@@ -8,8 +8,8 @@ RUN apk add --no-cache curl libc6-compat
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --omit=dev
+# Install dependencies (use npm install if package-lock.json is not available)
+RUN if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit=dev; fi
 
 # Copy source code
 COPY . .

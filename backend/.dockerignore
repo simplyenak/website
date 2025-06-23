@@ -97,7 +97,7 @@ ehthumbs.db
 *.swo
 
 # npm
-package-lock.json
+# package-lock.json (commented out - we need this for Docker builds)
 yarn.lock
 
 # Strapi
