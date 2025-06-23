@@ -14,7 +14,7 @@
   --color-orange: #ffa333;
 
   --text-shadow-custom: 1px 1px 5px var(--color-text);
-
+  --shadow-custom: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
   --text-4.5xl: 40px;
   --text-4.5xl--leading: 1;
   --text-4.5xl--letter-spacing: 0.8px;

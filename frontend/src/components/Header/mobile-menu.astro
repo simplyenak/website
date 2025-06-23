@@ -1,0 +1,84 @@
+---
+import IconMenu from '@/assets/icons/icon-menu.svg'
+import IconClose from '@/assets/icons/icon-close.svg'
+type Props = {
+  navItems: Array<{
+    name: string
+    href: string
+  }>
+}
+let { navItems } = Astro.props
+
+const activeUrl = Astro.url.pathname
+---
+
+<div class="lg:hidden">
+  <button class="cursor-pointer" data-mobile-menu-open>
+    <IconMenu class="size-8 text-primary" />
+  </button>
+  <div class="fixed inset-0 z-30 bg-black/20 hidden" data-mobile-menu-overlay>
+  </div>
+  <div
+    class="max-w-[400px] z-40 w-full bg-white fixed right-0 inset-y-0 shadow-custom translate-x-full transition-transform duration-300"
+    data-mobile-menu
+    transition:persist
+  >
+    <button
+      class="absolute top-4 right-4 cursor-pointer size-8 min-w-8 grid place-content-center text-primary hover:text-black duration-300 border border-text/10 rounded-full"
+      data-mobile-menu-close
+    >
+      <IconClose class="size-5" />
+    </button>
+    <ul class="flex flex-col justify-start h-full py-16">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                'px-10 py-2.5 text-body w-full block text-primary hover:bg-text/5 duration-300 font-semibold font-merriweather',
+                activeUrl === item.href ? 'bg-text/5' : '',
+              ]}
+            >
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuOpen = document.querySelector('[data-mobile-menu-open]')
+    const mobileMenuClose = document.querySelector('[data-mobile-menu-close]')
+    const mobileMenu = document.querySelector('[data-mobile-menu]')
+    const mobileMenuOverlay = document.querySelector(
+      '[data-mobile-menu-overlay]'
+    )
+
+    function openMenu() {
+      mobileMenu?.classList.remove('translate-x-full')
+      mobileMenu?.classList.add('translate-x-0')
+      mobileMenuOverlay?.classList.remove('hidden')
+    }
+
+    function closeMenu() {
+      mobileMenu?.classList.remove('translate-x-0')
+      mobileMenu?.classList.add('translate-x-full')
+      mobileMenuOverlay?.classList.add('hidden')
+    }
+
+    if (mobileMenuOpen) {
+      mobileMenuOpen.addEventListener('click', openMenu)
+    }
+
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', closeMenu)
+    }
+
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMenu)
+    }
+  })
+</script>
