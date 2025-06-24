@@ -8,6 +8,7 @@ import type Article from '@/interfaces/article'
 import HeroSection from '@/components/Home/HeroSection.astro'
 import PartnersSection from '@/components/Home/PartnersSection.astro'
 import AboutSection from '@/components/Home/AboutSection.astro'
+import OurToursSection from '@/components/Home/OurToursSection.astro'
 
 const articles = await fetchApi({
   endpoint: 'user', // the content type to fetch
@@ -21,4 +22,5 @@ console.log(articles)
   <HeroSection />
   <PartnersSection />
   <AboutSection />
+  <OurToursSection title="Our most popular tours" />
 </Layout>

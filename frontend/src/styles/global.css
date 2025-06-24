@@ -18,6 +18,12 @@
   --text-4.5xl--leading: 1;
   --text-4.5xl--letter-spacing: 0.8px;
 }
+
+@layer base {
+  html {
+    @apply scroll-smooth antialiased overflow-x-hidden;
+  }
+}
 @layer components {
   .main-container {
     @apply max-w-[1440px] mx-auto px-3 md:px-5 xl:px-[120px];
