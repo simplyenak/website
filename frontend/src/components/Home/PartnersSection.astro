@@ -16,14 +16,16 @@ const partners = [img1, img2, img3, img4, img5, img6]
   >
     {
       partners.map((partner) => (
-        <Image
-          src={partner}
-          alt="Partner logo"
-          class="mx-auto object-contain w-full h-auto max-h-[60px]"
-          loading="lazy"
-          width={400}
-          height={120}
-        />
+        <div>
+          <Image
+            src={partner}
+            alt="Partner logo"
+            class="mx-auto object-contain w-full h-auto max-h-[60px]"
+            loading="lazy"
+            width={400}
+            height={120}
+          />
+        </div>
       ))
     }
   </div>
