@@ -16,11 +16,62 @@ const articles = await fetchApi({
 })
 
 console.log(articles)
+
+import tourImg1 from '@/assets/images/2.webp'
+import IconMultiCircle from '@/assets/icons/icon-multicircle.svg'
 ---
 
 <Layout>
   <HeroSection />
   <PartnersSection />
   <AboutSection />
-  <OurToursSection title="Our most popular tours" />
+  <OurToursSection
+    title="Our most popular tours"
+    cards={Array.from({ length: 3 }, () => ({
+      title: 'Flavours of Malaysia (Off the Beaten Track)',
+      link: '#',
+      image: tourImg1,
+      price: 'RM 285',
+      duration: '4hrs',
+      location: 'Penang, Malaysia',
+      buttons: [
+        {
+          icon: null,
+          text: 'Book Now',
+          link: '#',
+        },
+      ],
+    }))}
+    button={{
+      text: 'browse available tours',
+      link: '/tours',
+    }}
+  />
+  <OurToursSection
+    title="Book your experience today"
+    cards={Array.from({ length: 5 }, () => ({
+      title: 'Flavours of Malaysia (Off the Beaten Track)',
+      link: '#',
+      image: tourImg1,
+      price: 'RM 285',
+      duration: '4hrs',
+      location: 'Penang, Malaysia',
+      buttons: [
+        {
+          icon: null,
+          text: 'Book Now',
+          link: '#',
+        },
+        {
+          icon: IconMultiCircle,
+          text: 'View',
+          link: '#',
+        },
+      ],
+    }))}
+    button={{
+      text: 'browse available tours',
+      link: '/tours',
+    }}
+  />
 </Layout>

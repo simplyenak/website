@@ -1,12 +1,85 @@
 ---
-let { title } = Astro.props;
+import { Image } from 'astro:assets'
+
+type Props = {
+  title: string
+  cards: Array<{
+    title: string
+    link: string
+    image: ImageMetadata
+    price: string
+    duration: string
+    location: string
+    buttons: Array<{
+      icon?: any
+      text: string
+      link: string
+    }>
+  }>
+  button: {
+    text: string
+    link: string
+  }
+}
+
+let { title, cards = [], button } = Astro.props
+import IconMoney from '@/assets/icons/icon-money.svg'
+import IconReload from '@/assets/icons/icon-reload.svg'
+import IconPaperRoket from '@/assets/icons/icon-paper-rocket.svg'
+import type { ImageMetadata } from 'astro'
 ---
 
 <section class="py-20 md:py-24">
   <div class="main-container">
-      <h2 class="text-primary text-h2 pb-12">{title}</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-
-      </div>
+    <h2 class="text-primary text-h2 pb-12 text-center">{title}</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      {
+        cards.map((card) => (
+          <div class="bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group">
+            <div class="h-[300px] md:h-[230px] overflow-hidden">
+              <Image
+                src={card.image}
+                alt="Tour image"
+                width={550}
+                height={300}
+                class="size-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-4 space-y-4">
+              <a
+                href={card.link}
+                class="font-semibold hover:text-primary text-body font-merriweather cursor-pointer block"
+              >
+                {card.title}
+              </a>
+              <ul class="*:flex *:items-center *:gap-2 text-body space-y-1">
+                <li>
+                  <IconMoney class="size-5 text-primary" />
+                  Price: {card.price}
+                </li>
+                <li>
+                  <IconReload class="size-5 text-primary" />
+                  Duration: {card.duration}
+                </li>
+                <li>
+                  <IconPaperRoket class="size-5 text-primary" />
+                  {card.location}
+                </li>
+              </ul>
+              <div class="grid grid-cols-2 gap-4">
+                {card.buttons.map((button) => (
+                  <a href={button.link} class="primary-btn-small">
+                    {button.icon && <button.icon class="size-5" />}
+                    {button.text}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <a href={button.link} class="secondary-btn-small mx-auto max-w-max uppercase mt-12">{button.text}</a>
   </div>
 </section>

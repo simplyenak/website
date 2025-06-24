@@ -14,6 +14,7 @@
 
   --text-shadow-custom: 1px 1px 5px var(--color-text);
   --shadow-custom: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+  --shadow-custom-1: 0px 0px 22px -5px #3b3b3b1a;
   --text-4.5xl: 40px;
   --text-4.5xl--leading: 1;
   --text-4.5xl--letter-spacing: 0.8px;
@@ -47,9 +48,9 @@
     @apply min-w-[210px] p-2.5 rounded-sm flex items-center justify-center gap-2.5 border border-white bg-[#efe5d940] text-white duration-300 hover:bg-primary hover:border-primary font-bold uppercase text-lg md:text-xl;
   }
   .primary-btn-small {
-    @apply min-w-[165px] px-2.5 py-2 rounded-sm flex items-center justify-center gap-2.5 border border-primary bg-primary text-white duration-300 hover:bg-[#efe5d940] hover:border-primary font-medium text-base md:text-lg;
+    @apply px-2.5 py-2 rounded-sm flex items-center justify-center gap-1 border border-primary bg-primary text-white duration-300 hover:bg-[#efe5d940] hover:border-primary hover:text-primary font-semibold text-base md:text-lg;
   }
   .secondary-btn-small {
-    @apply min-w-[165px] px-2.5 py-2 rounded-sm flex items-center justify-center gap-2.5 border border-primary bg-white text-primary duration-300 hover:bg-primary hover:text-white font-medium text-base md:text-lg;
+    @apply px-5 py-2 rounded-sm flex items-center justify-center gap-1 border border-primary bg-white text-primary duration-300 hover:bg-primary hover:text-white font-semibold text-base md:text-lg;
   }
 }
