@@ -1,0 +1,30 @@
+---
+import img1 from '@/assets/images/partners/1.webp'
+import img2 from '@/assets/images/partners/2.webp'
+import img3 from '@/assets/images/partners/3.webp'
+import img4 from '@/assets/images/partners/4.webp'
+import img5 from '@/assets/images/partners/5.webp'
+import img6 from '@/assets/images/partners/6.webp'
+import { Image } from 'astro:assets'
+
+const partners = [img1, img2, img3, img4, img5, img6]
+---
+
+<section class="bg-[#efe5d945] py-14">
+  <div
+    class="main-container flex items-center justify-center gap-5 sm:gap-10 xl:gap-12"
+  >
+    {
+      partners.map((partner) => (
+        <Image
+          src={partner}
+          alt="Partner logo"
+          class="mx-auto object-contain w-full h-auto max-h-[60px]"
+          loading="lazy"
+          width={400}
+          height={120}
+        />
+      ))
+    }
+  </div>
+</section>

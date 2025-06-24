@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro'
 import fetchApi from '@/lib/strapi'
 import type Article from '@/interfaces/article'
 import HeroSection from '@/components/Home/HeroSection.astro'
+import PartnersSection from '@/components/Home/PartnersSection.astro'
 
 const articles = await fetchApi({
   endpoint: 'user', // the content type to fetch
@@ -17,4 +18,5 @@ console.log(articles)
 
 <Layout>
   <HeroSection />
+  <PartnersSection />
 </Layout>
