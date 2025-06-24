@@ -9,7 +9,7 @@ import HeroSection from '@/components/Home/HeroSection.astro'
 import PartnersSection from '@/components/Home/PartnersSection.astro'
 import AboutSection from '@/components/Home/AboutSection.astro'
 import OurToursSection from '@/components/Home/OurToursSection.astro'
-
+import OurValuesSection from '@/components/Home/OurValuesSection.astro'
 const articles = await fetchApi({
   endpoint: 'user', // the content type to fetch
   wrappedByKey: 'data', // the key to unwrap the response
@@ -47,6 +47,7 @@ import IconMultiCircle from '@/assets/icons/icon-multicircle.svg'
       link: '/tours',
     }}
   />
+  <OurValuesSection />
   <OurToursSection
     title="Book your experience today"
     cards={Array.from({ length: 5 }, () => ({
