@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets'
+import img1 from '@/assets/images/clients/1.webp'
+import img2 from '@/assets/images/clients/2.webp'
+import img3 from '@/assets/images/clients/3.webp'
+import img4 from '@/assets/images/clients/4.webp'
+
+const testimonials = [
+  {
+    title: '“KL Street Food & Personable guide”',
+    review:
+      'Highly recommend this tour. Pauline was informative and very personable. According to my boys (10 & 12), she was the nicest guide we’ve ever had – and we’ve had a few. So full after the tour we couldn’t eat for hours, which is a record with two boys!',
+    image: img1,
+    name: 'Karen Cavanagh',
+    country: 'Australia',
+  },
+  {
+    title: '“Exceptional Guide, interesting and varied food experiences”',
+    review:
+      'We were in KL specifically to sample local food. Pauline was exceptional. We are not the easiest bunch to get along with, but she soon had us sorted out and provided fantastic advice and support. Thank you – we really appreciate all you did for us!',
+    image: img2,
+    name: 'John Kanis & Chris Lucas',
+    country: 'Australia – Owners, Lucas Group',
+  },
+  {
+    title: '“A real Penang Experience!!!”',
+    review:
+      'Knowing the history behind streets, temples, mosques and other establishments while tasting the local food is the real Penang experience! And Mark of Simply Enak was the perfect guy for this tour. We ended our trip filled with priceless knowledge of Penang culture and of great memories to keep. Kudos to Simply Enak and to Mark!',
+    image: img3,
+    name: 'Joy T',
+    country: 'USA',
+  },
+  {
+    title: '“Great private food/cultural tour”',
+    review:
+      'Mark customized our tour based on our preferences. The food was great and he’s so knowledgeable. Mark was friendly and we enjoyed exploring all the different places he showed us. I highly recommend using Simply Enak!',
+    image: img4,
+    name: 'Tany T',
+    country: 'USA',
+  },
+]
+---
+
+<section class="py-20 bg-[#f7f7f7]">
+  <div class="main-container">
+    <h2 class="text-h2 text-primary text-center mb-12">What our clients say</h2>
+    <swiper-container
+      slides-per-view="1.2"
+      speed="1000"
+      loop="true"
+      modules='["Pagination","Autoplay"]'
+      space-between="16"
+      breakpoints='{"640":{"slidesPerView":1.5,"spaceBetween":24},"768":{"slidesPerView":2,"spaceBetween":30}}'
+      autoplay='{"delay":3000,"disableOnInteraction":false}'
+      class="-mr-3 md:mr-0"
+      pagination="{el:'.testimonials-pagination','clickable':true,'bulletClass':'size-2.5 rounded-xs bg-text/30','bulletActiveClass':'!bg-primary'}"
+    >
+      <>
+        {
+          testimonials.map((testimonial) => (
+            <swiper-slide class="p-6 md:p-8 rounded-lg overflow-hidden bg-white border border-[#dddddd] shadow-custom-1 h-auto">
+              <div class="space-y-2 text-body">
+                <p>{testimonial.title}</p>
+                <p>{testimonial.review}</p>
+              </div>
+              <div class="flex items-center gap-4 mt-5">
+                <div class="md:size-[70px] size-12 rounded-full overflow-hidden">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.image.src}
+                    class="size-full object-cover"
+                  />
+                </div>
+                <div>
+                  <p class="text-body font-semibold uppercase">
+                    {testimonial.name}
+                  </p>
+                  <p class="text-sm font-medium">{testimonial.country}</p>
+                </div>
+              </div>
+            </swiper-slide>
+          ))
+        }
+      </>
+
+      <div
+        class="testimonials-pagination flex items-center justify-center gap-1 mt-8"
+      >
+      </div>
+    </swiper-container>
+  </div>
+</section>
+
+<script>
+  import { register } from 'swiper/element/bundle'
+  register()
+</script>
