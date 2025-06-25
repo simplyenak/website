@@ -15,7 +15,10 @@ const navItems = [
 const activeUrl = Astro.url.pathname
 ---
 
-<header class="bg-white shadow-custom relative z-50">
+<header
+  id="header"
+  class="bg-white shadow-custom inset-x-0 top-0 duration-300 z-50 sticky"
+>
   <TopBar />
   <nav
     class="main-container flex items-center justify-between gap-5 py-3 md:py-4"
