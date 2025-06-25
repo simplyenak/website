@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets'
+import img1 from '@/assets/images/1.webp'
+---
+
+<section id="about" class="pt-20 md:pt-32">
+  <div
+    class="main-container w-full flex flex-col md:flex-row justify-between items-center *:first:md:basis-[58%] *:last:md:basis-[42%] gap-16 lg:gap-20"
+  >
+    <div>
+      <h2 class="text-primary text-h2">
+        THE TRULY MALAYSIAN FOOD AND CULTURAL EXPERIENCE
+      </h2>
+      <p class="text-subheading pt-2.5 pb-4">
+        Are you looking to get a taste of true Malaysian food, culture and
+        heritage?
+      </p>
+      <p class="text-body">
+        Allow us to be your native guide as we share authentic Malaysian
+        favourites with you. Take a tour with us and we guarantee that you’ll
+        discover more than just delicious food! We operate in Georgetown,
+        Penang, and Kuala Lumpur, Malaysia. We have been trusted with a 5-star
+        ranking on TripAdvisor as well as the TripAdvisor Certificate of
+        Excellence for 4 consecutive years. We always aim to give you the best
+        experience possible.
+      </p>
+    </div>
+    <div class="rounded-xl overflow-hidden w-full h-[340px] md:h-[420px]">
+      <Image
+        src={img1}
+        alt="About Us"
+        width={960}
+        height={840}
+        class="size-full object-cover"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>

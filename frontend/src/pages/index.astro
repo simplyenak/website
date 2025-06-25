@@ -1,20 +1,86 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-import fetchApi from "@/lib/strapi";
-import type Article from "@/interfaces/article";
-
+import fetchApi from '@/lib/strapi'
+import type Article from '@/interfaces/article'
+import HeroSection from '@/components/Home/HeroSection.astro'
+import PartnersSection from '@/components/Home/PartnersSection.astro'
+import AboutSection from '@/components/Home/AboutSection.astro'
+import OurToursSection from '@/components/Home/OurToursSection.astro'
+import OurValuesSection from '@/components/Home/OurValuesSection.astro'
 const articles = await fetchApi({
-  endpoint: "user", // the content type to fetch
-  wrappedByKey: "data", // the key to unwrap the response
-});
+  endpoint: 'user', // the content type to fetch
+  wrappedByKey: 'data', // the key to unwrap the response
+})
 
-console.log(articles);
+console.log(articles)
+
+import tourImg1 from '@/assets/images/2.webp'
+import IconMultiCircle from '@/assets/icons/icon-multicircle.svg'
+import TestimonialsSection from '@/components/Home/TestimonialsSection.astro'
+import MediaSection from '@/components/Home/MediaSection.astro'
+import StoriesSection from '@/components/Home/StoriesSection.astro'
+import CTASection from '@/components/CTASection.astro'
 ---
 
 <Layout>
-  <Welcome />
+  <HeroSection />
+  <PartnersSection />
+  <AboutSection />
+  <OurToursSection
+    title="Our most popular tours"
+    cards={Array.from({ length: 3 }, () => ({
+      title: 'Flavours of Malaysia (Off the Beaten Track)',
+      link: '#',
+      image: tourImg1,
+      price: 'RM 285',
+      duration: '4hrs',
+      location: 'Penang, Malaysia',
+      buttons: [
+        {
+          icon: null,
+          text: 'Book Now',
+          link: '#',
+        },
+      ],
+    }))}
+    button={{
+      text: 'browse available tours',
+      link: '/tours',
+    }}
+  />
+  <OurValuesSection />
+  <OurToursSection
+    title="Book your experience today"
+    cards={Array.from({ length: 5 }, () => ({
+      title: 'Flavours of Malaysia (Off the Beaten Track)',
+      link: '#',
+      image: tourImg1,
+      price: 'RM 285',
+      duration: '4hrs',
+      location: 'Penang, Malaysia',
+      buttons: [
+        {
+          icon: null,
+          text: 'Book Now',
+          link: '#',
+        },
+        {
+          icon: IconMultiCircle,
+          text: 'View',
+          link: '#',
+        },
+      ],
+    }))}
+    button={{
+      text: 'browse available tours',
+      link: '/tours',
+    }}
+  />
+  <TestimonialsSection />
+  <MediaSection />
+  <StoriesSection />
+  <CTASection />
 </Layout>

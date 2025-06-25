@@ -1,0 +1,173 @@
+---
+import { Image } from 'astro:assets'
+import logo from '@/assets/images/simply_enak_logo.webp'
+import partner1 from '@/assets/images/partners/7.webp'
+import partner2 from '@/assets/images/partners/8.webp'
+import partner3 from '@/assets/images/partners/9.webp'
+import partner4 from '@/assets/images/partners/10.webp'
+import payment1 from '@/assets/images/payment-methods/1.webp'
+import payment2 from '@/assets/images/payment-methods/2.webp'
+import payment3 from '@/assets/images/payment-methods/3.webp'
+import payment4 from '@/assets/images/payment-methods/4.webp'
+import payment5 from '@/assets/images/payment-methods/5.webp'
+import payment6 from '@/assets/images/payment-methods/6.webp'
+import payment7 from '@/assets/images/payment-methods/7.webp'
+const partners = [
+  {
+    image: partner1,
+  },
+  {
+    image: partner2,
+  },
+  {
+    image: partner3,
+  },
+  {
+    image: partner4,
+  },
+]
+const paymentMethods = [
+  {
+    image: payment1,
+  },
+  {
+    image: payment2,
+  },
+  {
+    image: payment3,
+  },
+  {
+    image: payment4,
+  },
+  {
+    image: payment5,
+  },
+  {
+    image: payment6,
+  },
+  {
+    image: payment7,
+  },
+]
+const quickLinks = [
+  {
+    text: 'All Food Experiences',
+    link: '#',
+  },
+  {
+    text: 'Customise Your Experience',
+    link: '#',
+  },
+  {
+    text: 'Media Enquiries',
+    link: '#',
+  },
+  {
+    text: 'Contact Us',
+    link: '/contact',
+  },
+  {
+    text: 'Privacy Policy',
+    link: '/privacy-policy',
+  },
+  {
+    text: 'Terms & Conditions',
+    link: '/terms-conditions',
+  },
+]
+---
+
+<footer class="pt-20 pb-8 bg-primary text-white">
+  <div
+    class="main-container flex flex-col md:flex-row justify-between gap-10 pb-8 md:pb-20"
+  >
+    <div class="space-y-5">
+      <a href="/" class="px-4 py-2 bg-white block max-w-[250px]">
+        <Image
+          src={logo}
+          alt="Logo"
+          width={250}
+          height={150}
+          class="w-full object-contain"
+        />
+      </a>
+      <ul class="space-y-1 *:flex *:items-center *:gap-1">
+        <li>
+          <p>Phone:</p>
+          <a href="tel:+60172878929" class="hover:text-[#efe5d9] duration-300">
+            +60172878929
+          </a>
+        </li>
+        <li>
+          <p>Email:</p>
+          <a
+            href="mailto:booking@simplyenak.com"
+            class="hover:text-[#efe5d9] duration-300"
+          >
+            booking@simplyenak.com
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="space-y-6 md:space-y-10">
+      <div class="space-y-5">
+        <h3 class="text-subheading uppercase font-bold font-merriweather">
+          Partners
+        </h3>
+        <div class="flex items-center gap-4 flex-wrap">
+          {
+            partners.map((partner) => (
+              <Image
+                src={partner.image}
+                alt={partner.image.src}
+                class="h-10 md:h-[60px] w-auto object-contain"
+              />
+            ))
+          }
+        </div>
+      </div>
+      <div class="space-y-5">
+        <h3 class="text-subheading uppercase font-bold font-merriweather">
+          Payment methods
+        </h3>
+        <div class="flex items-center gap-2 flex-wrap">
+          {
+            paymentMethods.map((paymentMethod) => (
+              <div class="p-1.5 rounded-sm overflow-hidden bg-white grid place-items-center w-12">
+                <Image
+                  src={paymentMethod.image}
+                  alt={paymentMethod.image.src}
+                  class="size-full object-contain"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div class="space-y-5">
+      <h3
+        class="text-subheading uppercase font-bold font-merriweather whitespace-nowrap"
+      >
+        Quick LinkS
+      </h3>
+      <ul class="space-y-2 *:flex *:items-center *:gap-1">
+        {
+          quickLinks.map((link) => (
+            <li>
+              <a href={link.link} class="hover:text-[#efe5d9] duration-300">
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/30 pt-8 text-center px-3">
+    <p class="text-sm">
+      &copy; {new Date().getFullYear()} OPYRIGHT © 2023 SIMPLY ENAK FOOD EXPERIENCES.
+      ALL RIGHTS RESERVED.
+    </p>
+  </div>
+</footer>
