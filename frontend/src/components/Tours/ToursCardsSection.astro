@@ -1,0 +1,76 @@
+---
+import tourImg1 from '@/assets/images/2.webp'
+import ToursCard from '@/components/Tours/ToursCard.astro'
+const cards = [
+  {
+      title: 'Flavours of Malaysia (Off the Beaten Track)',
+      link: '#',
+      image: tourImg1,
+      price: 'RM 285',
+      duration: '4hrs',
+      location: 'Penang, Malaysia',
+      buttons: [
+        {
+          icon: null,
+          text: 'Book Now',
+          link: '#',
+        },
+      ],
+    },
+    {
+      title: 'Flavours of Malaysia (Off the Beaten Track)',
+      link: '#',
+      image: tourImg1,
+      price: 'RM 285',
+      duration: '4hrs',
+      location: 'Penang, Malaysia',
+      buttons: [
+        {
+          icon: null,
+          text: 'Book Now',
+          link: '#',
+        },
+      ],
+    },
+    {
+      title: 'Flavours of Malaysia (Off the Beaten Track)',
+      link: '#',
+      image: tourImg1,
+      price: 'RM 285',
+      duration: '4hrs',
+      location: 'Kuala Lumpur',
+      buttons: [
+        {
+          icon: null,
+          text: 'Book Now',
+          link: '#',
+        },
+      ],
+    }
+]
+---
+<section class="py-20 main-container">
+  <h4 class="text-xl md:text-2xl text-center font-medium">There are so many ways to discover and explore Malaysian food, culture and heritage. Whether you are into Nightlife or Street Food, Heritage or Markets we’ve got you covered with the tours below.</h4>
+  <div class="mt-8 space-y-10">
+    <div class="flex items-center justify-center overflow-x-auto gap-4">
+      <button class="tab-primary-btn">Kuala Lumpur</button>
+      <button class="tab-secondary-btn">Penang</button>
+      <button class="tab-secondary-btn">All</button>
+    </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-8 xl:gap-12">
+      {
+        cards.map((card) => (
+         <ToursCard
+          title={card.title}
+          link={card.link}
+          image={card.image}
+          price={card.price}
+          duration={card.duration}
+          buttons={card.buttons}
+          location={card.location}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

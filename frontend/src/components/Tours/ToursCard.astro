@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets'
+import IconMoney from '@/assets/icons/icon-money.svg'
+import IconReload from '@/assets/icons/icon-reload.svg'
+import IconPaperRoket from '@/assets/icons/icon-paper-rocket.svg'
+type Props = {
+  title: string
+  link: string
+  image: ImageMetadata
+  price: string
+  duration: string
+  location: string
+  buttons: Array<{
+    icon?: any
+    text: string
+    link: string,
+    class?: string
+  }>
+  class?: string
+}
+
+let { image, link, title, buttons, price, duration,location,class:className } = Astro.props
+---
+
+<div
+  class:list={["bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group", className]}
+>
+  <div class="h-[300px] md:h-[230px] overflow-hidden">
+    <Image
+      src={image}
+      alt="Tour image"
+      width={550}
+      height={300}
+      class="size-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+      loading="lazy"
+    />
+  </div>
+  <div class="p-4 space-y-4">
+    <a
+      href={link}
+      class="font-semibold hover:text-primary text-body font-merriweather cursor-pointer block"
+    >
+      {title}
+    </a>
+    <ul class="*:flex *:items-center *:gap-2 text-body space-y-1">
+      <li>
+        <IconMoney class="size-5 text-primary" />
+        Price: {price}
+      </li>
+      <li>
+        <IconReload class="size-5 text-primary" />
+        Duration: {duration}
+      </li>
+      <li>
+        <IconPaperRoket class="size-5 text-primary" />
+        {location}
+      </li>
+    </ul>
+    <div class="grid grid-cols-2 gap-4">
+      {
+        buttons.map((button) => (
+          <a href={button.link} class:list={["primary-btn-small", button.class]}>
+            {button.icon && <button.icon class="size-5" />}
+            {button.text}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
