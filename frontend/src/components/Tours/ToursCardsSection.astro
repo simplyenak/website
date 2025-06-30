@@ -1,76 +1,110 @@
 ---
 import tourImg1 from '@/assets/images/2.webp'
 import ToursCard from '@/components/Tours/ToursCard.astro'
+
 const cards = [
   {
-      title: 'Flavours of Malaysia (Off the Beaten Track)',
-      link: '#',
-      image: tourImg1,
-      price: 'RM 285',
-      duration: '4hrs',
-      location: 'Penang, Malaysia',
-      buttons: [
-        {
-          icon: null,
-          text: 'Book Now',
-          link: '#',
-        },
-      ],
-    },
-    {
-      title: 'Flavours of Malaysia (Off the Beaten Track)',
-      link: '#',
-      image: tourImg1,
-      price: 'RM 285',
-      duration: '4hrs',
-      location: 'Penang, Malaysia',
-      buttons: [
-        {
-          icon: null,
-          text: 'Book Now',
-          link: '#',
-        },
-      ],
-    },
-    {
-      title: 'Flavours of Malaysia (Off the Beaten Track)',
-      link: '#',
-      image: tourImg1,
-      price: 'RM 285',
-      duration: '4hrs',
-      location: 'Kuala Lumpur',
-      buttons: [
-        {
-          icon: null,
-          text: 'Book Now',
-          link: '#',
-        },
-      ],
-    }
-]
+    title: 'Flavours of Malaysia (Off the Beaten Track)',
+    link: '#',
+    image: tourImg1,
+    price: 'RM 285',
+    duration: '4hrs',
+    tags: ['Kuala Lumpur'],
+    location: 'Kuala Lumpur : Tealive, Pasar Seni LRT Station',
+    buttons: [
+      { icon: null, text: 'Book Now', link: '#' },
+    ],
+  },
+  {
+    title: 'Flavours of Malaysia (Off the Beaten Track)',
+    link: '#',
+    image: tourImg1,
+    price: 'RM 285',
+    duration: '4hrs',
+    tags: ['Kuala Lumpur'],
+    location: 'Kuala Lumpur',
+    buttons: [
+      { icon: null, text: 'Book Now', link: '#' },
+    ],
+  },
+  {
+    title: 'Flavours of Malaysia (Off the Beaten Track)',
+    link: '#',
+    image: tourImg1,
+    price: 'RM 285',
+    duration: '4hrs',
+    location: 'Penang, Malaysia',
+    tags: ['Penang'],
+    buttons: [
+      { icon: null, text: 'Book Now', link: '#' },
+    ],
+  },
+];
+const uniqueButtons = [
+  ...Array.from(new Set(cards.flatMap(card => card.tags))),
+  'All'
+];
 ---
+
 <section class="py-20 main-container">
-  <h4 class="text-xl md:text-2xl text-center font-medium">There are so many ways to discover and explore Malaysian food, culture and heritage. Whether you are into Nightlife or Street Food, Heritage or Markets we’ve got you covered with the tours below.</h4>
-  <div class="mt-8 space-y-10">
-    <div class="flex items-center justify-center overflow-x-auto gap-4">
-      <button class="tab-primary-btn">Kuala Lumpur</button>
-      <button class="tab-secondary-btn">Penang</button>
-      <button class="tab-secondary-btn">All</button>
+  <h4 class="text-xl md:text-2xl text-center font-medium">
+    There are so many ways to discover and explore Malaysian food, culture and
+    heritage. Whether you are into Nightlife or Street Food, Heritage or Markets
+    we’ve got you covered with the tours below.
+  </h4>
+  <div class="mt-8">
+    <div class="flex items-center justify-center overflow-x-auto gap-4" id="tab-buttons">
+      {uniqueButtons.map((button, idx) => (
+        <button
+          type="button"
+          class={idx === 0 ? 'tab-primary-btn' : 'tab-secondary-btn'}
+          data-button={button}
+        >
+          {button}
+        </button>
+      ))}
     </div>
-     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-8 xl:gap-12">
-      {
-        cards.map((card) => (
-         <ToursCard
-          title={card.title}
-          link={card.link}
-          image={card.image}
-          price={card.price}
-          duration={card.duration}
-          buttons={card.buttons}
-          location={card.location}
+    <div
+      id="cards-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-8 xl:gap-12 mt-10"
+    >
+      {cards.map((card) => (
+        <div
+          class="tour-card"
+          data-tags={card.tags}
+        >
+          <ToursCard
+            title={card.title}
+            link={card.link}
+            image={card.image}
+            price={card.price}
+            duration={card.duration}
+            buttons={card.buttons}
+            location={card.location}
           />
-        ))
-      }
+        </div>
+      ))}
     </div>
   </div>
 </section>
+
+<script type="module" is:inline>
+  const tabContainer = document.getElementById('tab-buttons');
+  const cardsGrid = document.getElementById('cards-grid');
+  let activeBtn = tabContainer.querySelector('button');
+  activeBtn && (activeBtn.className = 'tab-primary-btn');
+  const firstFilter = activeBtn.dataset.button;
+  [...cardsGrid.children].forEach(card => {
+    card.style.display = firstFilter === 'All' || card.dataset.tags === firstFilter ? '' : 'none';
+  });
+  tabContainer.onclick = e => {
+    if (e.target.tagName !== 'BUTTON') return;
+    activeBtn && (activeBtn.className = 'tab-secondary-btn');
+    e.target.className = 'tab-primary-btn';
+    activeBtn = e.target;
+    const sel = e.target.dataset.button;
+    [...cardsGrid.children].forEach(card => {
+      card.style.display = sel === 'All' || card.dataset.tags === sel ? '' : 'none';
+    });
+  };
+</script>
