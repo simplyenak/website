@@ -23,7 +23,7 @@ let { image, link, title, buttons, price, duration,location,class:className } = 
 ---
 
 <div
-  class:list={["bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group", className]}
+  class:list={["bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group h-full min-h-0 flex flex-col", className]}
 >
   <div class="h-[300px] md:h-[230px] overflow-hidden">
     <Image
@@ -35,7 +35,7 @@ let { image, link, title, buttons, price, duration,location,class:className } = 
       loading="lazy"
     />
   </div>
-  <div class="p-4 space-y-4">
+  <div class="p-4 space-y-4 grow flex flex-col">
     <a
       href={link}
       class="font-semibold hover:text-primary text-body font-merriweather cursor-pointer block"
@@ -56,7 +56,7 @@ let { image, link, title, buttons, price, duration,location,class:className } = 
         {location}
       </li>
     </ul>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-2 gap-4 mt-auto">
       {
         buttons.map((button) => (
           <a href={button.link} class:list={["primary-btn-small", button.class]}>
