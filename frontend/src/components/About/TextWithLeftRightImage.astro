@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets'
+let {
+  image,
+  title,
+  contents,
+  imagePosition = 'left',
+  bgColor = 'bg-white',
+} = Astro.props
+---
+
+<section class:list={['py-20 md:py-24', bgColor]}>
+  <div
+    class:list={[
+      'main-container flex gap-8 md:gap-16 flex-col-reverse',
+      imagePosition === 'left' ? 'md:flex-row' : 'md:flex-row-reverse',
+    ]}
+  >
+    <div
+      class="rounded-xl overflow-hidden h-[280px] md:h-[500px] w-full md:w-[45%]"
+    >
+      <Image
+        src={image}
+        alt="TextWithLeftRightImage"
+        height={500}
+        width={800}
+        class="object-cover object-top size-full"
+      />
+    </div>
+    <div class="flex-1">
+      <h2 class="text-h2 mb-6 text-primary !capitalize">{title}</h2>
+      <div
+        class="prose prose-headings:font-merriweather prose-h1:text-3xl prose-h1:md:text-4.5xl prose-h1:text-shadow-custom prose-h1:capitalize prose-h2:font-semibold prose-h2:text-2xl prose-h2:md:text-4xl prose-h2:capitalize prose-h3:font-semibold prose-h3:text-xl prose-h3:md:text-3xl prose-h3:capitalize prose-h4:text-lg prose-h4:md:text-2xl prose-h4:capitalize prose-h5:text-lg prose-h5:md:text-xl prose-h5:capitalize prose-h6:text-sm prose-h6:md:text-lg prose-h6:capitalize prose-p:text-base prose-p:md:text-lg md:text-lg text-base prose-p:mt-2 prose-headings:text-black prose-headings:font-bold"
+        set:html={contents}
+      />
+    </div>
+  </div>
+</section>
