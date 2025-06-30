@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets'
+let { title, description = '', image } = Astro.props
+---
+
+<section
+  class="min-h-[420px] h-full py-16 px-3 relative flex items-center justify-center text-center flex-col gap-4 md:gap-6 text-white"
+>
+  <h1 class="text-h1 xl:text-5xl">{title}</h1>
+  {description && <p class="text-subheading">{description}</p>}
+
+  <Image
+    src={image}
+    alt="About Hero Image"
+    class="absolute inset-0 size-full object-cover -z-10"
+    height={420}
+    width={1920}
+  />
+</section>
