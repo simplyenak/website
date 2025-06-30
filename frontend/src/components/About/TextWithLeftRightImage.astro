@@ -1,0 +1,63 @@
+---
+import img6 from '@/assets/images/6.jpg'
+import { Image } from 'astro:assets'
+let {
+  image,
+  title,
+  contents,
+  imagePosition = 'left',
+  bgColor = 'bg-white',
+} = Astro.props
+---
+
+<section class:list={['py-20 md:py-24', bgColor]}>
+  <div
+    class:list={[
+      'main-container flex gap-8 md:gap-16',
+      imagePosition === 'left'
+        ? 'md:flex-row flex-col-reverse'
+        : 'md:flex-row-reverse flex-col',
+    ]}
+  >
+    <div class="rounded-xl overflow-hidden h-[280px] md:h-[500px] w-[48%]">
+      <Image
+        src={img6}
+        alt="TextWithLeftRightImage"
+        height={500}
+        width={550}
+        class="object-cover object-top size-full"
+      />
+    </div>
+    <div class="flex-1">
+      <h2 class="text-h2 mb-4 text-primary">{title}</h2>
+      <div
+        class="prose prose-headings:font-merriweather prose-h1:text-h1 prose-h2:text-h2 prose-h3:text-h3 prose-h4:text-h4 prose-h5:text-h5 prose-h6:text-h6 prose-p:text-body prose-h1:text-shadow-custom prose-h2:text-primary text-body"
+      >
+        <p>
+          With Malaysia known to be one of the finest destinations for food
+          enthusiasts, we belief that there is more to Malaysian dishes than
+          being just plain delicious. Every dish served has its story of the
+          people, their culture and their heritage. Our mission is to tickle all
+          your senses by sharing these stories with you! As passionate culinary
+          explorers, we dislike ‘tourist traps’ as much as you do – that’s why
+          we only share authentic Malaysian culinary treasures and experiences
+          on our excursions. So, come join us on an adventure to indulge in
+          genuine Malaysian cuisine and experience the local community. We
+          guarantee you’ll go home with more than just a satisfied stomach!
+        </p>
+        <h5>Exploring All Senses</h5>
+        We embrace the importance of all the five senses. Therefore, on our tours
+        we emphasize on taste, smell, hear and sight while experiencing the beauty
+        of the Malaysian heritage and its culinary gems.
+        <h5>From The Heart</h5>
+        Being proud Malaysians, we share authentic Malaysian heritage from our hearts.
+        We take great pleasure in filling your stomachs with savoury treats, as much
+        as, to open your eyes to intimate stories of people, tradition and culture.
+        <h5>Giving Back!</h5>
+        Simply Enak believes in giving to the community by supporting the local businesses
+        we work with. By doing so, we also foster a great bond with the neighbourhoods
+        we support.
+      </div>
+    </div>
+  </div>
+</section>
