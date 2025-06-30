@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro'
+import CTASection from '@/components/CTASection.astro'
+import GlobalHero from '@/components/GlobalHero.astro'
+import bg5 from '@/assets/images/bg5.jpg'
+import ToursCardsSection from '@/components/Tours/ToursCardsSection.astro'
+---
+
+<Layout title="About – Simply Enak">
+  <GlobalHero title="Select The Best Tour for you" image={bg5} />
+  <ToursCardsSection />
+  <CTASection />
+</Layout>
