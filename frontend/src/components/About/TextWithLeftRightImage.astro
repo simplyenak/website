@@ -1,5 +1,4 @@
 ---
-import img6 from '@/assets/images/6.jpg'
 import { Image } from 'astro:assets'
 let {
   image,
@@ -13,51 +12,27 @@ let {
 <section class:list={['py-20 md:py-24', bgColor]}>
   <div
     class:list={[
-      'main-container flex gap-8 md:gap-16',
-      imagePosition === 'left'
-        ? 'md:flex-row flex-col-reverse'
-        : 'md:flex-row-reverse flex-col',
+      'main-container flex gap-8 md:gap-16 flex-col-reverse',
+      imagePosition === 'left' ? 'md:flex-row' : 'md:flex-row-reverse',
     ]}
   >
-    <div class="rounded-xl overflow-hidden h-[280px] md:h-[500px] w-[48%]">
+    <div
+      class="rounded-xl overflow-hidden h-[280px] md:h-[500px] w-full md:w-[45%]"
+    >
       <Image
-        src={img6}
+        src={image}
         alt="TextWithLeftRightImage"
         height={500}
-        width={550}
+        width={800}
         class="object-cover object-top size-full"
       />
     </div>
     <div class="flex-1">
-      <h2 class="text-h2 mb-4 text-primary">{title}</h2>
+      <h2 class="text-h2 mb-6 text-primary !capitalize">{title}</h2>
       <div
-        class="prose prose-headings:font-merriweather prose-h1:text-h1 prose-h2:text-h2 prose-h3:text-h3 prose-h4:text-h4 prose-h5:text-h5 prose-h6:text-h6 prose-p:text-body prose-h1:text-shadow-custom prose-h2:text-primary text-body"
-      >
-        <p>
-          With Malaysia known to be one of the finest destinations for food
-          enthusiasts, we belief that there is more to Malaysian dishes than
-          being just plain delicious. Every dish served has its story of the
-          people, their culture and their heritage. Our mission is to tickle all
-          your senses by sharing these stories with you! As passionate culinary
-          explorers, we dislike ‘tourist traps’ as much as you do – that’s why
-          we only share authentic Malaysian culinary treasures and experiences
-          on our excursions. So, come join us on an adventure to indulge in
-          genuine Malaysian cuisine and experience the local community. We
-          guarantee you’ll go home with more than just a satisfied stomach!
-        </p>
-        <h5>Exploring All Senses</h5>
-        We embrace the importance of all the five senses. Therefore, on our tours
-        we emphasize on taste, smell, hear and sight while experiencing the beauty
-        of the Malaysian heritage and its culinary gems.
-        <h5>From The Heart</h5>
-        Being proud Malaysians, we share authentic Malaysian heritage from our hearts.
-        We take great pleasure in filling your stomachs with savoury treats, as much
-        as, to open your eyes to intimate stories of people, tradition and culture.
-        <h5>Giving Back!</h5>
-        Simply Enak believes in giving to the community by supporting the local businesses
-        we work with. By doing so, we also foster a great bond with the neighbourhoods
-        we support.
-      </div>
+        class="prose prose-headings:font-merriweather prose-h1:text-3xl prose-h1:md:text-4.5xl prose-h1:text-shadow-custom prose-h1:capitalize prose-h2:font-semibold prose-h2:text-2xl prose-h2:md:text-4xl prose-h2:capitalize prose-h3:font-semibold prose-h3:text-xl prose-h3:md:text-3xl prose-h3:capitalize prose-h4:text-lg prose-h4:md:text-2xl prose-h4:capitalize prose-h5:text-lg prose-h5:md:text-xl prose-h5:capitalize prose-h6:text-sm prose-h6:md:text-lg prose-h6:capitalize prose-p:text-base prose-p:md:text-lg md:text-lg text-base prose-p:mt-2 prose-headings:text-black prose-headings:font-bold"
+        set:html={contents}
+      />
     </div>
   </div>
 </section>
