@@ -4,9 +4,17 @@ import CTASection from '@/components/CTASection.astro'
 import GlobalHero from '@/components/GlobalHero.astro'
 
 import bg3 from '@/assets/images/bg3.jpg'
+import MediaSection from '@/components/Home/MediaSection.astro'
+import TextWithLeftRightImage from '@/components/About/TextWithLeftRightImage.astro'
 ---
 
 <Layout title="About – Simply Enak">
   <GlobalHero title="ABOUT US" decription="" image={bg3} />
+  <TextWithLeftRightImage
+    title="the Leading Food Tour businesses in Malaysia"
+    contents=`
+    `
+  />
+  <MediaSection />
   <CTASection />
 </Layout>
