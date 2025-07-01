@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro'
+import CTASection from '@/components/CTASection.astro'
+import GlobalHero from '@/components/GlobalHero.astro'
+import IconCheckout from '@/assets/icons/icon-checkout.svg'
+import bg5 from '@/assets/images/bg5.jpg'
+import ToursCardsSection from '@/components/Tours/ToursCardsSection.astro'
+import OtherBookingSection from '@/components/Tours/OtherBookingSection.astro'
+---
+
+<Layout title="Food Tours – Simply Enak">
+  <GlobalHero title="Select The Best Tour for you" image={bg5} />
+  <ToursCardsSection />
+  <OtherBookingSection title="Or book a Bespoke Tour" description="Tailored to your wishes; group size, location, private or specific sites we love collaborating with you to create the perfect tour for you." button={{ icon: '', link: '', text: '' }} />
+   <OtherBookingSection title="Know what tour you want?" description="If you know exactly what tour you’d like to book, just click the button to complete your booking." button={{ icon: IconCheckout, link: '#', text: 'BOOK NOW' }} />
+  <CTASection />
+</Layout>
