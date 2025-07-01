@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets"
+import img7 from '@/assets/images/7.jpg'
+import img8 from '@/assets/images/8.jpeg'
+const stories = [
+  ...Array.from({ length: 20 }, (_, i) => ({
+    link: '#',
+    image: i % 2 === 0 ? img7 : img8,
+    tags: i % 2 === 0 ? ['Cuisine'] : ['Cuisine', 'Festivals'],
+    title: i % 2 === 0
+      ? 'Discover the Vibrant World of Malaysian Herbs and Traditional Flavours!'
+      : '11 Foods To Try During Hari Raya'
+  })),
+]
+---
+<section class="md:col-span-5">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
+   {
+    stories.slice(0,12).map((story, index) => (
+      <a href={story.link} class="group rounded-lg overflow-hidden relative w-full h-[380px]">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 text-white from-40% flex flex-col justify-end z-10 p-4 md:p-6 space-y-4">
+       <div class="flex items-center gap-2">
+        {
+          story.tags.map((tag) => (
+            <span class="bg-white text-body uppercase font-semibold text-black px-3 py-1 rounded-sm max-w-max">{tag}</span>
+          ))
+        }
+       </div>
+         <h4 class="text-h4 !font-bold capitalize line-clamp-3">{story.title}</h4>
+      </div>
+      <Image
+        src={story.image}
+        alt={story.image.src}
+        class="size-full object-cover group-hover:scale-110 transition-transform duration-300"
+        height={380}
+        width={768}
+      />
+    </a>
+    ))
+   }
+  </div>
+  <div class="w-full md:max-w-[60%] px-5 md:px-10 py-3 bg-text/15 flex items-center justify-between rounded-md mx-auto mt-10">
+    <button class="uppercase text-body font-semibold hover:text-primary duration-300 cursor-pointer">prev</button>
+    <div class="flex items-center gap-2">
+      <button class="size-6 md:size-8 rounded-full bg-white grid place-items-center text-primary font-semibold text-body cursor-pointer duration-300">
+        1
+      </button>
+      <button class="size-6 md:size-8 rounded-full hover:bg-white grid place-items-center hover:text-primary font-semibold text-body cursor-pointer duration-300">
+        2
+      </button>
+    </div>
+    <button class="uppercase text-body font-semibold hover:text-primary duration-300 cursor-pointer">next</button>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import type { ComponentProps } from 'astro/types';
+
+type Props = {
+  title?: string;
+  description?: string;
+  button?: {
+    icon?: any;
+    text: string;
+    link: string;
+  };
+};
+let { title, description, button } = Astro.props;
+---
+
+<section class="main-container">
+  <div class="border-t border-text/10 pt-10 pb-16 text-center space-y-4">
+    <h4 class="text-h4 text-primary">{title}</h4>
+    <h5 class="text-h5 normal-case max-w-[900px] mx-auto font-medium">{description}</h5>
+    {button && button.text && (
+      <a href={button.link} class="primary-btn-small max-w-max mx-auto">
+        {button.icon && <button.icon class="size-4" />}
+        {button.text}
+      </a>
+    )}
+  </div>
+</section>
