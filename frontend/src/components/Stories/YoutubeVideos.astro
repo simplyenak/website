@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+import IconYoutube from '@/assets/icons/icon-youtube.svg'
+import ytLogo from '@/assets/images/youtube-logo.webp'
+const youtubeVideos = [
+  ...Array.from({ length: 20 }, () => ({
+    embedUrl: 'https://www.youtube.com/embed/8nS3Tq5hPXE',
+  })),
+]
+---
+
+<div {...Astro.props}>
+  <Image
+    src={ytLogo}
+    alt="YouTube Logo"
+    class="w-full object-contain mx-auto"
+    loading="lazy"
+    height={100}
+    width={500}
+  />
+  <div class="space-y-4 my-5">
+    {
+      youtubeVideos
+        .slice(0, 5)
+        .map((video, index) => (
+          <iframe
+            src={video.embedUrl}
+            title={`YouTube video ${index + 1}`}
+            class="w-full aspect-video rounded-sm"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            loading="lazy"
+          />
+        ))
+    }
+  </div>
+  <div
+    class="flex flex-wrap items-center justify-center gap-2 whitespace-nowrap"
+  >
+    <button
+      class="px-2.5 py-1.5 text-white bg-black hover:bg-transparent border border-black hover:text-black text-xs rounded-sm text-center duration-300 cursor-pointer"
+    >
+      Load More…
+    </button>
+    <a
+      href="https://www.youtube.com/channel/UCgRvAZ86vyYwkk6-bvnDRCg/"
+      target="_blank"
+      class="flex items-center gap-2 px-2.5 py-1.5 text-white bg-primary hover:bg-transparent border border-primary hover:text-primary text-xs rounded-sm text-center duration-300"
+    >
+      <IconYoutube class="size-4" />
+      Subscribe
+    </a>
+  </div>
+</div>
