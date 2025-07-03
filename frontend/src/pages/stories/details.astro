@@ -1,0 +1,38 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import StoriesDetailsHero from '@/components/StoriesDetails/StoriesDetailsHero.astro'
+import StoriesDetailsSection from '@/components/StoriesDetails/StoriesDetailsSection.astro'
+import StoriesDetailsContents from '@/components/StoriesDetails/StoriesDetailsContents.astro'
+import img4 from '@/assets/images/4.webp'
+import stories from '@/data/stories.json'
+import AuthonSection from '@/components/StoriesDetails/AuthonSection.astro'
+import CommentSection from '@/components/StoriesDetails/CommentSection.astro'
+import AboutSimplyEnakSection from '@/components/StoriesDetails/AboutSimplyEnakSection.astro'
+import CTASection from '@/components/CTASection.astro'
+import YoutubeVideos from '@/components/Stories/YoutubeVideos.astro'
+import RelatedPosts from '@/components/StoriesDetails/RelatedPosts.astro'
+---
+
+<Layout title="Food Tours – Simply Enak">
+  <StoriesDetailsHero
+    title="Flavours of Malaysia (Off the Beaten Track)"
+    image={img4}
+  />
+  <StoriesDetailsSection>
+    <StoriesDetailsContents
+      title={stories[0].title}
+      contents={stories[0].contents}
+    />
+    <div class="px-4 md:px-8 lg:px-11 py-4 md:py-6 space-y-6">
+      <AuthonSection name="Mark" />
+      <CommentSection />
+    </div>
+    <div slot="sidebar" class="space-y-6">
+      <AboutSimplyEnakSection />
+      <YoutubeVideos class="p-4 rounded-sm border border-black/10" />
+      <RelatedPosts />
+    </div>
+  </StoriesDetailsSection>
+
+  <CTASection />
+</Layout>

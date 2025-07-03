@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import TourDetailsHero from '@/components/TourDetails/TourDetailsHero.astro'
+import tourImg1 from '@/assets/images/2.webp'
+---
+
+<Layout title="Food Tours – Simply Enak">
+  <TourDetailsHero
+    title="Flavours of Malaysia (Off the Beaten Track)"
+    price="RM 285"
+    duration="4hrs"
+    location="09:30 – 13:30 daily"
+    time="Kuala Lumpur: Hilton Garden Inn"
+    maxParticipants="9"
+    experienceType="Adventurous"
+    image={tourImg1}
+  />
+</Layout>

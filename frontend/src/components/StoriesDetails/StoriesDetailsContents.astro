@@ -1,0 +1,13 @@
+---
+import Prose from '@/components/Prose.astro'
+let { title, contents } = Astro.props
+---
+
+<div>
+  <h2
+    class="text-primary px-4 md:px-8 lg:px-11 py-4 md:py-6 bg-[#f7f7f7] text-h5"
+  >
+    {title}
+  </h2>
+  <Prose class="px-4 md:px-8 lg:px-11 py-4 md:py-6" set:html={contents} />
+</div>
