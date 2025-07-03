@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets'
+import dumyAvatar from '@/assets/images/dumy-avatar.jpg'
+let { image = dumyAvatar, name, possition = '' } = Astro.props
+---
+
+<div
+  class="flex items-center gap-4 border-t-4 border-black bg-[#f7f7f7] py-4 md:py-6 px-4 md:px-8"
+>
+  <Image
+    src={image}
+    alt={`${name} profile image`}
+    class="size-16 md:size-20 rounded-full object-cover"
+    width={80}
+    height={80}
+  />
+  <div>
+    <h3 class="text-h4 font-semibold">{name}</h3>
+    {possition && <p class="text-sm text-gray-500">{possition}</p>}
+  </div>
+</div>

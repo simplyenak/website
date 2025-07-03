@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets'
+let { title, image } = Astro.props
+---
+
+<section class="h-[420px] relative">
+  <div
+    class="main-container relative z-20 flex flex-col items-start justify-center gap-8 h-full"
+  >
+    <h2 class="text-h2 text-white font-bold capitalize">{title}</h2>
+  </div>
+  <Image
+    src={image}
+    alt="Stories Details Hero Image"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    width={1920}
+    height={600}
+  />
+</section>
