@@ -1,0 +1,12 @@
+<section class="py-12 main-container grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div
+    class="md:col-span-2 bg-white border border-[#efe5d9] rounded-sm space-y-6"
+  >
+    <slot />
+  </div>
+  <div>
+    <div class="space-y-6 p-5 bg-white border border-[#efe5d9] rounded-sm">
+      <slot name="sidebar" />
+    </div>
+  </div>
+</section>
