@@ -1,0 +1,8 @@
+---
+import Prose from '@/components/Prose.astro'
+let { contents } = Astro.props
+---
+
+<div class="rounded-sm bg-white p-6 md:p-12">
+  <Prose set:html={contents} />
+</div>

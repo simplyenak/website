@@ -1,0 +1,28 @@
+---
+import img1 from '@/assets/images/1.webp'
+import { Image } from 'astro:assets'
+---
+
+<section class="main-container py-20">
+  <h2 class="text-h2 text-primary text-center">Related Tours</h2>
+  <div class="mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
+    {
+      Array.from({ length: 4 }).map((_, index) => (
+        <a href="#" class="rounded-lg bg-white shadow-md overflow-hidden group">
+          <div class="h-32 w-full overflow-hidden">
+            <Image
+              src={img1}
+              alt="Tour Image"
+              class="size-full object-cover group-hover:scale-105 duration-300"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-sm font-semibold group-hover:text-primary">
+              Flavours of Malaysia
+            </h3>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
