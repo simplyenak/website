@@ -2,6 +2,10 @@
 import Layout from '@/layouts/Layout.astro'
 import TourDetailsHero from '@/components/TourDetails/TourDetailsHero.astro'
 import tourImg1 from '@/assets/images/2.webp'
+import StoriesDetailsSection from '@/components/StoriesDetails/StoriesDetailsSection.astro'
+import TourDetailsContents from '@/components/TourDetails/TourDetailsContents.astro'
+import tours from '@/data/tours.json'
+import RelatedToursSection from '@/components/TourDetails/RelatedToursSection.astro'
 ---
 
 <Layout title="Food Tours – Simply Enak">
@@ -15,4 +19,22 @@ import tourImg1 from '@/assets/images/2.webp'
     experienceType="Adventurous"
     image={tourImg1}
   />
+  <StoriesDetailsSection>
+    <TourDetailsContents contents={tours[0].contents} />
+    <div slot="sidebar">
+      <div
+        class="flex items-center justify-center gap-3 py-6 rounded-t-2xl bg-primary text-white"
+      >
+        <h5 class="text-h5 capitalize">From</h5>
+        <h4 class="text-h4 font-bold">RM 285</h4>
+      </div>
+      <iframe
+        class="h-[600px] w-full"
+        allow="payment"
+        src="https://assets.ticketinghub.com/checkout/index-dc5b0d9bec0a40ee67c25a8ae49997cf4d16cdb7.html#options=%7B%22context%22%3A%22customer%22%2C%22layout%22%3A%22embed%22%2C%22landing%22%3A%22calendar%22%2C%22color%22%3A%22%23ad2c36%22%2C%22footer%22%3A%22ssl%22%2C%22discounts%22%3Atrue%2C%22subscribe%22%3Atrue%2C%22avs%22%3Afalse%2C%22free%22%3Afalse%2C%22referral-code-param-name%22%3A%22th-reseller-ref%22%2C%22coupon-param-name%22%3A%22th-coupon%22%2C%22fields%22%3A%22name%2Cemail%2Ctelephone%22%2C%22currency%22%3A%22MYR%22%2C%22event-period%22%3A%227%22%2C%22events-view-mode%22%3A%22multi-day%22%2C%22collect-voucher-recipient-info%22%3Atrue%2C%22button-label%22%3A%22BOOK%20NOW%22%2C%22tos%22%3A%22https%3A%2F%2Fsimplyenak.com%2Fterms-conditions%2F%22%2C%22show-capacity-below%22%3A%224%22%2C%22social-sharing%22%3Afalse%2C%22book-more%22%3Afalse%2C%22book-more-if-tickets-limit-reached%22%3Afalse%2C%22show-product-logo%22%3Afalse%2C%22combination-discounts%22%3Atrue%2C%22show-product-description%22%3Afalse%2C%22gift-cards%22%3Atrue%2C%22ga-track-pageviews%22%3Atrue%2C%22ga-track-purchases%22%3Atrue%2C%22fb-pixel-track-purchases%22%3Atrue%2C%22ga-enable-debug-mode%22%3Afalse%2C%22extras-right-after-tickets%22%3Afalse%2C%22events-show-product-description%22%3Afalse%2C%22display-currency-as-symbol%22%3Afalse%2C%22extra-tickets%22%3Afalse%2C%22queueit%22%3Afalse%2C%22read-only-api%22%3Afalse%2C%22hide-option-prices%22%3Afalse%2C%22channel%22%3A%22e9409113-b42b-4a31-a53b-9d5121305aef%22%2C%22name%22%3A%22Flavours%20of%20Malasia%22%2C%22products_enabled%22%3Atrue%2C%22products%22%3A%22b00063b7-b907-4f25-9325-42e6934a34cc%22%2C%22referrer%22%3A%22https%3A%2F%2Fsimplyenak.com%2Ftours%2F%22%2C%22widget%22%3A%228be588c6-3879-4950-bc69-5d006cdf9152%22%2C%22referral-code%22%3Anull%2C%22origin%22%3A%22https%3A%2F%2Fsimplyenak.com%22%2C%22parentWidth%22%3A1665%7D"
+      >
+      </iframe>
+    </div>
+  </StoriesDetailsSection>
+  <RelatedToursSection />
 </Layout>
