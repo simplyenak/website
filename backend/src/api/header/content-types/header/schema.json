@@ -24,6 +24,11 @@
       "type": "component",
       "component": "nav-items.item",
       "repeatable": true
+    },
+    "sectionName": {
+      "type": "string",
+      "private": true,
+      "default": "Header"
     }
   }
 }
