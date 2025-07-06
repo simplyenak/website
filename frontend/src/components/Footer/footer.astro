@@ -9,10 +9,6 @@ const footer: Footer = await fetchApi({
     'footer?populate=logo&populate=partners.image&populate=paymentMethods&populate=quickLinks',
   wrappedByKey: 'data',
 })
-console.log('Footer data:', footer)
-
-const copyrightText = `COPYRIGHT &copy; ${new Date().getFullYear()} SIMPLY ENAK FOOD EXPERIENCES. ALL
-      RIGHTS RESERVED.<br />operator lincense`
 ---
 
 <footer class="pt-20 pb-8 bg-primary text-white">
