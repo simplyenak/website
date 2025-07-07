@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_partner_partners",
+  "info": {
+    "displayName": "partner"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "private": true,
+      "default": "partner"
+    }
+  },
+  "config": {}
+}

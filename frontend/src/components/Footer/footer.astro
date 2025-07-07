@@ -1,80 +1,14 @@
 ---
+import type { Footer } from '@/types'
 import { Image } from 'astro:assets'
-import logo from '@/assets/images/simply_enak_logo.webp'
-import partner1 from '@/assets/images/partners/7.webp'
-import partner2 from '@/assets/images/partners/8.webp'
-import partner3 from '@/assets/images/partners/9.webp'
-import partner4 from '@/assets/images/partners/10.webp'
-import payment1 from '@/assets/images/payment-methods/1.webp'
-import payment2 from '@/assets/images/payment-methods/2.webp'
-import payment3 from '@/assets/images/payment-methods/3.webp'
-import payment4 from '@/assets/images/payment-methods/4.webp'
-import payment5 from '@/assets/images/payment-methods/5.webp'
-import payment6 from '@/assets/images/payment-methods/6.webp'
-import payment7 from '@/assets/images/payment-methods/7.webp'
-const partners = [
-  {
-    image: partner1,
-  },
-  {
-    image: partner2,
-  },
-  {
-    image: partner3,
-  },
-  {
-    image: partner4,
-  },
-]
-const paymentMethods = [
-  {
-    image: payment1,
-  },
-  {
-    image: payment2,
-  },
-  {
-    image: payment3,
-  },
-  {
-    image: payment4,
-  },
-  {
-    image: payment5,
-  },
-  {
-    image: payment6,
-  },
-  {
-    image: payment7,
-  },
-]
-const quickLinks = [
-  {
-    text: 'All Food Experiences',
-    link: '#',
-  },
-  {
-    text: 'Customise Your Experience',
-    link: '#',
-  },
-  {
-    text: 'Media Enquiries',
-    link: '#',
-  },
-  {
-    text: 'Contact Us',
-    link: '/contact',
-  },
-  {
-    text: 'Privacy Policy',
-    link: '/privacy-policy',
-  },
-  {
-    text: 'Terms & Conditions',
-    link: '/terms-conditions',
-  },
-]
+import fetchApi from '@/lib/strapi'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+
+const footer: Footer = await fetchApi({
+  endpoint:
+    'footer?populate=logo&populate=partners.image&populate=paymentMethods&populate=quickLinks',
+  wrappedByKey: 'data',
+})
 ---
 
 <footer class="pt-20 pb-8 bg-primary text-white">
@@ -84,7 +18,7 @@ const quickLinks = [
     <div class="space-y-5">
       <a href="/" class="px-4 py-2 bg-white block max-w-[250px]">
         <Image
-          src={logo}
+          src={getFullMediaUrl(footer.logo)}
           alt="Logo"
           width={250}
           height={150}
@@ -94,17 +28,20 @@ const quickLinks = [
       <ul class="space-y-1 *:flex *:items-center *:gap-1">
         <li>
           <p>Phone:</p>
-          <a href="tel:+60172878929" class="hover:text-[#efe5d9] duration-300">
-            +60172878929
+          <a
+            href={`tel:${footer.phoneNumber}`}
+            class="hover:text-[#efe5d9] duration-300"
+          >
+            {footer.phoneNumber}
           </a>
         </li>
         <li>
           <p>Email:</p>
           <a
-            href="mailto:booking@simplyenak.com"
+            href={`mailto:${footer.email}`}
             class="hover:text-[#efe5d9] duration-300"
           >
-            booking@simplyenak.com
+            {footer.email}
           </a>
         </li>
       </ul>
@@ -116,11 +53,13 @@ const quickLinks = [
         </h3>
         <div class="flex items-center gap-4 flex-wrap">
           {
-            partners.map((partner) => (
+            footer.partners.map((partner) => (
               <Image
-                src={partner.image}
-                alt={partner.image.src}
+                src={getFullMediaUrl(partner.image)}
+                alt={partner.image.name}
                 class="h-10 md:h-[60px] w-auto object-contain"
+                height={60}
+                width={100}
               />
             ))
           }
@@ -132,12 +71,14 @@ const quickLinks = [
         </h3>
         <div class="flex items-center gap-2 flex-wrap">
           {
-            paymentMethods.map((paymentMethod) => (
+            footer.paymentMethods.map((paymentMethods) => (
               <div class="p-1.5 rounded-sm overflow-hidden bg-white grid place-items-center w-12">
                 <Image
-                  src={paymentMethod.image}
-                  alt={paymentMethod.image.src}
+                  src={getFullMediaUrl(paymentMethods)}
+                  alt={paymentMethods.name}
                   class="size-full object-contain"
+                  height={100}
+                  width={100}
                 />
               </div>
             ))
@@ -149,14 +90,14 @@ const quickLinks = [
       <h3
         class="text-subheading uppercase font-bold font-merriweather whitespace-nowrap"
       >
-        Quick LinkS
+        Quick Links
       </h3>
       <ul class="space-y-2 *:flex *:items-center *:gap-1">
         {
-          quickLinks.map((link) => (
+          footer.quickLinks.map((link) => (
             <li>
-              <a href={link.link} class="hover:text-[#efe5d9] duration-300">
-                {link.text}
+              <a href={link.href} class="hover:text-[#efe5d9] duration-300">
+                {link.name}
               </a>
             </li>
           ))
@@ -165,8 +106,9 @@ const quickLinks = [
     </div>
   </div>
   <div class="border-t border-white/30 pt-8 text-center px-3">
-    <p class="text-sm">
-      COPYRIGHT &copy; {new Date().getFullYear()} SIMPLY ENAK FOOD EXPERIENCES. ALL RIGHTS RES
-    </p>
+    <p
+      class="text-sm uppercase whitespace-break-spaces leading-none"
+      set:html={footer.copyrightText}
+    />
   </div>
 </footer>

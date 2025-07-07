@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_payment_method_payment_methods",
+  "info": {
+    "displayName": "paymentMethods"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "private": true,
+      "default": "Payment Methods Images"
+    }
+  },
+  "config": {}
+}

@@ -1,37 +1,40 @@
 FROM node:20-alpine
 
-WORKDIR /opt/app
+# Set working directory
+WORKDIR /app
 
 # Install system dependencies
-RUN apk add --no-cache curl libc6-compat
+RUN apk add --no-cache curl
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies (use npm install if package-lock.json is not available)
-RUN if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit=dev; fi
+# Install dependencies
+RUN npm ci --only=production
 
 # Copy source code
 COPY . .
 
-# Build the application
+# Set environment to production
 ENV NODE_ENV=production
+
+# Build the application
 RUN npm run build
 
-# Create non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S strapi -u 1001 && \
-    chown -R strapi:nodejs /opt/app
+# Set up data persistence directories
+RUN mkdir -p /app/data /app/public/uploads && \
+    chmod -R 755 /app/data /app/public/uploads
 
-# Switch to non-root user
-USER strapi
+# Set up data persistence directories
+RUN mkdir -p /app/data /app/public/uploads && \
+    chmod -R 755 /app/data /app/public/uploads
 
-# Expose port
+# Expose Strapi port
 EXPOSE 1337
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+# Health check for Dokploy monitoring (wait for DB connection)
+HEALTHCHECK --interval=30s --timeout=15s --start-period=60s --retries=5 \
   CMD curl -f http://localhost:1337/_health || exit 1
 
-# Start the application
+# Start Strapi
 CMD ["npm", "start"]
