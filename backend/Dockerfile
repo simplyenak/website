@@ -1,24 +1,40 @@
-FROM node:18-alpine AS base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
- 
-FROM base AS build
+FROM node:20-alpine
+
+# Set working directory
 WORKDIR /app
+
+# Install system dependencies
+RUN apk add --no-cache curl
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy source code
 COPY . .
-COPY package.json pnpm-lock.yaml ./
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+# Set environment to production
 ENV NODE_ENV=production
-RUN pnpm run build
- 
-FROM base AS dokploy
-WORKDIR /app
-ENV NODE_ENV=production
- 
-# Copy only the necessary files
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/package.json ./package.json
-COPY --from=build /app/node_modules ./node_modules
- 
-EXPOSE 3000
-CMD ["pnpm", "start"]
+
+# Build the application
+RUN npm run build
+
+# Set up data persistence directories
+RUN mkdir -p /app/data /app/public/uploads && \
+    chmod -R 755 /app/data /app/public/uploads
+
+# Set up data persistence directories
+RUN mkdir -p /app/data /app/public/uploads && \
+    chmod -R 755 /app/data /app/public/uploads
+
+# Expose Strapi port
+EXPOSE 1337
+
+# Health check for Dokploy monitoring (wait for DB connection)
+HEALTHCHECK --interval=30s --timeout=15s --start-period=60s --retries=5 \
+  CMD curl -f http://localhost:1337/_health || exit 1
+
+# Start Strapi
+CMD ["npm", "start"]
