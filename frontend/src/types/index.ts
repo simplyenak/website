@@ -43,3 +43,6 @@ export interface HeroSection {
   bgImage: Media
   buttons: Button[]
 }
+export interface PartnersSection {
+  partnersImages: Media[]
+}
