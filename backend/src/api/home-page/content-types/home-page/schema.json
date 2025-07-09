@@ -11,6 +11,10 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "metaTitle": {
+      "type": "string",
+      "default": "Simply Enak – Food Tours and more"
+    },
     "heroSection": {
       "type": "component",
       "component": "home-page.hero-section",

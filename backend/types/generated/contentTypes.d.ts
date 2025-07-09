@@ -496,6 +496,8 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     mediaSection: Schema.Attribute.Component<'home-page.media-section', false>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Simply Enak \u2013 Food Tours and more'>;
     ourToursSection: Schema.Attribute.Component<
       'home-page.our-tours-section',
       false

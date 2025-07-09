@@ -46,3 +46,9 @@ export interface HeroSection {
 export interface PartnersSection {
   partnersImages: Media[]
 }
+export interface AboutSection {
+  title: string
+  subTitle: string
+  description: string
+  image: Media
+}
