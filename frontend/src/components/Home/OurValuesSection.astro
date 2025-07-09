@@ -1,39 +1,30 @@
 ---
-import IconThumbsUp from '@/assets/icons/icon-thumbs-up.svg'
-import IconCamera from '@/assets/icons/icon-camera.svg'
-import IconHeart from '@/assets/icons/icon-heart.svg'
-const items = [
-  {
-    icon: IconThumbsUp,
-    title: 'Authentic',
-    description:
-      'Passionate from our hearts – we take pride in supporting local businesses and generations of vendors. We serve with our hearts.',
-  },
-  {
-    icon: IconCamera,
-    title: 'Explore',
-    description:
-      'All your senses: Smell, taste, hear, learn and feel the historic, delicious neighborhoods & off the beaten path communities full of hidden gems and stories.',
-  },
-  {
-    icon: IconHeart,
-    title: 'personal',
-    description:
-      'Attention and customer service from our experienced guides with extensive knowledge, ongoing training & education.',
-  },
-]
+import fetchApi from '@/lib/strapi'
+import type { OurValuesSection } from '@/types'
+import Icon from '@/components/Icon.astro'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+
+const data: {
+  ourValuesSection: OurValuesSection
+} = await fetchApi({
+  endpoint:
+    'home-page?populate=ourValuesSection.items.icon&populate=ourValuesSection.bgImage',
+  wrappedByKey: 'data',
+})
+const ourValuesSection = data.ourValuesSection
 ---
 
 <section
-  class="py-20 relative bg-[url('/src/assets/images/bg2.jpg')] bg-fixed bg-cover bg-center bg-no-repeat"
+  class:list={['py-20 relative bg-fixed bg-cover bg-center bg-no-repeat']}
+  style={`background-image: url('${getFullMediaUrl(ourValuesSection.bgImage)}');`}
 >
   <div class="main-container relative z-10">
     <h2 class="text-h2 text-primary mb-12 text-center">Our Core Values</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-12">
       {
-        items.map((item) => (
+        ourValuesSection.items.map((item) => (
           <div class="bg-white p-6 md:p-8 rounded-xl overflow-hidden space-y-3.5 border-[#dddddd] shadow-custom-1">
-            <item.icon class="size-12 text-black" />
+            <Icon name={item.icon.name} class="size-12 text-black" />
             <h4 class="text-xl font-merriweather uppercase text-primary font-semibold">
               {item.title}
             </h4>

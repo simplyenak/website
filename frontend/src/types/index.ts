@@ -52,3 +52,33 @@ export interface AboutSection {
   description: string
   image: Media
 }
+export interface OurToursSectionTypes {
+  title: string
+  button: Button
+}
+export interface OurValuesSection {
+  title: string
+  items: {
+    title: string
+    description: string
+    icon: { name: string }
+  }[]
+  bgImage: Media
+}
+export interface TestimonialsSection {
+  title: string
+  cards: {
+    title: string
+    review: string
+    name: string
+    country: string
+    image: Media
+  }[]
+}
+export interface MediaSection {
+  title: string
+  videoEmbedUrl: string
+}
+export interface StoriesSection{
+  title: string
+}

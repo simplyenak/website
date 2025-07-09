@@ -117,6 +117,7 @@ export interface HomePageOurValuesSection extends Struct.ComponentSchema {
     displayName: 'Our Values Section';
   };
   attributes: {
+    bgImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     items: Schema.Attribute.Component<'cards.our-values-card', true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };

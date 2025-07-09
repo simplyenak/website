@@ -40,6 +40,11 @@
       "component": "home-page.our-values-section",
       "repeatable": false
     },
+    "experienceTodaySection": {
+      "type": "component",
+      "component": "home-page.our-tours-section",
+      "repeatable": false
+    },
     "testimonialsSection": {
       "type": "component",
       "component": "home-page.testimonials-section",
