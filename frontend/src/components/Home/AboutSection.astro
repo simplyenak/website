@@ -1,6 +1,16 @@
 ---
 import { Image } from 'astro:assets'
 import img1 from '@/assets/images/1.webp'
+import fetchApi from '@/lib/strapi'
+import type { AboutSection } from '@/types'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+const data: {
+  aboutSection: AboutSection
+} = await fetchApi({
+  endpoint: 'home-page?populate=aboutSection.image',
+  wrappedByKey: 'data',
+})
+const aboutSection = data.aboutSection
 ---
 
 <section id="about" class="pt-20 md:pt-32">
@@ -9,25 +19,18 @@ import img1 from '@/assets/images/1.webp'
   >
     <div>
       <h2 class="text-primary text-h2">
-        THE TRULY MALAYSIAN FOOD AND CULTURAL EXPERIENCE
+        {aboutSection.title}
       </h2>
       <p class="text-subheading pt-2.5 pb-4">
-        Are you looking to get a taste of true Malaysian food, culture and
-        heritage?
+        {aboutSection.subTitle}
       </p>
       <p class="text-body">
-        Allow us to be your native guide as we share authentic Malaysian
-        favourites with you. Take a tour with us and we guarantee that you’ll
-        discover more than just delicious food! We operate in Georgetown,
-        Penang, and Kuala Lumpur, Malaysia. We have been trusted with a 5-star
-        ranking on TripAdvisor as well as the TripAdvisor Certificate of
-        Excellence for 4 consecutive years. We always aim to give you the best
-        experience possible.
+        {aboutSection.description}
       </p>
     </div>
     <div class="rounded-xl overflow-hidden w-full h-[340px] md:h-[420px]">
       <Image
-        src={img1}
+        src={getFullMediaUrl(aboutSection.image)}
         alt="About Us"
         width={960}
         height={840}
