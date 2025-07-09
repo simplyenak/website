@@ -1,0 +1,55 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroSection": {
+      "type": "component",
+      "component": "home-page.hero-section",
+      "repeatable": false
+    },
+    "partnersSection": {
+      "type": "component",
+      "component": "home-page.partners-section",
+      "repeatable": false
+    },
+    "aboutSection": {
+      "type": "component",
+      "component": "home-page.about-section",
+      "repeatable": false
+    },
+    "ourToursSection": {
+      "type": "component",
+      "component": "home-page.our-tours-section",
+      "repeatable": false
+    },
+    "ourValuesSection": {
+      "type": "component",
+      "component": "home-page.our-values-section",
+      "repeatable": false
+    },
+    "testimonialsSection": {
+      "type": "component",
+      "component": "home-page.testimonials-section",
+      "repeatable": false
+    },
+    "mediaSection": {
+      "type": "component",
+      "component": "home-page.media-section",
+      "repeatable": false
+    },
+    "storiesSection": {
+      "type": "component",
+      "component": "home-page.stories-section",
+      "repeatable": false
+    }
+  }
+}

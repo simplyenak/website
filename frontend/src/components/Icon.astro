@@ -1,0 +1,7 @@
+---
+const { name, class: className = '' } = Astro.props
+const IconModule = await import(`../assets/icons/${name}.svg`)
+const IconComponent = IconModule.default
+---
+
+<IconComponent class={className} />

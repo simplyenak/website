@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_home_page_stories_sections",
+  "info": {
+    "displayName": "Stories Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "component": "cards.stories-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
