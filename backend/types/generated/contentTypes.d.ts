@@ -473,6 +473,56 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
+  collectionName: 'home_pages';
+  info: {
+    displayName: 'Home Page';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutSection: Schema.Attribute.Component<'home-page.about-section', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroSection: Schema.Attribute.Component<'home-page.hero-section', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    > &
+      Schema.Attribute.Private;
+    mediaSection: Schema.Attribute.Component<'home-page.media-section', false>;
+    ourToursSection: Schema.Attribute.Component<
+      'home-page.our-tours-section',
+      false
+    >;
+    ourValuesSection: Schema.Attribute.Component<
+      'home-page.our-values-section',
+      false
+    >;
+    partnersSection: Schema.Attribute.Component<
+      'home-page.partners-section',
+      false
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    storiesSection: Schema.Attribute.Component<
+      'home-page.stories-section',
+      false
+    >;
+    testimonialsSection: Schema.Attribute.Component<
+      'home-page.testimonials-section',
+      false
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -985,6 +1035,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
+      'api::home-page.home-page': ApiHomePageHomePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
