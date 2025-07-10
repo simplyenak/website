@@ -27,11 +27,23 @@ const stories = [
     link: '/stories/details',
   },
 ]
+import fetchApi from '@/lib/strapi'
+import type { StoriesSection } from '@/types'
+
+const data: {
+  storiesSection: StoriesSection
+} = await fetchApi({
+  endpoint: 'home-page?populate=storiesSection',
+  wrappedByKey: 'data',
+})
+const storiesSectionData = data.storiesSection
 ---
 
 <section class="py-20 md:py-24 bg-[/stories/detailsf7f7f7]">
   <div class="main-container">
-    <h2 class="text-h2 text-primary text-center mb-12">latest Stories</h2>
+    <h2 class="text-h2 text-primary text-center mb-12">
+      {storiesSectionData.title}
+    </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
       {
         stories.map((story) => (

@@ -1,28 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro'
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 import fetchApi from '@/lib/strapi'
-import type Article from '@/interfaces/article'
+import type { OurToursSectionTypes } from '@/types'
 import HeroSection from '@/components/Home/HeroSection.astro'
 import PartnersSection from '@/components/Home/PartnersSection.astro'
 import AboutSection from '@/components/Home/AboutSection.astro'
 import OurToursSection from '@/components/Home/OurToursSection.astro'
 import OurValuesSection from '@/components/Home/OurValuesSection.astro'
-// const articles = await fetchApi({
-//   endpoint: 'article', // the content type to fetch
-//   wrappedByKey: 'data', // the key to unwrap the response
-// })
-
-// console.log(articles)
-
 import tourImg1 from '@/assets/images/2.webp'
 import IconMultiCircle from '@/assets/icons/icon-multicircle.svg'
 import TestimonialsSection from '@/components/Home/TestimonialsSection.astro'
 import MediaSection from '@/components/Home/MediaSection.astro'
 import StoriesSection from '@/components/Home/StoriesSection.astro'
 import CTASection from '@/components/CTASection.astro'
+
+const data: {
+  ourToursSection: OurToursSectionTypes
+  experienceTodaySection: OurToursSectionTypes
+} = await fetchApi({
+  endpoint:
+    'home-page?populate=ourToursSection.button&populate=experienceTodaySection.button',
+  wrappedByKey: 'data',
+})
+const ourToursSectionData = data.ourToursSection
+const experienceTodaySectionData = data.experienceTodaySection
 ---
 
 <Layout>
@@ -30,7 +31,7 @@ import CTASection from '@/components/CTASection.astro'
   <PartnersSection />
   <AboutSection />
   <OurToursSection
-    title="Our most popular tours"
+    title={ourToursSectionData.title}
     cards={Array.from({ length: 3 }, () => ({
       title: 'Flavours of Malaysia (Off the Beaten Track)',
       link: '#',
@@ -46,14 +47,11 @@ import CTASection from '@/components/CTASection.astro'
         },
       ],
     }))}
-    button={{
-      text: 'browse available tours',
-      link: '/tours',
-    }}
+    button={ourToursSectionData.button}
   />
   <OurValuesSection />
   <OurToursSection
-    title="Book your experience today"
+    title={experienceTodaySectionData.title}
     cards={Array.from({ length: 5 }, () => ({
       title: 'Flavours of Malaysia (Off the Beaten Track)',
       link: '#',
@@ -74,10 +72,7 @@ import CTASection from '@/components/CTASection.astro'
         },
       ],
     }))}
-    button={{
-      text: 'browse available tours',
-      link: '/tours',
-    }}
+    button={experienceTodaySectionData.button}
   />
   <TestimonialsSection />
   <MediaSection />

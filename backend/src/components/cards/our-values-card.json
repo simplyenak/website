@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_cards_our_values_cards",
+  "info": {
+    "displayName": "Our Values Card"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "component",
+      "component": "icon.icon",
+      "repeatable": false,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}
