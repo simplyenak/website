@@ -1,5 +1,9 @@
 ---
-import { Image } from 'astro:assets'
+let { title, cards = [], button } = Astro.props
+import type { ImageMetadata } from 'astro'
+import ToursCard from '@/components/Tours/ToursCard.astro'
+import Button from '../Button.astro'
+import type { Button as ButtonType } from '@/types'
 
 type Props = {
   title: string
@@ -16,21 +20,16 @@ type Props = {
       link: string
     }>
   }>
-  button: {
-    text: string
-    link: string
-  }
+  button: ButtonType
 }
-
-let { title, cards = [], button } = Astro.props
-import type { ImageMetadata } from 'astro'
-import ToursCard from '@/components/Tours/ToursCard.astro'
 ---
 
 <section class="py-20 md:py-24">
   <div class="main-container">
     <h2 class="text-primary text-h2 pb-12 text-center">{title}</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-8 xl:gap-12">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-8 xl:gap-12"
+    >
       {
         cards.map((card) => (
           <ToursCard
@@ -45,6 +44,12 @@ import ToursCard from '@/components/Tours/ToursCard.astro'
         ))
       }
     </div>
-    <a href={button.link} class="secondary-btn-small mx-auto max-w-max uppercase mt-12">{button.text}</a>
+    <Button
+      href={button.href}
+      title={button.title}
+      icon={button.icon?.name}
+      buttonType={button.buttonType}
+      class="mx-auto max-w-max uppercase mt-12"
+    />
   </div>
 </section>

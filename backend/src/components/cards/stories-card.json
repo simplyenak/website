@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_cards_stories_cards",
+  "info": {
+    "displayName": "Stories Card"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
