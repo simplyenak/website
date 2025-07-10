@@ -143,7 +143,6 @@ export interface HomePageStoriesSection extends Struct.ComponentSchema {
     displayName: 'Stories Section';
   };
   attributes: {
-    cards: Schema.Attribute.Component<'cards.stories-card', true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
