@@ -8,11 +8,6 @@
     "title": {
       "type": "string",
       "required": true
-    },
-    "cards": {
-      "type": "component",
-      "component": "cards.stories-card",
-      "repeatable": true
     }
   },
   "config": {}
