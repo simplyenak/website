@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_about_page_text_with_left_right_images",
+  "info": {
+    "displayName": "Text With LeftRight Image"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "contents": {
+      "type": "blocks",
+      "required": true
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "bgColor": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

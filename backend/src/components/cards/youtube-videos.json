@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_cards_youtube_videos",
+  "info": {
+    "displayName": "Youtube Videos"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "private": true,
+      "default": "Youtube Video"
+    },
+    "embedUrl": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}
