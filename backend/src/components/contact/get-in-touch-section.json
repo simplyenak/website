@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_contact_get_in_touch_sections",
+  "info": {
+    "displayName": "Get In Touch Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "contents": {
+      "type": "blocks",
+      "required": true
+    },
+    "formEmbedUrl": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}
