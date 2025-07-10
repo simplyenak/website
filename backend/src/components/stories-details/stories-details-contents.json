@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_stories_details_stories_details_contents",
+  "info": {
+    "displayName": "Stories Details Contents"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "contents": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sectionName": {
+      "type": "string",
+      "private": true,
+      "default": "About Page"
+    },
+    "aboutHero": {
+      "type": "component",
+      "component": "global-hero.global-hero",
+      "repeatable": false
+    },
+    "textWithLeftRightImage": {
+      "type": "component",
+      "component": "about-page.text-with-left-right-image",
+      "repeatable": false
+    },
+    "ourCoreValuesSection": {
+      "type": "component",
+      "component": "about-page.text-with-left-right-image",
+      "repeatable": false
+    },
+    "mediaSection": {
+      "type": "component",
+      "component": "home-page.media-section",
+      "repeatable": false
+    }
+  }
+}

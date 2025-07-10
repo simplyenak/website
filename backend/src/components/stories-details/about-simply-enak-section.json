@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_stories_details_about_simply_enak_sections",
+  "info": {
+    "displayName": "About Simply Enak Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "contents": {
+      "type": "blocks",
+      "required": true
+    },
+    "socialItems": {
+      "type": "component",
+      "component": "social-link.social-link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

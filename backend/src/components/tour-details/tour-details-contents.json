@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_tour_details_tour_details_contents",
+  "info": {
+    "displayName": "Tour Details Contents"
+  },
+  "options": {},
+  "attributes": {
+    "contents": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "config": {}
+}

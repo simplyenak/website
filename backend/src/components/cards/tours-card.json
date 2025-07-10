@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_cards_tours_cards",
+  "info": {
+    "displayName": "ToursCard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "price": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "buttons": {
+      "type": "component",
+      "component": "button.button",
+      "repeatable": true
+    },
+    "class": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

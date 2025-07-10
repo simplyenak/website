@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_global_hero_global_heroes",
+  "info": {
+    "displayName": "Global Hero"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "objectPosition": {
+      "type": "enumeration",
+      "default": "object-center",
+      "enum": [
+        "object-center",
+        "object-top",
+        "object-bottom",
+        "object-left",
+        "object-right",
+        "object-left-top",
+        "object-left-bottom",
+        "object-right-top",
+        "object-right-bottom",
+        "object-top-left",
+        "object-top-right",
+        "object-bottom-left",
+        "object-bottom-right"
+      ]
+    }
+  },
+  "config": {}
+}
