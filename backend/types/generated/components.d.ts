@@ -1,5 +1,20 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AboutPageTextWithLeftRightImage
+  extends Struct.ComponentSchema {
+  collectionName: 'components_about_page_text_with_left_right_images';
+  info: {
+    displayName: 'Text With LeftRight Image';
+  };
+  attributes: {
+    bgColor: Schema.Attribute.String;
+    contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
+    imagePosition: Schema.Attribute.Enumeration<['left', 'right']>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ButtonButton extends Struct.ComponentSchema {
   collectionName: 'components_button_buttons';
   info: {
@@ -19,7 +34,7 @@ export interface ButtonButton extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'primary-btn'>;
     href: Schema.Attribute.String;
     icon: Schema.Attribute.Component<'icon.icon', false>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -59,6 +74,88 @@ export interface CardsTestimonialsCard extends Struct.ComponentSchema {
     image: Schema.Attribute.Media<'images'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     review: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CardsToursCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_tours_cards';
+  info: {
+    displayName: 'ToursCard';
+  };
+  attributes: {
+    buttons: Schema.Attribute.Component<'button.button', true>;
+    class: Schema.Attribute.String;
+    duration: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.String;
+    price: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface CardsYoutubeVideos extends Struct.ComponentSchema {
+  collectionName: 'components_cards_youtube_videos';
+  info: {
+    displayName: 'Youtube Videos';
+  };
+  attributes: {
+    embedUrl: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.DefaultTo<'Youtube Video'>;
+  };
+}
+
+export interface ContactGetInTouchSection extends Struct.ComponentSchema {
+  collectionName: 'components_contact_get_in_touch_sections';
+  info: {
+    displayName: 'Get In Touch Section';
+  };
+  attributes: {
+    contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    formEmbedUrl: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface CtaSectionCtaSection extends Struct.ComponentSchema {
+  collectionName: 'components_cta_section_cta_sections';
+  info: {
+    displayName: 'CTA Section';
+  };
+  attributes: {
+    phoneNumber: Schema.Attribute.String & Schema.Attribute.Required;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface GlobalHeroGlobalHero extends Struct.ComponentSchema {
+  collectionName: 'components_global_hero_global_heroes';
+  info: {
+    displayName: 'Global Hero';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    objectPosition: Schema.Attribute.Enumeration<
+      [
+        'object-center',
+        'object-top',
+        'object-bottom',
+        'object-left',
+        'object-right',
+        'object-left-top',
+        'object-left-bottom',
+        'object-right-top',
+        'object-right-bottom',
+        'object-top-left',
+        'object-top-right',
+        'object-bottom-left',
+        'object-bottom-right',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'object-center'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -234,13 +331,132 @@ export interface PaymentMethodPaymentMethod extends Struct.ComponentSchema {
   };
 }
 
+export interface SocialLinkSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_social_link_social_links';
+  info: {
+    displayName: 'socialLink';
+  };
+  attributes: {
+    href: Schema.Attribute.String;
+    icon: Schema.Attribute.Component<'icon.icon', false> &
+      Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Private;
+  };
+}
+
+export interface StoriesDetailsAboutSimplyEnakSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_stories_details_about_simply_enak_sections';
+  info: {
+    displayName: 'About Simply Enak Section';
+  };
+  attributes: {
+    contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    socialItems: Schema.Attribute.Component<'social-link.social-link', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface StoriesDetailsAuthonSection extends Struct.ComponentSchema {
+  collectionName: 'components_stories_details_authon_sections';
+  info: {
+    displayName: 'Authon Section';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    possition: Schema.Attribute.String;
+  };
+}
+
+export interface StoriesDetailsStoriesDetailsContents
+  extends Struct.ComponentSchema {
+  collectionName: 'components_stories_details_stories_details_contents';
+  info: {
+    displayName: 'Stories Details Contents';
+  };
+  attributes: {
+    contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface StoriesDetailsStoriesDetailsHero
+  extends Struct.ComponentSchema {
+  collectionName: 'components_stories_details_stories_details_heroes';
+  info: {
+    displayName: 'Stories Details Hero';
+  };
+  attributes: {
+    bgImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface TourDetailsTourDetailsContents extends Struct.ComponentSchema {
+  collectionName: 'components_tour_details_tour_details_contents';
+  info: {
+    displayName: 'Tour Details Contents';
+  };
+  attributes: {
+    contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
+export interface TourDetailsTourDetailsHero extends Struct.ComponentSchema {
+  collectionName: 'components_tour_details_tour_details_heroes';
+  info: {
+    displayName: 'Tour Details Hero';
+  };
+  attributes: {
+    duration: Schema.Attribute.String & Schema.Attribute.Required;
+    experienceType: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    location: Schema.Attribute.String & Schema.Attribute.Required;
+    maxParticipants: Schema.Attribute.Integer;
+    price: Schema.Attribute.String & Schema.Attribute.Required;
+    time: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ToursOtherBookingSection extends Struct.ComponentSchema {
+  collectionName: 'components_tours_other_booking_sections';
+  info: {
+    displayName: 'Other Booking Section';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'button.button', false>;
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ToursToursCardsSection extends Struct.ComponentSchema {
+  collectionName: 'components_tours_tours_cards_sections';
+  info: {
+    displayName: 'Tours Cards Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.tours-card', true>;
+    text: Schema.Attribute.Text;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'about-page.text-with-left-right-image': AboutPageTextWithLeftRightImage;
       'button.button': ButtonButton;
       'cards.our-values-card': CardsOurValuesCard;
       'cards.stories-card': CardsStoriesCard;
       'cards.testimonials-card': CardsTestimonialsCard;
+      'cards.tours-card': CardsToursCard;
+      'cards.youtube-videos': CardsYoutubeVideos;
+      'contact.get-in-touch-section': ContactGetInTouchSection;
+      'cta-section.cta-section': CtaSectionCtaSection;
+      'global-hero.global-hero': GlobalHeroGlobalHero;
       'home-page.about-section': HomePageAboutSection;
       'home-page.hero-section': HomePageHeroSection;
       'home-page.media-section': HomePageMediaSection;
@@ -253,6 +469,15 @@ declare module '@strapi/strapi' {
       'nav-items.item': NavItemsItem;
       'partner.partner': PartnerPartner;
       'payment-method.payment-method': PaymentMethodPaymentMethod;
+      'social-link.social-link': SocialLinkSocialLink;
+      'stories-details.about-simply-enak-section': StoriesDetailsAboutSimplyEnakSection;
+      'stories-details.authon-section': StoriesDetailsAuthonSection;
+      'stories-details.stories-details-contents': StoriesDetailsStoriesDetailsContents;
+      'stories-details.stories-details-hero': StoriesDetailsStoriesDetailsHero;
+      'tour-details.tour-details-contents': TourDetailsTourDetailsContents;
+      'tour-details.tour-details-hero': TourDetailsTourDetailsHero;
+      'tours.other-booking-section': ToursOtherBookingSection;
+      'tours.tours-cards-section': ToursToursCardsSection;
     }
   }
 }

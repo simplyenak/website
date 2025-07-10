@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_stories_details_stories_details_heroes",
+  "info": {
+    "displayName": "Stories Details Hero"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "bgImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}
