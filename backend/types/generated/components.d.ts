@@ -258,37 +258,15 @@ export interface HomePageTestimonialsSection extends Struct.ComponentSchema {
 export interface IconIcon extends Struct.ComponentSchema {
   collectionName: 'components_icon_icons';
   info: {
+    description: 'An icon component for various UI elements';
     displayName: 'Icon';
   };
   attributes: {
-    name: Schema.Attribute.Enumeration<
-      [
-        'icon-arrow-right',
-        'icon-camera',
-        'icon-check',
-        'icon-checkout',
-        'icon-clock',
-        'icon-close',
-        'icon-envelope',
-        'icon-facebook',
-        'icon-heart',
-        'icon-instagram',
-        'icon-menu',
-        'icon-money',
-        'icon-multicircle',
-        'icon-paper-rocket',
-        'icon-phone',
-        'icon-reload',
-        'icon-search',
-        'icon-thumb-right',
-        'icon-thumbs-up',
-        'icon-user',
-        'icon-whatsapp',
-        'icon-youtube',
-      ]
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'icon-check'>;
+    color: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    size: Schema.Attribute.Enumeration<['small', 'medium', 'large']> &
+      Schema.Attribute.DefaultTo<'medium'>;
+    svg: Schema.Attribute.Text;
   };
 }
 

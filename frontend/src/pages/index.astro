@@ -31,7 +31,7 @@ const experienceTodaySectionData = data.experienceTodaySection
   <PartnersSection />
   <AboutSection />
   <OurToursSection
-    title={ourToursSectionData.title}
+    title={ourToursSectionData?.title ?? 'Our Tours'}
     cards={Array.from({ length: 3 }, () => ({
       title: 'Flavours of Malaysia (Off the Beaten Track)',
       link: '#',
@@ -47,11 +47,11 @@ const experienceTodaySectionData = data.experienceTodaySection
         },
       ],
     }))}
-    button={ourToursSectionData.button}
+    button={ourToursSectionData?.button}
   />
   <OurValuesSection />
   <OurToursSection
-    title={experienceTodaySectionData.title}
+    title={experienceTodaySectionData?.title ?? 'Experience Today'}
     cards={Array.from({ length: 5 }, () => ({
       title: 'Flavours of Malaysia (Off the Beaten Track)',
       link: '#',
@@ -72,7 +72,7 @@ const experienceTodaySectionData = data.experienceTodaySection
         },
       ],
     }))}
-    button={experienceTodaySectionData.button}
+    button={experienceTodaySectionData?.button}
   />
   <TestimonialsSection />
   <MediaSection />

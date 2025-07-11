@@ -14,11 +14,11 @@ const mediaSectionData = data.mediaSection
 <section class="py-20 md:py-24">
   <div class="main-container">
     <h2 class="text-h2 text-primary text-center mb-12">
-      {mediaSectionData.title}
+      {mediaSectionData?.title}
     </h2>
     <div class="aspect-video w-full rounded-lg overflow-hidden">
       <iframe
-        src={mediaSectionData.videoEmbedUrl}
+        src={mediaSectionData?.videoEmbedUrl}
         title="YouTube video player"
         class="size-full object-cover"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

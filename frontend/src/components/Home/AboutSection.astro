@@ -1,16 +1,16 @@
 ---
-import { Image } from 'astro:assets'
-import img1 from '@/assets/images/1.webp'
-import fetchApi from '@/lib/strapi'
-import type { AboutSection } from '@/types'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+import { Image } from "astro:assets";
+import img1 from "@/assets/images/1.webp";
+import fetchApi from "@/lib/strapi";
+import type { AboutSection } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 const data: {
-  aboutSection: AboutSection
+  aboutSection: AboutSection;
 } = await fetchApi({
-  endpoint: 'home-page?populate=aboutSection.image',
-  wrappedByKey: 'data',
-})
-const aboutSection = data.aboutSection
+  endpoint: "home-page?populate=aboutSection.image",
+  wrappedByKey: "data",
+});
+const aboutSection = data.aboutSection;
 ---
 
 <section id="about" class="pt-20 md:pt-32">
@@ -19,24 +19,27 @@ const aboutSection = data.aboutSection
   >
     <div>
       <h2 class="text-primary text-h2">
-        {aboutSection.title}
+        {aboutSection?.title}
       </h2>
       <p class="text-subheading pt-2.5 pb-4">
-        {aboutSection.subTitle}
+        {aboutSection?.subTitle}
       </p>
       <p class="text-body">
-        {aboutSection.description}
+        {aboutSection?.description}
       </p>
     </div>
     <div class="rounded-xl overflow-hidden w-full h-[340px] md:h-[420px]">
-      <Image
-        src={getFullMediaUrl(aboutSection.image)}
-        alt="About Us"
-        width={960}
-        height={840}
-        class="size-full object-cover"
-        loading="lazy"
-      />
+      {
+        aboutSection?.image && (
+          <Image
+            src={getFullMediaUrl(aboutSection.image)}
+            alt="About Section Image"
+            class="w-full h-full object-cover"
+            width={800}
+            height={600}
+          />
+        )
+      }
     </div>
   </div>
 </section>
