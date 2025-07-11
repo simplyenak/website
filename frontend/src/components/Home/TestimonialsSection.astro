@@ -19,7 +19,7 @@ const testimonialsSection = data.testimonialsSection
     <div id="testimonials-swiper" class="swiper -mr-3 md:mr-0">
       <div class="swiper-wrapper">
         {
-          testimonialsSection.cards.map((testimonial) => (
+          testimonialsSection?.cards.map((testimonial) => (
             <div class="swiper-slide p-6 md:p-8 rounded-lg overflow-hidden bg-white border border-[#dddddd] shadow-custom-1 !h-auto">
               <div class="space-y-2 text-body">
                 <p>{testimonial.title}</p>

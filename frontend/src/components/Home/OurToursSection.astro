@@ -1,27 +1,27 @@
 ---
-let { title, cards = [], button } = Astro.props
-import type { ImageMetadata } from 'astro'
-import ToursCard from '@/components/Tours/ToursCard.astro'
-import Button from '../Button.astro'
-import type { Button as ButtonType } from '@/types'
+let { title, cards = [], button } = Astro.props;
+import type { ImageMetadata } from "astro";
+import ToursCard from "@/components/Tours/ToursCard.astro";
+import Button from "../Button.astro";
+import type { Button as ButtonType } from "@/types";
 
 type Props = {
-  title: string
+  title: string;
   cards: Array<{
-    title: string
-    link: string
-    image: ImageMetadata
-    price: string
-    duration: string
-    location: string
+    title: string;
+    link: string;
+    image: ImageMetadata;
+    price: string;
+    duration: string;
+    location: string;
     buttons: Array<{
-      icon?: any
-      text: string
-      link: string
-    }>
-  }>
-  button: ButtonType
-}
+      icon?: any;
+      text: string;
+      link: string;
+    }>;
+  }>;
+  button: ButtonType;
+};
 ---
 
 <section class="py-20 md:py-24">
@@ -44,12 +44,17 @@ type Props = {
         ))
       }
     </div>
-    <Button
-      href={button.href}
-      title={button.title}
-      icon={button.icon?.name}
-      buttonType={button.buttonType}
-      class="mx-auto max-w-max uppercase mt-12"
-    />
+    {
+      button && (
+        <Button
+          href={button.href}
+          title={button.title}
+          icon={button.icon?.name}
+          xs
+          buttonType={button.buttonType}
+          class="mx-auto max-w-max uppercase mt-12"
+        />
+      )
+    }
   </div>
 </section>
