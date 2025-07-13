@@ -16,7 +16,7 @@ const ourValuesSection = data.ourValuesSection
 
 <section
   class:list={['py-20 relative bg-fixed bg-cover bg-center bg-no-repeat']}
-  style={`background-image: url('${getFullMediaUrl(ourValuesSection?.bgImage)}');`}
+  style={getFullMediaUrl(ourValuesSection?.bgImage) ? `background-image: url('${getFullMediaUrl(ourValuesSection?.bgImage)}');` : ''}
 >
   <div class="main-container relative z-10">
     <h2 class="text-h2 text-primary mb-12 text-center">Our Core Values</h2>

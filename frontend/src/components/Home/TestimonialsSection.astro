@@ -27,13 +27,15 @@ const testimonialsSection = data.testimonialsSection
               </div>
               <div class="flex items-center gap-4 mt-5">
                 <div class="md:size-[70px] size-12 rounded-full overflow-hidden">
-                  <Image
-                    src={getFullMediaUrl(testimonial.image)}
-                    alt={testimonial.image.name}
-                    class="size-full object-cover"
-                    height={70}
-                    width={70}
-                  />
+                  {getFullMediaUrl(testimonial.image) && (
+                    <Image
+                      src={getFullMediaUrl(testimonial.image)}
+                      alt={testimonial.image.name}
+                      class="size-full object-cover"
+                      height={70}
+                      width={70}
+                    />
+                  )}
                 </div>
                 <div>
                   <p class="text-body font-semibold uppercase">
