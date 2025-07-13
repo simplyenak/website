@@ -11,9 +11,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "sectionName": {
+    "metaTitle": {
       "type": "string",
-      "private": true,
       "default": "About Page"
     },
     "aboutHero": {
