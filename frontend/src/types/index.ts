@@ -75,10 +75,23 @@ export interface TestimonialsSection {
     image: Media
   }[]
 }
-export interface MediaSection {
+export interface MediaSectionTypes {
   title: string
   videoEmbedUrl: string
 }
-export interface StoriesSection{
+export interface StoriesSection {
   title: string
+}
+export interface GlobalHeroTypes {
+  title: string
+  description?: string
+  image: Media
+  objectPosition?: string
+}
+export interface TextWithLeftRightImageTypes {
+  title: string
+  contents: string
+  imagePosition: 'left' | 'right'
+  bgColor?: string
+  image: Media
 }

@@ -1,18 +1,33 @@
 ---
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
 import { Image } from 'astro:assets'
-let { title, description = '', image,objectPosition = 'object-center' } = Astro.props
+let {
+  title,
+  description = '',
+  image,
+  objectPosition = 'object-center',
+} = Astro.props
 ---
 
 <section
   class="min-h-[420px] h-full py-16 px-3 relative flex items-center justify-center text-center flex-col gap-4 md:gap-6 text-white"
 >
   <h1 class="text-h1 xl:text-5xl">{title}</h1>
-  {description ? (<p class="text-xl md:text-2xl max-w-4xl mx-auto font-semibold text-shadow-custom">{description}</p>) : null}
+  {
+    description ? (
+      <p class="text-xl md:text-2xl max-w-4xl mx-auto font-semibold text-shadow-custom">
+        {description}
+      </p>
+    ) : null
+  }
 
   <Image
-    src={image}
+    src={getFullMediaUrl(image)}
     alt="About Hero Image"
-    class:list={["absolute inset-0 size-full object-cover -z-10", objectPosition]}
+    class:list={[
+      'absolute inset-0 size-full object-cover -z-10',
+      objectPosition,
+    ]}
     height={420}
     width={1920}
   />
