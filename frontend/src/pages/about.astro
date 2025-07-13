@@ -6,51 +6,51 @@ import img6 from '@/assets/images/6.jpg'
 import bg3 from '@/assets/images/bg3.jpg'
 import MediaSection from '@/components/Home/MediaSection.astro'
 import TextWithLeftRightImage from '@/components/About/TextWithLeftRightImage.astro'
+import fetchApi from '@/lib/strapi'
+import type {
+  GlobalHeroTypes,
+  MediaSectionTypes,
+  TextWithLeftRightImageTypes,
+} from '@/types'
+
+const data: {
+  metaTitle: string
+  aboutHero: GlobalHeroTypes
+  textWithLeftRightImage: TextWithLeftRightImageTypes
+  ourCoreValuesSection: TextWithLeftRightImageTypes
+  mediaSection: MediaSectionTypes
+} = await fetchApi({
+  endpoint:
+    'about?populate=aboutHero.image&populate=textWithLeftRightImage.image&populate=ourCoreValuesSection.image&populate=mediaSection',
+  wrappedByKey: 'data',
+})
+console.log(data.textWithLeftRightImage.image)
 ---
 
-<Layout title="About – Simply Enak">
-  <GlobalHero title="ABOUT US" decription="" image={bg3} />
-  <TextWithLeftRightImage
-    title="the Leading Food Tour businesses in Malaysia"
-    contents=`With Malaysia known to be one of the finest destinations for food
-          enthusiasts, we belief that there is more to Malaysian dishes than
-          being just plain delicious. Every dish served has its story of the
-          people, their culture and their heritage. Our mission is to tickle all
-          your senses by sharing these stories with you! As passionate culinary
-          explorers, we dislike ‘tourist traps’ as much as you do – that’s why
-          we only share authentic Malaysian culinary treasures and experiences
-          on our excursions. So, come join us on an adventure to indulge in
-          genuine Malaysian cuisine and experience the local community. We
-          guarantee you’ll go home with more than just a satisfied stomach!`
-    imagePosition="left"
-    bgColor="bg-white"
-    image={img6}
+<Layout title={data.metaTitle}>
+  <GlobalHero
+    title={data.aboutHero.title}
+    decription={data.aboutHero.description}
+    image={data.aboutHero.image}
+    objectPosition={data.aboutHero.objectPosition}
   />
   <TextWithLeftRightImage
-    title="Our Core Values"
-    contents=`<h5>Exploring All Senses</h5>
-        <p>
-          We embrace the importance of all the five senses. Therefore, on our
-          tours we emphasize on taste, smell, hear and sight while experiencing
-          the beauty of the Malaysian heritage and its culinary gems.
-        </p>
-        <h5>From The Heart</h5>
-        <p>
-          Being proud Malaysians, we share authentic Malaysian heritage from our
-          hearts. We take great pleasure in filling your stomachs with savoury
-          treats, as much as, to open your eyes to intimate stories of people,
-          tradition and culture.
-        </p>
-        <h5>Giving Back!</h5>
-        <p>
-          Simply Enak believes in giving to the community by supporting the
-          local businesses we work with. By doing so, we also foster a great
-          bond with the neighbourhoods we support.
-        </p>`
-    imagePosition="right"
-    bgColor="bg-[#efe5d945]"
-    image={img6}
+    title={data.textWithLeftRightImage.title}
+    contents={data.textWithLeftRightImage.contents}
+    imagePosition={data.textWithLeftRightImage.imagePosition}
+    bgColor={data.textWithLeftRightImage.bgColor}
+    image={data.textWithLeftRightImage.image}
   />
-  <MediaSection />
+  <TextWithLeftRightImage
+    title={data.ourCoreValuesSection.title}
+    contents={data.ourCoreValuesSection.contents}
+    imagePosition={data.ourCoreValuesSection.imagePosition}
+    bgColor={data.ourCoreValuesSection.bgColor}
+    image={data.ourCoreValuesSection.image}
+  />
+  <MediaSection
+    title={data.mediaSection.title}
+    videoEmbedUrl={data.mediaSection.videoEmbedUrl}
+  />
   <CTASection />
 </Layout>
