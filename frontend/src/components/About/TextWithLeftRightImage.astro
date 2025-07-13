@@ -22,15 +22,17 @@ let {
     <div
       class="rounded-xl overflow-hidden h-[280px] md:h-[500px] w-full md:w-[45%]"
     >
-      {getFullMediaUrl(image) && (
-        <Image
-          src={getFullMediaUrl(image)}
-          alt="TextWithLeftRightImage"
-          height={500}
-          width={800}
-          class="object-cover object-top size-full"
-        />
-      )}
+      {
+        getFullMediaUrl(image) && (
+          <Image
+            src={getFullMediaUrl(image)}
+            alt="TextWithLeftRightImage"
+            height={500}
+            width={800}
+            class="object-cover object-top size-full"
+          />
+        )
+      }
     </div>
     <div class="flex-1">
       <h2 class="text-h2 mb-6 text-primary !capitalize">{title}</h2>
