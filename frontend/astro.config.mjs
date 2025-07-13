@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 import vue from '@astrojs/vue';
 
+import react from '@astrojs/react';
+
 // import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
@@ -14,5 +16,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [vue()]
+  integrations: [vue(), react()]
 });
