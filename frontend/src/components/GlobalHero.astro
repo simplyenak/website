@@ -21,14 +21,16 @@ let {
     ) : null
   }
 
-  <Image
-    src={getFullMediaUrl(image)}
-    alt="About Hero Image"
-    class:list={[
-      'absolute inset-0 size-full object-cover -z-10',
-      objectPosition,
-    ]}
-    height={420}
-    width={1920}
-  />
+  {getFullMediaUrl(image) && (
+    <Image
+      src={getFullMediaUrl(image)}
+      alt="About Hero Image"
+      class:list={[
+        'absolute inset-0 size-full object-cover -z-10',
+        objectPosition,
+      ]}
+      height={420}
+      width={1920}
+    />
+  )}
 </section>
