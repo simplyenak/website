@@ -95,3 +95,8 @@ export interface TextWithLeftRightImageTypes {
   bgColor?: string
   image: Media
 }
+export interface GetInTouchSectionTypes {
+  title: string
+  contents: string
+  formEmbedUrl: string
+}
