@@ -9,7 +9,7 @@ export interface AboutPageTextWithLeftRightImage
   attributes: {
     bgColor: Schema.Attribute.String;
     contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    image: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     imagePosition: Schema.Attribute.Enumeration<['left', 'right']>;
     title: Schema.Attribute.String;
   };
