@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_icon_icons",
+  "info": {
+    "displayName": "icon",
+    "description": "Icon component for displaying icons"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "medium"
+    },
+    "color": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
