@@ -10,14 +10,21 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.0",
+    "@astrojs/react": "^4.3.0",
     "@astrojs/vue": "^5.1.0",
+    "@strapi/blocks-react-renderer": "^1.0.2",
     "@tailwindcss/vite": "^4.1.10",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "astro": "^5.10.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "swiper": "^11.2.8",
     "tailwindcss": "^4.1.10",
     "vue": "^3.5.17"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16"
+    "@tailwindcss/typography": "^0.5.16",
+    "husky": "^9.1.7"
   }
 }
