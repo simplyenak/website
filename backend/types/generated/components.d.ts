@@ -258,15 +258,14 @@ export interface HomePageTestimonialsSection extends Struct.ComponentSchema {
 export interface IconIcon extends Struct.ComponentSchema {
   collectionName: 'components_icon_icons';
   info: {
-    description: 'An icon component for various UI elements';
-    displayName: 'Icon';
+    description: 'Icon component for displaying icons';
+    displayName: 'icon';
   };
   attributes: {
     color: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     size: Schema.Attribute.Enumeration<['small', 'medium', 'large']> &
       Schema.Attribute.DefaultTo<'medium'>;
-    svg: Schema.Attribute.Text;
   };
 }
 
