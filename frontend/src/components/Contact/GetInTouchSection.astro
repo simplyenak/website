@@ -1,30 +1,32 @@
 ---
-import IconCheck from '@/assets/icons/icon-check.svg'
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from '@strapi/blocks-react-renderer'
+let { title, contents, formEmbedUrl } = Astro.props
 ---
+
 <section class="py-5 main-container">
-  <div class="max-w-[960px] mx-auto rounded-sm bg-[#c4c1c11f] px-4 md:px-8 xl:px-12 py-8 md:py-12">
-    <h2 class="text-h2 text-primary text-center">Get in touch With Us</h2>
-    <div class="space-y-4 text-body mt-10">
-      <p>Simply Enak is one of the Leading Food Tour businesses in Malaysia with events in Kuala Lumpur and Penang. We have been trusted with a 5-star ranking on TripAdvisor as well as the TripAdvisor Certificate of Excellence for 4 consecutive years. We always aim to give you the best experience possible.</p>
-      <b>Send us a message when you…</b>
-      <ul class="pl-4 space-y-1 pt-2">
-        <li class="flex items-center gap-2">
-          <IconCheck class="size-4 min-w-4 text-primary" />
-          Are unclear about which tour to book.
-        </li>
-        <li class="flex items-center gap-2">
-          <IconCheck class="size-4 min-w-4 text-primary" />
-          Have a last-minute request.*
-        </li>
-        <li class="flex items-center gap-2">
-          <IconCheck class="size-4 min-w-4 text-primary" />
-          Have a larger group.**
-        </li>
-      </ul>
-      <p>*Remember to mention your preferred tour location (Kuala Lumpur or Penang) and all possible ways to contact you, so you have a better chance to join a tour. We will try to SMS (not call) your number when you provide us with your phone number.</p>
+  <div
+    class="max-w-[960px] mx-auto rounded-sm bg-[#c4c1c11f] px-4 md:px-8 xl:px-12 py-8 md:py-12"
+  >
+    <h2 class="text-h2 text-primary text-center">{title}</h2>
+    <div
+      class="text-body mt-10 prose-p:mt-4 prose-ul:pl-4 prose-ul:space-y-1 prose-ul:pt-2 prose-li:relative prose-li:pl-6 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-[0.45em] [&_li]:before:w-4 [&_li]:before:h-4 [&_li]:before:bg-[url('/icon-check.svg')] [&_li]:before:bg-contain [&_li]:before:bg-no-repeat [&_li]:before:bg-center"
+    >
+      <BlocksRenderer content={contents as BlocksContent} client:load />
     </div>
     <div class="w-full mt-10 md:mt-16">
-      <iframe  height="750" allowtransparency="true" style="width:100%;border:none" src="https://formaloo.net/tmzwx" id="formalooIframe" spellcheck="false" aria-label="To enrich screen reader interactions, please activate Accessibility in Grammarly extension settings"></iframe>
+      <iframe
+        height="750"
+        allowtransparency="true"
+        style="width:100%;border:none"
+        src={formEmbedUrl}
+        id="formalooIframe"
+        spellcheck="false"
+        aria-label="To enrich screen reader interactions, please activate Accessibility in Grammarly extension settings"
+      >
+      </iframe>
     </div>
   </div>
 </section>
