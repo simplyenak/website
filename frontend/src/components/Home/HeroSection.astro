@@ -1,18 +1,18 @@
 ---
-import { Image } from 'astro:assets'
-import Button from '@/components/Button.astro'
-import fetchApi from '@/lib/strapi'
-import type { HeroSection } from '@/types'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+import { Image } from "astro:assets";
+import Button from "@/components/Button.astro";
+import fetchApi from "@/lib/strapi";
+import type { HeroSection } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 const data: {
-  heroSection: HeroSection
+  heroSection: HeroSection;
 } = await fetchApi({
   endpoint:
-    'home-page?populate=heroSection.bgImage&populate=heroSection.buttons.icon',
-  wrappedByKey: 'data',
-})
-const heroSection = data.heroSection
+    "home-page?populate=heroSection.bgImage&populate=heroSection.buttons.icon",
+  wrappedByKey: "data",
+});
+const heroSection = data.heroSection;
 ---
 
 <section class="md:h-[640px] h-[742px] relative overflow-hidden">
@@ -38,13 +38,15 @@ const heroSection = data.heroSection
       </div>
     </div>
   </div>
-  {getFullMediaUrl(heroSection.bgImage) && (
-    <Image
-      src={getFullMediaUrl(heroSection.bgImage)}
-      alt="Hero Image"
-      class="absolute inset-0 object-cover size-full"
-      width={1920}
-      height={1080}
-    />
-  )}
+  {
+    getFullMediaUrl(heroSection.bgImage) && (
+      <Image
+        src={getFullMediaUrl(heroSection.bgImage)}
+        alt="Hero Image"
+        class="absolute inset-0 object-cover size-full"
+        width={1920}
+        height={1080}
+      />
+    )
+  }
 </section>

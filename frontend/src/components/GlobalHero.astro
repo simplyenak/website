@@ -1,12 +1,12 @@
 ---
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
-import { Image } from 'astro:assets'
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import { Image } from "astro:assets";
 let {
   title,
-  description = '',
+  description = "",
   image,
-  objectPosition = 'object-center',
-} = Astro.props
+  objectPosition = "object-center",
+} = Astro.props;
 ---
 
 <section
@@ -21,16 +21,18 @@ let {
     ) : null
   }
 
-  {getFullMediaUrl(image) && (
-    <Image
-      src={getFullMediaUrl(image)}
-      alt="About Hero Image"
-      class:list={[
-        'absolute inset-0 size-full object-cover -z-10',
-        objectPosition,
-      ]}
-      height={420}
-      width={1920}
-    />
-  )}
+  {
+    getFullMediaUrl(image) && (
+      <Image
+        src={getFullMediaUrl(image)}
+        alt="About Hero Image"
+        class:list={[
+          "absolute inset-0 size-full object-cover -z-10",
+          objectPosition,
+        ]}
+        height={420}
+        width={1920}
+      />
+    )
+  }
 </section>

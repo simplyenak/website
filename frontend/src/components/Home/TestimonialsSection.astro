@@ -1,16 +1,16 @@
 ---
-import { Image } from 'astro:assets'
-import fetchApi from '@/lib/strapi'
-import type { TestimonialsSection } from '@/types'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+import { Image } from "astro:assets";
+import fetchApi from "@/lib/strapi";
+import type { TestimonialsSection } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 const data: {
-  testimonialsSection: TestimonialsSection
+  testimonialsSection: TestimonialsSection;
 } = await fetchApi({
-  endpoint: 'home-page?populate=testimonialsSection.cards.image',
-  wrappedByKey: 'data',
-})
-const testimonialsSection = data.testimonialsSection
+  endpoint: "home-page?populate=testimonialsSection.cards.image",
+  wrappedByKey: "data",
+});
+const testimonialsSection = data.testimonialsSection;
 ---
 
 <section class="py-20 bg-[#f7f7f7]">
@@ -57,13 +57,13 @@ const testimonialsSection = data.testimonialsSection
 </section>
 
 <script>
-  import Swiper from 'swiper'
-  import 'swiper/css'
-  import 'swiper/css/pagination'
-  import { Pagination } from 'swiper/modules'
+  import Swiper from "swiper";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import { Pagination } from "swiper/modules";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    new Swiper('#testimonials-swiper', {
+  document.addEventListener("DOMContentLoaded", () => {
+    new Swiper("#testimonials-swiper", {
       modules: [Pagination],
       slidesPerView: 1.2,
       speed: 1000,
@@ -76,11 +76,11 @@ const testimonialsSection = data.testimonialsSection
       },
       autoplay: { delay: 3000, disableOnInteraction: false },
       pagination: {
-        el: '.testimonials-pagination',
+        el: ".testimonials-pagination",
         clickable: true,
-        bulletClass: 'size-2.5 rounded-xs bg-text/30 cursor-pointer',
-        bulletActiveClass: '!bg-primary',
+        bulletClass: "size-2.5 rounded-xs bg-text/30 cursor-pointer",
+        bulletActiveClass: "!bg-primary",
       },
-    })
-  })
+    });
+  });
 </script>
