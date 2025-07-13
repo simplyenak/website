@@ -2,42 +2,39 @@
 import { Image } from 'astro:assets'
 import img7 from '@/assets/images/7.jpg'
 import img8 from '@/assets/images/8.jpeg'
-const stories = [
-  ...Array.from({ length: 20 }, (_, i) => ({
-    link: '/stories/details',
-    image: i % 2 === 0 ? img7 : img8,
-    tags: i % 2 === 0 ? ['Cuisine'] : ['Cuisine', 'Festivals'],
-    title:
-      i % 2 === 0
-        ? 'Discover the Vibrant World of Malaysian Herbs and Traditional Flavours!'
-        : '11 Foods To Try During Hari Raya',
-  })),
-]
+import fetchApi from '@/lib/strapi'
+import type { StoriesDetailsPageTypes } from '@/types'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+const data = await fetchApi<StoriesDetailsPageTypes[]>({
+  endpoint: `storie?populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&populate=youtubeVideos`,
+  wrappedByKey: 'data',
+})
+const stories = data
 ---
 
 <section class="md:col-span-5">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
     {
-      stories.slice(0, 12).map((story, index) => (
+      stories.map((story, index) => (
         <a
-          href={story.link}
+          href={`/stories/${story.slug}`}
           class="group rounded-lg overflow-hidden relative w-full h-[380px]"
         >
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 text-white from-40% flex flex-col justify-end z-10 p-4 md:p-6 space-y-4">
             <div class="flex items-center gap-2">
-              {story.tags.map((tag) => (
+              {story.categories.map((tag) => (
                 <span class="bg-white text-body uppercase font-semibold text-black px-3 py-1 rounded-sm max-w-max">
-                  {tag}
+                  {tag.name}
                 </span>
               ))}
             </div>
             <h4 class="text-h4 !font-bold capitalize line-clamp-3">
-              {story.title}
+              {story.hero.title}
             </h4>
           </div>
           <Image
-            src={story.image}
-            alt={story.image.src}
+            src={getFullMediaUrl(story.hero.bgImage)}
+            alt={story.hero.bgImage.name}
             class="size-full object-cover group-hover:scale-110 transition-transform duration-300"
             height={380}
             width={768}

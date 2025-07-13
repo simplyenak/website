@@ -10,7 +10,7 @@
       "private": true,
       "default": "Youtube Video"
     },
-    "embedUrl": {
+    "youtubeVideoId": {
       "type": "string",
       "required": true
     }
