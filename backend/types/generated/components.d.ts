@@ -38,6 +38,16 @@ export interface ButtonButton extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsCategory extends Struct.ComponentSchema {
+  collectionName: 'components_cards_categories';
+  info: {
+    displayName: 'category';
+  };
+  attributes: {
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsOurValuesCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_our_values_cards';
   info: {
@@ -100,10 +110,10 @@ export interface CardsYoutubeVideos extends Struct.ComponentSchema {
     displayName: 'Youtube Videos';
   };
   attributes: {
-    embedUrl: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String &
       Schema.Attribute.Private &
       Schema.Attribute.DefaultTo<'Youtube Video'>;
+    youtubeVideoId: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -366,7 +376,9 @@ export interface StoriesDetailsStoriesDetailsHero
   };
   attributes: {
     bgImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
   };
 }
 
@@ -426,6 +438,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'about-page.text-with-left-right-image': AboutPageTextWithLeftRightImage;
       'button.button': ButtonButton;
+      'cards.category': CardsCategory;
       'cards.our-values-card': CardsOurValuesCard;
       'cards.stories-card': CardsStoriesCard;
       'cards.testimonials-card': CardsTestimonialsCard;

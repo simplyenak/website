@@ -1,13 +1,19 @@
 ---
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from '@strapi/blocks-react-renderer'
 import Prose from '@/components/Prose.astro'
-let { title, contents } = Astro.props
+let { contents } = Astro.props
 ---
 
 <div>
   <h2
     class="text-primary px-4 md:px-8 lg:px-11 py-4 md:py-6 bg-[#f7f7f7] text-h5"
   >
-    {title}
+    {contents.title}
   </h2>
-  <Prose class="px-4 md:px-8 lg:px-11 py-4 md:py-6" set:html={contents} />
+  <Prose class="px-4 md:px-8 lg:px-11 py-4 md:py-6">
+    <BlocksRenderer content={contents.contents as BlocksContent} client:load />
+  </Prose>
 </div>

@@ -100,3 +100,24 @@ export interface GetInTouchSectionTypes {
   contents: string
   formEmbedUrl: string
 }
+export interface StoriesDetailsPageTypes {
+  title: string
+  slug: string
+  metaTitle: string
+  hero: { title: string; bgImage: Media }
+  contents: Record<string, any>
+  categories: { name: string }[]
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  author: {
+    id: number
+    name: string
+    possition?: string | null
+    image?: Media
+  }
+  youtubeVideos?: {
+    id: number
+    youtubeVideoId: string
+  }[]
+}
