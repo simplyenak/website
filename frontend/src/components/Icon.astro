@@ -1,7 +1,20 @@
 ---
-const { name, class: className = '' } = Astro.props
-const IconModule = await import(`../assets/icons/${name}.svg`)
-const IconComponent = IconModule.default
+const { name, class: className = "" } = Astro.props;
+
+// Handle case when name is null, undefined, or empty
+if (!name) {
+  console.warn("Icon component: name prop is required");
+  return;
+}
+
+let IconComponent;
+try {
+  const IconModule = await import(`../assets/icons/${name}.svg`);
+  IconComponent = IconModule.default;
+} catch (error) {
+  console.warn(`Icon component: Could not load icon "${name}"`, error);
+  return;
+}
 ---
 
-<IconComponent class={className} />
+{IconComponent && <IconComponent class={className} />}
