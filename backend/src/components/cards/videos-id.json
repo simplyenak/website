@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_cards_videos_ids",
+  "info": {
+    "displayName": "videosId"
+  },
+  "options": {},
+  "attributes": {
+    "youtubeVideoId": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

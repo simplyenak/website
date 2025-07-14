@@ -1,4 +1,5 @@
 ---
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
 import { Image } from 'astro:assets'
 let { title, image } = Astro.props
 ---
@@ -10,7 +11,7 @@ let { title, image } = Astro.props
     <h2 class="text-h2 text-white font-bold capitalize">{title}</h2>
   </div>
   <Image
-    src={image}
+    src={getFullMediaUrl(image)}
     alt="Stories Details Hero Image"
     class="absolute inset-0 w-full h-full object-cover"
     loading="eager"

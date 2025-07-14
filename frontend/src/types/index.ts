@@ -1,3 +1,4 @@
+import { type BlocksContent } from '@strapi/blocks-react-renderer'
 export interface Media {
   url: string
   name: string
@@ -94,4 +95,41 @@ export interface TextWithLeftRightImageTypes {
   imagePosition: 'left' | 'right'
   bgColor?: string
   image: Media
+}
+export interface GetInTouchSectionTypes {
+  title: string
+  contents: string
+  formEmbedUrl: string
+}
+export interface YoutubeVideosTypes {
+  youtubeChannelUrl: string
+  videosIds: { youtubeVideoId: string }[]
+}
+export interface StoriesDetailsPageTypes {
+  title: string
+  slug: string
+  metaTitle: string
+  hero: { title: string; bgImage: Media }
+  contents: Record<string, any>
+  categories: { name: string }[]
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  author: {
+    id: number
+    name: string
+    possition?: string | null
+    image?: Media
+  }
+  youtubeVideos: YoutubeVideosTypes
+}
+export interface AboutSimplyEnakSectionTypes {
+  title: string
+  contents: BlocksContent
+  socialItems: {
+    icon: {
+      name: string
+    }
+    href: string
+  }[]
 }
