@@ -1,9 +1,19 @@
 ---
 import YoutubeVideos from '@/components/Stories/YoutubeVideos.astro'
+import fetchApi from '@/lib/strapi'
+import type { YoutubeVideosTypes } from '@/types'
+
+const data: {
+  youtubeVideos: YoutubeVideosTypes
+} = await fetchApi({
+  endpoint: `stories-main?populate=youtubeVideos.videosIds`,
+  wrappedByKey: 'data',
+})
+const youtubeVideos = data.youtubeVideos
 ---
 
 <div class="md:col-span-2">
   <div class="border border-orange rounded-md p-4 lg:p-6 sticky top-32">
-    <YoutubeVideos />
+    <YoutubeVideos youtubeVideos={youtubeVideos} />
   </div>
 </div>

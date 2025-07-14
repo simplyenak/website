@@ -2,14 +2,16 @@
 import { Image } from 'astro:assets'
 import IconYoutube from '@/assets/icons/icon-youtube.svg'
 import ytLogo from '@/assets/images/youtube-logo.webp'
-const youtubeVideos = [
-  ...Array.from({ length: 20 }, () => ({
-    embedUrl: 'https://www.youtube.com/embed/8nS3Tq5hPXE',
-  })),
-]
+import type { YoutubeVideosTypes } from '@/types'
+
+type Props = {
+  class?: string
+  youtubeVideos: YoutubeVideosTypes
+}
+const { youtubeVideos, class: className } = Astro.props
 ---
 
-<div {...Astro.props}>
+<div class={className}>
   <Image
     src={ytLogo}
     alt="YouTube Logo"
@@ -20,17 +22,15 @@ const youtubeVideos = [
   />
   <div class="space-y-4 my-5">
     {
-      youtubeVideos
-        .slice(0, 5)
-        .map((video, index) => (
-          <iframe
-            src={video.embedUrl}
-            title={`YouTube video ${index + 1}`}
-            class="w-full aspect-video rounded-sm"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            loading="lazy"
-          />
-        ))
+      youtubeVideos.videosIds.map((video, index) => (
+        <iframe
+          src={`https://www.youtube.com/embed/${video.youtubeVideoId}`}
+          title={`YouTube video ${index + 1}`}
+          class="w-full aspect-video rounded-sm"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          loading="lazy"
+        />
+      ))
     }
   </div>
   <div
@@ -42,7 +42,7 @@ const youtubeVideos = [
       Load More…
     </button>
     <a
-      href="https://www.youtube.com/channel/UCgRvAZ86vyYwkk6-bvnDRCg/"
+      href={youtubeVideos.youtubeChannelUrl}
       target="_blank"
       class="flex items-center gap-2 px-2.5 py-1.5 text-white bg-primary hover:bg-transparent border border-primary hover:text-primary text-xs rounded-sm text-center duration-300"
     >

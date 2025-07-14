@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "stories_mains",
+  "info": {
+    "singularName": "stories-main",
+    "pluralName": "stories-mains",
+    "displayName": "Stories Main"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "aboutSection": {
+      "type": "component",
+      "component": "stories-details.about-simply-enak-section",
+      "repeatable": false
+    },
+    "youtubeVideos": {
+      "type": "component",
+      "component": "cards.youtube-videos",
+      "repeatable": false
+    }
+  }
+}

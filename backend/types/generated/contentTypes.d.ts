@@ -570,6 +570,38 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiStoriesMainStoriesMain extends Struct.SingleTypeSchema {
+  collectionName: 'stories_mains';
+  info: {
+    displayName: 'Stories Main';
+    pluralName: 'stories-mains';
+    singularName: 'stories-main';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutSection: Schema.Attribute.Component<
+      'stories-details.about-simply-enak-section',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::stories-main.stories-main'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    youtubeVideos: Schema.Attribute.Component<'cards.youtube-videos', false>;
+  };
+}
+
 export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
   collectionName: 'storie';
   info: {
@@ -581,10 +613,6 @@ export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    aboutSection: Schema.Attribute.Component<
-      'stories-details.about-simply-enak-section',
-      false
-    >;
     author: Schema.Attribute.Component<'stories-details.authon-section', false>;
     categories: Schema.Attribute.Component<'cards.category', true> &
       Schema.Attribute.Required;
@@ -611,7 +639,7 @@ export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    youtubeVideos: Schema.Attribute.Component<'cards.youtube-videos', true>;
+    youtubeVideos: Schema.Attribute.Component<'cards.youtube-videos', false>;
   };
 }
 
@@ -1129,6 +1157,7 @@ declare module '@strapi/strapi' {
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::stories-main.stories-main': ApiStoriesMainStoriesMain;
       'api::stories.stories': ApiStoriesStories;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
