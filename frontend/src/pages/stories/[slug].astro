@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.params
 const data = await fetchApi<StoriesDetailsPageTypes[]>({
-  endpoint: `storie?filters[slug][$eq]=${slug}&populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&populate=youtubeVideos`,
+  endpoint: `storie?filters[slug][$eq]=${slug}&populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&populate=youtubeVideos.videosIds`,
   wrappedByKey: 'data',
 })
 const story = data[0]
@@ -41,7 +41,10 @@ const story = data[0]
     </div>
     <div slot="sidebar" class="space-y-6">
       <AboutSimplyEnakSection />
-      <YoutubeVideos class="p-4 rounded-sm border border-black/10" />
+      <YoutubeVideos
+        youtubeVideos={story.youtubeVideos}
+        class="p-4 rounded-sm border border-black/10"
+      />
       <RelatedPosts />
     </div>
   </StoriesDetailsSection>

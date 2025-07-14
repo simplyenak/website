@@ -7,20 +7,32 @@
   "options": {},
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true
-    },
-    "size": {
       "type": "enumeration",
+      "required": true,
       "enum": [
-        "small",
-        "medium",
-        "large"
-      ],
-      "default": "medium"
-    },
-    "color": {
-      "type": "string"
+        "icon-arrow-right",
+        "icon-camera",
+        "icon-check",
+        "icon-checkout",
+        "icon-clock",
+        "icon-close",
+        "icon-envelope",
+        "icon-facebook",
+        "icon-heart",
+        "icon-instagram",
+        "icon-menu",
+        "icon-money",
+        "icon-multicircle",
+        "icon-paper-rocket",
+        "icon-phone",
+        "icon-reload",
+        "icon-search",
+        "icon-thumb-right",
+        "icon-thumbs-up",
+        "icon-user",
+        "icon-whatsapp",
+        "icon-youtube"
+      ]
     }
   },
   "config": {}

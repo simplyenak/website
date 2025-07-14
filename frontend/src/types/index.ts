@@ -1,3 +1,4 @@
+import { type BlocksContent } from '@strapi/blocks-react-renderer'
 export interface Media {
   url: string
   name: string
@@ -100,6 +101,10 @@ export interface GetInTouchSectionTypes {
   contents: string
   formEmbedUrl: string
 }
+export interface YoutubeVideosTypes {
+  youtubeChannelUrl: string
+  videosIds: { youtubeVideoId: string }[]
+}
 export interface StoriesDetailsPageTypes {
   title: string
   slug: string
@@ -116,8 +121,15 @@ export interface StoriesDetailsPageTypes {
     possition?: string | null
     image?: Media
   }
-  youtubeVideos?: {
-    id: number
-    youtubeVideoId: string
+  youtubeVideos: YoutubeVideosTypes
+}
+export interface AboutSimplyEnakSectionTypes {
+  title: string
+  contents: BlocksContent
+  socialItems: {
+    icon: {
+      name: string
+    }
+    href: string
   }[]
 }
