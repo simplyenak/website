@@ -4,15 +4,30 @@ import CTASection from '@/components/CTASection.astro'
 import GlobalHero from '@/components/GlobalHero.astro'
 import bg4 from '@/assets/images/bg4.jpg'
 import GetInTouchSection from '@/components/Contact/GetInTouchSection.astro'
+import type { GlobalHeroTypes, GetInTouchSectionTypes } from '@/types'
+import fetchApi from '@/lib/strapi'
+import { date } from 'astro:schema'
+const data: {
+  metaTitle: string
+  heroSection: GlobalHeroTypes
+  getInTouchSection: GetInTouchSectionTypes
+} = await fetchApi({
+  endpoint: 'contact?populate=heroSection.image&populate=getInTouchSection',
+  wrappedByKey: 'data',
+})
 ---
 
-<Layout title="Contact – Simply Enak">
+<Layout title={data.metaTitle}>
   <GlobalHero
-    title="WE ARE HERE TO HELP!"
-    description="As Guides, we love answering your questions. Let us know how we can help you have the best possible experience visiting Malaysia."
-    image={bg4}
-    objectPosition="object-top"
+    title={data.heroSection.title}
+    description={data.heroSection.description}
+    image={data.heroSection.image}
+    objectPosition={data.heroSection.objectPosition}
   />
-  <GetInTouchSection />
+  <GetInTouchSection
+    title={data.getInTouchSection.title}
+    contents={data.getInTouchSection.contents}
+    formEmbedUrl={data.getInTouchSection.formEmbedUrl}
+  />
   <CTASection />
 </Layout>

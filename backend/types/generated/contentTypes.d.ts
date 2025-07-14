@@ -570,6 +570,79 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiStoriesMainStoriesMain extends Struct.SingleTypeSchema {
+  collectionName: 'stories_mains';
+  info: {
+    displayName: 'Stories Main';
+    pluralName: 'stories-mains';
+    singularName: 'stories-main';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutSection: Schema.Attribute.Component<
+      'stories-details.about-simply-enak-section',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::stories-main.stories-main'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    youtubeVideos: Schema.Attribute.Component<'cards.youtube-videos', false>;
+  };
+}
+
+export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
+  collectionName: 'storie';
+  info: {
+    displayName: 'stories';
+    pluralName: 'storie';
+    singularName: 'stories';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.Component<'stories-details.authon-section', false>;
+    categories: Schema.Attribute.Component<'cards.category', true> &
+      Schema.Attribute.Required;
+    contents: Schema.Attribute.Component<
+      'stories-details.stories-details-contents',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<
+      'stories-details.stories-details-hero',
+      false
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::stories.stories'
+    > &
+      Schema.Attribute.Private;
+    metaTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String & Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    youtubeVideos: Schema.Attribute.Component<'cards.youtube-videos', false>;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1084,6 +1157,8 @@ declare module '@strapi/strapi' {
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::stories-main.stories-main': ApiStoriesMainStoriesMain;
+      'api::stories.stories': ApiStoriesStories;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

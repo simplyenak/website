@@ -10,9 +10,13 @@
       "private": true,
       "default": "Youtube Video"
     },
-    "embedUrl": {
-      "type": "string",
-      "required": true
+    "youtubeChannelUrl": {
+      "type": "string"
+    },
+    "videosIds": {
+      "type": "component",
+      "component": "cards.videos-id",
+      "repeatable": true
     }
   },
   "config": {}

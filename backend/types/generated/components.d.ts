@@ -38,6 +38,16 @@ export interface ButtonButton extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsCategory extends Struct.ComponentSchema {
+  collectionName: 'components_cards_categories';
+  info: {
+    displayName: 'category';
+  };
+  attributes: {
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsOurValuesCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_our_values_cards';
   info: {
@@ -94,16 +104,27 @@ export interface CardsToursCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsVideosId extends Struct.ComponentSchema {
+  collectionName: 'components_cards_videos_ids';
+  info: {
+    displayName: 'videosId';
+  };
+  attributes: {
+    youtubeVideoId: Schema.Attribute.String;
+  };
+}
+
 export interface CardsYoutubeVideos extends Struct.ComponentSchema {
   collectionName: 'components_cards_youtube_videos';
   info: {
     displayName: 'Youtube Videos';
   };
   attributes: {
-    embedUrl: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String &
       Schema.Attribute.Private &
       Schema.Attribute.DefaultTo<'Youtube Video'>;
+    videosIds: Schema.Attribute.Component<'cards.videos-id', true>;
+    youtubeChannelUrl: Schema.Attribute.String;
   };
 }
 
@@ -262,10 +283,33 @@ export interface IconIcon extends Struct.ComponentSchema {
     displayName: 'icon';
   };
   attributes: {
-    color: Schema.Attribute.String;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    size: Schema.Attribute.Enumeration<['small', 'medium', 'large']> &
-      Schema.Attribute.DefaultTo<'medium'>;
+    name: Schema.Attribute.Enumeration<
+      [
+        'icon-arrow-right',
+        'icon-camera',
+        'icon-check',
+        'icon-checkout',
+        'icon-clock',
+        'icon-close',
+        'icon-envelope',
+        'icon-facebook',
+        'icon-heart',
+        'icon-instagram',
+        'icon-menu',
+        'icon-money',
+        'icon-multicircle',
+        'icon-paper-rocket',
+        'icon-phone',
+        'icon-reload',
+        'icon-search',
+        'icon-thumb-right',
+        'icon-thumbs-up',
+        'icon-user',
+        'icon-whatsapp',
+        'icon-youtube',
+      ]
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -366,7 +410,9 @@ export interface StoriesDetailsStoriesDetailsHero
   };
   attributes: {
     bgImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
   };
 }
 
@@ -426,10 +472,12 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'about-page.text-with-left-right-image': AboutPageTextWithLeftRightImage;
       'button.button': ButtonButton;
+      'cards.category': CardsCategory;
       'cards.our-values-card': CardsOurValuesCard;
       'cards.stories-card': CardsStoriesCard;
       'cards.testimonials-card': CardsTestimonialsCard;
       'cards.tours-card': CardsToursCard;
+      'cards.videos-id': CardsVideosId;
       'cards.youtube-videos': CardsYoutubeVideos;
       'contact.get-in-touch-section': ContactGetInTouchSection;
       'cta-section.cta-section': CtaSectionCtaSection;

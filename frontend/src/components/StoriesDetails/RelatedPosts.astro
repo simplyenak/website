@@ -1,46 +1,33 @@
 ---
 import { Image } from 'astro:assets'
-import img1 from '@/assets/images/3.webp'
-const posts = [
-  {
-    title: 'Exploring the Hidden Gems of Bali',
-    image: img1,
-    description:
-      'Discover the lesser-known attractions of Bali that will make your trip unforgettable.',
-    link: '#',
-  },
-  {
-    title: 'A Culinary Journey Through Italy',
-    image: img1,
-    description:
-      'Experience the rich flavors and traditions of Italian cuisine in this detailed guide.',
-    link: '#',
-  },
-  {
-    title: 'Adventure Awaits in the Amazon Rainforest',
-    image: img1,
-    description:
-      'Join us as we explore the diverse wildlife and breathtaking landscapes of the Amazon.',
-    link: '#',
-  },
-]
+import fetchApi from '@/lib/strapi'
+import type { StoriesDetailsPageTypes } from '@/types'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+const stories: StoriesDetailsPageTypes[] = await fetchApi({
+  endpoint: 'storie?populate=hero.bgImage',
+  wrappedByKey: 'data',
+})
 ---
 
 <div class="p-4 rounded-sm border border-black/10">
   <h4 class="text-h4 capitalize">Recent Posts</h4>
   <div class="space-y-4 my-5">
     {
-      posts.map((post) => (
-        <a href={post.link} class="flex items-center gap-4">
+      stories.slice(0, 3).map((story) => (
+        <a
+          href={`/stories/${story.slug}`}
+          class="flex items-start gap-4 hover:text-primary transition-colors"
+        >
           <Image
-            src={post.image}
-            alt={post.title}
+            src={getFullMediaUrl(story.hero.bgImage)}
+            alt={story.hero.bgImage.name}
             class="size-16 object-cover rounded-sm"
             loading="lazy"
+            width={64}
+            height={64}
           />
           <div>
-            <h5 class="text-body line-clamp-1">{post.title}</h5>
-            <p class="text-sm line-clamp-2">{post.description}</p>
+            <h5 class="text-body line-clamp-2 uppercase">{story.hero.title}</h5>
           </div>
         </a>
       ))
