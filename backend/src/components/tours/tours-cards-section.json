@@ -7,11 +7,6 @@
   "attributes": {
     "text": {
       "type": "text"
-    },
-    "cards": {
-      "type": "component",
-      "component": "cards.tours-card",
-      "repeatable": true
     }
   },
   "config": {}

@@ -452,8 +452,9 @@ export interface ToursOtherBookingSection extends Struct.ComponentSchema {
     displayName: 'Other Booking Section';
   };
   attributes: {
-    button: Schema.Attribute.Component<'button.button', false>;
     description: Schema.Attribute.Text;
+    isBookingButton: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     title: Schema.Attribute.String;
   };
 }
@@ -464,7 +465,6 @@ export interface ToursToursCardsSection extends Struct.ComponentSchema {
     displayName: 'Tours Cards Section';
   };
   attributes: {
-    cards: Schema.Attribute.Component<'cards.tours-card', true>;
     text: Schema.Attribute.Text;
   };
 }

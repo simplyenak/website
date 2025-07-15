@@ -1,24 +1,24 @@
 ---
-import fetchApi from "@/lib/strapi";
-import type { OurValuesSection } from "@/types";
-import Icon from "@/components/Icon.astro";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import fetchApi from '@/lib/strapi'
+import type { OurValuesSection } from '@/types'
+import Icon from '@/components/Icon.astro'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
 
 const data: {
-  ourValuesSection: OurValuesSection;
+  ourValuesSection: OurValuesSection
 } = await fetchApi({
   endpoint:
-    "home-page?populate=ourValuesSection.items.icon&populate=ourValuesSection.bgImage",
-  wrappedByKey: "data",
-});
-const ourValuesSection = data.ourValuesSection;
+    'home-page?populate=ourValuesSection.items.icon&populate=ourValuesSection.bgImage',
+  wrappedByKey: 'data',
+})
+const ourValuesSection = data.ourValuesSection
 ---
 
 <section
-  class:list={["py-20 relative bg-fixed bg-cover bg-center bg-no-repeat"]}
+  class:list={['py-20 relative bg-fixed bg-cover bg-center bg-no-repeat']}
   style={getFullMediaUrl(ourValuesSection?.bgImage)
     ? `background-image: url('${getFullMediaUrl(ourValuesSection?.bgImage)}');`
-    : ""}
+    : ''}
 >
   <div class="main-container relative z-10">
     <h2 class="text-h2 text-primary mb-12 text-center">Our Core Values</h2>

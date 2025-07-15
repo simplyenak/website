@@ -674,6 +674,10 @@ export interface ApiToursMainToursMain extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    toursCardsSection: Schema.Attribute.Component<
+      'tours.tours-cards-section',
+      false
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -709,6 +713,7 @@ export interface ApiToursTours extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    tags: Schema.Attribute.Component<'cards.category', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

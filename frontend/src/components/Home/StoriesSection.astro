@@ -1,42 +1,21 @@
 ---
-import img1 from "@/assets/images/3.webp";
-import img2 from "@/assets/images/4.webp";
-import img3 from "@/assets/images/5.webp";
-import { Image } from "astro:assets";
-const stories = [
-  {
-    image: img1,
-    title:
-      "Discover the Vibrant World of Malaysian Herbs and Traditional Flavours!",
-    description:
-      "Welcome to the vibrant world of Malaysian herbs, where the richness of Malaysian comes alive",
-    link: "/stories/details",
-  },
-  {
-    image: img2,
-    title: "11 Foods To Try During Hari Raya",
-    description:
-      "11 Traditional Hari Raya Dishes Enjoy Hari Raya As A Tourist Open",
-    link: "/stories/details",
-  },
-  {
-    image: img3,
-    title: "Bak Chang – The traditional food of the Chinese Dumpling Festival",
-    description:
-      "The Chinese Dumpling Festival is the perfect time to plan your Malaysian getaway and indulge in one of the most delicious delicacies that can be found at any festival time. The Bak Chang or Zhong in Cantonese and Zhang in Hokkien. These are glutinous rice dumplings stuffed with various fillings, and wrapped in bamboo or lotus leaves. ",
-    link: "/stories/details",
-  },
-];
-import fetchApi from "@/lib/strapi";
-import type { StoriesSection } from "@/types";
+import { Image } from 'astro:assets'
+import fetchApi from '@/lib/strapi'
+import type { StoriesDetailsPageTypes, StoriesSection } from '@/types'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
 
 const data: {
-  storiesSection: StoriesSection;
+  storiesSection: StoriesSection
 } = await fetchApi({
-  endpoint: "home-page?populate=storiesSection",
-  wrappedByKey: "data",
-});
-const storiesSectionData = data.storiesSection;
+  endpoint: 'home-page?populate=storiesSection',
+  wrappedByKey: 'data',
+})
+const storiesSectionData = data.storiesSection
+
+const stories = await fetchApi<StoriesDetailsPageTypes[]>({
+  endpoint: `storie?populate=hero.bgImage&populate=hero&populate=contents`,
+  wrappedByKey: 'data',
+})
 ---
 
 <section class="py-20 md:py-24 bg-[/stories/detailsf7f7f7]">
@@ -50,19 +29,23 @@ const storiesSectionData = data.storiesSection;
           <div class="bg-white rounded-lg shadow-custom-1 overflow-hidden group">
             <div class="h-[240px] overflow-hidden">
               <Image
-                src={story.image}
-                alt={story.image.src}
+                src={getFullMediaUrl(story.hero.bgImage)}
+                alt={story.hero.bgImage.name}
                 class="size-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                height={240}
+                width={360}
               />
             </div>
             <div class="p-4 md:p-5 space-y-3">
               <a
-                href={story.link}
+                href={`/stories/${story.slug}`}
                 class="text-subheading hover:text-primary duration-300 line-clamp-2"
               >
-                {story.title}
+                {story.hero.title}
               </a>
-              <p class="text-body line-clamp-3">{story.description}</p>
+              <p class="text-body line-clamp-3">
+                {story.contents.contents[0].children[0].text}
+              </p>
             </div>
           </div>
         ))

@@ -1,27 +1,23 @@
 ---
-let { title, cards = [], button } = Astro.props;
-import type { ImageMetadata } from "astro";
-import ToursCard from "@/components/Tours/ToursCard.astro";
-import Button from "../Button.astro";
-import type { Button as ButtonType } from "@/types";
+let { title, cards = [], button } = Astro.props
+import type { ImageMetadata } from 'astro'
+import ToursCard from '@/components/Tours/ToursCard.astro'
+import Button from '../Button.astro'
+import type { Button as ButtonType, Media } from '@/types'
 
 type Props = {
-  title: string;
+  title: string
   cards: Array<{
-    title: string;
-    link: string;
-    image: ImageMetadata;
-    price: string;
-    duration: string;
-    location: string;
-    buttons: Array<{
-      icon?: any;
-      text: string;
-      link: string;
-    }>;
-  }>;
-  button: ButtonType;
-};
+    title: string
+    link: string
+    image: Media
+    price: string
+    duration: string
+    location: string
+    buttons: ButtonType[]
+  }>
+  button: ButtonType
+}
 ---
 
 <section class="py-20 md:py-24">
