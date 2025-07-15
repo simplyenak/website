@@ -3,31 +3,41 @@ import { Image } from 'astro:assets'
 import IconMoney from '@/assets/icons/icon-money.svg'
 import IconReload from '@/assets/icons/icon-reload.svg'
 import IconPaperRoket from '@/assets/icons/icon-paper-rocket.svg'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+import type { Button as ButtonType, Media } from '@/types'
+import Button from '../Button.astro'
 type Props = {
   title: string
   link: string
-  image: ImageMetadata
+  image: Media
   price: string
   duration: string
   location: string
-  buttons: Array<{
-    icon?: any
-    text: string
-    link: string,
-    class?: string
-  }>
+  buttons: ButtonType[]
   class?: string
 }
 
-let { image, link, title, buttons, price, duration,location,class:className } = Astro.props
+let {
+  image,
+  link,
+  title,
+  buttons,
+  price,
+  duration,
+  location,
+  class: className,
+} = Astro.props
 ---
 
 <div
-  class:list={["bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group h-full min-h-0 flex flex-col", className]}
+  class:list={[
+    'bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group h-full min-h-0 flex flex-col',
+    className,
+  ]}
 >
   <div class="h-[300px] md:h-[230px] overflow-hidden">
     <Image
-      src={image}
+      src={getFullMediaUrl(image)}
       alt="Tour image"
       width={550}
       height={300}
@@ -59,10 +69,13 @@ let { image, link, title, buttons, price, duration,location,class:className } = 
     <div class="grid grid-cols-2 gap-4 mt-auto">
       {
         buttons.map((button) => (
-          <a href={button.link} class:list={["primary-btn-small", button.class]}>
-            {button.icon && <button.icon class="size-5" />}
-            {button.text}
-          </a>
+          <Button
+            icon={button.icon?.name}
+            title={button.title}
+            href={button.href}
+            buttonType={button.buttonType}
+            class="flex-row-reverse"
+          />
         ))
       }
     </div>

@@ -7,8 +7,6 @@ import PartnersSection from '@/components/Home/PartnersSection.astro'
 import AboutSection from '@/components/Home/AboutSection.astro'
 import OurToursSection from '@/components/Home/OurToursSection.astro'
 import OurValuesSection from '@/components/Home/OurValuesSection.astro'
-import tourImg1 from '@/assets/images/2.webp'
-import IconMultiCircle from '@/assets/icons/icon-multicircle.svg'
 import TestimonialsSection from '@/components/Home/TestimonialsSection.astro'
 import MediaSection from '@/components/Home/MediaSection.astro'
 import StoriesSection from '@/components/Home/StoriesSection.astro'
@@ -26,56 +24,73 @@ const data: {
 const ourToursSectionData = data.ourToursSection
 const experienceTodaySectionData = data.experienceTodaySection
 const mediaSectionData = data.mediaSection
+
+import type { TourDetailsPageTypes } from '@/types'
+
+const tours = await fetchApi<TourDetailsPageTypes[]>({
+  endpoint: `tour?populate=hero.image&populate=tags`,
+  wrappedByKey: 'data',
+})
 ---
 
 <Layout>
   <HeroSection />
   <PartnersSection />
   <AboutSection />
-  <OurToursSection
-    title={ourToursSectionData?.title ?? 'Our Tours'}
-    cards={Array.from({ length: 3 }, () => ({
-      title: 'Flavours of Malaysia (Off the Beaten Track)',
-      link: '#',
-      image: tourImg1,
-      price: 'RM 285',
-      duration: '4hrs',
-      location: 'Penang, Malaysia',
-      buttons: [
-        {
-          icon: null,
-          text: 'Book Now',
-          link: '#',
-        },
-      ],
-    }))}
-    button={ourToursSectionData?.button}
-  />
+  {
+    tours.length > 0 && (
+      <OurToursSection
+        title={ourToursSectionData?.title}
+        cards={tours.slice(0, 3).map((card) => ({
+          title: card.hero.title,
+          link: `/tours/${card.slug}`,
+          image: card.hero.image,
+          price: card.hero.price,
+          duration: card.hero.duration,
+          location: card.hero.location,
+          buttons: [
+            {
+              title: 'Book Now',
+              href: `/tours/${card.slug}`,
+              buttonType: 'primary-btn-small',
+            },
+          ],
+        }))}
+        button={ourToursSectionData?.button}
+      />
+    )
+  }
   <OurValuesSection />
-  <OurToursSection
-    title={experienceTodaySectionData?.title ?? 'Experience Today'}
-    cards={Array.from({ length: 5 }, () => ({
-      title: 'Flavours of Malaysia (Off the Beaten Track)',
-      link: '#',
-      image: tourImg1,
-      price: 'RM 285',
-      duration: '4hrs',
-      location: 'Penang, Malaysia',
-      buttons: [
-        {
-          icon: null,
-          text: 'Book Now',
-          link: '#',
-        },
-        {
-          icon: IconMultiCircle,
-          text: 'View',
-          link: '#',
-        },
-      ],
-    }))}
-    button={experienceTodaySectionData?.button}
-  />
+  {
+    tours.length > 3 && (
+      <OurToursSection
+        title={experienceTodaySectionData?.title ?? 'Experience Today'}
+        cards={tours.slice(3, 9).map((card) => ({
+          title: card.hero.title,
+          link: `/tours/${card.slug}`,
+          image: card.hero.image,
+          price: card.hero.price,
+          duration: card.hero.duration,
+          location: card.hero.location,
+          buttons: [
+            {
+              title: 'Book Now',
+              href: `/tours/${card.slug}`,
+              buttonType: 'primary-btn-small',
+            },
+            {
+              icon: { name: 'icon-multicircle' },
+              title: 'view',
+              href: `/tours/${card.slug}`,
+              buttonType: 'primary-btn-small',
+            },
+          ],
+        }))}
+        button={experienceTodaySectionData?.button}
+      />
+    )
+  }
+
   <TestimonialsSection />
   <MediaSection
     title={mediaSectionData.title}

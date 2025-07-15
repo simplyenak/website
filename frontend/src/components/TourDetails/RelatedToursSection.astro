@@ -16,6 +16,7 @@ const { slug } = Astro.params
       <h2 class="text-h2 text-primary text-center">Related Tours</h2>
       <div class="mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
         {tours
+          .slice(0, 6)
           .filter((item) => item.slug !== slug)
           .map((tour, index) => (
             <a

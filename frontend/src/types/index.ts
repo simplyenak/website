@@ -149,7 +149,19 @@ export interface TourDetailsPageTypes {
   hero: TourDetailsHeroTypes
   contents: BlocksContent
   bookingUrl?: string
+  tags: { name: string }[]
 }
-export interface TourPageTypes{
-  
+export interface BookBespokeTourTypes {
+  title: string
+  description: string
+  isBookingButton: boolean
+}
+export interface TourPageTypes {
+  metaTitle: string
+  hero: GlobalHeroTypes
+  toursCardsSection: {
+    text: string
+  }
+  bookBespokeTour: BookBespokeTourTypes
+  knowTourSection: BookBespokeTourTypes
 }

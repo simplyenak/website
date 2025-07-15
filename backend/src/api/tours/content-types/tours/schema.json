@@ -30,6 +30,11 @@
       "component": "tour-details.tour-details-contents",
       "repeatable": false,
       "required": true
+    },
+    "tags": {
+      "type": "component",
+      "component": "cards.category",
+      "repeatable": true
     }
   }
 }
