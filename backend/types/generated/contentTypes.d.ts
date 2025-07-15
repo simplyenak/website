@@ -643,6 +643,78 @@ export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiToursMainToursMain extends Struct.SingleTypeSchema {
+  collectionName: 'tours_mains';
+  info: {
+    displayName: 'Tours Main';
+    pluralName: 'tours-mains';
+    singularName: 'tours-main';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bookBespokeTour: Schema.Attribute.Component<
+      'tours.other-booking-section',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'global-hero.global-hero', false>;
+    knowTourSection: Schema.Attribute.Component<
+      'tours.other-booking-section',
+      false
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tours-main.tours-main'
+    > &
+      Schema.Attribute.Private;
+    metaTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiToursTours extends Struct.CollectionTypeSchema {
+  collectionName: 'tour';
+  info: {
+    displayName: 'tours';
+    pluralName: 'tour';
+    singularName: 'tours';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contents: Schema.Attribute.Component<
+      'tour-details.tour-details-contents',
+      false
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'tour-details.tour-details-hero', false> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tours.tours'> &
+      Schema.Attribute.Private;
+    metaTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1159,6 +1231,8 @@ declare module '@strapi/strapi' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::stories-main.stories-main': ApiStoriesMainStoriesMain;
       'api::stories.stories': ApiStoriesStories;
+      'api::tours-main.tours-main': ApiToursMainToursMain;
+      'api::tours.tours': ApiToursTours;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

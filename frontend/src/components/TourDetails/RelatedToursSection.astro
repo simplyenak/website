@@ -1,28 +1,44 @@
 ---
-import img1 from '@/assets/images/1.webp'
+import fetchApi from '@/lib/strapi'
+import type { TourDetailsPageTypes } from '@/types'
+import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
 import { Image } from 'astro:assets'
+const tours = await fetchApi<TourDetailsPageTypes[]>({
+  endpoint: `tour?populate=hero.image`,
+  wrappedByKey: 'data',
+})
+const { slug } = Astro.params
 ---
 
-<section class="main-container py-20">
-  <h2 class="text-h2 text-primary text-center">Related Tours</h2>
-  <div class="mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
-    {
-      Array.from({ length: 4 }).map((_, index) => (
-        <a href="#" class="rounded-lg bg-white shadow-md overflow-hidden group">
-          <div class="h-32 w-full overflow-hidden">
-            <Image
-              src={img1}
-              alt="Tour Image"
-              class="size-full object-cover group-hover:scale-105 duration-300"
-            />
-          </div>
-          <div class="p-4">
-            <h3 class="text-sm font-semibold group-hover:text-primary">
-              Flavours of Malaysia
-            </h3>
-          </div>
-        </a>
-      ))
-    }
-  </div>
-</section>
+{
+  tours.length > 1 && (
+    <section class="main-container py-20">
+      <h2 class="text-h2 text-primary text-center">Related Tours</h2>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        {tours
+          .filter((item) => item.slug !== slug)
+          .map((tour, index) => (
+            <a
+              href={`/tours/${tour.slug}`}
+              class="rounded-lg bg-white shadow-md overflow-hidden group"
+            >
+              <div class="h-32 w-full overflow-hidden">
+                <Image
+                  src={getFullMediaUrl(tour.hero.image)}
+                  alt="Tour Image"
+                  class="size-full object-cover group-hover:scale-105 duration-300"
+                  height={360}
+                  width={230}
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm font-semibold group-hover:text-primary">
+                  {tour.hero.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+      </div>
+    </section>
+  )
+}

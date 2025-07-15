@@ -440,7 +440,9 @@ export interface TourDetailsTourDetailsHero extends Struct.ComponentSchema {
     maxParticipants: Schema.Attribute.Integer;
     price: Schema.Attribute.String & Schema.Attribute.Required;
     time: Schema.Attribute.String;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
   };
 }
 
