@@ -1,32 +1,41 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import TourDetailsHero from '@/components/TourDetails/TourDetailsHero.astro'
-import tourImg1 from '@/assets/images/2.webp'
 import StoriesDetailsSection from '@/components/StoriesDetails/StoriesDetailsSection.astro'
 import TourDetailsContents from '@/components/TourDetails/TourDetailsContents.astro'
-import tours from '@/data/tours.json'
 import RelatedToursSection from '@/components/TourDetails/RelatedToursSection.astro'
+import fetchApi from '@/lib/strapi'
+import type { TourDetailsPageTypes } from '@/types'
+
+export async function getStaticPaths() {
+  const tours = await fetchApi<TourDetailsPageTypes[]>({
+    endpoint: 'tour',
+    wrappedByKey: 'data',
+  })
+  return tours.map((tour) => {
+    return {
+      params: { slug: tour.slug },
+    }
+  })
+}
+const { slug } = Astro.params
+const data = await fetchApi<TourDetailsPageTypes[]>({
+  endpoint: `tour?filters[slug][$eq]=${slug}&populate=hero.image&populate=contents`,
+  wrappedByKey: 'data',
+})
+const tour = data[0]
 ---
 
-<Layout title="Food Tours – Simply Enak">
-  <TourDetailsHero
-    title="Flavours of Malaysia (Off the Beaten Track)"
-    price="RM 285"
-    duration="4hrs"
-    location="09:30 – 13:30 daily"
-    time="Kuala Lumpur: Hilton Garden Inn"
-    maxParticipants="9"
-    experienceType="Adventurous"
-    image={tourImg1}
-  />
+<Layout title={tour.metaTitle}>
+  <TourDetailsHero hero={tour.hero} />
   <StoriesDetailsSection>
-    <TourDetailsContents contents={tours[0].contents} />
+    <TourDetailsContents contents={tour.contents} />
     <div slot="sidebar">
       <div
         class="flex items-center justify-center gap-3 py-6 rounded-t-2xl bg-primary text-white"
       >
         <h5 class="text-h5 capitalize">From</h5>
-        <h4 class="text-h4 font-bold">RM 285</h4>
+        <h4 class="text-h4 font-bold">{tour.hero.price}</h4>
       </div>
       <iframe
         class="h-[600px] w-full"

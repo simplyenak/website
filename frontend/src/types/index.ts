@@ -133,3 +133,23 @@ export interface AboutSimplyEnakSectionTypes {
     href: string
   }[]
 }
+export interface TourDetailsHeroTypes {
+  title: string
+  price: string
+  duration: string
+  location: string
+  time?: string
+  maxParticipants?: number
+  experienceType?: string
+  image: Media
+}
+export interface TourDetailsPageTypes {
+  metaTitle: string
+  slug: string
+  hero: TourDetailsHeroTypes
+  contents: BlocksContent
+  bookingUrl?: string
+}
+export interface TourPageTypes{
+  
+}
