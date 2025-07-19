@@ -21,14 +21,6 @@ ENV NODE_ENV=production
 # Build the application
 RUN npm run build
 
-# Set up data persistence directories
-RUN mkdir -p /app/data /app/public/uploads && \
-    chmod -R 755 /app/data /app/public/uploads
-
-# Set up data persistence directories
-RUN mkdir -p /app/data /app/public/uploads && \
-    chmod -R 755 /app/data /app/public/uploads
-
 # Expose Strapi port
 EXPOSE 1337
 
