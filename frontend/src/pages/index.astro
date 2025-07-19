@@ -38,7 +38,7 @@ const tours = await fetchApi<TourDetailsPageTypes[]>({
   <PartnersSection />
   <AboutSection />
   {
-    tours.length > 0 && (
+    tours?.length > 0 && (
       <OurToursSection
         title={ourToursSectionData?.title}
         cards={tours.slice(0, 3).map((card) => ({
@@ -62,7 +62,7 @@ const tours = await fetchApi<TourDetailsPageTypes[]>({
   }
   <OurValuesSection />
   {
-    tours.length > 3 && (
+    tours?.length > 3 && (
       <OurToursSection
         title={experienceTodaySectionData?.title ?? 'Experience Today'}
         cards={tours.slice(3, 9).map((card) => ({
