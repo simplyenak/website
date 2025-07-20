@@ -5,7 +5,7 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Install system dependencies needed for build
-RUN apk add --no-cache curl python3 make g++
+RUN apk add --no-cache curl python3 make g++ git
 
 # Copy package files
 COPY package*.json ./
@@ -17,7 +17,7 @@ RUN npm ci
 COPY . .
 
 # Set Node.js memory limit and build the application
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 ENV NODE_ENV=production
 
 # Build the application
@@ -40,7 +40,6 @@ RUN npm ci --only=production && npm cache clean --force
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/build ./build
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/config ./config
 COPY --from=builder /app/database ./database
