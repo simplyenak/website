@@ -1,59 +1,36 @@
-# Build stage
-FROM node:22-alpine AS builder
+# Creating multi-stage build for production
+FROM node:22-alpine AS build
 
-# Set working directory
-WORKDIR /app
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
 
-# Install system dependencies needed for build
-RUN apk add --no-cache curl python3 make g++ git
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
-# Copy package files
-COPY package*.json ./
+WORKDIR /opt/
 
-# Install all dependencies (including dev dependencies needed for build)
-RUN npm ci
+COPY package.json package-lock.json ./
 
-# Copy source code
+RUN npm install -g node-gyp
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
+
+ENV PATH=/opt/node_modules/.bin:$PATH
+
+WORKDIR /opt/app
 COPY . .
-
-# Set Node.js memory limit and build the application
-ENV NODE_OPTIONS="--max-old-space-size=8192"
-ENV NODE_ENV=production
-
-# Build the application
 RUN npm run build
 
-# Production stage
-FROM node:22-alpine AS production
+# Creating final production image
+FROM node:22-alpine
+RUN apk add --no-cache vips-dev
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+WORKDIR /opt/
+COPY --from=build /opt/node_modules ./node_modules
+WORKDIR /opt/app
+COPY --from=build /opt/app ./
+ENV PATH=/opt/node_modules/.bin:$PATH
 
-# Set working directory
-WORKDIR /app
-
-# Install system dependencies
-RUN apk add --no-cache curl
-
-# Copy package files
-COPY package*.json ./
-
-# Install only production dependencies
-RUN npm ci --only=production && npm cache clean --force
-
-# Copy built application from builder stage
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/config ./config
-COPY --from=builder /app/database ./database
-COPY --from=builder /app/src ./src
-
-# Set environment to production
-ENV NODE_ENV=production
-
-# Expose Strapi port
+RUN chown -R node:node /opt/app
+USER node
 EXPOSE 1337
-
-# Health check for Dokploy monitoring (wait for DB connection)
-HEALTHCHECK --interval=30s --timeout=15s --start-period=60s --retries=5 \
-  CMD curl -f http://localhost:1337/_health || exit 1
-
-# Start Strapi
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
