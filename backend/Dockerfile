@@ -1,36 +1,42 @@
-# Creating multi-stage build for production
-FROM node:22-alpine AS build
+# ---- Build Stage ----
+FROM node:20-alpine AS build
 
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
+# Use prebuilt Sharp binaries instead of compiling native modules
+ENV npm_config_sharp_binary_host="https://npm.taobao.org/mirrors/sharp-libvips"
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /opt/
-
-COPY package.json package-lock.json ./
-
-RUN npm install -g node-gyp
-RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
-
-ENV PATH=/opt/node_modules/.bin:$PATH
+# Install only essential native deps for light image handling
+RUN apk add --no-cache \
+  python3 \
+  make \
+  g++ \
+  vips-dev \
+  git
 
 WORKDIR /opt/app
+
+# Copy only the lockfiles and install production dependencies
+COPY package*.json ./
+
+RUN npm install --omit=dev --unsafe-perm
+
+# Copy remaining codebase and build
 COPY . .
+
 RUN npm run build
 
-# Creating final production image
-FROM node:22-alpine
-RUN apk add --no-cache vips-dev
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-WORKDIR /opt/
-COPY --from=build /opt/node_modules ./node_modules
-WORKDIR /opt/app
-COPY --from=build /opt/app ./
-ENV PATH=/opt/node_modules/.bin:$PATH
+# ---- Final Production Image ----
+FROM node:20-alpine
 
-RUN chown -R node:node /opt/app
+RUN apk add --no-cache vips-dev
+
+WORKDIR /opt/app
+
+# Copy built app from builder
+COPY --from=build /opt/app .
+
+ENV NODE_ENV=production
+
 USER node
+
 EXPOSE 1337
 CMD ["npm", "run", "start"]
