@@ -1,42 +1,24 @@
-# ---- Build Stage ----
-FROM node:20-alpine AS build
+# Final production image
+FROM node:20-alpine AS production
 
-# Use prebuilt Sharp binaries instead of compiling native modules
-ENV npm_config_sharp_binary_host="https://npm.taobao.org/mirrors/sharp-libvips"
-
-# Install only essential native deps for light image handling
-RUN apk add --no-cache \
-  python3 \
-  make \
-  g++ \
-  vips-dev \
-  git
-
-WORKDIR /opt/app
-
-# Copy only the lockfiles and install production dependencies
-COPY package*.json ./
-
-RUN npm install --omit=dev --unsafe-perm
-
-# Copy remaining codebase and build
-COPY . .
-
-RUN npm run build
-
-# ---- Final Production Image ----
-FROM node:20-alpine
-
+# Install only required runtime libs
 RUN apk add --no-cache vips-dev
 
 WORKDIR /opt/app
 
-# Copy built app from builder
-COPY --from=build /opt/app .
+# Copy app and deps
+COPY --from=build /opt/app ./
 
+# Set environment
 ENV NODE_ENV=production
+ENV PATH=/opt/app/node_modules/.bin:$PATH
+
+# Make sure user owns files
+RUN chown -R node:node /opt/app
 
 USER node
 
 EXPOSE 1337
+
+# Start Strapi
 CMD ["npm", "run", "start"]
