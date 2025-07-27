@@ -1,21 +1,21 @@
 ---
-import Layout from '@/layouts/Layout.astro'
-import StoriesDetailsHero from '@/components/StoriesDetails/StoriesDetailsHero.astro'
-import StoriesDetailsSection from '@/components/StoriesDetails/StoriesDetailsSection.astro'
-import StoriesDetailsContents from '@/components/StoriesDetails/StoriesDetailsContents.astro'
-import AuthonSection from '@/components/StoriesDetails/AuthonSection.astro'
-import CommentSection from '@/components/StoriesDetails/CommentSection.astro'
-import AboutSimplyEnakSection from '@/components/StoriesDetails/AboutSimplyEnakSection.astro'
-import CTASection from '@/components/CTASection.astro'
-import YoutubeVideos from '@/components/Stories/YoutubeVideos.astro'
-import RelatedPosts from '@/components/StoriesDetails/RelatedPosts.astro'
-import fetchApi from '@/lib/strapi'
-import type { StoriesDetailsPageTypes } from '@/types'
+import Layout from "@/layouts/Layout.astro"
+import StoriesDetailsHero from "@/components/StoriesDetails/StoriesDetailsHero.astro"
+import StoriesDetailsSection from "@/components/StoriesDetails/StoriesDetailsSection.astro"
+import StoriesDetailsContents from "@/components/StoriesDetails/StoriesDetailsContents.astro"
+import AuthonSection from "@/components/StoriesDetails/AuthonSection.astro"
+import CommentSection from "@/components/StoriesDetails/CommentSection.astro"
+import AboutSimplyEnakSection from "@/components/StoriesDetails/AboutSimplyEnakSection.astro"
+import CTASection from "@/components/CTASection.astro"
+import YoutubeVideos from "@/components/Stories/YoutubeVideos.tsx"
+import RelatedPosts from "@/components/StoriesDetails/RelatedPosts.astro"
+import fetchApi from "@/lib/strapi"
+import type { StoriesDetailsPageTypes } from "@/types"
 
 export async function getStaticPaths() {
   const stories = await fetchApi<StoriesDetailsPageTypes[]>({
-    endpoint: 'storie',
-    wrappedByKey: 'data',
+    endpoint: "storie",
+    wrappedByKey: "data",
   })
   return stories.map((story) => {
     return {
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const data = await fetchApi<StoriesDetailsPageTypes[]>({
   endpoint: `storie?filters[slug][$eq]=${slug}&populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&populate=youtubeVideos.videosIds`,
-  wrappedByKey: 'data',
+  wrappedByKey: "data",
 })
 const story = data[0]
 ---
@@ -43,7 +43,8 @@ const story = data[0]
       <AboutSimplyEnakSection />
       <YoutubeVideos
         youtubeVideos={story.youtubeVideos}
-        class="p-4 rounded-sm border border-black/10"
+        className="p-4 rounded-sm border border-black/10"
+        client:load
       />
       <RelatedPosts />
     </div>
