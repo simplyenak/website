@@ -1,22 +1,21 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import CTASection from "@/components/CTASection.astro";
-import GlobalHero from "@/components/GlobalHero.astro";
-import ToursCardsSection from "@/components/Tours/ToursCardsSection.astro";
-import OtherBookingSection from "@/components/Tours/OtherBookingSection.astro";
-import type { TourPageTypes } from "@/types";
-import fetchApi from "@/lib/strapi";
+import Layout from "@/layouts/Layout.astro"
+import CTASection from "@/components/CTASection.astro"
+import GlobalHero from "@/components/GlobalHero.astro"
+import ToursCardsSection from "@/components/Tours/ToursCardsSection.astro"
+import OtherBookingSection from "@/components/Tours/OtherBookingSection.astro"
+import type { TourPageTypes } from "@/types"
+import fetchApi from "@/lib/strapi"
 const data = await fetchApi<TourPageTypes>({
   endpoint:
     "tours-mains?populate=hero&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection",
   wrappedByKey: "data",
-});
-
-console.log(data);
+})
 ---
 
 <Layout title={data?.metaTitle ?? "Tours"}>
-  <!-- <GlobalHero title={data.hero.title} image={data.hero.image} />
+  {data.hero && <GlobalHero title={data.hero.title} image={data.hero.image} />}
+
   <ToursCardsSection title={data.toursCardsSection.text} />
   <OtherBookingSection
     title={data.bookBespokeTour.title}
@@ -28,5 +27,5 @@ console.log(data);
     description={data.knowTourSection.description}
     isBookingButton={data.knowTourSection.isBookingButton}
   />
-  <CTASection /> -->
+  <CTASection />
 </Layout>

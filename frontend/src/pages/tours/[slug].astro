@@ -27,7 +27,7 @@ const tour = data[0]
 ---
 
 <Layout title={tour.metaTitle}>
-  <TourDetailsHero hero={tour.hero} />
+{tour && (<TourDetailsHero hero={tour.hero} />
   <StoriesDetailsSection>
     <TourDetailsContents contents={tour.contents} />
     <div slot="sidebar">
@@ -45,5 +45,5 @@ const tour = data[0]
       </iframe>
     </div>
   </StoriesDetailsSection>
-  <RelatedToursSection />
+  <RelatedToursSection />)}
 </Layout>
