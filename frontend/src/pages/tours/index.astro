@@ -8,24 +8,51 @@ import type { TourPageTypes } from "@/types"
 import fetchApi from "@/lib/strapi"
 const data = await fetchApi<TourPageTypes>({
   endpoint:
-    "tours-mains?populate=hero&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection",
+    "tours-main?populate=hero.image&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection",
   wrappedByKey: "data",
 })
+const hasData = !!data && typeof data === "object"
 ---
 
-<Layout title={data?.metaTitle ?? "Tours"}>
-  {data.hero && <GlobalHero title={data.hero.title} image={data.hero.image} />}
+<Layout title={hasData && data.metaTitle ? data.metaTitle : "Tours"}>
+  {
+    hasData && data.hero && (
+      <GlobalHero title={data.hero.title} image={data.hero.image} />
+    )
+  }
 
-  <ToursCardsSection title={data.toursCardsSection.text} />
-  <OtherBookingSection
-    title={data.bookBespokeTour.title}
-    description={data.bookBespokeTour.description}
-    isBookingButton={data.bookBespokeTour.isBookingButton}
-  />
-  <OtherBookingSection
-    title={data.knowTourSection.title}
-    description={data.knowTourSection.description}
-    isBookingButton={data.knowTourSection.isBookingButton}
-  />
+  {
+    hasData && data.toursCardsSection && (
+      <ToursCardsSection title={data.toursCardsSection.text} />
+    )
+  }
+
+  {
+    hasData && data.bookBespokeTour && (
+      <OtherBookingSection
+        title={data.bookBespokeTour.title}
+        description={data.bookBespokeTour.description}
+        isBookingButton={data.bookBespokeTour.isBookingButton}
+      />
+    )
+  }
+
+  {
+    hasData && data.knowTourSection && (
+      <OtherBookingSection
+        title={data.knowTourSection.title}
+        description={data.knowTourSection.description}
+        isBookingButton={data.knowTourSection.isBookingButton}
+      />
+    )
+  }
+
+  {
+    !hasData && (
+      <div style="padding:2rem;text-align:center;color:red;">
+        Sorry, no tour data available.
+      </div>
+    )
+  }
   <CTASection />
 </Layout>
