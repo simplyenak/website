@@ -2,13 +2,13 @@
 import {
   BlocksRenderer,
   type BlocksContent,
-} from '@strapi/blocks-react-renderer'
-import fetchApi from '@/lib/strapi'
-import type { AboutSimplyEnakSectionTypes } from '@/types'
-import Icon from '../Icon.astro'
+} from "@strapi/blocks-react-renderer"
+import fetchApi from "@/lib/strapi"
+import type { AboutSimplyEnakSectionTypes } from "@/types"
+import Icon from "../Icon.astro"
 const data: { aboutSection: AboutSimplyEnakSectionTypes } = await fetchApi({
-  endpoint: 'stories-main?populate=aboutSection.socialItems.icon',
-  wrappedByKey: 'data',
+  endpoint: "stories-main?populate=aboutSection.socialItems.icon",
+  wrappedByKey: "data",
 })
 ---
 
@@ -20,15 +20,22 @@ const data: { aboutSection: AboutSimplyEnakSectionTypes } = await fetchApi({
   />
   <div class="flex items-center gap-1.5 pt-4">
     {
-      data.aboutSection.socialItems.map((item) => (
-        <a
-          class="size-10 min-w-10 bg-blue-500 text-white grid place-items-center rounded-lg"
-          href={item.href}
-          target="_blank"
-        >
-          <Icon class="size-5" name={item.icon.name} />
-        </a>
-      ))
+      data.aboutSection.socialItems.map(
+        (item: { href: string; icon: { name: string } }, idx: number) => {
+          let bgColor = "bg-blue-500"
+          if (idx === 1) bgColor = "bg-black"
+          if (idx === 2) bgColor = "bg-red-500"
+          return (
+            <a
+              class={`size-10 min-w-10 ${bgColor} text-white grid place-items-center rounded-lg`}
+              href={item.href}
+              target="_blank"
+            >
+              <Icon class="size-5" name={item.icon.name} />
+            </a>
+          )
+        }
+      )
     }
   </div>
 </div>
