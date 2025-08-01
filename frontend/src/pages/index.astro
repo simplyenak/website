@@ -1,36 +1,36 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import fetchApi from '@/lib/strapi'
-import type { MediaSectionTypes, OurToursSectionTypes } from '@/types'
-import HeroSection from '@/components/Home/HeroSection.astro'
-import PartnersSection from '@/components/Home/PartnersSection.astro'
-import AboutSection from '@/components/Home/AboutSection.astro'
-import OurToursSection from '@/components/Home/OurToursSection.astro'
-import OurValuesSection from '@/components/Home/OurValuesSection.astro'
-import TestimonialsSection from '@/components/Home/TestimonialsSection.astro'
-import MediaSection from '@/components/Home/MediaSection.astro'
-import StoriesSection from '@/components/Home/StoriesSection.astro'
-import CTASection from '@/components/CTASection.astro'
+import Layout from "../layouts/Layout.astro";
+import fetchApi from "@/lib/strapi";
+import type { MediaSectionTypes, OurToursSectionTypes } from "@/types";
+import HeroSection from "@/components/Home/HeroSection.astro";
+import PartnersSection from "@/components/Home/PartnersSection.astro";
+import AboutSection from "@/components/Home/AboutSection.astro";
+import OurToursSection from "@/components/Home/OurToursSection.astro";
+import OurValuesSection from "@/components/Home/OurValuesSection.astro";
+import TestimonialsSection from "@/components/Home/TestimonialsSection.astro";
+import MediaSection from "@/components/Home/MediaSection.astro";
+import StoriesSection from "@/components/Home/StoriesSection.astro";
+import CTASection from "@/components/CTASection.astro";
 
 const data: {
-  ourToursSection: OurToursSectionTypes
-  experienceTodaySection: OurToursSectionTypes
-  mediaSection: MediaSectionTypes
+  ourToursSection: OurToursSectionTypes;
+  experienceTodaySection: OurToursSectionTypes;
+  mediaSection: MediaSectionTypes;
 } = await fetchApi({
   endpoint:
-    'home-page?populate=ourToursSection.button&populate=experienceTodaySection.button&populate=mediaSection',
-  wrappedByKey: 'data',
-})
-const ourToursSectionData = data.ourToursSection
-const experienceTodaySectionData = data.experienceTodaySection
-const mediaSectionData = data.mediaSection
+    "home-page?populate=ourToursSection.button&populate=experienceTodaySection.button&populate=mediaSection",
+  wrappedByKey: "data",
+});
+const ourToursSectionData = data.ourToursSection;
+const experienceTodaySectionData = data.experienceTodaySection;
+const mediaSectionData = data.mediaSection;
 
-import type { TourDetailsPageTypes } from '@/types'
+import type { TourDetailsPageTypes } from "@/types";
 
 const tours = await fetchApi<TourDetailsPageTypes[]>({
   endpoint: `tour?populate=hero.image&populate=tags`,
-  wrappedByKey: 'data',
-})
+  wrappedByKey: "data",
+});
 ---
 
 <Layout>
@@ -50,9 +50,9 @@ const tours = await fetchApi<TourDetailsPageTypes[]>({
           location: card.hero.location,
           buttons: [
             {
-              title: 'Book Now',
+              title: "Book Now",
               href: `/tours/${card.slug}`,
-              buttonType: 'primary-btn-small',
+              buttonType: "primary-btn-small",
             },
           ],
         }))}
@@ -64,7 +64,7 @@ const tours = await fetchApi<TourDetailsPageTypes[]>({
   {
     tours?.length > 3 && (
       <OurToursSection
-        title={experienceTodaySectionData?.title ?? 'Experience Today'}
+        title={experienceTodaySectionData?.title ?? "Experience Today"}
         cards={tours.slice(3, 9).map((card) => ({
           title: card.hero.title,
           link: `/tours/${card.slug}`,
@@ -74,15 +74,15 @@ const tours = await fetchApi<TourDetailsPageTypes[]>({
           location: card.hero.location,
           buttons: [
             {
-              title: 'Book Now',
+              title: "Book Now",
               href: `/tours/${card.slug}`,
-              buttonType: 'primary-btn-small',
+              buttonType: "primary-btn-small",
             },
             {
-              icon: { name: 'icon-multicircle' },
-              title: 'view',
+              icon: { name: "icon-multicircle" },
+              title: "view",
               href: `/tours/${card.slug}`,
-              buttonType: 'primary-btn-small',
+              buttonType: "primary-btn-small",
             },
           ],
         }))}
