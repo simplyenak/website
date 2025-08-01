@@ -25,6 +25,10 @@
       "repeatable": false,
       "required": true
     },
+    "TicketingHubID": {
+      "type": "string",
+      "required": true
+    },
     "contents": {
       "type": "component",
       "component": "tour-details.tour-details-contents",
