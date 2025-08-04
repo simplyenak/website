@@ -1,80 +1,30 @@
-# Multi-platform build support
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
+# Creating multi-stage build for production
+FROM node:22-alpine AS build
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
-# Build stage
-FROM --platform=$TARGETPLATFORM node:22-slim AS builder
-
-# Install dependencies needed by Strapi and vips for building
-RUN apt-get update && apt-get install -y \
-    libvips-dev \
-    python3 \
-    make \
-    g++ \
-    libc6-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set working directory
+WORKDIR /opt/
+COPY package.json package-lock.json ./
+RUN npm install -g node-gyp
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
+ENV PATH=/opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
-
-# Copy package files
-COPY package*.json ./
-
-# Install all dependencies (including dev dependencies)
-RUN npm ci && npm rebuild
-
-# Copy source code
 COPY . .
-
-# Set build environment variables
-ENV NODE_ENV=production
-ENV STRAPI_TELEMETRY_DISABLED=true
-
-# Build the application
 RUN npm run build
 
-# Production stage
-FROM --platform=$TARGETPLATFORM node:22-slim AS production
-
-# Install only runtime dependencies
-RUN apt-get update && apt-get install -y \
-    libvips \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
-
-# Create app directory and user
-RUN groupadd -g 1001 nodejs && \
-    useradd -r -u 1001 -g nodejs strapi
-
-# Set working directory
+# Creating final production image
+FROM node:22-alpine
+RUN apk add --no-cache vips-dev
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+WORKDIR /opt/
+COPY --from=build /opt/node_modules ./node_modules
 WORKDIR /opt/app
+COPY --from=build /opt/app ./
+ENV PATH=/opt/node_modules/.bin:$PATH
 
-# Copy package.json and install only production dependencies
-COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
-
-# Copy built application from builder stage
-COPY --from=builder --chown=strapi:nodejs /opt/app/dist ./dist
-COPY --from=builder --chown=strapi:nodejs /opt/app/build ./build
-COPY --from=builder --chown=strapi:nodejs /opt/app/public ./public
-COPY --from=builder --chown=strapi:nodejs /opt/app/config ./config
-COPY --from=builder --chown=strapi:nodejs /opt/app/database ./database
-COPY --from=builder --chown=strapi:nodejs /opt/app/src ./src
-COPY --from=builder --chown=strapi:nodejs /opt/app/types ./types
-
-# Set environment variables
-ENV NODE_ENV=production
-ENV STRAPI_TELEMETRY_DISABLED=true
-
-# Switch to non-root user
-USER strapi
-
-# Expose port
+RUN chown -R node:node /opt/app
+USER node
 EXPOSE 1337
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1
-
-# Start the application
 CMD ["npm", "run", "start"]
