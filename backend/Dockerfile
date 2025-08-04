@@ -3,7 +3,7 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
 # Use Node.js LTS base image
-FROM --platform=$TARGETPLATFORM node:20-alpine
+FROM --platform=$TARGETPLATFORM node:22-alpine
 
 # Install dependencies needed by Strapi and vips
 RUN apk add --no-cache \
