@@ -11,7 +11,11 @@ RUN apk add --no-cache \
     vips-dev \
     gcompat \
     build-base \
-    python3
+    python3 \
+    make \
+    g++ \
+    libc6-compat \
+    libstdc++
 
 # Create app directory and user
 RUN addgroup -g 1001 -S nodejs && \
@@ -20,11 +24,16 @@ RUN addgroup -g 1001 -S nodejs && \
 # Set working directory
 WORKDIR /opt/app
 
+# Set environment variables for native compilation
+ENV NODE_ENV=production
+ENV STRAPI_TELEMETRY_DISABLED=true
+
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && \
+# Install dependencies (including dev dependencies for build)
+RUN npm ci && \
+    npm rebuild && \
     npm cache clean --force
 
 # Copy source code
@@ -32,6 +41,9 @@ COPY --chown=strapi:nodejs . .
 
 # Build the application
 RUN npm run build
+
+# Remove dev dependencies to reduce image size
+RUN npm prune --production
 
 # Switch to non-root user
 USER strapi
