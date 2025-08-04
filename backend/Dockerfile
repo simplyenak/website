@@ -2,24 +2,22 @@
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-# Use Node.js LTS base image
-FROM --platform=$TARGETPLATFORM node:22-alpine
+# Use Node.js LTS base image (Debian-based for better native module compatibility)
+FROM --platform=$TARGETPLATFORM node:22-slim
 
-# Install dependencies needed by Strapi and vips, including glibc compatibility for native bindings
-RUN apk add --no-cache \
-    vips \
-    vips-dev \
-    gcompat \
-    build-base \
+# Install dependencies needed by Strapi and vips
+RUN apt-get update && apt-get install -y \
+    libvips-dev \
     python3 \
     make \
     g++ \
-    libc6-compat \
-    libstdc++
+    libc6-dev \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create app directory and user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S strapi -u 1001 -G nodejs
+RUN groupadd -g 1001 nodejs && \
+    useradd -r -u 1001 -g nodejs strapi
 
 # Set working directory
 WORKDIR /opt/app
