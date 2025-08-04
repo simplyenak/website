@@ -1,41 +1,45 @@
-  FROM node:22-alpine AS build
+# Multi-platform build support
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
-  RUN apk add --no-cache \
-    build-base \
-    autoconf \
-    automake \
-    libpng-dev \
+# Use Node.js LTS base image
+FROM --platform=$TARGETPLATFORM node:20-alpine
+
+# Install dependencies needed by Strapi and vips
+RUN apk add --no-cache \
+    vips \
     vips-dev \
-    git
+    && rm -rf /var/cache/apk/*
 
-  WORKDIR /opt/app
+# Create app directory and user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S strapi -u 1001 -G nodejs
 
-  # Copy package files first for better layer caching
-  COPY package*.json ./
-  RUN npm install --only=production && npm cache clean --force
+# Set working directory
+WORKDIR /opt/app
 
-  COPY . .
-  RUN npm run build
+# Copy package files
+COPY package*.json ./
 
-  # Stage 2: Runtime image  
-  FROM node:22-alpine AS production
+# Install dependencies
+RUN npm ci --only=production && \
+    npm cache clean --force
 
-  RUN apk add --no-cache vips-dev
+# Copy source code
+COPY --chown=strapi:nodejs . .
 
-  WORKDIR /opt/app
+# Build the application
+RUN npm run build
 
-  # Copy built app from build stage
-  COPY --from=build /opt/app/dist ./dist
-  COPY --from=build /opt/app/node_modules ./node_modules
-  COPY --from=build /opt/app/package*.json ./
-  COPY --from=build /opt/app/public ./public
-  COPY --from=build /opt/app/favicon.ico ./
+# Switch to non-root user
+USER strapi
 
-  ENV NODE_ENV=production
-  ENV PATH=/opt/app/node_modules/.bin:$PATH
+# Expose port
+EXPOSE 1337
 
-  RUN chown -R node:node /opt/app
-  USER node
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1
 
-  EXPOSE 1337
-  CMD ["npm", "run", "start"]
+# Start the application
+CMD ["npm", "run", "start"]
