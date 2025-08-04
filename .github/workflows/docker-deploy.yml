@@ -3,7 +3,7 @@ name: Build and Push Backend Docker Image
 on:
   push:
     branches:
-      - main  # <-- Update this if your working branch is not `main`
+      - main # <-- Update this if your working branch is not `main`
 
 jobs:
   build:
