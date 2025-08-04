@@ -5,11 +5,13 @@ ARG BUILDPLATFORM
 # Use Node.js LTS base image
 FROM --platform=$TARGETPLATFORM node:22-alpine
 
-# Install dependencies needed by Strapi and vips
+# Install dependencies needed by Strapi and vips, including glibc compatibility for native bindings
 RUN apk add --no-cache \
     vips \
     vips-dev \
-    && rm -rf /var/cache/apk/*
+    gcompat \
+    build-base \
+    python3
 
 # Create app directory and user
 RUN addgroup -g 1001 -S nodejs && \
