@@ -1,29 +1,45 @@
-# Use official Node.js v22 Slim image
-FROM node:22-slim
+# Multi-platform build support
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
-# Install build tools for native modules
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends python3 make g++ \
-    && rm -rf /var/lib/apt/lists/*
+# Use Node.js LTS base image
+FROM --platform=$TARGETPLATFORM node:20-alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+# Install dependencies needed by Strapi and vips
+RUN apk add --no-cache \
+    vips \
+    vips-dev \
+    && rm -rf /var/cache/apk/*
 
-# Copy package.json and lock file
-COPY package.json yarn.lock* package-lock.json* ./
+# Create app directory and user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S strapi -u 1001 -G nodejs
+
+# Set working directory
+WORKDIR /opt/app
+
+# Copy package files
+COPY package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm ci --only=production && \
+    npm cache clean --force
 
-# Copy application code
-COPY . .
+# Copy source code
+COPY --chown=strapi:nodejs . .
 
-# Build Strapi admin panel
+# Build the application
 RUN npm run build
 
-# Expose Strapi port
+# Switch to non-root user
+USER strapi
+
+# Expose port
 EXPOSE 1337
 
-# Start the Strapi server
-CMD ["npm", "start"]
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:1337/_health || exit 1
 
+# Start the application
+CMD ["npm", "run", "start"]
