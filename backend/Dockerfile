@@ -1,30 +1,53 @@
-# Creating multi-stage build for production
+# Stage 1: Build
 FROM node:22-alpine AS build
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
 
-WORKDIR /opt/
-COPY package.json package-lock.json ./
-RUN npm install -g node-gyp
-RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
-ENV PATH=/opt/node_modules/.bin:$PATH
+# Install build tools
+RUN apk update && apk add --no-cache \
+    build-base \
+    gcc \
+    autoconf \
+    automake \
+    zlib-dev \
+    libpng-dev \
+    vips-dev \
+    git
+
+# Set workdir
 WORKDIR /opt/app
+
+# Copy everything (Strapi needs full project during build)
 COPY . .
+
+# Install node-gyp and deps
+RUN npm install -g node-gyp
+
+# Install ALL dependencies including devDependencies
+RUN npm config set fetch-retry-maxtimeout 600000 -g \
+  && npm install
+
+# Build Strapi Admin
 RUN npm run build
 
-# Creating final production image
+# Stage 2: Final production image
 FROM node:22-alpine
-RUN apk add --no-cache vips-dev
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-WORKDIR /opt/
-COPY --from=build /opt/node_modules ./node_modules
-WORKDIR /opt/app
-COPY --from=build /opt/app ./
-ENV PATH=/opt/node_modules/.bin:$PATH
 
+# Runtime deps
+RUN apk add --no-cache vips-dev
+
+# Set workdir
+WORKDIR /opt/app
+
+# Copy built app from builder
+COPY --from=build /opt/app .
+
+# Only keep production dependencies
+RUN npm prune --omit=dev
+
+# Set environment and permissions
+ENV NODE_ENV=production
 RUN chown -R node:node /opt/app
 USER node
+
+# Expose and run
 EXPOSE 1337
 CMD ["npm", "run", "start"]
