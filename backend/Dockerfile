@@ -1,37 +1,42 @@
-# Stage 1: Build
-FROM node:lts-slim AS build
+  # ---------- Stage 1: Build ----------
+  FROM node:20-bookworm as builder
 
-# Install dependencies needed for building native modules
-RUN apt-get update && apt-get install -y \
-  python3 \
-  make \
-  g++ \
-  git \
-  && rm -rf /var/lib/apt/lists/*
+  # Create app directory
+  WORKDIR /opt/app
 
-WORKDIR /opt
+  # Install required OS dependencies for native modules
+  RUN apt-get update && apt-get install -y \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install only production dependencies first
-COPY package.json package-lock.json ./
-RUN npm install --legacy-peer-deps
+  # Copy package files and install dependencies
+  COPY package*.json ./
+  RUN npm ci
 
-# Copy source and build
-WORKDIR /opt/app
-COPY . .
+  # Copy the rest of the Strapi app
+  COPY . .
 
-RUN npm run build
+  # Rebuild native dependencies like @swc/core for compatibility
+  RUN npm rebuild @swc/core --build-from-source || true
 
-# Stage 2: Final production image
-FROM node:lts-slim
+  # Build the Strapi admin panel
+  RUN npm run build
 
-WORKDIR /opt/app
+  # ---------- Stage 2: Production Image ----------
+  FROM node:20-slim
 
-# Copy app from build container
-COPY --from=build /opt/app ./
-COPY --from=build /opt/node_modules ./node_modules
+  # Create app directory
+  WORKDIR /opt/app
 
-ENV NODE_ENV=production
-ENV PATH=/opt/app/node_modules/.bin:$PATH
+  # Install only production dependencies
+  COPY --from=builder /opt/app /opt/app
 
-EXPOSE 1337
-CMD ["npm", "run", "start"]
+  # Use a non-root user (optional but recommended)
+  RUN addgroup --system strapi && adduser --system --ingroup strapi strapi
+  USER strapi
+
+  EXPOSE 1337
+
+  CMD ["npm", "start"]
