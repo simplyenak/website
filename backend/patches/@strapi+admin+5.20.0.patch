@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/admin/dist/admin/index.mjs b/node_modules/@strapi/admin/dist/admin/index.mjs
+index 47c004b..f72b3c5 100644
+--- a/node_modules/@strapi/admin/dist/admin/index.mjs
++++ b/node_modules/@strapi/admin/dist/admin/index.mjs
+@@ -15,6 +15,8 @@ export { ContentBox } from './admin/src/components/ContentBox.mjs';
+ export { SubNav } from './admin/src/components/SubNav.mjs';
+ export { GradientBadge } from './admin/src/components/GradientBadge.mjs';
+ export { tours } from './admin/src/components/GuidedTour/Tours.mjs';
++export { tours as unstable_tours } from './admin/src/components/GuidedTour/Tours.mjs';
++export { useGuidedTour } from './admin/src/components/GuidedTour/Context.mjs';
+ export { useTracking } from './admin/src/features/Tracking.mjs';
+ export { useStrapiApp } from './admin/src/features/StrapiApp.mjs';
+ export { NotificationsProvider, useNotification } from './admin/src/features/Notifications.mjs';
