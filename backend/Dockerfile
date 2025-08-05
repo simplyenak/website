@@ -30,11 +30,13 @@
   # Create app directory
   WORKDIR /opt/app
 
-  # Install only production dependencies
-  COPY --from=builder /opt/app /opt/app
-
-  # Use a non-root user (optional but recommended)
+  # Create user first
   RUN addgroup --system strapi && adduser --system --ingroup strapi strapi
+
+  # Install only production dependencies and set ownership
+  COPY --from=builder --chown=strapi:strapi /opt/app /opt/app
+
+  # Switch to non-root user
   USER strapi
 
   EXPOSE 1337
