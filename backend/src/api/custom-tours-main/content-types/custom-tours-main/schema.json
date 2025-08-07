@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "custom_tours_mains",
+  "info": {
+    "singularName": "custom-tours-main",
+    "pluralName": "custom-tours-mains",
+    "displayName": "Custom Tours Main"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroSection": {
+      "type": "component",
+      "component": "global-hero.global-hero",
+      "repeatable": false
+    }
+  }
+}

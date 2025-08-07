@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "terms_and_conditions",
+  "info": {
+    "singularName": "terms-and-condition",
+    "pluralName": "terms-and-conditions",
+    "displayName": "Terms And Condition"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string",
+      "default": "Terms & Conditions – Simply Enak"
+    },
+    "headline": {
+      "type": "string",
+      "required": true
+    },
+    "contents": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,32 @@
+---
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from "@strapi/blocks-react-renderer";
+import Layout from "@/layouts/Layout.astro";
+import Prose from "@/components/Prose.astro";
+import fetchApi from "@/lib/strapi";
+import type { TermsConditionsPageTypes } from "@/types";
+const termsConditionsData = await fetchApi<TermsConditionsPageTypes>({
+  endpoint: `terms-and-condition`,
+  wrappedByKey: "data",
+});
+console.log(termsConditionsData);
+---
+
+<Layout title={termsConditionsData.metaTitle}>
+  <section
+    class="py-15 bg-[#ffa33f1a] min-h-[250px] flex items-center justify-center h-full"
+  >
+    <div class="main-container text-center">
+      <h1 class="text-3xl md:text-5xl font-bold font-merriweather">
+        {termsConditionsData.headline}
+      </h1>
+    </div>
+  </section>
+  <section class="main-container py-15">
+    <Prose>
+      <BlocksRenderer content={termsConditionsData.contents} client:load />
+    </Prose>
+  </section>
+</Layout>

@@ -1,0 +1,54 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import StoriesDetailsHero from "@/components/StoriesDetails/StoriesDetailsHero.astro";
+import StoriesDetailsSection from "@/components/StoriesDetails/StoriesDetailsSection.astro";
+import StoriesDetailsContents from "@/components/StoriesDetails/StoriesDetailsContents.astro";
+import AuthonSection from "@/components/StoriesDetails/AuthonSection.astro";
+import CommentSection from "@/components/StoriesDetails/CommentSection.astro";
+import AboutSimplyEnakSection from "@/components/StoriesDetails/AboutSimplyEnakSection.astro";
+import CTASection from "@/components/CTASection.astro";
+import YoutubeVideos from "@/components/Stories/YoutubeVideos.tsx";
+import RelatedPosts from "@/components/StoriesDetails/RelatedPosts.astro";
+import fetchApi from "@/lib/strapi";
+import type { StoriesDetailsPageTypes } from "@/types";
+
+export async function getStaticPaths() {
+  const stories = await fetchApi<StoriesDetailsPageTypes[]>({
+    endpoint: "storie",
+    wrappedByKey: "data",
+  });
+  return stories.map((story) => {
+    return {
+      params: { slug: story.slug },
+    };
+  });
+}
+const { slug } = Astro.params;
+const data = await fetchApi<StoriesDetailsPageTypes[]>({
+  endpoint: `storie?filters[slug][$eq]=${slug}&populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&populate=youtubeVideos.videosIds`,
+  wrappedByKey: "data",
+});
+const story = data[0];
+---
+
+<Layout title={story.metaTitle}>
+  <StoriesDetailsHero title={story.hero.title} image={story.hero.bgImage} />
+  <StoriesDetailsSection>
+    <StoriesDetailsContents contents={story.contents} />
+    <div class="px-4 md:px-8 lg:px-11 py-4 md:py-6 space-y-6">
+      <AuthonSection author={story.author} />
+      <CommentSection />
+    </div>
+    <div slot="sidebar" class="space-y-6">
+      <AboutSimplyEnakSection />
+      <YoutubeVideos
+        youtubeVideos={story.youtubeVideos}
+        className="p-4 rounded-sm border border-black/10"
+        client:load
+      />
+      <RelatedPosts />
+    </div>
+  </StoriesDetailsSection>
+
+  <CTASection />
+</Layout>
