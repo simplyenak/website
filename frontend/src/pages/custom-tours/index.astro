@@ -1,0 +1,52 @@
+---
+import GlobalHero from "@/components/GlobalHero.astro";
+import Layout from "@/layouts/Layout.astro";
+import bg1 from "@/assets/images/bg1.jpg";
+import Image from "astro/components/Image.astro";
+import CTASection from "@/components/CTASection.astro";
+---
+
+<Layout>
+  <GlobalHero
+    title="Custom Tours"
+    description="Explore our custom tours and book your next adventure with us."
+    image={bg1}
+  />
+  <section class="main-container py-16 md:py-20 lg:py-25">
+    <p class="text-lg md:text-xl font-medium text-center mb-8 md:mb-12">
+      SELECT THE IMAGE THAT BEST FITS YOUR SITUATION…
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+      <div
+        class="bg-[#efe5d9] rounded-lg overflow-hidden shadow-[2px_0px_20px_-5px_#00000066] group"
+      >
+        <div class="h-50 w-full overflow-hidden">
+          <Image
+            src={bg1}
+            alt="Custom Tour 1"
+            class="size-full object-cover group-hover:scale-105 transition-transform duration-300"
+            width={400}
+            height={200}
+          />
+        </div>
+        <div
+          class="p-4 pb-8 md:pb-12 flex flex-col items-center justify-center text-center"
+        >
+          <h3 class="text-2xl md:text-3xl font-semibold mb-2">Custom Tour 1</h3>
+          <p class="text-base md:text-lg">
+            Change the time, duration or location of your tour or request for a
+            unique experience. Let us know what would make your tour
+            unforgettable.
+          </p>
+          <a
+            href="#"
+            class="primary-btn max-w-[130px] !min-w-[130px] w-full hover:!text-primary hover:!border-primary mt-8 md:mt-12"
+          >
+            SELECT
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <CTASection />
+</Layout>
