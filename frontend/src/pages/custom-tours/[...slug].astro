@@ -4,55 +4,39 @@ import CTASection from "@/components/CTASection.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
 import GetInTouchSection from "@/components/Contact/GetInTouchSection.astro";
 
-export async function getStaticPaths() {
-  return [
-    // { params: { /* required */ }, props: { /* optional */ } },
-    { params: { slug: "media" } },
-    // ...
-  ];
-}
+import fetchApi from "@/lib/strapi";
+import type { CustomToursPageType } from "@/types";
 
-const data = {
-  metaTitle: "Stories Details",
-  heroSection: {
-    title: "Stories Details",
-    description: "",
-    image: "/assets/images/bg1.jpg",
-    objectPosition: "center",
-  },
-  getInTouchSection: {
-    title: "Get in Touch",
-    contents: [
-      {
-        type: "paragraph",
-        content:
-          "We would love to hear from you! Please fill out the form below.",
-      },
-      {
-        type: "list",
-        items: [
-          "Share your thoughts and feedback",
-          "Ask questions about our services",
-          "Request a custom tour or service",
-        ],
-      },
-    ],
-    formEmbedUrl: "https://example.com/form",
-  },
-};
+export async function getStaticPaths() {
+  const stories = await fetchApi<CustomToursPageType[]>({
+    endpoint: "customs",
+    wrappedByKey: "data",
+  });
+  return stories.map((story) => {
+    return {
+      params: { slug: story.slug },
+    };
+  });
+}
+const { slug } = Astro.params;
+const data = await fetchApi<CustomToursPageType[]>({
+  endpoint: `customs?filters[slug][$eq]=${slug}&populate=heroSection.image&populate=getInTouchSection`,
+  wrappedByKey: "data",
+});
+const customTour = data[0];
 ---
 
-<Layout title={data.metaTitle}>
+<Layout title={customTour.metaTitle}>
   <GlobalHero
-    title={data.heroSection.title}
-    description={data.heroSection.description}
-    image={data.heroSection.image}
-    objectPosition={data.heroSection.objectPosition}
+    title={customTour.heroSection.title}
+    description={customTour.heroSection.description}
+    image={customTour.heroSection.image}
+    objectPosition={customTour.heroSection.objectPosition}
   />
-  <!-- <GetInTouchSection
-    title={data.getInTouchSection.title}
-    contents={data.getInTouchSection.contents}
-    formEmbedUrl={data.getInTouchSection.formEmbedUrl}
-  /> -->
+  <GetInTouchSection
+    title={customTour.getInTouchSection.title}
+    contents={customTour.getInTouchSection.contents}
+    formEmbedUrl={customTour.getInTouchSection.formEmbedUrl}
+  />
   <CTASection />
 </Layout>

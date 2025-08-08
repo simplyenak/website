@@ -8,7 +8,6 @@ const termsConditionsData = await fetchApi<TermsConditionsPageTypes>({
   endpoint: `terms-and-condition`,
   wrappedByKey: "data",
 });
-console.log(termsConditionsData);
 ---
 
 <Layout title={termsConditionsData.metaTitle}>

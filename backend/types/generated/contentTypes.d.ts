@@ -474,6 +474,40 @@ export interface ApiCustomToursMainCustomToursMain
   };
 }
 
+export interface ApiCustomCustom extends Struct.CollectionTypeSchema {
+  collectionName: 'customs';
+  info: {
+    displayName: 'custom tours';
+    pluralName: 'customs';
+    singularName: 'custom';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    getInTouchSection: Schema.Attribute.Component<
+      'contact.get-in-touch-section',
+      false
+    >;
+    heroSection: Schema.Attribute.Component<'global-hero.global-hero', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::custom.custom'
+    > &
+      Schema.Attribute.Private;
+    metaTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'metaTitle'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -695,7 +729,7 @@ export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.String & Schema.Attribute.Unique;
+    slug: Schema.Attribute.UID<'metaTitle'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -802,9 +836,7 @@ export interface ApiToursTours extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    slug: Schema.Attribute.UID<'metaTitle'>;
     tags: Schema.Attribute.Component<'cards.category', true>;
     TicketingHubID: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -1325,6 +1357,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::contact.contact': ApiContactContact;
       'api::custom-tours-main.custom-tours-main': ApiCustomToursMainCustomToursMain;
+      'api::custom.custom': ApiCustomCustom;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
