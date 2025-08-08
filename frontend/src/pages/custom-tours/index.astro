@@ -4,19 +4,25 @@ import Layout from "@/layouts/Layout.astro";
 import bg1 from "@/assets/images/bg1.jpg";
 import Image from "astro/components/Image.astro";
 import CTASection from "@/components/CTASection.astro";
+import fetchApi from "@/lib/strapi";
+import type { CustomToursPageTypes } from "@/types";
+const data = await fetchApi<CustomToursPageTypes>({
+  endpoint: `custom-tours-main?populate=heroSection.image`,
+  wrappedByKey: "data",
+});
 ---
 
-<Layout>
+<Layout title={data.metaTitle}>
   <GlobalHero
-    title="Custom Tours"
-    description="Explore our custom tours and book your next adventure with us."
-    image={bg1}
+    title={data.heroSection.title}
+    description={data.heroSection.description}
+    image={data.heroSection.image}
   />
   <section class="main-container py-16 md:py-20 lg:py-25">
     <p class="text-lg md:text-xl font-medium text-center mb-8 md:mb-12">
       SELECT THE IMAGE THAT BEST FITS YOUR SITUATION…
     </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
       <div
         class="bg-[#efe5d9] rounded-lg overflow-hidden shadow-[2px_0px_20px_-5px_#00000066] group"
       >

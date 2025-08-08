@@ -176,3 +176,8 @@ export interface PrivacyPolicyPageTypes {
   headline: string;
   contents: BlocksContent;
 }
+
+export interface CustomToursPageTypes {
+  metaTitle: string;
+  heroSection: GlobalHeroTypes;
+}
