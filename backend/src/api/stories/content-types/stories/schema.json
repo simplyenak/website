@@ -15,9 +15,9 @@
       "type": "string"
     },
     "slug": {
-      "type": "string",
-      "required": false,
-      "unique": true
+      "type": "uid",
+      "targetField": "metaTitle",
+      "required": true
     },
     "hero": {
       "type": "component",
