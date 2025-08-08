@@ -466,6 +466,7 @@ export interface ApiCustomToursMainCustomToursMain
       'api::custom-tours-main.custom-tours-main'
     > &
       Schema.Attribute.Private;
+    metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -727,30 +728,6 @@ export interface ApiTermsAndConditionTermsAndCondition
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Terms & Conditions \u2013 Simply Enak'>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTestTest extends Struct.CollectionTypeSchema {
-  collectionName: 'tests';
-  info: {
-    displayName: 'test';
-    pluralName: 'tests';
-    singularName: 'test';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::test.test'> &
-      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1355,7 +1332,6 @@ declare module '@strapi/strapi' {
       'api::stories-main.stories-main': ApiStoriesMainStoriesMain;
       'api::stories.stories': ApiStoriesStories;
       'api::terms-and-condition.terms-and-condition': ApiTermsAndConditionTermsAndCondition;
-      'api::test.test': ApiTestTest;
       'api::tours-main.tours-main': ApiToursMainToursMain;
       'api::tours.tours': ApiToursTours;
       'plugin::content-releases.release': PluginContentReleasesRelease;

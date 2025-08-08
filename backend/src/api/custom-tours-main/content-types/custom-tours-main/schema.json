@@ -11,6 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
     "heroSection": {
       "type": "component",
       "component": "global-hero.global-hero",
