@@ -31,7 +31,6 @@ const tours = await fetchApi<TourDetailsPageTypes[]>({
   endpoint: `tour?populate=hero.image&populate=tags`,
   wrappedByKey: "data",
 });
-console.log("tours", tours);
 ---
 
 <Layout>
