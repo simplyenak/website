@@ -1,27 +1,27 @@
-import { useState } from "react"
-import ytLogo from "@/assets/images/youtube-logo.webp"
+import { useState } from "react";
+import ytLogo from "@/assets/images/youtube-logo.webp";
 
 type YoutubeVideo = {
-  youtubeVideoId: string
-}
+  youtubeVideoId: string;
+};
 
 type YoutubeVideosTypes = {
-  videosIds: YoutubeVideo[]
-  youtubeChannelUrl: string
-}
+  videosIds: YoutubeVideo[];
+  youtubeChannelUrl: string;
+};
 
 type YoutubeVideosProps = {
-  className?: string
-  youtubeVideos: YoutubeVideosTypes
-}
+  className?: string;
+  youtubeVideos: YoutubeVideosTypes;
+};
 
 export default function YoutubeVideos({
   className = "",
   youtubeVideos,
 }: YoutubeVideosProps) {
-  const [visibleCount, setVisibleCount] = useState(6)
-  const totalVideos = youtubeVideos.videosIds.length
-  const canLoadMore = visibleCount < totalVideos
+  const [visibleCount, setVisibleCount] = useState(6);
+  const totalVideos = youtubeVideos?.videosIds?.length ?? 0;
+  const canLoadMore = visibleCount < totalVideos;
 
   return (
     <div className={className}>
@@ -76,5 +76,5 @@ export default function YoutubeVideos({
         </a>
       </div>
     </div>
-  )
+  );
 }
