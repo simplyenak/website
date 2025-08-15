@@ -166,3 +166,25 @@ export interface TourPageTypes {
   bookBespokeTour: BookBespokeTourTypes;
   knowTourSection: BookBespokeTourTypes;
 }
+export interface TermsConditionsPageTypes {
+  metaTitle: string;
+  headline: string;
+  contents: BlocksContent;
+}
+export interface PrivacyPolicyPageTypes {
+  metaTitle: string;
+  headline: string;
+  contents: BlocksContent;
+}
+
+export interface CustomToursMainPageTypes {
+  metaTitle: string;
+  heroSection: GlobalHeroTypes;
+}
+
+export interface CustomToursPageType {
+  metaTitle: string;
+  slug: string;
+  heroSection: GlobalHeroTypes;
+  getInTouchSection: GetInTouchSectionTypes;
+}
