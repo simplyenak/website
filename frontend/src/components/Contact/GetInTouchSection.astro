@@ -2,13 +2,16 @@
 import {
   BlocksRenderer,
   type BlocksContent,
-} from '@strapi/blocks-react-renderer'
-let { title, contents, formEmbedUrl } = Astro.props
+} from "@strapi/blocks-react-renderer";
+let { title, contents, formEmbedUrl } = Astro.props;
 ---
 
 <section class="py-5 main-container">
   <div
-    class="max-w-[960px] mx-auto rounded-sm bg-[#c4c1c11f] px-4 md:px-8 xl:px-12 py-8 md:py-12"
+    class:list={[
+      "max-w-[960px] mx-auto rounded-sm bg-[#c4c1c11f] px-4 md:px-8 xl:px-12",
+      title ? "py-8 md:py-12" : "py-4",
+    ]}
   >
     <h2 class="text-h2 text-primary text-center">{title}</h2>
     <div
