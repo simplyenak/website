@@ -16,7 +16,7 @@ console.log(contents.video);
   <Prose class="px-4 md:px-8 lg:px-11 py-4 md:py-6">
     <BlockRendererClient content={contents.contents} client:load />
     {
-      contents.video && (
+      contents.videoType === "video" && (
         <Video
           src={contents.video.url}
           poster={contents.video.poster}
@@ -30,14 +30,14 @@ console.log(contents.video);
       )
     }
     {
-      contents.embeddedVideo && (
+      contents.videoType === "embeded" && (
         <EmbeddedVideo
-          iframeSrc={contents.embeddedVideo.iframeSrc}
-          poster={contents.embeddedVideo.poster}
-          title={contents.embeddedVideo.title}
-          aspectRatio={contents.embeddedVideo.aspectRatio}
-          showPlayButton={contents.embeddedVideo.showPlayButton}
-          playButtonText={contents.embeddedVideo.playButtonText}
+          iframeSrc={contents.embededVideo.iframeSrc}
+          poster={contents.embededVideo.poster}
+          title={contents.embededVideo.title}
+          aspectRatio={contents.embededVideo.aspectRatio}
+          showPlayButton={contents.embededVideo.showPlayButton}
+          playButtonText={contents.embededVideo.playButtonText}
           client:load
         />
       )

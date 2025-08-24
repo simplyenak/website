@@ -37,7 +37,7 @@ export default function EmbeddedVideo({
         className={`${className} ${aspectRatioClasses[aspectRatio]} relative`}
       >
         <iframe
-          src={iframeSrc}
+          src={`${iframeSrc}?autoplay=${isPlaying ? 1 : 0}`}
           title={title || "Embedded Video"}
           className="w-full h-full rounded-lg"
           frameBorder="0"
