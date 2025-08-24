@@ -1,27 +1,95 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ytLogo from "@/assets/images/youtube-logo.webp";
-
-type YoutubeVideo = {
-  youtubeVideoId: string;
-};
-
-type YoutubeVideosTypes = {
-  videosIds: YoutubeVideo[];
-  youtubeChannelUrl: string;
-};
+import {
+  fetchYouTubeVideos,
+  getChannelUrl,
+  type YouTubeVideo,
+} from "@/lib/youtube";
 
 type YoutubeVideosProps = {
   className?: string;
-  youtubeVideos: YoutubeVideosTypes;
 };
 
-export default function YoutubeVideos({
-  className = "",
-  youtubeVideos,
-}: YoutubeVideosProps) {
+export default function YoutubeVideos({ className = "" }: YoutubeVideosProps) {
+  const [videos, setVideos] = useState<YouTubeVideo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(6);
-  const totalVideos = youtubeVideos?.videosIds?.length ?? 0;
-  const canLoadMore = visibleCount < totalVideos;
+  const [nextPageToken, setNextPageToken] = useState<string | undefined>();
+  const [hasMoreVideos, setHasMoreVideos] = useState(true);
+
+  useEffect(() => {
+    loadInitialVideos();
+  }, []);
+
+  const loadInitialVideos = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      console.log("Fetching initial YouTube videos...");
+      const response = await fetchYouTubeVideos(12); // Load 12 videos initially
+      console.log("YouTube API response:", response);
+      setVideos(response.items);
+      setNextPageToken(response.nextPageToken);
+      setHasMoreVideos(!!response.nextPageToken);
+    } catch (err) {
+      console.error("Error loading initial videos:", err);
+      setError(err instanceof Error ? err.message : "Failed to load videos");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadMoreVideos = async () => {
+    if (!nextPageToken || !hasMoreVideos || loadingMore) return;
+
+    try {
+      setLoadingMore(true);
+      console.log("Loading more videos with token:", nextPageToken);
+      const response = await fetchYouTubeVideos(6, nextPageToken);
+      console.log("More videos response:", response);
+      setVideos((prev) => [...prev, ...response.items]);
+      setNextPageToken(response.nextPageToken);
+      setHasMoreVideos(!!response.nextPageToken);
+      setVisibleCount((prev) => prev + 6);
+    } catch (err) {
+      console.error("Error loading more videos:", err);
+      setError(
+        err instanceof Error ? err.message : "Failed to load more videos"
+      );
+    } finally {
+      setLoadingMore(false);
+    }
+  };
+
+  const displayedVideos = videos.slice(0, visibleCount);
+  const canLoadMore = visibleCount < videos.length || hasMoreVideos;
+
+  if (error) {
+    return (
+      <div className={className}>
+        <img
+          src={typeof ytLogo === "string" ? ytLogo : ytLogo?.src || ""}
+          alt="YouTube Logo"
+          className="w-full object-contain mx-auto"
+          loading="lazy"
+          height={100}
+          width={500}
+        />
+        <div className="text-center py-8 text-red-600">
+          <p className="mb-2">Failed to load YouTube videos</p>
+          <p className="text-xs text-gray-500 mb-4">{error}</p>
+          <button
+            onClick={loadInitialVideos}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={className}>
@@ -33,33 +101,55 @@ export default function YoutubeVideos({
         height={100}
         width={500}
       />
-      <div className="space-y-4 my-5">
-        {youtubeVideos.videosIds.slice(0, visibleCount).map((video, index) => (
-          <iframe
-            key={video.youtubeVideoId}
-            src={`https://www.youtube.com/embed/${video.youtubeVideoId}`}
-            title={`YouTube video ${index + 1}`}
-            className="w-full aspect-video rounded-sm shadow-md border"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            loading="lazy"
-          />
-        ))}
-      </div>
+
+      {loading && videos.length === 0 ? (
+        <div className="space-y-4 my-5">
+          {[...Array(6)].map((_, index) => (
+            <div
+              key={index}
+              className="w-full aspect-video bg-gray-200 animate-pulse rounded-sm"
+            />
+          ))}
+        </div>
+      ) : videos.length === 0 ? (
+        <div className="text-center py-8 text-gray-500">
+          <p>No videos found</p>
+        </div>
+      ) : (
+        <div className="space-y-4 my-5">
+          {displayedVideos.map((video, index) => (
+            <div key={video.id} className="space-y-2">
+              <iframe
+                src={`https://www.youtube.com/embed/${video.id}`}
+                title={video.title}
+                className="w-full aspect-video rounded-sm shadow-md border"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                loading="lazy"
+              />
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                {video.title}
+              </h3>
+              <p className="text-xs text-gray-500">
+                {new Date(video.publishedAt).toLocaleDateString()}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="flex flex-wrap items-center justify-center gap-2 whitespace-nowrap mt-4">
         {canLoadMore && (
           <button
-            className="px-3 py-1.5 text-white bg-black hover:bg-gray-900 border border-black hover:text-white text-xs rounded-sm text-center duration-200 cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-black/30"
-            onClick={() =>
-              setVisibleCount((prev) => Math.min(prev + 6, totalVideos))
-            }
+            className="px-3 py-1.5 text-white bg-black hover:bg-gray-900 border border-black hover:text-white text-xs rounded-sm text-center duration-200 cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-black/30 disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={loadMoreVideos}
+            disabled={loadingMore}
             aria-label="Load more YouTube videos"
           >
-            Load More ({Math.min(visibleCount + 6, totalVideos) - visibleCount}{" "}
-            more)
+            {loadingMore ? "Loading..." : "Load More"}
           </button>
         )}
         <a
-          href={youtubeVideos.youtubeChannelUrl}
+          href={getChannelUrl()}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-3 py-1.5 text-white bg-primary hover:bg-transparent border border-primary hover:text-primary text-xs rounded-sm text-center duration-200 shadow-sm"

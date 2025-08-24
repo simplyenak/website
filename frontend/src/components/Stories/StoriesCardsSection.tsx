@@ -23,7 +23,7 @@ export default function StoriesCardsSection() {
   useEffect(() => {
     setLoading(true)
     fetchApi<StoriesDetailsPageTypes[]>({
-      endpoint: `storie?populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&populate=youtubeVideos&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
+      endpoint: `storie?populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
       wrappedByKey: "data",
     }).then((data) => {
       setStories(data || [])
