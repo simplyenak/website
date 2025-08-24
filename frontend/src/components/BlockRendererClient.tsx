@@ -60,8 +60,8 @@ export default function BlockRendererClient({
     let i = 0;
 
     while (i < content.length) {
-      const currentBlock = content[i];
-      const nextBlock = content[i + 1];
+      const currentBlock = content[i] as any;
+      const nextBlock = content[i + 1] as any;
 
       if (currentBlock.type === "image" && nextBlock?.type === "image") {
         elements.push(
@@ -81,10 +81,8 @@ export default function BlockRendererClient({
                 return (
                   <img
                     src={image.url}
-                    width={image.width}
-                    height={image.height}
                     alt={image.alternativeText || ""}
-                    className="size-full"
+                    className="w-full h-auto object-cover"
                   />
                 );
               },

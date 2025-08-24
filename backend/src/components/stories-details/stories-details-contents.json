@@ -12,6 +12,43 @@
     "contents": {
       "type": "blocks",
       "required": true
+    },
+    "videoType": {
+      "type": "enumeration",
+      "enum": [
+        "local",
+        "embeded"
+      ]
+    },
+    "video": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "videoType"
+            },
+            "local"
+          ]
+        }
+      },
+      "component": "video.video",
+      "repeatable": true
+    },
+    "embededVideo": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "videoType"
+            },
+            "embeded"
+          ]
+        }
+      },
+      "component": "embedded-video.embedded-video",
+      "repeatable": false
     }
   },
   "config": {}

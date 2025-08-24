@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.params;
 const data = await fetchApi<StoriesDetailsPageTypes[]>({
-  endpoint: `storie?filters[slug][$eq]=${slug}&populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image`,
+  endpoint: `storie?filters[slug][$eq]=${slug}&populate=hero.bgImage&populate=hero&populate=categories&populate=contents.video&populate=contents.embededVideo&populate=author.image`,
   wrappedByKey: "data",
 });
 const story = data[0];
