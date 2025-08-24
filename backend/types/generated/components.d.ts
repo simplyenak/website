@@ -137,6 +137,23 @@ export interface CtaSectionCtaSection extends Struct.ComponentSchema {
   };
 }
 
+export interface EmbeddedVideoEmbeddedVideo extends Struct.ComponentSchema {
+  collectionName: 'components_embedded_video_embedded_videos';
+  info: {
+    displayName: 'Embedded Video';
+  };
+  attributes: {
+    aspectRatio: Schema.Attribute.Enumeration<['16:9', '4:3', '1:1']> &
+      Schema.Attribute.DefaultTo<'16:9'>;
+    iframeSrc: Schema.Attribute.String & Schema.Attribute.Required;
+    playButtonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Play Video'>;
+    poster: Schema.Attribute.Media<'images'>;
+    showPlayButton: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface GlobalHeroGlobalHero extends Struct.ComponentSchema {
   collectionName: 'components_global_hero_global_heroes';
   info: {
@@ -384,7 +401,14 @@ export interface StoriesDetailsStoriesDetailsContents
   };
   attributes: {
     contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    embededVideo: Schema.Attribute.Component<
+      'embedded-video.embedded-video',
+      false
+    >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    video: Schema.Attribute.Component<'video.video', false> &
+      Schema.Attribute.Required;
+    videoType: Schema.Attribute.Enumeration<['local', 'embeded']>;
   };
 }
 
@@ -409,6 +433,12 @@ export interface TourDetailsTourDetailsContents extends Struct.ComponentSchema {
   };
   attributes: {
     contents: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    embededVideo: Schema.Attribute.Component<
+      'embedded-video.embedded-video',
+      false
+    >;
+    video: Schema.Attribute.Component<'video.video', false>;
+    videoType: Schema.Attribute.Enumeration<['local', 'embeded']>;
   };
 }
 
@@ -455,6 +485,26 @@ export interface ToursToursCardsSection extends Struct.ComponentSchema {
   };
 }
 
+export interface VideoVideo extends Struct.ComponentSchema {
+  collectionName: 'components_video_videos';
+  info: {
+    displayName: 'Video';
+  };
+  attributes: {
+    autoplay: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    controls: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    description: Schema.Attribute.Text;
+    fileType: Schema.Attribute.Enumeration<['upload', 'external']> &
+      Schema.Attribute.DefaultTo<'external'>;
+    loop: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    muted: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    poster: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+    videoFile: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -468,6 +518,7 @@ declare module '@strapi/strapi' {
       'cards.videos-id': CardsVideosId;
       'contact.get-in-touch-section': ContactGetInTouchSection;
       'cta-section.cta-section': CtaSectionCtaSection;
+      'embedded-video.embedded-video': EmbeddedVideoEmbeddedVideo;
       'global-hero.global-hero': GlobalHeroGlobalHero;
       'home-page.about-section': HomePageAboutSection;
       'home-page.hero-section': HomePageHeroSection;
@@ -490,6 +541,7 @@ declare module '@strapi/strapi' {
       'tour-details.tour-details-hero': TourDetailsTourDetailsHero;
       'tours.other-booking-section': ToursOtherBookingSection;
       'tours.tours-cards-section': ToursToursCardsSection;
+      'video.video': VideoVideo;
     }
   }
 }
