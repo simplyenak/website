@@ -101,10 +101,6 @@ export interface GetInTouchSectionTypes {
   contents: string;
   formEmbedUrl: string;
 }
-export interface YoutubeVideosTypes {
-  youtubeChannelUrl: string;
-  videosIds: { youtubeVideoId: string }[];
-}
 export interface StoriesDetailsPageTypes {
   title: string;
   slug: string;
@@ -121,7 +117,6 @@ export interface StoriesDetailsPageTypes {
     possition?: string | null;
     image?: Media;
   };
-  youtubeVideos: YoutubeVideosTypes;
 }
 export interface AboutSimplyEnakSectionTypes {
   title: string;

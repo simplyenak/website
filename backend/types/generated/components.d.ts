@@ -114,20 +114,6 @@ export interface CardsVideosId extends Struct.ComponentSchema {
   };
 }
 
-export interface CardsYoutubeVideos extends Struct.ComponentSchema {
-  collectionName: 'components_cards_youtube_videos';
-  info: {
-    displayName: 'Youtube Videos';
-  };
-  attributes: {
-    title: Schema.Attribute.String &
-      Schema.Attribute.Private &
-      Schema.Attribute.DefaultTo<'Youtube Video'>;
-    videosIds: Schema.Attribute.Component<'cards.videos-id', true>;
-    youtubeChannelUrl: Schema.Attribute.String;
-  };
-}
-
 export interface ContactGetInTouchSection extends Struct.ComponentSchema {
   collectionName: 'components_contact_get_in_touch_sections';
   info: {
@@ -480,7 +466,6 @@ declare module '@strapi/strapi' {
       'cards.testimonials-card': CardsTestimonialsCard;
       'cards.tours-card': CardsToursCard;
       'cards.videos-id': CardsVideosId;
-      'cards.youtube-videos': CardsYoutubeVideos;
       'contact.get-in-touch-section': ContactGetInTouchSection;
       'cta-section.cta-section': CtaSectionCtaSection;
       'global-hero.global-hero': GlobalHeroGlobalHero;
