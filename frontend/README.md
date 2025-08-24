@@ -1,16 +1,6 @@
-# Astro Starter Kit: Basics
+# Simply Enak Website - Frontend
 
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This is the frontend for the Simply Enak website built with Astro.
 
 ## 🚀 Project Structure
 
@@ -28,7 +18,26 @@ Inside of your Astro project, you'll see the following folders and files:
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🔧 Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Contact Form Configuration
+VITE_FORM_ENDPOINT=https://n8n.system.simplyenak.com/webhook/simply-enak-contact-2024-secure-form
+VITE_TURNSTILE_SITE_KEY=0x4AAAAAABpeXumlMVzDHFDl
+
+# YouTube API Configuration
+VITE_YOUTUBE_API_KEY=***REMOVED***
+VITE_YOUTUBE_CHANNEL_ID=your_youtube_channel_id_here
+```
+
+### YouTube API Setup
+
+1. Get your YouTube API key from [Google Cloud Console](https://console.cloud.google.com/)
+2. Enable the YouTube Data API v3
+3. Add your API key to `VITE_YOUTUBE_API_KEY`
+4. Add your YouTube channel ID to `VITE_YOUTUBE_CHANNEL_ID`
 
 ## 🧞 Commands
 

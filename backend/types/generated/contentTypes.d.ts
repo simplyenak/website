@@ -692,7 +692,6 @@ export interface ApiStoriesMainStoriesMain extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    youtubeVideos: Schema.Attribute.Component<'cards.youtube-videos', false>;
   };
 }
 
@@ -733,7 +732,6 @@ export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    youtubeVideos: Schema.Attribute.Component<'cards.youtube-videos', false>;
   };
 }
 
