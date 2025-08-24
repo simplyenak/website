@@ -1,8 +1,5 @@
 ---
-import {
-  BlocksRenderer,
-  type BlocksContent,
-} from "@strapi/blocks-react-renderer";
+import BlockRendererClient from "@/components/BlockRendererClient";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 import { Image } from "astro:assets";
 
@@ -42,7 +39,7 @@ let {
       <div
         class="prose prose-headings:font-merriweather prose-h1:text-3xl prose-h1:md:text-4.5xl prose-h1:text-shadow-custom prose-h1:capitalize prose-h2:font-semibold prose-h2:text-2xl prose-h2:md:text-4xl prose-h2:capitalize prose-h3:font-semibold prose-h3:text-xl prose-h3:md:text-3xl prose-h3:capitalize prose-h4:text-lg prose-h4:md:text-2xl prose-h4:capitalize prose-h5:text-lg prose-h5:md:text-xl prose-h5:capitalize prose-h6:text-sm prose-h6:md:text-lg prose-h6:capitalize prose-p:text-base prose-p:md:text-lg md:text-lg text-base prose-p:mt-2 prose-headings:text-black prose-headings:font-bold"
       >
-        <BlocksRenderer content={contents as BlocksContent} client:load />
+        <BlockRendererClient content={contents} client:load />
       </div>
     </div>
   </div>
