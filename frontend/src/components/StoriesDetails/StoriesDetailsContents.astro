@@ -4,7 +4,6 @@ import Prose from "@/components/Prose.astro";
 import Video from "@/components/Video";
 import EmbeddedVideo from "@/components/EmbeddedVideo";
 let { contents } = Astro.props;
-console.log(contents.video);
 ---
 
 <div>
@@ -16,7 +15,7 @@ console.log(contents.video);
   <Prose class="px-4 md:px-8 lg:px-11 py-4 md:py-6">
     <BlockRendererClient content={contents.contents} client:load />
     {
-      contents.videoType === "video" && (
+      contents.videoType === "local" && (
         <Video
           src={contents.video.url}
           poster={contents.video.poster}

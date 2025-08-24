@@ -5,8 +5,40 @@
   },
   "options": {},
   "attributes": {
+    "fileType": {
+      "type": "enumeration",
+      "default": "external",
+      "enum": [
+        "upload",
+        "external"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "fileType"
+            },
+            "external"
+          ]
+        }
+      },
+      "required": true
+    },
     "videoFile": {
       "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "fileType"
+            },
+            "upload"
+          ]
+        }
+      },
       "multiple": false,
       "required": true,
       "allowedTypes": [

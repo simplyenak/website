@@ -33,7 +33,8 @@
         }
       },
       "component": "video.video",
-      "repeatable": true
+      "repeatable": false,
+      "required": true
     },
     "embededVideo": {
       "type": "component",
