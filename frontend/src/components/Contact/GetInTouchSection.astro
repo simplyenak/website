@@ -3,7 +3,8 @@ import {
   BlocksRenderer,
   type BlocksContent,
 } from "@strapi/blocks-react-renderer";
-let { title, contents, formEmbedUrl } = Astro.props;
+import ContactForm from "./ContactForm.vue";
+let { title, contents } = Astro.props;
 ---
 
 <section class="py-5 main-container">
@@ -19,17 +20,8 @@ let { title, contents, formEmbedUrl } = Astro.props;
     >
       <BlocksRenderer content={contents as BlocksContent} client:load />
     </div>
-    <div class="w-full mt-10 md:mt-16">
-      <iframe
-        height="750"
-        allowtransparency="true"
-        style="width:100%;border:none"
-        src={formEmbedUrl}
-        id="formalooIframe"
-        spellcheck="false"
-        aria-label="To enrich screen reader interactions, please activate Accessibility in Grammarly extension settings"
-      >
-      </iframe>
+    <div class="w-full my-10 md:my-16">
+      <ContactForm client:only />
     </div>
   </div>
 </section>
