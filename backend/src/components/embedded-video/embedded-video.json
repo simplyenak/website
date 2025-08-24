@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_embedded_video_embedded_videos",
+  "info": {
+    "displayName": "Embedded Video"
+  },
+  "options": {},
+  "attributes": {
+    "iframeSrc": {
+      "type": "string",
+      "required": true
+    },
+    "poster": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "aspectRatio": {
+      "type": "enumeration",
+      "enum": ["16:9", "4:3", "1:1"],
+      "default": "16:9"
+    },
+    "showPlayButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "playButtonText": {
+      "type": "string",
+      "default": "Play Video"
+    }
+  },
+  "config": {}
+}

@@ -16,6 +16,11 @@ module.exports = ({ env }) => ({
           },
         },
       },
+      actionOptions: {
+        upload: {
+          sizeLimit: 300 * 1024 * 1024, // 300MB limit for videos
+        },
+      },
     },
   },
   // ...

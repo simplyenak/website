@@ -1,14 +1,40 @@
 ---
 import BlockRendererClient from "@/components/BlockRendererClient";
 import Prose from "@/components/Prose.astro";
+import Video from "@/components/Video";
+import EmbeddedVideo from "@/components/EmbeddedVideo";
 let { contents } = Astro.props;
 ---
 
 <div class="rounded-sm bg-white px-6 md:px-12 py-4">
   <Prose>
-    <BlockRendererClient
-      content={contents.contents}
-      client:load
-    />
+    <BlockRendererClient content={contents.contents} client:load />
+    {
+      contents.video && (
+        <Video
+          src={contents.video.url}
+          poster={contents.video.poster}
+          className="w-full rounded-md"
+          controls={contents.video.controls}
+          autoplay={contents.video.autoplay}
+          muted={contents.video.muted}
+          loop={contents.video.loop}
+          client:only
+        />
+      )
+    }
+    {
+      contents.embeddedVideo && (
+        <EmbeddedVideo
+          iframeSrc={contents.embededVideo.iframeSrc}
+          poster={contents.embededVideo.poster}
+          title={contents.embededVideo.title}
+          aspectRatio={contents.embededVideo.aspectRatio}
+          showPlayButton={contents.embededVideo.showPlayButton}
+          playButtonText={contents.embededVideo.playButtonText}
+          client:only
+        />
+      )
+    }
   </Prose>
 </div>
