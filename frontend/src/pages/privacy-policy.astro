@@ -1,5 +1,5 @@
 ---
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import BlockRendererClient from "@/components/BlockRendererClient";
 import Layout from "@/layouts/Layout.astro";
 import Prose from "@/components/Prose.astro";
 import fetchApi from "@/lib/strapi";
@@ -22,7 +22,7 @@ const privacyPolicy = await fetchApi<PrivacyPolicyPageTypes>({
   </section>
   <section class="main-container py-15">
     <Prose>
-      <BlocksRenderer content={privacyPolicy.contents} client:load />
+      <BlockRendererClient content={privacyPolicy.contents} client:load />
     </Prose>
   </section>
 </Layout>

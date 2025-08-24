@@ -1,14 +1,14 @@
 ---
-import {
-  BlocksRenderer,
-  type BlocksContent,
-} from '@strapi/blocks-react-renderer'
-import Prose from '@/components/Prose.astro'
-let { contents } = Astro.props
+import BlockRendererClient from "@/components/BlockRendererClient";
+import Prose from "@/components/Prose.astro";
+let { contents } = Astro.props;
 ---
 
 <div class="rounded-sm bg-white px-6 md:px-12 py-4">
   <Prose>
-    <BlocksRenderer content={contents.contents as BlocksContent} client:load />
+    <BlockRendererClient
+      content={contents.contents}
+      client:load
+    />
   </Prose>
 </div>
