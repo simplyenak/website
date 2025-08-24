@@ -1,21 +1,33 @@
 ---
-import { Image } from 'astro:assets'
-import fetchApi from '@/lib/strapi'
-import type { StoriesDetailsPageTypes, StoriesSection } from '@/types'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+import { Image } from "astro:assets";
+import fetchApi from "@/lib/strapi";
+import type { StoriesDetailsPageTypes, StoriesSection } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 const data: {
-  storiesSection: StoriesSection
+  storiesSection: StoriesSection;
 } = await fetchApi({
-  endpoint: 'home-page?populate=storiesSection',
-  wrappedByKey: 'data',
-})
-const storiesSectionData = data.storiesSection
+  endpoint: "home-page?populate=storiesSection",
+  wrappedByKey: "data",
+});
+const storiesSectionData = data.storiesSection;
 
 const stories = await fetchApi<StoriesDetailsPageTypes[]>({
-  endpoint: `storie?populate=hero.bgImage&populate=hero&populate=contents`,
-  wrappedByKey: 'data',
-})
+  endpoint: `storie?populate=hero.bgImage&populate=hero&populate=contents&pagination[page]=1&pagination[pageSize]=6`,
+  wrappedByKey: "data",
+});
+
+const meta = await fetchApi<{
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+}>({
+  endpoint: `storie?pagination[page]=1&pagination[pageSize]=6`,
+  wrappedByKey: "meta",
+});
 ---
 
 <section class="py-20 md:py-24 bg-[/stories/detailsf7f7f7]">
@@ -51,5 +63,30 @@ const stories = await fetchApi<StoriesDetailsPageTypes[]>({
         ))
       }
     </div>
+    {
+      meta && meta.pagination.total > 6 && (
+        <div class="text-center mt-12">
+          <a
+            href="/stories"
+            class="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300"
+          >
+            View All Stories
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        </div>
+      )
+    }
   </div>
 </section>

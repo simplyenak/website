@@ -406,7 +406,8 @@ export interface StoriesDetailsStoriesDetailsContents
       false
     >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    video: Schema.Attribute.Component<'video.video', true>;
+    video: Schema.Attribute.Component<'video.video', false> &
+      Schema.Attribute.Required;
     videoType: Schema.Attribute.Enumeration<['local', 'embeded']>;
   };
 }
@@ -493,10 +494,13 @@ export interface VideoVideo extends Struct.ComponentSchema {
     autoplay: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     controls: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     description: Schema.Attribute.Text;
+    fileType: Schema.Attribute.Enumeration<['upload', 'external']> &
+      Schema.Attribute.DefaultTo<'external'>;
     loop: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     muted: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     poster: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
     videoFile: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
   };
 }

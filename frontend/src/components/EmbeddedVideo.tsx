@@ -62,10 +62,10 @@ export default function EmbeddedVideo({
       )}
 
       {showPlayButton && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-40 transition-all duration-300 rounded-lg">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-opacity-40 transition-all duration-300 rounded-lg cursor-pointer">
           <div className="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 group-hover:scale-110 transition-transform duration-300">
             <svg
-              className="w-8 h-8 text-gray-800"
+              className="size-12 text-gray-800"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
