@@ -19,7 +19,7 @@ let { contents } = Astro.props;
           autoplay={contents.video.autoplay}
           muted={contents.video.muted}
           loop={contents.video.loop}
-          client:only
+          client:only="react"
         />
       )
     }
@@ -32,7 +32,7 @@ let { contents } = Astro.props;
           aspectRatio={contents.embededVideo.aspectRatio}
           showPlayButton={contents.embededVideo.showPlayButton}
           playButtonText={contents.embededVideo.playButtonText}
-          client:only
+          client:only="react"
         />
       )
     }
