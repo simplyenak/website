@@ -36,6 +36,7 @@ export interface Footer {
   paymentMethods: Media[];
   quickLinks: NavItem[];
   copyrightText: string;
+  informations: BlocksContent;
 }
 
 export interface HeroSection {
