@@ -1,4 +1,5 @@
 ---
+import BlockRendererClient from "@/components/BlockRendererClient";
 import type { Footer } from "@/types";
 import { Image } from "astro:assets";
 import fetchApi from "@/lib/strapi";
@@ -25,26 +26,11 @@ const footer: Footer = await fetchApi({
           class="w-full object-contain"
         />
       </a>
-      <ul class="space-y-1 *:flex *:items-center *:gap-1">
-        <li>
-          <p>Phone:</p>
-          <a
-            href={`tel:${footer.phoneNumber}`}
-            class="hover:text-[#efe5d9] duration-300"
-          >
-            {footer.phoneNumber}
-          </a>
-        </li>
-        <li>
-          <p>Email:</p>
-          <a
-            href={`mailto:${footer.email}`}
-            class="hover:text-[#efe5d9] duration-300"
-          >
-            {footer.email}
-          </a>
-        </li>
-      </ul>
+      <div
+        class="prose-a:text-white prose-a:no-underline prose-a:hover:text-white/80 text-white"
+      >
+        <BlockRendererClient content={footer.informations} client:load />
+      </div>
     </div>
     <div class="space-y-6 md:space-y-10">
       <div class="space-y-5">
