@@ -523,7 +523,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
+    informations: Schema.Attribute.Blocks;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -533,7 +533,6 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     partners: Schema.Attribute.Component<'partner.partner', true>;
     paymentMethods: Schema.Attribute.Media<'images', true>;
-    phoneNumber: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     quickLinks: Schema.Attribute.Component<'nav-items.item', true>;
     sectionName: Schema.Attribute.String &
