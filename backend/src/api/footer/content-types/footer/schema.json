@@ -19,11 +19,8 @@
         "images"
       ]
     },
-    "phoneNumber": {
-      "type": "string"
-    },
-    "email": {
-      "type": "email"
+    "informations": {
+      "type": "blocks"
     },
     "partners": {
       "type": "component",
