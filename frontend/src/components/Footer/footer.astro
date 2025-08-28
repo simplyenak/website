@@ -29,7 +29,10 @@ const footer: Footer = await fetchApi({
       <div
         class="prose-a:text-white prose-a:no-underline prose-a:hover:text-white/80 text-white"
       >
-        <BlockRendererClient content={footer.informations} client:load />
+        <BlockRendererClient
+          content={footer.informations}
+          client:only="react"
+        />
       </div>
     </div>
     <div class="space-y-6 md:space-y-10">
