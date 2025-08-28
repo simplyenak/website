@@ -13,7 +13,7 @@ let { contents } = Astro.props;
     {contents.title}
   </h2>
   <Prose class="px-4 md:px-8 lg:px-11 py-4 md:py-6">
-    <BlockRendererClient content={contents.contents} client:load />
+    <BlockRendererClient content={contents.contents} client:only="react" />
     {
       contents.videoType === "local" && (
         <Video

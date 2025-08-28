@@ -22,7 +22,10 @@ const termsConditionsData = await fetchApi<TermsConditionsPageTypes>({
   </section>
   <section class="main-container py-15">
     <Prose>
-      <BlockRendererClient content={termsConditionsData.contents} client:load />
+      <BlockRendererClient
+        content={termsConditionsData.contents}
+        client:only="react"
+      />
     </Prose>
   </section>
 </Layout>

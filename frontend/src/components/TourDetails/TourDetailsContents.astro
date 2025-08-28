@@ -8,7 +8,7 @@ let { contents } = Astro.props;
 
 <div class="rounded-sm bg-white px-6 md:px-12 py-4">
   <Prose>
-    <BlockRendererClient content={contents.contents} client:load />
+    <BlockRendererClient content={contents.contents} client:only="react" />
     {
       contents.video && (
         <Video

@@ -22,7 +22,10 @@ const privacyPolicy = await fetchApi<PrivacyPolicyPageTypes>({
   </section>
   <section class="main-container py-15">
     <Prose>
-      <BlockRendererClient content={privacyPolicy.contents} client:load />
+      <BlockRendererClient
+        content={privacyPolicy.contents}
+        client:only="react"
+      />
     </Prose>
   </section>
 </Layout>

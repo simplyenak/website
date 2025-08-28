@@ -11,7 +11,10 @@ const data: { aboutSection: AboutSimplyEnakSectionTypes } = await fetchApi({
 
 <div class="space-y-4 p-4 border border-black/10 rounded-sm text-sm">
   <h4 class="text-h4 capitalize">{data.aboutSection.title}</h4>
-  <BlockRendererClient content={data.aboutSection.contents} client:load />
+  <BlockRendererClient
+    content={data.aboutSection.contents}
+    client:only="react"
+  />
   <div class="flex items-center gap-1.5 pt-4">
     {
       data.aboutSection.socialItems.map(
