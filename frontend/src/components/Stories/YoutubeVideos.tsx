@@ -27,14 +27,11 @@ export default function YoutubeVideos({ className = "" }: YoutubeVideosProps) {
     try {
       setLoading(true);
       setError(null);
-      console.log("Fetching initial YouTube videos...");
       const response = await fetchYouTubeVideos(12); // Load 12 videos initially
-      console.log("YouTube API response:", response);
       setVideos(response.items);
       setNextPageToken(response.nextPageToken);
       setHasMoreVideos(!!response.nextPageToken);
     } catch (err) {
-      console.error("Error loading initial videos:", err);
       setError(err instanceof Error ? err.message : "Failed to load videos");
     } finally {
       setLoading(false);
@@ -46,9 +43,7 @@ export default function YoutubeVideos({ className = "" }: YoutubeVideosProps) {
 
     try {
       setLoadingMore(true);
-      console.log("Loading more videos with token:", nextPageToken);
       const response = await fetchYouTubeVideos(6, nextPageToken);
-      console.log("More videos response:", response);
       setVideos((prev) => [...prev, ...response.items]);
       setNextPageToken(response.nextPageToken);
       setHasMoreVideos(!!response.nextPageToken);
