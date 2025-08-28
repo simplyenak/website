@@ -1,13 +1,19 @@
-const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID;
+const YOUTUBE_API_KEY = import.meta.env.PUBLIC_VITE_YOUTUBE_API_KEY;
+const CHANNEL_ID = import.meta.env.PUBLIC_VITE_YOUTUBE_CHANNEL_ID;
 
-// Validate environment variables
-if (!YOUTUBE_API_KEY) {
-  throw new Error("VITE_YOUTUBE_API_KEY environment variable is required");
+// Check if YouTube API is properly configured
+export function isYouTubeConfigured(): boolean {
+  return !!(YOUTUBE_API_KEY && CHANNEL_ID);
 }
 
-if (!CHANNEL_ID) {
-  throw new Error("VITE_YOUTUBE_CHANNEL_ID environment variable is required");
+export function getYouTubeConfigError(): string | null {
+  if (!YOUTUBE_API_KEY) {
+    return "PUBLIC_VITE_YOUTUBE_API_KEY environment variable is required";
+  }
+  if (!CHANNEL_ID) {
+    return "PUBLIC_VITE_YOUTUBE_CHANNEL_ID environment variable is required";
+  }
+  return null;
 }
 
 export interface YouTubeVideo {
@@ -36,6 +42,11 @@ export async function fetchYouTubeVideos(
   maxResults: number = 10,
   pageToken?: string
 ): Promise<YouTubeApiResponse> {
+  const configError = getYouTubeConfigError();
+  if (configError) {
+    throw new Error(configError);
+  }
+
   const params = new URLSearchParams({
     part: "snippet",
     channelId: CHANNEL_ID,
@@ -52,7 +63,6 @@ export async function fetchYouTubeVideos(
   const url = `https://www.googleapis.com/youtube/v3/search?${params.toString()}`;
 
   try {
-    console.log("Fetching from URL:", url);
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -62,7 +72,6 @@ export async function fetchYouTubeVideos(
     }
 
     const data = await response.json();
-    console.log("Raw YouTube API response:", data);
 
     // Transform the response to match our interface
     const transformedData: YouTubeApiResponse = {
@@ -79,7 +88,6 @@ export async function fetchYouTubeVideos(
       pageInfo: data.pageInfo,
     };
 
-    console.log("Transformed data:", transformedData);
     return transformedData;
   } catch (error) {
     console.error("Error fetching YouTube videos:", error);
@@ -88,5 +96,9 @@ export async function fetchYouTubeVideos(
 }
 
 export function getChannelUrl(): string {
+  const configError = getYouTubeConfigError();
+  if (configError) {
+    return "#"; // Return a safe fallback URL
+  }
   return `https://www.youtube.com/channel/${CHANNEL_ID}`;
 }
