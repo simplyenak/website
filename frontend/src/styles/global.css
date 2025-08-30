@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --default-font-family: 'PT Sans', sans-serif;
-  --font-pt-sans: 'PT Sans', sans-serif;
-  --font-merriweather: 'Merriweather', serif;
+  --default-font-family: "PT Sans", sans-serif;
+  --font-pt-sans: "PT Sans", sans-serif;
+  --font-merriweather: "Merriweather", serif;
 
   --color-primary: #b52d38;
   --color-secondary: #885e40;
@@ -71,5 +71,16 @@
   }
   .tab-secondary-btn {
     @apply px-4 py-[5px] bg-transparent hover:bg-primary border border-primary text-primary hover:text-white text-base md:text-lg font-semibold duration-300 cursor-pointer;
+  }
+}
+
+@layer utilities {
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
   }
 }
