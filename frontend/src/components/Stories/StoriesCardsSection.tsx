@@ -13,7 +13,6 @@ type PaginationMeta = {
     total: number;
   };
 };
-
 export default function StoriesCardsSection() {
   const [stories, setStories] = useState<StoriesDetailsPageTypes[]>([]);
   const [page, setPage] = useState<number>(1);

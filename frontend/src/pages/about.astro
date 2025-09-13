@@ -5,6 +5,7 @@ import GlobalHero from "@/components/GlobalHero.astro";
 import MediaSection from "@/components/Home/MediaSection.astro";
 import TextWithLeftRightImage from "@/components/About/TextWithLeftRightImage.astro";
 import fetchApi from "@/lib/strapi";
+export const prerender = true;
 import type {
   GlobalHeroTypes,
   MediaSectionTypes,

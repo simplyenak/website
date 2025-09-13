@@ -2,11 +2,10 @@
 import Layout from '../layouts/Layout.astro'
 import CTASection from '@/components/CTASection.astro'
 import GlobalHero from '@/components/GlobalHero.astro'
-import bg4 from '@/assets/images/bg4.jpg'
 import GetInTouchSection from '@/components/Contact/GetInTouchSection.astro'
 import type { GlobalHeroTypes, GetInTouchSectionTypes } from '@/types'
 import fetchApi from '@/lib/strapi'
-import { date } from 'astro:schema'
+export const prerender = true;
 const data: {
   metaTitle: string
   heroSection: GlobalHeroTypes

@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Prose from "@/components/Prose.astro";
 import fetchApi from "@/lib/strapi";
 import type { PrivacyPolicyPageTypes } from "@/types";
+export const prerender = true;
 const privacyPolicy = await fetchApi<PrivacyPolicyPageTypes>({
   endpoint: `privacy-policy`,
   wrappedByKey: "data",
