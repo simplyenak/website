@@ -7,6 +7,8 @@ import RelatedToursSection from '@/components/TourDetails/RelatedToursSection.as
 import fetchApi from '@/lib/strapi'
 import type { TourDetailsPageTypes } from '@/types'
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const tours = await fetchApi<TourDetailsPageTypes[]>({
     endpoint: 'tour',

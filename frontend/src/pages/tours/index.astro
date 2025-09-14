@@ -1,17 +1,20 @@
 ---
-import Layout from "@/layouts/Layout.astro"
-import CTASection from "@/components/CTASection.astro"
-import GlobalHero from "@/components/GlobalHero.astro"
-import ToursCardsSection from "@/components/Tours/ToursCardsSection.astro"
-import OtherBookingSection from "@/components/Tours/OtherBookingSection.astro"
-import type { TourPageTypes } from "@/types"
-import fetchApi from "@/lib/strapi"
+import Layout from "@/layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import ToursCardsSection from "@/components/Tours/ToursCardsSection.astro";
+import OtherBookingSection from "@/components/Tours/OtherBookingSection.astro";
+import type { TourPageTypes } from "@/types";
+import fetchApi from "@/lib/strapi";
+
+export const prerender = true;
+
 const data = await fetchApi<TourPageTypes>({
   endpoint:
     "tours-main?populate=hero.image&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection",
   wrappedByKey: "data",
-})
-const hasData = !!data && typeof data === "object"
+});
+const hasData = !!data && typeof data === "object";
 ---
 
 <Layout title={hasData && data.metaTitle ? data.metaTitle : "Tours"}>

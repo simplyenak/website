@@ -6,7 +6,9 @@ import CTASection from "@/components/CTASection.astro";
 import fetchApi from "@/lib/strapi";
 import type { CustomToursMainPageTypes, CustomToursPageType } from "@/types";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
 export const prerender = true;
+
 const data = await fetchApi<CustomToursMainPageTypes>({
   endpoint: `custom-tours-main?populate=heroSection.image`,
   wrappedByKey: "data",
