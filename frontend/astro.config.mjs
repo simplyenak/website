@@ -1,21 +1,30 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from "@tailwindcss/vite";
 
-import vue from '@astrojs/vue';
+import vue from "@astrojs/vue";
 
-import react from '@astrojs/react';
+import react from "@astrojs/react";
 
-import cloudflare from '@astrojs/cloudflare';
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   adapter: cloudflare(),
-  output: 'server',
+  output: "server",
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        // Use react-dom/server.edge instead of react-dom/server.browser for React 19.
+        // Without this, MessageChannel from node:worker_threads needs to be polyfilled.
+        ...(import.meta.env.PROD
+          ? { "react-dom/server": "react-dom/server.edge" }
+          : {}),
+      },
+    },
   },
 
-  integrations: [vue(), react()]
+  integrations: [vue(), react()],
 });
