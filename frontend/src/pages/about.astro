@@ -27,7 +27,7 @@ const data: {
 });
 ---
 
-<Layout title={data.metaTitle ?? "About Us"}>
+<Layout title={data?.metaTitle ?? "About Us"}>
   <GlobalHero
     title={data.aboutHero.title}
     decription={data.aboutHero.description}
