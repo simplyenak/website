@@ -5,7 +5,9 @@ import GlobalHero from '@/components/GlobalHero.astro'
 import GetInTouchSection from '@/components/Contact/GetInTouchSection.astro'
 import type { GlobalHeroTypes, GetInTouchSectionTypes } from '@/types'
 import fetchApi from '@/lib/strapi'
+
 export const prerender = true;
+
 const data: {
   metaTitle: string
   heroSection: GlobalHeroTypes
