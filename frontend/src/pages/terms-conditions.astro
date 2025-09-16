@@ -4,7 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Prose from "@/components/Prose.astro";
 import fetchApi from "@/lib/strapi";
 import type { TermsConditionsPageTypes } from "@/types";
-
+import CTASection from "@/components/CTASection.astro";
 export const prerender = true;
 
 const termsConditionsData = await fetchApi<TermsConditionsPageTypes>({
@@ -31,4 +31,5 @@ const termsConditionsData = await fetchApi<TermsConditionsPageTypes>({
       />
     </Prose>
   </section>
+  <CTASection />
 </Layout>
