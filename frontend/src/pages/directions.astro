@@ -1,0 +1,119 @@
+---
+import GlobalHero from "@/components/GlobalHero.astro";
+import Layout from "@/layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+import FaqItem from "@/components/FaqItem";
+
+export const prerender = true;
+import img1 from "@/assets/images/kuala_lumpur_icon.webp";
+import img2 from "@/assets/images/penang_icon.webp";
+import img3 from "@/assets/images/asset-85.jpeg";
+import heroImage from "@/assets/images/kuala-lumpur-1641785_1920.jpg";
+import { Image } from "astro:assets";
+
+import faqimg1 from "@/assets/images/faq/1.webp";
+import faqimg2 from "@/assets/images/faq/2.webp";
+import faqimg3 from "@/assets/images/faq/3.jpg";
+import faqimg4 from "@/assets/images/faq/4.jpg";
+import faqimg5 from "@/assets/images/faq/5.jpg";
+
+const faqItems = [
+  {
+    title: "Kuala Lumpur – Flavours of Malaysia (Chow Kit)",
+    description: `
+<p>Follow these instructions if you are joining our Flavours of Malaysia Experience. Getting to the meeting point by public transport is rather easy. First take the <strong>train</strong>&nbsp;(KL Monorail line). Get off at&nbsp;Chow Kit Monorail Station (MR10)&nbsp;and exit the station through exit A / pintu A. Walk straight until you see a pedestrian bridge. Cross the road using the bridge and keep following the road until you reach the Hilton Garden Inn on your left-hand side. </p>
+<p>You will find your guide at the south entrance of the hotel.</p>
+<p>Coming by<strong>&nbsp;taxi or grab?</strong>&nbsp;Request the taxi driver to drop you at Hilton Garden Inn. </p>
+<p>You will find your guide near the entrance of the hotel.</p>`,
+    image: faqimg1,
+  },
+  {
+    title: "Penang – Mydin, Jalan Penang",
+    description: `<p>The Penang Street Food Tour starts in front of Mydin at 258, Jln Penang, George Town, 10000 George Town, Pulau Pinang.</p>`,
+    image: faqimg2,
+  },
+  {
+    title: "Kuala Lumpur – KL Street Food (Pasar Seni LRT)",
+    description: `
+<p>The following instructions will guide you to the meeting point for the Kuala Lumpur Street Food Experience.&nbsp;</p>
+<p>The best way to get to the meeting point&nbsp;is by<strong>&nbsp;train</strong>&nbsp;(Putra LRT line). Get off at&nbsp;Pasar Seni Station&nbsp;(KJ14)&nbsp;and exit the station. On your way out you will find a TeaLive outlet&nbsp;on your right.&nbsp;</p>
+<p>Wait there for your Simply Enak Licensed Guide (with a blue batch). Take the opportunity and get some bottles of water to keep yourself hydrated in the hot and humid Malaysian weather!</p>
+<p>Coming by<strong>&nbsp;taxi</strong>?&nbsp;Request the taxi driver to drop you at Hotel GEO Kuala Lumpur. Find the Pasar Seni Station (KJ14) escalators (next to the Klang River) and go&nbsp;towards the ticket machines. You will see the TeaLive outlet&nbsp;on your left.</p>
+<p>Wait there for your Simply Enak licensed guide (with a blue batch). Take the opportunity and get some bottles of water to keep yourself hydrated in the hot and humid Malaysian weather!</p>`,
+    image: faqimg3,
+  },
+  {
+    title: "Penang – Eat Drink Georgetown (Kapitan Keling Mosque)",
+    description: `<p>The Eat Drink Georgetown Food Experience starts from the Kapitan Keling Mosque, located in Georgetown, Penang.&nbsp;</p><p>Your guide will meet you in front of the Kapitan Keling Mosque.</p>
+    `,
+    image: faqimg4,
+  },
+  {
+    title: "Kuala Lumpur – Secrets of KL (Pasar Seni MRT)",
+    description: `
+<p>Secrets of KL Food Experience Meeting Point</p>
+<p>The following instructions will guide you to the meeting point for the Secrets of KL Food Experience.&nbsp;</p>
+<p>The best way to get to the meeting point&nbsp;is by<strong>&nbsp;MRT or LRT</strong>. Get off at&nbsp;Pasar Seni Station&nbsp;and find the Pasar Seni MRT Pintu A (Gate A) exit the station. Take the escalator to street level.</p>
+<p>Wait there for your Simply Enak Licensed Guide (with a blue batch).&nbsp;</p>
+<p>Arriving by<strong>&nbsp;taxi or e-hailing</strong>?&nbsp;Request the driver to drop you at Pintu A / Gate A Pasar Seni MRT Station. We meet at the entrance of the MRT station at street level.</p>
+<p>Wait there for your Simply Enak licensed guide (with a blue batch). Take the opportunity and get some bottles of water to keep yourself hydrated in the hot and humid Malaysian weather!</p>`,
+    image: faqimg5,
+  },
+];
+---
+
+<Layout>
+  <GlobalHero
+    title="Here’s how you find us!"
+    image={heroImage}
+    objectPosition="center"
+    isOverlay={true}
+  />
+  <section class="main-container py-16 md:py-20">
+    <h4 class="text-h4 text-center">Select your tour location</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-16 md:pt-20">
+      <div>
+        <Image
+          src={img1}
+          alt="Kuala Lumpur"
+          class="object-contain mx-auto max-w-[256px] rounded-full shadow-[0px_0px_15px_1px_#3a3a3aab]"
+          width={256}
+          height={256}
+        />
+      </div>
+      <div>
+        <Image
+          src={img2}
+          alt="Penang"
+          class="object-contain mx-auto max-w-[256px] rounded-full shadow-[0px_0px_15px_1px_#3a3a3aab]"
+          width={256}
+          height={256}
+        />
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 pt-16 md:pt-20">
+      <div class="flex flex-col w-full gap-5">
+        {
+          faqItems
+            .filter((_, i) => i % 2 === 0)
+            .map((item) => <FaqItem {...item} client:only="react" />)
+        }
+      </div>
+      <div class="flex flex-col w-full gap-5">
+        {
+          faqItems
+            .filter((_, i) => i % 2 === 1)
+            .map((item) => <FaqItem {...item} client:only="react" />)
+        }
+      </div>
+    </div>
+  </section>
+  <Image
+    src={img3}
+    alt="Kuala Lumpur"
+    class="w-full h-[500px] object-cover"
+    width={1920}
+    height={500}
+  />
+  <CTASection />
+</Layout>

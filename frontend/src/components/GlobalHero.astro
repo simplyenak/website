@@ -6,13 +6,15 @@ let {
   description = "",
   image,
   objectPosition = "object-center",
+  isOverlay = false,
 } = Astro.props;
 ---
 
 <section
-  class="min-h-[420px] h-full py-16 px-3 relative flex items-center justify-center text-center flex-col gap-4 md:gap-6 text-white"
+  class="min-h-[420px] h-full py-16 px-3 relative text-center  flex items-center justify-center text-white"
 >
-  <h1 class="text-h1 xl:text-5xl">{title}</h1>
+ <div class="relative z-10 flex flex-col gap-4 md:gap-6 ">
+   <h1 class="text-h1 xl:text-5xl">{title}</h1>
   {
     description ? (
       <p class="text-xl md:text-2xl max-w-4xl mx-auto font-semibold text-shadow-custom">
@@ -20,9 +22,16 @@ let {
       </p>
     ) : null
   }
+ </div>
 
   {
-    getFullMediaUrl(image) && (
+    isOverlay ? (
+      <div class="absolute inset-0 bg-black/30 z-0"></div>
+    ) : null
+  }
+
+  {
+    getFullMediaUrl(image) ? (
       <Image
         src={getFullMediaUrl(image)}
         alt="About Hero Image"
@@ -30,6 +39,14 @@ let {
           "absolute inset-0 size-full object-cover -z-10",
           objectPosition,
         ]}
+        height={420}
+        width={1920}
+      />
+    ) : (
+      <Image
+        src={image}
+        alt="Hero Image"
+        class="absolute inset-0 size-full object-cover -z-10"
         height={420}
         width={1920}
       />
