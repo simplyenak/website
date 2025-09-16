@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import IconArrowRight from "@/assets/icons/icon-arrow-right.tsx";
 
 interface FaqItemProps {
@@ -9,9 +9,26 @@ interface FaqItemProps {
 
 export default function FaqItem({ title, description, image }: FaqItemProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   return (
-    <div className="rounded-md w-full border border-[#3a3a3a33] overflow-hidden">
+    <div
+      ref={dropdownRef}
+      className="rounded-md w-full border border-[#3a3a3a33] overflow-hidden"
+    >
       <div className="grid grid-rows-[auto_0fr] transition-all duration-500 ease-in-out">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -26,7 +43,6 @@ export default function FaqItem({ title, description, image }: FaqItemProps) {
             <span className="text-[17px] uppercase font-semibold">{title}</span>
           </div>
         </button>
-
         <div
           className={`grid grid-rows-[0fr] transition-all duration-500 ease-in-out ${
             isOpen ? "grid-rows-[1fr]" : ""
