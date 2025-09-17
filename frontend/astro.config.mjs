@@ -13,6 +13,8 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://simplyenak.com",
+  
   adapter: cloudflare(),
   output: "server",
   vite: {
@@ -29,4 +31,4 @@ export default defineConfig({
   },
 
   integrations: [vue(), react(), sitemap()],
-});
+  });
