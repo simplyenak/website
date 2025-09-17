@@ -9,6 +9,8 @@ import react from "@astrojs/react";
 
 import cloudflare from "@astrojs/cloudflare";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   adapter: cloudflare(),
@@ -26,5 +28,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [vue(), react()],
+  integrations: [vue(), react(), sitemap()],
 });

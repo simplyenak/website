@@ -6,6 +6,7 @@ import TourDetailsContents from '@/components/TourDetails/TourDetailsContents.as
 import RelatedToursSection from '@/components/TourDetails/RelatedToursSection.astro'
 import fetchApi from '@/lib/strapi'
 import type { TourDetailsPageTypes } from '@/types'
+import { generateTourStructuredData, generateCanonicalUrl, cleanDescription } from '@/utils/seo'
 
 export const prerender = true;
 
@@ -26,9 +27,31 @@ const data = await fetchApi<TourDetailsPageTypes[]>({
   wrappedByKey: 'data',
 })
 const tour = data[0]
+
+// Generate SEO data
+const tourStructuredData = tour ? generateTourStructuredData({
+  name: tour.hero.title,
+  description: cleanDescription(tour.hero.title || ''),
+  price: parseFloat(tour.hero.price?.replace(/[^0-9.]/g, '') || '0'),
+  duration: tour.hero.duration,
+  location: tour.hero.location,
+  image: tour.hero.image?.url,
+  url: generateCanonicalUrl(`/tours/${tour.slug}`),
+}) : undefined
+
+const pageTitle = tour?.metaTitle || `${tour?.hero.title} - Malaysian Food Tour | Simply Enak`
+const pageDescription = cleanDescription(`Experience ${tour?.hero.title} with Simply Enak. ${tour?.hero.duration} of authentic Malaysian cuisine in ${tour?.hero.location}.`)
 ---
 
-<Layout title={tour.metaTitle}>
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  image={tour?.hero.image?.url}
+  imageAlt={`${tour?.hero.title} - Malaysian Food Tour`}
+  type="product"
+  canonicalURL={generateCanonicalUrl(`/tours/${tour?.slug}`)}
+  structuredData={tourStructuredData}
+>
 {tour && (<TourDetailsHero hero={tour.hero} />
   <StoriesDetailsSection>
     <TourDetailsContents contents={tour.contents} />
