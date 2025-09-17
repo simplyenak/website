@@ -27,7 +27,12 @@ const data: {
 });
 ---
 
-<Layout title={data?.metaTitle ?? "About Us"}>
+<Layout
+  title={data?.metaTitle ??
+    "About Simply Enak – Your Malaysian Food Tour Experts"}
+  description="Learn about Simply Enak's mission to share authentic Malaysian culinary culture. Meet our passionate local guides who bring you the best food experiences in Kuala Lumpur and Penang."
+  type="website"
+>
   <GlobalHero
     title={data.aboutHero.title}
     decription={data.aboutHero.description}

@@ -1,24 +1,29 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import CTASection from '@/components/CTASection.astro'
-import GlobalHero from '@/components/GlobalHero.astro'
-import GetInTouchSection from '@/components/Contact/GetInTouchSection.astro'
-import type { GlobalHeroTypes, GetInTouchSectionTypes } from '@/types'
-import fetchApi from '@/lib/strapi'
+import Layout from "../layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import GetInTouchSection from "@/components/Contact/GetInTouchSection.astro";
+import type { GlobalHeroTypes, GetInTouchSectionTypes } from "@/types";
+import fetchApi from "@/lib/strapi";
 
 export const prerender = true;
 
 const data: {
-  metaTitle: string
-  heroSection: GlobalHeroTypes
-  getInTouchSection: GetInTouchSectionTypes
+  metaTitle: string;
+  heroSection: GlobalHeroTypes;
+  getInTouchSection: GetInTouchSectionTypes;
 } = await fetchApi({
-  endpoint: 'contact?populate=heroSection.image&populate=getInTouchSection',
-  wrappedByKey: 'data',
-})
+  endpoint: "contact?populate=heroSection.image&populate=getInTouchSection",
+  wrappedByKey: "data",
+});
 ---
 
-<Layout title={data.metaTitle}>
+<Layout
+  title={data.metaTitle ||
+    "Contact Simply Enak – Book Your Malaysian Food Tour"}
+  description="Get in touch with Simply Enak to book your authentic Malaysian food tour. Contact our team for custom tours, group bookings, and food tour inquiries in Kuala Lumpur and Penang."
+  type="website"
+>
   <GlobalHero
     title={data.heroSection.title}
     description={data.heroSection.description}

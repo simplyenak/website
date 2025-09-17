@@ -17,7 +17,13 @@ const data = await fetchApi<TourPageTypes>({
 const hasData = !!data && typeof data === "object";
 ---
 
-<Layout title={hasData && data.metaTitle ? data.metaTitle : "Tours"}>
+<Layout
+  title={hasData && data.metaTitle
+    ? data.metaTitle
+    : "Malaysian Food Tours – Kuala Lumpur & Penang | Simply Enak"}
+  description="Discover authentic Malaysian food tours in Kuala Lumpur and Penang with Simply Enak. Experience local street food, hidden gems, and cultural stories with expert guides. Book your culinary adventure today."
+  type="website"
+>
   {
     hasData && data.hero && (
       <GlobalHero title={data.hero.title} image={data.hero.image} />
