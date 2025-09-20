@@ -1,15 +1,15 @@
 ---
-import ToursCard from "@/components/Tours/ToursCard.astro"
+import ToursCard from "@/components/Tours/ToursCard.astro";
 
-let { title } = Astro.props
+let { title } = Astro.props;
 
-import fetchApi from "@/lib/strapi"
-import type { TourDetailsPageTypes } from "@/types"
+import fetchApi from "@/lib/strapi";
+import type { TourDetailsPageTypes } from "@/types";
 
 const tours = await fetchApi<TourDetailsPageTypes[]>({
   endpoint: `tour?populate=hero.image&populate=tags`,
   wrappedByKey: "data",
-})
+});
 const uniqueButtons = [
   ...Array.from(
     new Set(
@@ -23,7 +23,7 @@ const uniqueButtons = [
     )
   ),
   "All",
-]
+];
 ---
 
 <section class="py-20 main-container">
@@ -80,24 +80,30 @@ const uniqueButtons = [
 </section>
 
 <script type="module" is:inline>
-  const tabContainer = document.getElementById("tab-buttons")
-  const cardsGrid = document.getElementById("cards-grid")
-  let activeBtn = tabContainer.querySelector("button")
-  activeBtn && (activeBtn.className = "tab-primary-btn")
-  const firstFilter = activeBtn.dataset.button
-  ;[...cardsGrid.children].forEach((card) => {
+  const tabContainer = document.getElementById("tab-buttons");
+  const cardsGrid = document.getElementById("cards-grid");
+  let activeBtn = tabContainer.querySelector("button");
+  activeBtn && (activeBtn.className = "tab-primary-btn");
+  const firstFilter = activeBtn.dataset.button;
+  [...cardsGrid.children].forEach((card) => {
     card.style.display =
-      firstFilter === "All" || card.dataset.tags === firstFilter ? "" : "none"
-  })
+      firstFilter === "All" || card.dataset.tags === firstFilter ? "" : "none";
+  });
   tabContainer.onclick = (e) => {
-    if (e.target.tagName !== "BUTTON") return
-    activeBtn && (activeBtn.className = "tab-secondary-btn")
-    e.target.className = "tab-primary-btn"
-    activeBtn = e.target
-    const sel = e.target.dataset.button
-    ;[...cardsGrid.children].forEach((card) => {
+    if (e.target.tagName !== "BUTTON") return;
+    activeBtn && (activeBtn.className = "tab-secondary-btn");
+    e.target.className = "tab-primary-btn";
+    activeBtn = e.target;
+    const sel = e.target.dataset.button;
+    [...cardsGrid.children].forEach((card) => {
       card.style.display =
-        sel === "All" || card.dataset.tags === sel ? "" : "none"
-    })
+        sel === "All" || card.dataset.tags === sel ? "" : "none";
+    });
+  };
+</script>
+
+<script is:inline>
+  if (typeof window !== "undefined" && window.trackCalendarView) {
+    window.trackCalendarView();
   }
 </script>

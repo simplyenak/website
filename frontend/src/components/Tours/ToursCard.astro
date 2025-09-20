@@ -1,21 +1,21 @@
 ---
-import { Image } from 'astro:assets'
-import IconMoney from '@/assets/icons/icon-money.svg'
-import IconReload from '@/assets/icons/icon-reload.svg'
-import IconPaperRoket from '@/assets/icons/icon-paper-rocket.svg'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
-import type { Button as ButtonType, Media } from '@/types'
-import Button from '../Button.astro'
+import { Image } from "astro:assets";
+import IconMoney from "@/assets/icons/icon-money.svg";
+import IconReload from "@/assets/icons/icon-reload.svg";
+import IconPaperRoket from "@/assets/icons/icon-paper-rocket.svg";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import type { Button as ButtonType, Media } from "@/types";
+import Button from "../Button.astro";
 type Props = {
-  title: string
-  link: string
-  image: Media
-  price: string
-  duration: string
-  location: string
-  buttons: ButtonType[]
-  class?: string
-}
+  title: string;
+  link: string;
+  image: Media;
+  price: string;
+  duration: string;
+  location: string;
+  buttons: ButtonType[];
+  class?: string;
+};
 
 let {
   image,
@@ -26,12 +26,12 @@ let {
   duration,
   location,
   class: className,
-} = Astro.props
+} = Astro.props;
 ---
 
 <div
   class:list={[
-    'bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group h-full min-h-0 flex flex-col',
+    "bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group h-full min-h-0 flex flex-col",
     className,
   ]}
 >
@@ -49,6 +49,7 @@ let {
     <a
       href={link}
       class="font-semibold hover:text-primary text-body font-merriweather cursor-pointer block"
+      onclick="if (typeof window !== 'undefined' && window.trackTourInterest) { window.trackTourInterest('{title}'); }"
     >
       {title}
     </a>
@@ -75,6 +76,11 @@ let {
             href={button.href}
             buttonType={button.buttonType}
             class="flex-row-reverse"
+            onclick={
+              button.title === "Book Now"
+                ? `if (typeof window !== 'undefined' && window.trackTourInterest) { window.trackTourInterest('${title}'); }`
+                : undefined
+            }
           />
         ))
       }
