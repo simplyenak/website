@@ -103,6 +103,7 @@ export interface GetInTouchSectionTypes {
   formEmbedUrl: string;
 }
 export interface StoriesDetailsPageTypes {
+  SEO: SEOTypes;
   title: string;
   slug: string;
   metaTitle: string;
@@ -141,6 +142,7 @@ export interface TourDetailsHeroTypes {
 }
 export interface TourDetailsPageTypes {
   metaTitle: string;
+  SEO: SEOTypes;
   slug: string;
   hero: TourDetailsHeroTypes;
   TicketingHubID: string;
@@ -155,6 +157,7 @@ export interface BookBespokeTourTypes {
 }
 export interface TourPageTypes {
   metaTitle: string;
+  SEO: SEOTypes;
   hero: GlobalHeroTypes;
   toursCardsSection: {
     text: string;
@@ -174,13 +177,21 @@ export interface PrivacyPolicyPageTypes {
 }
 
 export interface CustomToursMainPageTypes {
+  SEO: SEOTypes;
   metaTitle: string;
   heroSection: GlobalHeroTypes;
 }
 
 export interface CustomToursPageType {
+  SEO: SEOTypes;
   metaTitle: string;
   slug: string;
   heroSection: GlobalHeroTypes;
   getInTouchSection: GetInTouchSectionTypes;
+}
+export interface SEOTypes {
+  title: string;
+  description: string;
+  image: Media;
+  schema: any;
 }

@@ -355,6 +355,21 @@ export interface PaymentMethodPaymentMethod extends Struct.ComponentSchema {
   };
 }
 
+export interface SeoSeo extends Struct.ComponentSchema {
+  collectionName: 'components_seo_seos';
+  info: {
+    displayName: 'SEO';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    schema: Schema.Attribute.JSON;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Simply Enak \u2013 Food Tours and more'>;
+  };
+}
+
 export interface SocialLinkSocialLink extends Struct.ComponentSchema {
   collectionName: 'components_social_link_social_links';
   info: {
@@ -532,6 +547,7 @@ declare module '@strapi/strapi' {
       'nav-items.item': NavItemsItem;
       'partner.partner': PartnerPartner;
       'payment-method.payment-method': PaymentMethodPaymentMethod;
+      'seo.seo': SeoSeo;
       'social-link.social-link': SocialLinkSocialLink;
       'stories-details.about-simply-enak-section': StoriesDetailsAboutSimplyEnakSection;
       'stories-details.authon-section': StoriesDetailsAuthonSection;

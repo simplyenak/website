@@ -6,6 +6,8 @@ import GetInTouchSection from "@/components/Contact/GetInTouchSection.astro";
 
 import fetchApi from "@/lib/strapi";
 import type { CustomToursPageType } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import { generateCanonicalUrl } from "@/utils/seo";
 
 export const prerender = true;
 
@@ -22,23 +24,33 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.params;
 const data = await fetchApi<CustomToursPageType[]>({
-  endpoint: `customs?filters[slug][$eq]=${slug}&populate=heroSection.image&populate=getInTouchSection`,
+  endpoint: `customs?filters[slug][$eq]=${slug}&populate=heroSection.image&populate=getInTouchSection&populate=SEO.image`,
   wrappedByKey: "data",
 });
 const customTour = data[0];
+
+if (!customTour) {
+  return Astro.redirect("/404");
+}
 ---
 
-<Layout title={customTour.metaTitle}>
+<Layout
+  title={customTour.SEO?.title}
+  description={customTour.SEO?.description}
+  image={getFullMediaUrl(customTour.SEO?.image)}
+  structuredData={customTour.SEO?.schema}
+  canonicalURL={generateCanonicalUrl(`/custom-tours/${customTour.slug}`)}
+>
   <GlobalHero
-    title={customTour.heroSection.title}
-    description={customTour.heroSection.description}
-    image={customTour.heroSection.image}
-    objectPosition={customTour.heroSection.objectPosition}
+    title={customTour.heroSection?.title}
+    description={customTour.heroSection?.description}
+    image={customTour.heroSection?.image}
+    objectPosition={customTour.heroSection?.objectPosition}
   />
   <GetInTouchSection
-    title={customTour.getInTouchSection.title}
-    contents={customTour.getInTouchSection.contents}
-    formEmbedUrl={customTour.getInTouchSection.formEmbedUrl}
+    title={customTour.getInTouchSection?.title}
+    contents={customTour.getInTouchSection?.contents}
+    formEmbedUrl={customTour.getInTouchSection?.formEmbedUrl}
   />
   <CTASection />
 </Layout>

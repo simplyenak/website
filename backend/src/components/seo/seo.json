@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_seo_seos",
+  "info": {
+    "displayName": "SEO"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Simply Enak – Food Tours and more",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "schema": {
+      "type": "json"
+    }
+  },
+  "config": {}
+}

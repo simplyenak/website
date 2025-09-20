@@ -10,17 +10,24 @@ import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 export const prerender = true;
 
 const data = await fetchApi<CustomToursMainPageTypes>({
-  endpoint: `custom-tours-main?populate=heroSection.image`,
+  endpoint: `custom-tours-main?populate=heroSection.image&populate=SEO.image`,
   wrappedByKey: "data",
 });
 
 const customTours = await fetchApi<CustomToursPageType[]>({
-  endpoint: `customs?populate=heroSection.image`,
+  endpoint: `customs?populate=heroSection.image&populate=SEO.image`,
   wrappedByKey: "data",
 });
 ---
 
-<Layout title={data.metaTitle}>
+<Layout
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
+>
   <GlobalHero
     title={data.heroSection.title}
     description={data.heroSection.description}
