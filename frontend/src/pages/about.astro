@@ -12,26 +12,30 @@ import type {
   GlobalHeroTypes,
   MediaSectionTypes,
   TextWithLeftRightImageTypes,
+  SEOTypes,
 } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 const data: {
-  metaTitle: string;
+  SEO: SEOTypes;
   aboutHero: GlobalHeroTypes;
   textWithLeftRightImage: TextWithLeftRightImageTypes;
   ourCoreValuesSection: TextWithLeftRightImageTypes;
   mediaSection: MediaSectionTypes;
 } = await fetchApi({
   endpoint:
-    "about?populate=aboutHero.image&populate=textWithLeftRightImage.image&populate=ourCoreValuesSection.image&populate=mediaSection",
+    "about?populate=aboutHero.image&populate=textWithLeftRightImage.image&populate=ourCoreValuesSection.image&populate=mediaSection&populate=SEO.image",
   wrappedByKey: "data",
 });
 ---
 
 <Layout
-  title={data?.metaTitle ??
-    "About Simply Enak – Your Malaysian Food Tour Experts"}
-  description="Learn about Simply Enak's mission to share authentic Malaysian culinary culture. Meet our passionate local guides who bring you the best food experiences in Kuala Lumpur and Penang."
-  type="website"
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
 >
   <GlobalHero
     title={data.aboutHero.title}

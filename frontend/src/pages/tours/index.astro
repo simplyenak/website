@@ -6,23 +6,25 @@ import ToursCardsSection from "@/components/Tours/ToursCardsSection.astro";
 import OtherBookingSection from "@/components/Tours/OtherBookingSection.astro";
 import type { TourPageTypes } from "@/types";
 import fetchApi from "@/lib/strapi";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 export const prerender = true;
 
 const data = await fetchApi<TourPageTypes>({
   endpoint:
-    "tours-main?populate=hero.image&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection",
+    "tours-main?populate=hero.image&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection&populate=SEO.image",
   wrappedByKey: "data",
 });
 const hasData = !!data && typeof data === "object";
 ---
 
 <Layout
-  title={hasData && data.metaTitle
-    ? data.metaTitle
-    : "Malaysian Food Tours – Kuala Lumpur & Penang | Simply Enak"}
-  description="Discover authentic Malaysian food tours in Kuala Lumpur and Penang with Simply Enak. Experience local street food, hidden gems, and cultural stories with expert guides. Book your culinary adventure today."
-  type="website"
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
 >
   {
     hasData && data.hero && (

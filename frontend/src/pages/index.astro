@@ -1,7 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import fetchApi from "@/lib/strapi";
-import type { MediaSectionTypes, OurToursSectionTypes } from "@/types";
+import type {
+  MediaSectionTypes,
+  OurToursSectionTypes,
+  SEOTypes,
+} from "@/types";
 import HeroSection from "@/components/Home/HeroSection.astro";
 import PartnersSection from "@/components/Home/PartnersSection.astro";
 import AboutSection from "@/components/Home/AboutSection.astro";
@@ -18,9 +22,10 @@ const data: {
   ourToursSection: OurToursSectionTypes;
   experienceTodaySection: OurToursSectionTypes;
   mediaSection: MediaSectionTypes;
+  SEO: SEOTypes;
 } = await fetchApi({
   endpoint:
-    "home-page?populate=ourToursSection.button&populate=experienceTodaySection.button&populate=mediaSection",
+    "home-page?populate=ourToursSection.button&populate=experienceTodaySection.button&populate=mediaSection&populate=SEO.image",
   wrappedByKey: "data",
 });
 const ourToursSectionData = data.ourToursSection;
@@ -28,6 +33,7 @@ const experienceTodaySectionData = data.experienceTodaySection;
 const mediaSectionData = data.mediaSection;
 
 import type { TourDetailsPageTypes } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 const tours = await fetchApi<TourDetailsPageTypes[]>({
   endpoint: `tour?populate=hero.image&populate=tags`,
@@ -36,9 +42,12 @@ const tours = await fetchApi<TourDetailsPageTypes[]>({
 ---
 
 <Layout
-  title="Simply Enak – Premium Malaysian Food Tours in KL & Penang"
-  description="Experience authentic Malaysian cuisine with Simply Enak's guided food tours in Kuala Lumpur and Penang. Discover hidden gems, local flavors, and cultural stories with expert local guides."
-  type="website"
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
 >
   <HeroSection />
   <PartnersSection />

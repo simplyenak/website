@@ -11,6 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
+    },
     "metaTitle": {
       "type": "string",
       "default": "Contact – Simply Enak"

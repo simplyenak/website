@@ -11,6 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
+    },
     "aboutSection": {
       "type": "component",
       "component": "stories-details.about-simply-enak-section",

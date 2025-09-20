@@ -399,6 +399,7 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
       false
     >;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     textWithLeftRightImage: Schema.Attribute.Component<
       'about-page.text-with-left-right-image',
       false
@@ -438,6 +439,7 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
     metaTitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Contact \u2013 Simply Enak'>;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -468,6 +470,7 @@ export interface ApiCustomToursMainCustomToursMain
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -501,6 +504,7 @@ export interface ApiCustomCustom extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     slug: Schema.Attribute.UID<'metaTitle'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -619,6 +623,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       false
     >;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     storiesSection: Schema.Attribute.Component<
       'home-page.stories-section',
       false
@@ -688,6 +693,7 @@ export interface ApiStoriesMainStoriesMain extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -727,6 +733,7 @@ export interface ApiStoriesStories extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     slug: Schema.Attribute.UID<'metaTitle'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -797,6 +804,7 @@ export interface ApiToursMainToursMain extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     toursCardsSection: Schema.Attribute.Component<
       'tours.tours-cards-section',
       false
@@ -833,6 +841,7 @@ export interface ApiToursTours extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     slug: Schema.Attribute.UID<'metaTitle'>;
     tags: Schema.Attribute.Component<'cards.category', true>;
     TicketingHubID: Schema.Attribute.String & Schema.Attribute.Required;
