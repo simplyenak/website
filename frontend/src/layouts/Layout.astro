@@ -57,6 +57,101 @@ const {
       src="https://challenges.cloudflare.com/turnstile/v0/api.js"
       async
       defer></script>
+
+    <!-- Clean GA4 Tracking Code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-262711985"
+    ></script>
+    <script>
+      declare global {
+        interface Window {
+          dataLayer: any[];
+          trackTourBooking: (
+            tourName: string,
+            tourPrice: number,
+            bookingId: string
+          ) => void;
+          trackTourInterest: (tourName: string) => void;
+          trackCalendarView: () => void;
+          trackContactForm: () => void;
+        }
+      }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(...args: any[]) {
+        window.dataLayer.push(args);
+      }
+      gtag("js", new Date());
+
+      // Basic GA4 configuration
+      gtag("config", "G-262711985", {
+        // Enhanced measurement (automatic scroll, clicks, downloads)
+        send_page_view: true,
+        // Custom parameters for your food tour business
+        custom_map: {
+          tour_type: "custom_parameter_1",
+          booking_source: "custom_parameter_2",
+        },
+      });
+
+      // Helper function for tour booking conversion tracking (ready for when you need it)
+      function trackTourBooking(
+        tourName: string,
+        tourPrice: number,
+        bookingId: string
+      ) {
+        gtag("event", "purchase", {
+          transaction_id: bookingId,
+          value: tourPrice,
+          currency: "USD",
+          items: [
+            {
+              item_id: tourName.toLowerCase().replace(/\s+/g, "_"),
+              item_name: tourName,
+              category: "Food Tours",
+              quantity: 1,
+              price: tourPrice,
+            },
+          ],
+        });
+      }
+
+      // Helper function for tour interest tracking
+      function trackTourInterest(tourName: string) {
+        gtag("event", "view_item", {
+          currency: "USD",
+          value: 0,
+          items: [
+            {
+              item_id: tourName.toLowerCase().replace(/\s+/g, "_"),
+              item_name: tourName,
+              category: "Food Tours",
+            },
+          ],
+        });
+      }
+
+      // Calendar page engagement tracking
+      function trackCalendarView() {
+        gtag("event", "view_item_list", {
+          item_list_name: "Tour Calendar",
+          currency: "USD",
+        });
+      }
+
+      // Contact form submission tracking
+      function trackContactForm() {
+        gtag("event", "generate_lead", {
+          currency: "USD",
+          value: 0,
+          method: "contact_form",
+        });
+      }
+
+      // Make functions globally available
+      window.trackTourBooking = trackTourBooking;
+      window.trackTourInterest = trackTourInterest;
+      window.trackCalendarView = trackCalendarView;
+      window.trackContactForm = trackContactForm;
+    </script>
   </head>
   <body class="min-h-screen">
     <Header />

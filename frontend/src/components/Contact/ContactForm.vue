@@ -292,6 +292,10 @@ const handleSubmit = async () => {
         text: "Thank you for contacting Simply Enak! We've received your inquiry and will get back to you within 24 hours.",
       };
 
+      if (typeof window !== "undefined" && window.trackContactForm) {
+        window.trackContactForm();
+      }
+
       Object.keys(formData).forEach((key) => {
         if (key !== "website" && key !== "form_start_time") {
           formData[key] = "";

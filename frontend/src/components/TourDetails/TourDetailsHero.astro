@@ -1,17 +1,17 @@
 ---
-import IconMoney from '@/assets/icons/icon-money.svg'
-import IconReload from '@/assets/icons/icon-reload.svg'
-import IconPaperRoket from '@/assets/icons/icon-paper-rocket.svg'
-import IconUser from '@/assets/icons/icon-user.svg'
-import IconArrowRight from '@/assets/icons/icon-arrow-right.svg'
-import IconClock from '@/assets/icons/icon-clock.svg'
-import { Image } from 'astro:assets'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
-import type { TourDetailsHeroTypes } from '@/types'
+import IconMoney from "@/assets/icons/icon-money.svg";
+import IconReload from "@/assets/icons/icon-reload.svg";
+import IconPaperRoket from "@/assets/icons/icon-paper-rocket.svg";
+import IconUser from "@/assets/icons/icon-user.svg";
+import IconArrowRight from "@/assets/icons/icon-arrow-right.svg";
+import IconClock from "@/assets/icons/icon-clock.svg";
+import { Image } from "astro:assets";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import type { TourDetailsHeroTypes } from "@/types";
 type Props = {
-  hero: TourDetailsHeroTypes
-}
-let { hero } = Astro.props
+  hero: TourDetailsHeroTypes;
+};
+let { hero } = Astro.props;
 
 const items = [
   {
@@ -38,7 +38,7 @@ const items = [
     icon: IconArrowRight,
     text: hero.experienceType,
   },
-]
+];
 ---
 
 <section class="h-[600px] relative">
@@ -70,3 +70,9 @@ const items = [
     height={600}
   />
 </section>
+
+<script is:inline>
+  if (typeof window !== "undefined" && window.trackTourInterest) {
+    window.trackTourInterest("{hero.title}");
+  }
+</script>

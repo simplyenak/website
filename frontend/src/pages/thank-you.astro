@@ -32,3 +32,14 @@ import img1 from "@/assets/images/kuala-lumpur-1641785_1920.jpg";
   </section>
   <CTASection />
 </Layout>
+
+<script is:inline>
+  if (typeof window !== "undefined" && window.trackTourBooking) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tourName = urlParams.get("tour") || "Food Tour Experience";
+    const tourPrice = parseFloat(urlParams.get("price") || "0");
+    const bookingId = urlParams.get("booking_id") || Date.now().toString();
+
+    window.trackTourBooking(tourName, tourPrice, bookingId);
+  }
+</script>
