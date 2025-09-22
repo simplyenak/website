@@ -18,7 +18,7 @@ let { title, contents } = Astro.props;
       <BlockRendererClient content={contents} client:only="react" />
     </div>
     <div class="w-full my-10 md:my-16">
-      <ContactForm client:only="react" />
+      <ContactForm client:only="vue" />
     </div>
   </div>
 </section>
