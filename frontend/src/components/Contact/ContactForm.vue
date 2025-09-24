@@ -5,8 +5,14 @@
       @submit.prevent="handleSubmit"
       class="flex flex-col gap-6"
     >
-      <!-- Turnstile will be added when site key is properly configured -->
-      <!-- <div class="cf-turnstile" :data-sitekey="TURNSTILE_SITE_KEY"></div> -->
+      <!-- Turnstile CAPTCHA Widget -->
+      <div
+        v-if="showTurnstile"
+        class="cf-turnstile flex justify-center my-6"
+        :data-sitekey="TURNSTILE_SITE_KEY"
+        :data-callback="onTurnstileSuccess"
+        :data-error-callback="onTurnstileError"
+      ></div>
 
       <input
         type="text"
@@ -217,8 +223,9 @@ import { ref, reactive, computed, onMounted } from "vue";
 const FORM_ENDPOINT =
   import.meta.env.VITE_FORM_ENDPOINT ||
   "https://n8n.system.simplyenak.com/webhook/simply-enak-contact-2024-secure-form";
+
 const TURNSTILE_SITE_KEY =
-  import.meta.env.VITE_TURNSTILE_SITE_KEY || "0x4AAAAAABpeXumlMVzDHFDl";
+  import.meta.env.VITE_TURNSTILE_SITE_KEY || "0x4AAAAABpeXixc69t7jw2HzCsGs7evSFV";
 
 const formData = reactive({
   name: "",
@@ -235,6 +242,7 @@ const formData = reactive({
 const errors = reactive({});
 const isSubmitting = ref(false);
 const submitMessage = ref(null);
+const showTurnstile = ref(false);
 
 const validateForm = () => {
   const validationErrors = [];
@@ -257,6 +265,19 @@ const validateForm = () => {
   return true;
 };
 
+// Turnstile callback functions
+const onTurnstileSuccess = (token) => {
+  console.log('Turnstile verification successful:', token);
+};
+
+const onTurnstileError = (error) => {
+  console.error('Turnstile error:', error);
+  submitMessage.value = {
+    type: "error",
+    text: "Security verification failed. Please refresh the page and try again.",
+  };
+};
+
 const handleSubmit = async () => {
   if (!validateForm()) return;
 
@@ -266,43 +287,85 @@ const handleSubmit = async () => {
   try {
     formData.form_start_time = Date.now();
 
-    // Turnstile verification will be added when properly configured
-    // if (!window.turnstile) {
-    //   throw new Error("Security verification not ready. Please refresh the page and try again.");
-    // }
+    // Create FormData for N8N webhook compatibility
+    const form = new FormData();
+
+    // Add all form fields
+    Object.keys(formData).forEach((key) => {
+      if (formData[key] !== null && formData[key] !== undefined) {
+        form.append(key, formData[key]);
+      }
+    });
+
+    // Add tracking data
+    form.append("source_page", window.location.href);
+    form.append(
+      "utm_campaign",
+      new URLSearchParams(window.location.search).get("utm_campaign") || ""
+    );
+
+    // Add Turnstile response
+    const turnstileResponse = document.querySelector('.cf-turnstile input[name="cf-turnstile-response"]')?.value || '';
+    if (showTurnstile.value && !turnstileResponse) {
+      submitMessage.value = {
+        type: "error",
+        text: "Please complete the security verification.",
+      };
+      isSubmitting.value = false;
+      return;
+    }
+    form.append("cf-turnstile-response", turnstileResponse);
 
     const response = await fetch(FORM_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...formData,
-        source_page: window.location.pathname,
-        utm_campaign: new URLSearchParams(window.location.search).get(
-          "utm_campaign"
-        ),
-        "cf-turnstile-response": "", // Will be added when Turnstile is properly configured
-      }),
+      body: form,
     });
+
+    // Handle specific HTTP status codes
+    if (response.status === 403) {
+      throw new Error("Security verification failed. Please refresh the page and complete the security check.");
+    }
+
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status} ${response.statusText}`);
+    }
 
     const result = await response.json();
 
     if (response.ok && result.success) {
       submitMessage.value = {
         type: "success",
-        text: "Thank you for contacting Simply Enak! We've received your inquiry and will get back to you within 24 hours.",
+        text:
+          result.message ||
+          "Thank you for contacting Simply Enak! We've received your inquiry and will get back to you within 24 hours.",
       };
 
       if (typeof window !== "undefined" && window.trackContactForm) {
         window.trackContactForm();
       }
 
+      // Reset form
       Object.keys(formData).forEach((key) => {
         if (key !== "website" && key !== "form_start_time") {
           formData[key] = "";
         }
       });
+
+      // Reset Turnstile if available
+      if (typeof window !== "undefined" && window.turnstile && showTurnstile.value) {
+        const turnstileWidget = document.querySelector(".cf-turnstile");
+        if (turnstileWidget) {
+          try {
+            window.turnstile.reset(turnstileWidget);
+          } catch (error) {
+            console.error('Failed to reset Turnstile:', error);
+          }
+        }
+      }
     } else {
-      throw new Error(result.message || "Failed to submit form");
+      throw new Error(
+        result.error || result.message || "Failed to submit form"
+      );
     }
   } catch (error) {
     console.error("Form submission error:", error);
@@ -317,5 +380,38 @@ const handleSubmit = async () => {
 
 onMounted(() => {
   formData.form_start_time = Date.now();
+
+  // Make callback functions available globally for Turnstile
+  window.onTurnstileSuccess = onTurnstileSuccess;
+  window.onTurnstileError = onTurnstileError;
+
+  // Load Turnstile script
+  loadTurnstileScript();
 });
+
+// Load Turnstile script
+const loadTurnstileScript = () => {
+  if (!document.querySelector('script[src*="challenges.cloudflare.com"]')) {
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      console.log('Turnstile script loaded successfully');
+      showTurnstile.value = true;
+    };
+    script.onerror = (error) => {
+      console.error('Failed to load Turnstile script:', error);
+      submitMessage.value = {
+        type: "error",
+        text: "Security verification system failed to load. Please refresh the page and try again.",
+      };
+      showTurnstile.value = false;
+    };
+    document.head.appendChild(script);
+  } else {
+    // Script already exists, show turnstile
+    showTurnstile.value = true;
+  }
+};
 </script>
