@@ -10,8 +10,8 @@
         v-if="showTurnstile"
         class="cf-turnstile flex justify-center my-6"
         :data-sitekey="TURNSTILE_SITE_KEY"
-        :data-callback="onTurnstileSuccess"
-        :data-error-callback="onTurnstileError"
+        data-callback="onTurnstileSuccess"
+        data-error-callback="onTurnstileError"
       ></div>
 
       <input
@@ -225,7 +225,8 @@ const FORM_ENDPOINT =
   "https://n8n.system.simplyenak.com/webhook/simply-enak-contact-2024-secure-form";
 
 const TURNSTILE_SITE_KEY =
-  import.meta.env.VITE_TURNSTILE_SITE_KEY || "0x4AAAAABpeXixc69t7jw2HzCsGs7evSFV";
+  import.meta.env.VITE_TURNSTILE_SITE_KEY ||
+  "0x4AAAAABpeXixc69t7jw2HzCsGs7evSFV";
 
 const formData = reactive({
   name: "",
@@ -267,11 +268,11 @@ const validateForm = () => {
 
 // Turnstile callback functions
 const onTurnstileSuccess = (token) => {
-  console.log('Turnstile verification successful:', token);
+  console.log("Turnstile verification successful:", token);
 };
 
 const onTurnstileError = (error) => {
-  console.error('Turnstile error:', error);
+  console.error("Turnstile error:", error);
   submitMessage.value = {
     type: "error",
     text: "Security verification failed. Please refresh the page and try again.",
@@ -305,7 +306,10 @@ const handleSubmit = async () => {
     );
 
     // Add Turnstile response
-    const turnstileResponse = document.querySelector('.cf-turnstile input[name="cf-turnstile-response"]')?.value || '';
+    const turnstileResponse =
+      document.querySelector(
+        '.cf-turnstile input[name="cf-turnstile-response"]'
+      )?.value || "";
     if (showTurnstile.value && !turnstileResponse) {
       submitMessage.value = {
         type: "error",
@@ -323,11 +327,15 @@ const handleSubmit = async () => {
 
     // Handle specific HTTP status codes
     if (response.status === 403) {
-      throw new Error("Security verification failed. Please refresh the page and complete the security check.");
+      throw new Error(
+        "Security verification failed. Please refresh the page and complete the security check."
+      );
     }
 
     if (!response.ok) {
-      throw new Error(`Server error: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Server error: ${response.status} ${response.statusText}`
+      );
     }
 
     const result = await response.json();
@@ -352,13 +360,17 @@ const handleSubmit = async () => {
       });
 
       // Reset Turnstile if available
-      if (typeof window !== "undefined" && window.turnstile && showTurnstile.value) {
+      if (
+        typeof window !== "undefined" &&
+        window.turnstile &&
+        showTurnstile.value
+      ) {
         const turnstileWidget = document.querySelector(".cf-turnstile");
         if (turnstileWidget) {
           try {
             window.turnstile.reset(turnstileWidget);
           } catch (error) {
-            console.error('Failed to reset Turnstile:', error);
+            console.error("Failed to reset Turnstile:", error);
           }
         }
       }
@@ -397,11 +409,11 @@ const loadTurnstileScript = () => {
     script.async = true;
     script.defer = true;
     script.onload = () => {
-      console.log('Turnstile script loaded successfully');
+      console.log("Turnstile script loaded successfully");
       showTurnstile.value = true;
     };
     script.onerror = (error) => {
-      console.error('Failed to load Turnstile script:', error);
+      console.error("Failed to load Turnstile script:", error);
       submitMessage.value = {
         type: "error",
         text: "Security verification system failed to load. Please refresh the page and try again.",
