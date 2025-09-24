@@ -10,8 +10,8 @@
         v-if="showTurnstile"
         class="cf-turnstile flex justify-center my-6"
         :data-sitekey="TURNSTILE_SITE_KEY"
-        data-callback="onTurnstileSuccess"
-        data-error-callback="onTurnstileError"
+        :data-callback="onTurnstileSuccess"
+        :data-error-callback="onTurnstileError"
       ></div>
 
       <input
@@ -225,8 +225,7 @@ const FORM_ENDPOINT =
   "https://n8n.system.simplyenak.com/webhook/simply-enak-contact-2024-secure-form";
 
 const TURNSTILE_SITE_KEY =
-  import.meta.env.VITE_TURNSTILE_SITE_KEY ||
-  "0x4AAAAABpeXixc69t7jw2HzCsGs7evSFV";
+  import.meta.env.VITE_TURNSTILE_SITE_KEY || "0x4AAAAAABpeXumlMVzDHFDl";
 
 const formData = reactive({
   name: "",
