@@ -314,12 +314,12 @@ const handleSubmit = async () => {
 
     // Add Turnstile response - check both global variable and ref
     const tokenToUse = currentTurnstileToken || turnstileToken.value;
-    
+
     if (showTurnstile.value && !tokenToUse) {
-      console.log("Turnstile check failed:", { 
-        showTurnstile: showTurnstile.value, 
-        currentTurnstileToken, 
-        turnstileTokenRef: turnstileToken.value 
+      console.log("Turnstile check failed:", {
+        showTurnstile: showTurnstile.value,
+        currentTurnstileToken,
+        turnstileTokenRef: turnstileToken.value,
       });
       submitMessage.value = {
         type: "error",
@@ -328,11 +328,14 @@ const handleSubmit = async () => {
       isSubmitting.value = false;
       return;
     }
-    
+
     // Add the turnstile token to the form
     if (tokenToUse) {
       form.append("cf-turnstile-response", tokenToUse);
-      console.log("Adding Turnstile token to form:", tokenToUse.substring(0, 20) + "...");
+      console.log(
+        "Adding Turnstile token to form:",
+        tokenToUse.substring(0, 20) + "..."
+      );
     }
 
     const response = await fetch(FORM_ENDPOINT, {
