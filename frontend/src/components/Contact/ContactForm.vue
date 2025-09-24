@@ -10,8 +10,8 @@
         v-if="showTurnstile"
         class="cf-turnstile flex justify-center my-6"
         :data-sitekey="TURNSTILE_SITE_KEY"
-        :data-callback="onTurnstileSuccess"
-        :data-error-callback="onTurnstileError"
+        data-callback="onTurnstileSuccess"
+        data-error-callback="onTurnstileError"
       ></div>
 
       <input
@@ -243,6 +243,7 @@ const errors = reactive({});
 const isSubmitting = ref(false);
 const submitMessage = ref(null);
 const showTurnstile = ref(false);
+const turnstileToken = ref("");
 
 const validateForm = () => {
   const validationErrors = [];
@@ -265,13 +266,20 @@ const validateForm = () => {
   return true;
 };
 
+// Store turnstile token globally
+let currentTurnstileToken = "";
+
 // Turnstile callback functions
 const onTurnstileSuccess = (token) => {
   console.log("Turnstile verification successful:", token);
+  currentTurnstileToken = token;
+  turnstileToken.value = token; // Also update the ref for reactivity
 };
 
 const onTurnstileError = (error) => {
   console.error("Turnstile error:", error);
+  currentTurnstileToken = "";
+  turnstileToken.value = "";
   submitMessage.value = {
     type: "error",
     text: "Security verification failed. Please refresh the page and try again.",
@@ -304,12 +312,15 @@ const handleSubmit = async () => {
       new URLSearchParams(window.location.search).get("utm_campaign") || ""
     );
 
-    // Add Turnstile response
-    const turnstileResponse =
-      document.querySelector(
-        '.cf-turnstile input[name="cf-turnstile-response"]'
-      )?.value || "";
-    if (showTurnstile.value && !turnstileResponse) {
+    // Add Turnstile response - check both global variable and ref
+    const tokenToUse = currentTurnstileToken || turnstileToken.value;
+    
+    if (showTurnstile.value && !tokenToUse) {
+      console.log("Turnstile check failed:", { 
+        showTurnstile: showTurnstile.value, 
+        currentTurnstileToken, 
+        turnstileTokenRef: turnstileToken.value 
+      });
       submitMessage.value = {
         type: "error",
         text: "Please complete the security verification.",
@@ -317,7 +328,12 @@ const handleSubmit = async () => {
       isSubmitting.value = false;
       return;
     }
-    form.append("cf-turnstile-response", turnstileResponse);
+    
+    // Add the turnstile token to the form
+    if (tokenToUse) {
+      form.append("cf-turnstile-response", tokenToUse);
+      console.log("Adding Turnstile token to form:", tokenToUse.substring(0, 20) + "...");
+    }
 
     const response = await fetch(FORM_ENDPOINT, {
       method: "POST",
@@ -357,6 +373,10 @@ const handleSubmit = async () => {
           formData[key] = "";
         }
       });
+
+      // Clear turnstile token
+      currentTurnstileToken = "";
+      turnstileToken.value = "";
 
       // Reset Turnstile if available
       if (
