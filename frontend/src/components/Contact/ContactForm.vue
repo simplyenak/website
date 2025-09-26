@@ -333,6 +333,7 @@ const handleSubmit = async () => {
     );
 
     const tokenToUse = currentTurnstileToken || turnstileToken.value;
+    const turnstileAvailable = typeof window.turnstile !== "undefined";
 
     if (showTurnstile.value && !tokenToUse) {
       const isPATConflict = !turnstileAvailable && showTurnstile.value;
@@ -348,6 +349,13 @@ const handleSubmit = async () => {
 
     if (tokenToUse) {
       form.append("cf-turnstile-response", tokenToUse);
+    } else if (showTurnstile.value) {
+      submitMessage.value = {
+        type: "error",
+        text: "Security verification required. Please complete the CAPTCHA.",
+      };
+      isSubmitting.value = false;
+      return;
     }
 
     const response = await fetch(FORM_ENDPOINT, {
@@ -355,7 +363,6 @@ const handleSubmit = async () => {
       body: form,
     });
 
-    // Handle specific HTTP status codes
     if (response.status === 403) {
       throw new Error(
         "Security verification failed. Please refresh the page and complete the security check."
@@ -404,7 +411,7 @@ const handleSubmit = async () => {
           try {
             window.turnstile.reset(turnstileWidget);
           } catch (error) {
-            console.error("Failed to reset Turnstile:", error);
+            // Silent fail for production
           }
         }
       }
@@ -414,7 +421,6 @@ const handleSubmit = async () => {
       );
     }
   } catch (error) {
-    console.error("Form submission error:", error);
     submitMessage.value = {
       type: "error",
       text: "Sorry, there was an error submitting your form. Please try again or contact us directly.",
@@ -535,7 +541,9 @@ const renderTurnstileWidget = () => {
         size: "normal",
       });
       turnstileLoaded.value = true;
-    } catch {}
+    } catch (error) {
+      // Silent fail for production
+    }
   }
 };
 
