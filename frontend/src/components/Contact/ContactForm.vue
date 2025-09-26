@@ -5,14 +5,26 @@
       @submit.prevent="handleSubmit"
       class="flex flex-col gap-6"
     >
-      <!-- Turnstile CAPTCHA Widget -->
       <div
         v-if="showTurnstile"
+        ref="turnstileWidget"
         class="cf-turnstile flex justify-center my-6"
         :data-sitekey="TURNSTILE_SITE_KEY"
-        data-callback="onTurnstileSuccess"
-        data-error-callback="onTurnstileError"
+        :data-callback="turnstileCallbackName"
+        :data-error-callback="turnstileErrorCallbackName"
+        :data-theme="'light'"
+        :data-size="'normal'"
       ></div>
+
+      <div
+        v-if="showTurnstile && !turnstileLoaded"
+        class="text-center my-6 p-4 bg-gray-100 rounded border"
+      >
+        <p class="text-sm text-gray-600">
+          Security verification is loading... If this persists, please refresh
+          the page.
+        </p>
+      </div>
 
       <input
         type="text"
@@ -218,7 +230,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted } from "vue";
+import { ref, reactive, computed, onMounted, onUnmounted, watch } from "vue";
 
 const FORM_ENDPOINT =
   import.meta.env.VITE_FORM_ENDPOINT ||
@@ -244,6 +256,15 @@ const isSubmitting = ref(false);
 const submitMessage = ref(null);
 const showTurnstile = ref(false);
 const turnstileToken = ref("");
+const turnstileWidget = ref(null);
+const turnstileLoaded = ref(false);
+
+const turnstileCallbackName = `turnstileSuccess_${Math.random()
+  .toString(36)
+  .substr(2, 9)}`;
+const turnstileErrorCallbackName = `turnstileError_${Math.random()
+  .toString(36)
+  .substr(2, 9)}`;
 
 const validateForm = () => {
   const validationErrors = [];
@@ -266,18 +287,17 @@ const validateForm = () => {
   return true;
 };
 
-// Store turnstile token globally
 let currentTurnstileToken = "";
 
-// Turnstile callback functions
 const onTurnstileSuccess = (token) => {
-  console.log("Turnstile verification successful:", token);
   currentTurnstileToken = token;
-  turnstileToken.value = token; // Also update the ref for reactivity
+  turnstileToken.value = token;
+  if (submitMessage.value && submitMessage.value.type === "error") {
+    submitMessage.value = null;
+  }
 };
 
-const onTurnstileError = (error) => {
-  console.error("Turnstile error:", error);
+const onTurnstileError = () => {
   currentTurnstileToken = "";
   turnstileToken.value = "";
   submitMessage.value = {
@@ -312,30 +332,22 @@ const handleSubmit = async () => {
       new URLSearchParams(window.location.search).get("utm_campaign") || ""
     );
 
-    // Add Turnstile response - check both global variable and ref
     const tokenToUse = currentTurnstileToken || turnstileToken.value;
 
     if (showTurnstile.value && !tokenToUse) {
-      console.log("Turnstile check failed:", {
-        showTurnstile: showTurnstile.value,
-        currentTurnstileToken,
-        turnstileTokenRef: turnstileToken.value,
-      });
-      submitMessage.value = {
-        type: "error",
-        text: "Please complete the security verification.",
-      };
-      isSubmitting.value = false;
-      return;
+      const isPATConflict = !turnstileAvailable && showTurnstile.value;
+      if (!isPATConflict) {
+        submitMessage.value = {
+          type: "error",
+          text: "Please complete the security verification.",
+        };
+        isSubmitting.value = false;
+        return;
+      }
     }
 
-    // Add the turnstile token to the form
     if (tokenToUse) {
       form.append("cf-turnstile-response", tokenToUse);
-      console.log(
-        "Adding Turnstile token to form:",
-        tokenToUse.substring(0, 20) + "..."
-      );
     }
 
     const response = await fetch(FORM_ENDPOINT, {
@@ -414,28 +426,80 @@ const handleSubmit = async () => {
 
 onMounted(() => {
   formData.form_start_time = Date.now();
-
-  // Make callback functions available globally for Turnstile
-  window.onTurnstileSuccess = onTurnstileSuccess;
-  window.onTurnstileError = onTurnstileError;
-
-  // Load Turnstile script
-  loadTurnstileScript();
+  window[turnstileCallbackName] = onTurnstileSuccess;
+  window[turnstileErrorCallbackName] = onTurnstileError;
+  initializeTurnstile();
 });
 
-// Load Turnstile script
+watch(turnstileWidget, (newWidget) => {
+  if (newWidget && typeof window.turnstile !== "undefined") {
+    setTimeout(renderTurnstileWidget, 100);
+  }
+});
+
+const initializeTurnstile = () => {
+  showTurnstile.value = true;
+  forceLoadTurnstile();
+};
+
+const forceLoadTurnstile = () => {
+  if (typeof window.turnstile !== "undefined") {
+    turnstileLoaded.value = true;
+    return;
+  }
+
+  const existingScript = document.querySelector(
+    'script[src*="challenges.cloudflare.com"]'
+  );
+  if (!existingScript) {
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.crossOrigin = "anonymous";
+    script.onload = () => {
+      turnstileLoaded.value = true;
+      setTimeout(renderTurnstileWidget, 100);
+    };
+    script.onerror = () => setTimeout(loadTurnstileScript, 1000);
+    document.head.appendChild(script);
+  } else {
+    let attempts = 0;
+    const checkExistingScript = () => {
+      attempts++;
+      if (typeof window.turnstile !== "undefined") {
+        turnstileLoaded.value = true;
+        setTimeout(renderTurnstileWidget, 100);
+        return;
+      }
+      if (attempts < 20) {
+        setTimeout(checkExistingScript, 250);
+      } else {
+        loadTurnstileScript();
+      }
+    };
+    setTimeout(checkExistingScript, 100);
+  }
+};
+
 const loadTurnstileScript = () => {
+  if (typeof window.turnstile !== "undefined") {
+    showTurnstile.value = true;
+    turnstileLoaded.value = true;
+    return;
+  }
+
   if (!document.querySelector('script[src*="challenges.cloudflare.com"]')) {
     const script = document.createElement("script");
     script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
     script.async = true;
     script.defer = true;
+    script.crossOrigin = "anonymous";
     script.onload = () => {
-      console.log("Turnstile script loaded successfully");
       showTurnstile.value = true;
+      turnstileLoaded.value = true;
     };
-    script.onerror = (error) => {
-      console.error("Failed to load Turnstile script:", error);
+    script.onerror = () => {
       submitMessage.value = {
         type: "error",
         text: "Security verification system failed to load. Please refresh the page and try again.",
@@ -444,8 +508,40 @@ const loadTurnstileScript = () => {
     };
     document.head.appendChild(script);
   } else {
-    // Script already exists, show turnstile
-    showTurnstile.value = true;
+    const checkTurnstile = setInterval(() => {
+      if (typeof window.turnstile !== "undefined") {
+        showTurnstile.value = true;
+        clearInterval(checkTurnstile);
+      }
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(checkTurnstile);
+      if (typeof window.turnstile === "undefined") {
+        showTurnstile.value = false;
+      }
+    }, 5000);
   }
 };
+
+const renderTurnstileWidget = () => {
+  if (typeof window.turnstile !== "undefined" && turnstileWidget.value) {
+    try {
+      window.turnstile.render(turnstileWidget.value, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: window[turnstileCallbackName],
+        "error-callback": window[turnstileErrorCallbackName],
+        theme: "light",
+        size: "normal",
+      });
+      turnstileLoaded.value = true;
+    } catch {}
+  }
+};
+
+onUnmounted(() => {
+  if (window[turnstileCallbackName]) delete window[turnstileCallbackName];
+  if (window[turnstileErrorCallbackName])
+    delete window[turnstileErrorCallbackName];
+});
 </script>
