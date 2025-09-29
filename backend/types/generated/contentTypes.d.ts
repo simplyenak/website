@@ -410,6 +410,40 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_forms';
+  info: {
+    displayName: 'Contact Form';
+    pluralName: 'contact-forms';
+    singularName: 'contact-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    company: Schema.Attribute.String;
+    country: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    inquiryType: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-form.contact-form'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.String;
+    phoneNumber: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactContact extends Struct.SingleTypeSchema {
   collectionName: 'contacts';
   info: {
@@ -1361,6 +1395,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::contact-form.contact-form': ApiContactFormContactForm;
       'api::contact.contact': ApiContactContact;
       'api::custom-tours-main.custom-tours-main': ApiCustomToursMainCustomToursMain;
       'api::custom.custom': ApiCustomCustom;
