@@ -5,49 +5,14 @@
       @submit.prevent="handleSubmit"
       class="flex flex-col gap-6"
     >
-      <div
-        v-if="showTurnstile"
-        ref="turnstileWidget"
-        class="cf-turnstile flex justify-center my-6"
-        :data-sitekey="TURNSTILE_SITE_KEY"
-        :data-callback="turnstileCallbackName"
-        :data-error-callback="turnstileErrorCallbackName"
-        :data-theme="'light'"
-        :data-size="'normal'"
-      ></div>
-
-      <div
-        v-if="showTurnstile && !turnstileLoaded"
-        class="text-center my-6 p-4 bg-gray-100 rounded border"
-      >
-        <p class="text-sm text-gray-600">
-          Security verification is loading... If this persists, please refresh
-          the page.
-        </p>
-      </div>
-
-      <input
-        type="text"
-        name="website"
-        class="hidden"
-        tabindex="-1"
-        v-model="formData.website"
-      />
-      <input
-        type="hidden"
-        name="form_start_time"
-        id="form_start_time"
-        v-model="formData.form_start_time"
-      />
-
       <div class="flex flex-col gap-2">
         <input
           type="text"
-          name="name"
-          v-model="formData.name"
+          name="fullName"
+          v-model="formData.fullName"
           :class="[
             'px-4 py-3.5 border-2 rounded-sm text-base font-pt-sans transition-all duration-300 bg-white text-gray-800',
-            errors.name
+            errors.fullName
               ? 'border-red-500'
               : 'border-gray-200 focus:border-primary focus:shadow-[0_0_0_3px_rgba(181,45,56,0.1)]',
           ]"
@@ -56,9 +21,9 @@
           maxlength="255"
         />
         <span
-          v-if="errors.name"
+          v-if="errors.fullName"
           class="text-red-500 text-sm font-medium mt-1 font-pt-sans"
-          >{{ errors.name }}</span
+          >{{ errors.fullName }}</span
         >
       </div>
 
@@ -87,11 +52,11 @@
       <div class="flex flex-col gap-2">
         <input
           type="tel"
-          name="phone"
-          v-model="formData.phone"
+          name="phoneNumber"
+          v-model="formData.phoneNumber"
           :class="[
             'px-4 py-3.5 border-2 rounded-sm text-base font-pt-sans transition-all duration-300 bg-white text-gray-800',
-            errors.phone
+            errors.phoneNumber
               ? 'border-red-500'
               : 'border-gray-200 focus:border-primary focus:shadow-[0_0_0_3px_rgba(181,45,56,0.1)]',
           ]"
@@ -99,9 +64,9 @@
           maxlength="20"
         />
         <span
-          v-if="errors.phone"
+          v-if="errors.phoneNumber"
           class="text-red-500 text-sm font-medium mt-1 font-pt-sans"
-          >{{ errors.phone }}</span
+          >{{ errors.phoneNumber }}</span
         >
       </div>
 
@@ -149,11 +114,11 @@
 
       <div class="flex flex-col gap-2">
         <select
-          name="inquiry_type"
-          v-model="formData.inquiry_type"
+          name="inquiryType"
+          v-model="formData.inquiryType"
           :class="[
             'px-4 py-3.5 border-2 rounded-sm text-base font-pt-sans transition-all duration-300 bg-white text-gray-800 cursor-pointer appearance-none pr-10',
-            errors.inquiry_type
+            errors.inquiryType
               ? 'border-red-500'
               : 'border-gray-200 focus:border-primary focus:shadow-[0_0_0_3px_rgba(181,45,56,0.1)]',
           ]"
@@ -175,9 +140,9 @@
           <option value="General">General Question</option>
         </select>
         <span
-          v-if="errors.inquiry_type"
+          v-if="errors.inquiryType"
           class="text-red-500 text-sm font-medium mt-1 font-pt-sans"
-          >{{ errors.inquiry_type }}</span
+          >{{ errors.inquiryType }}</span
         >
       </div>
 
@@ -230,48 +195,30 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onUnmounted, watch } from "vue";
-
-const FORM_ENDPOINT =
-  import.meta.env.VITE_FORM_ENDPOINT ||
-  "https://n8n.system.simplyenak.com/webhook/simply-enak-contact-2024-secure-form";
-
-const TURNSTILE_SITE_KEY =
-  import.meta.env.VITE_TURNSTILE_SITE_KEY || "0x4AAAAAABpeXumlMVzDHFDl";
+import { ref, reactive, onMounted } from "vue";
+import { postApi } from "@/lib/strapi";
 
 const formData = reactive({
-  name: "",
+  fullName: "",
   email: "",
-  phone: "",
+  phoneNumber: "",
   company: "",
   country: "",
-  inquiry_type: "",
+  inquiryType: "",
   message: "",
-  website: "",
-  form_start_time: "",
 });
 
 const errors = reactive({});
 const isSubmitting = ref(false);
 const submitMessage = ref(null);
-const showTurnstile = ref(false);
-const turnstileToken = ref("");
-const turnstileWidget = ref(null);
-const turnstileLoaded = ref(false);
-
-const turnstileCallbackName = `turnstileSuccess_${Math.random()
-  .toString(36)
-  .substr(2, 9)}`;
-const turnstileErrorCallbackName = `turnstileError_${Math.random()
-  .toString(36)
-  .substr(2, 9)}`;
 
 const validateForm = () => {
   const validationErrors = [];
 
-  if (!formData.name?.trim()) validationErrors.push("Full name is required");
+  if (!formData.fullName?.trim())
+    validationErrors.push("Full name is required");
   if (!formData.email?.trim()) validationErrors.push("Email is required");
-  if (!formData.inquiry_type) validationErrors.push("Inquiry type is required");
+  if (!formData.inquiryType) validationErrors.push("Inquiry type is required");
   if (!formData.message?.trim()) validationErrors.push("Message is required");
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -287,25 +234,6 @@ const validateForm = () => {
   return true;
 };
 
-let currentTurnstileToken = "";
-
-const onTurnstileSuccess = (token) => {
-  currentTurnstileToken = token;
-  turnstileToken.value = token;
-  if (submitMessage.value && submitMessage.value.type === "error") {
-    submitMessage.value = null;
-  }
-};
-
-const onTurnstileError = () => {
-  currentTurnstileToken = "";
-  turnstileToken.value = "";
-  submitMessage.value = {
-    type: "error",
-    text: "Security verification failed. Please refresh the page and try again.",
-  };
-};
-
 const handleSubmit = async () => {
   if (!validateForm()) return;
 
@@ -313,117 +241,56 @@ const handleSubmit = async () => {
   submitMessage.value = null;
 
   try {
-    formData.form_start_time = Date.now();
+    // Prepare data for Strapi API
+    const contactData = {
+      ...formData,
+      publishedAt: new Date().toISOString(), // Auto-publish the contact form
+    };
 
-    // Create FormData for N8N webhook compatibility
-    const form = new FormData();
+    const result = await postApi({
+      endpoint: "contact-forms",
+      data: contactData,
+    });
 
-    // Add all form fields
+    console.log("Form submission successful:", result);
+
+    submitMessage.value = {
+      type: "success",
+      text: "Thank you for contacting Simply Enak! We've received your inquiry and will get back to you within 24 hours.",
+    };
+
+    if (typeof window !== "undefined" && window.trackContactForm) {
+      window.trackContactForm();
+    }
+
+    // Reset form
     Object.keys(formData).forEach((key) => {
-      if (formData[key] !== null && formData[key] !== undefined) {
-        form.append(key, formData[key]);
-      }
+      formData[key] = "";
     });
-
-    // Add tracking data
-    form.append("source_page", window.location.href);
-    form.append(
-      "utm_campaign",
-      new URLSearchParams(window.location.search).get("utm_campaign") || ""
-    );
-
-    const tokenToUse = currentTurnstileToken || turnstileToken.value;
-    const turnstileAvailable = typeof window.turnstile !== "undefined";
-
-    if (showTurnstile.value && !tokenToUse) {
-      const isPATConflict = !turnstileAvailable && showTurnstile.value;
-      if (!isPATConflict) {
-        submitMessage.value = {
-          type: "error",
-          text: "Please complete the security verification.",
-        };
-        isSubmitting.value = false;
-        return;
-      }
-    }
-
-    if (tokenToUse) {
-      form.append("cf-turnstile-response", tokenToUse);
-    } else if (showTurnstile.value) {
-      submitMessage.value = {
-        type: "error",
-        text: "Security verification required. Please complete the CAPTCHA.",
-      };
-      isSubmitting.value = false;
-      return;
-    }
-
-    const response = await fetch(FORM_ENDPOINT, {
-      method: "POST",
-      body: form,
-    });
-
-    if (response.status === 403) {
-      throw new Error(
-        "Security verification failed. Please refresh the page and complete the security check."
-      );
-    }
-
-    if (!response.ok) {
-      throw new Error(
-        `Server error: ${response.status} ${response.statusText}`
-      );
-    }
-
-    const result = await response.json();
-
-    if (response.ok && result.success) {
-      submitMessage.value = {
-        type: "success",
-        text:
-          result.message ||
-          "Thank you for contacting Simply Enak! We've received your inquiry and will get back to you within 24 hours.",
-      };
-
-      if (typeof window !== "undefined" && window.trackContactForm) {
-        window.trackContactForm();
-      }
-
-      // Reset form
-      Object.keys(formData).forEach((key) => {
-        if (key !== "website" && key !== "form_start_time") {
-          formData[key] = "";
-        }
-      });
-
-      // Clear turnstile token
-      currentTurnstileToken = "";
-      turnstileToken.value = "";
-
-      // Reset Turnstile if available
-      if (
-        typeof window !== "undefined" &&
-        window.turnstile &&
-        showTurnstile.value
-      ) {
-        const turnstileWidget = document.querySelector(".cf-turnstile");
-        if (turnstileWidget) {
-          try {
-            window.turnstile.reset(turnstileWidget);
-          } catch (error) {
-            // Silent fail for production
-          }
-        }
-      }
-    } else {
-      throw new Error(
-        result.error || result.message || "Failed to submit form"
-      );
-    }
   } catch (error) {
+    console.error("Form submission error:", error);
+
+    let errorMessage =
+      "Sorry, there was an error submitting your form. Please try again or contact us directly.";
+
+    // Provide more specific error messages if possible
+    if (error.message) {
+      if (error.message.includes("400")) {
+        errorMessage = "Please check your form data and try again.";
+      } else if (
+        error.message.includes("401") ||
+        error.message.includes("403")
+      ) {
+        errorMessage =
+          "Authentication error. Please refresh the page and try again.";
+      } else if (error.message.includes("500")) {
+        errorMessage = "Server error. Please try again later.";
+      }
+    }
+
     submitMessage.value = {
       type: "error",
-      text: "Sorry, there was an error submitting your form. Please try again or contact us directly.",
+      text: errorMessage,
     };
   } finally {
     isSubmitting.value = false;
@@ -431,125 +298,6 @@ const handleSubmit = async () => {
 };
 
 onMounted(() => {
-  formData.form_start_time = Date.now();
-  window[turnstileCallbackName] = onTurnstileSuccess;
-  window[turnstileErrorCallbackName] = onTurnstileError;
-  initializeTurnstile();
-});
-
-watch(turnstileWidget, (newWidget) => {
-  if (newWidget && typeof window.turnstile !== "undefined") {
-    setTimeout(renderTurnstileWidget, 100);
-  }
-});
-
-const initializeTurnstile = () => {
-  showTurnstile.value = true;
-  forceLoadTurnstile();
-};
-
-const forceLoadTurnstile = () => {
-  if (typeof window.turnstile !== "undefined") {
-    turnstileLoaded.value = true;
-    return;
-  }
-
-  const existingScript = document.querySelector(
-    'script[src*="challenges.cloudflare.com"]'
-  );
-  if (!existingScript) {
-    const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    script.async = true;
-    script.defer = true;
-    script.crossOrigin = "anonymous";
-    script.onload = () => {
-      turnstileLoaded.value = true;
-      setTimeout(renderTurnstileWidget, 100);
-    };
-    script.onerror = () => setTimeout(loadTurnstileScript, 1000);
-    document.head.appendChild(script);
-  } else {
-    let attempts = 0;
-    const checkExistingScript = () => {
-      attempts++;
-      if (typeof window.turnstile !== "undefined") {
-        turnstileLoaded.value = true;
-        setTimeout(renderTurnstileWidget, 100);
-        return;
-      }
-      if (attempts < 20) {
-        setTimeout(checkExistingScript, 250);
-      } else {
-        loadTurnstileScript();
-      }
-    };
-    setTimeout(checkExistingScript, 100);
-  }
-};
-
-const loadTurnstileScript = () => {
-  if (typeof window.turnstile !== "undefined") {
-    showTurnstile.value = true;
-    turnstileLoaded.value = true;
-    return;
-  }
-
-  if (!document.querySelector('script[src*="challenges.cloudflare.com"]')) {
-    const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    script.async = true;
-    script.defer = true;
-    script.crossOrigin = "anonymous";
-    script.onload = () => {
-      showTurnstile.value = true;
-      turnstileLoaded.value = true;
-    };
-    script.onerror = () => {
-      submitMessage.value = {
-        type: "error",
-        text: "Security verification system failed to load. Please refresh the page and try again.",
-      };
-      showTurnstile.value = false;
-    };
-    document.head.appendChild(script);
-  } else {
-    const checkTurnstile = setInterval(() => {
-      if (typeof window.turnstile !== "undefined") {
-        showTurnstile.value = true;
-        clearInterval(checkTurnstile);
-      }
-    }, 100);
-
-    setTimeout(() => {
-      clearInterval(checkTurnstile);
-      if (typeof window.turnstile === "undefined") {
-        showTurnstile.value = false;
-      }
-    }, 5000);
-  }
-};
-
-const renderTurnstileWidget = () => {
-  if (typeof window.turnstile !== "undefined" && turnstileWidget.value) {
-    try {
-      window.turnstile.render(turnstileWidget.value, {
-        sitekey: TURNSTILE_SITE_KEY,
-        callback: window[turnstileCallbackName],
-        "error-callback": window[turnstileErrorCallbackName],
-        theme: "light",
-        size: "normal",
-      });
-      turnstileLoaded.value = true;
-    } catch (error) {
-      // Silent fail for production
-    }
-  }
-};
-
-onUnmounted(() => {
-  if (window[turnstileCallbackName]) delete window[turnstileCallbackName];
-  if (window[turnstileErrorCallbackName])
-    delete window[turnstileErrorCallbackName];
+  // Initialize form
 });
 </script>
