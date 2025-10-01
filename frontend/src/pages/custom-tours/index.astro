@@ -29,9 +29,9 @@ const customTours = await fetchApi<CustomToursPageType[]>({
   }}
 >
   <GlobalHero
-    title={data.heroSection.title}
-    description={data.heroSection.description}
-    image={data.heroSection.image}
+    title={data?.heroSection.title || "Custom Tours"}
+    description={data?.heroSection.description}
+    image={data?.heroSection.image}
   />
   <section class="main-container py-16 md:py-20 lg:py-25">
     <p class="text-lg md:text-xl font-medium text-center mb-8 md:mb-12">
