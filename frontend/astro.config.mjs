@@ -14,11 +14,27 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://simplyenak.com",
-  
+
   adapter: cloudflare(),
-  output: "server",
+  output: "server", // Keep as server mode for now - pages with prerender:true will be static
+
+  build: {
+    inlineStylesheets: 'auto',
+  },
+
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom'],
+            'vue-vendor': ['vue'],
+          }
+        }
+      }
+    },
     resolve: {
       alias: {
         // Use react-dom/server.edge instead of react-dom/server.browser for React 19.

@@ -29,7 +29,7 @@ const privacyPolicy = await fetchApi<PrivacyPolicyPageTypes>({
         <Prose>
           <BlockRendererClient
             content={privacyPolicy.contents}
-            client:only="react"
+            client:visible
           />
         </Prose>
       )

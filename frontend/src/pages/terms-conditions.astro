@@ -29,7 +29,7 @@ const termsConditionsData = await fetchApi<TermsConditionsPageTypes>({
         <Prose>
           <BlockRendererClient
             content={termsConditionsData.contents}
-            client:only="react"
+            client:visible
           />
         </Prose>
       )

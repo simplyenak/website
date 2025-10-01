@@ -13,9 +13,9 @@ import { Image } from "astro:assets";
 
 import faqimg1 from "@/assets/images/faq/1.webp";
 import faqimg2 from "@/assets/images/faq/2.webp";
-import faqimg3 from "@/assets/images/faq/3.jpg";
+import faqimg3 from "@/assets/images/faq/3.webp";
 import faqimg4 from "@/assets/images/faq/4.jpg";
-import faqimg5 from "@/assets/images/faq/5.jpg";
+import faqimg5 from "@/assets/images/faq/5.webp";
 
 const faqItems = [
   {
@@ -96,14 +96,14 @@ const faqItems = [
         {
           faqItems
             .filter((_, i) => i % 2 === 0)
-            .map((item) => <FaqItem {...item} client:only="react" />)
+            .map((item) => <FaqItem {...item} client:idle />)
         }
       </div>
       <div class="flex flex-col w-full gap-5">
         {
           faqItems
             .filter((_, i) => i % 2 === 1)
-            .map((item) => <FaqItem {...item} client:only="react" />)
+            .map((item) => <FaqItem {...item} client:idle />)
         }
       </div>
     </div>
