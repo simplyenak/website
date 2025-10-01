@@ -39,33 +39,34 @@ const customTours = await fetchApi<CustomToursPageType[]>({
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
       {
-        customTours?.map((tour) => (
-          <div class="bg-[#efe5d9] rounded-lg overflow-hidden shadow-[2px_0px_20px_-5px_#00000066] group flex flex-col">
-            <div class="h-50 w-full overflow-hidden">
-              <Image
-                src={getFullMediaUrl(tour.heroSection?.image)}
-                alt={"Custom Tour Image"}
-                class="size-full object-cover group-hover:scale-105 transition-transform duration-300"
-                width={400}
-                height={200}
-              />
+        customTours &&
+          customTours?.map((tour) => (
+            <div class="bg-[#efe5d9] rounded-lg overflow-hidden shadow-[2px_0px_20px_-5px_#00000066] group flex flex-col">
+              <div class="h-50 w-full overflow-hidden">
+                <Image
+                  src={getFullMediaUrl(tour.heroSection?.image)}
+                  alt={"Custom Tour Image"}
+                  class="size-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={400}
+                  height={200}
+                />
+              </div>
+              <div class="p-4 pb-8 md:pb-12 flex flex-col items-center justify-center text-center">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-2">
+                  {tour.heroSection?.title || "Custom Tour"}
+                </h3>
+                <p class="text-base md:text-lg">
+                  {tour.heroSection?.description}
+                </p>
+                <a
+                  href={`/custom-tours/${tour.slug}`}
+                  class="primary-btn max-w-[130px] !min-w-[130px] w-full hover:!text-primary hover:!border-primary mt-8 md:mt-12"
+                >
+                  SELECT
+                </a>
+              </div>
             </div>
-            <div class="p-4 pb-8 md:pb-12 flex flex-col items-center justify-center text-center">
-              <h3 class="text-2xl md:text-3xl font-semibold mb-2">
-                {tour.heroSection?.title || "Custom Tour"}
-              </h3>
-              <p class="text-base md:text-lg">
-                {tour.heroSection?.description}
-              </p>
-              <a
-                href={`/custom-tours/${tour.slug}`}
-                class="primary-btn max-w-[130px] !min-w-[130px] w-full hover:!text-primary hover:!border-primary mt-8 md:mt-12"
-              >
-                SELECT
-              </a>
-            </div>
-          </div>
-        ))
+          ))
       }
     </div>
   </section>
