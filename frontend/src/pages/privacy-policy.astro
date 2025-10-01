@@ -13,23 +13,27 @@ const privacyPolicy = await fetchApi<PrivacyPolicyPageTypes>({
 });
 ---
 
-<Layout title={privacyPolicy.metaTitle}>
+<Layout title={privacyPolicy?.metaTitle ?? "Privacy Policy"}>
   <section
     class="py-15 bg-[#ffa33f1a] min-h-[250px] flex items-center justify-center h-full"
   >
     <div class="main-container text-center">
       <h1 class="text-3xl md:text-5xl font-bold font-merriweather">
-        {privacyPolicy.headline}
+        {privacyPolicy?.headline}
       </h1>
     </div>
   </section>
   <section class="main-container py-15">
-    <Prose>
-      <BlockRendererClient
-        content={privacyPolicy.contents}
-        client:only="react"
-      />
-    </Prose>
+    {
+      privacyPolicy?.contents && (
+        <Prose>
+          <BlockRendererClient
+            content={privacyPolicy.contents}
+            client:only="react"
+          />
+        </Prose>
+      )
+    }
   </section>
-  <CTASection />
 </Layout>
+<CTASection />
