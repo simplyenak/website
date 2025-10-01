@@ -13,23 +13,27 @@ const termsConditionsData = await fetchApi<TermsConditionsPageTypes>({
 });
 ---
 
-<Layout title={termsConditionsData.metaTitle}>
+<Layout title={termsConditionsData?.metaTitle ?? "Terms & Conditions"}>
   <section
     class="py-15 bg-[#ffa33f1a] min-h-[250px] flex items-center justify-center h-full"
   >
     <div class="main-container text-center">
       <h1 class="text-3xl md:text-5xl font-bold font-merriweather">
-        {termsConditionsData.headline}
+        {termsConditionsData?.headline}
       </h1>
     </div>
   </section>
   <section class="main-container py-15">
-    <Prose>
-      <BlockRendererClient
-        content={termsConditionsData.contents}
-        client:only="react"
-      />
-    </Prose>
+    {
+      termsConditionsData?.contents && (
+        <Prose>
+          <BlockRendererClient
+            content={termsConditionsData.contents}
+            client:only="react"
+          />
+        </Prose>
+      )
+    }
   </section>
   <CTASection />
 </Layout>

@@ -31,7 +31,7 @@ let {
   }
 
   {
-    getFullMediaUrl(image) ? (
+    getFullMediaUrl(image) && (
       <Image
         src={getFullMediaUrl(image)}
         alt="About Hero Image"
@@ -39,14 +39,6 @@ let {
           "absolute inset-0 size-full object-cover -z-10",
           objectPosition,
         ]}
-        height={420}
-        width={1920}
-      />
-    ) : (
-      <Image
-        src={image}
-        alt="Hero Image"
-        class="absolute inset-0 size-full object-cover -z-10"
         height={420}
         width={1920}
       />
