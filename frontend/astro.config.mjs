@@ -21,13 +21,26 @@ export default defineConfig({
   // Performance: Enable HTML compression
   compressHTML: true,
 
-  // Performance: Allow remote images from CDN (optimized by Cloudflare Polish)
+  // Performance: Enable image optimization for remote S3 images
   image: {
-    domains: ['cdn.simplyenak.com', 'api.system.simplyenak.com'],
-    remotePatterns: [{
-      protocol: 'https',
-      hostname: 'cdn.simplyenak.com',
-    }],
+    domains: ['se-website-images.s3.nl-ams.scw.cloud', 'cdn.simplyenak.com', 'api.system.simplyenak.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'se-website-images.s3.nl-ams.scw.cloud',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.simplyenak.com',
+      },
+    ],
+    // Optimize images: convert to WebP, resize for responsive display
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false, // Allow large S3 images
+      },
+    },
   },
 
   // Performance: Optimize CSS delivery
