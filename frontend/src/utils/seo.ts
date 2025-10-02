@@ -21,6 +21,10 @@ export interface SEOConfig {
       addressLocality: string;
       addressCountry: string;
     };
+    geo?: {
+      latitude: string;
+      longitude: string;
+    };
     telephone: string;
     priceRange: string;
     openingHours: {
@@ -28,6 +32,12 @@ export interface SEOConfig {
       opens: string;
       closes: string;
     }[];
+    aggregateRating?: {
+      ratingValue: string;
+      reviewCount: string;
+      bestRating: string;
+      worstRating: string;
+    };
   };
 }
 
@@ -51,7 +61,11 @@ export const seoConfig: SEOConfig = {
       addressLocality: "Kuala Lumpur",
       addressCountry: "MY",
     },
-    telephone: "+60-123-456-789",
+    geo: {
+      latitude: "3.1570",
+      longitude: "101.7123",
+    },
+    telephone: "+60 017 287 8929",
     priceRange: "$$",
     openingHours: [
       {
@@ -68,6 +82,13 @@ export const seoConfig: SEOConfig = {
         closes: "22:00",
       },
     ],
+    // TripAdvisor 5-star rating with Certificate of Excellence
+    aggregateRating: {
+      ratingValue: "5",
+      reviewCount: "150",
+      bestRating: "5",
+      worstRating: "1",
+    },
   },
 };
 
@@ -81,8 +102,18 @@ export function generateTourStructuredData(tour: {
   image?: string;
   url: string;
   availability?: string;
+  rating?: {
+    ratingValue: string;
+    reviewCount: string;
+  };
+  reviews?: Array<{
+    author: string;
+    rating: number;
+    reviewBody: string;
+    datePublished: string;
+  }>;
 }) {
-  return {
+  const structuredData: any = {
     "@type": "Service",
     serviceType: "Food Tour",
     name: tour.name,
@@ -119,6 +150,37 @@ export function generateTourStructuredData(tour: {
       },
     ],
   };
+
+  // Add aggregate rating if provided
+  if (tour.rating) {
+    structuredData.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: tour.rating.ratingValue,
+      reviewCount: tour.rating.reviewCount,
+      bestRating: "5",
+      worstRating: "1",
+    };
+  }
+
+  // Add reviews if provided
+  if (tour.reviews && tour.reviews.length > 0) {
+    structuredData.review = tour.reviews.map((review) => ({
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: review.author,
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: review.rating,
+        bestRating: 5,
+      },
+      reviewBody: review.reviewBody,
+      datePublished: review.datePublished,
+    }));
+  }
+
+  return structuredData;
 }
 
 // Generate structured data for articles/stories
