@@ -71,7 +71,7 @@ export const seoConfig: SEOConfig = {
   },
 };
 
-// Generate structured data for tours/products
+// Generate structured data for tours/services
 export function generateTourStructuredData(tour: {
   name: string;
   description: string;
@@ -83,14 +83,20 @@ export function generateTourStructuredData(tour: {
   availability?: string;
 }) {
   return {
-    "@type": "Product",
+    "@type": "Service",
+    serviceType: "Food Tour",
     name: tour.name,
     description: tour.description,
     image: tour.image || seoConfig.defaultImage,
     url: tour.url,
-    brand: {
-      "@type": "Brand",
+    provider: {
+      "@type": "LocalBusiness",
       name: seoConfig.siteName,
+      "@id": "https://simplyenak.com/#localbusiness",
+    },
+    areaServed: {
+      "@type": "City",
+      name: tour.location,
     },
     offers: {
       "@type": "Offer",
@@ -98,47 +104,8 @@ export function generateTourStructuredData(tour: {
       priceCurrency: "MYR",
       availability: tour.availability || "https://schema.org/InStock",
       url: tour.url,
-      seller: {
-        "@type": "Organization",
-        name: seoConfig.siteName,
-      },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: "0",
-          currency: "MYR",
-        },
-        shippingDestination: {
-          "@type": "DefinedRegion",
-          addressCountry: "MY",
-        },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 0,
-            unitCode: "DAY",
-          },
-          transitTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 0,
-            unitCode: "DAY",
-          },
-        },
-      },
-      hasMerchantReturnPolicy: {
-        "@type": "MerchantReturnPolicy",
-        applicableCountry: "MY",
-        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-        merchantReturnDays: 7,
-        returnMethod: "https://schema.org/ReturnByMail",
-        returnFees: "https://schema.org/FreeReturn",
-      },
+      validFrom: new Date().toISOString(),
     },
-    category: "Food Tour",
     additionalProperty: [
       {
         "@type": "PropertyValue",
