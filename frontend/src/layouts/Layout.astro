@@ -51,7 +51,7 @@ const {
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <script>
+    <script is:inline>
       (function () {
         const s = document.createElement("script");
         s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
@@ -63,8 +63,10 @@ const {
       })();
     </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-262711985"
-    ></script>
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-262711985"></script>
     <script>
       declare global {
         interface Window {
@@ -163,5 +165,27 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <script is:inline>
+      !(function () {
+        var e = document.createElement("div");
+        e.id = "myAliceWebChat";
+        var t = document.createElement("script");
+        (t.type = "text/javascript"),
+          (t.async = !0),
+          (t.src = "https://livechat.myalice.ai/index.js");
+        var a = document.body.getElementsByTagName("script");
+        (a = a[a.length - 1]).parentNode.insertBefore(t, a),
+          a.parentNode.insertBefore(e, a),
+          t.addEventListener("load", function () {
+            MyAliceWebChat.init({
+              selector: "#myAliceWebChat",
+              platformId: "12818",
+              primaryId: "7b296d7e658e11edac5dc275f55bff6f",
+              token: "4c6981083aeed7ce81f8c47d029d061227cf5f3939f449b4",
+            });
+          });
+      })();
+    </script>
   </body>
 </html>
