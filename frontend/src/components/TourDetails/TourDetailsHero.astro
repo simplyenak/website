@@ -5,7 +5,7 @@ import IconPaperRoket from "@/assets/icons/icon-paper-rocket.svg";
 import IconUser from "@/assets/icons/icon-user.svg";
 import IconArrowRight from "@/assets/icons/icon-arrow-right.svg";
 import IconClock from "@/assets/icons/icon-clock.svg";
-import { Image } from "astro:assets";
+
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 import type { TourDetailsHeroTypes } from "@/types";
 type Props = {
@@ -61,7 +61,7 @@ const items = [
       </ul>
     </div>
   </div>
-  <Image
+  <img
     src={getFullMediaUrl(hero.image)}
     alt="Tour Details Hero Image"
     class="absolute inset-0 w-full h-full object-cover"

@@ -1,6 +1,6 @@
 ---
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-import { Image } from "astro:assets";
+
 let {
   title,
   description = "",
@@ -32,7 +32,7 @@ let {
 
   {
     getFullMediaUrl(image) && (
-      <Image
+      <img
         src={getFullMediaUrl(image)}
         alt="About Hero Image"
         class:list={[

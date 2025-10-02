@@ -9,7 +9,7 @@ import img1 from "@/assets/images/kuala_lumpur_icon.webp";
 import img2 from "@/assets/images/penang_icon.webp";
 import img3 from "@/assets/images/asset-85.jpeg";
 import heroImage from "@/assets/images/kuala-lumpur-1641785_1920.jpg";
-import { Image } from "astro:assets";
+
 
 import faqimg1 from "@/assets/images/faq/1.webp";
 import faqimg2 from "@/assets/images/faq/2.webp";
@@ -73,7 +73,7 @@ const faqItems = [
     <h4 class="text-h4 text-center">Select your tour location</h4>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-16 md:pt-20">
       <div>
-        <Image
+        <img
           src={img1}
           alt="Kuala Lumpur"
           class="object-contain mx-auto max-w-[256px] rounded-full shadow-[0px_0px_15px_1px_#3a3a3aab]"
@@ -82,7 +82,7 @@ const faqItems = [
         />
       </div>
       <div>
-        <Image
+        <img
           src={img2}
           alt="Penang"
           class="object-contain mx-auto max-w-[256px] rounded-full shadow-[0px_0px_15px_1px_#3a3a3aab]"
@@ -108,7 +108,7 @@ const faqItems = [
       </div>
     </div>
   </section>
-  <Image
+  <img
     src={img3}
     alt="Kuala Lumpur"
     class="w-full h-[500px] object-cover"

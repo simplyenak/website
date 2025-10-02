@@ -2,7 +2,7 @@
 import fetchApi from "@/lib/strapi";
 import type { PartnersSection } from "@/types";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-import { Image } from "astro:assets";
+
 const data: {
   partnersSection: PartnersSection;
 } = await fetchApi({
@@ -21,7 +21,7 @@ const partnersSection = data.partnersSection;
         (image) =>
           getFullMediaUrl(image) && (
             <div>
-              <Image
+              <img
                 src={getFullMediaUrl(image)}
                 alt="Partner logo"
                 class="mx-auto object-contain w-full h-auto max-h-[60px]"

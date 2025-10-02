@@ -6,7 +6,7 @@ import Button from "@/components/Button.astro";
 
 export const prerender = true;
 import heroImage from "@/assets/images/background-for-hero.jpg";
-import { Image } from "astro:assets";
+
 import img3 from "@/assets/images/asset-85.jpeg";
 import img9 from "@/assets/images/9.webp";
 import img10 from "@/assets/images/10.webp";
@@ -71,7 +71,7 @@ const items = [
           ]}
         >
           <div class="flex-1">
-            <Image
+            <img
               src={item.image}
               alt={item.title}
               width={600}
@@ -91,7 +91,7 @@ const items = [
     }
   </section>
   <section class="relative">
-    <Image
+    <img
       src={img3}
       alt="Kuala Lumpur"
       class="w-full h-[500px] object-cover"

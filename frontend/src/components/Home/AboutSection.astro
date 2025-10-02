@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+
 import img1 from "@/assets/images/1.webp";
 import fetchApi from "@/lib/strapi";
 import type { AboutSection } from "@/types";
@@ -31,7 +31,7 @@ const aboutSection = data.aboutSection;
     <div class="rounded-xl overflow-hidden w-full h-[340px] md:h-[420px]">
       {
         aboutSection?.image && (
-          <Image
+          <img
             src={getFullMediaUrl(aboutSection.image)}
             alt="About Section Image"
             class="w-full h-full object-cover"
