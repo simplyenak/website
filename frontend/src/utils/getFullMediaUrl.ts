@@ -12,9 +12,10 @@ export function getFullMediaUrl(media: { url?: string } | undefined) {
     if (isDevelopment) {
       return media.url // Keep S3 direct in development
     }
-    // In production: rewrite to cdn.simplyenak.com/uploads/...
-    const path = media.url.split(s3Domain)[1] // Gets "/uploads/..." part
-    return cdnURL + path
+    // In production: rewrite S3 URL to CDN (images are at bucket root)
+    // Example: https://se-website-images.s3.nl-ams.scw.cloud/image.jpg → https://cdn.simplyenak.com/image.jpg
+    const filename = media.url.split(s3Domain)[1] // Gets "/image.jpg"
+    return cdnURL + filename
   }
 
   // If URL is already absolute (not S3), return as-is
