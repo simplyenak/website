@@ -92,6 +92,38 @@ export const seoConfig: SEOConfig = {
   },
 };
 
+// Location-specific coordinates for multi-city operations
+export const locations = {
+  kualaLumpur: {
+    name: "Kuala Lumpur",
+    address: {
+      streetAddress: "Kuala Lumpur City Centre",
+      addressLocality: "Kuala Lumpur",
+      addressRegion: "Federal Territory of Kuala Lumpur",
+      addressCountry: "MY",
+      postalCode: "50088",
+    },
+    geo: {
+      latitude: "3.1570",
+      longitude: "101.7123",
+    },
+  },
+  georgetown: {
+    name: "Georgetown, Penang",
+    address: {
+      streetAddress: "Georgetown Heritage Area",
+      addressLocality: "Georgetown",
+      addressRegion: "Penang",
+      addressCountry: "MY",
+      postalCode: "10200",
+    },
+    geo: {
+      latitude: "5.4141",
+      longitude: "100.3288",
+    },
+  },
+};
+
 // Generate structured data for tours/services
 export function generateTourStructuredData(tour: {
   name: string;
@@ -128,6 +160,23 @@ export function generateTourStructuredData(tour: {
     areaServed: {
       "@type": "City",
       name: tour.location,
+      ...(tour.location.toLowerCase().includes("kuala lumpur") && {
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: locations.kualaLumpur.geo.latitude,
+          longitude: locations.kualaLumpur.geo.longitude,
+        },
+      }),
+      ...(tour.location.toLowerCase().includes("penang") ||
+      tour.location.toLowerCase().includes("georgetown")
+        ? {
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: locations.georgetown.geo.latitude,
+              longitude: locations.georgetown.geo.longitude,
+            },
+          }
+        : {}),
     },
     offers: {
       "@type": "Offer",
@@ -301,4 +350,62 @@ export function generatePageTitle(
 export function generateCanonicalUrl(path: string): string {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   return `${seoConfig.siteUrl}${cleanPath}`;
+}
+
+// Generate location-specific LocalBusiness schema
+export function generateLocationSchema(
+  location: "kualaLumpur" | "georgetown"
+) {
+  const locationData = locations[location];
+
+  return {
+    "@type": "LocalBusiness",
+    "@id": `https://simplyenak.com/#localbusiness-${location}`,
+    name: `${seoConfig.siteName} - ${locationData.name}`,
+    url: seoConfig.siteUrl,
+    logo: seoConfig.logo,
+    image: seoConfig.defaultImage,
+    description: `${seoConfig.siteName} offers authentic Malaysian food tours in ${locationData.name}. Experience local culture, heritage, and delicious cuisine with expert local guides.`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: locationData.address.streetAddress,
+      addressLocality: locationData.address.addressLocality,
+      addressRegion: locationData.address.addressRegion,
+      addressCountry: locationData.address.addressCountry,
+      postalCode: locationData.address.postalCode,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: locationData.geo.latitude,
+      longitude: locationData.geo.longitude,
+    },
+    telephone: seoConfig.businessInfo.telephone,
+    priceRange: seoConfig.businessInfo.priceRange,
+    aggregateRating: seoConfig.businessInfo.aggregateRating,
+    openingHoursSpecification: seoConfig.businessInfo.openingHours.map(
+      (hours) => ({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: hours.dayOfWeek,
+        opens: hours.opens,
+        closes: hours.closes,
+      })
+    ),
+    sameAs: [
+      seoConfig.socialLinks.facebook,
+      seoConfig.socialLinks.instagram,
+      seoConfig.socialLinks.linkedin,
+    ].filter(Boolean),
+    areaServed: {
+      "@type": "City",
+      name: locationData.address.addressLocality,
+      containedIn: {
+        "@type": "State",
+        name: locationData.address.addressRegion,
+        containedIn: {
+          "@type": "Country",
+          name: "Malaysia",
+        },
+      },
+    },
+  };
 }
