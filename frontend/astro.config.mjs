@@ -21,6 +21,15 @@ export default defineConfig({
   // Performance: Enable HTML compression
   compressHTML: true,
 
+  // Performance: Allow remote images from Strapi (optimized by Cloudflare Polish)
+  image: {
+    domains: ['api.system.simplyenak.com'],
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'api.system.simplyenak.com',
+    }],
+  },
+
   // Performance: Optimize CSS delivery
   build: {
     inlineStylesheets: 'auto', // Inline small CSS (<4kb)
