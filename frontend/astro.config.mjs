@@ -14,9 +14,24 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://simplyenak.com",
-  
+
   adapter: cloudflare(),
   output: "server",
+
+  // Performance: Enable HTML compression
+  compressHTML: true,
+
+  // Performance: Optimize CSS delivery
+  build: {
+    inlineStylesheets: 'auto', // Inline small CSS (<4kb)
+  },
+
+  // Performance: Enable prefetch for faster navigation
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -27,6 +42,19 @@ export default defineConfig({
           ? { "react-dom/server": "react-dom/server.edge" }
           : {}),
       },
+    },
+    // Performance: Optimize build output
+    build: {
+      cssCodeSplit: true,
+      minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vue-vendor': ['vue'],
+            'react-vendor': ['react', 'react-dom'],
+          }
+        }
+      }
     },
   },
 
