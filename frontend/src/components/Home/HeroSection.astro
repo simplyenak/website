@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Button from "@/components/Button.astro";
 import fetchApi from "@/lib/strapi";
 import type { HeroSection } from "@/types";
@@ -40,18 +39,15 @@ const heroSection = data.heroSection;
   </div>
   {
     getFullMediaUrl(heroSection.bgImage) && (
-      <Image
+      <img
         src={getFullMediaUrl(heroSection.bgImage)}
         alt="Hero Image"
         class="absolute inset-0 object-cover size-full"
-        width={1920}
-        height={1080}
-        widths={[640, 750, 828, 1080, 1200, 1920]}
-        sizes="100vw"
+        width="1920"
+        height="1080"
         loading="eager"
         fetchpriority="high"
-        format="webp"
-        quality={85}
+        decoding="async"
       />
     )
   }
