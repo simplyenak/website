@@ -44,8 +44,20 @@ const baseStructuredData = {
         addressLocality: "Kuala Lumpur",
         addressCountry: "MY",
       },
-      telephone: "+60-123-456-789",
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: "3.1570",
+        longitude: "101.7123",
+      },
+      telephone: "+60 017 287 8929",
       priceRange: "$$",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        reviewCount: "150",
+        bestRating: "5",
+        worstRating: "1",
+      },
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
