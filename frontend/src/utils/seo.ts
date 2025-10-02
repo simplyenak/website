@@ -107,6 +107,8 @@ export const locations = {
       latitude: "3.1570",
       longitude: "101.7123",
     },
+    // Google My Business profile URL
+    hasMap: "https://www.google.com/search?kgmid=/g/11_rl_t5r&q=Kuala+Lumpur+Food+Tours+by+Simply+Enak",
   },
   georgetown: {
     name: "Georgetown, Penang",
@@ -121,6 +123,8 @@ export const locations = {
       latitude: "5.4141",
       longitude: "100.3288",
     },
+    // Google My Business profile URL
+    hasMap: "https://www.google.com/search?kgmid=/g/11f9xlvcb1&q=Penang+Food+Tours+by+Simply+Enak",
   },
 };
 
@@ -379,6 +383,8 @@ export function generateLocationSchema(
       latitude: locationData.geo.latitude,
       longitude: locationData.geo.longitude,
     },
+    // Link to Google My Business profile
+    ...(locationData.hasMap && { hasMap: locationData.hasMap }),
     telephone: seoConfig.businessInfo.telephone,
     priceRange: seoConfig.businessInfo.priceRange,
     aggregateRating: seoConfig.businessInfo.aggregateRating,
