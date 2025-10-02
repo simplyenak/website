@@ -1,7 +1,7 @@
 ---
 import BlockRendererClient from "@/components/BlockRendererClient";
 import type { Footer } from "@/types";
-import { Image } from "astro:assets";
+
 import fetchApi from "@/lib/strapi";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
@@ -18,7 +18,7 @@ const footer: Footer = await fetchApi({
   >
     <div class="space-y-5">
       <a href="/" class="px-4 py-2 bg-white block max-w-[250px]">
-        <Image
+        <img
           src={getFullMediaUrl(footer.logo)}
           alt="Logo"
           width={250}
@@ -45,7 +45,7 @@ const footer: Footer = await fetchApi({
             footer.partners.map(
               (partner) =>
                 getFullMediaUrl(partner.image) && (
-                  <Image
+                  <img
                     src={getFullMediaUrl(partner.image)}
                     alt={partner.image.name}
                     class="h-10 md:h-[60px] w-auto object-contain"
@@ -65,7 +65,7 @@ const footer: Footer = await fetchApi({
           {
             footer.paymentMethods.map((paymentMethods) => (
               <div class="p-1.5 rounded-sm overflow-hidden bg-white grid place-items-center w-12">
-                <Image
+                <img
                   src={getFullMediaUrl(paymentMethods)}
                   alt={paymentMethods.name}
                   class="size-full object-contain"

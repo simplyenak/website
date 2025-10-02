@@ -1,7 +1,7 @@
 ---
 import BlockRendererClient from "@/components/BlockRendererClient";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-import { Image } from "astro:assets";
+
 
 let {
   image,
@@ -24,7 +24,7 @@ let {
     >
       {
         getFullMediaUrl(image) && (
-          <Image
+          <img
             src={getFullMediaUrl(image)}
             alt="TextWithLeftRightImage"
             height={500}

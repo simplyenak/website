@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+
 import fetchApi from "@/lib/strapi";
 import type { TestimonialsSection } from "@/types";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
@@ -28,7 +28,7 @@ const testimonialsSection = data.testimonialsSection;
               <div class="flex items-center gap-4 mt-5">
                 <div class="md:size-[70px] size-12 rounded-full overflow-hidden">
                   {getFullMediaUrl(testimonial.image) && (
-                    <Image
+                    <img
                       src={getFullMediaUrl(testimonial.image)}
                       alt={testimonial.image.name}
                       class="size-full object-cover"
