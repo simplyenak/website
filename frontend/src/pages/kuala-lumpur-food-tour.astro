@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { kualaLumpurLandingPage } from '../data/kl-landing-page';
+
+export const prerender = true;
 import Hero from '../components/LandingPage/Hero.astro';
 import TrustBar from '../components/LandingPage/TrustBar.astro';
 import Heritage from '../components/LandingPage/Heritage.astro';
