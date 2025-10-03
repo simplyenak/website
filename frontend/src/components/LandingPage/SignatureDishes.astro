@@ -1,0 +1,212 @@
+---
+// Signature Dishes Section
+// Showcase iconic dishes with stories, origins, where to find them
+
+interface SignatureDish {
+  name: string;
+  description: string;
+  origin: string;
+  whereToFind: string;
+  image: string;
+  vegetarian?: boolean;
+  cultural: string;
+}
+
+interface Props {
+  dishes: SignatureDish[];
+  location: string;
+}
+
+const { dishes, location } = Astro.props;
+---
+
+<section class="signature-dishes-section py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Must-Try Dishes in {location}
+      </h2>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        Every dish tells a story. Here are the iconic foods that define {
+          location
+        }'s culinary identity—where they come from, what makes them special, and
+        where to find the best versions.
+      </p>
+    </div>
+
+    <!-- Dishes Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {
+        dishes.map((dish) => (
+          <article class="dish-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            {/* Image */}
+            <div class="dish-image-wrapper relative h-64 overflow-hidden">
+              <img
+                src={dish.image}
+                alt={dish.name}
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              />
+
+              {/* Badges */}
+              <div class="absolute top-4 right-4 flex gap-2">
+                {dish.vegetarian && (
+                  <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    Vegetarian
+                  </span>
+                )}
+                <span class="bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                  {dish.cultural}
+                </span>
+              </div>
+
+              {/* Gradient overlay */}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+
+            {/* Content */}
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                {dish.name}
+              </h3>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                {dish.description}
+              </p>
+
+              {/* Origin */}
+              <div class="mb-4">
+                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-1">
+                  Origin
+                </h4>
+                <p class="text-sm text-gray-700 leading-relaxed">
+                  {dish.origin}
+                </p>
+              </div>
+
+              {/* Where to Find */}
+              <div class="pt-4 border-t border-gray-200">
+                <h4 class="text-sm font-semibold text-yellow-600 uppercase tracking-wide mb-1 flex items-center gap-1">
+                  <svg
+                    class="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Where to Find It
+                </h4>
+                <p class="text-sm text-gray-700 leading-relaxed">
+                  {dish.whereToFind}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Bottom Note -->
+    <div class="mt-16 text-center max-w-2xl mx-auto">
+      <p class="text-lg text-gray-600 leading-relaxed">
+        <span class="text-yellow-600 font-semibold">Local tip:</span> The best
+        versions of these dishes aren't in fancy restaurants—they're at hawker stalls,
+        wet markets, and family-run kopitiams where recipes have been perfected over
+        generations. That's where we'll take you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dish-card {
+    position: relative;
+  }
+
+  .dish-image-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+    pointer-events: none;
+  }
+
+  /* Stagger animation */
+  .dish-card {
+    opacity: 0;
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .dish-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .dish-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .dish-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .dish-card:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .dish-card:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .dish-card:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Pause until in view */
+  @media (prefers-reduced-motion: no-preference) {
+    .dish-card {
+      animation-play-state: paused;
+    }
+
+    .dish-card.in-view {
+      animation-play-state: running;
+    }
+  }
+</style>
+
+<script>
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    document.querySelectorAll(".dish-card").forEach((card) => {
+      observer.observe(card);
+    });
+  } else {
+    document.querySelectorAll(".dish-card").forEach((card) => {
+      card.classList.add("in-view");
+    });
+  }
+</script>

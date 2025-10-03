@@ -1,0 +1,161 @@
+---
+// What to Expect section
+interface Props {
+  title: string;
+  intro: string;
+  items: Array<{
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+}
+
+const { title, intro, items } = Astro.props;
+
+// Icon mapping
+const iconMap: Record<string, string> = {
+  'utensils': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />',
+  'book-open': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+  'users': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />',
+  'award': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />',
+  'shopping-basket': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />',
+  'map': '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />',
+};
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        {title}
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        {intro}
+      </p>
+    </div>
+
+    <!-- Expectation Items Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        items.map((item, index) => (
+          <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+            {/* Icon */}
+            <div class="flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-lg mb-4 mx-auto">
+              <svg
+                class="w-8 h-8 text-yellow-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <g dangerouslySetInnerHTML={{ __html: iconMap[item.icon] || iconMap['award'] }} />
+              </svg>
+            </div>
+
+            {/* Title */}
+            <h3 class="text-xl font-semibold text-gray-900 text-center mb-3">
+              {item.title}
+            </h3>
+
+            {/* Description */}
+            <p class="text-gray-600 text-center leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Additional Info -->
+    <div class="mt-12">
+      <div class="bg-yellow-50 rounded-lg p-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">
+            What Makes Our Tours Different
+          </h3>
+          <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <div class="text-center">
+              <div class="flex items-center justify-center w-12 h-12 bg-yellow-500 rounded-full mb-3 mx-auto">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">Born & Raised Guides</h4>
+              <p class="text-sm text-gray-600">
+                Locals sharing their personal stories and family food traditions
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div class="flex items-center justify-center w-12 h-12 bg-yellow-500 rounded-full mb-3 mx-auto">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 100 4h2a2 2 0 100 4h2a1 1 0 100 2 2 2 0 01-2 2H6a2 2 0 01-2-2V5z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">Authentic Experiences</h4>
+              <p class="text-sm text-gray-600">
+                Real wet markets, hawker stalls, and family-run restaurants
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div class="flex items-center justify-center w-12 h-12 bg-yellow-500 rounded-full mb-3 mx-auto">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">Cultural Context</h4>
+              <p class="text-sm text-gray-600">
+                Learn the stories behind the dishes and why they matter
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Fade in animation for expectation cards */
+  .grid > div {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .grid > div:nth-child(1) { animation-delay: 0.1s; }
+  .grid > div:nth-child(2) { animation-delay: 0.2s; }
+  .grid > div:nth-child(3) { animation-delay: 0.3s; }
+  .grid > div:nth-child(4) { animation-delay: 0.4s; }
+  .grid > div:nth-child(5) { animation-delay: 0.5s; }
+  .grid > div:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Icon hover effect */
+  .hover\:shadow-lg:hover {
+    transform: translateY(-2px);
+  }
+</style>

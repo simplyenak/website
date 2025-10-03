@@ -1,0 +1,205 @@
+---
+// Food Cultures Section - Malay, Chinese, Indian cuisines
+// Visual, engaging, educational content
+
+interface FoodCulture {
+  name: string;
+  description: string;
+  keyDishes: string[];
+  culturalContext: string;
+  image: string;
+}
+
+interface Props {
+  cultures: FoodCulture[];
+  location: string;
+}
+
+const { cultures, location } = Astro.props;
+---
+
+<section class="food-cultures-section py-16 md:py-24 bg-gradient-to-b from-white via-gray-50 to-white">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        The Three Flavors of {location}
+      </h2>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        {location}'s food scene is shaped by three distinct culinary traditions—each
+        with its own history, techniques, and signature dishes. Together, they
+        create one of the world's most diverse food cultures.
+      </p>
+    </div>
+
+    <!-- Cultures Grid -->
+    <div class="space-y-16 max-w-6xl mx-auto">
+      {
+        cultures.map((culture, index) => (
+          <article
+            class={`culture-card grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${
+              index % 2 === 1 ? "lg:grid-flow-dense" : ""
+            }`}
+          >
+            {/* Image */}
+            <div
+              class={`culture-image-wrapper ${
+                index % 2 === 1 ? "lg:col-start-2" : ""
+              }`}
+            >
+              <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                <img
+                  src={culture.image}
+                  alt={`${culture.name} cuisine in ${location}`}
+                  class="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Floating badge */}
+                <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                  <p class="font-bold text-gray-900">{culture.name} Cuisine</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div
+              class={`culture-content ${
+                index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""
+              }`}
+            >
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">
+                {culture.name} Cuisine
+              </h3>
+
+              {/* Description */}
+              <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                {culture.description}
+              </p>
+
+              {/* Key Dishes */}
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
+                  Signature Dishes
+                </h4>
+                <ul class="space-y-2">
+                  {culture.keyDishes.map((dish) => (
+                    <li class="flex items-start gap-3">
+                      <svg
+                        class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path
+                          fill-rule="evenodd"
+                          d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span class="text-gray-700">{dish}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Cultural Context */}
+              <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg p-6 border-l-4 border-yellow-500">
+                <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-2">
+                  Cultural Context
+                </h4>
+                <p class="text-gray-700 leading-relaxed italic">
+                  {culture.culturalContext}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Bottom callout -->
+    <div class="mt-16 text-center max-w-3xl mx-auto">
+      <div class="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-8 md:p-12 text-white shadow-xl">
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">
+          But Here's What Makes {location} Special
+        </h3>
+        <p class="text-lg leading-relaxed opacity-95">
+          These three cultures didn't stay separate—they influenced each other.
+          Chinese hawkers use Malay sambal. Indian cooks adapted to local ingredients.
+          Peranakan (Nyonya) cuisine is a Chinese-Malay fusion. This cross-pollination
+          created dishes that exist nowhere else on Earth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .culture-card {
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .culture-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .culture-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .culture-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Pause animation until in viewport */
+  @media (prefers-reduced-motion: no-preference) {
+    .culture-card {
+      animation-play-state: paused;
+    }
+
+    .culture-card.in-view {
+      animation-play-state: running;
+    }
+  }
+</style>
+
+<script>
+  // Trigger animation on scroll
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -100px 0px",
+      }
+    );
+
+    document.querySelectorAll(".culture-card").forEach((card) => {
+      observer.observe(card);
+    });
+  } else {
+    // Fallback: show all
+    document.querySelectorAll(".culture-card").forEach((card) => {
+      card.classList.add("in-view");
+    });
+  }
+</script>
