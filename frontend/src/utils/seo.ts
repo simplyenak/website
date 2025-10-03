@@ -53,6 +53,11 @@ export const seoConfig: SEOConfig = {
     facebook: "https://www.facebook.com/simplyenak",
     instagram: "https://www.instagram.com/simplyenak",
     linkedin: "https://www.linkedin.com/company/simply-enak",
+    // TODO: Add your actual profile URLs from these platforms:
+    // klook: "https://www.klook.com/...",
+    // viator: "https://www.viator.com/...",
+    // getyourguide: "https://www.getyourguide.com/...",
+    // tripadvisor: "https://www.tripadvisor.com/...",
   },
   businessInfo: {
     name: "Simply Enak",
