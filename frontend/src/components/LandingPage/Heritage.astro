@@ -1,0 +1,149 @@
+---
+// Heritage & Food Culture Introduction Section
+// Educational content that positions you as the expert
+
+interface Props {
+  heritage: {
+    title: string;
+    introduction: string;
+    yearEstablished?: string;
+    culturalInfluences: string[];
+    keyFacts: Array<{
+      label: string;
+      value: string;
+      description?: string;
+    }>;
+  };
+  location: string;
+}
+
+const { heritage, location } = Astro.props;
+
+// Split introduction into paragraphs for better readability
+const paragraphs = heritage.introduction.split('\n\n');
+---
+
+<section id="heritage" class="heritage-section py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          {heritage.title}
+        </h2>
+        {heritage.yearEstablished && (
+          <p class="text-lg text-yellow-600 font-semibold">
+            Est. {heritage.yearEstablished}
+          </p>
+        )}
+      </div>
+
+      <!-- Rich Text Content -->
+      <div class="prose prose-lg md:prose-xl max-w-none mb-12">
+        {paragraphs.map((paragraph) => (
+          <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+
+      <!-- Cultural Influences -->
+      {heritage.culturalInfluences && heritage.culturalInfluences.length > 0 && (
+        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-8 mb-12">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">
+            Cultural Influences in {location}'s Food Scene
+          </h3>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {heritage.culturalInfluences.map((influence) => (
+              <li class="flex items-start gap-3">
+                <svg
+                  class="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span class="text-gray-700 text-lg">{influence}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Key Facts Grid -->
+      {heritage.keyFacts && heritage.keyFacts.length > 0 && (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {heritage.keyFacts.map((fact) => (
+            <div class="fact-card bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-yellow-500 hover:shadow-lg transition-all duration-300">
+              <p class="text-sm text-gray-600 uppercase tracking-wide mb-2">
+                {fact.label}
+              </p>
+              <p class="text-3xl font-bold text-gray-900 mb-2">{fact.value}</p>
+              {fact.description && (
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  {fact.description}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Prose styling for rich text readability */
+  .prose {
+    color: #374151;
+    max-width: 65ch;
+  }
+
+  .prose p {
+    margin-bottom: 1.5em;
+    line-height: 1.75;
+  }
+
+  /* Make first paragraph slightly larger */
+  .prose p:first-of-type {
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  /* Fact card hover effect */
+  .fact-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #f59e0b, #f97316);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .fact-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Responsive typography */
+  @media (max-width: 768px) {
+    .prose {
+      font-size: 1rem;
+    }
+
+    .prose p:first-of-type {
+      font-size: 1.0625rem;
+    }
+  }
+</style>
