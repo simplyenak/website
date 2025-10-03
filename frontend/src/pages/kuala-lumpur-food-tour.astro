@@ -7,7 +7,7 @@ import SEO from '../components/SEO.astro';
 
 const pageData = kualaLumpurLandingPage;
 
-// SEO metadata - KL Landing Page v2
+// SEO metadata - KL Food Guide
 const seoData = {
   title: pageData.metaTitle,
   description: pageData.metaDescription,
@@ -17,8 +17,8 @@ const seoData = {
   structuredData: {
     '@context': 'https://schema.org',
     '@type': ['TouristDestination', 'EducationalOrganization'],
-    name: 'Simply Enak: Kuala Lumpur\'s Leading Food Heritage Authority',
-    description: pageData.metaDescription + " Since 2018, Simply Enak has been Kuala Lumpur\'s most comprehensive resource for understanding the city\'s multicultural food evolution and cultural heritage.",
+    name: 'Simply Enak: Kuala Lumpur\'s Food Heritage Guide',
+    description: pageData.metaDescription + " Since 2018, Simply Enak has been Kuala Lumpur's most comprehensive resource for understanding the city's multicultural food evolution and cultural heritage.",
     url: `https://simplyenak.com${Astro.url.pathname}`,
     image: `https://simplyenak.com${pageData.hero.backgroundImage}`,
     educationalLevel: 'Cultural Education',
@@ -34,36 +34,6 @@ const seoData = {
       '@type': 'GeoCoordinates',
       latitude: pageData.geo.latitude,
       longitude: pageData.geo.longitude
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: pageData.trustSignals.rating,
-      reviewCount: pageData.trustSignals.reviewCount,
-      bestRating: 5,
-      worstRating: 1
-    },
-    sameAs: [
-      pageData.googleMyBusiness.url,
-      'https://www.tripadvisor.com/Attraction_Review-g298570-d2328058-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html'
-    ],
-    about: [
-      {
-        '@type': 'Thing',
-        name: 'Malaysian Food Heritage',
-        description: 'The multicultural evolution of Malaysian cuisine from Malay, Chinese, and Indian traditions'
-      },
-      {
-        '@type': 'Thing',
-        name: 'Kuala Lumpur Street Food Culture',
-        description: 'Traditional hawker center and wet market food culture spanning 150+ years'
-      }
-    ],
-    mainEntity: {
-      '@type': 'EducationalOrganization',
-      name: 'Simply Enak Food Heritage Education',
-      description: 'Kuala Lumpur\'s leading authority on multicultural food heritage education since 2018',
-      educationalLevel: 'Cultural Heritage Education',
-      hasEducationalUse: 'Teaching Malaysian Food History and Cultural Traditions'
     }
   }
 };
@@ -72,320 +42,434 @@ const seoData = {
 <Layout>
   <SEO {...seoData} />
 
-  <!-- Blog Header -->
-  <header class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <div class="text-gray-500 mb-4">
-          <time datetime="2025-10-03">October 3, 2025</time> •
-          <span>By Simply Enak Team</span> •
-          <span>15 min read</span>
-        </div>
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-br from-orange-50 to-blue-50 py-16">
+      <div class="px-4 text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
           {pageData.hero.title}
         </h1>
-        <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+        <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
           {pageData.hero.subtitle}
         </p>
-      </div>
 
-      <!-- Hero Image -->
-      <img
-        src={pageData.hero.backgroundImage}
-        alt="Kuala Lumpur food scene"
-        class="w-full h-64 md:h-96 object-cover rounded-lg"
-        loading="eager"
-      />
-    </div>
-  </header>
+        <!-- Segmentation Menu -->
+        <div class="bg-white rounded-xl shadow-lg p-6 max-w-4xl mx-auto">
+          <h2 class="text-lg font-semibold text-gray-900 mb-6">What brings you here today?</h2>
+          <div class="grid md:grid-cols-3 gap-4">
 
-  
-  <!-- Introduction -->
-  <section class="py-8 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-gray-700 leading-relaxed text-lg">
-          {pageData.hero.description}
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Heritage Section -->
-  <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        {pageData.heritage.title}
-      </h2>
-
-      <!-- Heritage introduction as blog paragraphs -->
-      <div class="prose prose-lg max-w-none mb-8">
-        {pageData.heritage.introduction.split('\n\n').map((paragraph) => (
-          <p class="text-gray-700 leading-relaxed mb-6 text-lg">
-            {paragraph}
-          </p>
-        ))}
-      </div>
-
-      <!-- Key Heritage Facts -->
-      <div class="bg-gray-50 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4">Key Facts About KL's Food Heritage</h3>
-        <ul class="space-y-3">
-          {pageData.heritage.keyFacts.map((fact) => (
-            <li class="flex items-start">
-              <span class="font-semibold text-gray-900 mr-2">{fact.label}:</span>
-              <span class="text-gray-700">{fact.value}</span>
-              {fact.description && (
-                <span class="text-gray-600 text-sm block mt-1">{fact.description}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Food Cultures Section -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        The Three Cultures That Shape Kuala Lumpur's Food
-      </h2>
-
-      {pageData.foodCultures.map((culture) => (
-        <div class="mb-12 bg-white p-6 rounded-lg">
-          <img
-            src={culture.image}
-            alt={`${culture.name} cuisine`}
-            class="w-full h-64 object-cover rounded-lg mb-6"
-            loading="lazy"
-          />
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">
-            {culture.name}
-          </h3>
-          <p class="text-gray-700 leading-relaxed mb-4">
-            {culture.description}
-          </p>
-          <div class="bg-gray-50 p-4 rounded">
-            <h4 class="font-semibold mb-2">Key Dishes:</h4>
-            <ul class="list-disc list-inside text-gray-700 space-y-1">
-              {culture.keyDishes.map((dish) => (
-                <li>{dish}</li>
-              ))}
-            </ul>
-          </div>
-          <p class="text-gray-600 leading-relaxed mt-4 italic">
-            {culture.culturalContext}
-          </p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Signature Dishes Section -->
-  <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        Signature Dishes You Must Try
-      </h2>
-
-      <div class="space-y-8">
-        {pageData.signatureDishes.map((dish) => (
-          <div class="border-b pb-8">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">
-              {dish.name}
-            </h3>
-            <img
-              src={dish.image}
-              alt={dish.name}
-              class="w-full h-48 object-cover rounded-lg mb-4"
-              loading="lazy"
-            />
-            <p class="text-gray-700 leading-relaxed mb-3">
-              {dish.description}
-            </p>
-            <div class="grid md:grid-cols-2 gap-4 text-sm">
-              <div>
-                <span class="font-semibold">Origin:</span> {dish.origin}
-              </div>
-              <div>
-                <span class="font-semibold">Where to Find:</span> {dish.whereToFind}
-              </div>
-              {dish.vegetarian && (
-                <div class="text-green-600 font-semibold">
-                  ✓ Vegetarian Friendly
+            <button
+              onclick="showSection('planning')"
+              class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all group"
+            >
+              <div class="flex items-center mb-2">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-blue-200">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                 </div>
-              )}
-              <div>
-                <span class="font-semibold">Cultural:</span> {dish.cultural}
+                <div>
+                  <h3 class="font-semibold text-gray-900">Planning Your Visit?</h3>
+                  <p class="text-sm text-gray-600">Quick facts, pricing, logistics</p>
+                </div>
               </div>
-            </div>
+            </button>
+
+            <button
+              onclick="showSection('culture')"
+              class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-green-500 hover:bg-green-50 transition-all group"
+            >
+              <div class="flex items-center mb-2">
+                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-green-200">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">Curious About KL's Food?</h3>
+                  <p class="text-sm text-gray-600">Heritage, culture, stories</p>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onclick="showSection('dishes')"
+              class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-orange-500 hover:bg-orange-50 transition-all group"
+            >
+              <div class="flex items-center mb-2">
+                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-orange-200">
+                  <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">What Should I Eat?</h3>
+                  <p class="text-sm text-gray-600">Must-try dishes, where to find them</p>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onclick="showSection('neighborhoods')"
+              class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-purple-500 hover:bg-purple-50 transition-all group"
+            >
+              <div class="flex items-center mb-2">
+                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-purple-200">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">Where Should I Go?</h3>
+                  <p class="text-sm text-gray-600">Best neighborhoods, food areas</p>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onclick="showSection('guides')"
+              class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-red-500 hover:bg-red-50 transition-all group"
+            >
+              <div class="flex items-center mb-2">
+                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-red-200">
+                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">Who Are My Guides?</h3>
+                  <p class="text-sm text-gray-600">Meet our local food experts</p>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onclick="showSection('booking')"
+              class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-yellow-500 hover:bg-yellow-50 transition-all group bg-yellow-50 border-yellow-300"
+            >
+              <div class="flex items-center mb-2">
+                <div class="w-10 h-10 bg-yellow-200 rounded-lg flex items-center justify-center mr-3">
+                  <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">Ready to Book?</h3>
+                  <p class="text-sm text-gray-600">See tour options & prices</p>
+                </div>
+              </div>
+            </button>
+
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Neighborhoods Section -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        Kuala Lumpur's Food Neighborhoods
-      </h2>
+    <!-- Dynamic Content Sections -->
+    <main class="px-4 py-8">
 
-      <div class="space-y-8">
-        {pageData.neighborhoods.map((neighborhood) => (
-          <div class="bg-white p-6 rounded-lg">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">
-              {neighborhood.name}
-            </h3>
-            <img
-              src={neighborhood.image}
-              alt={neighborhood.name}
-              class="w-full h-64 object-cover rounded-lg mb-4"
-              loading="lazy"
-            />
-            <p class="text-gray-700 leading-relaxed mb-4">
-              {neighborhood.description}
-            </p>
-            <div class="bg-gray-50 p-4 rounded">
-              <h4 class="font-semibold mb-2">Known For:</h4>
-              <ul class="list-disc list-inside text-gray-700 space-y-1">
-                {neighborhood.knownFor.map((item) => (
-                  <li>{item}</li>
-                ))}
+      <!-- Planning Section -->
+      <section id="planning-section" class="hidden max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900">Planning Your Visit</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <h3 class="font-semibold text-lg mb-3">Quick Facts</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li><strong>Duration:</strong> 4 hours per tour</li>
+                <li><strong>Group Size:</strong> Max 8 people</li>
+                <li><strong>Meeting Point:</strong> Central KL locations</li>
+                <li><strong>Available:</strong> Daily, 9 AM & 3 PM</li>
+                <li><strong>Dietary:</strong> Vegetarian options available</li>
               </ul>
-              <p class="text-gray-600 mt-3 italic">
-                <strong>Vibe:</strong> {neighborhood.vibe}
-              </p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+              <h3 class="font-semibold text-lg mb-3">What's Included</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li>✓ All food tastings (8-10 dishes)</li>
+                <li>✓ Local drinks</li>
+                <li>✓ Food expert guide</li>
+                <li>✓ Cultural stories</li>
+                <li>✓ Neighborhood walking tour</li>
+              </ul>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
-  <!-- Why Choose Simply Enak -->
-  <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        Why Choose Simply Enak for Food Heritage Education?
-      </h2>
+          <div class="text-center">
+            <h3 class="text-xl font-semibold mb-4">Choose Your Experience</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+              {pageData.featuredTours.map((tour) => (
+                <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <h4 class="font-semibold text-lg mb-2">{tour.name}</h4>
+                  <p class="text-gray-600 mb-3">{tour.description}</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-blue-600">RM {tour.price}</span>
+                    <a href={`/tours/${tour.slug}`} class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                      Book Now
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <p class="text-lg text-gray-700 leading-relaxed mb-6">
-        {pageData.whyTourWithUs.description}
-      </p>
+      <!-- Culture Section -->
+      <section id="culture-section" class="hidden max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900">KL's Food Heritage Story</h2>
+          </div>
 
-      <div class="space-y-6">
-        {pageData.whyTourWithUs.reasons.map((reason) => (
-          <div class="border-l-4 border-blue-500 pl-4">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              {reason.title}
-            </h3>
-            <p class="text-gray-700 leading-relaxed">
-              {reason.description}
+          <div class="prose max-w-none mb-8">
+            <p class="text-lg text-gray-700 leading-relaxed">
+              In 1857, Chinese tin miners established Kuala Lumpur at the muddy confluence of the Klang and Gombak rivers. They brought their cooking traditions. Malay traders arrived with spice knowledge. Indian Muslims set up food stalls. Over 150+ years, these cultures created Malaysia's unique food culture.
             </p>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
-  <!-- Featured Tours -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        Experience Kuala Lumpur's Food Heritage
-      </h2>
-
-      <div class="grid gap-6">
-        {pageData.featuredTours.map((tour) => (
-          <div class="bg-white border rounded-lg p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">
-              {tour.name}
-            </h3>
-            <p class="text-gray-700 mb-4">{tour.description}</p>
-            <div class="flex items-center justify-between">
-              <span class="text-lg font-semibold text-blue-600">
-                RM {tour.price}
-              </span>
-              <a
-                href={`/tours/${tour.slug}`}
-                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
-              >
-                Learn More
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Meet Your Guides -->
-  <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        Meet Your Food Heritage Guides
-      </h2>
-
-      <div class="space-y-8">
-        {pageData.guides.map((guide) => (
-          <div class="flex flex-col md:flex-row gap-6">
-            <img
-              src={guide.photo}
-              alt={guide.name}
-              class="w-full md:w-48 h-48 object-cover rounded-lg"
-              loading="lazy"
-            />
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">
-                {guide.name}
-              </h3>
-              <p class="text-gray-700 leading-relaxed mb-4">
-                {guide.bio}
-              </p>
-              <div>
-                <h4 class="font-semibold mb-2">Specialties:</h4>
-                <ul class="list-disc list-inside text-gray-700">
-                  {guide.specialties.map((specialty) => (
-                    <li>{specialty}</li>
-                  ))}
-                </ul>
-                {guide.credentials && (
-                  <div class="mt-4">
-                    <h4 class="font-semibold mb-2">Credentials:</h4>
-                    <ul class="list-disc list-inside text-gray-600 text-sm">
-                      {guide.credentials.map((credential) => (
-                        <li>{credential}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+          <div class="grid md:grid-cols-3 gap-6">
+            {pageData.foodCultures.map((culture) => (
+              <div class="border rounded-lg p-6">
+                <img src={culture.image} alt={culture.name} class="w-full h-40 object-cover rounded-lg mb-4" loading="lazy" />
+                <h3 class="font-semibold text-lg mb-2">{culture.name}</h3>
+                <p class="text-gray-600 text-sm mb-3">{culture.description}</p>
+                <div class="text-sm">
+                  <strong>Key Dishes:</strong>
+                  <ul class="list-disc list-inside mt-1 text-gray-600">
+                    {culture.keyDishes.slice(0, 3).map((dish) => <li key={dish}>{dish}</li>)}
+                  </ul>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Dishes Section -->
+      <section id="dishes-section" class="hidden max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900">Must-Try Dishes</h2>
+          </div>
+
+          <div class="grid gap-6">
+            {pageData.signatureDishes.map((dish) => (
+              <div class="border-b pb-6 last:border-0">
+                <div class="flex flex-col md:flex-row gap-4">
+                  <img src={dish.image} alt={dish.name} class="w-full md:w-48 h-32 object-cover rounded-lg" loading="lazy" />
+                  <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">{dish.name}</h3>
+                    <p class="text-gray-600 mb-2">{dish.description}</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                      <div><strong>Origin:</strong> {dish.origin}</div>
+                      <div><strong>Where:</strong> {dish.whereToFind}</div>
+                      {dish.vegetarian && <div className="text-green-600">✓ Vegetarian</div>}
+                      <div><strong>Type:</strong> {dish.cultural}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Neighborhoods Section -->
+      <section id="neighborhoods-section" class="hidden max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900">Best Food Neighborhoods</h2>
+          </div>
+
+          <div class="grid gap-6">
+            {pageData.neighborhoods.map((neighborhood) => (
+              <div class="border rounded-lg p-6">
+                <div class="flex flex-col md:flex-row gap-4">
+                  <img src={neighborhood.image} alt={neighborhood.name} class="w-full md:w-48 h-32 object-cover rounded-lg" loading="lazy" />
+                  <div class="flex-1">
+                    <h3 class="font-semibold text-xl mb-2">{neighborhood.name}</h3>
+                    <p class="text-gray-600 mb-3">{neighborhood.description}</p>
+                    <div class="bg-gray-50 p-3 rounded">
+                      <div class="text-sm"><strong>Known for:</strong></div>
+                      <ul class="list-disc list-inside text-gray-600 mt-1">
+                        {neighborhood.knownFor.map((item) => <li key={item}>{item}</li>)}
+                      </ul>
+                      <div class="text-sm mt-2 italic"><strong>Vibe:</strong> {neighborhood.vibe}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Guides Section -->
+      <section id="guides-section" class="hidden max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900">Meet Your Food Heritage Guides</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {pageData.guides.map((guide) => (
+              <div class="border rounded-lg p-6">
+                <div class="flex items-start gap-4">
+                  <img src={guide.photo} alt={guide.name} class="w-20 h-20 object-cover rounded-lg" loading="lazy" />
+                  <div>
+                    <h3 class="font-semibold text-lg mb-2">{guide.name}</h3>
+                    <p class="text-gray-600 text-sm mb-3">{guide.bio}</p>
+                    <div class="text-sm">
+                      <strong>Specialties:</strong>
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {guide.specialties.map((specialty) => (
+                          <span key={specialty} class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">
+                            {specialty}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking Section -->
+      <section id="booking-section" class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-lg p-8">
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Experience KL's Food Heritage?</h2>
+            <p class="text-lg text-gray-600">Choose your cultural food adventure</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            {pageData.featuredTours.map((tour) => (
+              <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                <h3 class="font-semibold text-xl mb-2">{tour.name}</h3>
+                <p class="text-gray-600 mb-4">{tour.description}</p>
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <div class="text-2xl font-bold text-orange-600">RM {tour.price}</div>
+                    <div class="text-sm text-gray-500">per person</div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-sm text-gray-500 mb-1">Duration: 4 hours</div>
+                    <div class="text-sm text-gray-500">Max 8 people</div>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <a href={`/tours/${tour.slug}`} class="flex-1 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors text-center">
+                    Book Now
+                  </a>
+                  <a href={`https://wa.me/60172878929?text=I'm interested in ${tour.name}`} target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="text-center">
+            <p class="text-sm text-gray-600 mb-4">
+              <strong>Why Choose Simply Enak?</strong><br>
+              6+ years educating about KL food heritage • Born & raised local guides • Small groups maximum 8 people • Educational approach first
+            </p>
+            <div class="flex justify-center gap-4">
+              <a href="/contact" class="text-blue-600 hover:text-blue-700">Contact Us</a>
+              <span class="text-gray-400">•</span>
+              <a href="/about" class="text-blue-600 hover:text-blue-700">About Us</a>
+              <span class="text-gray-400">•</span>
+              <a href="tel:+60172878929" class="text-blue-600 hover:text-blue-700">+60 17-287 8929</a>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
+        </div>
+      </section>
 
-  <!-- Simple Call to Action -->
-  <section class="py-16 bg-blue-50">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        Ready to Experience Kuala Lumpur's Food Heritage?
-      </h2>
-      <p class="text-lg text-gray-700 mb-8">
-        Join us on a cultural journey that goes beyond tasting—you'll learn the stories, traditions, and significance behind Malaysia's incredible food diversity.
-      </p>
-      <a
-        href="/tours"
-        class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold"
-      >
-        Explore Our Food Tours
-      </a>
-    </div>
-  </section>
+    </main>
+  </div>
+
+  <script>
+    function showSection(section) {
+      // Hide all sections
+      document.querySelectorAll('section[id$="-section"]').forEach(s => {
+        s.classList.add('hidden');
+      });
+
+      // Show selected section
+      const targetSection = document.getElementById(section + '-section');
+      if (targetSection) {
+        targetSection.classList.remove('hidden');
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Show booking section by default
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('booking');
+    });
+  </script>
+
+  <style>
+    /* Smooth transitions */
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    /* Button hover effects */
+    .group:hover .group-hover\:bg-blue-200 {
+      background-color: rgb(219 234 254);
+    }
+
+    .group:hover .group-hover\:bg-green-200 {
+      background-color: rgb(220 252 231);
+    }
+
+    .group:hover .group-hover\:bg-orange-200 {
+      background-color: rgb(254 215 170);
+    }
+
+    .group:hover .group-hover\:bg-purple-200 {
+      background-color: rgb(233 213 255);
+    }
+  </style>
 </Layout>
-
