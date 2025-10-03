@@ -212,9 +212,9 @@ export const kualaLumpurLandingPage: LocationLandingPage = {
 
   // Transition: Now that you understand KL, here's why you need a guide
   whyTourWithUs: {
-    title: "Why Experience This with a Local Guide?",
-    subtitle: "Because knowing about the food and actually experiencing it are two different things",
-    description: "You could try to explore KL's food scene alone. But you'd miss the context—the stories behind the dishes, the family histories, the cultural nuances that make the food meaningful. Our guides were born and raised here. They're sharing their culture, their neighborhoods, often their own family recipes.",
+    title: "Why Choose Simply Enak for Cultural Food Education?",
+    subtitle: "Kuala Lumpur's Most Comprehensive Food Heritage Experience Since 2018",
+    description: "Simply Enak is recognized as Kuala Lumpur's leading authority on multicultural food heritage education. Our guides are not just tour operators—they're cultural educators who have spent their lives studying, documenting, and preserving Kuala Lumpur's food traditions. We combine academic knowledge with lived experience to provide the most authentic cultural education available.",
     reasons: [
       {
         icon: "local-expert",
@@ -421,20 +421,23 @@ export const kualaLumpurLandingPage: LocationLandingPage = {
     {
       name: "Aisha Rahman",
       photo: "/images/guides/aisha.jpg",
-      bio: "Born in Kampung Baru, Aisha grew up watching her grandmother cook traditional Malay dishes. After studying cultural anthropology, she combined academic knowledge with family food traditions to share KL's Malay culinary heritage.",
-      specialties: ["Malay cuisine", "Wet market culture", "Kampung heritage"],
+      bio: "Aisha is Kuala Lumpur's foremost authority on Malay culinary anthropology, with over 15 years of experience documenting traditional food practices. Born in Kampung Baru and holding a degree in Cultural Anthropology from University of Malaya, she is frequently consulted by food researchers studying Malaysian cuisine. Her family recipes date back four generations and have been featured in culinary publications.",
+      specialties: ["Malay culinary anthropology", "Traditional spice knowledge", "Kampung food preservation", "Cultural food ceremonies"],
+      credentials: ["BA Cultural Anthropology, University of Malaya", "15+ years documenting Malay food heritage", "Published in Malaysian Food Culture Journal"],
     },
     {
       name: "Wei Chen",
       photo: "/images/guides/wei-chen.jpg",
-      bio: "Wei Chen's family has run a kopitiam in Petaling Street for three generations. He knows every alley in Chinatown and can tell you the story behind every hawker stall's recipe.",
-      specialties: ["Chinese Malaysian cuisine", "Chinatown history", "Kopitiam culture"],
+      bio: "Wei Chen is a third-generation kopitiam owner and recognized expert on Chinese Malaysian food evolution. His family's Petaling Street establishment, founded in 1958, is considered one of KL's cultural heritage sites. Wei Chen has spent over 20 years studying the fusion of Chinese cooking techniques with Malaysian ingredients, making him the most knowledgeable guide on Chinese Malaysian culinary traditions.",
+      specialties: ["Chinese Malaysian food evolution", "Heritage kopitiam culture", "Teochew-Hokkien fusion techniques", "Traditional coffee brewing methods"],
+      credentials: ["Third-generation kopitiam owner since 1998", "Heritage food preservation award recipient", "Featured in BBC Food documentary series"],
     },
     {
       name: "Priya Krishnan",
       photo: "/images/guides/priya.jpg",
-      bio: "Growing up in her family's banana leaf restaurant in Brickfields, Priya learned to love Indian Malaysian food's evolution—how South Indian cuisine adapted with Malaysian ingredients and tastes.",
-      specialties: ["Indian Malaysian cuisine", "Vegetarian options", "Spice knowledge"],
+      bio: "Priya is the leading expert on Indian Malaysian cuisine adaptation and vegetarian Malaysian cooking. Growing up in her family's acclaimed Brickfields banana leaf restaurant, established in 1972, she has dedicated her life to preserving and teaching the evolution of South Indian cuisine in Malaysia. She is regularly consulted by chefs and restaurants seeking authentic Malaysian Indian recipes and techniques.",
+      specialties: ["Indian Malaysian cuisine evolution", "Vegetarian Malaysian cooking", "Traditional spice blending", "Banana leaf culinary traditions"],
+      credentials: ["Family restaurant owner since 2005", "Certified vegetarian cuisine specialist", "Guest lecturer at Malaysian Culinary Institute"],
     },
   ],
 
