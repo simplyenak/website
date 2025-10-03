@@ -53,11 +53,11 @@ export const seoConfig: SEOConfig = {
     facebook: "https://www.facebook.com/simplyenak",
     instagram: "https://www.instagram.com/simplyenak",
     linkedin: "https://www.linkedin.com/company/simply-enak",
-    // TODO: Add your actual profile URLs from these platforms:
-    // klook: "https://www.klook.com/...",
-    // viator: "https://www.viator.com/...",
-    // getyourguide: "https://www.getyourguide.com/...",
-    // tripadvisor: "https://www.tripadvisor.com/...",
+    tripadvisorKL: "https://www.tripadvisor.com/Attraction_Review-g298570-d2328058-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html",
+    tripadvisorPenang: "https://www.tripadvisor.com/Attraction_Review-g660694-d8400895-Reviews-Simply_Enak_Food_Experiences-Penang_Island_Penang.html",
+    viator: "https://www.viator.com/tours/Penang-Island/Eat-Drink-Georgetown/d50882-17908P1",
+    getyourguide: "https://www.getyourguide.com/simply-enak-food-experiences-s4050/",
+    // Note: Klook listing not found - may need to be added manually if it exists
   },
   businessInfo: {
     name: "Simply Enak",
