@@ -128,25 +128,20 @@ const seoData = {
 
   <!-- Heritage Section -->
   <Heritage
-    title={pageData.heritage.title}
-    introduction={pageData.heritage.introduction}
-    yearEstablished={pageData.heritage.yearEstablished}
-    culturalInfluences={pageData.heritage.culturalInfluences}
-    keyFacts={pageData.heritage.keyFacts}
+    heritage={pageData.heritage}
+    location={pageData.name}
   />
 
   <!-- Food Cultures Section -->
   <FoodCultures
-    title="The Three Cultures That Shape KL's Food"
-    subtitle="How Malay, Chinese, and Indian Traditions Created Something Extraordinary"
-    foodCultures={pageData.foodCultures}
+    cultures={pageData.foodCultures}
+    location={pageData.name}
   />
 
   <!-- Signature Dishes Section -->
   <SignatureDishes
-    title="Signature Dishes You Must Try"
-    subtitle="The iconic foods that tell Kuala Lumpur's story"
     dishes={pageData.signatureDishes}
+    location={pageData.name}
   />
 
   <!-- Neighborhoods Section -->
@@ -164,19 +159,6 @@ const seoData = {
   <ToursGrid
     title="Experience Kuala Lumpur's Food Heritage"
     subtitle="Choose your adventure and discover the stories behind the food"
-    tours={pageData.featuredTours}
-  />
-
-  <!-- Reviews Section -->
-  <Reviews
-    reviews={pageData.reviews}
-    trustSignals={pageData.trustSignals}
-  />
-
-  <!-- Featured Tours Section -->
-  <ToursGrid
-    title="Experience Kuala Lumpur's Food Heritage"
-    subtitle="Each tour focuses on a different aspect of KL's multicultural food story"
     tours={pageData.featuredTours}
   />
 
