@@ -46,6 +46,11 @@ const tourStructuredData = generateTourStructuredData({
   location: tour.hero?.location || "",
   image: tour.hero?.image?.url || "",
   url: generateCanonicalUrl(`/tours/${tour.slug}`),
+  // Add company's TripAdvisor 5-star rating to all tours
+  rating: {
+    ratingValue: "5",
+    reviewCount: "150",
+  },
 });
 
 const pageTitle =
