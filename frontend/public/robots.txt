@@ -1,5 +1,7 @@
+# Default rules for all bots
 User-agent: *
 Allow: /
+Crawl-delay: 10
 
 # Disallow admin and private pages
 Disallow: /admin/
@@ -10,5 +12,65 @@ Disallow: /thank-you*
 # Allow specific thank you pages that should be indexed
 Allow: /thank-you/
 
+# Specific rules for major search engines (no crawl delay)
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /thank-you*
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /thank-you*
+
+# Block AI training crawlers (protect content from training data)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+# Allow AI search engines (can help with discovery)
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+
+User-agent: YouBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+
 # Sitemap
+Sitemap: https://simplyenak.com/sitemap-index.xml
 Sitemap: https://simplyenak.com/sitemap.xml
