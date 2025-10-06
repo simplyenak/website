@@ -213,6 +213,10 @@ export function generateTourStructuredData(tour: {
   if (tour.rating) {
     structuredData.aggregateRating = {
       "@type": "AggregateRating",
+      itemReviewed: {
+        "@type": "Service",
+        name: tour.name
+      },
       ratingValue: tour.rating.ratingValue,
       reviewCount: tour.rating.reviewCount,
       bestRating: "5",

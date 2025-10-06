@@ -1,64 +1,158 @@
 ---
 import Button from "@/components/Button.astro";
-import fetchApi from "@/lib/strapi";
-import type { HeroSection } from "@/types";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
-const data: {
-  heroSection: HeroSection;
-} = await fetchApi({
-  endpoint:
-    "home-page?populate=heroSection.bgImage&populate=heroSection.buttons.icon",
-  wrappedByKey: "data",
-});
-const heroSection = data.heroSection;
+// Hardcoded hero data from document - overriding CMS
+const heroData = {
+  title: "Food Tours that Reveal the",
+  highlight: "Hidden Culture and Heritage",
+  titleEnd: "of Malaysia",
+  subtitle: "Walk with a local. Taste real stories. Experience the Malaysia most tourists miss.",
+  description: "Our walking food tours are rooted in heritage and guided with heart. We bring you into family-run stalls, hidden streets, and local communities — so you experience Malaysia through taste, story, and connection.",
+  buttons: [
+    {
+      href: "#about",
+      title: "Learn More",
+      buttonType: "secondary",
+      icon: null
+    },
+    {
+      href: "/tours",
+      title: "Book now",
+      buttonType: "primary",
+      icon: null
+    }
+  ],
+  bgImage: "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg"
+};
 ---
 
-<section class="md:h-[640px] h-[742px] relative overflow-hidden hero-dark">
-  <div
-    class="main-container flex items-center justify-center text-center relative z-20 h-full text-white"
-  >
-    <div>
-      <h1 class="text-h1">
-        {heroSection.title.split(' ').map((word, index) => (
-          word === 'AUTHENTIC' || word === 'HERITAGE' || word === 'CULTURAL' ?
-            <span class="text-highlight">{word}</span> :
-            word
-        )).join(' ')}
+<section class="hero-section min-h-[600px] bg-[#2A2A2A] text-white relative overflow-hidden hero-redesign-final">
+  <div class="main-container grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[600px] py-20">
+
+    <!-- Hero Content -->
+    <div class="hero-content text-center lg:text-left">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-tight mb-8">
+        {heroData.title}<br>
+        <span class="highlight-text bg-[#FFB347] text-black px-4 py-1 inline-block mt-2">
+          {heroData.highlight}
+        </span> {heroData.titleEnd}
       </h1>
-      <p class="text-subheading pt-[30px] md:pt-10 pb-[50px] md:pb-[70px]">
-        {heroSection.subTitle.split(' ').map((word, index) => (
-          word.toLowerCase().includes('heritage') || word.toLowerCase().includes('authentic') ?
-            <span class="text-highlight">{word}</span> :
-            word
-        )).join(' ')}
+
+      <p class="text-xl md:text-2xl italic mb-6 text-gray-200">
+        {heroData.subtitle}
       </p>
-      <div class="flex items-center gap-7 flex-wrap justify-center">
-        {
-          heroSection.buttons.map((button) => (
-            <Button
-              href={button.href}
-              title={button.title}
-              icon={button.icon?.name}
-              buttonType={button.buttonType}
-            />
-          ))
-        }
+
+      <p class="text-base md:text-lg leading-relaxed mb-10 text-gray-300 max-w-2xl mx-auto lg:mx-0">
+        {heroData.description}
+      </p>
+
+      <!-- CTA Buttons and Rating -->
+      <div class="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          {
+            heroData.buttons.map((button) => (
+              <Button
+                href={button.href}
+                title={button.title}
+                icon={button.icon?.name}
+                buttonType={button.buttonType}
+                className="w-full sm:w-auto"
+              />
+            ))
+          }
+        </div>
+
+        <!-- Google Rating -->
+        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
+          <div class="flex text-yellow-400 text-xl">
+            {[...Array(5)].map((_, i) => (
+              <span key={i}>⭐</span>
+            ))}
+          </div>
+          <div class="w-8 h-8 bg-white rounded flex items-center justify-center">
+            <span class="text-xs font-bold text-blue-600">G</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  {
-    getFullMediaUrl(heroSection.bgImage) && (
+
+    <!-- Hero Image -->
+    <div class="hero-image relative">
       <img
-        src={getFullMediaUrl(heroSection.bgImage)}
-        alt="Hero Image"
-        class="absolute inset-0 object-cover size-full"
-        width="1920"
-        height="1080"
+        src={heroData.bgImage}
+        alt="Malaysian grilled food"
+        class="w-full rounded-xl shadow-2xl"
+        width="600"
+        height="400"
         loading="eager"
         fetchpriority="high"
         decoding="async"
       />
-    )
-  }
+
+      <!-- Stat Badge -->
+      <div class="absolute top-6 right-6 bg-[#FFB347] text-black rounded-full w-32 h-32 flex flex-col justify-center items-center text-center shadow-lg">
+        <div class="text-2xl font-bold">15,000+</div>
+        <div class="text-xs leading-tight px-2">
+          Travelers fed<br/>authentic Malaysian<br/>food
+        </div>
+      </div>
+
+      <!-- Features Bar -->
+      <div class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm px-4 py-3 rounded-b-xl">
+        <div class="flex justify-around text-white text-sm">
+          <span class="flex items-center gap-1">
+            <span class="text-green-400">✓</span>
+            Heritage Vendors
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="text-green-400">✓</span>
+            Low-Waste Tours
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="text-green-400">✓</span>
+            Slow Travel Values
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  .hero-section {
+    font-family: 'Georgia', serif;
+  }
+
+  .highlight-text {
+    font-weight: normal;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      min-height: auto;
+      padding: 4rem 0;
+    }
+
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+
+    .hero-image .absolute {
+      position: static;
+      margin-top: 1rem;
+    }
+
+    .hero-image .rounded-full {
+      width: 120px;
+      height: 120px;
+    }
+  }
+</style>
