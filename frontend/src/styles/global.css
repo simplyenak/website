@@ -12,6 +12,8 @@
   --color-secondary: #885e40;
   --color-text: #333333;
   --color-orange: #ffa333;
+  --color-dark: #1a1a1a;
+  --color-highlight: #ffa333;
 
   --text-shadow-custom: 1px 1px 5px var(--color-text);
   --shadow-custom: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
@@ -71,6 +73,12 @@
   }
   .tab-secondary-btn {
     @apply px-4 py-[5px] bg-transparent hover:bg-primary border border-primary text-primary hover:text-white text-base md:text-lg font-semibold duration-300 cursor-pointer;
+  }
+  .hero-dark {
+    @apply bg-[#1a1a1a] text-white;
+  }
+  .text-highlight {
+    @apply inline-block px-3 py-1 bg-[#ffa333] text-black font-semibold;
   }
 }
 

@@ -14,14 +14,24 @@ const data: {
 const heroSection = data.heroSection;
 ---
 
-<section class="md:h-[640px] h-[742px] relative overflow-hidden">
+<section class="md:h-[640px] h-[742px] relative overflow-hidden hero-dark">
   <div
     class="main-container flex items-center justify-center text-center relative z-20 h-full text-white"
   >
     <div>
-      <h1 class="text-h1">{heroSection.title}</h1>
+      <h1 class="text-h1">
+        {heroSection.title.split(' ').map((word, index) => (
+          word === 'AUTHENTIC' || word === 'HERITAGE' || word === 'CULTURAL' ?
+            <span class="text-highlight">{word}</span> :
+            word
+        )).join(' ')}
+      </h1>
       <p class="text-subheading pt-[30px] md:pt-10 pb-[50px] md:pb-[70px]">
-        {heroSection.subTitle}
+        {heroSection.subTitle.split(' ').map((word, index) => (
+          word.toLowerCase().includes('heritage') || word.toLowerCase().includes('authentic') ?
+            <span class="text-highlight">{word}</span> :
+            word
+        )).join(' ')}
       </p>
       <div class="flex items-center gap-7 flex-wrap justify-center">
         {
