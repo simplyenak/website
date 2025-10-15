@@ -175,6 +175,26 @@ const {
     </main>
     <Footer />
 
+    <!-- Email Protection Fix Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Replace "email protected" with actual email
+        const walker = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_TEXT,
+          null,
+          false
+        );
+        
+        let node;
+        while (node = walker.nextNode()) {
+          if (node.textContent.includes('[email protected]')) {
+            node.textContent = node.textContent.replace('[email protected]', 'contact@simplyenak.com');
+          }
+        }
+      });
+    </script>
+
     <!-- Performance: Load chat widget after page is interactive -->
     <script is:inline>
       (function () {
