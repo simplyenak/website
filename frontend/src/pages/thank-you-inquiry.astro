@@ -1,24 +1,11 @@
 ---
-import GlobalHero from "@/components/GlobalHero.astro";
 import Layout from "@/layouts/Layout.astro";
-import CTASection from "@/components/CTASection.astro";
-export const prerender = true;
+import ThankYou from "@/components/ThankYou.astro";
 import img1 from "@/assets/images/kuala-lumpur-1641785_1920.jpg";
+
+export const prerender = true;
 ---
 
 <Layout>
-  <GlobalHero
-    title="Thank you for your Inquiry!"
-    image={img1}
-    objectPosition="center"
-    isOverlay={true}
-  />
-  <section class="main-container pt-12 pb-20 space-y-4 text-base md:text-lg">
-   <h4 class="text-h4">THANK YOU FOR YOUR INQUIRY!</h4>
-   <p>We are working hard to reply to you as soon as we can. Normally this would take about 1 working day.</p>
-   <p>If you have something more urgent, please contact us by phone at +6017-287 8929.<p>
-   <p>In the meantime do check out our Facebook page for updates on Malaysian culture, people and most of all yummy food!<p>
-  <strong>And remember to give us a ‘like’ when you’re there.</strong>
-  </section>
-  <CTASection />
+  <ThankYou type="inquiry" image={img1} />
 </Layout>

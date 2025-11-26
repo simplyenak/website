@@ -3,40 +3,46 @@ import Layout from "../layouts/Layout.astro";
 import CTASection from "@/components/CTASection.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
 import GetInTouchSection from "@/components/Contact/GetInTouchSection.astro";
-import type {
-  GlobalHeroTypes,
-  GetInTouchSectionTypes,
-  SEOTypes,
-} from "@/types";
-import fetchApi from "@/lib/strapi";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 export const prerender = true;
 
-const data: {
-  SEO: SEOTypes;
-  heroSection: GlobalHeroTypes;
-  getInTouchSection: GetInTouchSectionTypes;
-} = await fetchApi({
-  endpoint:
-    "contact?populate=heroSection.image&populate=getInTouchSection&populate=SEO.image",
-  wrappedByKey: "data",
-});
+const data = {
+  SEO: {
+    title: "Contact Simply Enak | Book Your Food Tour",
+    description:
+      "Get in touch with Simply Enak for bookings, custom inquiries, or questions about our Malaysian food tours.",
+    image:
+      "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      name: "Contact Simply Enak",
+      description: "Contact us for food tour bookings",
+    },
+  },
+  heroSection: {
+    title: "Get in Touch",
+    description:
+      "Have a question? Want to plan a custom private tour? We're here to help you create the perfect Malaysian food adventure.",
+  },
+  getInTouchSection: {
+    title: "We'd Love to Hear From You",
+    contents:
+      "Whether you're ready to book or just exploring options, reach out to us. We usually respond within 24 hours.",
+    formEmbedUrl: "",
+  },
+};
 ---
 
 <Layout
-  {...data?.SEO && {
-    title: data.SEO.title,
-    description: data.SEO.description,
-    image: getFullMediaUrl(data.SEO.image),
-    structuredData: data.SEO.schema,
-  }}
+  title={data.SEO.title}
+  description={data.SEO.description}
+  image={data.SEO.image}
+  structuredData={data.SEO.schema}
 >
   <GlobalHero
     title={data.heroSection.title}
     description={data.heroSection.description}
-    image={data.heroSection.image}
-    objectPosition={data.heroSection.objectPosition}
   />
   <GetInTouchSection
     title={data.getInTouchSection.title}

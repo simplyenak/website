@@ -4,45 +4,62 @@ import CTASection from "@/components/CTASection.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
 import MediaSection from "@/components/Home/MediaSection.astro";
 import TextWithLeftRightImage from "@/components/About/TextWithLeftRightImage.astro";
-import fetchApi from "@/lib/strapi";
 
 export const prerender = true;
 
-import type {
-  GlobalHeroTypes,
-  MediaSectionTypes,
-  TextWithLeftRightImageTypes,
-  SEOTypes,
-} from "@/types";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-
-const data: {
-  SEO: SEOTypes;
-  aboutHero: GlobalHeroTypes;
-  textWithLeftRightImage: TextWithLeftRightImageTypes;
-  ourCoreValuesSection: TextWithLeftRightImageTypes;
-  mediaSection: MediaSectionTypes;
-} = await fetchApi({
-  endpoint:
-    "about?populate=aboutHero.image&populate=textWithLeftRightImage.image&populate=ourCoreValuesSection.image&populate=mediaSection&populate=SEO.image",
-  wrappedByKey: "data",
-});
+const data = {
+  SEO: {
+    title: "About Simply Enak | Authentic Malaysian Food Tours",
+    description:
+      "Learn about Simply Enak, our passion for Malaysian street food, and our mission to connect travelers with authentic local culture.",
+    image:
+      "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: "About Simply Enak",
+      description: "Authentic Malaysian Food Tours",
+    },
+  },
+  aboutHero: {
+    title: "Our Story",
+    subtitle:
+      "More than just food tours—we are your connection to the heart of Malaysia.",
+  },
+  textWithLeftRightImage: {
+    title: "How We Started",
+    contents:
+      "Simply Enak began with a simple idea: to share the Malaysia we know and love. Not the tourist traps, but the real places where locals eat, laugh, and live. Since 2010, we've been guiding guests through the back alleys of Kuala Lumpur and Penang, uncovering hidden gems and sharing the stories behind every dish.",
+    imagePosition: "left",
+    bgColor: "white",
+    image: {
+      url: "https://se-website-images.s3.nl-ams.scw.cloud/kl-chow-kit-market.jpg",
+    },
+  },
+  ourCoreValuesSection: {
+    title: "Our Core Values",
+    contents:
+      "We believe in authenticity, connection, and sustainability. We support local family-run businesses and ensure our tours respect the communities we visit. Our goal is to bridge cultures through the universal language of food.",
+    imagePosition: "right",
+    bgColor: "gray",
+    image: {
+      url: "https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg",
+    },
+  },
+  mediaSection: {
+    title: "See Us in Action",
+    videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+};
 ---
 
 <Layout
-  {...data?.SEO && {
-    title: data.SEO.title,
-    description: data.SEO.description,
-    image: getFullMediaUrl(data.SEO.image),
-    structuredData: data.SEO.schema,
-  }}
+  title={data.SEO.title}
+  description={data.SEO.description}
+  image={data.SEO.image}
+  structuredData={data.SEO.schema}
 >
-  <GlobalHero
-    title={data.aboutHero.title}
-    decription={data.aboutHero.description}
-    image={data.aboutHero.image}
-    objectPosition={data.aboutHero.objectPosition}
-  />
+  <GlobalHero title={data.aboutHero.title} subtitle={data.aboutHero.subtitle} />
   <TextWithLeftRightImage
     title={data.textWithLeftRightImage.title}
     contents={data.textWithLeftRightImage.contents}

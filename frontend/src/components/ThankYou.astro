@@ -1,0 +1,187 @@
+---
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import Button from "@/components/Button.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+
+interface Props {
+  type: "booking" | "contact" | "inquiry";
+  location?: string;
+  image: any;
+}
+
+const { type, location, image } = Astro.props;
+
+const content = {
+  booking: {
+    title: "We Can't Wait to Show You Our Malaysia",
+    subtitle: location
+      ? `${location} food tour confirmed`
+      : "Your tour is confirmed",
+    paragraphs: [
+      "Thank you for trusting us with your Malaysian food adventure. We're already excited to share the places, vendors, and stories we love.",
+      "Check your email for meeting details and what to expect. If anything's unclear, just reply to the confirmation email—we're here to help.",
+    ],
+    nextSteps: [
+      {
+        title: "Check Your Email",
+        description:
+          "Confirmation with meeting point, what to wear, and what to bring",
+      },
+      {
+        title: "Questions Before the Tour?",
+        description:
+          "WhatsApp us anytime at +60 17-287 8929 or reply to your confirmation email",
+      },
+      {
+        title: "Want to Explore More?",
+        description:
+          "Check out our other tours or read about what makes Malaysian food special",
+      },
+    ],
+    ctaText: "Looking forward to eating with you!",
+    buttons: [
+      { title: "See All Tours", href: "/tours", type: "secondary-btn" },
+      {
+        title: "Learn About Malaysian Food",
+        href: "/kuala-lumpur-food-tour",
+        type: "secondary-btn",
+      },
+    ],
+  },
+  contact: {
+    title: "Thanks for Reaching Out",
+    subtitle: "We'll get back to you soon",
+    paragraphs: [
+      "Got your message! We try to respond within 24 hours (usually faster). If you're asking about a tour happening tomorrow, call us directly at +60 17-287 8929.",
+      "While you wait, feel free to browse our tours or learn more about Malaysian food culture.",
+    ],
+    nextSteps: [
+      {
+        title: "We'll Reply Within 24 Hours",
+        description:
+          "Usually much faster—we check messages regularly throughout the day",
+      },
+      {
+        title: "Urgent Question?",
+        description:
+          "Call or WhatsApp +60 17-287 8929 if your tour is less than 48 hours away",
+      },
+      {
+        title: "Explore While You Wait",
+        description:
+          "Read about Malaysian food heritage or see what guests say about our tours",
+      },
+    ],
+    ctaText: "We'll talk soon!",
+    buttons: [
+      { title: "Browse Our Tours", href: "/tours", type: "secondary-btn" },
+      { title: "Read About Us", href: "/about", type: "secondary-btn" },
+    ],
+  },
+  inquiry: {
+    title: "Thanks for Your Interest",
+    subtitle: "Let's plan your perfect Malaysian food adventure",
+    paragraphs: [
+      "We received your inquiry! We'll review what you're looking for and get back to you within 24 hours with options and availability.",
+      "Custom experiences are what we love—whether it's dietary needs, specific neighborhoods, or multi-day adventures. We'll put something together just for you.",
+    ],
+    nextSteps: [
+      {
+        title: "We'll Send Options Soon",
+        description:
+          "Expect a personalized response within 24 hours with tour suggestions and availability",
+      },
+      {
+        title: "Want to Chat Now?",
+        description:
+          "WhatsApp us at +60 17-287 8929 to discuss your ideal tour",
+      },
+      {
+        title: "Get Inspired",
+        description:
+          "Browse our existing tours or read about Malaysian food culture while you wait",
+      },
+    ],
+    ctaText: "Looking forward to creating something special for you!",
+    buttons: [
+      { title: "See What We Offer", href: "/tours", type: "secondary-btn" },
+      {
+        title: "Learn About Malaysian Food",
+        href: "/kuala-lumpur-food-tour",
+        type: "secondary-btn",
+      },
+    ],
+  },
+};
+
+const pageContent = content[type];
+---
+
+<GlobalHero
+  title={pageContent.title}
+  subtitle={pageContent.subtitle}
+  description={pageContent.paragraphs.join("\n\n")}
+/>
+
+<Section variant="light">
+  <h2 class="text-h2 text-primary text-center mb-12">What Happens Next</h2>
+  <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    {
+      pageContent.nextSteps.map((step, index) => (
+        <Card>
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+              {index + 1}
+            </div>
+            <h3 class="text-h3 text-primary mb-3">{step.title}</h3>
+            <p class="text-body">{step.description}</p>
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+</Section>
+
+<Section>
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-xl text-primary mb-8 font-semibold">{pageContent.ctaText}</p>
+    <div class="flex gap-4 justify-center flex-wrap">
+      {
+        pageContent.buttons.map((button) => (
+          <Button
+            href={button.href}
+            title={button.title}
+            buttonType={button.type}
+          />
+        ))
+      }
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-200">
+      <p class="text-sm text-gray-600 mb-4">Questions? We're here.</p>
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <a
+          href="https://wa.me/60172878929"
+          class="text-primary hover:text-secondary transition-colors"
+        >
+          WhatsApp: +60 17-287 8929
+        </a>
+        <span class="text-gray-400">•</span>
+        <a
+          href="tel:+60172878929"
+          class="text-primary hover:text-secondary transition-colors"
+        >
+          Call: +60 17-287 8929
+        </a>
+        <span class="text-gray-400">•</span>
+        <a
+          href="/contact"
+          class="text-primary hover:text-secondary transition-colors"
+        >
+          Send Another Message
+        </a>
+      </div>
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,47 @@
+---
+interface Props {
+  amount: number;
+  currency?: 'RM' | 'USD' | 'EUR';
+  variant?: 'default' | 'large' | 'inline';
+  showLabel?: boolean;
+  label?: string;
+  class?: string;
+}
+
+const {
+  amount,
+  currency = 'RM',
+  variant = 'default',
+  showLabel = true,
+  label = 'per person',
+  class: className
+} = Astro.props;
+
+const variantClasses = {
+  default: 'text-2xl md:text-3xl',
+  large: 'text-3xl md:text-4xl',
+  inline: 'text-lg md:text-xl'
+};
+
+const formattedAmount = amount.toLocaleString('en-MY', {
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0
+});
+---
+
+<div class:list={[
+  'inline-flex items-baseline gap-1',
+  className
+]}>
+  <span class:list={[
+    'font-bold text-primary font-merriweather',
+    variantClasses[variant]
+  ]}>
+    {currency} {formattedAmount}
+  </span>
+  {showLabel && (
+    <span class="text-sm md:text-base text-gray-600">
+      {label}
+    </span>
+  )}
+</div>
