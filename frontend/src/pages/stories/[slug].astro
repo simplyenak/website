@@ -1,0 +1,122 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import Section from "@/components/Design/Section.astro";
+import Badge from "@/components/Design/Badge.astro";
+import Button from "@/components/Button.astro";
+import Prose from "@/components/Prose.astro";
+import { stories, type Story } from "@/data/stories-data";
+
+export async function getStaticPaths() {
+  return stories.map((story) => ({
+    params: { slug: story.slug },
+    props: { story },
+  }));
+}
+
+interface Props {
+  story: Story;
+}
+
+const { story } = Astro.props;
+
+// Format date
+const formattedDate = new Date(story.date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+// SEO Data
+const seoData = {
+  title: `${story.title} | Simply Enak Stories`,
+  description: story.excerpt,
+  image: story.image,
+  type: "article",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: story.title,
+    image: story.image,
+    datePublished: story.date,
+    author: {
+      "@type": "Organization",
+      name: story.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Simply Enak",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://se-website-images.s3.nl-ams.scw.cloud/simply-enak-logo.png",
+      },
+    },
+    description: story.excerpt,
+  },
+};
+---
+
+<Layout
+  title={seoData.title}
+  description={seoData.description}
+  image={seoData.image}
+  structuredData={seoData.structuredData}
+>
+  <GlobalHero
+    title={story.title}
+    subtitle={formattedDate}
+    image={story.image}
+    isOverlay={true}
+  />
+
+  <Section variant="default" spacing="default">
+    <div class="max-w-3xl mx-auto">
+      <!-- Categories -->
+      <div class="flex flex-wrap gap-2 mb-8 justify-center">
+        {
+          story.categories.map((category) => (
+            <Badge variant="secondary">{category}</Badge>
+          ))
+        }
+      </div>
+
+      <!-- Content -->
+      <Prose class="mb-12">
+        <div set:html={story.content} />
+      </Prose>
+
+      <!-- Author/Share/Footer of Article -->
+      <div class="border-t border-gray-200 pt-8 mt-12">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <div class="text-sm text-gray-600">
+            Written by <span class="font-semibold text-primary"
+              >{story.author}</span
+            >
+          </div>
+          <div class="flex gap-2">
+            <Button
+              href="/stories"
+              title="Back to Stories"
+              buttonType="secondary-btn-small"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Related/CTA Section -->
+  <Section variant="light">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-h2 text-primary mb-4">Taste These Stories</h2>
+      <p class="text-body mb-8">
+        Don't just read about Malaysian food heritage—experience it with us.
+        Join a tour and meet the vendors, taste the history, and create your own
+        stories.
+      </p>
+      <Button href="/tours" title="Find a Food Tour" buttonType="primary-btn" />
+    </div>
+  </Section>
+</Layout>

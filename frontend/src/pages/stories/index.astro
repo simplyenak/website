@@ -1,31 +1,210 @@
 ---
-import StoriesCardsSection from "@/components/Stories/StoriesCardsSection.tsx";
 import Layout from "@/layouts/Layout.astro";
-import StoriesSidebar from "@/components/Stories/StoriesSidebar.astro";
-import fetchApi from "@/lib/strapi";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-import type { SEOTypes } from "@/types";
+import GlobalHero from "@/components/GlobalHero.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import Badge from "@/components/Design/Badge.astro";
+import Button from "@/components/Button.astro";
+import { stories, storyCategories } from "@/data/stories-data";
 
 export const prerender = true;
 
-const data = await fetchApi<{ SEO: SEOTypes }>({
-  endpoint: "stories?populate=SEO.image",
-  wrappedByKey: "data",
-});
+// Hero section
+const hero = {
+  title: "Malaysian Food Stories",
+  subtitle:
+    "Where food meets culture, history, and the people who keep traditions alive",
+  image:
+    "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+};
+
+// SEO data
+const seoData = {
+  title: "Malaysian Food Stories & Cultural Heritage | Simply Enak",
+  description:
+    "Discover the stories behind Malaysian food culture—from family recipes passed down through generations to the heritage that shapes our cuisine today.",
+  image: hero.image,
+};
+
+// Format date for display
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+// Get featured story (first one) and rest
+const featuredStory = stories[0];
+const otherStories = stories.slice(1);
 ---
 
 <Layout
-  {...data?.SEO && {
-    title: data.SEO.title,
-    description: data.SEO.description,
-    image: getFullMediaUrl(data.SEO.image),
-    structuredData: data.SEO.schema,
-  }}
+  title={seoData.title}
+  description={seoData.description}
+  image={seoData.image}
 >
-  <section
-    class="py-20 md:py-32 main-container grid grid-cols-1 gap-8 xl:gap-16 md:grid-cols-7"
-  >
-    <StoriesCardsSection client:visible />
-    <StoriesSidebar />
-  </section>
+  <!-- Hero Section -->
+  <GlobalHero
+    title={hero.title}
+    subtitle={hero.subtitle}
+    image={hero.image}
+    isOverlay={true}
+  />
+
+  <!-- Featured Story Section -->
+  <Section variant="light" spacing="compact">
+    <div class="mb-12">
+      <h2 class="text-h3 text-primary mb-6 border-b border-gray-200 pb-2">
+        Featured Story
+      </h2>
+      <div
+        class="bg-white rounded-lg shadow-lg overflow-hidden grid md:grid-cols-2"
+      >
+        <div class="relative h-64 md:h-auto">
+          <img
+            src={featuredStory.image}
+            alt={featuredStory.title}
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-8 md:p-12 flex flex-col justify-center">
+          <div class="flex gap-2 mb-4">
+            {
+              featuredStory.categories.map((category) => (
+                <Badge variant="accent" size="small">
+                  {category}
+                </Badge>
+              ))
+            }
+          </div>
+          <h3
+            class="text-h2 text-primary mb-4 hover:text-secondary transition-colors"
+          >
+            <a href={`/stories/${featuredStory.slug}`}>{featuredStory.title}</a>
+          </h3>
+          <p class="text-body mb-6 line-clamp-3">
+            {featuredStory.excerpt}
+          </p>
+          <div class="flex items-center justify-between mt-auto">
+            <span class="text-sm text-gray-500"
+              >{formatDate(featuredStory.date)}</span
+            >
+            <Button
+              href={`/stories/${featuredStory.slug}`}
+              title="Read Full Story"
+              buttonType="primary-btn-small"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Categories & Latest Stories -->
+  <Section>
+    <!-- Category Filter (Visual) -->
+    <div class="flex flex-wrap gap-3 justify-center mb-12">
+      <a
+        href="/stories"
+        class="px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:bg-secondary transition-colors"
+      >
+        All Stories
+      </a>
+      {
+        storyCategories.map((category) => (
+          <a
+            href={`#`}
+            class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-sm font-semibold hover:bg-gray-200 transition-colors"
+            title={category.description}
+          >
+            {category.name}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Stories Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        otherStories.map((story) => (
+          <a href={`/stories/${story.slug}`} class="group h-full">
+            <Card class="h-full flex flex-col">
+              <div class="relative h-56 overflow-hidden rounded-t-lg flex-shrink-0">
+                <img
+                  src={story.image}
+                  alt={story.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                  {story.categories.slice(0, 1).map((category) => (
+                    <Badge variant="secondary" size="small">
+                      {category}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-h4 text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
+                  {story.title}
+                </h3>
+                <p class="text-body text-sm mb-4 line-clamp-3 flex-grow">
+                  {story.excerpt}
+                </p>
+                <div class="flex items-center justify-between text-xs text-gray-500 mt-auto pt-4 border-t border-gray-100">
+                  <span>{formatDate(story.date)}</span>
+                  <span class="text-primary font-semibold group-hover:translate-x-1 transition-transform">
+                    Read Story →
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Newsletter / CTA -->
+  <Section variant="accent">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-h2 text-primary mb-4">Hungry for More?</h2>
+      <p class="text-body mb-8 max-w-2xl mx-auto">
+        Join our newsletter to get the latest food stories, travel tips, and
+        exclusive tour offers delivered straight to your inbox. No spam, just
+        delicious content.
+      </p>
+
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto mb-12"
+      >
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary flex-grow"
+        />
+        <button
+          class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-colors whitespace-nowrap"
+        >
+          Subscribe
+        </button>
+      </div>
+
+      <div class="pt-8 border-t border-gray-200/50">
+        <p class="text-sm font-semibold text-primary mb-4">
+          Or experience it in person
+        </p>
+        <div class="flex gap-4 justify-center">
+          <Button
+            href="/tours"
+            title="Browse Food Tours"
+            buttonType="secondary-btn-small"
+          />
+        </div>
+      </div>
+    </div>
+  </Section>
 </Layout>
