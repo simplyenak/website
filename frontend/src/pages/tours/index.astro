@@ -1,69 +1,619 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import CTASection from "@/components/CTASection.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import Button from "@/components/Button.astro";
+import Badge from "@/components/Design/Badge.astro";
+import FAQ from "@/components/FAQ.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
-import ToursCardsSection from "@/components/Tours/ToursCardsSection.astro";
-import OtherBookingSection from "@/components/Tours/OtherBookingSection.astro";
-import type { TourPageTypes } from "@/types";
-import fetchApi from "@/lib/strapi";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 export const prerender = true;
 
-const data = await fetchApi<TourPageTypes>({
-  endpoint:
-    "tours-main?populate=hero.image&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection&populate=SEO.image",
-  wrappedByKey: "data",
-});
-const hasData = !!data && typeof data === "object";
+// Hero section
+const hero = {
+  title: "Choose Your Malaysian Food Adventure",
+  subtitle:
+    "Every path leads to authentic stories, family recipes, and cultural connections",
+  description:
+    "We're not tour operators—we're your temporary neighbors. For 14+ years, we've been walking guests through neighborhoods where we grew up eating, introducing them to vendors who've become family, and sharing the Malaysia we treasure. How would you like to explore?",
+  backgroundImage:
+    "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+};
+
+// Location-based segments
+const locationSegments = [
+  {
+    name: "Kuala Lumpur",
+    slug: "/kuala-lumpur-food-tour",
+    shortDescription: "Where three cultures meet on a plate",
+    fullDescription:
+      "In 1857, Chinese tin miners, Malay traders, and Indian Muslims converged at the muddy confluence of two rivers. Their cooking traditions didn't just coexist—they influenced each other, creating fusion cuisines that exist nowhere else on Earth. Today, KL is where you eat nasi lemak for breakfast, dim sum for lunch, and banana leaf curry for dinner.",
+    highlights: [
+      "6,000+ hawker stalls across Chinatown, Chow Kit, Brickfields",
+      "Malay, Chinese, Indian + Nyonya, Mamak fusion traditions",
+      "24/7 food scene from breakfast markets to mamak stalls",
+      "UNESCO-recognized heritage food districts",
+    ],
+    image:
+      "https://se-website-images.s3.nl-ams.scw.cloud/kl-chow-kit-market.jpg",
+    available: true,
+  },
+  {
+    name: "Penang (Georgetown)",
+    slug: "/tours/penang-heritage-food-trail",
+    shortDescription: "UNESCO World Heritage street food capital",
+    fullDescription:
+      "Georgetown's food scene earned UNESCO recognition not by accident, but through generations of families perfecting their recipes. Hokkien, Teochew, and Peranakan communities created dishes you can't find anywhere else. Every hawker stall has a story—and we know them all.",
+    highlights: [
+      "UNESCO World Heritage Site with living food traditions",
+      "Unique Hokkien, Teochew, Peranakan specialties",
+      "Family vendors spanning 3-4 generations",
+      "Where locals queue for their childhood favorites",
+    ],
+    image:
+      "https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg",
+    available: true,
+    badge: "Most Popular",
+  },
+  {
+    name: "Melaka",
+    slug: "/tours/melaka-cultural-food-journey",
+    shortDescription: "Peranakan fusion capital of Malaysia",
+    fullDescription:
+      "When Chinese traders married Malay women in the 15th century, they created a unique culture—and a unique cuisine. Nyonya cooking blends Chinese techniques with Malay spices in ways that took centuries to perfect. Melaka is where you taste that 600-year evolution.",
+    highlights: [
+      "Authentic Nyonya/Peranakan heritage dishes",
+      "Portuguese-Eurasian community traditions",
+      "600 years of cultural fusion on a plate",
+      "Family recipes passed down through generations",
+    ],
+    image:
+      "https://se-website-images.s3.nl-ams.scw.cloud/melaka-cultural-tour.jpg",
+    available: true,
+  },
+  {
+    name: "Ipoh",
+    slug: "/contact",
+    shortDescription: "Old town hawker culture and white coffee heritage",
+    fullDescription:
+      "Ipoh's old town hasn't changed much since the tin mining boom—and that's exactly why food lovers flock here. Family-run kopitiam serve Hainanese chicken rice the way it was meant to be. Bean sprouts grow sweeter in Ipoh's limestone water. And the white coffee? There's a reason people drive hours for it.",
+    highlights: [
+      "Legendary Hainanese chicken rice & white coffee",
+      "Limestone water makes unique bean sprouts",
+      "Old town kopitiam with pre-war architecture",
+      "Quieter, more intimate than KL or Penang",
+    ],
+    image: "https://se-website-images.s3.nl-ams.scw.cloud/ipoh-old-town.jpg",
+    available: false,
+    badge: "Coming Soon",
+  },
+];
+
+// Dietary preference segments
+const dietarySegments = [
+  {
+    name: "Vegetarian & Vegan Heritage",
+    slug: "/vegetarian-food-tours",
+    shortDescription: "140 years of plant-based Malaysian tradition",
+    fullDescription:
+      "Most people don't know Malaysia has a 140-year vegetarian heritage. Buddhist temple kitchens, South Indian family recipes, and Peranakan innovation created a plant-based food culture that rivals any in Asia. Meet Aunty Maya, whose family has served vegetarian dishes for 85 years. Taste mock meats that predate modern veganism by decades.",
+    highlights: [
+      "Buddhist temple kitchens & South Indian traditions",
+      "Meet families with 100+ year vegetarian recipes",
+      "Learn the difference between chai sim, Buddha's delight, and mock meat evolution",
+      "100% vegetarian environments or adapted regular tours",
+    ],
+    image:
+      "https://se-website-images.s3.nl-ams.scw.cloud/vegetarian-heritage.jpg",
+    available: true,
+    badge: "Heritage Focus",
+  },
+  {
+    name: "Halal-Certified Experiences",
+    slug: "/contact",
+    shortDescription: "All Malay & Muslim vendor tours",
+    fullDescription:
+      "Malaysia is a Muslim-majority country, which means exceptional halal food is everywhere. Our halal-certified tours focus on Malay kampung cooking, Muslim-Indian mamak traditions, and the Indonesian influences that shaped Malaysian cuisine. Every vendor is halal-certified.",
+    highlights: [
+      "100% halal-certified vendors & restaurants",
+      "Malay kampung cooking & mamak traditions",
+      "Indonesian-Malaysian fusion cuisine",
+      "Ramadan special tours during fasting month",
+    ],
+    image: "https://se-website-images.s3.nl-ams.scw.cloud/halal-malay-food.jpg",
+    available: false,
+    badge: "Coming Soon",
+  },
+  {
+    name: "All Dietary Needs Welcome",
+    slug: "/contact",
+    shortDescription: "We adapt every tour for your diet",
+    fullDescription:
+      "Allergies? Gluten-free? No pork? No problem. Every tour can be adapted for your dietary needs. We've been doing this for 14 years—we know which vendors can accommodate, which dishes can be modified, and how to ensure you experience Malaysian food culture without compromise.",
+    highlights: [
+      "Gluten-free, dairy-free, nut-free adaptations",
+      "Religious dietary requirements (kosher-style, Jain, etc.)",
+      "Allergy accommodations with vendor briefings",
+      "Same cultural education, adapted dishes",
+    ],
+    image:
+      "https://se-website-images.s3.nl-ams.scw.cloud/dietary-adaptations.jpg",
+    available: true,
+  },
+];
+
+// Group & custom segments
+const groupSegments = [
+  {
+    name: "Family Adventures",
+    slug: "/contact",
+    shortDescription: "Kid-friendly food, parent-approved experiences",
+    fullDescription:
+      "Traveling with children? We get it—you want them to experience Malaysian culture without the meltdowns. We adapt dishes for young palates, pace the tour for small legs, and make sure everyone learns something. Parents consistently tell us their kids talk about 'that food tour in Malaysia' years later.",
+    highlights: [
+      "Child-friendly dish selections (less spicy, familiar textures)",
+      "Shorter routes, more frequent breaks",
+      "Educational approach kids actually enjoy",
+      "Safe, clean, family-appropriate environments",
+    ],
+    icon: "👨‍👩‍👧‍👦",
+    available: true,
+  },
+  {
+    name: "Corporate Team Building",
+    slug: "/contact",
+    shortDescription: "Bonding over food, not trust falls",
+    fullDescription:
+      "Want your team to actually connect? Skip the generic team-building exercises. Walk through hawker markets together. Learn to spot fresh ingredients. Debate whether char kway teow is better in Penang or KL. Food brings people together in ways conference rooms never will.",
+    highlights: [
+      "Custom routes for group size (10-50 people)",
+      "Interactive elements: market shopping, dish spotting",
+      "Cultural learning that sparks conversation",
+      "Post-tour private dining options available",
+    ],
+    icon: "💼",
+    available: true,
+  },
+  {
+    name: "Special Celebrations",
+    slug: "/contact",
+    shortDescription: "Birthdays, anniversaries, reunions—make them memorable",
+    fullDescription:
+      "Some moments deserve more than a restaurant reservation. Celebrate milestones the Malaysian way: surrounded by food, family (chosen or blood), and stories. We'll create an experience that matches the occasion—from intimate couple's tours to multi-generation family reunions.",
+    highlights: [
+      "Private tours tailored to your occasion",
+      "Special touches: vendor birthday songs, anniversary surprises",
+      "Multi-generational group accommodations",
+      "Photo-friendly routes & moments built in",
+    ],
+    icon: "🎉",
+    available: true,
+  },
+  {
+    name: "Fully Custom Itineraries",
+    slug: "/contact",
+    shortDescription: "Your vision, our local knowledge",
+    fullDescription:
+      "Have specific interests? Want to combine cities? Need multi-day experiences? We'll design a tour that exists nowhere else. Tell us what fascinates you—historical trade routes, specific cuisines, cooking techniques, neighborhood transformations—and we'll create the itinerary.",
+    highlights: [
+      "Multi-city, multi-day adventures",
+      "Specific cuisine deep-dives (Nyonya, Mamak, Hakka, etc.)",
+      "Behind-the-scenes: home kitchens, market shopping, cooking classes",
+      "Combine food with history, art, architecture",
+    ],
+    icon: "✨",
+    available: true,
+  },
+];
+
+// FAQ data
+const faqs = [
+  {
+    question: "How do I decide which tour is right for me?",
+    answer:
+      "Start with location—which city interests you? Then consider your dietary needs and group type. If you're solo or a couple, join our regular tours. Families and groups of 6+ benefit from custom experiences. Still unsure? Contact us—we love helping people find their perfect Malaysian food adventure.",
+  },
+  {
+    question: "What if I have dietary restrictions?",
+    answer:
+      "Every tour can be adapted. Vegetarian, vegan, halal, gluten-free, allergies—just tell us when booking. Our dedicated vegetarian heritage tours explore Malaysia's 140-year plant-based tradition. For other dietary needs, we work with vendors who can accommodate while maintaining authentic flavors.",
+  },
+  {
+    question: "Do you offer tours in all these cities?",
+    answer:
+      "Currently running tours in Kuala Lumpur, Penang, and Melaka. Ipoh and specialized halal tours are coming soon. Want to be notified when they launch? Contact us and we'll add you to the list.",
+  },
+  {
+    question: "What's included in the tour price?",
+    answer:
+      "All food tastings (8-10 different dishes), beverages, and your guide's time and knowledge. You'll eat enough to be comfortably full. Not included: transportation to the meeting point, alcoholic beverages (unless specified), or souvenirs.",
+  },
+  {
+    question: "How long are the tours?",
+    answer:
+      "Regular tours run 3.5-4 hours. Custom tours can be shorter (2 hours) or longer (full day, multi-day). We pace based on your group—leisurely walks with plenty of time to chat with vendors and ask questions.",
+  },
+  {
+    question: "Can we book a private tour?",
+    answer:
+      "Yes! Private tours work beautifully for families, corporate groups, celebrations, or anyone who wants a more intimate experience. Same great routes and vendors, but at your own pace with a guide dedicated to your group.",
+  },
+];
+
+// SEO data
+const seoData = {
+  title: "Malaysian Food Tours | By Location, Diet & Group | Simply Enak",
+  description:
+    "Choose your Malaysian food adventure: explore by city (KL, Penang, Melaka), dietary preference (vegetarian, halal, all diets), or create a custom experience. Small groups, local guides, 14+ years sharing authentic food heritage.",
+  image: hero.backgroundImage,
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Simply Enak Food Tours",
+    description:
+      "Authentic Malaysian food and cultural experiences by location, dietary preference, and group type",
+    url: "https://simplyenak.com/tours",
+  },
+};
 ---
 
 <Layout
-  {...data?.SEO && {
-    title: data.SEO.title,
-    description: data.SEO.description,
-    image: getFullMediaUrl(data.SEO.image),
-    structuredData: data.SEO.schema,
-  }}
+  title={seoData.title}
+  description={seoData.description}
+  image={seoData.image}
+  structuredData={seoData.structuredData}
 >
-  {
-    hasData && data.hero && (
-      <GlobalHero title={data.hero.title} image={data.hero.image} />
-    )
-  }
+  <!-- Hero Section -->
+  <GlobalHero
+    title={hero.title}
+    subtitle={hero.subtitle}
+    description={hero.description}
+  />
 
-  {
-    hasData && data.toursCardsSection && (
-      <ToursCardsSection title={data.toursCardsSection.text} />
-    )
-  }
-
-  {
-    hasData && data.bookBespokeTour && (
-      <OtherBookingSection
-        title={data.bookBespokeTour.title}
-        description={data.bookBespokeTour.description}
-        isBookingButton={data.bookBespokeTour.isBookingButton}
-      />
-    )
-  }
-
-  {
-    hasData && data.knowTourSection && (
-      <OtherBookingSection
-        title={data.knowTourSection.title}
-        description={data.knowTourSection.description}
-        isBookingButton={data.knowTourSection.isBookingButton}
-      />
-    )
-  }
-
-  {
-    !hasData && (
-      <div style="padding:2rem;text-align:center;color:red;">
-        Sorry, no tour data available.
+  <!-- Image Section with 3 Key Points -->
+  <section
+    class="relative bg-cover bg-center h-[400px] md:h-[500px]"
+    style={`background-image: url('${hero.backgroundImage}')`}
+  >
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="main-container relative z-10 h-full flex items-center">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 w-full">
+        <div
+          class="bg-white/95 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg"
+        >
+          <div class="text-4xl mb-3">🍜</div>
+          <h3 class="text-h4 text-primary mb-2">14+ Years</h3>
+          <p class="text-body">
+            Sharing authentic Malaysian food heritage since 2011
+          </p>
+        </div>
+        <div
+          class="bg-white/95 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg"
+        >
+          <div class="text-4xl mb-3">👥</div>
+          <h3 class="text-h4 text-primary mb-2">Small Groups</h3>
+          <p class="text-body">
+            Maximum 8 people for intimate, personalized experiences
+          </p>
+        </div>
+        <div
+          class="bg-white/95 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg"
+        >
+          <div class="text-4xl mb-3">⭐</div>
+          <h3 class="text-h4 text-primary mb-2">5-Star Rated</h3>
+          <p class="text-body">TripAdvisor Travellers' Choice multiple years</p>
+        </div>
       </div>
-    )
-  }
-  <CTASection />
+    </div>
+  </section>
+
+  <!-- CTA Buttons Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="main-container text-center">
+      <div class="flex items-center gap-7 flex-wrap justify-center">
+        <Button
+          href="#by-location"
+          title="Browse by City"
+          buttonType="primary-btn"
+        />
+        <Button
+          href="#by-diet"
+          title="Dietary Options"
+          buttonType="secondary-btn"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Tours by Location -->
+  <Section id="by-location" variant="light">
+    <div class="text-center mb-12">
+      <h2 class="text-h2 text-primary">Explore by City</h2>
+      <p class="text-body mt-4 max-w-3xl mx-auto">
+        Every Malaysian city has its own food story. Choose your destination and
+        discover why locals are passionate about their regional specialties.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        locationSegments.map((location) => (
+          <Card variant="featured">
+            <div class="relative">
+              {location.badge && (
+                <div class="absolute top-4 right-4 z-10">
+                  <Badge
+                    variant={location.available ? "success" : "secondary"}
+                    size="small"
+                  >
+                    {location.badge}
+                  </Badge>
+                </div>
+              )}
+              <img
+                src={location.image}
+                alt={location.name}
+                class="w-full h-56 object-cover rounded-t-lg"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-h3 text-primary mb-2">{location.name}</h3>
+              <p class="text-sm text-secondary font-semibold mb-4 italic">
+                {location.shortDescription}
+              </p>
+
+              <p class="text-body mb-6 leading-relaxed">
+                {location.fullDescription}
+              </p>
+
+              <div class="mb-6">
+                <p class="text-sm font-semibold text-gray-900 mb-2">
+                  What makes it special:
+                </p>
+                <ul class="space-y-2">
+                  {location.highlights.map((highlight) => (
+                    <li class="flex items-start text-sm">
+                      <svg
+                        class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span class="text-gray-700">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {location.available ? (
+                <Button
+                  href={location.slug}
+                  title={`Explore ${location.name}`}
+                  buttonType="primary-btn"
+                  class="w-full"
+                />
+              ) : (
+                <Button
+                  href="/contact"
+                  title="Notify Me When Available"
+                  buttonType="secondary-btn"
+                  class="w-full"
+                />
+              )}
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Tours by Dietary Preference -->
+  <Section id="by-diet">
+    <div class="text-center mb-12">
+      <h2 class="text-h2 text-primary">Explore by Dietary Preference</h2>
+      <p class="text-body mt-4 max-w-3xl mx-auto">
+        Every diet has a story in Malaysia. Whether you're vegetarian,
+        halal-observant, or have specific dietary needs, you'll discover a rich
+        culinary heritage designed for you.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        dietarySegments.map((segment) => (
+          <Card variant="featured">
+            <div class="relative">
+              {segment.badge && (
+                <div class="absolute top-4 right-4 z-10">
+                  <Badge variant="accent" size="small">
+                    {segment.badge}
+                  </Badge>
+                </div>
+              )}
+              <img
+                src={segment.image}
+                alt={segment.name}
+                class="w-full h-48 object-cover rounded-t-lg"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-h3 text-primary mb-2">{segment.name}</h3>
+              <p class="text-sm text-secondary font-semibold mb-4 italic">
+                {segment.shortDescription}
+              </p>
+
+              <p class="text-body mb-6 leading-relaxed">
+                {segment.fullDescription}
+              </p>
+
+              <div class="mb-6">
+                <ul class="space-y-2">
+                  {segment.highlights.map((highlight) => (
+                    <li class="flex items-start text-sm">
+                      <svg
+                        class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span class="text-gray-700">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {segment.available ? (
+                <Button
+                  href={segment.slug}
+                  title="Learn More"
+                  buttonType="primary-btn"
+                  class="w-full"
+                />
+              ) : (
+                <Button
+                  href="/contact"
+                  title="Request This Tour"
+                  buttonType="secondary-btn"
+                  class="w-full"
+                />
+              )}
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Custom & Group Tours -->
+  <Section id="custom-group" variant="accent">
+    <div class="text-center mb-12">
+      <h2 class="text-h2 text-primary">Custom & Group Experiences</h2>
+      <p class="text-body mt-4 max-w-3xl mx-auto">
+        Sometimes the best experiences are the ones designed specifically for
+        you. Whether you're celebrating, team-building, or traveling with
+        family, we'll create something perfect.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        groupSegments.map((segment) => (
+          <Card>
+            <div class="text-center mb-6">
+              <div class="text-5xl mb-4">{segment.icon}</div>
+              <h3 class="text-h3 text-primary mb-2">{segment.name}</h3>
+              <p class="text-sm text-secondary font-semibold italic">
+                {segment.shortDescription}
+              </p>
+            </div>
+
+            <p class="text-body mb-6 leading-relaxed">
+              {segment.fullDescription}
+            </p>
+
+            <div class="mb-6">
+              <ul class="space-y-2">
+                {segment.highlights.map((highlight) => (
+                  <li class="flex items-start text-sm">
+                    <svg
+                      class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="text-gray-700">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <Button
+              href={segment.slug}
+              title="Plan This Experience"
+              buttonType="primary-btn"
+              class="w-full"
+            />
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Why Simply Enak -->
+  <Section variant="light">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-h2 text-primary mb-6">Why Simply Enak?</h2>
+      <p class="text-body mb-8 leading-relaxed">
+        We're not tour operators—we're your temporary neighbors in Malaysia. For
+        over 14 years, we've been sharing the places and flavors we grew up
+        eating, introducing guests to vendors who've become family, and
+        revealing the stories behind every dish. Come as a guest, leave as a
+        friend who sees, feels, and can taste the difference between tourist
+        Malaysia and the Malaysia we treasure.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-3xl font-bold text-primary mb-2">14+ Years</div>
+          <p class="text-sm text-gray-700">
+            Sharing Malaysian food heritage since 2011
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-3xl font-bold text-primary mb-2">1,000+</div>
+          <p class="text-sm text-gray-700">
+            Happy guests from around the world
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-3xl font-bold text-primary mb-2">5-Star</div>
+          <p class="text-sm text-gray-700">TripAdvisor Travellers' Choice</p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-wrap justify-center gap-6 text-sm pt-6 border-t border-gray-300"
+      >
+        <a
+          href="/about"
+          class="text-primary hover:text-secondary transition-colors font-semibold"
+          >About Us</a
+        >
+        <span class="text-gray-400">•</span>
+        <a
+          href="/contact"
+          class="text-primary hover:text-secondary transition-colors font-semibold"
+          >Contact Us</a
+        >
+        <span class="text-gray-400">•</span>
+        <a
+          href="tel:+60172878929"
+          class="text-primary hover:text-secondary transition-colors font-semibold"
+          >+60 17-287 8929</a
+        >
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <FAQ faqs={faqs} />
 </Layout>

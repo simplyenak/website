@@ -3,6 +3,7 @@ import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 
 let {
   title,
+  subtitle = "",
   description = "",
   image,
   objectPosition = "object-center",
@@ -11,30 +12,37 @@ let {
 ---
 
 <section
-  class="min-h-[420px] h-full py-16 px-3 relative text-center  flex items-center justify-center text-white"
+  class="bg-[#1a1a1a] text-white py-20 md:py-32 relative text-center flex items-center justify-center overflow-hidden"
 >
- <div class="relative z-10 flex flex-col gap-4 md:gap-6 ">
-   <h1 class="text-h1 xl:text-5xl">{title}</h1>
-  {
-    description ? (
-      <p class="text-xl md:text-2xl max-w-4xl mx-auto font-semibold text-shadow-custom">
-        {description}
-      </p>
-    ) : null
-  }
- </div>
+  <div class="main-container relative z-10 flex flex-col items-center">
+    <h1 class="text-4xl md:text-6xl font-merriweather mb-6 leading-tight">
+      {title}
+    </h1>
+
+    {
+      subtitle ? (
+        <p class="text-xl md:text-2xl font-merriweather italic mb-8 text-gray-200 max-w-4xl">
+          {subtitle}
+        </p>
+      ) : null
+    }
+
+    {
+      description ? (
+        <p class="text-body max-w-3xl mx-auto mb-10 opacity-90 leading-relaxed">
+          {description}
+        </p>
+      ) : null
+    }
+  </div>
+
+  {isOverlay && image ? <div class="absolute inset-0 bg-black/30 z-0" /> : null}
 
   {
-    isOverlay ? (
-      <div class="absolute inset-0 bg-black/30 z-0"></div>
-    ) : null
-  }
-
-  {
-    getFullMediaUrl(image) && (
+    image && getFullMediaUrl(image) && (
       <img
         src={getFullMediaUrl(image)}
-        alt="About Hero Image"
+        alt={title}
         class:list={[
           "absolute inset-0 size-full object-cover -z-10",
           objectPosition,

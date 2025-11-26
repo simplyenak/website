@@ -1,35 +1,11 @@
 ---
-import GlobalHero from "@/components/GlobalHero.astro";
 import Layout from "@/layouts/Layout.astro";
-import CTASection from "@/components/CTASection.astro";
+import ThankYou from "@/components/ThankYou.astro";
+import img1 from "@/assets/images/kuala-lumpur-1641785_1920.jpg";
 
 export const prerender = true;
-import img1 from "@/assets/images/kuala-lumpur-1641785_1920.jpg";
 ---
 
 <Layout>
-  <GlobalHero
-    title="Thank You"
-    description="YOU CAN SIT BACK AND RELAX NOW"
-    image={img1}
-    objectPosition="center"
-    isOverlay={true}
-  />
-  <section class="main-container pt-12 pb-20 space-y-4 text-base md:text-lg">
-    <p>
-      Thank you for booking a food experience with us. You can relax now as we
-      prepare to share the best of Malaysia’s Food, Culture and History with
-      you.
-    </p>
-    <p>
-      An e-mail is on its way to you right now. In this message, you will find
-      more details on your meeting location and how to best prepare for your
-      food experience.
-    </p>
-    <p>
-      If you have something more urgent, please contact us by phone at +6017-287
-      8929.
-    </p>
-  </section>
-  <CTASection />
+  <ThankYou type="booking" location="Penang" image={img1} />
 </Layout>

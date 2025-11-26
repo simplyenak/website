@@ -1,0 +1,403 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import ContentBlock from "@/components/Design/ContentBlock.astro";
+import PriceTag from "@/components/Design/PriceTag.astro";
+import Badge from "@/components/Design/Badge.astro";
+import Button from "@/components/Button.astro";
+import FAQ from "@/components/FAQ.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+
+export const prerender = false;
+
+// Import data from external file for maintainability
+import {
+  vegetarianEducation,
+  tourExperiences,
+  vegetarianFaqs,
+} from "../data/vegetarian-food-tours";
+
+// Schema data for SEO
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  name: "Malaysian Vegetarian Food Heritage Tours",
+  description:
+    "Educational food tours exploring Malaysia's 140-year vegetarian heritage",
+  provider: {
+    "@type": "Organization",
+    name: "Simply Enak",
+    url: "https://simplyenak.com",
+  },
+  offers: {
+    "@type": "AggregateOffer",
+    lowPrice: 180,
+    highPrice: 280,
+    priceCurrency: "MYR",
+  },
+};
+---
+
+<Layout
+  title="Malaysian Vegetarian Food Tours – 140 Years of Heritage | Simply Enak"
+  description="Meet Aunty Maya, whose family's served South Indian vegetarian dishes for 85 years. Taste Buddhist temple kitchens, Peranakan innovation, and plant-based traditions most visitors never see. This is Malaysia's vegetarian story."
+  structuredData={pageSchema}
+>
+  <!-- Hero Section -->
+  <GlobalHero
+    title={vegetarianEducation.hero.title}
+    subtitle={vegetarianEducation.hero.subtitle}
+  />
+
+  <!-- Image Section with 3 Key Points -->
+  <section
+    class="relative bg-cover bg-center h-[400px] md:h-[500px]"
+    style={`background-image: url('${vegetarianEducation.hero.image}')`}
+  >
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="main-container relative z-10 h-full flex items-center">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 w-full">
+        <div
+          class="bg-white/95 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg"
+        >
+          <div class="text-4xl mb-3">🕉️</div>
+          <h3 class="text-h4 text-primary mb-2">140 Years</h3>
+          <p class="text-body">
+            Buddhist temples and South Indian families preserving plant-based
+            heritage
+          </p>
+        </div>
+        <div
+          class="bg-white/95 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg"
+        >
+          <div class="text-4xl mb-3">👨‍👩‍👧‍👦</div>
+          <h3 class="text-h4 text-primary mb-2">Family Recipes</h3>
+          <p class="text-body">
+            Meet vendors with 100+ year vegetarian traditions
+          </p>
+        </div>
+        <div
+          class="bg-white/95 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg"
+        >
+          <div class="text-4xl mb-3">🌱</div>
+          <h3 class="text-h4 text-primary mb-2">Unique Fusion</h3>
+          <p class="text-body">
+            Chinese, Indian, and Peranakan plant-based innovation
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Buttons Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="main-container text-center">
+      <div class="flex items-center gap-7 flex-wrap justify-center">
+        <Button
+          href="#tours"
+          title="Taste The Heritage"
+          buttonType="primary-btn"
+        />
+        <Button
+          href="#heritage"
+          title="Learn The Stories"
+          buttonType="secondary-btn"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Tour Options Section -->
+  <Section id="tours" variant="light">
+    <div class="text-center mb-12">
+      <h2 class="text-h2 text-primary">Choose Your Vegetarian Adventure</h2>
+      <p class="text-subheading mt-4">
+        Whether you're a curious explorer or dedicated plant-based foodie
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+      <!-- Regular Tours Card -->
+      <Card variant="featured">
+        <div class="text-center">
+          <Badge variant="secondary" size="large" class="mb-4"
+            >Vegetarian-Ready Regular Tours</Badge
+          >
+          <h3 class="text-h3 text-primary mb-4">Join Our Regular Tours</h3>
+          <p class="text-body mb-6">
+            Experience Malaysia's diverse food culture with full vegetarian
+            options adapted from our <a
+              href="/kuala-lumpur-food-tour"
+              class="text-primary underline hover:text-secondary transition-colors"
+              >Kuala Lumpur</a
+            > and other <a
+              href="/tours"
+              class="text-primary underline hover:text-secondary transition-colors"
+              >regular food tours</a
+            >.
+          </p>
+
+          <ul class="text-left text-body space-y-3 mb-6">
+            <li>✓ All dishes vegetarian-adapted</li>
+            <li>✓ Mix with other food lovers</li>
+            <li>✓ General Malaysian food culture</li>
+            <li>✓ Just mention dietary needs when booking</li>
+          </ul>
+
+          <PriceTag
+            amount={180}
+            currency="RM"
+            variant="large"
+            label="from"
+            class="mb-6"
+          />
+
+          <Button
+            href="/contact"
+            title="Join Our Tours"
+            buttonType="primary-btn"
+            class="w-full"
+          />
+        </div>
+      </Card>
+
+      <!-- Exclusive Tours Card -->
+      <Card variant="featured">
+        <div class="text-center">
+          <Badge variant="accent" size="large" class="mb-4"
+            >Exclusive Heritage Tours</Badge
+          >
+          <h3 class="text-h3 text-primary mb-4">
+            Deep-Dive Heritage Experiences
+          </h3>
+          <p class="text-body mb-6">
+            100% vegetarian environments exploring family kitchens, temple
+            traditions, and cultural stories.
+          </p>
+
+          <ul class="text-left text-body space-y-3 mb-6">
+            <li>✓ 100% vegetarian environments</li>
+            <li>✓ Meet families with 100+ year traditions</li>
+            <li>✓ Hands-on cooking classes</li>
+            <li>✓ Small groups (6-8 people)</li>
+          </ul>
+
+          <PriceTag
+            amount={240}
+            currency="RM"
+            variant="large"
+            label="from"
+            class="mb-6"
+          />
+
+          <Button
+            href="/contact"
+            title="Create Your Experience"
+            buttonType="primary-btn"
+            class="w-full"
+          />
+        </div>
+      </Card>
+    </div>
+
+    <!-- Tour Experience Cards -->
+    <h3 class="text-h3 text-primary text-center mb-8">
+      Specialized Tour Experiences
+    </h3>
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        tourExperiences.map((experience) => (
+          <Card>
+            <h4 class="text-h4 text-primary mb-3">{experience.title}</h4>
+            <p class="text-body mb-4">{experience.description}</p>
+
+            <div class="mb-4">
+              <strong class="text-gray-900">Includes:</strong>
+              <ul class="list-disc list-inside text-body mt-2 space-y-1">
+                {experience.includes.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="flex justify-between items-center mb-4">
+              <PriceTag
+                amount={parseInt(experience.price.replace("RM ", ""))}
+                currency="RM"
+              />
+              <span class="text-sm text-gray-600">{experience.duration}</span>
+            </div>
+
+            <div class="text-sm text-gray-600 italic mb-4">
+              <strong>Best for:</strong> {experience.bestFor}
+            </div>
+
+            <Button
+              href="/contact"
+              title="I Want This"
+              buttonType="primary-btn-small"
+              class="w-full"
+            />
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Cultural Origins Section -->
+  <Section id="heritage">
+    <h2 class="text-h2 text-primary text-center mb-12">
+      Malaysia's Vegetarian Heritage Story
+    </h2>
+
+    <div class="space-y-12">
+      {
+        vegetarianEducation.culturalOrigins.map((origin, index) => (
+          <ContentBlock
+            layout={index % 2 === 0 ? "image-left" : "image-right"}
+            image={origin.image}
+            imageAlt={origin.title}
+            title={origin.title}
+            titleTag="h3"
+          >
+            <p class="text-body mb-4">{origin.description}</p>
+
+            <div class="mb-4">
+              <strong class="text-gray-900">Key Contributions:</strong>
+              <ul class="list-disc list-inside text-body mt-2 space-y-1">
+                {origin.keyContributions.map((contribution) => (
+                  <li>{contribution}</li>
+                ))}
+              </ul>
+            </div>
+
+            <p class="text-sm text-primary italic">
+              <strong>Impact:</strong> {origin.impact}
+            </p>
+          </ContentBlock>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Why Malaysian Vegetarian is Special -->
+  <Section variant="light">
+    <h2 class="text-h2 text-primary text-center mb-12">
+      {vegetarianEducation.whyMalaysianVegetarianSpecial.title}
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        vegetarianEducation.whyMalaysianVegetarianSpecial.reasons.map(
+          (reason) => (
+            <Card>
+              <h3 class="text-h3 text-primary mb-3">{reason.title}</h3>
+              <p class="text-body">{reason.description}</p>
+            </Card>
+          )
+        )
+      }
+    </div>
+  </Section>
+
+  <!-- Vegetarian Types Section -->
+  <Section>
+    <h2 class="text-h2 text-primary text-center mb-12">
+      {vegetarianEducation.vegetarianTypes.title}
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        vegetarianEducation.vegetarianTypes.types.map((type) => (
+          <Card>
+            <h3 class="text-h3 text-primary mb-3">{type.name}</h3>
+            <div class="space-y-3 text-body">
+              <div>
+                <strong>Characteristics:</strong> {type.characteristics}
+              </div>
+              <div>
+                <strong>Common Dishes:</strong> {type.commonDishes}
+              </div>
+              <div class="text-sm text-gray-600 italic">
+                <strong>Cultural Context:</strong> {type.culturalContext}
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Vendor Stories Section -->
+  <Section variant="accent">
+    <h2 class="text-h2 text-primary text-center mb-12">
+      Meet The Heritage Keepers
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        vegetarianEducation.vendorStories.map((vendor) => (
+          <Card>
+            <h3 class="text-h3 text-primary mb-3">{vendor.name}</h3>
+            <p class="text-body mb-3">{vendor.description}</p>
+            <p class="text-body italic mb-4">"{vendor.story}"</p>
+            <Badge variant="secondary" size="small">
+              {vendor.visitType}
+            </Badge>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- FAQ Section with Schema Markup -->
+  <FAQ faqs={vegetarianFaqs} />
+
+  <!-- CTA Section -->
+  <Section variant="light">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary mb-6">
+        Come Taste Malaysia's Vegetarian Heritage
+      </h2>
+      <p class="text-body mb-8">
+        Whether you join our regular tours or create a specialized vegetarian
+        heritage experience, you'll discover a side of Malaysia most visitors
+        never see.
+      </p>
+      <div class="flex gap-6 justify-center flex-wrap mb-8">
+        <Button
+          href="/contact"
+          title="Let's Plan Your Tour"
+          buttonType="primary-btn"
+        />
+        <Button
+          href="/tours"
+          title="See All Tours"
+          buttonType="secondary-btn"
+        />
+      </div>
+      <div
+        class="flex flex-wrap justify-center gap-6 text-sm pt-6 border-t border-gray-300"
+      >
+        <a
+          href="/kuala-lumpur-food-tour"
+          class="text-primary hover:text-secondary transition-colors"
+          >KL Food Tours</a
+        >
+        <span class="text-gray-400">•</span>
+        <a
+          href="/about"
+          class="text-primary hover:text-secondary transition-colors"
+          >About Simply Enak</a
+        >
+        <span class="text-gray-400">•</span>
+        <a
+          href="tel:+60172878929"
+          class="text-primary hover:text-secondary transition-colors"
+          >+60 17-287 8929</a
+        >
+      </div>
+    </div>
+  </Section>
+</Layout>
