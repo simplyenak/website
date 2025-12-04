@@ -1,0 +1,45 @@
+---
+
+import img1 from "@/assets/images/1.webp";
+import fetchApi from "@/lib/strapi";
+import type { AboutSection } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+const data: {
+  aboutSection: AboutSection;
+} = await fetchApi({
+  endpoint: "home-page?populate=aboutSection.image",
+  wrappedByKey: "data",
+});
+const aboutSection = data.aboutSection;
+---
+
+<section id="about" class="pt-20 md:pt-32">
+  <div
+    class="main-container w-full flex flex-col md:flex-row justify-between items-center *:first:md:basis-[58%] *:last:md:basis-[42%] gap-16 lg:gap-20"
+  >
+    <div>
+      <h2 class="text-primary text-h2">
+        {aboutSection?.title}
+      </h2>
+      <p class="text-subheading pt-2.5 pb-4">
+        {aboutSection?.subTitle}
+      </p>
+      <p class="text-body">
+        {aboutSection?.description}
+      </p>
+    </div>
+    <div class="rounded-xl overflow-hidden w-full h-[340px] md:h-[420px]">
+      {
+        aboutSection?.image && (
+          <img
+            src={getFullMediaUrl(aboutSection.image)}
+            alt="About Section Image"
+            class="w-full h-full object-cover"
+            width={800}
+            height={600}
+          />
+        )
+      }
+    </div>
+  </div>
+</section>
