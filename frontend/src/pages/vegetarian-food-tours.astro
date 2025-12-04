@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "../layouts/Layout.astro";
 import Section from "@/components/Design/Section.astro";
 import Card from "@/components/Design/Card.astro";
@@ -8,8 +10,6 @@ import Badge from "@/components/Design/Badge.astro";
 import Button from "@/components/Button.astro";
 import FAQ from "@/components/FAQ.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
-
-export const prerender = false;
 
 // Import data from external file for maintainability
 import {
