@@ -1,0 +1,88 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "title": "Kuala Lumpur Street Food Adventure",
+        "slug": "kuala-lumpur-street-food-adventure",
+        "hero": {
+          "title": "Kuala Lumpur Street Food Adventure",
+          "price": 150,
+          "duration": "4 hours",
+          "location": "Kuala Lumpur",
+          "image": null
+        }
+      }
+    },
+    {
+      "id": 2,
+      "attributes": {
+        "title": "Penang Heritage Food Tour",
+        "slug": "penang-heritage-food-tour",
+        "hero": {
+          "title": "Penang Heritage Food Tour",
+          "price": 180,
+          "duration": "5 hours",
+          "location": "Penang",
+          "image": null
+        }
+      }
+    },
+    {
+      "id": 3,
+      "attributes": {
+        "title": "Malacca Cultural Cuisine Experience",
+        "slug": "malacca-cultural-cuisine-experience",
+        "hero": {
+          "title": "Malacca Cultural Cuisine Experience",
+          "price": 160,
+          "duration": "4.5 hours",
+          "location": "Malacca",
+          "image": null
+        }
+      }
+    },
+    {
+      "id": 4,
+      "attributes": {
+        "title": "Ipoh Local Delights Tour",
+        "slug": "ipoh-local-delights-tour",
+        "hero": {
+          "title": "Ipoh Local Delights Tour",
+          "price": 140,
+          "duration": "4 hours",
+          "location": "Ipoh",
+          "image": null
+        }
+      }
+    },
+    {
+      "id": 5,
+      "attributes": {
+        "title": "Kota Kinabalu Seafood Adventure",
+        "slug": "kota-kinabalu-seafood-adventure",
+        "hero": {
+          "title": "Kota Kinabalu Seafood Adventure",
+          "price": 200,
+          "duration": "5 hours",
+          "location": "Kota Kinabalu",
+          "image": null
+        }
+      }
+    },
+    {
+      "id": 6,
+      "attributes": {
+        "title": "Johor Bahru Heritage Food Trail",
+        "slug": "johor-bahru-heritage-food-trail",
+        "hero": {
+          "title": "Johor Bahru Heritage Food Trail",
+          "price": 170,
+          "duration": "4.5 hours",
+          "location": "Johor Bahru",
+          "image": null
+        }
+      }
+    }
+  ]
+}

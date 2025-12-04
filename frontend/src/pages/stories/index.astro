@@ -2,10 +2,9 @@
 import Layout from "@/layouts/Layout.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
 import Section from "@/components/Design/Section.astro";
-import Card from "@/components/Design/Card.astro";
 import Badge from "@/components/Design/Badge.astro";
 import Button from "@/components/Button.astro";
-import { stories, storyCategories } from "@/data/stories-data";
+import { stories } from "@/data/stories-data";
 
 export const prerender = true;
 
@@ -36,9 +35,17 @@ function formatDate(dateStr: string): string {
   });
 }
 
-// Get featured story (first one) and rest
-const featuredStory = stories[0];
-const otherStories = stories.slice(1);
+// Filter stories for each section
+const vendorStories = stories.filter((s) =>
+  s.categories.includes("People & Stories")
+);
+const expertStories = stories.filter(
+  (s) =>
+    s.categories.includes("Food Culture") || s.categories.includes("Travel Tips")
+);
+const cultureStories = stories.filter((s) =>
+  s.categories.includes("Culture & Heritage")
+);
 ---
 
 <Layout
@@ -54,114 +61,305 @@ const otherStories = stories.slice(1);
     isOverlay={true}
   />
 
-  <!-- Featured Story Section -->
-  <Section variant="light" spacing="compact">
-    <div class="mb-12">
-      <h2 class="text-h3 text-primary mb-6 border-b border-gray-200 pb-2">
-        Featured Story
-      </h2>
-      <div
-        class="bg-white rounded-lg shadow-lg overflow-hidden grid md:grid-cols-2"
+  <!-- Category Navigation -->
+  <div
+    class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-md transition-all duration-300"
+  >
+    <div class="max-w-4xl mx-auto px-4">
+      <nav
+        class="flex items-center justify-center gap-4 md:gap-12 overflow-x-auto py-5 text-base md:text-lg font-bold whitespace-nowrap scrollbar-hide"
       >
-        <div class="relative h-64 md:h-auto">
-          <img
-            src={featuredStory.image}
-            alt={featuredStory.title}
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-        <div class="p-8 md:p-12 flex flex-col justify-center">
-          <div class="flex gap-2 mb-4">
-            {
-              featuredStory.categories.map((category) => (
-                <Badge variant="accent" size="small">
-                  {category}
-                </Badge>
-              ))
-            }
-          </div>
-          <h3
-            class="text-h2 text-primary mb-4 hover:text-secondary transition-colors"
-          >
-            <a href={`/stories/${featuredStory.slug}`}>{featuredStory.title}</a>
-          </h3>
-          <p class="text-body mb-6 line-clamp-3">
-            {featuredStory.excerpt}
-          </p>
-          <div class="flex items-center justify-between mt-auto">
-            <span class="text-sm text-gray-500"
-              >{formatDate(featuredStory.date)}</span
-            >
-            <Button
-              href={`/stories/${featuredStory.slug}`}
-              title="Read Full Story"
-              buttonType="primary-btn-small"
-            />
-          </div>
-        </div>
-      </div>
+        <a
+          href="#vendor-stories"
+          class="text-gray-600 hover:text-primary hover:bg-orange-50 px-4 py-2 rounded-full transition-all"
+        >
+          Vendor Stories
+        </a>
+        <a
+          href="#insider-expertise"
+          class="text-gray-600 hover:text-primary hover:bg-orange-50 px-4 py-2 rounded-full transition-all"
+        >
+          Insider Expertise
+        </a>
+        <a
+          href="#culture"
+          class="text-gray-600 hover:text-primary hover:bg-orange-50 px-4 py-2 rounded-full transition-all"
+        >
+          Culture & Heritage
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Breadcrumb Navigation -->
+  <Section variant="light">
+    <div class="max-w-4xl mx-auto">
+      <nav
+        class="flex items-center text-sm text-gray-600"
+        aria-label="Breadcrumb"
+      >
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/stories" class="text-primary font-medium">Stories</a>
+      </nav>
     </div>
   </Section>
 
-  <!-- Categories & Latest Stories -->
-  <Section>
-    <!-- Category Filter (Visual) -->
-    <div class="flex flex-wrap gap-3 justify-center mb-12">
-      <a
-        href="/stories"
-        class="px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:bg-secondary transition-colors"
-      >
-        All Stories
-      </a>
+  <!-- Section 1: Meet the Heritage Keepers (Vendor Stories) -->
+  <Section variant="light" id="vendor-stories">
+    <div class="flex justify-between items-end mb-12">
+      <div class="max-w-2xl">
+        <h2 class="text-h2 text-primary mb-4">Meet the Heritage Keepers</h2>
+        <p class="text-body">
+          The real stars of Malaysian cuisine aren't chefs—they're the aunties
+          and uncles who have perfected one dish over a lifetime.
+        </p>
+      </div>
+      <Button
+        href="/stories/archive"
+        title="View All"
+        buttonType="secondary-btn-small"
+        class="hidden md:inline-flex"
+      />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
       {
-        storyCategories.map((category) => (
+        vendorStories.slice(0, 5).map((story, index) => (
           <a
-            href={`#`}
-            class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-sm font-semibold hover:bg-gray-200 transition-colors"
-            title={category.description}
+            href={`/stories/${story.slug}`}
+            class:list={[
+              "group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
+              index === 0
+                ? "md:col-span-2 md:row-span-2"
+                : "col-span-1 row-span-1",
+            ]}
           >
-            {category.name}
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+              <img
+                src={story.image}
+                alt={story.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <div class="absolute top-6 left-6">
+                <Badge
+                  variant={index === 0 ? "accent" : "secondary"}
+                  size={index === 0 ? "medium" : "small"}
+                >
+                  Vendor Story
+                </Badge>
+              </div>
+
+              <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3
+                  class:list={[
+                    "font-bold mb-2 leading-tight",
+                    index === 0 ? "text-3xl md:text-4xl" : "text-xl",
+                  ]}
+                >
+                  {story.title}
+                </h3>
+
+                {index === 0 && (
+                  <p class="text-gray-200 mb-4 line-clamp-2 text-lg max-w-xl">
+                    {story.excerpt}
+                  </p>
+                )}
+
+                <div class="flex items-center justify-between mt-2">
+                  <span class="text-xs text-gray-300 font-medium uppercase tracking-wider">
+                    {formatDate(story.date)}
+                  </span>
+                  <div class="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Read Story</span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
           </a>
         ))
       }
     </div>
+  </Section>
 
-    <!-- Stories Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <!-- Section 2: Insider Expertise -->
+  <Section id="insider-expertise">
+    <div class="flex justify-between items-end mb-12">
+      <div class="max-w-2xl">
+        <h2 class="text-h2 text-primary mb-4">Insider Expertise</h2>
+        <p class="text-body">
+          How to eat like a local, spot a tourist trap, and understand the
+          complex history on your plate.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
       {
-        otherStories.map((story) => (
-          <a href={`/stories/${story.slug}`} class="group h-full">
-            <Card class="h-full flex flex-col">
-              <div class="relative h-56 overflow-hidden rounded-t-lg flex-shrink-0">
-                <img
-                  src={story.image}
-                  alt={story.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                  {story.categories.slice(0, 1).map((category) => (
-                    <Badge variant="secondary" size="small">
-                      {category}
-                    </Badge>
-                  ))}
-                </div>
+        expertStories.slice(0, 3).map((story, index) => (
+          <a
+            href={`/stories/${story.slug}`}
+            class:list={[
+              "group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
+              index === 0
+                ? "md:col-span-2 md:row-span-2"
+                : "col-span-1 row-span-1",
+            ]}
+          >
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+              <img
+                src={story.image}
+                alt={story.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <div class="absolute top-6 left-6">
+                <Badge variant="secondary" size="small">
+                  Expert Guide
+                </Badge>
               </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-h4 text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
+
+              <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3
+                  class:list={[
+                    "font-bold mb-2 leading-tight",
+                    index === 0 ? "text-3xl md:text-4xl" : "text-xl",
+                  ]}
+                >
                   {story.title}
                 </h3>
-                <p class="text-body text-sm mb-4 line-clamp-3 flex-grow">
-                  {story.excerpt}
-                </p>
-                <div class="flex items-center justify-between text-xs text-gray-500 mt-auto pt-4 border-t border-gray-100">
-                  <span>{formatDate(story.date)}</span>
-                  <span class="text-primary font-semibold group-hover:translate-x-1 transition-transform">
-                    Read Story →
+
+                {index === 0 && (
+                  <p class="text-gray-200 mb-4 line-clamp-2 text-lg max-w-xl">
+                    {story.excerpt}
+                  </p>
+                )}
+
+                <div class="flex items-center justify-between mt-2">
+                  <span class="text-xs text-gray-300 font-medium uppercase tracking-wider">
+                    {formatDate(story.date)}
                   </span>
+                  <div class="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Read Story</span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </Card>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Section 3: Malaysian Culture 101 -->
+  <Section variant="accent" id="culture">
+    <div class="flex justify-between items-end mb-12">
+      <div class="max-w-2xl">
+        <h2 class="text-h2 text-primary mb-4">Malaysian Culture 101</h2>
+        <p class="text-body">
+          Deep dives into the festivals, traditions, and communities that make
+          Malaysia unique.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[300px]">
+      {
+        cultureStories.slice(0, 2).map((story) => (
+          <a
+            href={`/stories/${story.slug}`}
+            class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+          >
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+              <img
+                src={story.image}
+                alt={story.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <div class="absolute top-6 left-6">
+                <Badge variant="accent" size="small">
+                  Culture
+                </Badge>
+              </div>
+
+              <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="text-2xl font-bold mb-2 leading-tight">
+                  {story.title}
+                </h3>
+
+                <p class="text-gray-200 mb-4 line-clamp-2 text-sm">
+                  {story.excerpt}
+                </p>
+
+                <div class="flex items-center justify-between mt-2">
+                  <span class="text-xs text-gray-300 font-medium uppercase tracking-wider">
+                    {formatDate(story.date)}
+                  </span>
+                  <div class="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Read Story</span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
           </a>
         ))
       }
@@ -169,7 +367,7 @@ const otherStories = stories.slice(1);
   </Section>
 
   <!-- Newsletter / CTA -->
-  <Section variant="accent">
+  <Section variant="light">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-h2 text-primary mb-4">Hungry for More?</h2>
       <p class="text-body mb-8 max-w-2xl mx-auto">
@@ -192,19 +390,17 @@ const otherStories = stories.slice(1);
           Subscribe
         </button>
       </div>
-
-      <div class="pt-8 border-t border-gray-200/50">
-        <p class="text-sm font-semibold text-primary mb-4">
-          Or experience it in person
-        </p>
-        <div class="flex gap-4 justify-center">
-          <Button
-            href="/tours"
-            title="Browse Food Tours"
-            buttonType="secondary-btn-small"
-          />
-        </div>
-      </div>
     </div>
   </Section>
+
+  <style>
+    /* Hide scrollbar for navigation */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </Layout>

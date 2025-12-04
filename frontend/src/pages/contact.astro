@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import CTASection from "@/components/CTASection.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
 import GetInTouchSection from "@/components/Contact/GetInTouchSection.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import FAQ from "@/components/FAQ.astro";
 
 export const prerender = true;
 
@@ -21,14 +24,60 @@ const data = {
     },
   },
   heroSection: {
-    title: "Get in Touch",
+    title: "Let's Plan Your Malaysia Experience",
     description:
-      "Have a question? Want to plan a custom private tour? We're here to help you create the perfect Malaysian food adventure.",
+      "Ready to join us for food adventures? Want to plan something special for your group? Just curious about Malaysian food? We're here to help make it happen.",
+    image: "/images/contact-hero.png",
   },
+  whyReachOut: {
+    title: "How Can We Help?",
+    reasons: [
+      {
+        title: "Custom Private Tours",
+        description:
+          "Want a tour just for your family? We can tailor the itinerary to your pace and interests.",
+        icon: "✨",
+      },
+      {
+        title: "Corporate & Team Building",
+        description:
+          "Looking for a unique team event? We host food challenges and cultural immersions for companies.",
+        icon: "🤝",
+      },
+      {
+        title: "Dietary Questions",
+        description:
+          "Vegetarian? Gluten-free? Allergies? Let us know, and we'll tell you exactly what's possible.",
+        icon: "🥗",
+      },
+    ],
+  },
+  ourPromise: {
+    title: "From Our Family to Yours",
+    content:
+      "When you message us, you're talking to the people who actually lead the tours. No call centers, no booking forms that disappear into the void. Just real humans who love sharing Malaysia. We read every message personally and get back to you within a day.",
+  },
+  quickAnswers: [
+    {
+      question: "Can I book for tomorrow?",
+      answer:
+        "For last-minute bookings (less than 24 hours), please WhatsApp us directly for the fastest response.",
+    },
+    {
+      question: "Do you do private tours?",
+      answer:
+        "Yes! All our tours can be booked privately. Just mention it in the form below.",
+    },
+    {
+      question: "What if I have a large group?",
+      answer:
+        "We can accommodate large groups for corporate events or schools. Please provide details in the form.",
+    },
+  ],
   getInTouchSection: {
-    title: "We'd Love to Hear From You",
+    title: "Send Us a Message",
     contents:
-      "Whether you're ready to book or just exploring options, reach out to us. We usually respond within 24 hours.",
+      "Tell us what you're looking for, and we'll get back to you with a plan.",
     formEmbedUrl: "",
   },
 };
@@ -43,11 +92,43 @@ const data = {
   <GlobalHero
     title={data.heroSection.title}
     description={data.heroSection.description}
+    image={data.heroSection.image}
+    isOverlay={true}
   />
+
+  <!-- Why Reach Out Section -->
+  <Section variant="light">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary">{data.whyReachOut.title}</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        data.whyReachOut.reasons.map((reason) => (
+          <Card class="text-center h-full">
+            <div class="text-4xl mb-4">{reason.icon}</div>
+            <h3 class="text-h3 text-primary mb-3">{reason.title}</h3>
+            <p class="text-body">{reason.description}</p>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Our Promise Section -->
+  <Section>
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary mb-6">{data.ourPromise.title}</h2>
+      <p class="text-body text-lg">{data.ourPromise.content}</p>
+    </div>
+  </Section>
+
   <GetInTouchSection
     title={data.getInTouchSection.title}
     contents={data.getInTouchSection.contents}
     formEmbedUrl={data.getInTouchSection.formEmbedUrl}
   />
+
+  <!-- Quick Answers FAQ -->
+  <FAQ faqs={data.quickAnswers} title="Quick Answers" />
   <CTASection />
 </Layout>

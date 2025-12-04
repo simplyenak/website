@@ -1,5 +1,4 @@
 ---
-
 import IconMoney from "@/assets/icons/icon-money.svg";
 import IconReload from "@/assets/icons/icon-reload.svg";
 import IconPaperRoket from "@/assets/icons/icon-paper-rocket.svg";
@@ -35,7 +34,14 @@ let {
     className,
   ]}
 >
-  <div class="h-[300px] md:h-[230px] overflow-hidden">
+  <div class="h-[300px] md:h-[230px] overflow-hidden relative">
+    {
+      title.includes("Kuala Lumpur") && (
+        <div class="absolute top-4 right-4 z-10 bg-orange text-black text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
+          Bestseller
+        </div>
+      )
+    }
     <img
       src={getFullMediaUrl(image)}
       alt="Tour image"

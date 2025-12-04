@@ -1,0 +1,413 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header/header.astro';
+import Footer from '../../components/Footer/footer.astro';
+import SEO from '../../components/SEO.astro';
+
+export const prerender = false;
+
+// Schema data for SEO
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Aunty Mary's Kitchen: 40 Years of Chai Stories in Petaling Street",
+  "author": {
+    "@type": "Organization",
+    "name": "Simply Enak"
+  },
+  "datePublished": "2025-10-08",
+  "dateModified": "2025-10-08",
+  "image": "/images/aunty-mary-kitchen.jpg",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Simply Enak",
+    "url": "https://simplyenak.com"
+  },
+  "articleSection": "Food Heritage",
+  "wordCount": 1500,
+  "keywords": ["Aunty Mary", "Petaling Street", "Malaysian chai", "family recipes", "Chinese-Malaysian heritage", "kopitiam culture"]
+};
+---
+
+<Layout
+  title="Aunty Mary's Kitchen: 40 Years of Chai Stories in Petaling Street | Simply Enak Stories"
+  description="Meet Aunty Mary, the heart of Petaling Street's morning ritual for 40 years. Discover how her family's chai recipe tells the story of Malaysia's cultural melting pot."
+  image="/images/aunty-mary-kitchen.jpg"
+  structuredData={pageSchema}
+>
+  <main class="min-h-screen">
+    <!-- Hero Section with Background Image -->
+    <section class="relative bg-black text-white h-[60vh] min-h-[500px] overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="/images/aunty-mary-kitchen.jpg" alt="Aunty Mary in her Petaling Street kitchen" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80"></div>
+      </div>
+
+      <div class="relative h-full flex items-center justify-center px-4">
+        <div class="text-center max-w-4xl">
+          <!-- Breadcrumb -->
+          <nav class="text-sm mb-6">
+            <a href="/stories" class="text-[#efa380] hover:text-white transition-colors">Stories</a>
+            <span class="text-gray-400 mx-2">→</span>
+            <span class="text-gray-300">Aunty Mary's Kitchen</span>
+          </nav>
+
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight font-merriweather">
+            Aunty Mary's Kitchen
+          </h1>
+          <p class="text-2xl text-gray-200 mb-8 leading-relaxed font-serif">
+            40 Years of Chai Stories in Petaling Street
+          </p>
+
+          <!-- Story Meta -->
+          <div class="flex items-center justify-center gap-6 text-sm text-gray-300">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+              <span>Simply Enak Team</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+              <span>October 8, 2025</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              <span>8 min read</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Quick Highlights -->
+    <section class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-[#885e40]/5 border border-[#885e40]/30 rounded-lg p-8 mb-12">
+          <h3 class="text-lg font-semibold text-[#885e40] mb-6 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+            </svg>
+            Story at a Glance
+          </h3>
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-[#b52d38] text-lg">👵</span>
+              <div>
+                <strong class="text-gray-900">The Person:</strong>
+                <span class="text-gray-700">Aunty Mary Chen, 68-year-old third-generation kopitiam owner</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-[#b52d38] text-lg">📍</span>
+              <div>
+                <strong class="text-gray-900">The Place:</strong>
+                <span class="text-gray-700">Chen's Coffee Corner, Petaling Street, Kuala Lumpur</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-[#b52d38] text-lg">🍛</span>
+              <div>
+                <strong class="text-gray-900">The Tradition:</strong>
+                <span class="text-gray-700">40 years of secret family chai recipe and kaya toast</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-[#b52d38] text-lg">🎯</span>
+              <div>
+                <strong class="text-gray-900">The Experience:</strong>
+                <span class="text-gray-700">Morning rituals, multigenerational regulars, living history</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opening Story -->
+        <div class="prose prose-lg max-w-none">
+          <p class="text-xl text-gray-700 leading-relaxed mb-8 text-center">
+            Every morning at 5:30 AM, the aroma of cardamom and cinnamon announces that Aunty Mary has started her day. For 40 years, her small kopitiam at the corner of Petaling Street has been more than just a coffee shop – it's a living museum of Malaysian breakfast culture, where every cup of chai tells a story.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Story Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 mb-12">
+          <div>
+            <h2 class="text-3xl font-bold text-[#b52d38] mb-6 font-merriweather">
+              From Humble Beginnings
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Mary Chen inherited her corner shop from her father in 1985, but the family's kopitiam legacy dates back to 1945 when her grandfather opened Chen's Coffee Corner after returning from World War II. "My father always said," Mary tells me, her hands expertly measuring tea leaves, "a kopitiam is not just about food. It's about community, about being the place where people start their day with hope."
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Today, at 68, Mary still arrives before dawn. Her hands move with practiced precision – a dance perfected over decades. She sources her tea leaves from the same supplier her grandfather used, a small plantation in Cameron Highlands that's been family-run for three generations.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              "The secret," she leans in conspiratorially, "is not just the ingredients. It's understanding the weather, the mood of the city, the stories people will tell today. My chai changes slightly every day – just like life."
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center relative overflow-hidden">
+              <img src="/images/aunty-mary-making-tea.jpg" alt="Aunty Mary preparing her famous chai" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full bg-gray-300 flex items-center justify-center" style="display:none;">
+                <span class="text-gray-600">Aunty Mary preparing her famous chai</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 text-center italic">
+              Aunty Mary's hands have prepared over 500,000 cups of chai in her lifetime
+            </p>
+          </div>
+        </div>
+
+        <!-- Cultural Heritage Box -->
+        <div class="bg-[#b52d38] text-white p-8 rounded-lg mb-12">
+          <h3 class="text-2xl font-bold mb-4 font-merriweather">
+            More Than Just Breakfast
+          </h3>
+          <p class="text-lg leading-relaxed mb-6">
+            Chen's Coffee Corner represents everything beautiful about Malaysian multiculturalism. Mary's family is Chinese-Malaysian, her chai recipe has Indian influences from the Tamil community that worked alongside her grandfather, and her customers represent every ethnicity and social class in Kuala Lumpur.
+          </p>
+          <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-3xl font-bold text-[#ffa333] mb-2">40</div>
+              <div class="text-sm">Years in Business</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-[#ffa333] mb-2">150+</div>
+              <div class="text-sm">Daily Regulars</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-[#ffa333] mb-2">3</div>
+              <div class="text-sm">Generations of Chens</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Details -->
+        <div class="space-y-12">
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 font-merriweather">
+              The Secret Recipe
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Mary won't share exact measurements, but she's happy to talk about philosophy. "Good chai needs patience," she explains while the tea simmers. "You can't rush it. The spices need time to talk to each other, to become friends in the pot."
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Her blend includes seven spices – cardamom, cinnamon, cloves, star anise, ginger, black pepper, and a secret ingredient she only calls "grandfather's wisdom." The tea leaves are a special mix of Assam and Ceylon varieties, sourced from the same plantation for 75 years.
+            </p>
+            <div class="bg-gray-100 p-6 rounded-lg border-l-4 border-[#b52d38]">
+              <p class="text-gray-700 italic">
+                "Every morning, I thank God for another day to serve people. In Malaysia, we say 'makan' (eat) when we meet, but we really mean 'I care about you.' My kopitiam is where people show they care about each other, over a cup of tea."
+              </p>
+              <p class="text-sm text-gray-600 mt-2">— Aunty Mary Chen</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 font-merriweather">
+              The Living Room of Petaling Street
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Walk into Chen's at 7 AM and you'll see Kuala Lumpur waking up. Bankers in suits sit next to construction workers sharing newspapers. Students do homework while elderly gentlemen debate politics. Everyone speaks different languages, but they all understand the language of Mary's chai and kaya toast.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              "My customers are my family," Mary says, pointing to a corner table where four elderly men have sat every morning for 30 years. "They came here as young men. Now they bring their grandchildren. I watched their children grow up, get married, have babies. This kopitiam has seen more life stories than any book."
+            </p>
+          </div>
+
+          <!-- Image Gallery -->
+          <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center relative overflow-hidden">
+              <img src="/images/kopitiam-interior.jpg" alt="Interior of Chen's Coffee Corner" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 text-sm" style="display:none;">
+                Kopitiam Interior
+              </div>
+            </div>
+            <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center relative overflow-hidden">
+              <img src="/images/kaya-toast.jpg" alt="Mary's famous kaya toast" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 text-sm" style="display:none;">
+                Famous Kaya Toast
+              </div>
+            </div>
+            <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center relative overflow-hidden">
+              <img src="/images/regular-customers.jpg" alt="Regular customers enjoying morning chai" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 text-sm" style="display:none;">
+                Morning Regulars
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 font-merriweather">
+              Passing the Torch
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Mary's daughter, Sarah, has been learning the family business since she was 15. Now 32, Sarah helps manage the kopitiam while studying for her MBA. "My mother is teaching me more than recipes," Sarah shares. "She's teaching me how to listen to people, how to remember their orders and their stories, how to make this place feel like home for everyone who walks in."
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              But Mary isn't ready to retire completely. "I'll stop when my hands can't hold the pot anymore," she laughs. "This kopitiam is my life's work. Every cup of tea carries the prayers of my grandfather, the dreams of my father, and the hopes of everyone who sits here."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-black text-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6 font-merriweather">
+          Taste the Stories of Malaysia
+        </h2>
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Aunty Mary's story is just one chapter in Malaysia's incredible food heritage. Our food tours connect you with amazing vendors like Mary – families who have dedicated their lives to preserving Malaysia's culinary traditions.
+        </p>
+
+        <div class="bg-[#885e40]/20 border border-[#885e40]/40 rounded-lg p-8 mb-8">
+          <h3 class="text-xl font-semibold mb-4">
+            Visit Chen's Coffee Corner
+          </h3>
+          <p class="text-gray-300 mb-4">
+            <strong>When:</strong> Daily 6:00 AM - 2:00 PM<br>
+            <strong>Where:</strong> Corner of Jalan Petaling, Kuala Lumpur<br>
+            <strong>Must-Try:</strong> Mary's Special Chai + Traditional Kaya Toast
+          </p>
+          <p class="text-gray-300 text-sm">
+            *Pro tip: Arrive before 7 AM for the full morning experience and the best chance to chat with Aunty Mary herself.
+          </p>
+        </div>
+
+        <!-- Tour Integration -->
+        <div class="bg-[#ffa333]/10 border border-[#ffa333]/30 rounded-lg p-8 mb-8">
+          <h3 class="text-xl font-semibold mb-4 text-black">
+            🌟 Join Our Kuala Lumpur Heritage Food Tour
+          </h3>
+          <p class="text-black mb-4">
+            <strong>Visit Aunty Mary with us!</strong> Our Kuala Lumpur Heritage Food Tour includes a morning stop at Chen's Coffee Corner, where you'll:
+          </p>
+          <ul class="text-black mb-6 space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-[#b52d38]">☕</span>
+              <span>Meet Aunty Mary and hear her family's story firsthand</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#b52d38]">🍵</span>
+              <span>Taste her famous chai made with the secret family recipe</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#b52d38]">🏮</span>
+              <span>Experience the authentic kopitiam atmosphere with local regulars</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[#b52d38]">📚</span>
+              <span>Learn about Malaysian breakfast culture and multicultural traditions</span>
+            </li>
+          </ul>
+          <p class="text-black font-medium">
+            <em>"Aunty Mary always saves her best stories for our Simply Enak guests!"</em>
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/tours"
+            class="bg-[#ffa333] text-black px-8 py-4 rounded-lg font-semibold hover:bg-[#f5e6ca] transition-all duration-300 text-lg inline-flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Explore Food Heritage Tours
+          </a>
+
+          <a
+            href="/contact"
+            class="bg-white text-[#b52d38] px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300 text-lg inline-flex items-center justify-center gap-3 border border-[#b52d38]"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+            Share Your Story
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Stories -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">
+          More Stories from Malaysian Kitchens
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+            <div class="bg-gray-200 h-40 flex items-center justify-center relative overflow-hidden">
+              <img src="/images/brickfields-vendor-story.jpg" alt="Brickfields vegetarian vendor" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 text-sm" style="display:none;">
+                Brickfields Vendor Story
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                Aunty Maya's Brickfields Legacy
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Three generations of South Indian vegetarian heritage in Kuala Lumpur's Little India.
+              </p>
+              <a href="/stories" class="text-[#b52d38] hover:text-[#885e40] font-medium text-sm">
+                Read More →
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+            <div class="bg-gray-200 h-40 flex items-center justify-center relative overflow-hidden">
+              <img src="/images/nyonya-kitchen-story.jpg" alt="Nyonya kitchen heritage" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 text-sm" style="display:none;">
+                Nyonya Kitchen Heritage
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                Mama Lim's Nyonya Secrets
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Preserving Peranakan culinary traditions one dish at a time in Melaka.
+              </p>
+              <a href="/stories" class="text-[#b52d38] hover:text-[#885e40] font-medium text-sm">
+                Read More →
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+            <div class="bg-gray-200 h-40 flex items-center justify-center relative overflow-hidden">
+              <img src="/images/hawker-center-story.jpg" alt="Hawker center community" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 text-sm" style="display:none;">
+                Hawker Center Community
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                Penang's Hawker Heroes
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                The unsung champions keeping George Town's street food culture alive.
+              </p>
+              <a href="/stories" class="text-[#b52d38] hover:text-[#885e40] font-medium text-sm">
+                Read More →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

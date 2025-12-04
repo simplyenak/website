@@ -1,0 +1,228 @@
+---
+import { quizSteps } from "../../data/tour-quiz-data";
+---
+
+<div class="w-full max-w-3xl mx-auto mt-8 relative min-h-[300px]">
+  <!-- Quiz Container -->
+  <div
+    id="quiz-container"
+    class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl shadow-2xl text-left transition-all duration-500"
+  >
+    <!-- Step 0: Intro -->
+    <div id="step-intro" class="quiz-step active">
+      <h3 class="text-2xl font-bold text-white mb-4">
+        Not sure which tour to pick?
+      </h3>
+      <p class="text-gray-200 mb-8 text-lg">
+        Answer 3 quick questions to find your perfect Malaysian food adventure.
+      </p>
+      <button
+        data-action="start"
+        class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+      >
+        Start Tour Finder
+      </button>
+    </div>
+
+    <!-- Dynamic Steps -->
+    {
+      quizSteps.map((step, index) => (
+        <div
+          id={`step-${index + 1}`}
+          class="quiz-step hidden opacity-0 translate-x-10"
+          data-step-key={step.id}
+        >
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-white">{step.question}</h3>
+            <span class="text-sm text-gray-300">
+              {index + 1}/{quizSteps.length}
+            </span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {step.options.map((option) => (
+              <button
+                data-value={option.value}
+                class="quiz-option bg-white/90 hover:bg-white text-gray-900 p-4 rounded-xl font-semibold transition-all hover:shadow-lg text-left flex items-center gap-3"
+              >
+                <span class="text-2xl">{option.icon}</span> {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <!-- Step Result -->
+    <div id="step-result" class="quiz-step hidden opacity-0 translate-x-10">
+      <div class="text-center">
+        <div class="mb-4 text-4xl">🎉</div>
+        <h3 id="result-headline" class="text-2xl font-bold text-white mb-6">
+          We Recommend:
+        </h3>
+
+        <!-- Recommendations Container -->
+        <div id="recommendations-list" class="grid grid-cols-1 gap-4 mb-8">
+          <!-- Items will be injected here via JS -->
+        </div>
+
+        <!-- Contact Option -->
+        <div
+          id="contact-option"
+          class="hidden bg-white/5 border border-white/10 rounded-xl p-4 mb-6"
+        >
+          <p class="text-white mb-3">Still not sure? Let us help you plan.</p>
+          <a
+            href="/contact"
+            class="inline-block border border-white text-white hover:bg-white hover:text-primary font-semibold py-2 px-6 rounded-lg transition-colors"
+          >
+            Talk to an Expert
+          </a>
+        </div>
+
+        <button
+          data-action="reset"
+          class="text-gray-300 hover:text-white text-sm underline"
+        >
+          Start Over
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .quiz-step {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  import { getRecommendation, quizSteps } from "../../data/tour-quiz-data";
+
+  // State
+  let state: Record<string, string> = {};
+
+  // Initialize state keys
+  quizSteps.forEach((step) => {
+    state[step.id] = "";
+  });
+
+  // Calculate total steps dynamically
+  const totalQuestionSteps = quizSteps.length;
+  // Steps array: intro, step-1...step-N, result
+  const steps = ["step-intro"];
+  for (let i = 1; i <= totalQuestionSteps; i++) {
+    steps.push(`step-${i}`);
+  }
+  steps.push("step-result");
+
+  let currentStep = 0;
+
+  function showStep(index: number) {
+    const currentEl = document.getElementById(steps[currentStep]);
+    const nextEl = document.getElementById(steps[index]);
+
+    if (currentEl && nextEl) {
+      // Fade out current
+      currentEl.classList.add("opacity-0", "-translate-x-10");
+      setTimeout(() => {
+        currentEl.classList.add("hidden");
+        currentEl.classList.remove("-translate-x-10"); // Reset pos
+
+        // Show next
+        nextEl.classList.remove("hidden");
+        // Trigger reflow
+        void nextEl.offsetWidth;
+        nextEl.classList.remove("opacity-0", "translate-x-10");
+      }, 300);
+    }
+    currentStep = index;
+  }
+
+  // Event Listeners
+  document.addEventListener("DOMContentLoaded", () => {
+    // Start Button
+    document
+      .querySelector('button[data-action="start"]')
+      ?.addEventListener("click", () => {
+        showStep(1);
+      });
+
+    // Option Buttons
+    document.querySelectorAll(".quiz-option").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const value = target.dataset.value;
+        const stepContainer = target.closest(".quiz-step");
+
+        if (!stepContainer || !value) return;
+
+        const stepKey = stepContainer.getAttribute("data-step-key");
+        if (stepKey) {
+          state[stepKey] = value;
+        }
+
+        // Determine next step
+        // Current step index in the 'steps' array is 'currentStep'
+        // If currentStep is less than totalQuestionSteps, go to next question
+        // If currentStep is equal to totalQuestionSteps, go to result (which is currentStep + 1)
+
+        if (currentStep < totalQuestionSteps) {
+          showStep(currentStep + 1);
+        } else {
+          // Calculate Result
+          const result = getRecommendation(state);
+
+          // Update Headline
+          const headlineEl = document.getElementById("result-headline");
+          if (headlineEl) headlineEl.textContent = result.headline;
+
+          // Render Items
+          const listEl = document.getElementById("recommendations-list");
+          if (listEl) {
+            listEl.innerHTML = result.items
+              .map(
+                (item) => `
+                    <div class="bg-white text-gray-900 rounded-xl p-5 shadow-xl transform transition-all hover:-translate-y-1 text-left relative overflow-hidden">
+                        ${item.badge ? `<span class="absolute top-0 right-0 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">${item.badge}</span>` : ""}
+                        <h4 class="text-lg font-bold text-primary mb-1 pr-16">${item.title}</h4>
+                        <p class="text-gray-600 mb-4 text-sm">${item.desc}</p>
+                        <a href="${item.link}" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-2 px-6 rounded-lg shadow transition-colors text-sm">
+                            View Details
+                        </a>
+                    </div>
+                `
+              )
+              .join("");
+          }
+
+          // Show/Hide Contact Option
+          const contactEl = document.getElementById("contact-option");
+          if (contactEl) {
+            if (result.showContactOption) {
+              contactEl.classList.remove("hidden");
+            } else {
+              contactEl.classList.add("hidden");
+            }
+          }
+
+          showStep(currentStep + 1);
+        }
+      });
+    });
+
+    // Reset
+    document
+      .querySelector('button[data-action="reset"]')
+      ?.addEventListener("click", () => {
+        // Reset state
+        Object.keys(state).forEach((key) => (state[key] = ""));
+        showStep(0);
+      });
+  });
+</script>

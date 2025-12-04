@@ -1,53 +1,112 @@
 ---
-import type { Header } from '@/types'
-import MobileMenu from '@/components/Header/mobile-menu.astro'
-import TopBar from '@/components/Header/top-bar.astro'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
-import { Image } from 'astro:assets'
-import fetchApi from '@/lib/strapi'
+import MobileMenu from "@/components/Header/mobile-menu.astro";
+import { Image } from "astro:assets";
 
-const header: Header = await fetchApi({
-  endpoint: 'header?populate=*',
-  wrappedByKey: 'data',
-})
-const activeUrl = Astro.url.pathname
+import logoImage from "@/assets/images/simply_enak_logo.webp";
+
+// Static header data - no Strapi
+const header = {
+  logo: logoImage,
+  navItems: [
+    { name: "Tours", href: "/tours" },
+    { name: "Stories", href: "/stories" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ],
+};
+
+const activeUrl = Astro.url.pathname;
 ---
 
 <header
   id="header"
-  class="bg-white shadow-custom inset-x-0 top-0 duration-300 z-50 sticky"
+  class="bg-white shadow-md inset-x-0 top-0 duration-300 z-50 sticky"
 >
-  <TopBar />
   <nav
-    class="main-container flex items-center justify-between gap-5 py-3 md:py-4"
+    class="main-container flex items-center justify-between gap-5 py-4 md:py-5"
   >
-    <a href="/">
+    <a href="/" class="flex-shrink-0">
       <Image
-        src={getFullMediaUrl(header.logo)}
+        src={header.logo}
         alt="Simply Enak Logo"
-        class="h-9 w-auto"
+        class="h-10 md:h-12 w-auto"
         height={72}
         width={270}
         priority
       />
     </a>
-    <ul class="lg:flex hidden gap-5 items-center">
-      {
-        header.navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class:list={[
-                'text-primary hover:underline text-body duration-300 font-semibold font-merriweather',
-                activeUrl === item.href ? 'underline' : '',
-              ]}
-            >
-              {item.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+
+    <div class="hidden lg:flex items-center gap-8">
+      <ul class="flex gap-8 items-center">
+        {
+          header.navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  "text-gray-800 hover:text-[#f59e0b] text-base duration-300 font-semibold font-merriweather transition-colors",
+                  activeUrl === item.href ? "text-[#f59e0b]" : "",
+                ]}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Contact Details -->
+      <div
+        class="flex flex-col items-end gap-1 text-xs text-gray-700 border-l border-gray-300 pl-6"
+      >
+        <a
+          href="tel:+60172878929"
+          class="flex items-center gap-2 hover:text-[#f59e0b] transition-colors"
+        >
+          <svg
+            class="w-3 h-3"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            ></path>
+          </svg>
+          <span>+60 17 287 8929</span>
+        </a>
+        <a
+          href="mailto:booking@simplyenak.com"
+          class="flex items-center gap-2 hover:text-[#f59e0b] transition-colors"
+        >
+          <svg
+            class="w-3 h-3"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
+          </svg>
+          <span>booking@simplyenak.com</span>
+        </a>
+      </div>
+
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow-lg hover:bg-red-700 hover:shadow-xl hover:scale-105 transition-all duration-300 whitespace-nowrap"
+      >
+        Book Now
+      </a>
+    </div>
+
     <MobileMenu navItems={header.navItems} />
   </nav>
 </header>

@@ -1,0 +1,93 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import Badge from "@/components/Design/Badge.astro";
+import { stories, storyCategories } from "@/data/stories-data";
+
+export const prerender = true;
+
+const hero = {
+  title: "All Stories",
+  subtitle: "Explore our complete collection of Malaysian food tales",
+};
+
+// Sort stories by date (newest first)
+const sortedStories = [...stories].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<Layout
+  title="All Stories | Simply Enak"
+  description="Browse our full archive of stories about Malaysian food, culture, and heritage."
+>
+  <GlobalHero title={hero.title} subtitle={hero.subtitle} />
+
+  <Section>
+    <!-- Category Filter (Simple Links) -->
+    <div class="flex flex-wrap gap-3 justify-center mb-12">
+      <a
+        href="/stories"
+        class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-sm font-semibold hover:bg-gray-200 transition-colors"
+      >
+        ← Back to Highlights
+      </a>
+      <span
+        class="px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold"
+      >
+        All Stories
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        sortedStories.map((story) => (
+          <a href={`/stories/${story.slug}`} class="group h-full">
+            <Card class="h-full flex flex-col">
+              <div class="relative h-56 overflow-hidden rounded-t-lg flex-shrink-0">
+                <img
+                  src={story.image}
+                  alt={story.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                  {story.categories.slice(0, 1).map((category) => (
+                    <Badge variant="secondary" size="small">
+                      {category}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-h4 text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
+                  {story.title}
+                </h3>
+                <p class="text-body text-sm mb-4 line-clamp-3 flex-grow">
+                  {story.excerpt}
+                </p>
+                <div class="flex items-center justify-between text-xs text-gray-500 mt-auto pt-4 border-t border-gray-100">
+                  <span>{formatDate(story.date)}</span>
+                  <span class="text-primary font-semibold group-hover:translate-x-1 transition-transform">
+                    Read Story →
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+</Layout>

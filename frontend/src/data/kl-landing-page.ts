@@ -8,8 +8,8 @@ export const kualaLumpurLandingPage: LocationLandingPage = {
   slug: "kuala-lumpur-food-tour",
   region: "Federal Territory",
 
-  metaTitle: "Kuala Lumpur Food & Heritage Guide – Discover Authentic Malaysian Cuisine",
-  metaDescription: "Explore Kuala Lumpur's multicultural food scene—from nasi lemak to char kway teow. Learn about Malay, Chinese, and Indian culinary traditions, iconic dishes, and the best neighborhoods to experience authentic Malaysian cuisine.",
+  metaTitle: "Kuala Lumpur Food Tours – Walk with Locals, Taste Real Stories | Simply Enak",
+  metaDescription: "Nasi lemak for breakfast, dim sum for lunch, banana leaf curry for dinner - this is how KL locals eat. We'll show you the family stalls, hidden lanes, and heritage recipes that three generations have perfected. Come taste our Malaysia.",
 
   hero: {
     title: "Kuala Lumpur: Where Three Cultures Meet on a Plate",

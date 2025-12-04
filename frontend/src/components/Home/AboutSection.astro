@@ -1,16 +1,11 @@
 ---
-
-import img1 from "@/assets/images/1.webp";
-import fetchApi from "@/lib/strapi";
-import type { AboutSection } from "@/types";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-const data: {
-  aboutSection: AboutSection;
-} = await fetchApi({
-  endpoint: "home-page?populate=aboutSection.image",
-  wrappedByKey: "data",
-});
-const aboutSection = data.aboutSection;
+// Static data - no Strapi
+const aboutSection = {
+  title: "Who We Are",
+  subTitle: "Come as a guest, leave as family",
+  description: "Since 2011, we've been sharing Malaysia's living food heritage with visitors who become friends. Our guides grew up in these neighborhoods and want to share their culture, their stories, their home with you. You'll meet vendors like Aunty Lim, who's been making laksa here since 1982 using her grandmother's recipe. Experience Malaysia through taste, story, and connection.",
+  image: "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg"
+};
 ---
 
 <section id="about" class="pt-20 md:pt-32">
@@ -19,27 +14,24 @@ const aboutSection = data.aboutSection;
   >
     <div>
       <h2 class="text-primary text-h2">
-        {aboutSection?.title}
+        {aboutSection.title}
       </h2>
       <p class="text-subheading pt-2.5 pb-4">
-        {aboutSection?.subTitle}
+        {aboutSection.subTitle}
       </p>
       <p class="text-body">
-        {aboutSection?.description}
+        {aboutSection.description}
       </p>
     </div>
     <div class="rounded-xl overflow-hidden w-full h-[340px] md:h-[420px]">
-      {
-        aboutSection?.image && (
-          <img
-            src={getFullMediaUrl(aboutSection.image)}
-            alt="About Section Image"
-            class="w-full h-full object-cover"
-            width={800}
-            height={600}
-          />
-        )
-      }
+      <img
+        src={aboutSection.image}
+        alt="Simply Enak Food Tours Malaysia"
+        class="w-full h-full object-cover"
+        width={800}
+        height={600}
+        loading="lazy"
+      />
     </div>
   </div>
 </section>

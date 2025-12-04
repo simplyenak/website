@@ -4,6 +4,8 @@ import CTASection from "@/components/CTASection.astro";
 import GlobalHero from "@/components/GlobalHero.astro";
 import MediaSection from "@/components/Home/MediaSection.astro";
 import TextWithLeftRightImage from "@/components/About/TextWithLeftRightImage.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
 
 export const prerender = true;
 
@@ -24,27 +26,66 @@ const data = {
   aboutHero: {
     title: "Our Story",
     subtitle:
-      "More than just food tours—we are your connection to the heart of Malaysia.",
+      "We're not tour operators. We're your temporary neighbors, passionate about sharing the Malaysia we treasure.",
+    image: "/images/about-hero.png",
   },
-  textWithLeftRightImage: {
+  ourStory: {
     title: "How We Started",
-    contents:
-      "Simply Enak began with a simple idea: to share the Malaysia we know and love. Not the tourist traps, but the real places where locals eat, laugh, and live. Since 2010, we've been guiding guests through the back alleys of Kuala Lumpur and Penang, uncovering hidden gems and sharing the stories behind every dish.",
+    contents: `It started with a simple frustration. We saw visitors coming to Malaysia and eating at "tourist trap" restaurants, missing the incredible, complex flavors we grew up with. They were seeing the sights, but missing the soul.
+
+    Simply Enak was born in 2010 to bridge that gap. We wanted to take guests down the back alleys, into the wet markets, and to the family-run stalls that don't have English menus. We wanted to explain *why* that noodle dish uses a specific type of soy sauce, or *how* that curry paste tells the story of migration.
+
+    Over a decade later, our mission remains the same: to help you see, feel, and taste the difference between tourist Malaysia and the real Malaysia.`,
     imagePosition: "left",
     bgColor: "white",
     image: {
       url: "https://se-website-images.s3.nl-ams.scw.cloud/kl-chow-kit-market.jpg",
     },
   },
-  ourCoreValuesSection: {
-    title: "Our Core Values",
-    contents:
-      "We believe in authenticity, connection, and sustainability. We support local family-run businesses and ensure our tours respect the communities we visit. Our goal is to bridge cultures through the universal language of food.",
-    imagePosition: "right",
-    bgColor: "gray",
-    image: {
-      url: "https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg",
-    },
+  ourPhilosophy: {
+    title: "Our Philosophy",
+    points: [
+      {
+        title: "Unscripted & Human",
+        description:
+          "We don't do canned jokes or rehearsed speeches. Our guides are licensed professionals, but they talk to you like friends—sharing real stories, not scripts.",
+        icon: "🤝",
+      },
+      {
+        title: "Slow Travel",
+        description:
+          "We walk. We pause. We take the time to appreciate the details—the architecture, the smells, the sounds of the neighborhood.",
+        icon: "🐢",
+      },
+      {
+        title: "Support Local",
+        description:
+          "We exclusively visit family-run businesses. Your tour fee directly supports the heritage keepers of our food culture.",
+        icon: "🏪",
+      },
+    ],
+  },
+  meetTheGuides: {
+    title: "Meet Your Local Friends",
+    intro:
+      "Our guides are all licensed with Tourism Malaysia, but they aren't just reciting a script. They are historians, home cooks, and storytellers who live and breathe this culture.",
+    guides: [
+      {
+        name: "The Historian",
+        description:
+          "Obsessed with how colonial history shaped our ingredients. Ask them about the Portuguese influence on Melaka's spicy curries.",
+      },
+      {
+        name: "The Home Cook",
+        description:
+          "Knows every grandmother's secret recipe. They can tell you exactly which spice is missing from a curry just by smelling it.",
+      },
+      {
+        name: "The Storyteller",
+        description:
+          "Weaves the legends of our neighborhoods into every stop. They turn a simple bowl of noodles into a tale of migration and survival.",
+      },
+    ],
   },
   mediaSection: {
     title: "See Us in Action",
@@ -59,21 +100,58 @@ const data = {
   image={data.SEO.image}
   structuredData={data.SEO.schema}
 >
-  <GlobalHero title={data.aboutHero.title} subtitle={data.aboutHero.subtitle} />
-  <TextWithLeftRightImage
-    title={data.textWithLeftRightImage.title}
-    contents={data.textWithLeftRightImage.contents}
-    imagePosition={data.textWithLeftRightImage.imagePosition}
-    bgColor={data.textWithLeftRightImage.bgColor}
-    image={data.textWithLeftRightImage.image}
+  <GlobalHero
+    title={data.aboutHero.title}
+    subtitle={data.aboutHero.subtitle}
+    image={data.aboutHero.image}
+    isOverlay={true}
   />
   <TextWithLeftRightImage
-    title={data.ourCoreValuesSection.title}
-    contents={data.ourCoreValuesSection.contents}
-    imagePosition={data.ourCoreValuesSection.imagePosition}
-    bgColor={data.ourCoreValuesSection.bgColor}
-    image={data.ourCoreValuesSection.image}
+    title={data.ourStory.title}
+    contents={data.ourStory.contents}
+    imagePosition={data.ourStory.imagePosition}
+    bgColor={data.ourStory.bgColor}
+    image={data.ourStory.image}
   />
+
+  <!-- Philosophy Section -->
+  <Section variant="light">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary">{data.ourPhilosophy.title}</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        data.ourPhilosophy.points.map((point) => (
+          <Card class="text-center h-full">
+            <div class="text-4xl mb-4">{point.icon}</div>
+            <h3 class="text-h3 text-primary mb-3">{point.title}</h3>
+            <p class="text-body">{point.description}</p>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Meet The Guides Section -->
+  <Section>
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary">{data.meetTheGuides.title}</h2>
+      <p class="text-body mt-4">{data.meetTheGuides.intro}</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        data.meetTheGuides.guides.map((guide) => (
+          <Card variant="featured" class="text-center h-full">
+            <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">
+              👤
+            </div>
+            <h3 class="text-h3 text-primary mb-3">{guide.name}</h3>
+            <p class="text-body italic">"{guide.description}"</p>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
   <MediaSection
     title={data.mediaSection.title}
     videoEmbedUrl={data.mediaSection.videoEmbedUrl}

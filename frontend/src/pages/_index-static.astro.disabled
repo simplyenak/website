@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "@/components/Home/HeroSection.astro";
+import PartnersSection from "@/components/Home/PartnersSection.astro";
+import AboutSection from "@/components/Home/AboutSection.astro";
+import OurToursSection from "@/components/Home/OurToursSection.astro";
+import OurValuesSection from "@/components/Home/OurValuesSection.astro";
+import TestimonialsSection from "@/components/Home/TestimonialsSection.astro";
+import MediaSection from "@/components/Home/MediaSection.astro";
+import StoriesSection from "@/components/Home/StoriesSection.astro";
+import CTASection from "@/components/CTASection.astro";
+
+// Static hardcoded data for development - bypassing Strapi
+const staticSEO = {
+  title: "Simply Enak - Authentic Malaysian Food Tours",
+  description: "Discover Malaysia's hidden cultural heritage through our authentic food tours. Walk with locals, taste real stories, and experience the Malaysia most tourists miss.",
+  image: "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Simply Enak",
+    "description": "Authentic Malaysian Food Tours",
+    "url": "https://simplyenak.com"
+  }
+};
+
+// Static tour data for development
+const staticTours = [
+  {
+    hero: {
+      title: "Kuala Lumpur Night Food Adventure",
+      price: "from RM 180",
+      duration: "4 hours",
+      location: "Kuala Lumpur",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/kl-night-tour.jpg"
+    },
+    slug: "kuala-lumpur-night-food-tour"
+  },
+  {
+    hero: {
+      title: "Penang Heritage Food Trail",
+      price: "from RM 220",
+      duration: "5 hours",
+      location: "Penang",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg"
+    },
+    slug: "penang-heritage-food-trail"
+  },
+  {
+    hero: {
+      title: "Melaka Cultural Food Journey",
+      price: "from RM 200",
+      duration: "4.5 hours",
+      location: "Melaka",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/melaka-cultural-tour.jpg"
+    },
+    slug: "melaka-cultural-food-journey"
+  }
+];
+
+const staticOurToursSection = {
+  title: "Explore Our Food Tours",
+  button: {
+    title: "View All Tours",
+    href: "/tours",
+    buttonType: "primary"
+  }
+};
+
+const staticExperienceSection = {
+  title: "Experience Today",
+  button: {
+    title: "Book Your Adventure",
+    href: "/contact",
+    buttonType: "primary"
+  }
+};
+
+const staticMediaSection = {
+  title: "See Our Food Tours in Action",
+  videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+};
+---
+
+<Layout
+  title={staticSEO.title}
+  description={staticSEO.description}
+  image={staticSEO.image}
+  structuredData={staticSEO.schema}
+>
+  <HeroSection />
+  <PartnersSection />
+  <AboutSection />
+  <OurToursSection
+    title={staticOurToursSection.title}
+    cards={staticTours.slice(0, 3).map((card) => ({
+      title: card.hero.title,
+      link: `/tours/${card.slug}`,
+      image: card.hero.image,
+      price: card.hero.price,
+      duration: card.hero.duration,
+      location: card.hero.location,
+      buttons: [
+        {
+          title: "Book Now",
+          href: `/tours/${card.slug}`,
+          buttonType: "primary-btn-small",
+        },
+      ],
+    }))}
+    button={staticOurToursSection.button}
+  />
+  <OurValuesSection />
+  <TestimonialsSection />
+  <MediaSection
+    title={staticMediaSection.title}
+    videoEmbedUrl={staticMediaSection.videoEmbedUrl}
+  />
+  <StoriesSection />
+  <CTASection />
+</Layout>

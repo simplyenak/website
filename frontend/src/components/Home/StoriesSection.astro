@@ -1,92 +1,91 @@
 ---
-
-import fetchApi from "@/lib/strapi";
-import type { StoriesDetailsPageTypes, StoriesSection } from "@/types";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-
-const data: {
-  storiesSection: StoriesSection;
-} = await fetchApi({
-  endpoint: "home-page?populate=storiesSection",
-  wrappedByKey: "data",
-});
-const storiesSectionData = data.storiesSection;
-
-const stories = await fetchApi<StoriesDetailsPageTypes[]>({
-  endpoint: `storie?populate=hero.bgImage&populate=hero&populate=contents&pagination[page]=1&pagination[pageSize]=6`,
-  wrappedByKey: "data",
-});
-
-const meta = await fetchApi<{
-  pagination: {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    total: number;
-  };
-}>({
-  endpoint: `storie?pagination[page]=1&pagination[pageSize]=6`,
-  wrappedByKey: "meta",
-});
+// Static data - no Strapi
+const storiesSection = {
+  title: "Malaysian Food Stories",
+  stories: [
+    {
+      slug: "why-we-care-about-sustainability",
+      hero: {
+        title: "Beyond Heritage: Our Sustainability Promise",
+        bgImage: "https://se-website-images.s3.nl-ams.scw.cloud/story-sustainable.jpg"
+      },
+      excerpt: "Our commitment to sustainability goes beyond heritage preservation. We believe meaningful travel should enrich both the visitor and the destination. Discover how we're working to protect Malaysia's culinary traditions and environment for future generations through responsible tourism practices."
+    },
+    {
+      slug: "malaysian-food-heritage",
+      hero: {
+        title: "The Heritage Behind Malaysian Food",
+        bgImage: "https://se-website-images.s3.nl-ams.scw.cloud/story-heritage.jpg"
+      },
+      excerpt: "Discover how Malaysian cuisine became a melting pot of Malay, Chinese, Indian, and indigenous influences over centuries of trade and cultural exchange."
+    },
+    {
+      slug: "street-food-culture",
+      hero: {
+        title: "Why Street Food Is the Soul of Malaysia",
+        bgImage: "https://se-website-images.s3.nl-ams.scw.cloud/story-street-food.jpg"
+      },
+      excerpt: "From hawker centers to roadside stalls, street food isn't just about eating—it's where communities gather, stories are shared, and traditions are preserved."
+    },
+    {
+      slug: "family-recipes",
+      hero: {
+        title: "Family Recipes Passed Down Through Generations",
+        bgImage: "https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg"
+      },
+      excerpt: "Meet the vendors who've been making the same dish for decades, using recipes their grandparents taught them. These are the keepers of Malaysian culinary heritage, preserving traditional cooking methods and supporting local farming communities."
+    },
+    {
+      slug: "traditional-cooking-methods",
+      hero: {
+        title: "Traditional Cooking Methods",
+        bgImage: "https://se-website-images.s3.nl-ams.scw.cloud/story-traditional-cooking.jpg"
+      },
+      excerpt: "Discover the traditional cooking techniques that have been passed down through generations. From clay pot cooking to charcoal grilling, these methods preserve authentic flavors and cultural knowledge."
+    },
+    {
+      slug: "local-farming-partnerships",
+      hero: {
+        title: "Local Farming Partnerships",
+        bgImage: "https://se-website-images.s3.nl-ams/scw.cloud/story-local-farming.jpg"
+      },
+      excerpt: "We work directly with local farmers and producers to source fresh, sustainable ingredients. These partnerships support local economies while ensuring the most authentic flavors for your food experience."
+    }
+  ]
+};
 ---
 
-<section class="py-20 md:py-24 bg-[/stories/detailsf7f7f7]">
+<section class="py-20 md:py-24 bg-[#f7f7f7]">
   <div class="main-container">
     <h2 class="text-h2 text-primary text-center mb-12">
-      {storiesSectionData?.title}
+      {storiesSection.title}
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
-      {
-        stories?.map((story) => (
-          <div class="bg-white rounded-lg shadow-custom-1 overflow-hidden group">
-            <div class="h-[240px] overflow-hidden">
-              <img
-                src={getFullMediaUrl(story.hero.bgImage)}
-                alt={story.hero.bgImage.name}
-                class="size-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                height={240}
-                width={360}
-              />
-            </div>
-            <div class="p-4 md:p-5 space-y-3">
-              <a
-                href={`/stories/${story.slug}`}
-                class="text-subheading hover:text-primary duration-300 line-clamp-2"
-              >
-                {story.hero.title}
-              </a>
-              <p class="text-body line-clamp-3">
-                {story.contents.contents[0].children[0].text}
-              </p>
-            </div>
+      {storiesSection.stories.map((story) => (
+        <div class="bg-white rounded-lg shadow-custom-1 overflow-hidden group">
+          <div class="h-[240px] overflow-hidden">
+            <img
+              src={story.hero.bgImage}
+              alt={story.hero.title}
+              class="size-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+              height={240}
+              width={360}
+              loading="lazy"
+            />
           </div>
-        ))
-      }
-    </div>
-    {
-      meta && meta.pagination.total > 6 && (
-        <div class="text-center mt-12">
-          <a
-            href="/stories"
-            class="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300"
-          >
-            View All Stories
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div class="p-4 md:p-5 space-y-3">
+            <a
+              href={`/stories/${story.slug}`}
+              class="text-subheading hover:text-primary duration-300 line-clamp-2 block"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
+              {story.hero.title}
+            </a>
+            <p class="text-body line-clamp-3">
+              {story.excerpt}
+            </p>
+          </div>
         </div>
-      )
-    }
+      ))}
+    </div>
   </div>
 </section>
