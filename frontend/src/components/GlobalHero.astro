@@ -14,6 +14,25 @@ let {
 <section
   class="bg-[#1a1a1a] text-white py-20 md:py-32 relative text-center flex items-center justify-center overflow-hidden"
 >
+  {
+    (typeof image === "string" ? image : getFullMediaUrl(image)) && (
+      <img
+        src={typeof image === "string" ? image : getFullMediaUrl(image)}
+        alt={title}
+        class:list={[
+          "absolute inset-0 size-full object-cover z-0",
+          objectPosition,
+        ]}
+        height={420}
+        width={1920}
+        loading="eager"
+        fetchpriority="high"
+      />
+    )
+  }
+
+  {isOverlay && image ? <div class="absolute inset-0 bg-black/50 z-0" /> : null}
+
   <div class="main-container relative z-10 flex flex-col items-center">
     <h1 class="text-4xl md:text-6xl font-merriweather mb-6 leading-tight">
       {title}
@@ -34,24 +53,7 @@ let {
         </p>
       ) : null
     }
+
+    <slot />
   </div>
-
-  {isOverlay && image ? <div class="absolute inset-0 bg-black/30 z-0" /> : null}
-
-  {
-    image && getFullMediaUrl(image) && (
-      <img
-        src={getFullMediaUrl(image)}
-        alt={title}
-        class:list={[
-          "absolute inset-0 size-full object-cover -z-10",
-          objectPosition,
-        ]}
-        height={420}
-        width={1920}
-        loading="eager"
-        fetchpriority="high"
-      />
-    )
-  }
 </section>

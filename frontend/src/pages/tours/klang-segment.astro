@@ -1,0 +1,406 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import Badge from "@/components/Design/Badge.astro";
+import Button from "@/components/Button.astro";
+import { Image } from "astro:assets";
+import heroImage from "@/assets/images/background-for-hero.jpg";
+import tourImage1 from "@/assets/images/6.jpg";
+import tourImage2 from "@/assets/images/7.jpg";
+import storyFamilyImage from "@/assets/images/bg1.jpg";
+import storyHeritageImage from "@/assets/images/bg2.jpg";
+
+import { klangLandingPage } from "@/data/klang-landing-page";
+import guideImage from "@/assets/images/dumy-avatar.jpg";
+import FAQ from "@/components/FAQ.astro";
+
+const segmentData = {
+  name: klangLandingPage.name,
+  tagline: klangLandingPage.hero.subtitle,
+  description: klangLandingPage.hero.description,
+  heroImage: heroImage,
+
+  seo: {
+    title: klangLandingPage.metaTitle,
+    description: klangLandingPage.metaDescription,
+  },
+
+  topPicks: [
+    {
+      title: "Klang Bak Kut Teh Tour",
+      duration: "3.5 Hours",
+      price: "RM 280",
+      image: tourImage1,
+      slug: "/contact",
+      badge: "Coming Soon",
+    },
+    {
+      title: "Klang Heritage Food Walk",
+      duration: "4 Hours",
+      price: "RM 320",
+      image: tourImage2,
+      slug: "/contact",
+      badge: null,
+    },
+  ],
+
+  heritage: {
+    title: klangLandingPage.heritage.title,
+    content: klangLandingPage.heritage.introduction,
+    image: storyFamilyImage,
+    imageAlt: "Klang heritage food",
+  },
+
+  foodCultures: klangLandingPage.foodCultures.map((culture, index) => ({
+    ...culture,
+    image:
+      [storyHeritageImage, storyFamilyImage, storyHeritageImage][index] ||
+      storyHeritageImage,
+  })),
+
+  signatureDishes: klangLandingPage.signatureDishes.map((dish, index) => ({
+    ...dish,
+    image: [tourImage1, tourImage2, tourImage1][index] || tourImage1,
+  })),
+
+  neighborhoods: klangLandingPage.neighborhoods.map((hood, index) => ({
+    ...hood,
+    image: [tourImage1, tourImage2][index] || tourImage1,
+  })),
+
+  tips: klangLandingPage.expectations.items
+    .slice(0, 4)
+    .map((item) => item.description),
+
+  guides: klangLandingPage.guides.map(() => ({
+    ...klangLandingPage.guides[0],
+    image: guideImage,
+  })),
+
+  reviews: klangLandingPage.reviews,
+  faqs: klangLandingPage.faqs,
+};
+
+export const prerender = true;
+---
+
+<Layout
+  title={segmentData.seo.title}
+  description={segmentData.seo.description}
+  image={segmentData.heroImage.src}
+>
+  <!-- Split Layout Hero -->
+  <section
+    class="relative pt-32 pb-12 md:pt-40 md:pb-20 overflow-hidden bg-[#1a1a1a] text-white"
+  >
+    <div class="main-container">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="relative z-10 order-2 lg:order-1">
+          <Badge variant="accent" customClasses="mb-6"
+            >Food & Culture Guide</Badge
+          >
+          <h1
+            class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight"
+          >
+            {segmentData.name}
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-gray-300 mb-8 font-light leading-relaxed"
+          >
+            {segmentData.tagline}
+          </p>
+          <div
+            class="flex items-center gap-4 text-sm font-medium text-gray-400 mb-8"
+          >
+            <a href="/" class="hover:text-white transition-colors">Home</a>
+            <span class="text-gray-600">/</span>
+            <a href="/tours" class="hover:text-white transition-colors">Tours</a
+            >
+            <span class="text-gray-600">/</span>
+            <span class="text-primary">{segmentData.name}</span>
+          </div>
+        </div>
+
+        <div
+          class="relative order-1 lg:order-2 flex justify-center lg:justify-end"
+        >
+          <div
+            class="relative rounded-[2rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700 ease-out max-w-[90%] lg:max-w-full"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 mix-blend-overlay"
+            >
+            </div>
+            <Image
+              src={segmentData.heroImage}
+              alt={segmentData.name}
+              class="w-full h-[400px] lg:h-[450px] object-cover"
+              width={800}
+              height={600}
+            />
+          </div>
+          <div
+            class="absolute -bottom-6 -left-6 w-24 h-24 bg-orange-500/20 rounded-full -z-10 blur-xl"
+          >
+          </div>
+          <div
+            class="absolute -top-6 -right-6 w-32 h-32 bg-blue-500/20 rounded-full -z-10 blur-xl"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <Section variant="light" customClasses="!py-16">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-primary mb-6">
+        Welcome to {segmentData.name}
+      </h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        {segmentData.description}
+      </p>
+    </div>
+  </Section>
+
+  <!-- Top Picks Section -->
+  <Section customClasses="!py-12 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <h3 class="text-2xl font-bold text-primary">
+          Top Experiences in {segmentData.name}
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {
+          segmentData.topPicks.map((tour) => (
+            <a
+              href={tour.slug}
+              class="group block bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden"
+            >
+              <div class="relative h-48 overflow-hidden">
+                <Image
+                  src={tour.image}
+                  alt={tour.title}
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  width={400}
+                  height={300}
+                />
+                {tour.badge && (
+                  <div class="absolute top-3 left-3">
+                    <Badge variant="accent" size="small">
+                      {tour.badge}
+                    </Badge>
+                  </div>
+                )}
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-1">
+                  {tour.title}
+                </h4>
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                  <div class="flex items-center gap-1">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span>{tour.duration}</span>
+                  </div>
+                  <span class="font-semibold text-primary">{tour.price}</span>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <!-- Heritage Section -->
+  <Section variant="light">
+    <div
+      class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 items-center"
+    >
+      <div class="flex-1">
+        <h2 class="text-3xl font-bold text-primary mb-6">
+          {segmentData.heritage.title}
+        </h2>
+        <div
+          class="text-lg text-gray-700 leading-relaxed mb-6 whitespace-pre-line"
+        >
+          {segmentData.heritage.content}
+        </div>
+        <div class="w-16 h-1 bg-primary/20 rounded-full"></div>
+      </div>
+      <div class="flex-1 w-full">
+        <div
+          class="relative rounded-2xl overflow-hidden shadow-xl rotate-1 hover:rotate-0 transition-transform duration-500"
+        >
+          <Image
+            src={segmentData.heritage.image}
+            alt={segmentData.heritage.imageAlt}
+            class="w-full h-auto object-cover"
+            width={600}
+            height={400}
+          />
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Food Cultures Section -->
+  <Section>
+    <h2 class="text-3xl font-bold text-primary text-center mb-12">
+      The Main Food Cultures
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {
+        segmentData.foodCultures.map((culture) => (
+          <Card>
+            <div class="relative h-48 -mx-6 -mt-6 mb-6 overflow-hidden">
+              <Image
+                src={culture.image}
+                alt={culture.name}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={400}
+                height={300}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-primary mb-3">{culture.name}</h3>
+            <p class="text-body mb-4">{culture.description}</p>
+            <div class="mb-4">
+              <strong class="text-gray-900 text-sm">Key Dishes:</strong>
+              <ul class="list-disc list-inside text-body mt-2 space-y-1 text-sm">
+                {culture.keyDishes.slice(0, 3).map((dish) => (
+                  <li>{dish}</li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Signature Dishes Section -->
+  <Section variant="light">
+    <h2 class="text-3xl font-bold text-primary text-center mb-12">
+      Must-Try Signature Dishes
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {
+        segmentData.signatureDishes.map((dish) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+            <div class="md:w-1/3 h-48 md:h-auto relative">
+              <Image
+                src={dish.image}
+                alt={dish.name}
+                class="w-full h-full object-cover absolute inset-0"
+                width={300}
+                height={300}
+              />
+            </div>
+            <div class="p-6 md:w-2/3">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-primary">{dish.name}</h3>
+                {dish.vegetarian && (
+                  <Badge variant="success" size="small">
+                    Veg
+                  </Badge>
+                )}
+              </div>
+              <p class="text-gray-600 text-sm mb-4">{dish.description}</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-gray-500">
+                <div>
+                  <strong class="text-gray-900">Origin:</strong> {dish.origin}
+                </div>
+                <div>
+                  <strong class="text-gray-900">Where:</strong>{" "}
+                  {dish.whereToFind}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Neighborhoods Section -->
+  <Section>
+    <h2 class="text-3xl font-bold text-primary text-center mb-12">
+      Best Food Neighborhoods
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {
+        segmentData.neighborhoods.map((hood) => (
+          <Card>
+            <div class="relative h-64 -mx-6 -mt-6 mb-6 overflow-hidden">
+              <Image
+                src={hood.image}
+                alt={hood.name}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                width={600}
+                height={400}
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <h3 class="text-2xl font-bold text-white">{hood.name}</h3>
+              </div>
+            </div>
+            <p class="text-body mb-4">{hood.description}</p>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <strong class="text-gray-900 text-sm block mb-2">
+                Known for:
+              </strong>
+              <div class="flex flex-wrap gap-2">
+                {hood.knownFor.slice(0, 3).map((item) => (
+                  <Badge variant="secondary" size="small">
+                    {item}
+                  </Badge>
+                ))}
+              </div>
+              <div class="text-sm mt-3 text-gray-600 italic">
+                <strong>Vibe:</strong> {hood.vibe}
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <FAQ faqs={segmentData.faqs} />
+
+  <!-- Newsletter CTA -->
+  <Section variant="light">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-primary mb-4">Not Ready to Book?</h2>
+      <p class="text-gray-600 mb-8">
+        Get our Klang food guide delivered to your inbox.
+      </p>
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
+      >
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary flex-grow"
+        />
+        <Button title="Send Guide" buttonType="primary-btn" />
+      </div>
+    </div>
+  </Section>
+</Layout>

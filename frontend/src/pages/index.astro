@@ -1,11 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import fetchApi from "@/lib/strapi";
-import type {
-  MediaSectionTypes,
-  OurToursSectionTypes,
-  SEOTypes,
-} from "@/types";
 import HeroSection from "@/components/Home/HeroSection.astro";
 import PartnersSection from "@/components/Home/PartnersSection.astro";
 import AboutSection from "@/components/Home/AboutSection.astro";
@@ -14,103 +8,227 @@ import OurValuesSection from "@/components/Home/OurValuesSection.astro";
 import TestimonialsSection from "@/components/Home/TestimonialsSection.astro";
 import MediaSection from "@/components/Home/MediaSection.astro";
 import StoriesSection from "@/components/Home/StoriesSection.astro";
+import FAQSection from "@/components/Home/FAQSection.astro";
 import CTASection from "@/components/CTASection.astro";
 
-export const prerender = true;
+// Static hardcoded data for development - bypassing Strapi
+const staticSEO = {
+  title: "Simply Enak - Malaysian Food Heritage Experiences",
+  description:
+    "Come as a guest, leave as family. Experience Malaysia through taste, story, and connection with locals who share their culture, their neighborhoods, their home with you.",
+  image:
+    "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+  schema: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TravelAgency",
+        "@id": "https://simplyenak.com#travelagency",
+        name: "Simply Enak",
+        description:
+          "Experience Malaysian food heritage with locals who share their home, culture, and stories with visitors who become friends.",
+        url: "https://simplyenak.com",
+        logo: "https://se-website-images.s3.nl-ams.scw.cloud/simply-enak-logo.png",
+        image:
+          "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+        priceRange: "$$",
+        telephone: "+60172878929",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "MY",
+          addressLocality: "Kuala Lumpur",
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5.0",
+          reviewCount: "1250",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        areaServed: [
+          "Kuala Lumpur",
+          "Penang",
+          "Melaka",
+          "Malaysia"
+        ],
+        knowsLanguage: ["English", "Malay", "Mandarin", "Cantonese"],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Malaysian Food Heritage Tours",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "TouristTrip",
+                name: "Kuala Lumpur Heritage Food Tour"
+              }
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "TouristTrip",
+                name: "Penang Heritage Food Trail"
+              }
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "TouristTrip",
+                name: "Melaka Cultural Food Journey"
+              }
+            }
+          ]
+        },
+        sameAs: [
+          "https://www.facebook.com/SimplyEnak",
+          "https://www.instagram.com/simplyenak",
+          "https://www.tripadvisor.com/Attraction_Review-g298570-d2414763-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html",
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://simplyenak.com#faq",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What makes Simply Enak different from other food tours?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "We're locals who grew up eating at these places. You'll meet Aunty Lim who's made laksa since 1982, visit family-run stalls where we've eaten for generations, and hear stories behind every dish. Come as a guest, leave as family."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "Do you accommodate dietary restrictions?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes! We can accommodate vegetarian, halal, gluten-free, and other dietary needs. Just let us know when booking and we'll ensure you have authentic Malaysian food that meets your requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "How long are the food tours?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Our heritage food tours range from 4-5 hours, including walking through neighborhoods and meeting vendors. We pace ourselves based on your group's interests and energy."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "Are the tours suitable for children?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Absolutely! We love sharing Malaysian food heritage with families. We can adjust portions, spice levels, and pacing to make it enjoyable for children while teaching them about Malaysian culture."
+            }
+          }
+        ]
+      }
+    ]
+  },
+};
 
-const data: {
-  ourToursSection: OurToursSectionTypes;
-  experienceTodaySection: OurToursSectionTypes;
-  mediaSection: MediaSectionTypes;
-  SEO: SEOTypes;
-} = await fetchApi({
-  endpoint:
-    "home-page?populate=ourToursSection.button&populate=experienceTodaySection.button&populate=mediaSection&populate=SEO.image",
-  wrappedByKey: "data",
-});
-const ourToursSectionData = data?.ourToursSection;
-const experienceTodaySectionData = data.experienceTodaySection;
-const mediaSectionData = data.mediaSection;
+// Static tour data for development
+const staticTours = [
+  {
+    hero: {
+      title: "Kuala Lumpur Night Food Adventure",
+      price: "from RM 180",
+      duration: "4 hours",
+      location: "Kuala Lumpur",
+      image: {
+        url: "https://se-website-images.s3.nl-ams.scw.cloud/kl-night-tour.jpg",
+        name: "KL Night Tour",
+      },
+    },
+    slug: "kuala-lumpur-night-food-tour",
+  },
+  {
+    hero: {
+      title: "Penang Heritage Food Trail",
+      price: "from RM 220",
+      duration: "5 hours",
+      location: "Penang",
+      image: {
+        url: "https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg",
+        name: "Penang Heritage Tour",
+      },
+    },
+    slug: "penang-heritage-food-trail",
+  },
+  {
+    hero: {
+      title: "Melaka Cultural Food Journey",
+      price: "from RM 200",
+      duration: "4.5 hours",
+      location: "Melaka",
+      image: {
+        url: "https://se-website-images.s3.nl-ams.scw.cloud/melaka-cultural-tour.jpg",
+        name: "Melaka Cultural Tour",
+      },
+    },
+    slug: "melaka-cultural-food-journey",
+  },
+];
 
-import type { TourDetailsPageTypes } from "@/types";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+const staticOurToursSection = {
+  title: "Explore Our Food Tours",
+  button: {
+    title: "View All Tours",
+    href: "/tours",
+    buttonType: "primary-btn" as const,
+  },
+};
 
-const tours = await fetchApi<TourDetailsPageTypes[]>({
-  endpoint: `tour?populate=hero.image&populate=tags`,
-  wrappedByKey: "data",
-});
+const staticExperienceSection = {
+  title: "Experience Today",
+  button: {
+    title: "Book Your Adventure",
+    href: "/contact",
+    buttonType: "primary",
+  },
+};
+
+const staticMediaSection = {
+  title: "See Our Food Tours in Action",
+  videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+};
 ---
 
 <Layout
-  {...data?.SEO && {
-    title: data.SEO.title,
-    description: data.SEO.description,
-    image: getFullMediaUrl(data.SEO.image),
-    structuredData: data.SEO.schema,
-  }}
+  title={staticSEO.title}
+  description={staticSEO.description}
+  image={staticSEO.image}
+  structuredData={staticSEO.schema}
 >
   <HeroSection />
   <PartnersSection />
   <AboutSection />
-  {
-    tours?.length > 0 && (
-      <OurToursSection
-        title={ourToursSectionData?.title}
-        cards={tours.slice(0, 3).map((card) => ({
-          title: card.hero.title,
-          link: `/tours/${card.slug}`,
-          image: card.hero.image,
-          price: card.hero.price,
-          duration: card.hero.duration,
-          location: card.hero.location,
-          buttons: [
-            {
-              title: "Book Now",
-              href: `/tours/${card.slug}`,
-              buttonType: "primary-btn-small",
-            },
-          ],
-        }))}
-        button={ourToursSectionData?.button}
-      />
-    )
-  }
+  <OurToursSection
+    title={staticOurToursSection.title}
+    cards={staticTours.slice(0, 3).map((card) => ({
+      title: card.hero.title,
+      link: `/tours/${card.slug}`,
+      image: card.hero.image,
+      price: card.hero.price,
+      duration: card.hero.duration,
+      location: card.hero.location,
+      buttons: [
+        {
+          title: "Book Now",
+          href: `/tours/${card.slug}`,
+          buttonType: "primary-btn-small" as const,
+        },
+      ],
+    }))}
+    button={staticOurToursSection.button}
+  />
   <OurValuesSection />
-  {
-    tours?.length > 3 && (
-      <OurToursSection
-        title={experienceTodaySectionData?.title ?? "Experience Today"}
-        cards={tours.slice(3, 9).map((card) => ({
-          title: card.hero.title,
-          link: `/tours/${card.slug}`,
-          image: card.hero.image,
-          price: card.hero.price,
-          duration: card.hero.duration,
-          location: card.hero.location,
-          buttons: [
-            {
-              title: "Book Now",
-              href: `/tours/${card.slug}`,
-              buttonType: "primary-btn-small",
-            },
-            {
-              icon: { name: "icon-multicircle" },
-              title: "view",
-              href: `/tours/${card.slug}`,
-              buttonType: "primary-btn-small",
-            },
-          ],
-        }))}
-        button={experienceTodaySectionData?.button}
-      />
-    )
-  }
-
   <TestimonialsSection />
   <MediaSection
-    title={mediaSectionData.title}
-    videoEmbedUrl={mediaSectionData.videoEmbedUrl}
+    title={staticMediaSection.title}
+    videoEmbedUrl={staticMediaSection.videoEmbedUrl}
   />
   <StoriesSection />
+  <FAQSection />
   <CTASection />
 </Layout>

@@ -7,6 +7,8 @@ import Button from "@/components/Button.astro";
 import Prose from "@/components/Prose.astro";
 import { stories, type Story } from "@/data/stories-data";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   return stories.map((story) => ({
     params: { slug: story.slug },

@@ -1,0 +1,70 @@
+---
+import Icon from "@/components/Icon.astro";
+
+// Static data
+const faqs = [
+  {
+    question: "What makes Simply Enak different from other food tours?",
+    answer:
+      "We're locals who grew up eating at these places. You'll meet Aunty Lim who's made laksa since 1982, visit family-run stalls where we've eaten for generations, and hear stories behind every dish. Come as a guest, leave as family.",
+  },
+  {
+    question: "Do you accommodate dietary restrictions?",
+    answer:
+      "Absolutely! We can accommodate vegetarian, halal, gluten-free, and other dietary needs. Just let us know when booking and we'll ensure you experience authentic Malaysian food that meets your requirements while still sharing the cultural stories.",
+  },
+  {
+    question: "How long are your heritage food tours?",
+    answer:
+      "Our cultural food tours range from 4-5 hours, including walking through neighborhoods where we grew up and meeting vendors who've become family friends. We pace ourselves based on your group's interests and energy levels.",
+  },
+  {
+    question: "Are the tours suitable for children?",
+    answer:
+      "We love sharing Malaysian food heritage with families! Children get to discover new flavors while learning about different cultures. We can adjust portions, spice levels, and walking pace to make it enjoyable for everyone.",
+  },
+  {
+    question: "What areas of Malaysia do you cover?",
+    answer:
+      "We currently share our food heritage in Kuala Lumpur, Penang, and Melaka - each with unique cultural stories and flavors. KL offers urban hawker culture, Penang has Peranakan heritage, and Melaka shows historical fusion.",
+  },
+  {
+    question: "How many people join each tour?",
+    answer:
+      "Small groups ensure meaningful cultural connections. Maximum 8 people per tour, so you can actually talk with vendors, ask questions, and experience the food without feeling rushed. We want you to feel like you're exploring with friends, not following a guide.",
+  },
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="main-container max-w-4xl">
+    <h2 class="text-h2 text-primary text-center mb-12">
+      Questions We Often Hear
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {
+        faqs.map((faq, index) => (
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+            <h3 class="text-lg font-merriweather font-semibold text-primary mb-3">
+              {faq.question}
+            </h3>
+            <div class="text-body text-gray-600 leading-relaxed">
+              {faq.answer}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Remove default triangle */
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

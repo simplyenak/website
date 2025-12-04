@@ -1,0 +1,86 @@
+---
+
+import fetchApi from "@/lib/strapi";
+import type { TestimonialsSection } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
+const data: {
+  testimonialsSection: TestimonialsSection;
+} = await fetchApi({
+  endpoint: "home-page?populate=testimonialsSection.cards.image",
+  wrappedByKey: "data",
+});
+const testimonialsSection = data.testimonialsSection;
+---
+
+<section class="py-20 bg-[#f7f7f7]">
+  <div class="main-container">
+    <h2 class="text-h2 text-primary text-center mb-12">What our clients say</h2>
+    <div id="testimonials-swiper" class="swiper -mr-3 md:mr-0">
+      <div class="swiper-wrapper">
+        {
+          testimonialsSection?.cards.map((testimonial) => (
+            <div class="swiper-slide p-6 md:p-8 rounded-lg overflow-hidden bg-white border border-[#dddddd] shadow-custom-1 !h-auto">
+              <div class="space-y-2 text-body">
+                <p>{testimonial.title}</p>
+                <p>{testimonial.review}</p>
+              </div>
+              <div class="flex items-center gap-4 mt-5">
+                <div class="md:size-[70px] size-12 rounded-full overflow-hidden">
+                  {getFullMediaUrl(testimonial.image) && (
+                    <img
+                      src={getFullMediaUrl(testimonial.image)}
+                      alt={testimonial.image.name}
+                      class="size-full object-cover"
+                      height={70}
+                      width={70}
+                    />
+                  )}
+                </div>
+                <div>
+                  <p class="text-body font-semibold uppercase">
+                    {testimonial.name}
+                  </p>
+                  <p class="text-sm font-medium">{testimonial.country}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div
+        class="testimonials-pagination flex items-center justify-center gap-1 mt-8"
+      >
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import { Pagination } from "swiper/modules";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    new Swiper("#testimonials-swiper", {
+      modules: [Pagination],
+      slidesPerView: 1.2,
+      speed: 1000,
+      loop: true,
+      spaceBetween: 16,
+      grabCursor: true,
+      breakpoints: {
+        640: { slidesPerView: 1.5, spaceBetween: 24 },
+        768: { slidesPerView: 2, spaceBetween: 30 },
+      },
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: {
+        el: ".testimonials-pagination",
+        clickable: true,
+        bulletClass: "size-2.5 rounded-xs bg-text/30 cursor-pointer",
+        bulletActiveClass: "!bg-primary",
+      },
+    });
+  });
+</script>

@@ -1,0 +1,31 @@
+{
+  "data": {
+    "id": 1,
+    "attributes": {
+      "metaTitle": "Simply Enak – Food Tours and more",
+      "ourToursSection": {
+        "title": "Our Popular Food Tours",
+        "button": {
+          "text": "View All Tours",
+          "url": "/tours"
+        }
+      },
+      "experienceTodaySection": {
+        "title": "Experience Today",
+        "button": {
+          "text": "Get Started",
+          "url": "/contact"
+        }
+      },
+      "mediaSection": {
+        "title": "Experience Malaysian Food Culture",
+        "videoEmbedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+      "SEO": {
+        "title": "Simply Enak – Food Tours and more",
+        "description": "Experience authentic Malaysian food tours with Simply Enak",
+        "image": null
+      }
+    }
+  }
+}

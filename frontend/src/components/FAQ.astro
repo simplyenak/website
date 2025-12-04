@@ -1,0 +1,54 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQ[];
+  title?: string;
+  variant?: 'accordion' | 'static';
+}
+
+const {
+  faqs,
+  title = "Frequently Asked Questions",
+  variant = 'static'
+} = Astro.props;
+
+// Generate Schema.org FAQPage markup for SEO
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<section class="py-16 md:py-20 bg-[#f9f6f2]">
+  <div class="main-container">
+    <h2 class="text-h2 text-primary text-center mb-12">{title}</h2>
+
+    <div class="max-w-3xl mx-auto space-y-6">
+      {faqs.map((faq, index) => (
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="font-semibold text-lg text-gray-900 mb-3">
+            {faq.question}
+          </h3>
+          <p class="text-body leading-relaxed">
+            {faq.answer}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Schema.org FAQPage markup for SEO -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

@@ -1,37 +1,57 @@
 ---
-import fetchApi from "@/lib/strapi";
-import type { PartnersSection } from "@/types";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-
-const data: {
-  partnersSection: PartnersSection;
-} = await fetchApi({
-  endpoint: "home-page?populate=partnersSection.partnersImages",
-  wrappedByKey: "data",
-});
-const partnersSection = data.partnersSection;
+// Static data - matching simplyenak.com credentials
+const partnersSection = {
+  partnersImages: [
+    {
+      src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-tripadvisor.png",
+      alt: "TripAdvisor",
+    },
+    {
+      src: "https://se-website-images.s3.nl-ams.scw.cloud/penang-global-tourism.png",
+      alt: "Penang Global Tourism",
+    },
+    {
+      src: "https://se-website-images.s3.nl-ams.scw.cloud/3sixdu-logo.png",
+      alt: "3sixdu",
+    },
+    {
+      src: "https://se-website-images.s3.nl-ams.scw.cloud/timeout-penang.png",
+      alt: "Time Out Penang",
+    },
+    {
+      src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-gourmet-traveller.png",
+      alt: "Gourmet Traveller",
+    },
+    {
+      src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-tourism-malaysia.png",
+      alt: "Tourism Malaysia",
+    },
+  ],
+};
 ---
 
-<section class="bg-[#efe5d945] py-14">
-  <div
-    class="main-container flex items-center justify-center gap-5 sm:gap-10 xl:gap-12"
-  >
-    {
-      partnersSection.partnersImages.map(
-        (image) =>
-          getFullMediaUrl(image) && (
-            <div>
-              <img
-                src={getFullMediaUrl(image)}
-                alt="Partner logo"
-                class="mx-auto object-contain w-full h-auto max-h-[60px]"
-                loading="lazy"
-                width={400}
-                height={120}
-              />
-            </div>
-          )
-      )
-    }
+<section class="bg-[#efe5d945] py-10">
+  <div class="main-container text-center">
+    <p class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-8">
+      As Featured In
+    </p>
+
+    <!-- Partner Logos -->
+    <div
+      class="flex items-center justify-center gap-8 md:gap-12 lg:gap-16 flex-wrap"
+    >
+      {
+        partnersSection.partnersImages.map((partner) => (
+          <div>
+            <img
+              src={partner.src}
+              alt={partner.alt}
+              class="mx-auto object-contain w-auto h-[50px] md:h-[60px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              loading="lazy"
+            />
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>

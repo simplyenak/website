@@ -1,57 +1,65 @@
 ---
-
-import fetchApi from "@/lib/strapi";
-import type { TestimonialsSection } from "@/types";
-import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
-
-const data: {
-  testimonialsSection: TestimonialsSection;
-} = await fetchApi({
-  endpoint: "home-page?populate=testimonialsSection.cards.image",
-  wrappedByKey: "data",
-});
-const testimonialsSection = data.testimonialsSection;
+// Static data - no Strapi
+const testimonialsSection = {
+  cards: [
+    {
+      title: "Unforgettable Experience",
+      review: "This wasn't just a food tour—it was a journey into Malaysian culture. Our guide showed us places we'd never have found on our own, and every vendor had a story. We left as friends.",
+      name: "Sarah & Tom",
+      country: "Australia",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/testimonial-1.jpg"
+    },
+    {
+      title: "Authentic and Personal",
+      review: "14 years of experience shows. They took us to family-run stalls where recipes have been passed down for generations. This is the real Malaysia.",
+      name: "Maria Rodriguez",
+      country: "Spain",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/testimonial-2.jpg"
+    },
+    {
+      title: "Best Food Tour in Asia",
+      review: "We've done food tours across Asia, but Simply Enak stands out. Small groups, passionate guides, and incredible food. Worth every ringgit.",
+      name: "James Chen",
+      country: "Singapore",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/testimonial-3.jpg"
+    }
+  ]
+};
 ---
 
 <section class="py-20 bg-[#f7f7f7]">
   <div class="main-container">
-    <h2 class="text-h2 text-primary text-center mb-12">What our clients say</h2>
+    <h2 class="text-h2 text-primary text-center mb-12">What Our Friends Say</h2>
     <div id="testimonials-swiper" class="swiper -mr-3 md:mr-0">
       <div class="swiper-wrapper">
-        {
-          testimonialsSection?.cards.map((testimonial) => (
-            <div class="swiper-slide p-6 md:p-8 rounded-lg overflow-hidden bg-white border border-[#dddddd] shadow-custom-1 !h-auto">
-              <div class="space-y-2 text-body">
-                <p>{testimonial.title}</p>
-                <p>{testimonial.review}</p>
+        {testimonialsSection.cards.map((testimonial) => (
+          <div class="swiper-slide p-6 md:p-8 rounded-lg overflow-hidden bg-white border border-[#dddddd] shadow-custom-1 !h-auto">
+            <div class="space-y-2 text-body">
+              <p class="font-semibold">{testimonial.title}</p>
+              <p>{testimonial.review}</p>
+            </div>
+            <div class="flex items-center gap-4 mt-5">
+              <div class="md:size-[70px] size-12 rounded-full overflow-hidden bg-gray-200">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="size-full object-cover"
+                  height={70}
+                  width={70}
+                  loading="lazy"
+                />
               </div>
-              <div class="flex items-center gap-4 mt-5">
-                <div class="md:size-[70px] size-12 rounded-full overflow-hidden">
-                  {getFullMediaUrl(testimonial.image) && (
-                    <img
-                      src={getFullMediaUrl(testimonial.image)}
-                      alt={testimonial.image.name}
-                      class="size-full object-cover"
-                      height={70}
-                      width={70}
-                    />
-                  )}
-                </div>
-                <div>
-                  <p class="text-body font-semibold uppercase">
-                    {testimonial.name}
-                  </p>
-                  <p class="text-sm font-medium">{testimonial.country}</p>
-                </div>
+              <div>
+                <p class="text-body font-semibold uppercase">
+                  {testimonial.name}
+                </p>
+                <p class="text-sm font-medium">{testimonial.country}</p>
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
-      <div
-        class="testimonials-pagination flex items-center justify-center gap-1 mt-8"
-      >
-      </div>
+      <div class="testimonials-pagination flex items-center justify-center gap-1 mt-8"></div>
     </div>
   </div>
 </section>
@@ -78,8 +86,6 @@ const testimonialsSection = data.testimonialsSection;
       pagination: {
         el: ".testimonials-pagination",
         clickable: true,
-        bulletClass: "size-2.5 rounded-xs bg-text/30 cursor-pointer",
-        bulletActiveClass: "!bg-primary",
       },
     });
   });

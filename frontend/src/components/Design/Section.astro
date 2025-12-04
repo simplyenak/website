@@ -1,36 +1,44 @@
 ---
 interface Props {
-  variant?: 'default' | 'light' | 'dark' | 'accent';
-  spacing?: 'default' | 'compact' | 'spacious';
+  variant?: "default" | "light" | "dark" | "accent";
+  spacing?: "default" | "compact" | "spacious";
   class?: string;
+  id?: string;
+  customClasses?: string;
 }
 
 const {
-  variant = 'default',
-  spacing = 'default',
-  class: className
+  variant = "default",
+  spacing = "default",
+  class: className,
+  id,
+  customClasses,
 } = Astro.props;
 
 const variantClasses = {
-  default: '',
-  light: 'bg-[#f9f6f2]',
-  dark: 'bg-[#2c2c2c] text-white',
-  accent: 'bg-gradient-to-br from-orange-50 to-blue-50'
+  default: "",
+  light: "bg-[#f9f6f2]",
+  dark: "bg-[#2c2c2c] text-white",
+  accent: "bg-gradient-to-br from-orange-50 to-blue-50",
 };
 
 const spacingClasses = {
-  default: 'py-16 md:py-20',
-  compact: 'py-8 md:py-12',
-  spacious: 'py-20 md:py-28'
+  default: "py-16 md:py-20",
+  compact: "py-8 md:py-12",
+  spacious: "py-20 md:py-28",
 };
 ---
 
-<section class:list={[
-  'w-full',
-  variantClasses[variant],
-  spacingClasses[spacing],
-  className
-]}>
+<section
+  id={id}
+  class:list={[
+    "w-full",
+    variantClasses[variant],
+    spacingClasses[spacing],
+    className,
+    customClasses,
+  ]}
+>
   <div class="main-container">
     <slot />
   </div>
