@@ -15,9 +15,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://simplyenak.com",
 
-  adapter: cloudflare({mode: 'pages'}),
-  output: "server",
-  trailingSlash: "ignore",
+  output: "static",
+  trailingSlash: "always",
 
   // Performance: Enable HTML compression
   compressHTML: true,
