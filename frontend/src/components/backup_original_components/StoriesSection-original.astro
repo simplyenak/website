@@ -1,0 +1,92 @@
+---
+
+import fetchApi from "@/lib/strapi";
+import type { StoriesDetailsPageTypes, StoriesSection } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
+const data: {
+  storiesSection: StoriesSection;
+} = await fetchApi({
+  endpoint: "home-page?populate=storiesSection",
+  wrappedByKey: "data",
+});
+const storiesSectionData = data.storiesSection;
+
+const stories = await fetchApi<StoriesDetailsPageTypes[]>({
+  endpoint: `storie?populate=hero.bgImage&populate=hero&populate=contents&pagination[page]=1&pagination[pageSize]=6`,
+  wrappedByKey: "data",
+});
+
+const meta = await fetchApi<{
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+}>({
+  endpoint: `storie?pagination[page]=1&pagination[pageSize]=6`,
+  wrappedByKey: "meta",
+});
+---
+
+<section class="py-20 md:py-24 bg-[/stories/detailsf7f7f7]">
+  <div class="main-container">
+    <h2 class="text-h2 text-primary text-center mb-12">
+      {storiesSectionData?.title}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
+      {
+        stories?.map((story) => (
+          <div class="bg-white rounded-lg shadow-custom-1 overflow-hidden group">
+            <div class="h-[240px] overflow-hidden">
+              <img
+                src={getFullMediaUrl(story.hero.bgImage)}
+                alt={story.hero.bgImage.name}
+                class="size-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                height={240}
+                width={360}
+              />
+            </div>
+            <div class="p-4 md:p-5 space-y-3">
+              <a
+                href={`/stories/${story.slug}`}
+                class="text-subheading hover:text-primary duration-300 line-clamp-2"
+              >
+                {story.hero.title}
+              </a>
+              <p class="text-body line-clamp-3">
+                {story.contents.contents[0].children[0].text}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    {
+      meta && meta.pagination.total > 6 && (
+        <div class="text-center mt-12">
+          <a
+            href="/stories"
+            class="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300"
+          >
+            View All Stories
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>
