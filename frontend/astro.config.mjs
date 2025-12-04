@@ -14,6 +14,7 @@ export default defineConfig({
   site: "https://simplyenak.com",
 
   output: "static",
+  trailingSlash: "always",
 
   // Performance: Enable HTML compression
   compressHTML: true,
