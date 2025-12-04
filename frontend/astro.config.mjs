@@ -7,15 +7,12 @@ import vue from "@astrojs/vue";
 
 import react from "@astrojs/react";
 
-import cloudflare from "@astrojs/cloudflare";
-
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://simplyenak.com",
 
-  adapter: cloudflare(),
   output: "static",
 
   // Performance: Enable HTML compression
