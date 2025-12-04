@@ -1,0 +1,31 @@
+---
+import StoriesCardsSection from "@/components/Stories/StoriesCardsSection.tsx";
+import Layout from "@/layouts/Layout.astro";
+import StoriesSidebar from "@/components/Stories/StoriesSidebar.astro";
+import fetchApi from "@/lib/strapi";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import type { SEOTypes } from "@/types";
+
+export const prerender = true;
+
+const data = await fetchApi<{ SEO: SEOTypes }>({
+  endpoint: "stories?populate=SEO.image",
+  wrappedByKey: "data",
+});
+---
+
+<Layout
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
+>
+  <section
+    class="py-20 md:py-32 main-container grid grid-cols-1 gap-8 xl:gap-16 md:grid-cols-7"
+  >
+    <StoriesCardsSection client:load />
+    <StoriesSidebar />
+  </section>
+</Layout>

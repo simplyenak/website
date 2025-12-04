@@ -1,0 +1,159 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  url?: string;
+  type?: "website" | "article" | "product";
+  noindex?: boolean;
+  nofollow?: boolean;
+  canonicalURL?: string;
+  structuredData?: object;
+}
+
+const {
+  title = "Simply Enak – Food Tours and more",
+  description = "Simply Enak offers premium Malaysian food tours in Kuala Lumpur, Penang and beyond. Authentic culinary, cultural and historical experiences guided by locals.",
+  image = "https://simplyenak.com/og-image.jpg",
+  imageAlt = "Simply Enak Food Tours - Authentic Malaysian Culinary Experiences",
+  url = Astro.url.href,
+  type = "website",
+  noindex = false,
+  nofollow = false,
+  canonicalURL = url,
+  structuredData,
+} = Astro.props;
+
+// Base structured data for the organization
+const baseStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://simplyenak.com/#localbusiness",
+      name: "Simply Enak",
+      url: "https://simplyenak.com",
+      logo: "https://simplyenak.com/logo.png",
+      image: "https://simplyenak.com/og-image.jpg",
+      description:
+        "Simply Enak offers premium Malaysian food tours in Kuala Lumpur, Penang and beyond. Authentic culinary, cultural and historical experiences guided by locals.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Kuala Lumpur City Centre",
+        addressLocality: "Kuala Lumpur",
+        addressCountry: "MY",
+      },
+      telephone: "+60-123-456-789",
+      priceRange: "$$",
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          opens: "09:00",
+          closes: "22:00",
+        },
+      ],
+      sameAs: [
+        "https://www.facebook.com/simplyenak",
+        "https://www.instagram.com/simplyenak",
+        "https://www.linkedin.com/company/simply-enak",
+      ],
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://simplyenak.com/#organization",
+      name: "Simply Enak",
+      url: "https://simplyenak.com",
+      logo: "https://simplyenak.com/logo.png",
+      sameAs: [
+        "https://www.facebook.com/simplyenak",
+        "https://www.instagram.com/simplyenak",
+        "https://www.linkedin.com/company/simply-enak",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://simplyenak.com/#website",
+      url: "https://simplyenak.com",
+      name: "Simply Enak Food Tours",
+      publisher: {
+        "@id": "https://simplyenak.com/#organization",
+      },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://simplyenak.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
+
+// Merge additional structured data if provided
+const finalStructuredData = structuredData
+  ? {
+      ...baseStructuredData,
+      "@graph": [...baseStructuredData["@graph"], structuredData],
+    }
+  : baseStructuredData;
+
+const robotsContent =
+  [noindex && "noindex", nofollow && "nofollow"].filter(Boolean).join(", ") ||
+  "index, follow";
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="robots" content={robotsContent} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content="Simply Enak" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+<meta property="twitter:image:alt" content={imageAlt} />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="author" content="Simply Enak" />
+<meta name="theme-color" content="#ff6b35" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
+
+<!-- Additional Open Graph Tags -->
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+
+<!-- Additional Twitter Tags -->
+<meta name="twitter:creator" content="@simplyenak" />
+<meta name="twitter:site" content="@simplyenak" />
+
+<!-- Structured Data -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(finalStructuredData)}
+/>

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_home_page_partners_sections",
+  "info": {
+    "displayName": "Partners Section"
+  },
+  "options": {},
+  "attributes": {
+    "partnersImages": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "SectionName": {
+      "type": "string",
+      "private": true,
+      "default": "Partners Section"
+    }
+  },
+  "config": {}
+}

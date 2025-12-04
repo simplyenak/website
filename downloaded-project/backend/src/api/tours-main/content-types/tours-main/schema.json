@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "tours_mains",
+  "info": {
+    "singularName": "tours-main",
+    "pluralName": "tours-mains",
+    "displayName": "Tours Main"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "hero": {
+      "type": "component",
+      "component": "global-hero.global-hero",
+      "repeatable": false
+    },
+    "toursCardsSection": {
+      "type": "component",
+      "component": "tours.tours-cards-section",
+      "repeatable": false
+    },
+    "bookBespokeTour": {
+      "type": "component",
+      "component": "tours.other-booking-section",
+      "repeatable": false
+    },
+    "knowTourSection": {
+      "type": "component",
+      "component": "tours.other-booking-section",
+      "repeatable": false
+    }
+  }
+}

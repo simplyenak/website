@@ -1,0 +1,106 @@
+---
+import BlockRendererClient from "@/components/BlockRendererClient";
+import type { Footer } from "@/types";
+import { Image } from "astro:assets";
+import fetchApi from "@/lib/strapi";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
+const footer: Footer = await fetchApi({
+  endpoint:
+    "footer?populate=logo&populate=partners.image&populate=paymentMethods&populate=quickLinks",
+  wrappedByKey: "data",
+});
+---
+
+<footer class="pt-20 pb-8 bg-primary text-white">
+  <div
+    class="main-container flex flex-col md:flex-row justify-between gap-10 pb-8 md:pb-20"
+  >
+    <div class="space-y-5">
+      <a href="/" class="px-4 py-2 bg-white block max-w-[250px]">
+        <Image
+          src={getFullMediaUrl(footer.logo)}
+          alt="Logo"
+          width={250}
+          height={150}
+          class="w-full object-contain"
+        />
+      </a>
+      <div
+        class="prose-a:text-white prose-a:no-underline prose-a:hover:text-white/80 text-white"
+      >
+        <BlockRendererClient
+          content={footer.informations}
+          client:only="react"
+        />
+      </div>
+    </div>
+    <div class="space-y-6 md:space-y-10">
+      <div class="space-y-5">
+        <h3 class="text-subheading uppercase font-bold font-merriweather">
+          Partners
+        </h3>
+        <div class="flex items-center gap-4 flex-wrap">
+          {
+            footer.partners.map(
+              (partner) =>
+                getFullMediaUrl(partner.image) && (
+                  <Image
+                    src={getFullMediaUrl(partner.image)}
+                    alt={partner.image.name}
+                    class="h-10 md:h-[60px] w-auto object-contain"
+                    height={60}
+                    width={100}
+                  />
+                )
+            )
+          }
+        </div>
+      </div>
+      <div class="space-y-5">
+        <h3 class="text-subheading uppercase font-bold font-merriweather">
+          Payment methods
+        </h3>
+        <div class="flex items-center gap-2 flex-wrap">
+          {
+            footer.paymentMethods.map((paymentMethods) => (
+              <div class="p-1.5 rounded-sm overflow-hidden bg-white grid place-items-center w-12">
+                <Image
+                  src={getFullMediaUrl(paymentMethods)}
+                  alt={paymentMethods.name}
+                  class="size-full object-contain"
+                  height={100}
+                  width={100}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div class="space-y-5">
+      <h3
+        class="text-subheading uppercase font-bold font-merriweather whitespace-nowrap"
+      >
+        Quick Links
+      </h3>
+      <ul class="space-y-2 *:flex *:items-center *:gap-1">
+        {
+          footer.quickLinks.map((link) => (
+            <li>
+              <a href={link.href} class="hover:text-[#efe5d9] duration-300">
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/30 pt-8 text-center px-3">
+    <div
+      class="text-sm uppercase whitespace-break-spaces"
+      set:html={footer.copyrightText}
+    />
+  </div>
+</footer>

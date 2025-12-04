@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_home_page_our_tours_sections",
+  "info": {
+    "displayName": "Our Tours Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "component": "button.button",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

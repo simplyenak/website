@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "strapi": {
+      "command": "npx",
+      "args": [
+        "strapi-mcp@latest",
+        "--url", "http://localhost:1337",
+        "--token", "***REMOVED***"
+      ]
+    }
+  }
+}

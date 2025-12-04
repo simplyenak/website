@@ -1,0 +1,56 @@
+{
+  "collectionName": "components_stories_details_stories_details_contents",
+  "info": {
+    "displayName": "Stories Details Contents"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "contents": {
+      "type": "blocks",
+      "required": true
+    },
+    "videoType": {
+      "type": "enumeration",
+      "enum": [
+        "local",
+        "embeded"
+      ]
+    },
+    "video": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "videoType"
+            },
+            "local"
+          ]
+        }
+      },
+      "component": "video.video",
+      "repeatable": false,
+      "required": true
+    },
+    "embededVideo": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "videoType"
+            },
+            "embeded"
+          ]
+        }
+      },
+      "component": "embedded-video.embedded-video",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

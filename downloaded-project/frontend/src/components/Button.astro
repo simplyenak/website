@@ -1,0 +1,9 @@
+---
+import Icon from '@/components/Icon.astro'
+let { icon, title, href, buttonType, class: className } = Astro.props
+---
+
+<a href={href} class:list={[buttonType, className]}>
+  <span>{title}</span>
+  {icon && <Icon name={icon} class="size-5" />}
+</a>

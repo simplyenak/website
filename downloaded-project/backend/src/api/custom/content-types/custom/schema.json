@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customs",
+  "info": {
+    "singularName": "custom",
+    "pluralName": "customs",
+    "displayName": "custom tours"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "metaTitle"
+    },
+    "heroSection": {
+      "type": "component",
+      "component": "global-hero.global-hero",
+      "repeatable": false
+    },
+    "getInTouchSection": {
+      "type": "component",
+      "component": "contact.get-in-touch-section",
+      "repeatable": false
+    }
+  }
+}

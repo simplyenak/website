@@ -1,0 +1,88 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import TourDetailsHero from "@/components/TourDetails/TourDetailsHero.astro";
+import StoriesDetailsSection from "@/components/StoriesDetails/StoriesDetailsSection.astro";
+import TourDetailsContents from "@/components/TourDetails/TourDetailsContents.astro";
+import RelatedToursSection from "@/components/TourDetails/RelatedToursSection.astro";
+import fetchApi from "@/lib/strapi";
+import type { TourDetailsPageTypes } from "@/types";
+import {
+  generateTourStructuredData,
+  generateCanonicalUrl,
+  cleanDescription,
+} from "@/utils/seo";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const tours = await fetchApi<TourDetailsPageTypes[]>({
+    endpoint: "tour",
+    wrappedByKey: "data",
+  });
+  return tours.map((tour) => {
+    return {
+      params: { slug: tour.slug },
+    };
+  });
+}
+const { slug } = Astro.params;
+const data = await fetchApi<TourDetailsPageTypes[]>({
+  endpoint: `tour?filters[slug][$eq]=${slug}&populate=hero.image&populate=contents&populate=contents.video&populate=contents.embededVideo&populate=SEO.image`,
+  wrappedByKey: "data",
+});
+const tour = data[0];
+
+if (!tour) {
+  return Astro.redirect("/404");
+}
+
+// Generate SEO data
+const tourStructuredData = generateTourStructuredData({
+  name: tour.hero?.title || "",
+  description: cleanDescription(tour.hero?.title || ""),
+  price: parseFloat(tour.hero?.price?.replace(/[^0-9.]/g, "") || "0"),
+  duration: tour.hero?.duration || "",
+  location: tour.hero?.location || "",
+  image: tour.hero?.image?.url || "",
+  url: generateCanonicalUrl(`/tours/${tour.slug}`),
+});
+
+const pageTitle =
+  tour.SEO?.title ||
+  tour.metaTitle ||
+  `${tour.hero?.title} - Malaysian Food Tour | Simply Enak`;
+const pageDescription =
+  tour.SEO?.description ||
+  cleanDescription(
+    `Experience ${tour.hero?.title} with Simply Enak. ${tour.hero?.duration} of authentic Malaysian cuisine in ${tour.hero?.location}.`
+  );
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image={getFullMediaUrl(tour.SEO?.image) ?? getFullMediaUrl(tour.hero?.image)}
+  imageAlt={`${tour.hero?.title} - Malaysian Food Tour`}
+  type="product"
+  canonicalURL={generateCanonicalUrl(`/tours/${tour.slug}`)}
+  structuredData={tour.SEO?.schema ?? tourStructuredData}
+>
+  <TourDetailsHero hero={tour.hero} />
+  <StoriesDetailsSection>
+    <TourDetailsContents contents={tour.contents} />
+    <div slot="sidebar" class="max-w-[320px] mx-auto">
+      <div
+        class="flex items-center justify-center gap-3 py-6 rounded-t-2xl bg-primary text-white"
+      >
+        <h5 class="text-h5 capitalize">From</h5>
+        <h4 class="text-h4 font-bold">{tour.hero?.price}</h4>
+      </div>
+      <script
+        is:inline
+        src="https://assets.ticketinghub.com/checkout.js"
+        data-widget={tour.TicketingHubID}></script>
+    </div>
+  </StoriesDetailsSection>
+  <RelatedToursSection />
+</Layout>

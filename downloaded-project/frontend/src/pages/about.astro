@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import MediaSection from "@/components/Home/MediaSection.astro";
+import TextWithLeftRightImage from "@/components/About/TextWithLeftRightImage.astro";
+import fetchApi from "@/lib/strapi";
+
+export const prerender = true;
+
+import type {
+  GlobalHeroTypes,
+  MediaSectionTypes,
+  TextWithLeftRightImageTypes,
+  SEOTypes,
+} from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
+const data: {
+  SEO: SEOTypes;
+  aboutHero: GlobalHeroTypes;
+  textWithLeftRightImage: TextWithLeftRightImageTypes;
+  ourCoreValuesSection: TextWithLeftRightImageTypes;
+  mediaSection: MediaSectionTypes;
+} = await fetchApi({
+  endpoint:
+    "about?populate=aboutHero.image&populate=textWithLeftRightImage.image&populate=ourCoreValuesSection.image&populate=mediaSection&populate=SEO.image",
+  wrappedByKey: "data",
+});
+---
+
+<Layout
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
+>
+  <GlobalHero
+    title={data.aboutHero.title}
+    decription={data.aboutHero.description}
+    image={data.aboutHero.image}
+    objectPosition={data.aboutHero.objectPosition}
+  />
+  <TextWithLeftRightImage
+    title={data.textWithLeftRightImage.title}
+    contents={data.textWithLeftRightImage.contents}
+    imagePosition={data.textWithLeftRightImage.imagePosition}
+    bgColor={data.textWithLeftRightImage.bgColor}
+    image={data.textWithLeftRightImage.image}
+  />
+  <TextWithLeftRightImage
+    title={data.ourCoreValuesSection.title}
+    contents={data.ourCoreValuesSection.contents}
+    imagePosition={data.ourCoreValuesSection.imagePosition}
+    bgColor={data.ourCoreValuesSection.bgColor}
+    image={data.ourCoreValuesSection.image}
+  />
+  <MediaSection
+    title={data.mediaSection.title}
+    videoEmbedUrl={data.mediaSection.videoEmbedUrl}
+  />
+  <CTASection />
+</Layout>

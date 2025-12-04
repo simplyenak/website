@@ -1,0 +1,317 @@
+import type { APIRoute } from "astro";
+
+export const GET: APIRoute = ({ site }) => {
+  const localBusinessData = {
+    "@context": "https://schema.org",
+    "@type": "TourOperator",
+    "name": "Simply Enak Food Experiences",
+    "alternateName": "Simply Enak Malaysian Food Tours",
+    "description": "Premium Malaysian food tours offering authentic culinary experiences in Kuala Lumpur and Penang. 14+ years of expertise with 5-star TripAdvisor rating. Led by knowledgeable local guides who share Malaysian culture and heritage.",
+    "url": "https://simplyenak.com/",
+    "logo": "https://simplyenak.com/images/simply-enak-logo.webp",
+    "image": "https://simplyenak.com/images/simply-enak-food-tours-facebook.jpg",
+    "telephone": "+60 17 287 8929",
+    "email": "info@simplyenak.com",
+    "sameAs": [
+      "https://www.facebook.com/simplyenak",
+      "https://www.instagram.com/simplyenakfoodtours",
+      "https://www.tripadvisor.com/Restaurant_Review-g661819-d282781",
+      "https://www.linkedin.com/company/simply-enak-food-experiences"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kuala Lumpur City Centre",
+      "addressLocality": "Kuala Lumpur",
+      "addressRegion": "Wilayah Persekutuan",
+      "postalCode": "50200",
+      "addressCountry": "MY"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 3.1390,
+      "longitude": 101.6869
+    },
+    "areaServed": [
+      {
+        "@type": "Place",
+        "name": "Kuala Lumpur",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "Malaysia",
+          "addressRegion": "Kuala Lumpur"
+        }
+      },
+      {
+        "@type": "Place", 
+        "name": "Penang",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "Malaysia",
+          "addressRegion": "Penang"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "GeorgeTown", 
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "Malaysia",
+          "addressRegion": "Penang"
+        }
+      }
+    ],
+    "hasMap": "https://maps.google.com/maps?q=Simply+Enak+Food+Experiences",
+    "openingHours": "Mo-Su 09:00-20:00",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+60 17 287 8929",
+      "contactType": "reservations",
+      "areaServed": "Kuala Lumpur, Penang, Georgetown",
+      "availableLanguage": ["English", "Malay"],
+      "hoursAvailable": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-20:00"
+    },
+    "priceRange": "$$",
+    "paymentAccepted": [
+      "Cash", 
+      "Credit Card", 
+      "PayPal"
+    ],
+    "currenciesAccepted": "MYR",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 5.0,
+      "reviewCount": 500,
+      "bestRating": 5,
+      "worstRating": 1
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Travel Enthusiast"
+        },
+        "reviewBody": "Simply Enak offers the most authentic Malaysian food tours. The guides are knowledgeable and passionate about sharing Malaysian culture. The food is diverse and delicious. A must-try experience in KL and Penang!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 5
+        },
+        "datePublished": "2024-01-15"
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Cultural Explorer"
+        },
+        "reviewBody": "The Georgetown tour was incredible. Mark's knowledge of UNESCO heritage sites and nyonya cuisine was impressive. The tour was well-paced and included food at places we never would have found on our own. Highly recommend!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 5
+        },
+        "datePublished": "2024-01-10"
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Food Lover"
+        },
+        "reviewBody": "Pauline guided us through Kuala Lumpur's street food scene. The explanations about Malaysian food culture were fascinating. We tried foods we would have never tried on our own. Safe, educational, and delicious!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 5
+        },
+        "datePublished": "2024-01-05"
+      }
+    ],
+    "tourType": [
+      "Food Tour",
+      "Cultural Tour",
+      "Walking Tour", 
+      "City Tour",
+      "Private Tour",
+      "Group Tour"
+    ],
+    "suitableFor": [
+      "Foodies",
+      "Cultural Enthusiasts",
+      "First-time Visitors",
+      "Families with Children",
+      "Couples",
+      "Groups",
+      "Solo Travelers",
+      "Business Travelers"
+    ],
+    "availableTour": [
+      {
+        "@type": "Tour",
+        "name": "Kuala Lumpur Street Food Tour",
+        "description": "Explore Kuala Lumpur's vibrant street food scene with expert local guide. Sample authentic Malaysian dishes, learn about food culture, visit hidden local favorites.",
+        "duration": "PT3H30M",
+        "price": "RM 285",
+        "maximumGroupSize": 12,
+        "suitableFor": ["Foodies", "Cultural Enthusiasts"],
+        "language": ["English"]
+      },
+      {
+        "@type": "Tour",
+        "name": "Penang Street Food Tour",
+        "description": "Discover Penang's famous street food scene including nyonya cuisine and UNESCO heritage sites. Experience GeorgeTown's cultural diversity through food.",
+        "duration": "PT3H30M", 
+        "price": "RM 285",
+        "maximumGroupSize": 12,
+        "suitableFor": ["Foodies", "Cultural Enthusiasts"],
+        "language": ["English"]
+      },
+      {
+        "@type": "Tour",
+        "name": "Flavours of Malaysia - Off the Beaten Track",
+        "description": "Deep dive into Malaysian culture and heritage beyond tourist hotspots. Experience authentic local life and traditional cuisine with local expert guide.",
+        "duration": "PT4H",
+        "price": "RM 289",
+        "maximumGroupSize": 12,
+        "suitableFor": ["Cultural Enthusiasts", "Foodies"],
+        "language": ["English"]
+      },
+      {
+        "@type": "Tour", 
+        "name": "Eat Drink GeorgeTown",
+        "description": "Complete Georgetown experience with UNESCO World Heritage sites and authentic nyonya cuisine. Perfect blend of culture, history, and food exploration.",
+        "duration": "PT4H",
+        "price": "RM 359", 
+        "maximumGroupSize": 8,
+        "suitableFor": ["Cultural Enthusiasts", "Foodies", "History Buffs"],
+        "language": ["English"]
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Kuala Lumpur Street Food Tour",
+        "description": "Experience authentic Malaysian street food with expert local guide",
+        "price": "RM 285",
+        "priceCurrency": "MYR",
+        "priceValidUntil": "2025-12-31",
+        "availability": "http://schema.org/InStock",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": "Street Food Tour",
+          "provider": {
+            "@type": "Organization",
+            "name": "Simply Enak Food Experiences"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Penang Street Food Tour", 
+        "description": "Explore Penang's famous street food with cultural insights",
+        "price": "RM 285",
+        "priceCurrency": "MYR",
+        "priceValidUntil": "2025-12-31",
+        "availability": "http://schema.org/InStock",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": "Penang Food Tour",
+          "provider": {
+            "@type": "Organization", 
+            "name": "Simply Enak Food Experiences"
+          }
+        }
+      }
+    ],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://simplyenak.com/",
+      "name": "Simply Enak Malaysian Food Tours",
+      "description": "Authentic Malaysian food tours with local guides. 14+ years experience, 5-star TripAdvisor. Kuala Lumpur, Penang, Georgetown tours.",
+      "url": "https://simplyenak.com/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "TouristDestination",
+        "name": "Kuala Lumpur",
+        "sameAs": "https://en.wikipedia.org/wiki/Kuala_Lumpur"
+      }
+    },
+    "potentialAction": [
+      {
+        "@type": "ReserveAction",
+        "target": "https://simplyenak.com/tours/",
+        "result": {
+          "@type": "Reservation",
+          "name": "Book Malaysian Food Tour"
+        }
+      },
+      {
+        "@type": "CallAction",
+        "target": "tel:+60172878929"
+      },
+      {
+        "@type": "EmailAction",
+        "target": "mailto:info@simplyenak.com"
+      }
+    ],
+    "hasCredential": {
+      "@type": "EducationalCredential",
+      "credentialCategory": "Certified Guide",
+      "credential": {
+        "@type": "Certified Tour Guide",
+        "name": "Malaysian Tourism Authority"
+      }
+    },
+    "award": [
+      {
+        "@type": "Award",
+        "name": "TripAdvisor Certificate of Excellence",
+        "awardYear": "2023",
+        "awardCategory": "Restaurant"
+      },
+      {
+        "@type": "Award", 
+        "name": "TripAdvisor Certificate of Excellence",
+        "awardYear": "2022",
+        "awardCategory": "Restaurant"
+      },
+      {
+        "@type": "Award",
+        "name": "TripAdvisor Certificate of Excellence", 
+        "awardYear": "2021",
+        "awardCategory": "Restaurant"
+      }
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Simply Enak Team",
+      "description": "Founded in 2010, Simply Enak has been providing authentic Malaysian food experiences for over a decade."
+    },
+    "numberOfEmployees": "11-50",
+    "knowsAbout": [
+      "Malaysian cuisine",
+      "Food tours",
+      "Cultural experiences",
+      "Heritage tours",
+      "Local guides",
+      "Halal food",
+      "Malaysian culture",
+      "Street food",
+      "Kuala Lumpur food",
+      "Penang cuisine",
+      "Georgetown heritage",
+      "Nyonya food"
+    ],
+    "jobTitle": [
+      "Tour Guide",
+      "Tour Operator",
+      "Cultural Guide"
+    ]
+  };
+
+  return new Response(JSON.stringify(localBusinessData), {
+    headers: {
+      "Content-Type": "application/ld+json",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400",
+      "Access-Control-Allow-Origin": "*"
+    }
+  });
+};

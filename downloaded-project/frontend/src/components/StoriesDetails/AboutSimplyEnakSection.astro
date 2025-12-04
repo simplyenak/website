@@ -1,0 +1,38 @@
+---
+import BlockRendererClient from "@/components/BlockRendererClient";
+import fetchApi from "@/lib/strapi";
+import type { AboutSimplyEnakSectionTypes } from "@/types";
+import Icon from "../Icon.astro";
+const data: { aboutSection: AboutSimplyEnakSectionTypes } = await fetchApi({
+  endpoint: "stories-main?populate=aboutSection.socialItems.icon",
+  wrappedByKey: "data",
+});
+---
+
+<div class="space-y-4 p-4 border border-black/10 rounded-sm text-sm">
+  <h4 class="text-h4 capitalize">{data.aboutSection.title}</h4>
+  <BlockRendererClient
+    content={data.aboutSection.contents}
+    client:only="react"
+  />
+  <div class="flex items-center gap-1.5 pt-4">
+    {
+      data.aboutSection.socialItems.map(
+        (item: { href: string; icon: { name: string } }, idx: number) => {
+          let bgColor = "bg-blue-500";
+          if (idx === 1) bgColor = "bg-black";
+          if (idx === 2) bgColor = "bg-red-500";
+          return (
+            <a
+              class={`size-10 min-w-10 ${bgColor} text-white grid place-items-center rounded-lg`}
+              href={item.href}
+              target="_blank"
+            >
+              <Icon class="size-5" name={item.icon.name} />
+            </a>
+          );
+        }
+      )
+    }
+  </div>
+</div>

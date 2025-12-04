@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour",
+  "info": {
+    "singularName": "tours",
+    "pluralName": "tour",
+    "displayName": "tours"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "metaTitle"
+    },
+    "hero": {
+      "type": "component",
+      "component": "tour-details.tour-details-hero",
+      "repeatable": false,
+      "required": true
+    },
+    "TicketingHubID": {
+      "type": "string",
+      "required": true
+    },
+    "contents": {
+      "type": "component",
+      "component": "tour-details.tour-details-contents",
+      "repeatable": false,
+      "required": true
+    },
+    "tags": {
+      "type": "component",
+      "component": "cards.category",
+      "repeatable": true
+    }
+  }
+}

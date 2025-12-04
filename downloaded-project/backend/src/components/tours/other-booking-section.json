@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_tours_other_booking_sections",
+  "info": {
+    "displayName": "Other Booking Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "isBookingButton": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

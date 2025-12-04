@@ -1,0 +1,133 @@
+import type { APIRoute } from "astro";
+
+// Enhanced Hero Section API
+export const GET: APIRoute = ({ site }) => {
+  const heroData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "CULINARY EXPERIENCES FROM THE HEART",
+    "description": "The most authentic way to discover food and culture in Kuala Lumpur and Penang. Join Simply Enak for authentic Malaysian favorites with local guides. Book your cultural food tour today!",
+    "url": "https://simplyenak.com/",
+    "mainEntity": {
+      "@type": "TouristTrip",
+      "name": "CULINARY EXPERIENCES FROM THE HEART",
+      "description": "The most authentic way to discover food and culture in Kuala Lumpur and Penang. Join Simply Enak for authentic Malaysian favorites with local guides. Book your cultural food tour today!",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Book Now",
+          "url": "https://simplyenak.com/tours/",
+          "priceCurrency": "MYR",
+          "price": 285,
+          "priceValidUntil": "2025-12-31"
+        },
+        {
+          "@type": "Offer", 
+          "name": "View Tours",
+          "url": "https://simplyenak.com/tours/",
+          "priceCurrency": "MYR",
+          "price": 285,
+          "priceValidUntil": "2025-12-31"
+        }
+      ]
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://simplyenak.com/images/hero-bg.jpg",
+      "width": 1920,
+      "height": 1080,
+      "caption": "Malaysian food tours with Simply Enak - Authentic culinary experiences with local guides"
+    }
+  };
+
+  return new Response(JSON.stringify({
+    heroSection: {
+      title: "CULINARY EXPERIENCES FROM THE HEART",
+      subTitle: "The most authentic way to discover food and culture in Kuala Lumpur and Penang. Join Simply Enak for authentic Malaysian favorites with local guides. Book your cultural food tour today!",
+      buttons: [
+        {
+          href: "/tours/",
+          title: "Book Now",
+          buttonType: "primary",
+          price: 285,
+          priceCurrency: "MYR"
+        },
+        {
+          href: "/tours/", 
+          title: "View Tours",
+          buttonType: "secondary"
+        }
+      ],
+      bgImage: {
+        formats: {
+          small: {
+            src: "/images/hero-bg-mobile.jpg",
+            width: 640,
+            height: 640
+          },
+          medium: {
+            src: "/images/hero-bg-tablet.jpg",
+            width: 1024,
+            height: 1024
+          },
+          large: {
+            src: "/images/hero-bg-desktop.jpg",
+            width: 1920,
+            height: 1080
+          }
+        },
+        url: "/images/hero-bg-desktop.jpg"
+      }
+    },
+    optimizations: {
+      seo: {
+        title: "CULINARY EXPERIENCES FROM THE HEART | Simply Enak Malaysian Food Tours",
+        description: "The most authentic way to discover food and culture in Kuala Lumpur and Penang. Join Simply Enak for authentic Malaysian favorites with local guides. Book your cultural food tour today!",
+        keywords: ["malaysian food tours", "kuala lumpur food tour", "penang food tour", "malaysian cuisine experience", "cultural food tours", "local guide malaysia"],
+        image: "/images/hero-bg-desktop.jpg",
+        altText: "Simply Enak Malaysian Food Tours - Authentic culinary experiences with local guides",
+        backgroundColor: "#000000",
+        textColor: "#ffffff",
+        contrast: "high",
+        layout: "full-width",
+        contentType: "hero-section",
+        priority: "high"
+      },
+      conversion: {
+        primaryCTA: "Book Now",
+        secondaryCTA: "View Tours",
+        urgency: "Limited spaces available - Book now",
+        trustSignals: {
+          yearsExperience: "14+ years",
+          tripAdvisorRating: "5-star",
+          certificateOfExcellence: "TripAdvisor Certificate of Excellence",
+          certifiedGuides: "Local expert guides",
+          authenticExperiences: "Cultural food experiences",
+          smallGroupSize: "Personal attention",
+          safeFoodOptions: "Halal-friendly options available"
+        }
+      },
+      performance: {
+        loadTime: "<1s",
+        firstContentfulPaint: "<1.5s",
+        largestContentfulPaint: "<2.5s",
+        cumulativeLayoutShift: "<0.1",
+        firstInputDelay: "<100ms"
+      },
+      accessibility: {
+        role: "banner",
+        ariaLabel: "Simply Enak Food Tours Hero Section",
+        keyboardAccessible: true,
+        screenReaderFriendly: true,
+        colorContrast: 7.1,
+        semanticHTML: true
+      }
+    }
+  }), {
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400",
+      "Access-Control-Allow-Origin": "*"
+    }
+  });
+};
