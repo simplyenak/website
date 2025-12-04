@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_home_page_media_sections",
+  "info": {
+    "displayName": "Media Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "videoEmbedUrl": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

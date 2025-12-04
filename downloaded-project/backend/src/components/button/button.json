@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_button_buttons",
+  "info": {
+    "displayName": "button"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "icon": {
+      "type": "component",
+      "component": "icon.icon",
+      "repeatable": false
+    },
+    "href": {
+      "type": "string"
+    },
+    "buttonType": {
+      "type": "enumeration",
+      "required": false,
+      "default": "primary-btn",
+      "enum": [
+        "primary-btn",
+        "secondary-btn",
+        "primary-btn-small",
+        "secondary-btn-small",
+        "tab-primary-btn",
+        "tab-secondary-btn"
+      ]
+    }
+  },
+  "config": {}
+}

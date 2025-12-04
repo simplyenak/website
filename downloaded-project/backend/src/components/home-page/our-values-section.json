@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_home_page_our_values_sections",
+  "info": {
+    "displayName": "Our Values Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "cards.our-values-card",
+      "repeatable": true
+    },
+    "bgImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

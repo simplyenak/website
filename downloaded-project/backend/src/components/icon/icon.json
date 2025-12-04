@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_icon_icons",
+  "info": {
+    "displayName": "icon",
+    "description": "Icon component for displaying icons"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "icon-arrow-right",
+        "icon-camera",
+        "icon-check",
+        "icon-checkout",
+        "icon-clock",
+        "icon-close",
+        "icon-envelope",
+        "icon-facebook",
+        "icon-heart",
+        "icon-instagram",
+        "icon-menu",
+        "icon-money",
+        "icon-multicircle",
+        "icon-paper-rocket",
+        "icon-phone",
+        "icon-reload",
+        "icon-search",
+        "icon-thumb-right",
+        "icon-thumbs-up",
+        "icon-user",
+        "icon-whatsapp",
+        "icon-youtube"
+      ]
+    }
+  },
+  "config": {}
+}

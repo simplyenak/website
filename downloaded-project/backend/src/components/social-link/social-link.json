@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_social_link_social_links",
+  "info": {
+    "displayName": "socialLink"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "private": true
+    },
+    "icon": {
+      "type": "component",
+      "component": "icon.icon",
+      "repeatable": false,
+      "required": true
+    },
+    "href": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

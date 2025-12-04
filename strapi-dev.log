@@ -1,0 +1,10 @@
+
+> backend@0.1.0 dev
+> strapi develop
+
+- Cleaning dist dir /home/maarten/website-optimization/backend/dist
+✔ Cleaning dist dir (11ms)
+- Loading Strapi
+[ERROR]  There seems to be an unexpected error, try again with --debug for more information 
+
+┌──────────────────────────────────────────────────────────────────────────────┐│                                                                              ││   Error: The module '/home/maarten/website-optimization/backend/node_modul   ││   es/better-sqlite3/build/Release/better_sqlite3.node'                       ││   was compiled against a different Node.js version using                     ││   NODE_MODULE_VERSION 115. This version of Node.js requires                  ││   NODE_MODULE_VERSION 137. Please try re-compiling or re-installing          ││   the module (for instance, using `npm rebuild` or `npm install`).           ││   at Object..node (node:internal/modules/cjs/loader:1920:18)                 ││   at Module.load (node:internal/modules/cjs/loader:1480:32)                  ││   at Module._load (node:internal/modules/cjs/loader:1299:12)                 ││   at TracingChannel.traceSync (node:diagnostics_channel:328:14)              ││   at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)                ││   at Module.require (node:internal/modules/cjs/loader:1503:12)               ││   at require (node:internal/modules/helpers:152:16)                          ││   at bindings (/home/maarten/website-optimization/backend/node_modules/bin   ││   dings/bindings.js:112:48)                                                  ││   at new Database (/home/maarten/website-optimization/backend/node_modules   ││   /better-sqlite3/lib/database.js:48:64)                                     ││   at Client_BetterSQLite3.acquireRawConnection                               ││   (/home/maarten/website-optimization/backend/node_modules/knex/lib/dialec   ││   ts/better-sqlite3/index.js:14:12)                                          ││                                                                              │└──────────────────────────────────────────────────────────────────────────────┘

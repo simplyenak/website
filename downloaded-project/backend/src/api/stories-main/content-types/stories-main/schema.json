@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "stories_mains",
+  "info": {
+    "singularName": "stories-main",
+    "pluralName": "stories-mains",
+    "displayName": "Stories Main"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
+    },
+    "aboutSection": {
+      "type": "component",
+      "component": "stories-details.about-simply-enak-section",
+      "repeatable": false
+    }
+  }
+}

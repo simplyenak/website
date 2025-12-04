@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_tour_details_tour_details_heroes",
+  "info": {
+    "displayName": "Tour Details Hero"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "price": {
+      "type": "string",
+      "required": true
+    },
+    "duration": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "time": {
+      "type": "string",
+      "required": false
+    },
+    "maxParticipants": {
+      "type": "integer"
+    },
+    "experienceType": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

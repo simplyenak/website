@@ -1,0 +1,33 @@
+---
+import GlobalHero from "@/components/GlobalHero.astro";
+import Layout from "@/layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+export const prerender = true;
+import img1 from "@/assets/images/kuala-lumpur-1641785_1920.jpg";
+---
+
+<Layout>
+  <GlobalHero
+    title="Thank You!"
+    image={img1}
+    objectPosition="center"
+    isOverlay={true}
+  />
+  <section class="main-container pt-12 pb-20 space-y-4 text-base md:text-lg prose-a:hover:text-primary prose-a:underline prose-a:text-blue-500 prose-p:underline-offset-8 prose-p:duration-300">
+    <h4 class="text-h4">THANK YOU FOR YOUR BOOKING!</h4>
+    <p>
+   It is time for you to sit back and relax and let us handle your booking. You will soon receive an e-mail to confirm your tour details.
+    </p>
+    <strong>In the meantime check out the following resources:</strong>
+    <ul class="space-y-2 list-decimal list-inside mt-4">
+      <li>
+        <a href="https://simplyenak.com/directions">How to get to the location of your Food Experience</a>
+      </li> <li>
+        <a href="https://simplyenak.com/get-best-food-experience-simply-enak">How to get the best out of your Food Experience</a>
+      </li>
+    </ul>
+    <p>You can also check out our Facebook page for updates on culture, people and most of all yummy food!</p>
+    <strong>And remember to give us a ‘like’ when you’re there.</strong>
+  </section>
+  <CTASection />
+</Layout>

@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "storie",
+  "info": {
+    "singularName": "stories",
+    "pluralName": "storie",
+    "displayName": "stories"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "metaTitle",
+      "required": true
+    },
+    "hero": {
+      "type": "component",
+      "component": "stories-details.stories-details-hero",
+      "repeatable": false
+    },
+    "categories": {
+      "type": "component",
+      "component": "cards.category",
+      "repeatable": true,
+      "required": true
+    },
+    "contents": {
+      "type": "component",
+      "component": "stories-details.stories-details-contents",
+      "repeatable": false
+    },
+    "author": {
+      "type": "component",
+      "component": "stories-details.authon-section",
+      "repeatable": false
+    },
+    "featuredEmbeddedVideo": {
+      "type": "component",
+      "component": "embedded-video.embedded-video",
+      "repeatable": false
+    },
+    "embeddedVideos": {
+      "type": "component",
+      "component": "embedded-video.embedded-video",
+      "repeatable": true
+    }
+  }
+}

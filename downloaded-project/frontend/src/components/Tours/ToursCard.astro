@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+import IconMoney from "@/assets/icons/icon-money.svg";
+import IconReload from "@/assets/icons/icon-reload.svg";
+import IconPaperRoket from "@/assets/icons/icon-paper-rocket.svg";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import type { Button as ButtonType, Media } from "@/types";
+import Button from "../Button.astro";
+type Props = {
+  title: string;
+  link: string;
+  image: Media;
+  price: string;
+  duration: string;
+  location: string;
+  buttons: ButtonType[];
+  class?: string;
+};
+
+let {
+  image,
+  link,
+  title,
+  buttons,
+  price,
+  duration,
+  location,
+  class: className,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "bg-[#efe5d945] border border-[#efe5d9] shadow-custom-1 rounded-xl overflow-hidden group h-full min-h-0 flex flex-col",
+    className,
+  ]}
+>
+  <div class="h-[300px] md:h-[230px] overflow-hidden">
+    <Image
+      src={getFullMediaUrl(image)}
+      alt="Tour image"
+      width={550}
+      height={300}
+      class="size-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+      loading="lazy"
+    />
+  </div>
+  <div class="p-4 space-y-4 grow flex flex-col">
+    <a
+      href={link}
+      class="font-semibold hover:text-primary text-body font-merriweather cursor-pointer block"
+      onclick="if (typeof window !== 'undefined' && window.trackTourInterest) { window.trackTourInterest('{title}'); }"
+    >
+      {title}
+    </a>
+    <ul class="*:flex *:items-center *:gap-2 text-body space-y-1">
+      <li>
+        <IconMoney class="size-5 text-primary" />
+        Price: {price}
+      </li>
+      <li>
+        <IconReload class="size-5 text-primary" />
+        Duration: {duration}
+      </li>
+      <li>
+        <IconPaperRoket class="size-5 text-primary" />
+        {location}
+      </li>
+    </ul>
+    <div class="grid grid-cols-2 gap-4 mt-auto">
+      {
+        buttons.map((button) => (
+          <Button
+            icon={button.icon?.name}
+            title={button.title}
+            href={button.href}
+            buttonType={button.buttonType}
+            class="flex-row-reverse"
+            onclick={
+              button.title === "Book Now"
+                ? `if (typeof window !== 'undefined' && window.trackTourInterest) { window.trackTourInterest('${title}'); }`
+                : undefined
+            }
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>

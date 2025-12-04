@@ -1,0 +1,69 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import ToursCardsSection from "@/components/Tours/ToursCardsSection.astro";
+import OtherBookingSection from "@/components/Tours/OtherBookingSection.astro";
+import type { TourPageTypes } from "@/types";
+import fetchApi from "@/lib/strapi";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
+export const prerender = true;
+
+const data = await fetchApi<TourPageTypes>({
+  endpoint:
+    "tours-main?populate=hero.image&populate=bookBespokeTour&populate=knowTourSection&populate=toursCardsSection&populate=SEO.image",
+  wrappedByKey: "data",
+});
+const hasData = !!data && typeof data === "object";
+---
+
+<Layout
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
+>
+  {
+    hasData && data.hero && (
+      <GlobalHero title={data.hero.title} image={data.hero.image} />
+    )
+  }
+
+  {
+    hasData && data.toursCardsSection && (
+      <ToursCardsSection title={data.toursCardsSection.text} />
+    )
+  }
+
+  {
+    hasData && data.bookBespokeTour && (
+      <OtherBookingSection
+        title={data.bookBespokeTour.title}
+        description={data.bookBespokeTour.description}
+        isBookingButton={data.bookBespokeTour.isBookingButton}
+      />
+    )
+  }
+
+  {
+    hasData && data.knowTourSection && (
+      <OtherBookingSection
+        title={data.knowTourSection.title}
+        description={data.knowTourSection.description}
+        isBookingButton={data.knowTourSection.isBookingButton}
+      />
+    )
+  }
+
+  {
+    !hasData && (
+      <div style="padding:2rem;text-align:center;color:red;">
+        Sorry, no tour data available.
+      </div>
+    )
+  }
+  <CTASection />
+</Layout>

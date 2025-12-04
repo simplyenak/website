@@ -1,0 +1,66 @@
+---
+import IconPhone from "@/assets/icons/icon-phone.svg"
+import IconEnvelope from "@/assets/icons/icon-envelope.svg"
+import IconFacebook from "@/assets/icons/icon-facebook.svg"
+import IconInstagram from "@/assets/icons/icon-instagram.svg"
+import IconYoutube from "@/assets/icons/icon-youtube.svg"
+import IconClock from "@/assets/icons/icon-clock.svg"
+const links = [
+  {
+    icon: IconPhone,
+    text:'+6 017 287 8929',
+    link: 'tel:+6 017 287 8929'
+  },
+  {
+    icon: IconEnvelope,
+    text:'booking@simplyenak.com',
+    link: 'mailto:booking@simplyenak.com'
+  },
+  {
+    icon: IconClock,
+    text:'Mon – Sun: 9:00 – 20:00',
+    link: ''
+  },{
+    icon: IconInstagram,
+    text:'',
+    link: 'https://www.instagram.com/simply.enak/'
+  },{
+    icon: IconFacebook,
+    text:'',
+    link: 'https://facebook.com/simplyenak'
+  },{
+    icon: IconYoutube,
+    text:'',
+    link: 'https://www.youtube.com/channel/UCgRvAZ86vyYwkk6-bvnDRCg/featured?view_as=subscriber'
+  },
+
+]
+---
+
+<div class="bg-secondary text-white">
+  <div class="main-container flex items-center justify-center md:justify-between gap-1 md:gap-5 py-2.5">
+    <ul class="flex items-center gap-1 md:gap-5">
+     {
+      links.slice(0,3).map((link) => (
+       <li class="last:hidden md:last:block">
+        <a href={link.link} class="flex items-center gap-2 text-sm hover:md:text-[#efe5d9] duration-300 size-9 min-w-9 md:size-auto rounded-full md:rounded-none hover:bg-orange hover:md:bg-transparent justify-center">
+          <link.icon class="size-4 md:text-orange text-white" />
+         <span class="hidden md:block"> {link.text}</span>
+        </a>
+      </li>
+      ))
+     }
+    </ul>
+     <ul class="flex items-center gap-1">
+     {
+      links.slice(3,6).map((link) => (
+       <li>
+        <a href={link.link} class="flex items-center gap-2 text-sm duration-300 size-9 min-w-9 rounded-full hover:bg-orange justify-center">
+          <link.icon class="size-4 text-white" />
+        </a>
+      </li>
+      ))
+     }
+    </ul>
+  </div>
+</div>

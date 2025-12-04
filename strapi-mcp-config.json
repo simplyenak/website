@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "strapi": {
+      "command": "npx",
+      "args": [
+        "strapi-mcp@latest",
+        "--url", "http://localhost:1337",
+        "--token", "6eadbd36b604b540f2d1f9454e18a3fe632bbef71a6fbeb2b32c3d175bdb53756960eed7ce385749a3e0e980beb2fde0e2786dd7931288d0296033b01cb162eaa5ca443b0519c32e14c29df510476512ab80c62bc1ba04cc84baf47336ecf1d6a7091f15873d62661d777e065f88ce9528dea8a65bd8e287f9dc3cba1db381d0"
+      ]
+    }
+  }
+}

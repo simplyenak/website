@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+import fetchApi from "@/lib/strapi";
+import type {
+  MediaSectionTypes,
+  OurToursSectionTypes,
+  SEOTypes,
+} from "@/types";
+import HeroSection from "@/components/Home/HeroSection.astro";
+import PartnersSection from "@/components/Home/PartnersSection.astro";
+import AboutSection from "@/components/Home/AboutSection.astro";
+import OurToursSection from "@/components/Home/OurToursSection.astro";
+import OurValuesSection from "@/components/Home/OurValuesSection.astro";
+import TestimonialsSection from "@/components/Home/TestimonialsSection.astro";
+import MediaSection from "@/components/Home/MediaSection.astro";
+import StoriesSection from "@/components/Home/StoriesSection.astro";
+import CTASection from "@/components/CTASection.astro";
+
+export const prerender = true;
+
+const data: {
+  ourToursSection: OurToursSectionTypes;
+  experienceTodaySection: OurToursSectionTypes;
+  mediaSection: MediaSectionTypes;
+  SEO: SEOTypes;
+} = await fetchApi({
+  endpoint:
+    "home-page?populate=ourToursSection.button&populate=experienceTodaySection.button&populate=mediaSection&populate=SEO.image",
+  wrappedByKey: "data",
+});
+const ourToursSectionData = data.ourToursSection;
+const experienceTodaySectionData = data.experienceTodaySection;
+const mediaSectionData = data.mediaSection;
+
+import type { TourDetailsPageTypes } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+
+const tours = await fetchApi<TourDetailsPageTypes[]>({
+  endpoint: `tour?populate=hero.image&populate=tags`,
+  wrappedByKey: "data",
+});
+---
+
+<Layout
+  {...data?.SEO && {
+    title: data.SEO.title,
+    description: data.SEO.description,
+    image: getFullMediaUrl(data.SEO.image),
+    structuredData: data.SEO.schema,
+  }}
+>
+  <HeroSection />
+  <PartnersSection />
+  <AboutSection />
+  {
+    tours?.length > 0 && (
+      <OurToursSection
+        title={ourToursSectionData?.title}
+        cards={tours.slice(0, 3).map((card) => ({
+          title: card.hero.title,
+          link: `/tours/${card.slug}`,
+          image: card.hero.image,
+          price: card.hero.price,
+          duration: card.hero.duration,
+          location: card.hero.location,
+          buttons: [
+            {
+              title: "Book Now",
+              href: `/tours/${card.slug}`,
+              buttonType: "primary-btn-small",
+            },
+          ],
+        }))}
+        button={ourToursSectionData?.button}
+      />
+    )
+  }
+  <OurValuesSection />
+  {
+    tours?.length > 3 && (
+      <OurToursSection
+        title={experienceTodaySectionData?.title ?? "Experience Today"}
+        cards={tours.slice(3, 9).map((card) => ({
+          title: card.hero.title,
+          link: `/tours/${card.slug}`,
+          image: card.hero.image,
+          price: card.hero.price,
+          duration: card.hero.duration,
+          location: card.hero.location,
+          buttons: [
+            {
+              title: "Book Now",
+              href: `/tours/${card.slug}`,
+              buttonType: "primary-btn-small",
+            },
+            {
+              icon: { name: "icon-multicircle" },
+              title: "view",
+              href: `/tours/${card.slug}`,
+              buttonType: "primary-btn-small",
+            },
+          ],
+        }))}
+        button={experienceTodaySectionData?.button}
+      />
+    )
+  }
+
+  <TestimonialsSection />
+  <MediaSection
+    title={mediaSectionData.title}
+    videoEmbedUrl={mediaSectionData.videoEmbedUrl}
+  />
+  <StoriesSection />
+  <CTASection />
+</Layout>
