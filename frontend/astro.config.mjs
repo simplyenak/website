@@ -16,7 +16,7 @@ export default defineConfig({
   site: "https://simplyenak.com",
 
   adapter: cloudflare(),
-  output: "server",
+  output: "static",
 
   // Performance: Enable HTML compression
   compressHTML: true,
