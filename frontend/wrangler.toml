@@ -6,6 +6,10 @@ pages_build_output_dir = "dist"
 name = "simply-enak-staging"
 pages_build_output_dir = "dist"
 
+[[env.staging.kv_namespaces]]
+binding = "SESSION"
+id = "f452f4e10b8340e795025e1e1ac10e3c"  # Dummy ID for staging - will be replaced in production
+
 [env.production]
 name = "simply-enak-production"
 pages_build_output_dir = "dist"
