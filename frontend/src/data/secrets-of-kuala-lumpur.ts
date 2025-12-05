@@ -3,8 +3,8 @@ import pakHassanImage from "@/assets/images/6.jpg";
 // Secrets of Kuala Lumpur Food Adventure Tour Data
 export const klSecretsTourData = {
   // SEO Meta
-  metaTitle: "Secrets of Kuala Lumpur Food Tour – Evening Heritage Adventure | Simply Enak",
-  metaDescription: "Discover KL's hidden food heritage on our evening walking tour. Meet Pak Hassan (67 years of nasi lemak), explore Kampung Baru, taste 15+ dishes from families who refused to sell out.",
+  metaTitle: "Secrets of Kuala Lumpur Food Tour – Evening Heritage Walk | Simply Enak",
+  metaDescription: "See KL's hidden food heritage on our evening walking tour. Meet Pak Hassan (67 years of nasi lemak), walk through Kampung Baru, taste 15+ dishes from families who refused to sell out.",
 
   // Basic Tour Info
   name: "Secrets of Kuala Lumpur",
@@ -156,8 +156,8 @@ export const klSecretsTourData = {
       description: "Light walking through neighborhoods (2-3 km total). Start before sunset, end after dark. Streets are well-lit and safe. Mostly flat terrain with frequent stops."
     },
     {
-      title: "Authentic Local Environments",
-      description: "You'll eat where locals eat—wooden stalls, plastic chairs, ceiling fans. Kampung Baru and Chow Kit are raw, authentic neighborhoods—not polished tourist zones."
+      title: "Where Locals Actually Eat",
+      description: "You'll eat where locals eat—wooden stalls, plastic chairs, ceiling fans. Kampung Baru and Chow Kit are raw neighborhoods—not polished tourist zones."
     },
     {
       title: "Living Cultural Tension",
@@ -193,7 +193,7 @@ export const klSecretsTourData = {
     },
     {
       question: "What's the difference between this and your other KL tours?",
-      answer: "This focuses on hidden neighborhoods (Kampung Baru, Chow Kit) and the tension between tradition and development. It's for people who want to see KL's authentic food culture—not just eat at famous spots."
+      answer: "This focuses on hidden neighborhoods (Kampung Baru, Chow Kit) and the tension between tradition and development. It's for people who want to see where KL locals actually eat—not just the famous spots."
     },
     {
       question: "Are children welcome?",
@@ -251,7 +251,7 @@ export const klSecretsTourData = {
   bookingCta: {
     title: "Come See KL's Hidden Food World",
     subtitle: "Small groups fill quickly—evening tours especially popular on weekends",
-    primaryButton: "Check Availability",
+    primaryButton: "Save My Spot",
     secondaryButton: "Ask Questions",
     features: [
       "Instant confirmation",

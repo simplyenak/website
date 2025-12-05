@@ -5,7 +5,7 @@ export const melakaTourData = {
   metaDescription: "Walk Melaka's colonial streets where Portuguese fishermen, Dutch traders, and Peranakan families created fusion dishes found nowhere else. Meet Aunty Rose, whose Cristang family has cooked Eurasian recipes for 150 years. Taste 600 years of history.",
 
   // Basic Tour Info
-  name: "Melaka Cultural Food Journey",
+  name: "Melaka Cultural Food Tour",
   slug: "melaka-cultural-food-journey",
   location: "Melaka (Malacca)",
   price: 220,
@@ -16,7 +16,7 @@ export const melakaTourData = {
 
   // SECTION 1: Clear Promise + Intrigue (Hero)
   hero: {
-    title: "Melaka Cultural Food Journey",
+    title: "Melaka Cultural Food Tour",
     subtitle: "Where 600 Years of Colonial Powers Created Fusion Magic",
     description: "Portuguese conquistadors, Dutch traders, British colonials, and Peranakan families—each left their recipes in Melaka's kitchens. Walk the UNESCO streets where Europe met Asia on the plate.",
     image: "https://se-website-images.s3.nl-ams.scw.cloud/melaka-cultural-tour.jpg"
@@ -155,7 +155,7 @@ export const melakaTourData = {
     },
     {
       title: "Family Kitchens & Local Spots",
-      description: "You'll eat in family homes, heritage shophouses, and local hawker stalls. Some locations are rustic—ceiling fans, plastic stools—this is authentic Melaka."
+      description: "You'll eat in family homes, heritage shophouses, and local hawker stalls. Some locations are rustic—ceiling fans, plastic stools—this is how locals eat."
     },
     {
       title: "Living History",
@@ -211,7 +211,7 @@ export const melakaTourData = {
       rating: 5,
       date: "2024-10-05",
       source: "TripAdvisor",
-      text: "We've visited Melaka three times but never understood its food history until this tour. Meeting Aunty Rose in the Portuguese Settlement was unforgettable—her Devil's Curry was incredible and hearing her speak Cristang was like stepping back 400 years. Best food tour we've done anywhere."
+      text: "We've visited Melaka three times but never understood its food history until this tour. Meeting Aunty Rose in the Portuguese Settlement—her Devil's Curry was incredible and hearing her speak Cristang was like stepping back 400 years. Best food tour we've done anywhere."
     },
     {
       name: "Sophie Bergman",
@@ -243,7 +243,7 @@ export const melakaTourData = {
   bookingCta: {
     title: "Come Taste Melaka's 600-Year Story",
     subtitle: "Small groups fill quickly—book ahead for weekend dates",
-    primaryButton: "Check Availability",
+    primaryButton: "Save My Spot",
     secondaryButton: "Ask Questions",
     features: [
       "Instant confirmation",

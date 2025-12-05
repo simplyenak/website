@@ -1,0 +1,125 @@
+---
+// Static data - no Strapi
+const meetTheVendorsSection = {
+  title: "Meet the Vendors",
+  subtitle: "The people who make Malaysian food culture what it is",
+  vendors: [
+    {
+      name: "Aunty Lim",
+      dish: "Curry Laksa",
+      location: "Petaling Street, KL",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/vendor-aunty-lim.jpg",
+      story: "Making curry laksa since 1982 using her grandmother's recipe. Every morning at 5am, she starts preparing the broth—20 different spices, simmered for hours. Locals line up before she even opens. Kenny has been eating here since he was 7 years old. \"The recipe hasn't changed in 40 years,\" she says. \"Why fix what works?\"",
+      since: "Since 1982",
+      tour: {
+        name: "KL Night Food Adventure",
+        slug: "kuala-lumpur-night-food-tour"
+      }
+    },
+    {
+      name: "Uncle Chen",
+      dish: "Char Kway Teow",
+      location: "Imbi Market, KL",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/vendor-uncle-chen.jpg",
+      story: "Third-generation char kway teow master. His grandfather started this stall in 1970. Uncle Chen learned the wok technique from his father—the exact heat, the timing, the wrist flick that gives the noodles that smoky flavor. He still uses the same charcoal wok from 1970. \"Gas stove cannot get the same taste,\" he insists.",
+      since: "Since 1970",
+      tour: {
+        name: "KL Night Food Adventure",
+        slug: "kuala-lumpur-night-food-tour"
+      }
+    },
+    {
+      name: "Mak Cik Salmah",
+      dish: "Nasi Lemak",
+      location: "Kampung Baru, KL",
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/vendor-mak-cik-salmah.jpg",
+      story: "Wrapping banana leaf packets of nasi lemak every morning for 35 years. Her sambal recipe is legendary—people drive across town just for it. She learned from her mother, who learned from her mother. Same coconut rice technique, same sambal blend, same banana leaves from the same supplier for three decades.",
+      since: "Since 1989",
+      tour: {
+        name: "KL Night Food Adventure",
+        slug: "kuala-lumpur-night-food-tour"
+      }
+    }
+  ]
+};
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="main-container">
+    <h2 class="text-h2 text-primary text-center mb-3">
+      {meetTheVendorsSection.title}
+    </h2>
+    <p class="text-center text-lg text-gray-600 mb-12">
+      {meetTheVendorsSection.subtitle}
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+      {meetTheVendorsSection.vendors.map((vendor) => (
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <!-- Vendor Photo -->
+          <div class="h-[280px] overflow-hidden bg-gray-200 relative">
+            <img
+              src={vendor.image}
+              alt={vendor.name}
+              class="w-full h-full object-cover"
+              width={400}
+              height={280}
+              loading="lazy"
+            />
+            <!-- Since Badge -->
+            <div class="absolute top-3 right-3 bg-[#f59e0b] text-black px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              {vendor.since}
+            </div>
+          </div>
+
+          <!-- Vendor Info -->
+          <div class="p-6">
+            <h3 class="text-2xl font-merriweather font-semibold text-primary mb-1">
+              {vendor.name}
+            </h3>
+
+            <p class="text-base font-bold text-[#c62828] mb-1">
+              {vendor.dish}
+            </p>
+
+            <p class="text-sm text-gray-500 mb-4">
+              📍 {vendor.location}
+            </p>
+
+            <p class="text-body text-sm leading-relaxed mb-4">
+              {vendor.story}
+            </p>
+
+            <!-- Tour CTA -->
+            <a
+              href={`/tours/${vendor.tour.slug}`}
+              class="inline-flex items-center gap-2 text-sm font-semibold text-[#c62828] hover:text-[#a52020] transition-colors duration-200 group"
+            >
+              <span>Meet {vendor.name.split(' ')[1] || vendor.name} on the {vendor.tour.name}</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom Message & CTA -->
+    <div class="mt-12 text-center">
+      <p class="text-body text-gray-600 max-w-3xl mx-auto mb-6">
+        These are just three of the 40+ heritage vendors we visit regularly. When you tour with us, you'll meet the people behind the food, hear their stories, and taste why these recipes have survived generations.
+      </p>
+
+      <a
+        href="/stories"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#c62828] text-white font-bold text-sm uppercase tracking-wider rounded shadow-lg hover:bg-[#a52020] hover:shadow-xl hover:scale-105 transition-all duration-300"
+      >
+        See All Vendor Stories
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

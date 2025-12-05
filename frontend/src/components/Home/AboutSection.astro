@@ -1,9 +1,10 @@
 ---
 // Static data - no Strapi
 const aboutSection = {
-  title: "Who We Are",
-  subTitle: "Come as a guest, leave as family",
-  description: "Since 2011, we've been sharing Malaysia's living food heritage with visitors who become friends. Our guides grew up in these neighborhoods and want to share their culture, their stories, their home with you. You'll meet vendors like Aunty Lim, who's been making laksa here since 1982 using her grandmother's recipe. Experience Malaysia through taste, story, and connection.",
+  title: "Where Locals Actually Eat",
+  subTitle: "No commission deals. No tourist menus. Just the best food in Malaysia.",
+  description: "We only take you to stalls where we actually eat. Places we've been going to for years—sometimes decades. No agreements, no commissions, no tourist menus. These vendors have been serving locals the same dishes since the 1970s and 80s because the food is that good. You'll pay the same prices locals pay and taste why people line up here every single day.",
+  heritage: "Many of these family-run stalls are 2nd or 3rd generation. Grandma's laksa recipe from 1982. Uncle's char kway teow technique perfected over 40 years. Without people eating here, these recipes disappear. When you tour with us, you're tasting Malaysian food at its absolute best while helping preserve culinary traditions that have fed neighborhoods for generations.",
   image: "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg"
 };
 ---
@@ -19,8 +20,15 @@ const aboutSection = {
       <p class="text-subheading pt-2.5 pb-4">
         {aboutSection.subTitle}
       </p>
-      <p class="text-body">
+
+      <!-- Main Description -->
+      <p class="text-body mb-4">
         {aboutSection.description}
+      </p>
+
+      <!-- Heritage Impact -->
+      <p class="text-body text-sm bg-gray-50 border-l-4 border-[#f59e0b] pl-4 py-3 italic">
+        {aboutSection.heritage}
       </p>
     </div>
     <div class="rounded-xl overflow-hidden w-full h-[340px] md:h-[420px]">

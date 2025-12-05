@@ -2,26 +2,54 @@
 import IconWhatsapp from '@/assets/icons/icon-whatsapp.svg'
 ---
 
-<section class="bg-orange py-6 md:py-8 relative">
-  <div
-    class="main-container flex flex-wrap text-center items-center justify-center gap-5 md:gap-10"
-  >
-    <p class="text-subheading font-semibold font-merriweather">
-      Need help? Call OR WHATSAPP us at <a href="tel:+60 17 287 8929">
-        <span class="whitespace-nowrap">+60 17 287 8929</span>
-      </a>
+<section class="bg-[#1a1a1a] py-16 md:py-20 relative">
+  <div class="main-container text-center">
+    <h2 class="text-3xl md:text-4xl font-merriweather text-white mb-4">
+      Let's Eat Together
+    </h2>
+    <p class="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
+      Join us for your next Malaysian adventure. Small groups, real neighborhoods, unforgettable stories.
     </p>
-    <a
-      href="https://wa.me/60172878929"
-      class="hover:scale-110 duration-300"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <IconWhatsapp class="size-20" />
-    </a>
-  </div>
-  <div
-    class="size-4 bg-orange absolute top-full inset-x-0 mx-auto rotate-45 -mt-2 z-30"
-  >
+
+    <!-- Booking Guarantee -->
+    <div class="flex flex-wrap justify-center gap-6 mb-8 text-sm text-gray-400">
+      <span class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        Free cancellation up to 24 hours
+      </span>
+      <span class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        We respond within 3 hours
+      </span>
+      <span class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+        Max 8 people per tour
+      </span>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-4 bg-[#c62828] text-white font-bold text-sm uppercase tracking-wider rounded shadow-lg hover:bg-[#a52020] hover:shadow-xl hover:scale-105 transition-all duration-300"
+      >
+        Book Your Experience
+      </a>
+      <a
+        href="https://wa.me/60172878929"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white font-bold text-sm uppercase tracking-wider rounded shadow-lg hover:bg-[#20BA5A] hover:shadow-xl hover:scale-105 transition-all duration-300"
+      >
+        <IconWhatsapp class="size-6" />
+        Chat with Kenny
+      </a>
+    </div>
   </div>
 </section>

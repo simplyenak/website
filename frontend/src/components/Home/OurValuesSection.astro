@@ -4,33 +4,26 @@ import Icon from '@/components/Icon.astro'
 // Static data - no Strapi
 const ourValuesSection = {
   bgImage: "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
-  highlightedText: "Sustainable Tourism & Community Partnerships",
-  highlightedText: "Supporting local communities and preserving Malaysian culinary heritage through responsible tourism practices.",
+  title: "What to Expect on Tour",
+  subtitle: "A typical day eating through Malaysia",
   items: [
     {
       icon: { name: "icon-hands-join" },
-      title: "Build Relationships with Openness",
-      description: "Every interaction is an opportunity to build a genuine relationship—we welcome our guests as friends while supporting local communities and preserving cultural heritage."
-    },
-    {
-      icon: { name: "icon-compass" },
-      title: "Keep Discovering and Exploring",
-      description: "Exploring lights us up. Let's keep walking new paths with fresh eyes and genuine excitement while discovering Malaysia's hidden cultural gems and traditional culinary practices."
+      title: "Morning: Meet at the Market",
+      description: "We start where locals start—the morning market. You'll see vendors setting up, smell fresh roti being griddled, and taste breakfast dishes that have been made the same way for decades. No tour bus parking lot. Just a neighborhood waking up.",
+      highlight: "Markets, not museums"
     },
     {
       icon: { name: "icon-heart" },
-      title: "Express Who You Are, Courageously",
-      description: "We speak authentically and share the truth about Malaysian heritage and culture, building trust through transparency and genuine connections."
-    },
-    {
-      icon: { name: "icon-leaf" },
-      title: "Environmental Stewardship",
-      description: "We're committed to protecting Malaysia's natural environment and culinary resources through sustainable tourism practices and environmental education."
+      title: "Midday: Walk & Talk",
+      description: "We walk through the neighborhoods where we grew up. Stop when something catches your eye. Ask questions. Take photos. Chat with vendors. This isn't a march through checkpoints—it's a stroll through someone's hometown with friends who know every corner.",
+      highlight: "Human-paced, not rush-paced"
     },
     {
       icon: { name: "icon-seedling" },
-      title: "Cultural Preservation",
-      description: "We actively work to preserve Malaysia's diverse culinary traditions and support cultural heritage programs that protect traditional knowledge and cooking methods."
+      title: "Afternoon: Stories Over Food",
+      description: "By the end, you'll know everyone's name—the people you toured with AND the vendors you met. You'll have Aunty Lim's WhatsApp number. You'll know which stall to return to tomorrow. You'll leave with friends, not just photos.",
+      highlight: "Connections, not just consumption"
     }
   ]
 };
@@ -41,15 +34,19 @@ const ourValuesSection = {
   style={`background-image: url('${ourValuesSection.bgImage}');`}
 >
   <div class="main-container relative z-10">
-    <h2 class="text-h2 text-primary mb-12 text-center">Our Core Values</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-12">
+    <h2 class="text-h2 text-primary mb-3 text-center">{ourValuesSection.title}</h2>
+    <p class="text-center text-lg text-gray-700 mb-12">{ourValuesSection.subtitle}</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
       {ourValuesSection.items.map((item) => (
         <div class="bg-white p-6 md:p-8 rounded-xl overflow-hidden space-y-3.5 border-[#dddddd] shadow-custom-1">
           <Icon name={item.icon.name} class="size-12 text-black" />
-          <h4 class="text-xl font-merriweather uppercase text-primary font-semibold">
+          <h4 class="text-xl font-merriweather text-primary font-semibold">
             {item.title}
           </h4>
-          <p class="text-body">{item.description}</p>
+          <p class="text-body mb-3">{item.description}</p>
+          <p class="text-sm font-semibold text-[#c62828] italic">
+            {item.highlight}
+          </p>
         </div>
       ))}
     </div>

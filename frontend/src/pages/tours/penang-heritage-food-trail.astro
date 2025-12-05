@@ -102,7 +102,7 @@ export const prerender = true;
         />
         <Button
           href="#journey"
-          title="See Your Journey"
+          title="See the Tour"
           buttonType="secondary-btn"
         />
       </div>
@@ -201,7 +201,7 @@ export const prerender = true;
   <!-- SECTION 5: Transformation Journey (Your 5-Hour Journey) -->
   <Section id="journey">
     <h2 class="text-h2 text-primary text-center mb-12">
-      Your 5-Hour Heritage Journey
+      Your 5-Hour Heritage Tour
     </h2>
     <div class="space-y-8 max-w-4xl mx-auto">
       {
@@ -423,12 +423,12 @@ export const prerender = true;
         <div class="flex gap-4 justify-center flex-wrap">
           <Button
             href="/contact"
-            title="Check Availability"
+            title={penangTourData.bookingCta.primaryButton}
             buttonType="primary-btn"
           />
           <Button
             href="https://wa.me/60172878929?text=I'm interested in Penang Heritage Food Trail"
-            title="Ask Questions"
+            title={penangTourData.bookingCta.secondaryButton}
             buttonType="secondary-btn"
           />
         </div>
