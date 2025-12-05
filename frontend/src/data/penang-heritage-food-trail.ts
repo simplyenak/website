@@ -160,7 +160,7 @@ export const penangTourData = {
       description: "2-3 km total with many stops. George Town's flat streets make this easy for all fitness levels. Covered walkways provide shade."
     },
     {
-      title: "Authentic Environments",
+      title: "Where Locals Actually Eat",
       description: "You'll eat where locals eat - hawker stalls, coffee shops, family homes. This means ceiling fans, plastic stools, and real Malaysian atmosphere."
     },
     {
@@ -217,7 +217,7 @@ export const penangTourData = {
       rating: 5,
       date: "2024-09-15",
       source: "TripAdvisor",
-      text: "We've done food tours in 12 countries. This Penang tour is hands down the best. Meeting Uncle Tan and hearing his 60-year story while eating his char kway teow was unforgettable. The Nyonya grandmother's home visit was so personal. Our guide knew everyone!"
+      text: "We've done food tours in 12 countries. This Penang tour is hands down the best. Meeting Uncle Tan and hearing his 60-year story while eating his char kway teow - wow. The Nyonya grandmother's home visit was so personal. Our guide knew everyone!"
     },
     {
       name: "Emma Richardson",
@@ -249,7 +249,7 @@ export const penangTourData = {
   bookingCta: {
     title: "Come Taste Penang's Heritage",
     subtitle: "Small groups fill quickly - especially weekends and holidays",
-    primaryButton: "Check Availability",
+    primaryButton: "Save My Spot",
     secondaryButton: "Ask Questions",
     features: [
       "Instant confirmation",

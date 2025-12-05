@@ -4,11 +4,13 @@ const heroSection = {
   title: "Food Tours that Reveal the",
   highlightedText: "Hidden Culture and Heritage",
   subtitle:
-    "Walk with a local. Taste real stories. Experience the Malaysia most tourists miss.",
+    "Walk with a local. Taste real stories. See the Malaysia most tourists miss.",
+  priceInfo: "From RM 180 | 4-5 hours | Max 8 people",
   description:
-    "Our walking food tours are rooted in heritage and guided with heart. We partner with local communities to preserve traditional cooking methods and support sustainable farming. We bring you into family-run stalls, hidden streets, and local communities — so you experience Malaysia through authentic taste, story, and connection while supporting cultural heritage and environmental stewardship.",
+    "Small group walking food tours through neighborhoods where we actually live and eat. We take you to vendors we've known for years, share stories behind each dish, and show you why this food matters. You'll eat at family-run stalls, walk hidden streets, and meet the people who make Malaysian food culture what it is.",
   bgImage:
     "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+  whatsappNumber: "+60172878929",
 };
 ---
 
@@ -62,9 +64,16 @@ const heroSection = {
 
     <!-- Subheadline -->
     <p
-      class="text-lg md:text-xl font-merriweather italic mb-4 text-white max-w-4xl mx-auto animate-fade-in-up animate-delay-1"
+      class="text-lg md:text-xl font-merriweather italic mb-2 text-white max-w-4xl mx-auto animate-fade-in-up animate-delay-1"
     >
       {heroSection.subtitle}
+    </p>
+
+    <!-- Price Info -->
+    <p
+      class="text-sm md:text-base text-gray-300 mb-4 max-w-4xl mx-auto animate-fade-in-up animate-delay-1"
+    >
+      {heroSection.priceInfo}
     </p>
 
     <!-- Buttons -->
@@ -75,13 +84,13 @@ const heroSection = {
         href="/tours"
         class="inline-flex items-center justify-center px-6 py-3 bg-[#c62828] text-white font-bold text-xs uppercase tracking-wider rounded shadow-lg hover:bg-[#a52020] hover:shadow-xl hover:scale-105 transition-all duration-300"
       >
-        BROWSE OUR TOURS
+        SEE OUR TOURS
       </a>
       <a
-        href="/about"
+        href="#about"
         class="inline-flex items-center justify-center px-6 py-3 bg-transparent text-white font-bold text-xs uppercase tracking-wider rounded border-2 border-white hover:bg-white/10 hover:scale-105 transition-all duration-300"
       >
-        HOW IT WORKS
+        WHY CHOOSE US
       </a>
     </div>
 
@@ -140,7 +149,7 @@ const heroSection = {
         class="absolute -top-8 right-3 md:-top-10 md:right-6 z-30 bg-[#f59e0b] text-black rounded-full w-28 h-28 md:w-36 md:h-36 flex items-center justify-center text-center p-3 shadow-2xl transform rotate-12 border-4 border-white"
       >
         <span class="text-base md:text-lg font-bold leading-tight"
-          >15,000+<br />Travellers</span
+          >Since<br />2011</span
         >
       </div>
 

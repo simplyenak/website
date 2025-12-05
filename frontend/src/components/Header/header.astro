@@ -1,5 +1,6 @@
 ---
 import MobileMenu from "@/components/Header/mobile-menu.astro";
+import LanguageSelector from "@/components/Header/LanguageSelector.astro";
 import { Image } from "astro:assets";
 
 import logoImage from "@/assets/images/simply_enak_logo.webp";
@@ -8,10 +9,10 @@ import logoImage from "@/assets/images/simply_enak_logo.webp";
 const header = {
   logo: logoImage,
   navItems: [
-    { name: "Tours", href: "/tours" },
-    { name: "Stories", href: "/stories" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Tours", href: "/tours/" },
+    { name: "Stories", href: "/stories/" },
+    { name: "About", href: "/about/" },
+    { name: "Contact", href: "/contact/" },
   ],
 };
 
@@ -99,8 +100,11 @@ const activeUrl = Astro.url.pathname;
         </a>
       </div>
 
+      <!-- Language Selector -->
+      <LanguageSelector variant="light" />
+
       <a
-        href="/contact"
+        href="/contact/"
         class="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow-lg hover:bg-red-700 hover:shadow-xl hover:scale-105 transition-all duration-300 whitespace-nowrap"
       >
         Book Now

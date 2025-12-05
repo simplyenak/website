@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroSection from "@/components/Home/HeroSection.astro";
 import PartnersSection from "@/components/Home/PartnersSection.astro";
 import AboutSection from "@/components/Home/AboutSection.astro";
+import MeetTheVendorsSection from "@/components/Home/MeetTheVendorsSection.astro";
 import OurToursSection from "@/components/Home/OurToursSection.astro";
 import OurValuesSection from "@/components/Home/OurValuesSection.astro";
 import TestimonialsSection from "@/components/Home/TestimonialsSection.astro";
@@ -15,9 +16,9 @@ import CTASection from "@/components/CTASection.astro";
 
 // Static hardcoded data for development - bypassing Strapi
 const staticSEO = {
-  title: "Simply Enak - Malaysian Food Heritage Experiences",
+  title: "Simply Enak | Your Neighborhood Friends in Malaysia",
   description:
-    "Come as a guest, leave as family. Experience Malaysia through taste, story, and connection with locals who share their culture, their neighborhoods, their home with you.",
+    "Come as a guest, leave as family. Join locals for Malaysian food tours in KL, Penang, and Melaka. Small groups, real neighborhoods, 1,250+ guests since 2011.",
   image:
     "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
   schema: {
@@ -28,7 +29,7 @@ const staticSEO = {
         "@id": "https://simplyenak.com#travelagency",
         name: "Simply Enak",
         description:
-          "Experience Malaysian food heritage with locals who share their home, culture, and stories with visitors who become friends.",
+          "Malaysian food tours with locals who share their home, culture, and stories. Eat where we actually eat. Meet vendors we've known for 14+ years.",
         url: "https://simplyenak.com",
         logo: "https://se-website-images.s3.nl-ams.scw.cloud/simply-enak-logo.png",
         image:
@@ -173,25 +174,25 @@ const staticTours = [
 ];
 
 const staticOurToursSection = {
-  title: "Explore Our Food Tours",
+  title: "Find the Best Tour for You",
   button: {
-    title: "View All Tours",
+    title: "See All Our Tours",
     href: "/tours",
     buttonType: "primary-btn" as const,
   },
 };
 
 const staticExperienceSection = {
-  title: "Experience Today",
+  title: "Ready to Eat?",
   button: {
-    title: "Book Your Adventure",
+    title: "Book Your Experience",
     href: "/contact",
     buttonType: "primary",
   },
 };
 
 const staticMediaSection = {
-  title: "See Our Food Tours in Action",
+  title: "Here's What Really Happens on Our Tours",
   videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
 };
 ---
@@ -205,6 +206,9 @@ const staticMediaSection = {
   <HeroSection />
   <PartnersSection />
   <AboutSection />
+  <MeetTheVendorsSection />
+  <OurValuesSection />
+  <TestimonialsSection />
   <OurToursSection
     title={staticOurToursSection.title}
     cards={staticTours.slice(0, 3).map((card) => ({
@@ -216,7 +220,7 @@ const staticMediaSection = {
       location: card.hero.location,
       buttons: [
         {
-          title: "Book Now",
+          title: "Join This Tour",
           href: `/tours/${card.slug}`,
           buttonType: "primary-btn-small" as const,
         },
@@ -224,8 +228,6 @@ const staticMediaSection = {
     }))}
     button={staticOurToursSection.button}
   />
-  <OurValuesSection />
-  <TestimonialsSection />
   <MediaSection
     title={staticMediaSection.title}
     videoEmbedUrl={staticMediaSection.videoEmbedUrl}
