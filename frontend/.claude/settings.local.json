@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Read(//home/maarten/crush-brain/**)",
+      "WebSearch",
+      "mcp__google-search-console__search_analytics",
+      "mcp__google-search-console__list_sites",
+      "Bash(env)",
+      "Read(//root/.config/**)",
+      "Read(//root/**)",
+      "mcp__google-analytics__getPageViews",
+      "mcp__google-analytics__runReport",
+      "Bash(cat:*)",
+      "Read(//home/maarten/Downloads/**)",
+      "Read(//etc/**)",
+      "Read(//home/maarten/.config/**)",
+      "Read(//home/maarten/**)",
+      "Bash(sqlite3:*)",
+      "Bash(netstat:*)",
+      "Bash(npm run build:*)",
+      "Bash(xargs:*)",
+      "Bash(npx playwright:*)",
+      "Bash(chromium:*)",
+      "Bash(gh run list:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
