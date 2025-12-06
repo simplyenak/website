@@ -153,37 +153,6 @@ const data = {
       },
     ],
   },
-  meetTheVendors: {
-    title: "The Vendors You'll Meet",
-    intro:
-      "Our tours aren't just about food. They're about the people who've been cooking the same recipes for decades. Here are just a few of the families you'll meet on our tours.",
-    vendors: [
-      {
-        name: "Uncle Tan",
-        age: "78 years old",
-        specialty: "Char Kway Teow Master",
-        description:
-          "60 years at the same hawker pitch in Penang. His family refused RM 50,000 from a hotel chain for his secret duck egg technique. You'll watch him work the wok and hear stories about George Town before the tourists arrived.",
-        location: "Penang",
-      },
-      {
-        name: "Pak Hassan",
-        age: "72 years old",
-        specialty: "Nasi Lemak Heritage",
-        description:
-          "His family has been making nasi lemak in Kampung Baru since 1957, Malaysia's independence year. Developers offered RM 800,000 for the land. He refused. The sambal recipe hasn't changed in 67 years.",
-        location: "Kuala Lumpur",
-      },
-      {
-        name: "Aunty Rose",
-        age: "67 years old",
-        specialty: "Cristang Devil's Curry",
-        description:
-          "Fourth-generation Portuguese-Malay cook. Her Devil's Curry blends Portuguese wine and vinegar with Malay chili and galangal. She speaks Cristang, a dying Portuguese-Malay creole spoken by only 1,000 people.",
-        location: "Melaka",
-      },
-    ],
-  },
   mediaSection: {
     title: "See Us in Action",
     videoEmbedUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER",
@@ -292,86 +261,43 @@ const data = {
       <p class="text-body mt-4">{data.meetTheTeam.intro}</p>
     </div>
 
-    <!-- Pauline - Founder (Featured Card) -->
-    <div class="max-w-4xl mx-auto mb-12">
-      <Card class="overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-        <div class="md:flex md:items-center gap-8">
-          <div class="md:w-1/3">
-            <div class="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden">
-              <img
-                src={data.founderStory.image.url}
-                alt={data.meetTheTeam.team[0].name}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
-          <div class="md:w-2/3 p-6 md:p-0">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-12 h-12 text-primary">
-                <Icon name={data.meetTheTeam.team[0].icon} />
-              </div>
-              <div>
-                <h3 class="text-h3 text-primary">{data.meetTheTeam.team[0].name}</h3>
-                <p class="text-sm text-gray-600">{data.meetTheTeam.team[0].role}</p>
-              </div>
-            </div>
-            <p class="text-sm font-semibold text-secondary mb-4">
-              {data.meetTheTeam.team[0].specialty}
-            </p>
-            <p class="text-body">{data.meetTheTeam.team[0].description}</p>
-          </div>
-        </div>
-      </Card>
-    </div>
-
-    <!-- Rest of the Team (Grid Cards) -->
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      {
-        data.meetTheTeam.team.slice(1).map((member) => (
-          <Card class="text-center h-full group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-            <div class="w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full mx-auto mb-6 overflow-hidden flex items-center justify-center">
-              <div class="w-20 h-20 text-primary group-hover:scale-110 transition-transform duration-300">
-                <Icon name={member.icon} />
-              </div>
-            </div>
-            <h3 class="text-h3 text-primary mb-1">{member.name}</h3>
-            <p class="text-sm text-gray-600 mb-2">{member.role}</p>
-            <p class="text-sm font-semibold text-secondary mb-4">
-              {member.specialty}
-            </p>
-            <p class="text-body">{member.description}</p>
-          </Card>
-        ))
-      }
-    </div>
-  </Section>
-
-  <!-- Meet The Vendors Section -->
-  <Section variant="light">
-    <div class="text-center mb-12 max-w-3xl mx-auto">
-      <h2 class="text-h2 text-primary">{data.meetTheVendors.title}</h2>
-      <p class="text-body mt-4">{data.meetTheVendors.intro}</p>
-    </div>
     <div class="grid md:grid-cols-3 gap-8">
       {
-        data.meetTheVendors.vendors.map((vendor) => (
-          <Card variant="featured" class="h-full">
-            <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">
-              👤
+        data.meetTheTeam.team.map((member) => (
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 aspect-[3/4]">
+            {/* Background Image */}
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30">
+              <img
+                src={member.name === "Pauline" ? data.founderStory.image.url : "https://se-website-images.s3.nl-ams.scw.cloud/dumy-avatar.webp"}
+                alt={member.name}
+                class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+              />
             </div>
-            <div class="text-center mb-4">
-              <h3 class="text-h3 text-primary mb-1">{vendor.name}</h3>
-              <p class="text-sm text-gray-500">{vendor.age}</p>
+
+            {/* Default Overlay - Title */}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 group-hover:opacity-0">
+              <h3 class="text-2xl font-bold text-white mb-1">{member.name}</h3>
+              <p class="text-sm text-white/90">{member.role}</p>
               <p class="text-sm font-semibold text-secondary mt-2">
-                {vendor.specialty}
+                {member.specialty}
               </p>
             </div>
-            <p class="text-body mb-4">{vendor.description}</p>
-            <div class="text-sm text-gray-500 flex items-center justify-center gap-2">
-              <Icon name="icon-marker" />
-              {vendor.location}
+
+            {/* Hover Overlay - Full Info */}
+            <div class="absolute inset-0 bg-primary/95 flex flex-col justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-12 h-12 text-white mb-4">
+                <Icon name={member.icon} />
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">{member.name}</h3>
+              <p class="text-sm text-white/90 mb-1">{member.role}</p>
+              <p class="text-sm font-semibold text-secondary mb-4">
+                {member.specialty}
+              </p>
+              <p class="text-sm text-white/90 leading-relaxed">
+                {member.description}
+              </p>
             </div>
-          </Card>
+          </div>
         ))
       }
     </div>
