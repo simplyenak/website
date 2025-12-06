@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import EmbeddedVideo from "@/components/EmbeddedVideo";
+
+interface MediaItem {
+  type: "image" | "video";
+  src: any; // ImageMetadata or string URL
+  alt?: string;
+  poster?: string; // For videos
+  title?: string; // For videos
+}
+
+interface Props {
+  items: MediaItem[];
+  title?: string;
+  description?: string;
+}
+
+const { items, title, description } = Astro.props;
+---
+
+<section class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    {
+      (title || description) && (
+        <div class="text-center mb-12">
+          {title && <h2 class="text-h2 text-primary mb-4">{title}</h2>}
+          {description && (
+            <p class="text-body max-w-2xl mx-auto">{description}</p>
+          )}
+        </div>
+      )
+    }
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        items.map((item, index) => (
+          <div
+            class:list={[
+              "rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-white",
+              // Make the first item span 2 columns if it's a video or just for variety
+              index === 0 && items.length > 3
+                ? "md:col-span-2 md:row-span-2"
+                : "",
+            ]}
+          >
+            {item.type === "image" ? (
+              <div class="h-full min-h-[250px] relative group overflow-hidden">
+                <Image
+                  src={item.src}
+                  alt={item.alt || "Gallery image"}
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  width={800}
+                  height={600}
+                />
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+              </div>
+            ) : (
+              <div class="h-full min-h-[250px]">
+                <EmbeddedVideo
+                  client:visible
+                  iframeSrc={item.src}
+                  poster={item.poster}
+                  title={item.title}
+                  className="w-full h-full"
+                />
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

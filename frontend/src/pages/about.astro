@@ -6,6 +6,7 @@ import MediaSection from "@/components/Home/MediaSection.astro";
 import TextWithLeftRightImage from "@/components/About/TextWithLeftRightImage.astro";
 import Section from "@/components/Design/Section.astro";
 import Card from "@/components/Design/Card.astro";
+import Icon from "@/components/Icon.astro";
 
 export const prerender = true;
 
@@ -26,21 +27,77 @@ const data = {
   aboutHero: {
     title: "Our Story",
     subtitle:
-      "We're not tour operators. We're your temporary neighbors, passionate about sharing the Malaysia we treasure.",
+      "Born in Malaysia. Raised on street food. Passionate about sharing the authentic side of our home with you.",
     image: "/images/about-hero.png",
   },
-  ourStory: {
-    title: "How We Started",
-    contents: `It started with a simple frustration. We saw visitors coming to Malaysia and eating at "tourist trap" restaurants, missing the incredible, complex flavors we grew up with. They were seeing the sights, but missing the soul.
+  founderStory: {
+    title: "Meet Pauline, Our Founder",
+    name: "Pauline",
+    contents: `Growing up in Malaysia, I spent countless mornings walking through wet markets with my mom. While she haggled for the freshest fish and picked out vegetables, I watched the hawkers craft dishes that had been passed down through generations. The sizzle of char kway teow on a screaming hot wok, the aromatic clouds of curry rising from street stalls, the careful art of folding roti canai. This was my Malaysia.
 
-    Simply Enak was born in 2010 to bridge that gap. We wanted to take guests down the back alleys, into the wet markets, and to the family-run stalls that don't have English menus. We wanted to explain *why* that noodle dish uses a specific type of soy sauce, or *how* that curry paste tells the story of migration.
+    When I started bringing friends from other countries around, I realized they were missing this entire world. They'd eat at air-conditioned restaurants with picture menus, never knowing that just two streets away, a grandmother was making laksa the same way her mother taught her 60 years ago.
 
-    Over a decade later, our mission remains the same: to help you see, feel, and taste the difference between tourist Malaysia and the real Malaysia.`,
-    imagePosition: "left",
+    Simply Enak started in 2010 because I wanted to share what I experienced as a child. Not the Malaysia you see in guidebooks, but the one I know: the night markets, the family recipes, the vendors who remember your face and your favorite dish. The authentic side of Malaysia that tourists walk past every day.`,
+    imagePosition: "right",
     bgColor: "white",
     image: {
-      url: "https://se-website-images.s3.nl-ams.scw.cloud/kl-chow-kit-market.jpg",
+      url: "https://se-website-images.s3.nl-ams.scw.cloud/dumy-avatar.webp",
     },
+  },
+  timeline: {
+    title: "Our Journey",
+    milestones: [
+      {
+        year: "2010",
+        title: "Simply Enak Founded",
+        description: "Pauline launches the first authentic food tours in Penang and Kuala Lumpur",
+      },
+      {
+        year: "2012",
+        title: "100+ Happy Guests",
+        description: "Word spreads through travel communities. We expand to Melaka tours.",
+      },
+      {
+        year: "2015",
+        title: "Featured by National Geographic",
+        description: "Our tours recognized for authentic cultural experiences and vendor relationships.",
+      },
+      {
+        year: "2018",
+        title: "500+ Tours Conducted",
+        description: "Licensed guides join the team. We refine our small-group philosophy.",
+      },
+      {
+        year: "2020",
+        title: "Adapting & Surviving",
+        description: "Pivoted to support local vendors during challenging times.",
+      },
+      {
+        year: "2024",
+        title: "1,000+ Happy Guests",
+        description: "14 years strong. Still walking the same markets, sharing the same passion.",
+      },
+    ],
+  },
+  stats: {
+    items: [
+      {
+        number: "1,000+",
+        label: "Happy Guests",
+      },
+      {
+        number: "4.9/5",
+        label: "TripAdvisor Rating",
+      },
+      {
+        number: "14 Years",
+        label: "Experience",
+      },
+      {
+        number: "Max 8",
+        label: "Group Size",
+      },
+    ],
   },
   ourPhilosophy: {
     title: "Our Philosophy",
@@ -48,48 +105,88 @@ const data = {
       {
         title: "Unscripted & Human",
         description:
-          "We don't do canned jokes or rehearsed speeches. Our guides are licensed professionals, but they talk to you like friends—sharing real stories, not scripts.",
-        icon: "🤝",
+          "We don't do canned jokes or rehearsed speeches. Our guides are licensed professionals, but they talk to you like friends: sharing real stories, not scripts.",
+        icon: "icon-hands-join",
       },
       {
         title: "Slow Travel",
         description:
-          "We walk. We pause. We take the time to appreciate the details—the architecture, the smells, the sounds of the neighborhood.",
-        icon: "🐢",
+          "We walk. We pause. We take the time to appreciate the details: the architecture, the smells, the sounds of the neighborhood.",
+        icon: "icon-compass",
       },
       {
         title: "Support Local",
         description:
           "We exclusively visit family-run businesses. Your tour fee directly supports the heritage keepers of our food culture.",
-        icon: "🏪",
+        icon: "icon-heart",
       },
     ],
   },
-  meetTheGuides: {
-    title: "Meet Your Local Friends",
+  meetTheTeam: {
+    title: "Meet the Team",
     intro:
-      "Our guides are all licensed with Tourism Malaysia, but they aren't just reciting a script. They are historians, home cooks, and storytellers who live and breathe this culture.",
-    guides: [
+      "Simply Enak is a small, passionate team. We're all licensed with Tourism Malaysia, but more importantly, we grew up eating at these same stalls. We know the vendors by name, the neighborhoods by heart, and the stories behind every dish.",
+    team: [
       {
-        name: "The Historian",
+        name: "Pauline",
+        role: "Founder & Lead Guide",
+        specialty: "14 Years Building Relationships",
         description:
-          "Obsessed with how colonial history shaped our ingredients. Ask them about the Portuguese influence on Melaka's spicy curries.",
+          "Started Simply Enak in 2010 after watching too many tourists miss the real Malaysia. Grew up walking wet markets with her mom, learning which vendors had the freshest fish and the best stories. Now brings that childhood wonder to every tour.",
+        icon: "icon-heart",
       },
       {
-        name: "The Home Cook",
+        name: "Our Licensed Guides",
+        role: "Tourism Malaysia Certified",
+        specialty: "Local Experts & Storytellers",
         description:
-          "Knows every grandmother's secret recipe. They can tell you exactly which spice is missing from a curry just by smelling it.",
+          "Every guide holds official Tourism Malaysia certification and speaks fluent English. But more importantly, they grew up here. They explain why Portuguese sailors married Malay women in Melaka, how Chinese clan associations shaped Penang's food scene, why Kampung Baru resisted developers.",
+        icon: "icon-star",
       },
       {
-        name: "The Storyteller",
+        name: "The Vendor Network",
+        role: "Our Extended Family",
+        specialty: "Multi-Generational Partnerships",
         description:
-          "Weaves the legends of our neighborhoods into every stop. They turn a simple bowl of noodles into a tale of migration and survival.",
+          "After 14 years, Uncle Tan, Pak Hassan, Aunty Rose, and dozens more aren't just stops on a tour. They're family. When they see us, they share stories they don't tell walk-ups. That's what 14 years of respect gets you: access tourists never get.",
+        icon: "icon-hands-join",
+      },
+    ],
+  },
+  meetTheVendors: {
+    title: "The Vendors You'll Meet",
+    intro:
+      "Our tours aren't just about food. They're about the people who've been cooking the same recipes for decades. Here are just a few of the families you'll meet on our tours.",
+    vendors: [
+      {
+        name: "Uncle Tan",
+        age: "78 years old",
+        specialty: "Char Kway Teow Master",
+        description:
+          "60 years at the same hawker pitch in Penang. His family refused RM 50,000 from a hotel chain for his secret duck egg technique. You'll watch him work the wok and hear stories about George Town before the tourists arrived.",
+        location: "Penang",
+      },
+      {
+        name: "Pak Hassan",
+        age: "72 years old",
+        specialty: "Nasi Lemak Heritage",
+        description:
+          "His family has been making nasi lemak in Kampung Baru since 1957, Malaysia's independence year. Developers offered RM 800,000 for the land. He refused. The sambal recipe hasn't changed in 67 years.",
+        location: "Kuala Lumpur",
+      },
+      {
+        name: "Aunty Rose",
+        age: "67 years old",
+        specialty: "Cristang Devil's Curry",
+        description:
+          "Fourth-generation Portuguese-Malay cook. Her Devil's Curry blends Portuguese wine and vinegar with Malay chili and galangal. She speaks Cristang, a dying Portuguese-Malay creole spoken by only 1,000 people.",
+        location: "Melaka",
       },
     ],
   },
   mediaSection: {
     title: "See Us in Action",
-    videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoEmbedUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER",
   },
 };
 ---
@@ -106,13 +203,67 @@ const data = {
     image={data.aboutHero.image}
     isOverlay={true}
   />
+
+  <!-- Founder Story Section -->
   <TextWithLeftRightImage
-    title={data.ourStory.title}
-    contents={data.ourStory.contents}
-    imagePosition={data.ourStory.imagePosition}
-    bgColor={data.ourStory.bgColor}
-    image={data.ourStory.image}
+    title={data.founderStory.title}
+    contents={data.founderStory.contents}
+    imagePosition={data.founderStory.imagePosition}
+    bgColor={data.founderStory.bgColor}
+    image={data.founderStory.image}
   />
+
+  <!-- Stats Section -->
+  <Section variant="light">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {
+        data.stats.items.map((stat) => (
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-primary mb-2">
+              {stat.number}
+            </div>
+            <div class="text-body text-gray-600">{stat.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Visual Timeline Section -->
+  <Section>
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary">{data.timeline.title}</h2>
+    </div>
+    <div class="max-w-4xl mx-auto">
+      <div class="relative">
+        <!-- Timeline Line -->
+        <div
+          class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary"
+        >
+        </div>
+
+        <!-- Timeline Items -->
+        {
+          data.timeline.milestones.map((milestone, index) => (
+            <div
+              class={`relative mb-12 md:mb-16 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex flex-row items-center`}
+            >
+              <div class="w-full md:w-5/12" />
+              <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold z-10 shadow-lg">
+                {milestone.year}
+              </div>
+              <div class="w-full md:w-5/12 pl-24 md:pl-0">
+                <Card class="h-full">
+                  <h3 class="text-h3 text-primary mb-2">{milestone.title}</h3>
+                  <p class="text-body text-gray-600">{milestone.description}</p>
+                </Card>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
 
   <!-- Philosophy Section -->
   <Section variant="light">
@@ -123,7 +274,9 @@ const data = {
       {
         data.ourPhilosophy.points.map((point) => (
           <Card class="text-center h-full">
-            <div class="text-4xl mb-4">{point.icon}</div>
+            <div class="w-16 h-16 mx-auto mb-4 text-primary">
+              <Icon name={point.icon} />
+            </div>
             <h3 class="text-h3 text-primary mb-3">{point.title}</h3>
             <p class="text-body">{point.description}</p>
           </Card>
@@ -132,21 +285,92 @@ const data = {
     </div>
   </Section>
 
-  <!-- Meet The Guides Section -->
+  <!-- Meet The Team Section -->
   <Section>
     <div class="text-center mb-12 max-w-3xl mx-auto">
-      <h2 class="text-h2 text-primary">{data.meetTheGuides.title}</h2>
-      <p class="text-body mt-4">{data.meetTheGuides.intro}</p>
+      <h2 class="text-h2 text-primary">{data.meetTheTeam.title}</h2>
+      <p class="text-body mt-4">{data.meetTheTeam.intro}</p>
+    </div>
+
+    <!-- Pauline - Founder (Featured Card) -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <Card class="overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+        <div class="md:flex md:items-center gap-8">
+          <div class="md:w-1/3">
+            <div class="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden">
+              <img
+                src={data.founderStory.image.url}
+                alt={data.meetTheTeam.team[0].name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+          <div class="md:w-2/3 p-6 md:p-0">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-12 h-12 text-primary">
+                <Icon name={data.meetTheTeam.team[0].icon} />
+              </div>
+              <div>
+                <h3 class="text-h3 text-primary">{data.meetTheTeam.team[0].name}</h3>
+                <p class="text-sm text-gray-600">{data.meetTheTeam.team[0].role}</p>
+              </div>
+            </div>
+            <p class="text-sm font-semibold text-secondary mb-4">
+              {data.meetTheTeam.team[0].specialty}
+            </p>
+            <p class="text-body">{data.meetTheTeam.team[0].description}</p>
+          </div>
+        </div>
+      </Card>
+    </div>
+
+    <!-- Rest of the Team (Grid Cards) -->
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {
+        data.meetTheTeam.team.slice(1).map((member) => (
+          <Card class="text-center h-full group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+            <div class="w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full mx-auto mb-6 overflow-hidden flex items-center justify-center">
+              <div class="w-20 h-20 text-primary group-hover:scale-110 transition-transform duration-300">
+                <Icon name={member.icon} />
+              </div>
+            </div>
+            <h3 class="text-h3 text-primary mb-1">{member.name}</h3>
+            <p class="text-sm text-gray-600 mb-2">{member.role}</p>
+            <p class="text-sm font-semibold text-secondary mb-4">
+              {member.specialty}
+            </p>
+            <p class="text-body">{member.description}</p>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Meet The Vendors Section -->
+  <Section variant="light">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary">{data.meetTheVendors.title}</h2>
+      <p class="text-body mt-4">{data.meetTheVendors.intro}</p>
     </div>
     <div class="grid md:grid-cols-3 gap-8">
       {
-        data.meetTheGuides.guides.map((guide) => (
-          <Card variant="featured" class="text-center h-full">
+        data.meetTheVendors.vendors.map((vendor) => (
+          <Card variant="featured" class="h-full">
             <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">
               👤
             </div>
-            <h3 class="text-h3 text-primary mb-3">{guide.name}</h3>
-            <p class="text-body italic">"{guide.description}"</p>
+            <div class="text-center mb-4">
+              <h3 class="text-h3 text-primary mb-1">{vendor.name}</h3>
+              <p class="text-sm text-gray-500">{vendor.age}</p>
+              <p class="text-sm font-semibold text-secondary mt-2">
+                {vendor.specialty}
+              </p>
+            </div>
+            <p class="text-body mb-4">{vendor.description}</p>
+            <div class="text-sm text-gray-500 flex items-center justify-center gap-2">
+              <Icon name="icon-marker" />
+              {vendor.location}
+            </div>
           </Card>
         ))
       }

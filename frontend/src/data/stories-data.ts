@@ -125,14 +125,21 @@ export const stories: Story[] = [
     title: "Family Recipes Passed Down Through Generations",
     excerpt: "Meet the vendors who've been making the same dish for decades, using recipes their grandparents taught them. These are the keepers of Malaysian culinary heritage.",
     content: `
-<p>In Georgetown, there's a laksa stall run by three siblings. Their grandmother started it in 1952. Their mother took over in the 1980s. Now the third generation runs it. Same recipe. Same location. Same blue plastic bowls. 72 years of one family making laksa the same way.</p>
+<p class="lead text-xl md:text-2xl font-light text-gray-600 mb-8">In Georgetown, there's a laksa stall run by three siblings. Their grandmother started it in 1952. Their mother took over in the 1980s. Now the third generation runs it. Same recipe. Same location. Same blue plastic bowls. 72 years of one family making laksa the same way.</p>
 
 <p>This is what we mean by "family recipes." Not just recipes passed down, but entire livelihoods, entire traditions, entire relationships with a community built around one dish. When you eat at these stalls, you're not just a customer—you're part of a story that spans generations.</p>
+
+<img src="https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes-1.jpg" alt="A family cooking together in a hawker stall" />
 
 <h3>Why Family Recipes Matter</h3>
 
 <h4>Consistency Through Time</h4>
 <p>Chefs experiment. Home cooks adapt. But hawkers who've been making the same dish for 30 years? They've perfected it. They know exactly how much salt, exactly how high the flame, exactly when to flip the wok. This knowledge can't be written down—it lives in their hands.</p>
+
+<blockquote>
+  "Recipes are guidelines. Experience is the real ingredient."
+  <cite>— The Nasi Kandar Dynasty Family</cite>
+</blockquote>
 
 <h4>Cultural Preservation</h4>
 <p>Many family recipes preserve cooking methods that have disappeared elsewhere. Slow-cooked rendang that takes 8 hours. Roti canai stretched by hand, not machine. Curry pastes pounded with mortar and pestle, not blended. These techniques are endangered. Family vendors are often the last keepers.</p>
@@ -145,21 +152,24 @@ export const stories: Story[] = [
 <h4>Aunty Lim's Vegetarian Stall (85 years)</h4>
 <p>Aunty Lim's family has served Buddhist vegetarian food for four generations. Her great-grandmother started cooking for temple festivals in 1939. Today, Aunty Lim makes the same mock char siu her ancestors created—wheat gluten marinated for hours to achieve that impossible texture and flavor. She's teaching her niece the recipes, but worries younger generations won't have the patience for techniques this slow.</p>
 
+<img src="https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes-2.jpg" alt="Aunty Lim preparing vegetarian food" />
+
 <h4>Uncle Chen's Char Kway Teow (50 years)</h4>
-<p>Uncle Chen learned to fry char kway teow from his father, who learned from Penang hawkers in the 1950s. His secret? Using lard (pork fat) for that smoky, savory depth. He estimates he's fried over 500,000 plates. Every morning at 6am, he's at the market selecting the freshest chives. "No shortcuts," he says. "Fresh ingredients, high heat, constant movement. That's all."</p>
+<p>Uncle Chen learned to fry char kway teow from his father, who learned from Penang hawkers in the 1950s. His secret? Using lard (pork fat) for that smoky, savory depth. He estimates he's fried over 500,000 plates. Every morning at 6am, he's at the market selecting the freshest chives.</p>
+
+<p>"No shortcuts," he says. "Fresh ingredients, high heat, constant movement. That's all."</p>
 
 <h4>The Nasi Kandar Dynasty (60 years)</h4>
-<p>One family runs three nasi kandar shops across Penang, all descended from their grandfather's original stall. The curry recipe is a family secret—each generation is taught before the previous one retires. They mix 23 different spices. The exact proportions? "You have to feel it," they say. "Recipes are guidelines. Experience is the real ingredient."</p>
+<p>One family runs three nasi kandar shops across Penang, all descended from their grandfather's original stall. The curry recipe is a family secret—each generation is taught before the previous one retires. They mix 23 different spices. The exact proportions? "You have to feel it," they say.</p>
 
 <h3>How to Show Respect for Family Vendors</h3>
 
-<p><strong>Ask About the History</strong> - Most vendors love sharing their family story. Ask how long they've been there. Ask who taught them. Their eyes light up when people show genuine interest.</p>
-
-<p><strong>Don't Rush Them</strong> - Some dishes take time to prepare properly. If there's a queue, it means the food is worth waiting for. Respect the process.</p>
-
-<p><strong>Return When Possible</strong> - Regulars matter to family vendors. Being recognized, becoming part of "the family's story," creates relationships that transcend transactions.</p>
-
-<p><strong>Support Their Next Generation</strong> - If you see younger family members learning, encourage them. Tell them their heritage matters. The next generation needs to hear that what they're preserving has value beyond just profit.</p>
+<ul>
+  <li><strong>Ask About the History</strong> - Most vendors love sharing their family story. Ask how long they've been there. Ask who taught them. Their eyes light up when people show genuine interest.</li>
+  <li><strong>Don't Rush Them</strong> - Some dishes take time to prepare properly. If there's a queue, it means the food is worth waiting for. Respect the process.</li>
+  <li><strong>Return When Possible</strong> - Regulars matter to family vendors. Being recognized, becoming part of "the family's story," creates relationships that transcend transactions.</li>
+  <li><strong>Support Their Next Generation</strong> - If you see younger family members learning, encourage them. Tell them their heritage matters. The next generation needs to hear that what they're preserving has value beyond just profit.</li>
+</ul>
     `,
     image: "https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg",
     date: "2024-10-05",
