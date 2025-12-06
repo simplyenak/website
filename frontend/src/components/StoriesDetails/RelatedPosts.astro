@@ -1,12 +1,12 @@
 ---
-import { Image } from 'astro:assets'
-import fetchApi from '@/lib/strapi'
-import type { StoriesDetailsPageTypes } from '@/types'
-import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
+import { Image } from "astro:assets";
+import fetchApi from "@/lib/strapi";
+import type { StoriesDetailsPageTypes } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 const stories: StoriesDetailsPageTypes[] = await fetchApi({
-  endpoint: 'storie?populate=hero.bgImage',
-  wrappedByKey: 'data',
-})
+  endpoint: "storie?populate=hero.bgImage",
+  wrappedByKey: "data",
+});
 ---
 
 <div class="p-4 rounded-sm border border-black/10">
@@ -15,7 +15,7 @@ const stories: StoriesDetailsPageTypes[] = await fetchApi({
     {
       stories.slice(0, 3).map((story) => (
         <a
-          href={`/stories/${story.slug}`}
+          href={`/stories/${story.slug}/`}
           class="flex items-start gap-4 hover:text-primary transition-colors"
         >
           <Image

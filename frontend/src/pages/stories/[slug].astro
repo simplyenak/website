@@ -5,15 +5,25 @@ import Section from "@/components/Design/Section.astro";
 import Badge from "@/components/Design/Badge.astro";
 import Button from "@/components/Button.astro";
 import Prose from "@/components/Prose.astro";
+import Sidebar from "@/components/StoriesDetails/Sidebar.astro";
+import RelatedTours from "@/components/StoriesDetails/RelatedTours.astro";
+import Comments from "@/components/Comments.astro";
 import { stories, type Story } from "@/data/stories-data";
 
-export const prerender = true;
-
 export async function getStaticPaths() {
-  return stories.map((story) => ({
+  const paths = stories.map((story) => ({
     params: { slug: story.slug },
     props: { story },
   }));
+  console.log(
+    "Generated paths:",
+    JSON.stringify(
+      paths.map((p) => p.params.slug),
+      null,
+      2
+    )
+  );
+  return paths;
 }
 
 interface Props {
@@ -72,53 +82,56 @@ const seoData = {
   />
 
   <Section variant="default" spacing="default">
-    <div class="max-w-3xl mx-auto">
-      <!-- Categories -->
-      <div class="flex flex-wrap gap-2 mb-8 justify-center">
-        {
-          story.categories.map((category) => (
-            <Badge variant="secondary">{category}</Badge>
-          ))
-        }
-      </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <!-- Main Content Column -->
+      <div class="lg:col-span-8">
+        <!-- Categories -->
+        <div class="flex flex-wrap gap-2 mb-8">
+          {
+            story.categories.map((category) => (
+              <Badge variant="secondary">{category}</Badge>
+            ))
+          }
+        </div>
 
-      <!-- Content -->
-      <Prose class="mb-12">
-        <div set:html={story.content} />
-      </Prose>
+        <!-- Content -->
+        <Prose class="mb-12">
+          <div set:html={story.content} />
+        </Prose>
 
-      <!-- Author/Share/Footer of Article -->
-      <div class="border-t border-gray-200 pt-8 mt-12">
-        <div
-          class="flex flex-col md:flex-row justify-between items-center gap-4"
-        >
-          <div class="text-sm text-gray-600">
-            Written by <span class="font-semibold text-primary"
-              >{story.author}</span
-            >
-          </div>
-          <div class="flex gap-2">
-            <Button
-              href="/stories"
-              title="Back to Stories"
-              buttonType="secondary-btn-small"
-            />
+        <!-- Author/Share/Footer of Article -->
+        <div class="border-t border-gray-200 pt-8 mt-12 mb-12">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-4"
+          >
+            <div class="text-sm text-gray-600">
+              Written by <span class="font-semibold text-primary"
+                >{story.author}</span
+              >
+            </div>
+            <div class="flex gap-2">
+              <Button
+                href="/stories/"
+                title="Back to Stories"
+                buttonType="secondary-btn-small"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </Section>
 
-  <!-- Related/CTA Section -->
-  <Section variant="light">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-h2 text-primary mb-4">Taste These Stories</h2>
-      <p class="text-body mb-8">
-        Don't just read about Malaysian food heritage—experience it with us.
-        Join a tour and meet the vendors, taste the history, and create your own
-        stories.
-      </p>
-      <Button href="/tours" title="Find a Food Tour" buttonType="primary-btn" />
+        <!-- Related Tours Section -->
+        <RelatedTours categories={story.categories} />
+
+        <!-- Comments Section -->
+        <div class="mt-16">
+          <Comments />
+        </div>
+      </div>
+
+      <!-- Sidebar Column -->
+      <div class="lg:col-span-4">
+        <Sidebar title={story.title} />
+      </div>
     </div>
   </Section>
 </Layout>

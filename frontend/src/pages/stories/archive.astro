@@ -38,7 +38,7 @@ function formatDate(dateStr: string): string {
     <!-- Category Filter (Simple Links) -->
     <div class="flex flex-wrap gap-3 justify-center mb-12">
       <a
-        href="/stories"
+        href="/stories/"
         class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-sm font-semibold hover:bg-gray-200 transition-colors"
       >
         ← Back to Highlights
@@ -53,7 +53,7 @@ function formatDate(dateStr: string): string {
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         sortedStories.map((story) => (
-          <a href={`/stories/${story.slug}`} class="group h-full">
+          <a href={`/stories/${story.slug}/`} class="group h-full">
             <Card class="h-full flex flex-col">
               <div class="relative h-56 overflow-hidden rounded-t-lg flex-shrink-0">
                 <img

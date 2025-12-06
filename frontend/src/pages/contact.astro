@@ -5,7 +5,8 @@ import GlobalHero from "@/components/GlobalHero.astro";
 import GetInTouchSection from "@/components/Contact/GetInTouchSection.astro";
 import Section from "@/components/Design/Section.astro";
 import Card from "@/components/Design/Card.astro";
-import FAQ from "@/components/FAQ.astro";
+import Icon from "@/components/Icon.astro";
+import Badge from "@/components/Design/Badge.astro";
 
 export const prerender = true;
 
@@ -36,19 +37,79 @@ const data = {
         title: "Custom Private Tours",
         description:
           "Want a tour just for your family? We can tailor the itinerary to your pace and interests.",
-        icon: "✨",
+        icon: "icon-heart",
       },
       {
         title: "Corporate & Team Building",
         description:
           "Looking for a unique team event? We host food challenges and cultural immersions for companies.",
-        icon: "🤝",
+        icon: "icon-hands-join",
       },
       {
         title: "Dietary Questions",
         description:
           "Vegetarian? Gluten-free? Allergies? Let us know, and we'll tell you exactly what's possible.",
-        icon: "🥗",
+        icon: "icon-leaf",
+      },
+    ],
+  },
+  planningScenarios: {
+    title: "Planning Your Malaysia Trip?",
+    subtitle: "Let us help you find the perfect food experience",
+    scenarios: [
+      {
+        icon: "icon-compass",
+        title: "First Time in Malaysia?",
+        description: "Not sure where to start? We'll help you understand the difference between tourist spots and authentic local experiences.",
+        storyLink: "/stories/tourist-vs-local-food/",
+        storyLabel: "Read: Tourist vs Local Food",
+        recommendation: "Start with Penang Heritage Food Trail",
+        tourLink: "/tours/penang-heritage-food-trail/",
+      },
+      {
+        icon: "icon-leaf",
+        title: "Vegetarian Traveler?",
+        description: "Malaysia has incredible vegetarian food traditions. All our tours have excellent plant-based options.",
+        storyLink: "/vegetarian-food-tours/",
+        storyLabel: "See: Vegetarian Food Tours",
+        recommendation: "All tours are vegetarian-friendly",
+        tourLink: "/tours/",
+      },
+      {
+        icon: "icon-heart",
+        title: "Traveling with Family?",
+        description: "Our small groups and relaxed pace work great for families. Kids 8+ usually love the cultural stories and diverse flavors.",
+        storyLink: "/stories/family-recipes/",
+        storyLabel: "Read: Family Recipes Story",
+        recommendation: "Morning Penang tour has easier pace",
+        tourLink: "/tours/penang-heritage-food-trail/",
+      },
+      {
+        icon: "icon-star",
+        title: "Foodie Adventure?",
+        description: "Want the complete Malaysian food experience? We recommend experiencing all three cities to understand regional differences.",
+        storyLink: "/stories/street-food-culture/",
+        storyLabel: "Read: Street Food Culture",
+        recommendation: "Book all 3 tours over 3-4 days",
+        tourLink: "/tours/",
+      },
+      {
+        icon: "icon-camera",
+        title: "Cultural Deep Dive?",
+        description: "Interested in how colonial history shaped Malaysian cuisine? Melaka offers 600 years of Portuguese, Dutch, and British influence.",
+        storyLink: "/stories/malaysian-food-heritage/",
+        storyLabel: "Read: Malaysian Food Heritage",
+        recommendation: "Melaka Cultural Food Journey",
+        tourLink: "/tours/melaka-cultural-food-journey/",
+      },
+      {
+        icon: "icon-thumbs-up",
+        title: "Short on Time?",
+        description: "Only in town for a day or two? Our evening Kuala Lumpur tour is perfect for fitting authentic experiences into a tight schedule.",
+        storyLink: "/tours/",
+        storyLabel: "Compare All Tours",
+        recommendation: "4-hour KL Secrets evening tour",
+        tourLink: "/tours/secrets-of-kuala-lumpur/",
       },
     ],
   },
@@ -57,23 +118,54 @@ const data = {
     content:
       "When you message us, you're talking to the people who actually lead the tours. No call centers, no booking forms that disappear into the void. Just real humans who love sharing Malaysia. We read every message personally and get back to you within a day.",
   },
-  quickAnswers: [
-    {
-      question: "Can I book for tomorrow?",
-      answer:
-        "For last-minute bookings (less than 24 hours), please WhatsApp us directly for the fastest response.",
-    },
-    {
-      question: "Do you do private tours?",
-      answer:
-        "Yes! All our tours can be booked privately. Just mention it in the form below.",
-    },
-    {
-      question: "What if I have a large group?",
-      answer:
-        "We can accommodate large groups for corporate events or schools. Please provide details in the form.",
-    },
-  ],
+  helpfulResources: {
+    title: "Common Questions? We've Written About That",
+    subtitle: "Find answers and stories that help you plan your Malaysia food adventure",
+    resources: [
+      {
+        icon: "icon-compass",
+        question: "What's the difference between the tours?",
+        answer: "Each city offers unique food heritage. Penang has Chinese-Malay fusion, KL shows hidden neighborhoods, Melaka reveals 600 years of colonial influence.",
+        linkText: "Compare All Tours",
+        linkUrl: "/tours/",
+      },
+      {
+        icon: "icon-heart",
+        question: "Will I actually like Malaysian food?",
+        answer: "Malaysian street food is complex, layered, and incredibly diverse. From mild coconut curries to fiery sambals, there's something for every palate.",
+        linkText: "Read: Street Food Culture",
+        linkUrl: "/stories/street-food-culture/",
+      },
+      {
+        icon: "icon-hands-join",
+        question: "Can I trust the street vendors?",
+        answer: "Meet Uncle Tan (60 years same pitch), Pak Hassan (refused RM 800k buyout), Aunty Rose (4th gen Cristang cook). These aren't random stalls.",
+        linkText: "Read: Meet the Vendors",
+        linkUrl: "/about/",
+      },
+      {
+        icon: "icon-leaf",
+        question: "What if I'm vegetarian or have dietary restrictions?",
+        answer: "Malaysia has strong Buddhist and Hindu vegetarian traditions. Every tour has excellent plant-based options, and we can work around most allergies.",
+        linkText: "See: Vegetarian Tours",
+        linkUrl: "/vegetarian-food-tours/",
+      },
+      {
+        icon: "icon-clock",
+        question: "How much walking is involved?",
+        answer: "2-3 km over 4-5 hours with frequent food stops. All tours are easy, flat terrain. We pause, we chat, we appreciate the details.",
+        linkText: "Read: What to Expect",
+        linkUrl: "/tours/",
+      },
+      {
+        icon: "icon-star",
+        question: "Why are Simply Enak tours different?",
+        answer: "14 years of vendor relationships, maximum 8 guests, real stories not scripts, family-run businesses only. We show you our Malaysia, not tourist Malaysia.",
+        linkText: "Read: Our Story",
+        linkUrl: "/about/",
+      },
+    ],
+  },
   getInTouchSection: {
     title: "Send Us a Message",
     contents:
@@ -96,8 +188,43 @@ const data = {
     isOverlay={true}
   />
 
-  <!-- Why Reach Out Section -->
+  <!-- Planning Scenarios Section -->
   <Section variant="light">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary">{data.planningScenarios.title}</h2>
+      <p class="text-body mt-4">{data.planningScenarios.subtitle}</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        data.planningScenarios.scenarios.map((scenario) => (
+          <Card class="h-full flex flex-col">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 flex-shrink-0 text-primary">
+                <Icon name={scenario.icon} />
+              </div>
+              <h3 class="text-h3 text-primary">{scenario.title}</h3>
+            </div>
+            <p class="text-body mb-4 flex-grow">{scenario.description}</p>
+            <div class="space-y-2 mt-auto">
+              <a
+                href={scenario.storyLink}
+                class="text-secondary hover:text-primary text-sm font-medium flex items-center gap-2 transition-colors"
+              >
+                <Icon name="icon-arrow-right" />
+                {scenario.storyLabel}
+              </a>
+              <p class="text-sm text-gray-600 italic">
+                ✓ {scenario.recommendation}
+              </p>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Why Reach Out Section -->
+  <Section>
     <div class="text-center mb-12 max-w-3xl mx-auto">
       <h2 class="text-h2 text-primary">{data.whyReachOut.title}</h2>
     </div>
@@ -105,7 +232,9 @@ const data = {
       {
         data.whyReachOut.reasons.map((reason) => (
           <Card class="text-center h-full">
-            <div class="text-4xl mb-4">{reason.icon}</div>
+            <div class="w-16 h-16 mx-auto mb-4 text-primary">
+              <Icon name={reason.icon} />
+            </div>
             <h3 class="text-h3 text-primary mb-3">{reason.title}</h3>
             <p class="text-body">{reason.description}</p>
           </Card>
@@ -128,7 +257,37 @@ const data = {
     formEmbedUrl={data.getInTouchSection.formEmbedUrl}
   />
 
-  <!-- Quick Answers FAQ -->
-  <FAQ faqs={data.quickAnswers} title="Quick Answers" />
+  <!-- Helpful Resources Section -->
+  <Section variant="light">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary">{data.helpfulResources.title}</h2>
+      <p class="text-body mt-4">{data.helpfulResources.subtitle}</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        data.helpfulResources.resources.map((resource) => (
+          <Card class="h-full flex flex-col">
+            <div class="flex items-start gap-4 mb-3">
+              <div class="w-10 h-10 flex-shrink-0 text-secondary">
+                <Icon name={resource.icon} />
+              </div>
+              <h3 class="text-lg font-semibold text-primary">
+                {resource.question}
+              </h3>
+            </div>
+            <p class="text-body mb-4 flex-grow">{resource.answer}</p>
+            <a
+              href={resource.linkUrl}
+              class="text-secondary hover:text-primary text-sm font-medium flex items-center gap-2 transition-colors mt-auto"
+            >
+              <Icon name="icon-arrow-right" />
+              {resource.linkText}
+            </a>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
   <CTASection />
 </Layout>
