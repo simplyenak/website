@@ -1,47 +1,35 @@
 ---
+import { Image } from "astro:assets";
+import tripadvisorLogo from "@/assets/images/tripadvisor-logo.png";
+import gourmetTravellerLogo from "@/assets/images/gourmet-traveller-logo.svg";
+
 // Static data - matching simplyenak.com credentials
 const partnersSection = {
   partnersImages: [
-    // TODO: Upload these logo files to S3 bucket, then uncomment
-    // {
-    //   src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-national-geographic.png",
-    //   alt: "National Geographic",
-    // },
-    // {
-    //   src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-discovery-channel.png",
-    //   alt: "Discovery Channel",
-    // },
-    // {
-    //   src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-the-edge.png",
-    //   alt: "The Edge",
-    // },
-    // {
-    //   src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-lonely-planet.png",
-    //   alt: "Lonely Planet",
-    // },
     {
-      src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-tripadvisor.png",
+      src: "https://cdn.worldvectorlogo.com/logos/national-geographic-1.svg",
+      alt: "National Geographic",
+      external: true
+    },
+    {
+      src: "https://cdn.worldvectorlogo.com/logos/discovery-channel.svg",
+      alt: "Discovery Channel",
+      external: true
+    },
+    {
+      src: "https://cdn.worldvectorlogo.com/logos/lonely-planet-1.svg",
+      alt: "Lonely Planet",
+      external: true
+    },
+    {
+      src: tripadvisorLogo,
       alt: "TripAdvisor",
+      external: false
     },
     {
-      src: "https://se-website-images.s3.nl-ams.scw.cloud/penang-global-tourism.png",
-      alt: "Penang Global Tourism",
-    },
-    {
-      src: "https://se-website-images.s3.nl-ams.scw.cloud/3sixdu-logo.png",
-      alt: "3sixdu",
-    },
-    {
-      src: "https://se-website-images.s3.nl-ams.scw.cloud/timeout-penang.png",
-      alt: "Time Out Penang",
-    },
-    {
-      src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-gourmet-traveller.png",
+      src: gourmetTravellerLogo,
       alt: "Gourmet Traveller",
-    },
-    {
-      src: "https://se-website-images.s3.nl-ams.scw.cloud/partner-tourism-malaysia.png",
-      alt: "Tourism Malaysia",
+      external: false
     },
   ],
 };
@@ -60,12 +48,21 @@ const partnersSection = {
       {
         partnersSection.partnersImages.map((partner) => (
           <div>
-            <img
-              src={partner.src}
-              alt={partner.alt}
-              class="mx-auto object-contain w-auto h-[50px] md:h-[60px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-              loading="lazy"
-            />
+            {partner.external ? (
+              <img
+                src={partner.src}
+                alt={partner.alt}
+                class="mx-auto object-contain w-auto h-[45px] md:h-[55px] max-w-[180px] md:max-w-[220px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                loading="lazy"
+              />
+            ) : (
+              <Image
+                src={partner.src}
+                alt={partner.alt}
+                class="mx-auto object-contain w-auto h-[45px] md:h-[55px] max-w-[180px] md:max-w-[220px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                loading="lazy"
+              />
+            )}
           </div>
         ))
       }
