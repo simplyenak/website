@@ -1,0 +1,210 @@
+---
+/**
+ * Specialty Landing Page
+ * URL: /tours/specialty/[slug]
+ * Example: /tours/specialty/street-food
+ */
+
+import Layout from '../../../layouts/Layout.astro';
+import { getSpecialtyLandingPageBySlug, getToursBySpecialty, getImageUrl } from '../../../lib/directus';
+import SEO from '../../../components/SEO.astro';
+
+const { slug } = Astro.params;
+const page = await getSpecialtyLandingPageBySlug(slug as string);
+
+if (!page) {
+  return Astro.redirect('/404');
+}
+
+const tours = await getToursBySpecialty(slug as string);
+
+const seoData = {
+  title: page.meta_title || `${page.specialty_name} Tours - Simply Enak`,
+  description: page.meta_description || `Experience the best ${page.specialty_name.toLowerCase()} in Malaysia. ${page.hero_subtitle}`,
+  image: getImageUrl(page.hero_image),
+  url: `/tours/specialty/${slug}`,
+};
+---
+
+<Layout>
+  <SEO {...seoData} />
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center bg-gradient-to-br from-yellow-50 to-orange-50 overflow-hidden">
+    {page.hero_image && (
+      <div class="absolute inset-0 z-0">
+        <img
+          src={getImageUrl(page.hero_image, { width: 1920, quality: 80 })}
+          alt={page.hero_title}
+          class="w-full h-full object-cover opacity-20"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+      </div>
+    )}
+    
+    <div class="relative z-10 container mx-auto px-4 py-20">
+      <div class="max-w-3xl">
+        {page.icon && (
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style={`background-color: ${page.color || '#000000'}20`}>
+            <span class="text-3xl">{page.icon}</span>
+          </div>
+        )}
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+          {page.hero_title}
+        </h1>
+        
+        {page.hero_subtitle && (
+          <p class="text-xl text-gray-600 mb-6">
+            {page.hero_subtitle}
+          </p>
+        )}
+        
+        {page.hero_description && (
+          <div class="prose prose-lg text-gray-700">
+            {page.hero_description}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  {page.experience_content && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            {page.experience_title || 'The Experience'}
+          </h2>
+          
+          <div class="prose prose-lg text-gray-700">
+            {page.experience_content}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- What Makes It Special -->
+  {page.what_makes_special && (
+    <section class="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-primary/10">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            What Makes It Special
+          </h2>
+          
+          <div class="prose prose-lg text-gray-700">
+            {page.what_makes_special}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Highlights -->
+  {page.highlights && page.highlights.length > 0 && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+            Tour Highlights
+          </h2>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {page.highlights.map((highlight: string) => (
+              <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
+                <svg class="w-6 h-6 text-primary flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-700">{highlight}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Featured Tours -->
+  {tours && tours.length > 0 && (
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
+            {page.specialty_name} Tours
+          </h2>
+          <p class="text-gray-600 text-center mb-12">
+            Handpicked experiences showcasing the best of {page.specialty_name.toLowerCase()}
+          </p>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tours.map((tour: any) => (
+              <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
+                {tour.hero_image && (
+                  <img
+                    src={getImageUrl(tour.hero_image, { width: 400, height: 300 })}
+                    alt={tour.name}
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">
+                    {tour.name}
+                  </h3>
+                  {tour.tagline && (
+                    <p class="text-gray-600 mb-4">
+                      {tour.tagline}
+                    </p>
+                  )}
+                  <div class="flex items-center gap-4 mb-4 text-sm text-gray-500">
+                    {tour.duration && (
+                      <span>{tour.duration}</span>
+                    )}
+                    {tour.location && (
+                      <span>{tour.location}</span>
+                    )}
+                  </div>
+                  <div class="flex items-center justify-between">
+                    {tour.price && (
+                      <span class="text-2xl font-bold text-primary">
+                        {tour.currency || 'MYR'} {tour.price}
+                      </span>
+                    )}
+                    <a
+                      href={tour.booking_url || `/tours/${tour.slug}`}
+                      class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-primary/90 transition"
+                    >
+                      Book Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready for a {page.specialty_name} Adventure?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+        Experience the best of {page.specialty_name.toLowerCase()} with our expert guides
+      </p>
+      <a
+        href="/tours"
+        class="inline-block bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition"
+      >
+        Browse All Tours
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,287 @@
+---
+/**
+ * Dietary Landing Page
+ * URL: /tours/dietary/[slug]
+ * Example: /tours/dietary/vegetarian
+ */
+
+import Layout from '../../../layouts/Layout.astro';
+import { getDietaryLandingPageBySlug, getToursByDietary, getImageUrl } from '../../../lib/directus';
+import SEO from '../../../components/SEO.astro';
+import Button from '../../components/Button.astro';
+import CTASection from '../../components/CTASection.astro';
+
+export async function getStaticPaths() {
+  return [];
+}
+
+const { slug } = Astro.params;
+const page = await getDietaryLandingPageBySlug(slug as string);
+
+if (!page) {
+  return Astro.redirect('/404');
+}
+
+const tours = await getToursByDietary(slug as string);
+
+const seoData = {
+  title: page.meta_title || `${page.dietary_name} Food Tours - Simply Enak`,
+  description: page.meta_description || `Discover ${page.dietary_name} friendly food tours in Malaysia. ${page.hero_subtitle}`,
+  image: getImageUrl(page.hero_image),
+  url: `/tours/dietary/${slug}`,
+};
+---
+
+<Layout>
+  <SEO {...seoData} />
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[600px] flex items-center bg-gradient-to-br from-orange-50 to-blue-50 overflow-hidden">
+    {page.hero_image && (
+      <div class="absolute inset-0 z-0">
+        <img
+          src={getImageUrl(page.hero_image, { width: 1920, quality: 80 })}
+          alt={page.hero_title}
+          class="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+      </div>
+    )}
+    
+    <div class="relative z-10 main-container flex items-center min-h-[600px] py-20">
+      <div class="max-w-3xl text-white">
+        {page.icon && (
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 bg-white/20 backdrop-blur-sm">
+            <span class="text-3xl">{page.icon}</span>
+          </div>
+        )}
+        
+        <h1 class="text-h1 text-white mb-4">
+          {page.hero_title}
+        </h1>
+        
+        {page.hero_subtitle && (
+          <p class="text-subheading text-white/90 mb-6">
+            {page.hero_subtitle}
+          </p>
+        )}
+        
+        {page.hero_description && (
+          <div class="prose prose-lg text-white/80">
+            {page.hero_description}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges Section -->
+  {page.challenges_content && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            {page.challenges_title || 'Dining Challenges in Malaysia'}
+          </h2>
+          
+          <div class="prose prose-lg text-gray-700">
+            {page.challenges_content}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Options Section -->
+  {page.options_content && (
+    <section class="py-16 md:py-24 bg-gradient-to-br from-yellow-50 to-orange-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            {page.options_title || 'Your Options'}
+          </h2>
+          
+          <div class="prose prose-lg text-gray-700">
+            {page.options_content}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Tips Section -->
+  {page.tips_content && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Practical Tips
+          </h2>
+          
+          <div class="prose prose-lg text-gray-700">
+            {page.tips_content}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Safe Dishes Section -->
+  {page.safe_dishes && page.safe_dishes.length > 0 && (
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+            Safe Dishes to Enjoy
+          </h2>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {page.safe_dishes.map((dish: any) => (
+              <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                {dish.image && (
+                  <img
+                    src={getImageUrl(dish.image, { width: 400, height: 300 })}
+                    alt={dish.name}
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">
+                    {dish.name}
+                  </h3>
+                  {dish.description && (
+                    <p class="text-gray-600">
+                      {dish.description}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Dishes to Avoid Section -->
+  {page.dishes_to_avoid && page.dishes_to_avoid.length > 0 && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+            Dishes to Avoid
+          </h2>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            {page.dishes_to_avoid.map((dish: any) => (
+              <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-red-900 mb-2">
+                  {dish.name}
+                </h3>
+                {dish.reason && (
+                  <p class="text-red-700">
+                    {dish.reason}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Compatible Tours Section -->
+  {tours && tours.length > 0 && (
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
+            {page.dietary_name}-Friendly Tours
+          </h2>
+          <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            All our tours below accommodate {page.dietary_name.toLowerCase()} dietary requirements
+          </p>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tours.map((tour: any) => (
+              <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                {tour.hero_image && (
+                  <img
+                    src={getImageUrl(tour.hero_image, { width: 400, height: 300 })}
+                    alt={tour.name}
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">
+                    {tour.name}
+                  </h3>
+                  {tour.tagline && (
+                    <p class="text-gray-600 mb-4">
+                      {tour.tagline}
+                    </p>
+                  )}
+                  <div class="flex items-center gap-4 mb-4 text-sm text-gray-500">
+                    {tour.duration && (
+                      <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        {tour.duration}
+                      </span>
+                    )}
+                    {tour.location && (
+                      <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {tour.location}
+                      </span>
+                    )}
+                  </div>
+                  <div class="flex items-center justify-between">
+                    {tour.price && (
+                      <span class="text-2xl font-bold text-primary">
+                        {tour.currency || 'MYR'} {tour.price}
+                      </span>
+                    )}
+                    <a
+                      href={tour.booking_url || `/tours/${tour.slug}`}
+                      class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-primary/90 transition"
+                    >
+                      Book Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready for a {page.dietary_name}-Friendly Food Adventure?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+        All our tours can accommodate your dietary needs. Just let us know when booking!
+      </p>
+      <a
+        href="/tours"
+        class="inline-block bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition"
+      >
+        Browse All Tours
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,225 @@
+---
+/**
+ * Location Landing Page
+ * URL: /tours/locations/[slug]
+ * Example: /tours/locations/kuala-lumpur
+ */
+
+import Layout from '../../../layouts/Layout.astro';
+import { getLocationLandingPageBySlug, getToursByLocation, getImageUrl } from '../../../lib/directus';
+import SEO from '../../../components/SEO.astro';
+
+const { slug } = Astro.params;
+const page = await getLocationLandingPageBySlug(slug as string);
+
+if (!page) {
+  return Astro.redirect('/404');
+}
+
+const tours = await getToursByLocation(slug as string);
+
+const seoData = {
+  title: page.meta_title || `${page.location_name} Food Tours - Simply Enak`,
+  description: page.meta_description || `Discover the best food tours in ${page.location_name}. ${page.hero_subtitle}`,
+  image: getImageUrl(page.hero_image),
+  url: `/tours/locations/${slug}`,
+};
+---
+
+<Layout>
+  <SEO {...seoData} />
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center bg-gradient-to-br from-blue-50 to-green-50 overflow-hidden">
+    {page.hero_image && (
+      <div class="absolute inset-0 z-0">
+        <img
+          src={getImageUrl(page.hero_image, { width: 1920, quality: 80 })}
+          alt={page.hero_title}
+          class="w-full h-full object-cover opacity-20"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+      </div>
+    )}
+    
+    <div class="relative z-10 container mx-auto px-4 py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+          {page.hero_title}
+        </h1>
+        
+        {page.hero_subtitle && (
+          <p class="text-xl text-gray-600 mb-6">
+            {page.hero_subtitle}
+          </p>
+        )}
+        
+        {page.hero_description && (
+          <div class="prose prose-lg text-gray-700">
+            {page.hero_description}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  {page.intro_content && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              {page.intro_title || `About ${page.location_name}`}
+            </h2>
+            <div class="prose prose-lg text-gray-700">
+              {page.intro_content}
+            </div>
+          </div>
+          {page.intro_image && (
+            <div class="rounded-2xl overflow-hidden shadow-xl">
+              <img
+                src={getImageUrl(page.intro_image, { width: 600, height: 400 })}
+                alt={page.location_name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Practical Info -->
+  {(page.best_time_to_visit || page.getting_around || page.what_to_pack) && (
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+            Practical Information
+          </h2>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            {page.best_time_to_visit && (
+              <div class="bg-white rounded-xl p-6 shadow-lg">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Best Time to Visit</h3>
+                <p class="text-gray-600">{page.best_time_to_visit}</p>
+              </div>
+            )}
+            
+            {page.getting_around && (
+              <div class="bg-white rounded-xl p-6 shadow-lg">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Getting Around</h3>
+                <div class="text-gray-600 prose prose-sm" set:html={page.getting_around} />
+              </div>
+            )}
+            
+            {page.what_to_pack && (
+              <div class="bg-white rounded-xl p-6 shadow-lg">
+                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                  <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">What to Pack</h3>
+                <p class="text-gray-600">{page.what_to_pack}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Featured Tours -->
+  {tours && tours.length > 0 && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
+            Food Tours in {page.location_name}
+          </h2>
+          <p class="text-gray-600 text-center mb-12">
+            Discover the best culinary experiences {page.location_name} has to offer
+          </p>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tours.map((tour: any) => (
+              <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
+                {tour.hero_image && (
+                  <img
+                    src={getImageUrl(tour.hero_image, { width: 400, height: 300 })}
+                    alt={tour.name}
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">
+                    {tour.name}
+                  </h3>
+                  {tour.tagline && (
+                    <p class="text-gray-600 mb-4">
+                      {tour.tagline}
+                    </p>
+                  )}
+                  <div class="flex items-center gap-4 mb-4 text-sm text-gray-500">
+                    {tour.duration && (
+                      <span>{tour.duration}</span>
+                    )}
+                    {tour.location && (
+                      <span>{tour.location}</span>
+                    )}
+                  </div>
+                  <div class="flex items-center justify-between">
+                    {tour.price && (
+                      <span class="text-2xl font-bold text-primary">
+                        {tour.currency || 'MYR'} {tour.price}
+                      </span>
+                    )}
+                    <a
+                      href={tour.booking_url || `/tours/${tour.slug}`}
+                      class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-primary/90 transition"
+                    >
+                      Book Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Explore {page.location_name}'s Food Scene?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+        Join us for an unforgettable culinary adventure
+      </p>
+      <a
+        href="/tours"
+        class="inline-block bg-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition"
+      >
+        View All Tours
+      </a>
+    </div>
+  </section>
+</Layout>
