@@ -1,15 +1,15 @@
 name: Deploy Frontend to Cloudflare Pages
 
 on:
-  push:
-    branches: [ staging, main ]
-    paths:
-      - 'frontend/**'
-      - '.github/workflows/deploy-frontend.yml'
-  pull_request:
-    branches: [ staging, main ]
-    paths:
-      - 'frontend/**'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
 
 jobs:
   deploy:
@@ -40,7 +40,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: staging
+          projectName: website
           directory: frontend/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}
+          branch: main
