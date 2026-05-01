@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/",
+    "/_astro/*",
+    "/favicon.ico",
+    "/icon-check.svg",
+    "/robots.txt",
+    "/images/*",
+    "/sitemap.xml",
+    "/about",
+    "/contact",
+    "/custom-tours/*",
+    "/directions",
+    "/get-best-food-experience-simply-enak",
+    "/kuala-lumpur-food-tour",
+    "/privacy-policy",
+    "/stories/*",
+    "/terms-conditions",
+    "/thank-you",
+    "/thank-you-booking",
+    "/thank-you-booking-kuala-lumpur",
+    "/thank-you-booking-penang",
+    "/thank-you-contact",
+    "/thank-you-inquiry",
+    "/tours",
+    "/tours/"
+  ]
+}
