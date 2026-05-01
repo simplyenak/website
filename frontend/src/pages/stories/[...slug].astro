@@ -1,0 +1,76 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import StoriesDetailsHero from "@/components/StoriesDetails/StoriesDetailsHero.astro";
+import StoriesDetailsSection from "@/components/StoriesDetails/StoriesDetailsSection.astro";
+import StoriesDetailsContents from "@/components/StoriesDetails/StoriesDetailsContents.astro";
+import AuthonSection from "@/components/StoriesDetails/AuthonSection.astro";
+import CommentSection from "@/components/StoriesDetails/CommentSection.astro";
+import AboutSimplyEnakSection from "@/components/StoriesDetails/AboutSimplyEnakSection.astro";
+import CTASection from "@/components/CTASection.astro";
+import YoutubeVideos from "@/components/Stories/YoutubeVideos.tsx";
+import RelatedPosts from "@/components/StoriesDetails/RelatedPosts.astro";
+import fetchApi from "@/lib/strapi";
+import type { StoriesDetailsPageTypes } from "@/types";
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import { cleanDescription, generateCanonicalUrl } from "@/utils/seo";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const stories = await fetchApi<StoriesDetailsPageTypes[]>({
+    endpoint: "storie",
+    wrappedByKey: "data",
+  });
+  return stories.map((story) => {
+    return {
+      params: { slug: story.slug },
+    };
+  });
+}
+const { slug } = Astro.params;
+const data = await fetchApi<StoriesDetailsPageTypes[]>({
+  endpoint: `storie?filters[slug][$eq]=${slug}&populate=hero.bgImage&populate=hero&populate=categories&populate=contents.video&populate=contents.embededVideo&populate=author.image&populate=SEO.image`,
+  wrappedByKey: "data",
+});
+const story = data[0];
+
+if (!story) {
+  return Astro.redirect("/404");
+}
+
+const pageTitle =
+  story.SEO?.title ??
+  story.metaTitle ??
+  `${story.hero?.title} - Malaysian Food Tour | Simply Enak`;
+const pageDescription =
+  story.SEO?.description ??
+  cleanDescription(`Experience ${story.hero?.title} with Simply Enak.`);
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image={getFullMediaUrl(story.SEO?.image) ??
+    getFullMediaUrl(story.hero?.bgImage)}
+  structuredData={story.SEO?.schema ?? {}}
+  canonicalURL={generateCanonicalUrl(`/stories/${story.slug}`)}
+>
+  <StoriesDetailsHero title={story.hero?.title} image={story.hero?.bgImage} />
+  <StoriesDetailsSection>
+    <StoriesDetailsContents contents={story.contents} />
+    <div class="px-4 md:px-8 lg:px-11 py-4 md:py-6 space-y-6">
+      <AuthonSection author={story.author} />
+      <CommentSection />
+    </div>
+    <div slot="sidebar" class="space-y-6">
+      <AboutSimplyEnakSection />
+      <YoutubeVideos
+        className="p-4 rounded-sm border border-black/10"
+        client:visible
+      />
+      <RelatedPosts />
+    </div>
+  </StoriesDetailsSection>
+
+  <CTASection />
+</Layout>

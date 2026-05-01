@@ -1,20 +1,21 @@
-name: Deploy Frontend to Cloudflare Pages
+name: Deploy Staging Frontend
 
 on:
   push:
-    branches: [ staging, main ]
+    branches: [ staging ]
     paths:
       - 'frontend/**'
       - '.github/workflows/deploy-frontend.yml'
   pull_request:
-    branches: [ staging, main ]
+    branches: [ staging ]
     paths:
       - 'frontend/**'
 
 jobs:
-  deploy:
+  deploy-staging:
     runs-on: ubuntu-latest
-    name: Deploy to Cloudflare Pages
+    name: Deploy Staging to Cloudflare Pages
+    environment: staging
 
     steps:
       - name: Checkout
@@ -33,9 +34,11 @@ jobs:
 
       - name: Build
         working-directory: frontend
+        env:
+          PUBLIC_STRAPI_URL: ${{ vars.STRAPI_URL || 'https://api.system.simplyenak.com' }}
         run: npm run build
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Staging Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -43,4 +46,4 @@ jobs:
           projectName: staging
           directory: frontend/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}
+          branch: staging

@@ -1,14 +1,20 @@
-name: Main Branch CI/CD
+name: Backend CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ staging ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/main.yml'
   pull_request:
-    branches: [ main ]
+    branches: [ staging ]
+    paths:
+      - 'backend/**'
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
+    name: Build and push backend Docker image
 
     steps:
     - uses: actions/checkout@v4
@@ -19,23 +25,8 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      run: |
-        if [ -d "backend" ]; then
-          cd backend && npm ci
-        else
-          echo "No backend directory found"
-        fi
-
-    - name: Run tests (if they exist)
-      run: |
-        if [ -d "backend" ] && [ -f "backend/package.json" ]; then
-          cd backend
-          if grep -q '"test"' package.json; then
-            npm test
-          else
-            echo "No test script found"
-          fi
-        fi
+      working-directory: backend
+      run: npm ci
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -46,10 +37,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push Docker image
+    - name: Build and push Docker image (staging)
       uses: docker/build-push-action@v5
       with:
         context: ./backend
         file: ./backend/Dockerfile
         push: true
-        tags: simplyenak/website-backend:latest
+        tags: simplyenak/website-backend:staging

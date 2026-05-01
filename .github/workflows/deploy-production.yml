@@ -3,22 +3,38 @@ name: Deploy to Production
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Target environment'
+      confirm_deploy:
+        description: 'Type "DEPLOY" to confirm production deployment'
         required: true
-        default: 'production'
-        type: choice
-        options:
-          - production
+        type: string
 
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    name: Verify deployment intent
+    if: ${{ github.event.inputs.confirm_deploy == 'DEPLOY' }}
+    steps:
+      - run: echo "Production deployment confirmed"
+
   deploy:
+    needs: verify
     runs-on: ubuntu-latest
     name: Deploy to Cloudflare Pages (production)
+    environment: production
 
     steps:
-      - name: Checkout
+      - name: Checkout main branch
         uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Verify we are on main
+        run: |
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          if [ "$BRANCH" != "main" ]; then
+            echo "ERROR: Production can only deploy from main. Current: $BRANCH"
+            exit 1
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,9 +49,11 @@ jobs:
 
       - name: Build
         working-directory: frontend
+        env:
+          PUBLIC_STRAPI_URL: ${{ vars.STRAPI_URL || 'https://api.system.simplyenak.com' }}
         run: npm run build
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Production Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -44,3 +62,11 @@ jobs:
           directory: frontend/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
+
+      - name: Deployment summary
+        run: |
+          echo "### Production Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "- **Project**: website (simplyenak.com)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: $(git rev-parse --short HEAD)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Triggered by**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time**: $(date -u '+%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
