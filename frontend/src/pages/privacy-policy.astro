@@ -1,0 +1,39 @@
+---
+import BlockRendererClient from "@/components/BlockRendererClient";
+import Layout from "@/layouts/Layout.astro";
+import Prose from "@/components/Prose.astro";
+import fetchApi from "@/lib/strapi";
+import type { PrivacyPolicyPageTypes } from "@/types";
+import CTASection from "@/components/CTASection.astro";
+export const prerender = true;
+
+const privacyPolicy = await fetchApi<PrivacyPolicyPageTypes>({
+  endpoint: `privacy-policy`,
+  wrappedByKey: "data",
+});
+---
+
+<Layout title={privacyPolicy?.metaTitle ?? "Privacy Policy"}>
+  <section
+    class="py-15 bg-[#ffa33f1a] min-h-[250px] flex items-center justify-center h-full"
+  >
+    <div class="main-container text-center">
+      <h1 class="text-3xl md:text-5xl font-bold font-merriweather">
+        {privacyPolicy?.headline}
+      </h1>
+    </div>
+  </section>
+  <section class="main-container py-15">
+    {
+      privacyPolicy?.contents && (
+        <Prose>
+          <BlockRendererClient
+            content={privacyPolicy.contents}
+            client:only="react"
+          />
+        </Prose>
+      )
+    }
+  </section>
+</Layout>
+<CTASection />

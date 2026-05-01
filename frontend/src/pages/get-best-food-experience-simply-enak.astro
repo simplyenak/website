@@ -1,0 +1,111 @@
+---
+import GlobalHero from "@/components/GlobalHero.astro";
+import Layout from "@/layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+import Button from "@/components/Button.astro";
+
+export const prerender = true;
+import heroImage from "@/assets/images/background-for-hero.jpg";
+
+import img3 from "@/assets/images/asset-85.jpeg";
+import img9 from "@/assets/images/9.webp";
+import img10 from "@/assets/images/10.webp";
+import img11 from "@/assets/images/11.webp";
+import img12 from "@/assets/images/12.webp";
+import img13 from "@/assets/images/13.webp";
+const items = [
+  {
+    title: "BE HUNGRY, BE OPEN",
+    description:
+      "Hotel breakfasts can be tempting, make sure you leave plenty of room for more food when you join your Food Experience. We encourage you to be open and try the foods introduced by the guide.",
+    image: img9,
+    bgImage: "/images/9.webp",
+  },
+  {
+    title: "BRING YOUR WATER BOTTLE",
+    description:
+      "With Malaysia’s Tropical climate it’s easy to get thirsty quickly. Bring a small bottle of water to keep you hydrated.",
+    image: img10,
+    bgImage: "/images/14.png",
+  },
+  {
+    title: "UMBRELLA AND RAINCOAT",
+    description:
+      "Malaysia’s downpour can be heavy. Please bring your own umbrella or raincoat if it’s raining or going to rain.",
+    image: img11,
+    bgImage: "/images/15.png",
+  },
+  {
+    title: "AVOID WEARING WHITE",
+    description:
+      "There’s nothing worse than spilling food on a white t-shirt. If you don’t mind the stain, you can always wear white.",
+    image: img12,
+    bgImage: "/images/16.png",
+  },
+  {
+    title: "WEAR COMFORTABLE SHOES",
+    description:
+      "Simply Enak’s Food Experiences are normally walking trails. Comfortable shoes will keep you comfortable the entire tour.",
+    image: img13,
+    bgImage: "/images/17.png",
+  },
+];
+---
+
+<Layout>
+  <GlobalHero
+    title="Here’s how you find us!"
+    image={heroImage}
+    objectPosition="center"
+    isOverlay={true}
+  />
+  <section class="main-container py-16 md:py-20 space-y-16 md:space-y-20">
+    {
+      items.map((item, index) => (
+        <div
+          class="flex gap-8 items-center text-center md:text-left"
+          class:list={[
+            index % 2 === 1
+              ? "flex-col md:flex-row-reverse"
+              : "flex-col md:flex-row",
+          ]}
+        >
+          <div class="flex-1">
+            <img
+              src={item.image}
+              alt={item.title}
+              width={600}
+              height={600}
+              class="max-w-[300px] mx-auto object-contain"
+              style={{
+                backgroundImage: `url(${item.bgImage})`,
+              }}
+            />
+          </div>
+          <div class="flex-1 space-y-3">
+            <h5 class="text-h5">{item.title}</h5>
+            <p class="text-body text-[#3a3a3a]">{item.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+  <section class="relative">
+    <img
+      src={img3}
+      alt="Kuala Lumpur"
+      class="w-full h-[500px] object-cover"
+      width={1920}
+      height={500}
+    />
+    <div class="absolute z-20 inset-0 flex items-center justify-center p-5">
+      <Button
+        href="/directions"
+        title="Click here for a detailed start location"
+        icon="double-chevron-right"
+        class="primary-btn max-w-max mx-auto !px-5 text-xs sm:text-base md:text-lg"
+      />
+    </div>
+  </section>
+  <CTASection />
+</Layout>

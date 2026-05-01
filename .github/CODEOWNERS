@@ -1,0 +1,5 @@
+# Production branch protection via CODEOWNERS
+# All changes to main require review from @maarten
+
+# All files require maarten's review before merging to main
+*       @maarten
