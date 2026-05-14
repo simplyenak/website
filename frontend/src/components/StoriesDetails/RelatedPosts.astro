@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import fetchApi from "@/lib/strapi";
+import fetchApi from "@/lib/payload";
 import type { StoriesDetailsPageTypes } from "@/types";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 const stories: StoriesDetailsPageTypes[] = await fetchApi({
-  endpoint: "storie?populate=hero.bgImage",
+  endpoint: "stories?depth=2",
   wrappedByKey: "data",
 });
 ---

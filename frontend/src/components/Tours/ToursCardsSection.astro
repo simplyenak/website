@@ -3,11 +3,11 @@ import ToursCard from "@/components/Tours/ToursCard.astro";
 
 let { title } = Astro.props;
 
-import fetchApi from "@/lib/strapi";
+import fetchApi from "@/lib/payload";
 import type { TourDetailsPageTypes } from "@/types";
 
 const tours = await fetchApi<TourDetailsPageTypes[]>({
-  endpoint: `tour?populate=hero.image&populate=tags`,
+  endpoint: `tours?depth=2`,
   wrappedByKey: "data",
 });
 const uniqueButtons = [

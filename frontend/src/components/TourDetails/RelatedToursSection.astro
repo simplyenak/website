@@ -1,11 +1,11 @@
 ---
-import fetchApi from '@/lib/strapi'
+import fetchApi from "@/lib/payload";
 import type { TourDetailsPageTypes } from '@/types'
 import { getFullMediaUrl } from '@/utils/getFullMediaUrl'
 import { Image } from 'astro:assets'
 const tours = await fetchApi<TourDetailsPageTypes[]>({
-  endpoint: `tour?populate=hero.image`,
-  wrappedByKey: 'data',
+  endpoint: `tours?depth=2`,
+  wrappedByKey: "data",
 })
 const { slug } = Astro.params
 ---

@@ -1,11 +1,12 @@
 ---
 import BlockRendererClient from "@/components/BlockRendererClient";
-import fetchApi from "@/lib/strapi";
+import fetchApi from "@/lib/payload";
 import type { AboutSimplyEnakSectionTypes } from "@/types";
 import Icon from "../Icon.astro";
 const data: { aboutSection: AboutSimplyEnakSectionTypes } = await fetchApi({
-  endpoint: "stories-main?populate=aboutSection.socialItems.icon",
+  endpoint: "stories?depth=3",
   wrappedByKey: "data",
+  wrappedByList: true,
 });
 ---
 

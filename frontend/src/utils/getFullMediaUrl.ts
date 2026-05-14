@@ -1,7 +1,7 @@
 export function getFullMediaUrl(media: { url?: string } | undefined) {
   // Proxy S3 images through Cloudflare CDN for Polish optimization (WebP/AVIF conversion)
   const cdnURL = 'https://cdn.simplyenak.com'
-  const baseURL = import.meta.env.STRAPI_URL ?? 'http://localhost:1337'
+  const baseURL = import.meta.env.PAYLOAD_URL ?? 'http://localhost:3000'
   const s3Domain = 'se-website-images.s3.nl-ams.scw.cloud'
 
   if (!media?.url) return ''

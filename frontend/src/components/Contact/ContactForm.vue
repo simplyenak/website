@@ -196,7 +196,7 @@
 
 <script setup>
 import { ref, reactive, onMounted } from "vue";
-import { postApi } from "@/lib/strapi";
+import { postApi } from "@/lib/payload";
 
 const formData = reactive({
   fullName: "",
@@ -241,7 +241,7 @@ const handleSubmit = async () => {
   submitMessage.value = null;
 
   try {
-    // Prepare data for Strapi API
+    // Prepare data for Payload CMS
     const contactData = {
       ...formData,
       publishedAt: new Date().toISOString(), // Auto-publish the contact form

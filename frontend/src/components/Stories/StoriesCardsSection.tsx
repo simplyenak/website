@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import fetchApi from "@/lib/strapi";
+import fetchApi from "@/lib/payload";
 import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
 import type { StoriesDetailsPageTypes } from "@/types";
 
@@ -28,11 +28,10 @@ export default function StoriesCardsSection() {
       try {
         const [storiesData, metaData] = await Promise.all([
           fetchApi<StoriesDetailsPageTypes[]>({
-            endpoint: `storie?populate=hero.bgImage&populate=hero&populate=categories&populate=contents&populate=author.image&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
-            wrappedByKey: "data",
+            endpoint: `stories?depth=3`,
           }),
           fetchApi<PaginationMeta>({
-            endpoint: `storie?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
+            endpoint: `stories?page=${page}&limit=${PAGE_SIZE}&depth=1`,
             wrappedByKey: "meta",
           }),
         ]);
