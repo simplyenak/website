@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy Production from Staging
 
 on:
   workflow_dispatch:
@@ -10,6 +10,11 @@ on:
         type: choice
         options:
           - production
+          - staging
+      message:
+        description: 'Deployment message'
+        required: false
+        default: 'Manual deployment from staging to production'
 
 permissions:
   contents: read
@@ -18,8 +23,8 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Cloudflare Pages (production)
-
+    name: Deploy to Cloudflare Pages
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,7 +40,7 @@ jobs:
         working-directory: frontend
         run: npm ci
 
-      - name: Build
+      - name: Build Production
         working-directory: frontend
         run: npm run build
 
