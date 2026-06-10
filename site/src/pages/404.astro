@@ -1,0 +1,71 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getPageBySlug } from '~/lib/content';
+
+const page = await getPageBySlug('404');
+const c = page?.content || {};
+const metadata = {
+  title: page?.metaTitle || 'Page Not Found',
+  description: page?.metaDescription || "This page doesn't exist — but the best food in Malaysia does.",
+  robots: { index: page?.robotsIndex ?? false },
+};
+const headingText = c.heading ?? "This page isn't here.\nBut the best Street Food\nin Kuala Lumpur definitely is.";
+const headingLines = headingText.split('\n');
+const highlightIdx = headingLines.findIndex((l: string) => l.includes('Street Food'));
+---
+
+<Layout metadata={metadata}>
+
+  <section class="min-h-[70vh] flex items-center bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center py-20">
+      <!-- Big visual -->
+      <div class="mb-8">
+        <span class="text-8xl md:text-9xl font-black font-heading text-primary/10 dark:text-primary/5 select-none">404</span>
+      </div>
+
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-4">{c.eyebrow ?? "Lost? That's OK."}</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-default mb-6 leading-tight">
+        {headingLines.map((line: string, i: number) => (
+          i === highlightIdx ? (
+            <>{line.replace('Street Food', '<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">Street Food</span>')}<br /></>
+          ) : (
+            <>{line}<br /></>
+          )
+        ))}
+      </h1>
+      <p class="text-muted text-lg mb-8 max-w-lg mx-auto">
+        {c.description ?? "The page you're looking for doesn't exist, but a bowl of the best laksa of your life definitely does. Let's get you back on track."}
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href={c.ctaPrimary?.url || "/tours"} class="inline-flex items-center justify-center gap-2 bg-accent text-black font-bold px-8 py-4 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg">
+          {c.ctaPrimary?.text || "Browse Our Tours"}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href={c.ctaSecondary?.url || "/"} class="inline-flex items-center justify-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-bold px-8 py-4 rounded hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-sm">
+          {c.ctaSecondary?.text || "Go Home"}
+        </a>
+      </div>
+
+      <div class="max-w-lg mx-auto border-t border-gray-100 dark:border-white/10 pt-8">
+        <p class="text-xs text-muted uppercase tracking-[0.2em] font-semibold mb-4">While you're here, try these</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {(c.quickLinks ?? [
+            { text: 'All Tours', url: '/tours' },
+            { text: 'Private Tours', url: '/tours' },
+            { text: 'Tailored Experiences', url: '/tours' },
+            { text: 'Our Story', url: '/about' },
+            { text: 'Contact', url: '/contact' },
+            { text: 'WhatsApp Us', url: 'https://wa.me/60172878929', accent: true },
+          ]).map((link: any, i: number) => (
+            <>
+              {i > 0 && <span class="text-muted/30">·</span>}
+              <a href={link.url} target={link.url?.startsWith('http') ? '_blank' : undefined} class={`text-sm font-medium underline underline-offset-4 decoration-gray-200 hover:decoration-primary transition-colors ${link.accent ? 'text-accent hover:text-[#e8922e]' : 'text-default hover:text-primary'}`}>{link.text}</a>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

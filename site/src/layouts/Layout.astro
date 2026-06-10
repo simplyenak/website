@@ -1,0 +1,77 @@
+---
+import '~/assets/styles/tailwind.css';
+
+import { I18N } from 'astrowind:config';
+
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import Favicons from '~/components/Favicons.astro';
+import CustomStyles from '~/components/CustomStyles.astro';
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import Analytics from '~/components/common/Analytics.astro';
+import CookieBanner from '~/components/common/CookieBanner.astro';
+import BasicScripts from '~/components/common/BasicScripts.astro';
+
+// Comment the line below to disable View Transitions
+import { ClientRouter } from 'astro:transitions';
+
+import type { MetaData as MetaDataType } from '~/types';
+
+export interface Props {
+  metadata?: MetaDataType;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { metadata = {}, structuredData } = Astro.props;
+const { language, textDirection } = I18N;
+---
+
+<!doctype html>
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+  <head>
+    <CommonMeta />
+    <Favicons />
+    <CustomStyles />
+    <ApplyColorMode />
+    <Metadata {...metadata} />
+    <SiteVerification />
+    <StructuredData items={structuredData} />
+    <Analytics />
+
+    <!-- Performance: Preconnect to critical origins -->
+    <link rel="preconnect" href="https://cdn.simplyenak.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
+
+    <!-- Cloudflare Turnstile — form spam protection -->
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- IndexNow verification for Bing/Yandex -->
+    <meta name="indexnow-key" content="8d67ae8f-2154-434e-aca7-68b3a7fa2ee0" />
+
+    <!-- Comment the line below to disable View Transitions -->
+    <ClientRouter fallback="swap" />
+  </head>
+
+  <body class="antialiased text-default bg-page tracking-tight">
+    <!-- Skip to main content — for keyboard/screen-reader users -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-white focus:text-primary focus:font-bold focus:rounded focus:shadow-lg focus:outline focus:outline-2 focus:outline-primary"
+    >
+      Skip to main content
+    </a>
+
+    <slot />
+
+    <CookieBanner />
+    <BasicScripts />
+  </body>
+</html>

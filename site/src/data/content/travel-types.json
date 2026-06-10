@@ -1,0 +1,46 @@
+[
+  {
+    "id": 4,
+    "name": "Solo",
+    "slug": "solo",
+    "icon": "🎒",
+    "color": "#8b5cf6",
+    "description": "Perfect for solo travellers",
+    "status": "published",
+    "updatedAt": "2026-05-19T08:33:23.425Z",
+    "createdAt": "2026-05-19T08:33:23.425Z"
+  },
+  {
+    "id": 3,
+    "name": "Foodie",
+    "slug": "foodie",
+    "icon": "🍜",
+    "color": "#ef4444",
+    "description": "For serious food enthusiasts",
+    "status": "published",
+    "updatedAt": "2026-05-19T08:33:22.863Z",
+    "createdAt": "2026-05-19T08:33:22.863Z"
+  },
+  {
+    "id": 2,
+    "name": "Family",
+    "slug": "family",
+    "icon": "👨‍👩‍👧‍👦",
+    "color": "#f59e0b",
+    "description": "Family-friendly tours",
+    "status": "published",
+    "updatedAt": "2026-05-19T08:33:22.293Z",
+    "createdAt": "2026-05-19T08:33:22.293Z"
+  },
+  {
+    "id": 1,
+    "name": "Couples",
+    "slug": "couples",
+    "icon": "💑",
+    "color": "#ec4899",
+    "description": "Romantic food experiences for two",
+    "status": "published",
+    "updatedAt": "2026-05-19T08:33:21.708Z",
+    "createdAt": "2026-05-19T08:33:21.708Z"
+  }
+]

@@ -1,0 +1,50 @@
+---
+import '@fontsource/merriweather/300.css';
+import '@fontsource/merriweather/400.css';
+import '@fontsource/merriweather/700.css';
+import '@fontsource/merriweather/900.css';
+import '@fontsource/pt-sans/400.css';
+import '@fontsource/pt-sans/700.css';
+---
+
+<style is:inline>
+  :root {
+    --aw-font-sans: 'PT Sans', sans-serif;
+    --aw-font-serif: 'PT Sans', sans-serif;
+    --aw-font-heading: 'Merriweather', Georgia, serif;
+
+    --aw-color-primary: rgb(181 45 56);
+    --aw-color-secondary: rgb(136 94 64);
+    --aw-color-accent: rgb(255 163 51);
+
+    --aw-color-text-heading: rgb(15 14 14);
+    --aw-color-text-default: rgb(15 14 14);
+    --aw-color-text-muted: rgb(15 14 14 / 66%);
+    --aw-color-bg-page: rgb(249 246 242);
+    --aw-color-bg-page-dark: rgb(26 24 24);
+
+    ::selection {
+      background-color: rgb(255 163 51 / 30%);
+    }
+  }
+
+  .dark {
+    --aw-font-sans: 'PT Sans', sans-serif;
+    --aw-font-serif: 'PT Sans', sans-serif;
+    --aw-font-heading: 'Merriweather', Georgia, serif;
+
+    --aw-color-primary: rgb(220 75 85);
+    --aw-color-secondary: rgb(190 130 80);
+    --aw-color-accent: rgb(255 175 71);
+
+    --aw-color-text-heading: rgb(247 248 248);
+    --aw-color-text-default: rgb(229 236 246);
+    --aw-color-text-muted: rgb(229 236 246 / 66%);
+    --aw-color-bg-page: rgb(26 24 24);
+
+    ::selection {
+      background-color: rgb(255 175 71 / 35%);
+      color: #fff;
+    }
+  }
+</style>

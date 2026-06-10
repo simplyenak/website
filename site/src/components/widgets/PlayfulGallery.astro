@@ -1,0 +1,122 @@
+---
+import type { Widget } from '~/types';
+
+export interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  images: Array<{
+    src: string;
+    alt: string;
+    caption?: string;
+  }>;
+}
+
+const {
+  title = 'Moments from Our Tours',
+  subtitle = 'Real guests, real food, real memories  -  captured along the way.',
+  tagline = 'Gallery',
+  images = [],
+  id = 'gallery',
+  isDark = false,
+  classes = {},
+  bg = '',
+} = Astro.props;
+
+// Desktop polaroid positions (7 images scattered collage)
+const desktopPositions = [
+  { left: '2%', top: '0%', rotate: '-5deg', width: '24%', z: 20 },
+  { left: '24%', top: '14%', rotate: '3deg', width: '22%', z: 10 },
+  { left: '46%', top: '2%', rotate: '-2deg', width: '26%', z: 30 },
+  { left: '70%', top: '20%', rotate: '6deg', width: '22%', z: 10 },
+  { left: '4%', top: '54%', rotate: '4deg', width: '22%', z: 20 },
+  { left: '30%', top: '60%', rotate: '-4deg', width: '24%', z: 30 },
+  { left: '56%', top: '56%', rotate: '2deg', width: '22%', z: 10 },
+];
+---
+
+<section
+  id={id}
+  class={`
+    relative py-20 md:py-28 overflow-hidden
+    ${isDark ? 'bg-page-dark' : 'bg-page'}
+    ${bg}
+    ${classes?.container ?? ''}
+  `}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <!-- Headline -->
+    <div class="text-center mb-14">
+      {tagline && (
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tagline}</p>
+      )}
+      {title && (
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">{title}</h2>
+      )}
+      {subtitle && (
+        <p class="text-muted max-w-2xl mx-auto">{subtitle}</p>
+      )}
+    </div>
+
+    <!-- === Mobile: horizontal scroll strip === -->
+    <div class="md:hidden flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+      {images.slice(0, 7).map((img) => (
+        <div class="snap-center shrink-0 w-[200px]">
+          <div class="bg-[#fffbef] dark:bg-[#2a2a24] p-2 pb-4 shadow-[0_6px_18px_rgba(0,0,0,0.12)] dark:shadow-[0_6px_18px_rgba(0,0,0,0.35)] rounded-[2px]">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="w-full h-auto block aspect-[4/3] object-cover rounded-[2px]"
+              loading="lazy"
+            />
+            {img.caption && (
+              <p class="text-[11px] text-center mt-2 text-muted dark:text-white/60 italic leading-tight px-1">
+                {img.caption}
+              </p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- === Desktop: scattered polaroid collage === -->
+    <div
+      class="relative w-full mx-auto max-md:hidden"
+      style="height: clamp(380px, 48vw, 520px); max-width: 1000px;"
+    >
+      {images.slice(0, 7).map((img, i) => {
+        const p = desktopPositions[i] || desktopPositions[0];
+        return (
+          <div
+            class="absolute transition-all duration-300 ease-out hover:!z-40"
+            style={`
+              left: ${p.left};
+              top: ${p.top};
+              width: ${p.width};
+              z-index: ${p.z};
+              transform: rotate(${p.rotate});
+            `}
+          >
+            <a
+              href={img.src}
+              target="_blank"
+              class="block bg-[#fffbef] dark:bg-[#2a2a24] p-2 pb-4 shadow-[0_8px_24px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.35)] rounded-[2px] transition-all duration-300 hover:!rotate-0 hover:!scale-[1.04] hover:!shadow-[0_14px_32px_rgba(0,0,0,0.20)] dark:hover:!shadow-[0_14px_32px_rgba(0,0,0,0.45)]"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                class="w-full h-auto block aspect-[4/3] object-cover rounded-[2px]"
+                loading="lazy"
+              />
+              {img.caption && (
+                <p class="text-[11px] text-center mt-2 text-muted dark:text-white/60 italic leading-tight px-1">
+                  {img.caption}
+                </p>
+              )}
+            </a>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

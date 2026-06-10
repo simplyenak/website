@@ -1,0 +1,72 @@
+site:
+  name: Simply Enak
+  site: 'https://simplyenak.com'
+  base: '/'
+  trailingSlash: false
+
+  googleSiteVerificationId: 'glJQJRm6UBIMRLJ2-JNPEW8id5jC5gKXFZqECJ4Id-c'
+
+# Default SEO metadata
+metadata:
+  title:
+    default: Simply Enak
+    template: '%s — Simply Enak'
+  description: "The most authentic way to discover food and culture in Kuala Lumpur and Penang. Join Simply Enak for Malaysian food tours with local guides."
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: Simply Enak
+    images:
+      - url: 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: '@simplyenak'
+    site: '@simplyenak'
+    cardType: summary_large_image
+
+i18n:
+  language: en
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: true
+    postsPerPage: 12
+
+    post:
+      isEnabled: true
+      permalink: '/%slug%'
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'stories'
+      robots:
+        index: true
+
+    category:
+      isEnabled: true
+      pathname: 'category'
+      robots:
+        index: true
+
+    tag:
+      isEnabled: true
+      pathname: 'tag'
+      robots:
+        index: false
+
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: G-262711985
+
+ui:
+  theme: 'system'

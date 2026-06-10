@@ -1,0 +1,82 @@
+---
+// Analytics — consent-gated GA4 + Meta Pixel.
+// Does NOT fire until visitor accepts cookies (via CookieBanner).
+// Exposes tracking functions: trackTourBooking, trackTourInterest, trackWhatsApp, trackContactForm
+
+import { ANALYTICS } from 'astrowind:config';
+
+const gaId = ANALYTICS?.vendors?.googleAnalytics?.id ? String(ANALYTICS.vendors.googleAnalytics.id) : 'G-262711985';
+const partytown = !!ANALYTICS?.vendors?.googleAnalytics?.partytown;
+const scriptType = partytown ? 'text/partytown' : undefined;
+---
+
+<script is:inline id="ga-init" data-ga-id={gaId} type={scriptType}>
+  (function () {
+    var gaId = document.getElementById('ga-init').dataset.gaId;
+    if (!gaId) return;
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    function initGA4(id) {
+      if (window._ga4Initialized) return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', id, {
+        send_page_view: true,
+        custom_map: { tour_type: 'custom_parameter_1', booking_source: 'custom_parameter_2' },
+      });
+      window._ga4Initialized = true;
+    }
+
+    // Return visitor who already accepted
+    if (localStorage.getItem('se_cookie_consent') === 'accepted') {
+      initGA4(gaId);
+    }
+
+    // First-time visitor who accepts during this session
+    document.addEventListener('cookieConsent:accepted', function () {
+      initGA4(gaId);
+    });
+
+    // ── Tracking helpers (silent no-ops if consent not given) ──
+
+    window.trackTourBooking = function (tourName, tourPrice, bookingId) {
+      if (!window._ga4Initialized) return;
+      gtag('event', 'purchase', {
+        transaction_id: bookingId, value: tourPrice, currency: 'MYR',
+        items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours', quantity: 1, price: tourPrice }],
+      });
+    };
+
+    window.trackTourInterest = function (tourName) {
+      if (!window._ga4Initialized) return;
+      gtag('event', 'view_item', {
+        currency: 'MYR', value: 0,
+        items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours' }],
+      });
+    };
+
+    window.trackContactForm = function () {
+      if (!window._ga4Initialized) return;
+      gtag('event', 'generate_lead', { currency: 'MYR', value: 0, method: 'contact_form' });
+    };
+
+    window.trackWhatsApp = function (source) {
+      if (!window._ga4Initialized) return;
+      gtag('event', 'contact', { method: 'whatsapp', event_label: source || 'unknown' });
+    };
+
+    // Global WhatsApp click tracker — catches all wa.me links
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href*="wa.me"]');
+      if (!a) return;
+      var source = a.dataset.trackSource || document.title || 'site';
+      if (window.trackWhatsApp) window.trackWhatsApp(source);
+    });
+  })();
+</script>

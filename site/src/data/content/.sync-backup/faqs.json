@@ -1,0 +1,188 @@
+[
+  {
+    "id": 11,
+    "question": "Do you offer private tours?",
+    "answer": "Yes! Private tours are available for couples, families, and groups. Use the contact form to plan a custom experience.",
+    "category": "private_tours",
+    "page_visibility": [
+      "contact",
+      "tours",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 17,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:38.923Z",
+    "createdAt": "2026-05-19T08:33:38.923Z",
+    "_status": "draft"
+  },
+  {
+    "id": 10,
+    "question": "What's your cancellation policy?",
+    "answer": "Free cancellation up to 24 hours before your tour. After that, we offer a full refund or rebooking if we can fill your spot.",
+    "category": "booking",
+    "page_visibility": [
+      "contact",
+      "tours",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 2,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:38.363Z",
+    "createdAt": "2026-05-19T08:33:38.363Z",
+    "_status": "draft"
+  },
+  {
+    "id": 9,
+    "question": "Do I need to book in advance?",
+    "answer": "We recommend booking at least 24 hours ahead so we can confirm availability with our vendors.",
+    "category": "booking",
+    "page_visibility": [
+      "contact",
+      "tours",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:37.797Z",
+    "createdAt": "2026-05-19T08:33:37.797Z",
+    "_status": "draft"
+  },
+  {
+    "id": 8,
+    "question": "How quickly do you respond?",
+    "answer": "We reply within 3 hours during business hours (9am-8pm Malaysia time). On WhatsApp it is usually within minutes.",
+    "category": "booking",
+    "page_visibility": [
+      "contact",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:37.234Z",
+    "createdAt": "2026-05-19T08:33:37.234Z",
+    "_status": "draft"
+  },
+  {
+    "id": 7,
+    "question": "What happens if it rains?",
+    "answer": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we will reschedule.",
+    "category": "general",
+    "page_visibility": [
+      "home",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:36.650Z",
+    "createdAt": "2026-05-19T08:33:36.650Z",
+    "_status": "draft"
+  },
+  {
+    "id": 6,
+    "question": "Is the food spicy?",
+    "answer": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available.",
+    "category": "general",
+    "page_visibility": [
+      "home",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 16,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:36.077Z",
+    "createdAt": "2026-05-19T08:33:36.077Z",
+    "_status": "draft"
+  },
+  {
+    "id": 5,
+    "question": "Can I book a private tour?",
+    "answer": "Yes. Private tours are available for groups, families, and corporate events. Contact us for a custom experience.",
+    "category": "booking",
+    "page_visibility": [
+      "home",
+      "tours",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 3,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:35.493Z",
+    "createdAt": "2026-05-19T08:33:35.493Z",
+    "_status": "draft"
+  },
+  {
+    "id": 4,
+    "question": "How much walking is involved?",
+    "answer": "About 2km of easy walking with frequent stops. Suitable for most fitness levels.",
+    "category": "general",
+    "page_visibility": [
+      "home",
+      "about",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:34.927Z",
+    "createdAt": "2026-05-19T08:33:34.927Z",
+    "_status": "draft"
+  },
+  {
+    "id": 3,
+    "question": "What dietary options do you accommodate?",
+    "answer": "We accommodate vegetarian, halal, nut-allergy, and gluten-sensitive diets. Just let us know when booking.",
+    "category": "dietary",
+    "page_visibility": [
+      "home",
+      "contact",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:34.359Z",
+    "createdAt": "2026-05-19T08:33:34.359Z",
+    "_status": "draft"
+  },
+  {
+    "id": 2,
+    "question": "How long are the tours?",
+    "answer": "Most tours run 3.5 to 4 hours. We cover about 2km of walking at a relaxed pace with plenty of seating at each stop.",
+    "category": "general",
+    "page_visibility": [
+      "home",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-05-19T08:33:33.788Z",
+    "createdAt": "2026-05-19T08:33:33.788Z",
+    "_status": "draft"
+  }
+]

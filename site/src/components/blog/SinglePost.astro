@@ -1,0 +1,143 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Image from '~/components/common/Image.astro';
+import PostTags from '~/components/blog/Tags.astro';
+import SocialShare from '~/components/common/SocialShare.astro';
+
+import { getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/utils';
+
+import type { Post } from '~/types';
+
+export interface Props {
+  post: Post;
+  url: string | URL;
+}
+
+const { post, url } = Astro.props;
+const readingTime = Math.max(1, Math.ceil((post.contents?.length || 1000) / 2000));
+const siteUrl = 'https://simplyenak.com';
+const blogSlug = typeof url === 'string' ? url.replace(siteUrl, '') : (url.pathname || '');
+---
+
+<section class="mx-auto">
+  <!-- BlogPosting Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image,
+    "datePublished": post.publishDate,
+    "dateModified": post.publishDate,
+    "author": {
+      "@type": "Person",
+      "name": post.author || "Simply Enak",
+      "description": post.author ? `Guide at Simply Enak` : "Simply Enak food tours team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Simply Enak",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": siteUrl + blogSlug
+    }
+  })} />
+  <article>
+    <!-- Hero with background image -->
+    <header class="relative bg-[#1a1a1a] text-white overflow-hidden">
+      {post.image && (
+        <div class="absolute inset-0">
+          <img src={post.image} alt="" class="w-full h-full object-cover opacity-30" loading="eager" />
+          <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
+        </div>
+      )}
+      <div class="relative max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+        <!-- Meta row -->
+        <div class="flex flex-wrap items-center gap-3 text-xs text-white/60 mb-4">
+          {post.publishDate && (
+            <time datetime={String(post.publishDate)}>
+              {getFormattedDate(post.publishDate)}
+            </time>
+          )}
+          <span class="text-white/30">·</span>
+          <span>{readingTime} min read</span>
+          {post.category?.title && (
+            <>
+              <span class="text-white/30">·</span>
+              <a class="hover:text-accent transition-colors" href={getPermalink(post.category.slug, 'category')}>
+                {post.category.title}
+              </a>
+            </>
+          )}
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-tight mb-4">
+          {post.title}
+        </h1>
+
+        <!-- Excerpt -->
+        {post.excerpt && (
+          <p class="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
+            {post.excerpt}
+          </p>
+        )}
+
+        <!-- Author -->
+        {post.author && (
+          <div class="flex items-center gap-3 mt-6 pt-6 border-t border-white/10">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+              <span class="text-accent font-bold text-sm">{post.author.charAt(0)}</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">{post.author}</p>
+              <p class="text-xs text-white/50">Simply Enak</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-16">
+      <!-- Featured image after hero -->
+      {post.image && (
+        <div class="-mx-4 sm:mx-0 mb-10">
+          <img
+            src={post.image}
+            alt={post.excerpt || post.title}
+            class="w-full rounded-xl shadow-md"
+            loading="eager"
+          />
+        </div>
+      )}
+
+      <!-- Article body -->
+      <div class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-primary prose-img:rounded-lg prose-blockquote:border-accent prose-blockquote:text-muted prose-li:my-1">
+        <slot />
+      </div>
+
+      <!-- Tags + Share -->
+      <div class="mt-12 pt-8 border-t border-gray-100 dark:border-white/10">
+        <div class="flex flex-col sm:flex-row justify-between gap-4">
+          <PostTags tags={post.tags} class="mr-5" />
+          <SocialShare url={url} text={post.title} class="align-middle text-gray-500 dark:text-slate-600" />
+        </div>
+      </div>
+
+      <!-- Related posts hint -->
+      <div class="mt-12 p-6 bg-gray-50 dark:bg-[#151313] rounded-xl border border-gray-100 dark:border-white/10 text-center">
+        <p class="text-sm text-muted">
+          Enjoyed this story? <a href="/stories" class="text-accent font-semibold hover:underline">Browse all stories →</a>
+        </p>
+      </div>
+    </div>
+  </article>
+</section>

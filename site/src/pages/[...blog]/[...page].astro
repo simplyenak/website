@@ -1,0 +1,237 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { getStaticPathsBlogList } from '~/utils/blog';
+import { fetchPosts } from '~/utils/blog';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return await getStaticPathsBlogList({ paginate });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props as Props;
+const currentPage = page.currentPage ?? 1;
+
+const allPosts = await fetchPosts();
+
+// Featured = first post
+const featured = allPosts[0];
+
+// Split by new categories
+const localKnowledge = allPosts.filter(p => p.category?.title === 'Local Food Knowledge');
+const travelTips = allPosts.filter(p => p.category?.title === 'Travel Tips');
+const vendorStories = allPosts.filter(p => p.category?.title === 'Vendor Stories');
+
+// Exclude featured from its section
+const localKnowledgeRest = localKnowledge.filter(p => p.slug !== featured?.slug);
+const travelTipsRest = travelTips.filter(p => p.slug !== featured?.slug);
+const vendorStoriesRest = vendorStories.filter(p => p.slug !== featured?.slug);
+
+const metadata = {
+  title: `Stories${currentPage > 1 ? `  -  Page ${currentPage}` : ''}`,
+  description: 'Local food knowledge, travel tips, and the vendors who keep Malaysian traditions alive.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Page Header -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://se-website-images.s3.nl-ams.scw.cloud/payload-media/eatdrinkgeorgetown_1_263d654742.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/60 via-[#1a1a1a]/80 to-[#1a1a1a]"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-3 leading-tight">Stories</h1>
+      <p class="text-lg text-white/70 max-w-2xl">Local food knowledge, travel tips, and the people behind Malaysia's best flavours</p>
+    </div>
+  </section>
+
+  <!-- Sticky Category Nav -->
+  <nav class="sticky top-0 z-30 bg-white dark:bg-[#1e1c1c] border-b border-gray-200 dark:border-white/10 shadow-sm" aria-label="Story categories">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center gap-2 py-3 overflow-x-auto">
+        <a href="#featured" class="text-sm font-semibold px-4 py-1.5 rounded-full bg-primary text-white whitespace-nowrap">All Stories</a>
+        <a href="#local-knowledge" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">Local Food Knowledge</a>
+        <a href="#travel-tips" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">Travel Tips</a>
+        <a href="#vendor-stories" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">Vendor Stories</a>
+        <div class="ml-auto flex items-center gap-1.5 text-xs text-muted shrink-0">
+          <a href="/" class="hover:text-primary transition-colors">Home</a>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <span class="text-default font-semibold">Stories</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+
+    {allPosts.length === 0 ? (
+      <section class="text-center py-16">
+        <p class="text-muted text-lg">Stories coming soon. Malaysian heritage is rich with food traditions waiting to be explored.</p>
+        <a href="/tours" class="inline-flex items-center gap-2 mt-6 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-[#e8922e] transition-colors text-sm">
+          Browse Tours Instead
+        </a>
+      </section>
+    ) : (
+      <>
+
+        <!-- Featured Story -->
+        {featured && (
+          <section id="featured" class="mb-16 scroll-mt-20">
+            <a href={`/${featured.slug}`} class="group block relative overflow-hidden rounded-xl aspect-[16/9] md:aspect-[21/9] shadow-lg">
+              <img src={featured.image} alt={featured.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+              <div class="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
+                <span class="inline-block self-start bg-accent text-black text-xs font-bold px-3 py-1 rounded-full mb-3">
+                  {featured.category?.title || 'Stories'}
+                </span>
+                <h2 class="text-2xl md:text-4xl font-bold font-heading text-white mb-2 group-hover:text-accent transition-colors leading-snug max-w-3xl">{featured.title}</h2>
+                <p class="text-white/70 text-sm md:text-base max-w-2xl mb-2 line-clamp-2">{featured.excerpt}</p>
+                <span class="text-accent font-semibold text-sm">Read the story →</span>
+              </div>
+            </a>
+          </section>
+        )}
+
+        <!-- Local Food Knowledge -->
+        {localKnowledgeRest.length > 0 && (
+          <section id="local-knowledge" class="mb-16 scroll-mt-20">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">What to eat & where</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">Local Food Knowledge</h2>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {localKnowledgeRest.map((post, i) => (
+                <a href={`/${post.slug}`} class:list={[
+                  'group block relative overflow-hidden rounded-xl shadow-md',
+                  i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+                ]}>
+                  <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                  <div class:list={[
+                    'absolute inset-0 flex flex-col justify-end',
+                    i < 2 ? 'p-5 md:p-6' : 'p-5',
+                  ]}>
+                    <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Local Food Knowledge</span>
+                    <h3 class:list={[
+                      'font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors',
+                      i < 2 ? 'text-lg md:text-xl' : 'text-base',
+                    ]}>{post.title}</h3>
+                    <p class="text-white/60 text-sm mt-1 line-clamp-2 hidden md:block">{post.excerpt}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Travel Tips -->
+        {travelTipsRest.length > 0 && (
+          <section id="travel-tips" class="mb-16 scroll-mt-20">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">Plan like a local</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">Travel Tips</h2>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {travelTipsRest.map((post, i) => (
+                <a href={`/${post.slug}`} class:list={[
+                  'group block relative overflow-hidden rounded-xl shadow-md',
+                  i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+                ]}>
+                  <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                  <div class:list={[
+                    'absolute inset-0 flex flex-col justify-end',
+                    i < 2 ? 'p-5 md:p-6' : 'p-5',
+                  ]}>
+                    <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Travel Tips</span>
+                    <h3 class:list={[
+                      'font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors',
+                      i < 2 ? 'text-lg md:text-xl' : 'text-base',
+                    ]}>{post.title}</h3>
+                    <p class="text-white/60 text-sm mt-1 line-clamp-2 hidden md:block">{post.excerpt}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Vendor Stories -->
+        {vendorStoriesRest.length > 0 && (
+          <section id="vendor-stories" class="mb-16 scroll-mt-20">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">The people behind the food</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">Vendor Stories</h2>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {vendorStoriesRest.map((post, i) => (
+                <a href={`/${post.slug}`} class:list={[
+                  'group block relative overflow-hidden rounded-xl shadow-md',
+                  i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+                ]}>
+                  <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                  <div class:list={[
+                    'absolute inset-0 flex flex-col justify-end',
+                    i < 2 ? 'p-5 md:p-6' : 'p-5',
+                  ]}>
+                    <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Vendor Stories</span>
+                    <h3 class:list={[
+                      'font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors',
+                      i < 2 ? 'text-lg md:text-xl' : 'text-base',
+                    ]}>{post.title}</h3>
+                    <p class="text-white/60 text-sm mt-1 line-clamp-2 hidden md:block">{post.excerpt}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Vendor Stories empty state -->
+        {vendorStoriesRest.length === 0 && (
+          <section id="vendor-stories" class="mb-16 scroll-mt-20">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">The people behind the food</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">Vendor Stories</h2>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 dark:bg-[#151313] rounded-xl border border-gray-100 dark:border-white/10 p-10 text-center">
+              <p class="text-muted mb-4">We're meeting the stall owners, market vendors, and home cooks who keep Malaysian food traditions alive. Their stories are coming soon.</p>
+              <a href="/tours" class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
+                Meet them on a tour →
+              </a>
+            </div>
+          </section>
+        )}
+
+        <!-- Newsletter CTA -->
+        <section class="bg-[#1a1a1a] rounded-xl p-10 md:p-14 text-center mt-8">
+          <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Hungry for More?</p>
+          <h2 class="text-3xl font-bold font-heading text-white mb-4">Get Stories in Your Inbox</h2>
+          <p class="text-white/60 max-w-md mx-auto mb-8">Local food knowledge, travel tips, and vendor stories straight from Malaysia. No spam, just the good stuff.</p>
+          <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input type="email" placeholder="Your email address" required class="flex-1 px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent text-sm" />
+            <button type="submit" class="px-6 py-3 bg-accent text-black font-bold rounded-lg hover:bg-[#e8922e] transition-colors text-sm whitespace-nowrap">Subscribe</button>
+          </form>
+        </section>
+
+      </>
+    )}
+  </div>
+</Layout>

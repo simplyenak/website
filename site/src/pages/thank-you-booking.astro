@@ -1,0 +1,30 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import ThankYou from '~/components/ThankYou.astro';
+import { getPageBySlug } from '~/lib/content';
+
+const page = await getPageBySlug('thank-you-booking');
+const d = (page?.thankYouData || {}) as any;
+const metadata = {
+  title: page?.metaTitle || 'Thank You — Booking Confirmed',
+  description: page?.metaDescription || '',
+  robots: { index: page?.robotsIndex ?? false },
+};
+---
+
+<Layout metadata={metadata}>
+  <ThankYou
+    title={d.title ?? "Thank You"}
+    subtitle={d.subtitle ?? "Received"}
+    paragraphs={d.paragraphs ?? ["Your submission has been received."]}
+    nextSteps={d.nextSteps ?? [
+      { title: 'Check Your Email', description: 'A confirmation is on its way' },
+      { title: "We'll Follow Up Personally", description: 'We respond within 24 hours' },
+    ]}
+    ctaText={d.ctaText ?? "We'll be in touch soon!"}
+    buttons={d.buttons ?? [
+      { title: 'Browse Our Tours', href: '/tours' },
+      { title: 'Back to Home', href: '/' },
+    ]}
+  />
+</Layout>

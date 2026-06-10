@@ -1,0 +1,154 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Brands from '~/components/widgets/Brands.astro';
+
+const metadata = {
+  title: 'Simply Enak – Malaysian Food Tours',
+  description: 'The most authentic way to discover food and culture in Kuala Lumpur and Penang. Join Simply Enak for Malaysian food tours with local guides.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <Hero
+    title="Malaysia's Culture and Heritage<br />As <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#b52d38] to-[#ffa333]\">Only Locals</span> Know It"
+    subtitle="Small group walking food tours through neighborhoods where we actually live and eat. Family-run stalls, hidden streets, and the stories behind every dish."
+    tagline="Simply Enak · Kuala Lumpur &amp; Penang · Food Tours"
+    actions={[
+      { variant: 'primary', text: 'Explore Tours', href: '/tours' },
+      { variant: 'secondary', text: 'See How It Works', href: '/how-it-works' },
+    ]}
+  />
+
+  <!-- ═══════════════════ BRANDS / PARTNERS ═══════════════════ -->
+  <Brands
+    title="As Seen On"
+    icons={[
+      { icon: 'tabler:brand-tripadvisor', alt: 'TripAdvisor' },
+      { icon: 'tabler:brand-google', alt: 'Google' },
+      { icon: 'tabler:award', alt: 'Certificate of Excellence' },
+    ]}
+  />
+
+  <!-- ═══════════════════ MANIFESTO ═══════════════════ -->
+  <Features
+    title="Great food isn't found in guidebooks."
+    subtitle="It's found down a side street your taxi driver almost missed. On a plastic stool under a fluorescent light. At a stall with no English menu and a queue of locals."
+    tagline="Our Philosophy"
+    columns={3}
+    items={[
+      {
+        title: 'Heritage Vendors',
+        description: 'We partner with family-run stalls that have been feeding their neighborhoods for decades. Recipes passed down through generations.',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Authentic Flavours',
+        description: 'No tourist menus. No shortcuts. We take you to the spots where we eat with our own families on weekends.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Cultural Context',
+        description: 'Every dish has a story — of migration, trade, and community. We share the history behind what\'s on your plate.',
+        icon: 'tabler:books',
+      },
+    ]}
+  />
+
+  <!-- ═══════════════════ SIGNATURE TOURS ═══════════════════ -->
+  <Features2
+    title="Our Signature Food Tours"
+    subtitle="Hand-picked routes through Malaysia's most flavorful neighborhoods"
+    tagline="Popular Experiences"
+    columns={3}
+    items={[
+      {
+        title: 'Flavours of Malaysia',
+        description: 'Market culture and hidden flavours. Explore KL\'s largest wet market, Chinatown temples, and historic food stalls. 8-10 dishes.',
+        href: '/tours/flavours-of-malaysia',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Kuala Lumpur Street Food',
+        description: 'The heart of KL street food. Walk through heritage lanes with 11 tastings including wonton mee, satay, and laksa.',
+        href: '/tours/kuala-lumpur-street-food',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Eat Drink George Town',
+        description: 'Penang\'s best evening food trail. Char kway teow, satay, and nutmeg cocktails in a historic speakeasy.',
+        href: '/tours/eat-drink-george-town',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Penang Street Food',
+        description: 'Penang\'s food capital tour. Chowrasta Market, Penang Laksa, and colourful Peranakan kuih.',
+        href: '/tours/penang-street-food',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Secrets of KL After Dark',
+        description: 'KL nightlife crawl with hidden speakeasies, street art, and late-night food. 4-5 craft cocktails included.',
+        href: '/tours/secrets-of-kl-nightlife',
+        icon: 'tabler:flame',
+      },
+    ]}
+  />
+
+  <!-- ═══════════════════ STATS ═══════════════════ -->
+  <Stats
+    title="Simply Enak by the Numbers"
+    tagline="Trusted by travellers worldwide"
+    stats={[
+      { title: 'Years Experience', value: '14+' },
+      { title: 'Happy Guests', value: '5000+' },
+      { title: 'TripAdvisor Rating', value: '5.0' },
+      { title: 'Tour Options', value: '16+' },
+    ]}
+  />
+
+  <!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
+  <Testimonials
+    title="What Our Guests Say"
+    tagline="Real reviews from real travellers"
+    testimonials={[
+      { name: 'Sarah Johnson', job: 'Australia', testimonial: 'The Flavours of Malaysia tour was the highlight of our trip. Our guide was knowledgeable and the food was incredible.' },
+      { name: 'Michael Chen', job: 'Singapore', testimonial: 'Great way to experience local culture. The market visit was eye-opening and all the food stops were fantastic.' },
+      { name: 'Emma Williams', job: 'United Kingdom', testimonial: 'We have done food tours around the world, and this one tops them all. Authentic, delicious, and great stories.' },
+    ]}
+  />
+
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <FAQs
+    title="Frequently Asked Questions"
+    tagline="Everything you need to know before booking"
+    items={[
+      { title: 'How long are the tours?', description: 'Most tours run 3.5–4 hours. We cover about 2km of walking at a relaxed pace with plenty of seating at each stop.' },
+      { title: 'What dietary options do you accommodate?', description: 'We accommodate vegetarian, halal, nut-allergy, and gluten-sensitive diets. Just let us know when booking.' },
+      { title: 'How much walking is involved?', description: 'About 2km of easy walking with frequent stops. Suitable for most fitness levels.' },
+      { title: 'Can I book a private tour?', description: 'Yes! Private tours are available for groups, families, and corporate events. Contact us for a custom experience.' },
+      { title: 'What happens if it rains?', description: 'Tours run rain or shine. Many food stops have covered seating. In extreme weather we\'ll reschedule.' },
+      { title: 'Is the food spicy?', description: 'Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available.' },
+    ]}
+  />
+
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <CallToAction
+    title="Ready to Taste Malaysia?"
+    subtitle="Book your food tour today and discover the flavors that make Malaysia one of the world's greatest food destinations."
+    actions={[
+      { variant: 'primary', text: 'Browse All Tours', href: '/tours' },
+      { variant: 'secondary', text: 'Contact Us', href: '/contact' },
+    ]}
+  />
+
+</Layout>

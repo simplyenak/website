@@ -1,0 +1,494 @@
+{
+  "id": 1,
+  "intro_title": null,
+  "intro_description": null,
+  "intro_button_label": null,
+  "steps": [
+    {
+      "id": "1",
+      "question": "How well do you know Malaysian food?",
+      "options": [
+        {
+          "id": "1",
+          "value": "newbie",
+          "label": "Honestly, I Just Found It",
+          "icon": "🆕",
+          "description": "I know nasi lemak exists. Maybe."
+        },
+        {
+          "id": "2",
+          "value": "tasted_once",
+          "label": "I've Tried the Famous Ones",
+          "icon": "🍽️",
+          "description": "Nasi lemak, satay, char kway teow — I know the hits"
+        },
+        {
+          "id": "3",
+          "value": "regular",
+          "label": "I Eat Here Every Time I Visit",
+          "icon": "✈️",
+          "description": "I have my favourite spots already"
+        },
+        {
+          "id": "4",
+          "value": "local",
+          "label": "I Could Eat This Every Day",
+          "icon": "🇲🇾",
+          "description": "Malaysian food is my comfort zone"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "question": "What's your food comfort zone?",
+      "options": [
+        {
+          "id": "5",
+          "value": "safe",
+          "label": "I Like My Comfort Zone",
+          "icon": "🛋️",
+          "description": "Familiar flavors, nothing too wild"
+        },
+        {
+          "id": "6",
+          "value": "mild_risk",
+          "label": "I'll Try If You Recommend It",
+          "icon": "🤞",
+          "description": "I trust good recommendations"
+        },
+        {
+          "id": "7",
+          "value": "adventurous",
+          "label": "Surprise Me — I Dare You",
+          "icon": "🌶️",
+          "description": "The weirder, the better"
+        },
+        {
+          "id": "8",
+          "value": "extreme",
+          "label": "I'll Eat Anything Once",
+          "icon": "🔥",
+          "description": "Durian? Chicken feet? Let's go."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "question": "What draws you to Malaysian food?",
+      "options": [
+        {
+          "id": "9",
+          "value": "culture",
+          "label": "The Stories Behind the Stalls",
+          "icon": "📖",
+          "description": "I want to know the history, the grandmother, the recipe passed down 4 generations"
+        },
+        {
+          "id": "10",
+          "value": "flavor",
+          "label": "The Flavours — All of Them",
+          "icon": "🍜",
+          "description": "Malay, Chinese, Indian, Peranakan — I want the full spectrum"
+        },
+        {
+          "id": "11",
+          "value": "social",
+          "label": "The People and the Atmosphere",
+          "icon": "🎉",
+          "description": "Night markets, hawker banter, eating elbow-to-elbow with locals"
+        },
+        {
+          "id": "12",
+          "value": "instagram",
+          "label": "The Experience and the Gram",
+          "icon": "📸",
+          "description": "I want food that looks as good as it tastes"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "question": "Your ideal Malaysian street food scene is...",
+      "options": [
+        {
+          "id": "13",
+          "value": "heritage_stall",
+          "label": "A 40-Year-Old Family Stall",
+          "icon": "🏚️",
+          "description": "One family, one recipe, four decades. This is where I belong."
+        },
+        {
+          "id": "14",
+          "value": "night_market",
+          "label": "A Bustling Night Market",
+          "icon": "🌙",
+          "description": "Neon lights, satay smoke, 100 stalls competing for my stomach."
+        },
+        {
+          "id": "15",
+          "value": "kopitiam",
+          "label": "A Classic Kopitiam",
+          "icon": "☕",
+          "description": "Plastic chairs, kopi-o, toast kaya, and locals arguing about politics."
+        },
+        {
+          "id": "16",
+          "value": "roadside_stall",
+          "label": "A Hidden Roadside Stall",
+          "icon": "🛤️",
+          "description": "You wouldn't find it unless someone local brought you here."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "question": "What's your most memorable Malaysian food moment?",
+      "options": [
+        {
+          "id": "17",
+          "value": "first_bite",
+          "label": "The First Bite That Changed Everything",
+          "icon": "✨",
+          "description": "One bite of something I'd never tried before. Game over. I was hooked."
+        },
+        {
+          "id": "18",
+          "value": "shared_meal",
+          "label": "Eating with Strangers Who Became Friends",
+          "icon": "🤝",
+          "description": "Sitting at a shared table, a local invited us in, we talked for hours."
+        },
+        {
+          "id": "19",
+          "value": "hidden_gem",
+          "label": "Finding the Place Nobody Told You About",
+          "icon": "💎",
+          "description": "Nobody on TripAdvisor knew about it. We stumbled in by accident."
+        },
+        {
+          "id": "20",
+          "value": "nostalgic",
+          "label": "Something That Reminded Me of Home",
+          "icon": "🏠",
+          "description": "A flavour that hit different. Felt like a hug from someone I haven't met."
+        }
+      ]
+    }
+  ],
+  "personalities": [
+    {
+      "id": "1",
+      "key": "spice_tourist",
+      "title": "The Spice Tourist",
+      "emoji": "🌶️",
+      "description": "You're new to Malaysian food — and that's exciting! You want the must-try dishes with a warm intro. No overwhelming spice levels, no mystery meats. Think nasi lemak with a side of storytelling.",
+      "tour_match": "Gentle introduction tours"
+    },
+    {
+      "id": "2",
+      "key": "heritage_hunter",
+      "title": "The Heritage Hunter",
+      "emoji": "🏛️",
+      "description": "You don't want to just eat — you want to know WHO made it, HOW long, and WHY the recipe hasn't changed since 1952. Every stall has a story.",
+      "tour_match": "Tours with generational vendors"
+    },
+    {
+      "id": "3",
+      "key": "hawker_hero",
+      "title": "The Hawker Hero",
+      "emoji": "🍜",
+      "description": "You live for the night market energy — satay smoke, clattering woks, the uncle who remembers your order. Maximum variety, maximum atmosphere.",
+      "tour_match": "High-energy street food tours"
+    },
+    {
+      "id": "4",
+      "key": "durian_daredevil",
+      "title": "The Durian Daredevil",
+      "emoji": "🔥",
+      "description": "You don't read menus — you point. Durian? Yes. Chicken feet? Absolutely. You're the friend who tries the weird stuff first.",
+      "tour_match": "Bold, less-travelled tours"
+    },
+    {
+      "id": "5",
+      "key": "culture_connector",
+      "title": "The Culture Connector",
+      "emoji": "🌏",
+      "description": "You're here for the people. The kopi maker at 4am. The satay uncle with a never-ending story. Food is your passport into someone else's story.",
+      "tour_match": "Tours blending food with culture"
+    }
+  ],
+  "scoring_weights": [
+    {
+      "id": "1",
+      "question_id": "malaysian_exposure",
+      "answer_value": "newbie",
+      "weights": {
+        "hawker_hero": 3,
+        "spice_tourist": 10,
+        "heritage_hunter": 2,
+        "durian_daredevil": 1,
+        "culture_connector": 4
+      }
+    },
+    {
+      "id": "2",
+      "question_id": "malaysian_exposure",
+      "answer_value": "tasted_once",
+      "weights": {
+        "hawker_hero": 7,
+        "spice_tourist": 5,
+        "heritage_hunter": 6,
+        "durian_daredevil": 4,
+        "culture_connector": 7
+      }
+    },
+    {
+      "id": "3",
+      "question_id": "malaysian_exposure",
+      "answer_value": "regular",
+      "weights": {
+        "hawker_hero": 8,
+        "spice_tourist": 2,
+        "heritage_hunter": 7,
+        "durian_daredevil": 7,
+        "culture_connector": 8
+      }
+    },
+    {
+      "id": "4",
+      "question_id": "malaysian_exposure",
+      "answer_value": "local",
+      "weights": {
+        "hawker_hero": 7,
+        "spice_tourist": 1,
+        "heritage_hunter": 9,
+        "durian_daredevil": 9,
+        "culture_connector": 9
+      }
+    },
+    {
+      "id": "5",
+      "question_id": "comfort_zone",
+      "answer_value": "safe",
+      "weights": {
+        "hawker_hero": 3,
+        "spice_tourist": 10,
+        "heritage_hunter": 4,
+        "durian_daredevil": 1,
+        "culture_connector": 5
+      }
+    },
+    {
+      "id": "6",
+      "question_id": "comfort_zone",
+      "answer_value": "mild_risk",
+      "weights": {
+        "hawker_hero": 6,
+        "spice_tourist": 5,
+        "heritage_hunter": 7,
+        "durian_daredevil": 3,
+        "culture_connector": 8
+      }
+    },
+    {
+      "id": "7",
+      "question_id": "comfort_zone",
+      "answer_value": "adventurous",
+      "weights": {
+        "hawker_hero": 9,
+        "spice_tourist": 2,
+        "heritage_hunter": 6,
+        "durian_daredevil": 8,
+        "culture_connector": 5
+      }
+    },
+    {
+      "id": "8",
+      "question_id": "comfort_zone",
+      "answer_value": "extreme",
+      "weights": {
+        "hawker_hero": 8,
+        "spice_tourist": 1,
+        "heritage_hunter": 5,
+        "durian_daredevil": 10,
+        "culture_connector": 4
+      }
+    },
+    {
+      "id": "9",
+      "question_id": "draw",
+      "answer_value": "culture",
+      "weights": {
+        "hawker_hero": 4,
+        "spice_tourist": 5,
+        "heritage_hunter": 10,
+        "durian_daredevil": 2,
+        "culture_connector": 9
+      }
+    },
+    {
+      "id": "10",
+      "question_id": "draw",
+      "answer_value": "flavor",
+      "weights": {
+        "hawker_hero": 9,
+        "spice_tourist": 6,
+        "heritage_hunter": 6,
+        "durian_daredevil": 7,
+        "culture_connector": 5
+      }
+    },
+    {
+      "id": "11",
+      "question_id": "draw",
+      "answer_value": "social",
+      "weights": {
+        "hawker_hero": 10,
+        "spice_tourist": 6,
+        "heritage_hunter": 5,
+        "durian_daredevil": 3,
+        "culture_connector": 9
+      }
+    },
+    {
+      "id": "12",
+      "question_id": "draw",
+      "answer_value": "instagram",
+      "weights": {
+        "hawker_hero": 5,
+        "spice_tourist": 7,
+        "heritage_hunter": 3,
+        "durian_daredevil": 3,
+        "culture_connector": 4
+      }
+    },
+    {
+      "id": "13",
+      "question_id": "ideal_scene",
+      "answer_value": "heritage_stall",
+      "weights": {
+        "hawker_hero": 3,
+        "spice_tourist": 5,
+        "heritage_hunter": 10,
+        "durian_daredevil": 2,
+        "culture_connector": 7
+      }
+    },
+    {
+      "id": "14",
+      "question_id": "ideal_scene",
+      "answer_value": "night_market",
+      "weights": {
+        "hawker_hero": 10,
+        "spice_tourist": 6,
+        "heritage_hunter": 3,
+        "durian_daredevil": 7,
+        "culture_connector": 5
+      }
+    },
+    {
+      "id": "15",
+      "question_id": "ideal_scene",
+      "answer_value": "kopitiam",
+      "weights": {
+        "hawker_hero": 6,
+        "spice_tourist": 7,
+        "heritage_hunter": 7,
+        "durian_daredevil": 4,
+        "culture_connector": 9
+      }
+    },
+    {
+      "id": "16",
+      "question_id": "ideal_scene",
+      "answer_value": "roadside_stall",
+      "weights": {
+        "hawker_hero": 7,
+        "spice_tourist": 3,
+        "heritage_hunter": 6,
+        "durian_daredevil": 10,
+        "culture_connector": 8
+      }
+    },
+    {
+      "id": "17",
+      "question_id": "food_memory",
+      "answer_value": "first_bite",
+      "weights": {
+        "hawker_hero": 7,
+        "spice_tourist": 6,
+        "heritage_hunter": 4,
+        "durian_daredevil": 9,
+        "culture_connector": 3
+      }
+    },
+    {
+      "id": "18",
+      "question_id": "food_memory",
+      "answer_value": "shared_meal",
+      "weights": {
+        "hawker_hero": 7,
+        "spice_tourist": 5,
+        "heritage_hunter": 5,
+        "durian_daredevil": 3,
+        "culture_connector": 10
+      }
+    },
+    {
+      "id": "19",
+      "question_id": "food_memory",
+      "answer_value": "hidden_gem",
+      "weights": {
+        "hawker_hero": 6,
+        "spice_tourist": 4,
+        "heritage_hunter": 7,
+        "durian_daredevil": 8,
+        "culture_connector": 6
+      }
+    },
+    {
+      "id": "20",
+      "question_id": "food_memory",
+      "answer_value": "nostalgic",
+      "weights": {
+        "hawker_hero": 4,
+        "spice_tourist": 6,
+        "heritage_hunter": 8,
+        "durian_daredevil": 2,
+        "culture_connector": 9
+      }
+    }
+  ],
+  "result_headlines": [
+    {
+      "id": "1",
+      "key": "no_match",
+      "headline": "We Think You'll Love These",
+      "subtext": "Based on your answers, these tours feel most like your kind of food experience."
+    },
+    {
+      "id": "2",
+      "key": "single_match",
+      "headline": "This One's Made For You",
+      "subtext": "We found the perfect match."
+    },
+    {
+      "id": "3",
+      "key": "multi_match",
+      "headline": "We Found Your Perfect Matches",
+      "subtext": "A few tours stood out."
+    },
+    {
+      "id": "4",
+      "key": "fallback",
+      "headline": "Our Top Picks For You",
+      "subtext": "These are the tours our guests love most."
+    }
+  ],
+  "fallback_headline": null,
+  "fallback_tours": [],
+  "contact_cta_text": null,
+  "contact_cta_button": null,
+  "updatedAt": "2026-05-19T08:34:29.395Z",
+  "createdAt": "2026-05-19T08:34:29.394Z"
+}
