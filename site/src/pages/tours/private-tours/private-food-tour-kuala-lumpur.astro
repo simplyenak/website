@@ -1,0 +1,88 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getAllTours } from '~/lib/content';
+
+const allTours = await getAllTours();
+const klTours = allTours.filter((t: any) => {
+  const loc = (t.location || '').toLowerCase();
+  return loc.includes('kl') || loc.includes('kuala lumpur');
+});
+
+const meta = {
+  title: 'Private Food Tour Kuala Lumpur | Simply Enak',
+  description: 'Book a private food tour in Kuala Lumpur with Simply Enak. Your group only, your pace, your personal guide.',
+};
+---
+
+<Layout metadata={meta}>
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        <a href="/tours" class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        <a href="/tours/private-tours" class="hover:text-primary transition-colors">Private Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        <span class="text-default font-semibold">Kuala Lumpur</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#1a2a1a] to-[#1a1a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Kuala Lumpur</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          Private Tour Kuala Lumpur
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          Your group, your pace — explore KL's food scene privately
+        </span>
+      </h1>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+a+private+food+tour+in+Kuala+Lumpur"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-muted/30 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">KL Private Tours</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-4 text-sm">All our Kuala Lumpur tours are available as private experiences</p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {klTours.map((tour: any) => (
+          <a href={`/tours/${tour.slug}`} class="group block rounded-xl border bg-card shadow-sm overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
+            {tour.image && (
+              <div class="aspect-[16/9] overflow-hidden">
+                <img src={tour.image} alt={tour.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            )}
+            <div class="p-5">
+              <h3 class="text-lg font-bold font-heading group-hover:text-primary">{tour.name}</h3>
+              <p class="text-sm text-muted mt-1 line-clamp-2">{tour.tagline}</p>
+              <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
+                <span class="font-semibold text-foreground">{tour.price}</span>
+                {tour.duration && <span>{tour.duration}</span>}
+              </div>
+              <div class="mt-3">
+                <span class="inline-block text-accent text-xs font-semibold group-hover:underline">View Details &rarr;</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
