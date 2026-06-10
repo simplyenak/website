@@ -219,12 +219,12 @@ const meta = {
               <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">Food You'll Taste</h2>
             </div>
             <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
-              {foods.map((food) => (
+              {foods.map((food: any) => (
                 <div class="flex items-start gap-4 bg-white border border-gray-100 p-5 rounded-lg shadow-sm">
                   <div class="flex items-center justify-center rounded-full bg-accent/10 flex-shrink-0 h-12 text-xl w-12">🍽️</div>
                   <div>
-                    <h3 class="font-bold font-heading text-default">{food}</h3>
-                    <p class="text-sm text-muted mt-0.5">{foodDescriptions[food] || 'Authentic Malaysian dish'}</p>
+                    <h3 class="font-bold font-heading text-default">{food.name}</h3>
+                    <p class="text-sm text-muted mt-0.5">{food.desc || foodDescriptions[food.name] || 'Authentic Malaysian dish'}</p>
                   </div>
                 </div>
               ))}
