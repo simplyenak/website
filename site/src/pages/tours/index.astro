@@ -264,8 +264,10 @@ const travelWith = travelTypeList
         <p class="text-muted max-w-xl mx-auto mt-4 text-sm">Every tour can be adapted. These are our dedicated dietary experiences.</p>
       </div>
 
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {dietarySegments.slice(0, 4).map((s: any) => (
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {dietarySegments.filter((s: any, i: number, arr: any[]) => 
+          i === arr.findIndex((a: any) => a.name === s.name)
+        ).map((s: any) => (
           <a href={`/tours/dietary/${s.slug}`} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
               <img src="https://se-website-images.s3.nl-ams.scw.cloud/vegetarian-heritage.jpg" alt={s.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
