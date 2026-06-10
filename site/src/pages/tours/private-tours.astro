@@ -1,0 +1,195 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getAllTours } from '~/lib/content';
+
+let pageData: any = {};
+try {
+  pageData = (await import('~/data/content/private-tours-page.json')).default;
+} catch {}
+
+const allTours = await getAllTours();
+
+const heroTitle = pageData.hero_title || 'A Tour Built Around You';
+const heroSubtitle = pageData.hero_subtitle || 'Your group, your pace, your guide';
+const whyPrivate = pageData.why_private || [];
+const audiences = pageData.audiences || [];
+const onEveryTour = pageData.on_every_tour || [];
+const privateExtras = pageData.private_extras || [];
+const faqs = pageData.faqs || [];
+
+const meta = {
+  title: pageData.seo_title || 'Private Food Tours Malaysia | Simply Enak',
+  description: pageData.seo_description || 'Book a private food tour in Malaysia.',
+};
+---
+
+<Layout metadata={meta}>
+  <!-- Hero -->
+  <section class="bg-[#1a1a1a] relative text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <div class="max-w-3xl">
+        <p class="font-bold text-xs uppercase tracking-[0.2em] text-accent/80 mb-3">Private Tours</p>
+        <h1 class="font-bold font-heading text-4xl md:text-5xl lg:text-6xl leading-tight mb-4">
+          <span class="text-white">{heroTitle.replace(/around you/i, '')}</span>
+          <span class="px-4 bg-accent font-black inline-block py-1 rounded-sm shadow-xl text-black ml-2" style="transform:rotate(-.7deg)">
+            Around You
+          </span>
+        </h1>
+        <p class="text-lg text-white/70 max-w-2xl mb-8">{heroSubtitle}</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+a+private+food+tour"
+             class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded-lg hover:bg-[#e8922e] transition-colors text-sm">
+            <Icon name="tabler:brand-whatsapp" class="w-5 h-5" />
+            Get a Quote
+          </a>
+          <a href="#tours"
+             class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-lg hover:border-white/60 transition-colors text-sm">
+            See Available Tours
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Private -->
+  <section class="py-20 bg-page">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <p class="font-bold text-xs uppercase text-accent tracking-[0.2em] mb-2">Private Tours</p>
+        <h2 class="font-bold font-heading text-3xl md:text-4xl text-default mb-3">{pageData.why_title || 'What a private tour means'}</h2>
+        <p class="text-muted max-w-2xl mx-auto">{pageData.why_subtitle || 'You book the guide. You get the guide.'}</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {whyPrivate.map((item: any) => (
+          <div class="text-center p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c]">
+            <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4 text-2xl">
+              {item.icon || '✓'}
+            </div>
+            <h3 class="font-bold font-heading text-lg text-default mb-2">{item.title}</h3>
+            <p class="text-sm text-muted">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Books -->
+  <section class="py-20 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="font-bold font-heading text-3xl md:text-4xl text-default mb-3">{pageData.audiences_title || 'Who books private tours'}</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {audiences.map((item: any) => (
+          <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-page">
+            <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">
+              {item.icon || '👤'}
+            </div>
+            <h3 class="font-bold font-heading text-default mb-2">{item.label}</h3>
+            <p class="text-sm text-muted">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Inclusions -->
+  <section class="py-20 bg-page">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c]">
+          <h3 class="font-bold font-heading text-xl text-default mb-5">{pageData.on_every_tour_label || 'Every Simply Enak tour'}</h3>
+          <ul class="space-y-3">
+            {onEveryTour.map((item: string) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:check" class="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c]">
+          <h3 class="font-bold font-heading text-xl text-default mb-5">{pageData.private_extras_label || 'What changes when it\'s private'}</h3>
+          <ul class="space-y-3">
+            {privateExtras.map((item: string) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:star" class="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Tours -->
+  <section class="py-20 bg-white dark:bg-[#1e1c1c]" id="tours">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="font-bold font-heading text-3xl md:text-4xl text-default mb-3">{pageData.available_privately_heading || 'Every tour is available privately'}</h2>
+        <p class="text-muted max-w-2xl mx-auto">{pageData.available_privately_subtext || 'Choose the tour that fits your group.'}</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allTours.slice(0, 6).map((tour: any) => (
+          <a href={`/tours/${tour.slug}`} class="group block rounded-xl overflow-hidden border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c] hover:shadow-md transition-shadow">
+            {tour.image && (
+              <div class="h-44 overflow-hidden">
+                <img src={tour.image} alt={tour.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+            )}
+            <div class="p-5">
+              <h3 class="font-bold font-heading text-default group-hover:text-primary transition-colors mb-1">{tour.name}</h3>
+              <p class="text-xs text-muted">{tour.duration} · {tour.location || ''}</p>
+              <p class="text-sm font-bold text-primary mt-2">{tour.price}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+a+private+food+tour"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded-lg hover:bg-[#e8922e] transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-5 h-5" />
+          {pageData.pricing_cta_whatsapp || 'Contact us on WhatsApp'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {faqs.length > 0 && (
+    <section class="py-20 bg-page">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <p class="font-bold text-xs uppercase text-accent tracking-[0.2em] mb-2">{pageData.faq_eyebrow || 'Common Questions'}</p>
+          <h2 class="font-bold font-heading text-3xl md:text-4xl text-default">{pageData.faq_heading || 'Private Tour FAQs'}</h2>
+        </div>
+        <div class="max-w-3xl mx-auto space-y-2">
+          {faqs.map((faq: any) => (
+            <details class="border border-gray-100 bg-white dark:bg-[#1e1c1c] dark:border-white/10 overflow-hidden group rounded-lg">
+              <summary class="text-sm items-center flex cursor-pointer dark:hover:bg-white/5 hover:bg-gray-50 justify-between list-none p-4 transition-colors">
+                <span class="text-default font-semibold pr-4">{faq.name || faq.question || ''}</span>
+                <svg class="text-primary flex-shrink-0 group-open:rotate-180 h-4 transition-transform w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+              </summary>
+              <div class="px-4 pb-4"><p class="text-sm text-muted">{faq.answer || faq.a || ''}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-20 bg-accent/5 border-t border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-bold font-heading text-3xl md:text-4xl text-default mb-3">{pageData.pricing_heading || 'Ready to book?'}</h2>
+      <p class="text-muted max-w-2xl mx-auto mb-8">{pageData.pricing_body || 'Send us your dates and group size.'}</p>
+      <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+a+private+food+tour"
+         class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded-lg hover:bg-[#e8922e] transition-colors">
+        <Icon name="tabler:brand-whatsapp" class="w-5 h-5" />
+        {pageData.pricing_cta_whatsapp || 'Send us a message on WhatsApp'}
+      </a>
+    </div>
+  </section>
+</Layout>
