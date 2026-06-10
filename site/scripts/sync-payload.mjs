@@ -22,8 +22,27 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// Load .env from project root if it exists (for local dev without --env-file)
+const envPath = path.resolve(__dirname, '..', '.env')
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf-8')
+  for (const line of envContent.split('\n')) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) continue
+    const eqIdx = trimmed.indexOf('=')
+    if (eqIdx === -1) continue
+    const key = trimmed.slice(0, eqIdx).trim()
+    const val = trimmed.slice(eqIdx + 1).trim()
+    if (!process.env[key]) {
+      process.env[key] = val
+    }
+  }
+}
+
 const PAYLOAD_URL = process.env.PAYLOAD_URL || 'http://localhost:3000'
 const PAYLOAD_TOKEN = process.env.PAYLOAD_TOKEN || ''
+const PAYLOAD_EMAIL = process.env.PAYLOAD_EMAIL || ''
+const PAYLOAD_PASSWORD = process.env.PAYLOAD_PASSWORD || ''
 const CONTENT_DIR = path.resolve(__dirname, '../src/data/content')
 const DRY_RUN = process.argv.includes('--dry-run')
 const VERBOSE = process.argv.includes('--verbose')
@@ -136,10 +155,40 @@ async function payloadFetch(slug, useAuth = true) {
 }
 
 async function fetchCollection(slug) {
-  // 1. Try with auth
+  // 1. Try with existing token
   if (PAYLOAD_TOKEN) {
     const docs = await payloadFetch(slug, true)
     if (docs !== null) { stats.fetched++; return docs }
+  }
+  // 1b. Try login-based auth if email/password are available
+  let loginToken = '';
+  if (PAYLOAD_EMAIL && PAYLOAD_PASSWORD) {
+    try {
+      const loginRes = await fetch(`${PAYLOAD_URL}/api/users/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: PAYLOAD_EMAIL, password: PAYLOAD_PASSWORD }),
+        signal: AbortSignal.timeout(15000),
+      })
+      if (loginRes.ok) {
+        const loginData = await loginRes.json()
+        loginToken = loginData.token || ''
+        if (loginToken) {
+          const url = new URL(`${PAYLOAD_URL}/api/${slug}`)
+          url.searchParams.set('depth', '3')
+          url.searchParams.set('limit', '0')
+          const authRes = await fetch(url, {
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${loginToken}` },
+            signal: AbortSignal.timeout(300000),
+          })
+          if (authRes.ok) {
+            const json = await authRes.json()
+            stats.fetched++
+            return json.docs || []
+          }
+        }
+      }
+    } catch { /* login failed, fall through */ }
   }
   // 2. Try without auth (public read)
   const docs = await payloadFetch(slug, false)
