@@ -1,1 +1,116 @@
-{}
+{
+  "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg",
+  "heroEyebrow": "Our Story",
+  "heroHeading": "Born in Malaysia. Raised on ",
+  "heroDescription": "What started as showing friends around Chow Kit market has become 14 years of sharing the real Malaysia, one meal at a time.",
+  "founderSection": {
+    "eyebrow": "Meet Pauline",
+    "heading": "She Started by Taking Friends to the Market",
+    "paragraphs": [
+      "Growing up in Malaysia, I spent my mornings walking through wet markets with my mom. While she haggled for the freshest fish, I watched the hawkers craft dishes that had been passed down for generations. The sizzle of char kway teow on a screaming hot wok. The aromatic clouds of curry. The careful art of folding roti canai. This was my Malaysia.",
+      "When I started bringing friends from overseas around, I realised they were missing all of it. They'd eat at air-conditioned restaurants with picture menus, never knowing that two streets away, a grandmother was making laksa the same way her mother taught her 60 years ago.",
+      "Simply Enak started in 2011 because I wanted to share what I grew up with. Not the Malaysia in guidebooks, the one I know. The night markets. The family recipes. The vendors who remember your face and your favourite dish. The real Malaysia that tourists walk past every day."
+    ],
+    "image": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
+  },
+  "stats": [
+    { "number": "5,000+", "label": "Happy Guests" },
+    { "number": "4.9/5", "label": "TripAdvisor Rating" },
+    { "number": "14 Years", "label": "Experience" },
+    { "number": "Max 8", "label": "Group Size" }
+  ],
+  "timelineSection": {
+    "eyebrow": "2011 — Present",
+    "heading": "14 Years of Simply Enak",
+    "description": "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. A few things happened along the way.",
+    "milestones": [
+      {
+        "year": "Today",
+        "title": "5,000+ guests and still eating",
+        "description": "Every week, travellers from around the world join us at the same stalls we've eaten at for 14 years. The guides know the vendors by name. The vendors know us.",
+        "isToday": true
+      },
+      {
+        "year": "2024",
+        "title": "BBC World Service",
+        "description": "Simply Enak is featured on the BBC World Service, sharing the story of Malaysian street food culture with a global audience.",
+        "logo": "/images/press-logos/bbc.svg",
+        "url": "https://www.bbc.co.uk/programmes/w3ct8sw1"
+      },
+      {
+        "year": "2019",
+        "title": "National Geographic",
+        "description": "National Geographic features Simply Enak in their coverage of Kuala Lumpur's best authentic food experiences, highlighting our focus on family-run stalls and local culture."
+      },
+      {
+        "year": "2017",
+        "title": "Lonely Planet",
+        "description": "Lonely Planet recommends Simply Enak as a top food tour in Kuala Lumpur, recognising our guides' deep knowledge of KL's street food heritage."
+      },
+      {
+        "year": "2011",
+        "title": "Simply Enak Founded",
+        "description": "Pauline leads her first food walk through Chow Kit market with a small group of friends. Nobody calls it a tour yet.",
+        "logo": "/images/press-logos/simplyenak.com.png"
+      }
+    ]
+  },
+  "philosophySection": {
+    "eyebrow": "What Guides Us",
+    "heading": "Three Things We Won't Compromise On",
+    "items": [
+      {
+        "number": "01",
+        "title": "No Scripts",
+        "description": "Our guides are licensed professionals, but they talk to you like friends. Real stories, not rehearsed speeches. You'll get a different tour every time because you're different every time."
+      },
+      {
+        "number": "02",
+        "title": "Slow Down",
+        "description": "We walk. We pause. We take the time to notice things: the architecture, the smells, the sounds of the neighbourhood. A food tour shouldn't feel like a marathon."
+      },
+      {
+        "number": "03",
+        "title": "Support Local",
+        "description": "We focus on small, local vendors — many family-run for generations. Your tour fee goes to the heritage keepers of Malaysian food culture — the same people who've been feeding this neighbourhood for decades."
+      }
+    ]
+  },
+  "teamSection": {
+    "eyebrow": "The Team",
+    "heading": "The People Behind the Flavours",
+    "description": "We're a small team, all licensed with Tourism Malaysia. More importantly, we grew up eating at these same stalls. We know the vendors by name, the neighbourhoods by heart, and the stories behind every dish.",
+    "members": [
+      {
+        "name": "Pauline",
+        "role": "Founder & Lead Guide",
+        "specialty": "15 Years Building Relationships",
+        "description": "Started Simply Enak in 2011 after watching too many tourists miss the real Malaysia. Grew up walking wet markets with her mom.",
+        "image": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
+      },
+      {
+        "name": "Maarten",
+        "role": "Partner",
+        "specialty": "Operations & Growth",
+        "description": "Manages operations and business development, ensuring every aspect of Simply Enak stays true to authentic Malaysian food experiences."
+      },
+      {
+        "name": "Trish",
+        "role": "Licensed Guide",
+        "specialty": "Tourism Malaysia Certified",
+        "description": "Brings warmth and deep local knowledge to every tour. A natural storyteller who makes every guest feel like family."
+      }
+    ]
+  },
+  "testimonial": {
+    "text": "\"The Penang Heritage tour exceeded our expectations. Our guide shared amazing stories and the food was outstanding. Every dish had a story.\"",
+    "name": "David Lee",
+    "location": "USA"
+  },
+  "ctaSection": {
+    "heading": "Ready to Eat With Us?",
+    "description": "Browse our tours, or message us on WhatsApp. We reply in minutes.",
+    "ctaPrimary": { "text": "Browse Tours", "url": "/tours" },
+    "ctaSecondary": { "text": "WhatsApp Us", "url": "https://wa.me/60172878929" }
+  }
+}
