@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "id": 9,
+    "title": "Welcome to the Simply Enak Family",
+    "type": "newsletter",
+    "slug": "thank-you-registration",
+    "status": "published",
+    "heroSection": {
+      "heading": null,
+      "subheading": null,
+      "icon": null
+    },
+    "message": null,
+    "nextSteps": [],
+    "contactInfo": {
+      "showContact": null,
+      "email": null,
+      "phone": null,
+      "responseTime": null
+    },
+    "ctaSection": {
+      "showCta": null,
+      "ctaButtons": []
+    },
+    "seo": {
+      "metaTitle": "Thank You — Registration Confirmed",
+      "metaDescription": "Your registration is confirmed. Welcome to the Simply Enak community."
+    },
+    "updatedAt": "2026-06-09T14:59:52.263Z",
+    "createdAt": "2026-06-09T14:59:52.263Z"
+  },
+  {
+    "id": 8,
+    "title": "Thanks for Your Interest",
+    "type": "tour_inquiry",
+    "slug": "thank-you-inquiry",
+    "status": "published",
+    "heroSection": {
+      "heading": null,
+      "subheading": null,
+      "icon": null
+    },
+    "message": null,
+    "nextSteps": [],
+    "contactInfo": {
+      "showContact": null,
+      "email": null,
+      "phone": null,
+      "responseTime": null
+    },
+    "ctaSection": {
+      "showCta": null,
+      "ctaButtons": []
+    },
+    "seo": {
+      "metaTitle": "Thank You — Inquiry Received",
+      "metaDescription": "We've received your inquiry and will suggest options soon."
+    },
+    "updatedAt": "2026-06-09T14:59:49.933Z",
+    "createdAt": "2026-06-09T14:59:49.933Z"
+  },
+  {
+    "id": 6,
+    "title": "We Can't Wait to Show You Our Malaysia",
+    "type": "booking",
+    "slug": "thank-you-booking-penang",
+    "status": "published",
+    "heroSection": {
+      "heading": null,
+      "subheading": null,
+      "icon": null
+    },
+    "message": null,
+    "nextSteps": [],
+    "contactInfo": {
+      "showContact": null,
+      "email": null,
+      "phone": null,
+      "responseTime": null
+    },
+    "ctaSection": {
+      "showCta": null,
+      "ctaButtons": []
+    },
+    "seo": {
+      "metaTitle": "Thank You — Penang Tour Confirmed",
+      "metaDescription": "Your Penang food tour booking is confirmed."
+    },
+    "updatedAt": "2026-06-09T14:59:44.942Z",
+    "createdAt": "2026-06-09T14:59:44.942Z"
+  },
+  {
+    "id": 5,
+    "title": "We Can't Wait to Show You Our Malaysia",
+    "type": "booking",
+    "slug": "thank-you-booking-kuala-lumpur",
+    "status": "published",
+    "heroSection": {
+      "heading": null,
+      "subheading": null,
+      "icon": null
+    },
+    "message": null,
+    "nextSteps": [],
+    "contactInfo": {
+      "showContact": null,
+      "email": null,
+      "phone": null,
+      "responseTime": null
+    },
+    "ctaSection": {
+      "showCta": null,
+      "ctaButtons": []
+    },
+    "seo": {
+      "metaTitle": "Thank You — Kuala Lumpur Tour Confirmed",
+      "metaDescription": "Your Kuala Lumpur food tour booking is confirmed."
+    },
+    "updatedAt": "2026-06-09T14:59:42.310Z",
+    "createdAt": "2026-06-09T14:59:42.310Z"
+  },
+  {
+    "id": 3,
+    "title": "Thank You",
+    "type": "custom",
+    "slug": "thank-you",
+    "status": "published",
+    "heroSection": {
+      "heading": null,
+      "subheading": null,
+      "icon": null
+    },
+    "message": null,
+    "nextSteps": [],
+    "contactInfo": {
+      "showContact": null,
+      "email": null,
+      "phone": null,
+      "responseTime": null
+    },
+    "ctaSection": {
+      "showCta": null,
+      "ctaButtons": []
+    },
+    "seo": {
+      "metaTitle": "Thank You",
+      "metaDescription": "Your submission has been received. We'll be in touch shortly."
+    },
+    "updatedAt": "2026-06-09T14:59:37.349Z",
+    "createdAt": "2026-06-09T14:59:37.349Z"
+  },
+  {
+    "id": 2,
+    "title": "Thanks for Reaching Out",
+    "type": "contact",
+    "slug": "thank-you-contact",
+    "status": "published",
+    "heroSection": {
+      "heading": null,
+      "subheading": null,
+      "icon": null
+    },
+    "message": null,
+    "nextSteps": [],
+    "contactInfo": {
+      "showContact": null,
+      "email": null,
+      "phone": null,
+      "responseTime": null
+    },
+    "ctaSection": {
+      "showCta": null,
+      "ctaButtons": []
+    },
+    "seo": {
+      "metaTitle": "Thank You — Message Received",
+      "metaDescription": "We've received your message and will respond soon."
+    },
+    "updatedAt": "2026-06-09T14:58:19.170Z",
+    "createdAt": "2026-06-09T14:58:19.170Z"
+  },
+  {
+    "id": 1,
+    "title": "We Can't Wait to Show You Our Malaysia",
+    "type": "booking",
+    "slug": "thank-you-booking",
+    "status": "published",
+    "heroSection": {
+      "heading": null,
+      "subheading": null,
+      "icon": null
+    },
+    "message": null,
+    "nextSteps": [],
+    "contactInfo": {
+      "showContact": null,
+      "email": null,
+      "phone": null,
+      "responseTime": null
+    },
+    "ctaSection": {
+      "showCta": null,
+      "ctaButtons": []
+    },
+    "seo": {
+      "metaTitle": "Thank You — Booking Confirmed",
+      "metaDescription": "Your food tour booking is confirmed. Check your email for details."
+    },
+    "updatedAt": "2026-06-09T14:58:12.138Z",
+    "createdAt": "2026-06-09T14:58:12.138Z"
+  }
+]
