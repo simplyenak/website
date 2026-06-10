@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
 import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList } from '~/lib/content';
 import PlayfulGallery from '~/components/widgets/PlayfulGallery.astro';
 
@@ -20,6 +21,24 @@ const foodDescriptions = tour.foodDescriptions || {};
 const itinerary = tour.itinerary || [];
 const widgetId = tour.widgetId || tour.ticketingHubId || '';
 const highlights = tour.highlights || [];
+
+// Premium Icon mapping — Tabler SVG icons instead of emoji
+const dietaryIconMap: Record<string, string> = {
+  vegan: 'leaf', vegetarian: 'seeding', pescatarian: 'fish',
+  halal: 'moon', 'gluten-free': 'grain', 'dairy-free': 'droplet',
+  'nut-free': 'cherry', 'egg-free': 'egg', 'low-sodium': 'salt',
+  'no-msg': 'x', spicy: 'flame', kosher: 'star',
+};
+const travelIconMap: Record<string, string> = {
+  solo: 'user', foodie: 'chef-hat', family: 'users', couples: 'heart',
+};
+// Dietary landing page URL builder
+const dietaryUrl = (slug: string) => `/tours/dietary/${slug}-food-tours-kuala-lumpur`;
+// Travel type landing page URL builder
+const travelUrl = (slug: string) => {
+  const pluralMap: Record<string, string> = { family: 'families', couple: 'couples', foodie: 'foodies' };
+  return `/tours/segments/food-tours-for-${pluralMap[slug] || slug + 's'}-kuala-lumpur`;
+};
 
 const meta = {
   title: `${tour.tagline || tour.name}  -  Simply Enak`,
@@ -82,17 +101,23 @@ const meta = {
             {(tour.dietaryOptions || []).map((opt) => {
               const tag = dietaryOptions.find((d: any) => d.slug === opt);
               return tag ? (
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium" style="background:rgba(255,163,51,.12);border:1px solid rgba(255,163,51,.25);color:#FFA333">
-                  <span style="font-size:12px">{tag.icon || '✓'}</span> {tag.name || opt}
-                </span>
+                <a href={dietaryUrl(opt)}
+                   class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium hover:opacity-80 transition-opacity"
+                   style="background:rgba(255,163,51,.12);border:1px solid rgba(255,163,51,.25);color:#FFA333">
+                  <Icon name={`tabler:${dietaryIconMap[opt] || 'check'}`} class="w-3.5 h-3.5" />
+                  {tag.name || opt}
+                </a>
               ) : null;
             })}
             {(tour.travelTypes || []).map((t) => {
               const tag = travelTypes.find((tt: any) => tt.slug === t);
               return tag ? (
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.85)">
-                  <span style="font-size:12px">{tag.icon || '✓'}</span> {tag.name || t}
-                </span>
+                <a href={travelUrl(t)}
+                   class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium hover:opacity-80 transition-opacity"
+                   style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.85)">
+                  <Icon name={`tabler:${travelIconMap[t] || 'user'}`} class="w-3.5 h-3.5" />
+                  {tag.name || t}
+                </a>
               ) : null;
             })}
           </div>
@@ -275,6 +300,11 @@ const meta = {
                class="inline-flex items-center justify-center gap-2 w-full border-2 border-primary text-primary font-bold px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors text-sm">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
               Chat on WhatsApp
+            </a>
+            <a href="/tours/comparison"
+               class="inline-flex items-center justify-center gap-2 w-full border border-gray-300 dark:border-white/20 text-muted font-semibold px-5 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-sm">
+              <Icon name="tabler:users" class="w-4 h-4" />
+              Book as a Private Tour
             </a>
           </div>
         </div>
