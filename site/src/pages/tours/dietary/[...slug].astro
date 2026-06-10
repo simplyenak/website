@@ -32,7 +32,7 @@ const matchingTours = allTours.filter((t: any) => {
 const landingPage = await getLandingPageBySlug(segment.slug);
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 
-// Filter reviews mentioning dietary keywords
+// Filter reviews mentioning dietary keywords, fallback to general KL reviews
 const dietaryKeywords: Record<string, string> = {
   'vegetarian-food-tours-kuala-lumpur': 'vegetarian',
   'halal-food-tours-kuala-lumpur': 'halal',
@@ -42,7 +42,7 @@ const dietaryKeywords: Record<string, string> = {
 };
 const dietKeyword = dietaryKeywords[segment.slug] || '';
 const dietaryReviews = dietKeyword ? reviews.filter((r: any) => r.text.toLowerCase().includes(dietKeyword)) : [];
-const featuredDietaryReviews = dietaryReviews.length > 0 ? dietaryReviews.slice(0, 6) : [];
+const featuredDietaryReviews = dietaryReviews.length > 0 ? dietaryReviews.slice(0, 6) : reviews.filter((r: any) => r.location === 'KL').slice(0, 6);
 
 const meta = {
   title: `${landingPage?.meta_title || landingPage?.metaTitle || segment.metaTitle || segment.nameFull || segment.name}  -  Simply Enak`,
