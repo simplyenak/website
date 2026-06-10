@@ -1,0 +1,500 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getAllTours } from '~/lib/content';
+import { tours } from '~/data/tours';
+
+const allTours = await getAllTours();
+const signatureTours = allTours.slice(0, 5);
+
+const metadata = {
+  title: 'Simply Enak vs Food Tour Malaysia & Secret Food Tours Compared (2026)',
+  description: 'See how Simply Enak compares to Food Tour Malaysia and Secret Food Tours in Kuala Lumpur and Penang. Small groups (max 9), real wet markets, 10+ year vendor relationships, all diets accommodated backed by real data from competitor websites.',
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is Simply Enak different from Food Tour Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply Enak runs genuinely small groups (max 9), visits real working wet markets instead of driving between food courts, accommodates all diets by default (vegetarian, vegan, halal, gluten-free), and has guides with 10+ year relationships with every vendor. Food Tour Malaysia uses private vehicle transport between stops rather than walking, requires advance booking, and explicitly disclaims dietary liability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Simply Enak compare to Secret Food Tours?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Secret Food Tours offers one standardized tour in KL for 12 people at USD 49.99. Simply Enak offers 5 distinct tours across KL and Penang at RM 285-359, each with different themes like wet markets, evening speakeasies, and heritage exploration. Simply Enak's groups are smaller (max 9), the experience is local and guide-led rather than a global franchise format."
+        }
+      }
+    ]
+  }
+};
+
+// Real competitor comparison data
+const comparisonPoints = [
+  {
+    category: 'Group Size',
+    ours: 'Max 9. Intimate, personal, no rushing.',
+    ftm: 'Up to 10 (walk) or small vehicle groups. No published max on vehicle tours.',
+    sft: 'Max 12. Noticeably larger groups.',
+    icon: '👥',
+  },
+  {
+    category: 'Tour Format',
+    ours: 'Walking through markets, streets, and neighbourhoods.',
+    ftm: 'Private vehicle between stops (drive, eat, drive).',
+    sft: 'Walking tour through Chinatown and Little India.',
+    icon: '🚶',
+  },
+  {
+    category: 'Market Experience',
+    ours: 'KL\'s largest working wet market. You walk through it with vendors who\'ve been there for decades.',
+    ftm: 'Not featured. Food courts and restaurant stops.',
+    sft: 'Not featured. Hawker stalls and cafes.',
+    icon: '🏪',
+  },
+  {
+    category: 'Guide Relationships',
+    ours: '10+ years with the same family-run vendors. Your guide knows every stall owner by name.',
+    ftm: 'Freelance guides. No long-term vendor ties evident.',
+    sft: 'Local guides but global franchise format. Guides rotate.',
+    icon: '🤝',
+  },
+  {
+    category: 'Dietary Accommodation',
+    ours: 'Vegetarian, vegan, halal, gluten-free. All tours, no extra charge, just 48hr notice.',
+    ftm: '"Customer\'s responsibility to inform." They explicitly disclaim liability for food issues.',
+    sft: 'Limited info. Standard global menu, advance notice may apply.',
+    icon: '🥬',
+  },
+  {
+    category: 'Number of Tours',
+    ours: '5 distinct tours across KL and Penang, each with its own theme.',
+    ftm: '4 tours (2 KL, 2 Penang). Similar format across locations.',
+    sft: '1 tour in KL only.',
+    icon: '🗺️',
+  },
+  {
+    category: 'Evening Options',
+    ours: 'Night tours with speakeasy bars and craft cocktails (KL and Penang).',
+    ftm: 'Evening option available (Off The Eaten Track, 7-11PM).',
+    sft: 'Daytime only.',
+    icon: '🌙',
+  },
+  {
+    category: 'Awards and Recognition',
+    ours: 'TripAdvisor Certificate of Excellence, consecutive years. Featured in National Geographic, BBC, Lonely Planet.',
+    ftm: 'TripAdvisor Certificate 2011-2019 (expired, no recent recognition).',
+    sft: 'Global chain, 100k+ reviews across all cities. 4.9 rating (138 KL reviews).',
+    icon: '🏆',
+  },
+  {
+    category: 'Private and Tailored',
+    ours: 'Full private tours, tailored routes, multi-city itineraries, team events.',
+    ftm: 'Private vehicle included but route seems fixed. Custom tours on request.',
+    sft: 'Private tours available.',
+    icon: '🎯',
+  },
+];
+
+// Head-to-head: specific tour comparisons
+const headToHead = [
+  {
+    ourTour: 'Flavours of Malaysia',
+    ourSlug: 'flavours-of-malaysia',
+    ourPrice: 'RM 289',
+    ourDesc: 'Wet market walkthrough, 10 tastings, 4 hours. KL\'s largest wet market plus Chinatown and temples.',
+    competitorName: 'Secret Food Tours: Kuala Lumpur',
+    competitorPrice: 'USD 49.99 (~RM 220)',
+    competitorDesc: '3-3.5 hours, 12+ stops, hawker stalls and cafes. Max 12 people. Global franchise format.',
+    advantage: 'Simply Enak takes you through a real working wet market where your guide knows every stall owner by name. You won\'t find that on any other KL food tour.',
+    ourTag: 'Simply Enak',
+    competitorTag: 'Secret Food Tours',
+  },
+  {
+    ourTour: 'KL Street Food',
+    ourSlug: 'kuala-lumpur-street-food',
+    ourPrice: 'RM 285',
+    ourDesc: 'Chinatown and Little India, 8-10 tastings, 3.5 hours. Easy walking pace with rest stops.',
+    competitorName: 'Food Tour Malaysia - Off The Eaten Track',
+    competitorPrice: 'USD 62 (~RM 275)',
+    competitorDesc: 'Evening 7-11PM, min 2 pax, private vehicle transport between stops. Same-style format.',
+    advantage: 'Simply Enak stays on foot through actual neighbourhoods. You walk into the city, not just its food courts. Small groups mean you hear every story.',
+    ourTag: 'Simply Enak',
+    competitorTag: 'Food Tour Malaysia',
+  },
+  {
+    ourTour: 'Eat Drink George Town',
+    ourSlug: 'eat-drink-george-town',
+    ourPrice: 'RM 359',
+    ourDesc: 'Evening tour, 8 tastings plus craft cocktails, 4 hours. Speakeasy bars and secret society tales.',
+    competitorName: 'Food Tour Malaysia - Eat Like A Local (Penang)',
+    competitorPrice: 'USD 67 (~RM 297)',
+    competitorDesc: 'Brunch or dinner, 3.5-4 hours, private vehicle. Requires 2-day advance booking.',
+    advantage: 'Simply Enak is the only tour combining Penang street food with speakeasy cocktail culture. Secret society tales and hidden bars make it a night out, not just dinner.',
+    ourTag: 'Simply Enak',
+    competitorTag: 'Food Tour Malaysia',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg" alt="" class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center">
+      <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">HONEST COMPARISON</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4 leading-tight">
+        Simply Enak vs Food Tour Malaysia &amp; Secret Food Tours<br />Compared (2026)
+      </h1>
+      <p class="text-white/70 max-w-2xl mx-auto text-sm md:text-base">
+        No fluff, no fake claims. Here's how we actually compare to <strong class="text-white">Food Tour Malaysia</strong>
+        and <strong class="text-white">Secret Food Tours</strong>, the two most visible food tour operators
+        in Kuala Lumpur and Penang. See for yourself what matters.
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="bg-page py-4 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+      <nav class="flex items-center text-sm text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-4 h-4 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/tours" class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-4 h-4 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-primary font-medium">Comparison</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section class="py-12 bg-page">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold font-heading mb-6">Why This Comparison Exists</h2>
+        <div class="space-y-4 text-sm text-muted leading-relaxed">
+          <p>There are two main food tour operators in Kuala Lumpur and Penang besides Simply Enak: <strong>Food Tour Malaysia</strong> (independent, KL-based, running since 2012) and <strong>Secret Food Tours</strong> (international chain with a KL outpost). Most third-party platforms like GetYourGuide and Viator resell these operators' tours.</p>
+          <p>This page compares <strong>Simply Enak</strong> against these real alternatives with actual data we verified from their websites. No generic competitors, no straw men. Just an honest look at what changes when you pick one over another.</p>
+          <p class="bg-accent/10 border-l-4 border-accent p-4 rounded text-default">
+            <strong>Short version:</strong> If you want small groups (max 9), real markets, a guide who's been visiting the same vendors for a decade, and dietary accommodation that's actually covered, Simply Enak is the only operator in KL doing all of this.
+          </p>
+        </div>
+      </div>
+
+      <!-- TL;DR Box -->
+      <div class="max-w-3xl mx-auto mt-8">
+        <div class="bg-accent/10 border-2 border-accent rounded-xl p-6">
+          <p class="text-xs uppercase tracking-wider text-accent font-bold mb-2">TL;DR</p>
+          <p class="text-sm text-default leading-relaxed font-medium">
+            <strong>Simply Enak wins for real food tours.</strong> It's the only operator walking you through working wet markets, keeping groups to 9 people max, with guides who've known their vendors for a decade. All diets covered, no extra charge. <strong>Food Tour Malaysia</strong> uses private vehicles between food-court stops and puts dietary responsibility on you. <strong>Secret Food Tours</strong> is a global franchise with one standardized KL tour for $49.99. Good value, but max 12 people and no market walk.
+          </p>
+          <p class="text-xs text-muted mt-2">
+            Pick Simply Enak for the real thing. Pick Secret Food Tours for a budget-friendly intro. Pick Food Tour Malaysia if you prefer a vehicle between stops.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- At a Glance: Feature Comparison -->
+  <section class="py-12 bg-muted/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">AT A GLANCE</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-heading">Simply Enak vs Real Competitors</h2>
+        <p class="text-muted max-w-xl mx-auto mt-3 text-sm">Compared against Food Tour Malaysia (FTM) and Secret Food Tours (SFT), the two most visible alternatives.</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl shadow-sm border border-gray-100">
+        <table class="w-full text-sm bg-white">
+          <thead>
+            <tr class="bg-[#1a1a1a] text-white">
+              <th class="text-left px-5 py-4 font-bold">Feature</th>
+              <th class="text-left px-5 py-4 font-bold text-accent">
+                <span class="flex items-center gap-2">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                  Simply Enak
+                </span>
+              </th>
+              <th class="text-left px-5 py-4 font-bold text-muted">Food Tour Malaysia</th>
+              <th class="text-left px-5 py-4 font-bold text-muted">Secret Food Tours</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonPoints.map((point, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+                <td class="px-5 py-4 font-semibold whitespace-nowrap">
+                  <span class="mr-2">{point.icon}</span>{point.category}
+                </td>
+                <td class="px-5 py-4 text-primary font-medium text-sm leading-relaxed">{point.ours}</td>
+                <td class="px-5 py-4 text-muted text-sm leading-relaxed">{point.ftm}</td>
+                <td class="px-5 py-4 text-muted text-sm leading-relaxed">{point.sft}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Head to Head: Real Comparisons -->
+  <section class="py-12 bg-page">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">TOUR BY TOUR</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-heading">How Our Tours Compare Head-to-Head</h2>
+        <p class="text-muted max-w-xl mx-auto mt-3 text-sm">Specific comparisons against the closest alternatives available in KL and Penang.</p>
+      </div>
+
+      <div class="space-y-6">
+        {headToHead.map((h2h) => (
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="grid md:grid-cols-2 gap-0">
+              <!-- Our Tour -->
+              <div class="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100">
+                <span class="text-xs uppercase tracking-wider text-accent font-bold mb-2 block">
+                  <svg class="w-4 h-4 inline mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                  Simply Enak
+                </span>
+                <h3 class="text-xl font-bold font-heading mb-1">
+                  <a href={`/tours/${h2h.ourSlug}`} class="hover:text-primary transition-colors">{h2h.ourTour}</a>
+                </h3>
+                <span class="text-accent font-bold text-lg">{h2h.ourPrice}</span>
+                <p class="text-sm text-muted mt-3 leading-relaxed">{h2h.ourDesc}</p>
+              </div>
+              <!-- Competitor -->
+              <div class="p-6 md:p-8 bg-gray-50/50">
+                <span class="text-xs uppercase tracking-wider text-muted font-bold mb-2 block">{h2h.competitorTag}</span>
+                <h3 class="text-xl font-bold font-heading mb-1 text-muted">{h2h.competitorName}</h3>
+                <span class="text-muted font-bold text-lg">{h2h.competitorPrice}</span>
+                <p class="text-sm text-muted mt-3 leading-relaxed">{h2h.competitorDesc}</p>
+              </div>
+            </div>
+            <div class="bg-accent/5 px-6 md:px-8 py-4 border-t border-gray-100">
+              <p class="text-sm font-medium flex items-start gap-2">
+                <svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>{h2h.advantage}</span>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Price Comparison -->
+  <section class="py-12 bg-muted/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">VALUE FOR MONEY</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-heading">Price Comparison</h2>
+        <p class="text-muted max-w-xl mx-auto mt-3 text-sm">What you actually get for your money. All Simply Enak prices include dietary accommodation by default, no hidden costs.</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {signatureTours.map((tour: any) => (
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex flex-col">
+            <h3 class="font-bold font-heading text-lg mb-1">{tour.name}</h3>
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="text-2xl font-bold text-accent">{tour.price}</span>
+              <span class="text-xs text-muted">/ person</span>
+            </div>
+            <ul class="space-y-2 mb-4 text-sm text-muted">
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> {tour.duration}</li>
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> {tour.tastings || '8-10 tastings'}</li>
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> {tour.groupSize || '2\u20139 people'}</li>
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> {tour.cancellation}</li>
+            </ul>
+            <div class="mt-auto pt-4 border-t border-gray-100">
+              <p class="text-xs text-muted mb-3">
+                <span class="font-semibold text-green-600">Competitors:
+                {tour.slug === 'flavours-of-malaysia' ? ' SFT: USD 49.99 (~RM 220) for 12 pax, 3hrs, no market. FTM: USD 62 (~RM 275) for vehicle-based tour.' : 
+                 tour.slug === 'eat-drink-george-town' ? ' FTM Penang: USD 67 (~RM 297) for brunch/dinner, no cocktails, no speakeasies.' : 
+                 tour.slug === 'kuala-lumpur-street-food' ? ' SFT: USD 49.99 (~RM 220), same area, double the group size. FTM: USD 62 (~RM 275) evening vehicle tour.' :
+                 tour.slug === 'penang-street-food' ? ' FTM Penang Walk: USD 62 (~RM 275), max 8 pax. FTM Eat Like A Local: USD 67 (~RM 297).' :
+                 ' FTM: USD 62-67 (~RM 275-297). SFT: USD 49.99 (~RM 220).'
+                }
+                </span>
+              </p>
+              <a href={`/tours/${tour.slug}`} class="inline-block bg-primary text-white font-semibold text-sm px-5 py-2.5 rounded hover:bg-primary/90 transition-colors w-full text-center">
+                View Tour Details
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Should Choose What -->
+  <section class="py-12 bg-page">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">WHICH TOUR OPERATOR IS RIGHT FOR YOU</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-heading">Who Should Choose What</h2>
+        <p class="text-muted max-w-xl mx-auto mt-3 text-sm">Honest recommendations based on what you're actually looking for.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <div class="text-2xl mb-3">🍜</div>
+          <h3 class="font-bold font-heading text-lg mb-2">Real Food Seekers</h3>
+          <p class="text-sm text-muted mb-3">You want wet markets, family-run stalls, a guide who knows every vendor by name and has been bringing guests there for years. The real thing.</p>
+          <span class="inline-block bg-accent text-black text-xs font-bold px-3 py-1 rounded-full">Choose Simply Enak</span>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <div class="text-2xl mb-3">💰</div>
+          <h3 class="font-bold font-heading text-lg mb-2">Budget-Conscious Travellers</h3>
+          <p class="text-sm text-muted mb-3">You want a quick, affordable food tour to tick the box. Secret Food Tours at $49.99 is the cheapest option. You will get a solid 3-hour overview of Chinatown and Little India.</p>
+          <span class="inline-block bg-muted/50 text-muted text-xs font-bold px-3 py-1 rounded-full">Choose Secret Food Tours</span>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <div class="text-2xl mb-3">🚐</div>
+          <h3 class="font-bold font-heading text-lg mb-2">Vehicle Preferrers</h3>
+          <p class="text-sm text-muted mb-3">You dislike walking or have mobility concerns. Food Tour Malaysia uses private vehicles to drive between food stops. Less walking, but also less time in the actual neighbourhood.</p>
+          <span class="inline-block bg-muted/50 text-muted text-xs font-bold px-3 py-1 rounded-full">Choose Food Tour Malaysia</span>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <div class="text-2xl mb-3">🌙</div>
+          <h3 class="font-bold font-heading text-lg mb-2">Nightlife and Cocktail Fans</h3>
+          <p class="text-sm text-muted mb-3">You want an evening out with speakeasy bars, craft cocktails, and secret society tales. Simply Enak's Eat Drink George Town is the only tour combining street food with hidden bars.</p>
+          <span class="inline-block bg-accent text-black text-xs font-bold px-3 py-1 rounded-full">Choose Simply Enak</span>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <div class="text-2xl mb-3">🥬</div>
+          <h3 class="font-bold font-heading text-lg mb-2">Dietary-Restricted Eaters</h3>
+          <p class="text-sm text-muted mb-3">You are vegetarian, vegan, halal, or gluten-free. Simply Enak covers all diets by default at no extra charge. FTM puts the responsibility on you and disclaims liability. SFT requires advance notice.</p>
+          <span class="inline-block bg-accent text-black text-xs font-bold px-3 py-1 rounded-full">Choose Simply Enak</span>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <div class="text-2xl mb-3">👥</div>
+          <h3 class="font-bold font-heading text-lg mb-2">Group Bookings and Private Tours</h3>
+          <p class="text-sm text-muted mb-3">You have a group of 10+ and need a private tour. Simply Enak offers tailored private tours with flexible routes and multi-city itineraries.</p>
+          <span class="inline-block bg-accent text-black text-xs font-bold px-3 py-1 rounded-full">Choose Simply Enak</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verdict Summary -->
+  <section class="py-12 bg-muted/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">VERDICT</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-heading">Category Winners at a Glance</h2>
+        <p class="text-muted max-w-xl mx-auto mt-3 text-sm">Simply Enak wins across the dimensions that matter most for a real food tour. The exceptions tell you when a competitor makes sense.</p>
+      </div>
+      <div class="overflow-x-auto rounded-xl shadow-sm border border-gray-100">
+        <table class="w-full text-sm bg-white">
+          <thead>
+            <tr class="bg-[#1a1a1a] text-white">
+              <th class="text-left px-5 py-4 font-bold">Category</th>
+              <th class="text-left px-5 py-4 font-bold text-accent">Winner</th>
+              <th class="text-left px-5 py-4 font-bold text-muted">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white"><td class="px-5 py-3 font-semibold">Group Size</td><td class="px-5 py-3 text-primary font-bold">Simply Enak</td><td class="px-5 py-3 text-muted">Max 9 vs 10-12. Smaller means a better pace.</td></tr>
+            <tr class="bg-gray-50/50"><td class="px-5 py-3 font-semibold">Market Walk</td><td class="px-5 py-3 text-primary font-bold">Simply Enak</td><td class="px-5 py-3 text-muted">Only operator visiting a real working wet market.</td></tr>
+            <tr class="bg-white"><td class="px-5 py-3 font-semibold">Guide Relationships</td><td class="px-5 py-3 text-primary font-bold">Simply Enak</td><td class="px-5 py-3 text-muted">10+ year vendor ties vs rotating freelancers.</td></tr>
+            <tr class="bg-gray-50/50"><td class="px-5 py-3 font-semibold">Dietary Accommodation</td><td class="px-5 py-3 text-primary font-bold">Simply Enak</td><td class="px-5 py-3 text-muted">Covered by default, no extra charge. Others disclaim liability.</td></tr>
+            <tr class="bg-white"><td class="px-5 py-3 font-semibold">Number of Tours</td><td class="px-5 py-3 text-primary font-bold">Simply Enak</td><td class="px-5 py-3 text-muted">5 distinct tours vs 1-4, across KL and Penang.</td></tr>
+            <tr class="bg-gray-50/50"><td class="px-5 py-3 font-semibold">Evening Options</td><td class="px-5 py-3 text-primary font-bold">Simply Enak</td><td class="px-5 py-3 text-muted">Only one with speakeasies and craft cocktails.</td></tr>
+            <tr class="bg-white"><td class="px-5 py-3 font-semibold">Price (Budget)</td><td class="px-5 py-3 text-green-600 font-bold">Secret Food Tours</td><td class="px-5 py-3 text-muted">$49.99, the cheapest option.</td></tr>
+            <tr class="bg-gray-50/50"><td class="px-5 py-3 font-semibold">Vehicle Transport</td><td class="px-5 py-3 text-green-600 font-bold">Food Tour Malaysia</td><td class="px-5 py-3 text-muted">Private vehicle between stops for less walking.</td></tr>
+            <tr class="bg-white border-t-2 border-accent"><td class="px-5 py-3 font-bold text-lg">Overall</td><td class="px-5 py-3 text-primary font-bold text-lg">Simply Enak</td><td class="px-5 py-3 text-muted">Best for small groups, real markets, dietary needs, and genuine local connection.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-muted text-center mt-6 max-w-lg mx-auto">Verdict based on actual data gathered from each operator's website in June 2026. Simply Enak data verified from our own tour pages.</p>
+    </div>
+  </section>
+
+  <!-- Why Choose Simply Enak Summary -->
+  <section class="py-12 bg-[#1a1a1a] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">THE BOTTOM LINE</p>
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-6">Why Choose Simply Enak?</h2>
+      <div class="grid gap-4 md:grid-cols-3 text-left">
+        <div class="bg-white/5 rounded-xl p-5">
+          <div class="text-2xl mb-2">🤝</div>
+          <h3 class="font-bold mb-2">10+ Year Vendor Relationships</h3>
+          <p class="text-sm text-white/70">We don't just show up at stalls. Your guide has known these vendors for a decade. You get the insider treatment that no global chain or drive-between-stops operator can match.</p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5">
+          <div class="text-2xl mb-2">👥</div>
+          <h3 class="font-bold mb-2">Small Groups, Always</h3>
+          <p class="text-sm text-white/70">Max 9 people, guaranteed. Most competitors run 10-12, and we have never gone above our cap. You will hear every story and never wait in line.</p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5">
+          <div class="text-2xl mb-2">🥬</div>
+          <h3 class="font-bold mb-2">Dietary Accommodation Included</h3>
+          <p class="text-sm text-white/70">Vegetarian, vegan, halal, gluten-free. All covered by default, no extra charge. Competitors either disclaim liability or require special approval.</p>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-4 justify-center">
+        <a href="/tours" class="bg-accent text-black font-bold px-8 py-3 rounded-lg hover:bg-accent/90 transition-colors">
+          Browse All Tours
+        </a>
+        <a href="https://wa.me/60172878929" target="_blank" class="border border-white/30 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition-colors">
+          Ask Us Anything
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-12 bg-page">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">FAQ</p>
+        <h2 class="text-2xl font-bold font-heading">Common Comparison Questions</h2>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+          <h3 class="font-bold mb-2">"How is Simply Enak different from Food Tour Malaysia?"</h3>
+          <p class="text-sm text-muted leading-relaxed">Food Tour Malaysia runs vehicle-based tours. They drive between food stops rather than walking through neighbourhoods. Their groups can be larger (up to 10+), and their dietary policy puts the responsibility on you ("customer's responsibility to inform"). Simply Enak walks through real wet markets and neighbourhoods, caps groups at 9, and accommodates all dietary needs by default. FTM's TripAdvisor Certificate of Excellence ran from 2011-2019 and has not been renewed.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+          <h3 class="font-bold mb-2">"How is Simply Enak different from Secret Food Tours?"</h3>
+          <p class="text-sm text-muted leading-relaxed">Secret Food Tours is a global franchise in 120+ cities offering one standardized KL tour for $49.99. It is a solid product but follows a formula that works everywhere. Simply Enak offers 5 distinct tours across KL and Penang, each with a different character, from wet market walks to evening speakeasies. Our guides have decade-long vendor relationships; Secret Food Tours' guides rotate through a global format. We also cap at 9 vs their 12.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+          <h3 class="font-bold mb-2">"Which tour is best for first-time visitors?"</h3>
+          <p class="text-sm text-muted leading-relaxed">For KL first-timers: <a href="/tours/flavours-of-malaysia" class="text-primary hover:underline">Flavours of Malaysia</a> (RM 289) is the complete introduction with the wet market, temples, and 10 tastings. For Penang first-timers: <a href="/tours/penang-street-food" class="text-primary hover:underline">Penang Street Food</a> (RM 285) a morning tour hitting all the iconic Penang dishes including Asam Laksa and Char Kway Teow.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+          <h3 class="font-bold mb-2">"What about operators on GetYourGuide or Viator?"</h3>
+          <p class="text-sm text-muted leading-relaxed">Most tours on those platforms are resold versions of Food Tour Malaysia or Secret Food Tours, plus some hotel-affiliated operators. The actual experience depends on the operator behind the listing, not the platform. Simply Enak is available direct. You get better pricing, direct communication with your guide, and full flexibility on dietary needs and timing.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+          <h3 class="font-bold mb-2">"Are Simply Enak tours more expensive than the alternatives?"</h3>
+          <p class="text-sm text-muted leading-relaxed">Our prices (RM 285-359, ~USD 64-81) sit in the middle range. Food Tour Malaysia charges USD 62-67 (~RM 275-297). Secret Food Tours charges USD 49.99 (~RM 220). But Simply Enak includes dietary accommodation by default (competitors do not), runs genuinely small groups (max 9 vs 10-12), offers 5 distinct tour themes (vs 1-4), and provides a wet market walk neither competitor matches. When you factor in what is included, our value is significantly higher per person.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 bg-muted/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-4">Still Comparing?</h2>
+      <p class="text-muted mb-8 max-w-xl mx-auto text-sm">We get it, there are a lot of options. Chat with us and we will help you figure out if Simply Enak is the right fit for your trip. No pressure, just honest advice.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="https://wa.me/60172878929" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#20bd5a] transition-colors">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="/contact" class="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors">
+          Send an Email
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

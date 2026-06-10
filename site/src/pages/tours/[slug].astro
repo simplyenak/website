@@ -1,0 +1,284 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList } from '~/lib/content';
+import PlayfulGallery from '~/components/widgets/PlayfulGallery.astro';
+
+export async function getStaticPaths() {
+  const tours = await getAllTours();
+  return tours.map((tour: any) => ({ params: { slug: tour.slug }, props: { tour } }));
+}
+
+const { tour } = Astro.props;
+const faqs = await getFAQs();
+const dietaryOptions = await getDietaryOptionList();
+const travelTypes = await getTravelTypeList();
+if (!tour) return Astro.redirect('/tours');
+
+const heroImg = tour.image;
+const foods = tour.foods || [];
+const foodDescriptions = tour.foodDescriptions || {};
+const itinerary = tour.itinerary || [];
+const widgetId = tour.widgetId || '';
+const highlights = tour.highlights || [];
+
+const meta = {
+  title: `${tour.tagline || tour.name}  -  Simply Enak`,
+  description: tour.shortDesc || tour.tagline || '',
+};
+---
+
+<Layout metadata={meta}>
+  <!-- Breadcrumb + Section Nav -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 py-3 overflow-x-auto">
+        <nav class="flex gap-2 whitespace-nowrap" aria-label="Tour sections">
+          {[
+            { id: 'overview', label: 'Overview' },
+            { id: 'itinerary-section', label: 'Itinerary' },
+            { id: 'tour-gallery', label: 'Gallery' },
+            { id: 'food', label: "What You'll Taste" },
+            { id: 'faq', label: 'FAQ' },
+          ].filter(s => {
+            if (s.id === 'food' && foods.length === 0) return false;
+            return true;
+          }).map(s => (
+            <a href={`#${s.id}`}
+               class="px-4 py-1.5 rounded-full text-sm font-semibold text-default border border-gray-200 dark:border-white/20 hover:border-primary hover:text-primary transition-colors">
+              {s.label}
+            </a>
+          ))}
+        </nav>
+        <div class="flex items-center gap-1.5 text-xs text-muted shrink-0 ml-auto">
+          <a href="/" class="hover:text-primary transition-colors whitespace-nowrap">Home</a>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <a href="/tours" class="hover:text-primary transition-colors whitespace-nowrap">Tours</a>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <span class="text-default font-semibold whitespace-nowrap">{tour.tagline || tour.name}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero: side-by-side layout -->
+  <section class="bg-[#1a1a1a] relative text-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 min-h-[450px]">
+        <div class="overflow-hidden relative h-64 md:h-auto">
+          {heroImg && <img src={heroImg} alt={tour.tagline || tour.name} class="w-full h-full object-cover" />}
+          <div class="absolute inset-0 bg-gradient-to-r from-black/60 hidden md:block to-transparent"></div>
+        </div>
+        <div class="flex justify-center flex-col bg-[#1a1a1a] md:p-10 p-8">
+          <p class="font-bold text-xs uppercase mb-2 tracking-[0.2em] text-accent/80">{tour.tagline || 'Food Tour'}</p>
+          <h1 class="font-bold font-heading text-3xl md:text-4xl leading-tight lg:text-5xl mb-2" style="font-size:clamp(1.5rem, 4.5vw, 3rem)">
+            <span class="text-white">
+              <span class="px-4 bg-accent font-black inline-block py-1 rounded-sm shadow-xl text-black" style="transform:rotate(-.7deg);font-size:clamp(1.3rem, 4.5vw, 3rem)">
+                {tour.name}
+              </span>
+            </span>
+          </h1>
+          <p class="text-sm mb-4 text-white/60">{tour.shortDesc ? tour.shortDesc.substring(0, 120) + '...' : ''}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {(tour.dietaryOptions || []).map((opt) => {
+              const tag = dietaryOptions.find((d: any) => d.slug === opt);
+              return tag ? (
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium" style="background:rgba(255,163,51,.12);border:1px solid rgba(255,163,51,.25);color:#FFA333">
+                  <span style="font-size:12px">{tag.icon || '✓'}</span> {tag.name || opt}
+                </span>
+              ) : null;
+            })}
+            {(tour.travelTypes || []).map((t) => {
+              const tag = travelTypes.find((tt: any) => tt.slug === t);
+              return tag ? (
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.85)">
+                  <span style="font-size:12px">{tag.icon || '✓'}</span> {tag.name || t}
+                </span>
+              ) : null;
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content + Sidebar -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-16 py-10">
+    <div class="grid gap-10 md:grid-cols-5">
+      <!-- Left: Main Content -->
+      <div class="md:col-span-3">
+
+        <!-- Overview -->
+        <section id="overview" class="mb-16 scroll-mt-20">
+          <h2 class="font-bold font-heading text-default text-2xl md:text-3xl mb-6">About This Tour</h2>
+          <div class="text-default leading-relaxed space-y-4">
+            {tour.shortDesc && <p class="text-muted">{tour.shortDesc}</p>}
+            {tour.fullDesc && <div class="text-muted space-y-4" set:html={tour.fullDesc} />}
+          </div>
+
+          {highlights.length > 0 && (
+            <div class="mt-8">
+              <h3 class="font-bold font-heading text-default text-xl mb-4">Tour Highlights</h3>
+              <ul class="space-y-3">
+                {highlights.map((h) => (
+                  <li class="flex items-start gap-3 text-muted">
+                    <span class="text-accent shrink-0 mt-1">✦</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+
+        <!-- Itinerary -->
+        {tour.itinerary && tour.itinerary.length > 0 && (
+          <section id="itinerary-section" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-10">
+              <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">What You'll Experience</p>
+              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">Tour Itinerary</h2>
+            </div>
+            <div class="relative">
+              <div class="absolute bg-primary/20 bottom-0 left-[19px] top-0 w-0.5"></div>
+              <div class="space-y-8">
+                {tour.itinerary.map((stop, i) => (
+                  <div class="flex gap-6 relative">
+                    <div class="flex items-center flex-col">
+                      <div class="text-sm items-center flex justify-center bg-primary font-bold font-heading h-10 relative rounded-full text-white w-10 z-10">{i + 1}</div>
+                    </div>
+                    <div class="flex-1 pt-1.5">
+                      {stop.time && <p class="font-bold text-xs uppercase text-accent tracking-wider">{stop.time}</p>}
+                      <h3 class="font-bold font-heading text-default text-lg mt-0.5">{stop.title}</h3>
+                      {stop.description && <p class="text-sm text-muted mt-1">{stop.description}</p>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <!-- Polaroid Gallery -->
+        <section id="tour-gallery" class="mb-16 scroll-mt-20">
+          <PlayfulGallery
+            tagline="Photos From This Tour"
+            title={`${tour.name} Gallery`}
+            images={[
+              { src: heroImg, alt: tour.name, caption: tour.tagline || tour.name },
+              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg', alt: 'Street food market', caption: 'Morning market' },
+              { src: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg', alt: 'Local cuisine', caption: 'Tasting flavours' },
+              { src: 'https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg', alt: 'Night market', caption: 'Evening adventure' },
+              { src: 'https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg', alt: 'Cultural sights', caption: 'Heritage & food' },
+              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg', alt: 'Local cuisine', caption: 'Authentic dishes' },
+              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg', alt: 'Heritage tour', caption: 'Cultural trail' },
+            ].filter(i => i.src)}
+          />
+        </section>
+
+        <!-- Food Cards -->
+        {foods.length > 0 && (
+          <section id="food" class="mb-16 scroll-mt-20">
+            <div class="text-center mb-10">
+              <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">What's on the Menu</p>
+              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">Food You'll Taste</h2>
+            </div>
+            <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+              {foods.map((food) => (
+                <div class="flex items-start gap-4 bg-white border border-gray-100 p-5 rounded-lg shadow-sm">
+                  <div class="flex items-center justify-center rounded-full bg-accent/10 flex-shrink-0 h-12 text-xl w-12">🍽️</div>
+                  <div>
+                    <h3 class="font-bold font-heading text-default">{food}</h3>
+                    <p class="text-sm text-muted mt-0.5">{foodDescriptions[food] || 'Authentic Malaysian dish'}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- FAQ -->
+        <section id="faq" class="mb-16 scroll-mt-20">
+          <div class="text-center mb-10">
+            <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">Common Questions</p>
+            <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">Questions We Often Hear</h2>
+          </div>
+          <div class="space-y-2 max-w-2xl mx-auto">
+            {faqs.filter((f: any) => {
+              const vis = f.page_visibility || [];
+              const tourSlugMap = {
+                'kuala-lumpur-street-food': 'kl-street-food',
+                'secrets-of-kl-nightlife-street-art-and-cocktails': 'secrets-of-kl-nightlife',
+              };
+              const pageKey = tourSlugMap[tour.slug] || tour.slug;
+              return vis.length === 0 || vis.includes('all') || vis.includes('tour-detail') || vis.includes(pageKey);
+            }).slice(0, 12).map((faq: any) => {
+              const question = faq.question || faq.q || '';
+              let answer = faq.answer || faq.a || '';
+              if (typeof answer === 'object' && answer?.root?.children) {
+                answer = answer.root.children.map((c: any) => c.children?.map((ch: any) => ch.text).join('') || '').join(' ');
+              }
+              return (
+              <details class="border border-gray-100 bg-white dark:bg-[#1e1c1c] dark:border-white/10 overflow-hidden group rounded-lg">
+                <summary class="text-sm items-center flex cursor-pointer dark:hover:bg-white/5 hover:bg-gray-50 justify-between list-none p-4 transition-colors">
+                  <span class="text-default font-semibold pr-4">{question}</span>
+                  <svg class="text-primary flex-shrink-0 group-open:rotate-180 h-4 transition-transform w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                </summary>
+                <div class="px-4 pb-4"><p class="text-sm text-muted">{answer}</p></div>
+              </details>
+              );
+            })}
+          </div>
+        </section>
+
+        <!-- Related tours (placeholder) -->
+        <section class="mb-16">
+          <h2 class="font-bold font-heading text-default text-2xl mb-8 text-center">You May Also Enjoy</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <a href="/tours" class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
+              <div class="h-40 overflow-hidden relative">
+                <img src="https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm font-bold font-heading text-default mb-1">Browse All Tours</h3>
+                <span class="text-muted text-xs group-hover:text-primary transition-colors">View all →</span>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right: Sidebar -->
+      <div class="md:col-span-2">
+        <div class="sticky top-24 border border-gray-100 bg-white dark:bg-[#1e1c1c] dark:border-white/10 overflow-hidden shadow-sm rounded-xl">
+          <div class="border-b border-gray-100 dark:border-white/10 p-6">
+            <p class="text-muted text-xs mb-1 tracking-wide uppercase">From</p>
+            <div class="font-bold font-heading text-3xl text-primary">{tour.price || 'RM 285'}</div>
+            <p class="text-muted text-xs mt-1">per person · free cancellation</p>
+          </div>
+          <div class="border-b border-gray-100 dark:border-white/10 p-6">
+            <div class="text-sm grid grid-cols-2 gap-y-3">
+              <div><span class="text-muted">Duration</span><p class="text-default font-semibold">{tour.duration || '3.5 hours'}</p></div>
+              <div><span class="text-muted">Schedule</span><p class="text-default font-semibold">{tour.schedule || 'Daily'}</p></div>
+              <div><span class="text-muted">Group</span><p class="text-default font-semibold">{tour.groupSize || '2–9 people'}</p></div>
+              <div><span class="text-muted">Difficulty</span><p class="text-default font-semibold">{tour.difficulty || 'Easy'}</p></div>
+              {tour.cancellation && (
+                <div class="col-span-2"><span class="text-muted">Cancellation</span><p class="text-default font-semibold text-green-600">{tour.cancellation}</p></div>
+              )}
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            {widgetId && (
+              <div class="w-full" id={`widget-container-${widgetId}`}>
+                <script src="https://assets.ticketinghub.com/checkout.js" async data-widget={widgetId}></script>
+              </div>
+            )}
+            <a href="https://wa.me/60172878929" target="_blank"
+               class="inline-flex items-center justify-center gap-2 w-full border-2 border-primary text-primary font-bold px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors text-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

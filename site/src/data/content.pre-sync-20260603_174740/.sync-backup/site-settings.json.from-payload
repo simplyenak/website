@@ -1,0 +1,154 @@
+{
+  "id": 1,
+  "site_name": "Simply Enak",
+  "tagline": null,
+  "description": null,
+  "company_established": 2011,
+  "registration_no": "{\"en\":\"In Progress\"}",
+  "tour_price": 285,
+  "tour_currency": "MYR",
+  "max_people_per_tour": 9,
+  "tour_duration": "3.5-4 hours",
+  "heritage_vendors_count": "12",
+  "years_operating": "14",
+  "guests_hosted": "5000+",
+  "rating": "5",
+  "review_count": "520",
+  "contact_email": "booking@simplyenak.com",
+  "contact_phone": "+6 017 287 8929",
+  "whatsapp_number": "+6 017 287 8929",
+  "business_hours": null,
+  "address": null,
+  "forms_webhook_url": null,
+  "social_facebook": "https://facebook.com/simplyenak",
+  "social_instagram": "https://www.instagram.com/simply.enak/",
+  "social_youtube": "https://www.youtube.com/channel/UCgRvAZ86vyYwkk6-bvnDRCg/featured?view_as_subscriber",
+  "social_tripadvisor": "https://www.tripadvisor.com/Attraction_Review-g298570-d13127832-Reviews-Simply_Enak-Kuala_Lumpur_Wilayah_Persekutuan.html",
+  "social_tripadvisor_penang": null,
+  "social_linkedin_company": "https://www.linkedin.com/company/simply-enak/",
+  "social_linkedin_maarten": "{\"en\":\"https://www.linkedin.com/in/maarten-van-rijn\"}",
+  "social_linkedin_pauline": "{\"en\":\"https://www.linkedin.com/in/pauline-lee-1972842/\"}",
+  "press_natgeo_url": null,
+  "press_lonelyplanet_url": null,
+  "press_cnn_url": null,
+  "press_routard_url": null,
+  "press_timeout_penang_url": null,
+  "gmb_kl_url": "https://www.google.com/maps/place/Simply+Enak+Food+Experiences/",
+  "gmb_penang_url": "https://www.google.com/maps/place/Simply+Enak+Food+Experiences+Penang/",
+  "meta_title": null,
+  "meta_description": null,
+  "og_image": null,
+  "hero_image": null,
+  "booking_url": "https://www.ticketinghub.com/",
+  "main_navigation": [
+    {
+      "url": "/",
+      "label": "Home"
+    },
+    {
+      "url": "/tours",
+      "label": "Food Tours"
+    },
+    {
+      "url": "/about",
+      "label": "About"
+    },
+    {
+      "url": "/stories",
+      "label": "Stories"
+    },
+    {
+      "url": "/contact",
+      "label": "Contact"
+    }
+  ],
+  "mobile_navigation": [
+    {
+      "url": "/",
+      "label": "Home"
+    },
+    {
+      "url": "/tours",
+      "label": "Food Tours"
+    },
+    {
+      "url": "/about",
+      "label": "About"
+    },
+    {
+      "url": "/stories",
+      "label": "Stories"
+    },
+    {
+      "url": "/contact",
+      "label": "Contact"
+    },
+    {
+      "url": "/tours/private-tours",
+      "label": "Private Tours"
+    }
+  ],
+  "footer_navigation": [
+    {
+      "url": "/tours",
+      "label": "All Food Experiences"
+    },
+    {
+      "url": "/tours/private-tours",
+      "label": "Private Tours"
+    },
+    {
+      "url": "/media",
+      "label": "Media Enquiries"
+    },
+    {
+      "url": "/contact",
+      "label": "Contact Us"
+    },
+    {
+      "url": "/privacy-policy",
+      "label": "Privacy Policy"
+    },
+    {
+      "url": "/terms-conditions",
+      "label": "Terms & Conditions"
+    }
+  ],
+  "footer_copyright_text": null,
+  "sub_page_menus": null,
+  "show_vendors": false,
+  "guide_image": null,
+  "guide_image_alt": null,
+  "guide_heading": null,
+  "guide_body": null,
+  "travellers_choice_year": null,
+  "currency_usd_rate": 0.2522,
+  "currency_aud_rate": 0.3512,
+  "countries_served": null,
+  "label_the_experience": null,
+  "label_straight_from_guests": null,
+  "label_stop_by_stop": null,
+  "label_why_join_us": null,
+  "label_the_full_story": null,
+  "label_on_the_tour": null,
+  "label_the_people": null,
+  "label_private_tailored": null,
+  "label_what_you_get": null,
+  "label_where_to_find_us": null,
+  "label_good_to_know": null,
+  "label_common_questions": null,
+  "label_background": null,
+  "label_come_with_us": null,
+  "label_insider_guides": null,
+  "label_local_specialties": null,
+  "label_food_culture": null,
+  "label_culture_heritage": null,
+  "label_vendor_stories": null,
+  "label_walk_it_with_us": null,
+  "label_stay_in_loop": null,
+  "label_good_for": null,
+  "main_tour_slugs": [],
+  "updatedAt": "2026-05-19T10:40:01.044Z",
+  "createdAt": "2026-05-19T08:33:33.175Z",
+  "currency_rates_fetched_at": "2026-06-02"
+}

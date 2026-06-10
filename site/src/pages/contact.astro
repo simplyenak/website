@@ -1,0 +1,361 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getContactPage } from '~/lib/content';
+
+const cp = await getContactPage();
+
+const metadata = {
+  title: 'Contact Us',
+  description: "Get in touch with Simply Enak. Whether you're booking a tour or just curious. We read every message and reply within 3 hours.",
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-20 md:py-28">
+    <div class="absolute inset-0">
+      <img src="https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-sm md:text-base uppercase tracking-[0.2em] font-bold mb-4">{cp.hero?.eyebrow ?? "Get In Touch"}</p>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight" style="font-size: clamp(1.5rem, 5vw, 3.25rem);">
+        <span class="block text-white mb-2">{cp.hero?.heading ?? "Tell Us What You're "}<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">Looking For</span></span>
+      </h1>
+      <p class="text-xl text-white/80 max-w-2xl mx-auto">
+        {cp.hero?.description ?? "Whether you're booking a tour or just curious — we read every message and reply within 3 hours."}
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Contact</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Method Cards -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.contactMethods?.heading ?? "How Can We Help?"}</h2>
+        <p class="text-muted">{cp.contactMethods?.description ?? "Choose the easiest way to reach us. We read every message."}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {(cp.contactMethods?.items ?? [
+          { type: 'whatsapp', title: 'Chat with Us', subtitle: 'Fastest response', detail: '+60 17-287 8929', cta: { text: 'Open WhatsApp', url: 'https://wa.me/60172878929' } },
+          { type: 'email', title: 'Email Us', subtitle: 'For detailed plans', detail: 'booking@simplyenak.com', cta: { text: 'Copy Email' } },
+          { type: 'phone', title: 'Call Us', subtitle: 'For urgent queries', detail: '+60 17-287 8929', cta: { text: 'Call Now', url: 'tel:+601****8929' } },
+        ]).map((method: any) => (
+          <div class="text-center p-8 rounded-lg border border-gray-100 dark:border-white/10 hover:shadow-md transition-shadow">
+            {method.type === 'whatsapp' && (
+              <div class="w-14 h-14 mx-auto mb-4 bg-[#25D366]/10 rounded-full flex items-center justify-center">
+                <svg class="w-7 h-7 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </div>
+            )}
+            {method.type === 'email' && (
+              <div class="w-14 h-14 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+            )}
+            {method.type === 'phone' && (
+              <div class="w-14 h-14 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+            )}
+            <h3 class="text-xl font-bold font-heading text-default mb-1">{method.title}</h3>
+            <p class="text-sm text-muted mb-2">{method.subtitle}</p>
+            <p class="font-medium text-default mb-6">{method.detail}</p>
+            {method.type === 'whatsapp' && (
+              <a href={method.cta.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-6 py-3 rounded hover:bg-[#1da851] transition-colors">
+                {method.cta.text}
+              </a>
+            )}
+            {method.type === 'email' && (
+              <button
+                id="copy-email-btn"
+                data-email={method.detail}
+                class="inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded hover:bg-secondary transition-colors cursor-pointer"
+              >
+                <span id="copy-email-text">{method.cta.text}</span>
+              </button>
+            )}
+            {method.type === 'phone' && (
+              <a href={method.cta.url} class="inline-flex items-center justify-center gap-2 bg-[#1a1a1a] text-white font-semibold px-6 py-3 rounded hover:bg-gray-800 transition-colors">
+                {method.cta.text}
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Planning Scenarios -->
+  <section class="py-16 md:py-20 bg-primary/5 dark:bg-primary/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.planningScenarios?.heading ?? "Whatever Stage You're At"}</h2>
+        <p class="text-muted">{cp.planningScenarios?.description ?? "We've helped guests from \"just browsing\" to \"we land tomorrow.\""}</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {(cp.planningScenarios?.items ?? [
+          { title: 'Just Browsing', description: 'Not sure yet? No pressure. Ask us anything about our tours, food, or neighbourhoods.', icon: '🧭' },
+          { title: 'Planning a Trip', description: "Tell us your dates and group size. We'll recommend the right tour for you.", icon: '📅' },
+          { title: 'Landing Tomorrow', description: 'Last-minute? We often have spots available. WhatsApp us for the fastest response.', icon: '✈️' },
+          { title: 'Team Event', description: "Conference wrapping up? We'll take your team somewhere memorable for the evening, with time to actually talk. KL and Penang.", icon: '🏢' },
+        ]).map((scenario: any) => (
+          <div class="text-center p-6 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c]">
+            <div class="text-3xl mb-4">{scenario.icon}</div>
+            <h3 class="text-lg font-bold font-heading text-default mb-2">{scenario.title}</h3>
+            <p class="text-sm text-muted">{scenario.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Promise + Form -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Our Promise -->
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.ourPromise?.title ?? "Our Promise"}</h2>
+          <p class="text-muted text-lg mb-8">{cp.ourPromise?.description ?? "When you reach out to Simply Enak, you're talking to real people who actually run the tours."}</p>
+          <ul class="space-y-4">
+            {(cp.ourPromise?.highlights ?? [
+              "We reply within 3 hours (often faster on WhatsApp)",
+              "No automated responses. A real person reads every message",
+              "We'll never push you to book something that isn't right for you",
+              "If we're not the right fit, we'll tell you honestly",
+            ]).map((h: string) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-default">{h}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-10 p-6 rounded-lg bg-primary/5 dark:bg-primary/10 border border-primary/10">
+            <h3 class="font-bold font-heading text-default mb-2">Business Hours</h3>
+            <p class="text-default">{cp.businessHours?.text ?? "Mon – Sun: 9:00 – 20:00"}</p>
+            <p class="text-sm text-muted mt-1">{cp.businessHours?.timezone ?? "Malaysia Time (GMT+8)"}</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-default mb-8">Send Us a Message</h2>
+          <form id="contact-form" class="space-y-5">
+            <!-- Name + Email -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="cf-name" class="block text-sm font-medium text-default mb-1">Full Name <span class="text-primary">*</span></label>
+                <input id="cf-name" type="text" name="fullName" required maxlength="255" autocomplete="name"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="e.g. Sarah Chen" />
+              </div>
+              <div>
+                <label for="cf-email" class="block text-sm font-medium text-default mb-1">Email <span class="text-primary">*</span></label>
+                <input id="cf-email" type="email" name="email" required maxlength="255" autocomplete="email"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="you@example.com" />
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="cf-phone" class="block text-sm font-medium text-default mb-1">Phone / WhatsApp <span class="text-muted font-normal">(optional)</span></label>
+              <input id="cf-phone" type="tel" name="phoneNumber" maxlength="30" autocomplete="tel"
+                class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                placeholder="+60 17-287 8929" />
+            </div>
+
+            <!-- Company + Country -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="cf-company" class="block text-sm font-medium text-default mb-1">Company <span class="text-muted font-normal">(optional)</span></label>
+                <input id="cf-company" type="text" name="company" maxlength="255" autocomplete="organization"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="Your company name" />
+              </div>
+              <div>
+                <label for="cf-country" class="block text-sm font-medium text-default mb-1">Country</label>
+                <input id="cf-country" type="text" name="country" maxlength="100" autocomplete="country-name"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="e.g. Australia" />
+              </div>
+            </div>
+
+            <!-- Inquiry Type -->
+            <div>
+              <label for="cf-inquiry" class="block text-sm font-medium text-default mb-1">What can we help you with? <span class="text-primary">*</span></label>
+              <select id="cf-inquiry" name="inquiryType" required
+                class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors cursor-pointer">
+                <option value="">Select an option…</option>
+                <option value="Public Tour">Join a Public Tour</option>
+                <option value="Private Tour">Private / Group Tour</option>
+                <option value="Food Experience">Custom Food Experience</option>
+                <option value="Corporate Event">Team Event</option>
+                <option value="Partnership">Partnership Inquiry</option>
+                <option value="Media">Media Inquiry</option>
+                <option value="General">General Question</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="cf-message" class="block text-sm font-medium text-default mb-1">Your Message <span class="text-primary">*</span></label>
+              <textarea id="cf-message" name="message" rows="5" required maxlength="5000"
+                class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-y"
+                placeholder="Tell us about your group, preferred dates, dietary needs, or anything else you'd like to know…"></textarea>
+            </div>
+
+            <!-- Honeypot -->
+            <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;visibility:hidden;" aria-hidden="true">
+              <label for="honeypot_website">Leave this blank</label>
+              <input type="text" id="honeypot_website" name="honeypot_website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Turnstile widget -->
+            <div id="turnstile-wrapper" class="cf-turnstile" data-sitekey="0x4AAAAAAAQixyz123" data-theme="auto" data-size="normal"></div>
+
+            <button type="submit" id="cf-submit"
+              class="w-full py-4 bg-primary text-white font-bold rounded hover:bg-secondary transition-colors cursor-pointer flex items-center justify-center gap-2">
+              Send Message
+            </button>
+
+            <!-- Submit feedback -->
+            <div id="cf-feedback" class="hidden p-4 rounded-lg font-medium text-center"></div>
+
+            <p class="text-xs text-muted text-center">
+              Your details are used only to respond to your enquiry and stored for up to 3 years.
+              <a href="/privacy" class="underline hover:text-primary transition-colors">Privacy Policy</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">Common Questions</h2>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-4">
+        {(cp.faqs ?? [
+          { question: 'How quickly do you respond?', answer: "We reply within 3 hours during business hours (9am–8pm Malaysia time). On WhatsApp, it's usually within minutes." },
+          { question: 'Do I need to book in advance?', answer: 'We recommend booking at least 24 hours ahead so we can confirm availability with our vendors. For last-minute requests, WhatsApp is your best bet.' },
+          { question: 'Can you accommodate dietary requirements?', answer: "Absolutely. Vegetarian, halal, gluten-free, allergies. Just let us know when you book and we'll make sure every stop works for you." },
+          { question: "What's your cancellation policy?", answer: 'Free cancellation up to 24 hours before your tour. After that, we offer a full refund or rebooking if we can fill your spot.' },
+          { question: 'Do you offer private tours?', answer: 'Yes! Private tours are available for couples, families, and groups. Use the form above or WhatsApp us to plan a custom experience.' },
+        ]).map((faq: any) => (
+          <details class="group bg-white dark:bg-[#1e1c1c] rounded-lg shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-default hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+              <span>{faq.question}</span>
+              <svg class="w-5 h-5 text-muted transition-transform group-open:rotate-180 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-muted leading-relaxed">{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bg-[#1a1a1a] py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl font-bold font-heading text-white mb-4">{cp.ctaSection?.heading ?? "Prefer to Chat?"}</h2>
+      <p class="text-white/80 mb-8">{cp.ctaSection?.description ?? "We typically respond within minutes on WhatsApp."}</p>
+      <a href={cp.ctaSection?.ctaUrl ?? "https://wa.me/60172878929"} target="_blank" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-all shadow-md">
+        {cp.ctaSection?.ctaText ?? "Chat on WhatsApp Now"}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Copy email
+  const copyBtn = document.getElementById('copy-email-btn');
+  const copyText = document.getElementById('copy-email-text');
+  if (copyBtn && copyText) {
+    const email = copyBtn.dataset.email || 'booking@simplyenak.com';
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+        copyText.textContent = 'Copied!';
+        setTimeout(() => { copyText.textContent = 'Copy Email'; }, 2000);
+      } catch {
+        window.location.href = 'mailto:' + email;
+      }
+    });
+  }
+
+  // Form submission
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('cf-submit');
+  const feedback = document.getElementById('cf-feedback');
+
+  if (form && submitBtn && feedback) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Honeypot check
+      const honeypot = (form.querySelector('#honeypot_website') as HTMLInputElement)?.value;
+      if (honeypot) return;
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      payload.submittedAt = new Date().toISOString();
+      payload.source = window.location.href;
+
+      submitBtn.textContent = 'Sending…';
+      submitBtn.setAttribute('disabled', 'true');
+      feedback.classList.add('hidden');
+
+      try {
+        const res = await fetch('https://formspree.io/f/xjkyqvpz', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        feedback.textContent = '✓ Message sent! We\'ll reply within 3 hours. Check your inbox (and spam folder).';
+        feedback.className = 'p-4 rounded-lg font-medium text-center bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800';
+        form.reset();
+        if (window.trackContactForm) window.trackContactForm();
+      } catch {
+        feedback.textContent = 'Something went wrong. Please email booking@simplyenak.com or WhatsApp +60 17-287 8929.';
+        feedback.className = 'p-4 rounded-lg font-medium text-center bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800';
+      } finally {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.removeAttribute('disabled');
+        feedback.classList.remove('hidden');
+      }
+    });
+  }
+</script>
