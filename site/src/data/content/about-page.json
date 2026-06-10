@@ -2,143 +2,123 @@
   "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg",
   "heroEyebrow": "Our Story",
   "heroHeading": "Born in Malaysia. Raised on ",
-  "heroDescription": "What started as showing friends around Chow Kit market has become 14 years of sharing the real Malaysia, one meal at a time.",
+  "heroDescription": "What started as showing friends around Chow Kit market has become 15 years of sharing the real Malaysia, one meal at a time.",
   "founderSection": {
     "eyebrow": "Meet Pauline",
     "heading": "She Started by Taking Friends to the Market",
     "paragraphs": [
-      "Growing up in Malaysia, I spent my mornings walking through wet markets with my mom. While she haggled for the freshest fish, I watched the hawkers craft dishes that had been passed down for generations. The sizzle of char kway teow on a screaming hot wok. The aromatic clouds of curry. The careful art of folding roti canai. This was my Malaysia.",
-      "When I started bringing friends from overseas around, I realised they were missing all of it. They'd eat at air-conditioned restaurants with picture menus, never knowing that two streets away, a grandmother was making laksa the same way her mother taught her 60 years ago.",
-      "Simply Enak started in 2011 because I wanted to share what I grew up with. Not the Malaysia in guidebooks, the one I know. The night markets. The family recipes. The vendors who remember your face and your favourite dish. The real Malaysia that tourists walk past every day."
+      "Growing up in Malaysia, I spent countless mornings walking through wet markets with my mom. While she haggled for the freshest fish and picked out vegetables, I watched the hawkers craft dishes that had been passed down through generations. The sizzle of char kway teow on a screaming hot wok, the aromatic clouds of curry rising from street stalls, the careful art of folding roti canai. This was my Malaysia.",
+      "When I started bringing friends from other countries around, I realised they were missing this entire world. They'd eat at air-conditioned restaurants with picture menus, never knowing that just two streets away, a grandmother was making laksa the same way her mother taught her 60 years ago.",
+      "Simply Enak started in 2011 because I wanted to share what I experienced as a child. Not the Malaysia you see in guidebooks, but the one I know: the night markets, the family recipes, the vendors who remember your face and your favourite dish. The real Malaysia that tourists walk past every day."
     ],
     "image": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
   },
   "stats": [
     { "number": "5,000+", "label": "Happy Guests" },
     { "number": "4.9/5", "label": "TripAdvisor Rating" },
-    { "number": "14 Years", "label": "Experience" },
-    { "number": "Max 8", "label": "Group Size" }
+    { "number": "15 Years", "label": "Experience" },
+    { "number": "Max 9", "label": "Group Size" }
   ],
   "timelineSection": {
     "eyebrow": "2011 — Present",
-    "heading": "14 Years of Simply Enak",
-    "description": "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. A few things happened along the way.",
+    "heading": "15 Years of Simply Enak",
+    "description": "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. This is our story.",
     "milestones": [
       {
         "year": "Today",
         "title": "5,000+ guests and still eating",
-        "description": "Every week, travellers from around the world join us at the same stalls we've eaten at for 14 years. The guides know the vendors by name. The vendors know us.",
+        "description": "Every week, guests from 50+ countries join us at the same stalls we've eaten at for 15 years. The guides know the vendors by name. The vendors know us.",
         "isToday": true
       },
       {
         "year": "2024",
-        "title": "BBC World Service",
-        "description": "Simply Enak is featured on the BBC World Service, sharing the story of Malaysian street food culture with a global audience.",
-        "logo": "/images/press-logos/bbc.svg",
-        "url": "https://www.bbc.co.uk/programmes/w3ct8sw1"
+        "title": "Destination Eat Drink Podcast",
+        "description": "Pauline joins the Destination Eat Drink podcast to talk about Penang's food culture — Nyonya cooking, nasi kandar, and what makes Malaysian street food unique.",
+        "logo": "/images/press-logos/radiomisfits.com.png",
+        "url": "https://radiomisfits.com/ded286/"
       },
       {
-        "year": "2024",
-        "title": "Time Out",
-        "description": "Time Out features Simply Enak in their Kuala Lumpur food guide, recommending our tours for authentic street food experiences.",
-        "logo": "/images/press-logos/timeout.svg"
+        "year": "2019–2020",
+        "title": "The Edge TV",
+        "description": "Malaysian business news channel The Edge TV profiles Simply Enak — Pauline takes the crew through the food stalls that tell KL's story, neighbourhood by neighbourhood.",
+        "logo": "/images/press-logos/theedge.com.my.png",
+        "url": "https://youtu.be/zlqXAnJMREo"
       },
       {
-        "year": "2024",
-        "title": "Minority Nomad Video",
-        "description": "Minority Nomad films a Simply Enak tour, exploring KL's hidden street food, art, and speakeasy scene with Pauline.",
-        "logo": "/images/press-logos/minoritynomad.com.png",
-        "url": "https://www.youtube.com/watch?v="
-      },
-      {
-        "year": "2023",
-        "title": "Discovery Channel / TLC",
-        "description": "Simply Enak is featured on Discovery Channel and TLC, bringing Malaysian street food culture to television audiences worldwide.",
-        "logo": "/images/press-logos/tlc.svg"
-      },
-      {
-        "year": "2023",
-        "title": "The Yum List",
-        "description": "The Yum List features Simply Enak as a top food experience in Kuala Lumpur, highlighting our market tours and local guide expertise.",
-        "logo": "/images/press-logos/theyumlist.net.png"
-      },
-      {
-        "year": "2022",
-        "title": "Mr Taster",
-        "description": "Mr Taster joins a Simply Enak food tour, sharing the experience with millions of followers across social media.",
-        "logo": "/images/press-logos/mr_taster.png"
-      },
-      {
-        "year": "2021",
-        "title": "Le Routard",
-        "description": "Le Routard (France's leading travel guide) recommends Simply Enak for travellers seeking authentic Malaysian food experiences.",
-        "logo": "/images/press-logos/routard.svg"
-      },
-      {
-        "year": "2021",
-        "title": "TVNZ",
-        "description": "New Zealand's TVNZ features Simply Enak in their travel programming, showcasing KL's street food culture.",
-        "logo": "/images/press-logos/tvnz.co.nz.png"
-      },
-      {
-        "year": "2021",
-        "title": "5 Lost Together",
-        "description": "Travel blog 5 Lost Together documents their Simply Enak food tour experience, highlighting the personal connection with local guides.",
-        "logo": "/images/press-logos/5losttogether.com.png"
-      },
-      {
-        "year": "2020",
-        "title": "The Edge Malaysia",
-        "description": "The Edge Malaysia profiles Simply Enak, covering how the business grew from a single market walk to a multi-city tour operation.",
-        "logo": "/images/press-logos/theedge.com.my.png"
-      },
-      {
-        "year": "2020",
-        "title": "9Now (Channel 9 Australia)",
-        "description": "Channel 9 Australia features Simply Enak on 9Now, bringing Malaysian street food to Australian television audiences.",
-        "logo": "/images/press-logos/9now.com.au.png"
-      },
-      {
-        "year": "2020",
-        "title": "Best Regards From Far",
-        "description": "Travel blog Best Regards From Far shares their Simply Enak experience, highlighting the stories behind every dish.",
-        "logo": "/images/press-logos/bestregardsfromfar.com.png"
-      },
-      {
-        "year": "2020",
-        "title": "Radio Misfits Podcast",
-        "description": "Pauline is interviewed on the Radio Misfits podcast, sharing the story behind Simply Enak and Malaysian food culture.",
-        "logo": "/images/press-logos/radiomisfits.com.png"
-      },
-      {
-        "year": "2019",
-        "title": "National Geographic",
-        "description": "National Geographic features Simply Enak in their coverage of Kuala Lumpur's best authentic food experiences.",
-        "logo": "/images/press-logos/natgeo.svg"
+        "year": "2018–2019",
+        "title": "The Food Ranger — 3 Videos",
+        "description": "Trevor James (The Food Ranger, 6M+ subscribers) films three videos with our team across KL's hawker stalls. Together they rack up millions of views, putting Malaysian street food on the global food map.",
+        "logo": "/images/press-logos/thefoodranger.svg",
+        "url": "https://youtu.be/poY8iDlC6Tk"
       },
       {
         "year": "2018",
-        "title": "Visit KL",
-        "description": "Kuala Lumpur's official tourism portal Visit KL recommends Simply Enak as an authentic local food experience.",
-        "logo": "/images/press-logos/visitkl.dbkl.gov.my.png"
+        "title": "Getaway, Channel Nine Australia",
+        "description": "Australian travel show Getaway flies host David Reyne to KL. Pauline takes the crew through Chow Kit wet market and Jalan Alor for primetime Australian television.",
+        "logo": "/images/press-logos/9now.com.au.png"
       },
       {
         "year": "2017",
-        "title": "Lonely Planet",
-        "description": "Lonely Planet recommends Simply Enak as a top food tour in Kuala Lumpur, recognising our deep knowledge of street food heritage.",
-        "logo": "/images/press-logos/lonely-planet.svg"
+        "title": "TVNZ: Karena & Kasey's Foreign Flavours",
+        "description": "Karena and Kasey Bird (MasterChef Australia winners) bring their TVNZ cooking series to Penang — Simply Enak shows them the Georgetown food scene that locals eat at every day.",
+        "logo": "/images/press-logos/tvnz.co.nz.png"
+      },
+      {
+        "year": "2016",
+        "title": "TLC: Taste Off with Chef Aaron Craze",
+        "description": "British chef Aaron Craze brings TLC's 'Taste Off' to KL. Pauline takes the crew through the hawker stalls and morning markets that make Malaysian food famous.",
+        "logo": "/images/press-logos/tlc.svg"
+      },
+      {
+        "year": "2016",
+        "title": "Time Out Penang",
+        "description": "Time Out names Simply Enak one of Penang's essential experiences, putting us on the map for food travellers heading north.",
+        "logo": "/images/press-logos/timeout.svg",
+        "url": "https://www.timeout.com/penang/things-to-do/simply-enak"
+      },
+      {
+        "year": "2016",
+        "title": "BBC Sport",
+        "description": "A BBC Sport team joins our Penang food trail and films the legendary Tiger Char Kway Teow vendor for an international sports audience.",
+        "logo": "/images/press-logos/bbc.svg",
+        "url": "https://youtu.be/zZbAAn16JWc"
       },
       {
         "year": "2015",
-        "title": "The Food Ranger",
-        "description": "Trevor James (The Food Ranger) features Simply Enak in his Ipoh street food series, bringing Malaysian food to millions of YouTube viewers.",
-        "logo": "/images/press-logos/thefoodranger.svg",
-        "url": "https://www.youtube.com/watch?v=uT5ndAoe0ow"
+        "title": "National Geographic: Confucius Was a Foodie",
+        "description": "NatGeo's 'Confucius Was a Foodie' series films Season 3 with Pauline guiding the crew through Kuala Lumpur's Chinese culinary heritage. Our vendor relationships open doors cameras usually don't get through.",
+        "logo": "/images/press-logos/natgeo.svg"
+      },
+      {
+        "year": "2016",
+        "title": "BBC Sport",
+        "description": "A BBC Sport team joins our Penang food trail and films the legendary Tiger Char Kway Teow vendor.",
+        "logo": "/images/press-logos/bbc.svg",
+        "url": "https://youtu.be/zZbAAn16JWc"
+      },
+      {
+        "year": "2014",
+        "title": "KL Food Trails — City Hall & Time Out KL",
+        "description": "Partnered with Kuala Lumpur City Hall's Tourism Unit and Time Out KL to map four neighbourhoods: Jalan Alor, Kampung Baru, Old KL, and Pudu. A printed map guiding visitors to the stalls and kopitiam that anchor each area.",
+        "logo": "/images/press-logos/visitkl.dbkl.gov.my.png"
+      },
+      {
+        "year": "2013",
+        "title": "Le Guide du Routard",
+        "description": "France's most-read travel guide lists Simply Enak among Malaysia's top food experiences — our first major international press recognition.",
+        "logo": "/images/press-logos/routard.svg",
+        "url": "https://www.routard.com/guide/kuala_lumpur/4385/activites_.htm"
+      },
+      {
+        "year": "2012",
+        "title": "Lonely Planet",
+        "description": "A Lonely Planet researcher joins one of our Petaling Street tours — incognito, as they always are. Simply Enak makes it into the most-read travel guide in the world.",
+        "logo": "/images/press-logos/lonely-planet.svg"
       },
       {
         "year": "2011",
         "title": "Simply Enak Founded",
-        "description": "Pauline leads her first food walk through Chow Kit market with a small group of friends. Nobody calls it a tour yet.",
+        "description": "Pauline leads her first food walk through Chow Kit market with a small group of friends. Nobody calls it a tour yet — it's just lunch.",
         "logo": "/images/press-logos/simplyenak.com.png"
       }
     ]
@@ -149,18 +129,18 @@
     "items": [
       {
         "number": "01",
-        "title": "No Scripts",
-        "description": "Our guides are licensed professionals, but they talk to you like friends. Real stories, not rehearsed speeches."
+        "title": "Unscripted & Human",
+        "description": "We don't do canned jokes or rehearsed speeches. Our guides are licensed professionals, but they talk to you like friends: sharing real stories, not scripts."
       },
       {
         "number": "02",
-        "title": "Slow Down",
-        "description": "We walk. We pause. We take the time to notice things: the architecture, the smells, the sounds of the neighbourhood."
+        "title": "Slow Travel",
+        "description": "We walk. We pause. We take the time to appreciate the details: the architecture, the smells, the sounds of the neighbourhood."
       },
       {
         "number": "03",
         "title": "Support Local",
-        "description": "We focus on small, local vendors — many family-run for generations. Your tour fee supports the heritage keepers of Malaysian food."
+        "description": "We exclusively visit family-run businesses. Your tour fee directly supports the heritage keepers of our food culture."
       }
     ]
   },
@@ -173,7 +153,7 @@
         "name": "Pauline",
         "role": "Founder & Lead Guide",
         "specialty": "15 Years Building Relationships",
-        "description": "Started Simply Enak in 2011 after watching too many tourists miss the real Malaysia.",
+        "description": "Started Simply Enak in 2011 after watching too many tourists miss the real Malaysia. Grew up walking wet markets with her mom.",
         "image": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
       },
       {
