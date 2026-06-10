@@ -10,9 +10,21 @@ export async function getStaticPaths() {
 }
 
 const { tour } = Astro.props;
+const allTours = await getAllTours();
 const faqs = await getFAQs();
 const dietaryOptions = await getDietaryOptionList();
 const travelTypes = await getTravelTypeList();
+
+// Extract city from location string for related tours
+const extractCity = (loc: string) => {
+  if (!loc) return '';
+  const l = loc.toLowerCase();
+  if (l.includes('penang')) return 'Penang';
+  if (l.includes('kl') || l.includes('kuala lumpur')) return 'Kuala Lumpur';
+  return loc.split(':')[0]?.trim() || loc;
+};
+const currentCity = extractCity(tour.location || '');
+const sameCityTours = allTours.filter((t: any) => t.slug !== tour.slug && extractCity(t.location || '') === currentCity).slice(0, 4);
 if (!tour) return Astro.redirect('/tours');
 
 const heroImg = tour.image;
@@ -254,19 +266,26 @@ const meta = {
           </div>
         </section>
 
-        <!-- Related tours (placeholder) -->
+        <!-- Related tours in same city -->
         <section class="mb-16">
           <h2 class="font-bold font-heading text-default text-2xl mb-8 text-center">You May Also Enjoy</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <a href="/tours" class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
-              <div class="h-40 overflow-hidden relative">
-                <img src="https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              </div>
-              <div class="p-4">
-                <h3 class="text-sm font-bold font-heading text-default mb-1">Browse All Tours</h3>
-                <span class="text-muted text-xs group-hover:text-primary transition-colors">View all →</span>
-              </div>
-            </a>
+            {sameCityTours.length > 0 ? sameCityTours.map((related: any) => (
+              <a href={`/tours/${related.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
+                <div class="h-40 overflow-hidden relative">
+                  {related.image && <img src={related.image} alt={related.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />}
+                </div>
+                <div class="p-4">
+                  <h3 class="text-sm font-bold font-heading text-default mb-1 group-hover:text-primary transition-colors">{related.name}</h3>
+                  <p class="text-xs text-muted mb-2">{related.duration} · {related.price}</p>
+                  <span class="text-muted text-xs group-hover:text-primary transition-colors">View tour →</span>
+                </div>
+              </a>
+            )) : (
+              <a href="/tours" class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all col-span-2 text-center py-10">
+                <span class="text-muted text-sm group-hover:text-primary transition-colors">Browse All Tours →</span>
+              </a>
+            )}
           </div>
         </section>
       </div>
