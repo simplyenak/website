@@ -265,9 +265,9 @@ const meta = {
               )}
             </div>
           </div>
-          <div class="p-6 space-y-3">
+          <div class="space-y-3 px-6 pb-6">
             {widgetId && (
-              <div class="w-full" id={`widget-container-${widgetId}`}>
+              <div class="max-w-fit" id={`widget-container-${widgetId}`}>
                 <script src="https://assets.ticketinghub.com/checkout.js" async data-widget={widgetId}></script>
               </div>
             )}
