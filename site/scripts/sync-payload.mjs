@@ -95,7 +95,7 @@ const SLUG_MAP = {
 }
 
 // Stats
-const stats = { fetched: 0, unauth: 0, defaulted: 0, written: 0, errored: 0, backupCount: 0 }
+const stats = { fetched: 0, unauth: 0, defaulted: 0, written: 0, errored: 0, backupCount: 0, preserved: 0 }
 
 // ─── HTTP helpers ───────────────────────────────────────────────────────────────
 
@@ -884,7 +884,7 @@ async function sync() {
   // ── Singletons ──
   const singletons = [
     { slug: 'home_page', file: 'home-page.json', label: 'Home Page', transform: transformHomePage },
-    { slug: 'about_page', file: 'about-page.json', label: 'About Page', transform: transformAboutPage },
+    { slug: 'about_page', file: 'about-page.json', label: 'About Page', transform: transformAboutPage, handCurated: true },
     { slug: 'contact_page', file: 'contact-page.json', label: 'Contact Page', transform: transformContactPage },
     { slug: 'site_settings', file: 'site-settings.json', label: 'Site Settings' },
     { slug: 'thank_you_pages', file: 'thank-you-pages.json', label: 'Thank You Pages', asArray: true },
@@ -911,7 +911,10 @@ async function sync() {
     } else {
       const doc = await fetchSingleton(item.slug)
       const data = item.transform ? (doc ? item.transform(doc) : null) : doc
-      if (data) {
+      if (item.handCurated && fs.existsSync(path.join(CONTENT_DIR, item.file)) && !FORCE) {
+        log(`  🛡️  HAND-CURATED: ${item.file} — skipping sync. Use --force to overwrite.`)
+        stats.preserved++
+      } else if (data) {
         // Protect hand-curated JSON from being overwritten by empty block transforms
         let requiredFields = []
         if (item.file === 'home-page.json') requiredFields = HOME_REQUIRED_FIELDS
