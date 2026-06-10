@@ -38,19 +38,101 @@
         "url": "https://www.bbc.co.uk/programmes/w3ct8sw1"
       },
       {
+        "year": "2024",
+        "title": "Time Out",
+        "description": "Time Out features Simply Enak in their Kuala Lumpur food guide, recommending our tours for authentic street food experiences.",
+        "logo": "/images/press-logos/timeout.svg"
+      },
+      {
+        "year": "2024",
+        "title": "Minority Nomad Video",
+        "description": "Minority Nomad films a Simply Enak tour, exploring KL's hidden street food, art, and speakeasy scene with Pauline.",
+        "logo": "/images/press-logos/minoritynomad.com.png",
+        "url": "https://www.youtube.com/watch?v="
+      },
+      {
+        "year": "2023",
+        "title": "Discovery Channel / TLC",
+        "description": "Simply Enak is featured on Discovery Channel and TLC, bringing Malaysian street food culture to television audiences worldwide.",
+        "logo": "/images/press-logos/tlc.svg"
+      },
+      {
+        "year": "2023",
+        "title": "The Yum List",
+        "description": "The Yum List features Simply Enak as a top food experience in Kuala Lumpur, highlighting our market tours and local guide expertise.",
+        "logo": "/images/press-logos/theyumlist.net.png"
+      },
+      {
+        "year": "2022",
+        "title": "Mr Taster",
+        "description": "Mr Taster joins a Simply Enak food tour, sharing the experience with millions of followers across social media.",
+        "logo": "/images/press-logos/mr_taster.png"
+      },
+      {
+        "year": "2021",
+        "title": "Le Routard",
+        "description": "Le Routard (France's leading travel guide) recommends Simply Enak for travellers seeking authentic Malaysian food experiences.",
+        "logo": "/images/press-logos/routard.svg"
+      },
+      {
+        "year": "2021",
+        "title": "TVNZ",
+        "description": "New Zealand's TVNZ features Simply Enak in their travel programming, showcasing KL's street food culture.",
+        "logo": "/images/press-logos/tvnz.co.nz.png"
+      },
+      {
+        "year": "2021",
+        "title": "5 Lost Together",
+        "description": "Travel blog 5 Lost Together documents their Simply Enak food tour experience, highlighting the personal connection with local guides.",
+        "logo": "/images/press-logos/5losttogether.com.png"
+      },
+      {
+        "year": "2020",
+        "title": "The Edge Malaysia",
+        "description": "The Edge Malaysia profiles Simply Enak, covering how the business grew from a single market walk to a multi-city tour operation.",
+        "logo": "/images/press-logos/theedge.com.my.png"
+      },
+      {
+        "year": "2020",
+        "title": "9Now (Channel 9 Australia)",
+        "description": "Channel 9 Australia features Simply Enak on 9Now, bringing Malaysian street food to Australian television audiences.",
+        "logo": "/images/press-logos/9now.com.au.png"
+      },
+      {
+        "year": "2020",
+        "title": "Best Regards From Far",
+        "description": "Travel blog Best Regards From Far shares their Simply Enak experience, highlighting the stories behind every dish.",
+        "logo": "/images/press-logos/bestregardsfromfar.com.png"
+      },
+      {
+        "year": "2020",
+        "title": "Radio Misfits Podcast",
+        "description": "Pauline is interviewed on the Radio Misfits podcast, sharing the story behind Simply Enak and Malaysian food culture.",
+        "logo": "/images/press-logos/radiomisfits.com.png"
+      },
+      {
         "year": "2019",
         "title": "National Geographic",
-        "description": "National Geographic features Simply Enak in their coverage of Kuala Lumpur's best authentic food experiences, highlighting our focus on family-run stalls and local culture."
+        "description": "National Geographic features Simply Enak in their coverage of Kuala Lumpur's best authentic food experiences.",
+        "logo": "/images/press-logos/natgeo.svg"
+      },
+      {
+        "year": "2018",
+        "title": "Visit KL",
+        "description": "Kuala Lumpur's official tourism portal Visit KL recommends Simply Enak as an authentic local food experience.",
+        "logo": "/images/press-logos/visitkl.dbkl.gov.my.png"
       },
       {
         "year": "2017",
         "title": "Lonely Planet",
-        "description": "Lonely Planet recommends Simply Enak as a top food tour in Kuala Lumpur, recognising our guides' deep knowledge of KL's street food heritage."
+        "description": "Lonely Planet recommends Simply Enak as a top food tour in Kuala Lumpur, recognising our deep knowledge of street food heritage.",
+        "logo": "/images/press-logos/lonely-planet.svg"
       },
       {
         "year": "2015",
         "title": "The Food Ranger",
-        "description": "Trevor James (The Food Ranger) features Simply Enak's team in his Ipoh street food series, bringing Malaysian food to millions of viewers.",
+        "description": "Trevor James (The Food Ranger) features Simply Enak in his Ipoh street food series, bringing Malaysian food to millions of YouTube viewers.",
+        "logo": "/images/press-logos/thefoodranger.svg",
         "url": "https://www.youtube.com/watch?v=uT5ndAoe0ow"
       },
       {
@@ -68,43 +150,43 @@
       {
         "number": "01",
         "title": "No Scripts",
-        "description": "Our guides are licensed professionals, but they talk to you like friends. Real stories, not rehearsed speeches. You'll get a different tour every time because you're different every time."
+        "description": "Our guides are licensed professionals, but they talk to you like friends. Real stories, not rehearsed speeches."
       },
       {
         "number": "02",
         "title": "Slow Down",
-        "description": "We walk. We pause. We take the time to notice things: the architecture, the smells, the sounds of the neighbourhood. A food tour shouldn't feel like a marathon."
+        "description": "We walk. We pause. We take the time to notice things: the architecture, the smells, the sounds of the neighbourhood."
       },
       {
         "number": "03",
         "title": "Support Local",
-        "description": "We focus on small, local vendors — many family-run for generations. Your tour fee goes to the heritage keepers of Malaysian food culture — the same people who've been feeding this neighbourhood for decades."
+        "description": "We focus on small, local vendors — many family-run for generations. Your tour fee supports the heritage keepers of Malaysian food."
       }
     ]
   },
   "teamSection": {
     "eyebrow": "The Team",
     "heading": "The People Behind the Flavours",
-    "description": "We're a small team, all licensed with Tourism Malaysia. More importantly, we grew up eating at these same stalls. We know the vendors by name, the neighbourhoods by heart, and the stories behind every dish.",
+    "description": "We're a small team, all licensed with Tourism Malaysia. We grew up eating at these same stalls.",
     "members": [
       {
         "name": "Pauline",
         "role": "Founder & Lead Guide",
         "specialty": "15 Years Building Relationships",
-        "description": "Started Simply Enak in 2011 after watching too many tourists miss the real Malaysia. Grew up walking wet markets with her mom.",
+        "description": "Started Simply Enak in 2011 after watching too many tourists miss the real Malaysia.",
         "image": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
       },
       {
         "name": "Maarten",
         "role": "Partner",
         "specialty": "Operations & Growth",
-        "description": "Manages operations and business development, ensuring every aspect of Simply Enak stays true to authentic Malaysian food experiences."
+        "description": "Ensures every aspect of Simply Enak stays true to authentic Malaysian food experiences."
       },
       {
         "name": "Trish",
         "role": "Licensed Guide",
         "specialty": "Tourism Malaysia Certified",
-        "description": "Brings warmth and deep local knowledge to every tour. A natural storyteller who makes every guest feel like family."
+        "description": "A natural storyteller who makes every guest feel like family."
       }
     ]
   },
