@@ -1,0 +1,536 @@
+import type { CollectionConfig } from 'payload'
+
+export const HomePage: CollectionConfig = {
+  slug: 'home_page',
+  admin: {
+    group: 'Pages',
+    description: '🏠 Home page content and sections',
+    useAsTitle: 'meta_title',
+  },
+  fields: [
+    // Hero Section
+    {
+      name: 'hero_title',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_highlight',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_title_end',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_subtitle',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_description',
+      type: 'textarea',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_price_info',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_vendors',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_since',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_rated',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_max_per_tour',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_low_waste',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_guides',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_stalls',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_values',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_guests_hosted',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_cities',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+    {
+      name: 'hero_bg_image',
+      type: 'text',
+      admin: {
+        group: 'Hero Section',
+      },
+    },
+
+    // Manifesto Section
+    {
+      name: 'manifesto_eyebrow',
+      type: 'text',
+      admin: {
+        group: 'Manifesto Section',
+      },
+    },
+    {
+      name: 'manifesto_headline',
+      type: 'textarea',
+      admin: {
+        group: 'Manifesto Section',
+      },
+    },
+    {
+      name: 'manifesto_tagline',
+      type: 'text',
+      admin: {
+        group: 'Manifesto Section',
+      },
+    },
+    {
+      name: 'manifesto_body',
+      type: 'textarea',
+      admin: {
+        group: 'Manifesto Section',
+      },
+    },
+    {
+      name: 'manifesto_attribution_role',
+      type: 'text',
+      admin: {
+        group: 'Manifesto Section',
+      },
+    },
+
+    // Pillars Section
+    {
+      name: 'pillars_intro',
+      type: 'text',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_people_label',
+      type: 'text',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_people_heading',
+      type: 'text',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_people_body',
+      type: 'textarea',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_food_label',
+      type: 'text',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_food_heading',
+      type: 'text',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_food_body',
+      type: 'textarea',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_place_label',
+      type: 'text',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_place_heading',
+      type: 'text',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+    {
+      name: 'pillar_place_body',
+      type: 'textarea',
+      admin: {
+        group: 'Pillars Section',
+      },
+    },
+
+    // Vendors Section
+    {
+      name: 'vendors_eyebrow',
+      type: 'text',
+      admin: {
+        group: 'Vendors Section',
+      },
+    },
+    {
+      name: 'vendors_title',
+      type: 'text',
+      admin: {
+        group: 'Vendors Section',
+      },
+    },
+    {
+      name: 'vendors_subtitle',
+      type: 'text',
+      admin: {
+        group: 'Vendors Section',
+      },
+    },
+    {
+      name: 'vendors_meet_on_tour',
+      type: 'text',
+      admin: {
+        group: 'Vendors Section',
+      },
+    },
+    {
+      name: 'vendors_footer',
+      type: 'text',
+      admin: {
+        group: 'Vendors Section',
+      },
+    },
+    {
+      name: 'vendors_read_stories',
+      type: 'text',
+      admin: {
+        group: 'Vendors Section',
+      },
+    },
+
+    // Tour Segments Section
+    {
+      name: 'segment_heading',
+      type: 'text',
+      admin: {
+        group: 'Tour Segments Section',
+      },
+    },
+    {
+      name: 'segment_subheading',
+      type: 'text',
+      admin: {
+        group: 'Tour Segments Section',
+      },
+    },
+    {
+      name: 'segment_view_all',
+      type: 'text',
+      admin: {
+        group: 'Tour Segments Section',
+      },
+    },
+
+    // About Section
+    {
+      name: 'about_eyebrow',
+      type: 'text',
+      admin: {
+        group: 'About Section',
+      },
+    },
+    {
+      name: 'about_title',
+      type: 'text',
+      admin: {
+        group: 'About Section',
+      },
+    },
+    {
+      name: 'about_subtitle',
+      type: 'text',
+      admin: {
+        group: 'About Section',
+      },
+    },
+    {
+      name: 'about_description',
+      type: 'textarea',
+      admin: {
+        group: 'About Section',
+      },
+    },
+    {
+      name: 'about_heritage',
+      type: 'text',
+      admin: {
+        group: 'About Section',
+      },
+    },
+    {
+      name: 'about_image',
+      type: 'text',
+      admin: {
+        group: 'About Section',
+      },
+    },
+
+    // Expect Section
+    {
+      name: 'expect_title',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_subtitle',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat1_number',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat1_heading',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat1_body',
+      type: 'textarea',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat2_number',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat2_heading',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat2_body',
+      type: 'textarea',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat3_number',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat3_heading',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat3_body',
+      type: 'textarea',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat4_number',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat4_heading',
+      type: 'text',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+    {
+      name: 'expect_stat4_body',
+      type: 'textarea',
+      admin: {
+        group: 'Expect Section',
+      },
+    },
+
+    // CTA Section
+    {
+      name: 'cta_eyebrow',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+    {
+      name: 'cta_title',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+    {
+      name: 'cta_subtitle',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+    {
+      name: 'cta_free_cancellation',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+    {
+      name: 'cta_reply_time',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+    {
+      name: 'cta_max_people',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+    {
+      name: 'cta_book_experience',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+    {
+      name: 'cta_chat_whatsapp',
+      type: 'text',
+      admin: {
+        group: 'CTA Section',
+      },
+    },
+
+    // FAQs
+    {
+      name: 'faqs',
+      type: 'json',
+      admin: {
+        group: 'FAQs Section',
+        description: 'Array of FAQ items for home page',
+      },
+    },
+
+    // SEO
+    {
+      name: 'meta_title',
+      type: 'text',
+      admin: {
+        group: 'SEO',
+      },
+    },
+    {
+      name: 'meta_description',
+      type: 'textarea',
+      admin: {
+        group: 'SEO',
+      },
+    },
+  ],
+}

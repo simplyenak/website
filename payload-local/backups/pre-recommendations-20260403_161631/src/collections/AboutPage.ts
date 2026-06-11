@@ -4,21 +4,12 @@ export const AboutPage: CollectionConfig = {
   slug: 'about_page',
   admin: {
     group: 'Pages',
-    useAsTitle: 'meta_title',
-    defaultSort: '-updatedAt',
     description: '📖 About page content',
-  },
-  localized: true,
-  access: {
-    read: () => true,
-    create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),
-    update: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),
-    delete: ({ req: { user } }) => (user as any)?.role === 'admin',
   },
   fields: [
     // SEO
-    { name: 'seo_title', type: 'text' },
-    { name: 'seo_description', type: 'textarea' },
+    { name: 'seo_title', type: 'text', admin: { group: 'SEO' } },
+    { name: 'seo_description', type: 'textarea', admin: { group: 'SEO' } },
 
     // Hero Section (blocks)
     {
