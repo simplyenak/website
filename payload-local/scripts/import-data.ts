@@ -67,7 +67,7 @@ async function main() {
 
   for (const { name, file } of collections) {
     // Check if collection already has data
-    const existing = await payload.find({ collection: name, limit: 1 })
+    const existing = await payload.find({ collection: name as const, limit: 1 })
     if (existing.docs.length > 0) {
       console.log(`⏭️  ${name}: already has data, skipping`)
       continue
