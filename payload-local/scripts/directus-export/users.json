@@ -1,0 +1,31 @@
+[
+  {
+    "id": "7d42348d-39a3-4e2e-b190-13b681f0c15f",
+    "first_name": "Admin",
+    "last_name": "User",
+    "email": "admin@simplyenak.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$U2nTnRlWpnIV8hJk5t1Pag$0+O/tXd6UDq1DUIwk31MF4SEJX1F4EmHo4ss/Na1reg",
+    "location": null,
+    "title": null,
+    "description": null,
+    "tags": null,
+    "avatar": null,
+    "language": null,
+    "tfa_secret": null,
+    "status": "active",
+    "role": "5c89ab98-6abb-4a11-a960-1222f1b39729",
+    "token": "PdYmYDt-o80ofhltvbUYUC68ZR-R2c_H",
+    "last_access": 1774970034345,
+    "last_page": "/settings/data-model",
+    "provider": "default",
+    "external_identifier": null,
+    "auth_data": null,
+    "email_notifications": 1,
+    "appearance": null,
+    "theme_dark": null,
+    "theme_light": null,
+    "theme_light_overrides": null,
+    "theme_dark_overrides": null,
+    "text_direction": "auto"
+  }
+]
