@@ -5,7 +5,6 @@ export const AboutPage: CollectionConfig = {
   admin: {
     group: 'Pages',
     useAsTitle: 'meta_title',
-    defaultSort: '-updatedAt',
     description: '📖 About page content',
   },
   localized: true,
