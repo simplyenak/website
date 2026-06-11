@@ -8,7 +8,6 @@ export const LandingPages: CollectionConfig = {
     description: '🗺️ Unified landing pages (dietary, specialty, travel type, location)',
     defaultColumns: ['title', 'type', 'slug', 'status'],
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

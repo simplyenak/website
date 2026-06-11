@@ -8,7 +8,6 @@ export const FAQs: CollectionConfig = {
     description: '❓ Frequently asked questions',
     defaultColumns: ['question', 'category', 'workflowStatus', 'sort_order'],
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

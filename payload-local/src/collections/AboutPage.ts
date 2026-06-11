@@ -7,7 +7,6 @@ export const AboutPage: CollectionConfig = {
     useAsTitle: 'meta_title',
     description: '📖 About page content',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

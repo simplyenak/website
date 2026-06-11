@@ -8,7 +8,6 @@ export const ThankYouPages: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'type', 'updatedAt', 'status'],
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

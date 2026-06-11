@@ -7,7 +7,6 @@ export const TrackRecordPage: CollectionConfig = {
     group: 'Pages',
     description: '🏆 Track Record page content',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

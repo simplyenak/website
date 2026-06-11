@@ -7,7 +7,6 @@ export const HowToPreparePage: CollectionConfig = {
     group: 'Pages',
     description: '🎒 How to Prepare page content',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),
