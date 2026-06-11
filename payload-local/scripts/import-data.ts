@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const IMPORT_DIR = path.join(__dirname, 'payload-import')
 
-async function importCollection(payload: any, collection: string, file: string) {
+async function importCollection(payload: any, collection: any, file: string) {
   const filePath = path.join(IMPORT_DIR, file)
   if (!fs.existsSync(filePath)) {
     console.log(`  ⏭️  ${file} not found, skipping`)
@@ -67,7 +67,7 @@ async function main() {
 
   for (const { name, file } of collections) {
     // Check if collection already has data
-    const existing = await payload.find({ collection: name as const, limit: 1 })
+    const existing = await payload.find({ collection: name as any, limit: 1 })
     if (existing.docs.length > 0) {
       console.log(`⏭️  ${name}: already has data, skipping`)
       continue
