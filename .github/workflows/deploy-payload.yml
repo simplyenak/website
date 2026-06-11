@@ -6,6 +6,9 @@ on:
     paths:
       - 'payload-local/**'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       
       - name: Install dependencies
         working-directory: ./payload-local
@@ -37,11 +40,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v5
         with:
           context: ./payload-local
           file: ./payload-local/Dockerfile
           push: true
           tags: simplyenak/payload-cms:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
