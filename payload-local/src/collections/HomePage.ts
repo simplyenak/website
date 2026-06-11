@@ -11,7 +11,6 @@ export const HomePage: CollectionConfig = {
     description: '🏠 Home page content and sections',
     useAsTitle: 'meta_title',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

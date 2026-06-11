@@ -7,7 +7,6 @@ export const ContactPage: CollectionConfig = {
     group: 'Pages',
     description: '📞 Contact page content (simplified flat fields)',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

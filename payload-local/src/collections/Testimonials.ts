@@ -8,7 +8,6 @@ export const Testimonials: CollectionConfig = {
     description: '⭐ Customer reviews and testimonials',
     defaultColumns: ['author_name', 'rating', 'relatedTours', 'workflowStatus'],
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

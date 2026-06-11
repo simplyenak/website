@@ -8,7 +8,6 @@ export const LegalPages: CollectionConfig = {
     useAsTitle: 'headline',
     defaultColumns: ['headline', 'slug', 'status', 'updatedAt'],
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

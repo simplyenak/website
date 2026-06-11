@@ -7,7 +7,6 @@ export const DirectionsPage: CollectionConfig = {
     group: 'Pages',
     description: '📍 Meeting Points & Directions page content',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

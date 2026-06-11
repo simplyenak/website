@@ -7,7 +7,6 @@ export const HowItWorksPage: CollectionConfig = {
     group: 'Pages',
     description: '📋 How It Works page content',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

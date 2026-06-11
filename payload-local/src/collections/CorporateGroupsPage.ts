@@ -7,7 +7,6 @@ export const CorporateGroupsPage: CollectionConfig = {
     group: 'Pages',
     description: '🏢 Corporate & Group Tours page content',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),

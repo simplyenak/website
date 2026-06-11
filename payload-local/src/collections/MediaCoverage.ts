@@ -7,7 +7,6 @@ export const MediaCoverage: CollectionConfig = {
     group: 'Content',
     description: '📰 Press mentions, awards, and media features',
   },
-  localized: true,
   access: {
     read: () => true,
     create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),
