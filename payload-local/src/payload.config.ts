@@ -14,6 +14,7 @@ import { mediaGalleryPlugin } from '@sitebytom/payload-media-gallery'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Tours } from './collections/Tours'
+import { TourMasters } from './collections/TourMasters'
 import { Stories } from './collections/Stories'
 import { Testimonials } from './collections/Testimonials'
 import { FAQs } from './collections/FAQs'
@@ -62,6 +63,7 @@ export default buildConfig({
     Media,
     // Tours & Booking
     Tours,
+    TourMasters,
     // Content & Blog
     Stories,
     Testimonials,
@@ -113,6 +115,7 @@ export default buildConfig({
       collections: [
         { slug: 'users' },
         { slug: 'tours' },
+        { slug: 'tour-masters' },
         { slug: 'stories' },
         { slug: 'testimonials' },
         { slug: 'faqs' },
