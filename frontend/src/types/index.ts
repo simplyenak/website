@@ -195,3 +195,98 @@ export interface SEOTypes {
   image: Media;
   schema: any;
 }
+
+// Location landing page data for programmatic SEO
+export interface LocationLandingPage {
+  name: string;
+  slug: string;
+  region: string;
+  metaTitle: string;
+  metaDescription: string;
+  hero: {
+    title: string;
+    subtitle: string;
+    description: string;
+    ctaText: string;
+    ctaUrl: string;
+    backgroundImage: string;
+  };
+  heritage: {
+    title: string;
+    introduction: string;
+    yearEstablished?: string;
+    culturalInfluences: string[];
+    keyFacts: Array<{ label: string; value: string; description?: string }>;
+  };
+  foodCultures: Array<{
+    name: string;
+    description: string;
+    keyDishes: string[];
+    culturalContext: string;
+    image: string;
+  }>;
+  signatureDishes: Array<{
+    name: string;
+    description: string;
+    origin: string;
+    whereToFind: string;
+    image: string;
+    vegetarian?: boolean;
+    cultural: string;
+  }>;
+  neighborhoods: Array<{
+    name: string;
+    description: string;
+    knownFor: string[];
+    vibe: string;
+    image: string;
+    mapLink?: string;
+  }>;
+  whyTourWithUs: {
+    title: string;
+    subtitle: string;
+    description: string;
+    reasons: Array<{ icon: string; title: string; description: string }>;
+  };
+  featuredTours: Array<{
+    name: string;
+    slug: string;
+    description: string;
+    price: number;
+    duration: string;
+    image: string;
+    highlights: string[];
+  }>;
+  trustSignals: {
+    reviewCount: number;
+    rating: number;
+    tripadvisorRanking: number;
+    certificateOfExcellence: boolean;
+  };
+  trustLogos: Array<{ name: string; logo: string; url: string }>;
+  reviews: Array<{
+    author: string;
+    location: string;
+    rating: number;
+    date: string;
+    text: string;
+    source: "TripAdvisor" | "Google" | "Viator" | "GetYourGuide";
+    verified: boolean;
+  }>;
+  expectations: {
+    title: string;
+    intro: string;
+    items: Array<{ title: string; description: string; icon: string }>;
+  };
+  faqs: Array<{ question: string; answer: string }>;
+  guides: Array<{ name: string; photo: string; bio: string; specialties: string[] }>;
+  locationContext: {
+    title: string;
+    description: string;
+    highlights: string[];
+    mapEmbedUrl: string;
+    culturalNotes: string;
+  };
+  geo: { latitude: string; longitude: string; addressLocality: string; addressRegion: string; postalCode: string };
+  googleMyBusiness: { url: string; placeId: string };
+}
