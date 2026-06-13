@@ -607,13 +607,18 @@ function transformAboutPage(doc) {
 
   // ── Hero Section ──
   const hero = blocks.heroSection || {}
-  out.hero_title = hero.title || ''
-  out.hero_subtitle = hero.subtitle || ''
+  out.heroImage = doc.hero_image || ''
+  out.heroEyebrow = doc.hero_eyebrow || ''
+  out.heroHeading = hero.title || ''
+  out.heroDescription = doc.hero_description || ''
 
   // ── Founder Story Section ──
-  const founder = blocks.founderStorySection || {}
-  out.founder_story_title = founder.title || founder.name || ''
-  out.founder_story_text = founder.content || founder.story || ''
+  out.founderSection = {
+    eyebrow: doc.founder_eyebrow || '',
+    heading: doc.founder_heading || '',
+    paragraphs: (doc.founder_paragraphs || '').split('\n\n').filter(Boolean),
+    image: doc.founder_image || '',
+  }
 
   // ── Stats Section ──
   const statsBlock = blocks.statsSection || {}
@@ -624,47 +629,68 @@ function transformAboutPage(doc) {
 
   // ── Timeline Section ──
   const timelineBlock = blocks.timelineSection || {}
-  out.timeline = (timelineBlock.events || []).map(e => ({
-    year: e.year || '',
-    title: e.title || '',
-    description: e.description || '',
-    logo_domain: e.logoDomain || e.logo_domain || null,
-    url: e.url || null,
-  }))
+  let milestones = []
+  if (timelineBlock.events) {
+    milestones = timelineBlock.events.map(e => ({
+      year: e.year || '',
+      title: e.title || '',
+      description: e.description || '',
+    }))
+  }
+  out.timelineSection = {
+    eyebrow: doc.timeline_eyebrow || '',
+    heading: doc.timeline_heading || '',
+    description: doc.timeline_description || '',
+    milestones,
+  }
 
   // ── Philosophy Section ──
-  // Frontend expects philosophy as array of {title, description, icon}
-  const philBlock = blocks.philosophySection || {}
-  if (philBlock.items && philBlock.items.length > 0) {
-    out.philosophy = philBlock.items.map(item => ({
-      title: item.title || '',
-      description: item.description || item.content || '',
-      icon: item.icon || '',
-    }))
-  } else if (philBlock.content) {
-    // Fallback: wrap single content string in array format
-    out.philosophy = [{
-      title: '',
-      description: philBlock.content,
-      icon: '',
-    }]
-  } else {
-    out.philosophy = []
+  let philItems = []
+  try {
+    philItems = JSON.parse(doc.philosophy_items || '[]')
+  } catch {}
+  out.philosophySection = {
+    eyebrow: doc.philosophy_eyebrow || '',
+    heading: doc.philosophy_heading || '',
+    items: philItems,
   }
 
   // ── Team Section ──
-  const teamBlock = blocks.teamSection || {}
-  out.team = (teamBlock.members || []).map(m => ({
-    name: m.name || '',
-    role: m.role || '',
-    specialty: m.specialty || '',
-    description: m.description || '',
-    photo: m.photo || null,
-  }))
+  let teamMembers = []
+  try {
+    teamMembers = JSON.parse(doc.team_members || '[]')
+  } catch {}
+  out.teamSection = {
+    eyebrow: doc.team_eyebrow || '',
+    heading: doc.team_heading || '',
+    description: doc.team_description || '',
+    members: teamMembers,
+  }
 
-  // ── SEO fields (flat on document, not in blocks) ──
-  out.seo_title = doc.seo_title || doc.meta_title || ''
-  out.seo_description = doc.seo_description || doc.meta_description || ''
+  // ── Testimonial ──
+  out.testimonial = {
+    text: doc.testimonial_text || '',
+    name: doc.testimonial_name || '',
+    location: doc.testimonial_location || '',
+  }
+
+  // ── CTA Section ──
+  out.ctaSection = {
+    heading: doc.cta_heading || '',
+    description: doc.cta_description || '',
+    ctaPrimary: {
+      text: doc.cta_primary_text || '',
+      url: doc.cta_primary_url || '',
+    },
+    ctaSecondary: {
+      text: doc.cta_secondary_text || '',
+      url: doc.cta_secondary_url || '',
+    },
+  }
+
+  // ── SEO fields ──
+  out.seo_title = doc.seo_title || ''
+  out.seo_description = doc.seo_description || ''
 
   return out
 }
@@ -931,7 +957,7 @@ async function sync() {
   // ── Singletons ──
   const singletons = [
     { slug: 'home_page', file: 'home-page.json', label: 'Home Page', transform: transformHomePage },
-    { slug: 'about_page', file: 'about-page.json', label: 'About Page', transform: transformAboutPage, handCurated: true },
+    { slug: 'about_page', file: 'about-page.json', label: 'About Page', transform: transformAboutPage },
     { slug: 'contact_page', file: 'contact-page.json', label: 'Contact Page', transform: transformContactPage },
     { slug: 'site_settings', file: 'site-settings.json', label: 'Site Settings' },
     { slug: 'thank_you_pages', file: 'thank-you-pages.json', label: 'Thank You Pages', asArray: true },
