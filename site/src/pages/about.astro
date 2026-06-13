@@ -5,8 +5,8 @@ import { getAboutPage } from '~/lib/content';
 const ap = await getAboutPage();
 
 const metadata = {
-  title: 'About Us',
-  description: 'Simply Enak has been sharing Malaysian food heritage since 2011. Meet the team, read our story, and see 14 years of press features  -  from National Geographic to BBC and The Food Ranger.',
+  title: 'About Simply Enak  -  Malaysian Food Tours Since 2011',
+  description: "Since 2011, Simply Enak has been sharing Malaysia's food heritage through small-group walking tours in Kuala Lumpur and Penang. Meet the guides, meet the vendors, taste the real Malaysia.",
 };
 ---
 
@@ -62,7 +62,7 @@ const metadata = {
           <div class="rounded-xl overflow-hidden">
             <img
               src={ap.founderSection?.image || "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"}
-              alt="Pauline — Founder & Lead Guide of Simply Enak"
+              alt="Pauline  -  Founder & Lead Guide of Simply Enak"
               class="w-full h-full object-cover aspect-[4/3]"
               loading="lazy"
             />
@@ -102,7 +102,7 @@ const metadata = {
         {(ap.philosophySection?.items ?? [
           { number: "01", title: "No Scripts", description: "Our guides are licensed professionals, but they talk to you like friends. Real stories, not rehearsed speeches. You'll get a different tour every time because you're different every time." },
           { number: "02", title: "Slow Down", description: "We walk. We pause. We take the time to notice things: the architecture, the smells, the sounds of the neighbourhood. A food tour shouldn't feel like a marathon." },
-          { number: "03", title: "Support Local", description: "We focus on small, local vendors — many family-run for generations. Your tour fee goes to the heritage keepers of Malaysian food culture — the same people who've been feeding this neighbourhood for decades." },
+          { number: "03", title: "Support Local", description: "We focus on small, local vendors  -  many family-run for generations. Your tour fee goes to the heritage keepers of Malaysian food culture  -  the same people who've been feeding this neighbourhood for decades." },
         ]).map((item: any) => (
           <div class="text-center p-8 rounded-xl border border-gray-100 dark:border-white/10 hover:shadow-md transition-shadow">
             <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-5">
@@ -120,7 +120,7 @@ const metadata = {
   <section class="py-16 md:py-24 bg-gray-50 dark:bg-[#151313]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16">
-        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">{ap.timelineSection?.eyebrow ?? "2011 — Present"}</p>
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">{ap.timelineSection?.eyebrow ?? "2011  -  Present"}</p>
         <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">{ap.timelineSection?.heading ?? "14 Years of Simply Enak"}</h2>
         <p class="text-muted max-w-2xl mx-auto">{ap.timelineSection?.description ?? "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. A few things happened along the way."}</p>
       </div>
@@ -133,7 +133,7 @@ const metadata = {
           {(ap.timelineSection?.milestones ?? [
             { year: 'Today', title: "5,000+ guests and still eating", description: "Every week, travellers from around the world join us at the same stalls we've eaten at for 14 years. The guides know the vendors by name. The vendors know us.", isToday: true },
             { year: '2024', title: 'BBC World Service', description: "Pauline joins the BBC World Service to share the story behind Simply Enak and what makes Malaysian food culture so unique on the world stage.", logo: '/images/press-logos/bbc.svg', url: 'https://www.bbc.co.uk/programmes/w3ct8sw1' },
-            { year: '2011', title: 'Simply Enak Founded', description: "Pauline leads her first food walk through Chow Kit market with a small group of friends. Nobody calls it a tour yet — it's just lunch.", logo: '/images/press-logos/simplyenak.com.png' },
+            { year: '2011', title: 'Simply Enak Founded', description: "Pauline leads her first food walk through Chow Kit market with a small group of friends. Nobody calls it a tour yet  -  it's just lunch.", logo: '/images/press-logos/simplyenak.com.png' },
           ]).map((milestone: any, index: number) => {
             const isEven = index % 2 === 0;
             const isVideo = milestone.url?.includes('youtube.com') || milestone.url?.includes('9now.com.au');

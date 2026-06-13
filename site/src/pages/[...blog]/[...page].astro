@@ -21,12 +21,12 @@ const allPosts = await fetchPosts();
 const featured = allPosts[0];
 
 // Split by new categories
-const localKnowledge = allPosts.filter(p => p.category?.title === 'Local Food Knowledge');
+const foodCulture = allPosts.filter(p => p.category?.title === 'Food & Culture Guides');
 const travelTips = allPosts.filter(p => p.category?.title === 'Travel Tips');
 const vendorStories = allPosts.filter(p => p.category?.title === 'Vendor Stories');
 
 // Exclude featured from its section
-const localKnowledgeRest = localKnowledge.filter(p => p.slug !== featured?.slug);
+const foodCultureRest = foodCulture.filter(p => p.slug !== featured?.slug);
 const travelTipsRest = travelTips.filter(p => p.slug !== featured?.slug);
 const vendorStoriesRest = vendorStories.filter(p => p.slug !== featured?.slug);
 
@@ -54,7 +54,7 @@ const metadata = {
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center gap-2 py-3 overflow-x-auto">
         <a href="#featured" class="text-sm font-semibold px-4 py-1.5 rounded-full bg-primary text-white whitespace-nowrap">All Stories</a>
-        <a href="#local-knowledge" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">Local Food Knowledge</a>
+        <a href="#food-culture" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">Food & Culture Guides</a>
         <a href="#travel-tips" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">Travel Tips</a>
         <a href="#vendor-stories" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">Vendor Stories</a>
         <div class="ml-auto flex items-center gap-1.5 text-xs text-muted shrink-0">
@@ -96,18 +96,18 @@ const metadata = {
           </section>
         )}
 
-        <!-- Local Food Knowledge -->
-        {localKnowledgeRest.length > 0 && (
-          <section id="local-knowledge" class="mb-16 scroll-mt-20">
+        <!-- Food & Culture Guides -->
+        {foodCultureRest.length > 0 && (
+          <section id="food-culture" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
-                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">What to eat & where</p>
-                <h2 class="text-2xl md:text-3xl font-bold font-heading">Local Food Knowledge</h2>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">Stories behind the dishes</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">Food & Culture Guides</h2>
               </div>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {localKnowledgeRest.map((post, i) => (
+              {foodCultureRest.map((post, i) => (
                 <a href={`/${post.slug}`} class:list={[
                   'group block relative overflow-hidden rounded-xl shadow-md',
                   i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
@@ -118,7 +118,7 @@ const metadata = {
                     'absolute inset-0 flex flex-col justify-end',
                     i < 2 ? 'p-5 md:p-6' : 'p-5',
                   ]}>
-                    <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Local Food Knowledge</span>
+                    <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Food & Culture Guides</span>
                     <h3 class:list={[
                       'font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors',
                       i < 2 ? 'text-lg md:text-xl' : 'text-base',

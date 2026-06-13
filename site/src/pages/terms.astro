@@ -1,14 +1,14 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getPageBySlug } from '~/lib/content';
+import { getLegalPage } from '~/lib/content';
 
-const page = await getPageBySlug('terms');
+const page = getLegalPage('terms-conditions');
 const metadata = {
-  title: page?.metaTitle || 'Terms & Conditions',
-  description: page?.metaDescription || 'Terms and conditions for Simply Enak Food Experiences.',
+  title: page?.metaTitle || page?.headline || 'Terms & Conditions',
+  description: page?.metaDescription || 'Terms and conditions for Simply Enak Food Experiences. Booking policies, cancellation terms, and participant requirements.',
 };
 const html = page?.content || '<p>Terms and conditions content goes here.</p>';
-const title = page?.title || 'Terms & Conditions';
+const title = page?.headline || 'Terms & Conditions';
 ---
 
 <Layout metadata={metadata}>

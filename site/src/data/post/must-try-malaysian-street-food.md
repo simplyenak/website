@@ -3,7 +3,7 @@ publishDate: 2026-06-01T00:00:00Z
 title: "Malaysian Street Food Checklist: What To Eat in KL and Penang"
 excerpt: "The dishes you should not miss on a food trip to Malaysia, from nasi lemak to char kway teow, explained by local guides who eat them every day."
 image: "https://cdn.simplyenak.com/kuala_lumpur_street_food_cd4fad4122.jpg"
-category: "Food Guide"
+category: "Food & Culture Guides"
 tags: ["Street Food", "Malaysian Food", "Kuala Lumpur", "Penang", "Food Guide"]
 author: "Pauline"
 metadata:
@@ -11,19 +11,21 @@ metadata:
   description: "A checklist of essential Malaysian street food dishes, from nasi lemak to char kway teow, explained by local guides."
 ---
 
-
-
 **Updated June 2026:** Malaysia's street food scene is always evolving. Here are the dishes our guides are recommending this year.
 
 My guests often ask me “what is the not-to-miss street food when I visit Malaysia?”.
 
 Honestly speaking the Malaysian streets are a paradise, packed with vendors selling the most and street foods. Whether you’re in a hawker stall or just out taking in the sights, street foods are the perfect way to enjoy the food and get a real feel for Malaysia and its people. The varieties of tastes and flavors you’ll find are all prepared with traditional techniques that represent the diversity of Malaysian culture. And won’t make a huge impact on your wallet.
 
+> "The flavours of Malaysian Street Food Checklist: What To Eat in KL and Penang tell a story of Malaysia's rich cultural heritage."
+
 I compiled this list of my personal favorites. Before I would send this list out to our clients after they completed their tour and now it’s time to share that list with everyone!
 
 So here is my Not-to-Miss Malaysian Street Food Checklist.
 
 Top of the list and a favorite for tourists and locals alike is Nasi lemak. Considered the national dish, it can be found in both roadside stalls served on a banana leaf and in 5-star restaurants in fine china. This dish is a hearty mix of coconut rice infused with pandan, cucumbers, nuts, anchovies and egg.
+
+![KL street food market](https://cdn.simplyenak.com/kuala_lumpur_street_food_cd4fad4122.jpg)
 
 There are several variations and choices of sides depending on where you go. Some more popular sides include deep-fried fish, chicken, fish cake and even curried vegetables. Besides the aromatic rice, the signature of this dish is the spicy sambal or chili paste.
 
@@ -139,7 +141,6 @@ Teh Tarik is a great accompaniment to Roti canai and is a very popular and tradi
 
 And that sums up my list of must-eat Street Food when visiting Malaysia. Do you have a favorite or have I missed a dish? Let me know in the comments below.
 
-
 ## Frequently Asked Questions
 
 **How many street food stalls are there in Malaysia?**
@@ -150,8 +151,5 @@ Nasi lemak is the national dish and available everywhere from airport kiosks to 
 
 **Is Malaysian street food spicy?**
 It can be, but not everything is. Dishes like char kway teow and Hokkien mee are savoury rather than spicy. If you want less heat, tell the vendor "kurang pedas" (less spicy). Most are happy to adjust.
-
-
----
 
 **Want to taste Malaysian food with a local guide?** [Browse our tours](/tours) and join us for a meal you will not forget.

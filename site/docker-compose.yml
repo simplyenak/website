@@ -1,6 +1,6 @@
 services:
-  astrowind:
+  simplyenak:
     build: .
-    container_name: astrowind
+    container_name: simplyenak
     ports:
       - 8080:8080

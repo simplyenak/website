@@ -37,6 +37,24 @@ const heroImg = tour.image;
 const foods = tour.foods || [];
 const foodDescriptions = tour.foodDescriptions || {};
 const itinerary = tour.itinerary || [];
+// Normalize itinerary stops: data has `desc`, template expects `description`
+const normalizedItinerary = itinerary.map((stop: any) => ({
+  time: stop.time,
+  title: stop.title,
+  description: stop.description || stop.desc || '',
+}));
+
+// Determine tour time of day from first itinerary stop
+const firstTime = normalizedItinerary.length > 0 ? normalizedItinerary[0].time : '';
+let tourTime = 'Daily';
+if (firstTime) {
+  const hour = parseInt(firstTime.split(':')[0], 10);
+  const ampm = firstTime.includes('PM') ? 'PM' : 'AM';
+  const hour24 = ampm === 'PM' && hour !== 12 ? hour + 12 : (ampm === 'AM' && hour === 12 ? 0 : hour);
+  if (hour24 < 12) tourTime = 'Morning';
+  else if (hour24 < 17) tourTime = 'Afternoon';
+  else tourTime = 'Evening';
+}
 const widgetId = tour.widgetId || tour.ticketingHubId || '';
 const highlights = tour.highlights || [];
 
@@ -62,9 +80,39 @@ const meta = {
   title: `${tour.tagline || tour.name}  -  Simply Enak`,
   description: tour.shortDesc || tour.tagline || '',
 };
+
+// Build Tour schema (TouristTrip + Product)
+const tourSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristTrip', 'Product'],
+  name: tour.name,
+  description: tour.shortDesc || tour.tagline || '',
+  url: `https://simplyenak.com/tours/${tour.slug}`,
+  image: tour.image || 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+  offers: {
+    '@type': 'Offer',
+    price: tour.price ? tour.price.replace('RM ', '') : '285',
+    priceCurrency: 'MYR',
+    availability: 'https://schema.org/InStock',
+    url: `https://simplyenak.com/tours/${tour.slug}`,
+  },
+  itinerary: tour.itinerary?.map((stop: any) => ({
+    '@type': 'TouristAttraction',
+    name: stop.title,
+    description: stop.description || stop.desc || '',
+  })) || undefined,
+  provider: {
+    '@type': 'TravelAgency',
+    name: 'Simply Enak',
+    url: 'https://simplyenak.com',
+    telephone: '+60 17-287 8929',
+  },
+};
 ---
 
 <Layout metadata={meta}>
+  <!-- TouristTrip + Product Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(tourSchema)} />
   <!-- Breadcrumb + Section Nav -->
   <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -183,13 +231,12 @@ const meta = {
             <div class="relative">
               <div class="absolute bg-primary/20 bottom-0 left-[19px] top-0 w-0.5"></div>
               <div class="space-y-8">
-                {tour.itinerary.map((stop, i) => (
+                {normalizedItinerary.map((stop, i) => (
                   <div class="flex gap-6 relative">
                     <div class="flex items-center flex-col">
                       <div class="text-sm items-center flex justify-center bg-primary font-bold font-heading h-10 relative rounded-full text-white w-10 z-10">{i + 1}</div>
                     </div>
                     <div class="flex-1 pt-1.5">
-                      {stop.time && <p class="font-bold text-xs uppercase text-accent tracking-wider">{stop.time}</p>}
                       <h3 class="font-bold font-heading text-default text-lg mt-0.5">{stop.title}</h3>
                       {stop.description && <p class="text-sm text-muted mt-1">{stop.description}</p>}
                     </div>
@@ -207,12 +254,12 @@ const meta = {
             title={`${tour.name} Gallery`}
             images={[
               { src: heroImg, alt: tour.name, caption: tour.tagline || tour.name },
-              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg', alt: 'Street food market', caption: 'Morning market' },
-              { src: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg', alt: 'Local cuisine', caption: 'Tasting flavours' },
-              { src: 'https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg', alt: 'Night market', caption: 'Evening adventure' },
-              { src: 'https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg', alt: 'Cultural sights', caption: 'Heritage & food' },
-              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg', alt: 'Local cuisine', caption: 'Authentic dishes' },
-              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg', alt: 'Heritage tour', caption: 'Cultural trail' },
+              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg', alt: 'Malaysian hawker preparing sizzling street food over a flaming wok', caption: 'Morning market' },
+              { src: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg', alt: 'Colourful spread of Penang hawker dishes served on a shared table', caption: 'Tasting flavours' },
+              { src: 'https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg', alt: 'Hidden speakeasy bar entrance lit by neon signs in downtown Kuala Lumpur', caption: 'Evening adventure' },
+              { src: 'https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg', alt: 'Bartender shaking a signature nutmeg cocktail tableside in Georgetown', caption: 'Heritage & food' },
+              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg', alt: 'Steaming bowls of Malaysian noodle soup at a street food stall', caption: 'Authentic dishes' },
+              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg', alt: 'Historic shophouses and street art along a Georgetown heritage lane', caption: 'Cultural trail' },
             ].filter(i => i.src)}
           />
         </section>
@@ -235,7 +282,7 @@ const meta = {
                 </div>
               ))}
             </div>
-            <p class="text-center text-sm text-muted mt-6 italic">... and more — these are just some of the highlights</p>
+            <p class="text-center text-sm text-muted mt-6 italic">... and more  -  these are just some of the highlights</p>
           </section>
         )}
 
@@ -307,12 +354,56 @@ const meta = {
           </div>
           <div class="border-b border-gray-100 dark:border-white/10 p-6">
             <div class="text-sm grid grid-cols-2 gap-y-3">
-              <div><span class="text-muted">Duration</span><p class="text-default font-semibold">{tour.duration || '3.5 hours'}</p></div>
-              <div><span class="text-muted">Schedule</span><p class="text-default font-semibold">{tour.schedule || 'Daily'}</p></div>
-              <div><span class="text-muted">Group</span><p class="text-default font-semibold">{tour.groupSize || '2–9 people'}</p></div>
-              <div><span class="text-muted">Difficulty</span><p class="text-default font-semibold">{tour.difficulty || 'Easy'}</p></div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <Icon name="tabler:clock" class="w-4 h-4 text-muted" />
+                  <span class="text-muted">Duration</span>
+                </div>
+                <p class="text-default font-semibold">{tour.duration || '3.5 hours'}</p>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <Icon name="tabler:bowl-chopsticks" class="w-4 h-4 text-muted" />
+                  <span class="text-muted">Tastings</span>
+                </div>
+                <p class="text-default font-semibold">{tour.tastings || foods.length + ' dishes'}</p>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <Icon name="tabler:calendar-time" class="w-4 h-4 text-muted" />
+                  <span class="text-muted">Start</span>
+                </div>
+                <p class="text-default font-semibold">{firstTime || tour.schedule || 'Daily'}</p>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <Icon name={tourTime === 'Morning' ? 'tabler:sun' : tourTime === 'Afternoon' ? 'tabler:sunset' : 'tabler:moon'} class="w-4 h-4 text-muted" />
+                  <span class="text-muted">Schedule</span>
+                </div>
+                <p class="text-default font-semibold">{tourTime || tour.schedule || 'Daily'}</p>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <Icon name="tabler:users" class="w-4 h-4 text-muted" />
+                  <span class="text-muted">Group</span>
+                </div>
+                <p class="text-default font-semibold">{tour.groupSize || '2–9 people'}</p>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <Icon name="tabler:walk" class="w-4 h-4 text-muted" />
+                  <span class="text-muted">Difficulty</span>
+                </div>
+                <p class="text-default font-semibold">{tour.difficulty || 'Easy'}</p>
+              </div>
               {tour.cancellation && (
-                <div class="col-span-2"><span class="text-muted">Cancellation</span><p class="text-default font-semibold text-green-600">{tour.cancellation}</p></div>
+                <div class="col-span-2">
+                  <div class="flex items-center gap-1.5">
+                    <Icon name="tabler:shield-check" class="w-4 h-4 text-default" />
+                    <span class="text-muted">Cancellation</span>
+                  </div>
+                  <p class="text-default font-semibold text-green-600">{tour.cancellation}</p>
+                </div>
               )}
             </div>
           </div>

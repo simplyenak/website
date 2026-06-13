@@ -5,12 +5,29 @@ import { getFAQsByPage } from '~/lib/content';
 const faqs = await getFAQsByPage('faq');
 
 const metadata = {
-  title: 'Frequently Asked Questions',
-  description: 'Frequently asked questions about Simply Enak food tours. Find answers about booking, dietary needs, pricing, and what to expect.',
+  title: 'Frequently Asked Questions About Malaysian Food Tours',
+  description: "Everything you need to know about Simply Enak's food tours in Kuala Lumpur and Penang. Dietary requirements, group sizes, pricing, cancellation policy, and more.",
 };
+
+// Build FAQPage structured data
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq: any) => ({
+    '@type': 'Question',
+    name: faq.question || faq.q || '',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer || faq.a || '',
+    },
+  })),
+};
+---
 ---
 
 <Layout metadata={metadata}>
+  <!-- FAQPage Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <!-- Hero -->
   <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-20 md:py-28">
     <div class="absolute inset-0">

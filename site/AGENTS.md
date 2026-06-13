@@ -1,10 +1,10 @@
-# AstroWind Agent Instructions
+# Simply Enak Site — Agent Instructions
 
 ## Project Overview
 
-AstroWind is a free, open-source website template built with **Astro v6** and **Tailwind CSS v4**. It generates a fully static site optimized for performance, SEO, and accessibility.
+Simply Enak's website, built with **Astro v6** and **Tailwind CSS v4**. Generates a fully static site optimized for performance, SEO, and accessibility.
 
-**Stack:** Astro v6 | Tailwind CSS v4 | TypeScript 5.9 | MDX | Sharp
+**Stack:** Astro v6 | Tailwind CSS v4 | TypeScript 5 | MDX | Sharp
 
 ## Quick Reference
 
@@ -20,8 +20,6 @@ AstroWind is a free, open-source website template built with **Astro v6** and **
 
 ## Architecture
 
-### Directory Structure
-
 ```
 src/
   assets/styles/tailwind.css   # Tailwind v4 config (themes, utilities, plugins)
@@ -33,10 +31,11 @@ src/
     CustomStyles.astro  # CSS variables for colors and fonts
   content.config.ts    # Content Collections schema (Astro v6 location)
   data/post/           # Blog posts (.md, .mdx)
+  data/content/        # JSON snapshots synced from Payload CMS
   layouts/             # Layout.astro, PageLayout.astro, MarkdownLayout.astro
-  pages/               # File-based routing
+  pages/               # File-based routing (index, about, tours, stories, contact...)
   utils/               # blog.ts, images.ts, permalinks.ts, frontmatter.ts
-  config.yaml          # Site configuration (loaded as virtual module)
+  config.yaml          # Site configuration
   navigation.ts        # Navigation structure
   types.d.ts           # TypeScript type definitions
 vendor/integration/    # Custom Astro integration for config loading
@@ -48,36 +47,23 @@ Use `~/` to import from `src/`:
 
 ```typescript
 import Image from '~/components/common/Image.astro';
-import { SITE } from 'astrowind:config';
+import { SITE } from 'astrowind:config';  // Virtual module from vendor integration
 ```
 
-### Configuration System
+### Site Configuration
 
-Site config lives in `src/config.yaml` and is loaded as a Vite virtual module `astrowind:config` by the custom integration in `vendor/integration/`. Exports: `SITE`, `I18N`, `METADATA`, `APP_BLOG`, `UI`, `ANALYTICS`.
+Site config lives in `src/config.yaml`. Exports: `SITE`, `I18N`, `METADATA`, `APP_BLOG`, `UI`, `ANALYTICS`.
 
-## Tailwind CSS v4
+## Content Sync
 
-Configuration is CSS-first in `src/assets/styles/tailwind.css`:
+Content flows from Payload CMS → JSON snapshots:
 
-- **Theme tokens:** `@theme { --color-primary: var(--aw-color-primary); ... }`
-- **Custom utilities:** `@utility bg-page { ... }`
-- **Dark mode:** Class-based via `@variant dark (&:where(.dark, .dark *))`
-- **Plugins:** `@plugin "@tailwindcss/typography"`
-- **Custom variant:** `@custom-variant intersect (&:not([no-intersect]))`
+```bash
+npm run sync               # Pull content from Payload → src/data/content/
+npm run sync:dry           # Preview without writing
+```
 
-CSS variables for colors/fonts are defined in `src/components/CustomStyles.astro` with light/dark theme variants.
-
-The Vite plugin `@tailwindcss/vite` is configured in `astro.config.ts` (not as an Astro integration).
-
-### Class Merging
-
-Components use `twMerge` from `tailwind-merge` v3 for conditional class composition.
-
-## Content Collections
-
-Defined in `src/content.config.ts` using the Astro v6 Content Layer API with `glob()` loader. Posts are in `src/data/post/` as `.md` or `.mdx` files.
-
-Post frontmatter: `title` (required), `publishDate`, `updateDate`, `draft`, `excerpt`, `image`, `category`, `tags`, `author`, `metadata`.
+Collections: tours, stories, faqs, testimonials, media_coverage, dietary_options, locations, landing_pages, etc.
 
 ## Component Patterns
 
@@ -85,7 +71,6 @@ Post frontmatter: `title` (required), `publishDate`, `updateDate`, `draft`, `exc
 - Use `class:list` for conditional classes
 - Use `twMerge()` when accepting className overrides
 - Use named slots for layout composition
-- Widget components accept standardized props (see `~/types`)
 
 ## Image Handling
 
@@ -103,4 +88,4 @@ After changes, always verify:
 
 1. `npm run build` succeeds
 2. `npm run check` passes (astro check + ESLint + Prettier)
-3. Visual check in browser: homepage, blog, dark mode, mobile menu
+3. Visual check in browser: homepage, blog, mobile menu
