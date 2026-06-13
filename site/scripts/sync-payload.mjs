@@ -906,6 +906,28 @@ async function sync() {
     }
   }
 
+  // ── Reviews (derived from testimonials collection) ──
+  log('⭐ Reviews...')
+  const testimonialsPath = path.join(CONTENT_DIR, 'testimonials.json')
+  const reviewsPath = path.join(CONTENT_DIR, 'reviews.json')
+  if (fs.existsSync(testimonialsPath)) {
+    try {
+      const testimonialDocs = JSON.parse(fs.readFileSync(testimonialsPath, 'utf-8'))
+      const reviews = (testimonialDocs || []).filter(d => d.workflowStatus === 'published').map(d => ({
+        author: d.author_name || '',
+        rating: d.rating || 5,
+        text: d.review_text || '',
+        date: d.date || '',
+        location: d.author_location === 'KL' ? 'KL' : d.author_location === 'Penang' ? 'Penang' : 'KL',
+      })).filter(r => r.author && r.text)
+      fs.writeFileSync(reviewsPath, JSON.stringify(reviews, null, 2) + '\n')
+      stats.written++
+      log(`  ✅ reviews.json (${reviews.length} reviews)`)
+    } catch (e) {
+      log(`  ⚠️  reviews.json transform failed: ${e.message}`)
+    }
+  }
+
   // ── Singletons ──
   const singletons = [
     { slug: 'home_page', file: 'home-page.json', label: 'Home Page', transform: transformHomePage },
