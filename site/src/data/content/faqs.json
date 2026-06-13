@@ -1,5 +1,20 @@
 [
   {
+    "id": 1,
+    "question": "How much does a food tour in KL cost?",
+    "answer": "Join-in tours are RM 285 to RM 359 per person, depending on which tour you choose. Private tours are quoted on request, usually for groups of four or more. Send us a message on WhatsApp and we'll put together something that works for your group.",
+    "category": null,
+    "page_visibility": [],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-11T09:45:30.320Z",
+    "createdAt": "2026-06-11T09:45:30.320Z",
+    "_status": "published"
+  },
+  {
     "id": 43,
     "question": "Is the street art walk long?",
     "answer": "The street art walk is about 15 minutes at a relaxed pace. Your guide will point out the most significant murals and share the stories behind them before we head to the first speakeasy.",
@@ -10,49 +25,178 @@
     "tags": [],
     "relatedTour": {
       "id": 5,
-      "name": null,
+      "name": "Secrets of KL – Nightlife, Street Art & Cocktails!",
       "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "KL After Dark",
+      "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+      "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL — from gangster histories to colonial scandals — while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni MRT",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 28,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:01:51.539Z",
+        "createdAt": "2026-05-19T10:01:50.448Z",
+        "url": "/api/media/file/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "thumbnailURL": null,
+        "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 73554,
+        "width": 1024,
+        "height": 678,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428331",
-          "highlight": "Hidden speakeasy bars locals love"
+          "id": "6a2b8118396ee2000167d636",
+          "highlight": "Hidden speakeasy bars"
         },
         {
-          "id": "69cf3377d670e2eb55428332",
-          "highlight": "Classic Malaysian late-night street food"
+          "id": "6a2b8118396ee2000167d637",
+          "highlight": "Late-night street food"
         },
         {
-          "id": "69cf3377d670e2eb55428333",
-          "highlight": "Forbidden tales of the red-light district"
+          "id": "6a2b8118396ee2000167d638",
+          "highlight": "Forbidden tales of old KL"
         },
         {
-          "id": "69cf3377d670e2eb55428334",
-          "highlight": "KL's vibrant street art at night"
+          "id": "6a2b8118396ee2000167d639",
+          "highlight": "Street art at night"
         },
         {
-          "id": "69cf3377d670e2eb55428335",
-          "highlight": "4-5 signature craft cocktails included"
+          "id": "6a2b8118396ee2000167d63a",
+          "highlight": "Signature craft cocktails"
         }
       ],
       "differentiatorsTourist": [],
@@ -68,9 +212,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:49.463Z",
+      "updatedAt": "2026-06-12T03:46:32.901Z",
       "createdAt": "2026-05-19T08:33:49.463Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -90,49 +234,178 @@
     "tags": [],
     "relatedTour": {
       "id": 5,
-      "name": null,
+      "name": "Secrets of KL – Nightlife, Street Art & Cocktails!",
       "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "KL After Dark",
+      "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+      "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL — from gangster histories to colonial scandals — while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni MRT",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 28,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:01:51.539Z",
+        "createdAt": "2026-05-19T10:01:50.448Z",
+        "url": "/api/media/file/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "thumbnailURL": null,
+        "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 73554,
+        "width": 1024,
+        "height": 678,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428331",
-          "highlight": "Hidden speakeasy bars locals love"
+          "id": "6a2b8118396ee2000167d636",
+          "highlight": "Hidden speakeasy bars"
         },
         {
-          "id": "69cf3377d670e2eb55428332",
-          "highlight": "Classic Malaysian late-night street food"
+          "id": "6a2b8118396ee2000167d637",
+          "highlight": "Late-night street food"
         },
         {
-          "id": "69cf3377d670e2eb55428333",
-          "highlight": "Forbidden tales of the red-light district"
+          "id": "6a2b8118396ee2000167d638",
+          "highlight": "Forbidden tales of old KL"
         },
         {
-          "id": "69cf3377d670e2eb55428334",
-          "highlight": "KL's vibrant street art at night"
+          "id": "6a2b8118396ee2000167d639",
+          "highlight": "Street art at night"
         },
         {
-          "id": "69cf3377d670e2eb55428335",
-          "highlight": "4-5 signature craft cocktails included"
+          "id": "6a2b8118396ee2000167d63a",
+          "highlight": "Signature craft cocktails"
         }
       ],
       "differentiatorsTourist": [],
@@ -148,9 +421,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:49.463Z",
+      "updatedAt": "2026-06-12T03:46:32.901Z",
       "createdAt": "2026-05-19T08:33:49.463Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -170,49 +443,178 @@
     "tags": [],
     "relatedTour": {
       "id": 5,
-      "name": null,
+      "name": "Secrets of KL – Nightlife, Street Art & Cocktails!",
       "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "KL After Dark",
+      "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+      "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL — from gangster histories to colonial scandals — while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni MRT",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 28,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:01:51.539Z",
+        "createdAt": "2026-05-19T10:01:50.448Z",
+        "url": "/api/media/file/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "thumbnailURL": null,
+        "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 73554,
+        "width": 1024,
+        "height": 678,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428331",
-          "highlight": "Hidden speakeasy bars locals love"
+          "id": "6a2b8118396ee2000167d636",
+          "highlight": "Hidden speakeasy bars"
         },
         {
-          "id": "69cf3377d670e2eb55428332",
-          "highlight": "Classic Malaysian late-night street food"
+          "id": "6a2b8118396ee2000167d637",
+          "highlight": "Late-night street food"
         },
         {
-          "id": "69cf3377d670e2eb55428333",
-          "highlight": "Forbidden tales of the red-light district"
+          "id": "6a2b8118396ee2000167d638",
+          "highlight": "Forbidden tales of old KL"
         },
         {
-          "id": "69cf3377d670e2eb55428334",
-          "highlight": "KL's vibrant street art at night"
+          "id": "6a2b8118396ee2000167d639",
+          "highlight": "Street art at night"
         },
         {
-          "id": "69cf3377d670e2eb55428335",
-          "highlight": "4-5 signature craft cocktails included"
+          "id": "6a2b8118396ee2000167d63a",
+          "highlight": "Signature craft cocktails"
         }
       ],
       "differentiatorsTourist": [],
@@ -228,9 +630,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:49.463Z",
+      "updatedAt": "2026-06-12T03:46:32.901Z",
       "createdAt": "2026-05-19T08:33:49.463Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -250,49 +652,178 @@
     "tags": [],
     "relatedTour": {
       "id": 5,
-      "name": null,
+      "name": "Secrets of KL – Nightlife, Street Art & Cocktails!",
       "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "KL After Dark",
+      "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+      "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL — from gangster histories to colonial scandals — while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni MRT",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 28,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:01:51.539Z",
+        "createdAt": "2026-05-19T10:01:50.448Z",
+        "url": "/api/media/file/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "thumbnailURL": null,
+        "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 73554,
+        "width": 1024,
+        "height": 678,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428331",
-          "highlight": "Hidden speakeasy bars locals love"
+          "id": "6a2b8118396ee2000167d636",
+          "highlight": "Hidden speakeasy bars"
         },
         {
-          "id": "69cf3377d670e2eb55428332",
-          "highlight": "Classic Malaysian late-night street food"
+          "id": "6a2b8118396ee2000167d637",
+          "highlight": "Late-night street food"
         },
         {
-          "id": "69cf3377d670e2eb55428333",
-          "highlight": "Forbidden tales of the red-light district"
+          "id": "6a2b8118396ee2000167d638",
+          "highlight": "Forbidden tales of old KL"
         },
         {
-          "id": "69cf3377d670e2eb55428334",
-          "highlight": "KL's vibrant street art at night"
+          "id": "6a2b8118396ee2000167d639",
+          "highlight": "Street art at night"
         },
         {
-          "id": "69cf3377d670e2eb55428335",
-          "highlight": "4-5 signature craft cocktails included"
+          "id": "6a2b8118396ee2000167d63a",
+          "highlight": "Signature craft cocktails"
         }
       ],
       "differentiatorsTourist": [],
@@ -308,9 +839,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:49.463Z",
+      "updatedAt": "2026-06-12T03:46:32.901Z",
       "createdAt": "2026-05-19T08:33:49.463Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -330,49 +861,178 @@
     "tags": [],
     "relatedTour": {
       "id": 5,
-      "name": null,
+      "name": "Secrets of KL – Nightlife, Street Art & Cocktails!",
       "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "KL After Dark",
+      "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+      "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL — from gangster histories to colonial scandals — while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni MRT",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 28,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:01:51.539Z",
+        "createdAt": "2026-05-19T10:01:50.448Z",
+        "url": "/api/media/file/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "thumbnailURL": null,
+        "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 73554,
+        "width": 1024,
+        "height": 678,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428331",
-          "highlight": "Hidden speakeasy bars locals love"
+          "id": "6a2b8118396ee2000167d636",
+          "highlight": "Hidden speakeasy bars"
         },
         {
-          "id": "69cf3377d670e2eb55428332",
-          "highlight": "Classic Malaysian late-night street food"
+          "id": "6a2b8118396ee2000167d637",
+          "highlight": "Late-night street food"
         },
         {
-          "id": "69cf3377d670e2eb55428333",
-          "highlight": "Forbidden tales of the red-light district"
+          "id": "6a2b8118396ee2000167d638",
+          "highlight": "Forbidden tales of old KL"
         },
         {
-          "id": "69cf3377d670e2eb55428334",
-          "highlight": "KL's vibrant street art at night"
+          "id": "6a2b8118396ee2000167d639",
+          "highlight": "Street art at night"
         },
         {
-          "id": "69cf3377d670e2eb55428335",
-          "highlight": "4-5 signature craft cocktails included"
+          "id": "6a2b8118396ee2000167d63a",
+          "highlight": "Signature craft cocktails"
         }
       ],
       "differentiatorsTourist": [],
@@ -388,9 +1048,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:49.463Z",
+      "updatedAt": "2026-06-12T03:46:32.901Z",
       "createdAt": "2026-05-19T08:33:49.463Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -410,49 +1070,234 @@
     "tags": [],
     "relatedTour": {
       "id": 4,
-      "name": null,
+      "name": "Penang Street Food",
       "slug": "penang-street-food",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Penang Food Capital Tour",
+      "shortDescription": "What makes Penang the food capital of Malaysia?",
+      "fullDescription": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
       "price": 285,
       "currency": "MYR",
       "duration": "3.5 hours",
       "durationMinutes": 210,
-      "location": "Penang",
-      "meetingPoint": null,
+      "location": "Penang Road",
+      "meetingPoint": "Penang Road",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 45,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:26.380Z",
+        "createdAt": "2026-05-19T10:03:25.607Z",
+        "url": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 40554,
+        "width": 768,
+        "height": 576,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428327",
-          "highlight": "Kopitiam \"Ngor Ka Sai\" - signature nutmeg pickles"
+          "id": "6a2b8117396ee2000167d631",
+          "highlight": "Kopitiam breakfast experience"
         },
         {
-          "id": "69cf3377d670e2eb55428328",
-          "highlight": "Watch master handcraft popiah skin"
+          "id": "6a2b8117396ee2000167d632",
+          "highlight": "Handcrafted popiah"
         },
         {
-          "id": "69cf3377d670e2eb55428329",
-          "highlight": "Legendary Asam Laksa - sweet, sour, savoury"
+          "id": "6a2b8117396ee2000167d633",
+          "highlight": "Legendary Asam Laksa"
         },
         {
-          "id": "69cf3377d670e2eb5542832a",
-          "highlight": "Peranakan culture through colourful kuey"
+          "id": "6a2b8117396ee2000167d634",
+          "highlight": "Peranakan kueh"
         },
         {
-          "id": "69cf3377d670e2eb5542832b",
-          "highlight": "Chowrasta Market with exotic fruits and spices"
+          "id": "6a2b8117396ee2000167d635",
+          "highlight": "Chowrasta Market visit"
         }
       ],
       "differentiatorsTourist": [],
@@ -468,9 +1313,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:48.876Z",
+      "updatedAt": "2026-06-12T03:46:31.972Z",
       "createdAt": "2026-05-19T08:33:48.876Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -490,49 +1335,234 @@
     "tags": [],
     "relatedTour": {
       "id": 4,
-      "name": null,
+      "name": "Penang Street Food",
       "slug": "penang-street-food",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Penang Food Capital Tour",
+      "shortDescription": "What makes Penang the food capital of Malaysia?",
+      "fullDescription": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
       "price": 285,
       "currency": "MYR",
       "duration": "3.5 hours",
       "durationMinutes": 210,
-      "location": "Penang",
-      "meetingPoint": null,
+      "location": "Penang Road",
+      "meetingPoint": "Penang Road",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 45,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:26.380Z",
+        "createdAt": "2026-05-19T10:03:25.607Z",
+        "url": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 40554,
+        "width": 768,
+        "height": 576,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428327",
-          "highlight": "Kopitiam \"Ngor Ka Sai\" - signature nutmeg pickles"
+          "id": "6a2b8117396ee2000167d631",
+          "highlight": "Kopitiam breakfast experience"
         },
         {
-          "id": "69cf3377d670e2eb55428328",
-          "highlight": "Watch master handcraft popiah skin"
+          "id": "6a2b8117396ee2000167d632",
+          "highlight": "Handcrafted popiah"
         },
         {
-          "id": "69cf3377d670e2eb55428329",
-          "highlight": "Legendary Asam Laksa - sweet, sour, savoury"
+          "id": "6a2b8117396ee2000167d633",
+          "highlight": "Legendary Asam Laksa"
         },
         {
-          "id": "69cf3377d670e2eb5542832a",
-          "highlight": "Peranakan culture through colourful kuey"
+          "id": "6a2b8117396ee2000167d634",
+          "highlight": "Peranakan kueh"
         },
         {
-          "id": "69cf3377d670e2eb5542832b",
-          "highlight": "Chowrasta Market with exotic fruits and spices"
+          "id": "6a2b8117396ee2000167d635",
+          "highlight": "Chowrasta Market visit"
         }
       ],
       "differentiatorsTourist": [],
@@ -548,9 +1578,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:48.876Z",
+      "updatedAt": "2026-06-12T03:46:31.972Z",
       "createdAt": "2026-05-19T08:33:48.876Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -570,49 +1600,234 @@
     "tags": [],
     "relatedTour": {
       "id": 4,
-      "name": null,
+      "name": "Penang Street Food",
       "slug": "penang-street-food",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Penang Food Capital Tour",
+      "shortDescription": "What makes Penang the food capital of Malaysia?",
+      "fullDescription": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
       "price": 285,
       "currency": "MYR",
       "duration": "3.5 hours",
       "durationMinutes": 210,
-      "location": "Penang",
-      "meetingPoint": null,
+      "location": "Penang Road",
+      "meetingPoint": "Penang Road",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 45,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:26.380Z",
+        "createdAt": "2026-05-19T10:03:25.607Z",
+        "url": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 40554,
+        "width": 768,
+        "height": 576,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428327",
-          "highlight": "Kopitiam \"Ngor Ka Sai\" - signature nutmeg pickles"
+          "id": "6a2b8117396ee2000167d631",
+          "highlight": "Kopitiam breakfast experience"
         },
         {
-          "id": "69cf3377d670e2eb55428328",
-          "highlight": "Watch master handcraft popiah skin"
+          "id": "6a2b8117396ee2000167d632",
+          "highlight": "Handcrafted popiah"
         },
         {
-          "id": "69cf3377d670e2eb55428329",
-          "highlight": "Legendary Asam Laksa - sweet, sour, savoury"
+          "id": "6a2b8117396ee2000167d633",
+          "highlight": "Legendary Asam Laksa"
         },
         {
-          "id": "69cf3377d670e2eb5542832a",
-          "highlight": "Peranakan culture through colourful kuey"
+          "id": "6a2b8117396ee2000167d634",
+          "highlight": "Peranakan kueh"
         },
         {
-          "id": "69cf3377d670e2eb5542832b",
-          "highlight": "Chowrasta Market with exotic fruits and spices"
+          "id": "6a2b8117396ee2000167d635",
+          "highlight": "Chowrasta Market visit"
         }
       ],
       "differentiatorsTourist": [],
@@ -628,9 +1843,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:48.876Z",
+      "updatedAt": "2026-06-12T03:46:31.972Z",
       "createdAt": "2026-05-19T08:33:48.876Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -650,49 +1865,234 @@
     "tags": [],
     "relatedTour": {
       "id": 4,
-      "name": null,
+      "name": "Penang Street Food",
       "slug": "penang-street-food",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Penang Food Capital Tour",
+      "shortDescription": "What makes Penang the food capital of Malaysia?",
+      "fullDescription": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
       "price": 285,
       "currency": "MYR",
       "duration": "3.5 hours",
       "durationMinutes": 210,
-      "location": "Penang",
-      "meetingPoint": null,
+      "location": "Penang Road",
+      "meetingPoint": "Penang Road",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 45,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:26.380Z",
+        "createdAt": "2026-05-19T10:03:25.607Z",
+        "url": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_Georgetown001_c0188c50e4.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 40554,
+        "width": 768,
+        "height": 576,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428327",
-          "highlight": "Kopitiam \"Ngor Ka Sai\" - signature nutmeg pickles"
+          "id": "6a2b8117396ee2000167d631",
+          "highlight": "Kopitiam breakfast experience"
         },
         {
-          "id": "69cf3377d670e2eb55428328",
-          "highlight": "Watch master handcraft popiah skin"
+          "id": "6a2b8117396ee2000167d632",
+          "highlight": "Handcrafted popiah"
         },
         {
-          "id": "69cf3377d670e2eb55428329",
-          "highlight": "Legendary Asam Laksa - sweet, sour, savoury"
+          "id": "6a2b8117396ee2000167d633",
+          "highlight": "Legendary Asam Laksa"
         },
         {
-          "id": "69cf3377d670e2eb5542832a",
-          "highlight": "Peranakan culture through colourful kuey"
+          "id": "6a2b8117396ee2000167d634",
+          "highlight": "Peranakan kueh"
         },
         {
-          "id": "69cf3377d670e2eb5542832b",
-          "highlight": "Chowrasta Market with exotic fruits and spices"
+          "id": "6a2b8117396ee2000167d635",
+          "highlight": "Chowrasta Market visit"
         }
       ],
       "differentiatorsTourist": [],
@@ -708,9 +2108,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:48.876Z",
+      "updatedAt": "2026-06-12T03:46:31.972Z",
       "createdAt": "2026-05-19T08:33:48.876Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -730,49 +2130,220 @@
     "tags": [],
     "relatedTour": {
       "id": 3,
-      "name": null,
+      "name": "Kuala Lumpur Street Food",
       "slug": "kuala-lumpur-street-food",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "The Heart of KL Street Food",
+      "shortDescription": "Brand new to Malaysia? This is everything you need to know!",
+      "fullDescription": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat — from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
       "price": 285,
       "currency": "MYR",
       "duration": "3.5 hours",
       "durationMinutes": 210,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni LRT Station",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 4,
+        "alt": null,
+        "updatedAt": "2026-05-19T09:59:42.545Z",
+        "createdAt": "2026-05-19T09:59:41.726Z",
+        "url": "/api/media/file/kuala_lumpur_street_food_cd4fad4122.jpg",
+        "thumbnailURL": null,
+        "filename": "kuala_lumpur_street_food_cd4fad4122.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 66068,
+        "width": 1280,
+        "height": 720,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb5542831c",
-          "highlight": "Major temples in Chinatown"
+          "id": "6a2b8116396ee2000167d62c",
+          "highlight": "Visit Chinatown\\'s food lanes"
         },
         {
-          "id": "69cf3377d670e2eb5542831d",
-          "highlight": "Historic lanes with food stalls that tell a story"
+          "id": "6a2b8116396ee2000167d62d",
+          "highlight": "Taste 8-10 authentic dishes"
         },
         {
-          "id": "69cf3377d670e2eb5542831e",
-          "highlight": "8-10 Malaysian dishes, from wok to table"
+          "id": "6a2b8116396ee2000167d62e",
+          "highlight": "Explore Little India"
         },
         {
-          "id": "69cf3377d670e2eb5542831f",
-          "highlight": "Perfect introduction to Malaysian culture"
+          "id": "6a2b8116396ee2000167d62f",
+          "highlight": "Learn about Malaysian food culture"
         },
         {
-          "id": "69cf3377d670e2eb55428320",
-          "highlight": "Small group experience (max 9)"
+          "id": "6a2b8116396ee2000167d630",
+          "highlight": "Perfect introduction to KL"
         }
       ],
       "differentiatorsTourist": [],
@@ -788,9 +2359,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:48.280Z",
+      "updatedAt": "2026-06-12T03:46:30.996Z",
       "createdAt": "2026-05-19T08:33:48.280Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -810,49 +2381,220 @@
     "tags": [],
     "relatedTour": {
       "id": 3,
-      "name": null,
+      "name": "Kuala Lumpur Street Food",
       "slug": "kuala-lumpur-street-food",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "The Heart of KL Street Food",
+      "shortDescription": "Brand new to Malaysia? This is everything you need to know!",
+      "fullDescription": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat — from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
       "price": 285,
       "currency": "MYR",
       "duration": "3.5 hours",
       "durationMinutes": 210,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni LRT Station",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 4,
+        "alt": null,
+        "updatedAt": "2026-05-19T09:59:42.545Z",
+        "createdAt": "2026-05-19T09:59:41.726Z",
+        "url": "/api/media/file/kuala_lumpur_street_food_cd4fad4122.jpg",
+        "thumbnailURL": null,
+        "filename": "kuala_lumpur_street_food_cd4fad4122.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 66068,
+        "width": 1280,
+        "height": 720,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb5542831c",
-          "highlight": "Major temples in Chinatown"
+          "id": "6a2b8116396ee2000167d62c",
+          "highlight": "Visit Chinatown\\'s food lanes"
         },
         {
-          "id": "69cf3377d670e2eb5542831d",
-          "highlight": "Historic lanes with food stalls that tell a story"
+          "id": "6a2b8116396ee2000167d62d",
+          "highlight": "Taste 8-10 authentic dishes"
         },
         {
-          "id": "69cf3377d670e2eb5542831e",
-          "highlight": "8-10 Malaysian dishes, from wok to table"
+          "id": "6a2b8116396ee2000167d62e",
+          "highlight": "Explore Little India"
         },
         {
-          "id": "69cf3377d670e2eb5542831f",
-          "highlight": "Perfect introduction to Malaysian culture"
+          "id": "6a2b8116396ee2000167d62f",
+          "highlight": "Learn about Malaysian food culture"
         },
         {
-          "id": "69cf3377d670e2eb55428320",
-          "highlight": "Small group experience (max 9)"
+          "id": "6a2b8116396ee2000167d630",
+          "highlight": "Perfect introduction to KL"
         }
       ],
       "differentiatorsTourist": [],
@@ -868,9 +2610,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:48.280Z",
+      "updatedAt": "2026-06-12T03:46:30.996Z",
       "createdAt": "2026-05-19T08:33:48.280Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -890,49 +2632,220 @@
     "tags": [],
     "relatedTour": {
       "id": 3,
-      "name": null,
+      "name": "Kuala Lumpur Street Food",
       "slug": "kuala-lumpur-street-food",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "The Heart of KL Street Food",
+      "shortDescription": "Brand new to Malaysia? This is everything you need to know!",
+      "fullDescription": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat — from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
       "price": 285,
       "currency": "MYR",
       "duration": "3.5 hours",
       "durationMinutes": 210,
-      "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "location": "KL",
+      "meetingPoint": "KL: Pasar Seni LRT Station",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 4,
+        "alt": null,
+        "updatedAt": "2026-05-19T09:59:42.545Z",
+        "createdAt": "2026-05-19T09:59:41.726Z",
+        "url": "/api/media/file/kuala_lumpur_street_food_cd4fad4122.jpg",
+        "thumbnailURL": null,
+        "filename": "kuala_lumpur_street_food_cd4fad4122.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 66068,
+        "width": 1280,
+        "height": 720,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb5542831c",
-          "highlight": "Major temples in Chinatown"
+          "id": "6a2b8116396ee2000167d62c",
+          "highlight": "Visit Chinatown\\'s food lanes"
         },
         {
-          "id": "69cf3377d670e2eb5542831d",
-          "highlight": "Historic lanes with food stalls that tell a story"
+          "id": "6a2b8116396ee2000167d62d",
+          "highlight": "Taste 8-10 authentic dishes"
         },
         {
-          "id": "69cf3377d670e2eb5542831e",
-          "highlight": "8-10 Malaysian dishes, from wok to table"
+          "id": "6a2b8116396ee2000167d62e",
+          "highlight": "Explore Little India"
         },
         {
-          "id": "69cf3377d670e2eb5542831f",
-          "highlight": "Perfect introduction to Malaysian culture"
+          "id": "6a2b8116396ee2000167d62f",
+          "highlight": "Learn about Malaysian food culture"
         },
         {
-          "id": "69cf3377d670e2eb55428320",
-          "highlight": "Small group experience (max 9)"
+          "id": "6a2b8116396ee2000167d630",
+          "highlight": "Perfect introduction to KL"
         }
       ],
       "differentiatorsTourist": [],
@@ -948,9 +2861,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:48.280Z",
+      "updatedAt": "2026-06-12T03:46:30.996Z",
       "createdAt": "2026-05-19T08:33:48.280Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -970,49 +2883,220 @@
     "tags": [],
     "relatedTour": {
       "id": 1,
-      "name": null,
+      "name": "Eat Drink George Town",
       "slug": "eat-drink-george-town",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Street Food and Cocktails in Penang",
+      "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+      "fullDescription": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Penang",
-      "meetingPoint": null,
+      "meetingPoint": "Penang: Masjid Kapitan Keling",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 6,
+        "alt": null,
+        "updatedAt": "2026-05-19T09:59:56.971Z",
+        "createdAt": "2026-05-19T09:59:56.436Z",
+        "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 158252,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428312",
-          "highlight": "Sizzling satay and samosas stuffed with spiced potatoes, fried to order"
+          "id": "6a2b8116396ee2000167d627",
+          "highlight": "Sizzling satay at a heritage stall"
         },
         {
-          "id": "69cf3377d670e2eb55428313",
-          "highlight": "Char kway teow fresh off the wok at Chew Jetty"
+          "id": "6a2b8116396ee2000167d628",
+          "highlight": "Char kway teow at Chew Jetty"
         },
         {
-          "id": "69cf3377d670e2eb55428314",
-          "highlight": "Roti jala handcrafted like golden lace"
+          "id": "6a2b8116396ee2000167d629",
+          "highlight": "Roti jala — net crepe"
         },
         {
-          "id": "69cf3377d670e2eb55428315",
-          "highlight": "Secret society tales and forbidden history"
+          "id": "6a2b8116396ee2000167d62a",
+          "highlight": "Secret society tales"
         },
         {
-          "id": "69cf3377d670e2eb55428316",
-          "highlight": "Junglebird cocktail toast to the evening"
+          "id": "6a2b8116396ee2000167d62b",
+          "highlight": "Signature Junglebird cocktail"
         }
       ],
       "differentiatorsTourist": [],
@@ -1028,9 +3112,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:46.974Z",
+      "updatedAt": "2026-06-12T03:46:30.049Z",
       "createdAt": "2026-05-19T08:33:46.973Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -1050,49 +3134,220 @@
     "tags": [],
     "relatedTour": {
       "id": 1,
-      "name": null,
+      "name": "Eat Drink George Town",
       "slug": "eat-drink-george-town",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Street Food and Cocktails in Penang",
+      "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+      "fullDescription": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Penang",
-      "meetingPoint": null,
+      "meetingPoint": "Penang: Masjid Kapitan Keling",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 6,
+        "alt": null,
+        "updatedAt": "2026-05-19T09:59:56.971Z",
+        "createdAt": "2026-05-19T09:59:56.436Z",
+        "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 158252,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428312",
-          "highlight": "Sizzling satay and samosas stuffed with spiced potatoes, fried to order"
+          "id": "6a2b8116396ee2000167d627",
+          "highlight": "Sizzling satay at a heritage stall"
         },
         {
-          "id": "69cf3377d670e2eb55428313",
-          "highlight": "Char kway teow fresh off the wok at Chew Jetty"
+          "id": "6a2b8116396ee2000167d628",
+          "highlight": "Char kway teow at Chew Jetty"
         },
         {
-          "id": "69cf3377d670e2eb55428314",
-          "highlight": "Roti jala handcrafted like golden lace"
+          "id": "6a2b8116396ee2000167d629",
+          "highlight": "Roti jala — net crepe"
         },
         {
-          "id": "69cf3377d670e2eb55428315",
-          "highlight": "Secret society tales and forbidden history"
+          "id": "6a2b8116396ee2000167d62a",
+          "highlight": "Secret society tales"
         },
         {
-          "id": "69cf3377d670e2eb55428316",
-          "highlight": "Junglebird cocktail toast to the evening"
+          "id": "6a2b8116396ee2000167d62b",
+          "highlight": "Signature Junglebird cocktail"
         }
       ],
       "differentiatorsTourist": [],
@@ -1108,9 +3363,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:46.974Z",
+      "updatedAt": "2026-06-12T03:46:30.049Z",
       "createdAt": "2026-05-19T08:33:46.973Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -1130,49 +3385,220 @@
     "tags": [],
     "relatedTour": {
       "id": 1,
-      "name": null,
+      "name": "Eat Drink George Town",
       "slug": "eat-drink-george-town",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Street Food and Cocktails in Penang",
+      "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+      "fullDescription": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Penang",
-      "meetingPoint": null,
+      "meetingPoint": "Penang: Masjid Kapitan Keling",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 6,
+        "alt": null,
+        "updatedAt": "2026-05-19T09:59:56.971Z",
+        "createdAt": "2026-05-19T09:59:56.436Z",
+        "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 158252,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428312",
-          "highlight": "Sizzling satay and samosas stuffed with spiced potatoes, fried to order"
+          "id": "6a2b8116396ee2000167d627",
+          "highlight": "Sizzling satay at a heritage stall"
         },
         {
-          "id": "69cf3377d670e2eb55428313",
-          "highlight": "Char kway teow fresh off the wok at Chew Jetty"
+          "id": "6a2b8116396ee2000167d628",
+          "highlight": "Char kway teow at Chew Jetty"
         },
         {
-          "id": "69cf3377d670e2eb55428314",
-          "highlight": "Roti jala handcrafted like golden lace"
+          "id": "6a2b8116396ee2000167d629",
+          "highlight": "Roti jala — net crepe"
         },
         {
-          "id": "69cf3377d670e2eb55428315",
-          "highlight": "Secret society tales and forbidden history"
+          "id": "6a2b8116396ee2000167d62a",
+          "highlight": "Secret society tales"
         },
         {
-          "id": "69cf3377d670e2eb55428316",
-          "highlight": "Junglebird cocktail toast to the evening"
+          "id": "6a2b8116396ee2000167d62b",
+          "highlight": "Signature Junglebird cocktail"
         }
       ],
       "differentiatorsTourist": [],
@@ -1188,9 +3614,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:46.974Z",
+      "updatedAt": "2026-06-12T03:46:30.049Z",
       "createdAt": "2026-05-19T08:33:46.973Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -1210,49 +3636,220 @@
     "tags": [],
     "relatedTour": {
       "id": 1,
-      "name": null,
+      "name": "Eat Drink George Town",
       "slug": "eat-drink-george-town",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Street Food and Cocktails in Penang",
+      "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+      "fullDescription": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
       "price": 359,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Penang",
-      "meetingPoint": null,
+      "meetingPoint": "Penang: Masjid Kapitan Keling",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 3,
+            "name": "Night Tour",
+            "slug": "night-tour",
+            "icon": "🌙",
+            "color": "#6366f1",
+            "description": "Evening food tours exploring night markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.030Z",
+            "createdAt": "2026-05-19T08:33:32.030Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 6,
+        "alt": null,
+        "updatedAt": "2026-05-19T09:59:56.971Z",
+        "createdAt": "2026-05-19T09:59:56.436Z",
+        "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "thumbnailURL": null,
+        "filename": "Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 158252,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3377d670e2eb55428312",
-          "highlight": "Sizzling satay and samosas stuffed with spiced potatoes, fried to order"
+          "id": "6a2b8116396ee2000167d627",
+          "highlight": "Sizzling satay at a heritage stall"
         },
         {
-          "id": "69cf3377d670e2eb55428313",
-          "highlight": "Char kway teow fresh off the wok at Chew Jetty"
+          "id": "6a2b8116396ee2000167d628",
+          "highlight": "Char kway teow at Chew Jetty"
         },
         {
-          "id": "69cf3377d670e2eb55428314",
-          "highlight": "Roti jala handcrafted like golden lace"
+          "id": "6a2b8116396ee2000167d629",
+          "highlight": "Roti jala — net crepe"
         },
         {
-          "id": "69cf3377d670e2eb55428315",
-          "highlight": "Secret society tales and forbidden history"
+          "id": "6a2b8116396ee2000167d62a",
+          "highlight": "Secret society tales"
         },
         {
-          "id": "69cf3377d670e2eb55428316",
-          "highlight": "Junglebird cocktail toast to the evening"
+          "id": "6a2b8116396ee2000167d62b",
+          "highlight": "Signature Junglebird cocktail"
         }
       ],
       "differentiatorsTourist": [],
@@ -1268,9 +3865,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:46.974Z",
+      "updatedAt": "2026-06-12T03:46:30.049Z",
       "createdAt": "2026-05-19T08:33:46.973Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -1290,49 +3887,234 @@
     "tags": [],
     "relatedTour": {
       "id": 2,
-      "name": null,
+      "name": "Flavours of Malaysia",
       "slug": "flavours-of-malaysia",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Market Culture and Hidden Flavours",
+      "shortDescription": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+      "fullDescription": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
       "price": 289,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "meetingPoint": "Kuala Lumpur: Hilton Garden Inn",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 47,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:37.416Z",
+        "createdAt": "2026-05-19T10:03:36.811Z",
+        "url": "/api/media/file/Flavours_of_Malaysia001_41094a74f7.jpg",
+        "thumbnailURL": null,
+        "filename": "Flavours_of_Malaysia001_41094a74f7.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 54836,
+        "width": 994,
+        "height": 660,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3376d670e2eb55428306",
-          "highlight": "Major temples in Chinatown"
+          "id": "6a2b8115396ee2000167d622",
+          "highlight": "Visit one of KL\\'s largest wet markets"
         },
         {
-          "id": "69cf3376d670e2eb55428307",
-          "highlight": "Historic lanes with stories"
+          "id": "6a2b8115396ee2000167d623",
+          "highlight": "Taste 10 authentic Malaysian dishes"
         },
         {
-          "id": "69cf3376d670e2eb55428308",
-          "highlight": "8-10 Malaysian dishes, from wok to table"
+          "id": "6a2b8115396ee2000167d624",
+          "highlight": "Explore historic Chinatown lanes"
         },
         {
-          "id": "69cf3376d670e2eb55428309",
-          "highlight": "Cultural fusion understanding"
+          "id": "6a2b8115396ee2000167d625",
+          "highlight": "Learn about Malay, Chinese and Indian food culture"
         },
         {
-          "id": "69cf3376d670e2eb5542830a",
-          "highlight": "Small group experience (max 9)"
+          "id": "6a2b8115396ee2000167d626",
+          "highlight": "Small group — max 9 people"
         }
       ],
       "differentiatorsTourist": [],
@@ -1348,9 +4130,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:47.673Z",
+      "updatedAt": "2026-06-12T03:46:29.121Z",
       "createdAt": "2026-05-19T08:33:47.672Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -1370,49 +4152,234 @@
     "tags": [],
     "relatedTour": {
       "id": 2,
-      "name": null,
+      "name": "Flavours of Malaysia",
       "slug": "flavours-of-malaysia",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Market Culture and Hidden Flavours",
+      "shortDescription": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+      "fullDescription": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
       "price": 289,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "meetingPoint": "Kuala Lumpur: Hilton Garden Inn",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 47,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:37.416Z",
+        "createdAt": "2026-05-19T10:03:36.811Z",
+        "url": "/api/media/file/Flavours_of_Malaysia001_41094a74f7.jpg",
+        "thumbnailURL": null,
+        "filename": "Flavours_of_Malaysia001_41094a74f7.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 54836,
+        "width": 994,
+        "height": 660,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3376d670e2eb55428306",
-          "highlight": "Major temples in Chinatown"
+          "id": "6a2b8115396ee2000167d622",
+          "highlight": "Visit one of KL\\'s largest wet markets"
         },
         {
-          "id": "69cf3376d670e2eb55428307",
-          "highlight": "Historic lanes with stories"
+          "id": "6a2b8115396ee2000167d623",
+          "highlight": "Taste 10 authentic Malaysian dishes"
         },
         {
-          "id": "69cf3376d670e2eb55428308",
-          "highlight": "8-10 Malaysian dishes, from wok to table"
+          "id": "6a2b8115396ee2000167d624",
+          "highlight": "Explore historic Chinatown lanes"
         },
         {
-          "id": "69cf3376d670e2eb55428309",
-          "highlight": "Cultural fusion understanding"
+          "id": "6a2b8115396ee2000167d625",
+          "highlight": "Learn about Malay, Chinese and Indian food culture"
         },
         {
-          "id": "69cf3376d670e2eb5542830a",
-          "highlight": "Small group experience (max 9)"
+          "id": "6a2b8115396ee2000167d626",
+          "highlight": "Small group — max 9 people"
         }
       ],
       "differentiatorsTourist": [],
@@ -1428,9 +4395,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:47.673Z",
+      "updatedAt": "2026-06-12T03:46:29.121Z",
       "createdAt": "2026-05-19T08:33:47.672Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -1450,49 +4417,234 @@
     "tags": [],
     "relatedTour": {
       "id": 2,
-      "name": null,
+      "name": "Flavours of Malaysia",
       "slug": "flavours-of-malaysia",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Market Culture and Hidden Flavours",
+      "shortDescription": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+      "fullDescription": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
       "price": 289,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "meetingPoint": "Kuala Lumpur: Hilton Garden Inn",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 47,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:37.416Z",
+        "createdAt": "2026-05-19T10:03:36.811Z",
+        "url": "/api/media/file/Flavours_of_Malaysia001_41094a74f7.jpg",
+        "thumbnailURL": null,
+        "filename": "Flavours_of_Malaysia001_41094a74f7.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 54836,
+        "width": 994,
+        "height": 660,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3376d670e2eb55428306",
-          "highlight": "Major temples in Chinatown"
+          "id": "6a2b8115396ee2000167d622",
+          "highlight": "Visit one of KL\\'s largest wet markets"
         },
         {
-          "id": "69cf3376d670e2eb55428307",
-          "highlight": "Historic lanes with stories"
+          "id": "6a2b8115396ee2000167d623",
+          "highlight": "Taste 10 authentic Malaysian dishes"
         },
         {
-          "id": "69cf3376d670e2eb55428308",
-          "highlight": "8-10 Malaysian dishes, from wok to table"
+          "id": "6a2b8115396ee2000167d624",
+          "highlight": "Explore historic Chinatown lanes"
         },
         {
-          "id": "69cf3376d670e2eb55428309",
-          "highlight": "Cultural fusion understanding"
+          "id": "6a2b8115396ee2000167d625",
+          "highlight": "Learn about Malay, Chinese and Indian food culture"
         },
         {
-          "id": "69cf3376d670e2eb5542830a",
-          "highlight": "Small group experience (max 9)"
+          "id": "6a2b8115396ee2000167d626",
+          "highlight": "Small group — max 9 people"
         }
       ],
       "differentiatorsTourist": [],
@@ -1508,9 +4660,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:47.673Z",
+      "updatedAt": "2026-06-12T03:46:29.121Z",
       "createdAt": "2026-05-19T08:33:47.672Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
@@ -1530,49 +4682,234 @@
     "tags": [],
     "relatedTour": {
       "id": 2,
-      "name": null,
+      "name": "Flavours of Malaysia",
       "slug": "flavours-of-malaysia",
-      "tagline": null,
-      "shortDescription": null,
-      "fullDescription": null,
+      "tagline": "Market Culture and Hidden Flavours",
+      "shortDescription": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+      "fullDescription": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
       "price": 289,
       "currency": "MYR",
       "duration": "4 hours",
       "durationMinutes": 240,
       "location": "Kuala Lumpur",
-      "meetingPoint": null,
+      "meetingPoint": "Kuala Lumpur: Hilton Garden Inn",
       "maxParticipants": 9,
       "minParticipants": 2,
-      "dietaryOptions": [],
-      "travelTypes": [],
-      "specialtyExperiences": [],
+      "dietaryOptions": [
+        {
+          "id": 7,
+          "name": "Vegetarian",
+          "slug": "vegetarian",
+          "icon": "🥬",
+          "color": "#4caf50",
+          "description": "Vegetarian-friendly dishes",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:27.383Z",
+          "createdAt": "2026-05-19T08:33:27.383Z",
+          "_status": "published"
+        },
+        {
+          "id": 3,
+          "name": "Halal",
+          "slug": "halal",
+          "icon": "🥩",
+          "color": "#2d8a4e",
+          "description": "Halal-certified food options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.147Z",
+          "createdAt": "2026-05-19T08:33:25.146Z",
+          "_status": "published"
+        },
+        {
+          "id": 12,
+          "name": "Vegan",
+          "slug": "vegan",
+          "icon": "🌱",
+          "color": "#8bc34a",
+          "description": "100% plant-based options",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:30.320Z",
+          "createdAt": "2026-05-19T08:33:30.320Z",
+          "_status": "published"
+        },
+        {
+          "id": 4,
+          "name": "Gluten-Free",
+          "slug": "gluten-free",
+          "icon": "🌾",
+          "color": "#ff9800",
+          "description": "Gluten-free dishes available",
+          "status": "published",
+          "scheduledPublish": null,
+          "publishedAt": null,
+          "updatedAt": "2026-05-19T08:33:25.704Z",
+          "createdAt": "2026-05-19T08:33:25.703Z",
+          "_status": "published"
+        }
+      ],
+      "travelTypes": [
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 2,
+            "name": "Family",
+            "slug": "family",
+            "icon": "👨‍👩‍👧‍👦",
+            "color": "#f59e0b",
+            "description": "Family-friendly tours",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.293Z",
+            "createdAt": "2026-05-19T08:33:22.293Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 1,
+            "name": "Couples",
+            "slug": "couples",
+            "icon": "💑",
+            "color": "#ec4899",
+            "description": "Romantic food experiences for two",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:21.708Z",
+            "createdAt": "2026-05-19T08:33:21.708Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 4,
+            "name": "Solo",
+            "slug": "solo",
+            "icon": "🎒",
+            "color": "#8b5cf6",
+            "description": "Perfect for solo travellers",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:23.425Z",
+            "createdAt": "2026-05-19T08:33:23.425Z"
+          }
+        },
+        {
+          "relationTo": "travel_types",
+          "value": {
+            "id": 3,
+            "name": "Foodie",
+            "slug": "foodie",
+            "icon": "🍜",
+            "color": "#ef4444",
+            "description": "For serious food enthusiasts",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:22.863Z",
+            "createdAt": "2026-05-19T08:33:22.863Z"
+          }
+        }
+      ],
+      "specialtyExperiences": [
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 4,
+            "name": "Street Food",
+            "slug": "street-food",
+            "icon": "🍢",
+            "color": "#f97316",
+            "description": "Explore hawker stalls and street food vendors",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:32.602Z",
+            "createdAt": "2026-05-19T08:33:32.602Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 2,
+            "name": "Market Tour",
+            "slug": "market-tour",
+            "icon": "🏪",
+            "color": "#22c55e",
+            "description": "Visit local wet markets",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:31.461Z",
+            "createdAt": "2026-05-19T08:33:31.461Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        },
+        {
+          "relationTo": "specialty_experiences",
+          "value": {
+            "id": 1,
+            "name": "Heritage",
+            "slug": "heritage",
+            "icon": "🏛️",
+            "color": "#0ea5e9",
+            "description": "Food tours focused on cultural heritage",
+            "status": "published",
+            "updatedAt": "2026-05-19T08:33:30.893Z",
+            "createdAt": "2026-05-19T08:33:30.893Z"
+          }
+        }
+      ],
       "foodItems": [],
       "tailoredAvailable": true,
       "tailoredNotes": null,
-      "heroImage": null,
+      "heroImage": {
+        "id": 47,
+        "alt": null,
+        "updatedAt": "2026-05-19T10:03:37.416Z",
+        "createdAt": "2026-05-19T10:03:36.811Z",
+        "url": "/api/media/file/Flavours_of_Malaysia001_41094a74f7.jpg",
+        "thumbnailURL": null,
+        "filename": "Flavours_of_Malaysia001_41094a74f7.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 54836,
+        "width": 994,
+        "height": 660,
+        "focalX": 50,
+        "focalY": 50
+      },
       "galleryImages": [],
       "whatsIncluded": [],
       "whatsExcluded": [],
       "highlights": [
         {
-          "id": "69cf3376d670e2eb55428306",
-          "highlight": "Major temples in Chinatown"
+          "id": "6a2b8115396ee2000167d622",
+          "highlight": "Visit one of KL\\'s largest wet markets"
         },
         {
-          "id": "69cf3376d670e2eb55428307",
-          "highlight": "Historic lanes with stories"
+          "id": "6a2b8115396ee2000167d623",
+          "highlight": "Taste 10 authentic Malaysian dishes"
         },
         {
-          "id": "69cf3376d670e2eb55428308",
-          "highlight": "8-10 Malaysian dishes, from wok to table"
+          "id": "6a2b8115396ee2000167d624",
+          "highlight": "Explore historic Chinatown lanes"
         },
         {
-          "id": "69cf3376d670e2eb55428309",
-          "highlight": "Cultural fusion understanding"
+          "id": "6a2b8115396ee2000167d625",
+          "highlight": "Learn about Malay, Chinese and Indian food culture"
         },
         {
-          "id": "69cf3376d670e2eb5542830a",
-          "highlight": "Small group experience (max 9)"
+          "id": "6a2b8115396ee2000167d626",
+          "highlight": "Small group — max 9 people"
         }
       ],
       "differentiatorsTourist": [],
@@ -1588,9 +4925,9 @@
       "publishedAt": null,
       "status": "published",
       "workflowStatus": "published",
-      "updatedAt": "2026-05-19T08:33:47.673Z",
+      "updatedAt": "2026-06-12T03:46:29.121Z",
       "createdAt": "2026-05-19T08:33:47.672Z",
-      "_status": "draft"
+      "_status": "published"
     },
     "relatedStory": null,
     "sort_order": 5,
