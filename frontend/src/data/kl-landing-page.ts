@@ -1,7 +1,7 @@
 // Kuala Lumpur Food Tour Landing Page
 // Educational-first approach: teach about KL's food culture, then present tours
 
-import type { LocationLandingPage } from './locations';
+import type { LocationLandingPage } from '@/types';
 
 export const kualaLumpurLandingPage: LocationLandingPage = {
   name: "Kuala Lumpur",

@@ -30,63 +30,92 @@ const testimonialsSection = {
 <section class="py-20 bg-[#f7f7f7]">
   <div class="main-container">
     <h2 class="text-h2 text-primary text-center mb-12">What Our Guests Say</h2>
-    <div id="testimonials-swiper" class="swiper -mr-3 md:mr-0">
-      <div class="swiper-wrapper">
-        {testimonialsSection.cards.map((testimonial) => (
-          <div class="swiper-slide p-6 md:p-8 rounded-lg overflow-hidden bg-white border border-[#dddddd] shadow-custom-1 !h-auto">
-            <div class="space-y-2 text-body">
-              <p class="font-semibold">{testimonial.title}</p>
-              <p>{testimonial.review}</p>
+
+    <!-- ponytail: scroll-snap replaces swiper — no 600KB dependency for 3 cards -->
+    <div class="testimonials-scroll flex overflow-x-auto snap-x snap-mandatory -mr-3 md:mr-0 scroll-smooth no-scrollbar">
+      {testimonialsSection.cards.map((testimonial) => (
+        <div class="snap-start shrink-0 w-[calc(100%-1.5rem)] sm:w-[calc(50%-1rem)] md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] p-6 md:p-8 rounded-lg bg-white border border-[#dddddd] shadow-custom-1 mr-4">
+          <div class="space-y-2 text-body">
+            <p class="font-semibold">{testimonial.title}</p>
+            <p>{testimonial.review}</p>
+          </div>
+          <div class="flex items-center gap-4 mt-5">
+            <div class="md:size-[70px] size-12 rounded-full overflow-hidden bg-gray-200 shrink-0">
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                class="size-full object-cover"
+                height={70}
+                width={70}
+                loading="lazy"
+              />
             </div>
-            <div class="flex items-center gap-4 mt-5">
-              <div class="md:size-[70px] size-12 rounded-full overflow-hidden bg-gray-200">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  class="size-full object-cover"
-                  height={70}
-                  width={70}
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <p class="text-body font-semibold uppercase">
-                  {testimonial.name}
-                </p>
-                <p class="text-sm font-medium">{testimonial.country}</p>
-              </div>
+            <div>
+              <p class="text-body font-semibold uppercase">
+                {testimonial.name}
+              </p>
+              <p class="text-sm font-medium">{testimonial.country}</p>
             </div>
           </div>
-        ))}
-      </div>
-      <div class="testimonials-pagination flex items-center justify-center gap-1 mt-8"></div>
+        </div>
+      ))}
     </div>
+    <div class="testimonials-dots flex items-center justify-center gap-2 mt-8"></div>
   </div>
 </section>
 
 <script>
-  import Swiper from "swiper";
-  import "swiper/css";
-  import "swiper/css/pagination";
-  import { Pagination } from "swiper/modules";
+  // ponytail: ~30 lines of vanilla JS replaces 600KB swiper dependency
+  const container = document.querySelector(".testimonials-scroll");
+  const dotsEl = document.querySelector(".testimonials-dots");
+  if (!container || !dotsEl) throw new Error("testimonials-scroll not found");
 
-  document.addEventListener("DOMContentLoaded", () => {
-    new Swiper("#testimonials-swiper", {
-      modules: [Pagination],
-      slidesPerView: 1.2,
-      speed: 1000,
-      loop: true,
-      spaceBetween: 16,
-      grabCursor: true,
-      breakpoints: {
-        640: { slidesPerView: 1.5, spaceBetween: 24 },
-        768: { slidesPerView: 2, spaceBetween: 30 },
-      },
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      pagination: {
-        el: ".testimonials-pagination",
-        clickable: true,
-      },
+  const slides = container.children;
+  const dots = [];
+
+  for (let i = 0; i < slides.length; i++) {
+    const dot = document.createElement("button");
+    dot.className = "w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors cursor-pointer hover:bg-gray-400";
+    dot.setAttribute("aria-label", `Go to testimonial ${i + 1}`);
+    dot.addEventListener("click", () => {
+      slides[i].scrollIntoView({ behavior: "smooth", inline: "start" });
     });
-  });
+    dotsEl.appendChild(dot);
+    dots.push(dot);
+  }
+
+  function updateActiveDot() {
+    const scrollLeft = container.scrollLeft;
+    const slideW = slides[0]?.offsetWidth || 1;
+    const gap = 16; // mr-4 = 16px
+    const idx = Math.round(scrollLeft / (slideW + gap));
+    dots.forEach((d, i) => {
+      d.classList.toggle("bg-gray-800", i === Math.min(idx, dots.length - 1));
+      d.classList.toggle("bg-gray-300", i !== Math.min(idx, dots.length - 1));
+    });
+  }
+
+  container.addEventListener("scroll", updateActiveDot, { passive: true });
+  updateActiveDot();
+
+  // Auto-advance every 4s, pause on hover/touch
+  let interval = setInterval(autoAdvance, 4000);
+  function autoAdvance() {
+    if (container.matches(":hover")) return;
+    const slideW = slides[0]?.offsetWidth || 1;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const next = Math.min(container.scrollLeft + slideW + 16, maxScroll);
+    if (next >= maxScroll) {
+      container.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      container.scrollBy({ left: slideW + 16, behavior: "smooth" });
+    }
+  }
+  container.addEventListener("mouseenter", () => clearInterval(interval));
+  container.addEventListener("mouseleave", () => { interval = setInterval(autoAdvance, 4000); });
 </script>
+
+<style>
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+</style>
