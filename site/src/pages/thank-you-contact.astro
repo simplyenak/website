@@ -1,14 +1,13 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import ThankYou from '~/components/ThankYou.astro';
-import { getPageBySlug } from '~/lib/content';
+import { getThankYouPage } from '~/lib/content';
 
-const page = await getPageBySlug('thank-you-contact');
-const d = (page?.thankYouData || {}) as any;
+const d = getThankYouPage('thank-you-contact') || {} as any;
 const metadata = {
-  title: page?.metaTitle || 'Thank You — Message Received',
-  description: page?.metaDescription || '',
-  robots: { index: page?.robotsIndex ?? false },
+  title: d.metaTitle || 'Thank You  -  Message Received',
+  description: d.metaDescription || '',
+  robots: { index: false },
 };
 ---
 

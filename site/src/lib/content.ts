@@ -37,6 +37,7 @@ let snapshotStories: any[] = [];
 let snapshotHomePage: any = {};
 let snapshotAboutPage: any = {};
 let snapshotContactPage: any = {};
+let snapshotThankYouPages: any[] = [];
 let snapshotPages: any[] = [];
 let snapshotLandingPages: any[] = [];
 
@@ -78,6 +79,9 @@ try {
   snapshotContactPage = (await import('~/data/content/contact-page.json')).default || {};
 } catch {}
 try {
+  snapshotThankYouPages = (await import('~/data/content/thank-you-pages.json')).default as any[] || [];
+} catch {}
+try {
   snapshotPages = (await import('~/data/content/pages.json')).default as any[] || [];
 } catch {}
 try {
@@ -94,61 +98,69 @@ try {
 // ── Live Payload fetchers (tier 1) ─────────────────────────────────────
 // These return the raw Payload docs. Callers use them as tier 1 fallback.
 
-async function liveTours(): Promise<any[] | null> {
+async function liveTours(locale?: string): Promise<any[] | null> {
   try {
-    return await fetchCollection('tours');
+    return await fetchCollection('tours', { locale });
   } catch {
     return null;
   }
 }
 
-async function liveHomePage() {
-  return fetchSingleton('home_page');
+async function liveHomePage(locale?: string) {
+  return fetchSingleton('home_page', { locale });
 }
 
-async function livePages() {
-  return fetchCollection('pages');
+async function livePages(locale?: string) {
+  return fetchCollection('pages', { locale });
 }
 
-async function liveFAQs() {
-  return fetchCollection('faqs');
+async function liveFAQs(locale?: string) {
+  return fetchCollection('faqs', { locale });
 }
 
-async function liveTestimonials() {
-  return fetchCollection('testimonials');
+async function liveTestimonials(locale?: string) {
+  return fetchCollection('testimonials', { locale });
 }
 
-async function liveStories() {
-  return fetchCollection('stories');
+async function liveStories(locale?: string) {
+  return fetchCollection('stories', { locale });
 }
 
-async function liveSiteSettings() {
-  return fetchSingleton('site_settings');
+async function liveSiteSettings(locale?: string) {
+  return fetchSingleton('site_settings', { locale });
 }
 
-async function liveLocations() {
-  return fetchCollection('locations');
+async function liveLocations(locale?: string) {
+  return fetchCollection('locations', { locale });
 }
 
-async function liveDietaryOptions() {
-  return fetchCollection('dietary_options');
+async function liveDietaryOptions(locale?: string) {
+  return fetchCollection('dietary_options', { locale });
 }
 
-async function liveSpecialtyExperiences() {
-  return fetchCollection('specialty_experiences');
+async function liveSpecialtyExperiences(locale?: string) {
+  return fetchCollection('specialty_experiences', { locale });
 }
 
-async function liveTravelTypes() {
-  return fetchCollection('travel_types');
+async function liveTravelTypes(locale?: string) {
+  return fetchCollection('travel_types', { locale });
 }
 
-async function liveLandingPages(): Promise<any[] | null> {
+async function liveLandingPages(locale?: string): Promise<any[] | null> {
   try {
-    const docs = await fetchCollection('landing_pages');
+    const docs = await fetchCollection('landing_pages', { locale });
     return docs || [];
   } catch {
     return null;
   }
+}
+
+async function liveAboutPage(locale?: string) {
+  return fetchSingleton('about_page', { locale });
+}
+
+async function liveContactPage(locale?: string) {
+  return fetchSingleton('contact_page', { locale });
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -432,8 +444,8 @@ function shapeHomePage(raw: any): HomePageData {
     },
     philosophy: {
       eyebrow: raw.philosophy?.eyebrow ?? 'Our Philosophy',
-      heading: raw.philosophy?.heading ?? 'Great food is not found in guidebooks.',
-      description: raw.philosophy?.description ?? 'It is found down a side street your taxi driver almost missed. On a plastic stool under a fluorescent light. At a stall with no English menu and a queue of locals.',
+      heading: raw.philosophy?.heading ?? 'Great food lives in the people, places and the stories we share.',
+      description: raw.philosophy?.description ?? 'The people who cook it, the places that shaped it, and the stories that make every dish unforgettable. This is what we share on every tour.',
       features: raw.philosophy?.features ?? [
         { icon: 'heart', title: 'Heritage Vendors', description: 'We partner with family-run stalls that have been feeding their neighborhoods for decades. Recipes passed down through generations.' },
         { icon: 'flame', title: 'Authentic Flavours', description: 'No tourist menus. No shortcuts. We take you to the spots where we eat with our own families on weekends.' },
@@ -516,9 +528,9 @@ function shapeHomePage(raw: any): HomePageData {
 // Each resolver tries live Payload API first, falls back to JSON snapshot,
 // then to hardcoded data where applicable.
 
-async function resolveTours(): Promise<any[]> {
+async function resolveTours(locale?: string): Promise<any[]> {
   // Tier 1: Live Payload API
-  const live = await liveTours();
+  const live = await liveTours(locale);
   if (live && live.length > 0) {
     return live
       .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
@@ -526,8 +538,8 @@ async function resolveTours(): Promise<any[]> {
       .filter(Boolean) as any[];
   }
 
-  // Tier 2: JSON snapshots
-  if (snapshotTours.length > 0) {
+  // Tier 2: JSON snapshots (English only — skip for other locales)
+  if ((!locale || locale === 'en') && snapshotTours.length > 0) {
     return snapshotTours
       .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
       .map(mergeTour)
@@ -538,83 +550,83 @@ async function resolveTours(): Promise<any[]> {
   return hardcodedTours;
 }
 
-async function resolveHomePage(): Promise<HomePageData> {
+async function resolveHomePage(locale?: string): Promise<HomePageData> {
   let raw: any;
-  const live = await liveHomePage();
+  const live = await liveHomePage(locale);
   if (live && Object.keys(live).length > 0) raw = live;
-  else if (snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
+  else if ((!locale || locale === 'en') && snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
   else raw = {};
   return shapeHomePage(raw);
 }
 
-async function resolvePages(): Promise<any[]> {
-  const live = await livePages();
+async function resolvePages(locale?: string): Promise<any[]> {
+  const live = await livePages(locale);
   if (live && live.length > 0) return live;
-  if (snapshotPages.length > 0) return snapshotPages;
+  if ((!locale || locale === 'en') && snapshotPages.length > 0) return snapshotPages;
   return [];
 }
 
-async function resolveFAQs(): Promise<any[]> {
-  const live = await liveFAQs();
+async function resolveFAQs(locale?: string): Promise<any[]> {
+  const live = await liveFAQs(locale);
   if (live && live.length > 0) return live;
-  if (snapshotFAQs.length > 0) return snapshotFAQs;
+  if ((!locale || locale === 'en') && snapshotFAQs.length > 0) return snapshotFAQs;
   const { tourFaqs } = await import('~/data/tours');
   return tourFaqs || [];
 }
 
-async function resolveTestimonials(): Promise<any[]> {
-  const live = await liveTestimonials();
+async function resolveTestimonials(locale?: string): Promise<any[]> {
+  const live = await liveTestimonials(locale);
   if (live && live.length > 0) return live;
-  if (snapshotTestimonials.length > 0) return snapshotTestimonials;
+  if ((!locale || locale === 'en') && snapshotTestimonials.length > 0) return snapshotTestimonials;
   return [];
 }
 
-async function resolveStories(): Promise<any[]> {
-  const live = await liveStories();
+async function resolveStories(locale?: string): Promise<any[]> {
+  const live = await liveStories(locale);
   if (live && live.length > 0) return live;
-  if (snapshotStories.length > 0) return snapshotStories;
+  if ((!locale || locale === 'en') && snapshotStories.length > 0) return snapshotStories;
   return [];
 }
 
-async function resolveSiteSettings(): Promise<any> {
-  const live = await liveSiteSettings();
+async function resolveSiteSettings(locale?: string): Promise<any> {
+  const live = await liveSiteSettings(locale);
   if (live && Object.keys(live).length > 0) return live;
-  if (snapshotSiteSettings && Object.keys(snapshotSiteSettings).length > 0) return snapshotSiteSettings;
+  if ((!locale || locale === 'en') && snapshotSiteSettings && Object.keys(snapshotSiteSettings).length > 0) return snapshotSiteSettings;
   return {};
 }
 
-async function resolveLocations(): Promise<any[]> {
-  const live = await liveLocations();
+async function resolveLocations(locale?: string): Promise<any[]> {
+  const live = await liveLocations(locale);
   if (live && live.length > 0) return live;
-  if (snapshotLocations.length > 0) return snapshotLocations;
+  if ((!locale || locale === 'en') && snapshotLocations.length > 0) return snapshotLocations;
   return [];
 }
 
-async function resolveDietaryOptions(): Promise<any[]> {
-  const live = await liveDietaryOptions();
+async function resolveDietaryOptions(locale?: string): Promise<any[]> {
+  const live = await liveDietaryOptions(locale);
   if (live && live.length > 0) return live;
-  if (snapshotDietaryOptions.length > 0) return snapshotDietaryOptions;
+  if ((!locale || locale === 'en') && snapshotDietaryOptions.length > 0) return snapshotDietaryOptions;
   return [];
 }
 
-async function resolveSpecialtyExperiences(): Promise<any[]> {
-  const live = await liveSpecialtyExperiences();
+async function resolveSpecialtyExperiences(locale?: string): Promise<any[]> {
+  const live = await liveSpecialtyExperiences(locale);
   if (live && live.length > 0) return live;
-  if (snapshotSpecialtyExperiences.length > 0) return snapshotSpecialtyExperiences;
+  if ((!locale || locale === 'en') && snapshotSpecialtyExperiences.length > 0) return snapshotSpecialtyExperiences;
   return [];
 }
 
-async function resolveTravelTypes(): Promise<any[]> {
-  const live = await liveTravelTypes();
+async function resolveTravelTypes(locale?: string): Promise<any[]> {
+  const live = await liveTravelTypes(locale);
   if (live && live.length > 0) return live;
-  if (snapshotTravelTypes.length > 0) return snapshotTravelTypes;
+  if ((!locale || locale === 'en') && snapshotTravelTypes.length > 0) return snapshotTravelTypes;
   return [];
 }
 
-async function resolveLandingPages(): Promise<any[]> {
-  const live = await liveLandingPages();
+async function resolveLandingPages(locale?: string): Promise<any[]> {
+  const live = await liveLandingPages(locale);
   if (live && live.length > 0) return live;
-  if (snapshotLandingPages.length > 0) return snapshotLandingPages;
+  if ((!locale || locale === 'en') && snapshotLandingPages.length > 0) return snapshotLandingPages;
   return [];
 }
 
@@ -622,27 +634,27 @@ async function resolveLandingPages(): Promise<any[]> {
 
 // -- Tours --
 
-export async function getAllTours() {
-  return resolveTours();
+export async function getAllTours(locale?: string) {
+  return resolveTours(locale);
 }
 
-export async function getTourBySlug(slug: string) {
-  const all = await resolveTours();
+export async function getTourBySlug(slug: string, locale?: string) {
+  const all = await resolveTours(locale);
   return all.find((t: any) => t.slug === slug || t.slug.startsWith(slug)) || null;
 }
 
-export async function getFeaturedTours() {
-  const all = await resolveTours();
+export async function getFeaturedTours(locale?: string) {
+  const all = await resolveTours(locale);
   return all.filter((t: any) => t.featured);
 }
 
 // -- Segments (locations, dietary, specialty, travel types) --
 
-export async function getLocationSegments() {
-  const payloadLocations = await resolveLocations();
+export async function getLocationSegments(locale?: string) {
+  const payloadLocations = await resolveLocations(locale);
   const payloadSlugs = new Set(payloadLocations.map((l: any) => l.slug));
   // Also check landing pages — any location-type landing page counts
-  const landingPages = await resolveLandingPages();
+  const landingPages = await resolveLandingPages(locale);
   const lpSlugs = new Set(landingPages.filter((p: any) => p.type === 'location').map((p: any) => p.slug));
   if (payloadSlugs.size > 0 || lpSlugs.size > 0) {
     return locationSegments.filter((s: any) => payloadSlugs.has(s.slug) || lpSlugs.has(s.slug));
@@ -650,10 +662,10 @@ export async function getLocationSegments() {
   return locationSegments;
 }
 
-export async function getDietarySegments() {
-  const dietaryOptions = await resolveDietaryOptions();
+export async function getDietarySegments(locale?: string) {
+  const dietaryOptions = await resolveDietaryOptions(locale);
   const payloadSlugs = new Set(dietaryOptions.map((d: any) => d.slug));
-  const landingPages = await resolveLandingPages();
+  const landingPages = await resolveLandingPages(locale);
   const lpSlugs = new Set(landingPages.filter((p: any) => p.type === 'dietary').map((p: any) => p.slug));
   if (payloadSlugs.size > 0 || lpSlugs.size > 0) {
     return dietarySegments.filter((s: any) => payloadSlugs.has(s.slug) || lpSlugs.has(s.slug));
@@ -661,10 +673,10 @@ export async function getDietarySegments() {
   return dietarySegments;
 }
 
-export async function getSpecialtySegments() {
-  const specialtyExperiences = await resolveSpecialtyExperiences();
+export async function getSpecialtySegments(locale?: string) {
+  const specialtyExperiences = await resolveSpecialtyExperiences(locale);
   const payloadSlugs = new Set(specialtyExperiences.map((s: any) => s.slug));
-  const landingPages = await resolveLandingPages();
+  const landingPages = await resolveLandingPages(locale);
   const lpSlugs = new Set(landingPages.filter((p: any) => p.type === 'specialty').map((p: any) => p.slug));
   if (payloadSlugs.size > 0 || lpSlugs.size > 0) {
     return specialtySegments.filter((s: any) => payloadSlugs.has(s.slug) || lpSlugs.has(s.slug));
@@ -672,10 +684,10 @@ export async function getSpecialtySegments() {
   return specialtySegments;
 }
 
-export async function getTravelTypeSegments() {
-  const travelTypes = await resolveTravelTypes();
+export async function getTravelTypeSegments(locale?: string) {
+  const travelTypes = await resolveTravelTypes(locale);
   const payloadSlugs = new Set(travelTypes.map((t: any) => t.slug));
-  const landingPages = await resolveLandingPages();
+  const landingPages = await resolveLandingPages(locale);
   const lpSlugs = new Set(landingPages.filter((p: any) => p.type === 'travel_type').map((p: any) => p.slug));
   if (payloadSlugs.size > 0 || lpSlugs.size > 0) {
     return travelTypeSegments.filter((s: any) => payloadSlugs.has(s.slug) || lpSlugs.has(s.slug));
@@ -693,8 +705,8 @@ export async function getSegmentBySlug(slug: string) {
   return all.find((s: any) => s.slug === slug) || null;
 }
 
-export async function getToursByTag(tag: string) {
-  const all = await resolveTours();
+export async function getToursByTag(tag: string, locale?: string) {
+  const all = await resolveTours(locale);
   return all.filter((t: any) =>
     (t.segmentTags && t.segmentTags.includes(tag)) ||
     (t.dietaryOptions && t.dietaryOptions.includes(tag)) ||
@@ -711,32 +723,32 @@ export async function getToursByTravelType(slug: string) { return getToursByTag(
 
 // -- Reference data (dietary options, locations, specialties, travel types) --
 
-export async function getDietaryOptionList() {
-  return resolveDietaryOptions();
+export async function getDietaryOptionList(locale?: string) {
+  return resolveDietaryOptions(locale);
 }
 
-export async function getSpecialtyList() {
-  return resolveSpecialtyExperiences();
+export async function getSpecialtyList(locale?: string) {
+  return resolveSpecialtyExperiences(locale);
 }
 
-export async function getTravelTypeList() {
-  return resolveTravelTypes();
+export async function getTravelTypeList(locale?: string) {
+  return resolveTravelTypes(locale);
 }
 
 // -- Site settings --
 
-export async function getSiteSettings() {
-  return resolveSiteSettings();
+export async function getSiteSettings(locale?: string) {
+  return resolveSiteSettings(locale);
 }
 
 // -- FAQs, Testimonials, Stories --
 
-export async function getFAQs() {
-  return resolveFAQs();
+export async function getFAQs(locale?: string) {
+  return resolveFAQs(locale);
 }
 
-export async function getFAQsByPage(page: string) {
-  const all = await resolveFAQs();
+export async function getFAQsByPage(page: string, locale?: string) {
+  const all = await resolveFAQs(locale);
   if (!all || all.length === 0) return [];
   return all.filter((faq: any) => {
     const vis = faq.page_visibility || [];
@@ -744,50 +756,99 @@ export async function getFAQsByPage(page: string) {
   });
 }
 
-export async function getTestimonials() {
-  return resolveTestimonials();
+export async function getTestimonials(locale?: string) {
+  return resolveTestimonials(locale);
 }
 
-export async function getStories() {
-  return resolveStories();
+export async function getStories(locale?: string) {
+  return resolveStories(locale);
 }
 
 // -- Pages (home, about, contact) --
 
-export async function getHomePage() {
-  return resolveHomePage();
+export async function getHomePage(locale?: string) {
+  return resolveHomePage(locale);
 }
 
-export async function getAboutPage() {
-  return snapshotAboutPage || {};
+export async function getAboutPage(locale?: string) {
+  // Tier 1: Live Payload API
+  const live = await liveAboutPage(locale);
+  if (live && Object.keys(live).length > 0) return live;
+  // Tier 2: JSON snapshot (English only)
+  if ((!locale || locale === 'en') && snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) return snapshotAboutPage;
+  return {};
 }
 
-export async function getContactPage() {
-  return snapshotContactPage || {};
+export async function getContactPage(locale?: string) {
+  // Tier 1: Live Payload API
+  const live = await liveContactPage(locale);
+  if (live && Object.keys(live).length > 0) return live;
+  // Tier 2: JSON snapshot (English only)
+  if ((!locale || locale === 'en') && snapshotContactPage && Object.keys(snapshotContactPage).length > 0) return snapshotContactPage;
+  return {};
 }
 
-export async function getPageBySlug(slug: string) {
-  const pages = await resolvePages();
+export async function getPageBySlug(slug: string, locale?: string) {
+  const pages = await resolvePages(locale);
   if (pages.length > 0) {
     return pages.find((p: any) => p.slug === slug && (!p._status || p._status === 'published')) || null;
   }
   return null;
 }
 
+// -- Thank You Pages --
+
+export function getThankYouPage(slug: string) {
+  if (snapshotThankYouPages.length > 0) {
+    const page = snapshotThankYouPages.find((p: any) => p.slug === slug);
+    if (page) {
+      // Map Payload fields to what the template expects
+      return {
+        title: page.title || '',
+        subtitle: page.heroSection?.subheading || page.heroSection?.heading || '',
+        paragraphs: page.message ? [page.message] : [],
+        nextSteps: page.nextSteps || [],
+        ctaText: page.ctaSection?.label || '',
+        buttons: page.ctaSection?.url ? [
+          { title: page.ctaSection?.label || 'Get Started', href: page.ctaSection?.url || '/' },
+          { title: 'Back to Home', href: '/' },
+        ] : [],
+        metaTitle: page.seo?.metaTitle || '',
+        metaDescription: page.seo?.metaDescription || '',
+      };
+    }
+  }
+  return null;
+}
+
+// -- Legal Pages --
+
+let snapshotLegalPages: any[] = [];
+try {
+  snapshotLegalPages = (await import('~/data/content/legal-pages.json')).default as any[] || [];
+} catch {}
+
+export function getLegalPage(slug: string) {
+  if (snapshotLegalPages.length > 0) {
+    return snapshotLegalPages.find((p: any) => p.slug === slug) || null;
+  }
+  return null;
+}
+
 // -- Landing Pages --
 
-export async function getLandingPages() {
-  const pages = await resolveLandingPages();
+export async function getLandingPages(locale?: string) {
+  const pages = await resolveLandingPages(locale);
   return pages.filter((p: any) => p._status === 'published' || !p._status);
 }
 
-export async function getLandingPagesByType(type: string) {
-  const all = await getLandingPages();
+export async function getLandingPagesByType(type: string, locale?: string) {
+  const all = await getLandingPages(locale);
   return all.filter((p: any) => p.type === type);
 }
 
-export async function getLandingPageBySlug(slug: string) {
-  const all = await getLandingPages();
+export async function getLandingPageBySlug(slug: string, locale?: string) {
+  const all = await getLandingPages(locale);
   return all.find((p: any) => p.slug === slug) || null;
 }
 

@@ -3,9 +3,13 @@ import Layout from '~/layouts/PageLayout.astro';
 import { segmentChips } from '~/data/segments';
 import { getAllTours, getHomePage } from '~/lib/content';
 import { SITE } from 'astrowind:config';
+import reviews from '~/data/content/reviews.json';
 
 const tours = await getAllTours();
 const hp = await getHomePage();
+
+// Use real reviews from JSON, shuffled
+const realReviews = [...reviews].sort(() => Math.random() - 0.5).slice(0, 6);
 
 const metadata = {
   title: 'Malaysian Food Tours in KL & Penang  -  Simply Enak',
@@ -135,44 +139,49 @@ const metadata = {
     })();
   </script>
 
-  <!-- Our Philosophy -->
+  <!-- Our Philosophy — People, Stories, Location -->
   <section class="relative not-prose scroll-mt-[72px]">
     <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
-    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 mx-auto py-12 relative max-w-5xl" no-intersect="">
-      <div class="text-center max-w-3xl mb-8 md:mb-12 md:mx-auto">
+    <div class="text-default px-4 lg:py-24 md:px-6 md:py-20 mx-auto py-16 relative max-w-6xl">
+      <div class="text-center max-w-3xl mb-14 md:mb-16 md:mx-auto">
         <p class="font-bold uppercase dark:text-orange-300 text-base text-secondary tracking-wide">{hp.philosophy.eyebrow}</p>
         <h2 class="font-bold font-heading md:text-4xl text-3xl leading-tighter text-heading tracking-tighter">{hp.philosophy.heading}</h2>
-        <p class="text-muted mt-4 text-xl">{hp.philosophy.description}</p>
+        <p class="text-muted mt-4 text-xl max-w-2xl mx-auto">{hp.philosophy.description}</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-y-12 mx-auto">
-        {hp.philosophy.features.map((feat: any, i: number) => (
-          <div class="intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0" data-animated="true" style={{ transitionDelay: `${i * 100}ms`, animationDelay: `${i * 100}ms` }}>
-            <div class="flex flex-row max-w-md">
-              <div class="flex justify-center">
-                {feat.icon === 'heart' ? (
-                  <svg class="rtl:mr-0 mr-2 rtl:ml-2 bg-primary h-7 md:h-12 md:p-3 md:w-12 mr-4 p-2 rounded-full rtl:ml-4 text-white w-7" data-icon="tabler:heart" height="1em" width="1em">
-                    <symbol id="ai:tabler:heart" viewBox="0 0 24 24"><path d="M19.5 12.572L12 20l-7.5-7.428A5 5 0 1 1 12 6.006a5 5 0 1 1 7.5 6.572" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></symbol>
-                    <use href="#ai:tabler:heart"/>
-                  </svg>
-                ) : feat.icon === 'flame' ? (
-                  <svg class="rtl:mr-0 mr-2 rtl:ml-2 bg-primary h-7 md:h-12 md:p-3 md:w-12 mr-4 p-2 rounded-full rtl:ml-4 text-white w-7" data-icon="tabler:flame" height="1em" width="1em">
-                    <symbol id="ai:tabler:flame" viewBox="0 0 24 24"><path d="M12 10.941c2.333-3.308.167-7.823-1-8.941c0 3.395-2.235 5.299-3.667 6.706C5.903 10.114 5 12 5 14.294C5 17.998 8.134 21 12 21s7-3.002 7-6.706c0-1.712-1.232-4.403-2.333-5.588c-2.084 3.353-3.257 3.353-4.667 2.235" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></symbol>
-                    <use href="#ai:tabler:flame"/>
-                  </svg>
-                ) : (
-                  <svg class="rtl:mr-0 mr-2 rtl:ml-2 bg-primary h-7 md:h-12 md:p-3 md:w-12 mr-4 p-2 rounded-full rtl:ml-4 text-white w-7" data-icon="tabler:books" height="1em" width="1em">
-                    <symbol id="ai:tabler:books" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zm4 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM5 8h4m0 8h4"/><path d="m13.803 4.56l2.184-.53c.562-.135 1.133.19 1.282.732l3.695 13.418a1.02 1.02 0 0 1-.634 1.219l-.133.041l-2.184.53c-.562.135-1.133-.19-1.282-.732L13.036 5.82a1.02 1.02 0 0 1 .634-1.219zM14 9l4-1m-2 8l3.923-.98"/></g></symbol>
-                    <use href="#ai:tabler:books"/>
-                  </svg>
-                )}
-              </div>
-              <div class="mt-0.5">
-                <h3 class="font-bold font-heading text-xl md:text-[1.3rem]">{feat.title}</h3>
-                <p class="text-muted mt-3">{feat.description}</p>
-              </div>
-            </div>
+
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+        <!-- People -->
+        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center">
+          <div class="w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+            </svg>
           </div>
-        ))}
+          <h3 class="text-2xl font-bold font-heading text-default mb-4">The People</h3>
+          <p class="text-muted leading-relaxed">The stalls we visit are run by people we've known for over a decade. Aunty Fatimah has been making roti jala in the same spot for 40 years. Uncle Kim's char kway teow recipe came from his father. These aren't hired vendors  -  they're the reason we started the tours.</p>
+        </div>
+
+        <!-- Stories -->
+        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center md:mt-8">
+          <div class="w-20 h-20 bg-accent/10 dark:bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading text-default mb-4">The Stories</h3>
+          <p class="text-muted leading-relaxed">Why is Penang laksa sour and KL's sweet? What's the story behind the Hainanese coffee shops on every corner? And how did a family dispute over a noodle recipe become a national dish? We grew up with these stories  -  and we share them over the table, not from a script.</p>
+        </div>
+
+        <!-- Location -->
+        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center">
+          <div class="w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading text-default mb-4">The Location</h3>
+          <p class="text-muted leading-relaxed">We don't go to the restaurants with air conditioning and picture menus. We take you to the stall down a staircase in Chow Kit market, the noodle shop that doesn't have a sign, and the curry house where the menu is written on a whiteboard in Malay. This is where we eat on our days off.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -219,8 +228,8 @@ const metadata = {
     </div>
   </section>
 
-  <!-- How Would You Like to Experience?  -  Comparison Table -->
-  <section class="bg-gray-50 md:py-20 py-16">
+  <!-- How Would You Like to Experience? — Comparison Cards -->
+  <section class="bg-gray-50 dark:bg-[#151313] md:py-20 py-16">
     <div class="sm:px-6 px-4 mx-auto max-w-6xl">
       <div class="text-center mb-12">
         <p class="font-bold uppercase tracking-[0.2em] mb-3 text-accent text-sm">{hp.comparisonSection.eyebrow}</p>
@@ -228,76 +237,81 @@ const metadata = {
         <p class="text-muted mt-3 mx-auto max-w-2xl">{hp.comparisonSection.description}</p>
       </div>
 
-      <!-- Desktop table -->
-      <div class="bg-white border overflow-hidden border-gray-200 hidden md:block rounded-xl shadow-sm">
-        <table class="text-sm w-full">
-          <thead>
-            <tr class="bg-white border-gray-100 border-b">
-              <th class="text-muted px-5 font-semibold py-4 text-left w-[140px]"></th>
-              {hp.comparisonSection.types.map((t: any) => (
-                <th class:list={[
-                  'font-bold text-default font-heading px-5 py-4 text-base text-center',
-                  t.popular ? 'bg-orange-50/40 border-gray-100 border-x' : '',
-                ]}>
-                  <div class="mb-1">{t.name}</div>
-                  <span class="text-muted text-xs font-normal">{t.subtitle}</span>
-                  {t.popular && (
-                    <div class="mt-1.5"><a class="font-bold rounded bg-accent text-black px-2 py-0.5 text-[10px] tracking-wider uppercase inline-block" href="/tours?filter=popular">Popular</a></div>
-                  )}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {hp.comparisonSection.types[0].rows.map((row: any, idx: number) => (
-              <tr class={`bg-white border-gray-100 border-b last:border-0${idx % 2 === 1 ? ' bg-gray-50/60' : ''}`}>
-                <td class="text-default text-xs font-semibold px-5 py-3.5 tracking-wider uppercase">{row.label}</td>
-                {hp.comparisonSection.types.map((t: any, ci: number) => (
-                  <td class:list={[
-                    'text-muted px-5 py-3.5 text-center',
-                    t.popular ? 'bg-orange-50/20 border-gray-100 border-x' : '',
-                  ]}>{t.rows[idx]?.value || ''}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Mobile cards -->
-      <div class="grid gap-4 md:hidden">
-        {hp.comparisonSection.types.map((t: any) => (
+      <!-- Comparison cards — responsive grid -->
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+        {hp.comparisonSection.types.map((t: any, typeIdx: number) => {
+          const priceRow = t.rows.find((r: any) => r.label === 'Price');
+          const otherRows = t.rows.filter((r: any) => r.label !== 'Price');
+          // Background tints: first card warm, middle/accent card warm+, third neutral
+          const bgTints = ['bg-amber-50/40', 'bg-orange-50/60', 'bg-white'];
+          const darkBgTints = ['dark:bg-[#1e1c1c]', 'dark:bg-[#2a2218]', 'dark:bg-[#1e1c1c]'];
+          return (
           <div class:list={[
-            'border rounded-xl shadow-sm p-5',
-            t.popular ? 'bg-orange-50 border-accent/30' : 'bg-white border-gray-200',
+            'relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 intersect-once motion-safe:md:intersect:animate-fade',
+            t.popular
+              ? 'border-2 border-accent shadow-lg z-10'
+              : 'border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md',
+            bgTints[typeIdx] || 'bg-white',
+            darkBgTints[typeIdx] || 'dark:bg-[#1e1c1c]',
           ]}>
-            <div class="flex items-center gap-2 mb-3">
-              <h3 class="font-bold text-default font-heading text-lg">{t.name}</h3>
-              {t.popular && <a class="font-bold rounded bg-accent text-black px-2 py-0.5 text-[10px] tracking-wider uppercase" href="/tours?filter=popular">Popular</a>}
+            {/* Colored top bar */}
+            <div class:list={['h-1.5', t.popular ? 'bg-accent' : 'bg-primary/40']}></div>
+
+            {/* Header + Price */}
+            <div class="px-6 pt-6 pb-5 text-center">
+              {t.popular && (
+                <span class="inline-block bg-accent text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Best Value</span>
+              )}
+              <h3 class="text-xl font-bold font-heading text-default">{t.name}</h3>
+              <p class="text-sm text-muted mt-1 mb-3">{t.subtitle}</p>
+              {priceRow && (
+                <div class="text-primary">
+                  <span class="text-xs text-muted/70 uppercase tracking-wider font-medium">{priceRow.label}</span>
+                  <div class="text-2xl font-bold font-heading">{priceRow.value}</div>
+                </div>
+              )}
             </div>
-            <p class="text-muted text-xs mb-4">{t.subtitle}</p>
-            <div class="space-y-2 mb-5">
-              {t.rows.map((row: any) => (
-                <div class="flex justify-between text-sm"><span class="text-muted font-medium">{row.label}</span><span class="text-default max-w-[60%] text-right">{row.value}</span></div>
-              ))}
+
+            {/* Divider */}
+            <hr class="border-gray-200 dark:border-white/10 mx-6" />
+
+            {/* Features list */}
+            <div class="px-6 py-5 flex-1">
+              <ul class="space-y-3.5">
+                {otherRows.map((r: any) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 mt-0 flex-shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                    </svg>
+                    <div class="min-w-0">
+                      <span class="text-[11px] text-muted/60 uppercase tracking-wider">{r.label}</span>
+                      <p class="text-sm font-semibold text-default leading-snug">{r.value}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <a
-              class:list={[
-                'font-bold rounded block px-5 py-2.5 text-center text-sm transition-colors',
-                t.popular
-                  ? 'bg-accent text-black hover:bg-[#f0952e]'
-                  : 'bg-primary text-white hover:bg-[#a02830]',
-              ]}
-              href={t.cta.url}
-              {...(t.cta.url?.startsWith('http') ? { target: '_blank' } : {})}
-            >{t.cta.text}</a>
+
+            {/* CTA */}
+            <div class="px-6 pb-6 mt-auto">
+              <a
+                class:list={[
+                  'font-bold rounded-lg block px-5 py-3 text-center text-sm transition-all w-full',
+                  t.popular
+                    ? 'bg-accent text-black hover:bg-[#f0952e] shadow-md hover:shadow-lg'
+                    : 'bg-primary text-white hover:bg-[#a02830]',
+                ]}
+                href={t.cta.url}
+                {...(t.cta.url?.startsWith('http') ? { target: '_blank' } : {})}
+              >{t.cta.text}</a>
+            </div>
           </div>
-        ))}
+        )})}
       </div>
 
       <div class="text-center mt-10">
         <p class="text-muted text-sm mb-4">Not sure which suits you? We'll help you decide.</p>
-        <a class="font-bold rounded bg-primary text-white hover:bg-[#a02830] transition-colors gap-2 inline-flex items-center px-8 py-3 shadow-md" href="https://wa.me/60172878929" target="_blank">
+        <a class="font-bold rounded bg-primary text-white hover:bg-[#a02830] dark:hover:bg-[#8a2030] transition-colors gap-2 inline-flex items-center px-8 py-3 shadow-md" href="https://wa.me/60172878929" target="_blank">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
           Chat with Us
         </a>
@@ -308,7 +322,7 @@ const metadata = {
   <!-- Social Proof: Stats + Testimonials -->
   <section class="relative not-prose scroll-mt-[72px]">
     <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
-    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 mx-auto py-12 relative max-w-6xl" no-intersect="">
+    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade mx-auto py-12 relative max-w-6xl" no-intersect="">
       <div class="text-center max-w-3xl mb-10 md:mb-14 md:mx-auto">
         <p class="font-bold uppercase dark:text-orange-300 text-base text-secondary tracking-wide">{hp.testimonialsSection.eyebrow}</p>
         <h2 class="font-bold font-heading md:text-4xl text-3xl leading-tighter text-heading tracking-tighter">{hp.testimonialsSection.heading}</h2>
@@ -317,7 +331,7 @@ const metadata = {
       <!-- Stats Row -->
       <div class="flex justify-center flex-wrap -m-4 text-center mb-12 md:mb-16">
         {hp.testimonialsSection.stats.map((stat: any) => (
-          <div class="text-center dark:md:border-slate-500 intersect-once intersect-quarter md:border-gray-200 md:border-r md:last:border-none md:w-1/4 min-w-[180px] motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 p-4 sm:w-1/2 w-full" no-intersect="">
+          <div class="text-center dark:md:border-slate-500 intersect-once intersect-quarter md:border-gray-200 md:border-r md:last:border-none md:w-1/4 min-w-[180px] motion-safe:md:intersect:animate-fade p-4 sm:w-1/2 w-full" no-intersect="">
             <div class="font-bold font-heading text-3xl md:text-4xl text-primary tracking-tight mb-1">{stat.number}</div>
             <div class="text-xs uppercase dark:text-slate-400 font-medium lg:text-sm text-gray-500 tracking-widest">{stat.label}</div>
           </div>
@@ -326,21 +340,21 @@ const metadata = {
 
       <!-- Testimonials -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {hp.testimonialsSection.testimonials.map((t: any) => (
-          <div class="flex h-auto intersect-once intersect-quarter motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0" no-intersect="">
+        {realReviews.map((r: any) => (
+          <div class="flex h-auto intersect-once intersect-quarter motion-safe:md:intersect:animate-fade" no-intersect="">
             <div class="flex flex-col rounded dark:border dark:border-slate-600 dark:shadow-none md:p-6 p-4 shadow-xl">
               <!-- Stars -->
               <div class="flex gap-0.5 mb-3">
-                {[1,2,3,4,5].map(() => (
+                {Array.from({ length: r.rating || 5 }).map(() => (
                   <svg class="h-4 w-4 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 ))}
               </div>
-              <blockquote class="flex-auto"><p class="text-muted">{t.text}</p></blockquote>
+              <blockquote class="flex-auto"><p class="text-muted">&ldquo;{r.text.length > 200 ? r.text.slice(0, 200) + '&hellip;' : r.text}&rdquo;</p></blockquote>
               <hr class="border-slate-200 dark:border-slate-600 my-4" />
               <div class="flex items-center">
                 <div class="rtl:ml-0 grow ml-3 rtl:mr-3">
-                  <p class="text-base font-semibold">{t.name}</p>
-                  <p class="text-muted text-xs">{t.location}</p>
+                  <p class="text-base font-semibold">{r.author}</p>
+                  <p class="text-muted text-xs">{r.date} &middot; via Google</p>
                 </div>
               </div>
             </div>
@@ -353,14 +367,14 @@ const metadata = {
   <!-- FAQ -->
   <section class="relative not-prose scroll-mt-[72px]">
     <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
-    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 mx-auto py-12 relative max-w-7xl" no-intersect="">
+    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade mx-auto py-12 relative max-w-7xl" no-intersect="">
       <div class="text-center max-w-3xl mb-8 md:mb-12 md:mx-auto">
         <p class="font-bold uppercase dark:text-orange-300 text-base text-secondary tracking-wide">{hp.faqSection.eyebrow}</p>
         <h2 class="font-bold font-heading md:text-4xl text-3xl leading-tighter text-heading tracking-tighter">{hp.faqSection.heading}</h2>
       </div>
       <div class="grid sm:grid-cols-2 gap-8 md:gap-y-12 mx-auto gap-y-8">
         {hp.faqSection.items.map((faq: any) => (
-          <div class="intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0" data-animated="true">
+          <div class="intersect-once motion-safe:md:intersect:animate-fade" data-animated="true">
             <div class="flex flex-row max-w-none">
               <div class="flex justify-center">
                 <svg class="text-primary flex-shrink-0 h-6 mr-2 mt-1 rtl:ml-2 rtl:mr-0 w-6" data-icon="tabler:chevron-right" height="1em" width="1em">
@@ -382,7 +396,7 @@ const metadata = {
   <!-- CTA -->
   <section class="relative not-prose scroll-mt-[72px]">
     <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
-    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 mx-auto py-12 relative max-w-6xl" no-intersect="">
+    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade mx-auto py-12 relative max-w-6xl" no-intersect="">
       <div class="text-center max-w-3xl dark:border dark:border-slate-600 dark:shadow-none mx-auto p-6 rounded shadow-xl">
         <div class="text-center md:mx-auto mb-0 md:mb-0">
           <h2 class="font-bold font-heading md:text-4xl leading-tighter text-heading tracking-tighter mb-4 text-4xl">{hp.ctaSection.heading}</h2>

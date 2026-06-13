@@ -3,7 +3,7 @@ publishDate: 2026-05-25T00:00:00Z
 title: "Bak Chang: The Dumpling That Tells Malaysia's Story"
 excerpt: "Bak Chang (Chinese dumplings) are more than just a festive snack. Here is what they mean in Malaysia, where to find the best ones, and why every family's recipe is different."
 image: "https://cdn.simplyenak.com/Bakchang_Zhong_Festival_Malaysia_3dc7f416db.jpeg"
-category: "Festivals & Celebrations"
+category: "Food & Culture Guides"
 tags: ["Chinese Cuisine", "Festivals", "Dumplings", "Malaysian Food"]
 author: "Pauline"
 metadata:
@@ -11,19 +11,21 @@ metadata:
   description: "Bak Chang (Chinese dumplings) explained: what they mean in Malaysia, where to find the best ones, and why every family recipe is different."
 ---
 
-
-
 **Updated May 2026:** Dumpling Festival season is here again, and Malaysian families are busy wrapping their annual batch of bak chang. Here is everything you need to know about this tradition.
 
 The Chinese Dumpling Festival is the perfect time to plan your Malaysian getaway and indulge in one of the most delicious delicacies that can be found at any festival time. The Bak Chang or Zhong in Cantonese and Zhang in Hokkien. These are glutinous rice dumplings stuffed with various fillings, and wrapped in bamboo or lotus leaves. They can be triangle shaped, square or round. But the shape doesn’t matter, they are all delicious. Just ask anyone who had been here during festival time and tried them. And they can be sweet, spicy, savory or all of the above. It all depends on who you buy them from and what part of Malaysia they have been influenced by.
 
 The Chinese Dumpling festival falls on the fifth day of the fifth lunar month, so every year it’s calculated on a different date. For 2019, it will fall on June 7th. Alternately it’s called the Double Fifth festival or the Dragon Boat Festival in Penang.
 
+> "Bak Chang: The Dumpling That Tells Malaysia's Story is something every visitor to Malaysia should experience."
+
 It’s believed the festival originated during the Warring States period in China, when Qu Yuan, a well-loved poet, jumped into the Miluo river and drowned himself when his country fell to the enemy. The villagers jumped into their boats and raced out to find and salvage his body, hence the boat races. When they couldn’t find his body, they threw dumplings into the river for the fish to eat, so they wouldn’t eat his body.
 
 An alternate version tells the story that the admirers of Qu Yuan dropped sticky rice bamboo wrappers into the river to feed him in the afterlife.
 
 Though the origins of Zhong, points to Southern China, this heritage food is also well acclaimed across the Malaysian Chinese communities. The Kuala Lumpur (Cantonese speaking KL-ites) refer it as Zong, the Northern Penang name it Bak Chang in the local Hokkien dialect and the Baba-Nyonya Peranakan call this dish Chang. For the purposes of this post from here on out I’ll refer to the dumpling as the Zhong.
+
+![Food and drinks at a local restaurant](https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg)
 
 Some of the traditional and modern types of Zhong available are:
 
@@ -97,7 +99,6 @@ Since it is a season of giving, you may hear about or encounter (or even get one
 
 Even though Hari Raya is a celebration, it still hold a special significance to the Muslim community and they take it just as seriously as they do with Ramadan. Charity is openly practiced especially on the last day of Ramadan and all through Hari Raya you can see families giving food and money to the poor or even inviting them into their homes so they can all celebrate together. Come and visit us in Malaysia during Hari Raya and you will surely get invited. Let’s eat!
 
-
 ## Frequently Asked Questions
 
 **When is the Dumpling Festival in 2026?**
@@ -108,8 +109,5 @@ Bak chang uses glutinous rice wrapped in bamboo leaves, which gives it a distinc
 
 **Are there halal versions of bak chang?**
 Yes, many Malaysian vendors make halal bak chang using chicken or beef instead of pork, while keeping the same cooking method and flavour profile.
-
-
----
 
 **Want to taste bak chang with a local guide?** Our tours visit the stalls and neighbourhoods where traditional snacks are still made by hand. [See our tours](/tours).

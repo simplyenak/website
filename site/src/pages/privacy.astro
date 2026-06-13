@@ -1,14 +1,14 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getPageBySlug } from '~/lib/content';
+import { getLegalPage } from '~/lib/content';
 
-const page = await getPageBySlug('privacy');
+const page = getLegalPage('privacy-policy');
 const metadata = {
-  title: page?.metaTitle || 'Privacy Policy',
-  description: page?.metaDescription || 'Privacy policy for Simply Enak Food Experiences.',
+  title: page?.metaTitle || page?.headline || 'Privacy Policy',
+  description: page?.metaDescription || 'Privacy policy for Simply Enak Food Experiences. How we handle your personal data, booking information, and communication preferences.',
 };
 const html = page?.content || '<p>Privacy policy content goes here.</p>';
-const title = page?.title || 'Privacy Policy';
+const title = page?.headline || 'Privacy Policy';
 ---
 
 <Layout metadata={metadata}>

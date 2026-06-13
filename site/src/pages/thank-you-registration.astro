@@ -1,14 +1,13 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import ThankYou from '~/components/ThankYou.astro';
-import { getPageBySlug } from '~/lib/content';
+import { getThankYouPage } from '~/lib/content';
 
-const page = await getPageBySlug('thank-you-registration');
-const d = (page?.thankYouData || {}) as any;
+const d = getThankYouPage('thank-you-registration') || {} as any;
 const metadata = {
-  title: page?.metaTitle || 'Thank You — Registration Confirmed',
-  description: page?.metaDescription || '',
-  robots: { index: page?.robotsIndex ?? false },
+  title: d.metaTitle || 'Thank You  -  Registration Confirmed',
+  description: d.metaDescription || '',
+  robots: { index: false },
 };
 ---
 

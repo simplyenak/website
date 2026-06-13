@@ -39,7 +39,7 @@ export function clearPayloadCache() {
  */
 export async function fetchCollection(
   slug: string,
-  options: { depth?: number; limit?: number; where?: Record<string, any> } = {},
+  options: { depth?: number; limit?: number; where?: Record<string, any>; locale?: string } = {},
 ): Promise<any[] | null> {
   // Check cache first
   const cacheKey = `collection:${slug}:${JSON.stringify(options)}`;
@@ -52,6 +52,10 @@ export async function fetchCollection(
 
     if (options.where) {
       url.searchParams.set('where', JSON.stringify(options.where));
+    }
+
+    if (options.locale) {
+      url.searchParams.set('locale', options.locale);
     }
 
     const headers: Record<string, string> = {
@@ -93,7 +97,7 @@ export async function fetchCollection(
  */
 export async function fetchSingleton(
   slug: string,
-  options: { depth?: number } = {},
+  options: { depth?: number; locale?: string } = {},
 ): Promise<any | null> {
   const cacheKey = `singleton:${slug}`;
   if (cache.has(cacheKey)) return cache.get(cacheKey)!;

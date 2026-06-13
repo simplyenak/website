@@ -120,8 +120,42 @@ const blogSlug = typeof url === 'string' ? url.replace(siteUrl, '') : (url.pathn
       )}
 
       <!-- Article body -->
-      <div class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-primary prose-img:rounded-lg prose-blockquote:border-accent prose-blockquote:text-muted prose-li:my-1">
+      <div class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-primary prose-img:rounded-lg prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-default prose-blockquote:font-medium prose-blockquote:text-lg prose-li:my-1">
         <slot />
+      </div>
+
+      <!-- In-article CTA -->
+      <div class="my-12 p-6 md:p-8 bg-accent/5 border border-accent/20 rounded-xl">
+        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+          <div class="flex-1">
+            <p class="font-bold font-heading text-lg text-default mb-1">Ready to taste these flavours yourself?</p>
+            <p class="text-sm text-muted">Join a Simply Enak food tour in Kuala Lumpur or Penang. Small groups, local guides, authentic experiences since 2011.</p>
+          </div>
+          <a href="/tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded-lg hover:bg-accent/90 transition-colors shrink-0 text-sm">
+            Browse Tours
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Author bio card -->
+      <div class="my-10 p-6 bg-gray-50 dark:bg-[#151313] rounded-xl border border-gray-100 dark:border-white/10">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+            <span class="text-accent font-bold text-xl">{post.author ? post.author.charAt(0) : 'S'}</span>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold font-heading text-default">{post.author || 'Simply Enak Team'}</p>
+            <p class="text-xs text-muted mb-2">Simply Enak Food Experiences</p>
+            <p class="text-sm text-muted leading-relaxed">
+              {post.author ? `${post.author} has been guiding food tours in Malaysia since 2011, sharing hidden gems and family-run stalls with travellers from around the world.` : 'Simply Enak has been sharing Malaysia\'s food heritage since 2011, leading small-group food tours through Kuala Lumpur, Penang, and beyond.'}
+            </p>
+            <div class="flex gap-3 mt-3">
+              <a href="/about" class="text-xs text-accent font-semibold hover:underline">About Simply Enak →</a>
+              <a href="/tours" class="text-xs text-accent font-semibold hover:underline">View our tours →</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Tags + Share -->

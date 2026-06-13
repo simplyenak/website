@@ -102,10 +102,6 @@ const stats = { fetched: 0, unauth: 0, defaulted: 0, written: 0, errored: 0, bac
 // Files that should NOT be overwritten by sync if they already have hand-curated content.
 const PROTECTED_FILES = new Set([
   'pages.json',
-  'dietary-landing-pages.json',
-  'specialty-landing-pages.json',
-  'travel-type-landing-pages.json',
-  'location-landing-pages.json',
 ])
 
 // Check if a transformed result is effectively empty (all block-sourced fields are empty/null).
@@ -685,6 +681,35 @@ function transformContactPage(doc) {
     contact_email: doc.contact_email || '',
     contact_hours: doc.contact_hours || '',
     whatsapp_number: doc.whatsapp_number || '',
+    // Structured sections matching template expectations
+    contactMethods: {
+      heading: doc.contact_methods_heading || '',
+      description: doc.contact_methods_description || '',
+      items: (doc.contact_methods_items || []).map(m => ({
+        type: m.type || '',
+        title: m.title || '',
+        subtitle: m.subtitle || '',
+        detail: m.detail || '',
+        cta: { text: m.cta_text || '', url: m.cta_url || '' },
+      })),
+    },
+    planningScenarios: {
+      heading: doc.planning_scenarios_heading || '',
+      description: doc.planning_scenarios_description || '',
+      items: (doc.planning_scenarios_items || []).map(s => ({
+        title: s.title || '',
+        description: s.description || '',
+      })),
+    },
+    ourPromise: {
+      title: doc.our_promise_title || '',
+      description: doc.our_promise_description || '',
+      highlights: (doc.our_promise_highlights || []).map(h => h.text || ''),
+    },
+    businessHours: {
+      text: doc.business_hours_text || '',
+      timezone: doc.business_hours_timezone || '',
+    },
     created_at: doc.createdAt,
     updated_at: doc.updatedAt,
   }

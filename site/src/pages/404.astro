@@ -6,7 +6,7 @@ const page = await getPageBySlug('404');
 const c = page?.content || {};
 const metadata = {
   title: page?.metaTitle || 'Page Not Found',
-  description: page?.metaDescription || "This page doesn't exist — but the best food in Malaysia does.",
+  description: page?.metaDescription || "This page doesn't exist  -  but the best food in Malaysia does.",
   robots: { index: page?.robotsIndex ?? false },
 };
 const headingText = c.heading ?? "This page isn't here.\nBut the best Street Food\nin Kuala Lumpur definitely is.";

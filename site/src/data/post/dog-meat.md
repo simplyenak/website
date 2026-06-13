@@ -3,7 +3,7 @@ publishDate: 2026-06-07T00:00:00Z
 title: "Do Malaysians Eat Dog Meat? And Other Questions About Malaysian Food"
 excerpt: "A common question from visitors answered honestly, plus a look at some of the more unusual dishes you might encounter on a Malaysian food tour."
 image: "https://cdn.simplyenak.com/dog_meat_1758512d66.jpg"
-category: "Food Culture"
+category: "Food & Culture Guides"
 tags: ["Malaysian Food", "Food Culture", "Local Knowledge", "Street Food"]
 author: "Pauline"
 metadata:
@@ -11,19 +11,21 @@ metadata:
   description: "An honest answer to whether Malaysians eat dog meat, plus a guide to unusual Malaysian dishes visitors might encounter."
 ---
 
-
-
 **Updated June 2026:** This question comes up on almost every tour. Here is the latest answer based on what our guides hear from guests every week.
 
 Every once in a while on a tour I get the odd question, based on what I call global rumors. One such question and rumor is: Do Malaysians eat dog meat?
 
 Although not illegal in Malaysia, the short answer is, no. Malaysians do not eat dog (or cats). This is a major misconception since dogs and cats can at times be found on the menu in other Asian countries like China, South Korea, and Viet Nam.
 
+> "Ask any local and they will tell you -  Do Malaysians Eat Dog Meat? And Other Questions About Malaysian Food is not to be missed."
+
 However, there are a few what many would call and other call just plain strange, foods in Malaysian food.
 
 Here are some examples:
 
 Frog legs aren’t that strange to Westerners and are even quite common in Chinese food, such as frog leg porridge, but the whole frog?
+
+![Street food in Penang](https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg)
 
 In a well-known night market called Jalan Alor in Kuala Lumpur, there’s a stall there that serves the whole frog battered and deep fried on a stick. Add a little chili powder on top to kick it up a notch. It’s not easy being green.
 
@@ -105,7 +107,6 @@ Since it is a season of giving, you may hear about or encounter (or even get one
 
 Even though Hari Raya is a celebration, it still hold a special significance to the Muslim community and they take it just as seriously as they do with Ramadan. Charity is openly practiced especially on the last day of Ramadan and all through Hari Raya you can see families giving food and money to the poor or even inviting them into their homes so they can all celebrate together. Come and visit us in Malaysia during Hari Raya and you will surely get invited. Let’s eat!
 
-
 ## Frequently Asked Questions
 
 **Is eating dog meat illegal in Malaysia?**
@@ -116,8 +117,5 @@ Beyond the familiar dishes, Malaysia offers dishes like sago grubs in Sabah and 
 
 **Are the unusual dishes safe to eat?**
 Yes, when prepared properly at established stalls. Like all Malaysian street food, hygiene standards at reputable vendors are good. If you are curious, ask your guide to take you to a trusted stall.
-
-
----
 
 **Want to taste Malaysian food with a local guide?** [Browse our tours](/tours) and join us for a meal you will not forget.

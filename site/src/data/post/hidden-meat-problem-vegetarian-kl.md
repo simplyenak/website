@@ -3,7 +3,7 @@ publishDate: 2026-06-09T00:00:00Z
 title: "The Hidden Meat Problem: Why Vegetables in KL Are Not Always What They Seem"
 excerpt: "That vegetable dish might contain shrimp paste, lard, or anchovy stock. Here is how to navigate KL's hidden meat problem as a vegetarian or vegan visitor."
 image: "https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg"
-category: "Food Culture"
+category: "Food & Culture Guides"
 tags: ["Vegetarian", "Kuala Lumpur", "Food Culture", "Vegan", "Local Knowledge"]
 author: "Pauline"
 metadata:
@@ -11,17 +11,15 @@ metadata:
   description: "How to navigate KL's hidden meat problem: shrimp paste, lard, and anchovy stock in seemingly vegetarian dishes."
 ---
 
-
-
 **Updated June 2026:** Our guides still hear this question every week. Here is the latest advice for vegetarian visitors.
 
 **TL;DR:** Ordering vegetables at a mixed hawker stall in KL doesn't make your meal vegetarian. Belacan (shrimp paste) is in almost every Malay vegetable dish. Lard is the default cooking fat at many Chinese stalls. Broths are usually pork-based. Oyster sauce is on almost every plate of Chinese greens. This post shows you where the animal products hide and how to navigate them.
 
----
-
 Here's something that surprises almost every vegetarian visitor to KL.
 
 You sit down at a hawker stall. You point to the vegetable dish. It looks perfectly innocent: kangkung, stir-fried with chilli and garlic. No meat in sight.
+
+> "Ask any local and they will tell you -  The Hidden Meat Problem: Why Vegetables in KL Are Not Always What They Seem is not to be missed."
 
 What you can't see is the belacan.
 
@@ -29,9 +27,9 @@ Belacan is fermented shrimp paste. It goes into the wok before the vegetables do
 
 If you're vegetarian and eating at mixed hawker stalls in KL, this is the guide you need. We've been navigating this for 14 years, and we want to save you the discovery.
 
----
-
 ## What Is Belacan, and Why Is It Everywhere?
+
+![Heritage street food in Georgetown](https://cdn.simplyenak.com/Eat_Drink_Georgetown2_1e8a13906e.jpg)
 
 Belacan is a fermented shrimp paste made from tiny dried shrimp, compressed into blocks and aged until pungent and deeply savoury. It is one of the foundational flavours in Malay cooking, used the way a French cook uses butter or an Italian cook uses olive oil: as the base that everything else is built on.
 
@@ -40,8 +38,6 @@ The most famous example is [kangkung belacan](https://www.singaporeanmalaysianre
 Belacan also goes into sambal, which is served alongside almost every Malay dish. It's in nasi goreng. It flavours the broth in some laksa varieties. It seasons the chilli sauces at mixed stalls. You often can't taste it as seafood, the fermentation transforms it into something deeper, smokier, more complex.
 
 At a dedicated 素食 Buddhist stall, none of this is an issue. At a mixed Malay hawker stall, it's worth asking every time.
-
----
 
 ## The Lard Question at Chinese Stalls
 
@@ -54,8 +50,6 @@ A plate of stir-fried kailan or tofu at a mixed Chinese stall may have been cook
 Then there's oyster sauce. [Oyster sauce is made from oyster extract](https://en.wikipedia.org/wiki/Oyster_sauce) and is the default sauce for Chinese-style greens across Malaysia. It's in the glossy sauce on your gai lan. It's in the dipping sauce beside your tofu. It's often added without anyone thinking to mention it, because for most diners it's not a concern.
 
 Vegetarian oyster sauce does exist and is common at Buddhist 素食 stalls. At mixed Chinese stalls, the default is the real thing.
-
----
 
 ## Which Dishes Are Most Likely to Catch You Out?
 
@@ -73,8 +67,6 @@ Vegetarian oyster sauce does exist and is common at Buddhist 素食 stalls. At m
 
 **Sambal**, virtually any sambal at a Malay stall contains belacan. Even served on the side, it came from the same wok.
 
----
-
 ## How Do You Actually Navigate This?
 
 The safest approach: eat at stalls built for vegetarians, not mixed stalls that try to accommodate you.
@@ -89,8 +81,6 @@ At mixed Chinese stalls, ask "Tak guna lard?" (No lard?) and "Ada sos tiram?" (I
 
 The stalls where you can eat freely without asking every question are the Buddhist 素食 stalls and Indian vegetarian places. [Our Chow Kit Market tour](https://simplyenak.com/tours/chow-kit-market) takes you through both, so you can see, smell, and taste the difference in a single morning.
 
----
-
 ## Why This Isn't Anyone's Fault
 
 It's worth saying clearly: vendors using belacan and lard aren't trying to catch you out.
@@ -100,8 +90,6 @@ These ingredients are part of how Malaysian cooking has worked for generations. 
 Knowing this changes how you navigate it. You're not looking for vendors who forgot to mention something. You're looking for the kitchens that were built around a different tradition from the start: the Buddhist 素食 stalls, the Indian vegetarian places, the temple canteens that have been feeding vegetarians properly for decades.
 
 That's exactly what [we show people on our tours in Kuala Lumpur](https://simplyenak.com/tours/locations/kuala-lumpur). Not how to negotiate with mixed stalls, but how to find the stalls that already work beautifully for you.
-
----
 
 ## Frequently Asked Questions
 
@@ -120,7 +108,6 @@ Some can and will. Others use lard as part of the base preparation and can't sep
 **Do Indian vegetarian restaurants in KL use belacan or lard?**
 No. South Indian and Tamil vegetarian cooking has its own tradition that does not include belacan, lard, or pork-based ingredients. These restaurants are a safe option for vegetarians, though it's worth asking about eggs and dairy depending on your needs.
 
-
 ## Frequently Asked Questions
 
 **What is belacan and why should vegetarians care?**
@@ -131,8 +118,5 @@ Lard (pork fat) is used in many traditional Chinese Malaysian dishes, especially
 
 **How do I find stalls that are genuinely vegetarian?**
 Look for 素食 (sù shí) signs at Chinese stalls. At Indian stalls, ask directly about eggs, ghee, and dairy. Our vegetarian food tours take you to verified spots so you do not have to worry.
-
-
----
 
 **Want a stress-free vegetarian food tour?** [Check our vegetarian-friendly tours](/tours/dietary/vegetarian).
