@@ -7,6 +7,8 @@ on:
         description: 'Deployment message'
         required: false
         default: 'Deploy new site to staging'
+  repository_dispatch:
+    types: [deploy-staging]
 
 jobs:
   deploy:
