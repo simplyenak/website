@@ -126,7 +126,7 @@ const HOME_REQUIRED_FIELDS = [
   'pillars_intro', 'vendors_title', 'segment_heading',
 ]
 const ABOUT_REQUIRED_FIELDS = [
-  'hero_title', 'founder_story_title', 'founder_story_text',
+  'heroHeading', 'heroDescription', 'founderSection',
 ]
 
 async function payloadFetch(slug, useAuth = true) {
@@ -958,6 +958,9 @@ async function sync() {
 
   // ── Reviews (derived from testimonials collection) ──
   log('⭐ Reviews...')
+  // ── Pages (empty — no Payload collection, kept for import compatibility) ──
+  writeJSON('pages.json', [])
+
   const testimonialsPath = path.join(CONTENT_DIR, 'testimonials.json')
   const reviewsPath = path.join(CONTENT_DIR, 'reviews.json')
   if (fs.existsSync(testimonialsPath)) {
