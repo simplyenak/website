@@ -14,13 +14,25 @@
     "image": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
   },
   "stats": [
-    { "number": "5,000+", "label": "Happy Guests" },
-    { "number": "4.9/5", "label": "TripAdvisor Rating" },
-    { "number": "15 Years", "label": "Experience" },
-    { "number": "Max 9", "label": "Group Size" }
+    {
+      "number": "5,000+",
+      "label": "Happy Guests"
+    },
+    {
+      "number": "4.9/5",
+      "label": "TripAdvisor Rating"
+    },
+    {
+      "number": "15 Years",
+      "label": "Experience"
+    },
+    {
+      "number": "Max 9",
+      "label": "Group Size"
+    }
   ],
   "timelineSection": {
-    "eyebrow": "2011 — Present",
+    "eyebrow": "2011 - Present",
     "heading": "15 Years of Simply Enak",
     "description": "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. This is our story.",
     "milestones": [
@@ -33,20 +45,20 @@
       {
         "year": "2024",
         "title": "Destination Eat Drink Podcast",
-        "description": "Pauline joins the Destination Eat Drink podcast to talk about Penang's food culture — Nyonya cooking, nasi kandar, and what makes Malaysian street food unique.",
+        "description": "Pauline joins the Destination Eat Drink podcast to talk about Penang's food culture - Nyonya cooking, nasi kandar, and what makes Malaysian street food unique.",
         "logo": "/images/press-logos/radiomisfits.com.png",
         "url": "https://radiomisfits.com/ded286/"
       },
       {
-        "year": "2019–2020",
+        "year": "2019-2020",
         "title": "The Edge TV",
-        "description": "Malaysian business news channel The Edge TV profiles Simply Enak — Pauline takes the crew through the food stalls that tell KL's story, neighbourhood by neighbourhood.",
+        "description": "Malaysian business news channel The Edge TV profiles Simply Enak - Pauline takes the crew through the food stalls that tell KL's story, neighbourhood by neighbourhood.",
         "logo": "/images/press-logos/the_edge_malaysia.png",
         "url": "https://youtu.be/zlqXAnJMREo"
       },
       {
-        "year": "2018–2019",
-        "title": "The Food Ranger — 3 Videos",
+        "year": "2018-2019",
+        "title": "The Food Ranger - 3 Videos",
         "description": "Trevor James (The Food Ranger, 6M+ subscribers) films three videos with our team across KL's hawker stalls. Together they rack up millions of views, putting Malaysian street food on the global food map.",
         "logo": "/images/press-logos/thefoodranger.com.png",
         "url": "https://youtu.be/poY8iDlC6Tk"
@@ -60,7 +72,7 @@
       {
         "year": "2017",
         "title": "TVNZ: Karena & Kasey's Foreign Flavours",
-        "description": "Karena and Kasey Bird (MasterChef Australia winners) bring their TVNZ cooking series to Penang — Simply Enak shows them the Georgetown food scene that locals eat at every day.",
+        "description": "Karena and Kasey Bird (MasterChef Australia winners) bring their TVNZ cooking series to Penang - Simply Enak shows them the Georgetown food scene that locals eat at every day.",
         "logo": "/images/press-logos/tvnz.co.nz.png"
       },
       {
@@ -91,27 +103,27 @@
       },
       {
         "year": "2014",
-        "title": "KL Food Trails — City Hall & Time Out KL",
+        "title": "KL Food Trails - City Hall & Time Out KL",
         "description": "Partnered with Kuala Lumpur City Hall's Tourism Unit and Time Out KL to map four neighbourhoods: Jalan Alor, Kampung Baru, Old KL, and Pudu. A printed map guiding visitors to the stalls and kopitiam that anchor each area.",
         "logo": "/images/press-logos/visitkl.dbkl.gov.my.png"
       },
       {
         "year": "2013",
         "title": "Le Guide du Routard",
-        "description": "France's most-read travel guide lists Simply Enak among Malaysia's top food experiences — our first major international press recognition.",
+        "description": "France's most-read travel guide lists Simply Enak among Malaysia's top food experiences - our first major international press recognition.",
         "logo": "/images/press-logos/routard.svg",
         "url": "https://www.routard.com/guide/kuala_lumpur/4385/activites_.htm"
       },
       {
         "year": "2012",
         "title": "Lonely Planet",
-        "description": "A Lonely Planet researcher joins one of our Petaling Street tours — incognito, as they always are. Simply Enak makes it into the most-read travel guide in the world.",
+        "description": "A Lonely Planet researcher joins one of our Petaling Street tours - incognito, as they always are. Simply Enak makes it into the most-read travel guide in the world.",
         "logo": "/images/press-logos/lonely-planet.svg"
       },
       {
         "year": "2011",
         "title": "Simply Enak Founded",
-        "description": "Pauline leads her first food walk through Chow Kit market with a small group of friends. Nobody calls it a tour yet — it's just lunch.",
+        "description": "Pauline leads her first food walk through Chow Kit market with a small group of friends. Nobody calls it a tour yet - it's just lunch.",
         "logo": "/images/press-logos/simplyenak.com.png"
       }
     ]
@@ -171,7 +183,13 @@
   "ctaSection": {
     "heading": "Ready to Eat With Us?",
     "description": "Browse our tours, or message us on WhatsApp. We reply in minutes.",
-    "ctaPrimary": { "text": "Browse Tours", "url": "/tours" },
-    "ctaSecondary": { "text": "WhatsApp Us", "url": "https://wa.me/60172878929" }
+    "ctaPrimary": {
+      "text": "Browse Tours",
+      "url": "/tours"
+    },
+    "ctaSecondary": {
+      "text": "WhatsApp Us",
+      "url": "https://wa.me/60172878929"
+    }
   }
 }

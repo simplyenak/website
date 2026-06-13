@@ -20,7 +20,7 @@
           "value": "tasted_once",
           "label": "I've Tried the Famous Ones",
           "icon": "🍽️",
-          "description": "Nasi lemak, satay, char kway teow — I know the hits"
+          "description": "Nasi lemak, satay, char kway teow - I know the hits"
         },
         {
           "id": "3",
@@ -59,7 +59,7 @@
         {
           "id": "7",
           "value": "adventurous",
-          "label": "Surprise Me — I Dare You",
+          "label": "Surprise Me - I Dare You",
           "icon": "🌶️",
           "description": "The weirder, the better"
         },
@@ -86,9 +86,9 @@
         {
           "id": "10",
           "value": "flavor",
-          "label": "The Flavours — All of Them",
+          "label": "The Flavours - All of Them",
           "icon": "🍜",
-          "description": "Malay, Chinese, Indian, Peranakan — I want the full spectrum"
+          "description": "Malay, Chinese, Indian, Peranakan - I want the full spectrum"
         },
         {
           "id": "11",
@@ -181,7 +181,7 @@
       "key": "spice_tourist",
       "title": "The Spice Tourist",
       "emoji": "🌶️",
-      "description": "You're new to Malaysian food — and that's exciting! You want the must-try dishes with a warm intro. No overwhelming spice levels, no mystery meats. Think nasi lemak with a side of storytelling.",
+      "description": "You're new to Malaysian food - and that's exciting! You want the must-try dishes with a warm intro. No overwhelming spice levels, no mystery meats. Think nasi lemak with a side of storytelling.",
       "tour_match": "Gentle introduction tours"
     },
     {
@@ -189,7 +189,7 @@
       "key": "heritage_hunter",
       "title": "The Heritage Hunter",
       "emoji": "🏛️",
-      "description": "You don't want to just eat — you want to know WHO made it, HOW long, and WHY the recipe hasn't changed since 1952. Every stall has a story.",
+      "description": "You don't want to just eat - you want to know WHO made it, HOW long, and WHY the recipe hasn't changed since 1952. Every stall has a story.",
       "tour_match": "Tours with generational vendors"
     },
     {
@@ -197,7 +197,7 @@
       "key": "hawker_hero",
       "title": "The Hawker Hero",
       "emoji": "🍜",
-      "description": "You live for the night market energy — satay smoke, clattering woks, the uncle who remembers your order. Maximum variety, maximum atmosphere.",
+      "description": "You live for the night market energy - satay smoke, clattering woks, the uncle who remembers your order. Maximum variety, maximum atmosphere.",
       "tour_match": "High-energy street food tours"
     },
     {
@@ -205,7 +205,7 @@
       "key": "durian_daredevil",
       "title": "The Durian Daredevil",
       "emoji": "🔥",
-      "description": "You don't read menus — you point. Durian? Yes. Chicken feet? Absolutely. You're the friend who tries the weird stuff first.",
+      "description": "You don't read menus - you point. Durian? Yes. Chicken feet? Absolutely. You're the friend who tries the weird stuff first.",
       "tour_match": "Bold, less-travelled tours"
     },
     {
