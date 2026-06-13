@@ -207,6 +207,32 @@ function backupExistingJSON() {
     fs.copyFileSync(path.join(CONTENT_DIR, f), path.join(BACKUP_DIR, f))
     count++
   }
+
+  // ponytail: rotate backups — keep last 5
+  const backupFiles = fs.readdirSync(BACKUP_DIR)
+    .filter(f => f.endsWith('.json'))
+    .map(f => ({ name: f, time: fs.statSync(path.join(BACKUP_DIR, f)).mtimeMs }))
+    .sort((a, b) => b.time - a.time)
+
+  // Group by base filename (strip timestamp/rotation markers)
+  const MAX_BACKUPS = 5
+  const groups = {}
+  for (const bf of backupFiles) {
+    // Remove any existing rotation suffix before grouping
+    const base = bf.name.replace(/\.\d+$/, '')
+    if (!groups[base]) groups[base] = []
+    groups[base].push(bf)
+  }
+  for (const [base, versions] of Object.entries(groups)) {
+    if (versions.length > MAX_BACKUPS) {
+      const toRemove = versions.slice(MAX_BACKUPS)
+      for (const old of toRemove) {
+        try { fs.unlinkSync(path.join(BACKUP_DIR, old.name)) } catch {}
+        count--
+      }
+    }
+  }
+
   return count
 }
 
@@ -904,7 +930,6 @@ async function sync() {
   // ── Core collections ──
   const coreItems = [
     { slug: 'tours', file: 'tours.json', label: 'Tours', transform: (docs) => (docs || []).map(transformTour) },
-    { slug: 'pages', file: 'pages.json', label: 'Pages', transform: (docs) => (docs || []).map(transformPage) },
     { slug: 'stories', file: 'stories.json', label: 'Stories' },
     { slug: 'faqs', file: 'faqs.json', label: 'FAQs' },
     { slug: 'testimonials', file: 'testimonials.json', label: 'Testimonials' },
@@ -1074,10 +1099,6 @@ async function sync() {
       log(`  ⚠️  ${file}: not found — create manually or via Payload collection`)
     }
   }
-
-  // ── Orphan / legacy files (empty arrays or defaults) ──
-  writeJSON('social-proof.json', [])
-  writeJSON('values-stories.json', [])
 
   // ── Summary ──
   console.log('')
