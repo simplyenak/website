@@ -101,7 +101,6 @@ const stats = { fetched: 0, unauth: 0, defaulted: 0, written: 0, errored: 0, bac
 
 // Files that should NOT be overwritten by sync if they already have hand-curated content.
 const PROTECTED_FILES = new Set([
-  'pages.json',
 ])
 
 // Check if a transformed result is effectively empty (all block-sourced fields are empty/null).
