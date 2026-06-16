@@ -23,9 +23,38 @@ const currentLang: Language = getLangFromUrl(Astro.url);
 // Use language-aware navigation for non-English, fall back to default for English
 const navData = currentLang === 'en' ? { links: headerData.links, actions: headerData.actions } : getHeaderData(currentLang);
 const footerNavData = currentLang === 'en' ? footerData : getFooterData(currentLang);
+
+// Build BreadcrumbList from URL path
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '';
+const segments = pathname.split('/').filter(Boolean);
+const breadcrumbItems = segments.length > 0
+  ? [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://simplyenak.com/' }]
+  : [];
+
+let currentPath = '';
+for (let i = 0; i < segments.length; i++) {
+  currentPath += '/' + segments[i];
+  const name = segments[i].replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: i + 2,
+    name: name,
+    item: 'https://simplyenak.com' + currentPath,
+  });
+}
+
+const breadcrumbSchema = breadcrumbItems.length > 1 ? {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simplyenak.com' + pathname + '/#breadcrumb',
+  itemListElement: breadcrumbItems,
+} : null;
+
+const mergedStructuredData = breadcrumbSchema
+  ? [breadcrumbSchema, ...(structuredData ? (Array.isArray(structuredData) ? structuredData : [structuredData]) : [])]
+  : structuredData;
 ---
 
-<Layout metadata={metadata} structuredData={structuredData}>
+<Layout metadata={metadata} structuredData={mergedStructuredData} lang={currentLang !== 'en' ? currentLang : undefined}>
   <slot name="announcement">
     <Announcement />
   </slot>
