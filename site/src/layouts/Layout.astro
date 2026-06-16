@@ -22,14 +22,16 @@ import type { MetaData as MetaDataType } from '~/types';
 export interface Props {
   metadata?: MetaDataType;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  lang?: string;
 }
 
-const { metadata = {}, structuredData } = Astro.props;
+const { metadata = {}, structuredData, lang: propLang } = Astro.props;
 const { language, textDirection } = I18N;
+const htmlLang = propLang || language;
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={htmlLang} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
     <Favicons />

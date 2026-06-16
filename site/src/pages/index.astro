@@ -15,9 +15,26 @@ const metadata = {
   title: 'Malaysian Food Tours in KL & Penang  -  Simply Enak',
   description: 'The most authentic way to discover food and culture in Kuala Lumpur and Penang.',
 };
+
+// Build Review schema for the 6 displayed reviews
+const reviewSchemaItems = realReviews.map((r, i) => ({
+  '@type': 'Review',
+  '@id': `https://simplyenak.com/#review-${i + 1}`,
+  author: { '@type': 'Person', name: r.author },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: r.rating || 5,
+    bestRating: 5,
+  },
+  description: (r.text || '').slice(0, 200),
+}));
+
+const structuredData = reviewSchemaItems.length > 0
+  ? [{ '@type': 'ItemList', itemListElement: reviewSchemaItems.map((item, i) => ({ '@type': 'ListItem', position: i + 1, item })) }]
+  : undefined;
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} structuredData={structuredData}>
 
   <!-- Hero -->
   <section class="relative not-prose bg-[#1a1a1a] overflow-hidden text-white">
