@@ -188,13 +188,13 @@ export default buildConfig({
         media: {
           prefix: 'payload-media',
           disableLocalStorage: true,
-          disablePayloadAccessControl: true,
+          disablePayloadAccessControl: false,
         },
       },
       bucket: process.env.S3_BUCKET || '',
       generateFileURL: (data) => {
         const filename = data.filename || data.name || '';
-        return `https://cdn.simplyenak.com/payload-media/${filename}`;
+        return `${process.env.PAYLOAD_PUBLIC_SERVER_URL || 'https://cms.system.simplyenak.com'}/api/media/file/${filename}`;
       },
       config: {
         credentials: {
