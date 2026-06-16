@@ -8,7 +8,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "prebuild": "node --env-file=.env scripts/sync-payload.mjs",
+    "prebuild": "node scripts/sync-payload.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
