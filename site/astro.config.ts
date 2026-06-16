@@ -84,6 +84,8 @@ export default defineConfig({
     domains: ['cdn.pixabay.com'],
   },
 
+  site: 'https://simplyenak.com',
+
   markdown: {
     processor: unified({
       remarkPlugins: [readingTimeRemarkPlugin],
