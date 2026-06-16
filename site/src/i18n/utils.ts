@@ -8,6 +8,16 @@ export const SUPPORTED_LANGS = ['ms'] as const;
 export type SupportedLang = typeof SUPPORTED_LANGS[number];
 
 /**
+ * Returns static path entries for non-default languages.
+ * Use in [lang] page frontmatter:
+ *   export async function getStaticPaths() { return getLangStaticPaths(); }
+ * Only generates paths for non-English locales (English uses root pages).
+ */
+export function getLangStaticPaths() {
+  return SUPPORTED_LANGS.map((lang) => ({ params: { lang } }));
+}
+
+/**
  * Extract the language code from a URL.
  * With prefixDefaultLocale: false, / is English, /ms/tours is Malay.
  */

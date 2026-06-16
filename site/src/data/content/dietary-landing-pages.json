@@ -1,1 +1,181 @@
-[]
+[
+  {
+    "slug": "vegetarian-food-tours-kuala-lumpur",
+    "name": "Vegetarian",
+    "nameFull": "Vegetarian Food Tours in Kuala Lumpur",
+    "description": "Malaysia is a paradise for vegetarians. Our guides know exactly which stalls serve the best vegetarian versions.",
+    "heroSubtitle": "100% Plant-Based. No Fish Sauce. No Surprises.",
+    "metaTitle": "Vegetarian Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Vegetarian_food_tour_KL_optimized_e8c0b9d1d0.jpg",
+    "related_segments": [
+      "halal-food-tours-kuala-lumpur",
+      "vegan-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "vegetarian-food-tours-penang",
+    "name": "Vegetarian",
+    "nameFull": "Vegetarian Food Tours in Penang",
+    "description": "Penang's vegetarian food scene is vibrant and diverse. Our guides know the best plant-based hawker stalls.",
+    "heroSubtitle": "Plant-based delights in Asia's food capital",
+    "metaTitle": "Vegetarian Food Tours in Penang",
+    "tours": [
+      "penang-street-food",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Vegetarian_food_tour_KL_optimized_e8c0b9d1d0.jpg",
+    "related_segments": [
+      "halal-food-tours-penang",
+      "vegan-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "halal-food-tours-kuala-lumpur",
+    "name": "Halal",
+    "nameFull": "Halal Food Tours in Kuala Lumpur",
+    "description": "All our tours are halal-friendly. We partner with Muslim-owned stalls and know exactly which food is halal-certified.",
+    "heroSubtitle": "Halal food tours in KL you can trust",
+    "metaTitle": "Halal Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Halal_food_tour_KL_optimized_a1b2c3d4e5.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-kuala-lumpur",
+      "jain-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "halal-food-tours-penang",
+    "name": "Halal",
+    "nameFull": "Halal Food Tours in Penang",
+    "description": "Discover Penang's best halal food - from nasi kandar to street-side satay.",
+    "heroSubtitle": "Halal food adventures in Penang",
+    "metaTitle": "Halal Food Tours in Penang",
+    "tours": [
+      "penang-street-food",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Halal_food_tour_KL_optimized_a1b2c3d4e5.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-penang",
+      "jain-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "gluten-free-food-tours-kuala-lumpur",
+    "name": "Gluten-Free",
+    "nameFull": "Gluten-Free Food Tours in Kuala Lumpur",
+    "description": "Gluten-free dining in Malaysia is easier than you think. Rice-based dishes are the heart of Malaysian cuisine.",
+    "heroSubtitle": "Gluten-free Malaysian food adventures",
+    "metaTitle": "Gluten-Free Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Gluten_free_food_tour_KL_optimized_f6g7h8i9j0.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-kuala-lumpur",
+      "halal-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "gluten-free-food-tours-penang",
+    "name": "Gluten-Free",
+    "nameFull": "Gluten-Free Food Tours in Penang",
+    "description": "Rice, rice, and more rice. Penang's gluten-free food scene is a dream.",
+    "heroSubtitle": "Gluten-free eating in food capital",
+    "metaTitle": "Gluten-Free Food Tours in Penang",
+    "tours": [
+      "penang-street-food",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Gluten_free_food_tour_KL_optimized_f6g7h8i9j0.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-penang",
+      "halal-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "vegan-food-tours-kuala-lumpur",
+    "name": "Vegan",
+    "nameFull": "Vegan Food Tours in Kuala Lumpur",
+    "description": "Vegan food in KL goes beyond salad. Discover plant-based versions of iconic Malaysian dishes.",
+    "heroSubtitle": "Plant-based Malaysian food in KL",
+    "metaTitle": "Vegan Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Vegan_food_tour_KL_optimized_k1l2m3n4o5.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-kuala-lumpur",
+      "jain-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "vegan-food-tours-penang",
+    "name": "Vegan",
+    "nameFull": "Vegan Food Tours in Penang",
+    "description": "Penang is surprisingly vegan-friendly. From coconut-based curries to fruit desserts.",
+    "heroSubtitle": "Vegan eats in Penang",
+    "metaTitle": "Vegan Food Tours in Penang",
+    "tours": [
+      "penang-street-food",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Vegan_food_tour_KL_optimized_k1l2m3n4o5.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-penang",
+      "jain-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "jain-food-tours-kuala-lumpur",
+    "name": "Jain",
+    "nameFull": "Jain Food Tours in Kuala Lumpur",
+    "description": "Strict Jain requirements met with care. No root vegetables, no onion, no garlic - pure sattvic food.",
+    "heroSubtitle": "Strict Jain. No Root Vegetables.",
+    "metaTitle": "Jain Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Jain_food_tour_KL_optimized_p6q7r8s9t0.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-kuala-lumpur",
+      "vegan-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "jain-food-tours-penang",
+    "name": "Jain",
+    "nameFull": "Jain Food Tours in Penang",
+    "description": "Jain-friendly Penang food tour with pre-arranged menus at our trusted vendors.",
+    "heroSubtitle": "Jain-friendly Penang food tour",
+    "metaTitle": "Jain Food Tours in Penang",
+    "tours": [
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Jain_food_tour_KL_optimized_p6q7r8s9t0.jpg",
+    "related_segments": [
+      "vegetarian-food-tours-penang",
+      "vegan-food-tours-penang"
+    ],
+    "_status": "published"
+  }
+]

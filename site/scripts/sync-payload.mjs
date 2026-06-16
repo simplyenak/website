@@ -101,6 +101,14 @@ const stats = { fetched: 0, unauth: 0, defaulted: 0, written: 0, errored: 0, bac
 
 // Files that should NOT be overwritten by sync if they already have hand-curated content.
 const PROTECTED_FILES = new Set([
+  'dietary-landing-pages.json',
+  'specialty-landing-pages.json',
+  'travel-type-landing-pages.json',
+  'location-landing-pages.json',
+  'directions-page.json',
+  'how-to-prepare-page.json',
+  'corporate-groups-page.json',
+  'track-record-page.json',
 ])
 
 // Check if a transformed result is effectively empty (all block-sourced fields are empty/null).
@@ -1022,6 +1030,23 @@ async function sync() {
 
         if (requiredFields.length > 0 && isEffectivelyEmpty(data, requiredFields) && !FORCE) {
           log(`  🛡️  EMPTY BLOCKS: ${item.file} — Payload blocks not populated yet. Preserving existing JSON. Use --force to overwrite.`)
+        } else if (PROTECTED_FILES.has(item.file) && !FORCE) {
+          const existingPath = path.join(CONTENT_DIR, item.file)
+          if (fs.existsSync(existingPath)) {
+            const existing = JSON.parse(fs.readFileSync(existingPath, 'utf-8'))
+            const existingKeys = Object.keys(existing).filter(k => k !== 'id' && k !== 'updatedAt' && k !== 'createdAt' && !k.endsWith('_id'))
+            const incomingKeys = Object.keys(data).filter(k => k !== 'id' && k !== 'updatedAt' && k !== 'createdAt' && !k.endsWith('_id'))
+            const existingFilled = existingKeys.filter(k => existing[k] !== null && existing[k] !== undefined && existing[k] !== '' && !(Array.isArray(existing[k]) && existing[k].length === 0))
+            const incomingFilled = incomingKeys.filter(k => data[k] !== null && data[k] !== undefined && data[k] !== '' && !(Array.isArray(data[k]) && data[k].length === 0))
+            if (existingFilled.length > incomingFilled.length) {
+              log(`  🛡️  PROTECTED: ${item.file} has ${existingFilled.length} filled fields (Payload has ${incomingFilled.length}). Use --force to overwrite.`)
+              stats.preserved++
+            } else {
+              writeJSON(item.file, data)
+            }
+          } else {
+            writeJSON(item.file, data)
+          }
         } else {
           writeJSON(item.file, data)
         }

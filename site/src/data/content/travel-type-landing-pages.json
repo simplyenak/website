@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "slug": "food-tours-for-families-kuala-lumpur",
+    "name": "Families",
+    "nameFull": "Food Tours for Families in Kuala Lumpur",
+    "description": "Kid-friendly food tours in KL that parents will enjoy too. Our guides know how to engage all ages.",
+    "heroSubtitle": "Family-Friendly Food Adventures",
+    "metaTitle": "Food Tours for Families in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "food-tours-for-families-penang",
+      "food-tours-for-foodies-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-for-families-penang",
+    "name": "Families",
+    "nameFull": "Food Tours for Families in Penang",
+    "description": "Penang is perfect for family food adventures. Kid-friendly hawker food and engaging stories.",
+    "heroSubtitle": "Penang Family Food Fun",
+    "metaTitle": "Food Tours for Families in Penang",
+    "tours": [
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "food-tours-for-families-kuala-lumpur",
+      "food-tours-for-foodies-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-for-couples-kuala-lumpur",
+    "name": "Couples",
+    "nameFull": "Food Tours for Couples in Kuala Lumpur",
+    "description": "Romantic food walks through KL's most atmospheric neighbourhoods. Perfect for two.",
+    "heroSubtitle": "Romantic Food Walks in KL",
+    "metaTitle": "Food Tours for Couples in Kuala Lumpur",
+    "tours": [
+      "secrets-of-kl-nightlife",
+      "flavours-of-malaysia"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+    "related_segments": [
+      "food-tours-for-couples-penang",
+      "food-tours-for-foodies-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-for-couples-penang",
+    "name": "Couples",
+    "nameFull": "Food Tours for Couples in Penang",
+    "description": "A romantic evening exploring Penang's best street food and heritage laneways.",
+    "heroSubtitle": "Penang Romance on a Plate",
+    "metaTitle": "Food Tours for Couples in Penang",
+    "tours": [
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+    "related_segments": [
+      "food-tours-for-couples-kuala-lumpur",
+      "food-tours-for-foodies-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-for-foodies-kuala-lumpur",
+    "name": "Foodies",
+    "nameFull": "Food Tours for Foodies in Kuala Lumpur",
+    "description": "Deep dives into KL cuisine for passionate eaters who want to understand every dish.",
+    "heroSubtitle": "For Passionate Eaters",
+    "metaTitle": "Food Tours for Foodies in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food",
+      "secrets-of-kl-nightlife"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "food-tours-for-foodies-penang",
+      "food-tours-for-couples-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-for-foodies-penang",
+    "name": "Foodies",
+    "nameFull": "Food Tours for Foodies in Penang",
+    "description": "For serious eaters. Explore Penang's most legendary hawker stalls and hidden gems.",
+    "heroSubtitle": "For Serious Eaters",
+    "metaTitle": "Food Tours for Foodies in Penang",
+    "tours": [
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "food-tours-for-foodies-kuala-lumpur",
+      "food-tours-for-couples-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-for-chefs",
+    "name": "Chefs",
+    "nameFull": "Food Tours for Professional Chefs",
+    "description": "Market-to-table experiences designed for culinary professionals. Deep dives into Malaysian ingredients, techniques, and vendor traditions.",
+    "heroSubtitle": "For the Professionals Who Feed Others",
+    "metaTitle": "Chef Food Tours in Malaysia",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "food-tours-for-foodies-kuala-lumpur",
+      "food-tours-for-foodies-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-for-wedding-groups",
+    "name": "Wedding Groups",
+    "nameFull": "Food Tours for Wedding Groups",
+    "description": "Pre-wedding or post-wedding food adventures for your guests. A unique way to celebrate with family and friends in Malaysia.",
+    "heroSubtitle": "Celebrate Together, Eat Together",
+    "metaTitle": "Wedding Group Food Tours in Malaysia",
+    "tours": [
+      "flavours-of-malaysia",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "food-tours-for-chefs",
+      "food-tours-for-families-kuala-lumpur"
+    ],
+    "_status": "published"
+  }
+]
