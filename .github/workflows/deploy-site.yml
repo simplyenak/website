@@ -1,0 +1,71 @@
+name: Deploy Site
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Deploy target'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      message:
+        description: 'Deployment message'
+        required: false
+        default: 'Deploy site update'
+  push:
+    branches: [main]
+    paths: ['site/**']
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Build site
+        working-directory: site
+        run: npm run build
+        env:
+          PAYLOAD_URL: https://cms.system.simplyenak.com
+
+      - name: Determine project name
+        id: project
+        run: |
+          if [[ "${{ github.event_name }}" == "push" || "${{ inputs.target }}" == "staging" ]]; then
+            echo "name=staging" >> $GITHUB_OUTPUT
+            echo "branch=main" >> $GITHUB_OUTPUT
+          else
+            echo "name=simplyenak-astrowind" >> $GITHUB_OUTPUT
+            echo "branch=main" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ steps.project.outputs.name }}
+          directory: site/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.project.outputs.branch }}
