@@ -266,9 +266,6 @@ export const LandingPages: CollectionConfig = {
       localized: true,
       admin: {
         description: '📝 Page content — formatted with ## headings and paragraphs. This is the main body of your landing page.',
-        components: {
-          Input: '@/components/admin/landing/ContentEditor',
-        },
       },
     },
     {

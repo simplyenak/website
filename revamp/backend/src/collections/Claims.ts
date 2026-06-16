@@ -127,12 +127,10 @@ export const Claims: CollectionConfig = {
       ({ data, originalDoc, operation }) => {
         if (operation !== 'update') return data
 
-        // Transition TO paid → set paidDate
         if (data?.status === 'paid' && originalDoc?.status !== 'paid') {
           data.paidDate = new Date().toISOString()
         }
 
-        // Revert FROM paid → clear paid fields
         if (originalDoc?.status === 'paid' && data?.status && data?.status !== 'paid') {
           data.paidDate = null
           data.paymentMethod = null
@@ -143,7 +141,6 @@ export const Claims: CollectionConfig = {
     ],
     afterChange: [
       async ({ doc, previousDoc, operation, req }) => {
-        // Only trigger financial sync on status TRANSITION to approved, not on every update
         if (
           operation === 'update' &&
           doc?.status === 'approved' &&
@@ -163,49 +160,10 @@ export const Claims: CollectionConfig = {
         }
       },
     ],
-    afterList: [
-      async ({ ops, req }) => {
-        // Check if any action was performed on this list
-        const action = req?.payload?.config?.collections?.claims?.admin?.actions?.find(
-          (a) => a.slug === 'submit-business-expense'
-        )
-        if (!action) return ops
-
-        // Find all claims in the list
-        const claims = await req.payload.find({
-          collection: 'claims',
-          limit: 100,
-        })
-
-        // Set up the action handler to create a new business expense claim
-        return {
-          ...ops,
-          submitBusinessExpense: async ({ data }: { data: Partial<Claims> }) => {
-            // Create a new claim with business type
-            const newClaim = {
-              claimType: 'business',
-              status: 'draft',
-              ...data,
-            }
-
-            await req.payload.create({
-              collection: 'claims',
-              data: newClaim,
-              req,
-            })
-
-            return { success: true, message: 'Business expense claim submitted' }
-          },
-        }
-      },
-    ],
   },
   access: {
     read: ({ req: { user } }) => {
       if (!user) return false
-      const u = user as any
-      if (u.role === 'admin') return true
-      // Guide access: use afterRead filter instead of query constraint
       return true
     },
     create: ({ req: { user } }) => {
@@ -215,9 +173,6 @@ export const Claims: CollectionConfig = {
     },
     update: ({ req: { user } }) => {
       if (!user) return false
-      const u = user as any
-      if (u.role === 'admin') return true
-      // Guides can update their own drafts
       return true
     },
     delete: ({ req: { user } }) => {
