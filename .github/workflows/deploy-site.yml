@@ -20,6 +20,8 @@ on:
     paths:
       - 'site/**'
       - '.github/workflows/deploy-site.yml'
+  repository_dispatch:
+    types: [deploy-staging]
 
 concurrency:
   group: deploy-site
@@ -61,7 +63,7 @@ jobs:
       - name: Determine project name
         id: project
         run: |
-          if [[ "${{ github.event_name }}" == "push" || "${{ inputs.target }}" == "staging" ]]; then
+          if [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "repository_dispatch" || "${{ inputs.target }}" == "staging" ]]; then
             echo "name=staging" >> $GITHUB_OUTPUT
             echo "branch=main" >> $GITHUB_OUTPUT
           else
