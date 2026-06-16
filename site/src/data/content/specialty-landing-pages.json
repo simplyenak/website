@@ -1,1 +1,219 @@
-[]
+[
+  {
+    "slug": "street-food-tours-kuala-lumpur",
+    "name": "Street Food",
+    "nameFull": "Street Food Tours in Kuala Lumpur",
+    "description": "The heart of KL's food culture - sizzling woks, aromatic spices, and flavours you'll never forget.",
+    "heroSubtitle": "Sizzling Woks, Bold Flavours",
+    "metaTitle": "Street Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "market-tours-kuala-lumpur",
+      "heritage-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "street-food-tours-penang",
+    "name": "Street Food",
+    "nameFull": "Street Food Tours in Penang",
+    "description": "Penang is the street food capital of Asia. Taste why on our guided tours.",
+    "heroSubtitle": "Asia's Street Food Capital",
+    "metaTitle": "Street Food Tours in Penang",
+    "tours": [
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "market-tours-penang",
+      "heritage-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "market-tours-kuala-lumpur",
+    "name": "Market Tour",
+    "nameFull": "Market Food Tours in Kuala Lumpur",
+    "description": "Explore KL's vibrant wet markets - the heart of the city's food culture.",
+    "heroSubtitle": "Where KL Shops, Cooks, and Eats",
+    "metaTitle": "Market Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "street-food-tours-kuala-lumpur",
+      "heritage-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "market-tours-penang",
+    "name": "Market Tour",
+    "nameFull": "Market Food Tours in Penang",
+    "description": "Penang's markets are a feast for the senses. From spices to fresh seafood.",
+    "heroSubtitle": "Penang's Market Treasures",
+    "metaTitle": "Market Food Tours in Penang",
+    "tours": [
+      "penang-street-food",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "street-food-tours-penang",
+      "heritage-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "heritage-food-tours-kuala-lumpur",
+    "name": "Heritage",
+    "nameFull": "Heritage Food Tours in Kuala Lumpur",
+    "description": "Taste KL's 150-year food heritage - from colonial-era kopitiams to family recipes.",
+    "heroSubtitle": "Taste KL's 150-Year Food Heritage",
+    "metaTitle": "Heritage Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "street-food-tours-kuala-lumpur",
+      "market-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "heritage-food-tours-penang",
+    "name": "Heritage",
+    "nameFull": "Heritage Food Tours in Penang",
+    "description": "Penang's food heritage is unmatched. Taste 200 years of Peranakan, Malay, and Chinese culinary tradition.",
+    "heroSubtitle": "200 Years of Culinary Tradition",
+    "metaTitle": "Heritage Food Tours in Penang",
+    "tours": [
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "street-food-tours-penang",
+      "market-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "night-food-tours-kuala-lumpur",
+    "name": "Night Food",
+    "nameFull": "Night Food Tours in Kuala Lumpur",
+    "description": "KL comes alive after dark. Night markets, late-night hawkers, and hidden cocktail bars.",
+    "heroSubtitle": "KL After Dark: Markets, Hawkers & Cocktails",
+    "metaTitle": "Night Food Tours in Kuala Lumpur",
+    "tours": [
+      "secrets-of-kl-nightlife"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+    "related_segments": [
+      "street-food-tours-kuala-lumpur",
+      "heritage-food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "night-food-tours-penang",
+    "name": "Night Food",
+    "nameFull": "Night Food Tours in Penang",
+    "description": "Experience Penang after dark - from night markets to late-night roti canai.",
+    "heroSubtitle": "Penang's Nighttime Food Scene",
+    "metaTitle": "Night Food Tours in Penang",
+    "tours": [
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+    "related_segments": [
+      "street-food-tours-penang",
+      "heritage-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "street-food-tours",
+    "name": "Street Food Tours",
+    "nameFull": "Street Food Tours in Malaysia",
+    "description": "Sizzling woks, aromatic spices, and flavours you'll never forget - Malaysia's street food scene is legendary.",
+    "heroSubtitle": "The Soul of Malaysian Food Culture",
+    "metaTitle": "Street Food Tours in Malaysia",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food",
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "street-food-tours-kuala-lumpur",
+      "street-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "market-tours",
+    "name": "Market Tours",
+    "nameFull": "Market Food Tours in Malaysia",
+    "description": "Wet markets at dawn, spice merchants, and the ingredients that make Malaysian cuisine possible.",
+    "heroSubtitle": "Where Malaysian Food Begins",
+    "metaTitle": "Market Food Tours in Malaysia",
+    "tours": [
+      "flavours-of-malaysia",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "market-tours-kuala-lumpur",
+      "market-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "heritage-food-tours",
+    "name": "Heritage Food Tours",
+    "nameFull": "Heritage Food Tours in Malaysia",
+    "description": "Colonial-era kopitiams, UNESCO-listed shophouses, and recipes passed through generations - Malaysia's food heritage is living history.",
+    "heroSubtitle": "Recipes Passed Through Generations",
+    "metaTitle": "Heritage Food Tours in Malaysia",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food",
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "heritage-food-tours-kuala-lumpur",
+      "heritage-food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "night-food-tours",
+    "name": "Night Food Tours",
+    "nameFull": "Night Food Tours in Malaysia",
+    "description": "Night markets, late-night hawkers, and hidden cocktail bars - Malaysia's food scene transforms after sunset.",
+    "heroSubtitle": "Malaysia After Dark",
+    "metaTitle": "Night Food Tours in Malaysia",
+    "tours": [
+      "secrets-of-kl-nightlife",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+    "related_segments": [
+      "night-food-tours-kuala-lumpur",
+      "night-food-tours-penang"
+    ],
+    "_status": "published"
+  }
+]

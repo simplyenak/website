@@ -1,1 +1,232 @@
-[]
+[
+  {
+    "slug": "food-tours-kuala-lumpur",
+    "name": "Kuala Lumpur",
+    "nameFull": "Food Tours in Kuala Lumpur",
+    "description": "Explore KL's diverse food scene - from Chinatown hawkers to Indian curry houses to Malay street stalls.",
+    "heroSubtitle": "Eat your way through Malaysia's capital",
+    "metaTitle": "Food Tours in Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food",
+      "secrets-of-kl-nightlife"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "food-tours-penang",
+      "food-tours-melaka"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-penang",
+    "name": "Penang",
+    "nameFull": "Food Tours in Penang",
+    "description": "Penang is Malaysia's food capital. Discover why on our guided street food tours.",
+    "heroSubtitle": "Asia's food capital awaits",
+    "metaTitle": "Food Tours in Penang",
+    "tours": [
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "food-tours-kuala-lumpur",
+      "food-tours-melaka"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-melaka",
+    "name": "Melaka",
+    "nameFull": "Food Tours in Melaka",
+    "description": "Discover Melaka's 600-year Peranakan food heritage - a unique blend of Malay, Chinese, and Portuguese influences.",
+    "heroSubtitle": "600 Years of Peranakan Heritage",
+    "metaTitle": "Food Tours in Melaka",
+    "tours": [
+      "flavours-of-malaysia"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "food-tours-kuala-lumpur",
+      "food-tours-penang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-ipoh",
+    "name": "Ipoh",
+    "nameFull": "Food Tours in Ipoh",
+    "description": "Ipoh is famous for its white coffee, bean sprout chicken, and nostalgic old-town food scene.",
+    "heroSubtitle": "White Coffee, Bean Sprout Chicken & Nostalgia",
+    "metaTitle": "Food Tours in Ipoh",
+    "tours": [
+      "flavours-of-malaysia"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "food-tours-kuala-lumpur",
+      "food-tours-klang"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "food-tours-klang",
+    "name": "Klang",
+    "nameFull": "Food Tours in Klang",
+    "description": "Klang is the birthplace of bak kut teh - explore the original pork bone tea and Hokkien heritage.",
+    "heroSubtitle": "Birthplace of Bak Kut Teh",
+    "metaTitle": "Food Tours in Klang",
+    "tours": [
+      "flavours-of-malaysia"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "food-tours-ipoh",
+      "food-tours-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "chow-kit-market-food-tour",
+    "name": "Chow Kit Market",
+    "nameFull": "Chow Kit Market Food Tour",
+    "description": "Explore Kuala Lumpur's oldest wet market. A sensory journey through the heart of Malay food culture.",
+    "heroSubtitle": "The Best Chow Kit Market Experience",
+    "metaTitle": "Chow Kit Market Food Tour Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "chinatown-food-tour-kuala-lumpur",
+      "kampung-baru-food-tour"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "chinatown-food-tour-kuala-lumpur",
+    "name": "Chinatown Petaling Street",
+    "nameFull": "Chinatown Food Tour Kuala Lumpur",
+    "description": "Discover the flavours of KL's historic Chinatown - from Hokkien noodles to dim sum joints.",
+    "heroSubtitle": "The Best Chinatown KL Experience",
+    "metaTitle": "Chinatown Food Tour Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "little-india-food-tour-kuala-lumpur",
+      "chow-kit-market-food-tour"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "little-india-food-tour-kuala-lumpur",
+    "name": "Little India Brickfields",
+    "nameFull": "Little India Food Tour Kuala Lumpur",
+    "description": "Taste authentic South Indian cuisine in KL's original Little India. Banana leaf feasts and spice markets.",
+    "heroSubtitle": "The Best Little India KL Experience",
+    "metaTitle": "Little India Food Tour Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia",
+      "kuala-lumpur-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "chinatown-food-tour-kuala-lumpur",
+      "kampung-baru-food-tour"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "kampung-baru-food-tour",
+    "name": "Kampung Baru",
+    "nameFull": "Kampung Baru Food Tour",
+    "description": "Visit KL's last surviving Malay village. Taste traditional kampung recipes passed down through generations.",
+    "heroSubtitle": "The Best Malay Village Experience KL",
+    "metaTitle": "Kampung Baru Food Tour Kuala Lumpur",
+    "tours": [
+      "flavours-of-malaysia"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
+    "related_segments": [
+      "chow-kit-market-food-tour",
+      "little-india-food-tour-kuala-lumpur"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "chowrasta-market-food-tour",
+    "name": "Chowrasta Market",
+    "nameFull": "Chowrasta Market Food Tour Penang",
+    "description": "Penang's famous market has been feeding the island for over a century.",
+    "heroSubtitle": "Penang's historic market experience",
+    "metaTitle": "Chowrasta Market Food Tour Penang",
+    "tours": [
+      "penang-street-food",
+      "eat-drink-george-town"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "georgetown-heritage-food-tour",
+      "gurney-drive-food-tour"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "georgetown-heritage-food-tour",
+    "name": "Georgetown Heritage",
+    "nameFull": "Georgetown Heritage Food Tour Penang",
+    "description": "UNESCO-listed George Town is a melting pot of cultures. Taste Peranakan, Hokkien, and Malay cuisine.",
+    "heroSubtitle": "George Town's heritage food scene",
+    "metaTitle": "Georgetown Heritage Food Tour Penang",
+    "tours": [
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "gurney-drive-food-tour",
+      "chowrasta-market-food-tour"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "gurney-drive-food-tour",
+    "name": "Gurney Drive",
+    "nameFull": "Gurney Drive Food Tour Penang",
+    "description": "Penang's famous seaside hawker centre. Dozens of stalls serving Penang's greatest hits.",
+    "heroSubtitle": "Penang's iconic hawker centre",
+    "metaTitle": "Gurney Drive Food Tour Penang",
+    "tours": [
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
+    "related_segments": [
+      "georgetown-heritage-food-tour",
+      "chowrasta-market-food-tour"
+    ],
+    "_status": "published"
+  },
+  {
+    "slug": "little-india-food-tour-penang",
+    "name": "Little India Penang",
+    "nameFull": "Little India Food Tour Penang",
+    "description": "Penang's Little India on Lebuh Queen is a riot of colour, spice, and flavour.",
+    "heroSubtitle": "Penang Little India food adventure",
+    "metaTitle": "Little India Food Tour Penang",
+    "tours": [
+      "eat-drink-george-town",
+      "penang-street-food"
+    ],
+    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
+    "related_segments": [
+      "georgetown-heritage-food-tour",
+      "gurney-drive-food-tour"
+    ],
+    "_status": "published"
+  }
+]

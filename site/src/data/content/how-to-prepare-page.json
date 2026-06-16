@@ -1,66 +1,80 @@
 {
   "id": 1,
-  "seo_title": null,
-  "seo_description": null,
-  "hero_title": null,
-  "hero_description": null,
-  "hero_image": null,
+  "seo_title": "How to Prepare for Your Food Tour | Simply Enak",
+  "seo_description": "Everything you need to know before your Simply Enak food tour. What to wear, what to bring, dietary requirements, and what to expect.",
+  "hero_title": "Getting Ready for Your Food Tour",
+  "hero_description": "A few simple tips to make sure you get the most out of your Malaysian food adventure.",
+  "hero_image": "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
   "whatToWear": [
     {
-      "id": "6a0c34768bb5600001c237a1",
+      "id": "ww-1",
       "title": "Light, breathable clothing",
-      "description": null
+      "description": "Malaysia is hot and humid year-round. Cotton, linen, or moisture-wicking fabrics are ideal."
     },
     {
-      "id": "6a0c34768bb5600001c237a2",
+      "id": "ww-2",
       "title": "Comfortable closed-toe shoes",
-      "description": null
+      "description": "We walk about 2 km on city streets and market floors. Supportive walking shoes make a big difference."
     },
     {
-      "id": "6a0c34768bb5600001c237a3",
-      "title": "Modest dress appreciated",
-      "description": null
+      "id": "ww-3",
+      "title": "Umbrella or foldable raincoat",
+      "description": "Tropical showers can appear suddenly. Most tours continue in light rain under covered walkways."
     },
     {
-      "id": "6a0c34768bb5600001c237a4",
-      "title": "Rain jacket (monsoon months)",
-      "description": null
+      "id": "ww-4",
+      "title": "Sun protection",
+      "description": "Hat, sunglasses, and sunscreen recommended for daytime tours."
     },
     {
-      "id": "6a0c34768bb5600001c237a5",
-      "title": "Avoid wearing white",
-      "description": null
+      "id": "ww-5",
+      "title": "Camera or phone",
+      "description": "You'll want to capture the colorful market scenes, sizzling woks, and beautiful temple architecture."
     }
   ],
   "whatToBring": [
     {
-      "id": "6a0c34768bb5600001c237a6",
-      "title": "Cash (Malaysian ringgit)",
-      "description": null
+      "id": "wb-1",
+      "item": "Personal water bottle (stays hydrated)"
     },
     {
-      "id": "6a0c34768bb5600001c237a7",
-      "title": "Reusable water bottle",
-      "description": null
+      "id": "wb-2",
+      "item": "Small appetite - we'll be eating 10-18 tastings!"
     },
     {
-      "id": "6a0c34768bb5600001c237a8",
-      "title": "Camera or phone",
-      "description": null
+      "id": "wb-3",
+      "item": "Cash (MYR) if you want to buy extras from vendors"
     },
     {
-      "id": "6a0c34768bb5600001c237a9",
-      "title": "Small daypack",
-      "description": null
+      "id": "wb-4",
+      "item": "Any dietary requirements clearly noted on your booking"
     }
   ],
-  "whatToExpect": [],
-  "dietary_heading": null,
-  "dietary_intro": null,
-  "dietary_notes": [],
-  "directions_cta_text": null,
-  "directions_cta_button": null,
-  "updatedAt": "2026-05-19T09:59:18.661Z",
-  "createdAt": "2026-05-19T09:59:18.660Z",
-  "_status": "draft"
+  "dietaryNotes": {
+    "title": "Dietary Requirements",
+    "description": "We accommodate most dietary needs with advance notice: vegetarian, vegan, halal, gluten-free, Jain, and most allergies. Let us know when booking and we'll prepare alternatives at every stop."
+  },
+  "whatToExpect": [
+    {
+      "id": "exp-1",
+      "title": "Pacing",
+      "description": "We walk at a relaxed pace with frequent stops. No need to rush."
+    },
+    {
+      "id": "exp-2",
+      "title": "Group Size",
+      "description": "Max 9 people per guide. Small groups mean personal attention."
+    },
+    {
+      "id": "exp-3",
+      "title": "Food Volume",
+      "description": "Enough for a full meal. Come hungry but not starving."
+    },
+    {
+      "id": "exp-4",
+      "title": "Hygiene",
+      "description": "We only visit vendors we personally trust. Hand sanitizer is available."
+    }
+  ],
+  "_status": "published"
 }
