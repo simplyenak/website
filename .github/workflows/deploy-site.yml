@@ -48,6 +48,9 @@ jobs:
         run: npm run build
         env:
           PAYLOAD_URL: https://cms.system.simplyenak.com
+          PAYLOAD_TOKEN: ${{ secrets.PAYLOAD_TOKEN }}
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
 
       - name: Determine project name
         id: project
