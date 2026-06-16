@@ -17,7 +17,9 @@ on:
         default: 'Deploy site update'
   push:
     branches: [main]
-    paths: ['site/**']
+    paths:
+      - 'site/**'
+      - '.github/workflows/deploy-site.yml'
 
 concurrency:
   group: deploy-site
