@@ -172,10 +172,12 @@ export default buildConfig({
     s3Storage({
       collections: {
         media: {
-          prefix: 'payload-media',
+          prefix: '',
           disableLocalStorage: true,
-          // @ts-expect-error — Type only accepts 'true' but 'false' is needed for API file serving
-          disablePayloadAccessControl: false,
+          disablePayloadAccessControl: true,
+          generateFileURL: ({ filename, prefix }: { filename: string; prefix?: string }) => {
+            return `https://se-website-images.s3.nl-ams.scw.cloud/${filename}`;
+          },
         },
       },
       bucket: process.env.S3_BUCKET || '',
