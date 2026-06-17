@@ -15,7 +15,7 @@ export const AboutPage: CollectionConfig = {
     { name: 'seo_title', type: 'text', localized: true },
     { name: 'seo_description', type: 'textarea', localized: true },
 
-    // Hero Section (blocks)
+    // Hero
     {
       name: 'heroSection',
       type: 'blocks',
@@ -31,8 +31,11 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'hero_image', type: 'text', admin: { description: 'Hero background image URL' } },
+    { name: 'hero_eyebrow', type: 'text', localized: true },
+    { name: 'hero_description', type: 'textarea', localized: true },
 
-    // Founder Story (blocks)
+    // Founder Story (blocks + flat fallback)
     {
       name: 'founderStorySection',
       type: 'blocks',
@@ -48,8 +51,12 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'founder_eyebrow', type: 'text', localized: true },
+    { name: 'founder_heading', type: 'text', localized: true },
+    { name: 'founder_paragraphs', type: 'textarea', localized: true },
+    { name: 'founder_image', type: 'text', admin: { description: 'Founder photo URL' } },
 
-    // Stats Section (blocks)
+    // Stats
     {
       name: 'statsSection',
       type: 'blocks',
@@ -74,7 +81,7 @@ export const AboutPage: CollectionConfig = {
       }],
     },
 
-    // Timeline Section (blocks)
+    // Timeline
     {
       name: 'timelineSection',
       type: 'blocks',
@@ -99,14 +106,17 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'timeline_eyebrow', type: 'text', localized: true },
+    { name: 'timeline_heading', type: 'text', localized: true },
+    { name: 'timeline_description', type: 'textarea', localized: true },
 
-    // Philosophy Section (blocks)
+    // Philosophy
     {
       name: 'philosophySection',
       type: 'blocks',
       maxRows: 1,
       localized: true,
-      admin: { description: 'Company philosophy/mission — core values with titles and icons' },
+      admin: { description: 'Company philosophy/mission' },
       blocks: [{
         slug: 'philosophyBlock',
         labels: { singular: 'Philosophy Block', plural: 'Philosophy Blocks' },
@@ -125,8 +135,11 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'philosophy_eyebrow', type: 'text', localized: true },
+    { name: 'philosophy_heading', type: 'text', localized: true },
+    { name: 'philosophy_items', type: 'textarea', admin: { description: 'JSON string of philosophy items (legacy fallback)' } },
 
-    // Team Section (blocks)
+    // Team
     {
       name: 'teamSection',
       type: 'blocks',
@@ -153,5 +166,22 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'team_eyebrow', type: 'text', localized: true },
+    { name: 'team_heading', type: 'text', localized: true },
+    { name: 'team_description', type: 'textarea', localized: true },
+    { name: 'team_members', type: 'textarea', admin: { description: 'JSON string of team members (legacy fallback)' } },
+
+    // Testimonial highlight
+    { name: 'testimonial_text', type: 'text', localized: true },
+    { name: 'testimonial_name', type: 'text' },
+    { name: 'testimonial_location', type: 'text' },
+
+    // CTA
+    { name: 'cta_heading', type: 'text', localized: true },
+    { name: 'cta_description', type: 'textarea', localized: true },
+    { name: 'cta_primary_text', type: 'text', localized: true },
+    { name: 'cta_primary_url', type: 'text' },
+    { name: 'cta_secondary_text', type: 'text', localized: true },
+    { name: 'cta_secondary_url', type: 'text' },
   ],
 }
