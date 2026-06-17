@@ -174,9 +174,8 @@ export default buildConfig({
         media: {
           prefix: 'payload-media',
           disableLocalStorage: true,
-          disablePayloadAccessControl: true,
           generateFileURL: ({ filename, prefix }: { filename: string; prefix?: string }) => {
-            return `https://cdn.simplyenak.com/payload-media/${filename}`;
+            return `${process.env.PAYLOAD_PUBLIC_SERVER_URL || 'https://cms.system.simplyenak.com'}/api/media/file/${filename}`;
           },
         },
       },
