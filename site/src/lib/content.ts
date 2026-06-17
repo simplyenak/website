@@ -560,14 +560,76 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
   // Map Payload block structure to flat keys that shapeHomePage expects.
   // Payload stores: heroSection[{block with fields}]
   // shapeHomePage reads: raw.hero, raw.featuredIn, raw.philosophy, etc.
-  if (raw.heroSection && raw.heroSection.length > 0) {
+  
+  // --- Map from JSON snapshot flat fields (e.g., hero_title → raw.hero.title) ---
+  if (raw.hero_title && !raw.hero) {
+    raw.hero = {
+      eyebrow: raw.hero_subtitle || '',
+      title: raw.hero_title || '',
+      titleHighlight: raw.hero_highlight || '',
+      description: raw.hero_description || '',
+      heroImage: raw.hero_image || raw.hero_bg_image || '',
+      ctaPrimary: { text: raw.hero_cta_primary || 'SEE OUR TOURS', url: raw.hero_cta_primary_url || '/tours' },
+      ctaSecondary: { text: raw.hero_cta_secondary || 'ABOUT US', url: raw.hero_cta_secondary_url || '/about' },
+      stats: [
+        { icon: 'google', stars: 5, label: raw.hero_vendors || '14+ Years Experience' },
+        { icon: 'tripadvisor', stars: 5, label: raw.hero_rated || 'TripAdvisor Certificate of Excellence' },
+        { icon: 'google', stars: 5, label: raw.hero_since || '5,000+ Happy Guests' },
+        { icon: 'google', stars: 5, label: raw.hero_max_per_tour || '40+ Heritage Vendors' },
+      ],
+    };
+  }
+  if (raw.vendors_title && !raw.featuredIn) {
+    raw.featuredIn = {
+      title: raw.vendors_title || raw.vendors_eyebrow || 'As Featured In',
+      logos: (raw.vendors_footer || '').includes(',')
+        ? raw.vendors_footer.split(',').map((l: string) => ({ src: l.trim(), alt: '', title: '' }))
+        : undefined,
+    };
+  }
+  if (raw.manifesto_eyebrow && !raw.philosophy) {
+    raw.philosophy = {
+      eyebrow: raw.manifesto_eyebrow || '',
+      heading: raw.manifesto_headline || '',
+      description: raw.manifesto_tagline || '',
+    };
+  }
+  if (raw.expect_title && !raw.testimonialsSection) {
+    raw.testimonialsSection = {
+      eyebrow: raw.expect_subtitle || '',
+      heading: raw.expect_title || '',
+      stats: [
+        { number: raw.expect_stat1_number || '', label: raw.expect_stat1_heading || '' },
+        { number: raw.expect_stat2_number || '', label: raw.expect_stat2_heading || '' },
+        { number: raw.expect_stat3_number || '', label: raw.expect_stat3_heading || '' },
+        { number: raw.expect_stat4_number || '', label: raw.expect_stat4_heading || '' },
+      ].filter((s: any) => s.number),
+    };
+  }
+  if (raw.cta_title && !raw.ctaSection) {
+    raw.ctaSection = {
+      heading: raw.cta_title || '',
+      description: raw.cta_description || '',
+      ctaPrimary: { text: raw.cta_book_experience || 'Browse All Tours', url: '/tours' },
+      ctaSecondary: { text: raw.cta_chat_whatsapp || 'Contact Us', url: '/contact' },
+    };
+  }
+  if (raw.faqs && Array.isArray(raw.faqs) && !raw.faqSection) {
+    raw.faqSection = { items: raw.faqs.map((f: any) => ({
+      question: f.question || '',
+      answer: f.answer || '',
+    }))};
+  }
+
+  // --- Map from Payload block structure (live API) ---
+  if (raw.heroSection && raw.heroSection.length > 0 && !raw.hero) {
     const b = raw.heroSection[0];
     raw.hero = {
       eyebrow: b.subtitle || '',
       title: b.title || '',
       titleHighlight: b.highlight || '',
       description: b.description || '',
-      heroImage: b.bgImage ? (typeof b.bgImage === 'object' ? b.bgImage.url : b.bgImage) : '',
+      heroImage: getImageUrl(b.bgImage) || '',
       ctaPrimary: b.ctaPrimary || { text: 'SEE OUR TOURS', url: '/tours' },
       ctaSecondary: b.ctaSecondary || { text: 'ABOUT US', url: '/about' },
       stats: b.badges ? b.badges.filter((x: any) => x.text).slice(0, 5).map((x: any) => ({
@@ -577,7 +639,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       })) : undefined,
     };
   }
-  if (raw.vendorsSection && raw.vendorsSection.length > 0) {
+  if (raw.vendorsSection && raw.vendorsSection.length > 0 && !raw.featuredIn) {
     const b = raw.vendorsSection[0];
     raw.featuredIn = {
       title: b.title || 'As Featured In',
@@ -588,7 +650,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       })) : undefined,
     };
   }
-  if (raw.manifestoSection && raw.manifestoSection.length > 0) {
+  if (raw.manifestoSection && raw.manifestoSection.length > 0 && !raw.philosophy) {
     const b = raw.manifestoSection[0];
     raw.philosophy = {
       eyebrow: b.eyebrow || '',
@@ -596,7 +658,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       description: b.tagline || '',
     };
   }
-  if (raw.expectSection && raw.expectSection.length > 0) {
+  if (raw.expectSection && raw.expectSection.length > 0 && !raw.testimonialsSection) {
     const b = raw.expectSection[0];
     raw.testimonialsSection = {
       eyebrow: b.subtitle || '',
@@ -607,7 +669,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       })) : undefined,
     };
   }
-  if (raw.ctaSection && raw.ctaSection.length > 0) {
+  if (raw.ctaSection && raw.ctaSection.length > 0 && !raw.ctaSection_data && !raw.ctaSection_flat) {
     const b = raw.ctaSection[0];
     delete raw.ctaSection;
     raw.ctaSection = {
@@ -617,7 +679,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       ctaSecondary: b.buttons?.[1] ? { text: b.buttons[1].label, url: b.buttons[1].url } : undefined,
     };
   }
-  if (raw.faqs && raw.faqs.length > 0) {
+  if (raw.faqs && Array.isArray(raw.faqs) && !raw.faqSection) {
     raw.faqSection = {
       items: raw.faqs.map((f: any) => ({
         question: f.question || '',
