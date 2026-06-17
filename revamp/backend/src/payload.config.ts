@@ -175,6 +175,7 @@ export default buildConfig({
           prefix: '',
           disableLocalStorage: true,
           disablePayloadAccessControl: true,
+          acl: 'public-read',
           generateFileURL: ({ filename, prefix }: { filename: string; prefix?: string }) => {
             return `https://se-website-images.s3.nl-ams.scw.cloud/${filename}`;
           },
