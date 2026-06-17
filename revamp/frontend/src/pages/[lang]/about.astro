@@ -1,0 +1,290 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import CTASection from "@/components/CTASection.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import TextWithLeftRightImage from "@/components/About/TextWithLeftRightImage.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import { getAboutPage } from "@/lib/content";
+import siteSettingsData from "@/data/content/site-settings.json";
+import { SUPPORTED_LANGS } from "@/i18n/utils";
+
+const BASE_URL = (import.meta.env.SITE ?? "https://simplyenak.com").replace(/\/$/, "");
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return SUPPORTED_LANGS.map((lang) => ({ params: { lang } }));
+}
+
+
+const urlLang = (Astro.params.lang as string) || 'en';
+const lang = urlLang;
+const page = (await getAboutPage(lang)) as any;
+
+function timelineLogoSrc(domain: string | null | undefined): string | null {
+  if (!domain) return null;
+  if (domain === "simplyenak.com") return "/wp-content/uploads/2019/04/logo_128x128.png";
+  return `/images/press-logos/${domain}.png`;
+}
+
+const stats: { number: string; label: string }[] = Array.isArray(page?.stats) ? page.stats : [];
+const timeline: { year: string; title: string; description: string; logo_domain?: string; url?: string }[] = Array.isArray(page?.timeline) ? page.timeline : [];
+const philosophy: { title: string; description: string; icon: string }[] = Array.isArray(page?.philosophy) ? page.philosophy : [];
+const team: { name: string; role: string; specialty: string; description: string; image?: string }[] = Array.isArray(page?.team) ? page.team : [];
+
+const aboutStructuredData = [
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE_URL}/` },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": `${BASE_URL}/about/` },
+    ],
+  },
+  {
+    "@type": "AboutPage",
+    "name": page?.seo_title,
+    "url": `${BASE_URL}/about/`,
+    "description": page?.seo_description,
+    "about": { "@id": `${BASE_URL}/#organization` },
+    "mentions": [
+      { "@id": `${BASE_URL}/#pauline` },
+      { "@id": `${BASE_URL}/#maarten` },
+    ],
+  },
+];
+---
+
+<Layout
+  title={page?.seo_title}
+  description={page?.seo_description}
+  structuredData={aboutStructuredData}
+  hreflangPath="/about/"
+>
+  <GlobalHero
+    title={page?.hero_title}
+    highlight={page?.hero_highlight}
+    subtitle={page?.hero_subtitle}
+    image={page?.hero_image ?? undefined}
+  />
+
+  <!-- Founder Story Section -->
+  {page?.founder_story_title && (
+    <TextWithLeftRightImage
+      title={page.founder_story_title}
+      contents={page?.founder_story_text}
+      imagePosition="right"
+      bgColor="white"
+      image={page?.founder_story_image ? { url: page.founder_story_image } : undefined}
+    />
+  )}
+
+  <!-- Stats Section -->
+  {stats.length > 0 && (
+    <Section variant="light" animate={true}>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        {stats.map((stat, index) => (
+          <div class="text-center border-t-4 border-primary/25 pt-6 scroll-animate" style={`transition-delay: ${index * 100}ms`}>
+            <div class="text-h1 text-primary mb-2">
+              {stat.number}
+            </div>
+            <div class="text-body text-gray-600">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+      {page?.stats_link_text && (
+        <div class="text-center mt-10">
+          <a href="/track-record/" class="text-body font-semibold text-primary hover:text-orange transition-colors duration-300">
+            {page.stats_link_text}
+          </a>
+        </div>
+      )}
+    </Section>
+  )}
+
+  <!-- Visual Timeline Section -->
+  {timeline.length > 0 && (
+    <Section animate={true}>
+      <div class="text-center mb-16 max-w-3xl mx-auto scroll-animate">
+        {page?.timeline_eyebrow && <p class="text-h6 tracking-[0.25em] text-orange font-bold mb-3">{page.timeline_eyebrow}</p>}
+        {page?.timeline_heading && <h2 class="text-h2 text-primary">{page.timeline_heading}</h2>}
+      </div>
+
+      <div class="max-w-4xl mx-auto relative">
+
+        <!-- Vertical line: left-side on mobile, centred on desktop -->
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
+             style="background: linear-gradient(to bottom, var(--color-primary) 0%, var(--color-orange) 55%, rgba(181,45,56,0.15) 100%);">
+        </div>
+
+        {timeline.map((milestone, index) => {
+          const isEven = index % 2 === 0;
+          const isToday = milestone.year === "Today";
+          return (
+            <div class="relative mb-10 last:mb-0">
+
+              <!-- Year dot — left-6 mobile, left-1/2 desktop -->
+              <div
+                class:list={[
+                  "absolute left-6 md:left-1/2 top-5 -translate-x-1/2 z-10 flex flex-col items-center",
+                ]}
+              >
+                <div
+                  class:list={[
+                    "flex items-center justify-center rounded-full border-4 border-white shadow-md font-merriweather font-bold leading-none text-center text-white",
+                    isToday
+                      ? "w-16 h-16 text-[10px]"
+                      : "w-12 h-12 text-[9px]",
+                  ]}
+                  style={isToday
+                    ? "background: var(--color-orange); box-shadow: 0 0 0 4px rgba(255,163,51,0.2), 0 4px 12px rgba(181,45,56,0.25);"
+                    : "background: var(--color-primary); box-shadow: 0 2px 8px rgba(181,45,56,0.2);"}
+                >
+                  <span class="leading-tight px-1">{milestone.year}</span>
+                </div>
+              </div>
+
+              <!-- Content card -->
+              <div
+                class:list={[
+                  "pl-16 md:pl-0 md:w-[44%]",
+                  isEven
+                    ? "md:mr-[56%] md:text-right"
+                    : "md:ml-[56%]",
+                ]}
+              >
+                <div
+                  class:list={[
+                    "relative rounded-xl p-5 border transition-shadow duration-200 hover:shadow-md",
+                    isToday
+                      ? "border-orange/30 bg-orange/5"
+                      : "border-gray-100 bg-white",
+                  ]}
+                >
+                  <!-- Logo badge — mirrors card side: right-side card gets logo on left, left-side card gets logo on right -->
+                  {timelineLogoSrc(milestone.logo_domain) && (
+                    <div class:list={[
+                      "absolute top-3 w-8 h-8 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden shadow-sm",
+                      isEven ? "left-3 md:left-auto md:right-3" : "left-3",
+                    ]}>
+                      <img
+                        src={timelineLogoSrc(milestone.logo_domain)!}
+                        alt={`${milestone.logo_domain} logo`}
+                        width="32"
+                        height="32"
+                        class="w-6 h-6 object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
+                  {isToday && page?.today_label && (
+                    <span class="inline-block text-[9px] uppercase tracking-[0.2em] font-bold text-orange mb-2">
+                      {page.today_label}
+                    </span>
+                  )}
+
+                  <h3
+                    class:list={[
+                      "font-merriweather font-bold leading-snug mb-2",
+                      isToday ? "text-orange text-lg" : "text-primary text-base",
+                      timelineLogoSrc(milestone.logo_domain) ? (isEven ? "pl-10 md:pl-0 md:pr-10" : "pl-10") : "",
+                    ]}
+                  >
+                    {milestone.title}
+                  </h3>
+
+                  <p class="text-sm text-gray-600 leading-relaxed">{milestone.description}</p>
+
+                  {milestone.url && (
+                    <a
+                      href={milestone.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1 mt-2.5 text-xs font-semibold text-primary hover:text-orange transition-colors duration-200"
+                    >
+                      {page?.timeline_card_link_label}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" class="w-3 h-3" aria-hidden="true">
+                        <path d="M4.5 2.5a.5.5 0 0 0 0 1H7.793L2.146 9.146a.5.5 0 0 0 .708.708L9 3.707V7a.5.5 0 0 0 1 0V2.5H4.5Z"/>
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  )}
+
+  <!-- Philosophy Section -->
+  {philosophy.length > 0 && (
+    <Section variant="light" animate={true}>
+      <div class="text-center mb-12 max-w-3xl mx-auto scroll-animate">
+        {page?.philosophy_heading && <h2 class="text-h2 text-primary">{page.philosophy_heading}</h2>}
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {philosophy.map((point, i) => (
+          <Card class="text-center h-full scroll-animate" style={`transition-delay: ${i * 100}ms`}>
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
+              <span class="text-h3 text-primary font-bold leading-none">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <h3 class="text-h3 text-primary mb-3">{point.title}</h3>
+            <p class="text-body">{point.description}</p>
+          </Card>
+        ))}
+      </div>
+    </Section>
+  )}
+
+  <!-- Meet The Team Section -->
+  {team.length > 0 && (
+    <Section animate={true}>
+      <div class="text-center mb-12 max-w-3xl mx-auto scroll-animate">
+        {page?.team_heading && <h2 class="text-h2 text-primary">{page.team_heading}</h2>}
+        {page?.team_intro && <p class="text-body mt-4">{page.team_intro}</p>}
+      </div>
+
+      <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+        {team.map((member) => (
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 aspect-[3/4]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30">
+              {member.image ? (
+                <img
+                  src={member.image}
+                  alt={`${member.name}, ${member.role} at Simply Enak`}
+                  class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width={300}
+                  height={400}
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-primary/10">
+                  <span class="text-6xl font-merriweather font-bold text-primary/30">{member.name?.charAt(0) ?? '?'}</span>
+                </div>
+              )}
+            </div>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 group-hover:opacity-0">
+              <h3 class="text-h3 text-white mb-1">{member.name}</h3>
+              <p class="text-body text-white/90">{member.role}</p>
+            </div>
+
+            <div class="absolute inset-0 bg-primary/95 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-h3 text-white mb-1 text-center">{member.name}</h3>
+              <p class="text-body text-orange font-semibold mb-3 text-center uppercase tracking-wide">{member.specialty}</p>
+              <p class="text-body text-white/85 text-center leading-relaxed line-clamp-5">{member.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  )}
+
+  <CTASection />
+</Layout>

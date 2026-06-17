@@ -1,0 +1,90 @@
+---
+import { getAllTours } from "@/lib/content";
+import Card from "@/components/Design/Card.astro";
+import Badge from "@/components/Design/Badge.astro";
+import Button from "@/components/Button.astro";
+
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props;
+
+// Fetch all published tours from Payload
+const allTours = await getAllTours();
+
+// Helper to calculate relevance score
+function getRelevanceScore(tour: any, categories: string[]) {
+  let score = 0;
+  const tourTags = tour.tags || [];
+
+  categories.forEach((category) => {
+    const categoryLower = category.toLowerCase();
+    tourTags.forEach((tag: string) => {
+      if (
+        categoryLower.includes(tag.toLowerCase()) ||
+        tag.toLowerCase().includes(categoryLower)
+      ) {
+        score += 2;
+      }
+      // Split category into words and check for partial matches
+      const words = categoryLower.split(/[\s&]+/);
+      words.forEach((word) => {
+        if (word.length > 3 && tag.toLowerCase().includes(word)) {
+          score += 1;
+        }
+      });
+    });
+  });
+
+  return score;
+}
+
+// Filter and sort tours
+const relatedTours = allTours
+  .map((tour) => ({ ...tour, score: getRelevanceScore(tour, categories) }))
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 2); // Take top 2
+
+// If no relevant tours found, just show the first 2 (fallback)
+const toursToShow =
+  relatedTours.length > 0 && relatedTours[0].score > 0
+    ? relatedTours
+    : allTours.slice(0, 2);
+---
+
+{
+  toursToShow.length > 0 && (
+    <div class="mt-12 border-t border-gray-200 pt-12">
+      <h3 class="text-h3 mb-6">Come Taste It With Us</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {toursToShow.map((tour) => (
+          <Card
+            href={`/tours/${tour.slug}/`}
+            image={tour.hero?.image || tour.heroImage?.url || ''}
+            imageAlt={tour.hero?.title || tour.name}
+            variant="default"
+            class="h-full flex flex-col"
+          >
+            <div class="flex-1">
+              <h4 class="text-h4 mb-2">{tour.name}</h4>
+              <p class="text-sm text-gray-600 mb-4 line-clamp-2">
+                {tour.shortDescription || tour.hero?.description || ''}
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <Badge variant="secondary">{tour.location}</Badge>
+                <Badge variant="outline">{tour.duration || tour.durationMinutes ? `${tour.durationMinutes} min` : ''}</Badge>
+              </div>
+            </div>
+            <div class="mt-auto pt-4 flex items-center justify-between">
+              <span class="font-bold text-primary">{tour.currency || 'MYR'} {tour.price}</span>
+              <span class="text-sm font-semibold text-primary group-hover:translate-x-1 transition-transform">
+                View Tour &rarr;
+              </span>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  )
+}

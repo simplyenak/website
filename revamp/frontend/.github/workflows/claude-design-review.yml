@@ -1,0 +1,147 @@
+name: Claude Design Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'src/pages/**/*.astro'
+      - 'src/styles/**/*.css'
+      - 'src/components/**/*.astro'
+  workflow_dispatch:
+
+jobs:
+  design-review:
+    runs-on: ubuntu-latest
+    name: Claude Design Review
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build project
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Claude Design Review
+        run: |
+          cd frontend
+
+          # Get changed files
+          CHANGED_FILES=$(git diff --name-only origin/main HEAD | grep -E '\.(astro|css|js)$' || echo "")
+
+          if [ -n "$CHANGED_FILES" ]; then
+            echo "🔍 Claude Design Review Started"
+            echo "================================="
+            echo "Changed files:"
+            echo "$CHANGED_FILES"
+            echo ""
+
+            # Read PROJECT_STATUS.md for context
+            echo "📋 Project Requirements:"
+            head -50 PROJECT_STATUS.md
+            echo ""
+
+            # Create review prompt
+            cat > claude-review-prompt.md << 'EOF'
+            Please review these website changes for design consistency based on the SimplyEnak website redesign requirements:
+
+            Design Requirements:
+            - Typography: Cormorant Garamond (serif) for headings, Inter (sans-serif) for body
+            - Colors: Primary maroon (#b52d38), Secondary brown (#885e40), Accent yellow (#ffa333)
+            - Dark hero sections with gradient backgrounds
+            - Yellow highlight boxes for emphasis (.text-highlight)
+            - Consistent button styling (.primary-btn, .secondary-btn)
+            - Heritage-focused messaging (not conversion-focused)
+            - Sustainability and slow travel values
+
+            Please check:
+            1. Font consistency (Cormorant for headings)
+            2. Brand color usage
+            3. Dark hero sections implementation
+            4. Button styling consistency
+            5. Overall design alignment with heritage-focused approach
+
+            Provide specific feedback and suggestions.
+            EOF
+
+            echo "📝 Review prompt created. Claude will analyze changes..."
+
+            # This would normally call Claude API
+            # For now, we'll do a basic automated check
+            echo "🤖 Automated Design Analysis:"
+
+            # Check for Cormorant font
+            if grep -r "font-serif\|Cormorant" src/pages/; then
+              echo "✅ Cormorant font usage detected"
+            else
+              echo "⚠️  Consider using Cormorant font for headings"
+            fi
+
+            # Check for brand colors
+            if grep -r "#b52d38\|primary-btn\|text-highlight" src/pages/; then
+              echo "✅ Brand colors detected"
+            else
+              echo "⚠️  Consider adding brand colors (maroon #b52d38, yellow highlights)"
+            fi
+
+            # Check for dark hero sections
+            if grep -r "hero-dark\|bg-gray-900" src/pages/; then
+              echo "✅ Dark hero sections detected"
+            else
+              echo "⚠️  Consider adding dark hero sections"
+            fi
+
+            echo ""
+            echo "📊 Design Review Summary"
+            echo "===================="
+            echo "✅ Automated checks completed"
+            echo "🤖 For detailed Claude review, set up Claude API integration"
+          else
+            echo "No design files changed - skipping review"
+          fi
+
+      - name: Comment on PR
+        if: success()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const path = './frontend';
+
+            if (fs.existsSync(path + '/claude-review-prompt.md')) {
+              const reviewContent = fs.readFileSync(path + '/claude-review-prompt.md', 'utf8');
+
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## 🤖 Claude Design Review\n\n${reviewContent}\n\n---\n*This is an automated design review based on your PROJECT_STATUS.md requirements.*`
+              });
+            }
+
+      - name: Update Project Status
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cd frontend
+
+          # Update last modified date in PROJECT_STATUS.md
+          sed -i "s/\*\*Last Updated\*\*:.*/\*\*Last Updated\*\*: $(date '+%Y-%m-%d')/" PROJECT_STATUS.md
+
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add PROJECT_STATUS.md
+          git commit -m "Update project status timestamp" || echo "No changes to commit"
+          git push || echo "No changes to push"

@@ -1,0 +1,284 @@
+---
+interface Props {
+  duration: string;
+  groupSize: string;
+  minAge?: string;
+  walkingLevel?: "Easy" | "Moderate" | "Active";
+  alcohol?: boolean;
+  vegetarian?: boolean;
+  halal?: boolean;
+  timing?: "Morning" | "Afternoon" | "Evening" | "Flexible";
+  privateAvailable?: boolean;
+}
+
+const {
+  duration,
+  groupSize,
+  minAge = "12+",
+  walkingLevel = "Easy",
+  alcohol = false,
+  vegetarian = true,
+  halal = false,
+  timing = "Morning",
+  privateAvailable = true,
+} = Astro.props;
+---
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
+  <h3 class="text-lg font-bold text-primary mb-4">Tour Highlights</h3>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-4">
+    <!-- Duration -->
+    <div class="flex items-start gap-3">
+      <div
+        class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      <div>
+        <span
+          class="block text-xs text-gray-500 uppercase tracking-wider font-semibold"
+          >Duration</span
+        >
+        <span class="text-sm font-medium text-gray-900">{duration}</span>
+      </div>
+    </div>
+
+    <!-- Group Size -->
+    <div class="flex items-start gap-3">
+      <div
+        class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a4.902 4.902 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+          ></path>
+        </svg>
+      </div>
+      <div>
+        <span
+          class="block text-xs text-gray-500 uppercase tracking-wider font-semibold"
+          >Group Size</span
+        >
+        <span class="text-sm font-medium text-gray-900">{groupSize}</span>
+      </div>
+    </div>
+
+    <!-- Walking Level -->
+    <div class="flex items-start gap-3">
+      <div
+        class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        </svg>
+      </div>
+      <div>
+        <span
+          class="block text-xs text-gray-500 uppercase tracking-wider font-semibold"
+          >Walking</span
+        >
+        <span class="text-sm font-medium text-gray-900">{walkingLevel}</span>
+      </div>
+    </div>
+
+    <!-- Min Age -->
+    <div class="flex items-start gap-3">
+      <div
+        class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          ></path>
+        </svg>
+      </div>
+      <div>
+        <span
+          class="block text-xs text-gray-500 uppercase tracking-wider font-semibold"
+          >Min Age</span
+        >
+        <span class="text-sm font-medium text-gray-900">{minAge}</span>
+      </div>
+    </div>
+
+    <!-- Timing -->
+    <div class="flex items-start gap-3">
+      <div
+        class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          ></path>
+        </svg>
+      </div>
+      <div>
+        <span
+          class="block text-xs text-gray-500 uppercase tracking-wider font-semibold"
+          >Timing</span
+        >
+        <span class="text-sm font-medium text-gray-900">{timing}</span>
+      </div>
+    </div>
+
+    <!-- Private Option -->
+    {
+      privateAvailable && (
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs text-gray-500 uppercase tracking-wider font-semibold">
+              Private
+            </span>
+            <span class="text-sm font-medium text-gray-900">Available</span>
+          </div>
+        </div>
+      )
+    }
+
+    <!-- Dietary Tags -->
+    {
+      vegetarian && (
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs text-gray-500 uppercase tracking-wider font-semibold">
+              Dietary
+            </span>
+            <span class="text-sm font-medium text-gray-900">Vegetarian</span>
+          </div>
+        </div>
+      )
+    }
+
+    {
+      halal && (
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs text-gray-500 uppercase tracking-wider font-semibold">
+              Dietary
+            </span>
+            <span class="text-sm font-medium text-gray-900">
+              Halal Friendly
+            </span>
+          </div>
+        </div>
+      )
+    }
+
+    {
+      alcohol && (
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+              />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs text-gray-500 uppercase tracking-wider font-semibold">
+              Drinks
+            </span>
+            <span class="text-sm font-medium text-gray-900">Alcohol Incl.</span>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</div>

@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ThankYou from "@/components/ThankYou.astro";
+import img1 from "@/assets/images/kuala-lumpur-1641785_1920.webp";
+
+export const prerender = true;
+---
+
+<Layout noindex={true} nofollow={true} title="Thank You for Contacting Us | Simply Enak">
+  <ThankYou type="contact" image={img1} />
+</Layout>
+
+<script is:inline>
+  if (typeof window !== "undefined" && window._ga4Initialized) {
+    gtag('event', 'generate_lead', {
+      currency: 'MYR',
+      value: 0,
+      method: 'contact_form',
+    });
+  }
+</script>

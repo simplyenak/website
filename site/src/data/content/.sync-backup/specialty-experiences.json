@@ -5,10 +5,11 @@
     "slug": "street-food",
     "icon": "🍢",
     "color": "#f97316",
-    "description": "Explore hawker stalls and street food vendors",
+    "description": "Hawker stalls and roadside vendors",
     "status": "published",
     "updatedAt": "2026-05-19T08:33:32.602Z",
-    "createdAt": "2026-05-19T08:33:32.602Z"
+    "createdAt": "2026-05-19T08:33:32.602Z",
+    "_status": "published"
   },
   {
     "id": 3,
@@ -16,10 +17,11 @@
     "slug": "night-tour",
     "icon": "🌙",
     "color": "#6366f1",
-    "description": "Evening food tours exploring night markets",
+    "description": "Evening food adventures and night markets",
     "status": "published",
     "updatedAt": "2026-05-19T08:33:32.030Z",
-    "createdAt": "2026-05-19T08:33:32.030Z"
+    "createdAt": "2026-05-19T08:33:32.030Z",
+    "_status": "published"
   },
   {
     "id": 2,
@@ -27,10 +29,11 @@
     "slug": "market-tour",
     "icon": "🏪",
     "color": "#22c55e",
-    "description": "Visit local wet markets",
+    "description": "Wet markets, spice shops, and local producers",
     "status": "published",
     "updatedAt": "2026-05-19T08:33:31.461Z",
-    "createdAt": "2026-05-19T08:33:31.461Z"
+    "createdAt": "2026-05-19T08:33:31.461Z",
+    "_status": "published"
   },
   {
     "id": 1,
@@ -38,9 +41,10 @@
     "slug": "heritage",
     "icon": "🏛️",
     "color": "#0ea5e9",
-    "description": "Food tours focused on cultural heritage",
+    "description": "Historic neighborhoods and traditional recipes",
     "status": "published",
     "updatedAt": "2026-05-19T08:33:30.893Z",
-    "createdAt": "2026-05-19T08:33:30.893Z"
+    "createdAt": "2026-05-19T08:33:30.893Z",
+    "_status": "published"
   }
 ]

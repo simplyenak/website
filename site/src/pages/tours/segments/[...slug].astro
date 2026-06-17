@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getAllTours, getLandingPageBySlug } from '~/lib/content';
+import { getAllTours, getLandingPageBySlug, getImageUrl } from '~/lib/content';
 import { travelTypeSegments } from '~/data/segments';
 import { marked } from 'marked';
 import reviews from '~/data/content/reviews.json';
@@ -42,12 +42,18 @@ const meta = {
   description: landingPage?.meta_description || landingPage?.metaDescription || segment.description || '',
 };
 
+const landingPageImages = (landingPage?.images || [])
+  .filter((img: any) => img.position === 'inline' || !img.position)
+  .map((img: any) => getImageUrl(img.image))
+  .filter(Boolean) as string[];
+
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: landingPage?.metaTitle || `${segment.name} Tours`,
   description: landingPage?.metaDescription || segment.description || '',
   url: `https://simplyenak.com/tours/segments/${segment.slug}`,
+  ...(landingPageImages.length > 0 && { image: landingPageImages }),
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: matchingTours.slice(0, 10).map((t: any, i: number) => ({
@@ -129,6 +135,32 @@ const schemaOrg = {
                   prose-ul:my-4 prose-li:my-1
                   prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
            set:html={await marked.parse(richContent)} />
+    </section>
+  )}
+
+  <!-- Inline images from CMS -->
+  {landingPage?.images && landingPage.images.length > 0 && (
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+      <div class="grid gap-8 md:grid-cols-2">
+        {landingPage.images.filter((img: any) => img.position === 'inline').map((img: any) => {
+          const imgUrl = getImageUrl(img.image);
+          return imgUrl ? (
+            <figure class="overflow-hidden rounded-xl">
+              <img
+                src={imgUrl}
+                alt={img.alt || ''}
+                loading="lazy"
+                width="800"
+                height="600"
+                class="w-full h-auto object-cover rounded-xl shadow-md"
+              />
+              {img.caption && (
+                <figcaption class="text-xs text-muted mt-2 text-center italic">{img.caption}</figcaption>
+              )}
+            </figure>
+          ) : null;
+        })}
+      </div>
     </section>
   )}
 

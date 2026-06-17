@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Disable static generation for admin routes to avoid React context issues
+  serverExternalPackages: ['@swc/core', 'drizzle-kit', '@libsql/linux-x64-gnu', '@libsql/darwin-arm64', '@libsql/win32-x64-msvc'],
+  experimental: {
+    isrFlushToDisk: false,
+  },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],

@@ -1,0 +1,460 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import CTASection from "@/components/CTASection.astro";
+import Section from "@/components/Design/Section.astro";
+import SocialProof from "@/components/SocialProof.astro";
+import siteSettingsData from "@/data/content/site-settings.json";
+
+export const prerender = true;
+
+const comparisonData = {
+  simplyEnak: {
+    name: "Simply Enak",
+    rating: "4.9",
+    reviews: `${siteSettingsData?.review_count || 520}+`,
+    groupSize: "Max 9",
+    experience: "Since 2011 (15 years)",
+    vendors: "Generational family stalls",
+    pricing: `RM ${siteSettingsData?.tour_price ?? 285}-359`,
+    booking: "Direct, no platform fees",
+    cancellation: "48 hours free",
+    dietary: "Halal, vegetarian, vegan, gluten-free on request",
+    guide: "Guides who grew up eating here",
+  },
+  competitors: [
+    {
+      name: "Chef's Tour",
+      rating: "4.5",
+      reviews: "200+",
+      groupSize: "Up to 12",
+      experience: "Est. 2012",
+      vendors: "Mixed",
+      pricing: "RM 245",
+      booking: "Viator / GetYourGuide",
+      cancellation: "24 hours",
+      dietary: "Vegetarian ad hoc only",
+      guide: "Chef-led (marketing focus)",
+    },
+    {
+      name: "Secret Food Tours",
+      rating: "4.4",
+      reviews: "150+",
+      groupSize: "Up to 12",
+      experience: "Global franchise",
+      vendors: "Varies by franchise",
+      pricing: "RM 235",
+      booking: "GetYourGuide / own site",
+      cancellation: "24 hours",
+      dietary: "Limited options",
+      guide: "Local contracted guides",
+    },
+  ],
+};
+
+const comparisonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Table",
+  name: "KL Food Tour Comparison",
+  description: "Compare Simply Enak with other Kuala Lumpur food tour companies",
+  about: {
+    "@type": "Thing",
+    name: "Food Tours in Kuala Lumpur",
+  },
+};
+---
+
+<Layout
+  title="Simply Enak vs Other KL Food Tours | Honest Comparison"
+  description="Compare Simply Enak with Chef's Tour and Secret Food Tours. See group sizes, pricing, vendor relationships, and what makes us different after 15 years of KL food tours."
+  structuredData={comparisonSchema}
+  hreflangPath="/vs/other-kl-food-tours/"
+>
+  <GlobalHero
+    title="How We Compare to Other KL Food Tours"
+    subtitle="No fluff, no bashing — just honest differences. You decide what matters."
+  />
+
+  <SocialProof variant="compact" />
+
+  <!-- Main Comparison Table -->
+  <Section variant="light" animate={true}>
+    <div class="max-w-6xl mx-auto">
+      <p class="text-center text-gray-700 mb-12 max-w-3xl mx-auto">
+        We've been doing food tours since 2011. Some competitors came later, some focus on different things. 
+        Here's what actually differs — so you can choose based on what matters to you.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-lg shadow-md overflow-hidden">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th class="px-6 py-4 text-left font-semibold">Feature</th>
+              <th class="px-6 py-4 text-left font-semibold bg-primary-dark">Simply Enak</th>
+              <th class="px-6 py-4 text-left font-semibold">Chef's Tour</th>
+              <th class="px-6 py-4 text-left font-semibold">Secret Food Tours</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Rating</td>
+              <td class="px-6 py-4 bg-primary-50 font-semibold">⭐ 4.9 ({comparisonData.simplyEnak.reviews} reviews)</td>
+              <td class="px-6 py-4">⭐ {comparisonData.competitors[0].rating} ({comparisonData.competitors[0].reviews} reviews)</td>
+              <td class="px-6 py-4">⭐ {comparisonData.competitors[1].rating} ({comparisonData.competitors[1].reviews} reviews)</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Group Size</td>
+              <td class="px-6 py-4 bg-primary-50">{comparisonData.simplyEnak.groupSize} people</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].groupSize} people</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].groupSize} people</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Experience</td>
+              <td class="px-6 py-4 bg-primary-50 font-semibold">{comparisonData.simplyEnak.experience}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].experience}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].experience}</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Vendors</td>
+              <td class="px-6 py-4 bg-primary-50">{comparisonData.simplyEnak.vendors} (40-60 years cooking)</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].vendors}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].vendors}</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Price Range</td>
+              <td class="px-6 py-4 bg-primary-50 font-semibold">{comparisonData.simplyEnak.pricing}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].pricing}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].pricing}</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Booking</td>
+              <td class="px-6 py-4 bg-primary-50">{comparisonData.simplyEnak.booking}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].booking}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].booking}</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Cancellation</td>
+              <td class="px-6 py-4 bg-primary-50">{comparisonData.simplyEnak.cancellation} free</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].cancellation}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].cancellation}</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-medium text-gray-900">Dietary Needs</td>
+              <td class="px-6 py-4 bg-primary-50 font-semibold">{comparisonData.simplyEnak.dietary}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].dietary}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].dietary}</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-medium text-gray-900">Guides</td>
+              <td class="px-6 py-4 bg-primary-50">{comparisonData.simplyEnak.guide}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[0].guide}</td>
+              <td class="px-6 py-4">{comparisonData.competitors[1].guide}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center text-sm text-gray-500 mt-6">
+        Data based on publicly available information as of March 2026. 
+        Competitor details may change — always verify before booking.
+      </p>
+    </div>
+  </Section>
+
+  <!-- What Makes Simply Enak Different -->
+  <Section variant="white" animate={true}>
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+        What Actually Makes Us Different
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Vendor Relationships -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a4.902 4.902 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">15-Year Vendor Relationships</h3>
+          <p class="text-gray-700 leading-relaxed">
+            We've known Aunty Lim since 2011. Uncle Chen since 2012. These aren't business partnerships — they're friendships built over hundreds of tours together. When a competitor tried to poach Aunty Lim with triple volume, she said no. That's the Simply Enak difference.
+          </p>
+        </div>
+
+        <!-- Small Groups -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Max 9 People, Always</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Not "up to 15." Not "usually 12." Maximum 9 people, every tour. Why? Because vendors can maintain quality for their regular customers. Because you can actually hear Aunty Lim's stories. Because it feels like eating with friends, not a tour group.
+          </p>
+        </div>
+
+        <!-- Fair Vendor Treatment -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">We Don't Negotiate Vendor Prices</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Other tours ask for discounts. We don't. Vendors tell us their prices — we pay them. Immediately, in cash, at the stall. That's why vendors trust us. That's why they've been with us 10+ years. That's why your tour feels like eating with friends, not a transaction.
+          </p>
+        </div>
+
+        <!-- Dietary Expertise -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">15 Years of Dietary Accommodation</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Vegetarian, vegan, halal, gluten-free, Jain — we've accommodated every dietary need since 2011. We know which stalls use belacan (shrimp paste), which use lard, which have dedicated allergen-free prep. We don't guess — we know.
+          </p>
+        </div>
+
+        <!-- Direct Booking -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">No Third-Party Fees</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Book direct with us — no Viator, no GetYourGuide, no platform fees. You get the best price, we get the relationship. Plus: faster confirmation (3 hours, not 2 days), flexible cancellation, and direct WhatsApp support before and during your tour.
+          </p>
+        </div>
+
+        <!-- Cultural Context -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">We Explain the "Why" Behind Every Dish</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Not just "this is char kway teow." But: "This wok has been in Uncle Tan's family since 1963. The smoky flavor comes from lard — that's why it tastes different from vegetarian versions. He cooks for 200 customers daily, but saves the best ingredients for our groups."
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- When Simply Enak Is NOT for You -->
+  <Section variant="light" animate={true}>
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
+        When We're NOT the Right Choice
+      </h2>
+      <p class="text-center text-gray-700 mb-12">
+        Honesty time. We're not for everyone. Here's when to book someone else:
+      </p>
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-orange-500">
+          <h3 class="font-semibold text-gray-900 mb-2">🚫 You want a quick, cheap tour</h3>
+          <p class="text-gray-700">
+            Our tours are {siteSettingsData?.tour_duration ?? "4-5 hours"}, RM 285-359. If you want a 2-hour rush hitting 5 stalls for RM 150, we're not it. Book a budget tour — but don't expect generational vendor relationships or cultural depth.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-orange-500">
+          <h3 class="font-semibold text-gray-900 mb-2">🚫 You prefer large groups</h3>
+          <p class="text-gray-700">
+            We cap at 9 people. If you want 20+ people, loud crowds, and party vibes, other tours offer that. We're about intimate conversations with vendors, not group photos at every stall.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-orange-500">
+          <h3 class="font-semibold text-gray-900 mb-2">🚫 You want to check off tourist attractions</h3>
+          <p class="text-gray-700">
+            We don't do Petronas Towers photo stops. We don't do Batu Caves. We do food stalls in neighborhoods where locals eat. If you want sightseeing, book a city tour. We're about depth, not breadth.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-orange-500">
+          <h3 class="font-semibold text-gray-900 mb-2">🚫 You need instant confirmation</h3>
+          <p class="text-gray-700">
+            We confirm within 3 hours during business hours. If you need instant confirmation at 2am, book through Viator. We're humans, not bots — we sleep, we eat, we spend time with vendors.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- When Simply Enak IS for You -->
+  <Section variant="white" animate={true}>
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
+        When We ARE the Right Choice
+      </h2>
+      <p class="text-center text-gray-700 mb-12">
+        We're the right fit if you value:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
+          <h3 class="font-semibold text-gray-900 mb-2">✅ Real vendor relationships</h3>
+          <p class="text-gray-700 text-sm">
+            You want to meet Aunty Lim, not "a local vendor." You want to hear stories that aren't scripted. You want to feel like you're eating with friends, not being herded through stalls.
+          </p>
+        </div>
+
+        <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
+          <h3 class="font-semibold text-gray-900 mb-2">✅ Small group intimacy</h3>
+          <p class="text-gray-700 text-sm">
+            You prefer 8 people over 20. You want to ask questions, not shout over crowds. You want vendors to remember your name, not just see you as another tourist.
+          </p>
+        </div>
+
+        <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
+          <h3 class="font-semibold text-gray-900 mb-2">✅ Cultural depth</h3>
+          <p class="text-gray-700 text-sm">
+            You want to understand why Malaysian food is a melting pot. You want to know the difference between Teochew, Cantonese, and Hakka. You want context, not just calories.
+          </p>
+        </div>
+
+        <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
+          <h3 class="font-semibold text-gray-900 mb-2">✅ Dietary accommodation</h3>
+          <p class="text-gray-700 text-sm">
+            You're vegetarian, vegan, halal, gluten-free, or Jain. You've been burned before by "vegetarian" dishes with shrimp paste. You want guides who know the difference between belacan and budu.
+          </p>
+        </div>
+
+        <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
+          <h3 class="font-semibold text-gray-900 mb-2">✅ Fair vendor treatment</h3>
+          <p class="text-gray-700 text-sm">
+            You care that vendors get paid fairly. You don't want your tour fee squeezing Aunty Lim's margins. You want your money going to the people who cook, not to platform commissions.
+          </p>
+        </div>
+
+        <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
+          <h3 class="font-semibold text-gray-900 mb-2">✅ 15 years of expertise</h3>
+          <p class="text-gray-700 text-sm">
+            You want guides who've been doing this since 2011. Who've hosted 5,000+ guests. Who know which stalls are best on Tuesday mornings vs. Saturday nights. Experience matters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section variant="light" animate={true}>
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+        Questions About Choosing a Food Tour
+      </h2>
+
+      <div class="space-y-4">
+        <details class="bg-white rounded-lg shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-primary transition-colors duration-200">
+            <span>Are food tours in KL worth it?</span>
+            <span class="ml-4 text-primary flex-shrink-0 transition-transform duration-200 group-open:rotate-45">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-4 text-gray-700 leading-relaxed border-t border-gray-100">
+            <p class="mb-3">Yes, if you choose the right tour. A good KL food tour gives you:</p>
+            <ul class="list-disc list-inside space-y-2 mb-3">
+              <li>Access to stalls you'd never find alone (we know vendors in alleyways with no English signs)</li>
+              <li>Cultural context (why this dish, why this neighborhood, why this recipe matters)</li>
+              <li>Dietary safety (we know which stalls use belacan, which use lard, which have cross-contamination risks)</li>
+              <li>Vendor relationships (you meet people, not just food)</li>
+            </ul>
+            <p>A bad tour? You'll get herded through tourist traps, fed pre-arranged samples, and leave knowing nothing. Check group sizes, read recent reviews, and ask about vendor relationships before booking.</p>
+          </div>
+        </details>
+
+        <details class="bg-white rounded-lg shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-primary transition-colors duration-200">
+            <span>What's the average cost of a food tour in KL?</span>
+            <span class="ml-4 text-primary flex-shrink-0 transition-transform duration-200 group-open:rotate-45">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-4 text-gray-700 leading-relaxed border-t border-gray-100">
+            <p class="mb-3">KL food tours range from RM 150 to RM 450 per person:</p>
+            <ul class="list-disc list-inside space-y-2 mb-3">
+              <li><strong>Budget (RM 150-220):</strong> 2-3 hours, 5-7 stalls, larger groups (15-20 people), tourist-focused vendors</li>
+              <li><strong>Mid-range (RM 220-320):</strong> 3-4 hours, 7-9 stalls, medium groups (10-15 people), mix of local and tourist vendors</li>
+              <li><strong>Premium (RM 285-450):</strong> 4-5 hours, 8-12 stalls, small groups (6-10 people), generational vendors, dietary accommodation</li>
+            </ul>
+            <p>Simply Enak is RM {siteSettingsData?.tour_price ?? 285}-359 for join-in tours ({siteSettingsData?.tour_duration ?? "4-5 hours"}, 8-10 stalls, max 9 people). Private tours are quoted on request.</p>
+          </div>
+        </details>
+
+        <details class="bg-white rounded-lg shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-primary transition-colors duration-200">
+            <span>How do I know if a food tour is authentic?</span>
+            <span class="ml-4 text-primary flex-shrink-0 transition-transform duration-200 group-open:rotate-45">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-4 text-gray-700 leading-relaxed border-t border-gray-100">
+            <p class="mb-3">Red flags of inauthentic tours:</p>
+            <ul class="list-disc list-inside space-y-2 mb-3">
+              <li>Vendors only serve tour groups (no regular customers)</li>
+              <li>Food is pre-prepared or cold when you arrive</li>
+              <li>Guide reads from a script, doesn't know vendor names</li>
+              <li>Stops are rushed (under 15 minutes per stall)</li>
+              <li>No dietary accommodation offered</li>
+            </ul>
+            <p class="mb-3">Green flags of authentic tours:</p>
+            <ul class="list-disc list-inside space-y-2">
+              <li>Vendors have regular customers eating alongside you</li>
+              <li>Food is cooked fresh when you arrive</li>
+              <li>Guide knows vendor names, family stories, recipe history</li>
+              <li>Stops are 20-30 minutes, allowing for conversation</li>
+              <li>Dietary needs are discussed before booking</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="bg-white rounded-lg shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-primary transition-colors duration-200">
+            <span>Should I book through Viator/GetYourGuide or direct?</span>
+            <span class="ml-4 text-primary flex-shrink-0 transition-transform duration-200 group-open:rotate-45">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-4 text-gray-700 leading-relaxed border-t border-gray-100">
+            <p class="mb-3"><strong>Book through platforms if:</strong></p>
+            <ul class="list-disc list-inside space-y-2 mb-3">
+              <li>You want instant confirmation</li>
+              <li>You prefer platform customer service</li>
+              <li>You're collecting points/rewards on that platform</li>
+            </ul>
+            <p class="mb-3"><strong>Book direct if:</strong></p>
+            <ul class="list-disc list-inside space-y-2">
+              <li>You want the best price (no 20-30% platform commission)</li>
+              <li>You want faster communication (WhatsApp vs. platform messaging)</li>
+              <li>You want flexible cancellation (we're more flexible than platforms)</li>
+              <li>You want to support the business directly (more money goes to vendors)</li>
+            </ul>
+            <p class="mt-3">At Simply Enak, direct booking gets you the same tour, better price, and faster support. Platforms are fine — but you're paying extra for their convenience.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </Section>
+
+  <CTASection />
+</Layout>

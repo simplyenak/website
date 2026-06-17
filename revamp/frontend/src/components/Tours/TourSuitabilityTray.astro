@@ -1,0 +1,54 @@
+---
+interface SuitabilityCard {
+  icon: string;          // SVG path content (Heroicons outline)
+  label: string;         // Short heading
+  answer: string;        // Brand-voice one-liner
+  available: boolean;    // true = orange accent, false = gray
+  iconBg: string;        // Tailwind bg class
+  iconColor: string;     // Tailwind text class
+}
+
+interface Props {
+  cards: SuitabilityCard[];
+}
+
+const { cards } = Astro.props;
+---
+
+{cards.length > 0 && (
+  <section aria-labelledby="suitability-heading">
+    <p class="text-eyebrow text-orange mb-3">Good to Know</p>
+    <h2 id="suitability-heading" class="text-h3 text-primary mb-6">Is This Tour Right For You?</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      {cards.map((card) => (
+        <div
+          class={`rounded-2xl border p-4 transition-all duration-200 ${
+            card.available
+              ? 'bg-white border-gray-100 border-t-[3px] border-t-orange/50 shadow-sm hover:shadow-md hover:-translate-y-0.5'
+              : 'bg-gray-50/50 border-gray-100/60 opacity-60'
+          }`}
+        >
+          <div
+            class={`w-9 h-9 rounded-xl flex items-center justify-center mb-3 ${
+              card.available ? card.iconBg : 'bg-gray-200'
+            }`}
+          >
+            <svg
+              class={`w-5 h-5 ${card.available ? card.iconColor : 'text-gray-400'}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              aria-hidden="true"
+              set:html={card.icon}
+            />
+          </div>
+          <p class="text-sm font-semibold text-gray-900 mb-1">{card.label}</p>
+          <p class={`text-xs leading-relaxed ${card.available ? 'text-gray-600' : 'text-gray-400'}`}>
+            {card.answer}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+)}

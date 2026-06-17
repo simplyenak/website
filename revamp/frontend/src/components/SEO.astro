@@ -1,0 +1,279 @@
+---
+import settings from "@/data/content/site-settings.json";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  url?: string;
+  type?: "website" | "article" | "product";
+  noindex?: boolean;
+  nofollow?: boolean;
+  canonicalURL?: string;
+  structuredData?: object | object[];
+  hreflangPath?: string; // e.g. "/" or "/tours/" — path used to build hreflang alternates
+  hreflangEnOnly?: boolean; // true = only emit hreflang="en" + x-default (no translated variants exist)
+  lang?: string; // BCP 47 language tag, e.g. "en", "ms", "zh"
+}
+
+const {
+  title = "Simply Enak | Malaysian Food Tours in KL & Penang",
+  description = settings?.meta_description || "Simply Enak has been sharing Malaysia's food heritage since 2011. Walking food tours in Kuala Lumpur and Penang, led by locals who grew up eating here.",
+  image = "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+  imageAlt = "Simply Enak Food Tours — walking food tours in Malaysia with local guides",
+  url = Astro.url.href,
+  type = "website",
+  noindex = false,
+  nofollow = false,
+  canonicalURL = url,
+  structuredData,
+  hreflangPath,
+  hreflangEnOnly = false,
+  lang = "en",
+} = Astro.props;
+
+const ogLocaleMap: Record<string, string> = {
+  en: "en_US",
+  ms: "ms_MY",
+  zh: "zh_CN",
+  de: "de_DE",
+  es: "es_ES",
+  fr: "fr_FR",
+  nl: "nl_NL",
+  ru: "ru_RU",
+  ja: "ja_JP",
+  pt: "pt_PT",
+};
+const ogLocale = ogLocaleMap[lang] ?? "en_US";
+
+// Build hreflang alternates when a path is provided
+const BASE_URL = (import.meta.env.SITE ?? "https://simplyenak.com").replace(/\/$/, "");
+const hreflangAlternates = hreflangPath
+  ? hreflangEnOnly
+    ? [
+        // English-only page: only self-referential en + x-default (no translated variants exist)
+        { lang: "en",        href: `${BASE_URL}${hreflangPath}` },
+        { lang: "x-default", href: `${BASE_URL}${hreflangPath}` },
+      ]
+    : [
+        // Multilingual page: full set of alternates
+        { lang: "en",        href: `${BASE_URL}${hreflangPath}` },
+        { lang: "ms",        href: `${BASE_URL}/ms${hreflangPath}` },
+        { lang: "zh-Hans",   href: `${BASE_URL}/zh${hreflangPath}` },
+        { lang: "de",        href: `${BASE_URL}/de${hreflangPath}` },
+        { lang: "es",        href: `${BASE_URL}/es${hreflangPath}` },
+        { lang: "fr",        href: `${BASE_URL}/fr${hreflangPath}` },
+        { lang: "nl",        href: `${BASE_URL}/nl${hreflangPath}` },
+        { lang: "ru",        href: `${BASE_URL}/ru${hreflangPath}` },
+        { lang: "ja",        href: `${BASE_URL}/ja${hreflangPath}` },
+        { lang: "pt-PT",     href: `${BASE_URL}/pt${hreflangPath}` },
+        { lang: "x-default", href: `${BASE_URL}${hreflangPath}` },
+      ]
+  : [];
+
+// Build sameAs — entity links help AI systems identify Simply Enak unambiguously
+// Social + review platforms from Payload settings; OTA profiles hardcoded (static)
+const sameAs = [
+  settings.social_facebook,
+  settings.social_instagram,
+  settings.social_youtube,
+  settings.social_tripadvisor,
+  settings.social_tripadvisor_penang,
+  settings.social_linkedin_company,
+  settings.gmb_kl_url,
+  settings.gmb_penang_url,
+  // Press (add URLs in Payload → Settings when available)
+  settings.press_natgeo_url,
+  settings.press_lonelyplanet_url,
+  settings.press_cnn_url,
+  settings.press_routard_url,
+  settings.press_timeout_penang_url,
+  // OTA booking platforms
+  "https://www.getyourguide.com/simply-enak-food-experiences-s4050/",
+  "https://www.viator.com/tours/Penang-Island/Eat-Drink-Georgetown/d50882-17908P1",
+].filter(Boolean);
+
+// Founder Person nodes — used in Organization schema and BlogPosting author
+const founders = [
+  {
+    "@type": "Person",
+    "@id": `${BASE_URL}/#pauline`,
+    name: "Pauline",
+    jobTitle: "Co-founder & Head Guide",
+    url: `${BASE_URL}/about/`,
+    description: `Co-founder of Simply Enak. ${settings?.tagline || "Your Neighborhood Friends in Malaysia"}. Local food guide and storyteller behind Simply Enak's tours in Kuala Lumpur and Penang since 2011.`,
+    worksFor: { "@id": `${BASE_URL}/#organization` },
+    ...(settings.social_linkedin_pauline ? { sameAs: [settings.social_linkedin_pauline] } : {}),
+  },
+  {
+    "@type": "Person",
+    "@id": `${BASE_URL}/#maarten`,
+    name: "Maarten Belmans",
+    jobTitle: "Co-founder",
+    url: `${BASE_URL}/about/`,
+    description: `Co-founder of Simply Enak. ${settings?.tagline || "Your Neighborhood Friends in Malaysia"}. Has been running food tours in Malaysia since 2011, specialising in connecting travellers with family-run hawker stalls and local food culture.`,
+    worksFor: { "@id": `${BASE_URL}/#organization` },
+    ...(settings.social_linkedin_maarten ? { sameAs: [settings.social_linkedin_maarten] } : {}),
+  },
+];
+
+// Base structured data for the organization
+const baseStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "TravelAgency"],
+      "@id": `${BASE_URL}/#localbusiness`,
+      name: "Simply Enak",
+      url: BASE_URL,
+      logo: `${BASE_URL}/logo.png`,
+      image: "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+      description: "Simply Enak has been sharing Malaysia's food heritage since 2011. Walking food tours in Kuala Lumpur and Penang, led by locals who grew up eating here.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Kuala Lumpur City Centre",
+        addressLocality: "Kuala Lumpur",
+        addressCountry: "MY",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: "3.1570",
+        longitude: "101.7123",
+      },
+      telephone: settings.contact_phone,
+      email: settings.contact_email,
+      priceRange: settings?.tour_price ? `RM ${settings.tour_price}–359` : "RM 285–359",
+      foundingDate: "2011",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: settings.rating || "4.9",
+        reviewCount: settings.review_count ?? 5000,
+        bestRating: "5",
+        worstRating: "1",
+      },
+      areaServed: ["Kuala Lumpur", "Penang", "Melaka", "Malaysia"],
+      knowsLanguage: ["English", "Malay", "Mandarin", "Cantonese"],
+      openingHoursSpecification: (() => {
+        const hours = settings?.business_hours || "Mon – Sun: 9:00 – 20:00";
+        const match = hours.match(/(\d{1,2}:\d{2})\s*[–-]\s*(\d{1,2}:\d{2})/);
+        const opens = match ? match[1].padStart(5, "0") : "09:00";
+        const closes = match ? match[2].padStart(5, "0") : "20:00";
+        return [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday", "Tuesday", "Wednesday", "Thursday",
+              "Friday", "Saturday", "Sunday",
+            ],
+            opens,
+            closes,
+          },
+        ];
+      })(),
+      sameAs,
+    },
+    {
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#organization`,
+      name: "Simply Enak",
+      url: BASE_URL,
+      logo: `${BASE_URL}/logo.png`,
+      foundingDate: "2011",
+      founder: founders.map(f => ({ "@id": f["@id"] })),
+      sameAs,
+    },
+    ...founders,
+    {
+      "@type": "WebSite",
+      "@id": `${BASE_URL}/#website`,
+      url: BASE_URL,
+      name: "Simply Enak Food Tours",
+      publisher: {
+        "@id": `${BASE_URL}/#organization`,
+      },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${BASE_URL}/tours/?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
+
+// Merge additional structured data if provided (supports single object or array)
+const extraItems = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+  ? [structuredData]
+  : [];
+const finalStructuredData =
+  extraItems.length > 0
+    ? { ...baseStructuredData, "@graph": [...baseStructuredData["@graph"], ...extraItems] }
+    : baseStructuredData;
+
+const robotsContent =
+  [noindex && "noindex", nofollow && "nofollow"].filter(Boolean).join(", ") ||
+  "index, follow";
+---
+
+<!-- Hreflang alternates (multilingual SEO) -->
+{hreflangAlternates.map(({ lang, href }) => (
+  <link rel="alternate" hreflang={lang} href={href} />
+))}
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="robots" content={robotsContent} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content="Simply Enak" />
+<meta property="og:locale" content={ogLocale} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+<meta property="twitter:image:alt" content={imageAlt} />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="author" content="Simply Enak" />
+<meta name="theme-color" content="#b52d38" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Search Engine Verification -->
+<!-- Bing Webmaster Tools: add verification code when available -->
+<!-- <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" /> -->
+<link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
+
+<!-- Additional Open Graph Tags -->
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+{image && (image.endsWith('.webp')
+  ? <meta property="og:image:type" content="image/webp" />
+  : <meta property="og:image:type" content="image/jpeg" />
+)}
+
+<!-- Additional Twitter Tags -->
+<meta name="twitter:creator" content="@simplyenak" />
+<meta name="twitter:site" content="@simplyenak" />
+
+<!-- Structured Data -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(finalStructuredData)}
+/>

@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Heritage",
+    "slug": "heritage",
+    "icon": "🏛️",
+    "color": "#0ea5e9",
+    "description": "Historic neighborhoods and traditional recipes",
+    "status": "published",
+    "updatedAt": "2026-04-03T07:08:39.095Z",
+    "createdAt": "2026-04-03T07:08:39.095Z"
+  },
+  {
+    "id": 2,
+    "name": "Market Tour",
+    "slug": "market-tour",
+    "icon": "🏪",
+    "color": "#22c55e",
+    "description": "Wet markets, spice shops, and local producers",
+    "status": "published",
+    "updatedAt": "2026-04-03T07:08:39.095Z",
+    "createdAt": "2026-04-03T07:08:39.095Z"
+  },
+  {
+    "id": 3,
+    "name": "Night Tour",
+    "slug": "night-tour",
+    "icon": "🌙",
+    "color": "#6366f1",
+    "description": "Evening food adventures and night markets",
+    "status": "published",
+    "updatedAt": "2026-04-03T07:08:39.095Z",
+    "createdAt": "2026-04-03T07:08:39.095Z"
+  },
+  {
+    "id": 4,
+    "name": "Street Food",
+    "slug": "street-food",
+    "icon": "🍢",
+    "color": "#f97316",
+    "description": "Hawker stalls and roadside vendors",
+    "status": "published",
+    "updatedAt": "2026-04-03T07:08:39.095Z",
+    "createdAt": "2026-04-03T07:08:39.095Z"
+  }
+]

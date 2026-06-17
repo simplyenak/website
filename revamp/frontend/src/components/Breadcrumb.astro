@@ -1,0 +1,71 @@
+---
+interface Crumb {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  /** Explicit crumb trail — auto-derived from URL if omitted */
+  crumbs?: Crumb[];
+}
+
+const { crumbs: propCrumbs } = Astro.props;
+
+// Small words that shouldn't be title-cased (unless first word)
+const SMALL = new Set(['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 'on', 'at', 'to', 'by', 'in', 'of', 'up']);
+
+function titleCase(str: string): string {
+  return str
+    .split(' ')
+    .map((word, i) => (i === 0 || !SMALL.has(word))
+      ? word.charAt(0).toUpperCase() + word.slice(1)
+      : word)
+    .join(' ');
+}
+
+function autoCrumbs(pathname: string): Crumb[] {
+  const segments = pathname.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
+  const crumbs: Crumb[] = [{ label: 'Home', href: '/' }];
+  let path = '';
+  for (const seg of segments) {
+    path += `/${seg}`;
+    crumbs.push({ label: titleCase(seg.replace(/-/g, ' ')), href: `${path}/` });
+  }
+  return crumbs;
+}
+
+const crumbs = propCrumbs ?? autoCrumbs(Astro.url.pathname);
+
+// Don't render on homepage or if only one crumb
+const show = crumbs.length > 1;
+---
+
+{show && (
+  <>
+    <nav aria-label="Breadcrumb" class="bg-white border-b border-gray-100">
+      <div class="main-container py-2">
+        <ol class="flex items-center gap-1.5 text-[10px] uppercase tracking-widest flex-wrap">
+          {crumbs.map((crumb, i) => {
+            const isLast = i === crumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && (
+                  <svg class="w-2.5 h-2.5 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                )}
+                {isLast ? (
+                  <span class="text-gray-400 font-medium" aria-current="page">{crumb.label}</span>
+                ) : (
+                  <a href={crumb.href} class="text-gray-300 hover:text-primary transition-colors">
+                    {crumb.label}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+  </>
+)}

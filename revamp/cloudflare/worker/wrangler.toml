@@ -1,0 +1,38 @@
+name = "simply-enak-forms"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+# ── Production (simplyenak.com) ──────────────────────────────────────────────
+# Deploy with: wrangler deploy --env production
+[env.production]
+routes = [
+  { pattern = "simplyenak.com/api/*", zone_name = "simplyenak.com" },
+  { pattern = "www.simplyenak.com/api/*", zone_name = "simplyenak.com" }
+]
+
+[env.production.vars]
+TURNSTILE_SECRET   = ""       # Set via --var or env file — never commit
+RESEND_API_KEY     = ""       # Resend API key
+NOTIFICATION_EMAIL = "hello@simplyenak.com"  # Where form emails go
+RESEND_AUDIENCE_ID = ""       # Optional: Resend audience for newsletter
+
+# ── Staging (staging.simplyenak.com) ─────────────────────────────────────────
+# Deploy with: wrangler deploy --env staging
+[env.staging]
+routes = [
+  { pattern = "staging.simplyenak.com/api/*", zone_name = "simplyenak.com" }
+]
+
+[env.staging.vars]
+TURNSTILE_SECRET   = ""
+RESEND_API_KEY     = ""
+NOTIFICATION_EMAIL = "hello@simplyenak.com"
+RESEND_AUDIENCE_ID = ""
+
+# ── Local development (skip Turnstile) ────────────────────────────────────────
+# Deploy with: wrangler dev --local
+[env.local]
+TURNSTILE_SECRET   = "local-skip"
+RESEND_API_KEY     = "local-skip"
+NOTIFICATION_EMAIL = "dev@simplyenak.com"
+RESEND_AUDIENCE_ID = ""

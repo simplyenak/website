@@ -1,0 +1,272 @@
+---
+import { siteConfig, formatPriceInfo } from '@/lib/site-config';
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  highlightedText?: string;
+  titleEnd?: string;
+  subtitle?: string;
+  priceInfo?: string;
+  bgImage?: string;
+  whatsappNumber?: string;
+  ctaPrimaryText?: string;
+  ctaPrimaryUrl?: string;
+  ctaSecondaryText?: string;
+  ctaSecondaryUrl?: string;
+  establishedLabel?: string;
+  establishedYear?: string;
+  locationLabel?: string;
+  googleLabel?: string;
+  tripadvisorLabel?: string;
+  socialProofRating?: string;
+  guestsHosted?: string;
+  sinceLabel?: string;
+}
+
+const heroSection = {
+  eyebrow: Astro.props.eyebrow,
+  title: Astro.props.title,
+  highlightedText: Astro.props.highlightedText,
+  titleEnd: Astro.props.titleEnd,
+  subtitle: Astro.props.subtitle,
+  priceInfo: Astro.props.priceInfo ?? formatPriceInfo(),
+  bgImage: Astro.props.bgImage,
+  whatsappNumber: Astro.props.whatsappNumber ?? siteConfig.whatsappNumber,
+  ctaPrimaryText: Astro.props.ctaPrimaryText,
+  ctaPrimaryUrl: Astro.props.ctaPrimaryUrl || '#find-your-tour',
+  ctaSecondaryText: Astro.props.ctaSecondaryText,
+  ctaSecondaryUrl: Astro.props.ctaSecondaryUrl || '/tours/',
+  establishedLabel: Astro.props.establishedLabel,
+  establishedYear: Astro.props.establishedYear,
+  locationLabel: Astro.props.locationLabel,
+  googleLabel: Astro.props.googleLabel,
+  tripadvisorLabel: Astro.props.tripadvisorLabel,
+  socialProofRating: Astro.props.socialProofRating,
+  guestsHosted: Astro.props.guestsHosted ?? siteConfig.tourFeatures.guestsHosted,
+  sinceLabel: Astro.props.sinceLabel ?? `since ${siteConfig.company.established}`,
+};
+---
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce-y {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50%       { transform: translateY(7px); opacity: 0.9; }
+  }
+  .fade-1 { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
+  .fade-2 { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.28s both; }
+  .fade-3 { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.46s both; }
+  .fade-4 { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.64s both; }
+  .fade-5 { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.78s both; }
+
+  .scroll-cue {
+    animation: bounce-y 2s ease-in-out infinite;
+  }
+
+  /* Dot-grid texture overlay */
+  .hero-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* EST badge stamp */
+  .est-badge {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+  }
+  .est-badge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 163, 51, 0.55);
+  }
+  .est-badge::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 163, 51, 0.3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-1, .fade-2, .fade-3, .fade-4, .fade-5 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .scroll-cue { animation: none; }
+  }
+</style>
+
+<section
+  class="hero-texture relative flex flex-col bg-dark text-white overflow-hidden"
+  style="min-height: max(92svh, 580px);"
+>
+  <!-- Full-bleed background image with gradient overlay -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src={heroSection.bgImage}
+      alt="Malaysian street food experience"
+      class="absolute inset-0 w-full h-full object-cover object-[center_30%]"
+      loading="eager"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    />
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, rgba(26,26,26,0.78) 0%, rgba(26,26,26,0.42) 38%, rgba(26,26,26,0.60) 65%, rgba(26,26,26,0.94) 100%);"
+    ></div>
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-10 main-container flex-1 flex flex-col justify-center items-center text-center pt-20 md:pt-28 pb-12">
+
+    <!-- Eyebrow -->
+    <p class="fade-2 text-eyebrow text-orange/90 mb-4">
+      {heroSection.eyebrow}
+    </p>
+
+    <!-- EST badge + H1 -->
+    <div class="fade-2 flex flex-col items-center gap-4 mb-4">
+      {(heroSection.establishedLabel || heroSection.establishedYear) && (
+        <div class="est-badge" aria-label={`Established ${heroSection.establishedYear}`}>
+          <span class="relative z-10 text-orange text-[9px] font-bold tracking-[0.25em] uppercase leading-none mb-0.5">
+            {heroSection.establishedLabel || 'EST'}
+          </span>
+          <div class="relative z-10 w-5 h-px bg-orange/40 my-0.5"></div>
+          <span class="relative z-10 font-merriweather font-black text-white text-lg leading-none">
+            {heroSection.establishedYear || '2011'}
+          </span>
+        </div>
+      )}
+
+      <h1
+      class="fade-2 font-merriweather font-bold text-white leading-[1.15] mb-4 max-w-4xl mx-auto"
+      style="font-size: clamp(1.5rem, 5vw, 3.25rem);"
+    >
+      {heroSection.title && (
+        <span class="block text-white mb-2">{heroSection.title}</span>
+      )}
+      {heroSection.highlightedText && (
+        <span
+          class="inline-block bg-orange text-black px-4 py-1.5 rounded-sm shadow-xl font-black"
+          style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);"
+        >
+          {heroSection.highlightedText}
+        </span>
+      )}
+    </h1>
+    </div>
+
+    <!-- Subtitle -->
+    <p
+      class="fade-3 font-merriweather italic text-gray-300 mb-2 max-w-3xl mx-auto"
+      style="font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.5;"
+    >
+      {heroSection.subtitle}
+    </p>
+
+    <!-- Price Anchor + Social Proof Bar -->
+    <div class="fade-3 flex flex-col items-center gap-2 mb-6">
+      {heroSection.priceInfo && (
+        <p class="text-white/50 text-xs tracking-wide">
+          {heroSection.priceInfo}
+        </p>
+      )}
+      {(heroSection.guestsHosted) && (
+        <div class="flex flex-wrap justify-center items-center gap-3 text-sm">
+          {heroSection.guestsHosted && (
+            <span class="text-white/60">
+              {heroSection.guestsHosted}
+              {heroSection.sinceLabel && (
+                <> {heroSection.sinceLabel}</>
+              )}
+            </span>
+          )}
+        </div>
+      )}
+    </div>
+
+    <!-- Platform Badges -->
+    {(heroSection.googleLabel || heroSection.tripadvisorLabel) && (
+      <div class="fade-3 flex flex-wrap justify-center items-center gap-6 md:gap-8 mb-8 p-3 px-5 bg-white/5 rounded-lg backdrop-blur-sm">
+        {heroSection.googleLabel && (
+          <div class="flex items-center gap-2.5">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" aria-label="Google Reviews">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-orange text-sm">★★★★★</div>
+              <div class="text-[10px] text-gray-400 uppercase tracking-wide">{heroSection.googleLabel}</div>
+            </div>
+          </div>
+        )}
+
+        {heroSection.googleLabel && heroSection.tripadvisorLabel && <div class="w-px h-7 bg-white/20 hidden sm:block" aria-hidden="true"></div>}
+
+        {heroSection.tripadvisorLabel && (
+          <div class="flex items-center gap-2.5">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" aria-label="TripAdvisor Reviews">
+              <circle cx="12" cy="12" r="10" fill="#00AF87"/>
+              <path d="M12 7l1.5 3.5 3.5.5-2.5 2.5.5 3.5-3-1.5-3 1.5.5-3.5L7 11l3.5-.5z" fill="white"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-[#00AF87] text-sm">★★★★★</div>
+              <div class="text-[10px] text-gray-400 uppercase tracking-wide">{heroSection.tripadvisorLabel}</div>
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+
+    <!-- CTA Buttons — Clear "Start Here" Signals -->
+    <div class="fade-4 flex flex-col sm:flex-row gap-4 justify-center mb-6">
+      <a
+        href={heroSection.ctaPrimaryUrl}
+        class="cta-primary cta-primary-lg group inline-flex"
+        aria-label={heroSection.ctaSecondaryText || heroSection.ctaPrimaryText || 'Book a tour'}
+      >
+        {heroSection.ctaPrimaryText}
+        <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+      {heroSection.ctaSecondaryText && (
+        <a
+          href={heroSection.ctaSecondaryUrl}
+          class="cta-secondary inline-flex"
+          style="border-color: rgba(255,163,51,0.5); color: rgba(255,255,255,0.85);"
+        >
+          {heroSection.ctaSecondaryText}
+        </a>
+      )}
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-cue mt-12" aria-hidden="true">
+      <svg class="w-5 h-5 text-white/60 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+</section>

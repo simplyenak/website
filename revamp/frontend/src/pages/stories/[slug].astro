@@ -1,0 +1,490 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import Section from "@/components/Design/Section.astro";
+import Badge from "@/components/Design/Badge.astro";
+import Button from "@/components/Button.astro";
+import Prose from "@/components/Prose.astro";
+import Sidebar from "@/components/StoriesDetails/Sidebar.astro";
+import { getAllStories, getToursByVendor, getToursById, getFeaturedTours, getSiteSettings, applyTranslation, getLexicalHtml, getLexicalText } from "@/lib/content";
+import { getLangFromUrl } from "@/i18n/utils";
+import { siteConfig } from "@/lib/site-config";
+
+// Extract headings from HTML content for table of contents
+function extractHeadings(html: string) {
+  const headingRegex = /<h([23])(?:[^>]*?\s+id=["']([^"']+)["'][^>]*?)?>([^<]+)<\/h\1>/g;
+  const headings: Array<{ level: number; id: string; text: string }> = [];
+  let match;
+  
+  while ((match = headingRegex.exec(html)) !== null) {
+    const level = parseInt(match[1]);
+    const id = match[2] || match[3].toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const text = match[3].replace(/<[^>]+>/g, '').trim();
+    
+    if (text) {
+      headings.push({ level, id, text });
+    }
+  }
+  
+  return headings;
+}
+
+export async function getStaticPaths() {
+  const stories = await getAllStories();
+  return stories.map((story) => ({
+    params: { slug: story.slug },
+    props: { story },
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const { story: rawStory } = Astro.props;
+const story = applyTranslation(rawStory, lang);
+
+const settings = await getSiteSettings();
+const whatsapp = (settings?.whatsapp_number ?? siteConfig.whatsappNumber).replace(/\D/g, '');
+
+// Vendor tours (only populated when story is about a specific vendor)
+const vendorTours = story.vendor_id ? await getToursByVendor(story.vendor_id) : [];
+
+// Dish tours (only populated when story links directly to tours)
+const dishTours = (!story.vendor_id && story.tour_ids?.length)
+  ? await getToursById(story.tour_ids)
+  : [];
+
+// Sidebar tours — prefer explicit tour_ids, else use featured tours filtered by location cue
+let sidebarTours: any[] = [];
+if (story.tour_ids?.length) {
+  sidebarTours = await getToursById(story.tour_ids);
+} else {
+  const featured = await getFeaturedTours();
+  const isPenangStory = /penang/i.test(
+    [story.title, story.excerpt, story.category].filter(Boolean).join(' ')
+  );
+  if (isPenangStory) {
+    sidebarTours = featured.filter((t: any) => t.location === 'Penang').slice(0, 2);
+  } else {
+    sidebarTours = featured.filter((t: any) => t.location === 'Kuala Lumpur').slice(0, 2);
+  }
+  // fallback: just take first 2 featured if filter yielded nothing
+  if (!sidebarTours.length) sidebarTours = featured.slice(0, 2);
+}
+
+// Format date
+const formattedDate = story.published_at
+  ? new Date(story.published_at).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : "";
+
+// Extract headings for table of contents (cap at 8 to avoid unwieldy lists)
+const storyHeadings = extractHeadings(story.content || '').slice(0, 8);
+const showTableOfContents = storyHeadings.length > 0;
+
+// SEO Data
+const seoData = {
+  title: story.meta_title ?? `${story.title} | Simply Enak Stories`,
+  description: story.meta_description ?? story.excerpt,
+  image: story.hero_image,
+  type: "article",
+  structuredData: [
+    {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplyenak.com" },
+      { "@type": "ListItem", "position": 2, "name": "Stories", "item": "https://simplyenak.com/stories/" },
+      { "@type": "ListItem", "position": 3, "name": story.title, "item": `https://simplyenak.com/stories/${story.slug}/` },
+    ],
+  },
+  {
+    "@type": "BlogPosting",
+    headline: story.title,
+    url: `https://simplyenak.com/stories/${story.slug}/`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://simplyenak.com/stories/${story.slug}/`,
+    },
+    image: story.hero_image,
+    datePublished: story.published_at,
+    dateModified: story.date_updated ?? story.published_at,
+    wordCount: story.content ? getLexicalText(story.content).split(/\s+/).filter(Boolean).length : undefined,
+    keywords: Array.isArray(story.tags) ? story.tags.join(', ') : story.tags,
+    author: {
+      "@type": "Person",
+      name: story.author_name,
+      // Link to the Person node defined in the global @graph for E-E-A-T
+      "@id": story.author_name?.toLowerCase() === "pauline"
+        ? "https://simplyenak.com/#pauline"
+        : story.author_name?.toLowerCase() === "maarten"
+          ? "https://simplyenak.com/#maarten"
+          : undefined,
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://simplyenak.com/#organization",
+      name: "Simply Enak",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://simplyenak.com/logo.png",
+      },
+    },
+    description: story.excerpt,
+    articleSection: story.categories?.[0],
+  },
+  ],
+};
+
+// Noindex placeholder stories until real content is published
+const isStub = (story._contentText?.trim().length ?? 0) < 500;
+
+// Related stories (exclude current, exclude stubs, prefer same category)
+const allStories = await getAllStories();
+const substantialOthers = allStories.filter(
+  (s: any) => s.slug !== story.slug && (s._contentText?.trim().length ?? 0) >= 500
+);
+const categoryMatches = substantialOthers
+  .filter((s: any) => s.categories?.some((c: string) => story.categories?.includes(c)))
+  .slice(0, 2);
+const relatedStories = categoryMatches.length > 0 ? categoryMatches : substantialOthers.slice(0, 2);
+---
+
+<Layout
+  title={seoData.title}
+  description={seoData.description}
+  image={seoData.image}
+  structuredData={seoData.structuredData}
+  noindex={isStub}
+  hreflangPath={`/stories/${story.slug}/`}
+  hreflangEnOnly={false}
+>
+  <GlobalHero
+    title={story.title}
+    subtitle={formattedDate}
+    image={story.hero_image}
+    isOverlay={true}
+  />
+
+  <Section variant="default" spacing="default">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <!-- Main Content Column -->
+      <div class="lg:col-span-8">
+        <article data-article-content>
+          <!-- Categories + Read Time -->
+          <div class="flex flex-wrap items-center gap-3 mb-8">
+            {story.categories.map((category) => (
+              <Badge variant="secondary">{category}</Badge>
+            ))}
+            {story.read_time_minutes && (
+              <span class="text-xs text-gray-400 ml-auto">{story.read_time_minutes} min read</span>
+            )}
+          </div>
+
+          <!-- Mobile Table of Contents -->
+          {showTableOfContents && (
+            <div class="lg:hidden mb-8">
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">On this page</p>
+                <nav aria-label="Table of contents">
+                  <ul class="space-y-2">
+                    {storyHeadings.map((heading) => (
+                      <li class={heading.level === 3 ? 'ml-3' : ''}>
+                        <a 
+                          href={`#${heading.id}`}
+                          class="block text-sm text-gray-700 hover:text-primary hover:underline transition-colors py-1"
+                        >
+                          {heading.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          )}
+
+          <!-- Content -->
+          <Prose class="mb-12">
+            <div set:html={getLexicalHtml(story.content)} />
+          </Prose>
+        </article>
+
+        <!-- Inline CTA — connects the story to the experience -->
+        {sidebarTours.length > 0 && (
+          <div class="rounded-2xl p-6 md:p-8 my-12 border-2" style="background: linear-gradient(135deg, #fdf8f2 0%, #fff5eb 100%); border-color: rgba(194,65,12,0.2);">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b52d38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-eyebrow text-orange mb-2">{settings?.label_come_with_us}</p>
+                <h3 class="text-xl md:text-2xl font-bold text-primary mb-3 leading-snug">
+                  The only way to understand this is to eat it.
+                </h3>
+                <p class="text-gray-700 mb-6 leading-relaxed text-sm md:text-base">
+                  We've been eating our way through Malaysia for fourteen years. Join us on a walk and we'll show you the stalls, introduce you to the people behind them, and explain what you're eating while you eat it.
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                href={`/tours/${sidebarTours[0].slug}/`}
+                class="cta-primary inline-flex items-center justify-center gap-2"
+              >
+                {sidebarTours[0].name}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a
+                href={`https://wa.me/${whatsapp}?text=Hi, I read your story "${story.title}" and I'd like to know more about your tours.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-primary hover:text-primary transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 4.977 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-4.931-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Ask on WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
+
+        <!-- Newsletter Signup -->
+        <div class="rounded-2xl p-6 md:p-8 my-12 border-2" style="background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%); border-color: rgba(181,45,56,0.15);">
+          <div class="max-w-2xl">
+            <p class="text-eyebrow text-orange mb-3">{settings?.label_stay_in_loop}</p>
+            <h3 class="text-xl md:text-2xl font-bold text-primary mb-3 leading-snug">
+              We write about Malaysian food. No schedule, no filler — just what's worth knowing.
+            </h3>
+            <form id="story-newsletter-form" class="flex flex-col sm:flex-row gap-3 mt-5" novalidate>
+              <!-- Honeypot: hidden from real users, bots fill this in -->
+              <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;visibility:hidden;" aria-hidden="true">
+                <label for="story-newsletter-hp">Leave this blank</label>
+                <input type="text" id="story-newsletter-hp" name="honeypot_website" tabindex="-1" autocomplete="off" />
+              </div>
+              <input
+                type="email"
+                id="story-newsletter-email"
+                placeholder="your@email.com"
+                required
+                class="flex-1 px-4 py-3 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
+              />
+              <button id="story-newsletter-submit" type="submit" class="cta-primary whitespace-nowrap">Subscribe</button>
+            </form>
+            <p id="story-newsletter-message" class="hidden mt-4 text-sm font-medium"></p>
+          </div>
+        </div>
+
+        <script define:vars={{ formsWebhook: import.meta.env.PUBLIC_FORMS_WEBHOOK || siteConfig.formsWebhookUrl }}>
+          const form = document.getElementById('story-newsletter-form');
+          const emailInput = document.getElementById('story-newsletter-email');
+          const submitBtn = document.getElementById('story-newsletter-submit');
+          const messageEl = document.getElementById('story-newsletter-message');
+
+          form?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = emailInput?.value?.trim();
+            const honeypot = document.getElementById('story-newsletter-hp')?.value;
+            if (!email) return;
+            // Silently swallow honeypot hits
+            if (honeypot) { form.reset(); messageEl.textContent = "You're in. We'll write when something's worth saying."; messageEl.className = 'block mt-3 text-sm font-medium text-green-700'; return; }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing…';
+            messageEl.className = 'hidden mt-3 text-sm font-medium';
+
+            try {
+              const res = await fetch(`${formsWebhook}/newsletter`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ source: 'newsletter', email, honeypot_website: honeypot, submittedAt: new Date().toISOString() }),
+              });
+              if (res.ok) {
+                messageEl.textContent = "You're in. We'll write when something's worth saying.";
+                messageEl.className = 'block mt-3 text-sm font-medium text-green-700';
+                form.reset();
+              } else {
+                throw new Error('server error');
+              }
+            } catch {
+              messageEl.textContent = 'Something went wrong. Try again or email us directly.';
+              messageEl.className = 'block mt-3 text-sm font-medium text-red-600';
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Subscribe';
+            }
+          });
+        </script>
+
+        <!-- Author/Share/Footer of Article -->
+        <div class="border-t border-gray-200 pt-8 mt-12 mb-12">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-4"
+          >
+            <div class="text-sm text-gray-600">
+              Written by <span class="font-semibold text-primary"
+                >{story.author_name}</span
+              >
+            </div>
+            <div class="flex gap-2">
+              <Button
+                href="/stories/"
+                title="Back to Stories"
+                buttonType="secondary-btn-small"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Vendor Tours Section (shown when story is about a vendor) -->
+        {vendorTours.length > 0 && (
+          <div class="mt-12 border-t border-gray-200 pt-12">
+            <div class="bg-primary/5 rounded-2xl p-6 md:p-8 mb-12">
+              <h3 class="text-h3 text-primary mb-3">Meet {story.author_name ?? 'This Vendor'} on Our Tours</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {vendorTours.map((tour: any) => (
+                  <a
+                    href={`/tours/${tour.slug}/`}
+                    class="group flex gap-4 p-4 rounded-xl border border-gray-100 hover:border-primary hover:shadow-md transition-all bg-white"
+                    aria-label={`Book ${tour.name} to meet ${story.author_name ?? 'this vendor'}`}
+                  >
+                    {tour.hero_image && (
+                      <img
+                        src={tour.hero_image}
+                        alt={tour.name}
+                        class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                      />
+                    )}
+                    <div class="min-w-0">
+                      <h4 class="font-bold text-gray-900 group-hover:text-primary transition-colors mb-1 text-sm">{tour.name}</h4>
+                      <p class="text-xs text-gray-500 line-clamp-2">{tour.short_description ?? tour.description}</p>
+                      <p class="text-xs font-bold text-primary mt-2">RM {tour.price} / person</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        <!-- Dish Tours Section (shown when story is about a dish) -->
+        {dishTours.length > 0 && (
+          <div class="mt-12 border-t border-gray-200 pt-12">
+            <h3 class="text-h3 text-primary mb-2">Taste this on these tours</h3>
+            <p class="text-sm text-gray-600 mb-6">We visit stalls that make this dish on the tours below.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {dishTours.map((tour: any) => (
+                <a
+                  href={`/tours/${tour.slug}/`}
+                  class="group flex gap-4 p-4 rounded-xl border border-gray-100 hover:border-primary hover:shadow-md transition-all bg-white"
+                >
+                  {tour.hero_image && (
+                    <img
+                      src={tour.hero_image}
+                      alt={tour.name}
+                      class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                      width={80}
+                      height={80}
+                      loading="lazy"
+                    />
+                  )}
+                  <div class="min-w-0">
+                    <h4 class="font-bold text-gray-900 group-hover:text-primary transition-colors mb-1 text-sm">{tour.name}</h4>
+                    <p class="text-xs text-gray-500 line-clamp-2">{tour.short_description ?? tour.tagline}</p>
+                    <p class="text-xs font-bold text-primary mt-2">{tour.currency ?? 'RM'} {tour.price} / person</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Related Tours Section (shown when no vendor or dish link) -->
+        {vendorTours.length === 0 && dishTours.length === 0 && sidebarTours.length > 0 && (
+          <div class="mt-12 border-t border-gray-200 pt-12">
+            <h3 class="text-h3 mb-6">Come Taste It With Us</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {sidebarTours.map((tour: any) => (
+                <a
+                  href={`/tours/${tour.slug}/`}
+                  class="group flex gap-4 p-4 rounded-xl border border-gray-100 hover:border-primary hover:shadow-md transition-all bg-white"
+                >
+                  {tour.hero_image && (
+                    <img
+                      src={tour.hero_image}
+                      alt={tour.name}
+                      class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                      width={80}
+                      height={80}
+                      loading="lazy"
+                    />
+                  )}
+                  <div class="min-w-0">
+                    <h4 class="font-bold text-gray-900 group-hover:text-primary transition-colors mb-1 text-sm">{tour.name}</h4>
+                    <p class="text-xs text-gray-500 line-clamp-2">{tour.short_description ?? tour.tagline}</p>
+                    <p class="text-xs font-bold text-primary mt-2">{tour.currency ?? 'RM'} {tour.price} / person</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Related Stories -->
+        {relatedStories.length > 0 && (
+          <div class="mt-12 border-t border-gray-200 pt-12">
+            <h3 class="text-h3 mb-6">More from the kitchen</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {relatedStories.map((s: any) => (
+                <a href={`/stories/${s.slug}/`} class="group block">
+                  {s.hero_image && (
+                    <img
+                      src={s.hero_image}
+                      alt={s.title}
+                      class="w-full h-40 object-cover rounded-xl mb-3"
+                      loading="lazy"
+                      width={600}
+                      height={160}
+                    />
+                  )}
+                  {s.categories?.[0] && (
+                    <p class="text-xs text-orange font-bold uppercase tracking-widest mb-1">{s.categories[0]}</p>
+                  )}
+                  <h4 class="font-bold text-primary group-hover:text-secondary transition-colors text-base mb-1">{s.title}</h4>
+                  <p class="text-sm text-gray-500 line-clamp-2">{s.excerpt}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Comments section removed — pending backend integration -->
+      </div>
+
+      <!-- Sidebar Column -->
+      <div class="lg:col-span-4">
+        <Sidebar title={story.title} tours={sidebarTours} content={story.content} />
+      </div>
+    </div>
+  </Section>
+
+  <script>
+    // Inject id attributes into headings so ToC anchor links work.
+    // The build-time extractHeadings() generates ids from heading text using the
+    // same slug logic — this mirrors it so the DOM ids match the href values.
+    document.addEventListener('DOMContentLoaded', () => {
+      const article = document.querySelector('[data-article-content]');
+      if (!article) return;
+      const seen = new Map<string, number>();
+      article.querySelectorAll<HTMLElement>('h2, h3').forEach(el => {
+        if (el.id) return; // already has one
+        const base = el.textContent!.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+        const count = seen.get(base) ?? 0;
+        el.id = count === 0 ? base : `${base}-${count + 1}`;
+        seen.set(base, count + 1);
+      });
+    });
+  </script>
+</Layout>

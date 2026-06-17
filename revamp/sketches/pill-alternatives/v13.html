@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simply Enak — v13 Extended Indicators</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #000; color: #1a1a1a; padding: 40px; }
+  h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+  .subtitle { color: #666; margin-bottom: 32px; font-size: 14px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 32px 0 16px; color: #444; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Preview grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid #e8e4e0; }
+  .icon-cell svg { display: block; }
+  .icon-name { font-size: 12px; font-weight: 500; text-align: center; }
+  .icon-source { font-size: 10px; color: #999; }
+
+  /* Boxed row styles */
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; }
+  .section-title.info { color: #888; }
+  .section-title.info::after { background: #ddd; }
+  .section-title.tags { color: #FFA333; }
+  .section-title.tags::after { background: #FFA333; opacity: 0.3; }
+  .attribute-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+  .box { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 8px; border: 1px solid; min-width: 64px; }
+  .box svg { display: block; }
+  .label { font-size: 11px; font-weight: 500; text-align: center; line-height: 1.2; white-space: nowrap; }
+  .box.info { border-color: #e0ddd8; background: #fff; }
+  .box.info .label { color: #444; }
+  .box.tag { border-color: #FFA333; background: #fffaf3; }
+  .box.tag .label { color: #8a5700; }
+
+  /* Card style */
+  .card { background: #fff; border-radius: 16px; border: 1px solid #e8e4e0; overflow: hidden; margin-bottom: 32px; }
+  .card-body { padding: 24px; }
+  .card-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+  .card-desc { font-size: 13px; color: #666; line-height: 1.6; margin-top: 16px; padding: 16px; background: #f8f8f6; border-radius: 8px; }
+  .card-desc strong { color: #333; }
+
+  /* Walking bar cells */
+  .walking-bar { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
+  .walking-bar rect { border-radius: 1px; }
+</style>
+</head>
+<body>
+
+<h1>Simply Enak — Icon System v13</h1>
+<p class="subtitle">Expanded indicators: Family, Drinks, Age, Private/Group, Cancellation, Local Impact, Gluten-free</p>
+
+<!-- ====== PREVIEW GRID ====== -->
+<h2>Core Indicators (from v12)</h2>
+<div class="grid">
+  <!-- Clock -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+    </svg>
+    <span class="icon-name">Duration</span>
+    <span class="icon-source">Lucide Clock</span>
+  </div>
+  <!-- Users -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>
+    </svg>
+    <span class="icon-name">Group Size</span>
+    <span class="icon-source">Lucide Users</span>
+  </div>
+  <!-- Calendar -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+    </svg>
+    <span class="icon-name">Schedule</span>
+    <span class="icon-source">Lucide Calendar</span>
+  </div>
+  <!-- Wheelchair -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="6" r="1.5"/><path d="M7 21a5 5 0 1 0 4.5-7.5"/><path d="M11.5 13.5 16 2l4 3.5"/>
+    </svg>
+    <span class="icon-name">Accessibility</span>
+    <span class="icon-source">Lucide Accessibility</span>
+  </div>
+  <!-- Walking bars -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 24 20" width="24" height="20" fill="none" stroke="none">
+      <rect x="1" y="2" width="3" height="16" rx="0.8" fill="#FFA333" opacity="0.25"/>
+      <rect x="6" y="2" width="3" height="16" rx="0.8" fill="#FFA333" opacity="0.25"/>
+      <rect x="11" y="2" width="3" height="16" rx="0.8" fill="#FFA333" opacity="0.25"/>
+      <rect x="16" y="2" width="3" height="16" rx="0.8" fill="#FFA333" opacity="0.15"/>
+      <rect x="21" y="2" width="3" height="16" rx="0.8" fill="#FFA333" opacity="0.15"/>
+    </svg>
+    <span class="icon-name">Walking (3/5)</span>
+    <span class="icon-source">Custom bars</span>
+  </div>
+  <!-- Leaf (vegetarian) -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+    </svg>
+    <span class="icon-name">Vegetarian</span>
+    <span class="icon-source">Lucide Leaf</span>
+  </div>
+  <!-- Vegan -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8q6 0 6-6-6 0-6 6"/><path d="M17.41 3.59a10 10 0 1 0 3 3"/><path d="M2 2a20.3 20.3 0 0 1 4 5.5"/>
+    </svg>
+    <span class="icon-name">Vegan</span>
+    <span class="icon-source">Lucide Vegan</span>
+  </div>
+  <!-- Halal -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 24 24" width="24" height="24" style="transform:scale(1.1)">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="#FFA333" stroke-width="1.5" opacity="0.4"/>
+      <text x="12" y="12.3" text-anchor="middle" dominant-baseline="central" font-family="'Noto Naskh Arabic','Traditional Arabic','Arial',sans-serif" font-size="9" fill="#FFA333" opacity="0.8">حلال</text>
+    </svg>
+    <span class="icon-name">Halal</span>
+    <span class="icon-source">Custom</span>
+  </div>
+  <!-- Languages -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </svg>
+    <span class="icon-name">Languages</span>
+    <span class="icon-source">Lucide Globe</span>
+  </div>
+  <!-- UK flag -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 513 342" style="width:32px;height:21px;border-radius:2px;"><g fill="#FFF"><path d="M0 0h513v341.3H0V0z"/><path d="M311.7 230 513 341.3v-31.5L369.3 230h-57.6zM200.3 111.3 0 0v31.5l143.7 79.8h56.6z"/></g><g fill="#012169"><path d="M393.8 230 513 295.7V230H393.8zm-82.1 0L513 341.3v-31.5L369.3 230h-57.6zm146.9 111.3-147-81.7v81.7h147zM90.3 230 0 280.2V230h90.3zm110 14.2v97.2H25.5l174.8-97.2zM118.2 111.3 0 45.6v65.7h118.2zm82.1 0L0 0v31.5l143.7 79.8h56.6zM53.4 0l147 81.7V0h-147zM421.7 111.3 513 61.1v50.2h-91.3zm-110-14.2V0h174.9L311.7 97.1z"/></g><g fill="#c8102e"><path d="M288 0h-64v138.7H0v64h224v138.7h64V202.7h224v-64H288V0z"/></g></svg>
+    <span class="icon-name">English</span>
+    <span class="icon-source">GB flag</span>
+  </div>
+  <!-- CN flag -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 513 342" style="width:32px;height:21px;border-radius:2px;"><path fill="#D80027" d="M0 0h513v342H0z"/><g fill="#FFDA44"><path d="m226.8 239.2-9.7-15.6-17.9 4.4 11.9-14.1-9.7-15.6 17.1 6.9 11.8-14.1-1.3 18.4 17.1 6.9-17.9 4.4zM290.6 82l-10.1 15.4 11.6 14.3-17.7-4.8-10.1 15.5-1-18.4-17.7-4.8 17.2-6.6-1-18.4 11.6 14.3zM236.2 25.4l-2 18.3 16.8 7.6-18 3.8-2 18.3-9.2-16-17.9 3.8 12.3-13.7-9.2-15.9 16.8 7.5zM292.8 161.8l-14.9 10.9 5.8 17.5-14.9-10.8-14.9 11 5.6-17.6-14.9-10.7 18.4-.1 5.6-17.6 5.8 17.5zM115 46.3l17.3 53.5h56.2l-45.4 32.9 17.3 53.5-45.4-33-45.5 33 17.4-53.5-45.5-32.9h56.3z"/></g></svg>
+    <span class="icon-name">Mandarin</span>
+    <span class="icon-source">CN flag</span>
+  </div>
+  <!-- MY flag -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 513 342" style="width:32px;height:21px;border-radius:2px;"><path fill="#FFF" d="M0 0h513v342H0z"/><g fill="#c00"><path d="M0 0h513v24.4H0zM0 48.9h513v24.4H0zM0 97.7h513v24.4H0zM0 146.6h513V171H0zM0 195.4h513v24.4H0zM0 244.3h513v24.4H0zM0 293.1h513v24.4H0z"/></g><path fill="#006" d="M0 0h256.5v195.4H0z"/><path d="M153.3 42.1C122.6 30.7 88.5 46.3 77.1 77s4.2 64.8 34.9 76.2c13.3 5 28 5 41.4 0-30.7 24.5-75.4 19.6-100-11.1s-19.6-75.4 11.1-100c26-20.7 62.9-20.7 88.8 0zm26.7 75-20.6 23.3 5.4-30.6-31-1.6 27.3-14.9L143 68l28.6 12 8.4-29.9 8.4 29.9L217 68l-18 25.4 27.3 14.9-31 1.6 5.4 30.6-20.7-23.4z" fill="#fc0"/></svg>
+    <span class="icon-name">Malay</span>
+    <span class="icon-source">MY flag</span>
+  </div>
+  <!-- FR flag -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 513 342" style="width:32px;height:21px;border-radius:2px;"><path fill="#FFF" d="M0 0h513v342H0z"/><path fill="#00318A" d="M0 0h171v342H0z"/><path fill="#D80027" d="M342 0h171v342H342z"/></svg>
+    <span class="icon-name">French</span>
+    <span class="icon-source">FR flag</span>
+  </div>
+</div>
+
+<h2>NEW Indicators</h2>
+<div class="grid">
+  <!-- Family Friendly -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="7" r="2.5"/>
+      <path d="M5.5 21v-3.5a3.5 3.5 0 0 1 3.5-3.5"/>
+      <circle cx="18" cy="8" r="2"/>
+      <path d="M21 21v-2a3 3 0 0 0-3-3"/>
+      <circle cx="13.5" cy="5" r="1.5"/>
+      <path d="M12 21v-4.5A1.5 1.5 0 0 1 13.5 15h0"/>
+    </svg>
+    <span class="icon-name">Family Friendly</span>
+    <span class="icon-source">Custom family</span>
+  </div>
+  <!-- Alcoholic drinks -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/>
+    </svg>
+    <span class="icon-name">Alcoholic Drinks</span>
+    <span class="icon-source">Lucide Wine</span>
+  </div>
+  <!-- Minimum Age -->
+  <div class="icon-cell">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <text x="12" y="12.3" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="8" font-weight="500" fill="#FFA333">18+</text>
+    </svg>
+    <span class="icon-name">18+ / Min. Age</span>
+    <span class="icon-source">Custom badge</span>
+  </div>
+  <!-- Private Tour -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+    </svg>
+    <span class="icon-name">Private Tour</span>
+    <span class="icon-source">Lucide User</span>
+  </div>
+  <!-- Group Tour -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>
+    </svg>
+    <span class="icon-name">Group Tour</span>
+    <span class="icon-source">Lucide Users</span>
+  </div>
+  <!-- Free Cancellation -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>
+    </svg>
+    <span class="icon-name">Free Cancellation</span>
+    <span class="icon-source">Lucide RotateCcw</span>
+  </div>
+  <!-- Local Impact -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
+    </svg>
+    <span class="icon-name">Local Impact</span>
+    <span class="icon-source">Lucide Handshake</span>
+  </div>
+  <!-- Gluten-free -->
+  <div class="icon-cell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="22"/>
+    </svg>
+    <span class="icon-name">Gluten-free</span>
+    <span class="icon-source">Lucide WheatOff</span>
+  </div>
+</div>
+
+<!-- ====== TOUR DEMO ====== -->
+<h2>Full Tour Demo — With All Indicators</h2>
+
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">Kampung Kitchen: A Taste of Malay Heritage</div>
+
+    <!-- Info section (white boxes) -->
+    <div class="section-title info">Info</div>
+    <div class="attribute-row">
+      <div class="box info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span class="label">4 hours</span>
+      </div>
+      <div class="box info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>
+        </svg>
+        <span class="label">Up to 8</span>
+      </div>
+      <div class="box info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <span class="label">Mon–Sat</span>
+      </div>
+      <div class="box info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="16" cy="6" r="1.5"/><path d="M7 21a5 5 0 1 0 4.5-7.5"/><path d="M11.5 13.5 16 2l4 3.5"/>
+        </svg>
+        <span class="label">Limited</span>
+      </div>
+      <!-- NEW: Private Tour indicator (white box — logistics) -->
+      <div class="box info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="label">Private</span>
+      </div>
+      <!-- NEW: Min Age (white box — logistics) -->
+      <div class="box info">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#B52D38" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <text x="12" y="12.3" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="8" font-weight="500" fill="#B52D38">12+</text>
+        </svg>
+        <span class="label">Min Age 12</span>
+      </div>
+      <!-- NEW: Free Cancellation (white box — policy) -->
+      <div class="box info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>
+        </svg>
+        <span class="label">Free Cancel</span>
+      </div>
+    </div>
+
+    <!-- Good For section (orange boxes) -->
+    <div class="section-title tags">Good For</div>
+    <div class="attribute-row">
+      <!-- Walking -->
+      <div class="box tag">
+        <svg viewBox="0 0 24 20" width="20" height="17" fill="none" stroke="none">
+          <rect x="1" y="4" width="3" height="14" rx="0.8" fill="#FFA333" opacity="0.25"/>
+          <rect x="6" y="4" width="3" height="14" rx="0.8" fill="#FFA333" opacity="0.15"/>
+          <rect x="11" y="4" width="3" height="14" rx="0.8" fill="#FFA333" opacity="0.15"/>
+          <rect x="16" y="4" width="3" height="14" rx="0.8" fill="#FFA333" opacity="0.15"/>
+          <rect x="21" y="4" width="3" height="14" rx="0.8" fill="#FFA333" opacity="0.15"/>
+        </svg>
+        <span class="label">Easy</span>
+      </div>
+
+      <!-- Languages: English + Malay -->
+      <div class="box tag">
+        <div style="display:flex;gap:3px;">
+          <svg viewBox="0 0 513 342" style="width:20px;height:13px;border-radius:1.5px;"><g fill="#FFF"><path d="M0 0h513v341.3H0V0z"/><path d="M311.7 230 513 341.3v-31.5L369.3 230h-57.6zM200.3 111.3 0 0v31.5l143.7 79.8h56.6z"/></g><g fill="#012169"><path d="M393.8 230 513 295.7V230H393.8zm-82.1 0L513 341.3v-31.5L369.3 230h-57.6zm146.9 111.3-147-81.7v81.7h147zM90.3 230 0 280.2V230h90.3zm110 14.2v97.2H25.5l174.8-97.2zM118.2 111.3 0 45.6v65.7h118.2zm82.1 0L0 0v31.5l143.7 79.8h56.6zM53.4 0l147 81.7V0h-147zM421.7 111.3 513 61.1v50.2h-91.3zm-110-14.2V0h174.9L311.7 97.1z"/></g><g fill="#c8102e"><path d="M288 0h-64v138.7H0v64h224v138.7h64V202.7h224v-64H288V0z"/></g></svg>
+          <svg viewBox="0 0 513 342" style="width:20px;height:13px;border-radius:1.5px;"><path fill="#FFF" d="M0 0h513v342H0z"/><g fill="#c00"><path d="M0 0h513v24.4H0zM0 48.9h513v24.4H0zM0 97.7h513v24.4H0zM0 146.6h513V171H0zM0 195.4h513v24.4H0zM0 244.3h513v24.4H0zM0 293.1h513v24.4H0z"/></g><path fill="#006" d="M0 0h256.5v195.4H0z"/><path d="M153.3 42.1C122.6 30.7 88.5 46.3 77.1 77s4.2 64.8 34.9 76.2c13.3 5 28 5 41.4 0-30.7 24.5-75.4 19.6-100-11.1s-19.6-75.4 11.1-100c26-20.7 62.9-20.7 88.8 0zm26.7 75-20.6 23.3 5.4-30.6-31-1.6 27.3-14.9L143 68l28.6 12 8.4-29.9 8.4 29.9L217 68l-18 25.4 27.3 14.9-31 1.6 5.4 30.6-20.7-23.4z" fill="#fc0"/></svg>
+        </div>
+        <span class="label">Eng / Malay</span>
+      </div>
+
+      <!-- Dietary: Halal + Vegetarian -->
+      <div class="box tag">
+        <div style="display:flex;gap:3px;align-items:center;">
+          <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="none" stroke="#FFA333" stroke-width="1.5" opacity="0.4"/><text x="12" y="12.3" text-anchor="middle" dominant-baseline="central" font-family="'Noto Naskh Arabic','Traditional Arabic','Arial',sans-serif" font-size="9" fill="#FFA333" opacity="0.8">حلال</text></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        </div>
+        <span class="label">Halal·Veg</span>
+      </div>
+
+      <!-- NEW: Family Friendly -->
+      <div class="box tag">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="7" r="2.5"/>
+          <path d="M5.5 21v-3.5a3.5 3.5 0 0 1 3.5-3.5"/>
+          <circle cx="18" cy="8" r="2"/>
+          <path d="M21 21v-2a3 3 0 0 0-3-3"/>
+          <circle cx="13.5" cy="5" r="1.5"/>
+          <path d="M12 21v-4.5A1.5 1.5 0 0 1 13.5 15h0"/>
+        </svg>
+        <span class="label">Family</span>
+      </div>
+
+      <!-- NEW: Alcoholic Drinks (shown as excluded — crossed out variant?) -->
+      <div class="box tag">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+          <path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/>
+          <line x1="4" y1="4" x2="20" y2="20" stroke="#FFA333" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="label" style="opacity:0.5;">No alcohol</span>
+      </div>
+
+      <!-- NEW: Local Impact -->
+      <div class="box tag">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>
+        </svg>
+        <span class="label">Local Impact</span>
+      </div>
+
+      <!-- NEW: Gluten-free -->
+      <div class="box tag">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m2 22 10-10"/><path d="m16 8-1.17 1.17"/><path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/><path d="m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97"/><path d="M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62"/><path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"/><path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"/><path d="m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98"/><path d="M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28"/><line x1="2" x2="22" y1="2" y2="2"/>
+        </svg>
+        <span class="label">Gluten-free</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-desc">
+    <strong>All icons from Lucide (ISC):</strong> Clock · Users · Calendar · Accessibility · User · Wine · RotateCcw · Handshake · WheatOff · Leaf · Vegan.<br>
+    <strong>Custom icons:</strong> Family (parent+child+infant silhouettes), Halal (Arabic "حلال"), Walking bars (5-level), Minimum Age (number badge).<br>
+    <strong>Flags:</strong> UK, China, Malaysia, France from <code>country-flag-icons</code> (MIT).<br>
+    <strong>Key design decisions:</strong><br>
+    &nbsp;&nbsp;• Info (white boxes): logistics + policies — Duration, Group, Schedule, Accessibility, Private/Group, Min Age, Cancellation<br>
+    &nbsp;&nbsp;• Good For (orange boxes): suitability tags — Walking, Language, Dietary, Family, Drinks, Local Impact<br>
+    &nbsp;&nbsp;• "No alcohol" shown as muted icon + strikethrough — communicates exclusion without implying it's missing<br>
+    &nbsp;&nbsp;• Family icon shows 3 sizes (adult + child + infant) — immediately recognizable
+  </div>
+</div>
+
+</body>
+</html>

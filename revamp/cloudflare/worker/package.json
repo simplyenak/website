@@ -1,0 +1,15 @@
+{
+  "name": "simply-enak-forms-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "deploy:production": "wrangler deploy --env production",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:local": "wrangler dev --local"
+  },
+  "devDependencies": {
+    "wrangler": "^4.90.1"
+  }
+}

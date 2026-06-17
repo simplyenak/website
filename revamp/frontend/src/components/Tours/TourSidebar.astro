@@ -1,0 +1,606 @@
+---
+import PriceTag from "@/components/Design/PriceTag.astro";
+import { siteConfig } from "@/lib/site-config";
+import { getLangFromUrl, localizePath } from "@/i18n/utils";
+
+interface Props {
+  price: number;
+  widgetId: string;
+  productName: string;
+}
+
+const { price, widgetId, productName } = Astro.props;
+const hasWidget = widgetId && widgetId.trim() !== "";
+const whatsappMsg = encodeURIComponent(`Hi! I'd like to join the ${productName} (RM ${price}/person). Can you tell me about availability?`);
+const whatsappUrl = `https://wa.me/${siteConfig.whatsappDigits}?text=${whatsappMsg}`;
+const inquiryWebhookUrl = import.meta.env.PUBLIC_FORMS_WEBHOOK || siteConfig.formsWebhookUrl;
+const email = siteConfig.email;
+const lang = getLangFromUrl(Astro.url);
+// Unique ID so multiple sidebars on a page (if ever) don't conflict
+const uid = Math.random().toString(36).slice(2, 7);
+---
+
+<div class="space-y-8 sticky top-24">
+  <!-- Booking / Request Card (Desktop) -->
+  <div
+    class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hidden lg:block"
+  >
+    <!-- Header -->
+    <div class={`p-6 ${hasWidget ? 'bg-primary' : 'bg-[#1a3a2a]'} text-white`}>
+      <h3 class="text-xl font-bold mb-1">{hasWidget ? 'Book This Tour' : 'Request This Tour'}</h3>
+      <p class="text-white/80 text-sm">{hasWidget ? 'Instant confirmation' : 'We\'ll confirm within 24 hours'}</p>
+    </div>
+
+    <div class="p-6">
+      <!-- Price display -->
+      <div class="flex items-baseline gap-1 mb-6">
+        <span class="text-sm text-gray-500">From</span>
+        <span class="text-3xl font-bold text-primary">RM {price}</span>
+        <span class="text-sm text-gray-500">/ person</span>
+      </div>
+
+      {hasWidget ? (
+        <!-- TicketingHub Widget Container -->
+        <div id={`widget-container-desktop-${widgetId}`} class="w-full">
+          <script
+            is:inline
+            async
+            src="https://assets.ticketinghub.com/checkout.js"
+            data-widget={widgetId}></script>
+        </div>
+      ) : (
+        <!-- Booking Request Form -->
+        <form id={`request-form-${uid}`} class="space-y-3" novalidate>
+          <input type="hidden" name="tourName" value={productName} />
+          <input type="hidden" name="tourPrice" value={`RM ${price}`} />
+          <input type="hidden" name="source" value="sidebar" />
+
+          <!-- Date range -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-medium text-gray-600 mb-1">From date</label>
+              <input
+                type="date"
+                name="dateFrom"
+                class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-600 mb-1">To date</label>
+              <input
+                type="date"
+                name="dateTo"
+                class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors"
+              />
+            </div>
+          </div>
+
+          <!-- Guests counters -->
+          <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <!-- Adults row -->
+            <div class="flex items-center justify-between px-3 py-2.5 border-b border-gray-100">
+              <div>
+                <span class="text-sm font-medium text-gray-800">Adults</span>
+                <span class="text-xs text-gray-400 ml-1">Age 12+</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button
+                  type="button"
+                  class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-lg leading-none"
+                  data-target={`adults-${uid}`}
+                  data-delta="-1"
+                  data-min="1"
+                >−</button>
+                <span id={`adults-${uid}`} class="w-6 text-center font-semibold text-gray-800 select-none">2</span>
+                <button
+                  type="button"
+                  class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors text-lg leading-none"
+                  data-target={`adults-${uid}`}
+                  data-delta="1"
+                  data-max="20"
+                >+</button>
+              </div>
+            </div>
+            <!-- Children row -->
+            <div class="flex items-center justify-between px-3 py-2.5">
+              <div>
+                <span class="text-sm font-medium text-gray-800">Children</span>
+                <span class="text-xs text-gray-400 ml-1">Under 12</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button
+                  type="button"
+                  class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-lg leading-none"
+                  data-target={`children-${uid}`}
+                  data-delta="-1"
+                  data-min="0"
+                >−</button>
+                <span id={`children-${uid}`} class="w-6 text-center font-semibold text-gray-800 select-none">0</span>
+                <button
+                  type="button"
+                  class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors text-lg leading-none"
+                  data-target={`children-${uid}`}
+                  data-delta="1"
+                  data-max="10"
+                >+</button>
+              </div>
+            </div>
+          </div>
+          <!-- Hidden fields carrying guest counts -->
+          <input type="hidden" name="adults" id={`adults-input-${uid}`} value="2" />
+          <input type="hidden" name="children" id={`children-input-${uid}`} value="0" />
+
+          <!-- Contact details -->
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name *"
+            aria-label="Your name (required)"
+            required
+            autocomplete="name"
+            class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address *"
+            aria-label="Email address (required)"
+            required
+            autocomplete="email"
+            class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="WhatsApp / phone"
+            aria-label="WhatsApp or phone number"
+            autocomplete="tel"
+            class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors"
+          />
+          <textarea
+            name="specialRequests"
+            placeholder="Dietary needs, allergies, or questions?"
+            aria-label="Special requests, dietary needs, or questions"
+            rows="2"
+            class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors resize-none"
+          ></textarea>
+          <p class="text-xs text-gray-400 -mt-1">Please mention any food allergies — we plan around them.</p>
+
+          <!-- Honeypot: hidden from real users, bots fill this in -->
+          <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;visibility:hidden;" aria-hidden="true">
+            <label for={`hp-website-${uid}`}>Leave this blank</label>
+            <input type="text" id={`hp-website-${uid}`} name="honeypot_website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div id={`request-error-${uid}`} class="hidden text-red-600 text-xs p-2 bg-red-50 border border-red-200 rounded-lg"></div>
+
+          <button
+            type="submit"
+            id={`request-submit-${uid}`}
+            class="w-full bg-[#1a3a2a] hover:bg-[#0f2419] text-white font-bold py-3 px-4 rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            Reserve My Spot
+          </button>
+
+          <p class="text-xs text-gray-400 mt-1 text-center">We'll reply within 3 hours</p>
+
+          <p class="text-center text-xs text-gray-400">
+            Or&nbsp;
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="text-[#1a3a2a] underline">ask on WhatsApp instead</a>
+          </p>
+        </form>
+      )}
+
+      <!-- Trust signals cluster -->
+      <div class="mt-5 pt-5 border-t border-gray-100 grid grid-cols-2 gap-3">
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Free cancellation
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Reply within 3 hrs
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Max 8 per group
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          Since 2011
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p class="text-xs text-gray-500 mb-2">
+          <span class="font-semibold">Need help?</span>
+          {' '}
+          <a href={localizePath("/contact/", lang)} class="text-primary hover:underline">Contact us</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between text-xs text-gray-500">
+      <span class="flex items-center gap-1">
+        <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        No booking fees
+      </span>
+      <span class="flex items-center gap-1">
+        <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        {hasWidget ? 'Secure payment' : 'Free cancellation'}
+      </span>
+    </div>
+  </div>
+
+  <!-- Quick Contact (Desktop) -->
+  <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 hidden lg:block">
+    <h4 class="font-bold text-gray-900 mb-2">Have Questions?</h4>
+    <p class="text-sm text-gray-600 mb-4">
+      Not sure if this tour is right for you? WhatsApp us for a quick chat.
+    </p>
+    <a
+      href={`https://wa.me/${siteConfig.whatsappDigits}`}
+      target="_blank"
+      data-track-source={`sidebar:${productName}`}
+      class="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-2 px-4 rounded-lg transition-colors text-sm"
+    >
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.884.902-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.494.999-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 4.976 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path>
+      </svg>
+      WhatsApp Us
+    </a>
+  </div>
+</div>
+
+<!-- Mobile Sticky Bottom Bar -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 safe-area-pb">
+  <div class="flex items-center justify-between gap-4">
+    <div>
+      <div class="text-xs text-gray-500">From</div>
+      <div class="flex items-baseline gap-1">
+        <span class="text-xl font-bold text-primary">RM {price}</span>
+        <span class="text-xs text-gray-500">/ person</span>
+      </div>
+    </div>
+
+    {hasWidget ? (
+      <button
+        data-widget-trigger={widgetId}
+        class="flex-1 bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md flex items-center justify-center gap-2"
+      >
+        <span>Save Your Spot</span>
+      </button>
+    ) : (
+      <button
+        id={`drawer-open-${uid}`}
+        type="button"
+        class="flex-1 bg-[#1a3a2a] hover:bg-[#0f2419] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md flex items-center justify-center gap-2"
+      >
+        <span>Request This Tour</span>
+      </button>
+    )}
+  </div>
+</div>
+
+<!-- Mobile Slide-up Drawer (only for no-widget tours) -->
+{!hasWidget && (
+  <div
+    id={`mobile-drawer-${uid}`}
+    class="lg:hidden fixed inset-0 z-[60] hidden"
+    aria-modal="true"
+    role="dialog"
+  >
+    <!-- Backdrop -->
+    <div id={`drawer-backdrop-${uid}`} class="absolute inset-0 bg-black/50"></div>
+    <!-- Sheet -->
+    <div class="drawer-sheet absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-[92dvh] flex flex-col shadow-2xl translate-y-full" id={`drawer-sheet-${uid}`}>
+      <!-- Handle + header -->
+      <div class="flex-shrink-0 px-4 pt-3 pb-4 border-b border-gray-100">
+        <div class="w-10 h-1 bg-gray-300 rounded-full mx-auto mb-3"></div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-bold text-gray-900">Request This Tour</h3>
+            <p class="text-xs text-gray-500">{productName}</p>
+          </div>
+          <button id={`drawer-close-${uid}`} type="button" class="p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition-colors" aria-label="Close">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable form body -->
+      <div class="flex-1 overflow-y-auto px-4 py-4">
+        <form id={`mobile-request-form-${uid}`} class="space-y-3" novalidate>
+          <input type="hidden" name="tourName" value={productName} />
+          <input type="hidden" name="tourPrice" value={`RM ${price}`} />
+          <input type="hidden" name="source" value="mobile-drawer" />
+
+          <!-- Date range -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-medium text-gray-600 mb-1">From date</label>
+              <input
+                type="date"
+                name="dateFrom"
+                class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-600 mb-1">To date</label>
+              <input
+                type="date"
+                name="dateTo"
+                class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors"
+              />
+            </div>
+          </div>
+
+          <!-- Guest counters -->
+          <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <div class="flex items-center justify-between px-3 py-2.5 border-b border-gray-100">
+              <div>
+                <span class="text-sm font-medium text-gray-800">Adults</span>
+                <span class="text-xs text-gray-400 ml-1">Age 12+</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button type="button" class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-lg leading-none" data-target={`m-adults-${uid}`} data-delta="-1" data-min="1">−</button>
+                <span id={`m-adults-${uid}`} class="w-6 text-center font-semibold text-gray-800 select-none">2</span>
+                <button type="button" class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors text-lg leading-none" data-target={`m-adults-${uid}`} data-delta="1" data-max="20">+</button>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-3 py-2.5">
+              <div>
+                <span class="text-sm font-medium text-gray-800">Children</span>
+                <span class="text-xs text-gray-400 ml-1">Under 12</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button type="button" class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-lg leading-none" data-target={`m-children-${uid}`} data-delta="-1" data-min="0">−</button>
+                <span id={`m-children-${uid}`} class="w-6 text-center font-semibold text-gray-800 select-none">0</span>
+                <button type="button" class="counter-btn w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1a3a2a] hover:text-[#1a3a2a] transition-colors text-lg leading-none" data-target={`m-children-${uid}`} data-delta="1" data-max="10">+</button>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" name="adults" id={`m-adults-input-${uid}`} value="2" />
+          <input type="hidden" name="children" id={`m-children-input-${uid}`} value="0" />
+
+          <!-- Contact -->
+          <input type="text" name="name" placeholder="Your name *" aria-label="Your name (required)" required autocomplete="name" class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors" />
+          <input type="email" name="email" placeholder="Email address *" aria-label="Email address (required)" required autocomplete="email" class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors" />
+          <input type="tel" name="phone" placeholder="WhatsApp / phone" aria-label="WhatsApp or phone number" autocomplete="tel" class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors" />
+          <textarea name="specialRequests" placeholder="Dietary needs, allergies, or questions?" aria-label="Special requests, dietary needs, or questions" rows="2" class="w-full px-3 py-2.5 min-h-[44px] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#1a3a2a] focus:ring-1 focus:ring-[#1a3a2a]/20 transition-colors resize-none"></textarea>
+          <p class="text-xs text-gray-400 -mt-1">Please mention any food allergies — we plan around them.</p>
+
+          <div id={`mobile-request-error-${uid}`} class="hidden text-red-600 text-xs p-2 bg-red-50 border border-red-200 rounded-lg"></div>
+        </form>
+      </div>
+
+      <!-- Sticky footer CTA -->
+      <div class="flex-shrink-0 px-4 py-4 border-t border-gray-100 bg-white safe-area-pb">
+        <button
+          type="button"
+          id={`mobile-request-submit-${uid}`}
+          class="w-full bg-[#1a3a2a] hover:bg-[#0f2419] text-white font-bold py-3.5 px-4 rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          Reserve My Spot
+        </button>
+        <p class="text-center text-xs text-gray-400 mt-2">We'll reply within 3 hours</p>
+        <p class="text-center text-xs text-gray-400 mt-2">
+          Or&nbsp;
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="text-[#1a3a2a] underline">ask on WhatsApp instead</a>
+        </p>
+      </div>
+    </div>
+  </div>
+)}
+
+<!-- Modal for TicketingHub widget -->
+{hasWidget && (
+  <div
+    id={`booking-modal-${widgetId}`}
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+  >
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
+      <button
+        id={`close-modal-${widgetId}`}
+        class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-1"
+        aria-label="Close booking"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div class="p-4" id={`widget-container-modal-${widgetId}`}>
+        <script is:inline async src="https://assets.ticketinghub.com/checkout.js" data-widget={widgetId}></script>
+      </div>
+    </div>
+  </div>
+)}
+
+<script define:vars={{ widgetId, hasWidget, inquiryWebhookUrl, uid, email }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    // ── Counter buttons ──────────────────────────────────────────────────
+    document.querySelectorAll(".counter-btn").forEach((btn) => {
+      const targetId = btn.dataset.target;
+      const delta = parseInt(btn.dataset.delta, 10);
+      const min = btn.dataset.min !== undefined ? parseInt(btn.dataset.min, 10) : null;
+      const max = btn.dataset.max !== undefined ? parseInt(btn.dataset.max, 10) : null;
+
+      btn.addEventListener("click", () => {
+        const display = document.getElementById(targetId);
+        if (!display) return;
+        let current = parseInt(display.textContent, 10);
+        const next = current + delta;
+        if (min !== null && next < min) return;
+        if (max !== null && next > max) return;
+        display.textContent = String(next);
+
+        // Sync hidden input (target id pattern: adults-UID or m-adults-UID)
+        const hiddenId = targetId.replace(/^m-/, "m-") + "-input-" + uid;
+        const altHiddenId = targetId + "-input-" + uid;
+        const hidden = document.getElementById(hiddenId) || document.getElementById(altHiddenId);
+        if (hidden) hidden.value = String(next);
+
+        // Disable minus at min
+        if (min !== null) {
+          btn.closest('.flex').querySelectorAll('.counter-btn[data-delta="-1"]').forEach((b) => {
+            const val = parseInt(document.getElementById(b.dataset.target)?.textContent || "0", 10);
+            const bMin = b.dataset.min !== undefined ? parseInt(b.dataset.min, 10) : null;
+            b.disabled = bMin !== null && val <= bMin;
+          });
+        }
+      });
+
+      // Set initial disabled state
+      if (min !== null) {
+        const display = document.getElementById(targetId);
+        const current = display ? parseInt(display.textContent, 10) : 0;
+        btn.disabled = delta < 0 && current <= min;
+      }
+    });
+
+    // ── Shared submit logic ───────────────────────────────────────────────
+    async function submitRequest(form, submitBtn, errorDiv) {
+      const nameVal = form.querySelector('[name="name"]').value.trim();
+      const emailVal = form.querySelector('[name="email"]').value.trim();
+
+      if (!nameVal || !emailVal) {
+        errorDiv.textContent = "Please fill in your name and email address.";
+        errorDiv.classList.remove("hidden");
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        errorDiv.textContent = "Please enter a valid email address.";
+        errorDiv.classList.remove("hidden");
+        return;
+      }
+
+      errorDiv.classList.add("hidden");
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "Sending…";
+
+      if (!inquiryWebhookUrl) {
+        window.location.href = "/contact/";
+        return;
+      }
+
+      const formData = new FormData(form);
+      const payload = { submittedAt: new Date().toISOString(), pageUrl: window.location.href };
+      formData.forEach((val, key) => { payload[key] = val; });
+
+      try {
+        const res = await fetch(inquiryWebhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        window.location.href = "/thank-you-inquiry/";
+      } catch (err) {
+        console.error("Request form error:", err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        errorDiv.textContent = `Something went wrong. Please try WhatsApp or email ${email}.`;
+        errorDiv.classList.remove("hidden");
+      }
+    }
+
+    // ── Desktop request form ──────────────────────────────────────────────
+    if (!hasWidget) {
+      const desktopForm = document.getElementById("request-form-" + uid);
+      if (desktopForm) {
+        const submitBtn = document.getElementById("request-submit-" + uid);
+        const errorDiv = document.getElementById("request-error-" + uid);
+        desktopForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          submitRequest(desktopForm, submitBtn, errorDiv);
+        });
+      }
+
+      // ── Mobile drawer ─────────────────────────────────────────────────
+      const drawer = document.getElementById("mobile-drawer-" + uid);
+      const sheet = document.getElementById("drawer-sheet-" + uid);
+      const openBtn = document.getElementById("drawer-open-" + uid);
+      const closeBtn = document.getElementById("drawer-close-" + uid);
+      const backdrop = document.getElementById("drawer-backdrop-" + uid);
+
+      function openDrawer() {
+        if (!drawer || !sheet) return;
+        drawer.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        requestAnimationFrame(() => {
+          sheet.style.transform = "translateY(0)";
+        });
+      }
+
+      function closeDrawer() {
+        if (!drawer || !sheet) return;
+        sheet.style.transform = "translateY(100%)";
+        document.body.style.overflow = "";
+        setTimeout(() => { drawer.classList.add("hidden"); }, 300);
+      }
+
+      if (openBtn) openBtn.addEventListener("click", openDrawer);
+      if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+      if (backdrop) backdrop.addEventListener("click", closeDrawer);
+
+      // Mobile form submit
+      const mobileForm = document.getElementById("mobile-request-form-" + uid);
+      const mobileSubmitBtn = document.getElementById("mobile-request-submit-" + uid);
+      const mobileErrorDiv = document.getElementById("mobile-request-error-" + uid);
+
+      if (mobileSubmitBtn && mobileForm) {
+        mobileSubmitBtn.addEventListener("click", () => {
+          submitRequest(mobileForm, mobileSubmitBtn, mobileErrorDiv);
+        });
+      }
+    }
+
+    // ── TicketingHub modal ────────────────────────────────────────────────
+    if (hasWidget) {
+      const openButtons = document.querySelectorAll('[data-widget-trigger="' + widgetId + '"]');
+      const modal = document.getElementById("booking-modal-" + widgetId);
+      const closeButton = document.getElementById("close-modal-" + widgetId);
+
+      if (modal) {
+        openButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+          });
+        });
+
+        if (closeButton) {
+          closeButton.addEventListener("click", () => {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+          });
+        }
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+          }
+        });
+      }
+    }
+  });
+</script>
+
+<style>
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  .drawer-sheet {
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+</style>

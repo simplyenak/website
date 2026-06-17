@@ -1,0 +1,25 @@
+---
+---
+
+<!-- Gradient Transition Section - Dark to Light -->
+<div class="w-full h-48 md:h-64 relative overflow-hidden" style="background: linear-gradient(to bottom, #0f0e0e 0%, #2a2520 25%, #4a4235 50%, #7a6f5a 75%, #fdf8f2 100%);">
+  <!-- Subtle dot pattern overlay -->
+  <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px); background-size: 32px 32px;"></div>
+  
+  <!-- Subtle fade animation -->
+  <style>
+    @keyframes gradientShift {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.5; }
+    }
+    .gradient-overlay {
+      animation: gradientShift 8s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gradient-overlay {
+        animation: none;
+        opacity: 0.3;
+      }
+    }
+  </style>
+</div>

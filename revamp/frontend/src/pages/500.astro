@@ -1,0 +1,53 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { siteConfig } from "@/lib/site-config";
+---
+
+<Layout
+  title="Something Went Wrong | Simply Enak"
+  description="Something went wrong on our end. We're looking into it — try again or WhatsApp us directly."
+  noindex={true}
+>
+  <div class="bg-gradient-to-br from-amber-50 to-orange-50 py-20 md:py-28">
+    <div class="main-container text-center">
+
+      <div class="text-7xl mb-6">🍳</div>
+
+      <h1 class="text-4xl md:text-5xl font-merriweather font-bold text-gray-900 mb-4">
+        Something burnt in the kitchen
+      </h1>
+
+      <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+        Something went wrong on our end — we're looking into it. Try refreshing the page, or reach us on WhatsApp.
+      </p>
+
+      <!-- Primary CTAs -->
+      <div class="flex flex-wrap gap-4 justify-center mb-16">
+        <a
+          href="/tours/"
+          class="bg-primary text-white px-7 py-3 rounded-full font-semibold hover:bg-primary/90 transition"
+        >
+          Browse Our Tours
+        </a>
+        <a
+          href={`https://wa.me/${siteConfig.whatsappDigits}`}
+          class="border-2 border-primary text-primary px-7 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition"
+        >
+          WhatsApp Us
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Friendly fallback -->
+  <section class="py-12 text-center">
+    <div class="main-container">
+      <p class="text-gray-600 mb-2">Want to book or just have a question?</p>
+      <a href={`https://wa.me/${siteConfig.whatsappDigits}`} class="text-primary font-semibold hover:underline">
+        WhatsApp us directly → {siteConfig.phone}
+      </a>
+    </div>
+  </section>
+
+</Layout>

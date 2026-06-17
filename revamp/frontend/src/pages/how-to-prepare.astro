@@ -1,0 +1,209 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import CTASection from "@/components/CTASection.astro";
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import Icon from "@/components/Icon.astro";
+import SocialProof from "@/components/SocialProof.astro";
+import { getHowToPreparePage, getFAQsForPage } from "@/lib/content";
+import { siteConfig } from "@/lib/site-config";
+import { getLangFromUrl } from "@/i18n/utils";
+import { renderInlineMarkdown, stripMarkdown } from '@/lib/render-inline-markdown';
+
+export const prerender = true;
+
+// Get language from URL
+const lang = getLangFromUrl(Astro.url);
+
+// Fetch page content and FAQs from Payload
+const [page, preparedFaqs] = await Promise.all([
+  getHowToPreparePage(lang),
+  getFAQsForPage('how-to-prepare', lang),
+]);
+
+const wearItems = Array.isArray(page?.wear_items) ? page.wear_items : [
+  { icon: "icon-leaf", title: "Light, breathable clothing", tip: "Linen or moisture-wicking fabric — Malaysia is 30°C+ year-round with high humidity." },
+  { icon: "icon-compass", title: "Comfortable closed-toe shoes", tip: "Hawker centres and old town streets can have uneven ground and occasional puddles." },
+  { icon: "icon-heart", title: "Modest dress appreciated", tip: "When we walk near mosques or temples, covered shoulders and knees show respect to the community." },
+  { icon: "icon-star", title: "Rain jacket (monsoon months)", tip: "November–March in Penang and October–February in KL see frequent afternoon showers." },
+  { icon: "icon-thumbs-up", title: "Avoid wearing white", tip: "Hawker food is saucy and sometimes enthusiastic about landing on your clothes. Dark colours are more forgiving." },
+];
+
+const bringItems = Array.isArray(page?.bring_items) ? page.bring_items : [
+  { icon: "icon-star", title: "Cash (Malaysian ringgit)", tip: "Most hawker stalls are cash-only. Recommended: RM 50–100 for the day. ATMs are available near most meeting points." },
+  { icon: "icon-leaf", title: "Reusable water bottle", tip: "We provide drinks at every stop but topping up between stops keeps you comfortable in the heat." },
+  { icon: "icon-camera", title: "Camera or phone", tip: "You'll want photos. Every stop is visually remarkable — wok flames, neon signs, hand-carved ice." },
+  { icon: "icon-compass", title: "Small daypack", tip: "Keeps your hands free for pointing, eating, and gesturing enthusiastically." },
+];
+
+const expectSteps = Array.isArray(page?.expect_steps) ? page.expect_steps : [
+  { step: "Arrive 5–10 minutes early", detail: "Tours start on time. Arriving a little early means you can settle in, meet your guide, and hear the opening story — which sets the tone for everything that follows." },
+  { step: "Meet your guide with the blue badge", detail: `Look for the Simply Enak guide wearing a blue badge at the meeting point. If you're running late, WhatsApp us on ${siteConfig.phone} and we'll wait or guide you in.` },
+  { step: "Walk, eat, talk — repeat", detail: "The tour is a conversation, not a lecture. Your guide introduces each stall, you eat, you ask questions, you move on. 10+ tasting stops over 4–5 hours. Pace is relaxed." },
+  { step: "Come with questions", detail: "Why does char kway teow taste different in Penang? What's the story behind this stall? What does the owner do differently? Your guide loves this part — no question is too basic." },
+  { step: "No tipping required", detail: "We include everything in the tour price. You're welcome to tip your guide if you want to, but never feel obligated. The most useful thing you can do for us is leave a detailed review." },
+];
+
+const dietaryNotes = Array.isArray(page?.dietary_notes) ? page.dietary_notes : [
+  { label: "Vegetarian", detail: "Malaysia has deep Buddhist and Hindu food traditions. Every tour includes excellent plant-based dishes. Tell us in advance and your guide will call out vegetarian options at each stop." },
+  { label: "Halal", detail: "All Simply Enak tours are fully halal-friendly. Malaysia's hawker culture is predominantly halal — we've specifically chosen stalls that meet this standard." },
+  { label: "Gluten-free", detail: "Many dishes use rice noodles, rice, and naturally gluten-free ingredients. Cross-contamination can happen in busy hawker centres — let us know and we'll advise per stop." },
+  { label: "Allergies (nuts, shellfish)", detail: "Malaysian cooking uses peanuts and shrimp paste widely. Tell us your specific allergy when booking and your guide will be briefed. Severe allergies should carry medication." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: preparedFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: stripMarkdown(faq.answer),
+    },
+  })),
+};
+---
+
+<Layout
+  title={page?.seo_title}
+  description={page?.seo_description}
+  structuredData={schema}
+  hreflangPath="/how-to-prepare/"
+
+>
+  <GlobalHero
+    title={page?.hero_title}
+    highlight={page?.hero_highlight}
+    description={page?.hero_description}
+    image={page?.hero_image ?? undefined}
+  />
+
+  <!-- What to wear -->
+  <Section animate={true}>
+    <div class="max-w-4xl mx-auto">
+      {page?.what_to_wear_heading && <h2 class="text-h2 text-primary text-center mb-10 scroll-animate">{page.what_to_wear_heading}</h2>}
+      <div class="grid sm:grid-cols-2 gap-6">
+        {wearItems.map((item, index) => (
+          <Card class="flex gap-4 items-start border-l-4 border-primary/30 scroll-animate" style={`transition-delay: ${index * 100}ms`}>
+            <div class="w-10 h-10 flex-shrink-0 text-primary mt-0.5 min-w-[40px] min-h-[40px] flex items-center justify-center">
+              <Icon name={item.icon} class="w-full h-full" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="text-h3 text-primary mb-1">{item.title}</h3>
+              <p class="text-body">{item.tip}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Social Proof -->
+  <SocialProof variant="inline" />
+
+  <!-- What to bring -->
+  <Section variant="light" animate={true}>
+    <div class="max-w-4xl mx-auto">
+      {page?.what_to_bring_heading && <h2 class="text-h2 text-primary text-center mb-10 scroll-animate">{page.what_to_bring_heading}</h2>}
+      <div class="grid sm:grid-cols-2 gap-6">
+        {bringItems.map((item, index) => (
+          <Card class="flex gap-4 items-start border-l-4 border-secondary/40 scroll-animate" style={`transition-delay: ${index * 100}ms`}>
+            <div class="w-10 h-10 flex-shrink-0 text-primary mt-0.5 min-w-[40px] min-h-[40px] flex items-center justify-center">
+              <Icon name={item.icon} class="w-full h-full" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="text-h3 text-primary mb-1">{item.title}</h3>
+              <p class="text-body">{item.tip}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- What to expect -->
+  <Section animate={true}>
+    <div class="max-w-3xl mx-auto">
+      {page?.what_to_expect_heading && <h2 class="text-h2 text-primary text-center mb-10 scroll-animate">{page.what_to_expect_heading}</h2>}
+      <ol class="space-y-6">
+        {expectSteps.map((item, i) => (
+          <li class="flex gap-5 scroll-animate" style={`transition-delay: ${i * 100}ms`}>
+            <div class="w-9 h-9 flex-shrink-0 rounded-full bg-primary text-white flex items-center justify-center font-bold text-body">
+              {i + 1}
+            </div>
+            <div class="pt-1">
+              <h3 class="text-h3 text-primary mb-1">{item.step}</h3>
+              <p class="text-body">{item.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </Section>
+
+  <!-- Dietary notes -->
+  <Section variant="light" animate={true}>
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10 scroll-animate">
+        {page?.dietary_heading && <h2 class="text-h2 text-primary">{page.dietary_heading}</h2>}
+        {page?.dietary_intro && <p class="text-body mt-3 max-w-2xl mx-auto">{page.dietary_intro}</p>}
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {dietaryNotes.map((note, index) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm scroll-animate" style={`transition-delay: ${index * 100}ms`}>
+            <h3 class="text-h3 text-primary mb-2">{note.label}</h3>
+            <p class="text-body">{note.detail}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-body mt-6">
+        {page?.dietary_note}{" "}
+        {page?.dietary_contact_link_text ? (
+          <a href="/contact/" class="text-body font-medium text-primary hover:underline" aria-label="Contact us to ask about dietary requirements">{page.dietary_contact_link_text}</a>
+        ) : null} — we're happy to advise.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Quick FAQ from Payload -->
+  <Section animate={true}>
+    <div class="max-w-3xl mx-auto">
+      {page?.faq_heading && <h2 class="text-h2 text-primary text-center mb-10 scroll-animate">{page.faq_heading}</h2>}
+      <div class="space-y-4">
+        {preparedFaqs.map((faq, index) => (
+          <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden scroll-animate" style={`transition-delay: ${index * 100}ms`}>
+            <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-gray-900 group-open:text-primary transition-colors list-none min-h-[44px]">
+              {faq.question}
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:text-primary transition-transform group-open:rotate-180" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 text-body text-gray-600 leading-relaxed" set:html={renderInlineMarkdown(faq.answer)} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Directions link -->
+  <Section variant="accent" spacing="compact" animate={true}>
+    <div class="max-w-2xl mx-auto text-center scroll-animate">
+      {page?.directions_cta_text && <p class="text-body font-semibold text-gray-800 mb-3">{page.directions_cta_text}</p>}
+      {page?.directions_cta_button && (
+        <a
+          href="/directions/"
+          class="inline-flex items-center gap-2 bg-primary text-white px-7 py-3 rounded-full font-semibold hover:bg-primary/90 transition min-h-[44px] min-w-[210px] justify-center"
+          aria-label="View meeting point directions"
+        >
+          {page.directions_cta_button}
+        </a>
+      )}
+    </div>
+  </Section>
+
+  <CTASection />
+</Layout>

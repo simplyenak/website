@@ -1,0 +1,78 @@
+name: Build & Push Staging
+
+on:
+  push:
+    branches: [main]
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: simplyenak/website-backend
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=staging-
+            type=ref,event=branch,prefix=staging-
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NODE_ENV=production
+
+      - name: Deploy to staging (same server — staging compose stack)
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@v1
+        env:
+          DEPLOY_SHA: ${{ github.sha }}
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || 4040 }}
+          envs: DEPLOY_SHA
+          script: |
+            echo "=== Pulling staging image ==="
+            docker pull simplyenak/website-backend:staging-$DEPLOY_SHA
+
+            echo "=== Updating staging compose ==="
+            cd /etc/dokploy/compose/simplyenak-backend-7x9k2m/code
+            sed -i "s|simplyenak/website-backend:.*|simplyenak/website-backend:staging-$DEPLOY_SHA|" docker-compose.yml
+
+            echo "=== Redeploying staging stack ==="
+            docker stack deploy -c docker-compose.yml simplyenak-backend --with-registry-auth
+
+            echo "=== Cleanup old staging images ==="
+            docker image prune -f --filter "label=org.opencontainers.image.source=https://github.com/simplyenak/revamp" 2>/dev/null || true
+
+            echo "✅ Staging deployed: simplyenak/website-backend:staging-$DEPLOY_SHA"

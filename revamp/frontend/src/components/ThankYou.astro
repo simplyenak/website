@@ -1,0 +1,109 @@
+---
+import Section from "@/components/Design/Section.astro";
+import Card from "@/components/Design/Card.astro";
+import Button from "@/components/Button.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import { siteConfig } from "@/lib/site-config";
+import { getThankYouPageByType } from "@/lib/content";
+
+interface Props {
+  type: "booking" | "contact" | "inquiry";
+  location?: string;
+  image: any;
+}
+
+const { type, location, image } = Astro.props;
+
+const data = await getThankYouPageByType(type);
+
+// Parse JSON string fields (sync script parses them, but guard for safety)
+const paragraphs: string[] = Array.isArray(data?.paragraphs)
+  ? data.paragraphs
+  : [];
+const nextSteps: { title: string; description: string }[] = Array.isArray(
+  data?.next_steps
+)
+  ? data.next_steps
+  : [];
+const buttons: { title: string; href: string; type: string }[] = Array.isArray(
+  data?.buttons
+)
+  ? data.buttons
+  : [];
+
+// Build subtitle — support optional {location} template
+const subtitle = (() => {
+  if (location && data?.subtitle_template) {
+    return data.subtitle_template.replace("{location}", location);
+  }
+  return data?.subtitle_default ?? "";
+})();
+---
+
+<GlobalHero
+  title={data?.title ?? "Thank You"}
+  subtitle={subtitle}
+  description={paragraphs.join("\n\n")}
+/>
+
+<Section variant="light">
+  <h2 class="text-h2 text-primary text-center mb-12">What Happens Next</h2>
+  <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    {
+      nextSteps.map((step, index) => (
+        <Card>
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+              {index + 1}
+            </div>
+            <h3 class="text-h3 text-primary mb-3">{step.title}</h3>
+            <p class="text-body">{step.description}</p>
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+</Section>
+
+<Section>
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-xl text-primary mb-8 font-semibold">{data?.cta_text}</p>
+    <div class="flex gap-4 justify-center flex-wrap">
+      {
+        buttons.map((button) => (
+          <Button
+            href={button.href}
+            title={button.title}
+            buttonType={button.type}
+          />
+        ))
+      }
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-200">
+      <p class="text-sm text-gray-600 mb-4">Questions? We're here.</p>
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <a
+          href={`https://wa.me/${siteConfig.whatsappDigits}`}
+          class="text-primary hover:text-secondary transition-colors"
+        >
+          WhatsApp: {siteConfig.phone}
+        </a>
+        <span class="text-gray-400">•</span>
+        <a
+          href={`tel:${siteConfig.whatsappNumber}`}
+          class="text-primary hover:text-secondary transition-colors"
+        >
+          Call: {siteConfig.phone}
+        </a>
+        <span class="text-gray-400">•</span>
+        <a
+          href="/contact"
+          class="text-primary hover:text-secondary transition-colors"
+        >
+          Send Another Message
+        </a>
+      </div>
+    </div>
+  </div>
+</Section>
