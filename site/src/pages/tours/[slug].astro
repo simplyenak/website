@@ -464,3 +464,6 @@ const tourSchema = {
     </section>
   )}
 </Layout>
+<script is:inline>
+  if (window.trackTourInterest) window.trackTourInterest('{tour.name || tour.tagline || ''}');
+</script>
