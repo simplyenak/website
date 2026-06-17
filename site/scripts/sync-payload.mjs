@@ -640,17 +640,18 @@ function transformAboutPage(doc) {
 
   // ── Hero Section ──
   const hero = blocks.heroSection || {}
-  out.heroImage = doc.hero_image || ''
-  out.heroEyebrow = doc.hero_eyebrow || ''
+  out.heroImage = hero.image || doc.hero_image || ''
+  out.heroEyebrow = doc.hero_eyebrow || hero.eyebrow || 'Our Story'
   out.heroHeading = hero.title || ''
-  out.heroDescription = doc.hero_description || ''
+  out.heroDescription = hero.subtitle || doc.hero_description || ''
 
   // ── Founder Story Section ──
+  const founder = blocks.founderStorySection || {}
   out.founderSection = {
-    eyebrow: doc.founder_eyebrow || '',
-    heading: doc.founder_heading || '',
-    paragraphs: (doc.founder_paragraphs || '').split('\n\n').filter(Boolean),
-    image: doc.founder_image || '',
+    eyebrow: doc.founder_eyebrow || founder.eyebrow || 'Meet Pauline',
+    heading: founder.title || doc.founder_heading || '',
+    paragraphs: (founder.content || doc.founder_paragraphs || '').split('\n\n').filter(Boolean),
+    image: founder.image || doc.founder_image || '',
   }
 
   // ── Stats Section ──
@@ -671,53 +672,61 @@ function transformAboutPage(doc) {
     }))
   }
   out.timelineSection = {
-    eyebrow: doc.timeline_eyebrow || '',
-    heading: doc.timeline_heading || '',
-    description: doc.timeline_description || '',
+    eyebrow: doc.timeline_eyebrow || timelineBlock.eyebrow || '2011 - Present',
+    heading: doc.timeline_heading || timelineBlock.heading || '',
+    description: doc.timeline_description || timelineBlock.description || '',
     milestones,
   }
 
   // ── Philosophy Section ──
+  const philBlock = blocks.philosophySection || {}
   let philItems = []
   try {
     philItems = JSON.parse(doc.philosophy_items || '[]')
   } catch {}
+  if (!philItems.length && philBlock.items) {
+    philItems = philBlock.items
+  }
   out.philosophySection = {
-    eyebrow: doc.philosophy_eyebrow || '',
-    heading: doc.philosophy_heading || '',
+    eyebrow: doc.philosophy_eyebrow || philBlock.eyebrow || '',
+    heading: doc.philosophy_heading || philBlock.heading || '',
     items: philItems,
   }
 
   // ── Team Section ──
+  const teamBlock = blocks.teamSection || {}
   let teamMembers = []
   try {
     teamMembers = JSON.parse(doc.team_members || '[]')
   } catch {}
+  if (!teamMembers.length && teamBlock.members) {
+    teamMembers = teamBlock.members
+  }
   out.teamSection = {
-    eyebrow: doc.team_eyebrow || '',
-    heading: doc.team_heading || '',
-    description: doc.team_description || '',
+    eyebrow: doc.team_eyebrow || teamBlock.eyebrow || '',
+    heading: doc.team_heading || teamBlock.heading || '',
+    description: doc.team_description || teamBlock.description || '',
     members: teamMembers,
   }
 
   // ── Testimonial ──
   out.testimonial = {
     text: doc.testimonial_text || '',
-    name: doc.testimonial_name || '',
+    name: doc.testimonial_name || 'Our Guests',
     location: doc.testimonial_location || '',
   }
 
   // ── CTA Section ──
   out.ctaSection = {
-    heading: doc.cta_heading || '',
+    heading: doc.cta_heading || 'Ready to Taste Malaysia?',
     description: doc.cta_description || '',
     ctaPrimary: {
-      text: doc.cta_primary_text || '',
-      url: doc.cta_primary_url || '',
+      text: doc.cta_primary_text || 'Browse All Tours',
+      url: doc.cta_primary_url || '/tours',
     },
     ctaSecondary: {
-      text: doc.cta_secondary_text || '',
-      url: doc.cta_secondary_url || '',
+      text: doc.cta_secondary_text || 'Contact Us',
+      url: doc.cta_secondary_url || '/contact',
     },
   }
 
@@ -974,13 +983,13 @@ async function sync() {
   if (fs.existsSync(testimonialsPath)) {
     try {
       const testimonialDocs = JSON.parse(fs.readFileSync(testimonialsPath, 'utf-8'))
-      const reviews = (testimonialDocs || []).filter(d => d.workflowStatus === 'published').map(d => ({
+      const reviews = (testimonialDocs || []).filter(d => d.workflowStatus === 'published' && d.author_name).map(d => ({
         author: d.author_name || '',
         rating: d.rating || 5,
         text: d.review_text || '',
         date: d.date || '',
         location: d.author_location === 'KL' ? 'KL' : d.author_location === 'Penang' ? 'Penang' : 'KL',
-      })).filter(r => r.author && r.text)
+      }))
       fs.writeFileSync(reviewsPath, JSON.stringify(reviews, null, 2) + '\n')
       stats.written++
       log(`  ✅ reviews.json (${reviews.length} reviews)`)
