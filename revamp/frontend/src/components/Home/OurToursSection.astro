@@ -1,0 +1,64 @@
+---
+let { eyebrow, title, cards = [], button } = Astro.props
+import type { ImageMetadata } from 'astro'
+import ToursCard from '@/components/Tours/ToursCard.astro'
+import Button from '../Button.astro'
+import type { Button as ButtonType, Media } from '@/types'
+
+type Props = {
+  eyebrow?: string
+  title?: string
+  cards: Array<{
+    title: string
+    link: string
+    image: Media
+    price: string
+    duration: string
+    location: string
+    buttons: ButtonType[]
+    featured?: boolean | number
+  }>
+  button: ButtonType
+}
+---
+
+<section class="py-20 md:py-24 bg-cream">
+  <div class="main-container">
+    <div class="text-center mb-12">
+      {eyebrow && <span class="text-eyebrow text-orange block mb-3">{eyebrow}</span>}
+      {title && <h2 class="font-merriweather text-3xl md:text-4xl font-bold text-primary">{title}</h2>}
+    </div>
+
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10"
+    >
+      {
+        cards.map((card) => (
+          <ToursCard
+            title={card.title}
+            link={card.link}
+            image={card.image}
+            price={card.price}
+            duration={card.duration}
+            buttons={card.buttons}
+            location={card.location}
+            featured={card.featured}
+          />
+        ))
+      }
+    </div>
+
+    {
+      button && (
+        <div class="text-center mt-12">
+          <a href={button.href} class="cta-secondary inline-flex" style="border-color: var(--primary); color: var(--primary);">
+            {button.title}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 0.5rem;">
+              <path d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

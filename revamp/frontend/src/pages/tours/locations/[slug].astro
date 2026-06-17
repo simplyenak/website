@@ -1,0 +1,525 @@
+---
+/**
+ * Location Landing Page
+ * URL: /tours/locations/[slug]
+ * Example: /tours/locations/kuala-lumpur
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import Section from '@/components/Design/Section.astro';
+import Card from '@/components/Design/Card.astro';
+import GlobalHero from '@/components/GlobalHero.astro';
+import CTASection from '@/components/CTASection.astro';
+import Icon from '@/components/Icon.astro';
+import Button from '@/components/Button.astro';
+import { getLocationLandingPageBySlug, getAllLocationLandingPages, getToursByLocation, getAllDietaryLandingPages, getAllSpecialtyLandingPages, getImageUrl } from '@/lib/content';
+import siteSettings from '@/data/content/site-settings.json';
+import { getLangFromUrl } from '@/i18n/utils';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const pages = await getAllLocationLandingPages();
+  return pages.map((page: any) => ({ params: { slug: page.slug } }));
+}
+
+const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const page = await getLocationLandingPageBySlug(slug as string, lang);
+
+if (!page) return Astro.redirect('/404');
+
+const [tours, dietaryPages, specialtyPages] = await Promise.all([
+  getToursByLocation(slug as string),
+  getAllDietaryLandingPages(lang),
+  getAllSpecialtyLandingPages(lang),
+]);
+
+const AUDIENCE_SPECIALTY_SLUGS = ['corporate', 'celebrations', 'custom', 'tailored'];
+const experienceSpecialtyPages = specialtyPages.filter((s: any) => !AUDIENCE_SPECIALTY_SLUGS.includes(s.slug));
+
+const foodHighlights: { icon: string; title: string; description: string }[] =
+  Array.isArray(page.food_highlights) ? page.food_highlights : [];
+const signatureDishes: { name: string; emoji: string; description: string }[] =
+  Array.isArray(page.signature_dishes) ? page.signature_dishes : [];
+
+// ── Structured data ──────────────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplyenak.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://simplyenak.com/tours/" },
+    { "@type": "ListItem", "position": 3, "name": page.location_name, "item": `https://simplyenak.com/tours/locations/${slug}/` },
+  ],
+};
+// Map GMB URLs to location slugs — add more as GBP listings are created
+const gmbUrlBySlug: Record<string, string> = {
+  "kuala-lumpur": siteSettings.gmb_kl_url,
+  "penang": siteSettings.gmb_penang_url,
+};
+const gmbUrl = gmbUrlBySlug[slug as string] || null;
+
+const geoBySlug: Record<string, { latitude: string; longitude: string }> = {
+  "kuala-lumpur": { latitude: "3.1390", longitude: "101.6869" },
+  "penang":       { latitude: "5.4141", longitude: "100.3288" },
+  "ipoh":         { latitude: "4.5975", longitude: "101.0901" },
+  "melaka":       { latitude: "2.1896", longitude: "102.2501" },
+};
+
+const pageSchema = {
+  "@type": "TouristDestination",
+  "name": `${page.location_name} Food Tours`,
+  "description": page.meta_description || page.hero_description,
+  "url": `https://simplyenak.com/tours/locations/${slug}/`,
+  "touristType": "Food Tourism",
+  "containedInPlace": { "@type": "Country", "name": "Malaysia" },
+  ...(geoBySlug[slug as string] ? {
+    "geo": { "@type": "GeoCoordinates", ...geoBySlug[slug as string] }
+  } : {}),
+  ...(gmbUrl ? { "hasMap": gmbUrl, "sameAs": [gmbUrl] } : {}),
+};
+
+const itemListSchema = tours.length > 0 ? {
+  "@type": "ItemList",
+  "name": `Food Tours in ${page.location_name}`,
+  "url": `https://simplyenak.com/tours/locations/${slug}/`,
+  "itemListElement": (tours as any[]).map((tour: any, i: number) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": tour.name,
+      "url": `https://simplyenak.com/tours/${tour.slug}/`,
+      "description": tour.short_description || tour.meta_description || "",
+      ...(tour.price ? {
+        "offers": {
+          "@type": "Offer",
+          "price": String(tour.price),
+          "priceCurrency": tour.currency,
+          "availability": "https://schema.org/InStock",
+        }
+      } : {}),
+    },
+  })),
+} : null;
+
+// FAQPage schema removed — Google restricted FAQPage rich results to government/health sites only
+const faqSchema = null;
+---
+
+<Layout
+  title={page.meta_title || `${page.location_name} Food Tours – Simply Enak`}
+  description={page.meta_description || `Food tours in ${page.location_name} with guides who grew up eating here. ${page.hero_subtitle}`}
+  structuredData={[breadcrumbSchema, pageSchema, ...(itemListSchema ? [itemListSchema] : [])].filter(Boolean)}
+  hreflangPath={`/tours/locations/${slug}/`}
+  hreflangEnOnly={false}
+>
+  <GlobalHero
+    title={page.hero_title}
+    subtitle={page.hero_subtitle}
+    description={page.hero_description}
+    image={getImageUrl(page.hero_image) ?? undefined}
+    isOverlay={!!page.hero_image}
+    ctaPrimary={{ text: "See Our Tours", href: "#tours" }}
+    ctaSecondary={{ text: "Learn About the Food", href: "#intro" }}
+    badges={["5,000+ Guests", "4.9 Rating", "TripAdvisor Travellers' Choice 2023"]}
+  />
+
+  <!-- Breadcrumb -->
+  <Section variant="light" spacing="compact">
+    <nav class="flex items-center text-sm text-gray-600 max-w-4xl mx-auto" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/tours/" class="hover:text-primary transition-colors">Tours</a>
+      <span class="mx-2">/</span>
+      <span class="text-primary font-medium">{page.location_name}</span>
+    </nav>
+  </Section>
+
+  <!-- Intro (Payload) -->
+  <Section id="intro">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary mb-6">
+        {page.intro_title || `About ${page.location_name}`}
+      </h2>
+      <div class="prose prose-lg text-gray-700 max-w-none" set:html={page.intro_content} />
+    </div>
+  </Section>
+
+  <!-- What makes this city special (Payload food_highlights) -->
+  {foodHighlights.length > 0 && (
+    <Section variant="light">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary">
+          What Makes {page.location_name} Food Special
+        </h2>
+        <p class="text-body mt-4 text-gray-600">
+          Every Malaysian city has its own food story. Here's what sets {page.location_name} apart.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {foodHighlights.map((h) => (
+          <Card class="h-full">
+            <div class="w-12 h-12 text-primary mb-4">
+              <Icon name={h.icon} class="w-full h-full" />
+            </div>
+            <h3 class="text-h3 text-primary mb-3">{h.title}</h3>
+            <p class="text-body text-gray-600">{h.description}</p>
+          </Card>
+        ))}
+      </div>
+    </Section>
+  )}
+
+  <!-- Signature Dishes (Payload signature_dishes) -->
+  {signatureDishes.length > 0 && (
+    <Section>
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary">
+          Dishes You Need to Try in {page.location_name}
+        </h2>
+        <p class="text-body mt-4 text-gray-600">
+          These aren't the most Instagrammed dishes — they're the ones locals actually eat, every week, because they're that good.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {signatureDishes.map((dish) => (
+          <Card class="text-center h-full">
+            <div class="text-5xl mb-4">{dish.emoji}</div>
+            <h3 class="text-h4 text-primary mb-2">{dish.name}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{dish.description}</p>
+          </Card>
+        ))}
+      </div>
+    </Section>
+  )}
+
+  <!-- Heritage Introduction -->
+  <Section variant="light" id="heritage">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-eyebrow text-orange mb-3 text-center">The Story Behind the Food</p>
+      <h2 class="text-h2 text-primary text-center mb-8">
+        How {page.location_name} Became a Food Paradise
+      </h2>
+      <div class="prose prose-lg max-w-none text-gray-700">
+        <p class="text-lg leading-relaxed mb-6">
+          Every Malaysian city has its own food story. {page.location_name}'s story begins with the people who built it.
+        </p>
+        <p class="leading-relaxed mb-6">
+          In the 1800s, tin miners from southern China arrived alongside Malay villagers, Indian traders, and Peranakan families. Each brought their recipes. Each adapted to local ingredients. What emerged wasn't just "Malaysian food" — it was {page.location_name}'s food: a collision of cultures that created something entirely new.
+        </p>
+        <p class="leading-relaxed">
+          Today, you'll find Malay aunties making laksa with Chinese Hokkien noodles. Indian uncles serving roti canai alongside Malaysian teh tarik. Peranakan families keeping recipes that are 140 years old. This isn't fusion — it's evolution. And it's why {page.location_name} eats better than anywhere else.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Food Cultures Showcase -->
+  <Section>
+    <div class="max-w-5xl mx-auto">
+      <p class="text-eyebrow text-orange mb-3 text-center">The Four Pillars</p>
+      <h2 class="text-h2 text-primary text-center mb-4">
+        The Food Cultures of {page.location_name}
+      </h2>
+      <p class="text-body text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+        Four culinary traditions. One extraordinary food scene. Here's who shaped what you'll eat.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Malay Cuisine -->
+        <div class="bg-cream p-5 sm:p-6 rounded-xl border border-gray-100 h-full">
+          <h3 class="text-h4 text-primary mb-3">Malay Cuisine</h3>
+          <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+            The indigenous foundation: aromatic herbs, coconut milk, Islamic traditions. Think nasi lemak wrapped in banana leaves, satay grilled over charcoal, rendang slow-cooked for hours. This is the food of community meals, royal courts, and eating with your hands.
+          </p>
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Look for: Nasi Lemak, Satay, Rendang, Mee Rebus</p>
+        </div>
+
+        <!-- Chinese Malaysian Cuisine -->
+        <div class="bg-cream p-5 sm:p-6 rounded-xl border border-gray-100 h-full">
+          <h3 class="text-h4 text-primary mb-3">Chinese Malaysian Cuisine</h3>
+          <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+            Hokkien, Cantonese, and Hakka immigrants arrived with wok techniques and family recipes. They adapted to local chilies, tropical herbs, and British colonial ingredients. The result? Char kway teow with wok hei, bak kut teh brewed with Malaysian herbs, dim sum in kopitiam settings.
+          </p>
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Look for: Char Kway Teow, Hokkien Mee, Bak Kut Teh, Dim Sum</p>
+        </div>
+
+        <!-- Indian Malaysian Cuisine -->
+        <div class="bg-cream p-5 sm:p-6 rounded-xl border border-gray-100 h-full">
+          <h3 class="text-h4 text-primary mb-3">Indian Malaysian Cuisine</h3>
+          <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+            South Indian Tamil families and Indian Muslim (Mamak) communities brought banana leaf rice, roti canai, and teh tarik. The Mamak invented 24-hour restaurants. Tamil families kept the tradition of communal banana leaf meals. Both changed how {page.location_name} eats forever.
+          </p>
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Look for: Roti Canai, Banana Leaf Rice, Murtabak, Teh Tarik</p>
+        </div>
+
+        <!-- Peranakan Cuisine -->
+        <div class="bg-cream p-5 sm:p-6 rounded-xl border border-gray-100 h-full">
+          <h3 class="text-h4 text-primary mb-3">Peranakan (Nyonya) Cuisine</h3>
+          <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+            When Chinese immigrants married Malays, Peranakan culture was born. Their cuisine is the ultimate fusion: Chinese ingredients meet Malay spices, cooked with patience and precision. Laksa, ayam pongteh, kuih pie tee — these are grandmother recipes, refined over generations.
+          </p>
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Look for: Laksa, Ayam Pongteh, Kuih Pie Tee</p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Neighborhoods Guide -->
+  {foodHighlights.length > 0 && (
+    <Section variant="light" id="neighborhoods">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-eyebrow text-orange mb-3">Where to Eat</p>
+        <h2 class="text-h2 text-primary">
+          {page.location_name}'s Food Neighborhoods
+        </h2>
+        <p class="text-body mt-4 text-gray-600">
+          Every neighborhood has its own specialty. Here's where locals actually eat.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {foodHighlights.map((h) => (
+          <Card class="h-full">
+            <div class="w-12 h-12 text-primary mb-4">
+              <Icon name={h.icon} class="w-full h-full" />
+            </div>
+            <h3 class="text-h3 text-primary mb-3">{h.title}</h3>
+            <p class="text-body text-gray-600">{h.description}</p>
+          </Card>
+        ))}
+      </div>
+    </Section>
+  )}
+
+  <!-- Why Food Tours Matter -->
+  <Section>
+    <div class="max-w-4xl mx-auto bg-primary/5 rounded-2xl p-8 md:p-10 border border-primary/10">
+      <div class="text-center mb-8">
+        <p class="text-eyebrow text-orange mb-3">Why It Matters</p>
+        <h2 class="text-h2 text-primary">Why Join a Food Tour?</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-h4 text-primary mb-4">Without a Local Guide</h3>
+          <ul class="space-y-3 text-gray-700 text-sm">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>You'll eat at tourist traps on the main streets</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Miss the stalls where locals actually eat</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Never learn the cultural stories behind dishes</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Leave wondering "what was that dish called?"</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-h4 text-primary mb-4">With Simply Enak</h3>
+          <ul class="space-y-3 text-gray-700 text-sm">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>We visit family-run stalls we've known for 14+ years</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>You'll meet vendors and hear their life stories</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>Learn the history, culture, and techniques behind every dish</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>Leave with a mental map of where to eat for the rest of your trip</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section variant="light" id="faq">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-eyebrow text-orange mb-3 text-center">Common Questions</p>
+      <h2 class="text-h2 text-primary text-center mb-8">
+        Questions We Often Hear
+      </h2>
+      <div class="space-y-6">
+        <div class="bg-white p-6 rounded-xl border border-gray-100">
+          <h3 class="text-h5 text-primary mb-3">What's the best time to visit {page.location_name} for food?</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            {page.best_time_to_visit || `Year-round! ${page.location_name} has a tropical climate. The coolest months (November-February) are most comfortable for walking. Food stalls operate daily, though some may close during major festivals.`}
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-100">
+          <h3 class="text-h5 text-primary mb-3">Are your food tours suitable for vegetarians?</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Yes! We offer dedicated vegetarian food tours and can adapt most tours for dietary restrictions. Just let us know when booking and we'll ensure you have plenty of delicious options.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-100">
+          <h3 class="text-h5 text-primary mb-3">How much walking is involved?</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Our tours cover about 2-3 kilometers over 4-5 hours, with plenty of stops to eat and rest. We walk at a leisurely pace and can accommodate most fitness levels.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-100">
+          <h3 class="text-h5 text-primary mb-3">Do I need to book in advance?</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Yes, we recommend booking at least 2-3 days in advance. Our tours are limited to 8 people to keep the experience intimate, and they often fill up 1-2 weeks ahead during peak season.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-100">
+          <h3 class="text-h5 text-primary mb-3">What if it rains?</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Tours run rain or shine! We have covered walkways and indoor stops along the route. In case of severe weather, we'll reschedule or provide a full refund.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Pull Quote (Payload founder_quote) -->
+  {page.founder_quote && (
+    <Section variant="light">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="text-7xl leading-none mb-2" style="color: var(--color-primary); opacity: 0.18;">&ldquo;</div>
+        <p class="text-xl md:text-2xl italic text-gray-700 leading-relaxed mb-6">
+          {page.founder_quote}
+        </p>
+        <p class="text-sm text-gray-500 uppercase tracking-widest">{page.founder_quote_attribution}</p>
+      </div>
+    </Section>
+  )}
+
+  <!-- Practical Info (Payload) -->
+  {(page.best_time_to_visit || page.getting_around || page.what_to_pack) && (
+    <Section>
+      <h2 class="text-h2 text-primary text-center mb-12">Practical Information</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {page.best_time_to_visit && (
+          <Card>
+            <div class="w-10 h-10 text-orange mb-4">
+              <Icon name="icon-clock" class="w-full h-full" />
+            </div>
+            <h3 class="text-h3 text-primary mb-3">When to Visit</h3>
+            <p class="text-body text-gray-600">{page.best_time_to_visit}</p>
+          </Card>
+        )}
+        {page.getting_around && (
+          <Card>
+            <div class="w-10 h-10 text-orange mb-4">
+              <Icon name="icon-compass" class="w-full h-full" />
+            </div>
+            <h3 class="text-h3 text-primary mb-3">Getting Around</h3>
+            <div class="prose prose-sm text-gray-600 max-w-none" set:html={page.getting_around} />
+          </Card>
+        )}
+        {page.what_to_pack && (
+          <Card>
+            <div class="w-10 h-10 text-orange mb-4">
+              <Icon name="icon-star" class="w-full h-full" />
+            </div>
+            <h3 class="text-h3 text-primary mb-3">What to Pack</h3>
+            <p class="text-body text-gray-600">{page.what_to_pack}</p>
+          </Card>
+        )}
+      </div>
+    </Section>
+  )}
+
+  <!-- Tours in this location -->
+  {tours.length > 0 ? (
+    <Section variant="light" id="tours">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary">
+          Food Tours in {page.location_name}
+        </h2>
+        <p class="text-body mt-4 text-gray-600">
+          Local guides. Real vendors. The food {page.location_name} is proud of.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {tours.map((tour: any) => (
+          <a href={`/tours/${tour.slug}/`} class="group block">
+            <Card class="h-full flex flex-col">
+              {tour.hero_image && (
+                <div class="overflow-hidden rounded-lg mb-4 h-48 -mx-6 -mt-6">
+                  <img
+                    src={getImageUrl(tour.hero_image, { width: 600, height: 400 }) ?? tour.hero_image}
+                    alt={tour.name}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <h3 class="text-h3 text-primary mb-2 group-hover:text-secondary transition-colors">
+                {tour.name}
+              </h3>
+              {tour.tagline && <p class="text-sm text-gray-600 mb-4 flex-grow">{tour.tagline}</p>}
+              <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                {tour.duration && <span>⏱ {tour.duration}</span>}
+                {tour.location && <span>📍 {tour.location}</span>}
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-auto">
+                <span class="text-xl font-bold text-primary">
+                  {tour.currency || 'MYR'} {tour.price}
+                </span>
+                <span class="text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
+                  View Tour →
+                </span>
+              </div>
+            </Card>
+          </a>
+        ))}
+      </div>
+    </Section>
+  ) : (
+    <Section variant="light">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-h2 text-primary mb-4">Our Tours</h2>
+        <p class="text-body mb-8 text-gray-600">
+          We run food tours across Malaysia's top culinary destinations. Browse all tours to find what fits your group and dates.
+        </p>
+        <Button href="/tours/" title="Browse All Tours" buttonType="cta-primary" />
+      </div>
+    </Section>
+  )}
+
+  <!-- Sub-segmentation links — dietary & specialty in this city -->
+  <Section variant="light" spacing="compact">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-4">{page.location_name} tours by interest</p>
+      <div class="flex flex-wrap gap-2">
+        {dietaryPages.map((d: any) => (
+          <a
+            href={`/tours/locations/${slug}/${d.slug}/`}
+            class="inline-flex items-center gap-1.5 text-sm text-primary border border-primary/25 rounded-full px-3 py-1.5 hover:bg-primary hover:text-white hover:border-primary transition-colors"
+          >
+            <span>{d.icon}</span>
+            <span>{d.dietary_name}</span>
+          </a>
+        ))}
+        {experienceSpecialtyPages.map((s: any) => (
+          <a
+            href={`/tours/locations/${slug}/${s.slug}/`}
+            class="inline-flex items-center gap-1.5 text-sm text-primary border border-primary/25 rounded-full px-3 py-1.5 hover:bg-primary hover:text-white hover:border-primary transition-colors"
+          >
+            <span>{s.icon}</span>
+            <span>{s.specialty_name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <CTASection />
+</Layout>

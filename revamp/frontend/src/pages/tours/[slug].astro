@@ -1,0 +1,1391 @@
+---
+export const prerender = true;
+
+import Layout from "@/layouts/Layout.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getAllTours, getTourBySlug, getPageBySlug, getAllPages, getVendorsByTour, getFAQsByPage, getTestimonialsByPage, getSiteSettings, getAllStories, getRelatedStories, getMainTourSlugs } from "@/lib/content";
+import { getLangFromUrl } from "@/i18n/utils";
+import { siteConfig } from "@/lib/site-config";
+import siteSettingsData from "@/data/content/site-settings.json";
+import allToursData from "@/data/content/tours.json";
+import TourSidebar from "@/components/Tours/TourSidebar.astro";
+import CTASection from "@/components/CTASection.astro";
+import ReviewCard from "@/components/TourDetails/ReviewCard.astro";
+import { renderInlineMarkdown } from '@/lib/render-inline-markdown';
+import { TOUR_CHIPS } from '@/lib/tour-chips';
+import type { ChipCfg } from '@/lib/tour-chips';
+
+export async function getStaticPaths() {
+  const [tours, pages] = await Promise.all([getAllTours(), getAllPages()]);
+  // Deduplicate: 32 slugs overlap between tours and pages (draft tours)
+  const allSlugs = new Set([
+    ...tours.map((tour: any) => tour.slug),
+    ...pages.map((page: any) => page.slug)
+  ]);
+  return Array.from(allSlugs).map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+
+// Try tour first, then page fallback
+let tour = await getTourBySlug(slug, lang);
+let isPage = false;
+if (!tour) {
+  tour = await getPageBySlug(slug, lang);
+  isPage = true;
+}
+
+const [generalFaqs, tourFaqs, generalTestimonials, tourTestimonials, settings, allStories] = await Promise.all([
+  getFAQsByPage("tours", lang),
+  getFAQsByPage(slug, lang),
+  getTestimonialsByPage("tours", lang),
+  getTestimonialsByPage(slug, lang),
+  getSiteSettings(),
+  getAllStories({}, lang),
+]);
+
+const seenIds = new Set(tourFaqs.map((f: any) => f.id));
+const faqs = [...tourFaqs, ...generalFaqs.filter((f: any) => !seenIds.has(f.id))];
+
+const seenTestimonialIds = new Set(tourTestimonials.map((t: any) => t.id));
+const testimonials = [...tourTestimonials, ...generalTestimonials.filter((t: any) => !seenTestimonialIds.has(t.id))];
+
+const vendors = tour ? await getVendorsByTour(slug) : [];
+
+if (!tour) return Astro.redirect("/tours/");
+
+const relatedStories = getRelatedStories(tour, allStories, 2);
+
+const whatsapp = (settings?.whatsapp_number ?? siteConfig.whatsappNumber).replace(/\D/g, '');
+const isBookable = tour.is_bookable === true || !!(tour.ticketing_hub_id?.trim());
+
+const tourDescription = tour.meta_description || tour.metaDescription || tour.short_description || tour.shortDescription || settings?.meta_description;
+
+// For guide pages: load real tours in the same city to route readers to bookable products
+const mainTourSlugs = getMainTourSlugs();
+const realTours: any[] = (allToursData as any[]).filter((t: any) => mainTourSlugs.includes(t.slug));
+const guideTours: any[] = !isBookable
+  ? (realTours.filter((t: any) => t.location === tour.location).length > 0
+      ? realTours.filter((t: any) => t.location === tour.location)
+      : realTours.slice(0, 3))
+  : [];
+
+function parseField(val: any, fallback: any[] = []) {
+  if (!val) return fallback;
+  if (Array.isArray(val)) return val;
+  try { return JSON.parse(val); } catch { return fallback; }
+}
+
+const highlights: string[]            = parseField(tour.highlights);
+const differentiatorsTourist: string[] = parseField(tour.differentiators_tourist);
+const differentiatorsUs: string[]      = parseField(tour.differentiators_us);
+const included: string[]              = parseField(tour.whats_included);
+const excluded: string[]        = parseField(tour.whats_excluded);
+const dietary: string[]         = parseField(tour.dietary_options);
+const travelTypes: string[]     = parseField(tour.travel_types);
+const specialties: string[]     = parseField(tour.specialty_experiences);
+const whatToBring: string[]     = parseField(tour.what_to_bring);
+const languages: string[]       = parseField(tour.languages_offered);
+const gallery: string[] = (() => {
+  // Try snake_case flat array first (sync format)
+  const flat = parseField(tour.gallery_images);
+  if (flat && flat.length > 0 && typeof flat[0] === 'string') return flat;
+  // Fallback: map Payload relation objects
+  if (Array.isArray(tour.galleryImages)) {
+    return tour.galleryImages
+      .map((g: any) => g?.image?.url || g?.url || null)
+      .filter(Boolean);
+  }
+  return flat || [];
+})();
+const galleryAlts: (string | null)[] = Array.isArray(tour.gallery_image_alts) ? tour.gallery_image_alts : [];
+
+interface ItineraryStop {
+  time: string;
+  title: string;
+  description: string;
+  tastings?: string[];
+  cultural_context?: string;
+}
+const itinerary: ItineraryStop[] = parseField(tour.itinerary);
+
+const allTags = [...dietary, ...travelTypes, ...specialties];
+
+
+function toIsoDuration(minutes: number | null | undefined): string | undefined {
+  if (!minutes) return undefined;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return h > 0 && m > 0 ? `PT${h}H${m}M` : h > 0 ? `PT${h}H` : `PT${m}M`;
+}
+
+const structuredData: Record<string, any> = {
+  "@type": isBookable ? "TouristTrip" : "Article",
+  "name": tour.name,
+  "description": tour.short_description,
+  "image": tour.hero_image,
+  "url": `https://simplyenak.com/tours/${tour.slug}/`,
+  ...(isBookable && tour.price ? {
+    "offers": {
+      "@type": "Offer",
+      "price": String(tour.price),
+      "priceCurrency": tour.currency,
+      "availability": tour.instant_confirmation ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+      "url": `https://simplyenak.com/tours/${tour.slug}/`,
+      "priceValidUntil": `${new Date().getFullYear()}-12-31`,
+    },
+  } : {}),
+  "touristType": travelTypes,
+  "provider": { "@id": "https://simplyenak.com/#localbusiness" },
+  ...(siteSettingsData?.rating && siteSettingsData?.review_count ? {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": siteSettingsData.rating,
+      "bestRating": "5",
+      "reviewCount": String(siteSettingsData.review_count),
+    },
+  } : {}),
+};
+
+const isoDuration = toIsoDuration(tour.duration_minutes);
+if (isoDuration) structuredData["duration"] = isoDuration;
+if (tour.max_participants) structuredData["maximumAttendeeCapacity"] = tour.max_participants;
+if (languages.length > 0) structuredData["inLanguage"] = languages;
+
+// startLocation: helps search engines understand exactly where this tour begins
+if (tour.meeting_point) {
+  structuredData["startLocation"] = {
+    "@type": "Place",
+    "name": tour.meeting_point,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": tour.location,
+      "addressCountry": "MY",
+    },
+  };
+}
+
+// keywords from specialty_experiences (e.g. "Chinatown", "Petaling Street") — local area signals
+const specialtyExperiences: string[] = Array.isArray(tour.specialty_experiences) ? tour.specialty_experiences : [];
+if (specialtyExperiences.length > 0) {
+  structuredData["keywords"] = specialtyExperiences.join(", ") + `, ${tour.location} food tour, Malaysia food tour`;
+}
+
+if (itinerary.length > 0) {
+  structuredData["itinerary"] = itinerary.map((stop: any) => ({
+    "@type": "TouristAttraction",
+    "name": stop.title,
+    "description": stop.description,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": tour.location,
+      "addressCountry": "MY",
+    },
+  }));
+}
+
+// Individual Review nodes from real testimonials
+if (testimonials.length > 0) {
+  structuredData["review"] = testimonials.slice(0, 5).map((t: any) => ({
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": t.author_name,
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": String(t.rating),
+      "bestRating": "5",
+    },
+    "reviewBody": t.review_text,
+    ...(t.date ? { "datePublished": t.date } : {}),
+  }));
+}
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplyenak.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://simplyenak.com/tours/" },
+    { "@type": "ListItem", "position": 3, "name": tour.name, "item": `https://simplyenak.com/tours/${tour.slug}/` },
+  ],
+};
+
+// FAQPage schema removed — Google restricted FAQPage rich results to government/health sites only
+const faqSchema = null;
+
+---
+
+<Layout
+  title={tour.meta_title ?? tour.metaTitle ?? `${tour.name} | Simply Enak`}
+  description={tourDescription}
+  image={tour.hero_image}
+  structuredData={[structuredData, breadcrumbSchema, faqSchema].filter(Boolean)}
+  noindex={tour.noindex === true}
+  hreflangPath={`/tours/${slug}/`}
+  hreflangEnOnly={tour.noindex === true}
+>
+  {tour.hero_image && (
+    <link rel="preload" as="image" href={tour.hero_image} imagesrcset={`${tour.hero_image}?w=480 480w, ${tour.hero_image}?w=800 800w, ${tour.hero_image}?w=1200 1200w, ${tour.hero_image}?w=1920 1920w`} imagesizes="100vw" fetchpriority="high" />
+  )}
+
+  <!-- ===================== HERO ===================== -->
+  {isBookable ? (
+  <section data-hero class="relative min-h-[85vh] flex items-end bg-dark overflow-hidden scroll-animate is-visible">
+    {tour.hero_image && (
+      <img
+        src={tour.hero_image}
+        alt={tour.hero_image_alt || tour.name}
+        class="absolute inset-0 w-full h-full object-cover opacity-60 scale-[1.02] scroll-animate"
+        loading="eager"
+        fetchpriority="high"
+        width={1920}
+        height={1080}
+        style="transition: transform 1.5s ease-out;"
+      />
+    )}
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,9,9,0.98) 0%, rgba(10,9,9,0.75) 40%, rgba(10,9,9,0.2) 75%, transparent 100%);"></div>
+
+    <div class="relative z-10 main-container w-full pb-16 pt-40">
+
+      <!-- Location eyebrow + special badges -->
+      <div class="hero-reveal hero-d1 flex flex-wrap items-center gap-2.5 mb-5">
+        <span class="text-h6 tracking-[0.25em] text-orange">Simply Enak · {tour.location} · Food Tour</span>
+        {tour.featured && <span class="px-2.5 py-0.5 bg-orange text-dark text-h6 tracking-widest" aria-label="Bestseller tour">Bestseller</span>}
+        {tour.new && <span class="px-2.5 py-0.5 bg-blue-500 text-white text-h6 tracking-widest" aria-label="New tour">New</span>}
+        {tour.instant_confirmation && <span class="px-2.5 py-0.5 bg-green-600 text-white text-h6 tracking-widest" aria-label="Instant confirmation available">✓ Instant</span>}
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-reveal hero-d2 text-h1 text-white mb-4">
+        {tour.name}
+      </h1>
+
+      {tour.tagline && (
+        <p class="hero-reveal hero-d3 text-white/60 mb-6 max-w-xl leading-relaxed" style="font-size: clamp(1rem, 1.8vw, 1.2rem);">{tour.tagline}</p>
+      )}
+
+      <!-- Qualifying tags — dietary + travel style — visible immediately -->
+      {allTags.length > 0 && (
+        <div class="hero-reveal hero-d4 flex flex-wrap gap-2 mb-6">
+          {dietary.map((d: string) => (
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm">{d}</span>
+          ))}
+          {travelTypes.map((t: string) => (
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm">{t}</span>
+          ))}
+          {specialties.map((s: string) => (
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-orange/20 text-orange border border-orange/25 backdrop-blur-sm">{s}</span>
+          ))}
+        </div>
+      )}
+
+      <!-- Key stats — compact inline -->
+      <div class="hero-reveal hero-d5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/50 mb-10 pb-10 border-b border-white/[0.08]">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-orange/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          {tour.duration}
+        </span>
+        {tour.tour_frequency && (
+          <>
+            <span class="hidden sm:inline text-white/[0.15]" aria-hidden="true">·</span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-orange/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              {tour.tour_frequency}
+            </span>
+          </>
+        )}
+        {tour.start_times && (
+          <>
+            <span class="hidden sm:inline text-white/[0.15]" aria-hidden="true">·</span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-orange/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              {tour.start_times}
+            </span>
+          </>
+        )}
+        <span class="hidden sm:inline text-white/[0.15]" aria-hidden="true">·</span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-orange/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a4.902 4.902 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          {tour.min_participants ?? 2}–{tour.max_participants ?? 8} people
+        </span>
+        <span class="hidden sm:inline text-white/[0.15]" aria-hidden="true">·</span>
+        {(!tour.cancellation_policy || /free/i.test(tour.cancellation_policy)) && (
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-orange/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Free cancellation
+          </span>
+        )}
+        {tour.dishes_count && (
+          <>
+            <span class="hidden sm:inline text-white/[0.15]" aria-hidden="true">·</span>
+            <span>{tour.dishes_count} tastings</span>
+          </>
+        )}
+        {tour.difficulty && (
+          <>
+            <span class="hidden sm:inline text-white/[0.15]" aria-hidden="true">·</span>
+            <span>{tour.difficulty}</span>
+          </>
+        )}
+        {languages.length > 0 && (
+          <>
+            <span class="hidden sm:inline text-white/[0.15]" aria-hidden="true">·</span>
+            <span>{languages.slice(0, 2).join(" & ")}</span>
+          </>
+        )}
+      </div>
+
+      <!-- Price — prominent anchor (bookable tours only) -->
+      {isBookable && tour.price && (
+        <div class="hero-reveal hero-d6 mb-5 leading-none">
+          <div class="text-h6 uppercase tracking-[0.2em] text-gray-500 mb-1">From</div>
+          <div class="font-merriweather font-bold text-orange" style="font-size: clamp(1.8rem, 6vw, 3rem);">{tour.currency ?? 'RM'} {tour.price}</div>
+          <div class="text-body text-white/55 mt-1 tracking-wide">per person{(!tour.cancellation_policy || /free/i.test(tour.cancellation_policy)) ? ' · free cancellation' : ''}</div>
+          <div class="text-xs text-white/30 mt-2">
+            {siteSettingsData?.currency_usd_rate
+              ? `≈ USD ${Math.round(tour.price * siteSettingsData.currency_usd_rate)} — about the price of one hotel breakfast`
+              : 'About the price of one hotel breakfast in KL'}
+          </div>
+          {(siteSettingsData?.currency_usd_rate || siteSettingsData?.currency_aud_rate) && (
+            <div class="text-xs text-white/40 mt-1">
+              RM = Malaysian Ringgit.{siteSettingsData?.currency_usd_rate ? ` RM ${tour.price} ≈ USD ${Math.round(tour.price * siteSettingsData.currency_usd_rate)}` : ''}{siteSettingsData?.currency_aud_rate ? ` / AUD ${Math.round(tour.price * siteSettingsData.currency_aud_rate)}` : ''}{siteSettingsData?.currency_rates_fetched_at ? ` · rates ${siteSettingsData.currency_rates_fetched_at}` : ' · indicative'}
+            </div>
+          )}
+        </div>
+      )}
+
+      <!-- CTAs — join-in first for bookable tours, private inquiry secondary -->
+      <div class="hero-reveal hero-d6 flex flex-wrap items-center gap-4">
+        {isBookable ? (
+          <>
+            <a
+              href="#booking"
+                class="cta-primary min-h-[44px] inline-flex items-center justify-center"
+                aria-label={`Check availability for ${tour.name}`}
+              >
+              Check Availability
+            </a>
+            <a
+              href={`https://wa.me/${whatsapp}?text=Hi! I'd like to arrange a private ${tour.name} tour for my group.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="secondary-btn min-h-[44px] inline-flex items-center justify-center"
+              aria-label="Plan this tour privately"
+            >
+              Plan This Tour Privately
+            </a>
+          </>
+        ) : (
+          <a
+            href={`https://wa.me/${whatsapp}?text=Hi! I'd like to know more about the ${tour.name} experience.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-primary min-h-[44px] inline-flex items-center justify-center"
+            aria-label="Chat about this experience"
+          >
+            Chat With Us About This
+          </a>
+        )}
+      </div>
+
+      <!-- Enhanced Social Proof -->
+      <div class="hero-reveal hero-d7 flex flex-wrap items-center gap-6 mt-10 pt-8 border-t border-white/[0.08]">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1">
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <a href={settings?.social_tripadvisor || siteSettingsData.social_tripadvisor} target="_blank" rel="noopener noreferrer" class="text-white/90 text-sm font-semibold hover:text-orange transition-colors underline decoration-orange/40 underline-offset-2">{siteSettingsData?.rating ?? settings?.rating ?? '4.9'} on TripAdvisor →</a>
+        </div>
+        <div class="hidden sm:block text-white/[0.15]" aria-hidden="true">|</div>
+        <div class="flex items-center gap-2">
+          <span class="text-white/90 text-sm">{siteSettingsData?.guests_hosted || '5,000+'} guests{siteSettingsData?.countries_served ? ` from ${siteSettingsData.countries_served}` : ' from 50+ countries'}</span>
+        </div>
+        <div class="hidden sm:block text-white/[0.15]" aria-hidden="true">|</div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          <a href={settings?.social_tripadvisor || siteSettingsData.social_tripadvisor} target="_blank" rel="noopener noreferrer" class="text-white/90 text-sm hover:text-orange transition-colors underline decoration-green-400/40 underline-offset-2">Travellers' Choice {siteSettingsData?.travellers_choice_year ?? settings?.travellers_choice_year ?? '2023'} →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  ) : (
+  <section class="relative min-h-[60vh] flex items-end bg-dark overflow-hidden">
+    {tour.hero_image && (
+      <img
+        src={tour.hero_image}
+        alt={tour.hero_image_alt || tour.name}
+        class="absolute inset-0 w-full h-full object-cover opacity-50"
+        loading="eager"
+        fetchpriority="high"
+        width={1920}
+        height={1080}
+      />
+    )}
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,9,9,0.95) 0%, rgba(10,9,9,0.6) 50%, rgba(10,9,9,0.15) 80%, transparent 100%);"></div>
+
+    <div class="relative z-10 main-container w-full pb-12 pt-32">
+      <!-- Breadcrumb label -->
+      <div class="flex flex-wrap items-center gap-2.5 mb-5">
+        <span class="text-h6 tracking-[0.25em] text-orange/80">Food Guide · {tour.location}</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-h1 text-white mb-4">
+        {tour.name}
+      </h1>
+
+      {tour.tagline && (
+        <p class="text-white/60 mb-6 max-w-xl leading-relaxed" style="font-size: clamp(1rem, 1.8vw, 1.2rem);">{tour.tagline}</p>
+      )}
+
+      <!-- Tags -->
+      {allTags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-8">
+          {dietary.map((d: string) => (
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm">{d}</span>
+          ))}
+          {travelTypes.map((t: string) => (
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm">{t}</span>
+          ))}
+          {specialties.map((s: string) => (
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-orange/20 text-orange border border-orange/25 backdrop-blur-sm">{s}</span>
+          ))}
+        </div>
+      )}
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href={`https://wa.me/${whatsapp}?text=Hi! I'd like to know more about the ${tour.name} experience.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-primary min-h-[44px] inline-flex items-center justify-center"
+          aria-label="Chat about this experience"
+        >
+          Chat With Us About This
+        </a>
+        <a
+          href="/tours/"
+          class="secondary-btn min-h-[44px] inline-flex items-center justify-center"
+          aria-label="See Our Bookable Tours"
+        >
+          See Our Bookable Tours
+        </a>
+      </div>
+    </div>
+  </section>
+  )}
+
+  <!-- Compact Social Proof (removed - now integrated in hero) -->
+
+  <!-- Enhanced breadcrumbs with category context -->
+  <Breadcrumb crumbs={[
+    { label: 'Home', href: '/' },
+    { label: 'Tours', href: '/tours/' },
+    ...(tour.segment_tags?.includes('kuala-lumpur') || tour.segment_tags?.includes('kl') ? [{ label: 'Kuala Lumpur', href: '/tours/locations/kuala-lumpur/' }] : []),
+    ...(tour.segment_tags?.includes('penang') ? [{ label: 'Penang', href: '/tours/locations/penang/' }] : []),
+    ...(tour.segment_tags?.includes('dietary') || tour.segment_tags?.includes('vegetarian') || tour.segment_tags?.includes('halal') || tour.segment_tags?.includes('vegan') ? [{ label: 'Dietary Tours', href: '/tours/dietary/vegetarian/' }] : []),
+    ...(tour.segment_tags?.includes('neighborhood') ? [{ label: 'Neighborhoods', href: '/tours/' }] : []),
+    { label: tour.name, href: `/tours/${tour.slug}/` },
+  ].filter(Boolean)} />
+
+  <!-- ===================== SUITABILITY ICON STRIP ===================== -->
+  {isBookable && allTags.length > 0 && (
+    <section class="bg-white border-b border-gray-100" aria-label="Tour suitability">
+      <div class="main-container py-6 md:py-7">
+        <div class="flex flex-wrap items-start gap-2 md:gap-3">
+          <div class="flex-shrink-0 self-center pr-4 mr-1 border-r border-gray-200">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">{settings?.label_good_for ?? siteSettingsData?.label_good_for ?? 'Good for'}</p>
+          </div>
+          {allTags.map((tag: string) => {
+            const cfg = TOUR_CHIPS[tag];
+            if (!cfg) return (
+              <span class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 rounded-xl">{tag}</span>
+            );
+            return (
+              <div class={`flex flex-col items-center gap-1.5 w-[72px] md:w-20 px-1 py-3 rounded-xl border border-transparent ${cfg.iconBg}`}>
+                <svg class={`w-6 h-6 ${cfg.iconColor} flex-shrink-0`} fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                  <Fragment set:html={cfg.icon} />
+                </svg>
+                <span class={`text-[10px] font-bold text-center leading-tight ${cfg.iconColor}`}>{tag}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== REVIEWS (moved up for trust) ===================== -->
+  {isBookable && testimonials.length > 0 && (
+    <section class="bg-cream border-b border-gray-100">
+      <div class="main-container py-10">
+        <div class="max-w-4xl mx-auto">
+          <p class="text-eyebrow text-orange mb-2 text-center">{settings?.label_straight_from_guests}</p>
+          <h2 class="text-h3 text-primary mb-1 text-center">What Guests Say</h2>
+          <p class="text-gray-400 text-sm mb-6 text-center flex items-center justify-center gap-1.5">
+            <span class="text-orange">★★★★★</span> on TripAdvisor & Google
+          </p>
+          <div class="grid sm:grid-cols-3 gap-4">
+            {testimonials.slice(0, 3).map((t: any) => {
+              const platform = t.platform === "Google" ? "Google" : "TripAdvisor";
+              return (
+                <ReviewCard
+                  quote={t.review_text}
+                  name={t.author_name}
+                  location={t.author_location}
+                  platform={platform}
+                  tour={tour.name}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== HOOK — what this tour is about ===================== -->
+  {isBookable && tour.short_description && (
+    <section class="bg-white py-20 md:py-28 relative overflow-hidden">
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background-image: radial-gradient(rgba(181,45,56,0.06) 1px, transparent 1px); background-size: 28px 28px;"
+        aria-hidden="true"
+      ></div>
+      <div class="main-container relative z-10">
+        <div class="max-w-3xl">
+          <p class="text-eyebrow text-orange mb-5">{settings?.label_the_experience}</p>
+          <p class="font-merriweather font-bold text-primary leading-[1.15] mb-6" style="font-size: clamp(1.5rem, 3.5vw, 2.6rem);">
+            {tour.short_description}
+          </p>
+          <div class="flex items-center gap-4" aria-hidden="true">
+            <div class="h-px bg-primary/20" style="width: clamp(2rem, 5vw, 5rem);"></div>
+            <span class="text-orange" style="font-size: 7px;">◆</span>
+            <div class="h-px bg-primary/20" style="width: clamp(2rem, 5vw, 5rem);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== WHAT MAKES THIS TOUR DIFFERENT ===================== -->
+  {isBookable && (differentiatorsTourist.length > 0 || differentiatorsUs.length > 0) && (
+  <section class="bg-cream py-16 md:py-20">
+    <div class="main-container">
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <p class="text-eyebrow text-orange mb-3">What Makes This Tour Different</p>
+        <h2 class="text-h2 text-primary mb-4">Not Your Typical Tourist Route</h2>
+      </div>
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+        {differentiatorsTourist.length > 0 && (
+          <div class="bg-white p-6 rounded-xl border border-gray-100">
+            <h3 class="text-h5 text-primary mb-3">Most Tourists</h3>
+            <ul class="space-y-3 text-gray-700 text-sm">
+              {differentiatorsTourist.map((item: string) => (
+                <li class="flex items-start gap-2">
+                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {differentiatorsUs.length > 0 && (
+          <div class="bg-white p-6 rounded-xl border border-gray-100">
+            <h3 class="text-h5 text-primary mb-3">With Simply Enak</h3>
+            <ul class="space-y-3 text-gray-700 text-sm">
+              {differentiatorsUs.map((item: string) => (
+                <li class="flex items-start gap-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+  )}
+
+  <!-- ===================== QUALIFIER — who this is and isn't for ===================== -->
+  {isBookable && (
+    <section class="bg-white py-14 md:py-16 border-b border-gray-100">
+      <div class="main-container">
+        <div class="max-w-3xl mx-auto grid sm:grid-cols-2 gap-10 md:gap-16">
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-5">Probably not for you if</p>
+            <ul class="space-y-3.5">
+              {[
+                "You prefer coaches, set menus, and air-con between stops",
+                "You want a group of 15+ with matching headsets",
+                "You need a laminated photo menu before you'll try something",
+                "You'd rather keep moving than linger at one stall for an hour",
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-gray-400 text-sm leading-relaxed">
+                  <span class="text-gray-300 font-bold flex-shrink-0 mt-0.5">—</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-orange mb-5">Right for you if</p>
+            <ul class="space-y-3.5">
+              {[
+                "You'd eat the same thing three days running if it's good enough",
+                "You want to know the name of the person who cooked your food",
+                "You're already eating at hawker stalls and want to go deeper",
+                tour.max_participants ? `You like small groups — we cap at ${tour.max_participants}` : "You like small groups — we cap at 8",
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-gray-700 text-sm leading-relaxed">
+                  <span class="text-orange font-bold flex-shrink-0 mt-0.5">→</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== ITINERARY (moved up for engagement) ===================== -->
+  {itinerary.length > 0 && (
+    <section aria-labelledby="itinerary-heading" class="bg-dark">
+      <div class="main-container py-20 md:py-28">
+        <div class="max-w-3xl mb-10">
+          <p class="text-eyebrow text-orange mb-4">{settings?.label_stop_by_stop}</p>
+          <h2 id="itinerary-heading" class="text-h3 text-white">Your {tour.duration} Tour</h2>
+        </div>
+        <div class="max-w-4xl">
+          {itinerary.map((stop, i) => (
+            <div class="relative flex overflow-hidden border-t border-white/[0.07] last:border-b last:border-white/[0.07] min-h-[140px] group hover:bg-white/[0.02] transition-colors">
+              <span
+                class="absolute left-0 top-1/2 -translate-y-1/2 font-merriweather font-bold text-white/[0.04] pointer-events-none select-none leading-none transition-opacity group-hover:text-white/[0.06]"
+                style="font-size: clamp(5rem, 10vw, 7rem);"
+                aria-hidden="true"
+              >{String(i + 1).padStart(2, '0')}</span>
+              <div class="flex-shrink-0 w-12 md:w-24 py-6 md:py-8 flex flex-col items-center justify-start border-r border-white/[0.07] bg-white/[0.01]">
+                <div class="w-8 h-8 rounded-full bg-orange/20 border border-orange/30 flex items-center justify-center mb-2">
+                  <span class="text-orange font-bold text-sm">{i + 1}</span>
+                </div>
+                <span class="text-orange text-[10px] font-bold tracking-[0.2em] uppercase text-center px-2">{stop.time}</span>
+              </div>
+              <div class="px-4 md:px-8 py-6 md:py-8 relative z-10 flex-1">
+                <h3 class="text-h4 text-white mb-2 leading-snug">{stop.title}</h3>
+                <p class="text-white/70 leading-relaxed text-sm mb-3">{stop.description}</p>
+                {stop.tastings && stop.tastings.length > 0 && (
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {stop.tastings.map((t: string) => (
+                      <span class="text-[11px] font-semibold text-orange bg-orange/10 border border-orange/20 px-3 py-1.5 rounded-full">{t}</span>
+                    ))}
+                  </div>
+                )}
+                {stop.cultural_context && (
+                  <div class="mt-4 p-3 bg-white/[0.05] border-l-2 border-orange rounded-r-lg">
+                    <p class="text-sm text-white/70 italic">{stop.cultural_context}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+          <div class="mt-10 flex items-start gap-4">
+            <div class="w-px h-10 bg-orange/30 flex-shrink-0 mt-1"></div>
+            <div>
+              <p class="font-merriweather font-bold text-white text-sm mb-1">No two tours are quite the same.</p>
+              <p class="text-white/65 text-sm leading-relaxed">We visit the same spots on every tour — but the experience shifts with the weather, your group, and whoever's in a talking mood that day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== MID-PAGE CTA — catches mobile users after itinerary ===================== -->
+  {isBookable && itinerary.length > 0 && (
+    <div class="bg-orange/10 border border-orange/20 rounded-xl p-6 md:p-8 my-8 mx-4 md:mx-auto md:max-w-4xl flex flex-col sm:flex-row items-center gap-4 justify-between">
+      <div>
+        <p class="font-merriweather font-bold text-primary text-lg">Ready to join us?</p>
+        <p class="text-gray-600 text-sm mt-1">Check availability and book your spot below.</p>
+      </div>
+      <a href="#booking" class="cta-primary inline-flex flex-shrink-0 items-center gap-2">
+        Check Availability
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  )}
+
+  <!-- ===================== ITINERARY PULL-QUOTE ===================== -->
+  {isBookable && testimonials.length > 3 && (
+    <div class="bg-cream border-b border-gray-100">
+      <div class="main-container py-10 max-w-3xl mx-auto">
+        <blockquote>
+          <p class="font-merriweather text-xl md:text-2xl text-primary/80 leading-relaxed italic mb-4 before:content-['\201C'] before:text-orange before:text-4xl before:leading-none before:block before:mb-2">
+            {testimonials[3].review_text?.length > 200 ? testimonials[3].review_text.slice(0, 200) + '…' : testimonials[3].review_text}
+          </p>
+          <footer class="text-sm text-gray-400 font-medium">
+            — {testimonials[3].author_name}{testimonials[3].author_location ? `, ${testimonials[3].author_location}` : ''}
+            {testimonials[3].platform && <span class="ml-2 text-gray-300">· {testimonials[3].platform}</span>}
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  )}
+
+  <!-- ===================== FOOD GUIDE INTRO (non-bookable) ===================== -->
+  {!isBookable && tour.short_description && (
+    <section class="bg-white py-20 md:py-28">
+      <div class="main-container">
+        <div class="max-w-3xl">
+          <p class="text-eyebrow text-orange mb-5">A Local's Guide to {tour.location}</p>
+          <p class="font-merriweather font-bold text-primary leading-[1.15] mb-6" style="font-size: clamp(1.5rem, 3.5vw, 2.6rem);">
+            {tour.short_description}
+          </p>
+          <div class="flex items-center gap-4" aria-hidden="true">
+            <div class="h-px bg-primary/20" style="width: clamp(2rem, 5vw, 5rem);"></div>
+            <span class="text-orange" style="font-size: 7px;">◆</span>
+            <div class="h-px bg-primary/20" style="width: clamp(2rem, 5vw, 5rem);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== DISHES (non-bookable) ===================== -->
+  {!isBookable && included.length > 0 && (
+    <section class="bg-cream py-16 md:py-20">
+      <div class="main-container">
+        <div class="max-w-4xl mx-auto">
+          <p class="text-eyebrow text-orange mb-3 text-center">What to Look For</p>
+          <h2 class="text-h2 text-primary mb-4 text-center">Dishes {'&'} Flavours in {tour.location}</h2>
+          <p class="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
+            These are the kinds of dishes you'll find when eating {dietary.length > 0 ? dietary.join(', ').toLowerCase() : 'local'} food in {tour.location}. Every one has a story.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {included.map((item: string) => (
+              <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start gap-3">
+                <span class="text-orange text-lg flex-shrink-0 mt-0.5">◈</span>
+                <p class="text-gray-700 text-sm leading-relaxed">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== YOUR GUIDE ===================== -->
+  {isBookable && (
+    <section class="bg-white border-b border-gray-100">
+      <div class="main-container py-16 md:py-20">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-8">
+          {siteSettingsData?.guide_image && (
+            <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-orange/20 flex-shrink-0">
+              <img
+                src={siteSettingsData.guide_image}
+                alt={siteSettingsData.guide_image_alt || "Pauline — Simply Enak co-founder and lead guide"}
+                class="w-full h-full object-cover"
+                loading="lazy"
+                width={160}
+                height={160}
+              />
+            </div>
+          )}
+          <div>
+            <p class="text-eyebrow text-orange mb-2">Your Guide</p>
+            <h2 class="text-h4 text-primary mb-2">
+              {siteSettingsData?.guide_heading ?? 'Pauline — co-founder & lead guide'}
+            </h2>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              {siteSettingsData?.guide_body ?? 'Pauline started Simply Enak in 2011. She\'s been taking guests through the eating streets of KL and Penang ever since — sharing the places she still goes herself, not a curated list from someone else\'s research.'}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===================== WHY JOIN + SIDEBAR ===================== -->
+  <div class="bg-cream">
+    <div class:list={["main-container gap-12 py-12", isBookable ? "grid lg:grid-cols-12" : ""]}>
+
+      <div class:list={["space-y-10", isBookable ? "lg:col-span-8" : "max-w-4xl mx-auto w-full"]}>
+
+        <!-- Highlights -->
+        {isBookable && highlights.filter((h: any) => typeof h === 'string' && h.trim().length > 0).length > 0 && (
+          <section aria-labelledby="highlights-heading">
+            <p class="text-eyebrow text-orange mb-3">{settings?.label_why_join_us}</p>
+            <h2 id="highlights-heading" class="text-h2 text-primary mb-8">Why You'll Love This Tour</h2>
+            <ul class="grid sm:grid-cols-2 gap-4">
+              {highlights.filter((h: any) => typeof h === 'string' && h.trim().length > 0).map((h: string, i: number) => (
+                <li class="bg-white p-5 relative overflow-hidden group">
+                  <span
+                    class="absolute right-3 bottom-1 font-merriweather font-bold text-primary/[0.06] leading-none select-none pointer-events-none group-hover:text-primary/[0.09] transition-colors duration-300"
+                    style="font-size: 4.5rem;"
+                    aria-hidden="true"
+                  >{String(i + 1).padStart(2, '0')}</span>
+                  <p class="text-[11px] uppercase tracking-[0.2em] font-bold text-orange mb-2">{String(i + 1).padStart(2, '0')}</p>
+                  <p class="text-gray-700 leading-relaxed relative z-10 text-sm">{h}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <!-- About -->
+        <section aria-labelledby="about-heading">
+          <p class="text-eyebrow text-orange mb-3">{settings?.label_the_full_story}</p>
+          <h2 id="about-heading" class="text-h2 text-primary mb-6">Everything You Need to Know</h2>
+          {tour.full_description && (
+            <div
+              class="prose prose-lg max-w-none text-gray-700 prose-headings:font-merriweather prose-headings:text-primary prose-a:text-primary bg-white p-6 md:p-8"
+              set:html={tour.full_description}
+            />
+          )}
+        </section>
+
+        <!-- ===================== GALLERY ===================== -->
+        {gallery.length > 0 && (
+          <section aria-labelledby="gallery-heading" class="pt-4">
+            <p class="text-eyebrow text-orange mb-3">{settings?.label_on_the_tour}</p>
+            <h2 id="gallery-heading" class="text-h3 text-primary mb-5">Tour Gallery</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+              {gallery.map((imgUrl: string, i: number) => (
+                <div class:list={["overflow-hidden", i === 0 ? "col-span-2" : ""]}>
+                  <img
+                    src={imgUrl}
+                    alt={galleryAlts[i] || `${tour.name} – photo ${i + 1}`}
+                    class:list={["w-full object-cover hover:scale-[1.04] transition-transform duration-700", i === 0 ? "h-56 sm:h-72 lg:h-80" : "h-32 sm:h-40 lg:h-48"]}
+                    loading="lazy"
+                    width={600}
+                    height={450}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- ===================== VENDORS ===================== -->
+        {siteSettingsData?.show_vendors !== false && vendors.length > 0 && (
+          <section aria-labelledby="vendors-heading" class="bg-cream rounded-xl px-6 md:px-10 py-10">
+            <p class="text-eyebrow text-orange mb-3">{settings?.label_the_people}</p>
+            <h2 id="vendors-heading" class="text-h3 text-primary mb-2">Meet the People Behind the Food</h2>
+            <p class="text-gray-400 text-sm mb-10 leading-relaxed">The food doesn't exist without the person making it. Here's who you'll sit with:</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+              {vendors.map((vendor: any, i: number) => {
+                const rotations = ['-2deg', '1.8deg', '-1.2deg', '2.4deg', '-1.6deg', '1.4deg'];
+                const rot = rotations[i % rotations.length];
+                return (
+                  <div class="vendor-polaroid-wrap flex flex-col items-center" style={`--rot: ${rot};`}>
+                    <div class="vendor-polaroid w-40 sm:w-48">
+                      {vendor.image ? (
+                        <img src={vendor.image} alt={vendor.name} class="w-full aspect-square object-cover block" loading="lazy" />
+                      ) : (
+                        <div class="w-full aspect-square bg-orange-50 flex items-center justify-center text-4xl select-none">🍽️</div>
+                      )}
+                      <p class="vendor-caption">{vendor.name}</p>
+                      {vendor.specialty && <p class="vendor-caption-sub">{vendor.specialty}</p>}
+                    </div>
+                    {vendor.bio && (
+                      <p class="text-xs text-gray-500 text-center leading-relaxed mt-4 max-w-[200px]">{vendor.bio}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        <!-- ===================== PRIVATE TOUR CALLOUT ===================== -->
+        {tour.tailored_available && (
+          <section class="bg-dark rounded-xl px-6 md:px-10 py-10">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange/10 border border-orange/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a4.902 4.902 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-orange mb-2">{settings?.label_private_tailored}</p>
+                <h3 class="text-h4 text-white mb-2">Want this tour just for your group?</h3>
+                {tour.tailored_notes && (
+                  <p class="text-white/50 text-sm leading-relaxed mb-4">{tour.tailored_notes}</p>
+                )}
+                <a
+                  href={`https://wa.me/${whatsapp}?text=Hi! I'd like to arrange a private ${tour.name} tour.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 border border-orange/40 text-orange text-xs font-bold uppercase tracking-wider hover:bg-orange/10 transition-colors duration-200"
+                >
+                  Ask about private dates
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <!-- ===================== PRACTICAL DETAILS ===================== -->
+        <section class="bg-white rounded-xl border border-gray-100 px-6 md:px-10 py-10 space-y-10">
+
+          {(included.length > 0 || excluded.length > 0) && (
+            <div aria-labelledby="included-heading">
+              <p class="text-eyebrow text-orange mb-3">{settings?.label_what_you_get}</p>
+              <h3 id="included-heading" class="text-h3 text-primary mb-6">What's Included</h3>
+              <div class="space-y-6">
+                {included.length > 0 && (
+                  <ul class="space-y-2.5">
+                    {included.map((item: string) => (
+                      <li class="flex items-start gap-3 text-gray-700 text-sm">
+                        <svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {excluded.length > 0 && (
+                  <ul class="space-y-2.5 pt-4 border-t border-gray-100">
+                    {excluded.map((item: string) => (
+                      <li class="flex items-start gap-3 text-gray-400 text-sm">
+                        <svg class="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              {whatToBring.length > 0 && (
+                <div class="mt-6 pt-5 border-t border-gray-100">
+                  <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-3">What to Bring</p>
+                  <ul class="flex flex-wrap gap-2">
+                    {whatToBring.map((item: string) => (
+                      <li class="text-sm bg-cream text-gray-700 px-3 py-1.5 border border-orange/20">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
+          {tour.meeting_point && (
+            <div aria-labelledby="meeting-heading" class="pt-4 border-t border-gray-100">
+              <p class="text-eyebrow text-orange mb-3">{settings?.label_where_to_find_us}</p>
+              <h3 id="meeting-heading" class="text-h3 text-primary mb-4">Meeting Point</h3>
+              <p class="text-gray-700 leading-relaxed text-sm font-semibold mb-3">{tour.meeting_point}</p>
+              {tour.directions_html ? (
+                <div class="text-sm text-gray-500 leading-relaxed prose prose-sm max-w-none prose-p:my-1.5" set:html={tour.directions_html} />
+              ) : (
+                <a href={`/directions/#tour-${tour.slug}`} class="text-sm text-primary hover:text-orange transition-colors">
+                  Get directions →
+                </a>
+              )}
+              {tour.cancellation_policy && (
+                <p class="mt-5 text-sm text-gray-400 border-t border-gray-100 pt-4">
+                  <span class="font-semibold text-gray-600">Cancellation: </span>{tour.cancellation_policy}
+                </p>
+              )}
+            </div>
+          )}
+
+          <div aria-labelledby="before-heading" class="pt-4 border-t border-gray-100">
+            <p class="text-eyebrow text-orange mb-3">{settings?.label_good_to_know}</p>
+            <h3 id="before-heading" class="text-h3 text-primary mb-5">Before You Join</h3>
+            {tour.walking_distance && (
+              <p class="text-sm text-gray-600 mb-4 flex items-center gap-2">
+                <svg class="w-4 h-4 text-orange/60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                This tour covers roughly <strong>{tour.walking_distance}</strong> on foot.
+              </p>
+            )}
+            <a href="/how-to-prepare/" class="group flex items-center gap-4 border border-gray-100 p-4 hover:border-orange/30 hover:shadow-sm transition-all duration-200">
+              <div class="w-8 h-8 flex-shrink-0 bg-primary/6 flex items-center justify-center text-primary">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="font-semibold text-gray-900 text-sm group-hover:text-primary transition-colors">How to prepare</p>
+                <p class="text-xs text-gray-400">What to wear, bring, expect</p>
+              </div>
+              <svg class="w-3.5 h-3.5 text-gray-300 group-hover:text-orange group-hover:translate-x-0.5 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          {faqs.length > 0 && (
+            <div aria-labelledby="faq-heading" class="pt-4 border-t border-gray-100">
+              <p class="text-eyebrow text-orange mb-3">{settings?.label_common_questions}</p>
+              <h3 id="faq-heading" class="text-h3 text-primary mb-8">Questions We Often Hear</h3>
+              <div>
+                {faqs.map((faq: any) => (
+                  <details class="border-b border-gray-100 last:border-0 py-4 group">
+                    <summary class="flex items-center justify-between cursor-pointer list-none font-merriweather font-bold text-primary text-sm leading-snug pr-4">
+                      {faq.question}
+                      <span class="text-orange flex-shrink-0 transition-transform group-open:rotate-45 ml-4" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="text-gray-500 text-sm leading-relaxed mt-3 pr-4" set:html={renderInlineMarkdown(faq.answer)} />
+                  </details>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </section>
+
+        <!-- ===================== FURTHER READING ===================== -->
+        {relatedStories.length > 0 && (
+          <section aria-labelledby="further-reading-heading">
+            <p class="text-eyebrow text-orange mb-3">{settings?.label_background}</p>
+            <h2 id="further-reading-heading" class="text-h3 text-primary mb-2">Further Reading</h2>
+            <p class="text-gray-500 text-sm mb-8">The food on this tour has a history. Here's some of it.</p>
+            <div class="grid sm:grid-cols-2 gap-6">
+              {relatedStories.map((s: any) => (
+                <a
+                  href={`/stories/${s.slug}/`}
+                  class="group bg-white border border-gray-100 hover:border-orange/30 hover:shadow-sm transition-all duration-200 flex flex-col overflow-hidden"
+                >
+                  {s.hero_image && (
+                    <img
+                      src={s.hero_image}
+                      alt={s.title}
+                      class="w-full h-40 object-cover group-hover:opacity-90 transition-opacity duration-300"
+                      loading="lazy"
+                      width={600}
+                      height={320}
+                    />
+                  )}
+                  <div class="p-5 flex flex-col flex-1">
+                    {s.category && (
+                      <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-2">{s.category}</span>
+                    )}
+                    <h3 class="text-h5 text-primary leading-snug mb-2 group-hover:text-orange transition-colors duration-200 line-clamp-2">{s.title}</h3>
+                    {s.excerpt && (
+                      <p class="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4 flex-1">{s.excerpt}</p>
+                    )}
+                    <span class="text-xs font-semibold text-primary group-hover:text-orange transition-colors duration-200 mt-auto">Read &rarr;</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- ===================== HOW WE HANDLE THIS (non-bookable) ===================== -->
+        {!isBookable && (
+          <section class="bg-cream rounded-xl px-6 md:px-10 py-10">
+            <p class="text-eyebrow text-orange mb-3 text-center">{settings?.label_why_join_us ?? 'Why Join Us'}</p>
+            <h2 class="text-h3 text-primary mb-8 text-center">How We Do It</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="bg-white p-6 rounded-xl border border-gray-100">
+                <div class="w-10 h-10 rounded-full bg-orange/10 border border-orange/20 flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <h3 class="text-h5 text-primary mb-2">Where locals eat, not where tourists go</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">We take you to the stalls locals actually queue for — tucked into shop lots and wet markets, not the food courts on the tourist trail.</p>
+              </div>
+              <div class="bg-white p-6 rounded-xl border border-gray-100">
+                <div class="w-10 h-10 rounded-full bg-orange/10 border border-orange/20 flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                </div>
+                <h3 class="text-h5 text-primary mb-2">You'll know what you're eating before you eat it</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Before we step out, we tell you what each dish is, where it comes from, and what to watch for — so you never eat blind.</p>
+              </div>
+              <div class="bg-white p-6 rounded-xl border border-gray-100">
+                <div class="w-10 h-10 rounded-full bg-orange/10 border border-orange/20 flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </div>
+                <h3 class="text-h5 text-primary mb-2">Every dish has a story you'll actually remember</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Every dish has a migration story, a family recipe, a political history. You'll hear them from the aunties who make the food — not from a laminated card.</p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <!-- ===================== EXPERIENCE IT (guide tours) ===================== -->
+        {guideTours.length > 0 && (
+          <section id="our-tours" class="bg-dark rounded-xl px-6 md:px-10 py-10">
+            <p class="text-eyebrow text-orange mb-3">GUIDE TOURS</p>
+            <h2 class="text-h3 text-white mb-3">
+              Our {tour.location} Food Tours
+            </h2>
+            <p class="text-white/55 text-sm mb-8 leading-relaxed max-w-2xl">
+              This guide covers a lot of ground. If you want to actually eat your way through {tour.location} with us — here's where to start.
+            </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {guideTours.map((gt: any) => (
+                <a
+                  href={`/tours/${gt.slug}/`}
+                  class="group bg-white/[0.05] border border-white/[0.08] hover:border-orange/40 hover:bg-white/[0.08] transition-all duration-200 flex flex-col overflow-hidden"
+                >
+                  {gt.hero_image && (
+                    <img
+                      src={gt.hero_image}
+                      alt={gt.name}
+                      class="w-full h-36 object-cover group-hover:opacity-90 transition-opacity duration-300"
+                      loading="lazy"
+                      width={480}
+                      height={270}
+                    />
+                  )}
+                  <div class="p-5 flex flex-col flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-orange mb-1.5">{gt.location} · Food Tour</p>
+                    <h3 class="text-h5 text-white leading-snug mb-2 group-hover:text-orange transition-colors">{gt.name}</h3>
+                    {gt.tagline && (
+                      <p class="text-white/50 text-xs leading-relaxed mb-3 flex-1 line-clamp-2">{gt.tagline}</p>
+                    )}
+                    <div class="flex items-center justify-between mt-auto pt-3 border-t border-white/[0.08]">
+                      {gt.price && <span class="text-orange font-bold text-sm">{gt.currency ?? 'RM'} {gt.price}</span>}
+                      <span class="text-xs font-semibold text-orange group-hover:translate-x-0.5 transition-transform ml-auto">See tour →</span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div class="mt-8 pt-8 border-t border-white/[0.08] text-center">
+              <a
+                href={`https://wa.me/${whatsapp}?text=Hi! I'd like to know more about your ${tour.location} food tours.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-orange text-dark font-bold text-sm tracking-wide hover:bg-orange/90 transition-colors"
+              >
+                Chat With Us
+              </a>
+            </div>
+          </section>
+        )}
+
+        <!-- ===================== INTERNAL LINKS ===================== -->
+        <section class="pt-8 border-t border-gray-100">
+          <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 mb-4">See More</p>
+          <div class="flex flex-wrap gap-2">
+            {tour.location === 'Kuala Lumpur' && (
+              <>
+                <a href="/tours/locations/kuala-lumpur/" class="text-sm text-primary hover:text-orange transition-colors underline">Kuala Lumpur food tours</a>
+                <span class="text-gray-300">·</span>
+              </>
+            )}
+            {tour.location === 'Penang' && (
+              <>
+                <a href="/tours/locations/penang/" class="text-sm text-primary hover:text-orange transition-colors underline">Penang food tours</a>
+                <span class="text-gray-300">·</span>
+              </>
+            )}
+            {tour.dietary_options?.includes('Vegetarian') && (
+              <>
+                <a href="/tours/dietary/vegetarian/" class="text-sm text-primary hover:text-orange transition-colors underline">Vegetarian food tours</a>
+                <span class="text-gray-300">·</span>
+              </>
+            )}
+            {tour.dietary_options?.includes('Halal') && (
+              <>
+                <a href="/tours/dietary/halal/" class="text-sm text-primary hover:text-orange transition-colors underline">Halal food tours</a>
+                <span class="text-gray-300">·</span>
+              </>
+            )}
+            {tour.dietary_options?.includes('Gluten-Free') && (
+              <>
+                <a href="/tours/dietary/gluten-free/" class="text-sm text-primary hover:text-orange transition-colors underline">Gluten-free food tours</a>
+                <span class="text-gray-300">·</span>
+              </>
+            )}
+            {tour.dietary_options?.includes('Vegan') && (
+              <>
+                <a href="/tours/dietary/vegan/" class="text-sm text-primary hover:text-orange transition-colors underline">Vegan food tours</a>
+                <span class="text-gray-300">·</span>
+              </>
+            )}
+            <a href="/stories/" class="text-sm text-primary hover:text-orange transition-colors underline">Malaysian food stories</a>
+            <span class="text-gray-300">·</span>
+            <a href="/about/" class="text-sm text-primary hover:text-orange transition-colors underline">About Simply Enak</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Sidebar (bookable tours only) -->
+      {isBookable && (
+        <div class="lg:col-span-4">
+          <div id="booking" class="lg:sticky lg:top-8 space-y-4">
+            <div class="lg:hidden bg-white rounded-xl shadow-lg border border-gray-100 p-5">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <div class="text-xs text-gray-500">From</div>
+                  <div class="text-2xl font-bold text-primary">{tour.currency ?? 'RM'} {tour.price}<span class="text-sm text-gray-500 font-normal"> / person</span></div>
+                </div>
+                {tour.ticketing_hub_id?.trim() ? (
+                  <button
+                    data-widget-trigger={tour.ticketing_hub_id}
+                    class="flex-shrink-0 bg-orange text-dark font-bold py-3 px-5 text-sm hover:bg-orange/90 transition-colors"
+                  >
+                    Check Availability
+                  </button>
+                ) : (
+                  <a
+                    href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(`Hi! I'd like to join the ${tour.name} (RM ${tour.price}/person). Can you tell me about availability?`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-shrink-0 bg-orange text-dark font-bold py-3 px-5 text-sm hover:bg-orange/90 transition-colors"
+                  >
+                    Check Availability
+                  </a>
+                )}
+              </div>
+              <p class="text-xs text-gray-400 mt-3">Free cancellation up to 24 hours before</p>
+            </div>
+            <TourSidebar
+              price={tour.price}
+              widgetId={tour.ticketing_hub_id}
+              productName={tour.name}
+            />
+            <div class="bg-cream border border-orange/15 rounded-xl px-5 py-4 text-center">
+              <p class="text-xs text-gray-500 mb-3 leading-relaxed">Not sure on dates yet? We usually reply within the hour.</p>
+              <a
+                href={`https://wa.me/${whatsapp}?text=Hi! I have a question about the ${tour.name} tour.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-orange transition-colors"
+              >
+                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.858L.057 23.521a.75.75 0 00.922.922l5.663-1.476A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.75 9.75 0 01-4.97-1.365l-.356-.213-3.693.962.982-3.595-.232-.371A9.75 9.75 0 1112 21.75z"/></svg>
+                Ask a question on WhatsApp
+              </a>
+            </div>
+
+            <!-- TODO: Add video embed here once Pauline records a 30–60s iPhone intro for this tour -->
+            <!-- Example: <video src={tour.promo_video_url} controls class="w-full rounded-xl" /> -->
+          </div>
+        </div>
+      )}
+
+    </div>
+  </div>
+
+  <!-- ===================== RELATED TOURS ===================== -->
+  {(() => {
+    const relatedTours = allToursData
+      .filter((t: any) => mainTourSlugs.includes(t.slug) && t.slug !== tour.slug)
+      .slice(0, 2);
+    return relatedTours.length > 0 && (
+      <section class="bg-dark py-20 md:py-24">
+        <div class="main-container">
+          <div class="max-w-3xl mb-10">
+            <p class="text-eyebrow text-orange mb-3">More to See</p>
+            <h2 class="text-h3 text-white">You Might Also Like</h2>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6 max-w-4xl">
+            {relatedTours.map((rt: any) => (
+              <a
+                href={`/tours/${rt.slug}/`}
+                class="group bg-white/[0.05] border border-white/[0.08] hover:border-orange/40 hover:bg-white/[0.08] transition-all duration-200 flex flex-col overflow-hidden"
+              >
+                {rt.hero_image && (
+                  <img
+                    src={rt.hero_image}
+                    alt={rt.name}
+                    class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity duration-300"
+                    loading="lazy"
+                    width={480}
+                    height={270}
+                  />
+                )}
+                <div class="p-5 flex flex-col flex-1">
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-orange mb-1.5">{rt.location} · Food Tour</p>
+                  <h3 class="text-h5 text-white leading-snug mb-2 group-hover:text-orange transition-colors">{rt.name}</h3>
+                  {rt.tagline && (
+                    <p class="text-white/50 text-xs leading-relaxed mb-3 flex-1 line-clamp-2">{rt.tagline}</p>
+                  )}
+                  <div class="flex items-center justify-between mt-auto pt-3 border-t border-white/[0.08]">
+                    {rt.price && <span class="text-orange font-bold text-sm">{rt.currency ?? 'RM'} {rt.price}</span>}
+                    <span class="text-xs font-semibold text-orange group-hover:translate-x-0.5 transition-transform ml-auto">See tour →</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  })()}
+
+  <CTASection whatsappNumber={settings?.whatsapp_number} />
+
+</Layout>
+
+<style>
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-reveal {
+    animation: heroReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-d1 { animation-delay: 0.1s; }
+  .hero-d2 { animation-delay: 0.28s; }
+  .hero-d3 { animation-delay: 0.46s; }
+  .hero-d4 { animation-delay: 0.62s; }
+  .hero-d5 { animation-delay: 0.78s; }
+  .hero-d6 { animation-delay: 0.94s; }
+
+  .vendor-polaroid {
+    background-color: #eaeaea;
+    padding: 14px 14px 44px;
+    transform: rotate(var(--rot, 0deg));
+    box-shadow: 2px 4px 14px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.12);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .vendor-polaroid-wrap:hover .vendor-polaroid {
+    transform: rotate(0deg) scale(1.04);
+    box-shadow: 4px 8px 24px rgba(0,0,0,0.22), 0 2px 6px rgba(0,0,0,0.14);
+  }
+  .vendor-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2c2c2c;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .vendor-caption-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-reveal { animation: none; opacity: 1; transform: none; }
+    .scroll-animate img { transition: none !important; transform: none !important; }
+  }
+</style>
+
+<script>
+  // Subtle parallax effect on hero image - only if reduced motion is not preferred
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    const heroImage = document.querySelector('.hero-reveal + img[src]');
+    if (heroImage) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const maxScroll = window.innerHeight * 0.5;
+        const parallax = Math.min(scrolled / maxScroll, 1) * 10;
+        (heroImage as HTMLElement).style.transform = `translateY(${parallax}px) scale(1.02)`;
+      }, { passive: true });
+    }
+  }
+
+  // Smooth scroll #booking link on mobile
+  document.querySelectorAll('a[href="#booking"]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const target = document.getElementById('booking');
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>

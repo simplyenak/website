@@ -1,0 +1,19 @@
+name: IndexNow — Notify Search Engines
+
+on:
+  workflow_run:
+    workflows: ["Deploy Frontend to Cloudflare Pages"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Ping IndexNow
+
+    steps:
+      - name: Submit sitemap via IndexNow
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            "https://api.indexnow.org/indexnow?url=https%3A%2F%2Fsimplyenak.com%2Fsitemap-index.xml&key=8d67ae8f-2154-434e-aca7-68b3a7fa2ee0"

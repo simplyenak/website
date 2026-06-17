@@ -1,0 +1,49 @@
+---
+interface Props {
+  variant?: "default" | "light" | "dark" | "accent";
+  spacing?: "default" | "compact" | "spacious";
+  class?: string;
+  id?: string;
+  customClasses?: string;
+  animate?: boolean;
+}
+
+const {
+  variant = "default",
+  spacing = "default",
+  class: className,
+  id,
+  customClasses,
+  animate = false,
+} = Astro.props;
+
+const variantClasses = {
+  default: "",
+  light: "bg-cream",
+  dark: "bg-dark text-white",
+  accent: "bg-gradient-to-br from-orange-50 to-amber-50/60",
+};
+
+// Premium spacing (Aura Home principle — matches global.css design spec)
+const spacingClasses = {
+  default: "py-24 lg:py-36",
+  compact: "py-12 lg:py-20",
+  spacious: "py-32 lg:py-48",
+};
+---
+
+<section
+  id={id}
+  class:list={[
+    "w-full",
+    variantClasses[variant],
+    spacingClasses[spacing],
+    className,
+    customClasses,
+  ]}
+>
+  <div class="main-container">
+    <slot />
+  </div>
+</section>
+

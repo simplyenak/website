@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simply Enak — Publishing Kanban</title>
+<!-- SortableJS — drag-and-drop between columns https://github.com/SortableJS/Sortable -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.3/Sortable.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; color: #1a1a1a; min-height: 100vh; }
+
+header { background: #1a1a1a; color: #fff; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+header h1 { font-size: 18px; font-weight: 600; }
+header small { font-size: 12px; color: #888; margin-left: auto; }
+
+.toolbar { display: flex; align-items: center; gap: 0; background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; }
+.tab { padding: 12px 18px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; border-bottom: 2px solid transparent; color: #666; background: none; transition: all 0.15s; }
+.tab.active { color: #1a1a1a; border-bottom-color: #e85d26; }
+.tab:hover:not(.active) { color: #1a1a1a; }
+.toolbar-legend { display: flex; gap: 12px; align-items: center; margin-left: auto; font-size: 12px; color: #666; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+.board { display: flex; gap: 16px; padding: 24px; overflow-x: auto; align-items: flex-start; min-height: calc(100vh - 100px); }
+
+.column { flex: 0 0 270px; display: flex; flex-direction: column; }
+
+.col-header { padding: 10px 14px; border-radius: 8px 8px 0 0; font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; color: #fff; }
+.col-count { background: rgba(255,255,255,0.25); padding: 1px 8px; border-radius: 10px; font-size: 11px; }
+
+.col-draft     .col-header { background: #6b7280; }
+.col-in_review .col-header { background: #d97706; }
+.col-approved  .col-header { background: #2563eb; }
+.col-published .col-header { background: #16a34a; }
+
+.col-body {
+  flex: 1;
+  background: #e4e4e0;
+  border-radius: 0 0 8px 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 80px;
+}
+/* SortableJS ghost & drag styles */
+.sortable-ghost { opacity: 0.3; }
+.sortable-drag  { box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important; transform: rotate(1.5deg); }
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 13px;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  border-left: 3px solid #e85d26;
+  transition: box-shadow 0.15s;
+}
+.card:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
+.card.story  { border-left-color: #7c3aed; }
+
+.card-type  { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa; margin-bottom: 4px; }
+.card-title { font-size: 13px; font-weight: 600; line-height: 1.4; color: #111; }
+.card-tags  { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+.tag { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 500; }
+.tag-missing { background: #fee2e2; color: #dc2626; }
+.tag-ok      { background: #dcfce7; color: #16a34a; }
+.tag-vendor  { background: #f3e8ff; color: #7c3aed; }
+.card-link { font-size: 11px; color: #2563eb; display: inline-block; margin-top: 7px; text-decoration: none; }
+.card-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Simply Enak — Publishing Kanban</h1>
+  <small>Drag cards between columns &middot; State saved in browser</small>
+</header>
+
+<div class="toolbar" id="toolbar">
+  <button class="tab active" data-filter="all">All</button>
+  <button class="tab" data-filter="tour">Tours</button>
+  <button class="tab" data-filter="story">Stories</button>
+  <div class="toolbar-legend">
+    <span><span class="dot" style="background:#e85d26"></span> Tour</span>
+    <span><span class="dot" style="background:#7c3aed"></span> Story</span>
+    <span class="tag tag-missing">&nbsp;⚠ needs image&nbsp;</span>
+    <span class="tag tag-vendor">&nbsp;vendor story&nbsp;</span>
+  </div>
+</div>
+
+<div class="board" id="board"></div>
+
+<script>
+// ---------------------------------------------------------------------------
+// Data
+// ---------------------------------------------------------------------------
+const COLUMNS = [
+  { id: 'draft',      label: 'Draft'     },
+  { id: 'in_review',  label: 'In Review' },
+  { id: 'approved',   label: 'Approved'  },
+  { id: 'published',  label: 'Published' },
+];
+
+const ITEMS = [
+  // Tours — content done (workflow_status published), not yet live (_status draft)
+  { id: 'tour-1', type: 'tour',  title: 'Flavours of Malaysia',                                    col: 'approved', hasImage: true,  vendor: false },
+  { id: 'tour-2', type: 'tour',  title: 'Eat Drink George Town',                                   col: 'approved', hasImage: true,  vendor: false },
+  { id: 'tour-3', type: 'tour',  title: 'Kuala Lumpur Street Food',                                col: 'approved', hasImage: true,  vendor: false },
+  { id: 'tour-4', type: 'tour',  title: 'Penang Street Food',                                      col: 'approved', hasImage: true,  vendor: false },
+  { id: 'tour-5', type: 'tour',  title: 'Secrets of KL \u2013 Nightlife, Street Art & Cocktails',  col: 'approved', hasImage: false, vendor: false },
+  // Stories — all draft in Payload DB
+  { id: 'story-1',  type: 'story', title: 'The Satay Master of Kampung Baru',                                           col: 'draft', hasImage: false, vendor: true  },
+  { id: 'story-2',  type: 'story', title: 'The Heritage Behind Malaysian Food',                                          col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-3',  type: 'story', title: 'Understanding Mamak Culture',                                                col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-4',  type: 'story', title: 'Family Recipes Passed Down Through Generations',                             col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-5',  type: 'story', title: "Why We Don\u2019t Do \u2018Tourist\u2019 Food",                              col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-6',  type: 'story', title: 'Why Street Food Is The Soul Of Malaysia',                                    col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-8',  type: 'story', title: 'What \u201cVegetarian\u201d Actually Means in Kuala Lumpur',                 col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-9',  type: 'story', title: "The Hidden Meat Problem: Why Vegetables in KL Aren\u2019t Always What They Seem", col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-10', type: 'story', title: 'How to Find Vegetarian Restaurants in KL, Penang and Ipoh',                 col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-12', type: 'story', title: 'Bak Chang \u2013 The traditional food of the Chinese Dumpling Festival',    col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-13', type: 'story', title: 'Do Malaysians Eat Dog Meat? (and other strange dishes)',                     col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-14', type: 'story', title: 'Do Malaysians Speak English',                                                col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-16', type: 'story', title: 'Is It Safe To Eat Roadside Food In Malaysia?',                               col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-18', type: 'story', title: 'Plan your trip around these festivities in Malaysia',                        col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-19', type: 'story', title: 'Discover the Vibrant World of Malaysian Herbs and Traditional Flavours',    col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-20', type: 'story', title: 'Must Try Malaysian Street Food Checklist',                                   col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-21', type: 'story', title: 'How long does it take to get to Kuala Lumpur from Port Klang?',             col: 'draft', hasImage: false, vendor: false },
+  { id: 'story-23', type: 'story', title: 'Traveling Malaysia during the fasting month (Ramadan)',                      col: 'draft', hasImage: false, vendor: false },
+];
+
+// ---------------------------------------------------------------------------
+// State (localStorage)
+// ---------------------------------------------------------------------------
+const STORAGE_KEY = 'se-kanban-v3';
+let state = {};
+
+function loadState() {
+  try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+  ITEMS.forEach(item => { if (!state[item.id]) state[item.id] = { col: item.col }; });
+  persist();
+}
+function persist() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function getCol(id) { return state[id]?.col ?? ITEMS.find(i => i.id === id)?.col ?? 'draft'; }
+
+// ---------------------------------------------------------------------------
+// Filter
+// ---------------------------------------------------------------------------
+let currentFilter = 'all';
+
+document.getElementById('toolbar').addEventListener('click', e => {
+  const btn = e.target.closest('.tab');
+  if (!btn) return;
+  currentFilter = btn.dataset.filter;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === btn));
+  render();
+});
+
+// ---------------------------------------------------------------------------
+// Build card element
+// ---------------------------------------------------------------------------
+function makeCard(item) {
+  const card = document.createElement('div');
+  card.className = 'card' + (item.type === 'story' ? ' story' : '');
+  card.dataset.id = item.id;
+
+  const typeEl = document.createElement('div');
+  typeEl.className = 'card-type';
+  typeEl.textContent = item.type;
+  card.appendChild(typeEl);
+
+  const titleEl = document.createElement('div');
+  titleEl.className = 'card-title';
+  titleEl.textContent = item.title;
+  card.appendChild(titleEl);
+
+  const tagsEl = document.createElement('div');
+  tagsEl.className = 'card-tags';
+
+  const imgTag = document.createElement('span');
+  imgTag.className = 'tag ' + (item.hasImage ? 'tag-ok' : 'tag-missing');
+  imgTag.textContent = item.hasImage ? '\u2713 image' : '\u26a0 needs image';
+  tagsEl.appendChild(imgTag);
+
+  if (item.vendor) {
+    const vt = document.createElement('span');
+    vt.className = 'tag tag-vendor';
+    vt.textContent = 'vendor story';
+    tagsEl.appendChild(vt);
+  }
+  card.appendChild(tagsEl);
+
+  const colSlug = item.type === 'tour' ? 'tours' : 'stories';
+  const link = document.createElement('a');
+  link.className = 'card-link';
+  link.href = 'http://localhost:3000/admin/collections/' + colSlug;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = 'Open in Payload \u2192';
+  card.appendChild(link);
+
+  return card;
+}
+
+// ---------------------------------------------------------------------------
+// Render board
+// ---------------------------------------------------------------------------
+function render() {
+  const visible = ITEMS.filter(i => currentFilter === 'all' || i.type === currentFilter);
+  const board = document.getElementById('board');
+  board.textContent = '';
+
+  COLUMNS.forEach(col => {
+    const colItems = visible.filter(i => getCol(i.id) === col.id);
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'column col-' + col.id;
+
+    const header = document.createElement('div');
+    header.className = 'col-header';
+    const labelEl = document.createElement('span');
+    labelEl.textContent = col.label;
+    const countEl = document.createElement('span');
+    countEl.className = 'col-count';
+    countEl.textContent = colItems.length;
+    header.appendChild(labelEl);
+    header.appendChild(countEl);
+    wrapper.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'col-body';
+    body.dataset.col = col.id;
+    colItems.forEach(item => body.appendChild(makeCard(item)));
+    wrapper.appendChild(body);
+
+    board.appendChild(wrapper);
+
+    // SortableJS — shared group so cards can move between columns
+    Sortable.create(body, {
+      group: 'kanban',
+      animation: 150,
+      ghostClass: 'sortable-ghost',
+      dragClass: 'sortable-drag',
+      onEnd(evt) {
+        const id = evt.item.dataset.id;
+        const newCol = evt.to.dataset.col;
+        if (id && newCol && state[id]) {
+          state[id].col = newCol;
+          persist();
+          // Update count badges without full re-render
+          document.querySelectorAll('.col-body').forEach(b => {
+            const colWrapper = b.closest('.column');
+            const badge = colWrapper.querySelector('.col-count');
+            if (badge) badge.textContent = b.querySelectorAll('.card').length;
+          });
+        }
+      }
+    });
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Init
+// ---------------------------------------------------------------------------
+loadState();
+render();
+</script>
+</body>
+</html>

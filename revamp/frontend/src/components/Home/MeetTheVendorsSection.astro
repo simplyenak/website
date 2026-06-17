@@ -1,0 +1,155 @@
+---
+interface Vendor {
+  name: string;
+  dish?: string;
+  location?: string;
+  image?: string;
+  story?: string;
+  since?: string;
+  tour_name?: string;
+  tour_slug?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  vendors?: Vendor[];
+  // Additional translations
+  eyebrow?: string;
+  meetOnTourText?: string;
+  footerText?: string;
+  readStoriesText?: string;
+  readStoriesUrl?: string;
+}
+
+const {
+  title,
+  subtitle,
+  vendors: propVendors,
+  eyebrow,
+  meetOnTourText,
+  footerText,
+  readStoriesText,
+  readStoriesUrl,
+} = Astro.props;
+
+// Use vendors from Payload (vendors.json); section renders nothing if empty
+const vendors = propVendors && propVendors.length > 0 ? propVendors : [];
+---
+
+<style>
+  .vendor-polaroid {
+    background-color: #eaeaea;
+    padding: 14px 14px 44px;
+    position: relative;
+    transform: rotate(var(--rot, 0deg));
+    box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+.vendor-polaroid-wrap:hover .vendor-polaroid {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.14);
+  }
+  /* Handwritten caption style */
+  .vendor-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2c2c2c;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .vendor-caption-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+    margin-top: 2px;
+  }
+</style>
+
+<section id="vendors" class="py-20 md:py-28 bg-cream">
+  <div class="main-container">
+    <div class="text-center mb-16">
+      <p class="text-eyebrow text-orange mb-3">{eyebrow}</p>
+      {title && <h2 class="font-merriweather text-3xl md:text-4xl font-bold text-primary">{title}</h2>}
+      {subtitle && <p class="text-gray-500 mt-4 text-sm max-w-sm mx-auto leading-relaxed">{subtitle}</p>}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-14 lg:gap-20">
+      {vendors && vendors.length > 0 ? vendors.map((vendor, i) => {
+        const rotations = ['-2.2deg', '1.8deg', '-1.4deg', '2.5deg', '-1deg', '1.6deg'];
+        const rot = rotations[i % rotations.length];
+        return (
+          <div class="vendor-polaroid-wrap flex flex-col items-center" style={`--rot: ${rot};`}>
+
+            <!-- Polaroid frame -->
+            <div class="vendor-polaroid w-full max-w-[260px]">
+              {vendor.image ? (
+                <img
+                  src={vendor.image}
+                  alt={vendor.name || 'Vendor'}
+                  class="w-full aspect-[4/5] object-cover block"
+                  width={400}
+                  height={500}
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full aspect-[4/5] bg-orange-50 flex items-center justify-center text-5xl select-none">
+                  <svg class="w-16 h-16 text-orange/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                </div>
+              )}
+              <!-- Handwritten caption inside bottom border -->
+              <p class="vendor-caption">{vendor.name || 'Vendor'}</p>
+              <p class="vendor-caption-sub">{vendor.dish}{vendor.since ? ` · ${vendor.since}` : ''}</p>
+            </div>
+
+            <!-- Story + link below the polaroid -->
+            <div class="mt-7 text-center max-w-[260px]">
+              {vendor.location && (
+                <p class="text-xs text-gray-500 mb-3 tracking-wide flex items-center justify-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  {vendor.location}
+                </p>
+              )}
+              <p class="text-gray-700 text-sm leading-relaxed mb-5">{vendor.story}</p>
+              {vendor.tour_slug && (
+                <a
+                  href={`/tours/${vendor.tour_slug}`}
+                  class="cta-tertiary"
+                  aria-label={`Meet ${vendor.name ? vendor.name.split(' ').pop() : 'Vendor'} on this tour`}
+                >
+                  <span>{meetOnTourText.replace('{name}', vendor.name ? vendor.name.split(' ').pop() : 'Vendor')}</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              )}
+            </div>
+
+          </div>
+        );
+      }) : null}
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-gray-600 max-w-xl mx-auto mb-7 text-sm leading-relaxed">
+        {footerText}
+      </p>
+      <a
+        href={readStoriesUrl}
+        class="cta-secondary cta-secondary-light inline-flex"
+      >
+        {readStoriesText}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

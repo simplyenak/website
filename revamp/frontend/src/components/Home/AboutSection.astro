@@ -1,0 +1,156 @@
+---
+interface Props {
+  title?: string;
+  subTitle?: string;
+  description?: string;
+  heritage?: string;
+  image?: string;
+  // Founder section props
+  founderName?: string;
+  founderTitle?: string;
+  founderQuote?: string;
+  founderLinkText?: string;
+  founderLinkUrl?: string;
+  founderImage?: string;
+  // Eyebrow text
+  eyebrow?: string;
+}
+
+const aboutSection = {
+  title: Astro.props.title ?? "Where Locals Actually Eat",
+  subTitle: Astro.props.subTitle ?? "No commission deals. No tourist menus. Just the stalls where we actually eat.",
+  description: Astro.props.description ?? "We only take you to stalls where we actually eat. Places we've been going to for years—sometimes decades. No agreements, no commissions, no tourist menus. These vendors have been serving locals the same dishes since the 1970s and 80s because the food is that good. You'll pay the same prices locals pay and taste why people line up here every single day.",
+  heritage: Astro.props.heritage ?? "Many of these family-run stalls are 2nd or 3rd generation. Grandma's laksa recipe from 1982. Uncle's char kway teow technique refined over 40 years. Without people eating here, these recipes disappear. When you walk with us, you're tasting what locals have lined up for since the 1970s and 80s — and helping keep these kitchens open.",
+  image: Astro.props.image ?? "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+  // Founder section defaults
+  founderName: Astro.props.founderName ?? "Pauline",
+  founderTitle: Astro.props.founderTitle ?? "Founder",
+  founderQuote: Astro.props.founderQuote ?? "In Malaysia, food is how stories get told. Every stall on our tours is somewhere I'd take my own family — fifteen years on, that's still the only rule we have.",
+  founderLinkText: Astro.props.founderLinkText ?? "15 years of guests →",
+  founderLinkUrl: Astro.props.founderLinkUrl ?? "/track-record/",
+  founderImage: Astro.props.founderImage ?? "https://se-website-images.s3.nl-ams.scw.cloud/dumy-avatar.webp",
+  // Eyebrow
+  eyebrow: Astro.props.eyebrow ?? "About Simply Enak",
+};
+---
+
+<style>
+  .about-image-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -10px -8px;
+    border: 3px solid;
+    border-color: var(--color-orange);
+    opacity: 0.4;
+    border-radius: 0.75rem;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+
+<section id="about" class="pt-20 md:pt-32 pb-4 overflow-hidden">
+  <div class="main-container">
+    <div class="flex flex-col md:flex-row items-start gap-16 lg:gap-24">
+
+      <!-- Text column -->
+      <div class="w-full md:w-[56%] shrink-0">
+
+        <!-- Eyebrow -->
+        <p class="text-eyebrow text-orange mb-4">
+          {aboutSection.eyebrow}
+        </p>
+
+        <h2 class="text-primary text-h2 mb-3">
+          {aboutSection.title}
+        </h2>
+
+        <p class="text-subheading pb-6 text-gray-600 leading-snug">
+          {aboutSection.subTitle}
+        </p>
+
+        <!-- Main Description -->
+        <p class="text-body mb-8 text-gray-700 leading-relaxed">
+          {aboutSection.description}
+        </p>
+
+        <!-- Heritage pull-quote -->
+        <div class="relative pl-7 py-1">
+          <!-- Vertical accent bar -->
+          <div class="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-gradient-to-b from-orange via-orange/60 to-transparent"></div>
+
+          <!-- Decorative opening quote -->
+          <span
+            class="absolute -top-5 left-4 font-merriweather font-bold leading-none select-none pointer-events-none"
+            style="font-size: 5rem; color: var(--color-orange); opacity: 0.18; line-height: 1;"
+            aria-hidden="true"
+          >&ldquo;</span>
+
+          <p class="text-body text-sm italic text-gray-600 leading-relaxed relative z-10">
+            {aboutSection.heritage}
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Image column -->
+      <div class="about-image-wrap relative w-full md:w-[44%]">
+        <div class="relative z-10 rounded-xl overflow-hidden w-full h-[340px] md:h-[500px] shadow-2xl">
+          <img
+            src={aboutSection.image}
+            alt="Simply Enak Food Tours Malaysia"
+            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            width={800}
+            height={600}
+            loading="lazy"
+          />
+          <!-- Subtle color wash at bottom -->
+          <div
+            class="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+            style="background: linear-gradient(to top, rgba(181,45,56,0.15), transparent);"
+          ></div>
+        </div>
+
+        <!-- Floating stat badge -->
+        <div
+          class="absolute bottom-4 -left-6 z-20 rounded-xl px-5 py-3 shadow-xl hidden md:block"
+          style="background: var(--color-dark); border: 1px solid rgba(255,163,51,0.3);"
+        >
+          <div class="font-merriweather font-bold text-orange text-2xl leading-none">14</div>
+          <div class="text-[10px] uppercase tracking-widest text-gray-400 mt-1">Years of tours</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Founder moment — Pauline -->
+    <div class="mt-14 pt-10 border-t border-primary/10 flex flex-col sm:flex-row items-center sm:items-start gap-8">
+      <!-- Photo -->
+      <div class="flex-shrink-0 flex flex-col items-center gap-2">
+        <img
+          src={aboutSection.founderImage}
+          alt={`${aboutSection.founderName}, ${aboutSection.founderTitle.toLowerCase()}`}
+          class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover ring-2 ring-orange/30"
+          width={128}
+          height={128}
+          loading="lazy"
+        />
+        <p class="text-xs text-gray-500 uppercase tracking-widest text-center">{aboutSection.founderName}<br/>{aboutSection.founderTitle}</p>
+      </div>
+      <!-- Quote -->
+      <blockquote class="flex-1 min-w-0">
+        <div
+          class="font-merriweather font-bold text-primary/10 leading-none select-none pointer-events-none mb-0"
+          style="font-size: 5rem; line-height: 0.6;"
+          aria-hidden="true"
+        >&ldquo;</div>
+        <p class="font-merriweather italic text-gray-700 leading-relaxed mt-2" style="font-size: clamp(1rem, 2vw, 1.25rem);">
+          {aboutSection.founderQuote}
+        </p>
+        <cite class="not-italic block mt-4 text-xs uppercase tracking-widest text-gray-400">
+          — {aboutSection.founderName} &nbsp;·&nbsp; {aboutSection.founderTitle}, Simply Enak &nbsp;·&nbsp;
+          <a href={aboutSection.founderLinkUrl} class="text-primary hover:text-orange transition-colors duration-200">{aboutSection.founderLinkText}</a>
+        </cite>
+      </blockquote>
+    </div>
+  </div>
+</section>

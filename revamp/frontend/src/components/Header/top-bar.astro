@@ -1,0 +1,93 @@
+---
+import IconPhone from "@/assets/icons/icon-phone.svg";
+import IconEnvelope from "@/assets/icons/icon-envelope.svg";
+import IconFacebook from "@/assets/icons/icon-facebook.svg";
+import IconInstagram from "@/assets/icons/icon-instagram.svg";
+import IconYoutube from "@/assets/icons/icon-youtube.svg";
+import IconClock from "@/assets/icons/icon-clock.svg";
+import LanguageSelector from "@/components/Header/LanguageSelector.astro";
+import { getSiteSettings } from "@/lib/content";
+
+const settings = await getSiteSettings();
+
+const contact = {
+  phone: settings?.contact_phone ?? "+6 017 287 8929",
+  email: settings?.contact_email ?? "booking@simplyenak.com",
+  hours: settings?.contact_hours ?? "Mon – Sun: 9:00 – 20:00",
+};
+
+const social = [
+  {
+    icon: IconInstagram,
+    label: "Follow Simply Enak on Instagram",
+    url: settings?.social_instagram ?? "https://www.instagram.com/simply.enak/",
+  },
+  {
+    icon: IconFacebook,
+    label: "Follow Simply Enak on Facebook",
+    url: settings?.social_facebook ?? "https://facebook.com/simplyenak",
+  },
+  {
+    icon: IconYoutube,
+    label: "Subscribe to Simply Enak on YouTube",
+    url: settings?.social_youtube ?? "https://www.youtube.com/channel/UCgRvAZ86vyYwkk6-bvnDRCg/featured?view_as=subscriber",
+  },
+];
+---
+
+<div class="bg-dark text-white">
+  <div class="main-container flex items-center justify-center md:justify-between gap-1 md:gap-5 py-2.5">
+
+    <!-- Contact info -->
+    <ul class="flex items-center gap-1 md:gap-5">
+      <li>
+        <a
+          href={`tel:${contact.phone.replace(/[\s-]/g, "")}`}
+          class="flex items-center gap-2 text-sm hover:md:text-[#efe5d9] duration-300 size-9 min-w-9 md:size-auto rounded-full md:rounded-none hover:bg-orange hover:md:bg-transparent justify-center"
+          aria-label={`Call us at ${contact.phone}`}
+        >
+          <IconPhone class="size-4 md:text-orange text-white" aria-hidden="true" focusable="false" />
+          <span class="hidden md:block" aria-hidden="true">{contact.phone}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href={`mailto:${contact.email}`}
+          class="flex items-center gap-2 text-sm hover:md:text-[#efe5d9] duration-300 size-9 min-w-9 md:size-auto rounded-full md:rounded-none hover:bg-orange hover:md:bg-transparent justify-center"
+          aria-label={`Email us at ${contact.email}`}
+        >
+          <IconEnvelope class="size-4 md:text-orange text-white" aria-hidden="true" focusable="false" />
+          <span class="hidden md:block" aria-hidden="true">{contact.email}</span>
+        </a>
+      </li>
+      <!-- Hours — display only, not a link -->
+      <li class="hidden md:flex items-center gap-2 text-sm">
+        <IconClock class="size-4 text-orange" aria-hidden="true" focusable="false" />
+        <span>{contact.hours}</span>
+      </li>
+    </ul>
+
+    <!-- Social + language -->
+    <ul class="flex items-center gap-1">
+      {
+        social.map((s) => (
+          <li>
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-sm duration-300 size-9 min-w-9 rounded-full hover:bg-orange justify-center"
+              aria-label={s.label}
+            >
+              <s.icon class="size-4 text-white" aria-hidden="true" focusable="false" />
+            </a>
+          </li>
+        ))
+      }
+      <!-- Language Selector -->
+      <li class="ml-2">
+        <LanguageSelector variant="dark" />
+      </li>
+    </ul>
+  </div>
+</div>

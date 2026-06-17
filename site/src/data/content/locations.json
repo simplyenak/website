@@ -3,12 +3,13 @@
     "id": 16,
     "name": "Ipoh",
     "slug": "ipoh",
-    "icon": null,
-    "color": null,
-    "description": "Famous for white coffee",
+    "icon": "🏛️",
+    "color": "#a855f7",
+    "description": "Colonial heritage town in Perak — famous for white coffee, bean sprouts chicken, and street art.",
     "status": "published",
-    "updatedAt": "2026-05-19T09:42:40.082Z",
-    "createdAt": "2026-05-19T09:42:40.082Z"
+    "updatedAt": "2026-06-17T03:16:22.924Z",
+    "createdAt": "2026-05-19T09:42:40.082Z",
+    "_status": "published"
   },
   {
     "id": 15,
@@ -16,10 +17,11 @@
     "slug": "penang",
     "icon": "🏝️",
     "color": "#22c55e",
-    "description": "The food capital of Malaysia",
+    "description": "Malaysia's food capital  -  Peranakan heritage, hawker culture, and island charm",
     "status": "published",
     "updatedAt": "2026-05-19T08:33:21.134Z",
-    "createdAt": "2026-05-19T08:33:21.134Z"
+    "createdAt": "2026-05-19T08:33:21.134Z",
+    "_status": "published"
   },
   {
     "id": 14,
@@ -27,9 +29,10 @@
     "slug": "kuala-lumpur",
     "icon": "🏙️",
     "color": "#0ea5e9",
-    "description": "Malaysia's capital city",
+    "description": "The capital city  -  diverse food scene from Malay, Chinese, and Indian traditions",
     "status": "published",
     "updatedAt": "2026-06-12T03:19:12.811Z",
-    "createdAt": "2026-05-19T08:33:20.569Z"
+    "createdAt": "2026-05-19T08:33:20.569Z",
+    "_status": "published"
   }
 ]

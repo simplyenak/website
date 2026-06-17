@@ -1,0 +1,100 @@
+---
+import ToursCard from "@/components/Tours/ToursCard.astro";
+import { getAllTours } from "@/lib/content";
+
+let { title } = Astro.props;
+
+const tours = await getAllTours();
+
+// Collect unique tags for filter buttons
+const uniqueButtons = [
+  ...Array.from(
+    new Set(
+      tours.flatMap((t) =>
+        Array.isArray(t.tags) ? t.tags.map((tag) => String(tag)) : []
+      )
+    )
+  ),
+  "All",
+];
+---
+
+<section class="py-20 main-container">
+  <h4 class="text-xl md:text-2xl text-center font-medium">
+    {title}
+  </h4>
+  {
+    tours.length > 0 && (
+      <div class="mt-8">
+        <div
+          class="flex items-center justify-center overflow-x-auto gap-4"
+          id="tab-buttons"
+        >
+          {uniqueButtons.map((button, idx) => (
+            <button
+              type="button"
+              class={idx === 0 ? "tab-primary-btn" : "tab-secondary-btn"}
+              data-button={button}
+            >
+              {button}
+            </button>
+          ))}
+        </div>
+        <div
+          id="cards-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-8 xl:gap-12 mt-10"
+        >
+          {tours.map((tour) => (
+            <div
+              class="tour-card"
+              data-tags={Array.isArray(tour.tags) ? tour.tags.join(", ") : ""}
+            >
+              <ToursCard
+                title={tour.name}
+                link={`/tours/${tour.slug}/`}
+                image={{ url: tour.hero_image ?? "" }}
+                price={tour.price ?? ""}
+                duration={tour.duration ?? ""}
+                location={tour.location ?? ""}
+                tags={[
+                  ...(Array.isArray(tour.dietaryOptions) ? tour.dietaryOptions : []),
+                  ...(Array.isArray(tour.travelTypes) ? tour.travelTypes : []),
+                ]}
+                buttons={[
+                  {
+                    title: "Join This Tour",
+                    href: `/tours/${tour.slug}/`,
+                    buttonType: "primary-btn-small",
+                  },
+                ]}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+</section>
+
+<script type="module" is:inline>
+  const tabContainer = document.getElementById("tab-buttons");
+  const cardsGrid = document.getElementById("cards-grid");
+  let activeBtn = tabContainer.querySelector("button");
+  activeBtn && (activeBtn.className = "tab-primary-btn");
+  const firstFilter = activeBtn.dataset.button;
+  [...cardsGrid.children].forEach((card) => {
+    card.style.display =
+      firstFilter === "All" || card.dataset.tags === firstFilter ? "" : "none";
+  });
+  tabContainer.onclick = (e) => {
+    if (e.target.tagName !== "BUTTON") return;
+    activeBtn && (activeBtn.className = "tab-secondary-btn");
+    e.target.className = "tab-primary-btn";
+    activeBtn = e.target;
+    const sel = e.target.dataset.button;
+    [...cardsGrid.children].forEach((card) => {
+      card.style.display =
+        sel === "All" || card.dataset.tags === sel ? "" : "none";
+    });
+  };
+</script>

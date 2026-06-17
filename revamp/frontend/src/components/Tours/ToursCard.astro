@@ -1,0 +1,119 @@
+---
+import { getFullMediaUrl } from "@/utils/getFullMediaUrl";
+import type { Button as ButtonType, Media } from "@/types";
+import { TOUR_CHIPS, TAG_CHIP_MAP } from "@/lib/tour-chips";
+
+type Props = {
+  title: string;
+  link: string;
+  image: Media;
+  price: string;
+  duration: string;
+  location: string;
+  buttons: ButtonType[];
+  featured?: boolean | number;
+  tags?: string[];
+  class?: string;
+};
+
+let {
+  image,
+  link,
+  title,
+  buttons,
+  price,
+  duration,
+  location,
+  featured,
+  tags,
+  class: className,
+} = Astro.props;
+
+// Resolve tags to chip configs — skip any slug not in the map
+const resolvedChips = (tags ?? [])
+  .map((slug) => {
+    const key = TAG_CHIP_MAP[slug];
+    if (!key) return null;
+    const cfg = TOUR_CHIPS[key];
+    if (!cfg) return null;
+    return { key, cfg };
+  })
+  .filter(Boolean)
+  .slice(0, 3); // cap at 3 pills so card stays compact
+---
+
+<div
+  class:list={[
+    "bg-white border border-gray-100 shadow-md rounded-xl overflow-hidden group h-full min-h-0 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
+    className,
+  ]}
+>
+  <div class="h-[240px] md:h-[220px] overflow-hidden relative">
+    {
+      (featured === true || featured === 1) && (
+        <div class="absolute top-4 right-4 z-10 bg-orange text-black text-xs font-bold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wider">
+          Bestseller
+        </div>
+      )
+    }
+    <img
+      src={getFullMediaUrl(image)}
+      alt={title}
+      width={550}
+      height={300}
+      class="size-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+      loading="lazy"
+    />
+  </div>
+  <div class="p-5 space-y-4 grow flex flex-col">
+    <a
+      href={link}
+      class="font-merriweather font-bold text-lg text-gray-900 hover:text-primary transition-colors cursor-pointer block"
+      onclick="if (typeof window !== 'undefined' && window.trackTourInterest) { window.trackTourInterest('{title}'); }"
+    >
+      {title}
+    </a>
+    <div class="flex items-center gap-4 text-sm text-gray-600">
+      <span class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        {duration}
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        {price}
+      </span>
+    </div>
+    <p class="text-sm text-gray-600 flex items-center gap-1.5">
+      <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+      {location}
+    </p>
+    {resolvedChips.length > 0 && (
+      <div class="flex flex-wrap gap-1.5">
+        {resolvedChips.map(({ key, cfg }) => (
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-gray-200 bg-white text-xs text-gray-600 font-medium">
+            <svg class="w-4 h-4 flex-shrink-0" style={`color: currentColor`} fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true" set:html={cfg.icon} />
+            {key}
+          </span>
+        ))}
+      </div>
+    )}
+    <!-- Standardized Primary CTA -->
+    <a
+      href={link}
+      class="cta-primary cta-primary-sm w-full justify-center mt-auto"
+      onclick="if (typeof window !== 'undefined' && window.trackTourInterest) { window.trackTourInterest('{title}'); }"
+    >
+      {buttons?.[0]?.title || "Join This Tour"}
+      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</div>

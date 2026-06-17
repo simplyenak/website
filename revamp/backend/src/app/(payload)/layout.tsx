@@ -13,6 +13,9 @@ type Args = {
   children: React.ReactNode
 }
 
+// Force dynamic rendering to avoid prerendering errors with React context
+export const dynamic = 'force-dynamic'
+
 const serverFunction: ServerFunctionClient = async function (args) {
   'use server'
   return handleServerFunctions({

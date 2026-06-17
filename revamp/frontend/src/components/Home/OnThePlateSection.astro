@@ -1,0 +1,63 @@
+---
+// OnThePlateSection.astro
+// Eight iconic Malaysian dishes, each mapped to its cultural origin.
+// All text comes via props from the content layer / translation overlay.
+
+interface Dish {
+  name: string;
+  culture: string;
+  description: string;
+  color: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  dishes?: Dish[];
+}
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  dishes = [],
+} = Astro.props;
+---
+
+<section class="bg-white py-16 md:py-20 border-t border-gray-100">
+  <div class="main-container">
+
+    <div class="max-w-3xl mb-12">
+      <p class="text-eyebrow text-orange mb-3">{eyebrow}</p>
+      <h2 class="font-merriweather font-bold text-primary text-2xl md:text-3xl leading-snug mb-4">
+        {title}
+      </h2>
+      <p class="text-gray-500 text-sm leading-relaxed max-w-2xl">
+        {subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+      {dishes.map((dish) => (
+        <div class="group">
+          <div class="border-t-2 pt-5 h-full" style={`border-color: ${dish.color};`}>
+            <span
+              class="text-[10px] font-bold uppercase tracking-[0.18em] block mb-2"
+              style={`color: ${dish.color};`}
+            >
+              {dish.culture}
+            </span>
+            <h3 class="font-merriweather font-bold text-primary text-base leading-snug mb-2">
+              {dish.name}
+            </h3>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              {dish.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

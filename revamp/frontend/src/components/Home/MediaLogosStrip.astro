@@ -1,0 +1,38 @@
+---
+// MediaLogosStrip.astro
+// Thin light credibility bar below hero.
+// Shows "As featured in" + publication logo images (dark-filtered for light bg).
+
+interface Props {
+  features?: Array<{ publication: string; logo_url?: string }>;
+  eyebrow?: string;
+}
+
+const { features = [], eyebrow } = Astro.props;
+const withLogos = features.filter(f => f.logo_url);
+if (!withLogos.length) return;
+---
+
+<div class="bg-white border-b border-gray-100">
+  <div class="main-container py-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+
+    <span class="text-gray-300 text-[9px] uppercase tracking-[0.22em] font-bold hidden sm:block flex-shrink-0">
+      {eyebrow || 'As featured in'}
+    </span>
+
+    <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
+      {withLogos.map((f) => (
+        <img
+          src={f.logo_url}
+          alt={f.publication}
+          class="h-5 max-w-[90px] object-contain transition-opacity duration-200"
+          style="filter: brightness(0) opacity(0.3);"
+          loading="lazy"
+          onmouseover="this.style.filter='brightness(0) opacity(0.55)'"
+          onmouseout="this.style.filter='brightness(0) opacity(0.3)'"
+        />
+      ))}
+    </div>
+
+  </div>
+</div>

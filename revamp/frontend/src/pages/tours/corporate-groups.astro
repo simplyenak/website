@@ -1,0 +1,203 @@
+---
+export const prerender = true;
+
+import Layout from '@/layouts/Layout.astro';
+import { getAllTours, getCorporateGroupsPage } from '@/lib/content';
+import siteSettingsData from "@/data/content/site-settings.json";
+import { getLangFromUrl } from '@/i18n/utils';
+import { siteConfig } from '@/lib/site-config';
+
+// Get language from URL
+const lang = getLangFromUrl(Astro.url);
+
+// Fetch data from Payload
+const [allTours, corporatePage] = await Promise.all([
+  getAllTours(),
+  getCorporateGroupsPage(lang),
+]);
+
+const klTours = allTours.filter((t: any) => t.location === 'Kuala Lumpur' && (t._status === 'published' || !t._status)).slice(0, 6);
+const penangTours = allTours.filter((t: any) => t.location === 'Penang' && (t._status === 'published' || !t._status)).slice(0, 6);
+
+const benefits = Array.isArray(corporatePage?.benefit_cards) ? corporatePage.benefit_cards : [];
+const featureCards = Array.isArray(corporatePage?.feature_cards) ? corporatePage.feature_cards : [];
+const howSteps = Array.isArray(corporatePage?.how_steps) ? corporatePage.how_steps : [];
+const offerPerfectForItems = Array.isArray(corporatePage?.offer_perfect_for)
+  ? corporatePage.offer_perfect_for.map((i: any) => typeof i === 'string' ? i : i.item).filter(Boolean)
+  : [];
+---
+
+<Layout
+  title={corporatePage?.seo_title}
+  description={corporatePage?.seo_description}
+  hreflangPath="/tours/corporate-groups/"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-end bg-dark overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,9,9,0.98) 0%, rgba(10,9,9,0.75) 40%, transparent 100%);"></div>
+
+    <div class="relative z-10 main-container w-full pb-16 pt-40">
+      {corporatePage?.hero_eyebrow && <p class="text-eyebrow text-orange mb-5">{corporatePage.hero_eyebrow}</p>}
+
+      {corporatePage?.hero_title && <h1 class="text-h1 text-white mb-4">{corporatePage.hero_title}</h1>}
+
+      {corporatePage?.hero_subtitle && <p class="text-white/60 mb-6 max-w-2xl leading-relaxed" style="font-size: clamp(1rem, 1.8vw, 1.2rem);">{corporatePage.hero_subtitle}</p>}
+
+      <div class="flex flex-wrap gap-4">
+        {corporatePage?.hero_cta_kl && <a href="#kl-groups" class="cta-primary">{corporatePage.hero_cta_kl}</a>}
+        {corporatePage?.hero_cta_penang && <a href="#penang-groups" class="secondary-btn">{corporatePage.hero_cta_penang}</a>}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Offer -->
+  <section class="bg-white py-20 md:py-28">
+    <div class="main-container max-w-3xl">
+      {corporatePage?.offer_eyebrow && <p class="text-eyebrow text-orange mb-5">{corporatePage.offer_eyebrow}</p>}
+      {corporatePage?.offer_heading && <h2 class="text-h2 text-primary mb-8">{corporatePage.offer_heading}</h2>}
+
+      <div class="space-y-6 text-gray-700 leading-relaxed">
+        {(corporatePage?.offer_body_1_strong || corporatePage?.offer_body_1_rest) && (
+          <p>
+            {corporatePage?.offer_body_1_strong && <strong class="text-primary">{corporatePage.offer_body_1_strong}</strong>} {corporatePage?.offer_body_1_rest}
+          </p>
+        )}
+
+        <div class="bg-cream p-6 border-l-4 border-orange">
+          {corporatePage?.offer_perfect_for_label && <p class="font-semibold text-primary mb-2">{corporatePage.offer_perfect_for_label}</p>}
+          <ul class="space-y-2 text-sm">
+            {offerPerfectForItems.map((item: string) => (
+              <li>✓ {item}</li>
+            ))}
+          </ul>
+        </div>
+
+        {corporatePage?.offer_body_2 && <p>{corporatePage.offer_body_2}</p>}
+      </div>
+    </div>
+  </section>
+
+  <!-- Group Benefits -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="main-container">
+      {corporatePage?.benefits_eyebrow && <p class="text-eyebrow text-orange mb-5">{corporatePage.benefits_eyebrow}</p>}
+      {corporatePage?.benefits_title && <h2 class="text-h2 text-primary mb-12">{corporatePage.benefits_title}</h2>}
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="bg-white p-6">
+            <div class="w-12 h-12 bg-orange/10 rounded-full flex items-center justify-center mb-4">
+              <span class="text-2xl">{benefit.icon}</span>
+            </div>
+            <h3 class="font-bold text-primary mb-2">{benefit.title}</h3>
+            <p class="text-sm text-gray-600">{benefit.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <!-- Feature Cards (why book with us) -->
+  <section class="bg-white py-20 md:py-28">
+    <div class="main-container">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featureCards.map((card: any) => (
+          <div class="bg-cream p-6">
+            <h3 class="text-h5 text-primary mb-2">{card.heading}</h3>
+            <p class="text-gray-600 text-sm">{card.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- KL Tours -->
+  <section id="kl-groups" class="bg-white py-20 md:py-28">
+    <div class="main-container">
+      {corporatePage?.kl_section?.eyebrow && <p class="text-eyebrow text-orange mb-5">{corporatePage.kl_section.eyebrow}</p>}
+      {corporatePage?.kl_section?.heading && <h2 class="text-h2 text-primary mb-4">{corporatePage.kl_section.heading}</h2>}
+      {corporatePage?.kl_section?.subtext && <p class="text-gray-400 text-sm mb-12 max-w-md leading-relaxed">{corporatePage.kl_section.subtext}</p>}
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {klTours.map((tour: any) => (
+          <a href={`/tours/${tour.slug}/`} class="group">
+            <div class="bg-cream border border-primary/10 p-6 h-full group-hover:border-orange/30 group-hover:shadow-sm transition-all duration-200">
+              {tour.featured && (
+                <span class="inline-block px-2 py-0.5 bg-orange text-dark text-[10px] font-bold uppercase tracking-widest mb-3">{corporatePage?.tour_badge_bestseller}</span>
+              )}
+              <h3 class="text-h5 text-primary mb-2 group-hover:text-orange transition-colors">{tour.name}</h3>
+              <p class="text-gray-600 text-sm mb-4 line-clamp-2">{tour.short_description}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">{tour.duration}</span>
+                <span class="font-merriweather font-bold text-orange">From RM {tour.price}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Penang Tours -->
+  <section id="penang-groups" class="bg-cream py-20 md:py-28">
+    <div class="main-container">
+      {corporatePage?.penang_section?.eyebrow && <p class="text-eyebrow text-orange mb-5">{corporatePage.penang_section.eyebrow}</p>}
+      {corporatePage?.penang_section?.heading && <h2 class="text-h2 text-primary mb-4">{corporatePage.penang_section.heading}</h2>}
+      {corporatePage?.penang_section?.subtext && <p class="text-gray-400 text-sm mb-12 max-w-md leading-relaxed">{corporatePage.penang_section.subtext}</p>}
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {penangTours.map((tour: any) => (
+          <a href={`/tours/${tour.slug}/`} class="group">
+            <div class="bg-white border border-primary/10 p-6 h-full group-hover:border-orange/30 group-hover:shadow-sm transition-all duration-200">
+              {tour.featured && (
+                <span class="inline-block px-2 py-0.5 bg-orange text-dark text-[10px] font-bold uppercase tracking-widest mb-3">{corporatePage?.tour_badge_bestseller}</span>
+              )}
+              <h3 class="text-h5 text-primary mb-2 group-hover:text-orange transition-colors">{tour.name}</h3>
+              <p class="text-gray-600 text-sm mb-4 line-clamp-2">{tour.short_description}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">{tour.duration}</span>
+                <span class="font-merriweather font-bold text-orange">From RM {tour.price}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="bg-white py-20 md:py-28">
+    <div class="main-container max-w-3xl">
+      {corporatePage?.how_eyebrow && <p class="text-eyebrow text-orange mb-5">{corporatePage.how_eyebrow}</p>}
+      {corporatePage?.how_heading && <h2 class="text-h2 text-primary mb-12">{corporatePage.how_heading}</h2>}
+
+      <div class="space-y-8">
+        {howSteps.map((step: any, index: number) => (
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-orange text-dark font-bold rounded-full flex items-center justify-center">{index + 1}</div>
+            <div>
+              <h3 class="text-h5 text-primary mb-2">{step.title}</h3>
+              <p class="text-gray-600">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-dark py-20">
+    <div class="main-container text-center">
+      {corporatePage?.cta_heading && <h2 class="text-h2 text-white mb-6">{corporatePage.cta_heading}</h2>}
+      {corporatePage?.cta_body && <p class="text-white/60 mb-10 max-w-xl mx-auto">{corporatePage.cta_body}</p>}
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        {corporatePage?.cta_email_label && <a href={`mailto:${siteConfig.email}`} class="cta-primary inline-block">{corporatePage.cta_email_label}</a>}
+        {corporatePage?.cta_whatsapp_label && <a href={`https://wa.me/${siteConfig.whatsappDigits}`} target="_blank" rel="noopener noreferrer" class="secondary-btn inline-block">{corporatePage.cta_whatsapp_label}</a>}
+      </div>
+      {(corporatePage?.cta_private_text || corporatePage?.cta_private_link_label) && (
+        <p class="text-white/65 text-sm">
+          {corporatePage?.cta_private_text} {corporatePage?.cta_private_href && corporatePage?.cta_private_link_label && <a href={corporatePage.cta_private_href} class="text-orange hover:underline">{corporatePage.cta_private_link_label}</a>}
+        </p>
+      )}
+    </div>
+  </section>
+</Layout>

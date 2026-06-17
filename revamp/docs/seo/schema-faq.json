@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What makes Simply Enak different from other food tours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We're locals who grew up eating at these places. You'll meet Aunty Lim who's made laksa since 1982, visit family-run stalls where we've eaten for generations, and hear stories behind every dish. Come as a guest, leave as friends. Our tours feature generational vendors, non-commission recommendations, and small groups (max 8 people) for an authentic Malaysian food experience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you accommodate dietary restrictions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! We can accommodate vegetarian, halal, gluten-free, vegan, and Jain dietary needs. Just let us know when booking and we'll make sure you get Malaysian food that meets your requirements while still sharing the cultural stories. We have dedicated dietary-specific tours and all our guides are trained on ingredient awareness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long are your heritage food tours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our cultural food tours range from 4-5 hours, including walking through neighborhoods where we grew up and meeting vendors we've known for years. We pace ourselves based on your group's interests and energy levels. Tours include 10-12 food tastings across multiple vendors, with breaks for cultural context and photos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the tours suitable for children?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We love sharing Malaysian food heritage with families! Children get to try new flavors while learning about different cultures. We can adjust portions, spice levels, and walking pace to make it enjoyable for everyone. Our small group size (max 8) means kids get personal attention from our guides."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas of Malaysia do you cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We currently share our food heritage in Kuala Lumpur, Penang, Ipoh, Melaka, and Klang - each with unique cultural stories and flavors. KL offers urban hawker culture, Penang has Peranakan heritage and famous street food, Ipoh is known for white coffee and old-town charm, Melaka shows historical Nyonya fusion, and Klang features royal Malay cuisine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many people join each tour?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Small groups ensure meaningful cultural connections. Maximum 8 people per tour, so you can actually talk with vendors, ask questions, and enjoy the food without feeling rushed. We want you to feel like you're walking around with friends, not following a guide. This also ensures we don't overwhelm our partner vendors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is vegetarian Malaysian food actually good?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exceptionally good. Malaysian vegetarian cuisine draws from Chinese Buddhist cooking, Indian vegetarian traditions, and Malay herb-forward dishes. You'll taste things like nyonya vegetable curries, Indian-Muslim dal, and Chinese tofu dishes that have been perfected over generations. Many of our vendor partners have been serving vegetarian options for 40+ years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer private tours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Private tours are available for couples, families, or small groups who want a fully tailored experience. We can customize the route, focus on specific cuisines, adjust the pace entirely to your preferences, and even arrange special vendor meetings. Contact us at booking@simplyenak.com or +60 17-287 8929 to discuss options."
+      }
+    }
+  ]
+}

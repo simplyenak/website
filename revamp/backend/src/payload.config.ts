@@ -44,11 +44,6 @@ import { TourQuiz } from './collections/TourQuiz'
 import { Neighborhoods } from './collections/Neighborhoods'
 import { ComparisonPage } from './collections/ComparisonPage'
 import { Pages } from './collections/Pages'
-// Guide Operations
-import { Guides } from './collections/Guides'
-import { TourBookings } from './collections/TourBookings'
-import { GuideAssignments } from './collections/GuideAssignments'
-import { Claims } from './collections/Claims'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -122,11 +117,6 @@ export default buildConfig({
     DirectionsPage,
     // Quiz
     TourQuiz,
-    // Guide Operations
-    Guides,
-    TourBookings,
-    GuideAssignments,
-    Claims,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -174,10 +164,6 @@ export default buildConfig({
         { slug: 'track_record_page' },
         { slug: 'private_tours_page' },
         { slug: 'directions_page' },
-        { slug: 'guides' },
-        { slug: 'tour-bookings' },
-        { slug: 'guide-assignments' },
-        { slug: 'claims' },
       ],
       defaultVersionStatus: 'published',
       importLimit: 0, // unlimited
@@ -188,14 +174,13 @@ export default buildConfig({
         media: {
           prefix: 'payload-media',
           disableLocalStorage: true,
-          disablePayloadAccessControl: false,
+          disablePayloadAccessControl: true,
+          generateFileURL: ({ filename, prefix }: { filename: string; prefix?: string }) => {
+            return `https://cdn.simplyenak.com/payload-media/${filename}`;
+          },
         },
       },
       bucket: process.env.S3_BUCKET || '',
-      generateFileURL: (data) => {
-        const filename = data.filename || data.name || '';
-        return `https://cdn.simplyenak.com/payload-media/${filename}`;
-      },
       config: {
         credentials: {
           accessKeyId: process.env.S3_ACCESS_KEY_ID || '',

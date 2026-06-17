@@ -1,0 +1,56 @@
+---
+import { getLangFromUrl, localizePath } from "@/i18n/utils";
+
+interface Stat {
+  number?: string;
+  heading?: string;
+  body?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+  stats?: Stat[];
+}
+
+const props = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const { eyebrow, ctaText } = props;
+const title = props.title;
+const subtitle = props.subtitle;
+const stats: Stat[] = (props.stats || []).filter((s) => s.heading);
+---
+
+<section class="py-16 md:py-20 bg-cream">
+  <div class="main-container">
+
+    <div class="max-w-4xl mx-auto">
+      {eyebrow && <p class="text-eyebrow text-orange mb-3">{eyebrow}</p>}
+      {title && <h2 class="text-h2 text-primary mb-3">{title}</h2>}
+      {subtitle && (
+        <p class="text-gray-500 text-sm mb-10 leading-relaxed">{subtitle}</p>
+      )}
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mt-10">
+        {stats.map((stat) => (
+          <div class="border-t border-gray-200 pt-6">
+            <p class="font-merriweather font-bold text-primary text-lg leading-snug mb-3">{stat.heading}</p>
+            <p class="text-gray-500 text-sm leading-relaxed">{stat.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {ctaText && (
+        <div class="mt-12">
+          <a href={localizePath('/tours/', lang)} class="cta-primary inline-flex">
+            {ctaText}
+          </a>
+        </div>
+      )}
+    </div>
+
+  </div>
+</section>

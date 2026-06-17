@@ -1,0 +1,15 @@
+---
+// Mock Button component for Storybook
+const { title, href, buttonType, class: className = "", ariaLabel, external = false, icon } = Astro.props;
+---
+<!-- Simple mock that renders a button-like element -->
+<a 
+  href={href} 
+  class={["min-h-[44px] inline-flex items-center justify-center", buttonType, className].join(' ')}
+  aria-label={ariaLabel || title}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>
+  <span>{title}</span>
+  {icon && <span class="size-5" aria-hidden="true">[Icon: {icon}]</span>}
+</a>

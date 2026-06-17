@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pill Alternatives — Hero Tag Comparison</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #1a1a1a;
+    color: #fff;
+    line-height: 1.5;
+    padding: 40px 24px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 4px; color: #fff; }
+  .subtitle { color: #888; font-size: 0.85rem; margin-bottom: 36px; }
+  
+  .variant-card {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .variant-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: #2a2a2a;
+    border-bottom: 1px solid #333;
+  }
+  .variant-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .variant-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #333;
+    color: #aaa;
+  }
+  .variant-preview {
+    padding: 32px 24px;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* For option C — inline stat line simulation */
+  .stat-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px 12px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+  }
+  .stat-line .sep { color: rgba(255,255,255,0.12); }
+
+  .annotation {
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.3);
+    font-size: 0.78rem;
+    color: #777;
+    border-top: 1px solid #333;
+  }
+  .annotation code {
+    color: #ffa333;
+    background: rgba(255,163,51,0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.72rem;
+  }
+
+  .tag-orange {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Hero Tag Display — Visual Comparison</h1>
+  <p class="subtitle">How qualifying tags (dietary, travel style, specialties) look against a dark hero overlay</p>
+
+  <!-- A: Current (glassmorphism pills) -->
+  <div class="variant-card">
+    <div class="variant-header">
+      <span class="variant-label">A. Current (glassmorphism pills)</span>
+      <span class="variant-badge">what you have now</span>
+    </div>
+    <div class="variant-preview" style="gap: 8px;">
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm tag-orange">Vegetarian</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm tag-orange">Easy Walking</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white/80 border border-white/15 backdrop-blur-sm tag-orange">English</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-orange/20 text-orange border border-orange/25 backdrop-blur-sm tag-orange">Chinatown</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-orange/20 text-orange border border-orange/25 backdrop-blur-sm tag-orange">Petaling Street</span>
+    </div>
+    <div class="annotation">Glassmorphism on an already-glass hero — competing visual textures. The backdrop-blur layers on top of the hero gradient feel busy.</div>
+  </div>
+
+  <!-- B: Orange recolored pills -->
+  <div class="variant-card">
+    <div class="variant-header">
+      <span class="variant-label">B. Orange chips (no glass)</span>
+      <span class="variant-badge">what I just changed to</span>
+    </div>
+    <div class="variant-preview" style="gap: 8px;">
+      <span class="px-3 py-1 text-xs font-semibold rounded-full border border-orange/20 bg-orange/10 text-orange tag-orange">Vegetarian</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full border border-orange/20 bg-orange/10 text-orange tag-orange">Easy Walking</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full border border-orange/20 bg-orange/10 text-orange tag-orange">English</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full border border-orange/30 bg-orange/15 text-orange tag-orange">Chinatown</span>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full border border-orange/30 bg-orange/15 text-orange tag-orange">Petaling Street</span>
+    </div>
+    <div class="annotation">Still pills, but orange brand color instead of glass. Removes backdrop-blur competition. Same visual weight as before but cleaner.</div>
+  </div>
+
+  <!-- C: Inline · separated list (no background) -->
+  <div class="variant-card">
+    <div class="variant-header">
+      <span class="variant-label">C. Inline · separated list</span>
+      <span class="variant-badge">no background</span>
+    </div>
+    <div class="variant-preview">
+      <div class="flex flex-wrap items-center gap-1 text-sm text-white/60">
+        <span>Vegetarian</span>
+        <span class="text-white/[0.15]">·</span>
+        <span>Easy Walking</span>
+        <span class="text-white/[0.15]">·</span>
+        <span>English</span>
+        <span class="text-white/[0.15]">·</span>
+        <span class="text-orange">Chinatown</span>
+        <span class="text-white/[0.15]">·</span>
+        <span class="text-orange">Petaling Street</span>
+      </div>
+    </div>
+    <div class="annotation">Zero background — just text with dots. Same pattern as the stats bar below it. Doesn't compete visually. <code>text-white/60</code> with <code>·</code> separators, specialties in <code>text-orange</code>.</div>
+  </div>
+
+  <!-- D: Underlined text links -->
+  <div class="variant-card">
+    <div class="variant-header">
+      <span class="variant-label">D. Underlined text tags</span>
+      <span class="variant-badge">editorial style</span>
+    </div>
+    <div class="variant-preview" style="gap: 4px 16px;">
+      <a class="text-orange/80 underline underline-offset-2 decoration-orange/30 text-xs font-medium">Vegetarian</a>
+      <a class="text-orange/80 underline underline-offset-2 decoration-orange/30 text-xs font-medium">Easy Walking</a>
+      <a class="text-orange/80 underline underline-offset-2 decoration-orange/30 text-xs font-medium">English</a>
+      <a class="text-orange underline underline-offset-2 decoration-orange/40 text-xs font-semibold">Chinatown</a>
+      <a class="text-orange underline underline-offset-2 decoration-orange/40 text-xs font-semibold">Petaling Street</a>
+    </div>
+    <div class="annotation">Editorial feel — more like Wikipedia tags than ecommerce badges. Fits "Passionate Friend" voice better. Can be actual links to /tours/dietary/vegetarian/. <code>underline-offset-2 text-orange/80</code></div>
+  </div>
+
+  <!-- E: Rectangle chips (not pills) -->
+  <div class="variant-card">
+    <div class="variant-header">
+      <span class="variant-label">E. Rectangle chips</span>
+      <span class="variant-badge">square corners</span>
+    </div>
+    <div class="variant-preview" style="gap: 8px;">
+      <span class="px-3 py-1 text-xs font-semibold border border-orange/20 bg-orange/10 text-orange tag-orange">Vegetarian</span>
+      <span class="px-3 py-1 text-xs font-semibold border border-orange/20 bg-orange/10 text-orange tag-orange">Easy Walking</span>
+      <span class="px-3 py-1 text-xs font-semibold border border-orange/20 bg-orange/10 text-orange tag-orange">English</span>
+      <span class="px-3 py-1 text-xs font-semibold border border-orange/30 bg-orange/15 text-orange tag-orange">Chinatown</span>
+      <span class="px-3 py-1 text-xs font-semibold border border-orange/30 bg-orange/15 text-orange tag-orange">Petaling Street</span>
+    </div>
+    <div class="annotation">Same as B but <code>rounded-sm</code> instead of <code>rounded-full</code>. Small square corners match the itinerary tastings chips. Less "badge" feel.</div>
+  </div>
+
+  <!-- F: Merged into stats line -->
+  <div class="variant-card">
+    <div class="variant-header">
+      <span class="variant-label">F. Merged into stats line</span>
+      <span class="variant-badge">single hero layer</span>
+    </div>
+    <div class="variant-preview">
+      <div class="stat-line">
+        <span>⏱ 3.5 hours</span>
+        <span class="sep">·</span>
+        <span>👥 2–9 people</span>
+        <span class="sep">·</span>
+        <span>🗓 Daily</span>
+        <span class="sep">·</span>
+        <span>🥬 Vegetarian</span>
+        <span class="sep">·</span>
+        <span>🥾 Easy walking</span>
+        <span class="sep">·</span>
+        <span>🗣 English</span>
+      </div>
+    </div>
+    <div class="annotation">Tags live in the existing stats bar — one less visual layer in the hero. Everything is <code>text-white/55</code> with <code>·</code> separators. Unifies all metadata in one place.</div>
+  </div>
+
+</div>
+</body>
+</html>

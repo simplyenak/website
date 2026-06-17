@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corrections — 5-bar walk + vegan/halal options</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #0d0d0d; color: #fff; line-height: 1.5;
+    padding: 40px 24px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+  .subtitle { color: #777; font-size: 0.85rem; margin-bottom: 40px; }
+
+  .card {
+    background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px;
+    margin-bottom: 32px; overflow: hidden;
+  }
+  .card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; background: #222; border-bottom: 1px solid #2a2a2a;
+  }
+  .card-label { font-weight: 600; font-size: 0.9rem; }
+  .card-badge { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; background: #2a2a2a; color: #999; }
+
+  .hero-box {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 6px; margin: 6px; padding: 36px 28px 28px;
+    position: relative; overflow: hidden;
+  }
+  .hero-box::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path d="M20,30 Q40,10 60,30 T100,30" fill="none" stroke="white" stroke-width="0.5"/><path d="M0,50 Q20,30 40,50 T80,50" fill="none" stroke="white" stroke-width="0.5"/><circle cx="70" cy="20" r="1" fill="white"/></svg>');
+    background-size: 200px 200px;
+  }
+  .hero-box > * { position: relative; z-index: 1; }
+  .hero-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 22px; line-height: 1.2; }
+
+  .annotation {
+    padding: 10px 24px; font-size: 0.75rem; color: #555;
+    background: rgba(0,0,0,0.15);
+  }
+
+  .group { margin-bottom: 16px; }
+  .group:last-child { margin-bottom: 0; }
+
+  .group-head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .group-head .label {
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
+  }
+  .group-head .line { flex: 1; height: 1px; }
+  .group-head.stats .label { color: rgba(255,255,255,0.2); }
+  .group-head.stats .line { background: rgba(255,255,255,0.06); }
+  .group-head.tags .label { color: rgba(255,163,51,0.35); }
+  .group-head.tags .line { background: rgba(255,163,51,0.08); }
+
+  .box-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .v5-box {
+    display: inline-flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 16px 20px; border-radius: 8px; border: 1px solid; min-width: 100px;
+  }
+  .v5-box svg { width: 26px; height: 26px; }
+  .v5-box .v5-label { font-size: 0.8rem; font-weight: 500; line-height: 1.2; }
+
+  .v5-box.stat {
+    background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.6);
+  }
+  .v5-box.stat svg { color: rgba(255,255,255,0.3); }
+
+  .v5-box.tag {
+    background: rgba(255,163,51,0.05); border-color: rgba(255,163,51,0.15);
+    color: #FFA333;
+  }
+  .v5-box.tag svg { color: #FFA333; opacity: 0.55; }
+
+  .v5-box.compact { padding: 12px 14px; min-width: 72px; gap: 6px; }
+  .v5-box.compact svg { width: 20px; height: 20px; }
+  .v5-box.compact .v5-label { font-size: 0.72rem; }
+
+  .alt-grid {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    padding: 16px 24px; background: #141414;
+    border: 1px solid #2a2a2a; border-radius: 8px; margin: 6px 6px 10px;
+  }
+  .alt-item {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .alt-item svg { width: 28px; height: 28px; }
+  .alt-item .alt-label { font-size: 0.7rem; color: #666; }
+  .alt-item .alt-name { font-size: 0.8rem; font-weight: 500; color: #FFA333; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Corrections — 5-level bar + vegan/halal options</h1>
+  <p class="subtitle">Fixed: 5 bars not 3. And showing vegan/halal alternatives since I assumed those wrong.</p>
+
+  <!-- ====== 5-BAR DIFFICULTY ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-label">Walking difficulty — 5-level bar</span>
+      <span class="card-badge">corrected</span>
+    </div>
+    <div class="hero-box" style="padding:28px;">
+      <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:center;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" opacity="0.55">
+            <rect x="2" y="18" width="4" height="8" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="8" y="12" width="4" height="14" rx="1" opacity="0.12"/>
+            <rect x="14" y="8" width="4" height="18" rx="1" opacity="0.12"/>
+            <rect x="20" y="6" width="4" height="20" rx="1" opacity="0.12"/>
+            <rect x="26" y="6" width="4" height="20" rx="1" opacity="0.12"/>
+          </svg>
+          <span style="font-size:0.75rem; color:#aaa;">Easy</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" opacity="0.55">
+            <rect x="2" y="18" width="4" height="8" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="8" y="12" width="4" height="14" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="14" y="8" width="4" height="18" rx="1" opacity="0.12"/>
+            <rect x="20" y="6" width="4" height="20" rx="1" opacity="0.12"/>
+            <rect x="26" y="6" width="4" height="20" rx="1" opacity="0.12"/>
+          </svg>
+          <span style="font-size:0.75rem; color:#aaa;">Moderate</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" opacity="0.55">
+            <rect x="2" y="18" width="4" height="8" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="8" y="12" width="4" height="14" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="14" y="8" width="4" height="18" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="20" y="6" width="4" height="20" rx="1" opacity="0.12"/>
+            <rect x="26" y="6" width="4" height="20" rx="1" opacity="0.12"/>
+          </svg>
+          <span style="font-size:0.75rem; color:#aaa;">Challenging</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" opacity="0.55">
+            <rect x="2" y="18" width="4" height="8" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="8" y="12" width="4" height="14" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="14" y="8" width="4" height="18" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="20" y="6" width="4" height="20" rx="1" fill="#FFA333" opacity="0.25"/>
+            <rect x="26" y="6" width="4" height="20" rx="1" opacity="0.12"/>
+          </svg>
+          <span style="font-size:0.75rem; color:#aaa;">Strenuous</span>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      5 vertical bars. Filled bars = difficulty level. 1/5 = Easy. 2/5 = Moderate. 3/5 = Challenging. 4/5 = Strenuous. Bars are thin rectangles with rounded top caps.
+    </div>
+  </div>
+
+  <!-- ====== VEGAN / HALAL ALTERNATIVES ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-label">Vegan + Halal — icon alternatives</span>
+      <span class="card-badge">pick your preference</span>
+    </div>
+
+    <!-- Vegan options -->
+    <div style="padding:8px 24px 0; font-size:0.75rem; color:#666; text-transform:uppercase; letter-spacing:0.04em;">Vegan options</div>
+    <div class="alt-grid">
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/>
+          <line x1="16" y1="4" x2="20" y2="8"/>
+          <line x1="20" y1="4" x2="16" y2="8"/>
+        </svg>
+        <span class="alt-name">Leaf + X</span>
+        <span class="alt-label">my suggestion</span>
+      </div>
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/>
+          <text x="12" y="14" text-anchor="middle" fill="#FFA333" font-size="7" font-weight="700" opacity="0.7">V</text>
+        </svg>
+        <span class="alt-name">Leaf + V</span>
+        <span class="alt-label">letter V inside</span>
+      </div>
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <path d="M12 2c-4 0-6 3-6 6s2 7 6 10"/>
+          <path d="M18 4l-6 6-4-3"/>
+        </svg>
+        <span class="alt-name">Leaf + stem</span>
+        <span class="alt-label">sprout/seedling</span>
+      </div>
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/>
+          <circle cx="12" cy="9" r="1.5" fill="#FFA333" opacity="0.15"/>
+        </svg>
+        <span class="alt-name">Leaf + dot</span>
+        <span class="alt-label">subtle dot</span>
+      </div>
+    </div>
+
+    <!-- Halal options -->
+    <div style="padding:8px 24px 0; font-size:0.75rem; color:#666; text-transform:uppercase; letter-spacing:0.04em;">Halal options</div>
+    <div class="alt-grid">
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <path d="M12 2l4 3-4 3"/>
+          <path d="M12 8l4 3-4 3"/>
+          <path d="M12 14l4 3-4 3"/>
+          <path d="M8 5l4 3-4 3"/>
+          <path d="M8 11l4 3-4 3"/>
+          <path d="M8 17l4 3-4 3"/>
+        </svg>
+        <span class="alt-name">Crescent</span>
+        <span class="alt-label">my suggestion</span>
+      </div>
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3c-5 0-9 4-9 9s4 9 9 9" stroke="#FFA333" opacity="0.3"/>
+          <path d="M12 3a9 9 0 0 1 0 18" fill="#FFA333" opacity="0.06"/>
+        </svg>
+        <span class="alt-name">Moon</span>
+        <span class="alt-label">full moon outline</span>
+      </div>
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <path d="M4 20l4-16h8l4 16"/>
+          <path d="M7 14h10"/>
+          <path d="M6 17h12"/>
+        </svg>
+        <span class="alt-name">Dome</span>
+        <span class="alt-label">mosque dome</span>
+      </div>
+      <div class="alt-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.55">
+          <path d="M12 2v8"/>
+          <path d="M8 6l4 4 4-4"/>
+          <path d="M4 13v5a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-5"/>
+        </svg>
+        <span class="alt-name">Check</span>
+        <span class="alt-label">verified checkmark</span>
+      </div>
+    </div>
+
+    <div class="annotation">
+      For <strong>Vegan</strong>: Leaf+X most distinct from plain leaf. Leaf+V is clearest. Sprout is more organic. Dot is too subtle.<br>
+      For <strong>Halal</strong>: Crescent is most recognized globally. Dome is culturally specific. Checkmark says "certified" rather than "halal" directly.
+    </div>
+  </div>
+
+  <!-- ====== CORRECTED TOUR ====== -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-label">✨ Corrected tour — with 5-bar + your icon picks</span>
+      <span class="card-badge">waiting on vegan/halal choice</span>
+    </div>
+    <div class="hero-box">
+      <h2 class="hero-title">George Street Food Odyssey</h2>
+
+      <div class="group">
+        <div class="group-head stats">
+          <span class="label">Info</span>
+          <span class="line"></span>
+        </div>
+        <div class="box-row">
+          <div class="v5-box stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="14"/></svg>
+            <span class="v5-label">3.5h</span>
+          </div>
+          <div class="v5-box stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3 20c1-4 4-5 9-5s8 1 9 5"/></svg>
+            <span class="v5-label">2–9</span>
+          </div>
+          <div class="v5-box stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+            <span class="v5-label">Daily</span>
+          </div>
+          <div class="v5-box stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="6" r="2.5"/><path d="M7 22l1-6h8l1 6"/><rect x="9" y="12" width="6" height="3" rx="1"/></svg>
+            <span class="v5-label">Limited</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head tags">
+          <span class="label">Good For</span>
+          <span class="line"></span>
+        </div>
+        <div class="box-row">
+          <div class="v5-box tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/></svg>
+            <span class="v5-label">Vegetarian</span>
+          </div>
+          <div class="v5-box tag">
+            <!-- Using V inside leaf as placeholder — replace with your pick -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/><text x="12" y="14" text-anchor="middle" fill="#FFA333" font-size="7" font-weight="700" opacity="0.7">V</text></svg>
+            <span class="v5-label">Vegan</span>
+          </div>
+          <div class="v5-box tag">
+            <!-- Using crescent as placeholder — replace with your pick -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l4 3-4 3"/><path d="M12 8l4 3-4 3"/><path d="M12 14l4 3-4 3"/><path d="M8 5l4 3-4 3"/><path d="M8 11l4 3-4 3"/><path d="M8 17l4 3-4 3"/></svg>
+            <span class="v5-label">Halal</span>
+          </div>
+          <div class="v5-box tag">
+            <!-- 5-bar: 1st bar filled = Easy -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="15" width="3" height="7" rx="1" fill="#FFA333" opacity="0.25"/><rect x="7" y="10" width="3" height="12" rx="1" opacity="0.12"/><rect x="12" y="7" width="3" height="15" rx="1" opacity="0.12"/><rect x="17" y="5" width="3" height="17" rx="1" opacity="0.12"/><rect x="22" y="5" width="3" height="17" rx="1" opacity="0.12"/></svg>
+            <span class="v5-label">Easy</span>
+          </div>
+          <div class="v5-box tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="5" y1="12" x2="19" y2="12"/><ellipse cx="12" cy="12" rx="4" ry="9" opacity="0.35"/></svg>
+            <span class="v5-label">English</span>
+          </div>
+          <div class="v5-box tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="5" y1="12" x2="19" y2="12"/><ellipse cx="12" cy="12" rx="4" ry="9" opacity="0.35"/></svg>
+            <span class="v5-label">Mandarin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      <strong>Fixed:</strong> Walking difficulty now uses 5 vertical bars (1 filled = Easy).<br>
+      <strong>Pending:</strong> Vegan and Halal icons — I assumed Leaf+X and Crescent but you said "I'm not sure." I need your pick from the alternatives above.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

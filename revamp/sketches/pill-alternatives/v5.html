@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Icon Style Reference — Simply Enak</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #0d0d0d;
+    color: #fff;
+    line-height: 1.5;
+    padding: 40px 24px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; color: #fff; }
+  .subtitle { color: #777; font-size: 0.85rem; margin-bottom: 40px; }
+
+  .section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; margin-bottom: 16px; }
+
+  /* Card grid */
+  .icon-set {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .icon-cell {
+    background: #1a1a1a;
+    padding: 28px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+  .icon-cell svg { width: 32px; height: 32px; flex-shrink: 0; }
+  .icon-label {
+    font-size: 0.65rem;
+    color: #666;
+    line-height: 1.3;
+  }
+  .icon-meta {
+    font-size: 0.6rem;
+    color: #444;
+    margin-top: 2px;
+  }
+
+  .style-header {
+    padding: 20px 24px 12px;
+    background: #1a1a1a;
+    border-radius: 12px 12px 0 0;
+  }
+  .style-name { font-weight: 600; font-size: 0.95rem; }
+  .style-desc { color: #777; font-size: 0.78rem; margin-top: 2px; }
+
+  .usage-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    margin: 16px 0 40px;
+    padding: 16px 24px;
+    align-items: center;
+  }
+  .usage-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+  }
+  .usage-item svg { width: 14px; height: 14px; }
+  .usage-item.tag { color: #FFA333; }
+  .usage-item.tag svg { color: #FFA333; }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #2a2a2a;
+    color: #888;
+    margin-left: 6px;
+  }
+
+  .annotation { color: #555; font-size: 0.75rem; padding: 14px 24px; border-top: 1px solid #222; }
+
+  hr { border: none; border-top: 1px solid #222; margin: 40px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Icon Style Directions — Simply Enak</h1>
+  <p class="subtitle">Six icon styles, each applied across the full set of 6 attributes. Warm, food-adjacent, Malaysian-rooted.</p>
+
+  <!-- ========= STYLE 1 ========= -->
+  <div class="style-header">
+    <div class="style-name">Style A — "Warung" <span class="badge">Food-adjacent metaphors</span></div>
+    <div class="style-desc">Everyday Malaysian food &amp; culture references. Each icon is a familiar object at the warung or pasar.</div>
+  </div>
+  <div class="icon-set">
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <!-- Teh tarik cup -->
+        <path d="M10 26h12l2-16H8l2 16z"/>
+        <path d="M8 10h16"/>
+        <path d="M22 10l-1-4H11l-1 4"/>
+        <path d="M24 14c2 0 3 2 3 4s-1 4-3 4"/>
+        <path d="M12 14h8l-1 8h-6z" fill="rgba(255,255,255,0.06)"/>
+      </svg>
+      <div class="icon-label">3.5 hours</div>
+      <div class="icon-meta">teh tarik = time for a drink</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <!-- Satay sticks -->
+        <line x1="8" y1="8" x2="8" y2="26"/>
+        <line x1="16" y1="8" x2="16" y2="26"/>
+        <line x1="24" y1="8" x2="24" y2="26"/>
+        <rect x="4" y="17" width="8" height="6" rx="2" fill="rgba(255,255,255,0.06)"/>
+        <rect x="12" y="15" width="8" height="6" rx="2" fill="rgba(255,255,255,0.06)"/>
+        <rect x="20" y="16" width="8" height="6" rx="2" fill="rgba(255,255,255,0.06)"/>
+      </svg>
+      <div class="icon-label">2–9 guests</div>
+      <div class="icon-meta">satay = sharing food together</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <!-- Sun / tropical day -->
+        <circle cx="16" cy="16" r="6"/>
+        <path d="M16 4v3"/>
+        <path d="M16 25v3"/>
+        <path d="M4 16h3"/>
+        <path d="M25 16h3"/>
+        <path d="M8.1 8.1l2.1 2.1"/>
+        <path d="M21.8 21.8l2.1 2.1"/>
+        <path d="M8.1 23.9l2.1-2.1"/>
+        <path d="M21.8 10.2l2.1-2.1"/>
+      </svg>
+      <div class="icon-label">Daily</div>
+      <div class="icon-meta">tropical sun = every day</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+        <!-- Kangkung/bunch of greens -->
+        <path d="M16 6c-4 0-7 2-7 6s3 8 7 12c4-4 7-8 7-12s-3-6-7-6z"/>
+        <path d="M16 16l-3-4"/>
+        <path d="M16 16l3-4"/>
+        <path d="M16 16v6"/>
+        <path d="M14 8l-2 2" stroke="#FFA333" opacity="0.4"/>
+        <path d="M18 8l2 2" stroke="#FFA333" opacity="0.4"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Vegetarian</div>
+      <div class="icon-meta">kangkung = fresh greens</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+        <!-- Slippers/sandal -->
+        <rect x="8" y="18" width="16" height="6" rx="3" fill="rgba(255,163,51,0.06)"/>
+        <path d="M10 18V15c0-3 2-5 6-5s6 2 6 5v3"/>
+        <path d="M14 18v3"/>
+        <path d="M18 18v3"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Easy walking</div>
+      <div class="icon-meta">selipar = relaxed pace</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+        <!-- Two speech bubbles -->
+        <path d="M6 16c0 5 3 9 8 9" opacity="0.5"/>
+        <path d="M10 12a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v4a5 5 0 0 1-5 5h-1l-3 3v-3h-2a5 5 0 0 1-5-5v-4z"/>
+        <circle cx="14" cy="14" r="1" fill="#FFA333" opacity="0.5"/>
+        <circle cx="18" cy="14" r="1" fill="#FFA333" opacity="0.5"/>
+        <circle cx="22" cy="14" r="1" fill="#FFA333" opacity="0.5"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">English</div>
+      <div class="icon-meta">bercakap = talking together</div>
+    </div>
+  </div>
+
+  <!-- Usage preview -->
+  <div class="usage-row">
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 20h12l2-12H4l2 12z"/><path d="M4 8h16"/><path d="M18 10c2 0 3 2 3 4"/></svg>3.5h</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="6" y1="8" x2="6" y2="22"/><line x1="12" y1="8" x2="12" y2="22"/><line x1="18" y1="8" x2="18" y2="22"/></svg>2–9</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="5"/><path d="M12 6v2"/><path d="M12 16v2"/></svg>Daily</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4c-3 0-5 2-5 5s2 6 5 9c3-3 5-6 5-9s-2-5-5-5z"/><path d="M12 12l-2-3"/><path d="M12 12l2-3"/></svg>Vegetarian</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="14" width="12" height="4" rx="2"/><path d="M8 14v-3c0-2 2-4 4-4s4 2 4 4v3"/></svg>Easy</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4h-1l-2 2v-2h-1a4 4 0 0 1-4-4v-3z"/></svg>English</div>
+  </div>
+
+  <!-- ========= STYLE 2 ========= -->
+  <div class="style-header">
+    <div class="style-name">Style B — "Batik" <span class="badge">Decorative cultural linework</span></div>
+    <div class="style-desc">Slightly ornate, curved lines inspired by batik/songket motifs. Warm, cultural, artisanal.</div>
+  </div>
+  <div class="icon-set">
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+        <circle cx="16" cy="16" r="9"/>
+        <circle cx="16" cy="16" r="5" stroke-dasharray="2 3"/>
+        <line x1="16" y1="16" x2="18.5" y2="18.5"/>
+        <circle cx="16" cy="7" r="0.8" fill="#fff" opacity="0.3"/>
+        <circle cx="25" cy="16" r="0.8" fill="#fff" opacity="0.3"/>
+        <circle cx="16" cy="25" r="0.8" fill="#fff" opacity="0.3"/>
+        <circle cx="7" cy="16" r="0.8" fill="#fff" opacity="0.3"/>
+      </svg>
+      <div class="icon-label">3.5 hours</div>
+      <div class="icon-meta">ornamental clock</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+        <circle cx="11" cy="9" r="4"/>
+        <circle cx="21" cy="9" r="4"/>
+        <path d="M5 27v-2c0-2.5 2-4 6-4"/>
+        <path d="M27 27v-2c0-2.5-2-4-6-4"/>
+        <path d="M11 19c2-2 8-2 10 0"/>
+        <circle cx="11" cy="9" r="1.5" fill="#fff" opacity="0.15"/>
+        <circle cx="21" cy="9" r="1.5" fill="#fff" opacity="0.15"/>
+      </svg>
+      <div class="icon-label">2–9 guests</div>
+      <div class="icon-meta">connected figures</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+        <rect x="5" y="5" width="22" height="22" rx="3"/>
+        <line x1="5" y1="10" x2="27" y2="10"/>
+        <circle cx="10" cy="14" r="1" fill="#fff" opacity="0.2"/>
+        <circle cx="16" cy="14" r="1" fill="#fff" opacity="0.2"/>
+        <circle cx="22" cy="14" r="1" fill="#fff" opacity="0.2"/>
+        <path d="M16 10v2" stroke="#fff" opacity="0.3"/>
+      </svg>
+      <div class="icon-label">Daily</div>
+      <div class="icon-meta">calendar with dots</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.5" stroke-linecap="round" opacity="0.8">
+        <path d="M16 6c-3.5 0-6 2-6 5.5S13 17 16 21c3-4 6-7.5 6-10S19.5 6 16 6z"/>
+        <path d="M14 11l2 2 2-2"/>
+        <path d="M16 13v5"/>
+        <path d="M13 8l-2 2" stroke="#FFA333" opacity="0.3"/>
+        <path d="M19 8l2 2" stroke="#FFA333" opacity="0.3"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Vegetarian</div>
+      <div class="icon-meta">leaf with check</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.5" stroke-linecap="round" opacity="0.8">
+        <path d="M4 18c0-6 4-10 12-10s12 4 12 10"/>
+        <path d="M10 18c0-3 2-5 6-5s6 2 6 5"/>
+        <circle cx="10" cy="18" r="0.8" fill="#FFA333" opacity="0.4"/>
+        <circle cx="16" cy="18" r="0.8" fill="#FFA333" opacity="0.4"/>
+        <circle cx="22" cy="18" r="0.8" fill="#FFA333" opacity="0.4"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Easy walking</div>
+      <div class="icon-meta">path with markers</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.5" stroke-linecap="round" opacity="0.8">
+        <circle cx="16" cy="16" r="10"/>
+        <path d="M6 16h20"/>
+        <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#FFA333" opacity="0.4"/>
+        <circle cx="10" cy="12" r="0.6" fill="#FFA333" opacity="0.4"/>
+        <circle cx="22" cy="12" r="0.6" fill="#FFA333" opacity="0.4"/>
+        <circle cx="10" cy="20" r="0.6" fill="#FFA333" opacity="0.4"/>
+        <circle cx="22" cy="20" r="0.6" fill="#FFA333" opacity="0.4"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">English</div>
+      <div class="icon-meta">globe with decorative dots</div>
+    </div>
+  </div>
+
+  <!-- Usage preview -->
+  <div class="usage-row">
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3" stroke-dasharray="2 2"/><line x1="12" y1="12" x2="14" y2="14"/></svg>3.5h</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><path d="M4 21v-2c0-2 2-3 5-3"/><path d="M20 21v-2c0-2-2-3-5-3"/></svg>2–9</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="8" x2="20" y2="8"/></svg>Daily</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c-3 0-5 2-5 5s2 6 5 8c3-2 5-5 5-8s-2-5-5-5z"/></svg>Vego</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14c0-5 3-8 8-8s8 3 8 8"/><path d="M8 14c0-2 1-4 4-4s4 2 4 4"/></svg>Easy</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="7"/><line x1="5" y1="12" x2="19" y2="12"/><ellipse cx="12" cy="12" rx="4" ry="7" opacity="0.4"/></svg>Eng</div>
+  </div>
+
+  <!-- ========= STYLE 3 ========= -->
+  <div class="style-header">
+    <div class="style-name">Style C — "Selamat" <span class="badge">Warm hand-drawn feel</span></div>
+    <div class="style-desc">Slightly uneven, human strokes. Like a favorite uncle drew them. Friendly, approachable, imperfect.</div>
+  </div>
+  <div class="icon-set">
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.7">
+        <circle cx="16" cy="16" r="8" stroke-dasharray="0.1 100" stroke-dashoffset="0"/>
+        <path d="M16 10v7l4 2" stroke="#fff"/>
+        <circle cx="16" cy="16" r="0.8" fill="#fff" opacity="0.2"/>
+      </svg>
+      <div class="icon-label">3.5 hours</div>
+      <div class="icon-meta">imperfect circle</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.7">
+        <circle cx="10" cy="9" r="3.5"/>
+        <circle cx="22" cy="9" r="3.5"/>
+        <path d="M5 25c1-6 8-6 11-6" stroke="#fff"/>
+        <path d="M27 25c-1-6-8-6-11-6" stroke="#fff"/>
+        <circle cx="10" cy="9" r="1.5" fill="#fff" opacity="0.12"/>
+        <circle cx="22" cy="9" r="1.5" fill="#fff" opacity="0.12"/>
+      </svg>
+      <div class="icon-label">2–9 guests</div>
+      <div class="icon-meta">two friends</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.7">
+        <path d="M8 6l1 3" stroke="#fff"/>
+        <path d="M24 6l-1 3" stroke="#fff"/>
+        <rect x="5" y="8" width="22" height="18" rx="2"/>
+        <line x1="5" y1="13" x2="27" y2="13"/>
+        <text x="16" y="22" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="7">XX</text>
+      </svg>
+      <div class="icon-label">Daily</div>
+      <div class="icon-meta">hand-drawn calendar</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.8">
+        <path d="M16 6c-5 0-8 3-8 7s3 8 8 11c5-3 8-7 8-11s-3-7-8-7z"/>
+        <path d="M12 12h8" stroke="#FFA333"/>
+        <path d="M16 12v5" stroke="#FFA333"/>
+        <circle cx="16" cy="10" r="1" fill="#FFA333" opacity="0.3"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Vegetarian</div>
+      <div class="icon-meta">drawn leaf</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.8">
+        <path d="M6 17c2-7 7-9 10-9s8 2 10 9"/>
+        <path d="M10 17c1-4 3-5 6-5s5 1 6 5"/>
+        <circle cx="16" cy="17" r="1.5" fill="#FFA333" opacity="0.2"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Easy walking</div>
+      <div class="icon-meta">rolling hills</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="2" stroke-linecap="round" opacity="0.8">
+        <path d="M6 14a4 4 0 0 1 4-5h12a4 4 0 0 1 4 5v3a4 4 0 0 1-4 5H10a4 4 0 0 1-4-5v-3z"/>
+        <path d="M25 18l3 6H4l3-6"/>
+        <circle cx="12" cy="15" r="1" fill="#FFA333" opacity="0.4"/>
+        <circle cx="16" cy="15" r="1" fill="#FFA333" opacity="0.4"/>
+        <circle cx="20" cy="15" r="1" fill="#FFA333" opacity="0.4"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">English</div>
+      <div class="icon-meta">chat bubble</div>
+    </div>
+  </div>
+
+  <!-- Usage preview -->
+  <div class="usage-row">
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="6"/><path d="M12 8v5l3 1.5"/></svg>3.5h</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M4 20c1-5 6-5 8-5"/><path d="M20 20c-1-5-6-5-8-5"/></svg>2–9</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="1.5"/><line x1="4" y1="10" x2="20" y2="10"/></svg>Daily</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4c-4 0-6 2-6 5s2 6 6 8c4-2 6-5 6-8s-2-5-6-5z"/></svg>Vego</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13c1-5 5-6 7-6s6 1 7 6"/><path d="M8 13c1-3 2-4 4-4s3 1 4 4"/></svg>Easy</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1l-2 2v-2h-5a3 3 0 0 1-3-3v-2z"/></svg>Eng</div>
+  </div>
+
+  <!-- ========= STYLE 4 ========= -->
+  <div class="style-header">
+    <div class="style-name">Style D — "Dua Warna" <span class="badge">Two-color brand system</span></div>
+    <div class="style-desc">Uses the brand's red (#B52D38) and orange (#FFA333) as icon colors. No white — the color IS the meaning.</div>
+  </div>
+  <div class="icon-set">
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#B52D38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="16" cy="16" r="9"/>
+        <line x1="16" y1="10" x2="16" y2="16"/>
+        <line x1="16" y1="16" x2="20" y2="20"/>
+      </svg>
+      <div class="icon-label" style="color:#B52D38;">3.5 hours</div>
+      <div class="icon-meta" style="color:rgba(181,45,56,0.5);">brand red</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#B52D38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10" cy="8" r="3.5"/>
+        <circle cx="22" cy="8" r="3.5"/>
+        <path d="M4 24v-2c0-2.5 2-4 6-4h12c4 0 6 1.5 6 4v2"/>
+      </svg>
+      <div class="icon-label" style="color:#B52D38;">2–9 guests</div>
+      <div class="icon-meta" style="color:rgba(181,45,56,0.5);">brand red</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#B52D38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="5" width="24" height="21" rx="3"/>
+        <line x1="4" y1="11" x2="28" y2="11"/>
+        <circle cx="11" cy="16" r="1.5" fill="#B52D38" opacity="0.2"/>
+        <circle cx="21" cy="16" r="1.5" fill="#B52D38" opacity="0.2"/>
+      </svg>
+      <div class="icon-label" style="color:#B52D38;">Daily</div>
+      <div class="icon-meta" style="color:rgba(181,45,56,0.5);">brand red</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 3c-5 0-8 3-8 7s3 9 8 13c5-4 8-9 8-13s-3-7-8-7z"/>
+        <circle cx="16" cy="10" r="2.5" fill="#FFA333" opacity="0.15"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Vegetarian</div>
+      <div class="icon-meta" style="color:rgba(255,163,51,0.5);">brand orange</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 16c5-10 10-10 13-10s8 0 13 10"/>
+        <path d="M9 16c2-5 4-6 7-6s5 1 7 6"/>
+        <circle cx="16" cy="16" r="2" fill="#FFA333" opacity="0.15"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Easy walking</div>
+      <div class="icon-meta" style="color:rgba(255,163,51,0.5);">brand orange</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="16" cy="16" r="9"/>
+        <line x1="6" y1="16" x2="26" y2="16"/>
+        <ellipse cx="16" cy="16" rx="5" ry="9" stroke="#FFA333" opacity="0.4"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">English</div>
+      <div class="icon-meta" style="color:rgba(255,163,51,0.5);">brand orange</div>
+    </div>
+  </div>
+
+  <!-- Usage preview -->
+  <div class="usage-row">
+    <div class="usage-item" style="color:#B52D38;"><svg viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="1.8"><circle cx="12" cy="12" r="7"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="15"/></svg>3.5h</div>
+    <div class="usage-item" style="color:#B52D38;"><svg viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="1.8"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3 20v-1c0-2 2-3 5-3h8c3 0 5 1 5 3v1"/></svg>2–9</div>
+    <div class="usage-item" style="color:#B52D38;"><svg viewBox="0 0 24 24" fill="none" stroke="#B52D38" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Daily</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="1.8"><path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/></svg>Vego</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="1.8"><path d="M4 14c3-7 7-9 9-9s6 2 9 9"/><path d="M8 14c1-3 3-5 5-5s4 2 5 5"/></svg>Easy</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="#FFA333" stroke-width="1.8"><circle cx="12" cy="12" r="7"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Eng</div>
+  </div>
+
+  <!-- ========= STYLE 5 ========= -->
+  <div class="style-header">
+    <div class="style-name">Style E — "Ringan" <span class="badge">Super minimal pictogram</span></div>
+    <div class="style-desc">As small as possible. Simple strokes, one clear shape each. Almost like airport pictograms but warmer.</div>
+  </div>
+  <div class="icon-set">
+    <div class="icon-cell">
+      <svg viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <circle cx="14" cy="14" r="7"/>
+        <line x1="14" y1="9" x2="14" y2="14"/>
+        <line x1="14" y1="14" x2="18" y2="17"/>
+      </svg>
+      <div class="icon-label">3.5h</div>
+      <div class="icon-meta">clock</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <circle cx="10" cy="9" r="3"/>
+        <circle cx="18" cy="9" r="3"/>
+        <path d="M5 22c1-3 4-4 9-4s8 1 9 4"/>
+      </svg>
+      <div class="icon-label">2–9</div>
+      <div class="icon-meta">people</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <rect x="4" y="5" width="20" height="18" rx="2"/>
+        <line x1="4" y1="10" x2="24" y2="10"/>
+        <circle cx="10" cy="14" r="1" fill="#fff" opacity="0.2"/>
+      </svg>
+      <div class="icon-label">Daily</div>
+      <div class="icon-meta">calendar</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 28 28" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+        <path d="M14 3c-4 0-7 3-7 7s3 8 7 11c4-3 7-7 7-11s-3-7-7-7z"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Vego</div>
+      <div class="icon-meta" style="color:rgba(255,163,51,0.5);">leaf</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 28 28" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+        <path d="M4 14c4-8 7-10 10-10s6 2 10 10"/>
+        <path d="M9 14c2-4 3-5 5-5s3 1 5 5"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Easy</div>
+      <div class="icon-meta" style="color:rgba(255,163,51,0.5);">hills</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 28 28" fill="none" stroke="#FFA333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+        <path d="M6 13a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-1l-2 2v-2h-5a4 4 0 0 1-4-4v-2z"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Eng</div>
+      <div class="icon-meta" style="color:rgba(255,163,51,0.5);">chat</div>
+    </div>
+  </div>
+
+  <!-- Usage preview: compact row -->
+  <div class="usage-row">
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="6"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="14"/></svg>3.5h</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="2.5"/><circle cx="15" cy="8" r="2.5"/><path d="M4 20c1-3 3-4 8-4s7 1 8 4"/></svg>2–9</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Daily</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/></svg>Vego</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13c3-7 6-9 8-9s5 2 8 9"/><path d="M8 13c1-3 3-4 4-4s3 1 4 4"/></svg>Easy</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 10a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1l-1.5 1.5V15h-5.5a3 3 0 0 1-3-3v-2z"/></svg>Eng</div>
+  </div>
+
+  <!-- ========= STYLE 6 ========= -->
+  <div class="style-header">
+    <div class="style-name">Style F — "Rasa" <span class="badge">Expressive, warm, almost playful</span></div>
+    <div class="style-desc">Bolder strokes (2.2px), slightly playful shapes. Each icon has a tiny accent fill color. Feels like a brand that smiles.</div>
+  </div>
+  <div class="icon-set">
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <circle cx="16" cy="16" r="8"/>
+        <line x1="16" y1="10" x2="16" y2="16"/>
+        <line x1="16" y1="16" x2="19" y2="19"/>
+        <circle cx="16" cy="8" r="1" fill="#fff" opacity="0.15"/>
+      </svg>
+      <div class="icon-label">3.5h</div>
+      <div class="icon-meta">bold clock</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <circle cx="10" cy="8" r="3"/>
+        <circle cx="22" cy="8" r="3"/>
+        <path d="M4 24c2-5 5-6 12-6s10 1 12 6"/>
+        <circle cx="10" cy="8" r="1.2" fill="#fff" opacity="0.12"/>
+        <circle cx="22" cy="8" r="1.2" fill="#fff" opacity="0.12"/>
+      </svg>
+      <div class="icon-label">2–9</div>
+      <div class="icon-meta">bold people</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+        <rect x="4" y="5" width="24" height="21" rx="3"/>
+        <line x1="4" y1="11" x2="28" y2="11"/>
+        <circle cx="12" cy="16" r="1.5" fill="#FFA333" opacity="0.2"/>
+        <circle cx="20" cy="16" r="1.5" fill="#FFA333" opacity="0.2"/>
+      </svg>
+      <div class="icon-label">Daily</div>
+      <div class="icon-meta">bold calendar</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+        <path d="M16 4c-4 0-7 3-7 7s3 8 7 11c4-3 7-7 7-11s-3-7-7-7z"/>
+        <circle cx="16" cy="10" r="2" fill="#FFA333" opacity="0.15"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Vego</div>
+      <div class="icon-meta">bold leaf</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+        <path d="M4 15c4-8 7-10 12-10s8 2 12 10"/>
+        <path d="M10 15c2-4 3-5 6-5s4 1 6 5"/>
+        <circle cx="16" cy="15" r="1.5" fill="#FFA333" opacity="0.15"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Easy</div>
+      <div class="icon-meta">bold hills</div>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FFA333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+        <path d="M6 12a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4h-2l-3 3v-3h-7a4 4 0 0 1-4-4v-3z"/>
+        <circle cx="11" cy="13" r="1" fill="#FFA333" opacity="0.3"/>
+        <circle cx="16" cy="13" r="1" fill="#FFA333" opacity="0.3"/>
+        <circle cx="21" cy="13" r="1" fill="#FFA333" opacity="0.3"/>
+      </svg>
+      <div class="icon-label" style="color:#FFA333;">Eng</div>
+      <div class="icon-meta">bold bubble</div>
+    </div>
+  </div>
+
+  <!-- Usage preview -->
+  <div class="usage-row">
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="6"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="14.5" y2="14.5"/></svg>3.5h</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3 20c1-4 4-5 9-5s8 1 9 5"/></svg>2–9</div>
+    <div class="usage-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="15" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Daily</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2c-4 0-6 3-6 6s2 7 6 10c4-3 6-7 6-10s-2-6-6-6z"/></svg>Vego</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12c3-7 6-9 9-9s6 2 9 9"/><path d="M8 12c1-3 3-4 5-4s4 1 5 4"/></svg>Easy</div>
+    <div class="usage-item tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 10a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1l-1.5 1.5V15H9a3 3 0 0 1-3-3v-2z"/></svg>Eng</div>
+  </div>
+
+  <hr>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:30px;">
+    <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; padding:20px;">
+      <div style="font-size:0.7rem; text-transform:uppercase; color:#555; letter-spacing:0.04em; margin-bottom:8px;">Quick comparisons</div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:0.78rem; color:#888;">
+        <div><span style="color:#fff; font-weight:500;">Style A "Warung"</span> — Most memorable and brand-distinct. Food references give it a story. Best if you want people to smile.</div>
+        <div><span style="color:#fff; font-weight:500;">Style B "Batik"</span> — Most culturally rich. Decorative dots feel Malaysian. Best if you lean into the heritage side.</div>
+        <div><span style="color:#fff; font-weight:500;">Style C "Selamat"</span> — Warmest, most human. Slightly imperfect feels genuine. Best for "Passionate Friend" voice.</div>
+        <div><span style="color:#fff; font-weight:500;">Style D "Dua Warna"</span> — Strongest brand identity. Uses red+orange as the only colors. Best for design system consistency.</div>
+        <div><span style="color:#fff; font-weight:500;">Style E "Ringan"</span> — Most practical. Smallest footprint, works at any size. Best if space is tight.</div>
+        <div><span style="color:#fff; font-weight:500;">Style F "Rasa"</span> — Bold and confident. Thick strokes feel solid. Best for a friendly, energetic brand.</div>
+      </div>
+    </div>
+    <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; padding:20px;">
+      <div style="font-size:0.7rem; text-transform:uppercase; color:#555; letter-spacing:0.04em; margin-bottom:8px;">My take</div>
+      <div style="font-size:0.78rem; color:#888; line-height:1.6;">
+        <p style="margin-bottom:10px;"><strong style="color:#fff;">A "Warung"</strong> is the most Simply Enak — food metaphors for a food tour company make it uniquely yours. Nobody else would use a teh tarik cup for "time."</p>
+        <p style="margin-bottom:10px;"><strong style="color:#fff;">D "Dua Warna"</strong> pairs well with it if you want the brand colors to do more work. A's tea cup + D's red/orange coloring would be a hybrid.</p>
+        <p><strong style="color:#fff;">C "Selamat"</strong> is the best match for "Passionate Friend" voice — imperfect, warm, human. But the food metaphors in A tell a richer story.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+---
+export const prerender = true;
+
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "@/components/Home/HeroSection.astro";
+import PartnersSection from "@/components/Home/PartnersSection.astro";
+import MeetTheVendorsSection from "@/components/Home/MeetTheVendorsSection.astro";
+import OurToursSection from "@/components/Home/OurToursSection.astro";
+import OurValuesSection from "@/components/Home/OurValuesSection.astro";
+import TestimonialsSection from "@/components/Home/TestimonialsSection.astro";
+import MediaSection from "@/components/Home/MediaSection.astro";
+import StoriesSection from "@/components/Home/StoriesSection.astro";
+import OurValuesStoriesSection from "@/components/Home/OurValuesStoriesSection.astro";
+import FAQSection from "@/components/Home/FAQSection.astro";
+import CTASection from "@/components/CTASection.astro";
+import ManifestoSection from "@/components/Home/ManifestoSection.astro";
+import ThreePillarsSection from "@/components/Home/ThreePillarsSection.astro";
+import SegmentDiscoverySection from "@/components/Home/SegmentDiscoverySection.astro";
+import GradientTransition from "@/components/Home/GradientTransition.astro";
+import TourConfigurator from "@/components/Tours/TourConfigurator.astro";
+import Section from "@/components/Design/Section.astro";
+import { getHomePage, getAllTours, getFeaturedTestimonials, getFeaturedStories, getFeaturedVendors, getFAQsByPage, getImageUrl, getSiteSettings, getMainTourSlugs } from "@/lib/content";
+import { getLangFromUrl } from "@/i18n/utils";
+import { siteConfig } from "@/lib/site-config";
+import tourImg1 from "@/assets/images/bg1.jpg";
+import tourImg2 from "@/assets/images/bg2.webp";
+import tourImg3 from "@/assets/images/bg3.webp";
+import tourImg4 from "@/assets/images/bg4.jpg";
+import tourImg5 from "@/assets/images/bg5.jpg";
+
+// Per-tour fallback images — used until real images are uploaded to Payload
+const tourFallbackImages: Record<string, { src: string }> = {
+  'kl-street-food': tourImg1,
+  'flavours-of-malaysia': tourImg2,
+  'eat-drink-george-town': tourImg3,
+  'penang-street-food': tourImg4,
+  'secrets-of-kl-nightlife': tourImg5,
+};
+
+// Get language from URL
+const urlLang = getLangFromUrl(Astro.url);
+
+// Fetch ALL content from JSON snapshots
+const [homePage, siteSettings, allTours, testimonials, stories, vendors, faqs] = await Promise.all([
+  getHomePage(urlLang),
+  getSiteSettings(),
+  getAllTours({ limit: 100 }, urlLang), // Fetch all to filter for main 5
+  getFeaturedTestimonials(),
+  getFeaturedStories(urlLang),
+  getFeaturedVendors(3, urlLang),
+  getFAQsByPage('home', urlLang),
+]);
+
+// Get content from home-page.json
+const content = homePage || {};
+
+// Map testimonials to component format
+const testimonialCards = testimonials.map((t: any) => ({
+  title: t.review_title || "Great Experience",
+  review: t.review_text,
+  name: t.author_name,
+  country: t.author_location,
+  image: t.author_photo ? getImageUrl(t.author_photo) : undefined,
+}));
+
+// Map stories to component format
+const storyCards = stories.map((s: any) => ({
+  slug: s.slug,
+  title: s.title,
+  image: s.hero_image ? getImageUrl(s.hero_image) : undefined,
+  excerpt: s.excerpt,
+}));
+
+// Map tours to OurToursSection card format (ONLY main 5 tours)
+const mainTourSlugs = getMainTourSlugs();
+const tourCards = allTours
+  .filter((tour: any) => mainTourSlugs.includes(tour.slug))
+  .map((tour: any) => {
+    const fallback = tourFallbackImages[tour.slug];
+    return {
+      title: tour.name,
+      link: `/tours/${tour.slug}/`,
+      image: tour.hero_image
+        ? { url: getImageUrl(tour.hero_image) }
+        : { url: fallback?.src },
+      price: `from ${tour.currency || "MYR"} ${tour.price}`,
+      duration: tour.duration,
+      location: tour.location,
+      featured: tour.featured,
+      buttons: [{ title: "Join This Tour", href: `/tours/${tour.slug}`, buttonType: "primary-btn-small" as const }],
+    };
+  });
+
+// Build SEO from site settings
+const seoTitle = siteSettings?.meta_title || content?.meta_title || 'Simply Enak | Malaysian Food Tours';
+const seoDescription = siteSettings?.meta_description || content?.meta_description || 'Small-group Malaysian food tours with guides who grew up eating at these stalls';
+const seoImage = siteSettings?.og_image || content?.hero_bg_image || 'https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg';
+
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  image={seoImage}
+  hreflangPath="/"
+>
+  {/* HERO SECTION - All from home-page.json */}
+  <HeroSection
+    eyebrow={content?.hero_eyebrow}
+    title={content?.hero_title}
+    highlightedText={content?.hero_highlight}
+    titleEnd={content?.hero_title_end}
+    subtitle={content?.hero_subtitle}
+    description={content?.hero_description}
+    priceInfo={content?.hero_price_info}
+    bgImage={content?.hero_bg_image}
+    whatsappNumber={siteSettings?.whatsapp_number}
+    ctaPrimaryText={content?.hero_cta_primary}
+    ctaPrimaryUrl={content?.hero_cta_primary_url}
+    ctaSecondaryText={content?.hero_cta_secondary}
+    ctaSecondaryUrl={content?.hero_cta_secondary_url}
+    establishedLabel={content?.hero_established_label}
+    establishedYear={content?.hero_established_year}
+    locationLabel={content?.hero_location_label}
+    googleLabel={content?.hero_google_label}
+    tripadvisorLabel={content?.hero_tripadvisor_label}
+    socialProofRating={content?.hero_social_proof_rating}
+    guestsHosted={content?.hero_guests_hosted}
+    sinceLabel={content?.hero_since}
+  />
+
+  {/* MANIFESTO SECTION - dark, flows directly from hero */}
+  <ManifestoSection
+    headline={content?.manifesto_headline}
+    eyebrow={content?.manifesto_eyebrow}
+    tagline={content?.manifesto_tagline}
+    body={content?.manifesto_body}
+    attributionName={content?.manifesto_attribution_name}
+    attributionRole={content?.manifesto_attribution_role}
+    portraitSrc={content?.manifesto_portrait ? getImageUrl(content.manifesto_portrait) : undefined}
+    portraitAlt={content?.manifesto_portrait_alt}
+    ctaText={content?.manifesto_cta_text}
+  />
+
+  {/* PARTNERS SECTION - dark, social proof after founder intro */}
+  <PartnersSection title={content?.partners_title} />
+
+  {/* THREE PILLARS SECTION - dark, closes the opening narrative */}
+  <ThreePillarsSection
+    intro={content?.pillars_intro}
+    peopleLabel={content?.pillar_people_label}
+    peopleHeading={content?.pillar_people_heading}
+    peopleBody={content?.pillar_people_body}
+    peopleImage={content?.pillar_people_image}
+    foodLabel={content?.pillar_food_label}
+    foodHeading={content?.pillar_food_heading}
+    foodBody={content?.pillar_food_body}
+    foodImage={content?.pillar_food_image}
+    placeLabel={content?.pillar_place_label}
+    placeHeading={content?.pillar_place_heading}
+    placeBody={content?.pillar_place_body}
+    placeImage={content?.pillar_place_image}
+    bridgeMessage={content?.pillars_bridge_message}
+    bridgeSubtext={content?.pillars_bridge_subtext}
+    bridgeCtaText={content?.pillars_bridge_cta_text}
+  />
+
+  {/* GRADIENT TRANSITION - Dark to Light — intended bridge point */}
+  <GradientTransition />
+
+  {/* EXPERIENCE PROFILER */}
+  <Section id="find-your-tour" variant="light" spacing="compact" class="!py-8 !pb-4 md:!py-10 md:!pb-6">
+    <div class="max-w-2xl mx-auto text-center mb-8 md:mb-10">
+      {content?.quiz_heading && <h2 class="text-h2 text-primary mb-3">{content.quiz_heading}</h2>}
+      {content?.quiz_subheading && <p class="text-gray-500 text-sm max-w-xs mx-auto leading-relaxed">{content.quiz_subheading}</p>}
+    </div>
+    <TourConfigurator />
+  </Section>
+
+  {/* MEET THE VENDORS SECTION - controlled by site_settings.show_vendors AND vendors data */}
+  {siteSettings?.show_vendors !== false && vendors.length > 0 && (
+    <MeetTheVendorsSection
+      eyebrow={content?.vendors_eyebrow}
+      title={content?.vendors_title}
+      subtitle={content?.vendors_subtitle}
+      vendors={vendors}
+      meetOnTourText={content?.vendors_meet_on_tour}
+      footerText={content?.vendors_footer}
+      readStoriesText={content?.vendors_read_stories}
+      readStoriesUrl={content?.vendors_read_stories_url}
+    />
+  )}
+
+  {/* OUR TOURS SECTION - from home-page.json */}
+  <OurToursSection
+    eyebrow={content?.featured_tours_eyebrow}
+    title={content?.featured_tours_title}
+    cards={tourCards.length > 0 ? tourCards : []}
+    button={{
+      title: content?.featured_tours_cta_text,
+      href: '/tours/',
+      buttonType: 'cta-primary' as const,
+    }}
+  />
+
+  {/* SEGMENT DISCOVERY SECTION - All from home-page.json */}
+  <SegmentDiscoverySection
+    eyebrow={content?.segment_section_eyebrow}
+    heading={content?.segment_heading}
+    subheading={content?.segment_subheading}
+    viewAllText={content?.segment_view_all}
+  />
+
+  {/* TESTIMONIALS SECTION - From testimonials.json */}
+  <TestimonialsSection
+    eyebrow={content?.testimonials_eyebrow}
+    heading={content?.testimonials_heading}
+    ctaText={content?.testimonials_cta_text}
+    cards={testimonialCards.length > 0 ? testimonialCards : undefined}
+  />
+
+  {/* OUR VALUES / WHAT TO EXPECT ON TOUR - ALL from home-page.json expect_* fields */}
+  <OurValuesSection
+    eyebrow={content?.expect_eyebrow}
+    title={content?.expect_title}
+    subtitle={content?.expect_subtitle}
+    ctaText={content?.expect_cta_text}
+    stats={[
+      {
+        number: content?.expect_stat1_number,
+        heading: content?.expect_stat1_heading,
+        body: content?.expect_stat1_body,
+      },
+      {
+        number: content?.expect_stat2_number,
+        heading: content?.expect_stat2_heading,
+        body: content?.expect_stat2_body,
+      },
+      {
+        number: content?.expect_stat3_number,
+        heading: content?.expect_stat3_heading,
+        body: content?.expect_stat3_body,
+      },
+      {
+        number: content?.expect_stat4_number,
+        heading: content?.expect_stat4_heading,
+        body: content?.expect_stat4_body,
+      },
+    ]}
+  />
+
+  {/* MEDIA SECTION - Conditional, from home-page.json */}
+  {(() => {
+    const videoUrl = content?.media_video_url;
+    const isPlaceholder = !videoUrl || videoUrl.includes('dQw4w9WgXcQ') || videoUrl.includes('PLACEHOLDER');
+    return !isPlaceholder ? (
+      <MediaSection
+        eyebrow={content?.media_eyebrow}
+        title={content?.media_title}
+        videoEmbedUrl={videoUrl}
+      />
+    ) : null;
+  })()}
+
+  {/* STORIES SECTION - From stories.json */}
+  <StoriesSection
+    eyebrow={content?.stories_eyebrow}
+    title={content?.stories_section_title}
+    stories={storyCards.length > 0 ? storyCards : undefined}
+  />
+
+  {/* OUR VALUES STORIES SECTION */}
+  <OurValuesStoriesSection
+    eyebrow={content?.values_eyebrow}
+    title={content?.values_title}
+    subtitle={content?.values_subtitle}
+    beliefs={[
+      { number: content?.values_belief1_number, title: content?.values_belief1_title, excerpt: content?.values_belief1_excerpt },
+      { number: content?.values_belief2_number, title: content?.values_belief2_title, excerpt: content?.values_belief2_excerpt },
+      { number: content?.values_belief3_number, title: content?.values_belief3_title, excerpt: content?.values_belief3_excerpt },
+      { number: content?.values_belief4_number, title: content?.values_belief4_title, excerpt: content?.values_belief4_excerpt },
+      { number: content?.values_belief5_number, title: content?.values_belief5_title, excerpt: content?.values_belief5_excerpt },
+    ]}
+  />
+
+  {/* FAQ SECTION - Title from home-page.json, FAQs from faqs.json */}
+  <FAQSection
+    eyebrow={content?.faq_eyebrow}
+    title={content?.faq_title}
+    ctaText={content?.faq_cta_text}
+    faqs={faqs.length > 0 ? faqs : undefined}
+  />
+
+  {/* CTA SECTION - ALL from home-page.json cta_* fields */}
+  <CTASection
+    eyebrow={content?.cta_eyebrow}
+    title={content?.cta_title}
+    subtitle={content?.cta_subtitle}
+    whatsappNumber={siteSettings?.whatsapp_number}
+    freeCancellationText={content?.cta_free_cancellation}
+    replyTimeText={content?.cta_reply_time}
+    maxPeopleText={content?.cta_max_people}
+    bookExperienceText={content?.cta_book_experience}
+    chatWhatsAppText={content?.cta_chat_whatsapp}
+  />
+</Layout>

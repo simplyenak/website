@@ -1,0 +1,157 @@
+---
+import { Image } from "astro:assets";
+import fallbackPeople from "@/assets/images/bg2.webp";
+import fallbackFood   from "@/assets/images/bg1.jpg";
+import fallbackPlace  from "@/assets/images/kuala-lumpur-1641785_1920.webp";
+
+interface Props {
+  intro?: string;
+  peopleLabel?: string;
+  peopleHeading?: string;
+  peopleBody?: string;
+  peopleImage?: string;
+  foodLabel?: string;
+  foodHeading?: string;
+  foodBody?: string;
+  foodImage?: string;
+  placeLabel?: string;
+  placeHeading?: string;
+  placeBody?: string;
+  placeImage?: string;
+  bridgeMessage?: string;
+  bridgeSubtext?: string;
+  bridgeCtaText?: string;
+}
+
+const {
+  intro,
+  peopleLabel,
+  peopleHeading,
+  peopleBody,
+  peopleImage,
+  foodLabel,
+  foodHeading,
+  foodBody,
+  foodImage,
+  placeLabel,
+  placeHeading,
+  placeBody,
+  placeImage,
+  bridgeMessage,
+  bridgeSubtext,
+  bridgeCtaText,
+} = Astro.props;
+
+const pillars = [
+  {
+    number: "01",
+    label: peopleLabel,
+    heading: peopleHeading,
+    body: peopleBody,
+    externalImage: peopleImage || null,
+    fallbackImage: fallbackPeople,
+    imageAlt: "Heritage vendors who have cooked the same recipes for decades",
+  },
+  {
+    number: "02",
+    label: foodLabel,
+    heading: foodHeading,
+    body: foodBody,
+    externalImage: foodImage || null,
+    fallbackImage: fallbackFood,
+    imageAlt: "Malaysian street food at a heritage hawker stall",
+  },
+  {
+    number: "03",
+    label: placeLabel,
+    heading: placeHeading,
+    body: placeBody,
+    externalImage: placeImage || null,
+    fallbackImage: fallbackPlace,
+    imageAlt: "Kuala Lumpur — the neighbourhoods that made Malaysian food culture what it is",
+  },
+];
+---
+
+<section class="bg-dark text-white py-16 md:py-24">
+
+  <!-- Intro -->
+  <div class="main-container mb-14">
+    <span class="text-eyebrow text-orange block mb-3">Our Philosophy</span>
+    <p class="font-merriweather text-xl md:text-2xl text-white/80 italic max-w-xl leading-snug">{intro}</p>
+  </div>
+
+  <!-- Three pillars grid -->
+  <div class="main-container grid grid-cols-1 md:grid-cols-3 gap-6">
+    {pillars.map((pillar) => (
+      <div class="relative rounded overflow-hidden bg-dark flex flex-col">
+
+        <!-- Image -->
+        <div class="relative h-52 md:h-60 overflow-hidden flex-shrink-0">
+          {pillar.externalImage ? (
+            <img
+              src={pillar.externalImage}
+              alt={pillar.imageAlt}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <Image
+              src={pillar.fallbackImage}
+              alt={pillar.imageAlt}
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 640]}
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          )}
+          <!-- Bottom vignette over image -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent pointer-events-none"></div>
+          <!-- Ghost number -->
+          <span
+            class="absolute right-3 top-3 font-merriweather font-bold text-white/10 pointer-events-none select-none leading-none"
+            style="font-size: 5rem;"
+            aria-hidden="true"
+          >{pillar.number}</span>
+        </div>
+
+        <!-- Text content -->
+        <div class="p-7 flex flex-col flex-1">
+          <span class="text-orange text-[10px] font-bold tracking-[0.25em] uppercase mb-3 block">{pillar.label}</span>
+          <h3 class="font-merriweather text-xl font-bold mb-3 leading-snug text-white">
+            {pillar.heading}
+          </h3>
+          <p class="text-white/60 leading-relaxed text-sm">
+            {pillar.body}
+          </p>
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+  <!-- Bridge CTA -->
+  {(bridgeMessage || bridgeSubtext || bridgeCtaText) && (
+    <div class="text-center mt-16">
+      {bridgeMessage && (
+        <p class="font-merriweather italic text-white/60 text-lg md:text-xl leading-snug max-w-lg mx-auto mb-2">
+          {bridgeMessage}
+        </p>
+      )}
+      {bridgeSubtext && (
+        <p class="text-white/35 text-sm leading-relaxed max-w-sm mx-auto mb-8">
+          {bridgeSubtext}
+        </p>
+      )}
+      {bridgeCtaText && (
+        <a href="#find-your-tour" class="cta-secondary inline-flex" style="border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.7);">
+          {bridgeCtaText}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 0.5rem;">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+      )}
+    </div>
+  )}
+
+</section>

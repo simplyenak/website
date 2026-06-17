@@ -1,0 +1,294 @@
+---
+/**
+ * Sub-segmentation Landing Pages
+ * URL: /tours/locations/[city]/[segment]
+ * Examples:
+ *   /tours/locations/penang/vegetarian
+ *   /tours/locations/kuala-lumpur/street-food
+ *   /tours/locations/ipoh/halal
+ *
+ * These pages exist for SEO and AI discovery — not linked in main navigation.
+ * They show tours matching BOTH the city tag AND the segment tag.
+ */
+export const prerender = true;
+
+import Layout from '@/layouts/Layout.astro';
+import Section from '@/components/Design/Section.astro';
+import Card from '@/components/Design/Card.astro';
+import GlobalHero from '@/components/GlobalHero.astro';
+import CTASection from '@/components/CTASection.astro';
+import CustomTourCTA from '@/components/Tours/CustomTourCTA.astro';
+import {
+  getAllLocationLandingPages,
+  getAllDietaryLandingPages,
+  getAllSpecialtyLandingPages,
+  getToursByAllTags,
+  getImageUrl,
+} from '@/lib/content';
+
+export async function getStaticPaths() {
+  // These specialty slugs are about audience type, not experience type — skip for sub-segments
+  const AUDIENCE_SPECIALTY_SLUGS = ['corporate', 'celebrations', 'custom', 'tailored'];
+
+  const [locations, dietaryPages, specialtyPages] = await Promise.all([
+    getAllLocationLandingPages(),
+    getAllDietaryLandingPages(),
+    getAllSpecialtyLandingPages(),
+  ]);
+
+  const experienceSpecialties = specialtyPages.filter(
+    (s: any) => !AUDIENCE_SPECIALTY_SLUGS.includes(s.slug)
+  );
+
+  const paths: any[] = [];
+
+  for (const location of locations) {
+    for (const dietary of dietaryPages) {
+      paths.push({
+        params: { city: location.slug, segment: dietary.slug },
+        props: {
+          cityPage: location,
+          segmentPage: dietary,
+          segmentType: 'dietary' as const,
+        },
+      });
+    }
+    for (const specialty of experienceSpecialties) {
+      paths.push({
+        params: { city: location.slug, segment: specialty.slug },
+        props: {
+          cityPage: location,
+          segmentPage: specialty,
+          segmentType: 'specialty' as const,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { city, segment } = Astro.params;
+const { cityPage, segmentPage, segmentType } = Astro.props;
+
+const tours = await getToursByAllTags([city, segment]);
+
+const segmentName: string =
+  segmentType === 'dietary' ? segmentPage.dietary_name : segmentPage.specialty_name;
+const cityName: string = cityPage.location_name;
+
+// Noindex thin content pages until unique content is added
+const noindex = tours.length === 0 || !introText || introText.length < 100;
+
+// ── Meta ─────────────────────────────────────────────────────────────────────
+
+const pageTitle =
+  segmentType === 'dietary'
+    ? `${segmentName} Food Tours in ${cityName} | Simply Enak`
+    : `${segmentName} Tours in ${cityName} | Simply Enak`;
+
+const pageDescription =
+  segmentType === 'dietary'
+    ? `${segmentName}-friendly food tours in ${cityName}, Malaysia. Our guides know which vendors are safe and which to avoid — no guesswork, no surprises.`
+    : `${segmentName} food tours in ${cityName}, Malaysia. Expert local guides, handpicked vendors, small groups of max 9.`;
+
+// ── Intro paragraph (template-driven) ────────────────────────────────────────
+
+function getIntroText(cityName: string, segmentName: string, segmentType: string): string {
+  if (segmentType === 'dietary') {
+    const dietaryIntros: Record<string, (city: string) => string> = {
+      vegetarian: (city) =>
+        `${city} has one of Malaysia's strongest vegetarian food scenes. Indian vegetarian restaurants are in every neighbourhood, and Chinese Buddhist eateries — often marked with 斋 — serve plant-based menus that have fed local families for decades. We know which stalls use shrimp paste in their vegetables (many do) and which are genuinely meat-free. You won't have to ask.`,
+      halal: (city) =>
+        `The vast majority of food in ${city} is halal by default — Malaysia is a Muslim-majority country, and halal slaughter is standard for meat sold at wet markets and most hawker stalls. The main exception is pork, which is sold separately and clearly marked. For most halal-observant guests, joining a regular tour with pork-free and vegetarian stops works well. If you need certified-halal premises specifically, we can design a tour around verified locations.`,
+      'gluten-free': (city) =>
+        `${city}'s food is built on rice and rice noodles — not wheat — which makes it genuinely manageable for gluten-free guests. Many hawker dishes are naturally wheat-free. The places to pay attention are soy sauce (contains wheat in most brands), oyster sauce, and some marinades. Our guides flag these proactively at every stop, so you know exactly what you're eating.`,
+      vegan: (city) =>
+        `Vegan eating in ${city} is absolutely possible, but it requires knowing where to look. Many dishes that appear plant-based contain shrimp paste, lard, or oyster sauce. Chinese Buddhist restaurants — strict, decades-old, and in every major neighbourhood — are the foundation of a good vegan day here. We don't have a fixed vegan tour because every guest has different priorities. Tell us what matters to you and we'll build around it.`,
+      jain: (city) =>
+        `Jain dietary practice requires more planning in ${city} than most other requirements, but it's not impossible. Chinese Buddhist restaurants that avoid garlic and onion overlap meaningfully with Jain requirements. Indian vegetarian restaurants, with advance notice, can accommodate specific needs. We're honest about where the boundaries are and work with vendors in advance to arrange what's possible.`,
+      'shellfish-allergy': (city) =>
+        `A shellfish allergy in ${city} requires active navigation because belacan — fermented shrimp paste — is one of the foundational flavour ingredients in Malaysian cooking. It appears in sambal, spice pastes, and dishes that look entirely vegetable-based from the menu. We know which vendors use it and which don't. Custom tours for shellfish-allergic guests are how we handle this safely.`,
+      'nut-allergy': (city) =>
+        `Peanuts appear throughout ${city}'s food culture — in satay sauce, rojak dressing, certain curries, as garnishes, and ground finely into sauces where they're invisible as a texture. A nut or peanut allergy requires a guide who knows which stalls and dishes are genuinely safe. We communicate your allergy to vendors before you arrive at each stop.`,
+      'dairy-free': (city) =>
+        `Most traditional food in ${city} is naturally dairy-free — the cuisine is built on coconut milk, not dairy, and wok cooking doesn't use butter or cream. The areas to navigate are drinks (teh tarik and kopi use condensed milk) and some Indian and mamak dishes where ghee appears. Our guides flag these at each stop so you can decide.`,
+    };
+
+    const key = segmentName.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const fn = dietaryIntros[key] ?? dietaryIntros['gluten-free'];
+    return fn(cityName);
+  }
+
+  // Specialty intros
+  const specialtyIntros: Record<string, (city: string) => string> = {
+    'street-food': (city) =>
+      `${city}'s street food scene is the reason food writers keep coming back. Hawker stalls that have cooked one dish for three or four generations, in the same location, to the same regulars. No restaurant overhead, no menu padding — just the best version of one thing. Our guides grew up eating at these stalls. They know the vendors by name, by story, by what time to arrive before the good plates run out.`,
+    cultural: (city) =>
+      `Food in ${city} is inseparable from its multicultural history. Malay, Chinese, and Indian communities have lived side by side here for generations, borrowing from each other's kitchens and creating dishes that exist nowhere else. A cultural food tour isn't just eating — it's understanding why the food tastes the way it does, and who made it that way.`,
+    heritage: (city) =>
+      `${city}'s heritage food scene is where history becomes something you can taste. Pre-war shophouses, recipes passed down through generations, vendors who have refused to modernise because the old way is better. Our guides know the stories behind every stall — not from a guidebook, but from years of eating here.`,
+    'multi-day': (city) =>
+      `A single day in ${city} will show you its food. Multiple days will show you why it matters. Multi-day tours let you eat at morning stalls before they sell out, return to dinner spots that need a full appetite, and understand a neighbourhood across meals rather than rushing through it. We design these around your pace, your interests, and what you want to take home.`,
+    chefs: (city) =>
+      `For chefs and serious food professionals, ${city} offers something that's hard to find elsewhere — direct access to the ingredients, techniques, and suppliers behind one of Asia's most complex food cultures. Our guides can introduce you to the wet market traders who supply the restaurants, the spice blenders who create the flavour bases, and the vendors willing to explain their methods to a fellow professional.`,
+  };
+
+  const fn = specialtyIntros[segment] ?? specialtyIntros['street-food'];
+  return fn(cityName);
+}
+
+const introText = getIntroText(cityName, segmentName, segmentType);
+
+// ── Structured data ──────────────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplyenak.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://simplyenak.com/tours/" },
+    { "@type": "ListItem", "position": 3, "name": cityName, "item": `https://simplyenak.com/tours/locations/${city}/` },
+    { "@type": "ListItem", "position": 4, "name": segmentName, "item": `https://simplyenak.com/tours/locations/${city}/${segment}/` },
+  ],
+};
+const pageSchema = {
+  "@type": "WebPage",
+  "name": pageTitle,
+  "description": pageDescription,
+  "url": `https://simplyenak.com/tours/locations/${city}/${segment}/`,
+};
+
+// ── Fallback images (used if tours have no hero_image) ───────────────────────
+const fallbackImage =
+  segmentType === 'dietary'
+    ? 'https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg'
+    : 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg';
+---
+
+<Layout title={pageTitle} description={pageDescription} structuredData={[breadcrumbSchema, pageSchema]} noindex={noindex} hreflangPath={`/tours/locations/${city}/${segment}/`} hreflangEnOnly={true}>
+
+  <!-- Hero -->
+  <GlobalHero
+    title={`${segmentName} in ${cityName}`}
+    subtitle={`Food tours for ${segmentName.toLowerCase()} ${segmentType === 'dietary' ? 'guests' : 'enthusiasts'}`}
+    description={introText.slice(0, 160) + '...'}
+    isOverlay={false}
+  />
+
+  <!-- Breadcrumb -->
+  <Section variant="light" spacing="compact">
+    <nav class="flex items-center text-sm text-gray-600 max-w-4xl mx-auto flex-wrap gap-y-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/tours/" class="hover:text-primary transition-colors">Tours</a>
+      <span class="mx-2">/</span>
+      <a href={`/tours/locations/${city}/`} class="hover:text-primary transition-colors">{cityName}</a>
+      <span class="mx-2">/</span>
+      <span class="text-primary font-medium">{segmentName}</span>
+    </nav>
+  </Section>
+
+  <!-- Intro -->
+  <Section>
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-h2 text-primary mb-6">
+        {segmentType === 'dietary'
+          ? `${segmentName} Dining in ${cityName}`
+          : `${segmentName} in ${cityName}`}
+      </h2>
+      <p class="text-body text-gray-700 leading-relaxed">{introText}</p>
+
+      <!-- Cross-links -->
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a
+          href={`/tours/locations/${city}/`}
+          class="inline-flex items-center gap-2 text-sm font-semibold text-primary border border-primary/30 rounded-full px-4 py-2 hover:bg-primary hover:text-white transition-colors"
+        >
+          All {cityName} tours →
+        </a>
+        {segmentType === 'dietary' ? (
+          <a
+            href={`/tours/dietary/${segment}/`}
+            class="inline-flex items-center gap-2 text-sm font-semibold text-primary border border-primary/30 rounded-full px-4 py-2 hover:bg-primary hover:text-white transition-colors"
+          >
+            {segmentName} tours across Malaysia →
+          </a>
+        ) : (
+          <a
+            href={`/tours/specialty/${segment}/`}
+            class="inline-flex items-center gap-2 text-sm font-semibold text-primary border border-primary/30 rounded-full px-4 py-2 hover:bg-primary hover:text-white transition-colors"
+          >
+            {segmentName} tours across Malaysia →
+          </a>
+        )}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Tours matching both tags -->
+  {tours.length > 0 ? (
+    <Section variant="light" id="tours">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary">
+          {segmentType === 'dietary'
+            ? `${segmentName}-Friendly Tours in ${cityName}`
+            : `${segmentName} Tours in ${cityName}`}
+        </h2>
+        <p class="text-body mt-4 text-gray-600">
+          {segmentType === 'dietary'
+            ? `Every tour below works for ${segmentName.toLowerCase()} guests — vendors verified, dishes explained.`
+            : `Handpicked ${segmentName.toLowerCase()} experiences in ${cityName} — small groups, expert guides.`}
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {tours.map((tour: any) => (
+          <a href={`/tours/${tour.slug}/`} class="group block">
+            <Card class="h-full flex flex-col">
+              {tour.hero_image ? (
+                <div class="overflow-hidden rounded-lg mb-4 h-48 -mx-6 -mt-6">
+                  <img
+                    src={getImageUrl(tour.hero_image, { width: 600, height: 400 }) ?? tour.hero_image}
+                    alt={tour.name}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div class="overflow-hidden rounded-lg mb-4 h-48 -mx-6 -mt-6">
+                  <img
+                    src={fallbackImage}
+                    alt={tour.name}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <h3 class="text-h3 text-primary mb-2 group-hover:text-secondary transition-colors">
+                {tour.name}
+              </h3>
+              {tour.tagline && <p class="text-sm text-gray-600 mb-4 flex-grow">{tour.tagline}</p>}
+              <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                {tour.duration && <span>⏱ {tour.duration}</span>}
+                {tour.location && <span>📍 {tour.location}</span>}
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-auto">
+                <span class="text-xl font-bold text-primary">
+                  {tour.currency || 'MYR'} {tour.price}
+                </span>
+                <span class="text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
+                  View Tour →
+                </span>
+              </div>
+            </Card>
+          </a>
+        ))}
+      </div>
+    </Section>
+  ) : (
+    <CustomTourCTA
+      typeName={`${segmentName} in ${cityName}`}
+      typeDescription={`We don't have a fixed ${segmentName.toLowerCase()} tour in ${cityName} yet, but we know the city well enough to design one around your group. Tell us what matters — dietary needs, group size, pace — and we'll put something together.`}
+    />
+  )}
+
+  <CTASection />
+</Layout>

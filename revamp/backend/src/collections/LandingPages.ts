@@ -60,17 +60,6 @@ export const LandingPages: CollectionConfig = {
       defaultValue: 'draft',
       admin: { position: 'sidebar' },
     },
-    {
-      name: 'icon',
-      type: 'text',
-      admin: { description: 'Emoji icon (e.g., 🥗, 🏛️, 👨‍👩‍👧‍👦)' },
-    },
-    {
-      name: 'color',
-      type: 'text',
-      admin: { description: 'Brand color hex (e.g., #22c55e)' },
-    },
-
     // === HERO SECTION (all types) ===
     {
       name: 'hero_title',
@@ -97,156 +86,6 @@ export const LandingPages: CollectionConfig = {
       admin: { description: 'Hero image — select from media library' },
     },
 
-    // === INTRO/CONTENT SECTION (all types) ===
-    {
-      name: 'intro_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Intro section heading (e.g., "Why It Matters", "The Experience")' },
-    },
-    {
-      name: 'intro_content',
-      type: 'textarea',
-      localized: true,
-      admin: { description: 'Main content paragraph' },
-    },
-
-    // === CHALLENGES SECTION (dietary only) ===
-    {
-      name: 'challenges_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Dietary: Challenges heading' },
-    },
-    {
-      name: 'challenges',
-      type: 'array',
-      localized: true,
-      admin: { description: 'Dietary: Challenges for this dietary type' },
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'description', type: 'text' },
-      ],
-    },
-
-    // === OPTIONS SECTION (dietary only) ===
-    {
-      name: 'options_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Dietary: Options/solutions heading' },
-    },
-    {
-      name: 'options_content',
-      type: 'textarea',
-      localized: true,
-      admin: { description: 'Dietary: How we cater to this dietary need' },
-    },
-
-    // === FEATURES/HIGHLIGHTS SECTION (specialty, travel_type) ===
-    {
-      name: 'features_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Features/highlights heading' },
-    },
-    {
-      name: 'highlights',
-      type: 'array',
-      localized: true,
-      admin: { description: 'Key features or highlights' },
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'description', type: 'text' },
-      ],
-    },
-
-    // === TIPS SECTION (all types) ===
-    {
-      name: 'tips_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Tips section heading' },
-    },
-    {
-      name: 'tips_content',
-      type: 'textarea',
-      localized: true,
-      admin: { description: 'General tips content' },
-    },
-    {
-      name: 'tips',
-      type: 'array',
-      localized: true,
-      admin: { description: 'Individual tip cards (title + content)' },
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'content', type: 'text' },
-      ],
-    },
-
-    // === DISH LISTS (dietary: safe dishes / avoid dishes) ===
-    {
-      name: 'safe_dishes_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Dietary: "Dishes you can enjoy" heading' },
-    },
-    {
-      name: 'safe_dishes',
-      type: 'array',
-      localized: true,
-      admin: { description: 'Dietary: Safe dishes to recommend' },
-      fields: [
-        { name: 'name', type: 'text', required: true },
-        { name: 'description', type: 'text' },
-      ],
-    },
-    {
-      name: 'avoid_dishes_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Dietary: "Dishes to avoid" heading' },
-    },
-    {
-      name: 'avoid_dishes',
-      type: 'array',
-      localized: true,
-      admin: { description: 'Dietary: Dishes to avoid for this type' },
-      fields: [
-        { name: 'name', type: 'text', required: true },
-        { name: 'description', type: 'text' },
-      ],
-    },
-
-    // === TOUR LIST (travel_type: suitable tours) ===
-    {
-      name: 'tours_heading',
-      type: 'text',
-      localized: true,
-      admin: { description: 'Travel type: "Suitable tours" heading' },
-    },
-    {
-      name: 'suitable_tours',
-      type: 'array',
-      admin: { description: 'Travel type: Tour slugs that suit this travel type' },
-      fields: [
-        { name: 'tour_slug', type: 'text', required: true, admin: { description: 'Tour slug (e.g., "chow-kit-market-food-tour")' } },
-      ],
-    },
-
-    // === TRAVEL TIPS (location: travel tips) ===
-    {
-      name: 'travel_tips',
-      type: 'array',
-      localized: true,
-      admin: { description: 'Location: Travel tips (title + content per tip)' },
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'content', type: 'text' },
-      ],
-    },
-
     // === SEO ===
     {
       name: 'meta_title',
@@ -265,8 +104,45 @@ export const LandingPages: CollectionConfig = {
       type: 'textarea',
       localized: true,
       admin: {
-        description: '📝 Page content — formatted with ## headings and paragraphs. This is the main body of your landing page.',
+        description: '📝 Page content — formatted with ## headings and paragraphs. This is the main body text.',
       },
+    },
+    {
+      name: 'images',
+      type: 'array',
+      admin: {
+        description: '🖼️ Images for this page — uploaded images generate WebP with responsive sizes and appear in structured data. Add alt text for SEO.',
+      },
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          admin: { description: 'Upload image — will be optimized to WebP with responsive sizes' },
+        },
+        {
+          name: 'alt',
+          type: 'text',
+          required: true,
+          admin: { description: 'Alt text (required for SEO & accessibility — describe what the image shows)' },
+        },
+        {
+          name: 'caption',
+          type: 'text',
+          admin: { description: 'Optional caption displayed below the image' },
+        },
+        {
+          name: 'position',
+          type: 'select',
+          defaultValue: 'inline',
+          options: [
+            { label: 'Inline (within content sections)', value: 'inline' },
+            { label: 'Hero background', value: 'hero' },
+          ],
+          admin: { description: 'Where to place this image on the page' },
+        },
+      ],
     },
     {
       name: 'published_at',

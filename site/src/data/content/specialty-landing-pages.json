@@ -1,219 +1,422 @@
 [
   {
+    "id": 338,
     "slug": "street-food-tours-kuala-lumpur",
-    "name": "Street Food",
-    "nameFull": "Street Food Tours in Kuala Lumpur",
-    "description": "The heart of KL's food culture - sizzling woks, aromatic spices, and flavours you'll never forget.",
-    "heroSubtitle": "Sizzling Woks, Bold Flavours",
-    "metaTitle": "Street Food Tours in Kuala Lumpur",
-    "tours": [
-      "flavours-of-malaysia",
-      "kuala-lumpur-street-food"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
-    "related_segments": [
-      "market-tours-kuala-lumpur",
-      "heritage-food-tours-kuala-lumpur"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Street Food Tours KL & Penang | Legendary Hawkers | Simply Enak",
+    "meta_description": "Legendary street food tours in Kuala Lumpur and Penang. Visit the hawker stalls that made Malaysian cuisine famous. From RM 285.",
+    "hero_title": "Street Food Tours",
+    "hero_subtitle": "The hawker stalls that built a food nation",
+    "hero_description": "Malaysian street food isn't a trend — it's a 150-year tradition. Our street food tours take you to the legendary hawkers who have perfected a single dish for decades.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Street Food Tours in Kuala Lumpur\"}",
+    "icon": "lunch_dining",
+    "color": "#EF4444",
+    "intro_heading": "Why Malaysian Street Food is Legendary",
+    "intro_content": "Malaysian hawker culture is UNESCO-recognised for good reason. In KL and Penang, street food isn't fast food — it's a lifetime of expertise served from a cart, stall, or hole-in-the-wall kitchen.\n\nOn our street food tours, you'll visit:\n\n- **Char kway teow masters**: Uncles who have fried noodles over charcoal since the 1980s, developing wok hei that gas stoves can't replicate\n- **Satay legends**: Families who have grilled the same skewers for three generations, using peanut sauce recipes passed down orally\n- **Laksa specialists**: Aunties who make their own spice paste from scratch, roasting and grinding ingredients the way their mothers taught them\n- **Hidden stalls**: The vendors who don't advertise, don't have Instagram, and don't need to — locals queue for an hour anyway\n\nThis is not tourist food. This is the real thing.",
+    "features_heading": "What Makes Our Street Food Tours Special",
+    "highlights": [
+      {
+        "title": "Legendary Vendors",
+        "description": "Visit hawkers recognised by locals as the best at their specific dish — often with decades of consistent quality."
+      },
+      {
+        "title": "Technique Focus",
+        "description": "Understand why charcoal matters, how wok hei develops, and what makes a satay sauce exceptional."
+      },
+      {
+        "title": "Hidden Locations",
+        "description": "The best stalls aren't on Google Maps. They're down alleyways, behind markets, and under apartment blocks."
+      },
+      {
+        "title": "Generational Stories",
+        "description": "Every vendor has a story. We tell you who they learned from, how the recipe evolved, and what threatens its survival."
+      }
+    ]
   },
   {
+    "id": 337,
     "slug": "street-food-tours-penang",
-    "name": "Street Food",
-    "nameFull": "Street Food Tours in Penang",
-    "description": "Penang is the street food capital of Asia. Taste why on our guided tours.",
-    "heroSubtitle": "Asia's Street Food Capital",
-    "metaTitle": "Street Food Tours in Penang",
-    "tours": [
-      "eat-drink-george-town",
-      "penang-street-food"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
-    "related_segments": [
-      "market-tours-penang",
-      "heritage-food-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Street Food Tours KL & Penang | Legendary Hawkers | Simply Enak",
+    "meta_description": "Legendary street food tours in Kuala Lumpur and Penang. Visit the hawker stalls that made Malaysian cuisine famous. From RM 285.",
+    "hero_title": "Street Food Tours",
+    "hero_subtitle": "The hawker stalls that built a food nation",
+    "hero_description": "Malaysian street food isn't a trend — it's a 150-year tradition. Our street food tours take you to the legendary hawkers who have perfected a single dish for decades.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Street Food Tours in Penang\"}",
+    "icon": "lunch_dining",
+    "color": "#EF4444",
+    "intro_heading": "Why Malaysian Street Food is Legendary",
+    "intro_content": "Malaysian hawker culture is UNESCO-recognised for good reason. In KL and Penang, street food isn't fast food — it's a lifetime of expertise served from a cart, stall, or hole-in-the-wall kitchen.\n\nOn our street food tours, you'll visit:\n\n- **Char kway teow masters**: Uncles who have fried noodles over charcoal since the 1980s, developing wok hei that gas stoves can't replicate\n- **Satay legends**: Families who have grilled the same skewers for three generations, using peanut sauce recipes passed down orally\n- **Laksa specialists**: Aunties who make their own spice paste from scratch, roasting and grinding ingredients the way their mothers taught them\n- **Hidden stalls**: The vendors who don't advertise, don't have Instagram, and don't need to — locals queue for an hour anyway\n\nThis is not tourist food. This is the real thing.",
+    "features_heading": "What Makes Our Street Food Tours Special",
+    "highlights": [
+      {
+        "title": "Legendary Vendors",
+        "description": "Visit hawkers recognised by locals as the best at their specific dish — often with decades of consistent quality."
+      },
+      {
+        "title": "Technique Focus",
+        "description": "Understand why charcoal matters, how wok hei develops, and what makes a satay sauce exceptional."
+      },
+      {
+        "title": "Hidden Locations",
+        "description": "The best stalls aren't on Google Maps. They're down alleyways, behind markets, and under apartment blocks."
+      },
+      {
+        "title": "Generational Stories",
+        "description": "Every vendor has a story. We tell you who they learned from, how the recipe evolved, and what threatens its survival."
+      }
+    ]
   },
   {
+    "id": 336,
     "slug": "market-tours-kuala-lumpur",
-    "name": "Market Tour",
-    "nameFull": "Market Food Tours in Kuala Lumpur",
-    "description": "Explore KL's vibrant wet markets - the heart of the city's food culture.",
-    "heroSubtitle": "Where KL Shops, Cooks, and Eats",
-    "metaTitle": "Market Food Tours in Kuala Lumpur",
-    "tours": [
-      "flavours-of-malaysia"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
-    "related_segments": [
-      "street-food-tours-kuala-lumpur",
-      "heritage-food-tours-kuala-lumpur"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Market Food Tours KL & Penang | Behind the Scenes | Simply Enak",
+    "meta_description": "Behind-the-scenes market tours in KL and Penang. See where the food comes from, meet the suppliers, and taste the freshest dishes. From RM 285.",
+    "hero_title": "Market Food Tours",
+    "hero_subtitle": "See where Malaysian food begins",
+    "hero_description": "Before it reaches the hawker stall, every ingredient passes through a market. Our market tours take you behind the scenes — to the wet markets where chefs shop, vendors source, and the real food culture operates.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Market Food Tours in Kuala Lumpur\"}",
+    "icon": "storefront",
+    "color": "#F97316",
+    "intro_heading": "The Market is Where the Story Starts",
+    "intro_content": "Malaysian wet markets are sensory explosions. Butchers hacking through the morning's delivery. Fishmongers scaling snapper while you watch. Produce sellers arranging tropical fruits you've never seen before.\n\nOn our market tours, you'll:\n\n- **Walk through Chow Kit Market** (KL's largest) with a guide who knows every stall holder by name\n- **Learn to identify ingredients**: galangal vs ginger, 5 types of chillies, the difference between belacan grades\n- **See the supply chain**: meet the fishmonger who supplies your favourite laksa stall\n- **Eat breakfast at the market**: the best food in any Malaysian market is eaten standing up, surrounded by crates of produce\n\nThis is where Malaysian food culture lives before it reaches the restaurants.",
+    "features_heading": "What Makes Our Market Tours Special",
+    "highlights": [
+      {
+        "title": "Chow Kit Market Access",
+        "description": "KL's largest wet market, explained. Your guide knows the butchers, fishmongers, and produce sellers personally."
+      },
+      {
+        "title": "Ingredient Education",
+        "description": "Learn to identify the building blocks of Malaysian cuisine: herbs, spices, pastes, and produce."
+      },
+      {
+        "title": "Market Breakfast",
+        "description": "Eat where the market workers eat — the freshest, cheapest, and most authentic food in the city."
+      },
+      {
+        "title": "Supplier Connections",
+        "description": "See the relationship between market vendors and hawkers. Understand why 'fresh daily' actually matters."
+      }
+    ]
   },
   {
+    "id": 335,
     "slug": "market-tours-penang",
-    "name": "Market Tour",
-    "nameFull": "Market Food Tours in Penang",
-    "description": "Penang's markets are a feast for the senses. From spices to fresh seafood.",
-    "heroSubtitle": "Penang's Market Treasures",
-    "metaTitle": "Market Food Tours in Penang",
-    "tours": [
-      "penang-street-food",
-      "eat-drink-george-town"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
-    "related_segments": [
-      "street-food-tours-penang",
-      "heritage-food-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Market Food Tours KL & Penang | Behind the Scenes | Simply Enak",
+    "meta_description": "Behind-the-scenes market tours in KL and Penang. See where the food comes from, meet the suppliers, and taste the freshest dishes. From RM 285.",
+    "hero_title": "Market Food Tours",
+    "hero_subtitle": "See where Malaysian food begins",
+    "hero_description": "Before it reaches the hawker stall, every ingredient passes through a market. Our market tours take you behind the scenes — to the wet markets where chefs shop, vendors source, and the real food culture operates.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Market Food Tours in Penang\"}",
+    "icon": "storefront",
+    "color": "#F97316",
+    "intro_heading": "The Market is Where the Story Starts",
+    "intro_content": "Malaysian wet markets are sensory explosions. Butchers hacking through the morning's delivery. Fishmongers scaling snapper while you watch. Produce sellers arranging tropical fruits you've never seen before.\n\nOn our market tours, you'll:\n\n- **Walk through Chow Kit Market** (KL's largest) with a guide who knows every stall holder by name\n- **Learn to identify ingredients**: galangal vs ginger, 5 types of chillies, the difference between belacan grades\n- **See the supply chain**: meet the fishmonger who supplies your favourite laksa stall\n- **Eat breakfast at the market**: the best food in any Malaysian market is eaten standing up, surrounded by crates of produce\n\nThis is where Malaysian food culture lives before it reaches the restaurants.",
+    "features_heading": "What Makes Our Market Tours Special",
+    "highlights": [
+      {
+        "title": "Chow Kit Market Access",
+        "description": "KL's largest wet market, explained. Your guide knows the butchers, fishmongers, and produce sellers personally."
+      },
+      {
+        "title": "Ingredient Education",
+        "description": "Learn to identify the building blocks of Malaysian cuisine: herbs, spices, pastes, and produce."
+      },
+      {
+        "title": "Market Breakfast",
+        "description": "Eat where the market workers eat — the freshest, cheapest, and most authentic food in the city."
+      },
+      {
+        "title": "Supplier Connections",
+        "description": "See the relationship between market vendors and hawkers. Understand why 'fresh daily' actually matters."
+      }
+    ]
   },
   {
+    "id": 334,
     "slug": "heritage-food-tours-kuala-lumpur",
-    "name": "Heritage",
-    "nameFull": "Heritage Food Tours in Kuala Lumpur",
-    "description": "Taste KL's 150-year food heritage - from colonial-era kopitiams to family recipes.",
-    "heroSubtitle": "Taste KL's 150-Year Food Heritage",
-    "metaTitle": "Heritage Food Tours in Kuala Lumpur",
-    "tours": [
-      "flavours-of-malaysia",
-      "kuala-lumpur-street-food"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
-    "related_segments": [
-      "street-food-tours-kuala-lumpur",
-      "market-tours-kuala-lumpur"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Heritage Food Tours Malaysia | History & Culture | Simply Enak",
+    "meta_description": "Heritage food tours in KL and Penang. 400 years of history told through dishes, markets, and family recipes. From RM 285.",
+    "hero_title": "Heritage Food Tours",
+    "hero_subtitle": "Every dish is a history lesson",
+    "hero_description": "Malaysian food didn't appear out of nowhere. It was built by migrants, traders, and families who adapted their recipes to a new land. Our heritage tours tell that story — one dish at a time.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Heritage Food Tours in Kuala Lumpur\"}",
+    "icon": "history_edu",
+    "color": "#7C3AED",
+    "intro_heading": "Food as Living History",
+    "intro_content": "Malaysia's food is a timeline of migration, trade, and cultural exchange. On our heritage tours, you'll taste:\n\n- **Malay cuisine**: The indigenous foundation — aromatic herbs, coconut milk, and Islamic culinary traditions shaped by 600 years of sultanates\n- **Chinese Malaysian food**: Hokkien, Cantonese, and Hakka immigrants arrived with wok techniques and adapted to local chilies and tropical herbs\n- **Indian Malaysian cuisine**: South Indian Tamil families and Indian Muslim communities brought banana leaf rice, roti canai, and the mamak culture\n- **Peranakan (Nyonya) food**: When Chinese immigrants married Malays, a unique fusion cuisine was born — Chinese ingredients, Malay spices, grandmother-level patience\n\nEvery stop includes the story: who brought this dish, how it changed, and who's keeping it alive today.",
+    "features_heading": "What You'll Experience",
+    "highlights": [
+      {
+        "title": "Generational Vendors",
+        "description": "Meet hawkers whose families have cooked the same dish for 60+ years. Hear the stories behind the recipes."
+      },
+      {
+        "title": "Heritage Neighbourhoods",
+        "description": "Walk through KL's oldest districts — Petaling Street, Chow Kit, Kampung Baru — where the food culture was born."
+      },
+      {
+        "title": "Cultural Context",
+        "description": "Your guide explains the religious, economic, and social forces that shaped what Malaysia eats today."
+      },
+      {
+        "title": "Living Traditions",
+        "description": "See techniques that haven't changed in generations: hand-pulled noodles, charcoal grilling, slow-cooked rendang."
+      }
+    ]
   },
   {
+    "id": 333,
     "slug": "heritage-food-tours-penang",
-    "name": "Heritage",
-    "nameFull": "Heritage Food Tours in Penang",
-    "description": "Penang's food heritage is unmatched. Taste 200 years of Peranakan, Malay, and Chinese culinary tradition.",
-    "heroSubtitle": "200 Years of Culinary Tradition",
-    "metaTitle": "Heritage Food Tours in Penang",
-    "tours": [
-      "eat-drink-george-town",
-      "penang-street-food"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
-    "related_segments": [
-      "street-food-tours-penang",
-      "market-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Heritage Food Tours Malaysia | History & Culture | Simply Enak",
+    "meta_description": "Heritage food tours in KL and Penang. 400 years of history told through dishes, markets, and family recipes. From RM 285.",
+    "hero_title": "Heritage Food Tours",
+    "hero_subtitle": "Every dish is a history lesson",
+    "hero_description": "Malaysian food didn't appear out of nowhere. It was built by migrants, traders, and families who adapted their recipes to a new land. Our heritage tours tell that story — one dish at a time.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Heritage Food Tours in Penang\"}",
+    "icon": "history_edu",
+    "color": "#7C3AED",
+    "intro_heading": "Food as Living History",
+    "intro_content": "Malaysia's food is a timeline of migration, trade, and cultural exchange. On our heritage tours, you'll taste:\n\n- **Malay cuisine**: The indigenous foundation — aromatic herbs, coconut milk, and Islamic culinary traditions shaped by 600 years of sultanates\n- **Chinese Malaysian food**: Hokkien, Cantonese, and Hakka immigrants arrived with wok techniques and adapted to local chilies and tropical herbs\n- **Indian Malaysian cuisine**: South Indian Tamil families and Indian Muslim communities brought banana leaf rice, roti canai, and the mamak culture\n- **Peranakan (Nyonya) food**: When Chinese immigrants married Malays, a unique fusion cuisine was born — Chinese ingredients, Malay spices, grandmother-level patience\n\nEvery stop includes the story: who brought this dish, how it changed, and who's keeping it alive today.",
+    "features_heading": "What You'll Experience",
+    "highlights": [
+      {
+        "title": "Generational Vendors",
+        "description": "Meet hawkers whose families have cooked the same dish for 60+ years. Hear the stories behind the recipes."
+      },
+      {
+        "title": "Heritage Neighbourhoods",
+        "description": "Walk through KL's oldest districts — Petaling Street, Chow Kit, Kampung Baru — where the food culture was born."
+      },
+      {
+        "title": "Cultural Context",
+        "description": "Your guide explains the religious, economic, and social forces that shaped what Malaysia eats today."
+      },
+      {
+        "title": "Living Traditions",
+        "description": "See techniques that haven't changed in generations: hand-pulled noodles, charcoal grilling, slow-cooked rendang."
+      }
+    ]
   },
   {
+    "id": 332,
     "slug": "night-food-tours-kuala-lumpur",
-    "name": "Night Food",
-    "nameFull": "Night Food Tours in Kuala Lumpur",
-    "description": "KL comes alive after dark. Night markets, late-night hawkers, and hidden cocktail bars.",
-    "heroSubtitle": "KL After Dark: Markets, Hawkers & Cocktails",
-    "metaTitle": "Night Food Tours in Kuala Lumpur",
-    "tours": [
-      "secrets-of-kl-nightlife"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
-    "related_segments": [
-      "street-food-tours-kuala-lumpur",
-      "heritage-food-tours-kuala-lumpur"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Night Food Tours KL & Penang | Simply Enak",
+    "meta_description": "After-dark food tours in Kuala Lumpur and Penang. Experience mamak culture, night markets, and the dishes that only come alive after sunset. From RM 285.",
+    "hero_title": "Night Food Tours",
+    "hero_subtitle": "When the sun goes down, the food gets better",
+    "hero_description": "Malaysia's night food culture is legendary. Mamak stalls that never close. Night markets that appear at dusk. Satay grills that only light up after 7pm. Our night tours show you the Malaysia that wakes up after dark.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Night Food Tours in Kuala Lumpur\"}",
+    "icon": "nightlight",
+    "color": "#1E3A8A",
+    "intro_heading": "Why Night Food in Malaysia is Different",
+    "intro_content": "Malaysia doesn't sleep — it eats. The country's 24-hour food culture is built on mamak stalls, night markets, and hawker centres that shift into higher gear after sunset.\n\nOn our night tours, you'll experience:\n\n- **Mamak culture**: Indian Muslim restaurants where students study, football fans argue, and families eat roti canai at 2am\n- **Night markets**: Temporary stalls that sell everything from satay to apam balik (crispy pancakes) under fluorescent lights\n- **After-dark specialities**: Dishes that hawkers only prepare at night, when the temperature drops and the crowds arrive\n- **A completely different atmosphere**: The same neighbourhoods feel different after dark — more relaxed, more social, more alive",
+    "features_heading": "What Makes Our Night Tours Special",
+    "highlights": [
+      {
+        "title": "Mamak Immersion",
+        "description": "Eat where Malaysians eat at 2am. Roti canai, teh tarik, and the unique social culture of 24-hour restaurants."
+      },
+      {
+        "title": "Night Market Navigation",
+        "description": "We take you to the best night markets — the ones locals actually go to, not the tourist traps."
+      },
+      {
+        "title": "Satay by Charcoal",
+        "description": "Watch satay being grilled over charcoal, basted with oil and spices, served fresh off the fire."
+      },
+      {
+        "title": "After-Hours Hawkers",
+        "description": "Some of KL's best hawkers only open after 7pm. We know which ones are worth staying up for."
+      }
+    ]
   },
   {
+    "id": 331,
     "slug": "night-food-tours-penang",
-    "name": "Night Food",
-    "nameFull": "Night Food Tours in Penang",
-    "description": "Experience Penang after dark - from night markets to late-night roti canai.",
-    "heroSubtitle": "Penang's Nighttime Food Scene",
-    "metaTitle": "Night Food Tours in Penang",
-    "tours": [
-      "eat-drink-george-town"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
-    "related_segments": [
-      "street-food-tours-penang",
-      "heritage-food-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Night Food Tours KL & Penang | Simply Enak",
+    "meta_description": "After-dark food tours in Kuala Lumpur and Penang. Experience mamak culture, night markets, and the dishes that only come alive after sunset. From RM 285.",
+    "hero_title": "Night Food Tours",
+    "hero_subtitle": "When the sun goes down, the food gets better",
+    "hero_description": "Malaysia's night food culture is legendary. Mamak stalls that never close. Night markets that appear at dusk. Satay grills that only light up after 7pm. Our night tours show you the Malaysia that wakes up after dark.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Night Food Tours in Penang\"}",
+    "icon": "nightlight",
+    "color": "#1E3A8A",
+    "intro_heading": "Why Night Food in Malaysia is Different",
+    "intro_content": "Malaysia doesn't sleep — it eats. The country's 24-hour food culture is built on mamak stalls, night markets, and hawker centres that shift into higher gear after sunset.\n\nOn our night tours, you'll experience:\n\n- **Mamak culture**: Indian Muslim restaurants where students study, football fans argue, and families eat roti canai at 2am\n- **Night markets**: Temporary stalls that sell everything from satay to apam balik (crispy pancakes) under fluorescent lights\n- **After-dark specialities**: Dishes that hawkers only prepare at night, when the temperature drops and the crowds arrive\n- **A completely different atmosphere**: The same neighbourhoods feel different after dark — more relaxed, more social, more alive",
+    "features_heading": "What Makes Our Night Tours Special",
+    "highlights": [
+      {
+        "title": "Mamak Immersion",
+        "description": "Eat where Malaysians eat at 2am. Roti canai, teh tarik, and the unique social culture of 24-hour restaurants."
+      },
+      {
+        "title": "Night Market Navigation",
+        "description": "We take you to the best night markets — the ones locals actually go to, not the tourist traps."
+      },
+      {
+        "title": "Satay by Charcoal",
+        "description": "Watch satay being grilled over charcoal, basted with oil and spices, served fresh off the fire."
+      },
+      {
+        "title": "After-Hours Hawkers",
+        "description": "Some of KL's best hawkers only open after 7pm. We know which ones are worth staying up for."
+      }
+    ]
   },
   {
+    "id": 330,
     "slug": "street-food-tours",
-    "name": "Street Food Tours",
-    "nameFull": "Street Food Tours in Malaysia",
-    "description": "Sizzling woks, aromatic spices, and flavours you'll never forget - Malaysia's street food scene is legendary.",
-    "heroSubtitle": "The Soul of Malaysian Food Culture",
-    "metaTitle": "Street Food Tours in Malaysia",
-    "tours": [
-      "flavours-of-malaysia",
-      "kuala-lumpur-street-food",
-      "eat-drink-george-town",
-      "penang-street-food"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg",
-    "related_segments": [
-      "street-food-tours-kuala-lumpur",
-      "street-food-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Street Food Tours KL & Penang | Legendary Hawkers | Simply Enak",
+    "meta_description": "Legendary street food tours in Kuala Lumpur and Penang. Visit the hawker stalls that made Malaysian cuisine famous. From RM 285.",
+    "hero_title": "Street Food Tours",
+    "hero_subtitle": "The hawker stalls that built a food nation",
+    "hero_description": "Malaysian street food isn't a trend — it's a 150-year tradition. Our street food tours take you to the legendary hawkers who have perfected a single dish for decades.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Street Food Tours in Malaysia\"}",
+    "icon": "lunch_dining",
+    "color": "#EF4444",
+    "intro_heading": "Why Malaysian Street Food is Legendary",
+    "intro_content": "Malaysian hawker culture is UNESCO-recognised for good reason. In KL and Penang, street food isn't fast food — it's a lifetime of expertise served from a cart, stall, or hole-in-the-wall kitchen.\n\nOn our street food tours, you'll visit:\n\n- **Char kway teow masters**: Uncles who have fried noodles over charcoal since the 1980s, developing wok hei that gas stoves can't replicate\n- **Satay legends**: Families who have grilled the same skewers for three generations, using peanut sauce recipes passed down orally\n- **Laksa specialists**: Aunties who make their own spice paste from scratch, roasting and grinding ingredients the way their mothers taught them\n- **Hidden stalls**: The vendors who don't advertise, don't have Instagram, and don't need to — locals queue for an hour anyway\n\nThis is not tourist food. This is the real thing.",
+    "features_heading": "What Makes Our Street Food Tours Special",
+    "highlights": [
+      {
+        "title": "Legendary Vendors",
+        "description": "Visit hawkers recognised by locals as the best at their specific dish — often with decades of consistent quality."
+      },
+      {
+        "title": "Technique Focus",
+        "description": "Understand why charcoal matters, how wok hei develops, and what makes a satay sauce exceptional."
+      },
+      {
+        "title": "Hidden Locations",
+        "description": "The best stalls aren't on Google Maps. They're down alleyways, behind markets, and under apartment blocks."
+      },
+      {
+        "title": "Generational Stories",
+        "description": "Every vendor has a story. We tell you who they learned from, how the recipe evolved, and what threatens its survival."
+      }
+    ]
   },
   {
+    "id": 329,
     "slug": "market-tours",
-    "name": "Market Tours",
-    "nameFull": "Market Food Tours in Malaysia",
-    "description": "Wet markets at dawn, spice merchants, and the ingredients that make Malaysian cuisine possible.",
-    "heroSubtitle": "Where Malaysian Food Begins",
-    "metaTitle": "Market Food Tours in Malaysia",
-    "tours": [
-      "flavours-of-malaysia",
-      "eat-drink-george-town"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg",
-    "related_segments": [
-      "market-tours-kuala-lumpur",
-      "market-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Market Food Tours KL & Penang | Behind the Scenes | Simply Enak",
+    "meta_description": "Behind-the-scenes market tours in KL and Penang. See where the food comes from, meet the suppliers, and taste the freshest dishes. From RM 285.",
+    "hero_title": "Market Food Tours",
+    "hero_subtitle": "See where Malaysian food begins",
+    "hero_description": "Before it reaches the hawker stall, every ingredient passes through a market. Our market tours take you behind the scenes — to the wet markets where chefs shop, vendors source, and the real food culture operates.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Market Food Tours in Malaysia\"}",
+    "icon": "storefront",
+    "color": "#F97316",
+    "intro_heading": "The Market is Where the Story Starts",
+    "intro_content": "Malaysian wet markets are sensory explosions. Butchers hacking through the morning's delivery. Fishmongers scaling snapper while you watch. Produce sellers arranging tropical fruits you've never seen before.\n\nOn our market tours, you'll:\n\n- **Walk through Chow Kit Market** (KL's largest) with a guide who knows every stall holder by name\n- **Learn to identify ingredients**: galangal vs ginger, 5 types of chillies, the difference between belacan grades\n- **See the supply chain**: meet the fishmonger who supplies your favourite laksa stall\n- **Eat breakfast at the market**: the best food in any Malaysian market is eaten standing up, surrounded by crates of produce\n\nThis is where Malaysian food culture lives before it reaches the restaurants.",
+    "features_heading": "What Makes Our Market Tours Special",
+    "highlights": [
+      {
+        "title": "Chow Kit Market Access",
+        "description": "KL's largest wet market, explained. Your guide knows the butchers, fishmongers, and produce sellers personally."
+      },
+      {
+        "title": "Ingredient Education",
+        "description": "Learn to identify the building blocks of Malaysian cuisine: herbs, spices, pastes, and produce."
+      },
+      {
+        "title": "Market Breakfast",
+        "description": "Eat where the market workers eat — the freshest, cheapest, and most authentic food in the city."
+      },
+      {
+        "title": "Supplier Connections",
+        "description": "See the relationship between market vendors and hawkers. Understand why 'fresh daily' actually matters."
+      }
+    ]
   },
   {
+    "id": 328,
     "slug": "heritage-food-tours",
-    "name": "Heritage Food Tours",
-    "nameFull": "Heritage Food Tours in Malaysia",
-    "description": "Colonial-era kopitiams, UNESCO-listed shophouses, and recipes passed through generations - Malaysia's food heritage is living history.",
-    "heroSubtitle": "Recipes Passed Through Generations",
-    "metaTitle": "Heritage Food Tours in Malaysia",
-    "tours": [
-      "flavours-of-malaysia",
-      "kuala-lumpur-street-food",
-      "eat-drink-george-town",
-      "penang-street-food"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg",
-    "related_segments": [
-      "heritage-food-tours-kuala-lumpur",
-      "heritage-food-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Heritage Food Tours Malaysia | History & Culture | Simply Enak",
+    "meta_description": "Heritage food tours in KL and Penang. 400 years of history told through dishes, markets, and family recipes. From RM 285.",
+    "hero_title": "Heritage Food Tours",
+    "hero_subtitle": "Every dish is a history lesson",
+    "hero_description": "Malaysian food didn't appear out of nowhere. It was built by migrants, traders, and families who adapted their recipes to a new land. Our heritage tours tell that story — one dish at a time.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Heritage Food Tours in Malaysia\"}",
+    "icon": "history_edu",
+    "color": "#7C3AED",
+    "intro_heading": "Food as Living History",
+    "intro_content": "Malaysia's food is a timeline of migration, trade, and cultural exchange. On our heritage tours, you'll taste:\n\n- **Malay cuisine**: The indigenous foundation — aromatic herbs, coconut milk, and Islamic culinary traditions shaped by 600 years of sultanates\n- **Chinese Malaysian food**: Hokkien, Cantonese, and Hakka immigrants arrived with wok techniques and adapted to local chilies and tropical herbs\n- **Indian Malaysian cuisine**: South Indian Tamil families and Indian Muslim communities brought banana leaf rice, roti canai, and the mamak culture\n- **Peranakan (Nyonya) food**: When Chinese immigrants married Malays, a unique fusion cuisine was born — Chinese ingredients, Malay spices, grandmother-level patience\n\nEvery stop includes the story: who brought this dish, how it changed, and who's keeping it alive today.",
+    "features_heading": "What You'll Experience",
+    "highlights": [
+      {
+        "title": "Generational Vendors",
+        "description": "Meet hawkers whose families have cooked the same dish for 60+ years. Hear the stories behind the recipes."
+      },
+      {
+        "title": "Heritage Neighbourhoods",
+        "description": "Walk through KL's oldest districts — Petaling Street, Chow Kit, Kampung Baru — where the food culture was born."
+      },
+      {
+        "title": "Cultural Context",
+        "description": "Your guide explains the religious, economic, and social forces that shaped what Malaysia eats today."
+      },
+      {
+        "title": "Living Traditions",
+        "description": "See techniques that haven't changed in generations: hand-pulled noodles, charcoal grilling, slow-cooked rendang."
+      }
+    ]
   },
   {
+    "id": 327,
     "slug": "night-food-tours",
-    "name": "Night Food Tours",
-    "nameFull": "Night Food Tours in Malaysia",
-    "description": "Night markets, late-night hawkers, and hidden cocktail bars - Malaysia's food scene transforms after sunset.",
-    "heroSubtitle": "Malaysia After Dark",
-    "metaTitle": "Night Food Tours in Malaysia",
-    "tours": [
-      "secrets-of-kl-nightlife",
-      "eat-drink-george-town"
-    ],
-    "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
-    "related_segments": [
-      "night-food-tours-kuala-lumpur",
-      "night-food-tours-penang"
-    ],
-    "_status": "published"
+    "status": "published",
+    "meta_title": "Night Food Tours KL & Penang | Simply Enak",
+    "meta_description": "After-dark food tours in Kuala Lumpur and Penang. Experience mamak culture, night markets, and the dishes that only come alive after sunset. From RM 285.",
+    "hero_title": "Night Food Tours",
+    "hero_subtitle": "When the sun goes down, the food gets better",
+    "hero_description": "Malaysia's night food culture is legendary. Mamak stalls that never close. Night markets that appear at dusk. Satay grills that only light up after 7pm. Our night tours show you the Malaysia that wakes up after dark.",
+    "hero_image": "",
+    "specialty_name": "{\"en\":\"Night Food Tours in Malaysia\"}",
+    "icon": "nightlight",
+    "color": "#1E3A8A",
+    "intro_heading": "Why Night Food in Malaysia is Different",
+    "intro_content": "Malaysia doesn't sleep — it eats. The country's 24-hour food culture is built on mamak stalls, night markets, and hawker centres that shift into higher gear after sunset.\n\nOn our night tours, you'll experience:\n\n- **Mamak culture**: Indian Muslim restaurants where students study, football fans argue, and families eat roti canai at 2am\n- **Night markets**: Temporary stalls that sell everything from satay to apam balik (crispy pancakes) under fluorescent lights\n- **After-dark specialities**: Dishes that hawkers only prepare at night, when the temperature drops and the crowds arrive\n- **A completely different atmosphere**: The same neighbourhoods feel different after dark — more relaxed, more social, more alive",
+    "features_heading": "What Makes Our Night Tours Special",
+    "highlights": [
+      {
+        "title": "Mamak Immersion",
+        "description": "Eat where Malaysians eat at 2am. Roti canai, teh tarik, and the unique social culture of 24-hour restaurants."
+      },
+      {
+        "title": "Night Market Navigation",
+        "description": "We take you to the best night markets — the ones locals actually go to, not the tourist traps."
+      },
+      {
+        "title": "Satay by Charcoal",
+        "description": "Watch satay being grilled over charcoal, basted with oil and spices, served fresh off the fire."
+      },
+      {
+        "title": "After-Hours Hawkers",
+        "description": "Some of KL's best hawkers only open after 7pm. We know which ones are worth staying up for."
+      }
+    ]
   }
 ]

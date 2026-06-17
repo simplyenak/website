@@ -1,0 +1,171 @@
+---
+
+---
+
+<div class="w-full max-w-4xl mx-auto mt-8">
+  <div
+    class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl"
+  >
+    <form id="tour-filter-form" class="flex flex-col md:flex-row gap-4">
+      <div class="flex-1">
+        <label class="block text-xs font-medium text-gray-200 mb-1 ml-1"
+          >Destination</label
+        >
+        <div class="relative">
+          <select
+            class="w-full appearance-none bg-white/90 text-gray-900 rounded-lg px-4 py-3 pr-8 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+          >
+            <option value="">Where to?</option>
+            <option value="kuala-lumpur">Kuala Lumpur</option>
+            <option value="penang">Penang</option>
+            <option value="melaka">Melaka</option>
+            <option value="ipoh">Ipoh</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              ></path></svg
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1">
+        <label class="block text-xs font-medium text-gray-200 mb-1 ml-1"
+          >Dietary</label
+        >
+        <div class="relative">
+          <select
+            class="w-full appearance-none bg-white/90 text-gray-900 rounded-lg px-4 py-3 pr-8 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+          >
+            <option value="">Any Preference</option>
+            <option value="vegetarian">Vegetarian / Vegan</option>
+            <option value="halal">Halal</option>
+            <option value="gluten-free">Gluten Free</option>
+            <option value="none">No Restrictions</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              ></path></svg
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1">
+        <label class="block text-xs font-medium text-gray-200 mb-1 ml-1"
+          >Group Size</label
+        >
+        <div class="relative">
+          <select
+            class="w-full appearance-none bg-white/90 text-gray-900 rounded-lg px-4 py-3 pr-8 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+          >
+            <option value="">How many?</option>
+            <option value="1-2">Solo / Couple</option>
+            <option value="3-5">Small Group</option>
+            <option value="6+">Large Group / Family</option>
+            <option value="corporate">Corporate Team</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              ></path></svg
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-none flex items-end">
+        <button
+          type="button"
+          class="w-full md:w-auto bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+        >
+          <span>Find My Tour</span>
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("tour-filter-form");
+  const button = form?.querySelector("button");
+
+  if (button && form) {
+    button.addEventListener("click", () => {
+      const selects = form.querySelectorAll("select");
+      const destination = selects[0].value;
+      const dietary = selects[1].value;
+      const groupSize = selects[2].value;
+
+      // Smart Routing Logic (The "Quiz" Brain)
+
+      // 1. Special Case: Vegetarian/Vegan
+      // If they explicitly want vegetarian, send them to the veg page regardless of city (unless they picked a specific city that doesn't have it yet, but for now Veg page is global)
+      if (dietary === "vegetarian") {
+        window.location.href = "/vegetarian-food-tours";
+        return;
+      }
+
+      // 2. Special Case: Corporate/Large Groups
+      // If it's a corporate or large group, send to contact page with pre-filled context if possible, or just the contact page.
+      if (groupSize === "corporate" || groupSize === "6+") {
+        window.location.href = "/contact?reason=group_booking";
+        return;
+      }
+
+      // 3. Destination Routing
+      if (destination === "penang") {
+        window.location.href = "/tours/penang-segment";
+      } else if (destination === "melaka") {
+        window.location.href = "/tours/melaka-cultural-food-journey";
+      } else if (destination === "kuala-lumpur") {
+        // If they chose KL + Halal, maybe send to a specific anchor or just the KL page
+        window.location.href = "/tours/kuala-lumpur-segment";
+      } else if (destination === "ipoh") {
+        window.location.href = "/tours/ipoh-segment";
+      } else {
+        // 4. Fallback: If no destination selected but they clicked search
+        if (dietary === "halal") {
+          // Could go to a halal specific page if it existed, or contact
+          window.location.href = "/contact?reason=halal_tour";
+        } else {
+          // Just scroll to cities
+          const citySection = document.getElementById("city");
+          if (citySection) citySection.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+  }
+</script>

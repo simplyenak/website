@@ -1,0 +1,1092 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Section from "@/components/Design/Section.astro";
+import Button from "@/components/Button.astro";
+import Badge from "@/components/Design/Badge.astro";
+import FAQ from "@/components/FAQ.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import TourQuiz from "@/components/Tours/TourQuiz.astro";
+import TestimonialCarousel from "@/components/Tours/TestimonialCarousel.astro";
+import { getAllTours, getAllSpecialtyLandingPages, getAllTravelTypeLandingPages, getAllLocationLandingPages, getAllDietaryLandingPages, getImageUrl, getToursIndexPage, getFAQsForPage, getMainTourSlugs } from "@/lib/content";
+import { SUPPORTED_LANGS, localizePath } from "@/i18n/utils";
+import { siteConfig } from "@/lib/site-config";
+import toursIndexContent from "@/data/content/tours-index-page.json";
+import siteSettingsData from "@/data/content/site-settings.json";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return SUPPORTED_LANGS.map((lang) => ({ params: { lang } }));
+}
+
+
+// Static JSON content — translation-safe fallbacks for all hardcoded strings
+const tip = toursIndexContent;
+
+// Get language from URL
+const urlLang = (Astro.params.lang as string) || 'en';
+const lang = urlLang;
+
+// Fetch all data from Payload
+const [allTours, specialtyPages, travelTypePages, locationPages, dietaryPages, toursIndexPage, pageFaqs] = await Promise.all([
+  getAllTours(),
+  getAllSpecialtyLandingPages(),
+  getAllTravelTypeLandingPages(),
+  getAllLocationLandingPages(),
+  getAllDietaryLandingPages(),
+  getToursIndexPage(lang),
+  getFAQsForPage('tours', lang),
+]);
+
+// Use Payload content or fallback to JSON defaults
+const hero = {
+  title: toursIndexPage?.hero_title ?? tip.hero_title,
+  subtitle: toursIndexPage?.hero_subtitle ?? tip.hero_subtitle,
+  description: toursIndexPage?.hero_description ?? tip.hero_description,
+  backgroundImage: toursIndexPage?.hero_background_image ?? tip.hero_background_image,
+};
+
+// Specialty pages split: experience-type (shown in Specialty section) vs
+// audience-type (corporate/celebrations/custom — shown in Custom & Group section)
+const AUDIENCE_SPECIALTY_SLUGS = ['corporate', 'celebrations', 'custom', 'tailored'];
+const experienceSpecialtyPages = specialtyPages.filter(
+  (s: any) => !AUDIENCE_SPECIALTY_SLUGS.includes(s.slug)
+);
+
+// Fallback images for segments without hero_image in Payload
+const specialtyFallbackImages: Record<string, string> = {
+  'street-food': 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg',
+  'cultural':    'https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg',
+  'heritage':    'https://se-website-images.s3.nl-ams.scw.cloud/story-heritage.jpg',
+  'multi-day':   'https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg',
+  'chefs':        'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg',
+  'corporate':    'https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg',
+  'celebrations': 'https://se-website-images.s3.nl-ams.scw.cloud/hari-raya-foods.jpg',
+  'custom':       'https://se-website-images.s3.nl-ams.scw.cloud/story-heritage.jpg',
+};
+const travelTypeFallbackImages: Record<string, string> = {
+  'family-friendly': 'https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg',
+  'adults-only':     'https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg',
+  'couples':         'https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg',
+  'solo-traveler':   'https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg',
+  'foodies':         'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg',
+  'first-timers':    'https://se-website-images.s3.nl-ams.scw.cloud/story-heritage.jpg',
+};
+
+const dietaryFallbackImages: Record<string, string> = {
+  'halal':            'https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg',
+  'gluten-free':      'https://se-website-images.s3.nl-ams.scw.cloud/story-heritage.jpg',
+  'vegan':            'https://se-website-images.s3.nl-ams.scw.cloud/dietary-adaptations.jpg',
+  'jain':             'https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg',
+  'shellfish-allergy':'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg',
+  'nut-allergy':      'https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg',
+  'dairy-free':       'https://se-website-images.s3.nl-ams.scw.cloud/hari-raya-foods.jpg',
+};
+
+// Location-based segments — data-driven from location-landing-pages.json
+const locationSegments = locationPages.map((loc: any) => ({
+  name: loc.location_name,
+  slug: `/tours/locations/${loc.slug}/`,
+  shortDescription: loc.hero_subtitle,
+  fullDescription: loc.hero_description,
+  image: loc.hero_image,
+  available: true,
+  badge: loc.badge ?? undefined,
+}));
+
+// Dietary preference segments — data-driven + static catchall card
+const dietarySegments = [
+  ...dietaryPages.map((d: any) => ({
+    name: d.dietary_name,
+    slug: `/tours/dietary/${d.slug}/`,
+    shortDescription: d.hero_subtitle,
+    fullDescription: d.hero_description,
+    image: d.hero_image || dietaryFallbackImages[d.slug] || '',
+    available: true,
+    badge: d.badge ?? undefined,
+  })),
+  {
+    name: tip.dietary_catchall_name,
+    slug: tip.dietary_catchall_slug,
+    shortDescription: tip.dietary_catchall_short_description,
+    fullDescription: tip.dietary_catchall_full_description,
+    image: tip.dietary_catchall_image,
+    available: true,
+  },
+];
+
+// Group & custom segments — driven from JSON content file
+const groupSegments = Array.isArray(tip.group_segments)
+  ? tip.group_segments.map((s: any) => ({
+      name: s.name,
+      slug: s.slug,
+      shortDescription: s.short_description,
+      fullDescription: s.full_description,
+      image: s.image,
+      available: true,
+    }))
+  : [
+      {
+        name: "Family Adventures",
+        slug: "/tours/travel-types/family-friendly/",
+        shortDescription: "Kid-friendly food, parent-approved experiences",
+        fullDescription:
+          "Traveling with children? We get it. We adapt dishes for young palates, pace the tour for small legs, and make sure everyone learns something.",
+        image: "https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg",
+        available: true,
+      },
+      {
+        name: "Corporate Team Building",
+        slug: "/tours/specialty/corporate/",
+        shortDescription: "Bonding over food, not trust falls",
+        fullDescription:
+          "Want your team to actually connect? Walk through hawker markets together. Learn to spot fresh ingredients. Debate whether char kway teow is better in Penang or KL.",
+        image: "https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg",
+        available: true,
+      },
+      {
+        name: "Special Celebrations",
+        slug: "/tours/specialty/celebrations/",
+        shortDescription: "Birthdays, anniversaries, reunions",
+        fullDescription:
+          "Celebrate milestones the Malaysian way: surrounded by food, family, and stories. We'll create an experience that matches the occasion.",
+        image: "https://se-website-images.s3.nl-ams.scw.cloud/hari-raya-foods.jpg",
+        available: true,
+      },
+      {
+        name: "Tailored Experiences",
+        slug: "/tours/specialty/custom/",
+        shortDescription: "Your vision, our local knowledge",
+        fullDescription:
+          "Have specific interests? Want to combine cities? Need multi-day experiences? We'll design a tour that exists nowhere else.",
+        image: "https://se-website-images.s3.nl-ams.scw.cloud/story-heritage.jpg",
+        available: true,
+      },
+    ];
+
+// FAQ data from Payload, falling back to JSON content file
+const faqs = pageFaqs.length > 0
+  ? pageFaqs
+  : (Array.isArray(tip.fallback_faqs) ? tip.fallback_faqs : [
+      {
+        question: "How do I decide which tour is right for me?",
+        answer:
+          "Start with location—which city interests you? Then consider your dietary needs and group type. If you're solo or a couple, join our regular tours. Families and groups of 6+ benefit from custom experiences. Still unsure? Contact us—we love helping people find their perfect Malaysian food adventure.",
+      },
+      {
+        question: "What if I have dietary restrictions?",
+        answer:
+          "Every tour can be adapted. Vegetarian, vegan, halal, gluten-free, allergies—just tell us when booking. Our dedicated vegetarian heritage tours explore Malaysia's 140-year plant-based tradition. For other dietary needs, we work with vendors who can accommodate while maintaining local flavours.",
+      },
+    ]);
+
+const mainTourSlugs = getMainTourSlugs();
+const PRIORITY_SLUGS = mainTourSlugs;
+
+// Bento grid caps — prevent sections from growing unwieldy as content is added
+const DIETARY_CAP = 6;
+const SPECIALTY_CAP = 6;
+const TRAVEL_CAP = 6;
+
+const dietaryVisible = dietarySegments.slice(0, DIETARY_CAP);
+const dietaryOverflow = dietarySegments.length > DIETARY_CAP;
+const specialtyVisible = experienceSpecialtyPages.slice(0, SPECIALTY_CAP);
+const specialtyOverflow = experienceSpecialtyPages.length > SPECIALTY_CAP;
+const travelVisible = travelTypePages.slice(0, TRAVEL_CAP);
+const travelOverflow = travelTypePages.length > TRAVEL_CAP;
+const realTours = allTours
+  .filter((t: any) => PRIORITY_SLUGS.includes(t.slug))
+  .sort((a: any, b: any) => PRIORITY_SLUGS.indexOf(a.slug) - PRIORITY_SLUGS.indexOf(b.slug));
+
+const schemaTours = allTours.filter((t: any) => !t.noindex);
+
+const TOUR_BADGES: Record<string, { label: string; color: string }> = {
+  'eat-drink-george-town': { label: 'Most Popular', color: 'bg-amber-500' },
+  'kuala-lumpur-street-food': { label: 'Guest Favourite', color: 'bg-orange-500' },
+  'secrets-of-kl-nightlife-street-art-and-cocktails': { label: 'Evening Tour', color: 'bg-purple-600' },
+};
+
+// SEO data — driven from JSON content file with string fallbacks
+const seoData = {
+  title: toursIndexPage?.seo_title ?? tip.seo_title,
+  description: toursIndexPage?.seo_description ?? tip.seo_description,
+  image: hero.backgroundImage,
+  structuredData: [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Simply Enak Food Tours",
+      description:
+        "Malaysian food and cultural experiences by location, dietary preference, and group type",
+      url: "https://simplyenak.com/tours/",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Simply Enak Food Tours",
+      url: "https://simplyenak.com/tours/",
+      numberOfItems: schemaTours.length,
+      itemListElement: schemaTours.map((t: any, i: number) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "TouristTrip",
+          name: t.name,
+          url: `https://simplyenak.com/tours/${t.slug}/`,
+          description: t.short_description ?? t.tagline,
+          image: t.hero_image,
+          offers: t.price ? {
+            "@type": "Offer",
+            price: String(t.price),
+            priceCurrency: t.currency,
+          } : undefined,
+        },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TourOperator",
+      "@id": "https://simplyenak.com/#business",
+      name: "Local Culinary Travel Experiences Sdn. Bhd.",
+      url: "https://simplyenak.com/",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: String(siteSettingsData.review_count ?? 5000),
+        bestRating: "5",
+        worstRating: "1",
+      },
+    },
+  ],
+};
+---
+
+<Layout
+  title={seoData.title}
+  description={seoData.description}
+  image={seoData.image}
+  structuredData={seoData.structuredData}
+  hreflangPath="/tours/"
+ 
+>
+  <GlobalHero
+    title={hero.title}
+    highlight={toursIndexPage?.hero_highlight ?? tip.hero_highlight}
+    subtitle={hero.subtitle}
+    image={hero.backgroundImage}
+    ctaPrimary={{ text: toursIndexPage?.hero_cta_primary, href: "#tours" }}
+    ctaSecondary={{ text: toursIndexPage?.hero_cta_secondary, href: "#tour-finder" }}
+  />
+
+  <!-- Category Navigation -->
+  <div
+    class="sticky top-[72px] md:top-[88px] z-40 bg-white border-b border-gray-200 shadow-md transition-all duration-300"
+  >
+    <div class="max-w-4xl mx-auto px-2">
+      <nav
+        class="flex items-center gap-2 overflow-x-auto py-3 scrollbar-hide"
+        aria-label="Tours page sections"
+      >
+        <a
+          href="#tours"
+          data-nav-link="tours"
+          class="inline-flex items-center px-5 py-3 min-h-[48px] text-[15px] md:text-base font-bold rounded-full whitespace-nowrap transition-all
+                 text-gray-600 hover:text-primary hover:bg-primary/5
+                 is-active:text-primary is-active:bg-primary/10"
+        >
+          {toursIndexPage?.nav_all ?? tip.nav_all}
+        </a>
+        <a
+          href="#city"
+          data-nav-link="city"
+          class="inline-flex items-center px-5 py-3 min-h-[48px] text-[15px] md:text-base font-bold rounded-full whitespace-nowrap transition-all
+                 text-gray-600 hover:text-primary hover:bg-primary/5
+                 is-active:text-primary is-active:bg-primary/10"
+        >
+          {toursIndexPage?.nav_by_city ?? tip.nav_by_city}
+        </a>
+        <a
+          href="#dietary"
+          data-nav-link="dietary"
+          class="inline-flex items-center px-5 py-3 min-h-[48px] text-[15px] md:text-base font-bold rounded-full whitespace-nowrap transition-all
+                 text-gray-600 hover:text-primary hover:bg-primary/5
+                 is-active:text-primary is-active:bg-primary/10"
+        >
+          {toursIndexPage?.nav_dietary ?? tip.nav_dietary}
+        </a>
+        <a
+          href="#specialty"
+          data-nav-link="specialty"
+          class="inline-flex items-center px-5 py-3 min-h-[48px] text-[15px] md:text-base font-bold rounded-full whitespace-nowrap transition-all
+                 text-gray-600 hover:text-primary hover:bg-primary/5
+                 is-active:text-primary is-active:bg-primary/10"
+        >
+          {toursIndexPage?.nav_specialty ?? tip.nav_specialty}
+        </a>
+        <a
+          href="#travel-style"
+          data-nav-link="travel-style"
+          class="inline-flex items-center px-5 py-3 min-h-[48px] text-[15px] md:text-base font-bold rounded-full whitespace-nowrap transition-all
+                 text-gray-600 hover:text-primary hover:bg-primary/5
+                 is-active:text-primary is-active:bg-primary/10"
+        >
+          {toursIndexPage?.nav_travel_style ?? tip.nav_travel_style}
+        </a>
+        <a
+          href="#custom"
+          data-nav-link="custom"
+          class="inline-flex items-center px-5 py-3 min-h-[48px] text-[15px] md:text-base font-bold rounded-full whitespace-nowrap transition-all
+                 text-gray-600 hover:text-primary hover:bg-primary/5
+                 is-active:text-primary is-active:bg-primary/10"
+        >
+          {toursIndexPage?.nav_custom ?? tip.nav_custom}
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Featured Tours — Main 5 Tours Only -->
+  <Section id="tours">
+    <div class="flex justify-between items-end mb-10">
+      <div class="max-w-2xl">
+        <p class="text-h6 tracking-[0.25em] text-orange font-bold mb-2">{toursIndexPage?.signature_tours_eyebrow ?? tip.signature_tours_eyebrow}</p>
+        <h2 class="text-h2 text-primary mb-3">{toursIndexPage?.signature_tours_heading ?? tip.signature_tours_heading}</h2>
+        <p class="text-body">
+          {toursIndexPage?.signature_tours_subtext ?? tip.signature_tours_subtext}
+        </p>
+      </div>
+      <Button href="#city" title="Browse by city" buttonType="secondary-btn" />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {
+        realTours.map((tour: any, index) => (
+          <a
+            href={`/tours/${tour.slug}/`}
+            class="group block"
+            aria-label={`View details for ${tour.name}: ${tour.tagline || tour.location} food tour`}
+          >
+            <div class="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+              {tour.hero_image ? (
+                <div class="overflow-hidden h-48 sm:h-52 flex-shrink-0 relative">
+                  <img
+                    src={getImageUrl(tour.hero_image, { width: 600, height: 420 }) ?? tour.hero_image}
+                    alt={tour.name}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {TOUR_BADGES[tour.slug] && (
+                    <div class={`absolute top-3 left-3 z-10 ${TOUR_BADGES[tour.slug]!.color} text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm`}>
+                      {TOUR_BADGES[tour.slug]!.label}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div class="h-48 sm:h-52 bg-orange-100 flex-shrink-0 flex items-center justify-center" aria-hidden="true">
+                  <span class="text-4xl">🍜</span>
+                </div>
+              )}
+              <div class="p-4 sm:p-6 flex flex-col flex-1">
+                {tour.location && (
+                  <span class="text-h6 tracking-widest text-secondary mb-1 sm:mb-2 uppercase font-semibold">
+                    {tour.location}
+                  </span>
+                )}
+                <h3 class="text-h3 text-gray-900 mb-1 sm:mb-2 group-hover:text-primary transition-colors leading-snug font-semibold">
+                  {tour.name}
+                </h3>
+                {tour.tagline && (
+                  <p class="text-body mb-4 line-clamp-2 flex-1">{tour.tagline}</p>
+                )}
+                <div class="flex items-center gap-4 text-body text-gray-500 mb-4">
+                  {tour.duration && <span aria-label={`Duration: ${tour.duration}`}>⏱ {tour.duration}</span>}
+                  {tour.max_participants && <span aria-label={`Up to ${tour.max_participants} people`}>👥 Up to {tour.max_participants}</span>}
+                </div>
+                <div class="flex items-center justify-between pt-2 sm:pt-4 border-t border-gray-100 mt-auto">
+                  <div>
+                    <span class="text-sm sm:text-h4 text-primary font-bold">
+                      RM {tour.price}
+                    </span>
+                    <span class="text-xs text-gray-500 ml-1">per person</span>
+                    <div class="flex items-center gap-1.5 text-xs text-gray-500 mt-1">
+                      <span class="text-amber-400 text-[13px]">★★★★★</span>
+                      <span>{(siteSettingsData.review_count ?? 5000).toLocaleString()}+ reviews</span>
+                    </div>
+                    {tour.whats_included?.[0] && (
+                      <p class="text-[11px] text-gray-500 mt-1.5">
+                        <span class="text-green-600 font-bold">✓</span> {tour.whats_included[0]}
+                      </p>
+                    )}
+                  </div>
+                  <span class="bg-primary text-white text-body font-semibold px-4 py-2 rounded-full group-hover:bg-secondary transition-colors min-h-[44px] flex items-center" aria-hidden="true">
+                    Check Availability
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Tour Finder — for undecided visitors -->
+  <div id="tour-finder" class="bg-primary/5 border-t border-b border-primary/10 py-8">
+    <div class="main-container">
+      <p class="text-center text-sm text-gray-500 mb-5 font-medium">Not sure which tour fits you? Answer 3 questions.</p>
+      <TourQuiz />
+    </div>
+  </div>
+
+  <!-- Section 1: Explore by City (Bento Grid) -->
+  <Section variant="light" id="city" animate={true}>
+    <div class="flex justify-between items-end mb-12 scroll-animate">
+      <div class="max-w-2xl">
+        <p class="text-h6 tracking-[0.25em] text-orange font-bold mb-2">{toursIndexPage?.tours_by_city_eyebrow ?? tip.tours_by_city_eyebrow}</p>
+        <h2 class="text-h2 text-primary mb-4">{toursIndexPage?.tours_by_city_heading ?? tip.tours_by_city_heading}</h2>
+        <p class="text-body">
+          {toursIndexPage?.tours_by_city_subtext ?? tip.tours_by_city_subtext}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:auto-rows-[300px] md:pb-0 md:overflow-visible">
+      {
+        locationSegments.map((location, index) => (
+          <a
+            href={location.slug}
+            class:list={[
+              "group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 scroll-animate",
+              "flex-shrink-0 w-[72vw] h-[220px] snap-start md:w-auto md:h-auto",
+              index === 0 ? "md:col-span-2 md:row-span-2" : "col-span-1 row-span-1"
+            ]}
+            style={`transition-delay: ${index * 100}ms`}
+            aria-label={`Explore ${location.name} food tours${location.fullDescription ? ': ' + (location.fullDescription.length > 100 ? location.fullDescription.substring(0, 100) + '…' : location.fullDescription) : ''}`}
+          >
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+              <img
+                src={location.image}
+                alt="" role="presentation"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              {location.badge && (
+                <div class="absolute top-6 left-6">
+                  <Badge
+                    variant="accent"
+                    size={index === 0 ? "medium" : "small"}
+                  >
+                    {location.badge}
+                  </Badge>
+                </div>
+              )}
+
+              <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class:list={[
+                  "font-bold mb-2 leading-tight",
+                  index === 0 ? "text-4xl md:text-5xl" : "text-2xl"
+                ]}>
+                  {location.name}
+                </h3>
+
+                <p class:list={[
+                  "text-gray-200 mb-4 line-clamp-2",
+                  index === 0 ? "text-lg max-w-xl" : "text-body"
+                ]}>
+                  {location.fullDescription}
+                </p>
+
+                <div class="flex items-center gap-2 text-orange font-bold uppercase tracking-wider text-xs md:text-sm lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                  <span>See Tours</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Section 2: Dietary Preferences -->
+  <Section id="dietary">
+    <div class="flex justify-between items-end mb-12">
+      <div class="max-w-2xl">
+        <p class="text-eyebrow text-orange mb-2">{toursIndexPage?.dietary_eyebrow ?? tip.dietary_eyebrow}</p>
+        <h2 class="text-h2 text-primary mb-4">{toursIndexPage?.dietary_heading ?? tip.dietary_heading}</h2>
+        <p class="text-body">
+          {toursIndexPage?.dietary_subtext ?? tip.dietary_subtext}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:auto-rows-[300px] md:pb-0 md:overflow-visible">
+      {
+        dietaryVisible.map((segment, index) => (
+          <a
+            href={segment.slug}
+            aria-label={`${segment.name}: ${segment.shortDescription}`}
+            class:list={[
+              "group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
+              "flex-shrink-0 w-[72vw] h-[220px] snap-start md:w-auto md:h-auto",
+              index === 0 ? "md:col-span-2 md:row-span-2" : "col-span-1 row-span-1"
+            ]}
+          >
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+              <img
+                src={segment.image}
+                alt="" role="presentation"
+                aria-hidden="true"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              {segment.badge && (
+                <div class="absolute top-6 left-6">
+                  <Badge
+                    variant="accent"
+                    size={index === 0 ? "medium" : "small"}
+                  >
+                    {segment.badge}
+                  </Badge>
+                </div>
+              )}
+              
+              <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class:list={[
+                  "font-bold mb-2 leading-tight",
+                  index === 0 ? "text-4xl md:text-5xl" : "text-2xl"
+                ]}>
+                  {segment.name}
+                </h3>
+                
+                <p class:list={[
+                  "text-gray-200 mb-4 line-clamp-2",
+                  index === 0 ? "text-lg max-w-xl" : "text-sm"
+                ]}>
+                  {segment.fullDescription}
+                </p>
+                
+                <div class="flex items-center gap-2 text-orange font-bold uppercase tracking-wider text-xs md:text-sm lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                  <span>View Details</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    {dietaryOverflow && (
+      <div class="text-center mt-8">
+        <a href="#experiences" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors">
+          View all {dietarySegments.length} dietary options
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    )}
+  </Section>
+
+  <!-- Section 3: Specialty Experiences (experience-type pages only) -->
+  {experienceSpecialtyPages.length > 0 && (
+    <Section variant="light" id="specialty">
+      <div class="flex justify-between items-end mb-12">
+        <div class="max-w-2xl">
+          <p class="text-eyebrow text-orange mb-2">{toursIndexPage?.specialty_eyebrow ?? tip.specialty_eyebrow}</p>
+          <h2 class="text-h2 text-primary mb-4">{toursIndexPage?.specialty_heading ?? tip.specialty_heading}</h2>
+          <p class="text-body">
+            {toursIndexPage?.specialty_subtext ?? tip.specialty_subtext}
+          </p>
+        </div>
+      </div>
+
+      <div class:list={["flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-3 md:grid md:gap-6 md:auto-rows-[300px] md:pb-0 md:overflow-visible", specialtyVisible.length >= 4 ? "md:grid-cols-2" : "md:grid-cols-3"]}>
+        {specialtyVisible.map((spec: any) => {
+          const image = spec.hero_image || specialtyFallbackImages[spec.slug] || '';
+          return (
+            <a
+              href={`/tours/specialty/${spec.slug}/`}
+              aria-label={spec.hero_subtitle ? `${spec.specialty_name}: ${spec.hero_subtitle}` : spec.specialty_name}
+              class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex-shrink-0 w-[72vw] h-[220px] snap-start md:w-auto md:h-auto"
+            >
+              <!-- Background Image -->
+              <div class="absolute inset-0">
+                <img
+                  src={image}
+                  alt="" role="presentation"
+                  aria-hidden="true"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+              </div>
+
+              <!-- Content Overlay -->
+              <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+                {spec.icon && (
+                  <div class="absolute top-6 left-6">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl shadow-sm">
+                      {spec.icon}
+                    </div>
+                  </div>
+                )}
+                <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 class="text-2xl font-bold mb-2 leading-tight">
+                    {spec.specialty_name}
+                  </h3>
+                  {spec.hero_subtitle && (
+                    <p class="text-sm text-gray-200 mb-4 line-clamp-2">{spec.hero_subtitle}</p>
+                  )}
+                  <div class="flex items-center gap-2 text-orange font-bold uppercase tracking-wider text-xs md:text-sm lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                    <span>See Tours</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      {specialtyOverflow && (
+        <div class="text-center mt-8">
+          <a href="#experiences" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors">
+            View all {experienceSpecialtyPages.length} specialty experiences
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </Section>
+  )}
+
+  <!-- Section 4: Travel Style -->
+  {travelTypePages.length > 0 && (
+    <Section variant="light" id="travel-style">
+      <div class="flex justify-between items-end mb-12">
+        <div class="max-w-2xl">
+          <p class="text-eyebrow text-orange mb-2">{toursIndexPage?.travel_style_eyebrow ?? tip.travel_style_eyebrow}</p>
+          <h2 class="text-h2 text-primary mb-4">{toursIndexPage?.travel_style_heading ?? tip.travel_style_heading}</h2>
+          <p class="text-body">
+            {toursIndexPage?.travel_style_subtext ?? tip.travel_style_subtext}
+          </p>
+        </div>
+      </div>
+
+      <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-3 md:grid md:grid-cols-2 md:gap-6 md:auto-rows-[300px] md:pb-0 md:overflow-visible">
+        {travelVisible.map((tt: any) => {
+          const image = tt.hero_image || travelTypeFallbackImages[tt.slug] || '';
+          return (
+            <a
+              href={`/tours/travel-types/${tt.slug}/`}
+              aria-label={tt.hero_subtitle ? `${tt.travel_type_name}: ${tt.hero_subtitle}` : tt.travel_type_name}
+              class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex-shrink-0 w-[72vw] h-[220px] snap-start md:w-auto md:h-auto"
+            >
+              <!-- Background Image -->
+              <div class="absolute inset-0">
+                <img
+                  src={image}
+                  alt="" role="presentation"
+                  aria-hidden="true"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+              </div>
+
+              <!-- Content Overlay -->
+              <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+                {tt.icon && (
+                  <div class="absolute top-6 left-6">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl shadow-sm">
+                      {tt.icon}
+                    </div>
+                  </div>
+                )}
+                <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 class="text-2xl font-bold mb-2 leading-tight">
+                    {tt.travel_type_name}
+                  </h3>
+                  {tt.hero_subtitle && (
+                    <p class="text-sm text-gray-200 mb-4 line-clamp-2">{tt.hero_subtitle}</p>
+                  )}
+                  <div class="flex items-center gap-2 text-orange font-bold uppercase tracking-wider text-xs md:text-sm lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                    <span>See Tours</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      {travelOverflow && (
+        <div class="text-center mt-8">
+          <a href="#experiences" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors">
+            View all {travelTypePages.length} travel styles
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </Section>
+  )}
+
+  <!-- Section 5: Custom & Group -->
+  <Section variant="accent" id="custom">
+    <div class="flex justify-between items-end mb-12">
+      <div class="max-w-2xl">
+        <p class="text-eyebrow text-orange mb-2">{toursIndexPage?.custom_group_eyebrow ?? tip.custom_group_eyebrow}</p>
+        <h2 class="text-h2 text-primary mb-4">{toursIndexPage?.custom_group_heading ?? tip.custom_group_heading}</h2>
+        <p class="text-body">
+          {toursIndexPage?.custom_group_subtext ?? tip.custom_group_subtext}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-3 md:grid md:grid-cols-2 md:gap-6 md:auto-rows-[300px] md:pb-0 md:overflow-visible">
+      {
+        groupSegments.map((segment) => (
+          <a
+            href={segment.slug}
+            aria-label={`${segment.name}: ${segment.shortDescription}`}
+            class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex-shrink-0 w-[72vw] h-[220px] snap-start md:w-auto md:h-auto"
+          >
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+              <img
+                src={segment.image}
+                alt="" role="presentation"
+                aria-hidden="true"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 class="text-2xl font-bold mb-2 leading-tight">
+                  {segment.name}
+                </h3>
+                
+                <p class="text-sm text-gray-200 mb-4 line-clamp-2">
+                  {segment.fullDescription}
+                </p>
+                
+                <div class="flex items-center gap-2 text-orange font-bold uppercase tracking-wider text-xs md:text-sm lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                  <span>Plan This</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Social Proof Section -->
+  <Section variant="light">
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <p class="text-eyebrow text-orange mb-2">{toursIndexPage?.social_proof_eyebrow ?? tip.social_proof_eyebrow}</p>
+      <h2 class="text-h2 text-primary mb-4">{toursIndexPage?.social_proof_heading ?? tip.social_proof_heading}</h2>
+      <p class="text-body">
+        {toursIndexPage?.social_proof_subtext ?? tip.social_proof_subtext}
+      </p>
+    </div>
+    <TestimonialCarousel />
+  </Section>
+
+  <!-- Why Simply Enak -->
+  <Section>
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-eyebrow text-orange mb-2">{toursIndexPage?.why_us_eyebrow ?? tip.why_us_eyebrow}</p>
+      <h2 class="text-h2 text-primary mb-6">{toursIndexPage?.why_us_heading ?? tip.why_us_heading}</h2>
+      <p class="text-body mb-8 leading-relaxed">
+        {toursIndexPage?.why_us_description ?? tip.why_us_description}
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        {(Array.isArray(toursIndexPage?.why_us_features) ? toursIndexPage.why_us_features : tip.why_us_features).map((feat: any, i: number) => (
+          <div class="flex flex-col items-center text-center group">
+            <div class:list={[
+              "w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 transform transition-transform group-hover:scale-110",
+              i % 2 === 0 ? "group-hover:rotate-3" : "group-hover:-rotate-3"
+            ]}>
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feat.icon_path} />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{feat.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              {feat.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div
+        class="flex flex-wrap justify-center gap-6 text-sm pt-6 border-t border-gray-300/50"
+      >
+        <a
+          href="/about/"
+          class="text-primary hover:text-secondary transition-colors font-semibold"
+          >About Us</a
+        >
+        <span class="text-gray-400">•</span>
+        <a
+          href={localizePath("/contact/", lang)}
+          class="text-primary hover:text-secondary transition-colors font-semibold"
+          >Contact Us</a
+        >
+        <span class="text-gray-400">•</span>
+        <a
+          href={`tel:${siteConfig.whatsappNumber}`}
+          class="text-primary hover:text-secondary transition-colors font-semibold"
+        >{siteConfig.phone}</a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Newsletter / CTA -->
+  <Section variant="light">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-h2 text-primary mb-4">{toursIndexPage?.cta_heading ?? tip.cta_heading}</h2>
+      <p class="text-body mb-8 max-w-2xl mx-auto">
+        {toursIndexPage?.cta_subtext ?? tip.cta_subtext}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto mb-12">
+        <a
+          href={`https://wa.me/${siteConfig.whatsappDigits}?text=Hi%21%20I%27d%20like%20to%20stay%20updated%20on%20Simply%20Enak%20tours%20and%20food%20stories.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+        >
+          <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.884.902-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.494.999-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 4.976 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          {toursIndexPage?.cta_whatsapp_label ?? tip.cta_whatsapp_label}
+        </a>
+        <a
+          href={localizePath("/contact/", lang)}
+          class="flex items-center justify-center bg-white border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+        >
+          {toursIndexPage?.cta_contact_label ?? tip.cta_contact_label}
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Planning Your Visit -->
+  <Section id="plan">
+    <div class="max-w-3xl mx-auto text-center mb-10">
+      <p class="text-eyebrow text-orange mb-2">{toursIndexPage?.planning_eyebrow ?? tip.planning_eyebrow}</p>
+      <h2 class="text-h2 text-primary">{toursIndexPage?.planning_heading ?? tip.planning_heading}</h2>
+      <p class="text-body mt-3">{toursIndexPage?.planning_subtext ?? tip.planning_subtext}</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+      {(Array.isArray(toursIndexPage?.planning_links) ? toursIndexPage.planning_links : tip.planning_links).map((link: any, i: number) => (
+        <a
+          href={link.href}
+          class="group flex items-center gap-5 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:border-primary hover:shadow-md transition-all"
+        >
+          <div class="w-14 h-14 flex-shrink-0 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+            {i === 0 ? (
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            ) : (
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            )}
+          </div>
+          <div class="min-w-0">
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors mb-1">{link.title}</h3>
+            <p class="text-sm text-gray-500">{link.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <FAQ faqs={faqs} />
+
+  <!-- Find Your Perfect Experience — SEO content pages that guide to main tours -->
+  <Section id="experiences" variant="light">
+    <div class="flex justify-between items-end mb-10">
+      <div class="max-w-2xl">
+        <h2 class="text-h2 text-primary mb-3">{toursIndexPage?.find_perfect_heading ?? tip.find_perfect_heading}</h2>
+        <p class="text-body">
+          {toursIndexPage?.find_perfect_subtext ?? tip.find_perfect_subtext}
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dietary Experiences -->
+      <div class="bg-white rounded-xl p-6 border border-primary/10">
+        <h3 class="font-bold text-primary text-lg mb-4"><span aria-hidden="true">🥗</span> Dietary Experiences</h3>
+        <p class="text-sm text-gray-600 mb-4">Vegetarian, halal, vegan, gluten-free, Jain — we adapt all our tours for your dietary needs.</p>
+        <ul class="space-y-2 text-sm">
+          {dietaryPages.map((d: any) => (
+            <li>
+              <a href={`/tours/dietary/${d.slug}/`} class="text-primary hover:underline flex items-center gap-2">
+                <span aria-hidden="true">→</span> {d.dietary_name} Food in Malaysia
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Specialty Experiences -->
+      <div class="bg-white rounded-xl p-6 border border-primary/10">
+        <h3 class="font-bold text-primary text-lg mb-4"><span aria-hidden="true">🍜</span> Specialty Experiences</h3>
+        <p class="text-sm text-gray-600 mb-4">Street food, market tours, heritage walks, night food — find the tour that fits you.</p>
+        <ul class="space-y-2 text-sm">
+          {experienceSpecialtyPages.map((s: any) => (
+            <li>
+              <a href={`/tours/specialty/${s.slug}/`} class="text-primary hover:underline flex items-center gap-2">
+                <span aria-hidden="true">→</span> {s.specialty_name} in Malaysia
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Neighborhood Experiences -->
+      <div class="bg-white rounded-xl p-6 border border-primary/10">
+        <h3 class="font-bold text-primary text-lg mb-4"><span aria-hidden="true">🏘️</span> Neighborhood Experiences</h3>
+        <p class="text-sm text-gray-600 mb-4">Chow Kit, Chinatown, Little India, Georgetown — the food neighborhoods where Malaysians shop, eat, and gather.</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/tours/neighborhoods/chow-kit/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Chow Kit Market</a></li>
+          <li><a href="/tours/neighborhoods/chinatown-petaling-street/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Chinatown Petaling Street</a></li>
+          <li><a href="/tours/neighborhoods/brickfields-little-india/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Brickfields Little India</a></li>
+          <li><a href="/tours/neighborhoods/kampung-baru-malay-village/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Kampung Baru Malay Village</a></li>
+          <li><a href="/tours/neighborhoods/chowrasta-georgetown/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Chowrasta Georgetown</a></li>
+          <li><a href="/tours/neighborhoods/georgetown-heritage/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Georgetown Heritage</a></li>
+          <li><a href="/tours/neighborhoods/gurney-drive-hawker/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Gurney Drive Hawker</a></li>
+          <li><a href="/tours/neighborhoods/little-india-lebuh-queen/" class="text-primary hover:underline flex items-center gap-2"><span aria-hidden="true">→</span> Little India Lebuh Queen</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 pt-8 border-t border-gray-100">
+      <p class="text-gray-700 font-semibold mb-1">Still not sure? We answer in minutes.</p>
+      <p class="text-sm text-gray-500 mb-4">{toursIndexPage?.find_perfect_footer ?? tip.find_perfect_footer}</p>
+      <a
+        href={`https://wa.me/${siteConfig.whatsappDigits}?text=${encodeURIComponent("Hi! I'm not sure which tour is right for me. Can you help?")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+      >
+        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.884.902-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.494.999-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 4.976 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        Ask on WhatsApp
+      </a>
+    </div>
+  </Section>
+</Layout>
+
+<style>
+  /* Hide scrollbar for navigation */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Active nav link */
+  [data-nav-link].is-active {
+    color: var(--color-primary);
+    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+  }
+  
+  /* Fluid typography for mobile */
+  @media (max-width: 768px) {
+    .text-h2 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+    .text-h3 {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+    .text-body {
+      font-size: 0.9375rem;
+      line-height: 1.5rem;
+    }
+  }
+  
+</style>
+
+<script>
+  const NAV_SECTION_IDS = ['tours', 'city', 'dietary', 'specialty', 'travel-style', 'custom', 'experiences']
+
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')
+
+  function setActive(id: string) {
+    navLinks.forEach((link) => {
+      const isActive = link.dataset.navLink === id
+      link.classList.toggle('is-active', isActive)
+    })
+  }
+
+  // Activate first section by default
+  setActive('tours')
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id)
+          break
+        }
+      }
+    },
+    // Trigger when a section's top edge crosses the 30% mark from the top
+    { rootMargin: '-30% 0px -65% 0px' }
+  )
+
+  NAV_SECTION_IDS.forEach((id) => {
+    const el = document.getElementById(id)
+    if (el) observer.observe(el)
+  })
+</script>

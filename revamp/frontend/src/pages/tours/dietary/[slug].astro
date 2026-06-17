@@ -1,0 +1,92 @@
+---
+/**
+ * Dietary Landing Page
+ * URL: /tours/dietary/[slug]
+ * Example: /tours/dietary/vegetarian
+ */
+
+import SegmentPage from '@/components/Segments/SegmentPage.astro';
+import { getDietaryLandingPageBySlug, getAllDietaryLandingPages, getToursByDietary } from '@/lib/content';
+import { markdownToHtml } from '@/lib/markdown-to-html';
+import segmentChips from '@/data/content/segment-chips.json';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const pages = await getAllDietaryLandingPages();
+  return pages.map((page: any) => ({ params: { slug: page.slug } }));
+}
+
+const { slug } = Astro.params;
+const page = await getDietaryLandingPageBySlug(slug as string);
+
+if (!page) return Astro.redirect('/404');
+
+const editorialHtml = page.intro_content ? await markdownToHtml(page.intro_content) : '';
+const tours = await getToursByDietary(slug as string);
+
+const reviews = page.reviews || [];
+const faq = page.faq || [];
+const relatedSegments = page.related_segments || [];
+
+const hasUniqueContent = (page.hero_description && page.hero_description.length > 100) || !!(page.intro_content);
+const noindex = false; // Segment pages are content marketing hubs — always indexed
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://simplyenak.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://simplyenak.com/tours/" },
+    { "@type": "ListItem", "position": 3, "name": `${page.dietary_name} Food Tours`, "item": `https://simplyenak.com/tours/dietary/${slug}/` },
+  ],
+};
+
+const itemListSchema = tours.length > 0 ? {
+  "@type": "ItemList",
+  "name": `${page.dietary_name} Food Tours in Malaysia`,
+  "url": `https://simplyenak.com/tours/dietary/${slug}/`,
+  "itemListElement": (tours as any[]).map((tour: any, i: number) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": tour.name,
+      "url": `https://simplyenak.com/tours/${tour.slug}/`,
+      "description": tour.short_description || tour.meta_description || "",
+      ...(tour.price ? {
+        "offers": {
+          "@type": "Offer",
+          "price": String(tour.price),
+          "priceCurrency": tour.currency,
+          "availability": "https://schema.org/InStock",
+        }
+      } : {}),
+    },
+  })),
+} : null;
+---
+
+<SegmentPage
+  slug={slug as string}
+  segmentType="dietary"
+  segmentName={page.dietary_name}
+  metaTitle={page.meta_title || `${page.dietary_name} Food Tours Malaysia – Simply Enak`}
+  metaDescription={page.meta_description || `${page.dietary_name}-friendly food tours in Malaysia with Simply Enak.`}
+  heroSubtitle={page.hero_subtitle}
+  heroDescription={page.hero_description}
+  heroImage={page.hero_image || undefined}
+  editorialHtml={editorialHtml}
+  tours={tours}
+  reviews={reviews}
+  faq={faq}
+  relatedSegments={relatedSegments}
+  segmentChips={segmentChips}
+  challenges={page.challenges || []}
+  optionsContent={page.options_content}
+  tips={page.tips || []}
+  safeDishes={page.safe_dishes || []}
+  avoidDishes={page.avoid_dishes || []}
+  structuredData={[breadcrumbSchema, ...(itemListSchema ? [itemListSchema] : [])].filter(Boolean)}
+  hreflangPath={`/tours/dietary/${slug}/`}
+  noindex={noindex}
+/>

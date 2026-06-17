@@ -1,0 +1,199 @@
+---
+export const prerender = true;
+
+import Layout from "@/layouts/Layout.astro";
+import GlobalHero from "@/components/GlobalHero.astro";
+import Section from "@/components/Design/Section.astro";
+import ScrollAnimate from "@/components/ScrollAnimate.astro";
+import Button from "@/components/Button.astro";
+import SocialProof from "@/components/SocialProof.astro";
+import { getStoriesByCategory } from "@/lib/content";
+import siteSettingsData from "@/data/content/site-settings.json";
+
+const valuesStories = await getStoriesByCategory("Our Values");
+
+const beliefs = [
+  {
+    title: "Nothing Goes to Waste",
+    excerpt: "We believe in ordering exactly what we'll eat. We believe in vendors who prep fresh daily and sell out.",
+    teacher: "Aunty Lim teaches us:",
+    teacherQuote: "In my mother's village, nothing was thrown. Banana leaves for wrapping. Pandan for flavor. Even the ash from coconut husks was used for cleaning.",
+    stats: [
+      { value: "3,000+", label: "Plastic bottles avoided/year" },
+      { value: "5km", label: "Max ingredient sourcing" },
+      { value: "0", label: "Food waste per tour" },
+    ],
+    icon: "🥥",
+  },
+  {
+    title: "Vendors Set Their Own Prices",
+    excerpt: "We believe Aunty Lim knows what her laksa is worth. We believe in paying immediately, in cash, at the stall.",
+    teacher: "Aunty Lim teaches us:",
+    teacherQuote: "You don't negotiate my prices. You pay immediately, in cash, at my stall. You bring small groups who ask questions. That matters.",
+    stats: [
+      { value: "10+", label: "Year partnerships" },
+      { value: "100%", label: "Vendor-led pricing" },
+      { value: "Immediate", label: "Payment terms" },
+    ],
+    icon: "⚖️",
+  },
+  {
+    title: "Recipes Shouldn't Disappear",
+    excerpt: "We believe Aunty Rose's kuih recipe — brought from Fujian in 1920 — shouldn't die with her.",
+    teacher: "Aunty Rose teaches us:",
+    teacherQuote: "My grandmother brought these recipes from Fujian. When I stop cooking, they disappear. That's why I let them record everything.",
+    stats: [
+      { value: "15+", label: "Recipes documented" },
+      { value: "10+", label: "Oral histories recorded" },
+      { value: "5", label: "Techniques filmed" },
+    ],
+    icon: "📜",
+  },
+  {
+    title: "Tourism Should Help, Not Hurt",
+    excerpt: "We believe Uncle Tan's stall should thrive, not become a tourist trap.",
+    teacher: "Uncle Tan teaches us:",
+    teacherQuote: "Tour guests ask about my life, not just my food. They remember my name. They come back. That makes me want to keep cooking.",
+    stats: [
+      { value: "5,000+", label: "Guests since 2011" },
+      { value: "50+", label: "Countries represented" },
+      { value: "500+", label: "5-star reviews" },
+    ],
+    icon: "🤝",
+  },
+  {
+    title: "Eat Like a Local, Not a Tourist",
+    excerpt: "We believe in ingredients sourced within 5km. We believe in walking, not buses.",
+    teacher: "Pak Hassan teaches us:",
+    teacherQuote: "My father bought from this market. I buy from this market. My son will buy from this market. That's how Malaysian food works.",
+    stats: [
+      { value: "5km", label: "Sourcing radius" },
+      { value: "0", label: "Tour buses used" },
+      { value: "100%", label: "Walking tours" },
+    ],
+    icon: "🍜",
+  },
+];
+---
+
+<Layout
+  title="What We Believe | Tradition Preservation & Vendor Stories — Simply Enak"
+  description="For 14+ years, we've learned from the vendors who've become our teachers. Aunty Lim, Pak Hassan, Uncle Tan — their beliefs guide how we operate."
+  image="https://se-website-images.s3.nl-ams.scw.cloud/aunty-lim-coconut.jpg"
+  hreflangPath="/about/our-values/"
+  hreflangEnOnly={true}
+>
+  <!-- Hero Section -->
+  <GlobalHero
+    title="More Than Tour Operators."
+    highlight="Your Temporary Neighbours."
+    subtitle="For 14+ years, we've been guided by principles that honor our vendors, their traditions, and the neighborhoods we call home. These are the beliefs that shape how we operate."
+    eyebrow="What We Believe"
+  />
+
+  <!-- Breadcrumb -->
+  <Section variant="light" spacing="compact">
+    <nav class="flex items-center text-sm text-gray-600 max-w-4xl mx-auto" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/about/" class="hover:text-primary transition-colors">About</a>
+      <span class="mx-2">/</span>
+      <span class="text-primary font-medium">Our Values</span>
+    </nav>
+  </Section>
+
+  <!-- Social Proof -->
+  <SocialProof variant="compact" />
+
+  <!-- Beliefs Grid -->
+  <Section id="beliefs">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {beliefs.map((belief, index) => (
+          <ScrollAnimate direction="up" delay={index * 100}>
+            <article class="bg-white rounded-2xl border border-primary/10 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+              <!-- Icon & Title -->
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/10 to-orange/10 border border-primary/20 flex items-center justify-center text-2xl flex-shrink-0">
+                  {belief.icon}
+                </div>
+                <div>
+                  <h2 class="text-h3 text-primary mb-2">{belief.title}</h2>
+                  <p class="text-body text-gray-600 leading-relaxed">{belief.excerpt}</p>
+                </div>
+              </div>
+
+              <!-- Vendor Quote -->
+              <div class="bg-gradient-to-br from-primary/5 to-orange/5 rounded-lg border-l-4 border-primary p-5 mb-6">
+                <div class="text-xs text-orange font-bold uppercase tracking-widest mb-3">{belief.teacher}</div>
+                <blockquote class="text-body text-gray-700 italic leading-relaxed font-merriweather">
+                  "{belief.teacherQuote}"
+                </blockquote>
+              </div>
+
+              <!-- Stats -->
+              <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-gray-100">
+                {belief.stats.map((stat) => (
+                  <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold font-merriweather bg-gradient-to-r from-primary to-orange bg-clip-text text-transparent mb-1">
+                      {stat.value}
+                    </div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wide">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </ScrollAnimate>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Commitment Section -->
+  <Section variant="light">
+    <ScrollAnimate direction="up">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-h2 text-primary mb-6">Why This Matters</h2>
+        <p class="text-body text-gray-700 mb-8 leading-relaxed">
+          These aren't lessons from a sustainability course. They're lessons from a lifetime of cooking with limited resources. 
+          Aunty Lim didn't learn to waste nothing from a textbook — she learned from her mother, who learned from her grandmother.
+        </p>
+        <p class="text-body text-gray-700 mb-12 leading-relaxed">
+          When we bring guests to these stalls, we're not teaching "eco-tourism." We're learning how Malaysian food was always made — 
+          before plastic, before refrigeration, before waste became normal.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            href="/tours/"
+            title="See Our Tours"
+            buttonType="cta-primary"
+          />
+          <Button
+            href="/contact/"
+            title="Contact Us"
+            buttonType="secondary-btn"
+          />
+        </div>
+      </div>
+    </ScrollAnimate>
+  </Section>
+
+  <!-- CTA Section -->
+  <Section>
+    <ScrollAnimate direction="up">
+      <div class="max-w-3xl mx-auto text-center bg-gradient-to-br from-primary/5 to-orange/5 rounded-2xl p-8 md:p-12 border border-primary/10">
+        <h2 class="text-h2 text-primary mb-4">Experience These Beliefs Firsthand</h2>
+        <p class="text-body text-gray-700 mb-8">
+          Join us on a tour and meet Aunty Lim, Pak Hassan, Uncle Tan. See how they cook, hear their stories, 
+          understand why these beliefs matter.
+        </p>
+        <Button
+          href="/tours/"
+          title="Book Your Tour"
+          buttonType="cta-primary"
+        />
+      </div>
+    </ScrollAnimate>
+  </Section>
+</Layout>

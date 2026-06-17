@@ -1,0 +1,267 @@
+---
+import { getTourQuiz, getAllTours } from "@/lib/content";
+
+interface Props {
+  image?: string;
+}
+const { image } = Astro.props;
+
+const quizConfig = await getTourQuiz();
+const allTours = await getAllTours();
+
+if (!quizConfig) {
+  Astro.respondWith(new Response('', { status: 204 }));
+}
+
+const quizData = {
+  steps: quizConfig.steps,
+  personalities: quizConfig.personalities || [],
+  scoringWeights: quizConfig.scoringWeights || [],
+  resultHeadlines: quizConfig.resultHeadlines || [],
+  fallback: quizConfig.fallback,
+  contactCTA: {
+    text: quizConfig.contactCTAText || 'Still not sure?',
+    button: quizConfig.contactCTAButton || 'Let Us Help',
+  },
+  intro: quizConfig.intro,
+  allTours: allTours.filter((t: any) => t._status === 'published').map((t: any) => ({
+    slug: t.slug, name: t.name, shortDescription: t.shortDescription || '',
+    location: t.location, link: `/tours/${t.slug}/`,
+  })),
+};
+
+const intro = quizConfig.intro;
+---
+
+<div class="w-full max-w-3xl mx-auto mt-6 md:mt-8 relative min-h-[180px] md:min-h-[300px]" role="region" aria-label="Foodie personality quiz">
+  <div aria-live="polite" aria-atomic="true" class="sr-only" id="quiz-live-region"></div>
+
+  <div id="quiz-container" class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl shadow-2xl text-left transition-all duration-500">
+    <!-- Intro -->
+    <div id="step-intro" class="quiz-step active">
+      <div class="flex flex-col sm:flex-row gap-6 items-center">
+        {image && (
+          <div class="w-36 h-36 sm:w-44 sm:h-44 flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
+            <img src={image} alt="What type of Malaysian foodie are you?" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+        )}
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-white mb-3">{intro.title}</h3>
+          <p class="text-gray-200 mb-6 text-base">{intro.description}</p>
+          <button data-action="start" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+            {intro.buttonLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question Steps -->
+    {quizData.steps.map((step: any, index: number) => (
+      <div id={`step-${index + 1}`} class="quiz-step hidden opacity-0 translate-x-10" data-step-key={step.id}>
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-xl font-bold text-white">{step.question}</h3>
+          <span class="text-sm text-gray-300">{index + 1}/{quizData.steps.length}</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {step.options.map((option: any) => (
+            <button data-value={option.value} class="quiz-option bg-white/90 hover:bg-white text-gray-900 p-4 rounded-xl font-semibold transition-all hover:shadow-lg text-left flex items-start gap-3">
+              <span class="text-2xl flex-shrink-0">{option.icon}</span>
+              <div>
+                <span class="block font-bold">{option.label}</span>
+                {option.description && <span class="block text-sm text-gray-500 mt-1">{option.description}</span>}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <!-- Result -->
+    <div id="step-result" class="quiz-step hidden opacity-0 translate-x-10">
+      <div class="text-center">
+        <div id="result-emoji" class="mb-2 text-5xl"></div>
+        <h3 id="result-personality" class="text-2xl font-bold text-white mb-2"></h3>
+        <p id="result-description" class="text-gray-300 text-sm mb-6 max-w-md mx-auto"></p>
+        <h4 id="result-headline" class="text-lg font-bold text-primary mb-6"></h4>
+        <p id="result-subtext" class="text-gray-300 text-sm mb-6 max-w-md mx-auto hidden"></p>
+        <div id="recommendations-list" class="grid grid-cols-1 gap-4 mb-8"></div>
+        <div id="contact-option" class="hidden bg-white/5 border border-white/10 rounded-xl p-4 mb-6">
+          <p id="contact-text" class="text-white mb-3"></p>
+          <a href="/contact" class="inline-block border border-white text-white hover:bg-white hover:text-primary font-semibold py-2 px-6 rounded-lg transition-colors">
+            <span id="contact-button-text"></span>
+          </a>
+        </div>
+        <button data-action="reset" class="text-gray-300 hover:text-white text-sm underline">Retake the Quiz</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .quiz-step { transition: opacity 0.3s ease, transform 0.3s ease; }
+  .hidden { display: none; }
+</style>
+
+<script define:vars={{ quizData }}>
+  function getRecommendation(answers: Record<string, string>) {
+    const { scoringWeights, personalities, allTours, resultHeadlines, fallback, contactCTA } = quizData;
+
+    // Score each personality
+    const pScores: Record<string, number> = {};
+    for (const weight of scoringWeights) {
+      const qid = weight.question_id;
+      const answer = answers[qid];
+      if (answer === weight.answer_value) {
+        const w = weight.weights as Record<string, number>;
+        for (const [key, score] of Object.entries(w)) {
+          pScores[key] = (pScores[key] || 0) + score;
+        }
+      }
+    }
+
+    // Top personality
+    const topP = Object.entries(pScores).sort((a, b) => b[1] - a[1])[0];
+    const topPersonality = topP ? personalities.find((p: any) => p.key === topP[0]) : null;
+
+    // Match tours to personality
+    const personalityTourMap: Record<string, string[]> = {
+      'spice_tourist': ['kuala-lumpur-street-food', 'flavours-of-malaysia', 'eat-drink-george-town'],
+      'heritage_hunter': ['kuala-lumpur-street-food', 'flavours-of-malaysia', 'eat-drink-george-town'],
+      'hawker_hero': ['kuala-lumpur-street-food', 'penang-street-food', 'flavours-of-malaysia'],
+      'durian_daredevil': ['secrets-of-kl-nightlife-street-art-and-cocktails', 'penang-street-food', 'kuala-lumpur-street-food'],
+      'culture_connector': ['kuala-lumpur-street-food', 'flavours-of-malaysia', 'eat-drink-george-town'],
+    };
+
+    const matchedSlugs = topPersonality ? (personalityTourMap[topPersonality.key] || []) : fallback.tourSlugs || [];
+    const items = matchedSlugs
+      .map((slug: string) => allTours.find((t: any) => t.slug === slug))
+      .filter(Boolean)
+      .slice(0, 3);
+
+    // Fallback if no matches
+    const finalItems = items.length > 0 ? items : (fallback.tourSlugs || [])
+      .map((slug: string) => allTours.find((t: any) => t.slug === slug))
+      .filter(Boolean)
+      .slice(0, 3);
+
+    // Headline
+    const hlKey = finalItems.length === 1 ? 'single_match' : finalItems.length >= 2 ? 'multi_match' : 'no_match';
+    const hl = resultHeadlines.find((h: any) => h.key === hlKey) || resultHeadlines[0];
+
+    return {
+      personality: topPersonality ? {
+        emoji: topPersonality.emoji || '🎉',
+        title: topPersonality.title,
+        description: topPersonality.description || '',
+      } : null,
+      headline: hl?.headline || 'Our Top Picks For You',
+      subtext: hl?.subtext || '',
+      items: finalItems,
+      contactText: contactCTA.text,
+      contactButton: contactCTA.button,
+      showContact: finalItems.length <= 2,
+    };
+  }
+
+  const state: Record<string, string> = {};
+  quizData.steps.forEach((step: any) => { state[step.id] = ''; });
+  const totalSteps = quizData.steps.length;
+  const steps = ['step-intro'];
+  for (let i = 1; i <= totalSteps; i++) steps.push(`step-${i}`);
+  steps.push('step-result');
+  let currentStep = 0;
+  const liveRegion = document.getElementById('quiz-live-region');
+
+  function announce(msg: string) {
+    if (liveRegion) { liveRegion.textContent = ''; requestAnimationFrame(() => { if (liveRegion) liveRegion.textContent = msg; }); }
+  }
+
+  function showStep(index: number) {
+    const cur = document.getElementById(steps[currentStep]);
+    const next = document.getElementById(steps[index]);
+    if (cur && next) {
+      cur.classList.add('opacity-0', '-translate-x-10');
+      setTimeout(() => {
+        cur.classList.add('hidden'); cur.classList.remove('-translate-x-10');
+        next.classList.remove('hidden'); void next.offsetWidth;
+        next.classList.remove('opacity-0', 'translate-x-10');
+        if (index === 0) announce('Quiz started.');
+        else if (steps[index] === 'step-result') announce('Quiz complete. Your foodie personality is ready.');
+        else { const h = next.querySelector('h3'); if (h) announce(`Question ${index} of ${totalSteps}: ${h.textContent}`); }
+        next.querySelector<HTMLElement>('h3, button')?.focus();
+      }, 300);
+    }
+    currentStep = index;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('button[data-action="start"]')?.addEventListener('click', () => showStep(1));
+
+    document.querySelectorAll('.quiz-option').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const value = target.dataset.value;
+        const stepContainer = target.closest('.quiz-step');
+        if (!stepContainer || !value) return;
+        const stepKey = stepContainer.getAttribute('data-step-key');
+        if (stepKey) state[stepKey] = value;
+
+        if (currentStep < totalSteps) showStep(currentStep + 1);
+        else {
+          const result = getRecommendation(state);
+
+          // Personality
+          const emojiEl = document.getElementById('result-emoji');
+          const persEl = document.getElementById('result-personality');
+          const descEl = document.getElementById('result-description');
+          if (result.personality) {
+            if (emojiEl) emojiEl.textContent = result.personality.emoji;
+            persEl.textContent = result.personality.title;
+            descEl.textContent = result.personality.description;
+          } else {
+            if (emojiEl) emojiEl.textContent = '🍜';
+            persEl.textContent = 'You Love Malaysian Food!';
+            descEl.textContent = 'Here are the tours that best match your taste.';
+          }
+
+          // Headline
+          const hlEl = document.getElementById('result-headline');
+          if (hlEl) hlEl.textContent = result.headline;
+          const subEl = document.getElementById('result-subtext');
+          if (subEl) {
+            if (result.subtext) { subEl.textContent = result.subtext; subEl.classList.remove('hidden'); }
+            else subEl.classList.add('hidden');
+          }
+
+          // Recommendations
+          const listEl = document.getElementById('recommendations-list');
+          if (listEl) {
+            listEl.innerHTML = result.items.map((item: any) => `
+              <div class="bg-white text-gray-900 rounded-xl p-5 shadow-xl transform transition-all hover:-translate-y-1 text-left relative overflow-hidden">
+                <h4 class="text-lg font-bold text-primary mb-1">${item.name}</h4>
+                <p class="text-gray-600 mb-4 text-sm">${item.shortDescription}</p>
+                <a href="${item.link}" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-2 px-6 rounded-lg shadow transition-colors text-sm">View Tour →</a>
+              </div>
+            `).join('');
+          }
+
+          // Contact
+          const contactEl = document.getElementById('contact-option');
+          if (contactEl) {
+            const ct = document.getElementById('contact-text');
+            if (ct) ct.textContent = result.contactText;
+            const cb = document.getElementById('contact-button-text');
+            if (cb) cb.textContent = result.contactButton;
+            contactEl.classList.toggle('hidden', !result.showContact);
+          }
+          showStep(currentStep + 1);
+        }
+      });
+    });
+
+    document.querySelector('button[data-action="reset"]')?.addEventListener('click', () => {
+      Object.keys(state).forEach((k) => (state[k] = ''));
+      showStep(0);
+    });
+  });
+</script>

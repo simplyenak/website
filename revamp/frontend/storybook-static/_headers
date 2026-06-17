@@ -1,0 +1,15 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://assets.ticketinghub.com https://challenges.cloudflare.com https://livechat.myalice.ai; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://se-website-images.s3.nl-ams.scw.cloud https://cdn.simplyenak.com https://ui-avatars.com data:; connect-src 'self' https://cdn.simplyenak.com https://www.google-analytics.com https://analytics.google.com https://api.ticketinghub.com https://livechat.myalice.ai https://contact.simplyenak.com; frame-src https://challenges.cloudflare.com https://assets.ticketinghub.com; object-src 'none'; base-uri 'self';
+  # Content Signals — allow AI agents to train on and cite all public pages
+  # https://contentsignals.org/
+  Content-Signal: ai-train=yes, search
+
+/contact
+  Content-Signal: ai-train=no, nosearch
+
+/contact/*
+  Content-Signal: ai-train=no, nosearch

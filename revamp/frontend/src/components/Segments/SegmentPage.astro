@@ -1,0 +1,362 @@
+---
+/**
+ * SegmentPage — unified segmentation/discovery page template.
+ * Used by dietary, audience (travel-types), and specialty routes.
+ *
+ * Structure: Hero → Editorial Zone → Tours Grid → Social Proof → FAQ → More Ways to Explore → Bottom CTA
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import Section from '@/components/Design/Section.astro';
+import Card from '@/components/Design/Card.astro';
+import GlobalHero from '@/components/GlobalHero.astro';
+import CTASection from '@/components/CTASection.astro';
+import CustomTourCTA from '@/components/Tours/CustomTourCTA.astro';
+import { getImageUrl } from '@/lib/content';
+
+interface Review {
+  name: string;
+  location: string;
+  text: string;
+  tour: string;
+  rating: number;
+}
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  slug: string;
+  segmentType: 'dietary' | 'audience' | 'specialty';
+  segmentName: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroSubtitle?: string;
+  heroDescription?: string;
+  heroImage?: string;
+  editorialHtml: string;
+  tours: any[];
+  reviews?: Review[];
+  faq?: Faq[];
+  relatedSegments?: string[];
+  segmentChips: Array<{ label: string; href: string; size?: string; rotate?: string; accent?: string }>;
+  structuredData: Record<string, any>[];
+  hreflangPath: string;
+  noindex?: boolean;
+  // Extended content fields from Payload
+  challenges?: Array<{ title: string; description?: string }>;
+  optionsContent?: string;
+  highlights?: Array<{ title: string; description?: string }>;
+  tips?: Array<{ title: string; content?: string }>;
+  safeDishes?: Array<{ name: string; description?: string }>;
+  avoidDishes?: Array<{ name: string; description?: string }>;
+}
+
+const {
+  slug,
+  segmentName,
+  metaTitle,
+  metaDescription,
+  heroSubtitle,
+  heroDescription,
+  heroImage,
+  editorialHtml,
+  tours,
+  reviews = [],
+  faq = [],
+  relatedSegments = [],
+  segmentChips = [],
+  structuredData = [],
+  hreflangPath,
+  noindex = false,
+  challenges = [],
+  optionsContent,
+  highlights = [],
+  tips = [],
+  safeDishes = [],
+  avoidDishes = [],
+} = Astro.props;
+
+// Filter chips to show only related segments (exclude current page and non-segment chips)
+const segmentPrefixes = ['/tours/dietary/', '/tours/specialty/', '/tours/travel-types/'];
+const relatedChips = segmentChips.filter(chip => {
+  if (!segmentPrefixes.some(p => chip.href.startsWith(p))) return false;
+  // Exclude current page
+  if (chip.href === hreflangPath) return false;
+  // If relatedSegments specified, prefer those
+  if (relatedSegments.length > 0) {
+    return relatedSegments.some(rs => chip.href.includes(rs));
+  }
+  return true;
+}).slice(0, 8);
+
+// Tour card component (reused pattern from existing templates)
+---
+
+<Layout
+  title={metaTitle}
+  description={metaDescription}
+  structuredData={structuredData}
+  hreflangPath={hreflangPath}
+  hreflangEnOnly={false}
+  noindex={noindex}
+>
+  <!-- Hero -->
+  <GlobalHero
+    title={`${segmentName} Food Tours`}
+    subtitle={heroSubtitle}
+    description={heroDescription}
+    image={heroImage}
+    ctaPrimary={{ text: "See Available Tours", href: "#tours" }}
+    ctaSecondary={faq.length > 0 ? { text: "Common Questions", href: "#faq" } : undefined}
+  />
+
+  <!-- Editorial Zone — free-form markdown content -->
+  {editorialHtml && (
+    <Section>
+      <div class="prose prose-lg prose-headings:text-primary prose-headings:font-merriweather prose-a:text-orange prose-a:underline hover:prose-a:text-orange/80 text-gray-700 max-w-none">
+        <Fragment set:html={editorialHtml} />
+      </div>
+    </Section>
+  )}
+
+  <!-- Challenges (dietary) -->
+  {challenges.length > 0 && (
+    <Section variant="light">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-h2 text-primary text-center mb-12">The Challenges</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {challenges.map((c) => (
+            <Card class="h-full">
+              <h3 class="text-h4 text-primary mb-3">{c.title}</h3>
+              {c.description && <p class="text-body text-gray-600">{c.description}</p>}
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- How We Cater (dietary options) -->
+  {optionsContent && (
+    <Section>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary mb-6">How We Cater to You</h2>
+        <div class="prose prose-lg text-gray-700 max-w-none">
+          <Fragment set:html={optionsContent} />
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- Highlights (specialty) -->
+  {highlights.length > 0 && (
+    <Section variant="light">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-h2 text-primary text-center mb-12">What Makes This Special</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {highlights.map((h) => (
+            <Card class="h-full">
+              <h3 class="text-h4 text-primary mb-3">{h.title}</h3>
+              {h.description && <p class="text-body text-gray-600">{h.description}</p>}
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- Tips (all segment types) -->
+  {tips.length > 0 && (
+    <Section>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-h2 text-primary text-center mb-12">Tips for Your Visit</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {tips.map((t) => (
+            <Card class="h-full">
+              <h3 class="text-h4 text-primary mb-3">{t.title}</h3>
+              {t.content && <p class="text-body text-gray-600">{t.content}</p>}
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- Safe Dishes (dietary) -->
+  {safeDishes.length > 0 && (
+    <Section variant="light">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-h2 text-primary text-center mb-12">Dishes You Can Enjoy</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {safeDishes.map((d) => (
+            <Card class="h-full text-center">
+              <h3 class="text-h4 text-primary mb-2">{d.name}</h3>
+              {d.description && <p class="text-sm text-gray-600">{d.description}</p>}
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- Avoid Dishes (dietary) -->
+  {avoidDishes.length > 0 && (
+    <Section>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-h2 text-primary text-center mb-12">What to Watch Out For</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {avoidDishes.map((d) => (
+            <Card class="h-full text-center border-orange/20">
+              <h3 class="text-h4 text-orange mb-2">{d.name}</h3>
+              {d.description && <p class="text-sm text-gray-600">{d.description}</p>}
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- Tours Grid -->
+  {tours.length > 0 ? (
+    <Section variant="light" id="tours">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary">
+          Tours for {segmentName}
+        </h2>
+        <p class="text-body mt-4 text-gray-600">
+          Every vendor has been vetted. Every dish explained. So you spend your time eating, not worrying.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {tours.map((tour: any) => (
+          <a href={`/tours/${tour.slug}/`} class="group block">
+            <Card>
+              {tour.hero_image && (
+                <div class="overflow-hidden rounded-lg mb-4 h-48 -mx-6 -mt-6">
+                  <img
+                    src={getImageUrl(tour.hero_image, { width: 600, height: 400 }) ?? tour.hero_image}
+                    alt={tour.name}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <h3 class="text-h3 text-primary mb-2 group-hover:text-secondary transition-colors">
+                {tour.name}
+              </h3>
+              {tour.tagline && <p class="text-sm text-gray-600 mb-4">{tour.tagline}</p>}
+              <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                {tour.duration && <span>⏱ {tour.duration}</span>}
+                {tour.location && <span>📍 {tour.location}</span>}
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                <span class="text-xl font-bold text-primary">
+                  {tour.currency || 'MYR'} {tour.price}
+                </span>
+                <span class="text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
+                  View Tour →
+                </span>
+              </div>
+            </Card>
+          </a>
+        ))}
+      </div>
+    </Section>
+  ) : (
+    <CustomTourCTA typeName={segmentName} />
+  )}
+
+  <!-- Social Proof -->
+  {reviews.length > 0 && (
+    <Section id="reviews">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary">What {segmentName} Guests Say</h2>
+        <p class="text-body mt-4 text-gray-600">
+          Real reviews from travelers with the same priorities as you.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {reviews.map((review: Review) => (
+          <Card class="h-full flex flex-col">
+            <!-- Stars -->
+            <div class="flex gap-1 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg
+                  class={`w-5 h-5 ${i < review.rating ? 'text-orange' : 'text-gray-200'}`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <!-- Quote -->
+            <blockquote class="text-gray-700 leading-relaxed mb-6 flex-grow">
+              "{review.text}"
+            </blockquote>
+            <!-- Attribution -->
+            <div class="border-t border-gray-100 pt-4">
+              <p class="font-semibold text-primary">{review.name}</p>
+              <p class="text-sm text-gray-500">{review.location}</p>
+              <p class="text-xs text-gray-400 mt-1">{review.tour}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Section>
+  )}
+
+  <!-- FAQ -->
+  {faq.length > 0 && (
+    <Section variant="light" id="faq">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-h2 text-primary text-center mb-12">
+          Common Questions
+        </h2>
+        <div class="space-y-4">
+          {faq.map((item: Faq) => (
+            <details class="group bg-white rounded-xl shadow-sm border border-gray-100">
+              <summary class="cursor-pointer p-6 text-h4 text-primary list-none flex items-center justify-between select-none">
+                <span>{item.question}</span>
+                <svg class="w-5 h-5 text-gray-400 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 -mt-2">
+                <p class="text-body text-gray-600 leading-relaxed">{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- More Ways to Explore -->
+  {relatedChips.length > 0 && (
+    <Section spacing="compact">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-4">More Ways to Explore</p>
+        <div class="flex flex-wrap gap-2">
+          {relatedChips.map((chip) => (
+            <a
+              href={chip.href}
+              class:list={[
+                "inline-flex items-center gap-1.5 text-sm text-primary border border-primary/25 rounded-full px-3 py-1.5 hover:bg-primary hover:text-white hover:border-primary transition-colors",
+                chip.accent === "orange" && "border-orange/25 text-orange hover:bg-orange hover:text-white hover:border-orange",
+              ]}
+            >
+              {chip.label} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <CTASection />
+</Layout>
