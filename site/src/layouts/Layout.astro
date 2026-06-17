@@ -28,6 +28,12 @@ export interface Props {
 const { metadata = {}, structuredData, lang: propLang } = Astro.props;
 const { language, textDirection } = I18N;
 const htmlLang = propLang || language;
+
+// Build hreflang links for en/ms locales
+const currentPath = Astro.url.pathname;
+const isMsPage = currentPath.startsWith('/ms');
+const enUrl = 'https://simplyenak.com' + (isMsPage ? currentPath.replace(/^\/ms/, '') || '/' : currentPath);
+const msUrl = 'https://simplyenak.com/ms' + (isMsPage ? currentPath.replace(/^\/ms/, '') || '/' : currentPath);
 ---
 
 <!doctype html>
@@ -54,6 +60,11 @@ const htmlLang = propLang || language;
       defer
       crossorigin="anonymous"
     ></script>
+
+    <!-- Hreflang — bilingual SEO for en/ms -->
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="ms" href={msUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
 
     <!-- IndexNow verification for Bing/Yandex -->
     <meta name="indexnow-key" content="8d67ae8f-2154-434e-aca7-68b3a7fa2ee0" />
