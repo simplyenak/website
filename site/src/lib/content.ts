@@ -556,6 +556,76 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
   if (live && Object.keys(live).length > 0) raw = live;
   else if ((!locale || locale === 'en') && snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
   else raw = {};
+
+  // Map Payload block structure to flat keys that shapeHomePage expects.
+  // Payload stores: heroSection[{block with fields}]
+  // shapeHomePage reads: raw.hero, raw.featuredIn, raw.philosophy, etc.
+  if (raw.heroSection && raw.heroSection.length > 0) {
+    const b = raw.heroSection[0];
+    raw.hero = {
+      eyebrow: b.subtitle || '',
+      title: b.title || '',
+      titleHighlight: b.highlight || '',
+      description: b.description || '',
+      heroImage: b.bgImage ? (typeof b.bgImage === 'object' ? b.bgImage.url : b.bgImage) : '',
+      ctaPrimary: b.ctaPrimary || { text: 'SEE OUR TOURS', url: '/tours' },
+      ctaSecondary: b.ctaSecondary || { text: 'ABOUT US', url: '/about' },
+      stats: b.badges ? b.badges.filter((x: any) => x.text).slice(0, 5).map((x: any) => ({
+        icon: x.text?.toLowerCase().includes('tripadvisor') ? 'tripadvisor' : 'google',
+        stars: 5,
+        label: x.text || '',
+      })) : undefined,
+    };
+  }
+  if (raw.vendorsSection && raw.vendorsSection.length > 0) {
+    const b = raw.vendorsSection[0];
+    raw.featuredIn = {
+      title: b.title || 'As Featured In',
+      logos: b.links ? b.links.map((l: any) => ({
+        src: l.url || '',
+        alt: l.label || '',
+        title: l.label || '',
+      })) : undefined,
+    };
+  }
+  if (raw.manifestoSection && raw.manifestoSection.length > 0) {
+    const b = raw.manifestoSection[0];
+    raw.philosophy = {
+      eyebrow: b.eyebrow || '',
+      heading: b.headline || '',
+      description: b.tagline || '',
+    };
+  }
+  if (raw.expectSection && raw.expectSection.length > 0) {
+    const b = raw.expectSection[0];
+    raw.testimonialsSection = {
+      eyebrow: b.subtitle || '',
+      heading: b.title || '',
+      stats: b.stats ? b.stats.map((s: any) => ({
+        number: s.number || '',
+        label: s.heading || s.label || '',
+      })) : undefined,
+    };
+  }
+  if (raw.ctaSection && raw.ctaSection.length > 0) {
+    const b = raw.ctaSection[0];
+    delete raw.ctaSection;
+    raw.ctaSection = {
+      heading: b.title || '',
+      description: b.subtitle || '',
+      ctaPrimary: b.buttons?.[0] ? { text: b.buttons[0].label, url: b.buttons[0].url } : undefined,
+      ctaSecondary: b.buttons?.[1] ? { text: b.buttons[1].label, url: b.buttons[1].url } : undefined,
+    };
+  }
+  if (raw.faqs && raw.faqs.length > 0) {
+    raw.faqSection = {
+      items: raw.faqs.map((f: any) => ({
+        question: f.question || '',
+        answer: f.answer || '',
+      })),
+    };
+  }
+
   return shapeHomePage(raw);
 }
 
