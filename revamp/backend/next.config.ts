@@ -22,6 +22,9 @@ const nextConfig: NextConfig = {
   experimental: {
     isrFlushToDisk: false,
   },
+  // Skip prerendering system error pages that fail with React context
+  skipTrailingSlashRedirect: true,
+  skipMiddlewareUrlNormalize: true,
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
