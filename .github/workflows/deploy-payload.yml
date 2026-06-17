@@ -37,3 +37,5 @@ jobs:
           file: revamp/backend/Dockerfile
           push: true
           tags: simplyenak/website-backend:latest
+          cache-from: type=registry,ref=simplyenak/website-backend:latest
+          cache-to: type=inline
