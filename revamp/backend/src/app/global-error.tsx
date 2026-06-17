@@ -1,5 +1,10 @@
 'use client'
 
+// Must be server-rendered — React context isn't available during static generation
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+export const revalidate = 0
+
 import React from 'react'
 
 /**

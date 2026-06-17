@@ -174,9 +174,8 @@ export default buildConfig({
         media: {
           prefix: 'payload-media',
           disableLocalStorage: true,
-          generateFileURL: ({ filename, prefix }: { filename: string; prefix?: string }) => {
-            return `${process.env.PAYLOAD_PUBLIC_SERVER_URL || 'https://cms.system.simplyenak.com'}/api/media/file/${filename}`;
-          },
+          // @ts-expect-error — Type only accepts 'true' but 'false' is needed for API file serving
+          disablePayloadAccessControl: false,
         },
       },
       bucket: process.env.S3_BUCKET || '',
