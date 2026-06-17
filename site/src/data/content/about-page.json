@@ -35,8 +35,135 @@
   "timelineSection": {
     "eyebrow": "2011 - Present",
     "heading": "15 Years of Simply Enak",
-    "description": "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. This is our story.",
-    "milestones": []
+    "description": "From a first food walk through Chow Kit to features in BBC World Service, National Geographic, and Lonely Planet. The full story of Simply Enak.",
+    "milestones": [
+      {
+        "year": "Today",
+        "title": "5,000+ guests and still eating",
+        "description": "Every week, travellers from around the world join us at the same stalls we've eaten at for 15 years.",
+        "isToday": true
+      },
+      {
+        "year": "2024",
+        "title": "BBC World Service",
+        "description": "Pauline joins the BBC World Service to share the story behind Simply Enak.",
+        "logo": "/images/press-logos/bbc.svg",
+        "url": "https://www.bbc.co.uk/programmes/w3ct8sw1"
+      },
+      {
+        "year": "2024",
+        "title": "Destination Eat Drink Podcast",
+        "description": "Simply Enak featured on the travel podcast.",
+        "logo": "/images/press-logos/radiomisfits.com.png",
+        "url": "https://radiomisfits.com/ded286/"
+      },
+      {
+        "year": "2024",
+        "title": "Best Regards From Far",
+        "description": "Featured in a top Malaysian food guide.",
+        "logo": "/images/press-logos/bestregardsfromfar.com.png",
+        "url": "https://bestregardsfromfar.com/2024/05/30/top-9-essential-malaysian-foods"
+      },
+      {
+        "year": "2020",
+        "title": "The Yum List",
+        "description": "Simply Enak featured on The Yum List.",
+        "logo": "/images/press-logos/theyumlist.net.png",
+        "url": "https://www.theyumlist.net/2020/02/mark-ng-simply-enak-food-tour/"
+      },
+      {
+        "year": "2019",
+        "title": "The Edge TV",
+        "description": "Simply Enak featured on The Edge Malaysia television.",
+        "logo": "/images/press-logos/theedge.com.my.png",
+        "url": "https://youtu.be/zlqXAnJMREo"
+      },
+      {
+        "year": "2018",
+        "title": "Channel 9 Australia",
+        "description": "Simply Enak featured on Australian television.",
+        "logo": "/images/press-logos/channel9-logo.svg"
+      },
+      {
+        "year": "2018",
+        "title": "The Food Ranger",
+        "description": "Food YouTuber Trevor James explores KL street food with Simply Enak.",
+        "logo": "/images/press-logos/thefoodranger.svg",
+        "url": "https://youtu.be/poY8iDlC6Tk"
+      },
+      {
+        "year": "2018",
+        "title": "5 Lost Together",
+        "description": "Featured as a must-do food tour experience.",
+        "logo": "/images/press-logos/5losttogether.com.png",
+        "url": "https://www.5losttogether.com/taking-a-food-tour-w"
+      },
+      {
+        "year": "2017",
+        "title": "TVNZ",
+        "description": "Simply Enak featured on New Zealand television.",
+        "logo": "/images/press-logos/tvnz.co.nz.png"
+      },
+      {
+        "year": "2016",
+        "title": "BBC Sport",
+        "description": "Simply Enak featured by BBC Sport during the KL coverage.",
+        "logo": "/images/press-logos/bbc.svg",
+        "url": "https://youtu.be/zZbAAn16JWc"
+      },
+      {
+        "year": "2016",
+        "title": "Time Out Penang",
+        "description": "Simply Enak featured by Time Out as a top food tour.",
+        "logo": "/images/press-logos/timeout.svg",
+        "url": "https://www.timeout.com/penang/things-to-do/simply-enak"
+      },
+      {
+        "year": "2016",
+        "title": "TLC",
+        "description": "Simply Enak featured on TLC.",
+        "logo": "/images/press-logos/tlc-logo.svg"
+      },
+      {
+        "year": "2015",
+        "title": "National Geographic",
+        "description": "Simply Enak featured by National Geographic.",
+        "logo": "/images/press-logos/natgeo.svg"
+      },
+      {
+        "year": "2015",
+        "title": "Minority Nomad",
+        "description": "KL food tour experience featured on the travel blog.",
+        "logo": "/images/press-logos/minoritynomad.com.png",
+        "url": "https://www.minoritynomad.com/blog/kuala-lumpur-food-tour"
+      },
+      {
+        "year": "2013",
+        "title": "Le Guide du Routard",
+        "description": "Simply Enak recommended in the French travel guidebook.",
+        "logo": "/images/press-logos/routard.svg",
+        "url": "https://www.routard.com/guide/kuala_lumpur/4385/activites_.htm"
+      },
+      {
+        "year": "2012",
+        "title": "Lonely Planet",
+        "description": "Simply Enak recommended in Lonely Planet's Malaysia guide.",
+        "logo": "/images/press-logos/lonely-planet.svg"
+      },
+      {
+        "year": "2012",
+        "title": "The Yum List",
+        "description": "Simply Enak's first review on The Yum List.",
+        "logo": "/images/press-logos/theyumlist.net.png",
+        "url": "https://www.theyumlist.net/2012/03/dine-with-local.html"
+      },
+      {
+        "year": "2011",
+        "title": "Simply Enak Founded",
+        "description": "Pauline leads her first food walk through Chow Kit market.",
+        "logo": "/images/press-logos/simplyenak.com.png"
+      }
+    ]
   },
   "philosophySection": {
     "eyebrow": "What Guides Us",

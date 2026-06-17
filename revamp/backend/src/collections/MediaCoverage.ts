@@ -63,5 +63,19 @@ export const MediaCoverage: CollectionConfig = {
       ],
       defaultValue: 'draft',
     },
+    {
+      name: 'page_visibility',
+      type: 'select',
+      hasMany: true,
+      options: [
+        { label: 'About page timeline', value: 'about' },
+        { label: 'Home page press strip', value: 'home' },
+        { label: 'Contact page', value: 'contact' },
+      ],
+      admin: {
+        description: 'Which pages should display this press item',
+        position: 'sidebar',
+      },
+    },
   ],
 }

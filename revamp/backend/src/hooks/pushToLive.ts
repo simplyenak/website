@@ -88,7 +88,7 @@ export const pushToLive: CollectionAfterChangeHook = async ({
 
     if (existing.docs.length > 0) {
       // Update existing
-      await payload.update({
+      const updated = await payload.update({
         collection: 'tours',
         id: existing.docs[0].id,
         data: publishedData as any,
@@ -96,12 +96,30 @@ export const pushToLive: CollectionAfterChangeHook = async ({
         context: { skipPushToLive: true },
         req,
       })
+
+      // Update TourMaster with publishedTourId
+      await payload.update({
+        collection: 'tour-masters',
+        id: doc.id,
+        data: { publishedTourId: updated.id } as any,
+        context: { skipPushToLive: true },
+        req,
+      })
     } else {
       // Create new
-      await payload.create({
+      const created = await payload.create({
         collection: 'tours',
         data: publishedData as any,
         draft: false,
+        context: { skipPushToLive: true },
+        req,
+      })
+
+      // Set publishedTourId on the new record
+      await payload.update({
+        collection: 'tour-masters',
+        id: doc.id,
+        data: { publishedTourId: created.id } as any,
         context: { skipPushToLive: true },
         req,
       })

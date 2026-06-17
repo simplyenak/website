@@ -552,6 +552,15 @@ export const TourMasters: CollectionConfig = {
     },
     // ── Workflow ─────────────────────────────────────────────────────
     {
+      name: 'publishedTourId',
+      type: 'relationship',
+      relationTo: 'tours',
+      admin: {
+        description: 'Link to the corresponding record in the published Tours collection',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'workflowStatus',
       type: 'select',
       options: [
