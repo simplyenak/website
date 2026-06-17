@@ -276,10 +276,14 @@ export const HomePage: CollectionConfig = {
     // FAQs
     {
       name: 'faqs',
-      type: 'json',
+      type: 'array',
       admin: {
-        description: 'Array of FAQ items for home page',
+        description: 'FAQ items for the home page (question + answer pairs)',
       },
+      fields: [
+        { name: 'question', type: 'text', required: true, admin: { description: 'The question' } },
+        { name: 'answer', type: 'textarea', required: true, admin: { description: 'The answer' } },
+      ],
     },
 
     // SEO

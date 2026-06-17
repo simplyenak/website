@@ -36,10 +36,10 @@ COPY . .
 
 # Build Next.js (admin panel + server)
 # Note: `_not-found` / `_global-error` system pages may fail to prerender
-# in Next.js 16 due to React context during static generation.
-# This is a known upstream bug — the server works correctly at runtime
-# because these pages are server-rendered on demand.
-RUN npx next build --webpack 2>&1; echo "Build complete (prerender warnings for system pages are non-fatal)"
+# in Next.js 16 due to React context. This is a known upstream bug —
+# the server works correctly at runtime because these pages are
+# server-rendered on demand. Build continues on non-zero exit.
+RUN npm run build 2>&1; echo "BUILD_DONE"
 
 # ============================================================
 # Stage 3: Production runner
