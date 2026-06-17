@@ -34,7 +34,8 @@ COPY --from=deps /app/node_modules ./node_modules
 # Copy all source files
 COPY . .
 
-# Build the Payload app
+# Build the Payload admin bundle, then Next.js
+RUN npx payload build 2>&1 | tail -5
 RUN pnpm run build
 
 # ============================================================
