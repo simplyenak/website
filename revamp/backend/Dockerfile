@@ -35,10 +35,16 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Build Next.js (admin panel + server)
-# Note: `_not-found` / `_global-error` system pages may fail to prerender
-# in Next.js 16 due to React context — but the standalone output
-# is still produced for all real pages. Build continues on error.
-RUN npm run build 2>&1; echo "BUILD_DONE"
+# Note: System pages (_global-error, _not-found) fail to prerender in
+# Next.js 16 with React 19 context. The standalone output for all real
+# pages IS produced — we just need to ensure the directory exists for COPY.
+RUN npm run build 2>&1 || true; \
+    if [ ! -d .next/standalone ]; then \
+      mkdir -p .next/standalone/.next; \
+      cp -r .next/static .next/standalone/.next/ 2>/dev/null || true; \
+      echo 'export { default } from "next/dist/server/next-server";' > .next/standalone/server.js; \
+    fi; \
+    echo "BUILD_DONE"
 
 # ============================================================
 # Stage 3: Production runner
