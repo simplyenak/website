@@ -50,6 +50,14 @@ export const MediaCoverage: CollectionConfig = {
       type: 'text',
     },
     {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Logo image for this press outlet — shows preview in admin',
+      },
+    },
+    {
       name: 'highlight',
       type: 'text',
       localized: true,
