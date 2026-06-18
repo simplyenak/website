@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
 import { getContactPage } from '~/lib/content';
 
 const cp = await getContactPage();
@@ -33,7 +34,7 @@ const metadata = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <div class="flex items-center gap-1.5 text-xs text-muted">
         <a href="/" class="hover:text-primary transition-colors">Home</a>
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <Icon name="tabler:chevron-right" class="w-3 h-3 text-muted" />
         <span class="text-default font-semibold">Contact</span>
       </div>
     </div>
@@ -70,19 +71,13 @@ const metadata = {
                 i === 0 ? 'bg-accent/10' : 'bg-primary/10',
               ]}>
                 {method.type === 'whatsapp' && (
-                  <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
-                  </svg>
+                  <Icon name="tabler:brand-whatsapp" class="w-7 h-7 text-accent" />
                 )}
                 {method.type === 'email' && (
-                  <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488a2.25 2.25 0 01-2.178 0l-6.478-3.488A2.25 2.25 0 012.25 9.906V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V9"/>
-                  </svg>
+                  <Icon name="tabler:mail" class="w-7 h-7 text-primary" />
                 )}
                 {method.type === 'phone' && (
-                  <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
-                  </svg>
+                  <Icon name="tabler:phone" class="w-7 h-7 text-primary" />
                 )}
               </div>
               <h3 class="text-xl font-bold font-heading text-default mb-1">{method.title}</h3>
@@ -131,24 +126,16 @@ const metadata = {
           <div class="text-center p-6 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c] group hover:shadow-md transition-shadow">
             <div class="w-12 h-12 mx-auto mb-4 bg-primary/5 dark:bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/10 dark:group-hover:bg-primary/20 transition-colors">
               {scenario.title === 'Just Browsing' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
-                </svg>
+                <Icon name="tabler:search" class="w-6 h-6 text-primary" />
               )}
               {scenario.title === 'Planning a Trip' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
-                </svg>
+                <Icon name="tabler:calendar-check" class="w-6 h-6 text-primary" />
               )}
               {scenario.title === 'Landing Tomorrow' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
+                <Icon name="tabler:clock" class="w-6 h-6 text-primary" />
               )}
               {scenario.title === 'Team Event' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
-                </svg>
+                <Icon name="tabler:users" class="w-6 h-6 text-primary" />
               )}
             </div>
             <h3 class="text-lg font-bold font-heading text-default mb-2">{scenario.title}</h3>
@@ -175,9 +162,7 @@ const metadata = {
               "If we're not the right fit, we'll tell you honestly",
             ]).map((h: string) => (
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-                </svg>
+                <Icon name="tabler:check" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                 <span class="text-default">{h}</span>
               </li>
             ))}
@@ -302,9 +287,7 @@ const metadata = {
           <details class="group bg-white dark:bg-[#1e1c1c] rounded-lg shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
             <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-default hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
               <span>{faq.question}</span>
-              <svg class="w-5 h-5 text-muted transition-transform group-open:rotate-180 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
+              <Icon name="tabler:chevron-down" class="w-5 h-5 text-muted transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
             </summary>
             <div class="px-6 pb-6">
               <p class="text-muted leading-relaxed">{faq.answer}</p>
@@ -322,7 +305,7 @@ const metadata = {
       <p class="text-white/80 mb-8">{cp.ctaSection?.description ?? "We typically respond within minutes on WhatsApp."}</p>
       <a href={cp.ctaSection?.ctaUrl ?? "https://wa.me/60172878929"} target="_blank" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-all shadow-md">
         {cp.ctaSection?.ctaText ?? "Chat on WhatsApp Now"}
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
       </a>
     </div>
   </section>
