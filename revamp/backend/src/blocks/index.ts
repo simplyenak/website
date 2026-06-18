@@ -28,7 +28,12 @@ export const heroBlock: Block = {
     { name: 'title', type: 'text' },
     { name: 'subtitle', type: 'text' },
     { name: 'description', type: 'textarea' },
-    { name: 'image', type: 'text' },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      admin: { description: 'Hero background image — select from media library' },
+    },
   ],
 }
 
@@ -165,7 +170,12 @@ export const introBlock: Block = {
   fields: [
     { name: 'title', type: 'text' },
     { name: 'content', type: 'textarea' },
-    { name: 'image', type: 'text' },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      admin: { description: 'Section image — select from media library' },
+    },
   ],
 }
 
@@ -252,7 +262,12 @@ export const teamBlock: Block = {
         { name: 'role', type: 'text' },
         { name: 'specialty', type: 'text' },
         { name: 'description', type: 'textarea' },
-        { name: 'photo', type: 'text' },
+        {
+          name: 'photo',
+          type: 'upload',
+          relationTo: 'media',
+          admin: { description: 'Team member photo — select from media library' },
+        },
       ],
     },
   ],
@@ -414,7 +429,12 @@ export const aboutBlock: Block = {
     { name: 'subtitle', type: 'text' },
     { name: 'description', type: 'textarea' },
     { name: 'heritage', type: 'text' },
-    { name: 'image', type: 'text' },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      admin: { description: 'Section image — select from media library' },
+    },
   ],
 }
 
