@@ -31,7 +31,6 @@ export const FoodItems: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-      localized: true,
       admin: {
         description: 'Dish name (e.g., "Nasi Lemak", "Char Koay Teow")',
       },
@@ -83,7 +82,6 @@ export const FoodItems: CollectionConfig = {
       name: 'description',
       type: 'textarea',
       required: true,
-      localized: true,
       admin: {
         description: 'What is this dish? Key characteristics and appeal',
       },

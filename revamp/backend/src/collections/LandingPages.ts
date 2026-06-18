@@ -28,7 +28,6 @@ export const LandingPages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      localized: true,
       required: true,
       admin: { description: 'Display title (e.g., "Vegetarian Food Tours", "Penang Food Scene")' },
     },
@@ -68,19 +67,16 @@ export const LandingPages: CollectionConfig = {
     {
       name: 'hero_title',
       type: 'text',
-      localized: true,
       admin: { description: 'Hero section title' },
     },
     {
       name: 'hero_subtitle',
       type: 'text',
-      localized: true,
       admin: { description: 'Hero subtitle / eyebrow' },
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Hero paragraph' },
     },
     {
@@ -94,19 +90,16 @@ export const LandingPages: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      localized: true,
       admin: { description: 'SEO meta title' },
     },
     {
       name: 'meta_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'SEO meta description' },
     },
     {
       name: 'content',
       type: 'textarea',
-      localized: true,
       admin: {
         description: '📝 Page content — formatted with ## headings and paragraphs. This is the main body text.',
       },

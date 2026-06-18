@@ -31,7 +31,6 @@ export const DietaryOptions: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-      localized: true,
       admin: {
         description: 'Dietary option name (e.g., "Vegetarian", "Halal")',
       },
@@ -62,7 +61,6 @@ export const DietaryOptions: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
-      localized: true,
       admin: {
         description: 'Brief description of this dietary option',
       },

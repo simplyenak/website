@@ -40,7 +40,6 @@ export const LegalPages: CollectionConfig = {
     {
       name: 'headline',
       type: 'text',
-      localized: true,
       required: true,
       admin: {
         description: 'Page headline/title (e.g., Privacy Policy, Terms of Service)',
@@ -49,7 +48,6 @@ export const LegalPages: CollectionConfig = {
     {
       name: 'content',
       type: 'richText',
-      localized: true,
       required: true,
       admin: {
         description: 'Full page content in rich text format',
@@ -58,7 +56,6 @@ export const LegalPages: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      localized: true,
       admin: {
         description: 'SEO meta title',
       },
@@ -66,7 +63,6 @@ export const LegalPages: CollectionConfig = {
     {
       name: 'meta_description',
       type: 'textarea',
-      localized: true,
       admin: {
         description: 'SEO meta description',
       },

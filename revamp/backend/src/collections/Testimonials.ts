@@ -52,7 +52,6 @@ export const Testimonials: CollectionConfig = {
       name: 'review_text',
       type: 'textarea',
       required: true,
-      localized: true,
       admin: {
         description: 'Full review text',
       },
@@ -60,7 +59,6 @@ export const Testimonials: CollectionConfig = {
     {
       name: 'review_title',
       type: 'text',
-      localized: true,
       admin: {
         description: 'Short review title/summary',
       },

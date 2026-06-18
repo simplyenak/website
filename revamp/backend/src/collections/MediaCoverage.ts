@@ -38,7 +38,6 @@ export const MediaCoverage: CollectionConfig = {
     {
       name: 'detail',
       type: 'textarea',
-      localized: true,
     },
     {
       name: 'url',
@@ -47,7 +46,6 @@ export const MediaCoverage: CollectionConfig = {
     {
       name: 'label',
       type: 'text',
-      localized: true,
     },
     {
       name: 'logo_domain',
@@ -64,7 +62,6 @@ export const MediaCoverage: CollectionConfig = {
     {
       name: 'highlight',
       type: 'text',
-      localized: true,
     },
     {
       name: 'status',

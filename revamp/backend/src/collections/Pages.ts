@@ -28,7 +28,6 @@ export const Pages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      localized: true,
       required: true,
       admin: { description: 'Page title (e.g., "Food Tour around Little India")' },
     },
@@ -73,7 +72,6 @@ export const Pages: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
-      localized: true,
       admin: { description: 'Short tagline shown under the title' },
     },
 
@@ -81,19 +79,16 @@ export const Pages: CollectionConfig = {
     {
       name: 'hero_title',
       type: 'text',
-      localized: true,
       admin: { description: 'Hero section title (defaults to page title if empty)' },
     },
     {
       name: 'hero_subtitle',
       type: 'text',
-      localized: true,
       admin: { description: 'Hero subtitle / eyebrow' },
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Hero paragraph' },
     },
     {
@@ -107,13 +102,11 @@ export const Pages: CollectionConfig = {
     {
       name: 'short_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Short description for cards/previews' },
     },
     {
       name: 'full_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Full page content (supports multi-paragraph)' },
     },
 
@@ -121,7 +114,6 @@ export const Pages: CollectionConfig = {
     {
       name: 'highlights',
       type: 'array',
-      localized: true,
       admin: { description: 'Key highlights of this page content' },
       fields: [
         { name: 'item', type: 'text', required: true },
@@ -149,13 +141,11 @@ export const Pages: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      localized: true,
       admin: { description: 'SEO meta title (defaults to page title)' },
     },
     {
       name: 'meta_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'SEO meta description' },
     },
 

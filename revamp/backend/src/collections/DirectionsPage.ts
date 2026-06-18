@@ -29,25 +29,21 @@ export const DirectionsPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      localized: true,
       required: true,
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      localized: true,
       required: true,
     },
     {
       name: 'hero_title',
       type: 'text',
-      localized: true,
       required: true,
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      localized: true,
     },
     {
       name: 'hero_image',
@@ -58,7 +54,6 @@ export const DirectionsPage: CollectionConfig = {
     {
       name: 'meeting_points',
       type: 'array',
-      localized: true,
       admin: { description: 'Meeting point locations for different tours' },
       fields: [
         {
@@ -105,7 +100,6 @@ export const DirectionsPage: CollectionConfig = {
     {
       name: 'general_tips',
       type: 'array',
-      localized: true,
       admin: { description: 'General tips for finding meeting points' },
       fields: [
         {

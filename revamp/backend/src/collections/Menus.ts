@@ -14,7 +14,6 @@ export const Menus: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-      localized: true,
       admin: {
         description: 'Menu name (e.g., "Main Navigation", "Footer Menu")',
       },
@@ -38,7 +37,6 @@ export const Menus: CollectionConfig = {
       type: 'array',
       required: true,
       minRows: 1,
-      localized: true,
       admin: {
         description: 'Menu items — label and URL for each link',
         initCollapsed: false,

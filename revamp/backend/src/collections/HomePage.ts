@@ -24,7 +24,6 @@ export const HomePage: CollectionConfig = {
       name: 'heroSection',
       type: 'blocks',
       maxRows: 1,
-      localized: true,
       admin: {
         description: 'Hero section with title, subtitle, badges, and background image',
       },
@@ -62,7 +61,6 @@ export const HomePage: CollectionConfig = {
       name: 'manifestoSection',
       type: 'blocks',
       maxRows: 1,
-      localized: true,
       admin: {
         description: 'Brand belief/mission statement section',
       },
@@ -86,7 +84,6 @@ export const HomePage: CollectionConfig = {
       name: 'pillarsSection',
       type: 'blocks',
       maxRows: 1,
-      localized: true,
       admin: {
         description: 'Three core pillars: People, Food, Place',
       },
@@ -117,7 +114,6 @@ export const HomePage: CollectionConfig = {
       name: 'vendorsSection',
       type: 'blocks',
       maxRows: 1,
-      localized: true,
       admin: {
         description: 'Vendor showcase section with links',
       },
@@ -149,7 +145,6 @@ export const HomePage: CollectionConfig = {
       name: 'segmentsSection',
       type: 'blocks',
       maxRows: 1,
-      localized: true,
       admin: {
         description: 'Tour category selector section',
       },
@@ -171,7 +166,6 @@ export const HomePage: CollectionConfig = {
       name: 'aboutSection',
       type: 'blocks',
       maxRows: 1,
-      localized: true,
       admin: {
         description: 'About Simply Enak teaser section',
       },
@@ -201,7 +195,6 @@ export const HomePage: CollectionConfig = {
       name: 'expectSection',
       type: 'blocks',
       maxRows: 1,
-      localized: true,
       admin: {
         description: '"What to Expect" stats section',
       },
@@ -233,7 +226,6 @@ export const HomePage: CollectionConfig = {
       name: 'ctaSection',
       type: 'blocks',
       maxRows: 3,
-      localized: true,
       admin: {
         description: 'Call-to-action section blocks',
       },
@@ -294,12 +286,10 @@ export const HomePage: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      localized: true,
     },
     {
       name: 'meta_description',
       type: 'textarea',
-      localized: true,
     },
   ],
 }

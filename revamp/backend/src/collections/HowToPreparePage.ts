@@ -29,27 +29,23 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      localized: true,
       required: true,
       admin: { description: 'SEO meta title' },
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      localized: true,
       required: true,
       admin: { description: 'SEO meta description' },
     },
     {
       name: 'hero_title',
       type: 'text',
-      localized: true,
       required: true,
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      localized: true,
       required: true,
     },
     {
@@ -61,7 +57,6 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'whatToWear',
       type: 'array',
-      localized: true,
       admin: { description: 'What to wear items' },
       fields: [
         {
@@ -78,7 +73,6 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'whatToBring',
       type: 'array',
-      localized: true,
       admin: { description: 'What to bring items' },
       fields: [
         {
@@ -95,7 +89,6 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'whatToExpect',
       type: 'array',
-      localized: true,
       admin: { description: 'What to expect steps/items' },
       fields: [
         {
@@ -112,19 +105,16 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'dietary_heading',
       type: 'text',
-      localized: true,
       admin: { description: 'Dietary requirements section heading' },
     },
     {
       name: 'dietary_intro',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Intro text for dietary section' },
     },
     {
       name: 'dietary_notes',
       type: 'array',
-      localized: true,
       admin: { description: 'Specific dietary notes/tips' },
       fields: [
         {
@@ -141,13 +131,11 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'directions_cta_text',
       type: 'text',
-      localized: true,
       admin: { description: 'CTA text for directions link' },
     },
     {
       name: 'directions_cta_button',
       type: 'text',
-      localized: true,
       admin: { description: 'CTA button label for directions' },
     },
   ],

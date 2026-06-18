@@ -19,7 +19,6 @@ export const TravelTypes: CollectionConfig = {
     delete: ({ req: { user } }) => (user as any)?.role === 'admin',
   },
   fields: [
-    { name: 'name', type: 'text', required: true, localized: true },
     {
       name: 'slug',
       type: 'text',
@@ -30,7 +29,6 @@ export const TravelTypes: CollectionConfig = {
     },
     { name: 'icon', type: 'text', admin: { description: 'Emoji or icon name' } },
     { name: 'color', type: 'text', admin: { description: 'UI color hex code' } },
-    { name: 'description', type: 'textarea', localized: true },
     {
       name: 'status',
       type: 'select',

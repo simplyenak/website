@@ -30,13 +30,11 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      localized: true,
       admin: { description: 'SEO meta title' },
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'SEO meta description' },
     },
 
@@ -44,14 +42,12 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'hero_title',
       type: 'text',
-      localized: true,
       required: true,
       admin: { description: 'e.g., "Tell Us What You\'re Looking For"' },
     },
     {
       name: 'hero_subtitle',
       type: 'textarea',
-      localized: true,
       admin: { description: 'e.g., "Whether you\'re booking a tour or just curious..."' },
     },
 
@@ -59,13 +55,11 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'intro_title',
       type: 'text',
-      localized: true,
       admin: { description: 'e.g., "How Can We Help?"' },
     },
     {
       name: 'intro_subtitle',
       type: 'text',
-      localized: true,
       admin: { description: 'e.g., "Choose your reason for reaching out"' },
     },
 
@@ -88,7 +82,6 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'contact_hours',
       type: 'text',
-      localized: true,
       admin: { description: 'e.g., "Mon – Sun: 9:00 – 20:00"' },
     },
 
@@ -108,7 +101,6 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'faq_content',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Optional FAQ content for contact page' },
     },
   ],

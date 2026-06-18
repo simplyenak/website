@@ -19,7 +19,6 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      localized: true,
       required: true,
       admin: {
         description: 'Page title (e.g., "Thank You - Contact Form")',
@@ -65,7 +64,6 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'heroSection',
       type: 'group',
-      localized: true,
       fields: [
         {
           name: 'heading',
@@ -96,7 +94,6 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'message',
       type: 'richText',
-      localized: true,
       admin: {
         description: 'Main thank you message',
       },
@@ -104,7 +101,6 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'nextSteps',
       type: 'array',
-      localized: true,
       admin: {
         description: 'What happens next (bullet points)',
       },
@@ -119,7 +115,6 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'contactInfo',
       type: 'group',
-      localized: true,
       fields: [
         {
           name: 'showContact',
@@ -156,7 +151,6 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'ctaSection',
       type: 'group',
-      localized: true,
       fields: [
         {
           name: 'showCta',
@@ -199,7 +193,6 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'seo',
       type: 'group',
-      localized: true,
       fields: [
         {
           name: 'metaTitle',
