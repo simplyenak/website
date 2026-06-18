@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getAboutPage } from '~/lib/content';
+import { getAboutPage, getImageUrl } from '~/lib/content';
 
 const ap = await getAboutPage();
 
@@ -14,7 +14,7 @@ const metadata = {
   <!-- Hero -->
   <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-20 md:py-28">
     <div class="absolute inset-0">
-      <img src={ap.heroImage || "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg"} alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
+      <img src={getImageUrl(ap.heroImage) || "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg"} alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
       <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
