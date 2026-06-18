@@ -31,16 +31,14 @@ const menuTours = await getMenuTours();
 if (menuTours && menuTours.length > 0) {
   const toursDropdown = navData.links?.find((l: any) => l.text === 'Tours' || l.links);
   if (toursDropdown) {
-    // Keep static links: All Tours (first) + Tour Comparison (last), replace middle with dynamic tours
+    // Keep static links: All Tours (first), replace rest with dynamic tours
     const allToursLink = toursDropdown.links?.[0];
-    const comparisonLink = toursDropdown.links?.find((l: any) => (l.text || '').toLowerCase().includes('comparison'));
     toursDropdown.links = [
       allToursLink,
       ...menuTours.map((t: any) => ({
         text: t.tagline || t.name || t.slug,
         href: getPermalink(`/tours/${t.slug}`),
       })),
-      comparisonLink,
     ].filter(Boolean);
   }
 }
