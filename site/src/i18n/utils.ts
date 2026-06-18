@@ -54,9 +54,13 @@ export function localizePath(path: string, lang: Language): string {
   return `/${lang}${clean || ''}`;
 }
 
+/** Pages that have translations. Tour details, stories, and other content pages
+ * only exist in English — the switcher falls back to language root for those. */
+const LOCALIZABLE_PREFIXES = ['/', '/about', '/contact', '/faq', '/tours', '/stories'];
+
 /**
  * Get the URL for switching to a different language from the current pathname.
- * Respects site's trailingSlash: false.
+ * Falls back to the language root if the current page doesn't exist in the target language.
  */
 export function getLangUrl(targetLang: string, currentPathname: string): string {
   // Remove existing language prefix (if any)
@@ -66,6 +70,12 @@ export function getLangUrl(targetLang: string, currentPathname: string): string 
 
   // No prefix for default language (English)
   if (targetLang === defaultLang) return cleanPath;
+
+  // Check if this page exists in the target language
+  const rootPath = cleanPath.split('/')[1] ? '/' + cleanPath.split('/')[1] : '/';
+  const isTranslated = LOCALIZABLE_PREFIXES.includes(rootPath) || LOCALIZABLE_PREFIXES.includes(cleanPath);
+
+  if (!isTranslated) return `/${targetLang}`;
 
   return `/${targetLang}${cleanPath === '/' ? '' : cleanPath}`;
 }
