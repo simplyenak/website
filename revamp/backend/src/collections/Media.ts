@@ -177,8 +177,6 @@ export const Media: CollectionConfig = {
         // reads from local disk. Since we use S3-only, the local file doesn't
         // exist. Also, direct S3 URLs may not be publicly accessible — they
         // must go through the CDN.
-        const cdnUrl = 'https://cdn.simplyenak.com'
-        const s3Domain = 'se-website-images.s3.nl-ams.scw.cloud'
 
         // Step 1: If thumbnailURL is a relative path, replace with sizes URL
         if (doc?.thumbnailURL && !doc.thumbnailURL.startsWith('http')) {
@@ -189,9 +187,17 @@ export const Media: CollectionConfig = {
         }
 
         // Step 2: Rewrite direct S3 URLs to CDN URLs
-        if (doc?.thumbnailURL?.includes(s3Domain)) {
-          const filename = doc.thumbnailURL.split(s3Domain)[1] // e.g. "/image.jpg"
-          doc.thumbnailURL = cdnUrl + filename
+        const s3Endpoint = 's3.nl-ams.scw.cloud'
+        if (doc?.thumbnailURL?.includes(s3Endpoint)) {
+          // URL format: https://s3.nl-ams.scw.cloud/se-website-images/filename.jpg
+          // Rewrite to:  https://cdn.simplyenak.com/filename.jpg
+          const bucket = process.env.S3_BUCKET || 'se-website-images'
+          const prefix = `${s3Endpoint}/${bucket}`
+          const idx = doc.thumbnailURL.indexOf(prefix)
+          if (idx !== -1) {
+            const filename = doc.thumbnailURL.slice(idx + prefix.length)
+            doc.thumbnailURL = 'https://cdn.simplyenak.com' + filename
+          }
         }
 
         return doc
