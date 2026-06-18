@@ -172,12 +172,10 @@ export default buildConfig({
     s3Storage({
       collections: {
         media: {
-          prefix: '',
+          prefix: 'payload-media',
           disablePayloadAccessControl: true,
           generateFileURL: ({ filename }) => {
-            const endpoint = process.env.S3_ENDPOINT || 'https://s3.nl-ams.scw.cloud'
-            const bucket = process.env.S3_BUCKET || 'se-website-images'
-            return `${endpoint}/${bucket}/${filename}`
+            return `https://cdn.simplyenak.com/payload-media/${filename}`
           },
         },
       },
