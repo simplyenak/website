@@ -37,7 +37,7 @@ export const headerData = {
         },
         {
           text: 'Tour Comparison',
-          href: getPermalink('/tours/comparison'),
+          href: getPermalink('/tours/why-simply-enak'),
         },
       ],
     },
@@ -68,7 +68,7 @@ export const footerData = {
         { text: 'Eat Drink George Town', href: '/tours/eat-drink-george-town' },
         { text: 'Penang Street Food', href: '/tours/penang-street-food' },
         { text: 'Secrets of KL', href: '/tours/secrets-of-kl-nightlife' },
-        { text: 'Tour Comparison', href: '/tours/comparison' },
+        { text: 'Tour Comparison', href: '/tours/why-simply-enak' },
       ],
     },
     {
@@ -149,7 +149,7 @@ export function getHeaderData(lang: Language) {
           { text: t('nav.eatDrinkGeorgeTown'), href: p('/tours/eat-drink-george-town') },
           { text: t('nav.penangStreetFood'), href: p('/tours/penang-street-food') },
           { text: t('nav.secretsOfKl'), href: p('/tours/secrets-of-kl-nightlife') },
-          { text: t('nav.tourComparison'), href: p('/tours/comparison') },
+          { text: t('nav.tourComparison'), href: p('/tours/why-simply-enak') },
         ],
       },
       {
@@ -185,7 +185,7 @@ export function getFooterData(lang: Language) {
           { text: t('nav.eatDrinkGeorgeTown'), href: p('/tours/eat-drink-george-town') },
           { text: t('nav.penangStreetFood'), href: p('/tours/penang-street-food') },
           { text: t('nav.secretsOfKl'), href: p('/tours/secrets-of-kl-nightlife') },
-          { text: t('nav.tourComparison'), href: p('/tours/comparison') },
+          { text: t('nav.tourComparison'), href: p('/tours/why-simply-enak') },
         ],
       },
       {
