@@ -14,7 +14,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:57:06.100Z",
       "createdAt": "2026-06-17T03:57:05.599Z",
-      "url": "/api/media/file/simplyenak.com.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simplyenak.com.png",
       "thumbnailURL": null,
       "filename": "simplyenak.com.png",
       "mimeType": "image/png",
@@ -74,7 +74,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:57:04.130Z",
       "createdAt": "2026-06-17T03:57:02.920Z",
-      "url": "/api/media/file/bestregardsfromfar.com.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/bestregardsfromfar.com.png",
       "thumbnailURL": null,
       "filename": "bestregardsfromfar.com.png",
       "mimeType": "image/png",
@@ -134,7 +134,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:57:01.672Z",
       "createdAt": "2026-06-17T03:57:01.495Z",
-      "url": "/api/media/file/5losttogether.com.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/5losttogether.com.png",
       "thumbnailURL": null,
       "filename": "5losttogether.com.png",
       "mimeType": "image/png",
@@ -194,7 +194,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:57:00.228Z",
       "createdAt": "2026-06-17T03:56:59.944Z",
-      "url": "/api/media/file/minoritynomad.com.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/minoritynomad.com.png",
       "thumbnailURL": null,
       "filename": "minoritynomad.com.png",
       "mimeType": "image/png",
@@ -254,7 +254,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:58.668Z",
       "createdAt": "2026-06-17T03:56:58.229Z",
-      "url": "/api/media/file/theyumlist.net.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/theyumlist.net.png",
       "thumbnailURL": null,
       "filename": "theyumlist.net.png",
       "mimeType": "image/png",
@@ -314,7 +314,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:56.151Z",
       "createdAt": "2026-06-17T03:56:55.273Z",
-      "url": "/api/media/file/radiomisfits.com.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/radiomisfits.com.png",
       "thumbnailURL": null,
       "filename": "radiomisfits.com.png",
       "mimeType": "image/png",
@@ -374,7 +374,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:54.032Z",
       "createdAt": "2026-06-17T03:56:53.003Z",
-      "url": "/api/media/file/the_food_ranger.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/the_food_ranger.png",
       "thumbnailURL": "/api/media/file/the_food_ranger-400x300.png",
       "filename": "the_food_ranger.png",
       "mimeType": "image/png",
@@ -385,7 +385,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/the_food_ranger-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/the_food_ranger-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -434,7 +434,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:51.087Z",
       "createdAt": "2026-06-17T03:56:50.858Z",
-      "url": "/api/media/file/timeout.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/timeout.png",
       "thumbnailURL": "/api/media/file/timeout-400x300.png",
       "filename": "timeout.png",
       "mimeType": "image/png",
@@ -445,7 +445,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/timeout-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/timeout-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -453,7 +453,7 @@
           "filename": "timeout-400x300.png"
         },
         "medium": {
-          "url": "/api/media/file/timeout-800x600.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/timeout-800x600.png",
           "width": 800,
           "height": 600,
           "mimeType": "image/png",
@@ -494,7 +494,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:48.921Z",
       "createdAt": "2026-06-17T03:56:48.463Z",
-      "url": "/api/media/file/le_routard.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/le_routard.png",
       "thumbnailURL": "/api/media/file/le_routard-400x300.png",
       "filename": "le_routard.png",
       "mimeType": "image/png",
@@ -505,7 +505,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/le_routard-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/le_routard-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -554,7 +554,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:46.703Z",
       "createdAt": "2026-06-17T03:56:46.222Z",
-      "url": "/api/media/file/lonely-planet.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/lonely-planet.png",
       "thumbnailURL": "/api/media/file/lonely-planet-400x300.png",
       "filename": "lonely-planet.png",
       "mimeType": "image/png",
@@ -565,7 +565,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/lonely-planet-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/lonely-planet-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -573,7 +573,7 @@
           "filename": "lonely-planet-400x300.png"
         },
         "medium": {
-          "url": "/api/media/file/lonely-planet-800x600.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/lonely-planet-800x600.png",
           "width": 800,
           "height": 600,
           "mimeType": "image/png",
@@ -581,7 +581,7 @@
           "filename": "lonely-planet-800x600.png"
         },
         "large": {
-          "url": "/api/media/file/lonely-planet-1200x800.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/lonely-planet-1200x800.png",
           "width": 1200,
           "height": 800,
           "mimeType": "image/png",
@@ -614,7 +614,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:43.393Z",
       "createdAt": "2026-06-17T03:56:40.968Z",
-      "url": "/api/media/file/the_edge_malaysia.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/the_edge_malaysia.png",
       "thumbnailURL": "/api/media/file/the_edge_malaysia-400x300.png",
       "filename": "the_edge_malaysia.png",
       "mimeType": "image/png",
@@ -625,7 +625,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/the_edge_malaysia-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/the_edge_malaysia-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -633,7 +633,7 @@
           "filename": "the_edge_malaysia-400x300.png"
         },
         "medium": {
-          "url": "/api/media/file/the_edge_malaysia-800x600.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/the_edge_malaysia-800x600.png",
           "width": 800,
           "height": 600,
           "mimeType": "image/png",
@@ -641,7 +641,7 @@
           "filename": "the_edge_malaysia-800x600.png"
         },
         "large": {
-          "url": "/api/media/file/the_edge_malaysia-1200x800.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/the_edge_malaysia-1200x800.png",
           "width": 1200,
           "height": 800,
           "mimeType": "image/png",
@@ -674,7 +674,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:39.347Z",
       "createdAt": "2026-06-17T03:56:38.988Z",
-      "url": "/api/media/file/9now.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/9now.png",
       "thumbnailURL": "/api/media/file/9now-400x300.png",
       "filename": "9now.png",
       "mimeType": "image/png",
@@ -685,7 +685,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/9now-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/9now-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -693,7 +693,7 @@
           "filename": "9now-400x300.png"
         },
         "medium": {
-          "url": "/api/media/file/9now-800x600.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/9now-800x600.png",
           "width": 800,
           "height": 600,
           "mimeType": "image/png",
@@ -701,7 +701,7 @@
           "filename": "9now-800x600.png"
         },
         "large": {
-          "url": "/api/media/file/9now-1200x800.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/9now-1200x800.png",
           "width": 1200,
           "height": 800,
           "mimeType": "image/png",
@@ -734,7 +734,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:37.284Z",
       "createdAt": "2026-06-17T03:56:37.134Z",
-      "url": "/api/media/file/tvnz.co.nz.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/tvnz.co.nz.png",
       "thumbnailURL": null,
       "filename": "tvnz.co.nz.png",
       "mimeType": "image/png",
@@ -794,7 +794,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:35.843Z",
       "createdAt": "2026-06-17T03:56:35.378Z",
-      "url": "/api/media/file/tlc.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/tlc.png",
       "thumbnailURL": "/api/media/file/tlc-400x300.png",
       "filename": "tlc.png",
       "mimeType": "image/png",
@@ -805,7 +805,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/tlc-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/tlc-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -854,7 +854,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:34.077Z",
       "createdAt": "2026-06-17T03:56:33.783Z",
-      "url": "/api/media/file/national_geographic.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/national_geographic.png",
       "thumbnailURL": "/api/media/file/national_geographic-400x300.png",
       "filename": "national_geographic.png",
       "mimeType": "image/png",
@@ -865,7 +865,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/national_geographic-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/national_geographic-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -914,7 +914,7 @@
       "prefix": "payload-media",
       "updatedAt": "2026-06-17T03:56:32.284Z",
       "createdAt": "2026-06-17T03:56:31.551Z",
-      "url": "/api/media/file/bbc.png?prefix=payload-media",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/bbc.png",
       "thumbnailURL": "/api/media/file/bbc-400x300.png",
       "filename": "bbc.png",
       "mimeType": "image/png",
@@ -925,7 +925,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/bbc-400x300.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/bbc-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -933,7 +933,7 @@
           "filename": "bbc-400x300.png"
         },
         "medium": {
-          "url": "/api/media/file/bbc-800x600.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/bbc-800x600.png",
           "width": 800,
           "height": 600,
           "mimeType": "image/png",
@@ -941,7 +941,7 @@
           "filename": "bbc-800x600.png"
         },
         "large": {
-          "url": "/api/media/file/bbc-1200x800.png?prefix=payload-media",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/bbc-1200x800.png",
           "width": 1200,
           "height": 800,
           "mimeType": "image/png",
