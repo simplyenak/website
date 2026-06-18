@@ -38,7 +38,7 @@ const desktopPositions = [
 <section
   id={id}
   class={`
-    relative py-20 md:py-28 overflow-hidden
+    relative py-12 md:py-28 overflow-hidden
     ${isDark ? 'bg-page-dark' : 'bg-page'}
     ${bg}
     ${classes?.container ?? ''}
@@ -58,11 +58,11 @@ const desktopPositions = [
       )}
     </div>
 
-    <!-- === Mobile: horizontal scroll strip === -->
-    <div class="md:hidden flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+    <!-- === Mobile: 2-column polaroid grid === -->
+    <div class="md:hidden grid grid-cols-2 gap-3">
       {images.slice(0, 7).map((img) => (
-        <div class="snap-center shrink-0 w-[200px]">
-          <div class="bg-[#fffbef] dark:bg-[#2a2a24] p-2 pb-4 shadow-[0_6px_18px_rgba(0,0,0,0.12)] dark:shadow-[0_6px_18px_rgba(0,0,0,0.35)] rounded-[2px]">
+        <div class="flex">
+          <div class="bg-[#fffbef] dark:bg-[#2a2a24] p-2 pb-4 shadow-[0_6px_18px_rgba(0,0,0,0.12)] dark:shadow-[0_6px_18px_rgba(0,0,0,0.35)] rounded-[2px] w-full">
             <img
               src={img.src}
               alt={img.alt}
