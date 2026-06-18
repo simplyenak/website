@@ -116,8 +116,8 @@ const tourSchema = {
   <!-- Breadcrumb + Section Nav -->
   <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center gap-4 py-3 overflow-x-auto">
-        <nav class="flex gap-2 whitespace-nowrap" aria-label="Tour sections">
+      <div class="md:flex md:items-center md:gap-4 py-3">
+        <nav class="flex gap-2 overflow-x-auto" aria-label="Tour sections">
           {[
             { id: 'overview', label: 'Overview' },
             { id: 'itinerary-section', label: 'Itinerary' },
@@ -134,7 +134,7 @@ const tourSchema = {
             </a>
           ))}
         </nav>
-        <div class="flex items-center gap-1.5 text-xs text-muted shrink-0 ml-auto">
+        <div class="hidden md:flex items-center gap-1.5 text-xs text-muted shrink-0 ml-auto">
           <a href="/" class="hover:text-primary transition-colors whitespace-nowrap">Home</a>
           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           <a href="/tours" class="hover:text-primary transition-colors whitespace-nowrap">Tours</a>
@@ -148,8 +148,8 @@ const tourSchema = {
   <!-- Hero: side-by-side layout -->
   <section class="bg-[#1a1a1a] relative text-white">
     <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-2 min-h-[450px]">
-        <div class="overflow-hidden relative h-64 md:h-auto">
+      <div class="md:grid md:grid-cols-2 md:min-h-[450px]">
+        <div class="overflow-hidden relative h-72 md:h-auto">
           {heroImg && <img src={heroImg} alt={tour.tagline || tour.name} class="w-full h-full object-cover" />}
           <div class="absolute inset-0 bg-gradient-to-r from-black/60 hidden md:block to-transparent"></div>
         </div>
@@ -193,7 +193,7 @@ const tourSchema = {
   </section>
 
   <!-- Main content + Sidebar -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-16 py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-16">
     <div class="grid gap-10 md:grid-cols-5">
       <!-- Left: Main Content -->
       <div class="md:col-span-3">
@@ -346,7 +346,7 @@ const tourSchema = {
 
       <!-- Right: Sidebar -->
       <div class="md:col-span-2">
-        <div class="sticky top-24 border border-gray-100 bg-white dark:bg-[#1e1c1c] dark:border-white/10 overflow-hidden shadow-sm rounded-xl">
+        <div class="md:sticky md:top-24 border border-gray-100 bg-white dark:bg-[#1e1c1c] dark:border-white/10 overflow-hidden shadow-sm rounded-xl">
           <div class="border-b border-gray-100 dark:border-white/10 p-6">
             <p class="text-muted text-xs mb-1 tracking-wide uppercase">From</p>
             <div class="font-bold font-heading text-3xl text-primary">{tour.price || 'RM 285'}</div>
