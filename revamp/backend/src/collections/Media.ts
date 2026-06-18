@@ -173,33 +173,16 @@ export const Media: CollectionConfig = {
     afterChange: [triggerStagingDeploy],
     afterRead: [
       ({ doc }) => {
-        // Payload's internal thumbnailURL points to /api/media/file/... which
-        // reads from local disk. Since we use S3-only, the local file doesn't
-        // exist. Also, direct S3 URLs may not be publicly accessible — they
-        // must go through the CDN.
-
-        // Step 1: If thumbnailURL is a relative path, replace with sizes URL
+        // Payload's internal thumbnailURL is a relative path (/api/media/file/...)
+        // which reads from local disk. Since we use S3-only, the local file
+        // doesn't exist. Use the thumbnail size URL instead, which is already
+        // an S3 or CDN URL from the S3 storage plugin.
         if (doc?.thumbnailURL && !doc.thumbnailURL.startsWith('http')) {
           const thumb = doc.sizes?.thumbnail
           if (thumb?.url) {
             doc.thumbnailURL = thumb.url
           }
         }
-
-        // Step 2: Rewrite direct S3 URLs to CDN URLs
-        const s3Endpoint = 's3.nl-ams.scw.cloud'
-        if (doc?.thumbnailURL?.includes(s3Endpoint)) {
-          // URL format: https://s3.nl-ams.scw.cloud/se-website-images/filename.jpg
-          // Rewrite to:  https://cdn.simplyenak.com/filename.jpg
-          const bucket = process.env.S3_BUCKET || 'se-website-images'
-          const prefix = `${s3Endpoint}/${bucket}`
-          const idx = doc.thumbnailURL.indexOf(prefix)
-          if (idx !== -1) {
-            const filename = doc.thumbnailURL.slice(idx + prefix.length)
-            doc.thumbnailURL = 'https://cdn.simplyenak.com' + filename
-          }
-        }
-
         return doc
       },
     ],
