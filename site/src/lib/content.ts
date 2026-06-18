@@ -591,14 +591,15 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
   // Expect/Stats → TestimonialsSection
   if (raw.expectSection && Array.isArray(raw.expectSection) && raw.expectSection.length > 0 && !raw.testimonialsSection) {
     const s = raw.expectSection[0];
-    raw.testimonialsSection = {
-      eyebrow: s.subtitle || '',
-      heading: s.title || '',
-      stats: Array.isArray(s.stats)
-        ? s.stats.map((st: any) => ({ number: st.number || '', label: st.heading || '' }))
-        : [],
-      testimonials: [],
-    };
+    const stats = Array.isArray(s.stats) ? s.stats.map((st: any) => ({ number: st.number || '', label: st.heading || '' })) : [];
+    if (stats.length > 0) {
+      raw.testimonialsSection = {
+        eyebrow: s.subtitle || '',
+        heading: s.title || '',
+        stats,
+        testimonials: [],
+      };
+    }
   }
   // CTA Section
   if (raw.ctaSection && Array.isArray(raw.ctaSection) && raw.ctaSection.length > 0) {
@@ -610,8 +611,8 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       ctaSecondary: c.buttons?.[1] ? { text: c.buttons[1].label, url: c.buttons[1].url } : { text: 'Contact Us', url: '/contact' },
     };
   }
-  // FAQs (top-level array field)
-  if (raw.faqs && Array.isArray(raw.faqs) && !raw.faqSection) {
+  // FAQs (top-level array field) — only if there are actual items
+  if (raw.faqs && Array.isArray(raw.faqs) && raw.faqs.length > 0 && !raw.faqSection) {
     raw.faqSection = {
       eyebrow: 'Frequently Asked Questions',
       heading: 'Everything you need to know',
