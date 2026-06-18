@@ -173,7 +173,7 @@ export default buildConfig({
       collections: {
         media: {
           prefix: 'payload-media',
-          disablePayloadAccessControl: true,
+          disablePayloadAccessControl: false,
           generateFileURL: ({ filename }) => {
             return `https://cdn.simplyenak.com/payload-media/${filename}`
           },
