@@ -26,7 +26,7 @@ export const Vendors: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
-      required: true,
+            required: true,
       admin: {
         description: 'Vendor/stall/restaurant name',
       },
@@ -63,7 +63,7 @@ export const Vendors: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
-      required: true,
+            required: true,
       admin: {
         description: 'Brief description of this vendor',
       },
@@ -71,7 +71,7 @@ export const Vendors: CollectionConfig = {
     {
       name: 'history',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'History, heritage, family story behind this vendor',
       },
     },
@@ -85,14 +85,14 @@ export const Vendors: CollectionConfig = {
     {
       name: 'generation',
       type: 'text',
-      admin: {
+            admin: {
         description: 'Which generation runs it now (e.g., "2nd generation", "3rd generation")',
       },
     },
     {
       name: 'ownerName',
       type: 'text',
-      admin: {
+            admin: {
         description: 'Current owner/chef name',
       },
     },
@@ -127,7 +127,7 @@ export const Vendors: CollectionConfig = {
     {
       name: 'location',
       type: 'group',
-      fields: [
+            fields: [
         {
           name: 'address',
           type: 'text',
@@ -196,7 +196,7 @@ export const Vendors: CollectionConfig = {
     {
       name: 'operatingHours',
       type: 'array',
-      admin: {
+            admin: {
         description: 'Operating hours by day',
       },
       fields: [
@@ -422,14 +422,14 @@ export const Vendors: CollectionConfig = {
     {
       name: 'story',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Full story, anecdotes, interesting facts about this vendor',
       },
     },
     {
       name: 'awards',
       type: 'array',
-      admin: {
+            admin: {
         description: 'Awards, recognitions, media features',
       },
       fields: [
@@ -451,14 +451,14 @@ export const Vendors: CollectionConfig = {
     {
       name: 'mediaFeatures',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'TV shows, newspapers, magazines, blogs that featured this vendor',
       },
     },
     {
       name: 'tips',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Tips for visitors (e.g., "Arrive early", "Cash only", "Best to try X dish")',
       },
     },

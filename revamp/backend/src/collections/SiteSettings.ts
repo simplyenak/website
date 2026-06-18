@@ -26,12 +26,12 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
-      admin: { description: 'Short tagline' },
+            admin: { description: 'Short tagline' },
     },
     {
       name: 'description',
       type: 'textarea',
-      admin: { description: 'Site description (SEO)' },
+            admin: { description: 'Site description (SEO)' },
     },
     {
       name: 'company_established',
@@ -113,12 +113,12 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'business_hours',
       type: 'text',
-      admin: { description: 'e.g., "Mon – Sun: 9:00 – 20:00"' },
+            admin: { description: 'e.g., "Mon – Sun: 9:00 – 20:00"' },
     },
     {
       name: 'address',
       type: 'textarea',
-      admin: { description: 'Business address' },
+            admin: { description: 'Business address' },
     },
 
     // ── Forms ──
@@ -202,11 +202,11 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-    },
+          },
     {
       name: 'meta_description',
       type: 'textarea',
-    },
+          },
     {
       name: 'og_image',
       type: 'upload',
@@ -243,7 +243,7 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'footer_copyright_text',
       type: 'text',
-    },
+          },
     {
       name: 'sub_page_menus',
       type: 'json',
@@ -349,39 +349,39 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'contact_page_title',
       type: 'text',
-      admin: { description: 'Contact page <title>' },
+            admin: { description: 'Contact page <title>' },
     },
     {
       name: 'contact_page_description',
       type: 'textarea',
-      admin: { description: 'Contact page meta description' },
+            admin: { description: 'Contact page meta description' },
     },
     {
       name: 'faq_page_title',
       type: 'text',
-      admin: { description: 'FAQ page <title>' },
+            admin: { description: 'FAQ page <title>' },
     },
     {
       name: 'faq_page_description',
       type: 'textarea',
-      admin: { description: 'FAQ page meta description' },
+            admin: { description: 'FAQ page meta description' },
     },
     {
       name: 'corporate_page_title',
       type: 'text',
-      admin: { description: 'Corporate page <title>' },
+            admin: { description: 'Corporate page <title>' },
     },
     {
       name: 'corporate_page_content',
       type: 'richText',
-      admin: { description: 'Corporate page body content' },
+            admin: { description: 'Corporate page body content' },
     },
 
     // ── Guide Fields ──
     {
       name: 'guide_meta_description',
       type: 'textarea',
-      admin: { description: 'Guide page meta description' },
+            admin: { description: 'Guide page meta description' },
     },
     {
       name: 'guide_max_bio_length',
@@ -424,34 +424,34 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'newsletter_section_heading',
       type: 'text',
-      admin: { description: 'Newsletter section heading' },
+            admin: { description: 'Newsletter section heading' },
     },
     {
       name: 'newsletter_placeholder_text',
       type: 'text',
-      admin: { description: 'Newsletter email input placeholder' },
+            admin: { description: 'Newsletter email input placeholder' },
     },
     {
       name: 'newsletter_submit_button',
       type: 'text',
-      admin: { description: 'Newsletter submit button label' },
+            admin: { description: 'Newsletter submit button label' },
     },
     {
       name: 'newsletter_success_message',
       type: 'text',
-      admin: { description: 'Message shown after successful subscription' },
+            admin: { description: 'Message shown after successful subscription' },
     },
 
     // ── WhatsApp ──
     {
       name: 'whatsapp_button_label',
       type: 'text',
-      admin: { description: 'WhatsApp CTA button text' },
+            admin: { description: 'WhatsApp CTA button text' },
     },
     {
       name: 'whatsapp_greeting_message',
       type: 'textarea',
-      admin: { description: 'Pre-filled WhatsApp message text' },
+            admin: { description: 'Pre-filled WhatsApp message text' },
     },
 
     // ── Analytics Type ──
@@ -480,7 +480,7 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'cookie_banner_message',
       type: 'textarea',
-      admin: { description: 'Main cookie banner text' },
+            admin: { description: 'Main cookie banner text' },
     },
     {
       name: 'cookie_banner_privacy_link',
@@ -490,12 +490,12 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'cookie_banner_decline_text',
       type: 'text',
-      admin: { description: 'Decline button label' },
+            admin: { description: 'Decline button label' },
     },
     {
       name: 'cookie_banner_accept_text',
       type: 'text',
-      admin: { description: 'Accept button label' },
+            admin: { description: 'Accept button label' },
     },
 
     // ── CTA Defaults ──
@@ -507,7 +507,7 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'primary_label',
           type: 'text',
-          admin: { description: 'Default primary CTA (e.g., "Book Your Tour")' },
+                    admin: { description: 'Default primary CTA (e.g., "Book Your Tour")' },
         },
         {
           name: 'primary_url',
@@ -517,7 +517,7 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'secondary_label',
           type: 'text',
-          admin: { description: 'Default secondary CTA (e.g., "Contact Us")' },
+                    admin: { description: 'Default secondary CTA (e.g., "Contact Us")' },
         },
         {
           name: 'secondary_url',
@@ -527,7 +527,7 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'whatsapp_label',
           type: 'text',
-          admin: { description: 'WhatsApp CTA fallback text' },
+                    admin: { description: 'WhatsApp CTA fallback text' },
         },
       ],
     },
@@ -568,17 +568,17 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'title',
           type: 'text',
-          admin: { description: '404 page heading' },
+                    admin: { description: '404 page heading' },
         },
         {
           name: 'body',
           type: 'textarea',
-          admin: { description: '404 page message' },
+                    admin: { description: '404 page message' },
         },
         {
           name: 'cta_label',
           type: 'text',
-          admin: { description: 'Button text (e.g., "Back to Home")' },
+                    admin: { description: 'Button text (e.g., "Back to Home")' },
         },
         {
           name: 'cta_url',

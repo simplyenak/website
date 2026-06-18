@@ -38,7 +38,7 @@ export const MediaCoverage: CollectionConfig = {
     {
       name: 'detail',
       type: 'textarea',
-    },
+          },
     {
       name: 'url',
       type: 'text',
@@ -46,7 +46,7 @@ export const MediaCoverage: CollectionConfig = {
     {
       name: 'label',
       type: 'text',
-    },
+          },
     {
       name: 'logo_domain',
       type: 'text',
@@ -62,7 +62,7 @@ export const MediaCoverage: CollectionConfig = {
     {
       name: 'highlight',
       type: 'text',
-    },
+          },
     {
       name: 'status',
       type: 'select',

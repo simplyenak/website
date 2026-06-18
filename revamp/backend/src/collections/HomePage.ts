@@ -24,7 +24,7 @@ export const HomePage: CollectionConfig = {
       name: 'heroSection',
       type: 'blocks',
       maxRows: 1,
-      admin: {
+            admin: {
         description: 'Hero section with title, subtitle, badges, and background image',
       },
       blocks: [
@@ -61,7 +61,7 @@ export const HomePage: CollectionConfig = {
       name: 'manifestoSection',
       type: 'blocks',
       maxRows: 1,
-      admin: {
+            admin: {
         description: 'Brand belief/mission statement section',
       },
       blocks: [
@@ -84,7 +84,7 @@ export const HomePage: CollectionConfig = {
       name: 'pillarsSection',
       type: 'blocks',
       maxRows: 1,
-      admin: {
+            admin: {
         description: 'Three core pillars: People, Food, Place',
       },
       blocks: [
@@ -114,7 +114,7 @@ export const HomePage: CollectionConfig = {
       name: 'vendorsSection',
       type: 'blocks',
       maxRows: 1,
-      admin: {
+            admin: {
         description: 'Vendor showcase section with links',
       },
       blocks: [
@@ -145,7 +145,7 @@ export const HomePage: CollectionConfig = {
       name: 'segmentsSection',
       type: 'blocks',
       maxRows: 1,
-      admin: {
+            admin: {
         description: 'Tour category selector section',
       },
       blocks: [
@@ -166,7 +166,7 @@ export const HomePage: CollectionConfig = {
       name: 'aboutSection',
       type: 'blocks',
       maxRows: 1,
-      admin: {
+            admin: {
         description: 'About Simply Enak teaser section',
       },
       blocks: [
@@ -195,7 +195,7 @@ export const HomePage: CollectionConfig = {
       name: 'expectSection',
       type: 'blocks',
       maxRows: 1,
-      admin: {
+            admin: {
         description: '"What to Expect" stats section',
       },
       blocks: [
@@ -226,7 +226,7 @@ export const HomePage: CollectionConfig = {
       name: 'ctaSection',
       type: 'blocks',
       maxRows: 3,
-      admin: {
+            admin: {
         description: 'Call-to-action section blocks',
       },
       blocks: [
@@ -286,10 +286,10 @@ export const HomePage: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-    },
+          },
     {
       name: 'meta_description',
       type: 'textarea',
-    },
+          },
   ],
 }

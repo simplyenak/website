@@ -22,24 +22,24 @@ export const TourQuiz: CollectionConfig = {
     {
       name: 'intro_title',
       type: 'text',
-      defaultValue: 'What Type of Malaysian Foodie Are You?',
+            defaultValue: 'What Type of Malaysian Foodie Are You?',
     },
     {
       name: 'intro_description',
       type: 'textarea',
-      defaultValue: 'Tell us about your Malaysian food experience and we\'ll reveal your foodie personality — plus match you with the perfect tour.',
+            defaultValue: 'Tell us about your Malaysian food experience and we\'ll reveal your foodie personality — plus match you with the perfect tour.',
     },
     {
       name: 'intro_button_label',
       type: 'text',
-      defaultValue: 'Take the Quiz',
+            defaultValue: 'Take the Quiz',
     },
 
     // ── Quiz Steps ──
     {
       name: 'steps',
       type: 'array',
-      required: true,
+            required: true,
       admin: {
         initCollapsed: true,
         description: 'Ordered quiz questions. Each option has score weights for each personality type.',
@@ -66,7 +66,7 @@ export const TourQuiz: CollectionConfig = {
     {
       name: 'personalities',
       type: 'array',
-      admin: { initCollapsed: true },
+            admin: { initCollapsed: true },
       fields: [
         { name: 'key', type: 'text', required: true },
         { name: 'title', type: 'text', required: true },
@@ -97,7 +97,7 @@ export const TourQuiz: CollectionConfig = {
     {
       name: 'result_headlines',
       type: 'array',
-      fields: [
+            fields: [
         { name: 'key', type: 'text', required: true },
         { name: 'headline', type: 'text', required: true },
         { name: 'subtext', type: 'textarea' },
@@ -105,6 +105,7 @@ export const TourQuiz: CollectionConfig = {
     },
 
     // ── Fallback ──
+    { name: 'fallback_headline', type: 'text', defaultValue: 'Our Top Picks For You' },
     {
       name: 'fallback_tours',
       type: 'relationship',
@@ -113,5 +114,7 @@ export const TourQuiz: CollectionConfig = {
     },
 
     // ── Contact CTA ──
+    { name: 'contact_cta_text', type: 'text', defaultValue: 'Still not sure which tour is right for you?' },
+    { name: 'contact_cta_button', type: 'text', defaultValue: 'Let Us Help You Choose' },
   ],
 }

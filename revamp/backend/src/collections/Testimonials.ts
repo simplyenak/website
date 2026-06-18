@@ -52,14 +52,14 @@ export const Testimonials: CollectionConfig = {
       name: 'review_text',
       type: 'textarea',
       required: true,
-      admin: {
+            admin: {
         description: 'Full review text',
       },
     },
     {
       name: 'review_title',
       type: 'text',
-      admin: {
+            admin: {
         description: 'Short review title/summary',
       },
     },

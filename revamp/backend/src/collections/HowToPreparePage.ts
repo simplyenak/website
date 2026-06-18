@@ -29,24 +29,24 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      required: true,
+            required: true,
       admin: { description: 'SEO meta title' },
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      required: true,
+            required: true,
       admin: { description: 'SEO meta description' },
     },
     {
       name: 'hero_title',
       type: 'text',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_image',
@@ -57,7 +57,7 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'whatToWear',
       type: 'array',
-      admin: { description: 'What to wear items' },
+            admin: { description: 'What to wear items' },
       fields: [
         {
           name: 'title',
@@ -73,7 +73,7 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'whatToBring',
       type: 'array',
-      admin: { description: 'What to bring items' },
+            admin: { description: 'What to bring items' },
       fields: [
         {
           name: 'title',
@@ -89,7 +89,7 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'whatToExpect',
       type: 'array',
-      admin: { description: 'What to expect steps/items' },
+            admin: { description: 'What to expect steps/items' },
       fields: [
         {
           name: 'title',
@@ -105,17 +105,17 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'dietary_heading',
       type: 'text',
-      admin: { description: 'Dietary requirements section heading' },
+            admin: { description: 'Dietary requirements section heading' },
     },
     {
       name: 'dietary_intro',
       type: 'textarea',
-      admin: { description: 'Intro text for dietary section' },
+            admin: { description: 'Intro text for dietary section' },
     },
     {
       name: 'dietary_notes',
       type: 'array',
-      admin: { description: 'Specific dietary notes/tips' },
+            admin: { description: 'Specific dietary notes/tips' },
       fields: [
         {
           name: 'title',
@@ -131,12 +131,12 @@ export const HowToPreparePage: CollectionConfig = {
     {
       name: 'directions_cta_text',
       type: 'text',
-      admin: { description: 'CTA text for directions link' },
+            admin: { description: 'CTA text for directions link' },
     },
     {
       name: 'directions_cta_button',
       type: 'text',
-      admin: { description: 'CTA button label for directions' },
+            admin: { description: 'CTA button label for directions' },
     },
   ],
 }

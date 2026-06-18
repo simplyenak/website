@@ -30,37 +30,37 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      admin: { description: 'SEO meta title' },
+            admin: { description: 'SEO meta title' },
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      admin: { description: 'SEO meta description' },
+            admin: { description: 'SEO meta description' },
     },
 
     // Hero
     {
       name: 'hero_title',
       type: 'text',
-      required: true,
+            required: true,
       admin: { description: 'e.g., "Tell Us What You\'re Looking For"' },
     },
     {
       name: 'hero_subtitle',
       type: 'textarea',
-      admin: { description: 'e.g., "Whether you\'re booking a tour or just curious..."' },
+            admin: { description: 'e.g., "Whether you\'re booking a tour or just curious..."' },
     },
 
     // Intro
     {
       name: 'intro_title',
       type: 'text',
-      admin: { description: 'e.g., "How Can We Help?"' },
+            admin: { description: 'e.g., "How Can We Help?"' },
     },
     {
       name: 'intro_subtitle',
       type: 'text',
-      admin: { description: 'e.g., "Choose your reason for reaching out"' },
+            admin: { description: 'e.g., "Choose your reason for reaching out"' },
     },
 
     // Contact Details
@@ -82,7 +82,7 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'contact_hours',
       type: 'text',
-      admin: { description: 'e.g., "Mon – Sun: 9:00 – 20:00"' },
+            admin: { description: 'e.g., "Mon – Sun: 9:00 – 20:00"' },
     },
 
     // Optional: Social Links
@@ -101,7 +101,7 @@ export const ContactPage: CollectionConfig = {
     {
       name: 'faq_content',
       type: 'textarea',
-      admin: { description: 'Optional FAQ content for contact page' },
+            admin: { description: 'Optional FAQ content for contact page' },
     },
   ],
 }

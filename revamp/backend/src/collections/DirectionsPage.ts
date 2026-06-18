@@ -29,22 +29,22 @@ export const DirectionsPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      required: true,
+            required: true,
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_title',
       type: 'text',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_description',
       type: 'textarea',
-    },
+          },
     {
       name: 'hero_image',
       type: 'upload',
@@ -54,7 +54,7 @@ export const DirectionsPage: CollectionConfig = {
     {
       name: 'meeting_points',
       type: 'array',
-      admin: { description: 'Meeting point locations for different tours' },
+            admin: { description: 'Meeting point locations for different tours' },
       fields: [
         {
           name: 'tour',
@@ -100,7 +100,7 @@ export const DirectionsPage: CollectionConfig = {
     {
       name: 'general_tips',
       type: 'array',
-      admin: { description: 'General tips for finding meeting points' },
+            admin: { description: 'General tips for finding meeting points' },
       fields: [
         {
           name: 'tip',

@@ -16,13 +16,15 @@ export const AboutPage: CollectionConfig = {
   },
   fields: [
     // SEO
+    { name: 'seo_title', type: 'text' },
+    { name: 'seo_description', type: 'textarea' },
 
     // Hero
     {
       name: 'heroSection',
       type: 'blocks',
       maxRows: 1,
-      admin: { description: 'Page hero with title and subtitle' },
+            admin: { description: 'Page hero with title and subtitle' },
       blocks: [{
         slug: 'heroBlock',
         labels: { singular: 'Hero Block', plural: 'Hero Blocks' },
@@ -33,13 +35,15 @@ export const AboutPage: CollectionConfig = {
       }],
     },
     { name: 'hero_image', type: 'text', admin: { description: 'Hero background image URL' } },
+    { name: 'hero_eyebrow', type: 'text' },
+    { name: 'hero_description', type: 'textarea' },
 
     // Founder Story (blocks + flat fallback)
     {
       name: 'founderStorySection',
       type: 'blocks',
       maxRows: 1,
-      admin: { description: 'Founder story with title and rich text content' },
+            admin: { description: 'Founder story with title and rich text content' },
       blocks: [{
         slug: 'founderStoryBlock',
         labels: { singular: 'Founder Story Block', plural: 'Founder Story Blocks' },
@@ -49,6 +53,9 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'founder_eyebrow', type: 'text' },
+    { name: 'founder_heading', type: 'text' },
+    { name: 'founder_paragraphs', type: 'textarea' },
     { name: 'founder_image', type: 'text', admin: { description: 'Founder photo URL' } },
 
     // Stats
@@ -56,7 +63,7 @@ export const AboutPage: CollectionConfig = {
       name: 'statsSection',
       type: 'blocks',
       maxRows: 1,
-      admin: { description: 'Key statistics about Simply Enak' },
+            admin: { description: 'Key statistics about Simply Enak' },
       blocks: [{
         slug: 'statsBlock',
         labels: { singular: 'Stats Block', plural: 'Stats Blocks' },
@@ -80,7 +87,7 @@ export const AboutPage: CollectionConfig = {
       name: 'timelineSection',
       type: 'blocks',
       maxRows: 1,
-      admin: { description: 'Company history timeline' },
+            admin: { description: 'Company history timeline' },
       blocks: [{
         slug: 'timelineBlock',
         labels: { singular: 'Timeline Block', plural: 'Timeline Blocks' },
@@ -99,13 +106,16 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'timeline_eyebrow', type: 'text' },
+    { name: 'timeline_heading', type: 'text' },
+    { name: 'timeline_description', type: 'textarea' },
 
     // Philosophy
     {
       name: 'philosophySection',
       type: 'blocks',
       maxRows: 1,
-      admin: { description: 'Company philosophy/mission' },
+            admin: { description: 'Company philosophy/mission' },
       blocks: [{
         slug: 'philosophyBlock',
         labels: { singular: 'Philosophy Block', plural: 'Philosophy Blocks' },
@@ -124,6 +134,8 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'philosophy_eyebrow', type: 'text' },
+    { name: 'philosophy_heading', type: 'text' },
     { name: 'philosophy_items', type: 'textarea', admin: { description: 'JSON string of philosophy items (legacy fallback)' } },
 
     // Team
@@ -131,7 +143,7 @@ export const AboutPage: CollectionConfig = {
       name: 'teamSection',
       type: 'blocks',
       maxRows: 1,
-      admin: { description: 'Team members' },
+            admin: { description: 'Team members' },
       blocks: [{
         slug: 'teamBlock',
         labels: { singular: 'Team Block', plural: 'Team Blocks' },
@@ -152,14 +164,22 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
+    { name: 'team_eyebrow', type: 'text' },
+    { name: 'team_heading', type: 'text' },
+    { name: 'team_description', type: 'textarea' },
     { name: 'team_members', type: 'textarea', admin: { description: 'JSON string of team members (legacy fallback)' } },
 
     // Testimonial highlight
+    { name: 'testimonial_text', type: 'text' },
     { name: 'testimonial_name', type: 'text' },
     { name: 'testimonial_location', type: 'text' },
 
     // CTA
+    { name: 'cta_heading', type: 'text' },
+    { name: 'cta_description', type: 'textarea' },
+    { name: 'cta_primary_text', type: 'text' },
     { name: 'cta_primary_url', type: 'text' },
+    { name: 'cta_secondary_text', type: 'text' },
     { name: 'cta_secondary_url', type: 'text' },
   ],
 }

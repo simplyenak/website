@@ -28,7 +28,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      required: true,
+            required: true,
       admin: { description: 'Page title (e.g., "Food Tour around Little India")' },
     },
     {
@@ -72,24 +72,24 @@ export const Pages: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
-      admin: { description: 'Short tagline shown under the title' },
+            admin: { description: 'Short tagline shown under the title' },
     },
 
     // === HERO SECTION ===
     {
       name: 'hero_title',
       type: 'text',
-      admin: { description: 'Hero section title (defaults to page title if empty)' },
+            admin: { description: 'Hero section title (defaults to page title if empty)' },
     },
     {
       name: 'hero_subtitle',
       type: 'text',
-      admin: { description: 'Hero subtitle / eyebrow' },
+            admin: { description: 'Hero subtitle / eyebrow' },
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      admin: { description: 'Hero paragraph' },
+            admin: { description: 'Hero paragraph' },
     },
     {
       name: 'hero_image',
@@ -102,19 +102,19 @@ export const Pages: CollectionConfig = {
     {
       name: 'short_description',
       type: 'textarea',
-      admin: { description: 'Short description for cards/previews' },
+            admin: { description: 'Short description for cards/previews' },
     },
     {
       name: 'full_description',
       type: 'textarea',
-      admin: { description: 'Full page content (supports multi-paragraph)' },
+            admin: { description: 'Full page content (supports multi-paragraph)' },
     },
 
     // === HIGHLIGHTS ===
     {
       name: 'highlights',
       type: 'array',
-      admin: { description: 'Key highlights of this page content' },
+            admin: { description: 'Key highlights of this page content' },
       fields: [
         { name: 'item', type: 'text', required: true },
       ],
@@ -141,12 +141,12 @@ export const Pages: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      admin: { description: 'SEO meta title (defaults to page title)' },
+            admin: { description: 'SEO meta title (defaults to page title)' },
     },
     {
       name: 'meta_description',
       type: 'textarea',
-      admin: { description: 'SEO meta description' },
+            admin: { description: 'SEO meta description' },
     },
 
     // === ORDERING ===

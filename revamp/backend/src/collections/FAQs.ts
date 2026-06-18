@@ -31,14 +31,14 @@ export const FAQs: CollectionConfig = {
       name: 'question',
       type: 'text',
       required: true,
-      admin: {
+            admin: {
         description: 'The question as a visitor would ask it',
       },
     },
     {
       name: 'answer',
       type: 'richText',
-      admin: {
+            admin: {
         description: 'Full answer — supports formatting, links, and lists',
       },
     },
