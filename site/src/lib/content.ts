@@ -625,7 +625,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       title: raw.hero_title || '',
       titleHighlight: raw.hero_highlight || '',
       description: raw.hero_description || '',
-      heroImage: raw.hero_image || raw.hero_bg_image || '',
+      heroImage: raw.hero_image ? getImageUrl(raw.hero_image) : getImageUrl(raw.hero_bg_image) || '',
       ctaPrimary: { text: raw.hero_cta_primary || 'SEE OUR TOURS', url: raw.hero_cta_primary_url || '/tours' },
       ctaSecondary: { text: raw.hero_cta_secondary || 'ABOUT US', url: raw.hero_cta_secondary_url || '/about' },
       stats: [
