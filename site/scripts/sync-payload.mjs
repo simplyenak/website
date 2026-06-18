@@ -983,7 +983,23 @@ async function sync() {
   if (fs.existsSync(testimonialsPath)) {
     try {
       const testimonialDocs = JSON.parse(fs.readFileSync(testimonialsPath, 'utf-8'))
-      const reviews = (testimonialDocs || []).filter(d => d.workflowStatus === 'published' && d.author_name).map(d => ({
+      // Localized fields (review_text, review_title) may not appear in list queries.
+      // Fetch each testimonial by ID to get full data.
+      const enriched = await Promise.all((testimonialDocs || []).filter(d => d.workflowStatus === 'published' && d.author_name).map(async (d) => {
+        if (d.review_text) return d // already has it
+        try {
+          const res = await fetch(`${PAYLOAD_URL}/api/testimonials/${d.id}?depth=1`, {
+            headers: PAYLOAD_TOKEN ? { Authorization: `Bearer ${PAYLOAD_TOKEN}` } : {},
+            signal: AbortSignal.timeout(5000),
+          })
+          if (res.ok) {
+            const full = await res.json()
+            return full
+          }
+        } catch {}
+        return d
+      }))
+      const reviews = enriched.map(d => ({
         author: d.author_name || '',
         rating: d.rating || 5,
         text: d.review_text || '',
