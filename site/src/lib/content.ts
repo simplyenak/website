@@ -251,6 +251,7 @@ function mergeTour(payload: any) {
       featured: payload.featured === true,
       popular: payload.popular === true,
       new: payload.new === true,
+      showInMenu: payload.showInMenu === true,
       publishedAt: payload.publishedAt || null,
       status: payload.status || 'published',
     };
@@ -784,6 +785,11 @@ export async function getTourBySlug(slug: string, locale?: string) {
 export async function getFeaturedTours(locale?: string) {
   const all = await resolveTours(locale);
   return all.filter((t: any) => t.featured);
+}
+
+export async function getMenuTours(locale?: string) {
+  const all = await resolveTours(locale);
+  return all.filter((t: any) => t.showInMenu);
 }
 
 // -- Segments (locations, dietary, specialty, travel types) --

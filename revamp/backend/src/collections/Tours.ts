@@ -516,6 +516,15 @@ export const Tours: CollectionConfig = {
       },
     },
     {
+      name: 'showInMenu',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        description: 'Show in the header navigation dropdown menu',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'popular',
       type: 'checkbox',
       defaultValue: false,

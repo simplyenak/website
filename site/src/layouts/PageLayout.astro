@@ -5,7 +5,9 @@ import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 
 import { headerData, footerData, getHeaderData, getFooterData } from '~/navigation';
+import { getMenuTours } from '~/lib/content';
 import { getLangFromUrl, localizePath } from '~/i18n/utils';
+import { getPermalink } from '~/utils/permalinks';
 
 import type { MetaData } from '~/types';
 import type { Language } from '~/i18n/ui';
@@ -23,6 +25,25 @@ const currentLang: Language = getLangFromUrl(Astro.url);
 // Use language-aware navigation for non-English, fall back to default for English
 const navData = currentLang === 'en' ? { links: headerData.links, actions: headerData.actions } : getHeaderData(currentLang);
 const footerNavData = currentLang === 'en' ? footerData : getFooterData(currentLang);
+
+// Inject dynamic tour links into the header navigation
+const menuTours = await getMenuTours();
+if (menuTours && menuTours.length > 0) {
+  const toursDropdown = navData.links?.find((l: any) => l.text === 'Tours' || l.links);
+  if (toursDropdown) {
+    // Keep static links: All Tours (first) + Tour Comparison (last), replace middle with dynamic tours
+    const allToursLink = toursDropdown.links?.[0];
+    const comparisonLink = toursDropdown.links?.find((l: any) => (l.text || '').toLowerCase().includes('comparison'));
+    toursDropdown.links = [
+      allToursLink,
+      ...menuTours.map((t: any) => ({
+        text: t.tagline || t.name || t.slug,
+        href: getPermalink(`/tours/${t.slug}`),
+      })),
+      comparisonLink,
+    ].filter(Boolean);
+  }
+}
 
 // Build BreadcrumbList from URL path
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '';
