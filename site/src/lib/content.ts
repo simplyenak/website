@@ -670,7 +670,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       ctaSecondary: { text: raw.cta_chat_whatsapp || 'Contact Us', url: '/contact' },
     };
   }
-  if (raw.faqs && Array.isArray(raw.faqs) && !raw.faqSection) {
+  if (raw.faqs && Array.isArray(raw.faqs) && raw.faqs.length > 0 && !raw.faqSection) {
     raw.faqSection = { items: raw.faqs.map((f: any) => ({
       question: f.question || '',
       answer: f.answer || '',
