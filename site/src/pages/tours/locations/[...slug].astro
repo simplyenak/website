@@ -90,7 +90,7 @@ const schemaOrg = {
   <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
     <div class="absolute inset-0">
       {landingPage?.hero_image || landingPage?.heroImage ? (
-        <img src={landingPage.hero_image || landingPage.heroImage} alt="" class="w-full h-full object-cover opacity-40" />
+        <img src={getImageUrl(landingPage.hero_image || landingPage.heroImage)} alt="" class="w-full h-full object-cover opacity-40" />
       ) : (
         <div class="w-full h-full bg-gradient-to-br from-[#1a2a2a] to-[#1a1a1a]"></div>
       )}
