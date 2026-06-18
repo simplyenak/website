@@ -574,9 +574,6 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       heroImage: bgUrl,
       ctaPrimary: { text: 'SEE OUR TOURS', url: '/tours' },
       ctaSecondary: { text: 'ABOUT US', url: '/about' },
-      stats: Array.isArray(h.badges)
-        ? h.badges.map((b: any) => ({ icon: 'google', stars: 5, label: b.text || '' }))
-        : [],
     };
   }
   // Manifesto → Philosophy
