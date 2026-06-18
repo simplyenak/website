@@ -127,6 +127,81 @@ function isEffectivelyEmpty(data, requiredFields = []) {
   return nonEmpty.length < fields.length
 }
 
+// ─── Image field resolution helpers ───────────────────────────────────────
+// Payload returns upload relationship fields as full media objects when
+// depth >= 2. These helpers normalize them to what the frontend expects.
+
+/**
+ * Extract URL string from a Payload media field.
+ * Handles: {url, width, height, alt}, string, null
+ */
+function resolveMediaUrl(media) {
+  if (!media) return null
+  if (typeof media === 'object' && media?.url) return media.url
+  if (typeof media === 'string' && media.length > 0) return media
+  return null
+}
+
+/**
+ * Extract alt text from a Payload media field.
+ */
+function resolveMediaAlt(media) {
+  if (!media) return ''
+  if (typeof media === 'object' && media?.alt) return media.alt
+  return ''
+}
+
+/**
+ * Extract dimensions from a Payload media field.
+ */
+function resolveMediaWidth(media) {
+  if (!media) return null
+  if (typeof media === 'object' && media?.width) return media.width
+  return null
+}
+
+function resolveMediaHeight(media) {
+  if (!media) return null
+  if (typeof media === 'object' && media?.height) return media.height
+  return null
+}
+
+/**
+ * Resolve a media field to a rich object for frontend Image components.
+ * Returns {src, alt, width, height, url} or the raw string.
+ * The frontend getImageUrl() and widgets handle both forms.
+ */
+function resolveMedia(media) {
+  if (!media) return null
+  if (typeof media === 'string') return media.length > 0 ? media : null
+  if (typeof media === 'object' && media?.url) {
+    return {
+      src: media.url,
+      url: media.url,
+      alt: media.alt || '',
+      width: media.width || null,
+      height: media.height || null,
+    }
+  }
+  return null
+}
+// ─── End image helpers ────────────────────────────────────────────────────
+
+/**
+ * Set URL + companion alt/width/height fields on an output object from a
+ * Payload media field.  Shorthand for flat-key transforms that need to
+ * carry all metadata without breaking existing URL-string consumers.
+ *
+ *   setMediaField(out, 'hero_bg_image', hero.bgImage)
+ *   → sets out.hero_bg_image, out.hero_bg_image_alt, out.hero_bg_image_width, out.hero_bg_image_height
+ */
+function setMediaField(out, fieldName, media) {
+  out[fieldName] = resolveMediaUrl(media)
+  out[`${fieldName}_alt`] = resolveMediaAlt(media)
+  out[`${fieldName}_width`] = resolveMediaWidth(media)
+  out[`${fieldName}_height`] = resolveMediaHeight(media)
+}
+
 // The key content fields for home-page and about-page — if these are all empty,
 // the Payload blocks haven't been populated yet.
 const HOME_REQUIRED_FIELDS = [
@@ -518,7 +593,7 @@ function transformHomePage(doc) {
   out.hero_subtitle = hero.subtitle || ''
   out.hero_description = hero.description || ''
   out.hero_price_info = hero.priceInfo || ''
-  out.hero_bg_image = hero.bgImage || hero.image || null
+  setMediaField(out, 'hero_bg_image', hero.bgImage || hero.image)
   out.hero_eyebrow = hero.eyebrow || ''
   out.hero_cta_primary = hero.ctaPrimaryText || hero.ctaPrimary || ''
   out.hero_cta_primary_url = hero.ctaPrimaryUrl || ''
@@ -546,7 +621,7 @@ function transformHomePage(doc) {
   out.manifesto_body = manifesto.body || ''
   out.manifesto_attribution_name = manifesto.attributionName || manifesto.founderName || ''
   out.manifesto_attribution_role = manifesto.attributionRole || manifesto.attribution || ''
-  out.manifesto_portrait = manifesto.portrait || null
+  setMediaField(out, 'manifesto_portrait', manifesto.portrait)
 
   // ── Pillars Section ──
   const pillars = blocks.pillarsSection || {}
@@ -560,7 +635,7 @@ function transformHomePage(doc) {
     out[`pillar_${key}_label`] = p.label || p.title || ''
     out[`pillar_${key}_heading`] = p.heading || ''
     out[`pillar_${key}_body`] = p.body || p.description || ''
-    out[`pillar_${key}_image`] = p.image || null
+    setMediaField(out, `pillar_${key}_image`, p.image)
   }
 
   // ── Vendors Section ──
@@ -583,7 +658,7 @@ function transformHomePage(doc) {
   out.about_subtitle = about.subtitle || null
   out.about_description = about.description || null
   out.about_heritage = about.heritage || null
-  out.about_image = about.image || null
+  setMediaField(out, 'about_image', about.image)
 
   // ── Expect Section (stats) ──
   // Frontend expects expect_stat{N}_number/heading/body for each stat
@@ -640,7 +715,7 @@ function transformAboutPage(doc) {
 
   // ── Hero Section ──
   const hero = blocks.heroSection || {}
-  out.heroImage = hero.image || doc.hero_image || ''
+  setMediaField(out, 'heroImage', hero.image || doc.hero_image)
   out.heroEyebrow = doc.hero_eyebrow || hero.eyebrow || 'Our Story'
   out.heroHeading = hero.title || ''
   out.heroDescription = hero.subtitle || doc.hero_description || ''
@@ -651,7 +726,8 @@ function transformAboutPage(doc) {
     eyebrow: doc.founder_eyebrow || founder.eyebrow || 'Meet Pauline',
     heading: founder.title || doc.founder_heading || '',
     paragraphs: (founder.content || doc.founder_paragraphs || '').split('\n\n').filter(Boolean),
-    image: founder.image || doc.founder_image || '',
+    image: resolveMediaUrl(founder.image) || resolveMediaUrl(doc.founder_image) || '',
+    imageAlt: resolveMediaAlt(founder.image) || resolveMediaAlt(doc.founder_image) || '',
   }
 
   // ── Stats Section ──
@@ -802,7 +878,7 @@ function transformNavigation(docs) {
 
 function transformPage(doc) {
   if (!doc) return null
-  return {
+  const out = {
     id: doc.id,
     slug: doc.slug,
     _status: doc.status || 'published',
@@ -814,7 +890,6 @@ function transformPage(doc) {
     hero_title: doc.hero_title || '',
     hero_subtitle: doc.hero_subtitle || '',
     hero_description: doc.hero_description || '',
-    hero_image: doc.hero_image || null,
     short_description: doc.short_description || '',
     shortDescription: doc.short_description || '',
     full_description: doc.full_description || '',
@@ -830,6 +905,8 @@ function transformPage(doc) {
     createdAt: doc.createdAt,
     updatedAt: doc.updatedAt,
   }
+  setMediaField(out, 'hero_image', doc.hero_image)
+  return out
 }
 function transformLandingPages(docs) {
   if (!docs || docs.length === 0) return { dietary: [], specialty: [], travelType: [], location: [] }
@@ -842,8 +919,9 @@ function transformLandingPages(docs) {
       id: doc.id, slug: doc.slug, status: doc.status || 'published',
       meta_title: doc.meta_title || '', meta_description: doc.meta_description || '',
       hero_title: doc.hero_title || '', hero_subtitle: doc.hero_subtitle || '',
-      hero_description: doc.hero_description || '', hero_image: doc.hero_image || '',
+      hero_description: doc.hero_description || '',
     }
+    setMediaField(flat, 'hero_image', doc.hero_image)
 
     if (type === 'dietary') {
       flat.dietary_name = doc.title

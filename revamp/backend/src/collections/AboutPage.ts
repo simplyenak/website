@@ -34,7 +34,7 @@ export const AboutPage: CollectionConfig = {
         ],
       }],
     },
-    { name: 'hero_image', type: 'text', admin: { description: 'Hero background image URL' } },
+    { name: 'hero_image', type: 'upload', relationTo: 'media', admin: { description: 'Hero background image — select from media library' } },
     { name: 'hero_eyebrow', type: 'text' },
     { name: 'hero_description', type: 'textarea' },
 
@@ -56,7 +56,7 @@ export const AboutPage: CollectionConfig = {
     { name: 'founder_eyebrow', type: 'text' },
     { name: 'founder_heading', type: 'text' },
     { name: 'founder_paragraphs', type: 'textarea' },
-    { name: 'founder_image', type: 'text', admin: { description: 'Founder photo URL' } },
+    { name: 'founder_image', type: 'upload', relationTo: 'media', admin: { description: 'Founder photo — select from media library' } },
 
     // Stats
     {
