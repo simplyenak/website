@@ -174,6 +174,7 @@ export default buildConfig({
         media: {
           prefix: '',
           disablePayloadAccessControl: true,
+          disableLocalStorage: false,
         },
       },
       bucket: process.env.S3_BUCKET || '',
