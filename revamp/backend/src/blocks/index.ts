@@ -579,7 +579,12 @@ export const neighborhoodBlock: Block = {
     { name: 'name', type: 'text', required: true },
     { name: 'slug', type: 'text', required: true },
     { name: 'description', type: 'textarea' },
-    { name: 'image', type: 'text' },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      admin: { description: 'Neighborhood image — select from media library' },
+    },
     { name: 'location', type: 'text' },
     {
       name: 'highlights',
