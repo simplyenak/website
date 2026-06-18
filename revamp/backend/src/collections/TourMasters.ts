@@ -46,7 +46,7 @@ export const TourMasters: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-      admin: {
+            admin: {
         description: 'The official tour name (e.g., "Flavours of Malaysia")',
       },
     },
@@ -62,7 +62,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
-      admin: {
+            admin: {
         description: 'Short, catchy phrase (e.g., "Off the Beaten Track")',
       },
     },
@@ -70,14 +70,14 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'shortDescription',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Brief overview for listing pages (2-3 sentences)',
       },
     },
     {
       name: 'fullDescription',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Complete tour description for detail pages',
       },
     },
@@ -122,7 +122,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'meetingPoint',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Where participants should gather',
       },
     },
@@ -190,7 +190,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'tailoredNotes',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Notes about customisation options',
       },
     },
@@ -222,7 +222,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'whatsIncluded',
       type: 'array',
-      admin: {
+            admin: {
         description: 'What is included in the tour price',
       },
       fields: [
@@ -236,7 +236,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'whatsExcluded',
       type: 'array',
-      admin: {
+            admin: {
         description: 'What is NOT included in the tour price',
       },
       fields: [
@@ -251,7 +251,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'highlights',
       type: 'array',
-      admin: {
+            admin: {
         description: 'Tour highlights and key features',
       },
       fields: [
@@ -307,7 +307,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'cancellationPolicy',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Cancellation and refund policy text',
       },
     },
@@ -370,7 +370,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'itinerary',
       type: 'array',
-      admin: {
+            admin: {
         description: 'Step-by-step tour itinerary',
       },
       fields: [
@@ -401,7 +401,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'differentiatorsTourist',
       type: 'array',
-      admin: {
+            admin: {
         description: 'What makes this tour different — written for tourists',
       },
       fields: [
@@ -415,7 +415,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'differentiatorsUs',
       type: 'array',
-      admin: {
+            admin: {
         description: 'What makes this tour different — written for our brand voice',
       },
       fields: [
@@ -429,7 +429,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'whatToBring',
       type: 'array',
-      admin: {
+            admin: {
         description: 'What guests should bring / wear',
       },
       fields: [
@@ -492,7 +492,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'heroImageAlt',
       type: 'text',
-      admin: {
+            admin: {
         description: 'Alt text for the hero image',
       },
     },
@@ -524,7 +524,7 @@ export const TourMasters: CollectionConfig = {
     {
       name: 'badgeLabel',
       type: 'text',
-      admin: {
+            admin: {
         description: 'Override badge text (e.g., "Bestseller", "New")',
       },
     },

@@ -18,14 +18,14 @@ export const Media: CollectionConfig = {
       name: 'alt',
       type: 'text',
       required: false,
-      admin: {
+            admin: {
         description: 'Alt text for accessibility',
       },
     },
     {
       name: 'caption',
       type: 'text',
-      admin: {
+            admin: {
         description: 'Optional caption',
       },
     },

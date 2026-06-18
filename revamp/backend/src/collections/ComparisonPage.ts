@@ -26,28 +26,28 @@ export const ComparisonPage: CollectionConfig = {
       name: 'page_title',
       type: 'text',
       required: true,
-      admin: { description: 'Page H1 title' },
+            admin: { description: 'Page H1 title' },
     },
     {
       name: 'page_subtitle',
       type: 'text',
-      admin: { description: 'Subtitle under the title' },
+            admin: { description: 'Subtitle under the title' },
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      admin: { description: 'Intro paragraph explaining the comparison' },
+            admin: { description: 'Intro paragraph explaining the comparison' },
     },
     {
       name: 'comparison_intro',
       type: 'textarea',
-      admin: { description: 'Text before the comparison table' },
+            admin: { description: 'Text before the comparison table' },
     },
     {
       name: 'competitors',
       type: 'array',
       maxRows: 5,
-      admin: { initCollapsed: true, description: 'Competitors to compare against' },
+            admin: { initCollapsed: true, description: 'Competitors to compare against' },
       fields: [
         { name: 'name', type: 'text', required: true, admin: { description: 'Competitor name' } },
         { name: 'tagline', type: 'text', admin: { description: 'Short tagline or descriptor' } },
@@ -57,7 +57,7 @@ export const ComparisonPage: CollectionConfig = {
       name: 'comparison_rows',
       type: 'array',
       maxRows: 20,
-      admin: { initCollapsed: true, description: 'Feature comparison rows' },
+            admin: { initCollapsed: true, description: 'Feature comparison rows' },
       fields: [
         {
           name: 'feature',
@@ -90,6 +90,10 @@ export const ComparisonPage: CollectionConfig = {
       type: 'group',
       admin: { description: 'Bottom CTA section' },
       fields: [
+        { name: 'eyebrow', type: 'text' },
+        { name: 'title', type: 'text' },
+        { name: 'body', type: 'textarea' },
+        { name: 'cta_label', type: 'text' },
         { name: 'cta_url', type: 'text' },
       ],
     },
@@ -97,7 +101,7 @@ export const ComparisonPage: CollectionConfig = {
       name: 'trust_badges',
       type: 'array',
       maxRows: 5,
-      admin: { initCollapsed: true, description: 'Trust signals below comparison' },
+            admin: { initCollapsed: true, description: 'Trust signals below comparison' },
       fields: [
         { name: 'icon', type: 'text', admin: { description: 'Icon name or SVG reference' } },
         { name: 'label', type: 'text', required: true },
@@ -107,10 +111,10 @@ export const ComparisonPage: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-    },
+          },
     {
       name: 'meta_description',
       type: 'textarea',
-    },
+          },
   ],
 }

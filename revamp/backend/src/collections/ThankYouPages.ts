@@ -19,7 +19,7 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      required: true,
+            required: true,
       admin: {
         description: 'Page title (e.g., "Thank You - Contact Form")',
       },
@@ -64,7 +64,7 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'heroSection',
       type: 'group',
-      fields: [
+            fields: [
         {
           name: 'heading',
           type: 'text',
@@ -94,14 +94,14 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'message',
       type: 'richText',
-      admin: {
+            admin: {
         description: 'Main thank you message',
       },
     },
     {
       name: 'nextSteps',
       type: 'array',
-      admin: {
+            admin: {
         description: 'What happens next (bullet points)',
       },
       fields: [
@@ -115,7 +115,7 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'contactInfo',
       type: 'group',
-      fields: [
+            fields: [
         {
           name: 'showContact',
           type: 'checkbox',
@@ -151,7 +151,7 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'ctaSection',
       type: 'group',
-      fields: [
+            fields: [
         {
           name: 'showCta',
           type: 'checkbox',
@@ -193,7 +193,7 @@ export const ThankYouPages: CollectionConfig = {
     {
       name: 'seo',
       type: 'group',
-      fields: [
+            fields: [
         {
           name: 'metaTitle',
           type: 'text',

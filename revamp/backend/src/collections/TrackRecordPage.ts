@@ -25,31 +25,31 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      required: true,
+            required: true,
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_title',
       type: 'text',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_subtitle',
       type: 'textarea',
-    },
+          },
     {
       name: 'philosophy_quote',
       type: 'textarea',
-      admin: { description: 'Philosophy/mission quote block' },
+            admin: { description: 'Philosophy/mission quote block' },
     },
     {
       name: 'stats',
       type: 'array',
-      admin: { description: 'Key statistics/metrics' },
+            admin: { description: 'Key statistics/metrics' },
       fields: [
         {
           name: 'number',
@@ -66,7 +66,7 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'segments',
       type: 'array',
-      admin: { description: 'Guest segments served (corporate, families, etc.)' },
+            admin: { description: 'Guest segments served (corporate, families, etc.)' },
       fields: [
         {
           name: 'num',
@@ -91,7 +91,7 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'case_studies',
       type: 'array',
-      admin: { description: 'Case studies / client stories' },
+            admin: { description: 'Case studies / client stories' },
       fields: [
         {
           name: 'client',
@@ -128,7 +128,7 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'awards',
       type: 'array',
-      admin: { description: 'Awards and recognitions' },
+            admin: { description: 'Awards and recognitions' },
       fields: [
         {
           name: 'award',
@@ -148,7 +148,7 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'how_we_work_eyebrow',
       type: 'text',
-      admin: { description: 'Eyebrow text for "How we work" section' },
+            admin: { description: 'Eyebrow text for "How we work" section' },
     },
   ],
 }

@@ -29,44 +29,44 @@ export const CorporateGroupsPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      required: true,
+            required: true,
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_eyebrow',
       type: 'text',
-      admin: { description: 'Small label above hero title' },
+            admin: { description: 'Small label above hero title' },
     },
     {
       name: 'hero_title',
       type: 'text',
-      required: true,
+            required: true,
     },
     {
       name: 'hero_subtitle',
       type: 'textarea',
-    },
+          },
     {
       name: 'offer_eyebrow',
       type: 'text',
-    },
+          },
     {
       name: 'offer_heading',
       type: 'text',
-    },
+          },
     {
       name: 'offer_body_1',
       type: 'textarea',
-      admin: { description: 'Main offer description text' },
+            admin: { description: 'Main offer description text' },
     },
     {
       name: 'offer_perfect_for',
       type: 'array',
-      admin: { description: '"Perfect for" list items' },
+            admin: { description: '"Perfect for" list items' },
       fields: [
         {
           name: 'item',
@@ -78,20 +78,20 @@ export const CorporateGroupsPage: CollectionConfig = {
     {
       name: 'offer_body_2',
       type: 'textarea',
-      admin: { description: 'Secondary offer text' },
+            admin: { description: 'Secondary offer text' },
     },
     {
       name: 'benefits_eyebrow',
       type: 'text',
-    },
+          },
     {
       name: 'benefits_title',
       type: 'text',
-    },
+          },
     {
       name: 'benefit_cards',
       type: 'array',
-      admin: { description: 'Feature/benefit cards' },
+            admin: { description: 'Feature/benefit cards' },
       fields: [
         {
           name: 'icon',
@@ -112,7 +112,7 @@ export const CorporateGroupsPage: CollectionConfig = {
     {
       name: 'kl_section',
       type: 'group',
-      fields: [
+            fields: [
         {
           name: 'eyebrow',
           type: 'text',
@@ -131,7 +131,7 @@ export const CorporateGroupsPage: CollectionConfig = {
     {
       name: 'penang_section',
       type: 'group',
-      fields: [
+            fields: [
         {
           name: 'eyebrow',
           type: 'text',
@@ -150,15 +150,15 @@ export const CorporateGroupsPage: CollectionConfig = {
     {
       name: 'how_eyebrow',
       type: 'text',
-    },
+          },
     {
       name: 'how_heading',
       type: 'text',
-    },
+          },
     {
       name: 'how_steps',
       type: 'array',
-      admin: { description: 'How it works steps for corporate groups' },
+            admin: { description: 'How it works steps for corporate groups' },
       fields: [
         {
           name: 'number',
@@ -178,18 +178,18 @@ export const CorporateGroupsPage: CollectionConfig = {
     {
       name: 'cta_heading',
       type: 'text',
-    },
+          },
     {
       name: 'cta_body',
       type: 'textarea',
-    },
+          },
     {
       name: 'cta_email_label',
       type: 'text',
-    },
+          },
     {
       name: 'cta_whatsapp_label',
       type: 'text',
-    },
+          },
   ],
 }

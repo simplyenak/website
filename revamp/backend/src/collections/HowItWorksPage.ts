@@ -29,23 +29,23 @@ export const HowItWorksPage: CollectionConfig = {
     {
       name: 'hero_title',
       type: 'text',
-      required: true,
+            required: true,
       admin: { description: 'Page hero title' },
     },
     {
       name: 'hero_subtitle',
       type: 'text',
-      admin: { description: 'Hero subtitle' },
+            admin: { description: 'Hero subtitle' },
     },
     {
       name: 'steps_title',
       type: 'text',
-      admin: { description: 'Section title for tour steps' },
+            admin: { description: 'Section title for tour steps' },
     },
     {
       name: 'steps',
       type: 'array',
-      required: true,
+            required: true,
       admin: { description: 'Step-by-step tour process' },
       fields: [
         {
@@ -68,12 +68,12 @@ export const HowItWorksPage: CollectionConfig = {
     {
       name: 'inclusions_title',
       type: 'text',
-      admin: { description: 'Section title for what\'s included' },
+            admin: { description: 'Section title for what\'s included' },
     },
     {
       name: 'inclusions',
       type: 'array',
-      admin: { description: 'Items included in every tour' },
+            admin: { description: 'Items included in every tour' },
       fields: [
         {
           name: 'item',
@@ -85,17 +85,17 @@ export const HowItWorksPage: CollectionConfig = {
     {
       name: 'formats_title',
       type: 'text',
-      admin: { description: 'Section title for tour formats' },
+            admin: { description: 'Section title for tour formats' },
     },
     {
       name: 'formats_subtitle',
       type: 'text',
-      admin: { description: 'Subtitle for tour formats section' },
+            admin: { description: 'Subtitle for tour formats section' },
     },
     {
       name: 'formats',
       type: 'array',
-      admin: { description: 'Tour format options (join-in, private, etc.)' },
+            admin: { description: 'Tour format options (join-in, private, etc.)' },
       fields: [
         {
           name: 'name',
@@ -112,12 +112,12 @@ export const HowItWorksPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      admin: { description: 'SEO meta title' },
+            admin: { description: 'SEO meta title' },
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      admin: { description: 'SEO meta description' },
+            admin: { description: 'SEO meta description' },
     },
   ],
 }

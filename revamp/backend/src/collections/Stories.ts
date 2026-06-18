@@ -38,7 +38,7 @@ export const Stories: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
-      admin: {
+            admin: {
         description: 'Blog post title',
       },
     },
@@ -64,7 +64,7 @@ export const Stories: CollectionConfig = {
     {
       name: 'excerpt',
       type: 'textarea',
-      admin: {
+            admin: {
         description: 'Short summary for listing pages (2-3 sentences)',
       },
     },
@@ -72,7 +72,7 @@ export const Stories: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: true,
-      admin: {
+            admin: {
         description: 'Full blog post content',
       },
     },
