@@ -196,15 +196,14 @@ const tourSchema = {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-16">
     <div class="grid gap-10 md:grid-cols-5">
       <!-- Left: Main Content -->
-      <div class="md:col-span-3">
-
-        <!-- Overview -->
-        <section id="overview" class="mb-16 scroll-mt-20">
-          <h2 class="font-bold font-heading text-default text-2xl md:text-3xl mb-6">About This Tour</h2>
-          <div class="text-default leading-relaxed space-y-4">
-            {tour.shortDesc && <p class="text-muted break-words">{tour.shortDesc}</p>}
-            {tour.fullDesc && <div class="text-muted space-y-4 break-words max-w-full overflow-x-hidden" set:html={tour.fullDesc} />}
-          </div>
+      <div class="md:col-span-3 min-w-0">
+          <!-- Overview -->
+          <section id="overview" class="mb-16 scroll-mt-20">
+            <h2 class="font-bold font-heading text-default text-2xl md:text-3xl mb-6">About This Tour</h2>
+            <div class="text-default leading-relaxed space-y-4">
+              {tour.shortDesc && <p class="text-muted">{tour.shortDesc}</p>}
+              {tour.fullDesc && <div class="text-muted space-y-4 set-html-content" set:html={tour.fullDesc} />}
+            </div>
 
           {highlights.length > 0 && (
             <div class="mt-8">
@@ -345,7 +344,7 @@ const tourSchema = {
       </div>
 
       <!-- Right: Sidebar -->
-      <div class="md:col-span-2">
+      <div class="md:col-span-2 min-w-0">
         <div class="md:sticky md:top-24 border border-gray-100 bg-white dark:bg-[#1e1c1c] dark:border-white/10 overflow-hidden shadow-sm rounded-xl">
           <div class="border-b border-gray-100 dark:border-white/10 p-6">
             <p class="text-muted text-xs mb-1 tracking-wide uppercase">From</p>
@@ -467,3 +466,12 @@ const tourSchema = {
 <script is:inline>
   if (window.trackTourInterest) window.trackTourInterest('{tour.name || tour.tagline || ''}');
 </script>
+<style is:global>
+  .set-html-content img,
+  .set-html-content table,
+  .set-html-content pre,
+  .set-html-content iframe {
+    max-width: 100% !important;
+    height: auto;
+  }
+</style>
