@@ -26,7 +26,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
-      localized: true,
       required: true,
       admin: {
         description: 'Vendor/stall/restaurant name',
@@ -64,7 +63,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
-      localized: true,
       required: true,
       admin: {
         description: 'Brief description of this vendor',
@@ -73,7 +71,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'history',
       type: 'textarea',
-      localized: true,
       admin: {
         description: 'History, heritage, family story behind this vendor',
       },
@@ -88,7 +85,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'generation',
       type: 'text',
-      localized: true,
       admin: {
         description: 'Which generation runs it now (e.g., "2nd generation", "3rd generation")',
       },
@@ -96,7 +92,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'ownerName',
       type: 'text',
-      localized: true,
       admin: {
         description: 'Current owner/chef name',
       },
@@ -132,7 +127,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'location',
       type: 'group',
-      localized: true,
       fields: [
         {
           name: 'address',
@@ -202,7 +196,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'operatingHours',
       type: 'array',
-      localized: true,
       admin: {
         description: 'Operating hours by day',
       },
@@ -429,7 +422,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'story',
       type: 'textarea',
-      localized: true,
       admin: {
         description: 'Full story, anecdotes, interesting facts about this vendor',
       },
@@ -437,7 +429,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'awards',
       type: 'array',
-      localized: true,
       admin: {
         description: 'Awards, recognitions, media features',
       },
@@ -460,7 +451,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'mediaFeatures',
       type: 'textarea',
-      localized: true,
       admin: {
         description: 'TV shows, newspapers, magazines, blogs that featured this vendor',
       },
@@ -468,7 +458,6 @@ export const Vendors: CollectionConfig = {
     {
       name: 'tips',
       type: 'textarea',
-      localized: true,
       admin: {
         description: 'Tips for visitors (e.g., "Arrive early", "Cash only", "Best to try X dish")',
       },

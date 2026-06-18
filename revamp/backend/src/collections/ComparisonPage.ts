@@ -26,32 +26,27 @@ export const ComparisonPage: CollectionConfig = {
       name: 'page_title',
       type: 'text',
       required: true,
-      localized: true,
       admin: { description: 'Page H1 title' },
     },
     {
       name: 'page_subtitle',
       type: 'text',
-      localized: true,
       admin: { description: 'Subtitle under the title' },
     },
     {
       name: 'hero_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Intro paragraph explaining the comparison' },
     },
     {
       name: 'comparison_intro',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Text before the comparison table' },
     },
     {
       name: 'competitors',
       type: 'array',
       maxRows: 5,
-      localized: true,
       admin: { initCollapsed: true, description: 'Competitors to compare against' },
       fields: [
         { name: 'name', type: 'text', required: true, admin: { description: 'Competitor name' } },
@@ -62,7 +57,6 @@ export const ComparisonPage: CollectionConfig = {
       name: 'comparison_rows',
       type: 'array',
       maxRows: 20,
-      localized: true,
       admin: { initCollapsed: true, description: 'Feature comparison rows' },
       fields: [
         {
@@ -96,10 +90,6 @@ export const ComparisonPage: CollectionConfig = {
       type: 'group',
       admin: { description: 'Bottom CTA section' },
       fields: [
-        { name: 'eyebrow', type: 'text', localized: true },
-        { name: 'title', type: 'text', localized: true },
-        { name: 'body', type: 'textarea', localized: true },
-        { name: 'cta_label', type: 'text', localized: true },
         { name: 'cta_url', type: 'text' },
       ],
     },
@@ -107,7 +97,6 @@ export const ComparisonPage: CollectionConfig = {
       name: 'trust_badges',
       type: 'array',
       maxRows: 5,
-      localized: true,
       admin: { initCollapsed: true, description: 'Trust signals below comparison' },
       fields: [
         { name: 'icon', type: 'text', admin: { description: 'Icon name or SVG reference' } },
@@ -118,12 +107,10 @@ export const ComparisonPage: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      localized: true,
     },
     {
       name: 'meta_description',
       type: 'textarea',
-      localized: true,
     },
   ],
 }

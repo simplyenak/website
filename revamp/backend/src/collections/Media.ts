@@ -18,7 +18,6 @@ export const Media: CollectionConfig = {
       name: 'alt',
       type: 'text',
       required: false,
-      localized: true,
       admin: {
         description: 'Alt text for accessibility',
       },
@@ -26,7 +25,6 @@ export const Media: CollectionConfig = {
     {
       name: 'caption',
       type: 'text',
-      localized: true,
       admin: {
         description: 'Optional caption',
       },

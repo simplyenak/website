@@ -44,7 +44,6 @@ export const Neighborhoods: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
-      localized: true,
       admin: { description: 'Neighborhood name (e.g., "Bukit Bintang")' },
     },
     {
@@ -57,13 +56,11 @@ export const Neighborhoods: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Short description of the neighborhood' },
     },
     {
       name: 'fullDescription',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Longer description for detail pages' },
     },
     {
@@ -86,7 +83,6 @@ export const Neighborhoods: CollectionConfig = {
       name: 'highlights',
       type: 'array',
       maxRows: 10,
-      localized: true,
       admin: { initCollapsed: true, description: 'Key highlights or tags' },
       fields: [{ name: 'text', type: 'text', required: true }],
     },
@@ -94,7 +90,6 @@ export const Neighborhoods: CollectionConfig = {
       name: 'foodSpecialties',
       type: 'array',
       maxRows: 10,
-      localized: true,
       admin: { initCollapsed: true, description: 'Famous dishes from this area' },
       fields: [{ name: 'name', type: 'text', required: true }],
     },
@@ -119,12 +114,10 @@ export const Neighborhoods: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      localized: true,
     },
     {
       name: 'meta_description',
       type: 'textarea',
-      localized: true,
     },
   ],
 }

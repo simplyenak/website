@@ -22,19 +22,16 @@ export const TourQuiz: CollectionConfig = {
     {
       name: 'intro_title',
       type: 'text',
-      localized: true,
       defaultValue: 'What Type of Malaysian Foodie Are You?',
     },
     {
       name: 'intro_description',
       type: 'textarea',
-      localized: true,
       defaultValue: 'Tell us about your Malaysian food experience and we\'ll reveal your foodie personality — plus match you with the perfect tour.',
     },
     {
       name: 'intro_button_label',
       type: 'text',
-      localized: true,
       defaultValue: 'Take the Quiz',
     },
 
@@ -42,7 +39,6 @@ export const TourQuiz: CollectionConfig = {
     {
       name: 'steps',
       type: 'array',
-      localized: true,
       required: true,
       admin: {
         initCollapsed: true,
@@ -70,7 +66,6 @@ export const TourQuiz: CollectionConfig = {
     {
       name: 'personalities',
       type: 'array',
-      localized: true,
       admin: { initCollapsed: true },
       fields: [
         { name: 'key', type: 'text', required: true },
@@ -102,7 +97,6 @@ export const TourQuiz: CollectionConfig = {
     {
       name: 'result_headlines',
       type: 'array',
-      localized: true,
       fields: [
         { name: 'key', type: 'text', required: true },
         { name: 'headline', type: 'text', required: true },
@@ -111,7 +105,6 @@ export const TourQuiz: CollectionConfig = {
     },
 
     // ── Fallback ──
-    { name: 'fallback_headline', type: 'text', localized: true, defaultValue: 'Our Top Picks For You' },
     {
       name: 'fallback_tours',
       type: 'relationship',
@@ -120,7 +113,5 @@ export const TourQuiz: CollectionConfig = {
     },
 
     // ── Contact CTA ──
-    { name: 'contact_cta_text', type: 'text', localized: true, defaultValue: 'Still not sure which tour is right for you?' },
-    { name: 'contact_cta_button', type: 'text', localized: true, defaultValue: 'Let Us Help You Choose' },
   ],
 }

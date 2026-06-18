@@ -26,13 +26,11 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
-      localized: true,
       admin: { description: 'Short tagline' },
     },
     {
       name: 'description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Site description (SEO)' },
     },
     {
@@ -115,13 +113,11 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'business_hours',
       type: 'text',
-      localized: true,
       admin: { description: 'e.g., "Mon – Sun: 9:00 – 20:00"' },
     },
     {
       name: 'address',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Business address' },
     },
 
@@ -206,12 +202,10 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'meta_title',
       type: 'text',
-      localized: true,
     },
     {
       name: 'meta_description',
       type: 'textarea',
-      localized: true,
     },
     {
       name: 'og_image',
@@ -249,7 +243,6 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'footer_copyright_text',
       type: 'text',
-      localized: true,
     },
     {
       name: 'sub_page_menus',
@@ -356,37 +349,31 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'contact_page_title',
       type: 'text',
-      localized: true,
       admin: { description: 'Contact page <title>' },
     },
     {
       name: 'contact_page_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Contact page meta description' },
     },
     {
       name: 'faq_page_title',
       type: 'text',
-      localized: true,
       admin: { description: 'FAQ page <title>' },
     },
     {
       name: 'faq_page_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'FAQ page meta description' },
     },
     {
       name: 'corporate_page_title',
       type: 'text',
-      localized: true,
       admin: { description: 'Corporate page <title>' },
     },
     {
       name: 'corporate_page_content',
       type: 'richText',
-      localized: true,
       admin: { description: 'Corporate page body content' },
     },
 
@@ -394,7 +381,6 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'guide_meta_description',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Guide page meta description' },
     },
     {
@@ -438,25 +424,21 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'newsletter_section_heading',
       type: 'text',
-      localized: true,
       admin: { description: 'Newsletter section heading' },
     },
     {
       name: 'newsletter_placeholder_text',
       type: 'text',
-      localized: true,
       admin: { description: 'Newsletter email input placeholder' },
     },
     {
       name: 'newsletter_submit_button',
       type: 'text',
-      localized: true,
       admin: { description: 'Newsletter submit button label' },
     },
     {
       name: 'newsletter_success_message',
       type: 'text',
-      localized: true,
       admin: { description: 'Message shown after successful subscription' },
     },
 
@@ -464,13 +446,11 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'whatsapp_button_label',
       type: 'text',
-      localized: true,
       admin: { description: 'WhatsApp CTA button text' },
     },
     {
       name: 'whatsapp_greeting_message',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Pre-filled WhatsApp message text' },
     },
 
@@ -500,7 +480,6 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'cookie_banner_message',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Main cookie banner text' },
     },
     {
@@ -511,13 +490,11 @@ export const SiteSettings: CollectionConfig = {
     {
       name: 'cookie_banner_decline_text',
       type: 'text',
-      localized: true,
       admin: { description: 'Decline button label' },
     },
     {
       name: 'cookie_banner_accept_text',
       type: 'text',
-      localized: true,
       admin: { description: 'Accept button label' },
     },
 
@@ -530,7 +507,6 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'primary_label',
           type: 'text',
-          localized: true,
           admin: { description: 'Default primary CTA (e.g., "Book Your Tour")' },
         },
         {
@@ -541,7 +517,6 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'secondary_label',
           type: 'text',
-          localized: true,
           admin: { description: 'Default secondary CTA (e.g., "Contact Us")' },
         },
         {
@@ -552,7 +527,6 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'whatsapp_label',
           type: 'text',
-          localized: true,
           admin: { description: 'WhatsApp CTA fallback text' },
         },
       ],
@@ -594,19 +568,16 @@ export const SiteSettings: CollectionConfig = {
         {
           name: 'title',
           type: 'text',
-          localized: true,
           admin: { description: '404 page heading' },
         },
         {
           name: 'body',
           type: 'textarea',
-          localized: true,
           admin: { description: '404 page message' },
         },
         {
           name: 'cta_label',
           type: 'text',
-          localized: true,
           admin: { description: 'Button text (e.g., "Back to Home")' },
         },
         {

@@ -31,7 +31,6 @@ export const FAQs: CollectionConfig = {
       name: 'question',
       type: 'text',
       required: true,
-      localized: true,
       admin: {
         description: 'The question as a visitor would ask it',
       },
@@ -39,7 +38,6 @@ export const FAQs: CollectionConfig = {
     {
       name: 'answer',
       type: 'richText',
-      localized: true,
       admin: {
         description: 'Full answer — supports formatting, links, and lists',
       },

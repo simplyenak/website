@@ -25,36 +25,30 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'seo_title',
       type: 'text',
-      localized: true,
       required: true,
     },
     {
       name: 'seo_description',
       type: 'textarea',
-      localized: true,
       required: true,
     },
     {
       name: 'hero_title',
       type: 'text',
-      localized: true,
       required: true,
     },
     {
       name: 'hero_subtitle',
       type: 'textarea',
-      localized: true,
     },
     {
       name: 'philosophy_quote',
       type: 'textarea',
-      localized: true,
       admin: { description: 'Philosophy/mission quote block' },
     },
     {
       name: 'stats',
       type: 'array',
-      localized: true,
       admin: { description: 'Key statistics/metrics' },
       fields: [
         {
@@ -72,7 +66,6 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'segments',
       type: 'array',
-      localized: true,
       admin: { description: 'Guest segments served (corporate, families, etc.)' },
       fields: [
         {
@@ -98,7 +91,6 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'case_studies',
       type: 'array',
-      localized: true,
       admin: { description: 'Case studies / client stories' },
       fields: [
         {
@@ -136,7 +128,6 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'awards',
       type: 'array',
-      localized: true,
       admin: { description: 'Awards and recognitions' },
       fields: [
         {
@@ -157,7 +148,6 @@ export const TrackRecordPage: CollectionConfig = {
     {
       name: 'how_we_work_eyebrow',
       type: 'text',
-      localized: true,
       admin: { description: 'Eyebrow text for "How we work" section' },
     },
   ],
