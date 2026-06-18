@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const ContactPage: CollectionConfig = {
   slug: 'contact_page',
@@ -20,6 +21,9 @@ export const ContactPage: CollectionConfig = {
       },
     },
     maxPerDoc: 20,
+  },
+  hooks: {
+    afterChange: [triggerStagingDeploy],
   },
   fields: [
     // SEO

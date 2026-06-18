@@ -1,7 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const AboutPage: CollectionConfig = {
   slug: 'about_page',
+  hooks: {
+    afterChange: [triggerStagingDeploy],
+  },
   admin: {
     group: 'Pages',
     useAsTitle: 'seo_title',

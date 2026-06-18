@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const SpecialtyExperiences: CollectionConfig = {
   slug: 'specialty_experiences',
@@ -43,6 +44,7 @@ export const SpecialtyExperiences: CollectionConfig = {
     },
   ],
   hooks: {
+    afterChange: [triggerStagingDeploy],
     beforeChange: [
       ({ operation, data }) => {
         if (operation === 'create' && data.name && !data.slug) {

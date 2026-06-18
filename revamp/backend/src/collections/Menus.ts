@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const Menus: CollectionConfig = {
   slug: 'menus',
@@ -88,6 +89,7 @@ export const Menus: CollectionConfig = {
     },
   ],
   hooks: {
+    afterChange: [triggerStagingDeploy],
     beforeChange: [
       ({ data }) => {
         if (data?.items) {

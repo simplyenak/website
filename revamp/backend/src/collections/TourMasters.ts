@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { pushToLive } from '../hooks/pushToLive'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const TourMasters: CollectionConfig = {
   slug: 'tour-masters',
@@ -37,7 +38,7 @@ export const TourMasters: CollectionConfig = {
         return data
       },
     ],
-    afterChange: [pushToLive],
+    afterChange: [pushToLive, triggerStagingDeploy],
   },
   fields: [
     // ── Identity ──────────────────────────────────────────────────────

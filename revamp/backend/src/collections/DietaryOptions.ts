@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const DietaryOptions: CollectionConfig = {
   slug: 'dietary_options',
@@ -21,6 +22,9 @@ export const DietaryOptions: CollectionConfig = {
       },
     },
     maxPerDoc: 50,
+  },
+  hooks: {
+    afterChange: [triggerStagingDeploy],
   },
   fields: [
     {
