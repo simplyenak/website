@@ -202,8 +202,8 @@ const tourSchema = {
         <section id="overview" class="mb-16 scroll-mt-20">
           <h2 class="font-bold font-heading text-default text-2xl md:text-3xl mb-6">About This Tour</h2>
           <div class="text-default leading-relaxed space-y-4">
-            {tour.shortDesc && <p class="text-muted">{tour.shortDesc}</p>}
-            {tour.fullDesc && <div class="text-muted space-y-4" set:html={tour.fullDesc} />}
+            {tour.shortDesc && <p class="text-muted break-words">{tour.shortDesc}</p>}
+            {tour.fullDesc && <div class="text-muted space-y-4 break-words max-w-full overflow-x-hidden" set:html={tour.fullDesc} />}
           </div>
 
           {highlights.length > 0 && (
@@ -213,7 +213,7 @@ const tourSchema = {
                 {highlights.map((h) => (
                   <li class="flex items-start gap-3 text-muted">
                     <span class="text-accent shrink-0 mt-1">✦</span>
-                    <span>{h}</span>
+                    <span class="break-words">{h}</span>
                   </li>
                 ))}
               </ul>
