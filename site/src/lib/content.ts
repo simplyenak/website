@@ -560,7 +560,65 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
   // Map Payload block structure to flat keys that shapeHomePage expects.
   // Payload stores: heroSection[{block with fields}]
   // shapeHomePage reads: raw.hero, raw.featuredIn, raw.philosophy, etc.
-  
+
+  // --- Map from Payload blocks format (tier 1 live API) ---
+  // Each section is an array of blocks with maxRows: 1
+  if (raw.heroSection && Array.isArray(raw.heroSection) && raw.heroSection.length > 0 && !raw.hero) {
+    const h = raw.heroSection[0];
+    const bgUrl = typeof h.bgImage === 'object' && h.bgImage?.url ? h.bgImage.url : (typeof h.bgImage === 'string' ? h.bgImage : '');
+    raw.hero = {
+      eyebrow: h.subtitle || '',
+      title: h.title || '',
+      titleHighlight: h.highlight || '',
+      description: h.description || '',
+      heroImage: bgUrl,
+      ctaPrimary: { text: 'SEE OUR TOURS', url: '/tours' },
+      ctaSecondary: { text: 'ABOUT US', url: '/about' },
+      stats: Array.isArray(h.badges)
+        ? h.badges.map((b: any) => ({ icon: 'google', stars: 5, label: b.text || '' }))
+        : [],
+    };
+  }
+  // Manifesto → Philosophy
+  if (raw.manifestoSection && Array.isArray(raw.manifestoSection) && raw.manifestoSection.length > 0 && !raw.philosophy) {
+    const m = raw.manifestoSection[0];
+    raw.philosophy = {
+      eyebrow: m.eyebrow || '',
+      heading: m.headline || '',
+      description: m.tagline || '',
+    };
+  }
+  // Expect/Stats → TestimonialsSection
+  if (raw.expectSection && Array.isArray(raw.expectSection) && raw.expectSection.length > 0 && !raw.testimonialsSection) {
+    const s = raw.expectSection[0];
+    raw.testimonialsSection = {
+      eyebrow: s.subtitle || '',
+      heading: s.title || '',
+      stats: Array.isArray(s.stats)
+        ? s.stats.map((st: any) => ({ number: st.number || '', label: st.heading || '' }))
+        : [],
+      testimonials: [],
+    };
+  }
+  // CTA Section
+  if (raw.ctaSection && Array.isArray(raw.ctaSection) && raw.ctaSection.length > 0) {
+    const c = raw.ctaSection[0];
+    raw.ctaSection = {
+      heading: c.title || '',
+      description: c.subtitle || '',
+      ctaPrimary: c.buttons?.[0] ? { text: c.buttons[0].label, url: c.buttons[0].url } : { text: 'Browse All Tours', url: '/tours' },
+      ctaSecondary: c.buttons?.[1] ? { text: c.buttons[1].label, url: c.buttons[1].url } : { text: 'Contact Us', url: '/contact' },
+    };
+  }
+  // FAQs (top-level array field)
+  if (raw.faqs && Array.isArray(raw.faqs) && !raw.faqSection) {
+    raw.faqSection = {
+      eyebrow: 'Frequently Asked Questions',
+      heading: 'Everything you need to know',
+      items: raw.faqs.map((f: any) => ({ question: f.question || '', answer: f.answer || '' })),
+    };
+  }
+
   // --- Map from JSON snapshot flat fields (e.g., hero_title → raw.hero.title) ---
   if (raw.hero_title && !raw.hero) {
     raw.hero = {
