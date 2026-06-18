@@ -1,65 +1,13 @@
 {
   "id": 1,
-  "seo_title": "Directions & Meeting Points | Simply Enak",
-  "seo_description": "Find your Simply Enak food tour meeting point in Kuala Lumpur and Penang. Directions to Pasar Seni LRT, Hilton Garden Inn, and George Town meeting points.",
-  "hero_title": "How to Find Us",
-  "hero_description": "All our tours start at convenient, easy-to-find meeting points in the heart of each city.",
-  "hero_image": "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
-  "meeting_points": [
-    {
-      "id": "mp-1",
-      "name": "Pasar Seni LRT Station (KL)",
-      "address": "Pasar Seni LRT Station, Jalan Sultan, Kuala Lumpur",
-      "description": "Meet at Tealive, Pasar Seni LRT Station. The station is on the Kelana Jaya LRT line, one stop from KL Sentral.",
-      "google_maps_url": "https://maps.google.com/?q=Pasar+Seni+LRT+Station",
-      "tours": [
-        "kuala-lumpur-street-food",
-        "secrets-of-kl-nightlife"
-      ]
-    },
-    {
-      "id": "mp-2",
-      "name": "Hilton Garden Inn KL North (KL)",
-      "address": "Hilton Garden Inn KL North, 449 Jalan Tuanku Abdul Rahman, Kuala Lumpur",
-      "description": "Meet at the Hilton Garden Inn KL North lobby. Located in the Chow Kit neighborhood, a 5-minute taxi from KLCC.",
-      "google_maps_url": "https://maps.google.com/?q=Hilton+Garden+Inn+KL+North",
-      "tours": [
-        "flavours-of-malaysia"
-      ]
-    },
-    {
-      "id": "mp-3",
-      "name": "George Town Meeting Point (Penang)",
-      "address": "In front of the CHEW JETTY, Weld Quay, George Town, Penang",
-      "description": "Meet at the entrance of Chew Jetty on Weld Quay. Look for the Simply Enak guide with a blue badge.",
-      "google_maps_url": "https://maps.google.com/?q=Chew+Jetty+George+Town+Penang",
-      "tours": [
-        "eat-drink-george-town",
-        "penang-street-food"
-      ]
-    }
-  ],
-  "general_tips": [
-    {
-      "id": "tip-1",
-      "tip": "Arrive 5-10 minutes early so we can start on time"
-    },
-    {
-      "id": "tip-2",
-      "tip": "Wear comfortable walking shoes - we'll cover about 2 km"
-    },
-    {
-      "id": "tip-3",
-      "tip": "Bring an umbrella or hat for sun/rain protection"
-    },
-    {
-      "id": "tip-4",
-      "tip": "Let us know if you're running late via WhatsApp +6 017 287 8929"
-    },
-    {
-      "id": "tip-5",
-      "tip": "All meeting points are near public transport and taxi stands"
-    }
-  ],
-  "_status": "published"
+  "seo_title": "Meeting Points & Directions | Simply Enak Food Tours",
+  "seo_description": "Find your Simply Enak meeting point. Step-by-step directions to the start of each food tour in Kuala Lumpur and Penang  -  by train, taxi, or Grab.",
+  "hero_title": "Here's how to find us",
+  "hero_description": "Step-by-step directions to every Simply Enak meeting point. Arrive confident  -  your guide will be waiting.",
+  "hero_image": null,
+  "meeting_points": null,
+  "general_tips": null,
+  "updatedAt": "2026-05-19T09:59:19.831Z",
+  "createdAt": "2026-05-19T09:59:19.830Z",
+  "_status": "draft"
 }
