@@ -86,5 +86,36 @@ const msUrl = 'https://simplyenak.com/ms' + (isMsPage ? currentPath.replace(/^\/
 
     <CookieBanner />
     <BasicScripts />
+
+    <!-- MyAlice Chat Widget — loaded after page is interactive -->
+    <script>
+      (function () {
+        function loadChatWidget() {
+          var e = document.createElement("div");
+          e.id = "myAliceWebChat";
+          var t = document.createElement("script");
+          t.type = "text/javascript";
+          t.async = true;
+          t.src = "https://livechat.myalice.ai/index.js";
+          var a = document.body.getElementsByTagName("script");
+          a = a[a.length - 1];
+          a.parentNode.insertBefore(t, a);
+          a.parentNode.insertBefore(e, a);
+          t.addEventListener("load", function () {
+            MyAliceWebChat.init({
+              selector: "#myAliceWebChat",
+              platformId: "12818",
+              primaryId: "7b296d7e658e11edac5dc275f55bff6f",
+              token: "4c6981083aeed7ce81f8c47d029d061227cf5f3939f449b4",
+            });
+          });
+        }
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(loadChatWidget, { timeout: 3000 });
+        } else {
+          setTimeout(loadChatWidget, 2000);
+        }
+      })();
+    </script>
   </body>
 </html>
