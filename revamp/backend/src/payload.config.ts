@@ -174,7 +174,11 @@ export default buildConfig({
         media: {
           prefix: '',
           disablePayloadAccessControl: true,
-          disableLocalStorage: false,
+          generateFileURL: ({ filename }) => {
+            const endpoint = process.env.S3_ENDPOINT || 'https://s3.nl-ams.scw.cloud'
+            const bucket = process.env.S3_BUCKET || 'se-website-images'
+            return `${endpoint}/${bucket}/${filename}`
+          },
         },
       },
       bucket: process.env.S3_BUCKET || '',
