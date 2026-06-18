@@ -1,7 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const FoodItems: CollectionConfig = {
   slug: 'food_items',
+  hooks: {
+    afterChange: [triggerStagingDeploy],
+  },
   admin: {
     useAsTitle: 'name',
     group: 'Reference Data',

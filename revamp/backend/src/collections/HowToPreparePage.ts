@@ -1,7 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const HowToPreparePage: CollectionConfig = {
   slug: 'how_to_prepare_page',
+  hooks: {
+    afterChange: [triggerStagingDeploy],
+  },
   admin: {
     useAsTitle: 'seo_title',
     group: 'Pages',

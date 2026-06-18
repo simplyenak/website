@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const Neighborhoods: CollectionConfig = {
   slug: 'neighborhoods',
@@ -23,6 +24,7 @@ export const Neighborhoods: CollectionConfig = {
     maxPerDoc: 50,
   },
   hooks: {
+    afterChange: [triggerStagingDeploy],
     beforeChange: [
       ({ operation, data }) => {
         if (operation === 'create' && data.name && !data.slug) {

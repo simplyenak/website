@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -8,6 +9,9 @@ export const Media: CollectionConfig = {
   admin: {
     group: 'Content',
     description: '📸 Image and media library for all content',
+  },
+  hooks: {
+    afterChange: [triggerStagingDeploy],
   },
   fields: [
     {

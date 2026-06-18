@@ -1,7 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const SiteSettings: CollectionConfig = {
   slug: 'site_settings',
+  hooks: {
+    afterChange: [triggerStagingDeploy],
+  },
   admin: {
     group: 'Settings & Config',
     description: 'Global site settings — pricing, contact, social, navigation',

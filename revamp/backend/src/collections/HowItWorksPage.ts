@@ -1,7 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const HowItWorksPage: CollectionConfig = {
   slug: 'how_it_works_page',
+  hooks: {
+    afterChange: [triggerStagingDeploy],
+  },
   admin: {
     useAsTitle: 'hero_title',
     group: 'Pages',

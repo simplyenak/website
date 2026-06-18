@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const FAQs: CollectionConfig = {
   slug: 'faqs',
@@ -21,6 +22,9 @@ export const FAQs: CollectionConfig = {
       },
     },
     maxPerDoc: 50,
+  },
+  hooks: {
+    afterChange: [triggerStagingDeploy],
   },
   fields: [
     {

@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const MediaCoverage: CollectionConfig = {
   slug: 'media_coverage',
@@ -13,6 +14,9 @@ export const MediaCoverage: CollectionConfig = {
   versions: {
     drafts: true,
     maxPerDoc: 50,
+  },
+  hooks: {
+    afterChange: [triggerStagingDeploy],
   },
   fields: [
     {

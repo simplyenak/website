@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const LegalPages: CollectionConfig = {
   slug: 'legal_pages',
@@ -11,6 +12,9 @@ export const LegalPages: CollectionConfig = {
   versions: {
     drafts: true,
     maxPerDoc: 50,
+  },
+  hooks: {
+    afterChange: [triggerStagingDeploy],
   },
   fields: [
     {
