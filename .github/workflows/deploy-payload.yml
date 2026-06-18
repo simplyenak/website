@@ -36,6 +36,6 @@ jobs:
           context: revamp/backend
           file: revamp/backend/Dockerfile
           push: true
-          tags: simplyenak/website-backend:latest
+          tags: simplyenak/website-backend:latest,simplyenak/website-backend:noloc2
           cache-from: type=registry,ref=simplyenak/website-backend:latest
           cache-to: type=inline
