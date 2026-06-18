@@ -10,35 +10,10 @@
     "hero_description": "KL's food scene is a 150-year collision of Malay, Chinese, Indian, and Peranakan cultures. We take you to the stalls where this story is still being written every day.",
     "hero_image": "",
     "location_name": "{\"en\":\"Food Tours in Kuala Lumpur\"}",
-    "intro_heading": "Malaysia's Food Crossroads",
-    "intro_content": "<p>Kuala Lumpur began as a tin-mining settlement in 1857. Chinese labourers from Fujian and Guangdong, Malay villagers from the surrounding hills, Indian traders from Tamil Nadu, and Peranakan families from Melaka all converged on this muddy junction where the Klang and Gombak rivers met.</p><p>Each community brought their recipes. Each adapted to tropical ingredients. What emerged wasn't just 'Malaysian food' — it was KL's food: a layered, evolving cuisine that you can't fully experience anywhere else.</p><p>Today, KL is Malaysia's most dynamic food city. From the 4am wet markets of Chow Kit to the 24-hour mamak stalls of Bangsar, from the hidden Chinese coffee shops of Pudu to the street-side satay grills of Klang, the city eats around the clock. Our food tours take you into the neighbourhoods where this culture lives — not the tourist restaurants, but the family stalls that have been feeding locals for generations.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Start Early",
-        "content": ""
-      },
-      {
-        "title": "Walk, Don't Taxi",
-        "content": ""
-      },
-      {
-        "title": "Mix Your Languages",
-        "content": ""
-      },
-      {
-        "title": "Cash is King",
-        "content": ""
-      },
-      {
-        "title": "Dress for the Tropics",
-        "content": ""
-      },
-      {
-        "title": "Drink More Than You Think",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 325,
@@ -51,45 +26,20 @@
     "hero_description": "George Town isn't just Malaysia's food capital — it's where Malay, Chinese, Indian, and Peranakan flavours first collided. We take you to the hawkers who have perfected their dishes for 40+ years.",
     "hero_image": "",
     "location_name": "{\"en\":\"Food Tours in Penang\"}",
-    "intro_heading": "The Food Capital of Malaysia",
-    "intro_content": "<p>Penang Island has been a trading port since 1786. Arab, Indian, Chinese, Malay, and European ships docked here, and the food culture that emerged is unlike anything else in Southeast Asia.</p><p>George Town, the island's capital, is a UNESCO World Heritage Site — not just for its architecture, but for its living food culture. The same families have been cooking the same dishes for generations. Char kway teow over charcoal fires. Assam laksa from recipes perfected in the 1980s. Peranakan kuih made by grandmothers who learned from their grandmothers.</p><p>On our Penang food tours, you don't just taste the food — you meet the people who make it. The uncle who has been frying kway teow since 1982. The auntie whose assam laksa recipe won a CNN poll. The family-run Peranakan kitchen that tourists rarely find.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Come Hungry",
-        "content": ""
-      },
-      {
-        "title": "Walk Between Stalls",
-        "content": ""
-      },
-      {
-        "title": "Learn a Few Words",
-        "content": ""
-      },
-      {
-        "title": "Bring Cash",
-        "content": ""
-      },
-      {
-        "title": "Dress for Heat",
-        "content": ""
-      },
-      {
-        "title": "Stay Hydrated",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 324,
     "slug": "food-tours-melaka",
     "status": "published",
-    "meta_title": "Food Tours in Melaka",
-    "meta_description": "Food Tours in Melaka",
-    "hero_title": "Food Tours in Melaka",
-    "hero_subtitle": "600 Years of Peranakan Heritage",
-    "hero_description": "Discover Melaka's 600-year Peranakan food heritage - a unique blend of Malay, Chinese, and Portuguese influences.",
+    "meta_title": "{\"en\":\"Food Tours in Melaka\"}",
+    "meta_description": "{\"en\":\"Food Tours in Melaka\"}",
+    "hero_title": "{\"en\":\"Food Tours in Melaka\"}",
+    "hero_subtitle": "{\"en\":\"600 Years of Peranakan Heritage\"}",
+    "hero_description": "{\"en\":\"Discover Melaka's 600-year Peranakan food heritage - a unique blend of Malay, Chinese, and Portuguese influences.\"}",
     "hero_image": "",
     "location_name": "{\"en\":\"Food Tours in Melaka\"}",
     "intro_heading": "",
@@ -101,11 +51,11 @@
     "id": 323,
     "slug": "food-tours-ipoh",
     "status": "published",
-    "meta_title": "Food Tours in Ipoh",
-    "meta_description": "Food Tours in Ipoh",
-    "hero_title": "Food Tours in Ipoh",
-    "hero_subtitle": "White Coffee, Bean Sprout Chicken & Nostalgia",
-    "hero_description": "Ipoh is famous for its white coffee, bean sprout chicken, and nostalgic old-town food scene.",
+    "meta_title": "{\"en\":\"Food Tours in Ipoh\"}",
+    "meta_description": "{\"en\":\"Food Tours in Ipoh\"}",
+    "hero_title": "{\"en\":\"Food Tours in Ipoh\"}",
+    "hero_subtitle": "{\"en\":\"White Coffee, Bean Sprout Chicken & Nostalgia\"}",
+    "hero_description": "{\"en\":\"Ipoh is famous for its white coffee, bean sprout chicken, and nostalgic old-town food scene.\"}",
     "hero_image": "",
     "location_name": "{\"en\":\"Food Tours in Ipoh\"}",
     "intro_heading": "",
@@ -117,11 +67,11 @@
     "id": 322,
     "slug": "food-tours-klang",
     "status": "published",
-    "meta_title": "Food Tours in Klang",
-    "meta_description": "Food Tours in Klang",
-    "hero_title": "Food Tours in Klang",
-    "hero_subtitle": "Birthplace of Bak Kut Teh",
-    "hero_description": "Klang is the birthplace of bak kut teh - explore the original pork bone tea and Hokkien heritage.",
+    "meta_title": "{\"en\":\"Food Tours in Klang\"}",
+    "meta_description": "{\"en\":\"Food Tours in Klang\"}",
+    "hero_title": "{\"en\":\"Food Tours in Klang\"}",
+    "hero_subtitle": "{\"en\":\"Birthplace of Bak Kut Teh\"}",
+    "hero_description": "{\"en\":\"Klang is the birthplace of bak kut teh - explore the original pork bone tea and Hokkien heritage.\"}",
     "hero_image": "",
     "location_name": "{\"en\":\"Food Tours in Klang\"}",
     "intro_heading": "",
@@ -140,35 +90,10 @@
     "hero_description": "KL's food scene is a 150-year collision of Malay, Chinese, Indian, and Peranakan cultures. We take you to the stalls where this story is still being written every day.",
     "hero_image": "",
     "location_name": "{\"en\":\"Chow Kit Market Food Tour\"}",
-    "intro_heading": "Malaysia's Food Crossroads",
-    "intro_content": "<p>Kuala Lumpur began as a tin-mining settlement in 1857. Chinese labourers from Fujian and Guangdong, Malay villagers from the surrounding hills, Indian traders from Tamil Nadu, and Peranakan families from Melaka all converged on this muddy junction where the Klang and Gombak rivers met.</p><p>Each community brought their recipes. Each adapted to tropical ingredients. What emerged wasn't just 'Malaysian food' — it was KL's food: a layered, evolving cuisine that you can't fully experience anywhere else.</p><p>Today, KL is Malaysia's most dynamic food city. From the 4am wet markets of Chow Kit to the 24-hour mamak stalls of Bangsar, from the hidden Chinese coffee shops of Pudu to the street-side satay grills of Klang, the city eats around the clock. Our food tours take you into the neighbourhoods where this culture lives — not the tourist restaurants, but the family stalls that have been feeding locals for generations.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Start Early",
-        "content": ""
-      },
-      {
-        "title": "Walk, Don't Taxi",
-        "content": ""
-      },
-      {
-        "title": "Mix Your Languages",
-        "content": ""
-      },
-      {
-        "title": "Cash is King",
-        "content": ""
-      },
-      {
-        "title": "Dress for the Tropics",
-        "content": ""
-      },
-      {
-        "title": "Drink More Than You Think",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 320,
@@ -181,35 +106,10 @@
     "hero_description": "KL's food scene is a 150-year collision of Malay, Chinese, Indian, and Peranakan cultures. We take you to the stalls where this story is still being written every day.",
     "hero_image": "",
     "location_name": "{\"en\":\"Chinatown Food Tour Kuala Lumpur\"}",
-    "intro_heading": "Malaysia's Food Crossroads",
-    "intro_content": "<p>Kuala Lumpur began as a tin-mining settlement in 1857. Chinese labourers from Fujian and Guangdong, Malay villagers from the surrounding hills, Indian traders from Tamil Nadu, and Peranakan families from Melaka all converged on this muddy junction where the Klang and Gombak rivers met.</p><p>Each community brought their recipes. Each adapted to tropical ingredients. What emerged wasn't just 'Malaysian food' — it was KL's food: a layered, evolving cuisine that you can't fully experience anywhere else.</p><p>Today, KL is Malaysia's most dynamic food city. From the 4am wet markets of Chow Kit to the 24-hour mamak stalls of Bangsar, from the hidden Chinese coffee shops of Pudu to the street-side satay grills of Klang, the city eats around the clock. Our food tours take you into the neighbourhoods where this culture lives — not the tourist restaurants, but the family stalls that have been feeding locals for generations.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Start Early",
-        "content": ""
-      },
-      {
-        "title": "Walk, Don't Taxi",
-        "content": ""
-      },
-      {
-        "title": "Mix Your Languages",
-        "content": ""
-      },
-      {
-        "title": "Cash is King",
-        "content": ""
-      },
-      {
-        "title": "Dress for the Tropics",
-        "content": ""
-      },
-      {
-        "title": "Drink More Than You Think",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 319,
@@ -222,35 +122,10 @@
     "hero_description": "KL's food scene is a 150-year collision of Malay, Chinese, Indian, and Peranakan cultures. We take you to the stalls where this story is still being written every day.",
     "hero_image": "",
     "location_name": "{\"en\":\"Little India Food Tour Kuala Lumpur\"}",
-    "intro_heading": "Malaysia's Food Crossroads",
-    "intro_content": "<p>Kuala Lumpur began as a tin-mining settlement in 1857. Chinese labourers from Fujian and Guangdong, Malay villagers from the surrounding hills, Indian traders from Tamil Nadu, and Peranakan families from Melaka all converged on this muddy junction where the Klang and Gombak rivers met.</p><p>Each community brought their recipes. Each adapted to tropical ingredients. What emerged wasn't just 'Malaysian food' — it was KL's food: a layered, evolving cuisine that you can't fully experience anywhere else.</p><p>Today, KL is Malaysia's most dynamic food city. From the 4am wet markets of Chow Kit to the 24-hour mamak stalls of Bangsar, from the hidden Chinese coffee shops of Pudu to the street-side satay grills of Klang, the city eats around the clock. Our food tours take you into the neighbourhoods where this culture lives — not the tourist restaurants, but the family stalls that have been feeding locals for generations.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Start Early",
-        "content": ""
-      },
-      {
-        "title": "Walk, Don't Taxi",
-        "content": ""
-      },
-      {
-        "title": "Mix Your Languages",
-        "content": ""
-      },
-      {
-        "title": "Cash is King",
-        "content": ""
-      },
-      {
-        "title": "Dress for the Tropics",
-        "content": ""
-      },
-      {
-        "title": "Drink More Than You Think",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 318,
@@ -263,35 +138,10 @@
     "hero_description": "KL's food scene is a 150-year collision of Malay, Chinese, Indian, and Peranakan cultures. We take you to the stalls where this story is still being written every day.",
     "hero_image": "",
     "location_name": "{\"en\":\"Kampung Baru Food Tour\"}",
-    "intro_heading": "Malaysia's Food Crossroads",
-    "intro_content": "<p>Kuala Lumpur began as a tin-mining settlement in 1857. Chinese labourers from Fujian and Guangdong, Malay villagers from the surrounding hills, Indian traders from Tamil Nadu, and Peranakan families from Melaka all converged on this muddy junction where the Klang and Gombak rivers met.</p><p>Each community brought their recipes. Each adapted to tropical ingredients. What emerged wasn't just 'Malaysian food' — it was KL's food: a layered, evolving cuisine that you can't fully experience anywhere else.</p><p>Today, KL is Malaysia's most dynamic food city. From the 4am wet markets of Chow Kit to the 24-hour mamak stalls of Bangsar, from the hidden Chinese coffee shops of Pudu to the street-side satay grills of Klang, the city eats around the clock. Our food tours take you into the neighbourhoods where this culture lives — not the tourist restaurants, but the family stalls that have been feeding locals for generations.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Start Early",
-        "content": ""
-      },
-      {
-        "title": "Walk, Don't Taxi",
-        "content": ""
-      },
-      {
-        "title": "Mix Your Languages",
-        "content": ""
-      },
-      {
-        "title": "Cash is King",
-        "content": ""
-      },
-      {
-        "title": "Dress for the Tropics",
-        "content": ""
-      },
-      {
-        "title": "Drink More Than You Think",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 317,
@@ -304,35 +154,10 @@
     "hero_description": "George Town isn't just Malaysia's food capital — it's where Malay, Chinese, Indian, and Peranakan flavours first collided. We take you to the hawkers who have perfected their dishes for 40+ years.",
     "hero_image": "",
     "location_name": "{\"en\":\"Chowrasta Market Food Tour Penang\"}",
-    "intro_heading": "The Food Capital of Malaysia",
-    "intro_content": "<p>Penang Island has been a trading port since 1786. Arab, Indian, Chinese, Malay, and European ships docked here, and the food culture that emerged is unlike anything else in Southeast Asia.</p><p>George Town, the island's capital, is a UNESCO World Heritage Site — not just for its architecture, but for its living food culture. The same families have been cooking the same dishes for generations. Char kway teow over charcoal fires. Assam laksa from recipes perfected in the 1980s. Peranakan kuih made by grandmothers who learned from their grandmothers.</p><p>On our Penang food tours, you don't just taste the food — you meet the people who make it. The uncle who has been frying kway teow since 1982. The auntie whose assam laksa recipe won a CNN poll. The family-run Peranakan kitchen that tourists rarely find.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Come Hungry",
-        "content": ""
-      },
-      {
-        "title": "Walk Between Stalls",
-        "content": ""
-      },
-      {
-        "title": "Learn a Few Words",
-        "content": ""
-      },
-      {
-        "title": "Bring Cash",
-        "content": ""
-      },
-      {
-        "title": "Dress for Heat",
-        "content": ""
-      },
-      {
-        "title": "Stay Hydrated",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 316,
@@ -345,35 +170,10 @@
     "hero_description": "George Town isn't just Malaysia's food capital — it's where Malay, Chinese, Indian, and Peranakan flavours first collided. We take you to the hawkers who have perfected their dishes for 40+ years.",
     "hero_image": "",
     "location_name": "{\"en\":\"Georgetown Heritage Food Tour Penang\"}",
-    "intro_heading": "The Food Capital of Malaysia",
-    "intro_content": "<p>Penang Island has been a trading port since 1786. Arab, Indian, Chinese, Malay, and European ships docked here, and the food culture that emerged is unlike anything else in Southeast Asia.</p><p>George Town, the island's capital, is a UNESCO World Heritage Site — not just for its architecture, but for its living food culture. The same families have been cooking the same dishes for generations. Char kway teow over charcoal fires. Assam laksa from recipes perfected in the 1980s. Peranakan kuih made by grandmothers who learned from their grandmothers.</p><p>On our Penang food tours, you don't just taste the food — you meet the people who make it. The uncle who has been frying kway teow since 1982. The auntie whose assam laksa recipe won a CNN poll. The family-run Peranakan kitchen that tourists rarely find.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Come Hungry",
-        "content": ""
-      },
-      {
-        "title": "Walk Between Stalls",
-        "content": ""
-      },
-      {
-        "title": "Learn a Few Words",
-        "content": ""
-      },
-      {
-        "title": "Bring Cash",
-        "content": ""
-      },
-      {
-        "title": "Dress for Heat",
-        "content": ""
-      },
-      {
-        "title": "Stay Hydrated",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 315,
@@ -386,35 +186,10 @@
     "hero_description": "George Town isn't just Malaysia's food capital — it's where Malay, Chinese, Indian, and Peranakan flavours first collided. We take you to the hawkers who have perfected their dishes for 40+ years.",
     "hero_image": "",
     "location_name": "{\"en\":\"Gurney Drive Food Tour Penang\"}",
-    "intro_heading": "The Food Capital of Malaysia",
-    "intro_content": "<p>Penang Island has been a trading port since 1786. Arab, Indian, Chinese, Malay, and European ships docked here, and the food culture that emerged is unlike anything else in Southeast Asia.</p><p>George Town, the island's capital, is a UNESCO World Heritage Site — not just for its architecture, but for its living food culture. The same families have been cooking the same dishes for generations. Char kway teow over charcoal fires. Assam laksa from recipes perfected in the 1980s. Peranakan kuih made by grandmothers who learned from their grandmothers.</p><p>On our Penang food tours, you don't just taste the food — you meet the people who make it. The uncle who has been frying kway teow since 1982. The auntie whose assam laksa recipe won a CNN poll. The family-run Peranakan kitchen that tourists rarely find.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Come Hungry",
-        "content": ""
-      },
-      {
-        "title": "Walk Between Stalls",
-        "content": ""
-      },
-      {
-        "title": "Learn a Few Words",
-        "content": ""
-      },
-      {
-        "title": "Bring Cash",
-        "content": ""
-      },
-      {
-        "title": "Dress for Heat",
-        "content": ""
-      },
-      {
-        "title": "Stay Hydrated",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   },
   {
     "id": 314,
@@ -427,34 +202,9 @@
     "hero_description": "George Town isn't just Malaysia's food capital — it's where Malay, Chinese, Indian, and Peranakan flavours first collided. We take you to the hawkers who have perfected their dishes for 40+ years.",
     "hero_image": "",
     "location_name": "{\"en\":\"Little India Food Tour Penang\"}",
-    "intro_heading": "The Food Capital of Malaysia",
-    "intro_content": "<p>Penang Island has been a trading port since 1786. Arab, Indian, Chinese, Malay, and European ships docked here, and the food culture that emerged is unlike anything else in Southeast Asia.</p><p>George Town, the island's capital, is a UNESCO World Heritage Site — not just for its architecture, but for its living food culture. The same families have been cooking the same dishes for generations. Char kway teow over charcoal fires. Assam laksa from recipes perfected in the 1980s. Peranakan kuih made by grandmothers who learned from their grandmothers.</p><p>On our Penang food tours, you don't just taste the food — you meet the people who make it. The uncle who has been frying kway teow since 1982. The auntie whose assam laksa recipe won a CNN poll. The family-run Peranakan kitchen that tourists rarely find.</p>",
+    "intro_heading": "",
+    "intro_content": "",
     "travel_tips_heading": "",
-    "travel_tips": [
-      {
-        "title": "Come Hungry",
-        "content": ""
-      },
-      {
-        "title": "Walk Between Stalls",
-        "content": ""
-      },
-      {
-        "title": "Learn a Few Words",
-        "content": ""
-      },
-      {
-        "title": "Bring Cash",
-        "content": ""
-      },
-      {
-        "title": "Dress for Heat",
-        "content": ""
-      },
-      {
-        "title": "Stay Hydrated",
-        "content": ""
-      }
-    ]
+    "travel_tips": []
   }
 ]

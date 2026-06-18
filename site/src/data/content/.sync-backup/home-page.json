@@ -7,44 +7,44 @@
   "hero_description": "Small-group walking food tours through neighborhoods where we actually live and eat. We take you to family-run stalls, share stories behind each dish, and show you why this food matters.",
   "hero_price_info": "From RM 285",
   "hero_bg_image": {
-    "id": 5,
+    "id": 130,
     "usage": null,
     "prefix": "payload-media",
-    "updatedAt": "2026-05-19T09:59:50.618Z",
-    "createdAt": "2026-05-19T09:59:49.821Z",
-    "url": "/api/media/file/Food_Experience_optimized_adc493606c.jpg?prefix=payload-media",
-    "thumbnailURL": "/api/media/file/Food_Experience_optimized_adc493606c-400x300.jpg",
-    "filename": "Food_Experience_optimized_adc493606c.jpg",
+    "updatedAt": "2026-06-17T16:07:56.247Z",
+    "createdAt": "2026-06-17T16:07:53.723Z",
+    "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang006.jpg",
+    "thumbnailURL": "/api/media/file/Penang006-400x300.jpg",
+    "filename": "Penang006.jpg",
     "mimeType": "image/jpeg",
-    "filesize": 175526,
-    "width": 1929,
-    "height": 1343,
+    "filesize": 345099,
+    "width": 1600,
+    "height": 1066,
     "focalX": 50,
     "focalY": 50,
     "sizes": {
       "thumbnail": {
-        "url": "/api/media/file/Food_Experience_optimized_adc493606c-400x300.jpg?prefix=payload-media",
+        "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang006-400x300.jpg",
         "width": 400,
         "height": 300,
         "mimeType": "image/jpeg",
-        "filesize": 23620,
-        "filename": "Food_Experience_optimized_adc493606c-400x300.jpg"
+        "filesize": 28508,
+        "filename": "Penang006-400x300.jpg"
       },
       "medium": {
-        "url": "/api/media/file/Food_Experience_optimized_adc493606c-800x600.jpg?prefix=payload-media",
+        "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang006-800x600.jpg",
         "width": 800,
         "height": 600,
         "mimeType": "image/jpeg",
-        "filesize": 71400,
-        "filename": "Food_Experience_optimized_adc493606c-800x600.jpg"
+        "filesize": 78342,
+        "filename": "Penang006-800x600.jpg"
       },
       "large": {
-        "url": "/api/media/file/Food_Experience_optimized_adc493606c-1200x800.jpg?prefix=payload-media",
+        "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang006-1200x800.jpg",
         "width": 1200,
         "height": 800,
         "mimeType": "image/jpeg",
-        "filesize": 125993,
-        "filename": "Food_Experience_optimized_adc493606c-1200x800.jpg"
+        "filesize": 132062,
+        "filename": "Penang006-1200x800.jpg"
       }
     }
   },
@@ -117,36 +117,10 @@
   "cta_chat_whatsapp": "",
   "cta_free_cancellation": "Small groups, max 9 people",
   "cta_reply_time": "Free cancellation",
-  "cta_max_people": "Dietary requirements accommodated",
   "vendors_meet_on_tour": null,
   "vendors_footer": null,
   "vendors_read_stories": null,
   "meta_title": "Malaysian Food Tours in KL & Penang | Simply Enak | Since 2011",
   "meta_description": "Small-group food, culture and heritage tours with guides who grew up here. Join-in or private tours in KL and Penang. Max 8 people. From RM 285.",
-  "faqs": [
-    {
-      "question": "How long are the tours?",
-      "answer": "Most tours run 3.5 to 4 hours. We cover about 2km of walking at a relaxed pace with plenty of seating at each stop."
-    },
-    {
-      "question": "What dietary options do you accommodate?",
-      "answer": "We accommodate vegetarian, halal, vegan, gluten-free, and most dietary needs. Just let us know when booking."
-    },
-    {
-      "question": "How much walking is involved?",
-      "answer": "About 2km of easy walking with frequent stops. Suitable for most fitness levels."
-    },
-    {
-      "question": "Can I book a private tour?",
-      "answer": "Yes. Private tours are available for groups, families, and corporate events. Contact us for a custom experience."
-    },
-    {
-      "question": "Is the food spicy?",
-      "answer": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available."
-    },
-    {
-      "question": "What happens if it rains?",
-      "answer": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we will reschedule."
-    }
-  ]
+  "faqs": []
 }
