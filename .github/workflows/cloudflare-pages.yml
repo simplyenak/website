@@ -58,26 +58,12 @@ jobs:
         with:
           script: |
             const branch = context.payload.pull_request.head.ref;
-            const previewUrl = `https://${branch}.simplyenak-website.pages.dev`;
+            const previewUrl = 'https://' + branch + '.simplyenak-website.pages.dev';
+            const body = '## Preview Deployment Ready!\n\n**Branch:** ' + branch + '\n**Preview URL:** ' + previewUrl + '\n\nTest this deployment with PageSpeed Insights:\nhttps://pagespeed.web.dev/analysis?url=' + encodeURIComponent(previewUrl);
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `## 🚀 Preview Deployment Ready!
-
-**Branch:** \`${branch}\`
-**Preview URL:** ${previewUrl}
-
-### Performance Testing
-Test this deployment with PageSpeed Insights:
-https://pagespeed.web.dev/analysis?url=${encodeURIComponent(previewUrl)}
-
-### Next Steps
-1. Visit the preview URL to test functionality
-2. Run PageSpeed Insights to verify performance improvements
-3. Check mobile and desktop scores
-
----
-*This preview will be automatically updated with new commits to this PR.*`
+              body: body
             });
