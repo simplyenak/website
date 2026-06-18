@@ -171,6 +171,22 @@ export const Media: CollectionConfig = {
       },
     ],
     afterChange: [triggerStagingDeploy],
+    afterRead: [
+      ({ doc }) => {
+        // Replace relative thumbnail URLs with the S3 URL from generated sizes.
+        // Payload's internal thumbnailURL points to /api/media/file/... which
+        // reads from local disk. Since we use S3-only (disableLocalStorage: true),
+        // the local file doesn't exist. The sizes.thumbnail.url is already a
+        // correct S3 URL, so we copy it to thumbnailURL for the admin panel.
+        if (doc?.thumbnailURL && !doc.thumbnailURL.startsWith('http')) {
+          const thumb = doc.sizes?.thumbnail
+          if (thumb?.url) {
+            doc.thumbnailURL = thumb.url
+          }
+        }
+        return doc
+      },
+    ],
   },
   upload: {
     staticDir: 'media',
