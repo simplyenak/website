@@ -173,11 +173,7 @@ export default buildConfig({
       collections: {
         media: {
           prefix: '',
-          disableLocalStorage: true,
           disablePayloadAccessControl: true,
-          generateFileURL: ({ filename, prefix }: { filename: string; prefix?: string }) => {
-            return `https://se-website-images.s3.nl-ams.scw.cloud/${filename}`;
-          },
         },
       },
       bucket: process.env.S3_BUCKET || '',
