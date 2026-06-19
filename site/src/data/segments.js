@@ -204,7 +204,7 @@ export const locationSegments = [
  description: "Explore KL's diverse food scene - from Chinatown hawkers to Indian curry houses to Malay street stalls.",
  heroSubtitle: "Eat your way through Malaysia's capital",
  metaTitle: 'Food Tours in Kuala Lumpur',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife-street-art-and-cocktails'],
  },
  {
  slug: 'food-tours-penang',
@@ -358,7 +358,7 @@ export const specialtySegments = [
  nameFull: 'Night Food Tours in Kuala Lumpur',
  description: 'KL comes alive after dark. Night markets, late-night hawkers, and hidden cocktail bars.',
  metaTitle: 'Night Food Tours in Kuala Lumpur',
- tours: ['secrets-of-kl-nightlife'],
+ tours: ['secrets-of-kl-nightlife-street-art-and-cocktails'],
  },
  {
  slug: 'night-food-tours-penang',
@@ -410,7 +410,7 @@ export const specialtySegments = [
  heroSubtitle: "Malaysia After Dark",
  metaTitle: 'Night Food Tours in Malaysia',
  heroImage: 'https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg',
- tours: ['secrets-of-kl-nightlife', 'eat-drink-george-town'],
+ tours: ['secrets-of-kl-nightlife-street-art-and-cocktails', 'eat-drink-george-town'],
  cityVariants: ['night-food-tours-kuala-lumpur', 'night-food-tours-penang'],
  },
 ];
@@ -439,7 +439,7 @@ export const travelTypeSegments = [
  nameFull: 'Food Tours for Couples in Kuala Lumpur',
  description: 'Romantic food walks through KL\'s most atmospheric neighbourhoods. Perfect for two.',
  metaTitle: 'Food Tours for Couples in Kuala Lumpur',
- tours: ['secrets-of-kl-nightlife', 'flavours-of-malaysia'],
+ tours: ['secrets-of-kl-nightlife-street-art-and-cocktails', 'flavours-of-malaysia'],
  },
  {
  slug: 'food-tours-for-couples-penang',
@@ -455,7 +455,7 @@ export const travelTypeSegments = [
  nameFull: 'Food Tours for Foodies in Kuala Lumpur',
  description: 'Deep dives into KL cuisine for passionate eaters who want to understand every dish.',
  metaTitle: 'Food Tours for Foodies in Kuala Lumpur',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife-street-art-and-cocktails'],
  },
  {
  slug: 'food-tours-for-foodies-penang',

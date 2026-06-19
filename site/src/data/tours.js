@@ -234,7 +234,7 @@ The evening ends with an alcoholic drink in a heritage setting where old Penang 
  ],
  },
  {
- slug: 'secrets-of-kl-nightlife',
+ slug: 'secrets-of-kl-nightlife-street-art-and-cocktails',
  ticketingHubId: '148305db-44f6-4e6b-b8ec-dedfa9154716',
  name: 'Secrets of KL - Nightlife, Street Art & Cocktails!',
  price: 'RM 359',
