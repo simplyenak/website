@@ -39,6 +39,11 @@ jobs:
           npm run build
         env:
           PUBLIC_STRAPI_URL: ${{ secrets.STRAPI_URL || 'https://your-strapi-url.com' }}
+          PAYLOAD_URL: https://cms.system.simplyenak.com
+          PAYLOAD_TOKEN: ${{ secrets.PAYLOAD_TOKEN }}
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
