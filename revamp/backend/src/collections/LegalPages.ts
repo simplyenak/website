@@ -9,6 +9,12 @@ export const LegalPages: CollectionConfig = {
     useAsTitle: 'headline',
     defaultColumns: ['headline', 'slug', 'status', 'updatedAt'],
   },
+  access: {
+    read: () => true,
+    create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),
+    update: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),
+    delete: ({ req: { user } }) => (user as any)?.role === 'admin',
+  },
   versions: {
     drafts: true,
     maxPerDoc: 50,
