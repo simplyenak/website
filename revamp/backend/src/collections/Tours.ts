@@ -8,13 +8,7 @@ export const Tours: CollectionConfig = {
     group: 'Tours & Booking',
     description: '🚌 Tour offerings and packages',
     defaultColumns: ['name', 'slug', 'price', 'duration', 'location', 'workflowStatus', 'featured'],
-    components: {
-      views: {
-        list: {
-          Component: '@/components/admin/tours/list',
-        },
-      },
-    },
+    // Custom list view disabled — using Payload default until Kanban is debugged
   },
   access: {
     read: () => true,
