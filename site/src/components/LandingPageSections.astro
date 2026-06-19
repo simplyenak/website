@@ -1,9 +1,6 @@
 ---
 /**
  * LandingPageSections.astro — Premium, visually-rich landing page
- *
- * Designed to sell the experience with strong imagery and clear conversion.
- * Falls back to CDN tour images when Payload images aren't available.
  */
 interface Props {
   segment: any;
@@ -25,7 +22,6 @@ const segmentPaths: Record<string, string> = {
 const segmentPath = segmentPaths[segmentType] || '/tours/';
 const segmentLabel = { dietary: 'Dietary', specialty: 'Experience', location: 'Location', travel_type: 'Travel Style' }[segmentType] || '';
 
-// Background image fallbacks — CDN images that exist (from tours.json)
 const bgImages = [
   'https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg',
   'https://cdn.simplyenak.com/kuala_lumpur_street_food_cd4fad4122.jpg',
@@ -34,35 +30,62 @@ const bgImages = [
 ];
 const heroBg = landingPage?.heroImage || bgImages[Math.floor(Math.random() * bgImages.length)];
 
-// Key selling points with visual icons
-const features = [
-  { icon: '🍜', label: `${tourCount} Tour${tourCount !== 1 ? 's' : ''}`, desc: `Curated experience${tourCount !== 1 ? 's' : ''} in this category` },
-  { icon: '👤', label: 'Small Groups', desc: 'Max 8 guests, personal guide' },
-  { icon: '⭐', label: '5-Star Rated', desc: '5000+ reviews on Google & TA' },
-  { icon: '💰', label: 'From RM 285', desc: 'All tastings included, no hidden fees' },
-];
+// Segment-specific key features
+const getFeatures = () => {
+  const base = [
+    { icon: '👤', label: 'Small Groups', desc: 'Max 8 guests, personal guide' },
+    { icon: '⭐', label: '5-Star Rated', desc: '5000+ reviews on Google & TA' },
+    { icon: '💰', label: tourCount > 0 ? `From RM ${matchingTours[0]?.price || 285}` : 'From RM 285', desc: 'All tastings included' },
+  ];
+  const segFeatures: Record<string, { icon: string; label: string; desc: string }[]> = {
+    dietary: [{ icon: '🥗', label: 'Dietary-Friendly', desc: 'Stalls vetted for your needs' }, ...base],
+    specialty: [{ icon: '🍜', label: 'Curated Routes', desc: 'Hand-picked stalls by our guides' }, ...base],
+    location: [{ icon: '📍', label: 'Local Neighbourhoods', desc: 'Areas tourists rarely see' }, ...base],
+    travel_type: [{ icon: '👥', label: 'Tailored Experience', desc: 'Matched to your travel style' }, ...base],
+  };
+  return segFeatures[segmentType] || base;
+};
 
-// Gallery images — from Payload or fallback to CDN tour images
+// Gallery images
 const galleryImages = (landingPage?.images || []).filter((img: any) => img.position !== 'hero')
   .map((img: any) => ({
     url: typeof img.image === 'object' ? img.image?.url : img.image,
-    alt: img.alt || '',
-    caption: img.caption || '',
-  }))
-  .filter((img: any) => img.url);
+    alt: img.alt || '', caption: img.caption || '',
+  })).filter((img: any) => img.url);
 
-// If no Payload images, use CDN fallback images
 const cdnFallbackImages = [
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown001_7f2c0b4c3f.jpg', alt: 'Food tasting experience', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Kuala_Lumpur_Street_Food001_6fcced575c.jpg', alt: 'Street food tour', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown003_c7b4448cd0.jpg', alt: 'Local guide explaining dish', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown2_1a84f7f151.jpg', alt: 'Hawker stall cooking', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown001_7f2c0b4c3f.jpg', alt: 'Food tasting', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Kuala_Lumpur_Street_Food001_6fcced575c.jpg', alt: 'Street food', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown003_c7b4448cd0.jpg', alt: 'Local guide', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown2_1a84f7f151.jpg', alt: 'Hawker stall', caption: '' },
   { url: 'https://cdn.simplyenak.com/eatdrinkgeorgetown_1_263d654742.jpg', alt: 'Market visit', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown3_08347c2ca0.jpg', alt: 'Group food tour', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown3_08347c2ca0.jpg', alt: 'Food tour group', caption: '' },
 ];
-
 const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImages.slice(0, 4);
+
+const polaroidLabels = ['Local Guide', 'Fresh Ingredients', 'Hawker Stall', 'Small Groups'];
+const segmentCtaText: Record<string, string> = {
+  dietary: 'Book a tour that fits your dietary needs',
+  specialty: 'Book a tour crafted around your interests',
+  location: 'Explore the neighbourhood with a local',
+  travel_type: 'Find the perfect tour for your group',
+};
+const ctaText = segmentCtaText[segmentType] || 'Book your tour today';
+const features = getFeatures();
 ---
+
+<!-- Sticky mobile CTA -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] md:hidden">
+  <div class="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
+    <div>
+      <p class="text-xs text-muted">From {tourCount > 0 ? `RM ${matchingTours[0]?.price || 285}` : 'RM 285'}/pax</p>
+      <p class="text-xs font-semibold">{tourCount} tour{tourCount !== 1 ? 's' : ''} available</p>
+    </div>
+    <a href="#tours" class="bg-accent text-black font-bold px-6 py-2.5 rounded text-sm hover:bg-accent/90 transition-colors">
+      Book Now
+    </a>
+  </div>
+</div>
 
 <!-- Hero -->
 <section class="relative min-h-[70vh] flex items-center bg-[#1a1a1a] text-white overflow-hidden">
@@ -83,9 +106,7 @@ const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImag
         {segment.heroSubtitle || landingPage?.heroSubtitle || `Food Tours`}
       </span>
     </h1>
-    <p class="text-white/60 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-      {intro}
-    </p>
+    <p class="text-white/60 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">{intro}</p>
     <div class="mt-10 flex justify-center gap-4 flex-wrap">
       <a href="#tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg shadow-accent/25">
         Browse Tours
@@ -98,30 +119,24 @@ const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImag
   </div>
 </section>
 
-<!-- Image gallery — polaroid-style cards -->
+<!-- Image gallery — polaroid cards -->
 {displayImages.length > 0 && (
   <section class="py-12 bg-white dark:bg-[#1e1c1c]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <p class="text-center text-accent text-xs uppercase tracking-[0.25em] font-bold mb-8">What to Expect</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         {displayImages.slice(0, 4).map((img: any, i: number) => (
-          <div class="group">
-            <div class="relative bg-white dark:bg-gray-800 p-2 rounded-sm shadow-md hover:shadow-xl transition-shadow duration-300" style="transform: rotate(var(--rot, 0deg));">
+          <div class="group" style={{ rotate: i === 0 ? '-1deg' : i === 1 ? '1.5deg' : i === 2 ? '-0.5deg' : '1deg' }}>
+            <div class="bg-white dark:bg-gray-800 p-2 rounded-sm shadow-md hover:shadow-xl transition-shadow duration-300">
               <div class="aspect-square overflow-hidden">
                 <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div class="pt-2 pb-1 text-center">
                 <p class="text-xs font-semibold text-gray-700 dark:text-gray-300 font-heading">
-                  {img.caption || (i === 0 ? 'Local Guide' : i === 1 ? 'Fresh Ingredients' : i === 2 ? 'Hawker Stall' : 'Small Groups')}
+                  {img.caption || polaroidLabels[i]}
                 </p>
               </div>
             </div>
-            <style>
-              .group:nth-child(1) .relative { --rot: -1deg; }
-              .group:nth-child(2) .relative { --rot: 1.5deg; }
-              .group:nth-child(3) .relative { --rot: -0.5deg; }
-              .group:nth-child(4) .relative { --rot: 1deg; }
-            </style>
           </div>
         ))}
       </div>
@@ -146,6 +161,31 @@ const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImag
   </div>
 </section>
 
+<!-- What to Expect — step guide -->
+<section class="py-14 bg-muted/20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">How It Works</p>
+    <h2 class="text-2xl md:text-3xl font-bold font-heading mb-10">A {segment.name} Tour in 3 Steps</h2>
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div class="bg-card border rounded-xl p-6 shadow-sm">
+        <span class="text-3xl block mb-3">👋</span>
+        <h3 class="font-bold font-heading mb-2">Meet Your Guide</h3>
+        <p class="text-sm text-muted">Start at a recognisable landmark. Your guide will brief you on the route and answer any questions.</p>
+      </div>
+      <div class="bg-card border rounded-xl p-6 shadow-sm">
+        <span class="text-3xl block mb-3">🍜</span>
+        <h3 class="font-bold font-heading mb-2">Walk & Taste</h3>
+        <p class="text-sm text-muted">Visit 5-8 family-run stalls. Taste dishes, hear their stories, learn how they're made.</p>
+      </div>
+      <div class="bg-card border rounded-xl p-6 shadow-sm">
+        <span class="text-3xl block mb-3">⭐</span>
+        <h3 class="font-bold font-heading mb-2">Finish Satisfied</h3>
+        <p class="text-sm text-muted">End with a full stomach, food knowledge, and recommendations for the rest of your trip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Tours -->
 <section class="py-16 bg-muted/30" id="tours">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -159,18 +199,25 @@ const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImag
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {matchingTours.map((tour: any) => (
           <a href={`/tours/${tour.slug}`} class="group block rounded-xl border bg-card shadow-sm overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1.5">
-            <div class="aspect-[16/10] overflow-hidden">
+            <div class="aspect-[16/10] overflow-hidden relative">
               <img src={tour.image || 'https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg'} alt={tour.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+              {segmentType === 'dietary' && (
+                <span class="absolute top-3 left-3 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">{segment.name}-Friendly</span>
+              )}
+              {segmentType === 'specialty' && (
+                <span class="absolute top-3 left-3 bg-accent text-black text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">{segment.name}</span>
+              )}
             </div>
             <div class="p-5">
               <h3 class="text-lg font-bold font-heading group-hover:text-primary transition-colors">{tour.name}</h3>
               <p class="text-sm text-muted mt-1.5 line-clamp-2 leading-relaxed">{tour.tagline || tour.shortDescription}</p>
               <div class="mt-4 flex items-center gap-3 text-xs text-muted">
-                <span class="font-bold text-default text-base">RM {tour.price}</span>
+                <span class="font-bold text-default text-base">RM {tour.price}<span class="text-xs font-normal text-muted">/pax</span></span>
                 {tour.duration && <><span class="text-gray-300">|</span><span>{tour.duration}</span></>}
               </div>
-              <div class="mt-3 pt-3 border-t border-gray-100 dark:border-white/5">
-                <span class="inline-flex items-center gap-1 text-accent text-xs font-semibold group-hover:gap-2 transition-all">View Tour Details <span>&rarr;</span></span>
+              <div class="mt-3 pt-3 border-t border-gray-100 dark:border-white/5 flex items-center justify-between">
+                <span class="inline-flex items-center gap-1 text-accent text-xs font-semibold group-hover:gap-2 transition-all">View Details <span>&rarr;</span></span>
+                <span class="text-[10px] text-muted">Free cancellation</span>
               </div>
             </div>
           </a>
@@ -226,8 +273,8 @@ const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImag
   <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5"></div>
   <div class="absolute inset-0" style="background-image: radial-gradient(rgba(181,45,56,.04) 1px, transparent 1px); background-size: 24px 24px;"></div>
   <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Ready to Taste {segment.name}?</h2>
-    <p class="text-muted text-lg mb-8 max-w-lg mx-auto">Book a tour with a local guide who grew up eating the food they'll show you.</p>
+    <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Ready for Your {segment.name} Experience?</h2>
+    <p class="text-muted text-lg mb-8 max-w-lg mx-auto">{ctaText}</p>
     <div class="flex justify-center gap-4 flex-wrap">
       <a href="#tours" class="bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-accent/90 transition-colors shadow-lg shadow-accent/20">
         Book a Tour
