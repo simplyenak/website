@@ -109,12 +109,7 @@ const schemaOrg = {
   <!-- Rich editorial content -->
   {landingPage?.content && (
     <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-      <div class="prose prose-gray dark:prose-invert max-w-none
-                  prose-headings:font-heading prose-headings:font-bold
-                  prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-12 prose-h2:mb-4
-                  prose-p:text-muted prose-p:text-sm prose-p:md:text-base prose-p:leading-relaxed
-                  prose-ul:my-4 prose-li:my-1
-                  prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
+      <div class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-primary prose-img:rounded-lg prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-default prose-blockquote:font-medium prose-blockquote:text-lg prose-li:my-1"
            set:html={await marked.parse(landingPage.content)} />
     </section>
   )}
