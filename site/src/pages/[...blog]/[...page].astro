@@ -3,6 +3,7 @@ import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { getStaticPathsBlogList } from '~/utils/blog';
 import { fetchPosts } from '~/utils/blog';
+import { getStoriesPage, getImageUrl } from '~/lib/content';
 
 export const prerender = true;
 
@@ -15,12 +16,13 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { page } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
+const sp = await getStoriesPage();
 const allPosts = await fetchPosts();
 
 // Featured = first post
 const featured = allPosts[0];
 
-// Split by new categories
+// Split by categories
 const foodCulture = allPosts.filter(p => p.category?.title === 'Food & Culture Guides');
 const travelTips = allPosts.filter(p => p.category?.title === 'Travel Tips');
 const vendorStories = allPosts.filter(p => p.category?.title === 'Vendor Stories');
@@ -31,8 +33,8 @@ const travelTipsRest = travelTips.filter(p => p.slug !== featured?.slug);
 const vendorStoriesRest = vendorStories.filter(p => p.slug !== featured?.slug);
 
 const metadata = {
-  title: `Stories${currentPage > 1 ? `  -  Page ${currentPage}` : ''}`,
-  description: 'Local food knowledge, travel tips, and the vendors who keep Malaysian traditions alive.',
+  title: sp.seo_title || `Stories${currentPage > 1 ? `  -  Page ${currentPage}` : ''}`,
+  description: sp.seo_description || 'Local food knowledge, travel tips, and the vendors who keep Malaysian traditions alive.',
 };
 ---
 
@@ -40,12 +42,12 @@ const metadata = {
   <!-- Page Header -->
   <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
     <div class="absolute inset-0">
-      <img src="https://se-website-images.s3.nl-ams.scw.cloud/payload-media/eatdrinkgeorgetown_1_263d654742.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
+      <img src={getImageUrl(sp.hero_image) || 'https://se-website-images.s3.nl-ams.scw.cloud/payload-media/eatdrinkgeorgetown_1_263d654742.jpg'} alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
       <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/60 via-[#1a1a1a]/80 to-[#1a1a1a]"></div>
     </div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-3 leading-tight">Stories</h1>
-      <p class="text-lg text-white/70 max-w-2xl">Local food knowledge, travel tips, and the people behind Malaysia's best flavours</p>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-3 leading-tight">{sp.hero_title || 'Stories'}</h1>
+      <p class="text-lg text-white/70 max-w-2xl">{sp.hero_description || 'Local food knowledge, travel tips, and the people behind Malaysia\'s best flavours'}</p>
     </div>
   </section>
 
@@ -70,9 +72,9 @@ const metadata = {
 
     {allPosts.length === 0 ? (
       <section class="text-center py-16">
-        <p class="text-muted text-lg">Stories coming soon. Malaysian heritage is rich with food traditions waiting to be explored.</p>
-        <a href="/tours" class="inline-flex items-center gap-2 mt-6 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-[#e8922e] transition-colors text-sm">
-          Browse Tours Instead
+        <p class="text-muted text-lg">{sp.empty_message || 'Stories coming soon. Malaysian heritage is rich with food traditions waiting to be explored.'}</p>
+        <a href={sp.empty_cta_href || '/tours'} class="inline-flex items-center gap-2 mt-6 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-[#e8922e] transition-colors text-sm">
+          {sp.empty_cta_text || 'Browse Tours Instead'}
         </a>
       </section>
     ) : (
@@ -101,8 +103,8 @@ const metadata = {
           <section id="food-culture" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
-                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">Stories behind the dishes</p>
-                <h2 class="text-2xl md:text-3xl font-bold font-heading">Food & Culture Guides</h2>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{sp.food_culture_eyebrow || 'Stories behind the dishes'}</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">{sp.food_culture_heading || 'Food & Culture Guides'}</h2>
               </div>
             </div>
 
@@ -136,8 +138,8 @@ const metadata = {
           <section id="travel-tips" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
-                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">Plan like a local</p>
-                <h2 class="text-2xl md:text-3xl font-bold font-heading">Travel Tips</h2>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{sp.travel_tips_eyebrow || 'Plan like a local'}</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">{sp.travel_tips_heading || 'Travel Tips'}</h2>
               </div>
             </div>
 
@@ -167,12 +169,12 @@ const metadata = {
         )}
 
         <!-- Vendor Stories -->
-        {vendorStoriesRest.length > 0 && (
+        {vendorStoriesRest.length > 0 ? (
           <section id="vendor-stories" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
-                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">The people behind the food</p>
-                <h2 class="text-2xl md:text-3xl font-bold font-heading">Vendor Stories</h2>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{sp.vendor_stories_eyebrow || 'The people behind the food'}</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">{sp.vendor_stories_heading || 'Vendor Stories'}</h2>
               </div>
             </div>
 
@@ -199,22 +201,20 @@ const metadata = {
               ))}
             </div>
           </section>
-        )}
-
-        <!-- Vendor Stories empty state -->
-        {vendorStoriesRest.length === 0 && (
+        ) : (
+          <!-- Vendor Stories empty state -->
           <section id="vendor-stories" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
-                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">The people behind the food</p>
-                <h2 class="text-2xl md:text-3xl font-bold font-heading">Vendor Stories</h2>
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{sp.vendor_stories_eyebrow || 'The people behind the food'}</p>
+                <h2 class="text-2xl md:text-3xl font-bold font-heading">{sp.vendor_stories_heading || 'Vendor Stories'}</h2>
               </div>
             </div>
 
             <div class="bg-gray-50 dark:bg-[#151313] rounded-xl border border-gray-100 dark:border-white/10 p-10 text-center">
-              <p class="text-muted mb-4">We're meeting the stall owners, market vendors, and home cooks who keep Malaysian food traditions alive. Their stories are coming soon.</p>
-              <a href="/tours" class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
-                Meet them on a tour →
+              <p class="text-muted mb-4">{sp.vendor_stories_empty_message || 'We\'re meeting the stall owners, market vendors, and home cooks who keep Malaysian food traditions alive. Their stories are coming soon.'}</p>
+              <a href={sp.vendor_stories_empty_cta_href || '/tours'} class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
+                {sp.vendor_stories_empty_cta || 'Meet them on a tour \u2192'}
               </a>
             </div>
           </section>
@@ -222,12 +222,12 @@ const metadata = {
 
         <!-- Newsletter CTA -->
         <section class="bg-[#1a1a1a] rounded-xl p-10 md:p-14 text-center mt-8">
-          <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Hungry for More?</p>
-          <h2 class="text-3xl font-bold font-heading text-white mb-4">Get Stories in Your Inbox</h2>
-          <p class="text-white/60 max-w-md mx-auto mb-8">Local food knowledge, travel tips, and vendor stories straight from Malaysia. No spam, just the good stuff.</p>
+          <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">{sp.newsletter_eyebrow || 'Hungry for More?'}</p>
+          <h2 class="text-3xl font-bold font-heading text-white mb-4">{sp.newsletter_heading || 'Get Stories in Your Inbox'}</h2>
+          <p class="text-white/60 max-w-md mx-auto mb-8">{sp.newsletter_description || 'Local food knowledge, travel tips, and vendor stories straight from Malaysia. No spam, just the good stuff.'}</p>
           <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="email" placeholder="Your email address" required class="flex-1 px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent text-sm" />
-            <button type="submit" class="px-6 py-3 bg-accent text-black font-bold rounded-lg hover:bg-[#e8922e] transition-colors text-sm whitespace-nowrap">Subscribe</button>
+            <input type="email" placeholder={sp.newsletter_placeholder || 'Your email address'} required class="flex-1 px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent text-sm" />
+            <button type="submit" class="px-6 py-3 bg-accent text-black font-bold rounded-lg hover:bg-[#e8922e] transition-colors text-sm whitespace-nowrap">{sp.newsletter_button_text || 'Subscribe'}</button>
           </form>
         </section>
 
