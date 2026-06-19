@@ -127,7 +127,7 @@ export const Media: CollectionConfig = {
   ],
   hooks: {
     beforeValidate: [
-      ({ data, operation }: { data: Record<string, any>; operation: string }) => {
+      async ({ data, req, operation }: { data: Record<string, any>; req?: any; operation: string }) => {
         if (operation !== 'create' && operation !== 'update') return data
         if (!data?.filename) return data
 
@@ -142,6 +142,18 @@ export const Media: CollectionConfig = {
           let locName = ''
           if (typeof data.location_ref === 'object' && data.location_ref?.name) {
             locName = data.location_ref.name
+          } else if ((typeof data.location_ref === 'number' || typeof data.location_ref === 'string') && req?.payload) {
+            // Relationship comes in as just the ID — fetch the location name
+            try {
+              const loc = await req.payload.findByID({
+                collection: 'locations',
+                id: data.location_ref,
+                depth: 0,
+              })
+              if (loc?.name) locName = loc.name
+            } catch {
+              // Location lookup failed — proceed without location in filename
+            }
           }
 
           const parts: string[] = ['simply-enak']
