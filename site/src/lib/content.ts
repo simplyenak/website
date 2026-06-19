@@ -573,8 +573,8 @@ async function resolveTours(locale?: string): Promise<any[]> {
       .filter(Boolean) as any[];
   }
 
-  // Tier 2: JSON snapshots (English only — skip for other locales)
-  if ((!locale || locale === 'en') && snapshotTours.length > 0) {
+  // Tier 2: JSON snapshots (fallback for all locales)
+  if (snapshotTours.length > 0) {
     return snapshotTours
       .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
       .map(mergeTour)
@@ -589,7 +589,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
   let raw: any;
   const live = await liveHomePage(locale);
   if (live && Object.keys(live).length > 0) raw = live;
-  else if ((!locale || locale === 'en') && snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
+  else if (snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
   else raw = {};
 
   // Map Payload block structure to flat keys that shapeHomePage expects.
@@ -733,14 +733,14 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
 async function resolvePages(locale?: string): Promise<any[]> {
   const live = await livePages(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotPages.length > 0) return snapshotPages;
+  if (snapshotPages.length > 0) return snapshotPages;
   return [];
 }
 
 async function resolveFAQs(locale?: string): Promise<any[]> {
   const live = await liveFAQs(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotFAQs.length > 0) return snapshotFAQs;
+  if (snapshotFAQs.length > 0) return snapshotFAQs;
   const { tourFaqs } = await import('~/data/tours');
   return tourFaqs || [];
 }
@@ -748,49 +748,49 @@ async function resolveFAQs(locale?: string): Promise<any[]> {
 async function resolveTestimonials(locale?: string): Promise<any[]> {
   const live = await liveTestimonials(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotTestimonials.length > 0) return snapshotTestimonials;
+  if (snapshotTestimonials.length > 0) return snapshotTestimonials;
   return [];
 }
 
 async function resolveStories(locale?: string): Promise<any[]> {
   const live = await liveStories(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotStories.length > 0) return snapshotStories;
+  if (snapshotStories.length > 0) return snapshotStories;
   return [];
 }
 
 async function resolveSiteSettings(locale?: string): Promise<any> {
   const live = await liveSiteSettings(locale);
   if (live && Object.keys(live).length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotSiteSettings && Object.keys(snapshotSiteSettings).length > 0) return snapshotSiteSettings;
+  if (snapshotSiteSettings && Object.keys(snapshotSiteSettings).length > 0) return snapshotSiteSettings;
   return {};
 }
 
 async function resolveLocations(locale?: string): Promise<any[]> {
   const live = await liveLocations(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotLocations.length > 0) return snapshotLocations;
+  if (snapshotLocations.length > 0) return snapshotLocations;
   return [];
 }
 
 async function resolveDietaryOptions(locale?: string): Promise<any[]> {
   const live = await liveDietaryOptions(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotDietaryOptions.length > 0) return snapshotDietaryOptions;
+  if (snapshotDietaryOptions.length > 0) return snapshotDietaryOptions;
   return [];
 }
 
 async function resolveSpecialtyExperiences(locale?: string): Promise<any[]> {
   const live = await liveSpecialtyExperiences(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotSpecialtyExperiences.length > 0) return snapshotSpecialtyExperiences;
+  if (snapshotSpecialtyExperiences.length > 0) return snapshotSpecialtyExperiences;
   return [];
 }
 
 async function resolveTravelTypes(locale?: string): Promise<any[]> {
   const live = await liveTravelTypes(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotTravelTypes.length > 0) return snapshotTravelTypes;
+  if (snapshotTravelTypes.length > 0) return snapshotTravelTypes;
   return [];
 }
 
