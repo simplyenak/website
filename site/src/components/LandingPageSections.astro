@@ -126,8 +126,8 @@ const features = getFeatures();
       <p class="text-center text-accent text-xs uppercase tracking-[0.25em] font-bold mb-8">What to Expect</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         {displayImages.slice(0, 4).map((img: any, i: number) => (
-          <div class="group" style={{ rotate: i === 0 ? '-1deg' : i === 1 ? '1.5deg' : i === 2 ? '-0.5deg' : '1deg' }}>
-            <div class="bg-white dark:bg-gray-800 p-2 rounded-sm shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="group">
+            <div class="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
               <div class="aspect-square overflow-hidden">
                 <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
