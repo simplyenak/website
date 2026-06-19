@@ -11,6 +11,33 @@ const hp = await getHomePage();
 // Use real reviews from JSON, shuffled
 const realReviews = [...reviews].sort(() => Math.random() - 0.5).slice(0, 6);
 
+const philosophyCards = [
+  {
+    title: 'The People',
+    icon: 'people',
+    color: 'primary',
+    text: "The stalls we visit are run by people we've known for over a decade. Aunty Fatimah has been making roti jala in the same spot for 40 years. Uncle Kim's char kway teow recipe came from his father. These aren't hired vendors — they're the reason we started the tours.",
+  },
+  {
+    title: 'The Stories',
+    icon: 'stories',
+    color: 'accent',
+    text: "Why is Penang laksa sour and KL's sweet? What's the story behind the Hainanese coffee shops on every corner? And how did a family dispute over a noodle recipe become a national dish? We grew up with these stories — and we share them over the table, not from a script.",
+  },
+  {
+    title: 'The Location',
+    icon: 'location',
+    color: 'primary',
+    text: "We don't go to the restaurants with air conditioning and picture menus. We take you to the stall down a staircase in Chow Kit market, the noodle shop that doesn't have a sign, and the curry house where the menu is written on a whiteboard in Malay. This is where we eat on our days off.",
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  people: 'M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z',
+  stories: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  location: 'M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z',
+};
+
 const metadata = {
   title: 'Malaysian Food Tours in KL & Penang  -  Simply Enak',
   description: 'The most authentic way to discover food and culture in Kuala Lumpur and Penang.',
@@ -179,48 +206,64 @@ const finalStructuredData = structuredData.length > 0 ? structuredData : undefin
   <section class="relative not-prose scroll-mt-[72px]">
     <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
     <div class="text-default px-4 lg:py-24 md:px-6 md:py-20 mx-auto py-16 relative max-w-6xl">
-      <div class="text-center max-w-3xl mb-14 md:mb-16 md:mx-auto">
+      <div class="text-center max-w-3xl mb-10 md:mb-14 md:mx-auto">
         <p class="font-bold uppercase dark:text-orange-300 text-base text-secondary tracking-wide">{hp.philosophy.eyebrow}</p>
         <h2 class="font-bold font-heading md:text-4xl text-3xl leading-tighter text-heading tracking-tighter">{hp.philosophy.heading}</h2>
-        <p class="text-muted mt-4 text-xl max-w-2xl mx-auto">{hp.philosophy.description}</p>
+        <p class="text-muted mt-4 text-lg max-w-2xl mx-auto">{hp.philosophy.description}</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
-        <!-- People -->
-        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center">
-          <div class="w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold font-heading text-default mb-4">The People</h3>
-          <p class="text-muted leading-relaxed">The stalls we visit are run by people we've known for over a decade. Aunty Fatimah has been making roti jala in the same spot for 40 years. Uncle Kim's char kway teow recipe came from his father. These aren't hired vendors  -  they're the reason we started the tours.</p>
+      <!-- Mobile: horizontal swipe carousel -->
+      <div class="md:hidden">
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-2 philosophy-scroll">
+          {philosophyCards.map((card, i) => (
+            <div class="snap-center shrink-0 w-[80vw] first:ml-0 last:mr-4">
+              <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-6 shadow-sm text-center h-full">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={`background-color: ${card.color === 'primary' ? 'rgba(220, 75, 85, 0.1)' : 'rgba(190, 130, 80, 0.1)'};`}>
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" style={`color: ${card.color === 'primary' ? '#DC4B55' : '#BE8250'};`}>
+                    <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[card.icon]} />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold font-heading text-default mb-3">{card.title}</h3>
+                <p class="text-muted text-sm leading-relaxed">{card.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
+        <!-- Dot indicators -->
+        <div class="flex justify-center gap-2 mt-5">
+          {philosophyCards.map((_, i) => (
+            <div class={`w-2 h-2 rounded-full ${i === 0 ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-600'}`}></div>
+          ))}
+        </div>
+      </div>
 
-        <!-- Stories -->
-        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center md:mt-8">
-          <div class="w-20 h-20 bg-accent/10 dark:bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
-            </svg>
+      <!-- Desktop: 3-column grid -->
+      <div class="hidden md:grid md:grid-cols-3 gap-8 lg:gap-10">
+        {philosophyCards.map((card, i) => (
+          <div class={`group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center ${i === 1 ? 'md:mt-8' : ''}`}>
+            <div class="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" style={`background-color: ${card.color === 'primary' ? 'rgba(220, 75, 85, 0.1)' : 'rgba(190, 130, 80, 0.1)'};`}>
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" style={`color: ${card.color === 'primary' ? '#DC4B55' : '#BE8250'};`}>
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[card.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold font-heading text-default mb-4">{card.title}</h3>
+            <p class="text-muted leading-relaxed">{card.text}</p>
           </div>
-          <h3 class="text-2xl font-bold font-heading text-default mb-4">The Stories</h3>
-          <p class="text-muted leading-relaxed">Why is Penang laksa sour and KL's sweet? What's the story behind the Hainanese coffee shops on every corner? And how did a family dispute over a noodle recipe become a national dish? We grew up with these stories  -  and we share them over the table, not from a script.</p>
-        </div>
-
-        <!-- Location -->
-        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center">
-          <div class="w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold font-heading text-default mb-4">The Location</h3>
-          <p class="text-muted leading-relaxed">We don't go to the restaurants with air conditioning and picture menus. We take you to the stall down a staircase in Chow Kit market, the noodle shop that doesn't have a sign, and the curry house where the menu is written on a whiteboard in Malay. This is where we eat on our days off.</p>
-        </div>
+        ))}
       </div>
     </div>
   </section>
+
+<style>
+  /* Hide scrollbar for mobile philosophy carousel */
+  .philosophy-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .philosophy-scroll::-webkit-scrollbar {
+    display: none;
+  }
+</style>
 
   <!-- Signature Food Tours -->
   <section class="bg-white md:py-24 py-16">
