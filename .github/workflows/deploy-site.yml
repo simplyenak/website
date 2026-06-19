@@ -51,12 +51,6 @@ jobs:
         working-directory: site
         run: npm ci
 
-      - name: Translate content
-        working-directory: site
-        run: node scripts/translate-simple.mjs
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
       - name: Build site
         working-directory: site
         run: npm run build
