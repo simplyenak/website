@@ -108,6 +108,29 @@ const load = async function (): Promise<Array<Post>> {
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
     .filter((post) => !post.draft);
 
+  // Also add Payload stories to the listing
+  try {
+    const payloadStories = (await import('~/data/content/stories.json')).default as any[] || [];
+    const payloadPosts = payloadStories
+      .filter((s: any) => s.workflowStatus === 'published' || s._status === 'published')
+      .map((s: any) => ({
+        id: 'payload-' + s.id,
+        slug: s.slug,
+        permalink: s.slug,
+        publishDate: new Date(s.publishedDate || s.createdAt || Date.now()),
+        title: s.title || '',
+        excerpt: s.excerpt || '',
+        image: s.featuredImage ? (typeof s.featuredImage === 'object' ? s.featuredImage.url : s.featuredImage) : null,
+        author: typeof s.author === 'object' && s.author !== null ? (s.author.fullName || s.author.name || 'Simply Enak') : (s.author || 'Simply Enak Team'),
+        draft: false,
+        category: { title: 'Food & Culture Guides', slug: 'food-culture-guides' },
+        metadata: { title: s.meta_title || s.title, description: s.excerpt || '' },
+        tags: [],
+      })) as Post[];
+
+    results.push(...payloadPosts.sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf()));
+  } catch (e) {}
+
   return results;
 };
 
@@ -185,7 +208,7 @@ export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateF
 /** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
-  return (await fetchPosts()).flatMap((post) => ({
+  return (await fetchPosts()).filter(p => !p.id.startsWith('payload-')).flatMap((post) => ({
     params: {
       blog: post.permalink,
     },
