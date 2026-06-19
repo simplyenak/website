@@ -6,6 +6,7 @@ import type { ImageMetadata } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
+import { marked } from 'marked';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
@@ -47,7 +48,12 @@ const metadata = merge(
 
 <Layout metadata={metadata}>
   <SinglePost post={{ ...post, image: image }} url={url}>
-    {post.Content && <post.Content />}
+    {(post as any)._fromPayload && (post as any)._mdContent ? (
+      <div class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-primary prose-img:rounded-lg prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-default prose-blockquote:font-medium prose-blockquote:text-lg prose-li:my-1"
+           set:html={await marked.parse((post as any)._mdContent)} />
+    ) : (
+      post.Content && <post.Content />
+    )}
   </SinglePost>
   <ToBlogLink />
   <RelatedPosts post={post} />

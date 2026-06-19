@@ -108,11 +108,12 @@ const load = async function (): Promise<Array<Post>> {
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
     .filter((post) => !post.draft);
 
-  // Also add Payload stories to the listing
+
+  // Also add Payload stories with content_markdown
   try {
     const payloadStories = (await import('~/data/content/stories.json')).default as any[] || [];
     const payloadPosts = payloadStories
-      .filter((s: any) => s.workflowStatus === 'published' || s._status === 'published')
+      .filter((s: any) => (s.workflowStatus === 'published' || s._status === 'published') && s.content_markdown)
       .map((s: any) => ({
         id: 'payload-' + s.id,
         slug: s.slug,
@@ -126,6 +127,9 @@ const load = async function (): Promise<Array<Post>> {
         category: { title: 'Food & Culture Guides', slug: 'food-culture-guides' },
         metadata: { title: s.meta_title || s.title, description: s.excerpt || '' },
         tags: [],
+        contents: s.content_markdown || '',
+        _fromPayload: true,
+        _mdContent: s.content_markdown || '',
       })) as Post[];
 
     results.push(...payloadPosts.sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf()));
@@ -208,7 +212,7 @@ export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateF
 /** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
-  return (await fetchPosts()).filter(p => !p.id.startsWith('payload-')).flatMap((post) => ({
+  return (await fetchPosts()).flatMap((post) => ({
     params: {
       blog: post.permalink,
     },
