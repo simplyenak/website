@@ -263,6 +263,13 @@ const finalStructuredData = structuredData.length > 0 ? structuredData : undefin
   .philosophy-scroll::-webkit-scrollbar {
     display: none;
   }
+  .comparison-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .comparison-scroll::-webkit-scrollbar {
+    display: none;
+  }
 </style>
 
   <!-- Signature Food Tours -->
@@ -316,8 +323,79 @@ const finalStructuredData = structuredData.length > 0 ? structuredData : undefin
         <p class="text-muted mt-3 mx-auto max-w-2xl">{hp.comparisonSection.description}</p>
       </div>
 
-      <!-- Comparison cards — responsive grid -->
-      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      <!-- Mobile: horizontal swipe carousel -->
+      <div class="md:hidden">
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-2 comparison-scroll">
+          {hp.comparisonSection.types.map((t: any, typeIdx: number) => {
+            const priceRow = t.rows.find((r: any) => r.label === 'Price');
+            const otherRows = t.rows.filter((r: any) => r.label !== 'Price');
+            const bgTints = ['bg-amber-50/40', 'bg-orange-50/60', 'bg-white'];
+            const darkBgTints = ['dark:bg-[#1e1c1c]', 'dark:bg-[#2a2218]', 'dark:bg-[#1e1c1c]'];
+            return (
+            <div class="snap-center shrink-0 w-[80vw] first:ml-0 last:mr-4">
+              <div class:list={[
+                'relative flex flex-col rounded-2xl overflow-hidden h-full',
+                t.popular
+                  ? 'border-2 border-accent shadow-lg z-10'
+                  : 'border border-gray-200 dark:border-white/10 shadow-sm',
+                bgTints[typeIdx] || 'bg-white',
+                darkBgTints[typeIdx] || 'dark:bg-[#1e1c1c]',
+              ]}>
+                <div class:list={['h-1.5', t.popular ? 'bg-accent' : 'bg-primary/40']}></div>
+                <div class="px-5 pt-5 pb-4 text-center">
+                  {t.popular && (
+                    <span class="inline-block bg-accent text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Best Value</span>
+                  )}
+                  <h3 class="text-lg font-bold font-heading text-default">{t.name}</h3>
+                  <p class="text-xs text-muted mt-1 mb-3">{t.subtitle}</p>
+                  {priceRow && (
+                    <div class="text-primary">
+                      <span class="text-[10px] text-muted/70 uppercase tracking-wider font-medium">{priceRow.label}</span>
+                      <div class="text-xl font-bold font-heading">{priceRow.value}</div>
+                    </div>
+                  )}
+                </div>
+                <hr class="border-gray-200 dark:border-white/10 mx-5" />
+                <div class="px-5 py-4 flex-1">
+                  <ul class="space-y-2.5">
+                    {otherRows.map((r: any) => (
+                      <li class="flex items-start gap-2.5">
+                        <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                        </svg>
+                        <div class="min-w-0">
+                          <span class="text-[10px] text-muted/60 uppercase tracking-wider">{r.label}</span>
+                          <p class="text-xs font-semibold text-default leading-snug">{r.value}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="px-5 pb-5 mt-auto">
+                  <a
+                    class:list={[
+                      'font-bold rounded-lg block px-5 py-2.5 text-center text-xs transition-all w-full',
+                      t.popular
+                        ? 'bg-accent text-black hover:bg-[#f0952e] shadow-md'
+                        : 'bg-primary text-white hover:bg-[#a02830]',
+                    ]}
+                    href={t.cta.url}
+                    {...(t.cta.url?.startsWith('http') ? { target: '_blank' } : {})}
+                  >{t.cta.text}</a>
+                </div>
+              </div>
+            </div>
+          )})}
+        </div>
+        <div class="flex justify-center gap-2 mt-6">
+          {hp.comparisonSection.types.map((_: any, i: number) => (
+            <div class={`w-2 h-2 rounded-full ${i === 0 ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-600'}`}></div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Desktop: 3-column grid -->
+      <div class="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
         {hp.comparisonSection.types.map((t: any, typeIdx: number) => {
           const priceRow = t.rows.find((r: any) => r.label === 'Price');
           const otherRows = t.rows.filter((r: any) => r.label !== 'Price');

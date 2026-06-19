@@ -58,8 +58,8 @@ export const dietarySegments = [
  slug: 'vegetarian-food-tours-kuala-lumpur',
  name: 'Vegetarian',
  nameFull: 'Vegetarian Food Tours in Kuala Lumpur',
- description: 'Group dining experience in KL. Perfect for bachelor/ette parties and celebration dinners.'s best spots. Rooftop bars and late-night hawkers.'s most famous hawker centre. Char kway teow, seafood, cendol. Evening tour.'s heritage food trail through UNESCO George Town. Nyonya, Hokkien, Indian.'s traditional Malay village. Nasi lemak, satay, rendang. Malay food at its source.'s Little India. Banana leaf rice, roti canai, thosai. A South Asian food adventure.'s oldest market.'s pork rib soup is worth the trip from KL.'s culinary heritage.'s unique food story.'s hawker lanes, Air Itam's market, Batu Ferringhi's night eats.'s diverse food scene with a local guide.'s cuisine. A cultural food tour across two cities.'s market guide.'s legendary street food scene.'s food scene comes alive at night.'s food heritage. Nyonya, Hokkien, Indian-Muslim — 200 years on a plate.'s food history with a guide.'s guide to KL's best markets.'s food capital.'s best street food with a local guide.'s 素食 (sù shí) Buddhist vegetarian scene. Plant-based dishes that even meat-eaters love.'s Buddhist vegetarian tradition. Our guides know which stalls are truly vegan.'s rice-based cuisine works for gluten-free diets. Private tour for coeliac or severe allergies.'s halal. From Kampung Baru to Brickfields.'s Buddhist vegetarian hawkers to Air Itam's temple canteens. Discover Penang's plant-based side with a local guide.',
- heroSubtitle: 'KL food tour for wedding groups's traditional Malay market's famous bak kut teh's food scene's food heritage's night food's food heritage's markets, guided's street food culture's night food scene's heritage food's heritage food trail's markets, guided's markets, explored's famous street food's street food, guided's best vegetarian food, guided's best vegetarian stalls',
+ description: 'Malaysia is a paradise for vegetarians. Our guides know exactly which stalls serve the best vegetarian versions.',
+ heroSubtitle: '100% Plant-Based. No Fish Sauce. No Surprises.',
  metaTitle: 'Vegetarian Food Tours in Kuala Lumpur',
  tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food'],
  },
@@ -204,7 +204,7 @@ export const locationSegments = [
  description: "Explore KL's diverse food scene - from Chinatown hawkers to Indian curry houses to Malay street stalls.",
  heroSubtitle: "Eat your way through Malaysia's capital",
  metaTitle: 'Food Tours in Kuala Lumpur',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife-street-art-and-cocktails'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife'],
  },
  {
  slug: 'food-tours-penang',
@@ -271,8 +271,8 @@ export const locationSegments = [
  {
  slug: 'chowrasta-market-food-tour',
  name: 'Chowrasta Market',
- description: 'Chowrasta Market tour. Asam laksa, popiah, fresh spices. Penang's market culture.'s famous market has been feeding the island for over a century.',
- heroSubtitle: 'Penang's famous market's historic market experience',
+ description: 'Penang\'s famous market has been feeding the island for over a century.',
+ heroSubtitle: 'Penang\'s historic market experience',
  metaTitle: 'Chowrasta Market Food Tour Penang',
  tours: ['penang-street-food', 'eat-drink-george-town'],
  },
@@ -295,8 +295,8 @@ export const locationSegments = [
  {
  slug: 'little-india-food-tour-penang',
  name: 'Little India Penang',
- description: 'George Town's Indian quarter. Nasi kandar, banana leaf, roti canai.'s Little India on Lebuh Queen is a riot of colour, spice, and flavour.',
- heroSubtitle: 'Penang's Little India food tour',
+ description: 'Penang\'s Little India on Lebuh Queen is a riot of colour, spice, and flavour.',
+ heroSubtitle: 'Penang Little India food adventure',
  metaTitle: 'Little India Food Tour Penang',
  tours: ['eat-drink-george-town', 'penang-street-food'],
  },
@@ -358,7 +358,7 @@ export const specialtySegments = [
  nameFull: 'Night Food Tours in Kuala Lumpur',
  description: 'KL comes alive after dark. Night markets, late-night hawkers, and hidden cocktail bars.',
  metaTitle: 'Night Food Tours in Kuala Lumpur',
- tours: ['secrets-of-kl-nightlife-street-art-and-cocktails'],
+ tours: ['secrets-of-kl-nightlife'],
  },
  {
  slug: 'night-food-tours-penang',
@@ -410,7 +410,7 @@ export const specialtySegments = [
  heroSubtitle: "Malaysia After Dark",
  metaTitle: 'Night Food Tours in Malaysia',
  heroImage: 'https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg',
- tours: ['secrets-of-kl-nightlife-street-art-and-cocktails', 'eat-drink-george-town'],
+ tours: ['secrets-of-kl-nightlife', 'eat-drink-george-town'],
  cityVariants: ['night-food-tours-kuala-lumpur', 'night-food-tours-penang'],
  },
 ];
@@ -439,7 +439,7 @@ export const travelTypeSegments = [
  nameFull: 'Food Tours for Couples in Kuala Lumpur',
  description: 'Romantic food walks through KL\'s most atmospheric neighbourhoods. Perfect for two.',
  metaTitle: 'Food Tours for Couples in Kuala Lumpur',
- tours: ['secrets-of-kl-nightlife-street-art-and-cocktails', 'flavours-of-malaysia'],
+ tours: ['secrets-of-kl-nightlife', 'flavours-of-malaysia'],
  },
  {
  slug: 'food-tours-for-couples-penang',
@@ -455,7 +455,7 @@ export const travelTypeSegments = [
  nameFull: 'Food Tours for Foodies in Kuala Lumpur',
  description: 'Deep dives into KL cuisine for passionate eaters who want to understand every dish.',
  metaTitle: 'Food Tours for Foodies in Kuala Lumpur',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife-street-art-and-cocktails'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife'],
  },
  {
  slug: 'food-tours-for-foodies-penang',
