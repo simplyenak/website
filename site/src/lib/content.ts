@@ -40,6 +40,7 @@ let snapshotContactPage: any = {};
 let snapshotThankYouPages: any[] = [];
 let snapshotPages: any[] = [];
 let snapshotLandingPages: any[] = [];
+let snapshotToursPage: any = {};
 
 // Eager-import JSON at build time — Astro resolves these at compile
 try {
@@ -94,6 +95,9 @@ try {
 } catch {
   snapshotLandingPages = [];
 }
+try {
+  snapshotToursPage = (await import('~/data/content/tours-page.json')).default || {};
+} catch {}
 
 // ── Live Payload fetchers (tier 1) ─────────────────────────────────────
 // These return the raw Payload docs. Callers use them as tier 1 fallback.
@@ -161,6 +165,10 @@ async function liveAboutPage(locale?: string) {
 
 async function liveContactPage(locale?: string) {
   return fetchSingleton('contact_page', { locale });
+}
+
+async function liveToursPage(locale?: string) {
+  return fetchSingleton('tours_page', { locale });
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -929,6 +937,15 @@ export async function getContactPage(locale?: string) {
   if (live && Object.keys(live).length > 0) return live;
   // Tier 2: JSON snapshot (English only)
   if ((!locale || locale === 'en') && snapshotContactPage && Object.keys(snapshotContactPage).length > 0) return snapshotContactPage;
+  return {};
+}
+
+export async function getToursPage(locale?: string) {
+  // Tier 1: Live Payload API
+  const live = await liveToursPage(locale);
+  if (live && Object.keys(live).length > 0) return live;
+  // Tier 2: JSON snapshot (English only)
+  if ((!locale || locale === 'en') && snapshotToursPage && Object.keys(snapshotToursPage).length > 0) return snapshotToursPage;
   return {};
 }
 

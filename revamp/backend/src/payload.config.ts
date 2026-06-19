@@ -43,6 +43,7 @@ import { DirectionsPage } from './collections/DirectionsPage'
 import { TourQuiz } from './collections/TourQuiz'
 import { Neighborhoods } from './collections/Neighborhoods'
 import { ComparisonPage } from './collections/ComparisonPage'
+import { ToursPage } from './collections/ToursPage'
 import { Pages } from './collections/Pages'
 
 const filename = fileURLToPath(import.meta.url)
@@ -114,6 +115,7 @@ export default buildConfig({
     CorporateGroupsPage,
     TrackRecordPage,
     PrivateToursPage,
+    ToursPage,
     DirectionsPage,
     // Quiz
     TourQuiz,

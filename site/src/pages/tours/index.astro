@@ -1,70 +1,40 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getAllTours, getSpecialtyList, getTravelTypeList } from '~/lib/content';
+import { getAllTours, getToursPage, getImageUrl } from '~/lib/content';
 import { dietarySegments, locationSegments, specialtySegments, travelTypeSegments } from '~/data/segments';
+
+const tp = await getToursPage();
 const tours = await getAllTours();
-const specialties = await getSpecialtyList();
-const travelTypeList = await getTravelTypeList();
 
 const metadata = {
-  title: 'Food Tours in Malaysia',
-  description: 'Explore our range of authentic Malaysian food and culture tours in Kuala Lumpur, Penang, Melaka, Ipoh and beyond.',
+  title: tp.seo_title || 'Food Tours in Malaysia',
+  description: tp.seo_description || 'Explore our range of authentic Malaysian food and culture tours in Kuala Lumpur, Penang, Melaka, Ipoh and beyond.',
 };
 
 // All 5 signature tours
 const signatureTours = tours.slice(0, 5);
-
-// Experience types - map specialty slugs to hero images and landing page slugs
-const experienceImages: Record<string, string> = {
-  'street-food': 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg',
-  'market-tour': 'https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg',
-  'heritage': 'https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg',
-  'night-tour': 'https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg',
-};
-const experienceSlugMap: Record<string, string> = {
-  'street-food': 'street-food-tours-kuala-lumpur',
-  'market-tour': 'market-tours-kuala-lumpur',
-  'heritage': 'heritage-food-tours-kuala-lumpur',
-  'night-tour': 'night-food-tours-kuala-lumpur',
-};
-const experienceTypes = specialties
-  .filter((s: any) => experienceImages[s.slug] && experienceSlugMap[s.slug])
-  .map((s: any) => ({ name: s.name, slug: experienceSlugMap[s.slug], image: experienceImages[s.slug] }));
-
-// Travel types with hero images and correct segment slugs
-const travelImages: Record<string, { image: string; icon: string }> = {
-  'family': { image: 'https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg', icon: '👨‍👩‍👧‍👦' },
-  'couples': { image: 'https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg', icon: '💑' },
-  'foodie': { image: 'https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg', icon: '🍽️' },
-};
-const travelSlugMap: Record<string, string> = {
-  'family': 'food-tours-for-families-kuala-lumpur',
-  'couples': 'food-tours-for-couples-kuala-lumpur',
-  'foodie': 'food-tours-for-foodies-kuala-lumpur',
-};
-const travelWith = travelTypeList
-  .filter((t: any) => travelImages[t.slug] && travelSlugMap[t.slug])
-  .map((t: any) => ({ name: t.name, slug: travelSlugMap[t.slug], image: travelImages[t.slug].image, icon: travelImages[t.slug].icon }));
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Section -->
   <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
     <div class="absolute inset-0">
-      <img src="https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg" alt="" class="w-full h-full object-cover opacity-40" />
+      <img src={getImageUrl(tp.hero_image) || 'https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg'} alt="" class="w-full h-full object-cover opacity-40" />
       <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center">
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-6 leading-tight">
-        Food, Culture & Heritage Tours<br />in <span class="text-accent">KL, Ipoh & Penang</span>
-      </h1>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-6 leading-tight" set:html={tp.hero_title?.replace(/\{highlight\}/g, `<span class="text-accent">`).replace(/\{\/highlight\}/g, `</span>`) || 'Food, Culture & Heritage Tours<br />in <span class="text-accent">KL, Ipoh & Penang</span>'} />
       <div class="flex flex-wrap justify-center gap-3 mt-8">
-        <a href="#tours" class="bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors">
-          SEE ALL TOURS
-        </a>
-        <a href="/tours" class="border border-white/30 text-white font-semibold px-6 py-3 rounded hover:bg-white/10 transition-colors">
-          PLAN A PRIVATE TOUR
-        </a>
+        {tp.hero_cta_primary_text && (
+          <a href={tp.hero_cta_primary_href || '#tours'} class="bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors">
+            {tp.hero_cta_primary_text}
+          </a>
+        )}
+        {tp.hero_cta_secondary_text && (
+          <a href={tp.hero_cta_secondary_href || '/tours'} class="border border-white/30 text-white font-semibold px-6 py-3 rounded hover:bg-white/10 transition-colors">
+            {tp.hero_cta_secondary_text}
+          </a>
+        )}
       </div>
     </div>
   </section>
@@ -99,48 +69,38 @@ const travelWith = travelTypeList
   <section class="py-16 bg-page" id="private">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">YOUR CHOICE</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Three Ways to Experience Malaysia</h2>
-        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">Private tour, tailored route, or small group. Pick what fits you.</p>
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.three_ways_eyebrow || 'YOUR CHOICE'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{tp.three_ways_heading || 'Three Ways to Experience Malaysia'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">{tp.three_ways_description || 'Private tour, tailored route, or small group. Pick what fits you.'}</p>
       </div>
 
       <div class="grid gap-6 md:grid-cols-3">
-        <!-- Private Tour -->
-        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-          <h3 class="text-xl font-bold font-heading mb-3">Private Tour</h3>
-          <p class="text-sm text-muted mb-4">Any of our signature tours, run privately for your group. Includes hotel pickup and dietary needs accommodated in advance.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Your group only</li>
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Hotel pickup included</li>
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Flexible start time</li>
-          </ul>
-          <a href="/tours/private-tours" class="inline-block bg-primary text-white font-semibold px-5 py-2.5 rounded hover:bg-primary/90 transition-colors text-sm">Book a Private Tour</a>
-        </div>
-
-        <!-- Tailored Experience -->
-        <div class="bg-white rounded-xl border-2 border-accent shadow-md p-6 relative">
-          <span class="absolute -top-3 left-4 bg-accent text-black text-xs font-bold px-3 py-1 rounded-full">POPULAR</span>
-          <h3 class="text-xl font-bold font-heading mb-3">Tailored Experience</h3>
-          <p class="text-sm text-muted mb-4">Custom route designed around your interests. Pre-tour WhatsApp planning with your guide.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Fully customized route</li>
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Any duration</li>
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Special dietary focus</li>
-          </ul>
-          <a href="/contact" class="inline-block bg-accent text-black font-semibold px-5 py-2.5 rounded hover:bg-accent/90 transition-colors text-sm">Tell Us What You Want</a>
-        </div>
-
-        <!-- Join a Small Group -->
-        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-          <h3 class="text-xl font-bold font-heading mb-3">Join a Small Group</h3>
-          <p class="text-sm text-muted mb-4">Book a spot on one of our scheduled tours alongside fellow travellers. Max 9 guests.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> From RM 285/person</li>
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Max 9 guests</li>
-            <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Fixed schedule</li>
-          </ul>
-          <a href="#tours" class="inline-block bg-primary text-white font-semibold px-5 py-2.5 rounded hover:bg-primary/90 transition-colors text-sm">Browse All Tours</a>
-        </div>
+        {(tp.three_ways || [
+          { title: 'Private Tour', description: 'Any of our signature tours, run privately for your group. Includes hotel pickup and dietary needs accommodated in advance.', features: [{ feature: 'Your group only' }, { feature: 'Hotel pickup included' }, { feature: 'Flexible start time' }], cta_text: 'Book a Private Tour', cta_href: '/tours/private-tours' },
+          { title: 'Tailored Experience', description: 'Custom route designed around your interests. Pre-tour WhatsApp planning with your guide.', features: [{ feature: 'Fully customized route' }, { feature: 'Any duration' }, { feature: 'Special dietary focus' }], cta_text: 'Tell Us What You Want', cta_href: '/contact', is_popular: true },
+          { title: 'Join a Small Group', description: 'Book a spot on one of our scheduled tours alongside fellow travellers. Max 9 guests.', features: [{ feature: 'From RM 285/person' }, { feature: 'Max 9 guests' }, { feature: 'Fixed schedule' }], cta_text: 'Browse All Tours', cta_href: '#tours' },
+        ]).map((card: any) => (
+          <div class={`bg-white rounded-xl ${card.is_popular ? 'border-2 border-accent shadow-md relative' : 'border border-gray-100 shadow-sm'} p-6`}>
+            {card.is_popular && <span class="absolute -top-3 left-4 bg-accent text-black text-xs font-bold px-3 py-1 rounded-full">POPULAR</span>}
+            <h3 class="text-xl font-bold font-heading mb-3">{card.title}</h3>
+            <p class="text-sm text-muted mb-4">{card.description}</p>
+            {(card.features && card.features.length > 0) && (
+              <ul class="space-y-2 mb-6">
+                {card.features.map((f: any) => (
+                  <li class="flex items-center gap-2 text-sm">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    {f.feature || f}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {card.cta_text && (
+              <a href={card.cta_href || '#'} class={`inline-block ${card.is_popular ? 'bg-accent text-black' : 'bg-primary text-white'} font-semibold px-5 py-2.5 rounded hover:bg-opacity-90 transition-colors text-sm`}>
+                {card.cta_text}
+              </a>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -149,9 +109,9 @@ const travelWith = travelTypeList
   <section class="py-16" id="tours">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">THE ORIGINALS</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Our Signature Food Tours</h2>
-        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">The 5 tours that started it all. Each one built around vendors we've known for over a decade.</p>
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.signature_eyebrow || 'THE ORIGINALS'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{tp.signature_heading || 'Our Signature Food Tours'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">{tp.signature_description || 'The 5 tours that started it all. Each one built around vendors we\'ve known for over a decade.'}</p>
       </div>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -186,81 +146,26 @@ const travelWith = travelTypeList
   <section class="py-16 bg-muted/30" id="city">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">BY DESTINATION</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Tours by City</h2>
-        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">Every Malaysian city tells a different food story. Choose your chapter.</p>
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.city_eyebrow || 'BY DESTINATION'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{tp.city_heading || 'Tours by City'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">{tp.city_description || 'Every Malaysian city tells a different food story. Choose your chapter.'}</p>
       </div>
 
       <div class="grid gap-6 md:grid-cols-2">
-        <!-- Kuala Lumpur -->
-        <a href="/tours/locations/food-tours-kuala-lumpur" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[16/9]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg" alt="Kuala Lumpur" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <span class="text-xs uppercase tracking-wider text-accent font-bold">KUALA LUMPUR</span>
-            <h3 class="text-2xl font-bold font-heading mt-1">Kuala Lumpur</h3>
-            <p class="text-sm text-white/80 mt-2">From Chinatown hawkers to Indian curry houses. KL's multicultural food scene.</p>
-            <span class="text-accent font-semibold text-sm mt-3">3 tours →</span>
-          </div>
-        </a>
-
-        <!-- Penang -->
-        <a href="/tours/locations/food-tours-penang" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[16/9]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg" alt="Penang" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <span class="text-xs uppercase tracking-wider text-accent font-bold">PENANG</span>
-            <h3 class="text-2xl font-bold font-heading mt-1">Penang</h3>
-            <p class="text-sm text-white/80 mt-2">Asia's food capital. Peranakan heritage, hawker culture, and island charm.</p>
-            <span class="text-accent font-semibold text-sm mt-3">2 tours →</span>
-          </div>
-        </a>
-
-        <!-- Melaka -->
-        <a href="/tours/locations/food-tours-melaka" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[16/9]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/melaka-cultural-tour.jpg" alt="Melaka" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <span class="text-xs uppercase tracking-wider text-accent font-bold">MELAKA</span>
-            <h3 class="text-2xl font-bold font-heading mt-1">Melaka</h3>
-            <p class="text-sm text-white/80 mt-2">600 years of Peranakan heritage. Nyonya cuisine and Portuguese-Eurasian flavors.</p>
-            <span class="text-accent font-semibold text-sm mt-3">Coming soon →</span>
-          </div>
-        </a>
-
-        <!-- Ipoh -->
-        <a href="/tours/locations/food-tours-ipoh" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[16/9]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/ipoh-old-town.jpg" alt="Ipoh" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <span class="text-xs uppercase tracking-wider text-accent font-bold">IPOH</span>
-            <h3 class="text-2xl font-bold font-heading mt-1">Ipoh</h3>
-            <p class="text-sm text-white/80 mt-2">Old town charm, white coffee heritage, and bean sprout chicken fame.</p>
-            <span class="text-accent font-semibold text-sm mt-3">Coming soon →</span>
-          </div>
-        </a>
-
-        <!-- Klang -->
-        <a href="/tours/locations/food-tours-klang" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[16/9]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg" alt="Klang" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <span class="text-xs uppercase tracking-wider text-accent font-bold">KLANG</span>
-            <h3 class="text-2xl font-bold font-heading mt-1">Klang</h3>
-            <p class="text-sm text-white/80 mt-2">Birthplace of bak kut teh. Royal Malay heritage and port town traditions.</p>
-            <span class="text-accent font-semibold text-sm mt-3">Coming soon →</span>
-          </div>
-        </a>
+        {(tp.cities || []).map((city: any) => (
+          <a href={city.href || '/tours'} class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[16/9]">
+            <div class="absolute inset-0">
+              <img src={getImageUrl(city.image) || ''} alt={city.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+            </div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <span class="text-xs uppercase tracking-wider text-accent font-bold">{city.name}</span>
+              <h3 class="text-2xl font-bold font-heading mt-1">{city.name}</h3>
+              {city.description && <p class="text-sm text-white/80 mt-2">{city.description}</p>}
+              {city.tour_count_label && <span class="text-accent font-semibold text-sm mt-3">{city.tour_count_label}</span>}
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -269,18 +174,18 @@ const travelWith = travelTypeList
   <section class="py-16" id="dietary">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">DIETARY PREFERENCES</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Tours by Dietary Need</h2>
-        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">Every tour can be adapted. These are our dedicated dietary experiences.</p>
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.dietary_eyebrow || 'DIETARY PREFERENCES'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{tp.dietary_heading || 'Tours by Dietary Need'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">{tp.dietary_description || 'Every tour can be adapted. These are our dedicated dietary experiences.'}</p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {dietarySegments.filter((s: any, i: number, arr: any[]) => 
+        {dietarySegments.filter((s: any, i: number, arr: any[]) =>
           i === arr.findIndex((a: any) => a.name === s.name)
         ).map((s: any) => (
           <a href={`/tours/dietary/${s.slug}`} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
-              <img src="https://se-website-images.s3.nl-ams.scw.cloud/vegetarian-heritage.jpg" alt={s.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={getImageUrl(tp.dietary_image) || 'https://se-website-images.s3.nl-ams.scw.cloud/vegetarian-heritage.jpg'} alt={s.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute inset-0 p-4 flex flex-col justify-end text-white">
@@ -297,20 +202,20 @@ const travelWith = travelTypeList
   <section class="py-16 bg-muted/30" id="experiences">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">EXPERIENCE TYPE</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Tours by Experience</h2>
-        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">From morning markets to night food adventures.</p>
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.experience_eyebrow || 'EXPERIENCE TYPE'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{tp.experience_heading || 'Tours by Experience'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">{tp.experience_description || 'From morning markets to night food adventures.'}</p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {experienceTypes.map((s: any) => (
-          <a href={`/tours/specialty/${s.slug}`} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
+        {(tp.experiences || []).map((exp: any) => (
+          <a href={exp.href || '/tours'} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
-              <img src={s.image} alt={s.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={getImageUrl(exp.image) || ''} alt={exp.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute inset-0 p-4 flex flex-col justify-end text-white">
-              <h3 class="text-xl font-bold font-heading">{s.name}</h3>
+              <h3 class="text-xl font-bold font-heading">{exp.name}</h3>
               <span class="text-sm text-white/80 group-hover:underline mt-1">View →</span>
             </div>
           </a>
@@ -323,20 +228,20 @@ const travelWith = travelTypeList
   <section class="py-16" id="who">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">TRAVEL STYLE</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Who You're Traveling With</h2>
-        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">Tours designed for your specific travel group.</p>
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.travel_with_eyebrow || 'TRAVEL STYLE'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{tp.travel_with_heading || 'Who You\'re Traveling With'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">{tp.travel_with_description || 'Tours designed for your specific travel group.'}</p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {travelWith.map((s: any) => (
-          <a href={`/tours/segments/${s.slug}`} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
+        {(tp.travel_with_options || []).map((opt: any) => (
+          <a href={opt.href || '/tours'} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
-              <img src={s.image} alt={s.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={getImageUrl(opt.image) || ''} alt={opt.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute inset-0 p-4 flex flex-col justify-end text-white">
-              <h3 class="text-xl font-bold font-heading">{s.name}</h3>
+              <h3 class="text-xl font-bold font-heading">{opt.icon ? `${opt.icon} ${opt.name}` : opt.name}</h3>
               <span class="text-sm text-white/80 group-hover:underline mt-1">View →</span>
             </div>
           </a>
@@ -349,66 +254,24 @@ const travelWith = travelTypeList
   <section class="py-16 bg-muted/30" id="groups">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">FOR GROUPS</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Groups & Events</h2>
-        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">Private tours, corporate outings, and custom experiences.</p>
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.groups_eyebrow || 'FOR GROUPS'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{tp.groups_heading || 'Groups & Events'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-4 text-sm">{tp.groups_description || 'Private tours, corporate outings, and custom experiences.'}</p>
       </div>
 
       <div class="grid gap-6 md:grid-cols-3">
-        <a href="/tours" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[4/3]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg" alt="Families & Groups" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <h3 class="text-2xl font-bold font-heading">Families & Groups</h3>
-            <p class="text-sm text-white/80 mt-2">Kid-friendly food, parent-approved.</p>
-          </div>
-        </a>
-
-        <a href="/tours" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[4/3]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg" alt="Team Events" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <h3 class="text-2xl font-bold font-heading">Team Events</h3>
-            <p class="text-sm text-white/80 mt-2">After-conference dinners & team nights out</p>
-          </div>
-        </a>
-
-        <a href="/contact" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[4/3]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/hari-raya-foods.jpg" alt="Celebrations" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <h3 class="text-2xl font-bold font-heading">Celebrations</h3>
-            <p class="text-sm text-white/80 mt-2">Birthdays & reunions</p>
-          </div>
-        </a>
-
-        <a href="/tours/segments/food-tours-for-chefs" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[4/3]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg" alt="Chef Experiences" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <h3 class="text-2xl font-bold font-heading">Chef Experiences</h3>
-            <p class="text-sm text-white/80 mt-2">Market-to-table for professional chefs</p>
-          </div>
-        </a>
-
-        <a href="/tours/segments/food-tours-for-wedding-groups" class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[4/3]">
-          <div class="absolute inset-0">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg" alt="Wedding Groups" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-          </div>
-          <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
-            <h3 class="text-2xl font-bold font-heading">Wedding Groups</h3>
-            <p class="text-sm text-white/80 mt-2">Pre- or post-wedding food adventures</p>
-          </div>
-        </a>
+        {(tp.groups || []).map((group: any) => (
+          <a href={group.href || '/tours'} class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[4/3]">
+            <div class="absolute inset-0">
+              <img src={getImageUrl(group.image) || ''} alt={group.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+            </div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <h3 class="text-2xl font-bold font-heading">{group.title}</h3>
+              {group.description && <p class="text-sm text-white/80 mt-2">{group.description}</p>}
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -419,31 +282,29 @@ const travelWith = travelTypeList
       <div class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-xl">
         <div class="grid md:grid-cols-2">
           <div class="relative aspect-[16/9] md:aspect-auto">
-            <img src="https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg" alt="Tailor Make Your Own Tour" class="w-full h-full object-cover" />
+            <img src={getImageUrl(tp.tailor_image) || 'https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg'} alt="Tailor Make Your Own Tour" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-transparent to-transparent md:block hidden"></div>
           </div>
           <div class="p-8 md:p-12 text-white flex flex-col justify-center">
-            <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">FULLY CUSTOM</p>
-            <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Tailor Make Your Own Tour</h2>
-            <p class="text-white/70 text-sm mb-6">Have something specific in mind? We'll design a tour around your interests, dietary needs, and schedule. Multi-city itineraries, special dietary focuses, or themed experiences  -  if you can imagine it, we can create it.</p>
-            <ul class="space-y-2 mb-8">
-              <li class="flex items-center gap-2 text-sm text-white/80">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                Any duration (2 hours to multi-day)
-              </li>
-              <li class="flex items-center gap-2 text-sm text-white/80">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                Combine multiple cities
-              </li>
-              <li class="flex items-center gap-2 text-sm text-white/80">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                Pre-tour WhatsApp planning with your guide
-              </li>
-            </ul>
-            <a href="/contact" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors w-fit">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-              Tell Us Your Idea
-            </a>
+            <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{tp.tailor_eyebrow || 'FULLY CUSTOM'}</p>
+            <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">{tp.tailor_heading || 'Tailor Make Your Own Tour'}</h2>
+            <p class="text-white/70 text-sm mb-6">{tp.tailor_description || 'Have something specific in mind? We\'ll design a tour around your interests, dietary needs, and schedule. Multi-city itineraries, special dietary focuses, or themed experiences — if you can imagine it, we can create it.'}</p>
+            {(tp.tailor_features && tp.tailor_features.length > 0) && (
+              <ul class="space-y-2 mb-8">
+                {tp.tailor_features.map((f: any) => (
+                  <li class="flex items-center gap-2 text-sm text-white/80">
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    {f.feature || f}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {tp.tailor_cta_text && (
+              <a href={tp.tailor_cta_href || '/contact'} class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors w-fit">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                {tp.tailor_cta_text}
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -454,8 +315,8 @@ const travelWith = travelTypeList
   <section class="py-16 bg-muted/30">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-10">
-        <h2 class="text-2xl md:text-3xl font-bold font-heading">Find Your Perfect Tour</h2>
-        <p class="text-muted max-w-xl mx-auto mt-3 text-sm">Browse all our tour categories</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-heading">{tp.find_tour_heading || 'Find Your Perfect Tour'}</h2>
+        <p class="text-muted max-w-xl mx-auto mt-3 text-sm">{tp.find_tour_description || 'Browse all our tour categories'}</p>
       </div>
 
       <!-- By Location -->
@@ -511,11 +372,11 @@ const travelWith = travelTypeList
   <!-- Not Sure CTA -->
   <section class="py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-6">Not Sure Which Tour to Pick?</h2>
-      <p class="text-muted mb-8">Chat with us and we'll help you find the perfect food experience.</p>
-      <a href="https://wa.me/60172878929" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#20bd5a] transition-colors text-lg">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-6">{tp.not_sure_heading || 'Not Sure Which Tour to Pick?'}</h2>
+      <p class="text-muted mb-8">{tp.not_sure_description || 'Chat with us and we\'ll help you find the perfect food experience.'}</p>
+      <a href={tp.not_sure_cta_href || 'https://wa.me/60172878929'} target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#20bd5a] transition-colors text-lg">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
-        Chat on WhatsApp
+        {tp.not_sure_cta_text || 'Chat on WhatsApp'}
       </a>
     </div>
   </section>
