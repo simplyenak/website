@@ -26,19 +26,18 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: site/package-lock.json
 
       - name: Install dependencies
         run: |
-          cd frontend
+          cd site
           npm ci
 
       - name: Build Astro site
         run: |
-          cd frontend
+          cd site
           npm run build
         env:
-          # Add your Strapi API URL as a GitHub secret
           PUBLIC_STRAPI_URL: ${{ secrets.STRAPI_URL || 'https://your-strapi-url.com' }}
 
       - name: Publish to Cloudflare Pages
@@ -47,7 +46,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: website
-          directory: frontend/dist
+          directory: site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           # Branch deployments will create preview URLs automatically
           branch: ${{ github.head_ref || github.ref_name }}
