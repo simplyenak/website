@@ -201,6 +201,24 @@ function unwrap(arr: any[], key = 'item') {
 }
 
 /**
+ * Extract gallery images from Payload array to the shape PlayfulGallery expects.
+ * Uses the media's built-in caption field for polaroid text — user edits it
+ * by clicking the image in Payload admin.
+ */
+function extractGalleryImages(arr: any[]): Array<{ src: string; alt: string; caption: string }> {
+  if (!Array.isArray(arr)) return [];
+  return arr
+    .map((item: any) => {
+      const img = typeof item.image === 'object' && item.image ? item.image : {};
+      const src = img.url || img.src || '';
+      const alt = img.alt || 'Tour photo';
+      const caption = img.caption || alt;
+      return src ? { src, alt, caption } : null;
+    })
+    .filter(Boolean) as any;
+}
+
+/**
  * Build the forYou tray from Payload data
  */
 function buildForYou(payloadTour: any) {
@@ -645,10 +663,8 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
       ctaPrimary: { text: raw.hero_cta_primary || 'SEE OUR TOURS', url: raw.hero_cta_primary_url || '/tours' },
       ctaSecondary: { text: raw.hero_cta_secondary || 'ABOUT US', url: raw.hero_cta_secondary_url || '/about' },
       stats: [
-        { icon: 'google', stars: 5, label: raw.hero_vendors || '14+ Years Experience' },
-        { icon: 'tripadvisor', stars: 5, label: raw.hero_rated || 'TripAdvisor Certificate of Excellence' },
-        { icon: 'google', stars: 5, label: raw.hero_since || '5,000+ Happy Guests' },
-        { icon: 'google', stars: 5, label: raw.hero_max_per_tour || '40+ Heritage Vendors' },
+        { icon: 'google', stars: 5, label: 'Google Reviews' },
+        { icon: 'tripadvisor', stars: 5, label: 'Travellers Choice' },
       ],
     };
   }
