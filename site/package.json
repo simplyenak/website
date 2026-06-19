@@ -8,7 +8,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "prebuild": "node scripts/sync-payload.mjs",
+    "prebuild": "node scripts/sync-payload.mjs || true",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
