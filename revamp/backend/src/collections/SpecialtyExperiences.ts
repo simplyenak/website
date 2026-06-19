@@ -33,6 +33,12 @@ export const SpecialtyExperiences: CollectionConfig = {
     { name: 'color', type: 'text', admin: { description: 'UI color hex code' } },
     { name: 'description', type: 'textarea' },
     {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      admin: { description: 'Card background image for the tours listing page' },
+    },
+    {
       name: 'status',
       type: 'select',
       options: [

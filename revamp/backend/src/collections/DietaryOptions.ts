@@ -66,6 +66,14 @@ export const DietaryOptions: CollectionConfig = {
       },
     },
     {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Card background image for the tours listing page',
+      },
+    },
+    {
       name: 'status',
       type: 'select',
       options: [

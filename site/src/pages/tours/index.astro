@@ -2,9 +2,16 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { getAllTours, getToursPage, getImageUrl } from '~/lib/content';
 import { dietarySegments, locationSegments, specialtySegments, travelTypeSegments } from '~/data/segments';
+import { getDietaryOptionList, getLocationSegments, getSpecialtyList, getTravelTypeList } from '~/lib/content';
 
 const tp = await getToursPage();
 const tours = await getAllTours();
+
+// Payload reference data for segment images (user uploads in admin)
+const dietaryRefs = await getDietaryOptionList();
+const locationRefs = await getLocationSegments();
+const specialtyRefs = await getSpecialtyList();
+const travelTypeRefs = await getTravelTypeList();
 
 const metadata = {
   title: tp.seo_title || 'Food Tours in Malaysia',
@@ -14,22 +21,15 @@ const metadata = {
 // All 5 signature tours
 const signatureTours = tours.slice(0, 5);
 
-// Build image lookups from segments.js — managed in one place, not Payload arrays
+// Build image lookups from Payload reference data — managed in Payload admin, not code
 const locationImageMap: Record<string, string> = {};
-locationSegments.forEach(s => { if (s.image) locationImageMap[s.slug] = s.image; });
+locationRefs.forEach((s: any) => { if (s.image) locationImageMap[s.slug] = getImageUrl(s.image); });
 const dietaryImageMap: Record<string, string> = {};
-dietarySegments.forEach(s => { if (s.image) dietaryImageMap[s.slug] = s.image; });
+dietaryRefs.forEach((s: any) => { if (s.image) dietaryImageMap[s.slug] = getImageUrl(s.image); });
 const specialtyImageMap: Record<string, string> = {};
-specialtySegments.forEach(s => { if (s.image || s.heroImage) specialtyImageMap[s.slug] = s.image || s.heroImage; });
-// Also map by base slug prefix for experience cards (e.g. "street-food-..." matches "street-food")
-specialtySegments.forEach(s => {
-  const baseSlug = s.slug.replace(/-tours-(kuala-lumpur|penang|malaysia).*$/, '');
-  if ((s.image || s.heroImage) && !specialtyImageMap[baseSlug]) specialtyImageMap[baseSlug] = s.image || s.heroImage;
-});
+specialtyRefs.forEach((s: any) => { if (s.image) specialtyImageMap[s.slug] = getImageUrl(s.image); });
 const travelTypeImageMap: Record<string, string> = {};
-travelTypeSegments.forEach(s => { if (s.image) travelTypeImageMap[s.slug] = s.image; });
-// Also map by name
-travelTypeSegments.forEach(s => { if (s.image && !travelTypeImageMap[s.name]) travelTypeImageMap[s.name] = s.image; });
+travelTypeRefs.forEach((s: any) => { if (s.image) travelTypeImageMap[s.slug] = getImageUrl(s.image); });
 ---
 
 <Layout metadata={metadata}>
