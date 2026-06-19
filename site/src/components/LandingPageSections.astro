@@ -1,9 +1,9 @@
 ---
 /**
- * LandingPageSections.astro — Conversion-focused sections for segment landing pages
+ * LandingPageSections.astro — Premium, visually-rich landing page
  *
- * Designed to sell the tour experience first. Short, scannable, action-oriented.
- * Used by dietary/specialty/location/segments templates.
+ * Designed to sell the experience with strong imagery and clear conversion.
+ * Falls back to CDN tour images when Payload images aren't available.
  */
 interface Props {
   segment: any;
@@ -18,69 +18,110 @@ const { segment, landingPage, matchingTours, featuredReviews, segmentType, allSe
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 const tourCount = matchingTours.length;
 
-// Build segment link path
 const segmentPaths: Record<string, string> = {
-  dietary: '/tours/dietary/',
-  specialty: '/tours/specialty/',
-  location: '/tours/locations/',
-  travel_type: '/tours/segments/',
+  dietary: '/tours/dietary/', specialty: '/tours/specialty/',
+  location: '/tours/locations/', travel_type: '/tours/segments/',
 };
 const segmentPath = segmentPaths[segmentType] || '/tours/';
 const segmentLabel = { dietary: 'Dietary', specialty: 'Experience', location: 'Location', travel_type: 'Travel Style' }[segmentType] || '';
 
-// Key features pulled from segment or landing page data
-const features = [
-  { icon: '🍜', label: `${tourCount} Tour${tourCount !== 1 ? 's' : ''} Available`, desc: `Choose from ${tourCount} hand-picked experience${tourCount !== 1 ? 's' : ''}` },
-  { icon: '👤', label: 'Small Groups', desc: 'Max 8 guests per tour — intimate and personal' },
-  { icon: '🗓️', label: 'Daily Tours', desc: 'Morning and afternoon slots available' },
-  { icon: '💰', label: 'Best Price Guarantee', desc: 'From RM 285 per person, no hidden fees' },
+// Background image fallbacks — CDN images that exist (from tours.json)
+const bgImages = [
+  'https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg',
+  'https://cdn.simplyenak.com/kuala_lumpur_street_food_cd4fad4122.jpg',
+  'https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg',
+  'https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg',
 ];
+const heroBg = landingPage?.heroImage || bgImages[Math.floor(Math.random() * bgImages.length)];
+
+// Key selling points with visual icons
+const features = [
+  { icon: '🍜', label: `${tourCount} Tour${tourCount !== 1 ? 's' : ''}`, desc: `Curated experience${tourCount !== 1 ? 's' : ''} in this category` },
+  { icon: '👤', label: 'Small Groups', desc: 'Max 8 guests, personal guide' },
+  { icon: '⭐', label: '5-Star Rated', desc: '5000+ reviews on Google & TA' },
+  { icon: '💰', label: 'From RM 285', desc: 'All tastings included, no hidden fees' },
+];
+
+// Gallery images — from Payload or fallback to CDN tour images
+const galleryImages = (landingPage?.images || []).filter((img: any) => img.position !== 'hero')
+  .map((img: any) => ({
+    url: typeof img.image === 'object' ? img.image?.url : img.image,
+    alt: img.alt || '',
+    caption: img.caption || '',
+  }))
+  .filter((img: any) => img.url);
+
+// If no Payload images, use CDN fallback images
+const cdnFallbackImages = [
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown001_7f2c0b4c3f.jpg', alt: 'Food tasting experience', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Kuala_Lumpur_Street_Food001_6fcced575c.jpg', alt: 'Street food tour', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown003_c7b4448cd0.jpg', alt: 'Local guide explaining dish', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown2_1a84f7f151.jpg', alt: 'Hawker stall cooking', caption: '' },
+  { url: 'https://cdn.simplyenak.com/eatdrinkgeorgetown_1_263d654742.jpg', alt: 'Market visit', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown3_08347c2ca0.jpg', alt: 'Group food tour', caption: '' },
+];
+
+const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImages.slice(0, 4);
 ---
 
 <!-- Hero -->
-<section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+<section class="relative min-h-[70vh] flex items-center bg-[#1a1a1a] text-white overflow-hidden">
   <div class="absolute inset-0">
-    {landingPage?.heroImage ? (
-      <img src={landingPage.heroImage} alt="" class="w-full h-full object-cover opacity-40" />
-    ) : (
-      <div class="w-full h-full bg-gradient-to-br from-[#2a1a1a] to-[#1a1a1a]"></div>
-    )}
-    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/80"></div>
+    <img src={heroBg} alt="" class="w-full h-full object-cover opacity-35" loading="eager" />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/90"></div>
+    <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255,163,51,.08) 1px, transparent 1px); background-size: 32px 32px;"></div>
   </div>
-  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+  <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6 py-24 md:py-32 text-center">
     {segmentLabel && (
-      <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">{segmentLabel}</p>
+      <p class="text-accent/80 text-xs uppercase tracking-[0.25em] font-bold mb-4">{segmentLabel}</p>
     )}
-    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
-      <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4 leading-tight">
+      <span class="inline-block bg-accent text-black px-5 py-2 rounded-sm shadow-lg" style="transform:rotate(-0.5deg); font-size: clamp(1.5rem, 4vw, 2.5rem);">
         {segment.name}
       </span>
-      <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+      <span class="block text-white/90 text-xl md:text-2xl lg:text-3xl mt-4 font-normal font-sans max-w-3xl mx-auto">
         {segment.heroSubtitle || landingPage?.heroSubtitle || `Food Tours`}
       </span>
     </h1>
-    <p class="text-white/70 max-w-2xl mx-auto text-sm md:text-base">
+    <p class="text-white/60 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
       {intro}
     </p>
-    <div class="mt-8 flex justify-center gap-4">
-      <a href="#tours" class="btn-primary inline-flex items-center gap-2">
+    <div class="mt-10 flex justify-center gap-4 flex-wrap">
+      <a href="#tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg shadow-accent/25">
         Browse Tours
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </a>
-      <a href="/contact" class="btn-secondary inline-flex items-center gap-2">
+      <a href="/contact" class="inline-flex items-center gap-2 border-2 border-white/20 text-white font-semibold px-8 py-3.5 rounded hover:bg-white/5 transition-colors text-sm">
         Ask a Question
       </a>
     </div>
   </div>
 </section>
 
-<!-- Key features / selling points -->
-<section class="py-12 bg-white dark:bg-[#1e1c1c] border-b border-gray-100 dark:border-white/10">
+<!-- Image gallery strip -->
+{displayImages.length > 0 && (
+  <section class="py-8 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {displayImages.slice(0, 4).map((img: any) => (
+          <div class="aspect-[4/3] overflow-hidden rounded-xl shadow-sm">
+            <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Key features -->
+<section class="py-14 bg-white dark:bg-[#1e1c1c] border-y border-gray-100 dark:border-white/5">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
       {features.map((f) => (
-        <div class="text-center">
-          <span class="text-3xl block mb-2">{f.icon}</span>
+        <div class="text-center group">
+          <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+            <span>{f.icon}</span>
+          </div>
           <h3 class="text-sm font-bold font-heading">{f.label}</h3>
           <p class="text-xs text-muted mt-1">{f.desc}</p>
         </div>
@@ -89,41 +130,40 @@ const features = [
   </div>
 </section>
 
-<!-- Tour cards (main conversion section) -->
+<!-- Tours -->
 <section class="py-16 bg-muted/30" id="tours">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl md:text-4xl font-bold font-heading">{segment.name} Tours in Malaysia</h2>
-      <p class="text-muted max-w-2xl mx-auto mt-3">Small-group walking food tours through neighbourhoods where locals actually eat</p>
+    <div class="text-center mb-12">
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Choose Your Tour</p>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading">{segment.name} Tours</h2>
+      <p class="text-muted max-w-xl mx-auto mt-3 text-sm">Small-group walking food tours through real neighbourhoods, led by local guides</p>
     </div>
 
     {matchingTours.length > 0 ? (
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {matchingTours.map((tour: any) => (
-          <a href={`/tours/${tour.slug}`} class="group block rounded-xl border bg-card shadow-sm overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
-            {tour.image && (
-              <div class="aspect-[16/9] overflow-hidden">
-                <img src={tour.image} alt={tour.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-              </div>
-            )}
+          <a href={`/tours/${tour.slug}`} class="group block rounded-xl border bg-card shadow-sm overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1.5">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src={tour.image || 'https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg'} alt={tour.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+            </div>
             <div class="p-5">
-              <h3 class="text-lg font-bold font-heading group-hover:text-primary">{tour.name}</h3>
-              <p class="text-sm text-muted mt-1 line-clamp-2">{tour.tagline || tour.shortDescription}</p>
-              <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
-                <span class="font-semibold">RM {tour.price}</span>
-                {tour.duration && <span>&middot; {tour.duration}</span>}
+              <h3 class="text-lg font-bold font-heading group-hover:text-primary transition-colors">{tour.name}</h3>
+              <p class="text-sm text-muted mt-1.5 line-clamp-2 leading-relaxed">{tour.tagline || tour.shortDescription}</p>
+              <div class="mt-4 flex items-center gap-3 text-xs text-muted">
+                <span class="font-bold text-default text-base">RM {tour.price}</span>
+                {tour.duration && <><span class="text-gray-300">|</span><span>{tour.duration}</span></>}
               </div>
-              <div class="mt-3">
-                <span class="inline-block text-accent text-xs font-semibold group-hover:underline">View Tour &rarr;</span>
+              <div class="mt-3 pt-3 border-t border-gray-100 dark:border-white/5">
+                <span class="inline-flex items-center gap-1 text-accent text-xs font-semibold group-hover:gap-2 transition-all">View Tour Details <span>&rarr;</span></span>
               </div>
             </div>
           </a>
         ))}
       </div>
     ) : (
-      <div class="text-center">
-        <p class="text-muted mb-4">No specific tours found for this category.</p>
-        <a href="/tours" class="inline-block bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+      <div class="text-center py-12">
+        <p class="text-muted mb-6">No specific tours listed for this category yet.</p>
+        <a href="/tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
           Browse All Tours
         </a>
       </div>
@@ -131,26 +171,32 @@ const features = [
   </div>
 </section>
 
-<!-- Guest reviews -->
+<!-- Reviews -->
 {featuredReviews.length > 0 && (
   <section class="py-16 bg-gradient-to-b from-transparent to-muted/20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-10">
-        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">What Guests Say</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Real Reviews from Real Guests</h2>
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Guest Reviews</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">What Our Guests Say</h2>
+        <p class="text-muted mt-2 text-sm">Rated 5 stars on Google and TripAdvisor</p>
       </div>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {featuredReviews.slice(0, 6).map((r: any) => (
-          <div class="bg-card border rounded-xl p-6 shadow-sm flex flex-col">
+          <div class="bg-card border rounded-xl p-6 shadow-sm flex flex-col hover:shadow-md transition-shadow">
             <div class="flex items-center gap-1 mb-3">
               {Array.from({ length: r.rating || 5 }).map(() => (
                 <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               ))}
             </div>
-            <p class="text-sm text-muted italic flex-grow">&ldquo;{(r.text || '').length > 150 ? (r.text || '').slice(0, 150) + '&hellip;' : (r.text || '')}&rdquo;</p>
-            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/10">
-              <p class="text-sm font-semibold">{r.author || 'Guest'}</p>
-              {r.location && <p class="text-xs text-muted">via {r.location}</p>}
+            <p class="text-sm text-muted italic flex-grow leading-relaxed">&ldquo;{(r.text || '').length > 180 ? (r.text || '').slice(0, 180) + '&hellip;' : (r.text || '')}&rdquo;</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/5 flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
+                <span class="text-accent text-xs font-bold">{(r.author || 'G')[0]}</span>
+              </div>
+              <div>
+                <p class="text-sm font-semibold">{r.author || 'Guest'}</p>
+                {r.location && <p class="text-xs text-muted">{r.location}</p>}
+              </div>
             </div>
           </div>
         ))}
@@ -159,27 +205,18 @@ const features = [
   </section>
 )}
 
-<!-- FAQ -->
-{landingPage?.content && (
-  <section class="py-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl font-bold font-heading mb-4">Frequently Asked Questions</h2>
-      <p class="text-muted mb-8">Everything you need to know about {segment.name.toLowerCase()} tours</p>
-      <a href="/faq" class="text-accent font-semibold text-sm hover:underline">View all FAQs &rarr;</a>
-    </div>
-  </section>
-)}
-
-<!-- Final CTA -->
-<section class="py-16 bg-accent/5 border-t border-gray-100 dark:border-white/10">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Ready to Experience {segment.name} Tours?</h2>
-    <p class="text-muted text-lg mb-8">Book your spot today. Small groups, local guides, unforgettable meals.</p>
+<!-- CTA -->
+<section class="py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5"></div>
+  <div class="absolute inset-0" style="background-image: radial-gradient(rgba(181,45,56,.04) 1px, transparent 1px); background-size: 24px 24px;"></div>
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Ready to Taste {segment.name}?</h2>
+    <p class="text-muted text-lg mb-8 max-w-lg mx-auto">Book a tour with a local guide who grew up eating the food they'll show you.</p>
     <div class="flex justify-center gap-4 flex-wrap">
-      <a href="#tours" class="bg-accent text-black font-bold px-8 py-3 rounded hover:bg-accent/90 transition-colors">
+      <a href="#tours" class="bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-accent/90 transition-colors shadow-lg shadow-accent/20">
         Book a Tour
       </a>
-      <a href="/contact" class="border-2 border-gray-300 dark:border-white/20 text-default font-bold px-8 py-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+      <a href="/contact" class="border-2 border-gray-300 dark:border-white/20 text-default font-bold px-8 py-3.5 rounded hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
         Contact Us
       </a>
     </div>
@@ -188,13 +225,14 @@ const features = [
 
 <!-- Explore more -->
 {allSegments.length > 1 && (
-  <section class="py-12">
+  <section class="py-14 bg-white dark:bg-[#1e1c1c]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h3 class="text-lg font-bold font-heading mb-6">Explore More Options</h3>
+      <h3 class="text-lg font-bold font-heading mb-2">Explore More</h3>
+      <p class="text-muted text-sm mb-6">Other popular ways to experience Malaysian food</p>
       <div class="flex flex-wrap gap-3 justify-center">
         {allSegments.filter((s: any) => s.slug !== segment.slug).slice(0, 12).map((s: any) => (
           <a href={`${segmentPath}${s.slug}`}
-             class="chip inline-block border-2 border-gray-300 dark:border-white/20 rounded-full px-5 py-2 text-sm font-semibold text-default hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+             class="inline-block border-2 border-gray-200 dark:border-white/10 rounded-full px-5 py-2 text-sm font-semibold text-default hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
             {s.name}
           </a>
         ))}
