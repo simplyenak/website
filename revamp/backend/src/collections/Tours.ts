@@ -45,6 +45,7 @@ export const Tours: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
+      localized: true,
             admin: {
         description: 'The official tour name (e.g., "Flavours of Malaysia")',
       },
@@ -61,6 +62,7 @@ export const Tours: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
+      localized: true,
             admin: {
         description: 'Short, catchy phrase (e.g., "Off the Beaten Track")',
       },
@@ -68,6 +70,7 @@ export const Tours: CollectionConfig = {
     {
       name: 'shortDescription',
       type: 'textarea',
+      localized: true,
             admin: {
         description: 'Brief overview for listing pages (2-3 sentences)',
       },
@@ -75,6 +78,7 @@ export const Tours: CollectionConfig = {
     {
       name: 'fullDescription',
       type: 'textarea',
+      localized: true,
             admin: {
         description: 'Complete tour description for detail pages',
       },
@@ -150,7 +154,7 @@ export const Tours: CollectionConfig = {
     {
       name: 'travelTypes',
       type: 'relationship',
-      relationTo: ['landing_pages', 'travel_types'],
+      relationTo: 'travel_types',
       hasMany: true,
       admin: {
         description: 'Select travel types this tour suits (Couples, Solo, Family, Foodie)',
@@ -159,7 +163,7 @@ export const Tours: CollectionConfig = {
     {
       name: 'specialtyExperiences',
       type: 'relationship',
-      relationTo: ['landing_pages', 'specialty_experiences'],
+      relationTo: 'specialty_experiences',
       hasMany: true,
       admin: {
         description: 'Select specialty experiences (Heritage, Street Food, Night Tour, Market)',
