@@ -98,14 +98,30 @@ const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImag
   </div>
 </section>
 
-<!-- Image gallery strip -->
+<!-- Image gallery — polaroid-style cards -->
 {displayImages.length > 0 && (
-  <section class="py-8 bg-white dark:bg-[#1e1c1c]">
+  <section class="py-12 bg-white dark:bg-[#1e1c1c]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {displayImages.slice(0, 4).map((img: any) => (
-          <div class="aspect-[4/3] overflow-hidden rounded-xl shadow-sm">
-            <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+      <p class="text-center text-accent text-xs uppercase tracking-[0.25em] font-bold mb-8">What to Expect</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {displayImages.slice(0, 4).map((img: any, i: number) => (
+          <div class="group">
+            <div class="relative bg-white dark:bg-gray-800 p-2 rounded-sm shadow-md hover:shadow-xl transition-shadow duration-300" style="transform: rotate(var(--rot, 0deg));">
+              <div class="aspect-square overflow-hidden">
+                <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="pt-2 pb-1 text-center">
+                <p class="text-xs font-semibold text-gray-700 dark:text-gray-300 font-heading">
+                  {img.caption || (i === 0 ? 'Local Guide' : i === 1 ? 'Fresh Ingredients' : i === 2 ? 'Hawker Stall' : 'Small Groups')}
+                </p>
+              </div>
+            </div>
+            <style>
+              .group:nth-child(1) .relative { --rot: -1deg; }
+              .group:nth-child(2) .relative { --rot: 1.5deg; }
+              .group:nth-child(3) .relative { --rot: -0.5deg; }
+              .group:nth-child(4) .relative { --rot: 1deg; }
+            </style>
           </div>
         ))}
       </div>
