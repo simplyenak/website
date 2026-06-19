@@ -112,8 +112,10 @@ export const dietarySegments = [
  slug: 'vegan-food-tours-kuala-lumpur',
  name: 'Vegan',
  nameFull: 'Vegan Food Tours in Kuala Lumpur',
- description: 'Vegan food in KL goes beyond salad. Discover plant-based versions of iconic Malaysian dishes.',
- heroSubtitle: 'Plant-based Malaysian food in KL',
+
+ description: 'KL Buddhist vegetarian tradition means plant-based eating is well understood here. Our guides know which stalls are truly vegan and which use hidden shrimp paste.',
+
+ heroSubtitle: 'Vegan food in KL, guide-verified',
  metaTitle: 'Vegan Food Tours in Kuala Lumpur',
  tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food'],
  },
@@ -130,8 +132,10 @@ export const dietarySegments = [
  slug: 'jain-food-tours-kuala-lumpur',
  name: 'Jain',
  nameFull: 'Jain Food Tours in Kuala Lumpur',
- description: 'Strict Jain requirements met with care. No root vegetables, no onion, no garlic - pure sattvic food.',
- heroSubtitle: 'Strict Jain. No Root Vegetables.',
+
+ description: 'KL Indian community understands Jain cooking. Stalls in Brickfields that prepare food without onion, garlic, or root vegetables. Private tour for full compliance.',
+
+ heroSubtitle: 'Jain-friendly food in KL, carefully sourced',
  metaTitle: 'Jain Food Tours in Kuala Lumpur',
  tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food'],
  },
@@ -316,7 +320,8 @@ export const specialtySegments = [
  slug: 'street-food-tours-penang',
  name: 'Street Food',
  nameFull: 'Street Food Tours in Penang',
- description: "Penang is the street food capital of Asia. Taste why on our guided tours.",
+
+ description: 'Gurney Drive at dusk, Chulia Street late-night hawkers, Air Itam morning market. Three different Penang food experiences.',
  metaTitle: 'Street Food Tours in Penang',
  tours: ['eat-drink-george-town', 'penang-street-food'],
  },
@@ -356,7 +361,8 @@ export const specialtySegments = [
  slug: 'night-food-tours-kuala-lumpur',
  name: 'Night Food',
  nameFull: 'Night Food Tours in Kuala Lumpur',
- description: 'KL comes alive after dark. Night markets, late-night hawkers, and hidden cocktail bars.',
+
+ description: 'Jalan Alor neon, SS2 pasar malam, late-night roti canai at 2am. KL after dark is when the real food scene comes alive.',
  metaTitle: 'Night Food Tours in Kuala Lumpur',
  tours: ['secrets-of-kl-nightlife'],
  },
@@ -364,7 +370,8 @@ export const specialtySegments = [
  slug: 'night-food-tours-penang',
  name: 'Night Food',
  nameFull: 'Night Food Tours in Penang',
- description: 'Experience Penang after dark - from night markets to late-night roti canai.',
+
+ description: 'Gurney Drive evening hawker centre, Chulia Street late supper, night market snacks. Penang after dark is a different food city.',
  metaTitle: 'Night Food Tours in Penang',
  tours: ['eat-drink-george-town'],
  },
@@ -469,8 +476,10 @@ export const travelTypeSegments = [
  slug: 'food-tours-for-chefs',
  name: 'Chefs',
  nameFull: 'Food Tours for Professional Chefs',
- description: 'Market-to-table experiences designed for culinary professionals. Deep dives into Malaysian ingredients, techniques, and vendor traditions.',
- heroSubtitle: 'For the Professionals Who Feed Others',
+
+ description: 'Market-to-table experiences for culinary professionals. Ingredient sourcing, technique-focused tastings, behind-the-scenes vendor access.',
+
+ heroSubtitle: 'KL food tour designed for culinary professionals',
  metaTitle: 'Chef Food Tours in Malaysia',
  tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food'],
  },
