@@ -1,1 +1,262 @@
-{}
+{
+  "seo_title": "Food Tours in Malaysia",
+  "seo_description": "Explore our range of authentic Malaysian food and culture tours in Kuala Lumpur, Penang, Melaka, Ipoh and beyond.",
+  "hero_title": "Food, Culture & Heritage Tours<br/>in {highlight}KL, Ipoh & Penang{/highlight}",
+  "hero_cta_primary_text": "SEE ALL TOURS",
+  "hero_cta_primary_href": "#tours",
+  "hero_cta_secondary_text": "PLAN A PRIVATE TOUR",
+  "hero_cta_secondary_href": "/tours/private-tours",
+  "three_ways_eyebrow": "YOUR CHOICE",
+  "three_ways_heading": "Three Ways to Experience Malaysia",
+  "three_ways_description": "Private tour, tailored route, or small group. Pick what fits you.",
+  "three_ways": [
+    {
+      "id": "65b7e2a1c1e5a80001a1b001",
+      "title": "Private Tour",
+      "description": "Any of our signature tours, run privately for your group. Includes hotel pickup and dietary needs accommodated in advance.",
+      "features": [
+        {
+          "id": "65b7e2a1c1e5a80001a1b002",
+          "feature": "Your group only"
+        },
+        {
+          "id": "65b7e2a1c1e5a80001a1b003",
+          "feature": "Hotel pickup included"
+        },
+        {
+          "id": "65b7e2a1c1e5a80001a1b004",
+          "feature": "Flexible start time"
+        }
+      ],
+      "cta_text": "Book a Private Tour",
+      "cta_href": "/tours/private-tours",
+      "is_popular": false
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b005",
+      "title": "Tailored Experience",
+      "description": "Custom route designed around your interests. Pre-tour WhatsApp planning with your guide.",
+      "features": [
+        {
+          "id": "65b7e2a1c1e5a80001a1b006",
+          "feature": "Fully customized route"
+        },
+        {
+          "id": "65b7e2a1c1e5a80001a1b007",
+          "feature": "Any duration"
+        },
+        {
+          "id": "65b7e2a1c1e5a80001a1b008",
+          "feature": "Special dietary focus"
+        }
+      ],
+      "cta_text": "Tell Us What You Want",
+      "cta_href": "/contact",
+      "is_popular": true
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b009",
+      "title": "Join a Small Group",
+      "description": "Book a spot on one of our scheduled tours alongside fellow travellers. Max 9 guests.",
+      "features": [
+        {
+          "id": "65b7e2a1c1e5a80001a1b00a",
+          "feature": "From RM 285/person"
+        },
+        {
+          "id": "65b7e2a1c1e5a80001a1b00b",
+          "feature": "Max 9 guests"
+        },
+        {
+          "id": "65b7e2a1c1e5a80001a1b00c",
+          "feature": "Fixed schedule"
+        }
+      ],
+      "cta_text": "Browse All Tours",
+      "cta_href": "#tours",
+      "is_popular": false
+    }
+  ],
+  "signature_eyebrow": "THE ORIGINALS",
+  "signature_heading": "Our Signature Food Tours",
+  "signature_description": "The 5 tours that started it all. Each one built around vendors we've known for over a decade.",
+  "city_eyebrow": "BY DESTINATION",
+  "city_heading": "Tours by City",
+  "city_description": "Every Malaysian city tells a different food story. Choose your chapter.",
+  "cities": [
+    {
+      "id": "65b7e2a1c1e5a80001a1b00d",
+      "name": "Kuala Lumpur",
+      "description": "From Chinatown hawkers to Indian curry houses. KL's multicultural food scene.",
+      "href": "/tours/locations/food-tours-kuala-lumpur",
+      "tour_count_label": "3 tours →",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b00e",
+      "name": "Penang",
+      "description": "Asia's food capital. Peranakan heritage, hawker culture, and island charm.",
+      "href": "/tours/locations/food-tours-penang",
+      "tour_count_label": "2 tours →",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b00f",
+      "name": "Melaka",
+      "description": "600 years of Peranakan heritage. Nyonya cuisine and Portuguese-Eurasian flavors.",
+      "href": "/tours/locations/food-tours-melaka",
+      "tour_count_label": "Coming soon →",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/melaka-cultural-tour.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b010",
+      "name": "Ipoh",
+      "description": "Old town charm, white coffee heritage, and bean sprout chicken fame.",
+      "href": "/tours/locations/food-tours-ipoh",
+      "tour_count_label": "Coming soon →",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/ipoh-old-town.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b011",
+      "name": "Klang",
+      "description": "Birthplace of bak kut teh. Royal Malay heritage and port town traditions.",
+      "href": "/tours/locations/food-tours-klang",
+      "tour_count_label": "Coming soon →",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg"
+    }
+  ],
+  "dietary_eyebrow": "DIETARY PREFERENCES",
+  "dietary_heading": "Tours by Dietary Need",
+  "dietary_description": "Every tour can be adapted. These are our dedicated dietary experiences.",
+  "experience_eyebrow": "EXPERIENCE TYPE",
+  "experience_heading": "Tours by Experience",
+  "experience_description": "From morning markets to night food adventures.",
+  "experiences": [
+    {
+      "id": "65b7e2a1c1e5a80001a1b012",
+      "name": "Street Food",
+      "specialty_slug": "street-food",
+      "href": "/tours/specialty/street-food-tours-kuala-lumpur",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b013",
+      "name": "Market Tour",
+      "specialty_slug": "market-tour",
+      "href": "/tours/specialty/market-tours-kuala-lumpur",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b014",
+      "name": "Heritage",
+      "specialty_slug": "heritage",
+      "href": "/tours/specialty/heritage-food-tours-kuala-lumpur",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b015",
+      "name": "Night Tour",
+      "specialty_slug": "night-tour",
+      "href": "/tours/specialty/night-food-tours-kuala-lumpur",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg"
+    }
+  ],
+  "travel_with_eyebrow": "TRAVEL STYLE",
+  "travel_with_heading": "Who You're Traveling With",
+  "travel_with_description": "Tours designed for your specific travel group.",
+  "travel_with_options": [
+    {
+      "id": "65b7e2a1c1e5a80001a1b016",
+      "name": "Family",
+      "icon": "👨‍👩‍👧‍👦",
+      "travel_type_slug": "family",
+      "href": "/tours/segments/food-tours-for-families-kuala-lumpur",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b017",
+      "name": "Couples",
+      "icon": "💑",
+      "travel_type_slug": "couples",
+      "href": "/tours/segments/food-tours-for-couples-kuala-lumpur",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b018",
+      "name": "Foodie",
+      "icon": "🍽️",
+      "travel_type_slug": "foodie",
+      "href": "/tours/segments/food-tours-for-foodies-kuala-lumpur",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg"
+    }
+  ],
+  "groups_eyebrow": "FOR GROUPS",
+  "groups_heading": "Groups & Events",
+  "groups_description": "Private tours, corporate outings, and custom experiences.",
+  "groups": [
+    {
+      "id": "65b7e2a1c1e5a80001a1b019",
+      "title": "Families & Groups",
+      "description": "Kid-friendly food, parent-approved.",
+      "href": "/tours",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/story-family-recipes.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b01a",
+      "title": "Team Events",
+      "description": "After-conference dinners & team nights out",
+      "href": "/tours",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b01b",
+      "title": "Celebrations",
+      "description": "Birthdays & reunions",
+      "href": "/contact",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/hari-raya-foods.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b01c",
+      "title": "Chef Experiences",
+      "description": "Market-to-table for professional chefs",
+      "href": "/tours/segments/food-tours-for-chefs",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b01d",
+      "title": "Wedding Groups",
+      "description": "Pre- or post-wedding food adventures",
+      "href": "/tours/segments/food-tours-for-wedding-groups",
+      "image": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg"
+    }
+  ],
+  "tailor_eyebrow": "FULLY CUSTOM",
+  "tailor_heading": "Tailor Make Your Own Tour",
+  "tailor_description": "Have something specific in mind? We'll design a tour around your interests, dietary needs, and schedule. Multi-city itineraries, special dietary focuses, or themed experiences — if you can imagine it, we can create it.",
+  "tailor_features": [
+    {
+      "id": "65b7e2a1c1e5a80001a1b01e",
+      "feature": "Any duration (2 hours to multi-day)"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b01f",
+      "feature": "Combine multiple cities"
+    },
+    {
+      "id": "65b7e2a1c1e5a80001a1b020",
+      "feature": "Pre-tour WhatsApp planning with your guide"
+    }
+  ],
+  "tailor_cta_text": "Tell Us Your Idea",
+  "tailor_cta_href": "/contact",
+  "find_tour_heading": "Find Your Perfect Tour",
+  "find_tour_description": "Browse all our tour categories",
+  "not_sure_heading": "Not Sure Which Tour to Pick?",
+  "not_sure_description": "Chat with us and we'll help you find the perfect food experience.",
+  "not_sure_cta_text": "Chat on WhatsApp",
+  "not_sure_cta_href": "https://wa.me/60172878929",
+  "_status": "published",
+  "hero_image": "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
+  "dietary_image": "https://se-website-images.s3.nl-ams.scw.cloud/vegetarian-heritage.jpg",
+  "tailor_image": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg"
+}
