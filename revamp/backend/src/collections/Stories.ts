@@ -77,6 +77,13 @@ export const Stories: CollectionConfig = {
       },
     },
     {
+      name: 'content_markdown',
+      type: 'textarea',
+      admin: {
+        description: 'Markdown version of content — used for static site rendering. If empty, site falls back to richText conversion.',
+      },
+    },
+    {
       name: 'publishedDate',
       type: 'date',
       admin: {
