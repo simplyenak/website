@@ -21,6 +21,7 @@ export const Users: CollectionConfig = {
       ],
       defaultValue: 'editor',
       required: true,
+      saveToJWT: true,
       admin: {
         description: 'User role determines what they can access and edit',
         position: 'sidebar',
