@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { getToursByTag, getLandingPageBySlug, getImageUrl } from '~/lib/content';
 import { dietarySegments } from '~/data/segments';
+import reviews from '~/data/content/reviews.json';
 import LandingPageSections from '~/components/LandingPageSections.astro';
 
 export async function getStaticPaths() {
