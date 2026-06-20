@@ -32,6 +32,15 @@ const foodCultureRest = foodCulture.filter(p => p.slug !== featured?.slug);
 const travelTipsRest = travelTips.filter(p => p.slug !== featured?.slug);
 const vendorStoriesRest = vendorStories.filter(p => p.slug !== featured?.slug);
 
+// Max stories per category section (rest are hidden, revealed by "Show more" button)
+const MAX_VISIBLE = 6;
+const foodCultureVisible = foodCultureRest.slice(0, MAX_VISIBLE);
+const foodCultureHidden = foodCultureRest.slice(MAX_VISIBLE);
+const travelTipsVisible = travelTipsRest.slice(0, MAX_VISIBLE);
+const travelTipsHidden = travelTipsRest.slice(MAX_VISIBLE);
+const vendorStoriesVisible = vendorStoriesRest.slice(0, MAX_VISIBLE);
+const vendorStoriesHidden = vendorStoriesRest.slice(MAX_VISIBLE);
+
 const metadata = {
   title: sp.seo_title || `Stories${currentPage > 1 ? `  -  Page ${currentPage}` : ''}`,
   description: sp.seo_description || 'Local food knowledge, travel tips, and the vendors who keep Malaysian traditions alive.',
@@ -99,7 +108,7 @@ const metadata = {
         )}
 
         <!-- Food & Culture Guides -->
-        {foodCultureRest.length > 0 && (
+        {foodCultureVisible.length > 0 && (
           <section id="food-culture" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
@@ -109,7 +118,7 @@ const metadata = {
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {foodCultureRest.map((post, i) => (
+              {foodCultureVisible.map((post, i) => (
                 <a href={`/${post.slug}`} class:list={[
                   'group block relative overflow-hidden rounded-xl shadow-md',
                   i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
@@ -130,11 +139,35 @@ const metadata = {
                 </a>
               ))}
             </div>
+
+            {foodCultureHidden.length > 0 && (
+              <div class="mt-6 hidden food-culture-hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {foodCultureHidden.map((post, i) => (
+                  <a href={`/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                    <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-5">
+                      <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Food & Culture Guides</span>
+                      <h3 class="font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors text-base">{post.title}</h3>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
+            {foodCultureHidden.length > 0 && (
+              <div class="text-center mt-8">
+                <button onclick="document.querySelector('.food-culture-hidden').classList.remove('hidden'); this.style.display='none';"
+                  class="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-semibold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors text-sm">
+                  Discover {foodCultureHidden.length} more food & culture stories
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            )}
           </section>
         )}
 
         <!-- Travel Tips -->
-        {travelTipsRest.length > 0 && (
+        {travelTipsVisible.length > 0 && (
           <section id="travel-tips" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
@@ -144,7 +177,7 @@ const metadata = {
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {travelTipsRest.map((post, i) => (
+              {travelTipsVisible.map((post, i) => (
                 <a href={`/${post.slug}`} class:list={[
                   'group block relative overflow-hidden rounded-xl shadow-md',
                   i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
@@ -165,11 +198,35 @@ const metadata = {
                 </a>
               ))}
             </div>
+
+            {travelTipsHidden.length > 0 && (
+              <div class="mt-6 hidden travel-tips-hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {travelTipsHidden.map((post, i) => (
+                  <a href={`/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                    <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-5">
+                      <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Travel Tips</span>
+                      <h3 class="font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors text-base">{post.title}</h3>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
+            {travelTipsHidden.length > 0 && (
+              <div class="text-center mt-8">
+                <button onclick="document.querySelector('.travel-tips-hidden').classList.remove('hidden'); this.style.display='none';"
+                  class="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-semibold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors text-sm">
+                  Discover {travelTipsHidden.length} more travel tips
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            )}
           </section>
         )}
 
         <!-- Vendor Stories -->
-        {vendorStoriesRest.length > 0 ? (
+        {vendorStoriesVisible.length > 0 ? (
           <section id="vendor-stories" class="mb-16 scroll-mt-20">
             <div class="flex items-center justify-between mb-8">
               <div>
@@ -179,7 +236,7 @@ const metadata = {
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {vendorStoriesRest.map((post, i) => (
+              {vendorStoriesVisible.map((post, i) => (
                 <a href={`/${post.slug}`} class:list={[
                   'group block relative overflow-hidden rounded-xl shadow-md',
                   i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
@@ -200,6 +257,30 @@ const metadata = {
                 </a>
               ))}
             </div>
+
+            {vendorStoriesHidden.length > 0 && (
+              <div class="mt-6 hidden vendor-stories-hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {vendorStoriesHidden.map((post, i) => (
+                  <a href={`/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                    <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-5">
+                      <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">Vendor Stories</span>
+                      <h3 class="font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors text-base">{post.title}</h3>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
+            {vendorStoriesHidden.length > 0 && (
+              <div class="text-center mt-8">
+                <button onclick="document.querySelector('.vendor-stories-hidden').classList.remove('hidden'); this.style.display='none';"
+                  class="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-semibold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors text-sm">
+                  Discover {vendorStoriesHidden.length} more vendor stories
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            )}
           </section>
         ) : (
           <!-- Vendor Stories empty state -->

@@ -1,8 +1,8 @@
 {
   "id": 1,
-  "hero_title": null,
-  "hero_subtitle": null,
-  "steps_title": null,
+  "hero_title": "How Our Food Tours Work",
+  "hero_subtitle": "From booking to the last bite, here is what happens on a Simply Enak tour.",
+  "steps_title": "The Process",
   "steps": [
     {
       "id": "6a0c34758bb5600001c23794",
@@ -41,7 +41,7 @@
       "detail": "Reviews on TripAdvisor and Google help other travellers find us."
     }
   ],
-  "inclusions_title": null,
+  "inclusions_title": "What is Included",
   "inclusions": [
     {
       "id": "6a0c34758bb5600001c2379a",
@@ -79,5 +79,5 @@
   "seo_description": "How Simply Enak food tours work — Simply Enak Malaysian food tours.",
   "updatedAt": "2026-05-19T09:59:17.490Z",
   "createdAt": "2026-05-19T09:59:17.489Z",
-  "_status": "draft"
+  "_status": "published"
 }

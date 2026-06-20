@@ -1,6 +1,14 @@
 ---
 /**
- * LandingPageSections.astro — Premium, visually-rich landing page
+ * LandingPageSections.astro — Conversion-focused landing page
+ * 
+ * Story arc:
+ * 1. Hook — challenge expectations about this segment
+ * 2. Tours first — show what's on offer immediately
+ * 3. Why this matters — use Payload content for narrative
+ * 4. Social proof — reviews from people who did this
+ * 5. Guide link — "Read the full guide" for deep-dive readers
+ * 6. CTA — clear next step
  */
 interface Props {
   segment: any;
@@ -30,23 +38,26 @@ const bgImages = [
 ];
 const heroBg = landingPage?.heroImage || bgImages[Math.floor(Math.random() * bgImages.length)];
 
-// Segment-specific key features
-const getFeatures = () => {
-  const base = [
-    { icon: '👤', label: 'Small Groups', desc: 'Max 8 guests, personal guide' },
-    { icon: '⭐', label: '5-Star Rated', desc: '5000+ reviews on Google & TA' },
-    { icon: '💰', label: tourCount > 0 ? `From RM ${matchingTours[0]?.price || 285}` : 'From RM 285', desc: 'All tastings included' },
-  ];
-  const segFeatures: Record<string, { icon: string; label: string; desc: string }[]> = {
-    dietary: [{ icon: '🥗', label: 'Dietary-Friendly', desc: 'Stalls vetted for your needs' }, ...base],
-    specialty: [{ icon: '🍜', label: 'Curated Routes', desc: 'Hand-picked stalls by our guides' }, ...base],
-    location: [{ icon: '📍', label: 'Local Neighbourhoods', desc: 'Areas tourists rarely see' }, ...base],
-    travel_type: [{ icon: '👥', label: 'Tailored Experience', desc: 'Matched to your travel style' }, ...base],
+// Story hooks — different per segment type, specific to the segment
+const getHook = () => {
+  const name = segment.name || 'this';
+  const hooks: Record<string, string> = {
+    location: `${name} does not taste like the hotel buffet. It tastes like a charcoal wok at midnight, a curry that has been simmering since dawn, and a kuih lady who remembers your order from last time.`,
+    dietary: `Finding ${name.toLowerCase()} food in Malaysia is easier than most people think. You just need to know which stalls to walk into.`,
+    specialty: `${name} is not a tourist activity here. It is how the city feeds itself.`,
+    travel_type: `The right food tour depends on who you are travelling with. Here is what works for ${name.toLowerCase()}.`,
   };
-  return segFeatures[segmentType] || base;
+  return hooks[segmentType] || `This is what ${name} looks like with a local who knows where to go.`;
 };
 
-// Gallery images
+// The landing page content (short intro from Payload)
+const pageContent = landingPage?.content || '';
+const introHeading = landingPage?.intro_heading || '';
+const guideSlug = landingPage?.guide_slug || '';
+const guideLinkText = landingPage?.guide_link_text || 'Read the full guide';
+const ctaText = landingPage?.cta_text || 'Browse tours';
+
+// Gallery images from Payload or CDN fallback
 const galleryImages = (landingPage?.images || []).filter((img: any) => img.position !== 'hero')
   .map((img: any) => ({
     url: typeof img.image === 'object' ? img.image?.url : img.image,
@@ -54,31 +65,24 @@ const galleryImages = (landingPage?.images || []).filter((img: any) => img.posit
   })).filter((img: any) => img.url);
 
 const cdnFallbackImages = [
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown001_7f2c0b4c3f.jpg', alt: 'Food tasting', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Kuala_Lumpur_Street_Food001_6fcced575c.jpg', alt: 'Street food', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown003_c7b4448cd0.jpg', alt: 'Local guide', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown2_1a84f7f151.jpg', alt: 'Hawker stall', caption: '' },
-  { url: 'https://cdn.simplyenak.com/eatdrinkgeorgetown_1_263d654742.jpg', alt: 'Market visit', caption: '' },
-  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown3_08347c2ca0.jpg', alt: 'Food tour group', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown001_7f2c0b4c3f.jpg', alt: 'Food tasting on a Simply Enak tour', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Kuala_Lumpur_Street_Food001_6fcced575c.jpg', alt: 'KL street food stall', caption: '' },
+  { url: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown003_c7b4448cd0.jpg', alt: 'Local guide explaining dishes', caption: '' },
+  { url: 'https://cdn.simplyenak.com/eatdrinkgeorgetown_1_263d654742.jpg', alt: 'Market visit on tour', caption: '' },
 ];
 const displayImages = galleryImages.length > 0 ? galleryImages : cdnFallbackImages.slice(0, 4);
 
-const polaroidLabels = ['Local Guide', 'Fresh Ingredients', 'Hawker Stall', 'Small Groups'];
-const segmentCtaText: Record<string, string> = {
-  dietary: 'Book a tour that fits your dietary needs',
-  specialty: 'Book a tour crafted around your interests',
-  location: 'Explore the neighbourhood with a local',
-  travel_type: 'Find the perfect tour for your group',
-};
-const ctaText = segmentCtaText[segmentType] || 'Book your tour today';
-const features = getFeatures();
+const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
+  const p = typeof t.price === 'string' ? parseInt(t.price.replace(/[^0-9]/g, '')) : t.price;
+  return p || 999;
+})) : 285;
 ---
 
 <!-- Sticky mobile CTA -->
 <div class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] md:hidden">
   <div class="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
     <div>
-      <p class="text-xs text-muted">From {tourCount > 0 ? `${matchingTours[0]?.price || 285}` : '285'} MYR/pax</p>
+      <p class="text-xs text-muted">From RM {lowestPrice} MYR/pax</p>
       <p class="text-xs font-semibold">{tourCount} tour{tourCount !== 1 ? 's' : ''} available</p>
     </div>
     <a href="#tours" class="bg-accent text-black font-bold px-6 py-2.5 rounded text-sm hover:bg-accent/90 transition-colors">
@@ -87,173 +91,159 @@ const features = getFeatures();
   </div>
 </div>
 
-<!-- Hero -->
-<section class="relative min-h-[70vh] flex items-center bg-[#1a1a1a] text-white overflow-hidden">
+<!-- 1. HERO — Hook with a bold statement -->
+<section class="relative min-h-[60vh] flex items-center bg-[#1a1a1a] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src={heroBg} alt="" class="w-full h-full object-cover opacity-35" loading="eager" />
-    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/90"></div>
-    <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255,163,51,.08) 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <img src={heroBg} alt="" class="w-full h-full object-cover opacity-40" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/65 to-black/90"></div>
   </div>
-  <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6 py-24 md:py-32 text-center">
+  <div class="relative w-full max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
     {segmentLabel && (
       <p class="text-accent/80 text-xs uppercase tracking-[0.25em] font-bold mb-4">{segmentLabel}</p>
     )}
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4 leading-tight">
-      <span class="inline-block bg-accent text-black px-5 py-2 rounded-sm shadow-lg" style="transform:rotate(-0.5deg); font-size: clamp(1.5rem, 4vw, 2.5rem);">
-        {segment.name}
-      </span>
-      <span class="block text-white/90 text-xl md:text-2xl lg:text-3xl mt-4 font-normal font-sans max-w-3xl mx-auto">
-        {segment.heroSubtitle || landingPage?.heroSubtitle || `Food Tours`}
-      </span>
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6 leading-tight">
+      {segment.name}
     </h1>
-    <p class="text-white/60 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">{intro}</p>
-    <div class="mt-10 flex justify-center gap-4 flex-wrap">
-      <a href="#tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg shadow-accent/25">
-        Browse Tours
+    <p class="text-xl md:text-2xl text-white/85 font-normal font-sans leading-relaxed max-w-2xl mb-8">
+      {getHook()}
+    </p>
+    {intro && (
+      <p class="text-white/50 max-w-xl text-sm md:text-base leading-relaxed mb-8">{intro}</p>
+    )}
+    <div class="flex flex-wrap gap-4">
+      <a href="#tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-7 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg shadow-accent/20">
+        {tourCount > 0 ? `${ctaText} (${tourCount})` : ctaText}
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </a>
-      <a href="/contact" class="inline-flex items-center gap-2 border-2 border-white/20 text-white font-semibold px-8 py-3.5 rounded hover:bg-white/5 transition-colors text-sm">
+      <a href="/contact" class="inline-flex items-center gap-2 border-2 border-white/20 text-white font-semibold px-7 py-3.5 rounded hover:bg-white/5 transition-colors text-sm">
         Ask a Question
       </a>
     </div>
+    {tourCount > 0 && (
+      <div class="mt-10 flex items-center gap-6 text-sm text-white/40">
+        <span class="flex items-center gap-2"><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg> 5,000+ reviews</span>
+        <span>From RM {lowestPrice}/person</span>
+        <span>Max 8 guests</span>
+      </div>
+    )}
   </div>
 </section>
 
-<!-- Image gallery — polaroid cards -->
-{displayImages.length > 0 && (
-  <section class="py-12 bg-white dark:bg-[#1e1c1c]">
+<!-- 2. TOURS FIRST — show what's on offer immediately -->
+{tourCount > 0 && (
+  <section class="py-16 bg-white dark:bg-[#1e1c1c]" id="tours">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <p class="text-center text-accent text-xs uppercase tracking-[0.25em] font-bold mb-8">What to Expect</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {displayImages.slice(0, 4).map((img: any, i: number) => (
-          <div class="group">
-            <div class="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
-              <div class="aspect-square overflow-hidden">
-                <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              <div class="pt-2 pb-1 text-center">
-                <p class="text-xs font-semibold text-gray-700 dark:text-gray-300 font-heading">
-                  {img.caption || polaroidLabels[i]}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div class="mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-3">
+          {tourCount === 1 ? 'The Tour' : `${tourCount} Tours Available`}
+        </h2>
+        <p class="text-muted text-sm max-w-xl">
+          {tourCount === 1
+            ? `This is the tour we recommend for ${segment.name.toLowerCase()}.`
+            : `These are the tours that work best for ${segment.name.toLowerCase()}. Pick one, or ask us which fits your group.`}
+        </p>
       </div>
-    </div>
-  </section>
-)}
 
-<!-- Key features -->
-<section class="py-14 bg-white dark:bg-[#1e1c1c] border-y border-gray-100 dark:border-white/5">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      {features.map((f) => (
-        <div class="text-center group">
-          <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-            <span>{f.icon}</span>
-          </div>
-          <h3 class="text-sm font-bold font-heading">{f.label}</h3>
-          <p class="text-xs text-muted mt-1">{f.desc}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- What to Expect — step guide -->
-<section class="py-14 bg-muted/20">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-    <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">How It Works</p>
-    <h2 class="text-2xl md:text-3xl font-bold font-heading mb-10">A {segment.name} Tour in 3 Steps</h2>
-    <div class="grid md:grid-cols-3 gap-8 text-left">
-      <div class="bg-card border rounded-xl p-6 shadow-sm">
-        <span class="text-3xl block mb-3">👋</span>
-        <h3 class="font-bold font-heading mb-2">Meet Your Guide</h3>
-        <p class="text-sm text-muted">Start at a recognisable landmark. Your guide will brief you on the route and answer any questions.</p>
-      </div>
-      <div class="bg-card border rounded-xl p-6 shadow-sm">
-        <span class="text-3xl block mb-3">🍜</span>
-        <h3 class="font-bold font-heading mb-2">Walk & Taste</h3>
-        <p class="text-sm text-muted">Visit 5-8 family-run stalls. Taste dishes, hear their stories, learn how they're made.</p>
-      </div>
-      <div class="bg-card border rounded-xl p-6 shadow-sm">
-        <span class="text-3xl block mb-3">⭐</span>
-        <h3 class="font-bold font-heading mb-2">Finish Satisfied</h3>
-        <p class="text-sm text-muted">End with a full stomach, food knowledge, and recommendations for the rest of your trip.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tours -->
-<section class="py-16 bg-muted/30" id="tours">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="text-center mb-12">
-      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Choose Your Tour</p>
-      <h2 class="text-3xl md:text-4xl font-bold font-heading">{segment.name} Tours</h2>
-      <p class="text-muted max-w-xl mx-auto mt-3 text-sm">Small-group walking food tours through real neighbourhoods, led by local guides</p>
-    </div>
-
-    {matchingTours.length > 0 ? (
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {matchingTours.map((tour: any) => (
-          <a href={`/tours/${tour.slug}`} class="group block rounded-xl border bg-card shadow-sm overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1.5">
+          <a href={`/tours/${tour.slug}`} class="group block rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
             <div class="aspect-[16/10] overflow-hidden relative">
               <img src={tour.image || 'https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg'} alt={tour.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-              {segmentType === 'dietary' && (
-                <span class="absolute top-3 left-3 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">{segment.name}-Friendly</span>
-              )}
-              {segmentType === 'specialty' && (
-                <span class="absolute top-3 left-3 bg-accent text-black text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">{segment.name}</span>
-              )}
+              <div class="absolute bottom-3 left-3 bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                <span class="font-bold text-default text-sm">RM {tour.price}</span>
+                <span class="text-xs text-muted">/pax</span>
+              </div>
             </div>
             <div class="p-5">
               <h3 class="text-lg font-bold font-heading group-hover:text-primary transition-colors">{tour.name}</h3>
               <p class="text-sm text-muted mt-1.5 line-clamp-2 leading-relaxed">{tour.tagline || tour.shortDescription}</p>
               <div class="mt-4 flex items-center gap-3 text-xs text-muted">
-                <span class="font-bold text-default text-base">RM {tour.price}<span class="text-xs font-normal text-muted">/pax</span></span>
-                {tour.duration && <><span class="text-gray-300">|</span><span>{tour.duration}</span></>}
+                {tour.duration && <span class="flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> {tour.duration}</span>}
+                {tour.location && <span class="flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> {tour.location}</span>}
               </div>
-              <div class="mt-3 pt-3 border-t border-gray-100 dark:border-white/5 flex items-center justify-between">
-                <span class="inline-flex items-center gap-1 text-accent text-xs font-semibold group-hover:gap-2 transition-all">View Details <span>&rarr;</span></span>
+              <div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/5 flex items-center justify-between">
+                <span class="inline-flex items-center gap-1 text-accent text-xs font-semibold group-hover:gap-2 transition-all">
+                  View Details <span>&rarr;</span>
+                </span>
                 <span class="text-[10px] text-muted">Free cancellation</span>
               </div>
             </div>
           </a>
         ))}
       </div>
-    ) : (
-      <div class="text-center py-12">
-        <p class="text-muted mb-6">No specific tours listed for this category yet.</p>
-        <a href="/tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
-          Browse All Tours
-        </a>
-      </div>
-    )}
-  </div>
-</section>
 
-<!-- Reviews -->
-{featuredReviews.length > 0 && (
-  <section class="py-16 bg-gradient-to-b from-transparent to-muted/20">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Guest Reviews</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">What Our Guests Say</h2>
-        <p class="text-muted mt-2 text-sm">Rated 5 stars on Google and TripAdvisor</p>
+      <!-- Can't decide? Cross-link to quiz or contact -->
+      <div class="mt-10 text-center">
+        <p class="text-sm text-muted mb-3">Not sure which tour is right for you?</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a href="/tour-quiz" class="text-accent text-sm font-semibold hover:underline">Take our tour quiz &rarr;</a>
+          <span class="text-muted">|</span>
+          <a href="/contact" class="text-accent text-sm font-semibold hover:underline">Ask us directly &rarr;</a>
+        </div>
       </div>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    </div>
+  </section>
+)}
+
+<!-- 3. WHY THIS MATTERS — narrative using Payload content + images -->
+{(pageContent || displayImages.length > 0) && (
+  <section class="py-16 bg-muted/20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      {introHeading && (
+        <h2 class="text-2xl md:text-3xl font-bold font-heading mb-6 text-center">{introHeading}</h2>
+      )}
+      {pageContent && (
+        <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mb-10">
+          {pageContent.split('\n').filter((line: string) => line.trim()).map((line: string) => (
+            <p>{line.trim()}</p>
+          ))}
+        </div>
+      )}
+      {displayImages.length > 0 && (
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {displayImages.slice(0, 4).map((img: any) => (
+            <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-32 md:h-40 object-cover" />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<!-- 4. GUIDE LINK — for deep-dive readers -->
+{guideSlug && (
+  <section class="py-10 bg-white dark:bg-[#1e1c1c] border-y border-gray-100 dark:border-white/5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <a href={`/stories/${guideSlug}`} class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
+        {guideLinkText}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <p class="text-xs text-muted mt-2">Full guide with neighbourhood breakdowns, stall recommendations, and what to expect</p>
+    </div>
+  </section>
+)}
+
+<!-- 5. SOCIAL PROOF — reviews -->
+{featuredReviews.length > 0 && (
+  <section class="py-16 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold font-heading mb-2">What guests say</h2>
+        <p class="text-muted text-sm">Real reviews from people who did this tour</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {featuredReviews.slice(0, 6).map((r: any) => (
-          <div class="bg-card border rounded-xl p-6 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+          <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-5 flex flex-col">
             <div class="flex items-center gap-1 mb-3">
               {Array.from({ length: r.rating || 5 }).map(() => (
                 <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               ))}
             </div>
-            <p class="text-sm text-muted italic flex-grow leading-relaxed">&ldquo;{(r.text || '').length > 180 ? (r.text || '').slice(0, 180) + '&hellip;' : (r.text || '')}&rdquo;</p>
+            <p class="text-sm text-muted italic flex-grow leading-relaxed">&ldquo;{(r.text || '').length > 160 ? (r.text || '').slice(0, 160) + '\u2026' : (r.text || '')}&rdquo;</p>
             <div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/5 flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
+              <div class="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
                 <span class="text-accent text-xs font-bold">{(r.author || 'G')[0]}</span>
               </div>
               <div>
@@ -268,34 +258,44 @@ const features = getFeatures();
   </section>
 )}
 
-<!-- CTA -->
-<section class="py-20 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5"></div>
-  <div class="absolute inset-0" style="background-image: radial-gradient(rgba(181,45,56,.04) 1px, transparent 1px); background-size: 24px 24px;"></div>
+<!-- 6. CTA — clear next step -->
+<section class="py-16 bg-[#1a1a1a] text-white relative overflow-hidden">
+  <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255,163,51,.06) 1px, transparent 1px); background-size: 32px 32px;"></div>
   <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Ready for Your {segment.name} Experience?</h2>
-    <p class="text-muted text-lg mb-8 max-w-lg mx-auto">{ctaText}</p>
+    <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+      {tourCount > 0 ? `Ready to eat in ${segment.name}?` : `Want to explore ${segment.name}?`}
+    </h2>
+    <p class="text-white/60 text-lg mb-8 max-w-lg mx-auto">
+      {tourCount > 0
+        ? 'Book a spot on a small-group tour, or ask us about a private experience for your group.'
+        : 'Send us a message and we will help you plan the right food tour.'}
+    </p>
     <div class="flex justify-center gap-4 flex-wrap">
-      <a href="#tours" class="bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-accent/90 transition-colors shadow-lg shadow-accent/20">
-        Book a Tour
+      {tourCount > 0 && (
+        <a href="#tours" class="bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm">
+          Book a Tour
+        </a>
+      )}
+      <a href="https://wa.me/60172878929" class="inline-flex items-center gap-2 border-2 border-white/20 text-white font-semibold px-8 py-3.5 rounded hover:bg-white/5 transition-colors text-sm">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp us
       </a>
-      <a href="/contact" class="border-2 border-gray-300 dark:border-white/20 text-default font-bold px-8 py-3.5 rounded hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-        Contact Us
+      <a href="/contact" class="border-2 border-white/20 text-white font-semibold px-8 py-3.5 rounded hover:bg-white/5 transition-colors text-sm">
+        Send a message
       </a>
     </div>
   </div>
 </section>
 
-<!-- Explore more -->
+<!-- Explore more segments -->
 {allSegments.length > 1 && (
-  <section class="py-14 bg-white dark:bg-[#1e1c1c]">
+  <section class="py-10 bg-muted/20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h3 class="text-lg font-bold font-heading mb-2">Explore More</h3>
-      <p class="text-muted text-sm mb-6">Other popular ways to experience Malaysian food</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        {allSegments.filter((s: any) => s.slug !== segment.slug).slice(0, 12).map((s: any) => (
+      <p class="text-xs text-muted uppercase tracking-wider font-semibold mb-4">Explore other ways to experience Malaysian food</p>
+      <div class="flex flex-wrap gap-2 justify-center">
+        {allSegments.filter((s: any) => s.slug !== segment.slug).slice(0, 10).map((s: any) => (
           <a href={`${segmentPath}${s.slug}`}
-             class="inline-block border-2 border-gray-200 dark:border-white/10 rounded-full px-5 py-2 text-sm font-semibold text-default hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+             class="inline-block border border-gray-200 dark:border-white/10 rounded-full px-4 py-1.5 text-xs font-medium text-muted hover:border-primary hover:text-primary transition-colors">
             {s.name}
           </a>
         ))}
