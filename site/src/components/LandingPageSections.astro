@@ -66,6 +66,73 @@ const introHeading = landingPage?.intro_heading || '';
 const guideLinkText = landingPage?.guide_link_text || 'Read the full guide';
 const ctaText = landingPage?.cta_text || 'Browse tours';
 
+// People, Places, Stories — segment-specific pitch
+const getPeoplePlacesStories = () => {
+  const name = segment.name || 'this experience';
+  const locName = segment.name || 'this city';
+  const people: Record<string, { title: string; desc: string }> = {
+    location: {
+      title: 'The People',
+      desc: `Family-run stalls that have been feeding their neighborhoods for decades. ${locName}'s hawkers take pride in recipes passed down through generations — and our guides personally know the stories behind each one.`,
+    },
+    dietary: {
+      title: 'The People',
+      desc: `Stall owners who understand ${name.toLowerCase()} cooking aren't just accommodating — they're specialists. We personally vet every vendor to ensure their methods match what you need.`,
+    },
+    specialty: {
+      title: 'The People',
+      desc: `Hawkers who have spent 40+ years perfecting a single dish. They do not just cook — they are the guardians of a craft, and their wok is the canvas.`,
+    },
+    travel_type: {
+      title: 'The People',
+      desc: `Our guides are natural hosts who tailor the experience to your group — keeping curious minds engaged and making sure everyone feels welcome at every stop.`,
+    },
+  };
+  const places: Record<string, { title: string; desc: string }> = {
+    location: {
+      title: 'The Places',
+      desc: `Hidden alleyways, bustling markets, and streets that transform at night. The best food in ${locName} lives where the locals eat — not where the guidebooks send you.`,
+    },
+    dietary: {
+      title: 'The Places',
+      desc: `From temple kitchens that have perfected mock meats to dedicated ${name.toLowerCase()} banana leaf joints and hawker stalls that genuinely get it right — the right spots make all the difference.`,
+    },
+    specialty: {
+      title: 'The Places',
+      desc: `The most atmospheric spots where ${name.toLowerCase()} culture thrives — from pre-dawn wet markets to midnight alleyways buzzing with charcoal fires and the clatter of woks.`,
+    },
+    travel_type: {
+      title: 'The Places',
+      desc: `Spots with seating, space, and something for everyone — no stressful queues, no overly-spicy surprises, just the right atmosphere for your group to connect over great food.`,
+    },
+  };
+  const stories: Record<string, { title: string; desc: string }> = {
+    location: {
+      title: 'The Stories',
+      desc: `${locName}'s food tells the story of migration, trade, and community — Chinese kopitiams, Indian banana leaf joints, Malay warungs. Every dish carries a history.`,
+    },
+    dietary: {
+      title: 'The Stories',
+      desc: `Dietary traditions in Malaysia go back centuries — shaped by temple diets, religious practices, and immigrant communities who adapted their food to new ingredients without compromising their values.`,
+    },
+    specialty: {
+      title: 'The Stories',
+      desc: `Every dish has a migration story. Hokkien mee from Fujian, satay from Java, roti canai from India — modified, improved, made Malaysian. ${name} is that story on a plate.`,
+    },
+    travel_type: {
+      title: 'The Stories',
+      desc: `Tales of migration, trade, and tradition that make food come alive. Each stop on your tour comes with a story that connects you to Malaysia's rich cultural tapestry.`,
+    },
+  };
+  return {
+    people: people[segmentType] || people.location,
+    places: places[segmentType] || places.location,
+    stories: stories[segmentType] || stories.location,
+  };
+};
+
+const pitch = !pageContent ? getPeoplePlacesStories() : null;
+
 // Gallery images from Payload or CDN fallback
 const galleryImages = (landingPage?.images || []).filter((img: any) => img.position !== 'hero')
   .map((img: any) => ({
@@ -194,32 +261,74 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </section>
 )}
 
-<!-- 3. WHY THIS MATTERS — narrative using Payload content + images -->
-{(pageContent || displayImages.length > 0) && (
-  <section class="py-16 bg-muted/20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      {introHeading && (
-        <h2 class="text-2xl md:text-3xl font-bold font-heading mb-6 text-center">{introHeading}</h2>
+<!-- 3. WHAT MAKES THIS SPECIAL — People, Places, Stories -->
+{(pageContent || pitch) && (() => {
+  const pp = pitch || { 
+    people: { title: 'The People', desc: pageContent },
+    places: { title: 'The Places', desc: '' },
+    stories: { title: 'The Stories', desc: '' },
+  };
+  return (
+  <section class="py-16 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-2">What Makes It Special</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">
+          {introHeading || `The People, the Places, the Stories`}
+        </h2>
+        <p class="text-muted text-sm mt-3 max-w-xl mx-auto">{introHeading ? '' : `This is what makes ${segment.name || 'this experience'} worth exploring.`}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-14">
+        <!-- People -->
+        <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
+          <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold font-heading mb-3">{pp.people.title}</h3>
+          <p class="text-sm text-muted leading-relaxed">{pp.people.desc}</p>
+        </div>
+
+        <!-- Places -->
+        <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
+          <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold font-heading mb-3">{pp.places.title}</h3>
+          <p class="text-sm text-muted leading-relaxed">{pp.places.desc}</p>
+        </div>
+
+        <!-- Stories -->
+        <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
+          <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="text-lg font-bold font-heading mb-3">{pp.stories.title}</h3>
+          <p class="text-sm text-muted leading-relaxed">{pp.stories.desc}</p>
+        </div>
+      </div>
+
+      <!-- Images gallery -->
+      {displayImages.length > 0 && (
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {displayImages.slice(0, 4).map((img: any) => (
+            <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3]">
+              <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+          ))}
+        </div>
       )}
+
       {pageContent && (
-        <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mb-10">
+        <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mt-10 max-w-3xl mx-auto">
           {pageContent.split('\n').filter((line: string) => line.trim()).map((line: string) => (
             <p>{line.trim()}</p>
           ))}
         </div>
       )}
-      {displayImages.length > 0 && (
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {displayImages.slice(0, 4).map((img: any) => (
-            <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-32 md:h-40 object-cover" />
-            </div>
-          ))}
-        </div>
-      )}
     </div>
-  </section>
-)}
+  </section>);
+})()}
 
 <!-- 4. GUIDE CARD — visual card linking to full guide on Stories -->
 {guideSlug && (
