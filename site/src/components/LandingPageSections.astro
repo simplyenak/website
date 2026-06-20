@@ -24,7 +24,7 @@ const intro = landingPage?.hero_description || landingPage?.introduction || segm
 const tourCount = matchingTours.length;
 
 // Fetch guide story for the visual guide card
-const guideSlug = landingPage?.guide_slug || '';
+const guideSlug = (landingPage?.guide_slug || '').replace(/--+/g, '-');
 let guideStory: any = null;
 if (guideSlug) {
   try {
