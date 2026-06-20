@@ -966,6 +966,11 @@ export async function getStories(locale?: string) {
   return resolveStories(locale);
 }
 
+export async function getStoryBySlug(slug: string, locale?: string) {
+  const all = await resolveStories(locale);
+  return all.find((s: any) => s.slug === slug && (!s._status || s._status === 'published')) || null;
+}
+
 // -- Pages (home, about, contact) --
 
 export async function getHomePage(locale?: string) {

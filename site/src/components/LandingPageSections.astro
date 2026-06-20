@@ -23,6 +23,16 @@ const { segment, landingPage, matchingTours, featuredReviews, segmentType, allSe
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 const tourCount = matchingTours.length;
 
+// Fetch guide story for the visual guide card
+const guideSlug = landingPage?.guide_slug || '';
+let guideStory: any = null;
+if (guideSlug) {
+  try {
+    const { getStoryBySlug } = await import('~/lib/content');
+    guideStory = await getStoryBySlug(guideSlug);
+  } catch {}
+}
+
 const segmentPaths: Record<string, string> = {
   dietary: '/tours/dietary/', specialty: '/tours/specialty/',
   location: '/tours/locations/', travel_type: '/tours/segments/',
@@ -53,7 +63,6 @@ const getHook = () => {
 // The landing page content (short intro from Payload)
 const pageContent = landingPage?.content || '';
 const introHeading = landingPage?.intro_heading || '';
-const guideSlug = landingPage?.guide_slug || '';
 const guideLinkText = landingPage?.guide_link_text || 'Read the full guide';
 const ctaText = landingPage?.cta_text || 'Browse tours';
 
@@ -139,8 +148,8 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
         </h2>
         <p class="text-muted text-sm max-w-xl">
           {tourCount === 1
-            ? `This is the tour we recommend for ${segment.name.toLowerCase()}.`
-            : `These are the tours that work best for ${segment.name.toLowerCase()}. Pick one, or ask us which fits your group.`}
+            ? `This is the tour we recommend for ${segment.name}.`
+            : `These are the tours that work best for ${segment.name}. Pick one, or ask us which fits your group.`}
         </p>
       </div>
 
@@ -212,15 +221,34 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </section>
 )}
 
-<!-- 4. GUIDE LINK — for deep-dive readers -->
+<!-- 4. GUIDE CARD — visual card linking to full guide on Stories -->
 {guideSlug && (
-  <section class="py-10 bg-white dark:bg-[#1e1c1c] border-y border-gray-100 dark:border-white/5">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <a href={`/stories/${guideSlug}`} class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
-        {guideLinkText}
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <section class="py-12 bg-muted/20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <a href={`/stories/${guideSlug}`} class="group flex flex-col sm:flex-row gap-5 bg-card border border-gray-100 dark:border-white/10 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all">
+        {guideStory?.image || guideStory?.featured_image ? (
+          <div class="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden shrink-0">
+            <img src={guideStory.image || guideStory.featured_image} alt={guideStory.title || 'Food guide'} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+        ) : (
+          <div class="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden shrink-0 bg-accent/10 flex items-center justify-center">
+            <svg class="w-12 h-12 text-accent/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+        )}
+        <div class="flex-1 p-5 sm:p-6 flex flex-col justify-center">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">Complete Guide</p>
+          <h3 class="text-lg font-bold font-heading mb-2 group-hover:text-primary transition-colors">
+            {guideStory?.title || `${segment.name} Guide`}
+          </h3>
+          {guideStory?.excerpt && (
+            <p class="text-sm text-muted leading-relaxed line-clamp-2">{guideStory.excerpt}</p>
+          )}
+          <span class="inline-flex items-center gap-1 text-accent text-xs font-semibold mt-3 group-hover:gap-2 transition-all">
+            {guideLinkText}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
       </a>
-      <p class="text-xs text-muted mt-2">Full guide with neighbourhood breakdowns, stall recommendations, and what to expect</p>
     </div>
   </section>
 )}
