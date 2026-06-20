@@ -2,14 +2,14 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { getAllTours, getToursPage, getImageUrl } from '~/lib/content';
 import { dietarySegments, locationSegments, specialtySegments, travelTypeSegments } from '~/data/segments';
-import { getDietaryOptionList, getLocationSegments, getSpecialtyList, getTravelTypeList } from '~/lib/content';
+import { getDietaryOptionList, getLocationList, getSpecialtyList, getTravelTypeList } from '~/lib/content';
 
 const tp = await getToursPage();
 const tours = await getAllTours();
 
 // Payload reference data for segment images (user uploads in admin)
 const dietaryRefs = await getDietaryOptionList();
-const locationRefs = await getLocationSegments();
+const locationRefs = await getLocationList();
 const specialtyRefs = await getSpecialtyList();
 const travelTypeRefs = await getTravelTypeList();
 

@@ -903,6 +903,10 @@ export async function getDietaryOptionList(locale?: string) {
   return resolveDietaryOptions(locale);
 }
 
+export async function getLocationList(locale?: string) {
+  return resolveLocations(locale);
+}
+
 export async function getSpecialtyList(locale?: string) {
   return resolveSpecialtyExperiences(locale);
 }
