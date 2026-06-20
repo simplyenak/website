@@ -66,72 +66,90 @@ const introHeading = landingPage?.intro_heading || '';
 const guideLinkText = landingPage?.guide_link_text || 'Read the full guide';
 const ctaText = landingPage?.cta_text || 'Browse tours';
 
-// People, Places, Stories — segment-specific pitch
+// People, Places, Stories — segment-specific sales pitch
 const getPeoplePlacesStories = () => {
   const name = segment.name || 'this experience';
-  const locName = segment.name || 'this city';
-  const people: Record<string, { title: string; desc: string }> = {
-    location: {
-      title: 'The People',
-      desc: `Family-run stalls that have been feeding their neighborhoods for decades. ${locName}'s hawkers take pride in recipes passed down through generations — and our guides personally know the stories behind each one.`,
+  const first = (segment.slug || '').split('-')[0]; // e.g. 'halal', 'vegetarian', 'kuala'
+
+  // Specific pitches keyed by the segment's first slug word
+  const specific: Record<string, { people: string; places: string; stories: string }> = {
+    halal: {
+      people: "The hawkers and cooks who make Malaysian halal food so good that locals queue for it. From Malay nasi campur veterans to the Chinese Muslim restaurants serving halal versions of classic dishes — every stall we visit is personally vetted so you never have to ask. You can trust every bite, and that changes how you eat.",
+      places: "Kampung Baru's hidden Malay supper spots, the Chinese Muslim eateries where halal Char Siu is an art form, and the night markets where everything is naturally halal. The places tourists don't know exist — but where every local Muslim foodie goes.",
+      stories: "Islam arrived in Malaysia with traders from the Middle East and India over 600 years ago. It didn't replace the food culture — it shaped it. Malay food is naturally halal by definition, but the real story is how Chinese, Indian, and Malay cuisines each found their own way to stay halal while keeping their soul.",
     },
-    dietary: {
-      title: 'The People',
-      desc: `Stall owners who understand ${name.toLowerCase()} cooking aren't just accommodating — they're specialists. We personally vet every vendor to ensure their methods match what you need.`,
+    vegetarian: {
+      people: "The stall owners who understand vegetarian cooking isn't about what they leave out — it's about what they put in. From the Indian banana leaf aunties who've been serving lunch for 40 years to the Buddhist temple chefs who've perfected the art of mock meats, these cooks make vegetables sing.",
+      places: "Brickfields' legendary banana leaf row where you can eat a dozen vegetarian dishes on a single leaf. The temple kitchens serving vegetarian zhai that tastes nothing like 'health food.' And the Indian Muslim stalls that have been making perfect roti canai with coconut milk all along.",
+      stories: "KL's vegetarian traditions span centuries. Buddhist monastic cooking brought plant-based eating to China centuries ago, and Chinese immigrants brought it here. Tamil Hindu culinary heritage means some of the best vegetarian food in Malaysia comes from Indian-Muslim hawkers. Three traditions, one city, infinite options.",
     },
-    specialty: {
-      title: 'The People',
-      desc: `Hawkers who have spent 40+ years perfecting a single dish. They do not just cook — they are the guardians of a craft, and their wok is the canvas.`,
+    vegan: {
+      people: "The vendors who prove vegan food in Malaysia is anything but limited. We've found the stalls that use coconut milk instead of dairy, palm sugar instead of honey, and vegetables so fresh they don't need to hide behind butter. These cooks understand that vegan means delicious first, plant-based second.",
+      places: "The Buddhist zhai kitchens where vegan cooking has been perfected over centuries — no dairy, no eggs, just pure plant-based flavor. Indian banana leaf joints serving coconut-milk curries that happen to be completely vegan. And the night market stalls where you'll find snacks you thought you'd never eat again.",
+      stories: "Malaysia's vegan tradition runs deep — Buddhist monastic diets have been entirely plant-based for over a thousand years. When Chinese Buddhist immigrants arrived, they brought a cuisine that was already 100% vegan, using tofu, gluten, and vegetable proteins in ways most Western vegan food still hasn't caught up with.",
     },
-    travel_type: {
-      title: 'The People',
-      desc: `Our guides are natural hosts who tailor the experience to your group — keeping curious minds engaged and making sure everyone feels welcome at every stop.`,
+    gluten: {
+      people: "The hawkers who understand that gluten-free isn't a trend here — it's the original recipe. Rice, rice noodles, rice flour. These cooks have been making food that happens to be gluten-free for generations, using ingredients that are naturally safe. We vet every stall personally so you don't have to worry.",
+      places: "The rice noodle stalls where fresh-made hor fun and kway teow are the foundation of the cuisine. The nasi lemak vendors serving coconut rice that's naturally safe. The satay stalls grilling over charcoal with sauces made from scratch. Malaysia's best food is already gluten-free — you just need to know where.",
+      stories: "Rice is the soul of Malaysian food, and rice has no gluten. While Western cuisine leans on wheat, Malaysia built its food culture around rice noodles, rice flour, and coconut. The cooks here don't adapt recipes to be gluten-free — they've been cooking this way all along.",
     },
-  };
-  const places: Record<string, { title: string; desc: string }> = {
-    location: {
-      title: 'The Places',
-      desc: `Hidden alleyways, bustling markets, and streets that transform at night. The best food in ${locName} lives where the locals eat — not where the guidebooks send you.`,
+    kuala: {
+      people: "The third-generation hawkers who've been feeding KL's neighborhoods since before the Petronas Towers existed. The roti canai masters who've flipped dough for 40+ years. The kopitiam uncles who remember when this was a tin-mining town. These aren't just cooks — they're KL's living culinary archive.",
+      places: "Hidden alleyways in Chow Kit where the best curry laksa waits. The bustling market stalls of Pudu where families have shopped for three generations. Streets around Masjid India that transform at night into an open-air feast. The places no guidebook sends you — because they don't need to.",
+      stories: "KL's food tells the story of Malaysia itself. Chinese immigrants who built kopitiam culture around strong coffee and kaya toast. Indian-Muslim traders who brought banana leaf rice and roti canai. Malay villagers who carried their nasi lemak recipes from kampungs to the city. Three cultures, one table, 150 years of history in every bite.",
     },
-    dietary: {
-      title: 'The Places',
-      desc: `From temple kitchens that have perfected mock meats to dedicated ${name.toLowerCase()} banana leaf joints and hawker stalls that genuinely get it right — the right spots make all the difference.`,
+    penang: {
+      people: "The hawkers who've made Penang the street food capital of Asia. These aren't restaurant chefs — they're stallholders who've dedicated their lives to a single dish, often working the same spot for 30+ years. Every bowl of Char Koay Teow tells you something about the person who cooked it.",
+      places: "George Town's heritage streets where the best hawker stalls hide behind century-old shophouses. The air-conditioned kopitiams where Hokkien families gather. The night markets along Gurney Drive. And the quiet neighborhood stalls where locals eat — the ones that never make it to any 'best of' list.",
+      stories: "Penang's food is the story of the Straits — where Chinese traders, Malay royalty, and European colonizers created a culture that's unlike anywhere else. Penang was the first British settlement in Southeast Asia, and its food reflects every wave of migration that followed. It's not just street food — it's 200 years of history on a plate.",
     },
-    specialty: {
-      title: 'The Places',
-      desc: `The most atmospheric spots where ${name.toLowerCase()} culture thrives — from pre-dawn wet markets to midnight alleyways buzzing with charcoal fires and the clatter of woks.`,
+    ipoh: {
+      people: "The coffee masters who've been roasting Ipoh's famous white coffee since before Malaysia existed. The Hakka families who brought their distinctive cuisine and never left. The hawkers who still cook the same way their grandparents did — because if it isn't broken, don't fix it.",
+      places: "The old-town coffee shops where Ipoh's white coffee culture was born. The Hakka eateries serving dishes you can't find anywhere else. The quiet neighborhoods where the best curry mee hides in plain sight. Ipoh's food doesn't shout — it doesn't need to.",
+      stories: "Ipoh was once the richest city in Malaysia, built on tin mining. That wealth attracted migrants from southern China, especially the Hakka, who brought a cuisine that's survived almost unchanged. Ipoh's food is a time capsule — what Malaysian Chinese food tasted like before globalization.",
     },
-    travel_type: {
-      title: 'The Places',
-      desc: `Spots with seating, space, and something for everyone — no stressful queues, no overly-spicy surprises, just the right atmosphere for your group to connect over great food.`,
-    },
-  };
-  const stories: Record<string, { title: string; desc: string }> = {
-    location: {
-      title: 'The Stories',
-      desc: `${locName}'s food tells the story of migration, trade, and community — Chinese kopitiams, Indian banana leaf joints, Malay warungs. Every dish carries a history.`,
-    },
-    dietary: {
-      title: 'The Stories',
-      desc: `Dietary traditions in Malaysia go back centuries — shaped by temple diets, religious practices, and immigrant communities who adapted their food to new ingredients without compromising their values.`,
-    },
-    specialty: {
-      title: 'The Stories',
-      desc: `Every dish has a migration story. Hokkien mee from Fujian, satay from Java, roti canai from India — modified, improved, made Malaysian. ${name} is that story on a plate.`,
-    },
-    travel_type: {
-      title: 'The Stories',
-      desc: `Tales of migration, trade, and tradition that make food come alive. Each stop on your tour comes with a story that connects you to Malaysia's rich cultural tapestry.`,
+    melaka: {
+      people: "The Peranakan (Straits Chinese) cooks who created one of the world's first fusion cuisines — and have been perfecting it for 600 years. The Malay-Muslim hawkers serving dishes that trace back to Portuguese colonizers. The Portuguese-Eurasian families who still cook recipes from the 1500s.",
+      places: "Jonker Street's heritage shophouses where Nyonya cooking reigns. The Portuguese Settlement where Eurasian descendants still make their traditional devil's curry. The Malay kampungs serving food that's pure Peranakan-Malay — a mix that only exists in Melaka.",
+      stories: "Melaka's food is the original fusion. When Chinese traders married Malay women in the 1400s, they created Peranakan (Nyonya) cuisine — a blend of Chinese techniques with Malay ingredients. Then came the Portuguese in 1511, then the Dutch, then the British. Every colonizer left something on the plate.",
     },
   };
+
+  // Type-based fallbacks
+  const typeFallback: Record<string, { people: string; places: string; stories: string }> = {
+    location: {
+      people: `Family-run stalls that have been feeding their neighborhoods for decades. ${name}'s hawkers take pride in recipes passed down through generations — and our guides personally know the stories behind each one.`,
+      places: `Hidden alleyways, bustling markets, and streets that transform at night. The best food in ${name} lives where the locals eat — not where the guidebooks send you.`,
+      stories: `${name}'s food tells the story of migration, trade, and community — Chinese kopitiams, Indian banana leaf joints, Malay warungs. Every dish carries a history.`,
+    },
+    dietary: {
+      people: `Stall owners who understand ${name.toLowerCase()} cooking aren't just accommodating — they're specialists. We personally vet every vendor so you can eat with complete confidence.`,
+      places: `From temple kitchens to dedicated hawker stalls that genuinely get it right, we know exactly where to find food that meets your needs without compromising on taste.`,
+      stories: `Dietary traditions in Malaysia go back centuries — shaped by temple diets, religious practices, and immigrant communities who adapted their food to new ingredients without losing their identity.`,
+    },
+    specialty: {
+      people: `Hawkers who have spent 40+ years perfecting a single dish. They don't just cook — they're the guardians of a craft, and their wok is the canvas.`,
+      places: `The most atmospheric spots where ${name.toLowerCase()} culture thrives — from pre-dawn wet markets to midnight alleyways buzzing with charcoal fires and the clatter of woks.`,
+      stories: `Every dish has a migration story. Hokkien mee from Fujian, satay from Java, roti canai from India — modified, improved, made Malaysian. That's the story on every plate.`,
+    },
+    travel_type: {
+      people: `Our guides are natural hosts who tailor every stop to your group — keeping curious minds engaged and making sure everyone feels welcome at the table.`,
+      places: `Spots with seating, space, and the right atmosphere for your group to connect over great food — no stressful queues, no surprises, just the memories you came for.`,
+      stories: `Tales of migration, trade, and tradition that make food come alive. Each stop on your tour comes with a story that connects your group to Malaysia's rich cultural tapestry.`,
+    },
+  };
+
+  // Try specific first, fall back to type-based
+  const s = specific[first];
+  const f = typeFallback[segmentType] || typeFallback.location;
   return {
-    people: people[segmentType] || people.location,
-    places: places[segmentType] || places.location,
-    stories: stories[segmentType] || stories.location,
+    people: { title: 'The People', desc: s?.people || f.people },
+    places: { title: 'The Places', desc: s?.places || f.places },
+    stories: { title: 'The Stories', desc: s?.stories || f.stories },
   };
 };
 
-const pitch = !pageContent ? getPeoplePlacesStories() : null;
+const pitch = getPeoplePlacesStories();
 
 // Gallery images from Payload or CDN fallback
 const galleryImages = (landingPage?.images || []).filter((img: any) => img.position !== 'hero')
@@ -262,73 +280,65 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
 )}
 
 <!-- 3. WHAT MAKES THIS SPECIAL — People, Places, Stories -->
-{(pageContent || pitch) && (() => {
-  const pp = pitch || { 
-    people: { title: 'The People', desc: pageContent },
-    places: { title: 'The Places', desc: '' },
-    stories: { title: 'The Stories', desc: '' },
-  };
-  return (
-  <section class="py-16 bg-white dark:bg-[#1e1c1c]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-2">What Makes It Special</p>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">
-          {introHeading || `The People, the Places, the Stories`}
-        </h2>
-        <p class="text-muted text-sm mt-3 max-w-xl mx-auto">{introHeading ? '' : `This is what makes ${segment.name || 'this experience'} worth exploring.`}</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-14">
-        <!-- People -->
-        <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
-          <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
-            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold font-heading mb-3">{pp.people.title}</h3>
-          <p class="text-sm text-muted leading-relaxed">{pp.people.desc}</p>
-        </div>
-
-        <!-- Places -->
-        <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
-          <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
-            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold font-heading mb-3">{pp.places.title}</h3>
-          <p class="text-sm text-muted leading-relaxed">{pp.places.desc}</p>
-        </div>
-
-        <!-- Stories -->
-        <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
-          <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
-            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h3 class="text-lg font-bold font-heading mb-3">{pp.stories.title}</h3>
-          <p class="text-sm text-muted leading-relaxed">{pp.stories.desc}</p>
-        </div>
-      </div>
-
-      <!-- Images gallery -->
-      {displayImages.length > 0 && (
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {displayImages.slice(0, 4).map((img: any) => (
-            <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3]">
-              <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {pageContent && (
-        <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mt-10 max-w-3xl mx-auto">
-          {pageContent.split('\n').filter((line: string) => line.trim()).map((line: string) => (
-            <p>{line.trim()}</p>
-          ))}
-        </div>
-      )}
+<section class="py-16 bg-white dark:bg-[#1e1c1c]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-2">What Makes It Special</p>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading">
+        {introHeading || `The People, the Places, the Stories`}
+      </h2>
+      <p class="text-muted text-sm mt-3 max-w-xl mx-auto">{introHeading ? '' : `This is what makes ${segment.name || 'this experience'} worth exploring.`}</p>
     </div>
-  </section>);
-})()}
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-14">
+      <!-- People -->
+      <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
+        <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
+          <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold font-heading mb-3">{pitch.people.title}</h3>
+        <p class="text-sm text-muted leading-relaxed">{pitch.people.desc}</p>
+      </div>
+
+      <!-- Places -->
+      <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
+        <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
+          <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold font-heading mb-3">{pitch.places.title}</h3>
+        <p class="text-sm text-muted leading-relaxed">{pitch.places.desc}</p>
+      </div>
+
+      <!-- Stories -->
+      <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-6 md:p-8 text-center hover:shadow-lg transition-shadow">
+        <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
+          <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="text-lg font-bold font-heading mb-3">{pitch.stories.title}</h3>
+        <p class="text-sm text-muted leading-relaxed">{pitch.stories.desc}</p>
+      </div>
+    </div>
+
+    <!-- Images gallery -->
+    {displayImages.length > 0 && (
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {displayImages.slice(0, 4).map((img: any) => (
+          <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3]">
+            <img src={img.url} alt={img.alt || ''} loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+        ))}
+      </div>
+    )}
+
+    {pageContent && (
+      <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mt-10 max-w-3xl mx-auto">
+        {pageContent.split('\n').filter((line: string) => line.trim()).map((line: string) => (
+          <p>{line.trim()}</p>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
 
 <!-- 4. GUIDE CARD — visual card linking to full guide on Stories -->
 {guideSlug && (
