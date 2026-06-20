@@ -2,35 +2,7 @@
   {
     "id": 28,
     "question": "Can you handle dietary restrictions on a private tour?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "That's one of the main reasons people go private. On a join-in tour we work around dietary needs — on a private tour we build the entire route around them.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "answer": "That's one of the main reasons people go private. On a join-in tour we work around what's available, but on a private tour we can build the entire route around your needs. Vegetarian, vegan, gluten-free, halal — we've done it all. Just let us know when you book.",
     "category": "private_tours",
     "page_visibility": [
       "private-tours",
@@ -49,35 +21,7 @@
   {
     "id": 27,
     "question": "How far ahead should we book a private tour?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "A week ahead is comfortable, two is better. We've pulled tours together in 48 hours before, but the more notice we have, the better we can tailor the experience.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "answer": "A week ahead is comfortable, two is better. We've pulled tours together in 48 hours before, but the best routes take time to plan. For large groups or specific dietary needs, the earlier the better.",
     "category": "private_tours",
     "page_visibility": [
       "private-tours",
@@ -95,35 +39,7 @@
   {
     "id": 26,
     "question": "Can we change the route on a private tour?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "Once you book, your guide will reach out before the day to discuss preferences. Want more street food? Less walking? A specific dish you're dying to try? We'll adjust.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "answer": "Once you book, your guide will reach out before the day to discuss preferences. Want more seafood? Less walking? A specific neighbourhood? It's your tour — we adjust.",
     "category": "private_tours",
     "page_visibility": [
       "private-tours",
@@ -140,36 +56,8 @@
   },
   {
     "id": 25,
-    "question": "What's the minimum group size for a private tour?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "Two people is fine — we've done it plenty of times. Most private groups run between 4 and 8 people.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "What happens if it rains?",
+    "answer": "We tour rain or shine — many of our best food discoveries are under covered walkways and indoor markets. In rare cases of extreme weather we'll reschedule or refund.",
     "category": "private_tours",
     "page_visibility": [
       "private-tours",
@@ -187,36 +75,8 @@
   },
   {
     "id": 24,
-    "question": "Is a private tour worth the extra cost?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "That depends on what you're after. If you want to move at your own pace, have the guide all to yourselves, customise the route, or need specific dietary accommodation, a private tour is absolutely worth it.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "Do we get to meet the vendors?",
+    "answer": "That's the whole point. We take you to family-run stalls where the owner will shake your hand, show you their technique, and share the story behind their recipe. It's not a restaurant visit — it's a visit to someone's life's work.",
     "category": "private_tours",
     "page_visibility": [
       "private-tours",
@@ -234,36 +94,8 @@
   },
   {
     "id": 23,
-    "question": "Can I book a private tour?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "Yes. Private tours are available for groups, families, and corporate events. Contact us for pricing and availability. Private tours give you flexibility on timing, route, and pace.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "Can children join the tour?",
+    "answer": "Absolutely. Kids under 6 join free, and our guides know how to keep them engaged. The walking pace is gentle with plenty of seating stops. Let us know ages when booking so we can prepare.",
     "category": "private_tours",
     "page_visibility": [
       "home",
@@ -282,36 +114,8 @@
   },
   {
     "id": 22,
-    "question": "What happens if it rains?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we'll adjust the route to include more sheltered spots — but a bit of rain has never stopped a Malaysian from eating.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "What if I have a food allergy?",
+    "answer": "Flag it when you book and we'll brief your guide. Malaysian cooking uses peanuts, shrimp paste, and soy frequently — but we know which stalls can accommodate and which to avoid. We take allergies seriously.",
     "category": "booking",
     "page_visibility": [
       "home",
@@ -329,36 +133,8 @@
   },
   {
     "id": 21,
-    "question": "Is the food spicy?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available and we'll warn you before anything particularly spicy arrives.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "Is the tour suitable for solo travellers?",
+    "answer": "Very much so. Around 30% of our guests come alone. You'll be in a small group of 2-8 people, and our guides are experts at bringing everyone into the conversation. Many solo travellers tell us it's the highlight of their trip.",
     "category": "general",
     "page_visibility": [
       "home",
@@ -376,36 +152,8 @@
   },
   {
     "id": 20,
-    "question": "What dietary options do you accommodate?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "We accommodate vegetarian, halal, vegan, gluten-free, and most dietary needs. Just let us know when you book. Our guides work with each food stall to ensure your meal is prepared correctly.",
-                  "type": "text",
-                  "style": "",
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "textStyle": ""
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "What's included in a private tour?",
+    "answer": "Everything on a join-in tour, plus a fully customisable route, your own dedicated guide, flexible timing, and the freedom to linger where you want. It's your evening — you set the pace.",
     "category": "dietary",
     "page_visibility": [
       "home",
@@ -424,38 +172,8 @@
   },
   {
     "id": 11,
-    "question": "I have mobility issues. Can I still join?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Yes. We walk about 3km at a relaxed pace with frequent stops, and most food stalls are at ground level. If you have specific mobility concerns, [let us know](/contact/) when booking. We can shorten the route or choose stalls with easier access. Our [private tours](/tours/private-tours/) offer the most flexibility for adapting the pace and route.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "Where do we meet?",
+    "answer": "Your guide will confirm the exact meeting point after booking. We always meet at a recognisable landmark — a train station exit or a well-known building — with clear directions.",
     "category": "private_tours",
     "page_visibility": [
       "contact",
@@ -473,38 +191,8 @@
   },
   {
     "id": 10,
-    "question": "I have food allergies. Is it safe?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "We take allergies seriously. Let us know when booking about any allergies  -  peanuts, shellfish, gluten, etc. We'll adjust the route and inform each vendor. Some vendors have dedicated allergen-free prep areas. For severe allergies, we carry epinephrine and know the nearest clinic. Your safety comes first.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "What happens to my booking if I'm running late?",
+    "answer": "No stress. Message your guide and they'll adjust the route so you don't miss the best parts. We build buffer time into every tour.",
     "category": "booking",
     "page_visibility": [
       "contact",
@@ -522,38 +210,8 @@
   },
   {
     "id": 9,
-    "question": "How much walking is involved?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Approximately 3km walking distance over 4-5 hours, at a leisurely pace with plenty of stops. We pause at each stall for 20-30 minutes, giving you time to digest, take photos, and listen to vendor stories. Not a power walk  -  more like a stroll through the neighborhood with friends.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "Do I need to book in advance?",
+    "answer": "We recommend booking at least 24 hours ahead so we can confirm availability with our vendors.",
     "category": "booking",
     "page_visibility": [
       "contact",
@@ -571,38 +229,8 @@
   },
   {
     "id": 8,
-    "question": "How much does a food tour in KL cost?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Join-in tours are RM 285 to RM 359 per person, depending on which tour you choose. Private tours are quoted on request, usually for groups of four or more. Send us a message on WhatsApp and we'll put together something that works for your group.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "How quickly do you respond?",
+    "answer": "We reply within 3 hours during business hours (9am-8pm Malaysia time). On WhatsApp it is usually within minutes.",
     "category": "booking",
     "page_visibility": [
       "contact",
@@ -619,38 +247,8 @@
   },
   {
     "id": 7,
-    "question": "How long are the tours?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Most tours run 4 to 5 hours at a leisurely pace. We pace based on your group's energy and curiosity  -  we're not watching a clock. If a vendor has a story worth hearing about their 40 years of cooking, we stop and hear it. That's the Simply Enak difference.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "What happens if it rains?",
+    "answer": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we will reschedule.",
     "category": "general",
     "page_visibility": [
       "home",
@@ -667,38 +265,8 @@
   },
   {
     "id": 6,
-    "question": "How do I book?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Book directly on the tour page at simplyenak.com or message us on WhatsApp at +60 12-345-6789. We confirm within 3 hours during business hours, often sooner. No third-party platforms, no booking fees, no hidden costs  -  we keep it direct so there are no markups.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "Is the food spicy?",
+    "answer": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available.",
     "category": "general",
     "page_visibility": [
       "home",
@@ -715,38 +283,8 @@
   },
   {
     "id": 5,
-    "question": "Do you offer hotel pickup?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Hotel pickup is available as an add-on for [private and tailored tours](/tours/private-tours/). For join-in tours, we meet at a central location that is easy to reach by Grab or public transport. We send detailed directions after booking, including [how to get there](/how-to-prepare/).",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "Can I book a private tour?",
+    "answer": "Yes. Private tours are available for groups, families, and corporate events. Contact us for a custom experience.",
     "category": "booking",
     "page_visibility": [
       "home",
@@ -764,38 +302,8 @@
   },
   {
     "id": 4,
-    "question": "Can I take photos during the tour?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Absolutely! We encourage photos  -  most guests want to remember Aunty Lim's smile or Uncle Tan's wok skills. Vendors are proud of their food and happy to be photographed. We'll also take group photos and can help you capture the perfect shot for Instagram or TripAdvisor.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "How much walking is involved?",
+    "answer": "About 2km of easy walking with frequent stops. Suitable for most fitness levels.",
     "category": "general",
     "page_visibility": [
       "home",
@@ -813,38 +321,8 @@
   },
   {
     "id": 3,
-    "question": "Can I book a tour as a private experience?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Every tour can be run privately for your group. Private tours mean your own guide, flexible start time, and a route tailored to your interests and dietary needs. Groups of 4 or more. [See private tour options](/tours/private-tours/) or [message us](/contact/) to plan your tour.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "What dietary options do you accommodate?",
+    "answer": "We accommodate vegetarian, halal, nut-allergy, and gluten-sensitive diets. Just let us know when booking.",
     "category": "dietary",
     "page_visibility": [
       "home",
@@ -862,38 +340,8 @@
   },
   {
     "id": 2,
-    "question": "Are there toilet breaks during the tour?",
-    "answer": {
-      "en": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "Yes! We start near a toilet facility and have bathroom breaks planned at 2-3 points during the tour. Most stalls have basic facilities, and we know which shopping centers have clean restrooms along the route. We pace the tour so you're never rushing or uncomfortable.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null
-            }
-          ],
-          "direction": null
-        }
-      }
-    },
+    "question": "How long are the tours?",
+    "answer": "Most tours run 3.5 to 4 hours. We cover about 2km of walking at a relaxed pace with plenty of seating at each stop.",
     "category": "general",
     "page_visibility": [
       "home",

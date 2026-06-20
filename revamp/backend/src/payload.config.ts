@@ -39,6 +39,7 @@ import { HowToPreparePage } from './collections/HowToPreparePage'
 import { CorporateGroupsPage } from './collections/CorporateGroupsPage'
 import { TrackRecordPage } from './collections/TrackRecordPage'
 import { PrivateToursPage } from './collections/PrivateToursPage'
+import { TailoredToursPage } from './collections/TailoredToursPage'
 import { DirectionsPage } from './collections/DirectionsPage'
 import { TourQuiz } from './collections/TourQuiz'
 import { Neighborhoods } from './collections/Neighborhoods'
@@ -116,6 +117,7 @@ export default buildConfig({
     CorporateGroupsPage,
     TrackRecordPage,
     PrivateToursPage,
+    TailoredToursPage,
     ToursPage,
     StoriesPage,
     DirectionsPage,

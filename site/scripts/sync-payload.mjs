@@ -1104,6 +1104,7 @@ async function sync() {
     { slug: 'how_to_prepare_page', file: 'how-to-prepare-page.json', label: 'How To Prepare Page' },
     { slug: 'corporate_groups_page', file: 'corporate-groups-page.json', label: 'Corporate Groups Page' },
     { slug: 'private_tours_page', file: 'private-tours-page.json', label: 'Private Tours Page', transform: transformPrivateToursPage },
+    { slug: 'tailored_tours_page', file: 'tailored-tours-page.json', label: 'Tailored Tours Page', transform: transformPrivateToursPage },
     { slug: 'track_record_page', file: 'track-record-page.json', label: 'Track Record Page' },
     { slug: 'directions_page', file: 'directions-page.json', label: 'Directions Page' },
   ]

@@ -39,6 +39,13 @@ export const Media: CollectionConfig = {
         description: 'Optional caption — include photo credit here if needed.',
       },
     },
+    {
+      name: 'polaroidLabel',
+      type: 'text',
+      admin: {
+        description: 'Short label shown on the polaroid card (e.g., "Morning market"). Keep it brief — space is tight.',
+      },
+    },
 
     // ── Filename builders ──
     {
@@ -127,7 +134,7 @@ export const Media: CollectionConfig = {
   ],
   hooks: {
     beforeValidate: [
-      async ({ data, req, operation }: { data: Record<string, any>; req?: any; operation: string }) => {
+      async ({ data, req, operation }: any) => {
         if (operation !== 'create' && operation !== 'update') return data
         if (!data?.filename) return data
 

@@ -1,13 +1,13 @@
 [
   {
     "id": 4,
-    "name": "Solo Traveler",
+    "name": "Solo",
     "slug": "solo",
     "icon": "🎒",
     "color": "#8b5cf6",
-    "description": "Perfect for independent explorers",
+    "description": null,
     "status": "published",
-    "updatedAt": "2026-05-19T08:33:23.425Z",
+    "updatedAt": "2026-06-19T14:43:09.797Z",
     "createdAt": "2026-05-19T08:33:23.425Z",
     "_status": "published"
   },
@@ -17,21 +17,21 @@
     "slug": "foodie",
     "icon": "🍜",
     "color": "#ef4444",
-    "description": "Deep dives into Malaysian cuisine",
+    "description": null,
     "status": "published",
-    "updatedAt": "2026-05-19T08:33:22.863Z",
+    "updatedAt": "2026-06-19T14:43:22.225Z",
     "createdAt": "2026-05-19T08:33:22.863Z",
     "_status": "published"
   },
   {
     "id": 2,
-    "name": "Family-Friendly",
+    "name": "Family",
     "slug": "family",
     "icon": "👨‍👩‍👧‍👦",
     "color": "#f59e0b",
-    "description": "Tours suitable for all ages",
+    "description": null,
     "status": "published",
-    "updatedAt": "2026-05-19T08:33:22.293Z",
+    "updatedAt": "2026-06-19T14:43:44.060Z",
     "createdAt": "2026-05-19T08:33:22.293Z",
     "_status": "published"
   },
@@ -41,9 +41,9 @@
     "slug": "couples",
     "icon": "💑",
     "color": "#ec4899",
-    "description": "Romantic food experiences for two",
+    "description": null,
     "status": "published",
-    "updatedAt": "2026-05-19T08:33:21.708Z",
+    "updatedAt": "2026-06-19T14:43:56.093Z",
     "createdAt": "2026-05-19T08:33:21.708Z",
     "_status": "published"
   }

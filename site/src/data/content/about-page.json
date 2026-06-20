@@ -1,6 +1,9 @@
 {
   "id": 1,
-  "heroImage": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg",
+  "heroImage": null,
+  "heroImage_alt": "",
+  "heroImage_width": null,
+  "heroImage_height": null,
   "heroEyebrow": "Our Story",
   "heroHeading": "Born in Malaysia. Raised on street food.",
   "heroDescription": "What started as showing friends around Chow Kit market has become 15 years of sharing the real Malaysia, one meal at a time.",
@@ -12,7 +15,8 @@
       "When I started bringing friends from other countries around, I realised they were missing this entire world. They'd eat at air-conditioned restaurants with picture menus, never knowing that just two streets away, a grandmother was making laksa the same way her mother taught her 60 years ago.",
       "Simply Enak started in 2011 because I wanted to share what I experienced as a child. Not the Malaysia you see in guidebooks, but the one I know: the night markets, the family recipes, the vendors who remember your face and your favourite dish. The real Malaysia that tourists walk past every day."
     ],
-    "image": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
+    "image": "",
+    "imageAlt": ""
   },
   "stats": [
     {
@@ -34,8 +38,8 @@
   ],
   "timelineSection": {
     "eyebrow": "2011 - Present",
-    "heading": "",
-    "description": "",
+    "heading": "15 Years of Simply Enak",
+    "description": "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. This is our story.",
     "milestones": [
       {
         "year": "Today",
@@ -135,8 +139,8 @@
     ]
   },
   "philosophySection": {
-    "eyebrow": "",
-    "heading": "",
+    "eyebrow": "What Guides Us",
+    "heading": "Three Things We Won't Compromise On",
     "items": [
       {
         "number": "01",
@@ -156,9 +160,9 @@
     ]
   },
   "teamSection": {
-    "eyebrow": "",
-    "heading": "",
-    "description": "",
+    "eyebrow": "The Team",
+    "heading": "The People Behind the Flavours",
+    "description": "We're a small team, all licensed with Tourism Malaysia. We grew up eating at these same stalls.",
     "members": [
       {
         "name": "Pauline",
@@ -184,19 +188,19 @@
     ]
   },
   "testimonial": {
-    "text": "",
+    "text": "\"The Penang Heritage tour exceeded our expectations. Our guide shared amazing stories and the food was outstanding. Every dish had a story.\"",
     "name": "David Lee",
     "location": "USA"
   },
   "ctaSection": {
-    "heading": "Ready to Taste Malaysia?",
-    "description": "",
+    "heading": "Ready to Eat With Us?",
+    "description": "Browse our tours, or message us on WhatsApp. We reply in minutes.",
     "ctaPrimary": {
-      "text": "Browse All Tours",
+      "text": "Browse Tours",
       "url": "/tours"
     },
     "ctaSecondary": {
-      "text": "Contact Us",
+      "text": "WhatsApp Us",
       "url": "https://wa.me/60172878929"
     }
   },

@@ -1,0 +1,197 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+let pageData: any = {};
+try {
+  pageData = (await import('~/data/content/corporate-groups-page.json')).default;
+} catch {}
+
+const perfectFor = pageData.offer_perfect_for || [];
+const benefitCards = pageData.benefit_cards || [];
+const howSteps = pageData.how_steps || [];
+const klSection = pageData.kl_section || {};
+const penangSection = pageData.penang_section || {};
+
+const heroTitle = pageData.hero_title || 'Where Kuala Lumpur Actually Eats';
+const heroSubtitle = pageData.hero_subtitle || 'Team meals and client visits that don\'t feel like team meals.';
+
+const meta = {
+  title: pageData.seo_title || 'Corporate & Group Food Tours Malaysia | Simply Enak',
+  description: pageData.seo_description || 'Corporate food tours in Kuala Lumpur and Penang.',
+};
+---
+
+<Layout metadata={meta}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/tours" class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Corporate & Groups</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#2a1a1a] to-[#1a1a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">{pageData.hero_eyebrow || 'Groups & Corporate'}</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          {heroTitle}
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          {heroSubtitle}
+        </span>
+      </h1>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+enquiring+about+a+corporate+food+tour"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          {pageData.cta_whatsapp_label || 'WhatsApp us'}
+        </a>
+        <a href="mailto:info@simplyenak.com"
+           class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded hover:border-white/60 transition-colors text-sm">
+          <Icon name="tabler:mail" class="w-4 h-4" />
+          {pageData.cta_email_label || 'Email us'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offer section -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{pageData.offer_eyebrow || 'What We Offer'}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.offer_heading || 'Food experiences for work groups'}</h2>
+      </div>
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <p class="text-muted text-sm leading-relaxed">{pageData.offer_body_1}</p>
+      </div>
+
+      {perfectFor.length > 0 && (
+        <div class="max-w-2xl mx-auto mb-10">
+          <ul class="space-y-3">
+            {perfectFor.map((item: any) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:check" class="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                <span>{item.item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {pageData.offer_body_2 && (
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="text-muted text-sm leading-relaxed">{pageData.offer_body_2}</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  {benefitCards.length > 0 && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{pageData.benefits_eyebrow || 'Why Teams Choose Us'}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.benefits_title || 'What makes our corporate tours different'}</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {benefitCards.map((item: any) => (
+            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+              <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">
+                {item.icon || '✓'}
+              </div>
+              <h3 class="font-bold font-heading text-default mb-2">{item.title}</h3>
+              <p class="text-sm text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- KL and Penang sections -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">{klSection.eyebrow || 'Kuala Lumpur'}</p>
+          <h3 class="text-xl font-bold font-heading mb-3">{klSection.heading || 'KL Corporate Tours'}</h3>
+          <p class="text-sm text-muted leading-relaxed">{klSection.subtext}</p>
+        </div>
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">{penangSection.eyebrow || 'Penang'}</p>
+          <h3 class="text-xl font-bold font-heading mb-3">{penangSection.heading || 'Penang Corporate Tours'}</h3>
+          <p class="text-sm text-muted leading-relaxed">{penangSection.subtext}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  {howSteps.length > 0 && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{pageData.how_eyebrow || 'Booking Process'}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.how_heading || 'How it works'}</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+          {howSteps.map((step: any) => (
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-full bg-accent text-black font-bold text-lg flex items-center justify-center mx-auto mb-4">
+                {step.number || ''}
+              </div>
+              <h3 class="font-bold font-heading text-default mb-2">{step.title}</h3>
+              {step.description && <p class="text-sm text-muted leading-relaxed">{step.description}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-[#1a1a1a] text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">{pageData.cta_heading || 'Ready to book your team?'}</h2>
+      <p class="text-white/70 text-sm leading-relaxed mb-8 max-w-xl mx-auto">{pageData.cta_body}</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+enquiring+about+a+corporate+food+tour"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          {pageData.cta_whatsapp_label || 'WhatsApp us'}
+        </a>
+        <a href="mailto:info@simplyenak.com"
+           class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded hover:border-white/60 transition-colors text-sm">
+          <Icon name="tabler:mail" class="w-4 h-4" />
+          {pageData.cta_email_label || 'Email us'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-link to private tours -->
+  <section class="py-12 bg-muted/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm text-muted mb-4">Looking for a tour for a smaller group? Private tours run our standard routes for just your party.</p>
+      <a href="/tours/private-tours/"
+         class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
+        See Private Tours
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

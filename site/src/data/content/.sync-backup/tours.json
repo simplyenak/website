@@ -3,44 +3,44 @@
     "id": 5,
     "name": "Secrets of KL - Nightlife, Street Art & Cocktails!",
     "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
-    "tagline": "KL After Dark - Speakeasies, Street Art and Street Food",
-    "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars, classic Malaysian food and the forbidden tales of the red-light district.",
-    "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? Let's get started with a locally inspired cocktail, or if you're keen a craft beer infused with typically Malaysian flavours.\n\nA young and entrepreneurial group of business owners is slowly changing the way Kuala Lumpur and specifically Petaling Street looks. Much of this change is happening in secret, behind obscure doors. What used to be brothels are now trendy, underground, pubs and cocktail bars. They blend in really well with the traditional street food that has been served in this area for many years now.\n\nWe'll walk the alleys as well as some of the train stations' street art and murals. Enjoy stories of the night, vices and how they have shaped the capital city of Malaysia. Dinner will be served at one of the must-eat street food stalls whilst you will be entertained with stories of the city's history and culture; food for thought as well as the stomach!\n\nThis tour comes with a secret dish, only to be announced on the day of the tour. Speaking of food, we will make sure your stomach is taken care of as well with a sample of the snacks locals queue for after midnight, clay pot chicken rice and more. Also indulge in a must-have dish when in Kuala Lumpur, one of the Rendangs that take all day to cook  -  and sixty seconds to disappear!\n\nLooking for a different kind of night fun and learning more about the city of Kuala Lumpur in the process? Then this is your tour. Catch a glimpse of KL's hidden nightlife today!",
+    "tagline": "Discover KL After Dark",
+    "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+    "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
     "price": 359,
     "currency": "MYR",
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "KL",
-    "meetingPoint": "Pasar Seni MRT Station",
+    "meetingPoint": "KL: Pasar Seni MRT",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
       {
-        "id": 7,
-        "name": "Vegetarian",
-        "slug": "vegetarian",
-        "icon": "🥬",
-        "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "id": 4,
+        "name": "Gluten-Free",
+        "slug": "gluten-free",
+        "icon": "🌾",
+        "color": "#ff9800",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       },
       {
-        "id": 3,
-        "name": "Halal",
-        "slug": "halal",
-        "icon": "🥩",
-        "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "id": 11,
+        "name": "Pescatarian",
+        "slug": "pescatarian",
+        "icon": "🐟",
+        "color": "#06b6d4",
+        "description": "Fish and seafood but no meat",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
+        "updatedAt": "2026-06-19T14:38:57.793Z",
+        "createdAt": "2026-05-19T08:33:29.735Z",
         "_status": "published"
       }
     ],
@@ -53,9 +53,9 @@
           "slug": "couples",
           "icon": "💑",
           "color": "#ec4899",
-          "description": "Romantic food experiences for two",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:21.708Z",
+          "updatedAt": "2026-06-19T14:43:56.093Z",
           "createdAt": "2026-05-19T08:33:21.708Z",
           "_status": "published"
         }
@@ -64,13 +64,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 4,
-          "name": "Solo Traveler",
+          "name": "Solo",
           "slug": "solo",
           "icon": "🎒",
           "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:23.425Z",
+          "updatedAt": "2026-06-19T14:43:09.797Z",
           "createdAt": "2026-05-19T08:33:23.425Z",
           "_status": "published"
         }
@@ -83,9 +83,9 @@
           "slug": "foodie",
           "icon": "🍜",
           "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.863Z",
+          "updatedAt": "2026-06-19T14:43:22.225Z",
           "createdAt": "2026-05-19T08:33:22.863Z",
           "_status": "published"
         }
@@ -96,13 +96,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -111,13 +111,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 3,
-          "name": "Night Tour",
+          "name": "Night tour",
           "slug": "night-tour",
           "icon": "🌙",
           "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.030Z",
+          "updatedAt": "2026-06-19T14:45:44.828Z",
           "createdAt": "2026-05-19T08:33:32.030Z",
           "_status": "published"
         }
@@ -130,9 +130,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -143,12 +143,24 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 28,
+      "alt": null,
+      "caption": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
+      "tags": [],
       "prefix": "payload-media",
       "updatedAt": "2026-05-19T10:01:51.539Z",
       "createdAt": "2026-05-19T10:01:50.448Z",
-      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
-      "thumbnailURL": "/api/media/file/secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg",
+      "url": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg",
       "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
       "mimeType": "image/jpeg",
       "filesize": 73554,
@@ -158,7 +170,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -166,7 +178,7 @@
           "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg"
         },
         "medium": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-800x600.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -183,71 +195,117 @@
         }
       }
     },
-    "galleryImages": [],
+    "galleryImages": [
+      {
+        "id": "6a350dcfea16cabe39498bc9",
+        "image": {
+          "id": 136,
+          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+          "subject": "landmark",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
+          "usage": null,
+          "tags": [],
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-19T00:18:02.769Z",
+          "createdAt": "2026-06-19T00:18:01.822Z",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+          "filename": "simply-enak-landmark.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 2305832,
+          "width": 2730,
+          "height": 4096,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 21170,
+              "filename": "DSC_9621-400x300.jpg"
+            },
+            "medium": {
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 68243,
+              "filename": "DSC_9621-800x600.jpg"
+            },
+            "large": {
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 122310,
+              "filename": "DSC_9621-1200x800.jpg"
+            }
+          }
+        }
+      }
+    ],
     "whatsIncluded": [
       {
-        "item": "Street art tour with local expert",
-        "id": "6a321188055fbe0001981de3"
+        "id": "6a321188055fbe0001981de5",
+        "item": "Expert local guide"
       },
       {
-        "item": "Late-night street food snacks",
-        "id": "6a321188055fbe0001981de4"
+        "id": "6a321188055fbe0001981de6",
+        "item": "Small group experience (max 9)"
       },
       {
-        "item": "Expert local guide",
-        "id": "6a321188055fbe0001981de5"
+        "id": "6a321188055fbe0001981de7",
+        "item": "Hidden speakeasy bar access"
       },
       {
-        "item": "Small group experience (max 9)",
-        "id": "6a321188055fbe0001981de6"
-      },
-      {
-        "item": "Hidden speakeasy bar access",
-        "id": "6a321188055fbe0001981de7"
-      },
-      {
-        "item": "Detailed meeting point instructions",
-        "id": "6a321188055fbe0001981de8"
+        "id": "6a321188055fbe0001981de8",
+        "item": "Detailed meeting point instructions"
       }
     ],
     "whatsExcluded": [
       {
-        "item": "Transportation to meeting point",
-        "id": "6a321188055fbe0001981de9"
+        "id": "6a321188055fbe0001981de9",
+        "item": "Transportation to meeting point"
       },
       {
-        "item": "Additional drinks beyond included cocktails",
-        "id": "6a321188055fbe0001981dea"
+        "id": "6a321188055fbe0001981dea",
+        "item": "Additional drinks beyond included cocktail / alcoholic drink"
       },
       {
-        "item": "Personal purchases",
-        "id": "6a321188055fbe0001981deb"
-      },
-      {
-        "item": "Tips for your guide",
-        "id": "6a321188055fbe0001981dec"
+        "id": "6a321188055fbe0001981deb",
+        "item": "Personal purchases"
       }
     ],
     "highlights": [
       {
-        "highlight": "Hidden speakeasy bars",
-        "id": "6a2b8118396ee2000167d636"
+        "id": "6a2b8118396ee2000167d636",
+        "highlight": "Hidden speakeasy bars"
       },
       {
-        "highlight": "Late-night street food",
-        "id": "6a2b8118396ee2000167d637"
+        "id": "6a2b8118396ee2000167d637",
+        "highlight": "Chocolate tasting"
       },
       {
-        "highlight": "Forbidden tales of old KL",
-        "id": "6a2b8118396ee2000167d638"
+        "id": "6a2b8118396ee2000167d638",
+        "highlight": "Forbidden tales of old KL"
       },
       {
-        "highlight": "Street art at night",
-        "id": "6a2b8118396ee2000167d639"
+        "id": "6a2b8118396ee2000167d639",
+        "highlight": "Street art at night"
       },
       {
-        "highlight": "Signature craft cocktails",
-        "id": "6a2b8118396ee2000167d63a"
+        "id": "6a2b8118396ee2000167d63a",
+        "highlight": "Signature craft cocktails"
       }
     ],
     "ticketingHubId": "148305db-44f6-4e6b-b8ec-dedfa9154716",
@@ -255,24 +313,66 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "24-hours in advance",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 10,
     "difficulty": "easy",
     "walkingDistance": "2.5 km",
     "directionsHtml": null,
-    "itinerary": [],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
-    "languagesOffered": [],
+    "itinerary": [
+      {
+        "id": "it_5_0",
+        "step": 1,
+        "title": "Meet at Pasar Seni MRT",
+        "description": "Meet your guide at Pasar Seni MRT Station. We'll start with an introduction to KL's street art scene before exploring the nightlife.\n\nPasar Seni (Central Market) is the heart of KL's arts district. From here, we'll explore the backstreets where KL's street art was born.",
+        "duration": null
+      },
+      {
+        "id": "it_5_1",
+        "step": 2,
+        "title": "Street Art in Chinatown",
+        "description": "Discover hidden street art murals in Chinatown's backstreets. Learn about the artists and the stories behind each mural.\n\nTastings: Local street snacks\n\nKL's street art scene exploded after 2010, when Lithuanian artist Ernest Zacharevic created murals in Georgetown. KL's artists followed suit, transforming Chinatown's backstreets.",
+        "duration": null
+      },
+      {
+        "id": "it_5_2",
+        "step": 3,
+        "title": "Rooftop Sunset Drinks",
+        "description": "Enjoy sunset drinks at a hidden rooftop bar with panoramic views of KL's skyline. Learn about the city's transformation from mining camp to metropolis.\n\nTastings: Welcome cocktail, Local appetizers\n\nKL's rooftop bar scene is relatively new — most opened in the last 10 years. This one offers the best view of Merdeka 118, Southeast Asia's tallest building.",
+        "duration": null
+      },
+      {
+        "id": "it_5_3",
+        "step": 4,
+        "title": "Speakeasy Cocktail Experience",
+        "description": "Discover a hidden speakeasy bar behind an unmarked door. Learn about KL's growing craft cocktail scene and the bartenders pushing boundaries.\n\nTastings: Signature craft cocktail, Bar snacks\n\nKL's speakeasy scene started around 2015, when bartenders began hiding bars behind bookshelves, phone booths, and unmarked doors. This one is ranked among Asia's 50 best bars.",
+        "duration": null
+      },
+      {
+        "id": "it_5_4",
+        "step": 5,
+        "title": "Late Night Hawker Supper",
+        "description": "End with a late-night hawker supper at a stall that only opens after dark. This is where KL's nightlife crowd comes to refuel.\n\nTastings: Char kway teow, Satay, Fresh sugarcane juice\n\nLate-night hawker stalls are KL's best-kept secret. They serve the night crowd — taxi drivers, bar staff, and party-goers looking for authentic food after midnight.",
+        "duration": null
+      }
+    ],
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
+    "languagesOffered": [
+      {
+        "id": "6a351021c27e6480a3614964",
+        "language": "English"
+      }
+    ],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
-    "heroImageAlt": null,
+    "heroImageAlt": "Nightlife cocktail bar in Kuala Lumpur with creative drinks and city lights",
     "featured": false,
-    "popular": false,
+    "showInMenu": true,
+    "popular": true,
     "new": false,
     "badgeLabel": null,
     "publishedAt": null,
@@ -283,43 +383,43 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-06-17T11:36:36.078Z",
+    "updatedAt": "2026-06-19T14:55:38.514Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
     "is_bookable": true,
-    "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars, classic Malaysian food and the forbidden tales of the red-light district.",
-    "full_description": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? Let's get started with a locally inspired cocktail, or if you're keen a craft beer infused with typically Malaysian flavours.\n\nA young and entrepreneurial group of business owners is slowly changing the way Kuala Lumpur and specifically Petaling Street looks. Much of this change is happening in secret, behind obscure doors. What used to be brothels are now trendy, underground, pubs and cocktail bars. They blend in really well with the traditional street food that has been served in this area for many years now.\n\nWe'll walk the alleys as well as some of the train stations' street art and murals. Enjoy stories of the night, vices and how they have shaped the capital city of Malaysia. Dinner will be served at one of the must-eat street food stalls whilst you will be entertained with stories of the city's history and culture; food for thought as well as the stomach!\n\nThis tour comes with a secret dish, only to be announced on the day of the tour. Speaking of food, we will make sure your stomach is taken care of as well with a sample of the snacks locals queue for after midnight, clay pot chicken rice and more. Also indulge in a must-have dish when in Kuala Lumpur, one of the Rendangs that take all day to cook  -  and sixty seconds to disappear!\n\nLooking for a different kind of night fun and learning more about the city of Kuala Lumpur in the process? Then this is your tour. Catch a glimpse of KL's hidden nightlife today!",
+    "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+    "full_description": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
     "dietary_options": [
       {
-        "id": 7,
-        "name": "Vegetarian",
-        "slug": "vegetarian",
-        "icon": "🥬",
-        "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "id": 4,
+        "name": "Gluten-Free",
+        "slug": "gluten-free",
+        "icon": "🌾",
+        "color": "#ff9800",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       },
       {
-        "id": 3,
-        "name": "Halal",
-        "slug": "halal",
-        "icon": "🥩",
-        "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "id": 11,
+        "name": "Pescatarian",
+        "slug": "pescatarian",
+        "icon": "🐟",
+        "color": "#06b6d4",
+        "description": "Fish and seafood but no meat",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
+        "updatedAt": "2026-06-19T14:38:57.793Z",
+        "createdAt": "2026-05-19T08:33:29.735Z",
         "_status": "published"
       }
     ],
@@ -328,13 +428,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -343,13 +443,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 3,
-          "name": "Night Tour",
+          "name": "Night tour",
           "slug": "night-tour",
           "icon": "🌙",
           "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.030Z",
+          "updatedAt": "2026-06-19T14:45:44.828Z",
           "createdAt": "2026-05-19T08:33:32.030Z",
           "_status": "published"
         }
@@ -362,17 +462,15 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
       }
     ],
     "whats_included": [
-      "Street art tour with local expert",
-      "Late-night street food snacks",
       "Expert local guide",
       "Small group experience (max 9)",
       "Hidden speakeasy bar access",
@@ -380,11 +478,10 @@
     ],
     "whats_excluded": [
       "Transportation to meeting point",
-      "Additional drinks beyond included cocktails",
-      "Personal purchases",
-      "Tips for your guide"
+      "Additional drinks beyond included cocktail / alcoholic drink",
+      "Personal purchases"
     ],
-    "cancellation_policy": null,
+    "cancellation_policy": "24-hours in advance",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 10,
@@ -393,25 +490,27 @@
     "differentiators_tourist": [],
     "differentiators_us": [],
     "what_to_bring": [],
-    "languages_offered": [],
+    "languages_offered": [
+      "English"
+    ],
     "segment_tags": [],
     "promo_video_url": null,
     "gallery_image_alts": [],
-    "hero_image_alt": null
+    "hero_image_alt": "Nightlife cocktail bar in Kuala Lumpur with creative drinks and city lights"
   },
   {
     "id": 4,
     "name": "Penang Street Food",
     "slug": "penang-street-food",
-    "tagline": "Penang Food Capital Tour",
-    "shortDescription": "What makes Penang the \"food capital\" of Malaysia? Simply Enak will guide you through the cultural fusion that created dishes you'll only find here. At Chowrasta Market, we'll dare you to try kopitiam \"Ngor Ka Sai\".",
-    "fullDescription": "Penang is known in Malaysia as the food capital and what better way than to eat your way through the street food this island has to offer? As we walk past the monuments of Penang we take a step back to the time when Penang was formed as a settlement.\n\nAs we try different dishes we step into the traditions and culture that make Penang food the kind you remember months later. Have a light (or no) breakfast to prepare for all the local favorites such as Roti Chennai, Penang Laksa, Nasi Lemak and more.",
+    "tagline": null,
+    "shortDescription": null,
+    "fullDescription": null,
     "price": 285,
     "currency": "MYR",
     "duration": "3.5 hours",
     "durationMinutes": 210,
     "location": "Penang Road",
-    "meetingPoint": "Mydin, Penang Road",
+    "meetingPoint": null,
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -421,11 +520,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -435,11 +534,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -449,11 +548,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -463,11 +562,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -477,13 +576,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 2,
-          "name": "Family-Friendly",
+          "name": "Family",
           "slug": "family",
           "icon": "👨‍👩‍👧‍👦",
           "color": "#f59e0b",
-          "description": "Tours suitable for all ages",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.293Z",
+          "updatedAt": "2026-06-19T14:43:44.060Z",
           "createdAt": "2026-05-19T08:33:22.293Z",
           "_status": "published"
         }
@@ -496,9 +595,9 @@
           "slug": "couples",
           "icon": "💑",
           "color": "#ec4899",
-          "description": "Romantic food experiences for two",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:21.708Z",
+          "updatedAt": "2026-06-19T14:43:56.093Z",
           "createdAt": "2026-05-19T08:33:21.708Z",
           "_status": "published"
         }
@@ -507,13 +606,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 4,
-          "name": "Solo Traveler",
+          "name": "Solo",
           "slug": "solo",
           "icon": "🎒",
           "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:23.425Z",
+          "updatedAt": "2026-06-19T14:43:09.797Z",
           "createdAt": "2026-05-19T08:33:23.425Z",
           "_status": "published"
         }
@@ -526,9 +625,9 @@
           "slug": "foodie",
           "icon": "🍜",
           "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.863Z",
+          "updatedAt": "2026-06-19T14:43:22.225Z",
           "createdAt": "2026-05-19T08:33:22.863Z",
           "_status": "published"
         }
@@ -539,13 +638,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -558,9 +657,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -569,13 +668,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 2,
-          "name": "Market Tour",
+          "name": "Market tour",
           "slug": "market-tour",
           "icon": "🏪",
           "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:31.461Z",
+          "updatedAt": "2026-06-19T14:46:14.340Z",
           "createdAt": "2026-05-19T08:33:31.461Z",
           "_status": "published"
         }
@@ -588,9 +687,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -601,12 +700,24 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 45,
+      "alt": null,
+      "caption": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
+      "tags": [],
       "prefix": "payload-media",
       "updatedAt": "2026-05-19T10:03:26.380Z",
       "createdAt": "2026-05-19T10:03:25.607Z",
-      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Eat_Drink_Georgetown001_c0188c50e4.jpg",
-      "thumbnailURL": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4-400x300.webp",
+      "url": "https://cdn.simplyenak.com/payload-media/Eat_Drink_Georgetown001_c0188c50e4.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Eat_Drink_Georgetown001_c0188c50e4-400x300.webp",
       "filename": "Eat_Drink_Georgetown001_c0188c50e4.jpg",
       "mimeType": "image/jpeg",
       "filesize": 40554,
@@ -616,7 +727,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Eat_Drink_Georgetown001_c0188c50e4-400x300.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/Eat_Drink_Georgetown001_c0188c50e4-400x300.webp",
           "width": 400,
           "height": 300,
           "mimeType": "image/webp",
@@ -642,28 +753,28 @@
       }
     },
     "galleryImages": [],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Kopitiam breakfast experience",
-        "id": "6a2b8117396ee2000167d631"
+        "id": "6a2b8117396ee2000167d631",
+        "highlight": "Kopitiam breakfast experience"
       },
       {
-        "highlight": "Handcrafted popiah",
-        "id": "6a2b8117396ee2000167d632"
+        "id": "6a2b8117396ee2000167d632",
+        "highlight": "Handcrafted popiah"
       },
       {
-        "highlight": "Legendary Asam Laksa",
-        "id": "6a2b8117396ee2000167d633"
+        "id": "6a2b8117396ee2000167d633",
+        "highlight": "Legendary Asam Laksa"
       },
       {
-        "highlight": "Peranakan kueh",
-        "id": "6a2b8117396ee2000167d634"
+        "id": "6a2b8117396ee2000167d634",
+        "highlight": "Peranakan kueh"
       },
       {
-        "highlight": "Chowrasta Market visit",
-        "id": "6a2b8117396ee2000167d635"
+        "id": "6a2b8117396ee2000167d635",
+        "highlight": "Chowrasta Market visit"
       }
     ],
     "ticketingHubId": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -679,15 +790,16 @@
     "walkingDistance": "2.5 km",
     "directionsHtml": null,
     "itinerary": [],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -695,17 +807,17 @@
     "status": "published",
     "workflowStatus": "published",
     "meta": {
-      "title": null,
-      "description": null,
+      "title": "Penang Street Food | Simply Enak Food Tours",
+      "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-06-17T03:17:17.057Z",
+    "updatedAt": "2026-06-19T05:23:20.077Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
     "is_bookable": true,
-    "short_description": "What makes Penang the \"food capital\" of Malaysia? Simply Enak will guide you through the cultural fusion that created dishes you'll only find here. At Chowrasta Market, we'll dare you to try kopitiam \"Ngor Ka Sai\".",
-    "full_description": "Penang is known in Malaysia as the food capital and what better way than to eat your way through the street food this island has to offer? As we walk past the monuments of Penang we take a step back to the time when Penang was formed as a settlement.\n\nAs we try different dishes we step into the traditions and culture that make Penang food the kind you remember months later. Have a light (or no) breakfast to prepare for all the local favorites such as Roti Chennai, Penang Laksa, Nasi Lemak and more.",
+    "short_description": null,
+    "full_description": null,
     "duration_minutes": 210,
     "max_participants": 9,
     "min_participants": 2,
@@ -716,11 +828,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -730,11 +842,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -744,11 +856,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -758,11 +870,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -772,13 +884,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -791,9 +903,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -802,13 +914,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 2,
-          "name": "Market Tour",
+          "name": "Market tour",
           "slug": "market-tour",
           "icon": "🏪",
           "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:31.461Z",
+          "updatedAt": "2026-06-19T14:46:14.340Z",
           "createdAt": "2026-05-19T08:33:31.461Z",
           "_status": "published"
         }
@@ -821,9 +933,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -850,15 +962,15 @@
     "id": 3,
     "name": "Kuala Lumpur Street Food",
     "slug": "kuala-lumpur-street-food",
-    "tagline": "The Heart of KL Street Food",
-    "shortDescription": "Brand new to Malaysia? This is everything you need to know! Simply Enak will guide you through major temples and historic lanes in Chinatown, stopping at stalls that locals swear by.",
-    "fullDescription": "When you think of Malaysia, you think of food, Street Food! And what's a better way to dive into Malaysian Street Food than taking a stroll through the Heart of Kuala Lumpur, the Heritage Zone? The Kuala Lumpur Street Food Experience is a great way for any first-time visitor to see how food and culture feed each other in Malaysia.\n\nDuring our walk, you will taste, smell and hear a great variety of cultural influences that makes Malaysia's culture and food so diverse and memorable. On this tour, you will visit local tradesmen, street food vendors and shops hidden from the eyes of tourists. Witness the daily life of local Malaysians as you sample some of the same banana-leaf rice and pulled teh tarik that fuel this city. This experience is a great way to get a helicopter view of Malaysian Food and Culture. Bring your kids along, this is a kid friendly Food Experience!",
+    "tagline": null,
+    "shortDescription": null,
+    "fullDescription": null,
     "price": 285,
     "currency": "MYR",
     "duration": "3.5 hours",
     "durationMinutes": 210,
     "location": "KL",
-    "meetingPoint": "Tealive, Pasar Seni LRT Station",
+    "meetingPoint": null,
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -868,11 +980,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -882,11 +994,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -896,11 +1008,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -910,11 +1022,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -924,13 +1036,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 2,
-          "name": "Family-Friendly",
+          "name": "Family",
           "slug": "family",
           "icon": "👨‍👩‍👧‍👦",
           "color": "#f59e0b",
-          "description": "Tours suitable for all ages",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.293Z",
+          "updatedAt": "2026-06-19T14:43:44.060Z",
           "createdAt": "2026-05-19T08:33:22.293Z",
           "_status": "published"
         }
@@ -943,9 +1055,9 @@
           "slug": "couples",
           "icon": "💑",
           "color": "#ec4899",
-          "description": "Romantic food experiences for two",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:21.708Z",
+          "updatedAt": "2026-06-19T14:43:56.093Z",
           "createdAt": "2026-05-19T08:33:21.708Z",
           "_status": "published"
         }
@@ -954,13 +1066,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 4,
-          "name": "Solo Traveler",
+          "name": "Solo",
           "slug": "solo",
           "icon": "🎒",
           "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:23.425Z",
+          "updatedAt": "2026-06-19T14:43:09.797Z",
           "createdAt": "2026-05-19T08:33:23.425Z",
           "_status": "published"
         }
@@ -973,9 +1085,9 @@
           "slug": "foodie",
           "icon": "🍜",
           "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.863Z",
+          "updatedAt": "2026-06-19T14:43:22.225Z",
           "createdAt": "2026-05-19T08:33:22.863Z",
           "_status": "published"
         }
@@ -986,13 +1098,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -1005,9 +1117,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1020,9 +1132,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1033,12 +1145,24 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 4,
+      "alt": null,
+      "caption": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
+      "tags": [],
       "prefix": "payload-media",
       "updatedAt": "2026-05-19T09:59:42.545Z",
       "createdAt": "2026-05-19T09:59:41.726Z",
-      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122.jpg",
-      "thumbnailURL": "/api/media/file/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
+      "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
       "filename": "kuala_lumpur_street_food_cd4fad4122.jpg",
       "mimeType": "image/jpeg",
       "filesize": 66068,
@@ -1048,7 +1172,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -1056,7 +1180,7 @@
           "filename": "kuala_lumpur_street_food_cd4fad4122-400x300.jpg"
         },
         "medium": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122-800x600.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -1064,7 +1188,7 @@
           "filename": "kuala_lumpur_street_food_cd4fad4122-800x600.jpg"
         },
         "large": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122-1200x800.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -1074,28 +1198,28 @@
       }
     },
     "galleryImages": [],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Visit Chinatown\\'s food lanes",
-        "id": "6a2b8116396ee2000167d62c"
+        "id": "6a2b8116396ee2000167d62c",
+        "highlight": "Visit Chinatown\\'s food lanes"
       },
       {
-        "highlight": "Taste 8-10 authentic dishes",
-        "id": "6a2b8116396ee2000167d62d"
+        "id": "6a2b8116396ee2000167d62d",
+        "highlight": "Taste 8-10 authentic dishes"
       },
       {
-        "highlight": "Explore Little India",
-        "id": "6a2b8116396ee2000167d62e"
+        "id": "6a2b8116396ee2000167d62e",
+        "highlight": "Explore Little India"
       },
       {
-        "highlight": "Learn about Malaysian food culture",
-        "id": "6a2b8116396ee2000167d62f"
+        "id": "6a2b8116396ee2000167d62f",
+        "highlight": "Learn about Malaysian food culture"
       },
       {
-        "highlight": "Perfect introduction to KL",
-        "id": "6a2b8116396ee2000167d630"
+        "id": "6a2b8116396ee2000167d630",
+        "highlight": "Perfect introduction to KL"
       }
     ],
     "ticketingHubId": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -1111,15 +1235,16 @@
     "walkingDistance": "2 km",
     "directionsHtml": null,
     "itinerary": [],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -1127,17 +1252,17 @@
     "status": "published",
     "workflowStatus": "published",
     "meta": {
-      "title": null,
-      "description": null,
+      "title": "Kuala Lumpur Street Food | Simply Enak Food Tours",
+      "description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes.",
       "image": null
     },
-    "updatedAt": "2026-06-17T03:17:18.008Z",
+    "updatedAt": "2026-06-19T05:23:19.757Z",
     "createdAt": "2026-05-19T08:33:48.280Z",
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
     "is_bookable": true,
-    "short_description": "Brand new to Malaysia? This is everything you need to know! Simply Enak will guide you through major temples and historic lanes in Chinatown, stopping at stalls that locals swear by.",
-    "full_description": "When you think of Malaysia, you think of food, Street Food! And what's a better way to dive into Malaysian Street Food than taking a stroll through the Heart of Kuala Lumpur, the Heritage Zone? The Kuala Lumpur Street Food Experience is a great way for any first-time visitor to see how food and culture feed each other in Malaysia.\n\nDuring our walk, you will taste, smell and hear a great variety of cultural influences that makes Malaysia's culture and food so diverse and memorable. On this tour, you will visit local tradesmen, street food vendors and shops hidden from the eyes of tourists. Witness the daily life of local Malaysians as you sample some of the same banana-leaf rice and pulled teh tarik that fuel this city. This experience is a great way to get a helicopter view of Malaysian Food and Culture. Bring your kids along, this is a kid friendly Food Experience!",
+    "short_description": null,
+    "full_description": null,
     "duration_minutes": 210,
     "max_participants": 9,
     "min_participants": 2,
@@ -1148,11 +1273,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -1162,11 +1287,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -1176,11 +1301,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -1190,11 +1315,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -1204,13 +1329,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -1223,9 +1348,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1238,9 +1363,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1267,15 +1392,15 @@
     "id": 2,
     "name": "Flavours of Malaysia",
     "slug": "flavours-of-malaysia",
-    "tagline": "Market Culture and Hidden Flavours",
-    "shortDescription": "Brand new to Malaysia? This is everything you need to know! Simply Enak will guide you through major temples and historic lanes in Chinatown, stopping at stalls that have been feeding KL for decades. Perfect introduction to Malaysian culture and heritage.",
-    "fullDescription": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia, hence its title flavours of Malaysia.\n\nImagine rows of local fruits, vegetables and spices that are on display along with an array of stalls selling the freshest meat and seafood. Walking through the market, you'll taste popular Malaysian dishes, as well as, understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real which means you may experience, see and smell things that are not present in markets in other parts of our world.",
+    "tagline": null,
+    "shortDescription": null,
+    "fullDescription": null,
     "price": 289,
     "currency": "MYR",
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "Kuala Lumpur",
-    "meetingPoint": "Hilton Garden Inn, KL",
+    "meetingPoint": null,
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -1285,11 +1410,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -1299,11 +1424,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -1313,11 +1438,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -1327,11 +1452,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -1341,13 +1466,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 2,
-          "name": "Family-Friendly",
+          "name": "Family",
           "slug": "family",
           "icon": "👨‍👩‍👧‍👦",
           "color": "#f59e0b",
-          "description": "Tours suitable for all ages",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.293Z",
+          "updatedAt": "2026-06-19T14:43:44.060Z",
           "createdAt": "2026-05-19T08:33:22.293Z",
           "_status": "published"
         }
@@ -1360,9 +1485,9 @@
           "slug": "couples",
           "icon": "💑",
           "color": "#ec4899",
-          "description": "Romantic food experiences for two",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:21.708Z",
+          "updatedAt": "2026-06-19T14:43:56.093Z",
           "createdAt": "2026-05-19T08:33:21.708Z",
           "_status": "published"
         }
@@ -1371,13 +1496,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 4,
-          "name": "Solo Traveler",
+          "name": "Solo",
           "slug": "solo",
           "icon": "🎒",
           "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:23.425Z",
+          "updatedAt": "2026-06-19T14:43:09.797Z",
           "createdAt": "2026-05-19T08:33:23.425Z",
           "_status": "published"
         }
@@ -1390,9 +1515,9 @@
           "slug": "foodie",
           "icon": "🍜",
           "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.863Z",
+          "updatedAt": "2026-06-19T14:43:22.225Z",
           "createdAt": "2026-05-19T08:33:22.863Z",
           "_status": "published"
         }
@@ -1403,13 +1528,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -1418,13 +1543,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 2,
-          "name": "Market Tour",
+          "name": "Market tour",
           "slug": "market-tour",
           "icon": "🏪",
           "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:31.461Z",
+          "updatedAt": "2026-06-19T14:46:14.340Z",
           "createdAt": "2026-05-19T08:33:31.461Z",
           "_status": "published"
         }
@@ -1437,9 +1562,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1452,9 +1577,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1462,15 +1587,27 @@
     ],
     "foodItems": [],
     "tailoredAvailable": true,
-    "tailoredNotes": "All our tours start with a minimum of 2 reservations. Special rates for group bookings of 6+ people.",
+    "tailoredNotes": null,
     "heroImage": {
       "id": 47,
+      "alt": null,
+      "caption": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
+      "tags": [],
       "prefix": "payload-media",
       "updatedAt": "2026-05-19T10:03:37.416Z",
       "createdAt": "2026-05-19T10:03:36.811Z",
-      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia001_41094a74f7.jpg",
-      "thumbnailURL": "/api/media/file/Flavours_of_Malaysia001_41094a74f7-400x300.webp",
+      "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia001_41094a74f7.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia001_41094a74f7-400x300.webp",
       "filename": "Flavours_of_Malaysia001_41094a74f7.jpg",
       "mimeType": "image/jpeg",
       "filesize": 54836,
@@ -1480,7 +1617,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia001_41094a74f7-400x300.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia001_41094a74f7-400x300.webp",
           "width": 400,
           "height": 300,
           "mimeType": "image/webp",
@@ -1488,7 +1625,7 @@
           "filename": "Flavours_of_Malaysia001_41094a74f7-400x300.webp"
         },
         "medium": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia001_41094a74f7-800x600.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia001_41094a74f7-800x600.webp",
           "width": 800,
           "height": 600,
           "mimeType": "image/webp",
@@ -1506,28 +1643,28 @@
       }
     },
     "galleryImages": [],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Visit one of KL\\'s largest wet markets",
-        "id": "6a2b8115396ee2000167d622"
+        "id": "6a2b8115396ee2000167d622",
+        "highlight": "Visit one of KL\\'s largest wet markets"
       },
       {
-        "highlight": "Taste 10 authentic Malaysian dishes",
-        "id": "6a2b8115396ee2000167d623"
+        "id": "6a2b8115396ee2000167d623",
+        "highlight": "Taste 10 authentic Malaysian dishes"
       },
       {
-        "highlight": "Explore historic Chinatown lanes",
-        "id": "6a2b8115396ee2000167d624"
+        "id": "6a2b8115396ee2000167d624",
+        "highlight": "Explore historic Chinatown lanes"
       },
       {
-        "highlight": "Learn about Malay, Chinese and Indian food culture",
-        "id": "6a2b8115396ee2000167d625"
+        "id": "6a2b8115396ee2000167d625",
+        "highlight": "Learn about Malay, Chinese and Indian food culture"
       },
       {
-        "highlight": "Small group  -  max 9 people",
-        "id": "6a2b8115396ee2000167d626"
+        "id": "6a2b8115396ee2000167d626",
+        "highlight": "Small group  -  max 9 people"
       }
     ],
     "ticketingHubId": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -1543,15 +1680,16 @@
     "walkingDistance": "2 km",
     "directionsHtml": null,
     "itinerary": [],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -1559,17 +1697,17 @@
     "status": "published",
     "workflowStatus": "published",
     "meta": {
-      "title": null,
-      "description": null,
+      "title": "Flavours of Malaysia | Simply Enak Food Tours",
+      "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
       "image": null
     },
-    "updatedAt": "2026-06-17T03:17:19.295Z",
+    "updatedAt": "2026-06-19T05:23:19.430Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
     "is_bookable": true,
-    "short_description": "Brand new to Malaysia? This is everything you need to know! Simply Enak will guide you through major temples and historic lanes in Chinatown, stopping at stalls that have been feeding KL for decades. Perfect introduction to Malaysian culture and heritage.",
-    "full_description": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia, hence its title flavours of Malaysia.\n\nImagine rows of local fruits, vegetables and spices that are on display along with an array of stalls selling the freshest meat and seafood. Walking through the market, you'll taste popular Malaysian dishes, as well as, understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real which means you may experience, see and smell things that are not present in markets in other parts of our world.",
+    "short_description": null,
+    "full_description": null,
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
@@ -1580,11 +1718,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -1594,11 +1732,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -1608,11 +1746,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -1622,11 +1760,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -1636,13 +1774,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -1651,13 +1789,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 2,
-          "name": "Market Tour",
+          "name": "Market tour",
           "slug": "market-tour",
           "icon": "🏪",
           "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:31.461Z",
+          "updatedAt": "2026-06-19T14:46:14.340Z",
           "createdAt": "2026-05-19T08:33:31.461Z",
           "_status": "published"
         }
@@ -1670,9 +1808,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1685,9 +1823,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1714,15 +1852,15 @@
     "id": 1,
     "name": "Eat Drink George Town",
     "slug": "eat-drink-george-town",
-    "tagline": "Street Food and Cocktails in Penang",
-    "shortDescription": "Hungry for Georgetown's greatest hits? Simply Enak's most-loved Penang tour starts as the sun sets and Georgetown comes alive. Three cultures' evening delights.",
-    "fullDescription": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food  -  from wok-fried char kway teow to nutmeg cocktails shaken tableside. This evening tour takes you around the heritage zone of Penang where we will walk and talk you through the stories that have shaped Penang into what it is today, a fusion of cultures and food worth crossing town for.\n\nOn this tour, we will visit hawker stalls from various ethnic backgrounds and learn the stories of these hawkers. One of the highlights is a visit to a Clan Jetty including a taste of the Char Kway Teow that draws queues from across Penang. We end the experience on a happy note at a famous Penang cocktail bar and let the bartender shake up a cocktail using local ingredients and spices.\n\nCome hungry and ready for a fun experience. Our Penang-born guide is ready to share his stories of food, culture and the people of Penang.",
+    "tagline": null,
+    "shortDescription": null,
+    "fullDescription": null,
     "price": 359,
     "currency": "MYR",
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "Penang",
-    "meetingPoint": "Masjid Kapitan Keling",
+    "meetingPoint": null,
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -1732,11 +1870,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -1746,11 +1884,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -1760,11 +1898,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -1774,11 +1912,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -1792,9 +1930,9 @@
           "slug": "couples",
           "icon": "💑",
           "color": "#ec4899",
-          "description": "Romantic food experiences for two",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:21.708Z",
+          "updatedAt": "2026-06-19T14:43:56.093Z",
           "createdAt": "2026-05-19T08:33:21.708Z",
           "_status": "published"
         }
@@ -1803,13 +1941,13 @@
         "relationTo": "travel_types",
         "value": {
           "id": 4,
-          "name": "Solo Traveler",
+          "name": "Solo",
           "slug": "solo",
           "icon": "🎒",
           "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:23.425Z",
+          "updatedAt": "2026-06-19T14:43:09.797Z",
           "createdAt": "2026-05-19T08:33:23.425Z",
           "_status": "published"
         }
@@ -1822,9 +1960,9 @@
           "slug": "foodie",
           "icon": "🍜",
           "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:22.863Z",
+          "updatedAt": "2026-06-19T14:43:22.225Z",
           "createdAt": "2026-05-19T08:33:22.863Z",
           "_status": "published"
         }
@@ -1835,13 +1973,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -1854,9 +1992,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1865,13 +2003,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 3,
-          "name": "Night Tour",
+          "name": "Night tour",
           "slug": "night-tour",
           "icon": "🌙",
           "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.030Z",
+          "updatedAt": "2026-06-19T14:45:44.828Z",
           "createdAt": "2026-05-19T08:33:32.030Z",
           "_status": "published"
         }
@@ -1884,9 +2022,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -1897,12 +2035,24 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 6,
+      "alt": null,
+      "caption": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
+      "tags": [],
       "prefix": "payload-media",
       "updatedAt": "2026-05-19T09:59:56.971Z",
       "createdAt": "2026-05-19T09:59:56.436Z",
-      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
-      "thumbnailURL": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp",
+      "url": "https://cdn.simplyenak.com/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp",
       "filename": "Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
       "mimeType": "image/jpeg",
       "filesize": 158252,
@@ -1912,7 +2062,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp",
           "width": 400,
           "height": 300,
           "mimeType": "image/webp",
@@ -1920,7 +2070,7 @@
           "filename": "Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp"
         },
         "medium": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89-800x600.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89-800x600.webp",
           "width": 800,
           "height": 600,
           "mimeType": "image/webp",
@@ -1928,7 +2078,7 @@
           "filename": "Eat_Drink_George_Town_Bart_1527cf1f89-800x600.webp"
         },
         "large": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89-1200x800.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/Eat_Drink_George_Town_Bart_1527cf1f89-1200x800.webp",
           "width": 1200,
           "height": 800,
           "mimeType": "image/webp",
@@ -1938,28 +2088,28 @@
       }
     },
     "galleryImages": [],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Sizzling satay at a heritage stall",
-        "id": "6a2b8116396ee2000167d627"
+        "id": "6a2b8116396ee2000167d627",
+        "highlight": "Sizzling satay at a heritage stall"
       },
       {
-        "highlight": "Char kway teow at Chew Jetty",
-        "id": "6a2b8116396ee2000167d628"
+        "id": "6a2b8116396ee2000167d628",
+        "highlight": "Char kway teow at Chew Jetty"
       },
       {
-        "highlight": "Roti jala  -  net crepe",
-        "id": "6a2b8116396ee2000167d629"
+        "id": "6a2b8116396ee2000167d629",
+        "highlight": "Roti jala  -  net crepe"
       },
       {
-        "highlight": "Secret society tales",
-        "id": "6a2b8116396ee2000167d62a"
+        "id": "6a2b8116396ee2000167d62a",
+        "highlight": "Secret society tales"
       },
       {
-        "highlight": "Signature Junglebird cocktail",
-        "id": "6a2b8116396ee2000167d62b"
+        "id": "6a2b8116396ee2000167d62b",
+        "highlight": "Signature Junglebird cocktail"
       }
     ],
     "ticketingHubId": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -1975,15 +2125,16 @@
     "walkingDistance": "2 km",
     "directionsHtml": null,
     "itinerary": [],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -1991,17 +2142,17 @@
     "status": "published",
     "workflowStatus": "published",
     "meta": {
-      "title": null,
-      "description": null,
+      "title": "Eat Drink George Town | Simply Enak Food Tours",
+      "description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert.",
       "image": null
     },
-    "updatedAt": "2026-06-17T03:17:20.306Z",
+    "updatedAt": "2026-06-19T05:23:19.076Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
     "is_bookable": true,
-    "short_description": "Hungry for Georgetown's greatest hits? Simply Enak's most-loved Penang tour starts as the sun sets and Georgetown comes alive. Three cultures' evening delights.",
-    "full_description": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food  -  from wok-fried char kway teow to nutmeg cocktails shaken tableside. This evening tour takes you around the heritage zone of Penang where we will walk and talk you through the stories that have shaped Penang into what it is today, a fusion of cultures and food worth crossing town for.\n\nOn this tour, we will visit hawker stalls from various ethnic backgrounds and learn the stories of these hawkers. One of the highlights is a visit to a Clan Jetty including a taste of the Char Kway Teow that draws queues from across Penang. We end the experience on a happy note at a famous Penang cocktail bar and let the bartender shake up a cocktail using local ingredients and spices.\n\nCome hungry and ready for a fun experience. Our Penang-born guide is ready to share his stories of food, culture and the people of Penang.",
+    "short_description": null,
+    "full_description": null,
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
@@ -2012,11 +2163,11 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:27.383Z",
+        "updatedAt": "2026-06-19T14:40:18.126Z",
         "createdAt": "2026-05-19T08:33:27.383Z",
         "_status": "published"
       },
@@ -2026,11 +2177,11 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.147Z",
+        "updatedAt": "2026-06-19T14:41:44.523Z",
         "createdAt": "2026-05-19T08:33:25.146Z",
         "_status": "published"
       },
@@ -2040,11 +2191,11 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:30.320Z",
+        "updatedAt": "2026-06-19T14:37:43.922Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -2054,11 +2205,11 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-05-19T08:33:25.704Z",
+        "updatedAt": "2026-06-19T14:41:27.332Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -2068,13 +2219,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 4,
-          "name": "Street Food",
+          "name": "Street food",
           "slug": "street-food",
           "icon": "🍢",
           "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.602Z",
+          "updatedAt": "2026-06-19T14:44:21.390Z",
           "createdAt": "2026-05-19T08:33:32.602Z",
           "_status": "published"
         }
@@ -2087,9 +2238,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
@@ -2098,13 +2249,13 @@
         "relationTo": "specialty_experiences",
         "value": {
           "id": 3,
-          "name": "Night Tour",
+          "name": "Night tour",
           "slug": "night-tour",
           "icon": "🌙",
           "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:32.030Z",
+          "updatedAt": "2026-06-19T14:45:44.828Z",
           "createdAt": "2026-05-19T08:33:32.030Z",
           "_status": "published"
         }
@@ -2117,9 +2268,9 @@
           "slug": "heritage",
           "icon": "🏛️",
           "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
+          "description": null,
           "status": "published",
-          "updatedAt": "2026-05-19T08:33:30.893Z",
+          "updatedAt": "2026-06-19T14:46:46.161Z",
           "createdAt": "2026-05-19T08:33:30.893Z",
           "_status": "published"
         }
