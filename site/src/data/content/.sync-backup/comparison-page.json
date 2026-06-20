@@ -1,0 +1,109 @@
+{
+  "page_title": "Why Simply Enak — See How We Compare",
+  "page_subtitle": "Honest comparison vs real alternatives in KL and Penang",
+  "hero_description": "No fluff, no fake claims. Here's how we actually compare to Food Tour Malaysia and Secret Food Tours, the two most visible food tour operators in Kuala Lumpur and Penang.",
+  "comparison_intro": "There are two main food tour operators in KL and Penang besides Simply Enak: Food Tour Malaysia (independent, running since 2012) and Secret Food Tours (international chain with a KL outpost). This page compares Simply Enak against these real alternatives with actual data verified from their websites.",
+  "competitors": [
+    { "name": "Simply Enak", "tagline": "Small groups, real markets, decade-long vendor ties" },
+    { "name": "Food Tour Malaysia", "tagline": "Vehicle-based tours, freelance guides" },
+    { "name": "Secret Food Tours", "tagline": "Global franchise, one standardized KL tour" }
+  ],
+  "comparison_rows": [
+    {
+      "feature": "Group Size",
+      "us_value": "Max 9 people — intimate, personal, no rushing",
+      "competitor_values": [
+        { "value": "Up to 10+ (walk) or vehicle groups" },
+        { "value": "Max 12 — noticeably larger groups" }
+      ],
+      "highlight": true
+    },
+    {
+      "feature": "Tour Format",
+      "us_value": "Walking through markets, streets, and neighbourhoods",
+      "competitor_values": [
+        { "value": "Private vehicle between stops (drive, eat, drive)" },
+        { "value": "Walking tour through Chinatown and Little India" }
+      ],
+      "highlight": false
+    },
+    {
+      "feature": "Market Experience",
+      "us_value": "KL's largest working wet market with vendors who've been there for decades",
+      "competitor_values": [
+        { "value": "Not featured. Food courts and restaurant stops." },
+        { "value": "Not featured. Hawker stalls and cafes." }
+      ],
+      "highlight": true
+    },
+    {
+      "feature": "Guide Relationships",
+      "us_value": "10+ years with the same family-run vendors. Your guide knows every stall owner by name.",
+      "competitor_values": [
+        { "value": "Freelance guides. No long-term vendor ties evident." },
+        { "value": "Local guides but global franchise format. Guides rotate." }
+      ],
+      "highlight": true
+    },
+    {
+      "feature": "Dietary Accommodation",
+      "us_value": "Vegetarian, vegan, halal, gluten-free on all tours. 48hr notice, no extra charge.",
+      "competitor_values": [
+        { "value": "Customer's responsibility to inform. Liability disclaimed." },
+        { "value": "Limited info. Standard global menu, advance notice may apply." }
+      ],
+      "highlight": true
+    },
+    {
+      "feature": "Number of Tours",
+      "us_value": "5 distinct tours across KL and Penang, each with its own theme",
+      "competitor_values": [
+        { "value": "4 tours (2 KL, 2 Penang). Similar format across locations." },
+        { "value": "1 tour in KL only." }
+      ],
+      "highlight": false
+    },
+    {
+      "feature": "Evening Options",
+      "us_value": "Night tours with speakeasy bars and craft cocktails (KL and Penang)",
+      "competitor_values": [
+        { "value": "Evening option available (Off The Eaten Track, 7-11PM)" },
+        { "value": "Daytime only." }
+      ],
+      "highlight": false
+    },
+    {
+      "feature": "Awards and Recognition",
+      "us_value": "TripAdvisor Certificate of Excellence, consecutive years. Featured in National Geographic, BBC, Lonely Planet.",
+      "competitor_values": [
+        { "value": "TripAdvisor Certificate 2011-2019 (expired, no recent renewal)" },
+        { "value": "Global chain, 100k+ reviews across all cities. 4.9 rating (138 KL reviews)" }
+      ],
+      "highlight": false
+    },
+    {
+      "feature": "Private and Tailored Tours",
+      "us_value": "Full private tours, tailored routes, multi-city itineraries, team events",
+      "competitor_values": [
+        { "value": "Private vehicle included but route seems fixed. Custom tours on request." },
+        { "value": "Private tours available." }
+      ],
+      "highlight": false
+    }
+  ],
+  "cta_section": {
+    "eyebrow": "STILL COMPARING?",
+    "title": "We're Happy to Help You Decide",
+    "body": "Chat with us and we'll help you figure out if Simply Enak is the right fit for your trip. No pressure, just honest advice from people who love Malaysian food.",
+    "cta_label": "Chat on WhatsApp",
+    "cta_url": "https://wa.me/60172878929?text=Hi%2C+I%27m+comparing+food+tour+operators+and+have+a+question"
+  },
+  "trust_badges": [
+    { "icon": "tabler:star", "label": "TripAdvisor Certificate of Excellence" },
+    { "icon": "tabler:award", "label": "Featured in National Geographic" },
+    { "icon": "tabler:users", "label": "Max 9 People Per Tour" },
+    { "icon": "tabler:leaf", "label": "Dietary Accommodation Included" }
+  ],
+  "meta_title": "Why Simply Enak — See How We Compare to Other Food Tours",
+  "meta_description": "Wondering what makes us different? Small groups (max 9), real wet markets, 10+ year vendor relationships, and every diet accommodated. Here is how we compare to other food tours in KL and Penang."
+}

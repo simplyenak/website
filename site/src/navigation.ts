@@ -98,7 +98,12 @@ export const footerData = {
   ],
   companyLinks: [
     { text: 'About Simply Enak', href: '/about' },
+    { text: 'Our Track Record', href: '/track-record' },
     { text: 'Stories & Blog', href: '/stories' },
+    { text: 'How It Works', href: '/how-it-works' },
+    { text: 'How To Prepare', href: '/how-to-prepare' },
+    { text: 'Meeting Points', href: '/directions' },
+    { text: 'Tour Finder Quiz', href: '/tour-quiz' },
     { text: 'Contact Us', href: '/contact' },
     { text: 'FAQ', href: '/faq' },
     { text: 'Private Tours', href: '/tours/private-tours' },

@@ -1107,6 +1107,8 @@ async function sync() {
     { slug: 'tailored_tours_page', file: 'tailored-tours-page.json', label: 'Tailored Tours Page', transform: transformPrivateToursPage },
     { slug: 'track_record_page', file: 'track-record-page.json', label: 'Track Record Page' },
     { slug: 'directions_page', file: 'directions-page.json', label: 'Directions Page' },
+    { slug: 'comparison_page', file: 'comparison-page.json', label: 'Comparison Page' },
+    { slug: 'tour_quiz', file: 'tour-quiz.json', label: 'Tour Quiz' },
   ]
 
   for (const item of singletons) {
