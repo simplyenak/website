@@ -1,5 +1,5 @@
 {
-  "id": 3,
+  "id": 1,
   "seo_title": "Tailored Food Tours Malaysia | Custom Routes | Simply Enak",
   "seo_description": "Design a completely custom food tour in Malaysia. Tell us your interests, dietary needs, and schedule. We build a route nobody else gets.",
   "hero_title": "A Route Nobody Else Gets",
@@ -13,19 +13,16 @@
   "what_subtitle": "A private tour takes an existing route and runs it for your group only. A tailored experience builds a new route from scratch around what you actually want.",
   "what_cards": [
     {
-      "id": 1,
       "icon": "🗺️",
       "title": "Custom route, not a preset",
       "detail": "We don't adjust an existing tour. Your guide designs a route from scratch based on your brief. Different neighbourhoods, different stalls, different dishes."
     },
     {
-      "id": 2,
       "icon": "📞",
       "title": "Pre-tour planning call",
       "detail": "Before anything is booked, you talk to your guide on WhatsApp. You discuss what you want to eat, how much you can walk, what you've tried before, what you're curious about."
     },
     {
-      "id": 3,
       "icon": "⏱️",
       "title": "Any duration, any format",
       "detail": "Three hours, six hours, a full day, a multi-city itinerary. A food crawl, a market deep-dive, a heritage walk with tastings. The format serves the experience, not the other way around."
@@ -34,31 +31,26 @@
   "difference_heading": "Private tour vs tailored experience",
   "difference_rows": [
     {
-      "id": 1,
       "feature": "Route",
       "private_tour": "Existing tour route, your group only",
       "tailored": "New route designed from your brief"
     },
     {
-      "id": 2,
       "feature": "Planning",
       "private_tour": "Guide briefs dietary needs before the day",
       "tailored": "Full planning call with your guide before booking"
     },
     {
-      "id": 3,
       "feature": "Duration",
       "private_tour": "Standard tour length (3.5-4 hours)",
       "tailored": "Whatever you need (2 hours to full day)"
     },
     {
-      "id": 4,
       "feature": "Stalls visited",
       "private_tour": "Same stalls as the join-in tour",
       "tailored": "Hand-picked based on your interests"
     },
     {
-      "id": 5,
       "feature": "Price",
       "private_tour": "Fixed per-group rate",
       "tailored": "Quoted based on scope and duration"
@@ -68,25 +60,21 @@
   "process_heading": "From idea to table",
   "process_steps": [
     {
-      "id": 1,
       "number": 1,
       "title": "Tell us what you want",
       "description": "Send us a WhatsApp or email. Tell us who's coming, what you're curious about, any dietary needs, and your dates. The more detail you give, the better the route."
     },
     {
-      "id": 2,
       "number": 2,
       "title": "Your guide responds with a plan",
       "description": "Within 24 hours, your guide replies with a proposed route. Neighbourhoods, stalls, dishes, timing. You refine it together until it feels right."
     },
     {
-      "id": 3,
       "number": 3,
       "title": "We book the stalls",
       "description": "Once you're happy with the plan, we confirm with each stall, arrange logistics, and brief your guide on every detail of your route."
     },
     {
-      "id": 4,
       "number": 4,
       "title": "You show up and eat",
       "description": "Your guide meets you at the agreed point. Everything else is handled. Adjustments on the day are always possible."
@@ -95,25 +83,21 @@
   "use_cases_heading": "Who books tailored experiences",
   "use_cases": [
     {
-      "id": 1,
       "icon": "🔍",
       "label": "Returning guests",
       "detail": "You did Flavours of Malaysia last time. You want to go deeper into a specific neighbourhood or cuisine. We build a route that goes where the first tour didn't."
     },
     {
-      "id": 2,
       "icon": "👩‍🍳",
       "label": "Serious foodies",
       "detail": "You've done the research. You want the char kway teow stall that uses charcoal, the laksa stall that makes its own paste, the kuih lady who only sells on certain days."
     },
     {
-      "id": 3,
       "icon": "🎬",
       "label": "Journalists & creators",
       "detail": "Filming, writing, researching. You need access, stories, and a guide who can get you behind the counter. We've done this with BBC, National Geographic, and independent creators."
     },
     {
-      "id": 4,
       "icon": "🎉",
       "label": "Milestone trips",
       "detail": "Birthdays, anniversaries, honeymoons. You want the day to feel different from a standard tour. We design the route around the occasion."
@@ -123,19 +107,16 @@
   "examples_subtext": "Every tailored route is unique. These are real examples of what we've designed for past guests.",
   "examples": [
     {
-      "id": 1,
       "title": "The Durian Pilgrimage",
       "description": "A 5-hour route for a guest who wanted to understand durian beyond the tourist stalls. Started at a durian farm outside Penang, ended at a specialist stall in George Town where we tasted 7 varieties. Included a stop at a durian paste maker.",
       "duration": "5 hours"
     },
     {
-      "id": 2,
       "title": "Hawker Dynasty Tour",
       "description": "Built for a food writer. Visited three hawker stalls run by different generations of the same family. Each stop traced how the recipes changed (or didn't) across 60 years. Ended at the grandchild's modern reinterpretation.",
       "duration": "4 hours"
     },
     {
-      "id": 3,
       "title": "Vegetarian KL Deep Dive",
       "description": "A guest who'd been told KL was hard for vegetarians. We built a route through Little India, Kampung Baru, and a Chinese vegetarian stall hidden above a hardware shop. Six stops, all plant-based, all deeply local.",
       "duration": "3.5 hours"
@@ -173,7 +154,5 @@
   "private_callout": "Want an existing tour run just for your group? Private tours use our standard routes with no strangers.",
   "private_cta_text": "See Private Tours",
   "private_cta_href": "/tours/private-tours/",
-  "updatedAt": "2026-06-20T00:56:06.475Z",
-  "createdAt": "2026-06-20T00:56:06.475Z",
   "_status": "published"
 }

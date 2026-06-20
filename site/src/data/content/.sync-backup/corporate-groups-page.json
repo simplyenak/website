@@ -1,82 +1,92 @@
 {
   "id": 1,
-  "seo_title": "corporate_groups_page | Simply Enak",
-  "seo_description": "Corporate food tour packages — Simply Enak Malaysian food tours.",
-  "hero_eyebrow": null,
-  "hero_title": null,
-  "hero_subtitle": null,
-  "offer_eyebrow": null,
-  "offer_heading": null,
-  "offer_body_1": null,
+  "seo_title": "Corporate & Group Food Tours Malaysia | Simply Enak",
+  "seo_description": "Corporate food tours in Kuala Lumpur and Penang. Take your team to the stalls where locals actually eat. Team building, client entertainment, retreats.",
+  "hero_eyebrow": "Groups & Corporate",
+  "hero_title": "Where Kuala Lumpur Actually Eats",
+  "hero_subtitle": "Team meals and client visits that don't feel like team meals. We take corporate groups to the stalls where the city feeds itself, not the restaurants on the tourist strip.",
+  "offer_eyebrow": "What We Offer",
+  "offer_heading": "Food experiences for work groups",
+  "offer_body_1": "Your team has seen the inside of enough hotel ballrooms and convention centres. We take them somewhere different: the hawker stalls, night markets, and heritage coffee shops where Kuala Lumpur and Penang have been feeding themselves for generations.",
   "offer_perfect_for": [
     {
-      "id": "6a0c34748bb5600001c2378b",
       "item": "Work colleagues visiting KL or Penang at the same time"
     },
     {
-      "id": "6a0c34748bb5600001c2378c",
       "item": "Corporate groups who want to eat where locals eat, not where tourists are sent"
     },
     {
-      "id": "6a0c34748bb5600001c2378d",
-      "item": "Teams wanting an active, engaging activity"
+      "item": "Teams wanting an active, engaging activity that builds real connections"
     },
     {
-      "id": "6a0c34748bb5600001c2378e",
-      "item": "International visitors wanting to understand Malaysian culture"
+      "item": "International visitors wanting to understand Malaysian culture through food"
     },
     {
-      "id": "6a0c34748bb5600001c2378f",
-      "item": "Remote teams meeting up for retreats"
+      "item": "Remote teams meeting up for retreats and offsites"
     }
   ],
-  "offer_body_2": null,
-  "benefits_eyebrow": null,
-  "benefits_title": null,
-  "benefit_cards": [],
+  "offer_body_2": "Every tour is led by a certified local guide who knows the vendors personally. We handle dietary requirements, transport logistics, and timing so your team can focus on the experience.",
+  "benefits_eyebrow": "Why Teams Choose Us",
+  "benefits_title": "What makes our corporate tours different",
+  "benefit_cards": [
+    {
+      "icon": "🤝",
+      "title": "Vendor relationships",
+      "description": "We eat at these stalls ourselves. Your group gets the same welcome we do."
+    },
+    {
+      "icon": "📋",
+      "title": "Logistics handled",
+      "description": "Dietary needs, transport, timing, group photos. We coordinate everything."
+    },
+    {
+      "icon": "🌏",
+      "title": "Cultural translation",
+      "description": "Your guide explains what you're eating, where it came from, and why it matters."
+    },
+    {
+      "icon": "📞",
+      "title": "Single point of contact",
+      "description": "One person handles your booking from enquiry to the last bite. No handoffs."
+    }
+  ],
   "kl_section": {
-    "eyebrow": null,
-    "heading": null,
-    "subtext": null
+    "eyebrow": "Kuala Lumpur",
+    "heading": "KL Corporate Tours",
+    "subtext": "Chinatown, Kampung Baru, Brickfields. We take your team through neighbourhoods where the food tells the story of how KL was built. Routes can include wet market visits, hawker centre meals, and heritage walks."
   },
   "penang_section": {
-    "eyebrow": null,
-    "heading": null,
-    "subtext": null
+    "eyebrow": "Penang",
+    "heading": "Penang Corporate Tours",
+    "subtext": "George Town's street food scene is one of the best in Asia. We navigate your group through Chowrasta Market, Little India, and the heritage streets, stopping at stalls that have been feeding Penang for decades."
   },
-  "how_eyebrow": null,
-  "how_heading": null,
+  "how_eyebrow": "Booking Process",
+  "how_heading": "How it works",
   "how_steps": [
     {
-      "id": "6a0c34748bb5600001c23790",
-      "number": null,
+      "number": 1,
       "title": "Contact Us",
-      "description": null
+      "description": "Send your dates, group size, and any dietary requirements. We respond within 24 hours."
     },
     {
-      "id": "6a0c34748bb5600001c23791",
-      "number": null,
-      "title": "We'll Recommend Tours",
-      "description": null
+      "number": 2,
+      "title": "We Recommend Tours",
+      "description": "Based on your group size and goals, we suggest routes and provide a per-person or per-group quote."
     },
     {
-      "id": "6a0c34748bb5600001c23792",
-      "number": null,
+      "number": 3,
       "title": "Confirm & Pay",
-      "description": null
+      "description": "Invoice provided. We can accommodate purchase orders and corporate payment terms."
     },
     {
-      "id": "6a0c34748bb5600001c23793",
-      "number": null,
+      "number": 4,
       "title": "Enjoy the Experience",
-      "description": null
+      "description": "Your guide meets your group at the agreed location. Everything from there is handled."
     }
   ],
-  "cta_heading": null,
-  "cta_body": null,
-  "cta_email_label": null,
-  "cta_whatsapp_label": null,
-  "updatedAt": "2026-05-19T09:59:16.317Z",
-  "createdAt": "2026-05-19T09:59:16.316Z",
-  "_status": "draft"
+  "cta_heading": "Ready to book your team?",
+  "cta_body": "Send us your group details and we'll come back with route recommendations and pricing within 24 hours.",
+  "cta_email_label": "Email us",
+  "cta_whatsapp_label": "WhatsApp us",
+  "_status": "published"
 }

@@ -6,6 +6,7 @@
     "icon": "🏛️",
     "color": "#a855f7",
     "description": "Famous for white coffee",
+    "image": null,
     "status": "published",
     "updatedAt": "2026-06-19T14:47:04.194Z",
     "createdAt": "2026-05-19T09:42:40.082Z",
@@ -18,6 +19,7 @@
     "icon": "🏝️",
     "color": "#22c55e",
     "description": null,
+    "image": null,
     "status": "published",
     "updatedAt": "2026-06-19T14:47:24.022Z",
     "createdAt": "2026-05-19T08:33:21.134Z",
@@ -30,8 +32,62 @@
     "icon": "🏙️",
     "color": "#0ea5e9",
     "description": null,
+    "image": {
+      "id": 136,
+      "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+      "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+      "subject": "landmark",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
+      "usage": null,
+      "tags": [],
+      "prefix": "payload-media",
+      "updatedAt": "2026-06-19T00:18:02.769Z",
+      "createdAt": "2026-06-19T00:18:01.822Z",
+      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+      "filename": "simply-enak-landmark.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 2305832,
+      "width": 2730,
+      "height": 4096,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 21170,
+          "filename": "DSC_9621-400x300.jpg"
+        },
+        "medium": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+          "width": 800,
+          "height": 600,
+          "mimeType": "image/jpeg",
+          "filesize": 68243,
+          "filename": "DSC_9621-800x600.jpg"
+        },
+        "large": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+          "width": 1200,
+          "height": 800,
+          "mimeType": "image/jpeg",
+          "filesize": 122310,
+          "filename": "DSC_9621-1200x800.jpg"
+        }
+      }
+    },
     "status": "published",
-    "updatedAt": "2026-06-19T14:47:55.657Z",
+    "updatedAt": "2026-06-20T00:22:54.695Z",
     "createdAt": "2026-05-19T08:33:20.569Z",
     "_status": "published"
   }
