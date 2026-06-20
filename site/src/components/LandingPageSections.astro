@@ -2,13 +2,15 @@
 /**
  * LandingPageSections.astro — Conversion-focused landing page
  * 
- * Story arc:
- * 1. Hook — challenge expectations about this segment
- * 2. Tours first — show what's on offer immediately
- * 3. Why this matters — use Payload content for narrative
- * 4. Social proof — reviews from people who did this
- * 5. Guide link — "Read the full guide" for deep-dive readers
- * 6. CTA — clear next step
+ * Story arc (PAS + StoryBrand + AIDA integrated):
+ * 1. Hero — Name the problem + bold hook (PAS start)
+ * 2. Problem/Agitate — Short pain-point acknowledgement (PAS)
+ * 3. Tours — The solution, shown immediately (PAS solution + AIDA desire)
+ * 4. How It Works — 3 steps, builds confidence (StoryBrand plan)
+ * 5. People/Places/Stories — Why we're the right guide (StoryBrand guide)
+ * 6. Guide link — Deeper dive for the interested
+ * 7. Social proof — Reviews (AIDA desire reinforcement)
+ * 8. CTA — Urgency + risk reversal (AIDA action)
  */
 interface Props {
   segment: any;
@@ -48,16 +50,42 @@ const bgImages = [
 ];
 const heroBg = landingPage?.heroImage || bgImages[Math.floor(Math.random() * bgImages.length)];
 
-// Story hooks — different per segment type, specific to the segment
+// Story hooks — PAS problem + bold hook, per segment type
 const getHook = () => {
   const name = segment.name || 'this';
+  const first = (segment.slug || '').split('-')[0];
   const hooks: Record<string, string> = {
-    location: `${name} does not taste like the hotel buffet. It tastes like a charcoal wok at midnight, a curry that has been simmering since dawn, and a kuih lady who remembers your order from last time.`,
-    dietary: `Finding ${name.toLowerCase()} food in Malaysia is easier than most people think. You just need to know which stalls to walk into.`,
-    specialty: `${name} is not a tourist activity here. It is how the city feeds itself.`,
-    travel_type: `The right food tour depends on who you are travelling with. Here is what works for ${name.toLowerCase()}.`,
+    location: `Most visitors to ${name} leave thinking they've experienced Malaysian food. They haven't. Real ${name} tastes like a charcoal wok at midnight, a curry that has been simmering since dawn, and a kuih lady who remembers your order from last time.`,
+    dietary: `You've been burned by places that claim to be ${name.toLowerCase()} but really aren't. In Kuala Lumpur, the good news is this: finding food you can actually trust is easier than you think. You just need to know which stalls to walk into.`,
+    specialty: `You don't want the tourist version of ${name.toLowerCase()}. You want the real thing — where locals queue, where the wok hasn't stopped moving in 40 years. Here, ${name.toLowerCase()} is not a tourist activity. It is how the city feeds itself.`,
+    travel_type: `Finding the right food tour for ${name.toLowerCase()} shouldn't mean compromising. Whether you want a private experience or a shared table, here's what actually works.`,
   };
+  // Specific segment hooks override the generic type
+  if (first === 'halal') return `Finding food you can trust in a foreign city is exhausting. You ask, they nod, but you're never 100% sure. What if you didn't have to ask? What if every single bite was verified before you arrived?`;
+  if (first === 'vegetarian') return `You're tired of tours where 'vegetarian options' means a sad plate of vegetables while everyone else eats the real meal. What if you could eat every single dish on the tour — and never worry about what's in it?`;
+  if (first === 'vegan') return `Vegan-friendly in Southeast Asia usually means a fruit platter and a lot of white rice. But what if it meant the same full meal everyone else is eating — just made entirely from plants?`;
+  if (first === 'gluten') return `Everyone warns you about gluten in Asia. Soy sauce, noodles, hidden wheat. But here's the secret: Malaysia's best food was never made with wheat. You've been avoiding the wrong things.`;
+  if (first === 'kuala') return `Most visitors to Kuala Lumpur eat in the same few tourist spots and leave thinking they've seen the city. They haven't. Real KL lives in alleyways no guidebook sends you to — and that's where we'll take you.`;
+  if (first === 'penang') return `Penang has the best street food in Asia — but finding the right stalls without a local means queuing at tourist traps while the real gems stay hidden. We know exactly who does what dish best.`;
+  if (first === 'ipoh') return `Most travellers skip Ipoh. That's their loss. This is where Malaysian Chinese food tastes the way it did 50 years ago — before shortcuts, before compromise, before tourism changed everything.`;
+  if (first === 'melaka') return `Melaka created the world's first fusion cuisine 600 years ago. But most visitors only scratch the surface — eating at the same Jonker Street stalls everyone goes to. The real Melaka is hiding in plain sight.`;
   return hooks[segmentType] || `This is what ${name} looks like with a local who knows where to go.`;
+};
+
+// Problem/Agitate — segment-specific pain point
+const getProblem = () => {
+  const first = (segment.slug || '').split('-')[0];
+  const probs: Record<string, { title: string; desc: string }> = {
+    halal: { title: "The 'Is this halal?' problem", desc: "You spend half your meal asking questions instead of enjoying the food. One stall says yes, another says mostly. You end up at a chain restaurant because at least that's safe. You didn't travel across the world to eat at a chain." },
+    vegetarian: { title: 'The sad side-dish problem', desc: 'Tour food tours don\'t cater to vegetarians. You get one option while everyone else eats properly. So you either settle for less or spend your trip policing what goes into your mouth. Neither is a vacation.' },
+    vegan: { title: "The 'vegan-friendly' trap", desc: "'Vegan-friendly' in Southeast Asia can mean anything from a fruit platter to something cooked in shrimp paste with a leaf of lettuce on top. You can't relax when you're not sure. So you stick to what's safe and miss the real experience." },
+    gluten: { title: 'The gluten anxiety', desc: 'Everyone told you Asia would be hard for gluten-free. Soy sauce, noodles, hidden wheat in everything. So you walk into every meal on guard, asking questions, reading labels, never fully relaxing. You deserve better than that on vacation.' },
+    kuala: { title: 'The tourist trap problem', desc: "KL's tourist areas are full of food that looks Malaysian but was designed for tourists. The real city — where locals have eaten for generations — is hiding in neighborhoods most visitors never find. Without a guide, you'll walk right past it." },
+    penang: { title: 'The paralysis of choice', desc: "Penang has hundreds of hawker stalls. The famous ones have long queues and inflated prices. The real gems don't advertise. Without a local, you'll pick based on Instagram likes and miss what makes Penang actually special." },
+    ipoh: { title: 'The overlooked city', desc: "Ipoh isn't on most tourist itineraries, which means most visitors miss the most intact traditional food scene in Malaysia. The city that invented white coffee, where Hakka recipes have survived unchanged for generations — it's right here, waiting." },
+    melaka: { title: 'The surface-level visit', desc: "Melaka's history draws millions, but most visitors eat at the same tourist-oriented restaurants on Jonker Street. The Peranakan (Nyonya) cooks who created the world's first fusion cuisine are still here, cooking recipes from the 1400s. You just need to know where." },
+  };
+  return probs[first] || null;
 };
 
 // The landing page content (short intro from Payload)
@@ -223,7 +251,25 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </div>
 </section>
 
-<!-- 2. TOURS FIRST — show what's on offer immediately -->
+<!-- 2. PROBLEM/AGITATE — name the pain before showing the solution -->
+{(() => {
+  const prob = getProblem();
+  if (!prob) return null;
+  return <section class="py-14 bg-muted/20 border-y border-gray-100 dark:border-white/5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Sound familiar?</p>
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-4">{prob.title}</h2>
+      <p class="text-muted text-base leading-relaxed max-w-2xl mx-auto">{prob.desc}</p>
+      <div class="mt-6 flex items-center justify-center gap-2 text-sm">
+        <span class="w-8 h-px bg-gray-300 dark:bg-white/20"></span>
+        <span class="text-accent font-semibold text-xs uppercase tracking-wider">That's where we come in</span>
+        <span class="w-8 h-px bg-gray-300 dark:bg-white/20"></span>
+      </div>
+    </div>
+  </section>;
+})()}
+
+<!-- 3. TOURS FIRST — show the solution immediately -->
 {tourCount > 0 && (
   <section class="py-16 bg-white dark:bg-[#1e1c1c]" id="tours">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -279,7 +325,34 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </section>
 )}
 
-<!-- 3. WHAT MAKES THIS SPECIAL — People, Places, Stories -->
+<!-- 4. HOW IT WORKS — 3-step plan builds confidence (StoryBrand) -->
+<section class="py-14 bg-muted/20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-2">How It Works</p>
+      <h2 class="text-2xl md:text-3xl font-bold font-heading">Three steps to eating like a local</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <div class="bg-card rounded-xl p-6 md:p-8 text-center border border-gray-100 dark:border-white/10">
+        <div class="w-12 h-12 rounded-full bg-accent text-black font-black flex items-center justify-center mx-auto mb-4 text-lg shadow-md">1</div>
+        <h3 class="text-base font-bold font-heading mb-2">Pick your adventure</h3>
+        <p class="text-sm text-muted leading-relaxed">Choose the tour that matches your taste — join a small group or book a private experience. Every route is built around the real food locals actually eat.</p>
+      </div>
+      <div class="bg-card rounded-xl p-6 md:p-8 text-center border border-gray-100 dark:border-white/10">
+        <div class="w-12 h-12 rounded-full bg-accent text-black font-black flex items-center justify-center mx-auto mb-4 text-lg shadow-md">2</div>
+        <h3 class="text-base font-bold font-heading mb-2">Meet your guide</h3>
+        <p class="text-sm text-muted leading-relaxed">A local who knows every stall, every hawker, and every story behind the food. This is the person who grew up eating here — they'll take you where guidebooks can't.</p>
+      </div>
+      <div class="bg-card rounded-xl p-6 md:p-8 text-center border border-gray-100 dark:border-white/10">
+        <div class="w-12 h-12 rounded-full bg-accent text-black font-black flex items-center justify-center mx-auto mb-4 text-lg shadow-md">3</div>
+        <h3 class="text-base font-bold font-heading mb-2">Eat without worry</h3>
+        <p class="text-sm text-muted leading-relaxed">8+ stops, 3–4 hours, one incredible meal. Every dish is vetted, every stall is trusted, and every bite comes with a story. You just show up and enjoy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. WHAT MAKES THIS SPECIAL — People, Places, Stories (StoryBrand: meet your guide) -->
 <section class="py-16 bg-white dark:bg-[#1e1c1c]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
     <div class="text-center mb-12">
@@ -340,7 +413,7 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </div>
 </section>
 
-<!-- 4. GUIDE CARD — visual card linking to full guide on Stories -->
+<!-- 6. GUIDE CARD — deeper dive for the interested -->
 {guideSlug && (
   <section class="py-12 bg-muted/20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
@@ -375,7 +448,7 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </section>
 )}
 
-<!-- 5. SOCIAL PROOF — reviews -->
+<!-- 7. SOCIAL PROOF — reviews (AIDA desire reinforcement) -->
 {featuredReviews.length > 0 && (
   <section class="py-16 bg-white dark:bg-[#1e1c1c]">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
@@ -408,7 +481,7 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </section>
 )}
 
-<!-- 6. CTA — clear next step -->
+<!-- 8. CTA — urgency + risk reversal (AIDA action) -->
 <section class="py-16 bg-[#1a1a1a] text-white relative overflow-hidden">
   <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255,163,51,.06) 1px, transparent 1px); background-size: 32px 32px;"></div>
   <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
