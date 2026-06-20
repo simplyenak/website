@@ -881,15 +881,37 @@ export async function getSegmentBySlug(slug: string) {
   return all.find((s: any) => s.slug === slug) || null;
 }
 
+// Smart matching: handles both string arrays and object arrays (Payload relations)
+// Also matches by tour location field for location segments
+function tourMatchesTag(tour: any, tag: string): boolean {
+  const tagLower = tag.toLowerCase();
+
+  // Direct string array match
+  if (tour.segmentTags && tour.segmentTags.includes(tag)) return true;
+
+  // Object array match — extract slug from each relation object
+  const extractSlugs = (arr: any[]): string[] =>
+    arr?.map((item: any) => (typeof item === 'string' ? item : item?.slug || '')).filter(Boolean) || [];
+
+  if (extractSlugs(tour.dietaryOptions).some((s: string) => tagLower.includes(s) || s.includes(tagLower))) return true;
+  if (extractSlugs(tour.specialtyExperiences).some((s: string) => tagLower.includes(s) || s.includes(tagLower))) return true;
+  if (extractSlugs(tour.travelTypes).some((s: string) => tagLower.includes(s) || s.includes(tagLower))) return true;
+  if (extractSlugs(tour.locations).some((s: string) => tagLower.includes(s) || s.includes(tagLower))) return true;
+
+  // Location name match — tour.location is a string like "Kuala Lumpur" or "KL"
+  if (tour.location) {
+    const loc = tour.location.toLowerCase().trim();
+    // Normalize common abbreviations
+    const locNorm = loc === 'kl' ? 'kuala lumpur' : loc;
+    if (tagLower.includes(locNorm) || locNorm.includes(tagLower)) return true;
+  }
+
+  return false;
+}
+
 export async function getToursByTag(tag: string, locale?: string) {
   const all = await resolveTours(locale);
-  return all.filter((t: any) =>
-    (t.segmentTags && t.segmentTags.includes(tag)) ||
-    (t.dietaryOptions && t.dietaryOptions.includes(tag)) ||
-    (t.specialtyExperiences && t.specialtyExperiences.includes(tag)) ||
-    (t.locations && t.locations.includes(tag)) ||
-    (t.travelTypes && t.travelTypes.includes(tag))
-  );
+  return all.filter((t: any) => tourMatchesTag(t, tag));
 }
 
 export async function getToursByDietary(slug: string) { return getToursByTag(slug); }

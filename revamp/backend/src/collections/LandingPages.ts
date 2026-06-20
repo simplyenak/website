@@ -9,7 +9,7 @@ export const LandingPages: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     group: 'Landing Pages',
-    description: '🗺️ Unified landing pages (dietary, specialty, travel type, location)',
+    description: '🗺️ Dedicated landing pages — hero + intro + auto-linked tours. Long-form guides live in Stories.',
     defaultColumns: ['title', 'type', 'slug', 'status'],
   },
   access: {
@@ -100,9 +100,34 @@ export const LandingPages: CollectionConfig = {
     {
       name: 'content',
       type: 'textarea',
-            admin: {
-        description: '📝 Page content — formatted with ## headings and paragraphs. This is the main body text.',
+          admin: {
+        description: '📝 Short intro paragraph (2-3 sentences). Long-form guides live in Stories.',
       },
+    },
+    {
+      name: 'intro_heading',
+      type: 'text',
+          admin: { description: 'Heading for the intro section (e.g., "Why vegetarian food in KL?")' },
+    },
+    {
+      name: 'cta_text',
+      type: 'text',
+          admin: { description: 'Primary CTA button text (e.g., "Browse vegetarian tours")' },
+    },
+    {
+      name: 'cta_href',
+      type: 'text',
+          admin: { description: 'Primary CTA link (e.g., "#tours" or "/contact")' },
+    },
+    {
+      name: 'guide_link_text',
+      type: 'text',
+          admin: { description: 'Link to the full guide on Stories (e.g., "Read our complete vegetarian guide →")' },
+    },
+    {
+      name: 'guide_slug',
+      type: 'text',
+          admin: { description: 'Story slug for the full guide (e.g., "vegetarian-guide-kuala-lumpur")' },
     },
     {
       name: 'images',

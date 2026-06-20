@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getAllTours, getLandingPageBySlug, getImageUrl } from '~/lib/content';
+import { getAllTours, getToursByTag, getLandingPageBySlug, getImageUrl } from '~/lib/content';
 import { locationSegments } from '~/data/segments';
 import reviews from '~/data/content/reviews.json';
 import LandingPageSections from '~/components/LandingPageSections.astro';
@@ -13,13 +13,8 @@ export async function getStaticPaths() {
 }
 
 const { segment } = Astro.props;
-const allTours = await getAllTours();
-const matchingTours = allTours.filter((t: any) => {
-  if (t.locationExperiences && t.locationExperiences.includes(segment.slug)) return true;
-  if (t.segmentTags && t.segmentTags.includes(segment.slug)) return true;
-  if (segment.tours && segment.tours.includes(t.slug)) return true;
-  return false;
-});
+// Smart matching: auto-link tours by location name, dietary options, specialties, etc.
+const matchingTours = await getToursByTag(segment.slug);
 
 const landingPage = await getLandingPageBySlug(segment.slug);
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
