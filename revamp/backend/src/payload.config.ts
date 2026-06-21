@@ -47,6 +47,7 @@ import { ComparisonPage } from './collections/ComparisonPage'
 import { ToursPage } from './collections/ToursPage'
 import { StoriesPage } from './collections/StoriesPage'
 import { Pages } from './collections/Pages'
+import { ContentBriefs } from './collections/ContentBriefs'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -123,6 +124,8 @@ export default buildConfig({
     DirectionsPage,
     // Quiz
     TourQuiz,
+    // Content Pipeline
+    ContentBriefs,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
