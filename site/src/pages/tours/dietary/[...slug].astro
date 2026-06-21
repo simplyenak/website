@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getToursByTag, getLandingPageBySlug, getImageUrl } from '~/lib/content';
+import { getToursByTag, getLandingPageBySlug, getImageUrl, cleanPageTitle } from '~/lib/content';
 import { dietarySegments } from '~/data/segments';
 import reviews from '~/data/content/reviews.json';
 import LandingPageSections from '~/components/LandingPageSections.astro';
@@ -31,7 +31,7 @@ const dietaryReviews = dietKeyword ? reviews.filter((r: any) => r.text?.toLowerC
 const featuredReviews = dietaryReviews.length > 0 ? dietaryReviews.slice(0, 6) : reviews.filter((r: any) => r.location === 'KL').slice(0, 6);
 
 const meta = {
-  title: `${landingPage?.meta_title || landingPage?.metaTitle || segment.metaTitle || segment.nameFull || segment.name}`,
+  title: cleanPageTitle(landingPage?.meta_title || landingPage?.metaTitle || segment.metaTitle || segment.nameFull || segment.name),
   description: landingPage?.meta_description || landingPage?.metaDescription || segment.description || '',
 };
 ---

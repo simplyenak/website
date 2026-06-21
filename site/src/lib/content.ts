@@ -1081,6 +1081,18 @@ export function getImageUrl(url: any) {
   if (!url) return null;
   if (typeof url === 'object' && url.url) return getImageUrl(url.url);
   if (typeof url === 'string' && (url.startsWith('http://') || url.startsWith('https://'))) return url;
-  if (typeof url === 'string') return `https://cdn.simplyenak.com/${url.replace(/^\//, '')}`;
+  if (typeof url === 'string') return 'https://cdn.simplyenak.com/' + url.replace(/^\//, '');
   return null;
+}
+
+/**
+ * Clean a page title: strip trailing "| Simply Enak" to avoid double brand name
+ * when the title template appends " — Simply Enak". Handles both pipe and dash separators.
+ */
+export function cleanPageTitle(title: string | null | undefined): string {
+  if (!title) return '';
+  return title
+    .replace(/\s*\|\s*Simply\s*Enak\s*$/i, '')
+    .replace(/\s*[—–-]\s*Simply\s*Enak\s*$/i, '')
+    .trim();
 }
