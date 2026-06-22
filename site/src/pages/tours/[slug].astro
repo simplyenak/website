@@ -81,7 +81,16 @@ const meta = {
   description: tour.shortDesc || tour.tagline || '',
 };
 
-// Build Tour schema (TouristTrip + Product)
+// Build Tour schema (TouristTrip + Product + map signal)
+const mapUrls: Record<string, string> = {
+  'kuala lumpur': 'https://maps.google.com/maps?q=Kuala+Lumpur+Malaysia&z=13',
+  'kl': 'https://maps.google.com/maps?q=Kuala+Lumpur+Malaysia&z=13',
+  'penang': 'https://maps.google.com/maps?q=George+Town+Penang+Malaysia&z=13',
+  'penang road': 'https://maps.google.com/maps?q=Penang+Road+Malaysia&z=13',
+};
+const locKey = (tour.location || 'kl').toLowerCase();
+const mapUrl = mapUrls[locKey] || 'https://maps.google.com/maps?q=Malaysia&z=10';
+
 const tourSchema = {
   '@context': 'https://schema.org',
   '@type': ['TouristTrip', 'Product'],
@@ -89,6 +98,16 @@ const tourSchema = {
   description: tour.shortDesc || tour.tagline || '',
   url: `https://simplyenak.com/tours/${tour.slug}`,
   image: tour.image || 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+  location: {
+    '@type': 'Place',
+    name: tour.location || 'Kuala Lumpur',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: tour.location || 'Kuala Lumpur',
+      addressCountry: 'MY',
+    },
+    hasMap: mapUrl,
+  },
   offers: {
     '@type': 'Offer',
     price: tour.price ? tour.price.replace('RM ', '') : '285',
@@ -421,6 +440,25 @@ const tourSchema = {
                class="inline-flex items-center justify-center gap-2 w-full border border-gray-300 dark:border-white/20 text-muted font-semibold px-5 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-sm">
               <Icon name="tabler:users" class="w-4 h-4" />
               Book as a Private Tour
+            </a>
+          </div>
+          <!-- Map embed — signal to Google Maps (no API key needed) -->
+          <div class="border-t border-gray-100 dark:border-white/10 p-6">
+            <p class="text-xs text-muted uppercase tracking-wider font-semibold mb-3">Location</p>
+            <div class="rounded-lg overflow-hidden shadow-sm aspect-[2/1]">
+              <iframe
+                class="w-full h-full"
+                loading="lazy"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(tour.location || 'Kuala Lumpur, Malaysia')}&output=embed&z=12`}
+                title={`Map of ${tour.location || 'Kuala Lumpur'}`}
+                style="border:0;"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <a href={mapUrl} target="_blank" rel="noopener noreferrer"
+               class="block p-2 text-center text-xs text-accent font-semibold hover:underline">
+              Open in Google Maps &rarr;
             </a>
           </div>
         </div>
