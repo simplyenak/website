@@ -1,0 +1,418 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { useTranslations } from '~/i18n/utils';
+import { segmentChips } from '~/data/segments';
+import { getAllTours, getHomePage } from '~/lib/content';
+import { SITE } from 'astrowind:config';
+import reviews from '~/data/content/reviews.json';
+
+const lang = 'ja';
+const t = useTranslations(lang);
+
+const tours = await getAllTours(lang);
+const hp = await getHomePage(lang);
+
+// Use real reviews from JSON, shuffled
+const realReviews = [...reviews].sort(() => Math.random() - 0.5).slice(0, 6);
+
+const metadata = {
+  title: 'Pusingan Makanan Malaysia di KL & Pulau Pinang - Simply Enak',
+  description: 'Cara paling autentik untuk menemui makanan dan budaya di Kuala Lumpur dan Pulau Pinang.',
+};
+export const prerender = true;
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero -->
+  <section class="relative not-prose bg-[#1a1a1a] overflow-hidden text-white">
+    <div class="absolute inset-0">
+      <img alt="" class="w-full h-full object-cover opacity-40" src={hp.hero.heroImage} />
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(26,26,26,.78) 0,rgba(26,26,26,.42) 38%,rgba(26,26,26,.6) 65%,rgba(26,26,26,.94) 100%)"></div>
+    </div>
+    <div class="relative mx-auto px-4 max-w-7xl sm:px-6" style="min-height:max(80svh,500px)">
+      <div class="flex items-center justify-center flex-col md:pb-24 md:pt-32 min-h-[80svh] pb-16 pt-24 text-center">
+        <p class="font-bold uppercase tracking-[0.2em] text-sm mb-4 md:text-base text-[#ffa333]/90">{hp.hero.eyebrow}</p>
+        <div class="flex items-center flex-col gap-4 mb-4">
+          <div class="relative flex-col h-[72px] inline-flex items-center justify-center rounded-full w-[72px]" style="border:1.5px solid rgba(255,163,51,.55)" aria-label="Ditubuhkan 2011">
+            <div class="absolute inset-[5px] rounded-full" style="border:1px dashed rgba(255,163,51,.3)"></div>
+            <a class="font-bold uppercase leading-none mb-0.5 relative text-[#ffa333] text-[9px] tracking-[0.25em] z-10" href="/ja/tours">{t('hero.est')}</a>
+            <div class="relative z-10 h-px w-5" style="background-color:rgba(255,163,51,.4)"></div>
+            <a class="font-bold leading-none relative z-10 text-lg text-white" style="font-family:Merriweather,Georgia,serif" href="/ja/tours">2011</a>
+          </div>
+          <h1 class="font-bold leading-tight max-w-4xl mx-auto text-white" style="font-family:Merriweather,Georgia,serif;font-size:clamp(1.5rem, 5vw, 3.25rem)">
+            <span class="text-white block">{hp.hero.title}<br>
+              <a class="bg-[#ffa333] font-black inline-block px-4 py-1.5 rounded-sm shadow-xl text-black" style="transform:rotate(-.7deg);font-size:clamp(1.3rem, 4.5vw, 3rem)" href="/ja/tours">{hp.hero.titleHighlight}</a>
+            </span>
+          </h1>
+        </div>
+        <p class="font-[family-name:var(--aw-font-heading)] italic max-w-3xl mb-6 mx-auto text-gray-300" style="font-size:clamp(1rem, 2vw, 1.25rem);line-height:1.5">{hp.hero.description}</p>
+        <div class="flex justify-center flex-col gap-4 mb-8 sm:flex-row">
+          <a class="btn-primary" href={hp.hero.ctaPrimary.url}>{hp.hero.ctaPrimary.text}</a>
+          <a class="btn-secondary" href={hp.hero.ctaSecondary.url}>{hp.hero.ctaSecondary.text}</a>
+        </div>
+        <div class="flex items-center justify-center flex-wrap gap-6 md:gap-8 p-3 px-5 rounded-lg" style="background-color:rgba(255,255,255,.05);backdrop-filter:blur(4px)">
+          {hp.hero.stats.map((stat: any) => (
+            <div class="flex items-center gap-2.5">
+              {stat.icon === 'google' ? (
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+              ) : (
+                <svg class="w-7 h-7" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" fill="#00AF87" r="10"/>
+                  <path d="M12 7l1.5 3.5 3.5.5-2.5 2.5.5 3.5-3-1.5-3 1.5.5-3.5L7 11l3.5-.5z" fill="white"/>
+                </svg>
+              )}
+              <div class="text-left">
+                <div class="text-sm" class:list={[stat.icon === 'google' ? 'text-[#ffa333]' : 'text-[#00AF87]']}>{'★'.repeat(stat.stars)}</div>
+                <div class="tracking-wide uppercase text-[10px] text-gray-400">{stat.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <a href="#featured" class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-white/40 hover:text-white/70 transition-colors" aria-label="Tatal ke bawah">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- As Featured In  -  Logo bar -->
+  <section id="featured" class="bg-white dark:bg-[#1e1c1c] border-b border-gray-100 dark:border-white/10 py-8 md:py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <p class="text-center text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 dark:text-gray-500 mb-6">{hp.featuredIn.title}</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-5 md:gap-x-12">
+        {hp.featuredIn.logos.map((logo: any) => (
+          <img src={logo.src} alt={logo.alt} class="h-9 w-auto grayscale opacity-50 hover:opacity-90 dark:invert transition-all duration-300" title={logo.title} loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Segment chips -->
+  <section class="relative overflow-hidden bg-page border-b border-gray-100 md:py-20 py-16">
+    <div class="absolute inset-0 pointer-events-none" style="background-image:radial-gradient(rgba(181,45,56,.04) 1px,transparent 1px);background-size:22px 22px" aria-hidden="true"></div>
+    <div class="relative mx-auto px-4 max-w-6xl sm:px-6 z-10">
+      <div class="text-center mb-12">
+        <p class="font-bold text-xs uppercase mb-3 text-accent tracking-[0.2em]">PILIH PENGALAMAN ANDA</p>
+        <h2 class="font-bold text-default font-heading md:text-4xl text-3xl">Teroka Mengikut</h2>
+        <p class="text-muted mt-3 mx-auto max-w-xs text-sm">Cari pusingan yang sesuai untuk citarasa anda</p>
+      </div>
+      <div id="chip-cloud" class="flex items-center px-4 flex-wrap gap-3 justify-center md:gap-4 segment-chips sm:px-6">
+        {segmentChips.map((chip: any) => {
+          const isLarge = chip.size === 'large';
+          const isMedium = chip.size === 'medium';
+          const cls = isLarge
+            ? 'chip font-bold text-default border-gray-300 duration-200 hover:-translate-y-1 hover:bg-primary hover:border-primary hover:scale-[1.04] hover:shadow-md hover:text-white inline-block rounded-full transition-all border-2 px-6 py-2.5 text-base'
+            : isMedium
+            ? 'chip font-bold text-default border-gray-300 duration-200 hover:-translate-y-1 hover:bg-primary hover:border-primary hover:scale-[1.04] hover:shadow-md hover:text-white inline-block rounded-full transition-all border font-semibold px-4 py-2 text-sm'
+            : 'chip font-bold text-default border-gray-300 duration-200 hover:-translate-y-1 hover:bg-primary hover:border-primary hover:scale-[1.04] hover:shadow-md hover:text-white inline-block rounded-full transition-all border font-medium px-3 py-1.5 text-xs';
+          return (
+            <a href={chip.href} class={cls} style={{ rotate: chip.rotate }}
+               data-accent={chip.accent || 'true'}>
+              {chip.label}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      if (!document.getElementById('chip-accent-style')) {
+        var st = document.createElement('style');
+        st.id = 'chip-accent-style';
+        st.textContent = '.chip-accent{border-color:#ffa333!important;color:#ffa333!important}.chip-accent:hover{background-color:#ffa333!important;border-color:#ffa333!important;color:#000!important}';
+        document.head.appendChild(st);
+      }
+      var N=5,MS=10000;
+      function pick(){
+        var c=document.getElementById("chip-cloud");if(!c)return;
+        var p=c.querySelectorAll(".chip");if(!p.length)return;
+        for(var i=0;i<p.length;i++)p[i].classList.remove("chip-accent");
+        var a=[];for(var i=0;i<p.length;i++)a.push(i);
+        for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}
+        var n=Math.min(N,a.length);for(var k=0;k<n;k++)p[a[k]].classList.add("chip-accent");
+      }
+      document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){setTimeout(pick,500)}):setTimeout(pick,500);
+      setInterval(pick,MS);
+    })();
+  </script>
+
+  <!-- Our Philosophy -->
+  <section class="relative not-prose scroll-mt-[72px]">
+    <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
+    <div class="text-default px-4 lg:py-24 md:px-6 md:py-20 mx-auto py-16 relative max-w-6xl">
+      <div class="text-center max-w-3xl mb-14 md:mb-16 md:mx-auto">
+        <p class="font-bold uppercase dark:text-orange-300 text-base text-secondary tracking-wide">{hp.philosophy.eyebrow}</p>
+        <h2 class="font-bold font-heading md:text-4xl text-3xl leading-tighter text-heading tracking-tighter">{hp.philosophy.heading}</h2>
+        <p class="text-muted mt-4 text-xl max-w-2xl mx-auto">{hp.philosophy.description}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+        <!-- People -->
+        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center">
+          <div class="w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading text-default mb-4">Orang Tempatan</h3>
+          <p class="text-muted leading-relaxed">Gerai yang kami kunjungi dijalankan oleh orang yang telah kami kenali selama lebih sedekad. Kak Fatimah telah membuat roti jala di tempat yang sama selama 40 tahun. Resipi char kway teow Wah Kim berasal daripada bapanya. Mereka bukan peniaga yang diupah - mereka adalah sebab kami memulakan pusingan ini.</p>
+        </div>
+
+        <!-- Stories -->
+        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center md:mt-8">
+          <div class="w-20 h-20 bg-accent/10 dark:bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading text-default mb-4">Cerita-Cerita</h3>
+          <p class="text-muted leading-relaxed">Kenapa laksa Penang masam dan KL manis? Apa cerita di sebalik kedai kopi Hainanese di setiap sudut? Dan bagaimana pertelingkahan keluarga mengenai resipi mi menjadi hidangan nasional? Kami membesar dengan cerita-cerita ini - dan kami kongsikannya di meja makan, bukan dari skrip.</p>
+        </div>
+
+        <!-- Location -->
+        <div class="group bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300 text-center">
+          <div class="w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading text-default mb-4">Lokasi</h3>
+          <p class="text-muted leading-relaxed">Kami tidak pergi ke restoran yang berpendingin hawa dan menu bergambar. Kami bawa anda ke gerai di bawah tangga di pasar Chow Kit, kedai mi yang tidak mempunyai papan tanda, dan rumah kari yang menunya ditulis di papan putih dalam Bahasa Melayu. Di sinilah kami makan pada hari cuti kami.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature Food Tours -->
+  <section class="bg-white md:py-24 py-16">
+    <div class="sm:px-6 px-4 mx-auto max-w-7xl">
+      <div class="text-center mb-12">
+        <p class="font-bold uppercase text-primary mb-3 text-sm tracking-[0.2em]">{hp.toursSection.eyebrow}</p>
+        <h2 class="font-bold text-default font-heading md:text-4xl text-3xl">{hp.toursSection.heading}</h2>
+        <p class="text-muted mt-3 mx-auto max-w-2xl">{hp.toursSection.description}</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-cols-1 lg:gap-8">
+        {tours.map((tour: any) => (
+          <a class="rounded block bg-white border border-gray-100 duration-300 group hover:shadow-xl overflow-hidden shadow-md transition-all" href={`/ja/tours/${tour.slug}`}>
+            <div class="relative overflow-hidden h-52">
+              <img alt={tour.tagline || tour.name} class="w-full h-full object-cover duration-500 group-hover:scale-105 transition-transform" src={tour.image} />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <div class="flex gap-2 absolute bottom-3 left-3">
+                <span class="font-bold text-xs px-2.5 py-1 rounded bg-primary text-white">{tour.duration}</span>
+                {tour.tastings && <span class="font-bold text-xs px-2.5 py-1 rounded bg-accent text-black">{tour.tastings}</span>}
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-default font-heading text-lg mb-1">{tour.tagline || tour.name}</h3>
+              <p class="font-bold text-xs uppercase mb-1 text-primary tracking-wider">Pusingan Makanan</p>
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-muted text-xs">{t('common.from')}</span>
+                  <span class="font-bold text-xl ml-1 text-primary">{tour.price}</span>
+                </div>
+                <span class="text-sm font-semibold group-hover:text-primary text-secondary transition-colors">Lihat Butiran &rarr;</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a class="font-bold rounded bg-primary text-white hover:bg-[#a02830] gap-2 inline-flex items-center px-8 shadow-md duration-300 hover:shadow-lg py-3.5 transition-all" href="/ja/tours">
+          {t('common.viewAll')} Pusingan
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Cards -->
+  <section class="bg-gray-50 dark:bg-[#151313] md:py-20 py-16">
+    <div class="sm:px-6 px-4 mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <p class="font-bold uppercase tracking-[0.2em] mb-3 text-accent text-sm">{hp.comparisonSection.eyebrow}</p>
+        <h2 class="font-bold text-default font-heading md:text-4xl text-3xl">{hp.comparisonSection.heading}</h2>
+        <p class="text-muted mt-3 mx-auto max-w-2xl">{hp.comparisonSection.description}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+        {hp.comparisonSection.types.map((t: any, typeIdx: number) => {
+          const priceRow = t.rows.find((r: any) => r.label === 'Price');
+          const otherRows = t.rows.filter((r: any) => r.label !== 'Price');
+          const bgTints = ['bg-amber-50/40', 'bg-orange-50/60', 'bg-white'];
+          const darkBgTints = ['dark:bg-[#1e1c1c]', 'dark:bg-[#2a2218]', 'dark:bg-[#1e1c1c]'];
+          return (
+          <div class:list={[
+            'relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 intersect-once motion-safe:md:intersect:animate-fade',
+            t.popular
+              ? 'border-2 border-accent shadow-lg z-10'
+              : 'border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md',
+            bgTints[typeIdx] || 'bg-white',
+            darkBgTints[typeIdx] || 'dark:bg-[#1e1c1c]',
+          ]}>
+            {/* Colored top bar */}
+            <div class:list={['h-1.5', t.popular ? 'bg-accent' : 'bg-primary/40']}></div>
+
+            {/* Header + Price */}
+            <div class="px-6 pt-6 pb-5 text-center">
+              {t.popular && (
+                <span class="inline-block bg-accent text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Nilai Terbaik</span>
+              )}
+              <h3 class="text-xl font-bold font-heading text-default">{t.name}</h3>
+              <p class="text-sm text-muted mt-1 mb-3">{t.subtitle}</p>
+              {priceRow && (
+                <div class="text-primary">
+                  <span class="text-xs text-muted/70 uppercase tracking-wider font-medium">{priceRow.label}</span>
+                  <div class="text-2xl font-bold font-heading">{priceRow.value}</div>
+                </div>
+              )}
+            </div>
+
+            <hr class="border-gray-200 dark:border-white/10 mx-6" />
+
+            <div class="px-6 py-5 flex-1">
+              <ul class="space-y-3.5">
+                {otherRows.map((r: any) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 mt-0 flex-shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                    </svg>
+                    <div class="min-w-0">
+                      <span class="text-[11px] text-muted/60 uppercase tracking-wider">{r.label}</span>
+                      <p class="text-sm font-semibold text-default leading-snug">{r.value}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="px-6 pb-6 mt-auto">
+              <a
+                class:list={[
+                  'font-bold rounded-lg block px-5 py-3 text-center text-sm transition-all w-full',
+                  t.popular
+                    ? 'bg-accent text-black hover:bg-[#f0952e] shadow-md hover:shadow-lg'
+                    : 'bg-primary text-white hover:bg-[#a02830]',
+                ]}
+                href={t.cta.url}
+                {...(t.cta.url?.startsWith('http') ? { target: '_blank' } : {})}
+              >{t.cta.text}</a>
+            </div>
+          </div>
+        )})}
+      </div>
+
+      <div class="text-center mt-10">
+        <p class="text-muted text-sm mb-4">Tidak pasti yang mana sesuai untuk anda? Kami akan bantu anda memutuskan.</p>
+        <a class="font-bold rounded bg-primary text-white hover:bg-[#a02830] dark:hover:bg-[#8a2030] transition-colors gap-2 inline-flex items-center px-8 py-3 shadow-md" href="https://wa.me/60172878929" target="_blank">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          Sembang dengan Kami
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof: Stats + Testimonials -->
+  <section class="relative not-prose scroll-mt-[72px]">
+    <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
+    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade mx-auto py-12 relative max-w-6xl" no-intersect="">
+      <div class="text-center max-w-3xl mb-10 md:mb-14 md:mx-auto">
+        <p class="font-bold uppercase dark:text-orange-300 text-base text-secondary tracking-wide">{hp.testimonialsSection.eyebrow}</p>
+        <h2 class="font-bold font-heading md:text-4xl text-3xl leading-tighter text-heading tracking-tighter">{hp.testimonialsSection.heading}</h2>
+      </div>
+
+      <div class="flex justify-center flex-wrap -m-4 text-center mb-12 md:mb-16">
+        {hp.testimonialsSection.stats.map((stat: any) => (
+          <div class="text-center dark:md:border-slate-500 intersect-once intersect-quarter md:border-gray-200 md:border-r md:last:border-none md:w-1/4 min-w-[180px] motion-safe:md:intersect:animate-fade p-4 sm:w-1/2 w-full" no-intersect="">
+            <div class="font-bold font-heading text-3xl md:text-4xl text-primary tracking-tight mb-1">{stat.number}</div>
+            <div class="text-xs uppercase dark:text-slate-400 font-medium lg:text-sm text-gray-500 tracking-widest">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {realReviews.map((r: any) => (
+          <div class="flex h-auto intersect-once intersect-quarter motion-safe:md:intersect:animate-fade" no-intersect="">
+            <div class="flex flex-col rounded dark:border dark:border-slate-600 dark:shadow-none md:p-6 p-4 shadow-xl">
+              <div class="flex gap-0.5 mb-3">
+                {Array.from({ length: r.rating || 5 }).map(() => (
+                  <svg class="h-4 w-4 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                ))}
+              </div>
+              <blockquote class="flex-auto"><p class="text-muted">&ldquo;{r.text.length > 200 ? r.text.slice(0, 200) + '&hellip;' : r.text}&rdquo;</p></blockquote>
+              <hr class="border-slate-200 dark:border-slate-600 my-4" />
+              <div class="flex items-center">
+                <div class="rtl:ml-0 grow ml-3 rtl:mr-3">
+                  <p class="text-base font-semibold">{r.author}</p>
+                  <p class="text-muted text-xs">{r.date} &middot; via Google</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="relative not-prose scroll-mt-[72px]">
+    <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
+    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade mx-auto py-12 relative max-w-7xl" no-intersect="">
+      <div class="text-center max-w-3xl mb-8 md:mb-12 md:mx-auto">
+        <p class="font-bold uppercase dark:text-orange-300 text-base text-secondary tracking-wide">{hp.faqSection.eyebrow}</p>
+        <h2 class="font-bold font-heading md:text-4xl text-3xl leading-tighter text-heading tracking-tighter">{hp.faqSection.heading}</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-8 md:gap-y-12 mx-auto gap-y-8">
+        {hp.faqSection.items.map((faq: any) => (
+          <div class="intersect-once motion-safe:md:intersect:animate-fade" data-animated="true">
+            <div class="flex flex-row max-w-none">
+              <div class="flex justify-center">
+                <svg class="text-primary flex-shrink-0 h-6 mr-2 mt-1 rtl:ml-2 rtl:mr-0 w-6" data-icon="tabler:chevron-right" height="1em" width="1em">
+                  <symbol id="ai:tabler:chevron-right" viewBox="0 0 24 24"><path d="m9 6l6 6l-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></symbol>
+                  <use href="#ai:tabler:chevron-right"/>
+                </svg>
+              </div>
+              <div class="mt-0.5">
+                <h3 class="font-bold font-heading text-xl">{faq.question}</h3>
+                <p class="text-muted mt-3">{faq.answer}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative not-prose scroll-mt-[72px]">
+    <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
+    <div class="text-default px-4 intersect-no-queue intersect-once intersect-quarter lg:py-20 md:px-6 md:py-16 motion-safe:md:intersect:animate-fade mx-auto py-12 relative max-w-6xl" no-intersect="">
+      <div class="text-center max-w-3xl dark:border dark:border-slate-600 dark:shadow-none mx-auto p-6 rounded shadow-xl">
+        <div class="text-center md:mx-auto mb-0 md:mb-0">
+          <h2 class="font-bold font-heading md:text-4xl leading-tighter text-heading tracking-tighter mb-4 text-4xl">{hp.ctaSection.heading}</h2>
+          <p class="text-muted mt-4 text-xl dark:text-slate-400">{hp.ctaSection.description}</p>
+        </div>
+        <div class="flex flex-col gap-4 sm:flex-row flex-nowrap m-auto max-w-xs mt-6 sm:justify-center sm:max-w-md">
+          <div class="flex w-full sm:w-auto"><a class="w-full sm:mb-0 btn-primary" href={hp.ctaSection.ctaPrimary.url}>{hp.ctaSection.ctaPrimary.text}</a></div>
+          <div class="flex w-full sm:w-auto"><a class="w-full sm:mb-0 btn-secondary" href={hp.ctaSection.ctaSecondary.url}>{hp.ctaSection.ctaSecondary.text}</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style is:global>
+  @media (max-width: 639px) {
+    .segment-chips a {
+      rotate: none !important;
+    }
+  }
+</style>

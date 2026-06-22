@@ -2,7 +2,7 @@ import { ui, defaultLang } from "./ui";
 import type { Language, UiKey } from "./ui";
 
 /** All supported non-English language codes. Used in getStaticPaths() for [lang] routes. */
-export const SUPPORTED_LANGS = ['ms'] as const;
+export const SUPPORTED_LANGS = ['ms', 'zh', 'de', 'es', 'fr', 'nl', 'ru', 'ja', 'pt'] as const;
 
 /** Supported languages as a union type including default */
 export type SupportedLang = typeof SUPPORTED_LANGS[number];

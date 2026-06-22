@@ -1,0 +1,61 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getToursByTag, getLandingPageBySlug, cleanPageTitle } from '~/lib/content';
+import { travelTypeSegments } from '~/data/segments';
+import reviews from '~/data/content/reviews.json';
+import LandingPageSections from '~/components/LandingPageSections.astro';
+
+const locale = 'ja';
+
+export async function getStaticPaths() {
+  return travelTypeSegments.map((s: any) => ({
+    params: { slug: s.slug },
+    props: { segment: s },
+  }));
+}
+
+const { segment } = Astro.props;
+const matchingTours = await getToursByTag(segment.slug);
+
+const landingPage = await getLandingPageBySlug(segment.slug, locale);
+const featuredReviews = reviews.filter((r: any) => r.location === 'KL').slice(0, 6);
+
+const meta = {
+  title: cleanPageTitle(landingPage?.meta_title || segment.metaTitle || segment.nameFull || `${segment.name} Tours`),
+  description: landingPage?.meta_description || segment.description || '',
+};
+---
+
+<Layout metadata={meta} structuredData={{
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: landingPage?.meta_title || segment.nameFull || `${segment.name} Tours`,
+  description: landingPage?.meta_description || segment.description || '',
+  url: `https://simplyenak.com/ja/tours/segments/${segment.slug}`,
+}}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/ja" class="hover:text-primary transition-colors">Laman Utama</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/ja/tours" class="hover:text-primary transition-colors">Pusingan</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">{segment.name}</span>
+      </div>
+    </div>
+  </div>
+
+  <LandingPageSections
+    {segment}
+    {landingPage}
+    matchingTours={matchingTours}
+    featuredReviews={featuredReviews}
+    segmentType="travel_type"
+    allSegments={travelTypeSegments}
+  />
+</Layout>
+
+<script is:inline>
+  if (window.trackTourInterest) window.trackTourInterest('{segment.name} Tours (MS)');
+</script>

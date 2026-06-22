@@ -1,0 +1,85 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getStoryBySlug, getImageUrl } from '~/lib/content';
+
+const all = (await import('~/data/content/stories.json')).default as any[];
+// Apply BM locale translations
+const locale = 'ru';
+const stories = all
+  .filter((s: any) => (s.workflowStatus === 'published' || !s._status) && s.content_markdown)
+  .map((s: any) => {
+    const trans = s.translations?.find((t: any) => t.languages_code === locale);
+    if (!trans) return s;
+    return {
+      ...s,
+      title: trans.title || s.title,
+      excerpt: trans.excerpt || s.excerpt,
+      meta_title: trans.meta_title || s.meta_title,
+      meta_description: trans.meta_description || s.meta_description,
+    };
+  })
+  .sort((a: any, b: any) => new Date(b.publishedDate || b.createdAt || 0).getTime() - new Date(a.publishedDate || a.createdAt || 0).getTime());
+
+const metadata = {
+  title: 'Panduan & Cerita Malaysia | Simply Enak',
+  description: 'Terokai panduan makanan, cerita vendor, dan petua perjalanan untuk Kuala Lumpur, Pulau Pinang, dan seterusnya.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/ru" class="hover:text-primary transition-colors">Laman Utama</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Panduan & Cerita</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="py-16 bg-gradient-to-b from-primary/5 to-page">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <span class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">PANDUAN & CERITA</span>
+      <h1 class="text-3xl md:text-5xl font-bold font-heading mb-4">Terokai Malaysia Melalui Makanan</h1>
+      <p class="text-muted max-w-2xl mx-auto">Panduan vendor, petua perjalanan, dan cerita di sebalik hidangan — ditulis oleh pemandu tempatan kami yang telah menghabiskan lebih sedekad meneroka budaya makanan Malaysia.</p>
+    </div>
+  </section>
+
+  <!-- Stories Grid -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      {stories.length === 0 && (
+        <p class="text-center text-muted py-12">Cerita akan datang tidak lama lagi.</p>
+      )}
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {stories.map((s: any) => {
+          const img = getImageUrl(s.featuredImage || '');
+          return (
+            <a href={`/ru/stories/${s.slug}`} class="group bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col">
+              <div class="aspect-[16/10] overflow-hidden bg-muted/10">
+                {img ? (
+                  <img src={img} alt={s.title || ''} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center text-muted/30">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                  </div>
+                )}
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">PANDUAN</p>
+                <h2 class="font-bold font-heading text-lg group-hover:text-primary transition-colors mb-2">{s.title}</h2>
+                {s.excerpt && <p class="text-sm text-muted line-clamp-3">{s.excerpt}</p>}
+                <div class="mt-auto pt-4">
+                  <span class="text-accent text-sm font-semibold group-hover:underline">Baca Lagi &rarr;</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</Layout>

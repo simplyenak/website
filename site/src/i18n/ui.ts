@@ -10,6 +10,14 @@
 export const languages = {
   en: "English",
   ms: "Bahasa Malaysia",
+  zh: "中文",
+  de: "Deutsch",
+  es: "Español",
+  fr: "Français",
+  nl: "Nederlands",
+  ru: "Русский",
+  ja: "日本語",
+  pt: "Português",
 } as const;
 
 export type Language = keyof typeof languages;

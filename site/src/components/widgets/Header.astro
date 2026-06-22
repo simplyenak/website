@@ -52,6 +52,8 @@ const {
 // Languages to display in switcher (current lang first, then the other)
 const switcherLangs = (Object.keys(languages) as Language[]).filter(l => l !== currentLang);
 
+const langFlags: any = { ms: '🇲🇾', zh: '🇨🇳', de: '🇩🇪', es: '🇪🇸', fr: '🇫🇷', nl: '🇳🇱', ru: '🇷🇺', ja: '🇯🇵', pt: '🇵🇹' };
+
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
@@ -148,7 +150,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
           {/* Language switcher  -  flag icons */}
           {switcherLangs.map((lang) => {
-            const flag = lang === 'ms' ? '🇲🇾' : '🇬🇧';
+            const flag = langFlags[lang] || '🌐';
             return (
               <a
                 class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"

@@ -1,0 +1,191 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+let pageData: any = {};
+try {
+  pageData = (await import('~/data/content/track-record-page.json')).default;
+} catch {}
+
+const stats = pageData.stats || [];
+const segments = pageData.segments || [];
+const caseStudies = pageData.case_studies || [];
+const press = pageData.press || [];
+const awards = pageData.awards || [];
+
+const heroTitle = pageData.hero_title || 'Our Track Record';
+const heroSubtitle = pageData.hero_subtitle || 'Five years of connecting travellers with the real Malaysia.';
+const philosophyQuote = pageData.philosophy_quote || '"We don\'t just show you what to eat — we show you why it matters."';
+const howWeWorkEyebrow = pageData.how_we_work_eyebrow || 'By the Numbers';
+
+const meta = {
+  title: pageData.seo_title || 'Track Record | Simply Enak',
+  description: pageData.seo_description || 'Simply Enak\'s track record, awards, and press coverage.',
+};
+---
+<Layout metadata={meta}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/pt/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Our Track Record</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#2a1a1a] to-[#1a1a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Track Record</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          {heroTitle}
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          {heroSubtitle}
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  {stats.length > 0 && (
+    <section class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{howWeWorkEyebrow}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">Simply Enak by the Numbers</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat: any) => (
+            <div class="text-center p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm">
+              <p class="text-4xl md:text-5xl font-bold font-heading text-accent mb-2">{stat.number}</p>
+              <p class="text-sm text-muted font-semibold">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Philosophy Quote -->
+  {philosophyQuote && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="relative">
+          <svg class="w-10 h-10 mx-auto mb-6 text-accent/40" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 3.03-7.336l.303-.34.581.385c1.042.686 3.596 2.348 3.596 5.017 0 1.765-.77 3.242-2.28 4.293.86.424 1.511 1.117 1.511 2.311 0 .899-.478 1.672-1.304 2.116-.977.528-2.087.338-2.854-.416-.773-.76-.872-2.093-.872-3.04zm9 0C12.553 16.227 12 15 12 13.011c0-3.5 2.457-6.637 3.03-7.336l.303-.34.581.385c1.042.686 3.596 2.348 3.596 5.017 0 1.765-.77 3.242-2.28 4.293.86.424 1.511 1.117 1.511 2.311 0 .899-.478 1.672-1.304 2.116-.977.528-2.087.338-2.854-.416-.773-.76-.872-2.093-.872-3.04z"/>
+          </svg>
+          <blockquote class="text-xl md:text-2xl font-heading italic text-default leading-relaxed max-w-2xl mx-auto">
+            {philosophyQuote}
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Segments -->
+  {segments.length > 0 && (
+    <section class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Who We Serve</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">Our Guest Segments</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {segments.map((segment: any) => (
+            <div class="p-6 md:p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm text-center">
+              <div class="text-4xl mb-4">{segment.emoji}</div>
+              <h3 class="text-lg font-bold font-heading mb-2">{segment.name}</h3>
+              <p class="text-sm text-muted leading-relaxed">{segment.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Case Studies -->
+  {caseStudies.length > 0 && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Case Studies</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">Client Stories</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {caseStudies.map((cs: any) => (
+            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm">
+              <p class="text-xs uppercase tracking-wider text-accent font-bold mb-1">{cs.type || ''}</p>
+              <h3 class="font-bold font-heading text-default mb-2">{cs.client}</h3>
+              <p class="text-sm text-muted leading-relaxed">{cs.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Press -->
+  {press.length > 0 && (
+    <section class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Press</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">Media Coverage</h2>
+        </div>
+        <div class="flex flex-wrap gap-6 justify-center">
+          {press.map((item: any) => (
+            <a href={item.url} target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-sm font-semibold text-default">
+              <Icon name="tabler:external-link" class="w-4 h-4" />
+              {item.outlet}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Awards -->
+  {awards.length > 0 && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Recognition</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">Awards & Accolades</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {awards.map((award: any) => (
+            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm text-center">
+              <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <Icon name="tabler:award" class="w-6 h-6 text-accent" />
+              </div>
+              <h3 class="font-bold font-heading text-default mb-1">{award.award}</h3>
+              <p class="text-xs text-muted">{award.organization}{award.year ? ` · ${award.year}` : ''}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-4">Experience it for yourself</h2>
+      <p class="text-muted text-sm mb-6">Book a tour and taste what makes Malaysian food unforgettable.</p>
+      <a href="/pt/tours"
+         class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+        <Icon name="tabler:compass" class="w-4 h-4" />
+        View All Tours
+      </a>
+    </div>
+  </section>
+</Layout>
