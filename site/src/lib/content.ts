@@ -1077,12 +1077,70 @@ export async function getLandingPageBySlug(slug: string, locale?: string) {
 
 // -- Image URLs --
 
+const CDN_DOMAIN = 'https://cdn.simplyenak.com';
+const CDN_PREFIX = 'payload-media';
+
+/**
+ * Normalize any image URL to the CDN.
+ * Handles three patterns:
+ *   1. Already a CDN URL → as-is
+ *   2. Direct S3 URL (s3.nl-ams.scw.cloud/se-website-images/...) → rewrite to CDN
+ *   3. Relative path (/api/media/file/...) → prepend CDN domain
+ *   4. Raw http/https that doesn't match patterns 1-2 → try to rewrite via CDN
+ */
 export function getImageUrl(url: any) {
   if (!url) return null;
   if (typeof url === 'object' && url.url) return getImageUrl(url.url);
-  if (typeof url === 'string' && (url.startsWith('http://') || url.startsWith('https://'))) return url;
-  if (typeof url === 'string') return 'https://cdn.simplyenak.com/' + url.replace(/^\//, '');
-  return null;
+  if (typeof url !== 'string') return null;
+
+  // Already a CDN URL — use as-is
+  if (url.startsWith(CDN_DOMAIN)) return url;
+
+  // Direct S3 URL → rewrite to CDN with payload-media prefix
+  if (url.includes('s3.nl-ams.scw.cloud/se-website-images')) {
+    const filename = url.split('/').pop();
+    return filename ? `${CDN_DOMAIN}/${CDN_PREFIX}/${filename}` : url;
+  }
+
+  // Relative path starting with / → prepend CDN domain
+  if (url.startsWith('/')) return `${CDN_DOMAIN}${url}`;
+
+  // Other http/https (e.g. external URLs) — pass through
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+
+  // Anything else — assume relative, prepend CDN
+  return `${CDN_DOMAIN}/${url}`;
+}
+
+/**
+ * Build a responsive srcset string from a Payload media object's sizes.
+ * The media object is the full object returned at depth ≥ 2:
+ *   { url, width, height, sizes: { thumbnail: { url, width, height }, medium, large } }
+ *
+ * Returns something like:
+ *   "https://cdn.simplyenak.com/.../thumb.webp 400w, https://cdn.simplyenak.com/.../medium.webp 800w"
+ * or null if no sizes are available.
+ */
+export function getSrcsetFromMedia(media: any): string | null {
+  if (!media || typeof media !== 'object') return null;
+
+  const sizes = media.sizes;
+  if (!sizes) return null;
+
+  const entries: Array<{ url: string; width: number }> = [];
+
+  // Order: smallest to largest
+  const ORDER = ['thumbnail', 'medium', 'large'];
+  for (const name of ORDER) {
+    const size = sizes[name];
+    if (size?.url && size?.width) {
+      entries.push({ url: getImageUrl(size.url) || size.url, width: size.width });
+    }
+  }
+
+  if (entries.length === 0) return null;
+
+  return entries.map((e) => `${e.url} ${e.width}w`).join(', ');
 }
 
 /**

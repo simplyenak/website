@@ -226,24 +226,42 @@ export const Media: CollectionConfig = {
   },
   upload: {
     staticDir: 'media',
+    // Convert all uploads to WebP for web-optimized delivery.
+    // Quality 80 for main image — good balance of size vs fidelity.
+    formatOptions: {
+      format: 'webp',
+      options: { quality: 80 },
+    },
     imageSizes: [
       {
         name: 'thumbnail',
         width: 400,
         height: 300,
         position: 'centre',
+        formatOptions: {
+          format: 'webp',
+          options: { quality: 75 },
+        },
       },
       {
         name: 'medium',
         width: 800,
         height: 600,
         position: 'centre',
+        formatOptions: {
+          format: 'webp',
+          options: { quality: 80 },
+        },
       },
       {
         name: 'large',
         width: 1200,
         height: 800,
         position: 'centre',
+        formatOptions: {
+          format: 'webp',
+          options: { quality: 82 },
+        },
       },
     ],
     adminThumbnail: 'thumbnail',

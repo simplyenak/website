@@ -39,9 +39,13 @@ interface Props extends Omit<HTMLAttributes<'img'>, 'src' | 'width' | 'height'> 
   widths?: number[];
   format?: Format;
   layout?: Layout;
+  /** Pre-built srcset string (e.g. from Payload image sizes), overrides automated CDN srcset. */
+  srcset?: string;
+  /** HTML sizes attribute for responsive images. */
+  imgSizes?: string;
 }
 
-const { src, alt, width, height, widths, format, layout = 'constrained', ...rest } = Astro.props;
+const { src, alt, width, height, widths, format, layout = 'constrained', srcset: propSrcset, imgSizes, ...rest } = Astro.props;
 
 // --- Accessibility ---------------------------------------------------------
 if (alt === undefined || alt === null) {
@@ -162,7 +166,8 @@ const cdnSrcSet =
   isCdnUrl ? (
     <img
       src={cdnSrc}
-      srcset={cdnSrcSet}
+      srcset={propSrcset || cdnSrcSet}
+      sizes={imgSizes}
       width={w}
       height={h}
       alt={alt}
