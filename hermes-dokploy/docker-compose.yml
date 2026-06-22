@@ -1,0 +1,279 @@
+version: "3.8"
+
+services:
+  hermes:
+    build:
+      context: .
+      dockerfile: Dockerfile.hermes
+    image: hermes-simplyenak:latest   # local tag for Dokploy internal use
+    image: hermes-simplyenak:latest   # local tag for Dokploy internal use
+    environment:
+      - GLM_API_KEY=${GLM_API_KEY}
+      - ZAI_API_KEY=${ZAI_API_KEY}
+      - TELEGRAM_BOT_TOKEN=***REMOVED***
+      - TELEGRAM_ALLOWED_USERS=${TELEGRAM_ALLOWED_USERS}
+      - TELEGRAM_HOME_CHANNEL=${TELEGRAM_HOME_CHANNEL}
+      - ROCKETCHAT_URL=${ROCKETCHAT_URL}
+      - ROCKETCHAT_USERNAME=${ROCKETCHAT_USERNAME}
+      - ROCKETCHAT_PASSWORD=${ROCKETCHAT_PASSWORD}
+      - ROCKETCHAT_ALLOWED_USERS=${ROCKETCHAT_ALLOWED_USERS}
+      - TELEGRAM_WEBHOOK_URL=${TELEGRAM_WEBHOOK_URL}
+      - TELEGRAM_WEBHOOK_SECRET=***REMOVED***
+      - GATEWAY_ALLOW_ALL_USERS=${GATEWAY_ALLOW_ALL_USERS:-false}
+      - WEBHOOK_ENABLED=${WEBHOOK_ENABLED:-true}
+      - WEBHOOK_PORT=${WEBHOOK_PORT:-8644}
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - TZ=${TZ:-Asia/Kuala_Lumpur}
+      - MEMPALACE_URL=${MEMPALACE_URL:-http://mempalace-proxy:3456/mcp}
+      - MEMPALACE_TIMEOUT=${MEMPALACE_TIMEOUT:-60}
+      - OPENVIKING_ENDPOINT=${OPENVIKING_ENDPOINT:-http://openviking:1933}
+      - BRILLIANT_MCP_URL=${BRILLIANT_MCP_URL:-http://brilliant-mcp:8002/mcp}
+      - BRILLIANT_URL=${BRILLIANT_URL:-http://cortex-api:8000}
+      - BRILLIANT_API_KEY=${BRILLIANT_API_KEY}
+      - SEARXNG_URL=${SEARXNG_URL:-http://searxng:8080}
+      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL:-http://production-n8n-6aryb3_n8n:5678/webhook}
+      - API_SERVER_ENABLED=${API_SERVER_ENABLED:-true}
+      - API_SERVER_HOST=${API_SERVER_HOST:-0.0.0.0}
+      - HERMES_WORKSPACE_PASSWORD=${HERMES_WORKSPACE_PASSWORD}
+      - API_SERVER_KEY=${API_SERVER_KEY}
+    volumes:
+      - hermes-data:/home/hermes/.hermes
+      - hermes-backups:/home/hermes/.hermes/backups
+      - hermes-workspace:/home/hermes/workspace
+      - mempalace-data:/home/hermes/.mempalace
+    networks:
+      hermes-network-enc:
+        aliases:
+          - hermes
+      hermes-services-enc:
+        aliases:
+          - hermes
+      dokploy-network:
+        aliases:
+          - hermes
+    healthcheck:
+      test: ["CMD", "python3", "/home/hermes/healthcheck.py"]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.lbswarm=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.routers.production-hermes-42-web.rule=Host(`hermes.system.simplyenak.com`)
+        - traefik.http.routers.production-hermes-42-web.entrypoints=web
+        - traefik.http.routers.production-hermes-42-web.middlewares=redirect-to-https@file
+        - traefik.http.routers.production-hermes-42-web.service=production-hermes-42-web
+        - traefik.http.services.production-hermes-42-web.loadbalancer.server.port=8644
+        - traefik.http.routers.production-hermes-42-websecure.rule=Host(`hermes.system.simplyenak.com`)
+        - traefik.http.routers.production-hermes-42-websecure.entrypoints=websecure
+        - traefik.http.routers.production-hermes-42-websecure.service=production-hermes-42-websecure
+        - traefik.http.routers.production-hermes-42-websecure.tls.certresolver=letsencrypt
+        - traefik.http.services.production-hermes-42-websecure.loadbalancer.server.port=8644
+        - traefik.http.middlewares.hermes-ui-auth.basicauth.users=maarten:$$apr1$$A/DDaEo.$$0LndHQHLZrholn74FXaF2/
+        - traefik.http.middlewares.hermes-ui-auth.basicauth.realm=Hermes Agent UI
+        - traefik.http.routers.production-hermes-ui-web.rule=Host(`hermes-ui.system.simplyenak.com`)
+        - traefik.http.routers.production-hermes-ui-web.entrypoints=web
+        - traefik.http.routers.production-hermes-ui-web.middlewares=redirect-to-https@file,hermes-ui-auth
+        - traefik.http.routers.production-hermes-ui-web.service=production-hermes-ui-web
+        - traefik.http.services.production-hermes-ui-web.loadbalancer.server.port=9119
+        - traefik.http.routers.production-hermes-ui-websecure.rule=Host(`hermes-ui.system.simplyenak.com`)
+        - traefik.http.routers.production-hermes-ui-websecure.entrypoints=websecure
+        - traefik.http.routers.production-hermes-ui-websecure.middlewares=hermes-ui-auth
+        - traefik.http.routers.production-hermes-ui-websecure.service=production-hermes-ui-websecure
+        - traefik.http.routers.production-hermes-ui-websecure.tls.certresolver=letsencrypt
+        - traefik.http.services.production-hermes-ui-websecure.loadbalancer.server.port=9119
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1024M
+          pids: 50
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=64m
+
+  mempalace-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.proxy
+    image: hermes-simplyenak-mempalace:latest   # local tag
+    volumes:
+      - mempalace-data:/home/mempalace/.mempalace
+    networks:
+      hermes-network-enc:
+        aliases:
+          - mempalace-proxy
+      dokploy-network:
+        aliases:
+          - mempalace-proxy
+    healthcheck:
+      test: ["CMD-SHELL", "python3 -c \"import urllib.request; urllib.request.urlopen('http://localhost:3456/sse')\" 2>/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.lbswarm=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.middlewares.mempalace-auth.basicauth.users=maarten:$$apr1$$A/DDaEo.$$0LndHQHLZrholn74FXaF2/
+        - traefik.http.middlewares.mempalace-auth.basicauth.realm=MemPalace MCP
+        - traefik.http.routers.mempalace-mcp-web.rule=Host(`mempalace.system.simplyenak.com`)
+        - traefik.http.routers.mempalace-mcp-web.entrypoints=web
+        - traefik.http.routers.mempalace-mcp-web.middlewares=redirect-to-https@file,mempalace-auth
+        - traefik.http.routers.mempalace-mcp-web.service=mempalace-mcp-web
+        - traefik.http.services.mempalace-mcp-web.loadbalancer.server.port=3456
+        - traefik.http.routers.mempalace-mcp-websecure.rule=Host(`mempalace.system.simplyenak.com`)
+        - traefik.http.routers.mempalace-mcp-websecure.entrypoints=websecure
+        - traefik.http.routers.mempalace-mcp-websecure.middlewares=mempalace-auth
+        - traefik.http.routers.mempalace-mcp-websecure.service=mempalace-mcp-websecure
+        - traefik.http.routers.mempalace-mcp-websecure.tls.certresolver=letsencrypt
+        - traefik.http.services.mempalace-mcp-websecure.loadbalancer.server.port=3456
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 512M
+          pids: 30
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=32m
+
+  searxng:
+    image: searxng/searxng:latest
+    environment:
+      - SEARXNG_BASE_URL=https://search.system.simplyenak.com/
+      - SEARXNG_SECRET=***REMOVED***
+      - SEARXNG_BIND_ADDRESS=0.0.0.0
+      - SEARXNG_PORT=8080
+    volumes:
+      - searxng-data:/etc/searxng
+    networks:
+      hermes-network-enc:
+        aliases:
+          - searxng
+    deploy:
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 256M
+
+  brilliant-mcp:
+    build:
+      context: ./brilliant-mcp
+      dockerfile: Dockerfile
+    environment:
+      - CORTEX_BASE_URL=http://cortex-api:8000
+      - CORTEX_API_KEY=***REMOVED***
+      - PORT=8002
+    networks:
+      hermes-services-enc:
+        aliases:
+          - brilliant-mcp
+      dokploy-network:
+        aliases:
+          - brilliant-mcp-proxy
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.lbswarm=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.middlewares.brilliant-mcp-auth.basicauth.users=maarten:$$apr1$$A/DDaEo.$$0LndHQHLZrholn74FXaF2/
+        - traefik.http.middlewares.brilliant-mcp-auth.basicauth.realm=Brilliant MCP
+        - traefik.http.routers.brilliant-mcp-web.rule=Host(`brilliant-mcp.system.simplyenak.com`)
+        - traefik.http.routers.brilliant-mcp-web.entrypoints=web
+        - traefik.http.routers.brilliant-mcp-web.middlewares=redirect-to-https@file,brilliant-mcp-auth
+        - traefik.http.routers.brilliant-mcp-web.service=brilliant-mcp-web
+        - traefik.http.services.brilliant-mcp-web.loadbalancer.server.port=8002
+        - traefik.http.routers.brilliant-mcp-websecure.rule=Host(`brilliant-mcp.system.simplyenak.com`)
+        - traefik.http.routers.brilliant-mcp-websecure.entrypoints=websecure
+        - traefik.http.routers.brilliant-mcp-websecure.middlewares=brilliant-mcp-auth
+        - traefik.http.routers.brilliant-mcp-websecure.service=brilliant-mcp-websecure
+        - traefik.http.routers.brilliant-mcp-websecure.tls.certresolver=letsencrypt
+        - traefik.http.services.brilliant-mcp-websecure.loadbalancer.server.port=8002
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 256M
+
+  hermes-workspace:
+    image: ghcr.io/outsourc-e/hermes-workspace:latest
+    environment:
+      - HERMES_API_URL=http://hermes:8642
+      - HERMES_DASHBOARD_URL=http://hermes:9119
+      - HERMES_API_TOKEN=***REMOVED***
+      - HERMES_PASSWORD=***REMOVED***
+      - HOST=0.0.0.0
+      - TRUST_PROXY=1
+      - COOKIE_SECURE=1
+      - STREAM_ACCEPTED_TIMEOUT_MS=120000
+      - STREAM_HANDOFF_TIMEOUT_MS=300000
+      - VITE_PLAYGROUND_WS_URL=wss://hermes-playground-ws.myaurora-agi.workers.dev/playground
+      - VITE_PLAYGROUND_STATS_URL=https://hermes-playground-ws.myaurora-agi.workers.dev/stats
+    networks:
+      hermes-network-enc:
+        aliases:
+          - hermes-workspace
+      dokploy-network:
+        aliases:
+          - hermes-workspace
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.lbswarm=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.routers.workspace-web.rule=Host(`workspace.system.simplyenak.com`)
+        - traefik.http.routers.workspace-web.entrypoints=web
+        - traefik.http.routers.workspace-web.middlewares=redirect-to-https@file
+        - traefik.http.routers.workspace-web.service=workspace-web
+        - traefik.http.services.workspace-web.loadbalancer.server.port=3000
+        - traefik.http.routers.workspace-websecure.rule=Host(`workspace.system.simplyenak.com`)
+        - traefik.http.routers.workspace-websecure.entrypoints=websecure
+        - traefik.http.routers.workspace-websecure.service=workspace-websecure
+        - traefik.http.routers.workspace-websecure.tls.certresolver=letsencrypt
+        - traefik.http.services.workspace-websecure.loadbalancer.server.port=3000
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1024M
+    depends_on:
+      hermes:
+        condition: service_healthy
+
+volumes:
+  hermes-data:
+  hermes-backups:
+  hermes-workspace:
+  mempalace-data:
+    external: true
+    name: hermes-dokploy_mempalace-data
+  searxng-data:
+
+networks:
+  hermes-network-enc:
+    external: true
+  hermes-services-enc:
+    external: true
+  dokploy-network:
+    external: true
