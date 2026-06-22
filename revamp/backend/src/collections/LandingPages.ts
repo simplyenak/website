@@ -86,17 +86,7 @@ export const LandingPages: CollectionConfig = {
       admin: { description: 'Hero image — select from media library' },
     },
 
-    // === SEO ===
-    {
-      name: 'meta_title',
-      type: 'text',
-            admin: { description: 'SEO meta title' },
-    },
-    {
-      name: 'meta_description',
-      type: 'textarea',
-            admin: { description: 'SEO meta description' },
-    },
+    // === SEO — handled by @payloadcms/plugin-seo (meta group with title, description, image) ===
     {
       name: 'content',
       type: 'textarea',

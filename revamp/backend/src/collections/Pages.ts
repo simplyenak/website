@@ -137,17 +137,7 @@ export const Pages: CollectionConfig = {
       admin: { description: 'Max group size — informational only' },
     },
 
-    // === SEO ===
-    {
-      name: 'meta_title',
-      type: 'text',
-            admin: { description: 'SEO meta title (defaults to page title)' },
-    },
-    {
-      name: 'meta_description',
-      type: 'textarea',
-            admin: { description: 'SEO meta description' },
-    },
+    // === SEO — handled by @payloadcms/plugin-seo (meta group with title, description, image) ===
 
     // === ORDERING ===
     {
