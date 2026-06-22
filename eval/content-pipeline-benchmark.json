@@ -1,0 +1,211 @@
+[
+  {
+    "case_id": "lp_eight_section_arc",
+    "content_type": "landing_page",
+    "scenario": "Landing page must follow the 8-section story arc",
+    "description": "Every Simply Enak landing page should follow: Hero → Problem → Tours → HowItWorks → Testimonials/Social Proof → FAQ → Final CTA. Tours must appear early, not buried after generic sections.",
+    "expected_sections": [
+      "hero",
+      "problem_or_hook",
+      "tours",
+      "how_it_works",
+      "social_proof",
+      "faq",
+      "final_cta"
+    ],
+    "min_sections_present": 6,
+    "hard_requirements": [
+      "tours_section_must_appear_before_position_4",
+      "hero_must_have_title_and_description",
+      "cta_must_be_present"
+    ],
+    "forbidden_patterns": [
+      "generic_template_blocks_without_tours",
+      "tours_buried_after_faq",
+      "missing_cta"
+    ],
+    "weight": 1.0,
+    "notes": "Maarten: 'I don't really see a story arch or even a visual arch. I don't feel it's helping me buy a tour.' Tours shown FIRST, not buried."
+  },
+  {
+    "case_id": "lp_hero_fields_populated",
+    "content_type": "landing_page",
+    "scenario": "Hero fields must not be null in Payload",
+    "description": "Common bug: hero_title and hero_description are null in Payload DB even when content appears populated. The 3-tier pipeline (live API → JSON snapshots → hardcoded data) must all resolve to non-null hero content.",
+    "required_fields": [
+      "hero_title",
+      "hero_description"
+    ],
+    "check_tiers": [
+      "live_payload_api",
+      "json_snapshots",
+      "hardcoded_segments"
+    ],
+    "forbidden_patterns": [
+      "hero_title_null",
+      "hero_description_null",
+      "_status_filter_rejecting_draft_entries"
+    ],
+    "weight": 0.9,
+    "notes": "Root cause pattern: _status filter in getLandingPages() rejects draft entries. Hero fields often null despite content being populated — update both Payload AND snapshot files."
+  },
+  {
+    "case_id": "lp_bm_mirrors_en",
+    "content_type": "landing_page",
+    "scenario": "Bahasa Malaysia page must mirror English content",
+    "description": "BM pages must automatically mirror EN content. Both locale versions must have the same sections, same tours, same structure — just translated.",
+    "required_locales": [
+      "en",
+      "ms"
+    ],
+    "hard_requirements": [
+      "section_count_en_equals_ms",
+      "same_tours_listed",
+      "same_cta_structure"
+    ],
+    "forbidden_patterns": [
+      "bm_page_missing_sections_present_in_en",
+      "en_only_content",
+      "translation_gaps"
+    ],
+    "weight": 0.8,
+    "notes": "Maarten expects BM pages to mirror EN content automatically."
+  },
+  {
+    "case_id": "lp_image_optimization",
+    "content_type": "landing_page",
+    "scenario": "Images must be optimized for performance",
+    "description": "Images should use srcset from sizes approach, WebP format, lazy loading. No oversized images. CF Free plan has no Polish/Image Resizing.",
+    "required_attributes": [
+      "srcset",
+      "loading_lazy",
+      "webp_or_responsive_format"
+    ],
+    "forbidden_patterns": [
+      "no_srcset",
+      "eager_loading_all_images",
+      "png_for_photos",
+      "images_over_200kb_without_srcset"
+    ],
+    "weight": 0.7,
+    "notes": "Maarten prefers practical srcset-from-sizes approach over compression tools. Sharp WebP + Payload sizes."
+  },
+  {
+    "case_id": "lp_field_collisions",
+    "content_type": "landing_page",
+    "scenario": "Payload fields must not collide across content types",
+    "description": "GraphQL type collisions when multiple content types use the same field name. Known fixes: steps_title→steps_heading, three_ways_description→three_ways_section_description, groups_description→groups_section_description.",
+    "forbidden_patterns": [
+      "duplicate_field_names_across_types",
+      "versions_drafts_enabled_on_pages_with_collisions"
+    ],
+    "known_fixes": [
+      "rename_colliding_fields",
+      "disable_versions_drafts_on_HowItWorksPage_and_ToursPage"
+    ],
+    "weight": 0.6,
+    "notes": "Recent commits fixed field collisions. Check for regressions."
+  },
+  {
+    "case_id": "blog_seo_basics",
+    "content_type": "blog_post",
+    "scenario": "Blog post must have SEO fundamentals",
+    "description": "Every blog post must have proper title tag, meta description, H1, structured headings, and relevant internal links to tours.",
+    "required_elements": [
+      "title_tag_under_60_chars",
+      "meta_description_120_160_chars",
+      "single_h1",
+      "logical_h2_h3_hierarchy",
+      "internal_link_to_tour_or_lp",
+      "canonical_url"
+    ],
+    "forbidden_patterns": [
+      "missing_meta_description",
+      "multiple_h1_tags",
+      "title_over_60_chars",
+      "no_internal_links"
+    ],
+    "weight": 0.8
+  },
+  {
+    "case_id": "blog_brand_voice",
+    "content_type": "blog_post",
+    "scenario": "Content must match Simply Enak brand voice",
+    "description": "The Passionate Friend archetype: warm, knowledgeable, enthusiastic. Success filter: WELCOMED, FASCINATED, CONNECTED. Content pillars: Tailored Experiences, Malaysia's Beauty, Sustainable Impact. Show don't tell.",
+    "brand_checks": [
+      "warm_not_cold_tone",
+      "knowledgeable_not_pedantic",
+      "enthusiastic_not_hyped",
+      "malaysian_specifics_present",
+      "show_dont_tell",
+      "local_guide_perspective"
+    ],
+    "forbidden_patterns": [
+      "generic_travel_content",
+      "cold_corporate_tone",
+      "no_malaysian_specifics",
+      "telling_not_showing"
+    ],
+    "weight": 0.7,
+    "notes": "Brand archetype is 'The Passionate Friend'. Voice: warm, knowledgeable, enthusiastic."
+  },
+  {
+    "case_id": "lp_payload_deploy_pipeline",
+    "content_type": "landing_page",
+    "scenario": "Landing page data flow must resolve correctly",
+    "description": "Build uses LIVE Payload API first (tier 1). If Payload returns docs (even with null fields), snapshot JSONs are NEVER used. Generic umbrella pages must exist in Payload DB AND snapshot files.",
+    "pipeline_tiers": [
+      "tier_1_live_payload_api",
+      "tier_2_json_snapshots_fallback",
+      "tier_3_hardcoded_segments_last_resort"
+    ],
+    "hard_requirements": [
+      "payload_api_checked_first",
+      "snapshots_only_used_when_api_empty",
+      "generic_umbrella_pages_exist_in_both"
+    ],
+    "forbidden_patterns": [
+      "snapshots_used_when_payload_has_docs",
+      "payload_doc_with_null_treated_as_absent",
+      "missing_umbrella_pages"
+    ],
+    "weight": 0.9,
+    "notes": "Common root cause: _status filter rejects draft entries, making API appear empty."
+  },
+  {
+    "case_id": "media_upload_quality",
+    "content_type": "media",
+    "scenario": "Uploaded media must be clean",
+    "description": "Bulk upload sends '' for select fields → must convert to undefined in beforeValidate. Filename uniqueness: append trailing num/random hex. Quote format: Pauline + outlet + photo.",
+    "hard_requirements": [
+      "empty_string_converted_to_undefined",
+      "unique_filenames",
+      "images_have_alt_text",
+      "quotes_attributed_with_outlet_and_photo"
+    ],
+    "forbidden_patterns": [
+      "empty_string_select_fields",
+      "duplicate_filenames",
+      "missing_alt_text"
+    ],
+    "weight": 0.5
+  },
+  {
+    "case_id": "deploy_workflow",
+    "content_type": "infrastructure",
+    "scenario": "Deploy follows staging-first workflow",
+    "description": "Push main → GH Actions → docker service update --image --force. Watchtower is monitor-only. New Payload collections need payload_locked_documents_rels.",
+    "hard_requirements": [
+      "staging_checked_before_prod",
+      "gh_actions_build_completes",
+      "docker_service_update_with_force",
+      "watchtower_not_relied_on_for_deploy"
+    ],
+    "forbidden_patterns": [
+      "deploy_without_staging_check",
+      "relying_on_watchtower",
+      "missing_payload_locked_documents_rels"
+    ],
+    "weight": 0.6
+  }
+]
