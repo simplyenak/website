@@ -38,7 +38,7 @@ export const HowItWorksPage: CollectionConfig = {
             admin: { description: 'Hero subtitle' },
     },
     {
-      name: 'steps_title',
+      name: 'steps_section_title',
       type: 'text',
             admin: { description: 'Section title for tour steps' },
     },
