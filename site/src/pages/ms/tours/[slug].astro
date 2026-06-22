@@ -8,7 +8,7 @@ import reviews from '~/data/content/reviews.json';
 const locale = 'ms';
 
 export async function getStaticPaths() {
-  const tours = await getAllTours(locale);
+  const tours = await getAllTours('ms');
   return tours.map((tour: any) => ({ params: { slug: tour.slug }, props: { tour } }));
 }
 
