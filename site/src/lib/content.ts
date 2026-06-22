@@ -182,6 +182,27 @@ async function liveStoriesPage(locale?: string) {
 // ── Helpers ───────────────────────────────────────────────────────────────
 
 /**
+ * Apply locale-specific translations from an item's `translations` array.
+ * When snapshots are used as fallback for a non-EN locale, this merges
+ * the translated fields (from the `translations` array) onto the item,
+ * so the frontend reads the BM content from the expected top-level fields.
+ */
+function applyLocaleTranslations(item: any, locale?: string): any {
+  if (!item || !locale || locale === 'en') return item;
+  const trans = item.translations?.find((t: any) => t.languages_code === locale);
+  if (!trans) return item;
+  // Merge translation fields on top of English — don't overwrite null/empty with null/empty
+  const merged = { ...item };
+  for (const [key, val] of Object.entries(trans)) {
+    if (key === 'languages_code' || key === 'id') continue;
+    if (val && typeof val === 'string' && val.trim()) {
+      (merged as any)[key] = val;
+    }
+  }
+  return merged;
+}
+
+/**
  * Extract highlight text from Payload's nested highlight format.
  */
 function unwrapHighlights(payloadTour: any) {
@@ -795,9 +816,24 @@ async function resolveTravelTypes(locale?: string): Promise<any[]> {
 }
 
 async function resolveLandingPages(locale?: string): Promise<any[]> {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotLandingPages.length > 0) {
+    const translated = snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
+    // Only use snapshots if we actually have BM translations
+    const hasTranslations = translated.some(item => {
+      const ht = item.hero_title;
+      return ht && /[^\x00-\x7F]/.test(ht);
+    });
+    if (hasTranslations) return translated;
+  }
+  // Tier 1: Live Payload API
   const live = await liveLandingPages(locale);
   if (live && live.length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotLandingPages.length > 0) return snapshotLandingPages;
+  // Tier 2: JSON snapshots (fallback for all locales)
+  if (snapshotLandingPages.length > 0) {
+    if (!locale || locale === 'en') return snapshotLandingPages;
+    return snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
+  }
   return [];
 }
 

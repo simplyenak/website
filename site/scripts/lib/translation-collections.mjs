@@ -197,6 +197,48 @@ export const COLLECTIONS = {
       'filter_all_label', 'no_results_text',
     ],
   },
+  landing_pages_dietary: {
+    file: 'dietary-landing-pages.json',
+    type: 'array',
+    matchField: 'slug',
+    translatableFields: [
+      'hero_title', 'hero_subtitle', 'hero_description',
+      'content', 'intro_heading',
+      'dietary_name',
+      'meta_title', 'meta_description',
+    ],
+  },
+  landing_pages_specialty: {
+    file: 'specialty-landing-pages.json',
+    type: 'array',
+    matchField: 'slug',
+    translatableFields: [
+      'hero_title', 'hero_subtitle', 'hero_description',
+      'content', 'intro_heading',
+      'specialty_name',
+      'meta_title', 'meta_description',
+    ],
+  },
+  landing_pages_travel_type: {
+    file: 'travel-type-landing-pages.json',
+    type: 'array',
+    matchField: 'slug',
+    translatableFields: [
+      'hero_title', 'hero_subtitle', 'hero_description',
+      'content', 'intro_heading',
+      'meta_title', 'meta_description',
+    ],
+  },
+  landing_pages_location: {
+    file: 'location-landing-pages.json',
+    type: 'array',
+    matchField: 'slug',
+    translatableFields: [
+      'hero_title', 'hero_subtitle', 'hero_description',
+      'content', 'intro_heading',
+      'meta_title', 'meta_description',
+    ],
+  },
 };
 
 /**
