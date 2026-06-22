@@ -92,7 +92,7 @@ const metadata = {
         <!-- Featured Story -->
         {featured && (
           <section id="featured" class="mb-16 scroll-mt-20">
-            <a href={`/${featured.slug}`} class="group block relative overflow-hidden rounded-xl aspect-[16/9] md:aspect-[21/9] shadow-lg">
+            <a href={`/stories/${featured.slug}`} class="group block relative overflow-hidden rounded-xl aspect-[16/9] md:aspect-[21/9] shadow-lg">
               <img src={featured.image} alt={featured.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
               <div class="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
@@ -119,7 +119,7 @@ const metadata = {
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {foodCultureVisible.map((post, i) => (
-                <a href={`/${post.slug}`} class:list={[
+                <a href={`/stories/${post.slug}`} class:list={[
                   'group block relative overflow-hidden rounded-xl shadow-md',
                   i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
                 ]}>
@@ -143,7 +143,7 @@ const metadata = {
             {foodCultureHidden.length > 0 && (
               <div class="mt-6 hidden food-culture-hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {foodCultureHidden.map((post, i) => (
-                  <a href={`/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                  <a href={`/stories/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
                     <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-5">
@@ -178,7 +178,7 @@ const metadata = {
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {travelTipsVisible.map((post, i) => (
-                <a href={`/${post.slug}`} class:list={[
+                <a href={`/stories/${post.slug}`} class:list={[
                   'group block relative overflow-hidden rounded-xl shadow-md',
                   i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
                 ]}>
@@ -202,7 +202,7 @@ const metadata = {
             {travelTipsHidden.length > 0 && (
               <div class="mt-6 hidden travel-tips-hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {travelTipsHidden.map((post, i) => (
-                  <a href={`/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                  <a href={`/stories/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
                     <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-5">
@@ -237,7 +237,7 @@ const metadata = {
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {vendorStoriesVisible.map((post, i) => (
-                <a href={`/${post.slug}`} class:list={[
+                <a href={`/stories/${post.slug}`} class:list={[
                   'group block relative overflow-hidden rounded-xl shadow-md',
                   i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
                 ]}>
@@ -261,7 +261,7 @@ const metadata = {
             {vendorStoriesHidden.length > 0 && (
               <div class="mt-6 hidden vendor-stories-hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {vendorStoriesHidden.map((post, i) => (
-                  <a href={`/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                  <a href={`/stories/${post.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
                     <img src={post.image} alt={post.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-5">
