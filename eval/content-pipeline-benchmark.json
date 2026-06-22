@@ -23,21 +23,36 @@
     "notes": "Root cause: _status filter in getLandingPages() rejects draft entries."
   },
   {
-    "case_id": "lp_bm_mirrors_en",
-    "content_type": "landing_page",
-    "scenario": "Bahasa Malaysia page must mirror English content",
-    "description": "BM pages must have the same sections, tours, and structure as EN — just translated.",
+    "case_id": "i18n_full_coverage",
+    "content_type": "all",
+    "scenario": "All content must have complete MS locale coverage",
+    "description": "Every route, tour, landing page, blog post, story must have a complete MS counterpart. No EN-only pages. Meta titles and descriptions also translated. BM pages must mirror EN structure section-for-section.",
     "required_locales": ["en", "ms"],
-    "hard_requirements": ["section_count_en_equals_ms", "same_tours_listed", "same_cta_structure"],
-    "forbidden_patterns": ["bm_page_missing_sections_present_in_en", "en_only_content", "translation_gaps"],
+    "check_scope": ["routes", "tours", "landing_pages", "blog_posts", "stories", "meta_data"],
+    "check_content_types": {
+      "landing_page": {"section_count_en_equals_ms": true, "same_cta_structure": true, "same_tours_listed": true},
+      "tour": {"all_fields_translated": true, "check_fields": ["title", "description", "itinerary", "included", "excluded", "meta_title", "meta_description"]},
+      "blog_post": {"title_and_body_translated": true}
+    },
+    "forbidden_patterns": [
+      "en_only_page_without_ms", "ms_page_returns_404", "ms_page_with_en_meta",
+      "translation_missing_in_template", "en_text_in_ms_field", "ms_field_null",
+      "bm_page_missing_sections_present_in_en", "en_only_content", "translation_gaps"
+    ],
+    "hard_requirements": [
+      "all_landing_pages_have_ms_routes",
+      "route_count_en_equals_ms",
+      "all_tour_translations_complete",
+      "all_tour_fields_translated_to_ms"
+    ],
     "weight": 0.8,
-    "notes": "Maarten expects BM pages to mirror EN content automatically."
+    "notes": "Consolidated from lp_bm_mirrors_en + tour_bm_translated. 32 LP routes deployed en+ms."
   },
   {
     "case_id": "tour_data_completeness",
     "content_type": "tour",
     "scenario": "Every tour must have all required fields populated in Payload",
-    "description": "Check all bookable tours for complete data: description, itinerary, included/excluded, dietary options, images, pricing tiers, meeting point, max pax, what-to-bring, cancellation policy, languages, accessibility info. No null fields in Payload for any tour.",
+    "description": "Check all bookable tours for complete data: description, itinerary, included/excluded, dietary options, images, pricing tiers, meeting point, max pax, what-to-bring, cancellation policy, languages, accessibility info.",
     "required_fields": [
       "title", "description", "itinerary", "included", "excluded",
       "dietary_options", "hero_image", "gallery_images",
@@ -60,16 +75,20 @@
     "notes": "4 core tours: Eat Drink George Town, Penang Street Food, KL Street Food, Flavours of Malaysia."
   },
   {
-    "case_id": "tour_bm_translated",
+    "case_id": "tour_regression_checks",
     "content_type": "tour",
-    "scenario": "Tour pages must have complete BM translations",
-    "description": "Every tour must have full BM translations for all fields: title, description, itinerary, included/excluded, dietary notes, and metadata. No EN text leaking into MS locale.",
-    "required_locales": ["en", "ms"],
-    "check_fields": ["title", "description", "itinerary", "included", "excluded", "meta_title", "meta_description"],
-    "forbidden_patterns": ["en_text_in_ms_field", "ms_field_null", "ms_page_404"],
-    "hard_requirements": ["all_tour_fields_translated_to_ms", "ms_pages_build_successfully"],
-    "weight": 0.7,
-    "notes": "Recent MS locale routes added for all 32 landing pages. Tours should follow the same pattern."
+    "scenario": "Known tour bugs must not regress",
+    "description": "Regression tests for bugs found and fixed in prior sessions. Each test targets a specific root cause that has caused issues before.",
+    "regression_tests": [
+      {"id": "walking_label_moderate", "description": "Walking label must be 'Moderate Walking' not bare 'Moderate'", "forbidden": "bare_moderate_label"},
+      {"id": "wheelchair_field_exists", "description": "wheelchair accessibility field must exist and not be null", "forbidden": "wheelchair_field_null"},
+      {"id": "alcohol_policy_set", "description": "Bring Your Own vs Provided vs Not Allowed must be stated", "forbidden": "alcohol_policy_missing"},
+      {"id": "age_requirement_stated", "description": "Age requirement (All Ages / Adults 21+ / etc) must be present", "forbidden": "age_requirement_null"},
+      {"id": "itinerary_json_valid", "description": "Itinerary must be valid JSON array, not plain text", "forbidden": "itinerary_not_json"}
+    ],
+    "min_passed": 4,
+    "weight": 0.8,
+    "notes": "From prior audit: 3 fields missing (wheelchair, alcohol, age), 5 tours had status:draft, walking label was 'Moderate' instead of 'Moderate Walking'."
   },
   {
     "case_id": "seo_page_health",
@@ -105,10 +124,33 @@
     "notes": "Applies to all: tours, landing pages (32+), blog posts, stories."
   },
   {
-    "case_id": "blog_brand_voice",
-    "content_type": "blog_post",
-    "scenario": "Content must match Simply Enak brand voice",
-    "description": "The Passionate Friend archetype: warm, knowledgeable, enthusiastic. Success filter: WELCOMED, FASCINATED, CONNECTED. Content pillars: Tailored Experiences, Malaysia's Beauty, Sustainable Impact.",
+    "case_id": "seo_schema_markup",
+    "content_type": "all",
+    "scenario": "Pages must have complete structured data markup",
+    "description": "JSON-LD schema must be present and valid per content type: BlogPosting/BreadcrumbList for blogs, Product for tours, FAQPage for FAQ sections, LocalBusiness for homepage. Schema must validate against Google structured data rules.",
+    "required_schemas_by_type": {
+      "blog_post": ["BlogPosting", "Person", "BreadcrumbList"],
+      "tour": ["Product", "BreadcrumbList"],
+      "landing_page": ["BreadcrumbList"],
+      "homepage": ["LocalBusiness", "BreadcrumbList"]
+    },
+    "conditional_schemas": {"has_faq_section": "FAQPage"},
+    "forbidden_patterns": [
+      "missing_blogposting_schema", "invalid_date_format", "missing_author",
+      "wrong_publisher_name", "missing_product_schema_on_tour", "invalid_price_specification"
+    ],
+    "hard_requirements": [
+      "schema_validates_no_errors",
+      "publisher_equals_simply_enak"
+    ],
+    "weight": 0.7,
+    "notes": "Consolidated from blog_schema_markup. Extended to all content types."
+  },
+  {
+    "case_id": "brand_voice_compliance",
+    "content_type": "all",
+    "scenario": "Content must match Simply Enak brand voice across all types",
+    "description": "The Passionate Friend archetype across all copy: tour descriptions, landing pages, blog posts, emails. Success filter: WELCOMED, FASCINATED, CONNECTED. Content pillars: Tailored Experiences, Malaysia's Beauty, Sustainable Impact.",
     "brand_checks": [
       "warm_not_cold_tone",
       "knowledgeable_not_pedantic",
@@ -116,42 +158,26 @@
       "malaysian_specifics_present",
       "show_dont_tell",
       "local_guide_perspective",
-      "banned_words_absent"
+      "banned_words_absent",
+      "sensory_food_descriptions"
     ],
+    "content_type_checks": {
+      "tour": ["dish_names_with_sensory_details", "cultural_context_between_stops", "insider_knowledge_taught"],
+      "blog_post": ["personal_anecdote", "connects_to_malaysian_culture"],
+      "email": ["warm_greeting", "specific_offer_or_question"]
+    },
     "min_checks_passed": 5,
     "forbidden_patterns": [
-      "generic_travel_content",
-      "cold_corporate_tone",
-      "no_malaysian_specifics",
-      "telling_not_showing",
-      "ai_sounding_patterns"
+      "generic_travel_content", "cold_corporate_tone", "no_malaysian_specifics",
+      "telling_not_showing", "ai_sounding_patterns", "banned_words",
+      "generic_delicious_description"
     ],
     "hard_requirements": [
       "banned_words_list_respected",
       "contains_at_least_one_dish_or_place_name"
     ],
     "weight": 0.7,
-    "notes": "Brand archetype: 'The Passionate Friend'. Voice: warm, knowledgeable, enthusiastic. Banned words list in Brilliant KB."
-  },
-  {
-    "case_id": "blog_schema_markup",
-    "content_type": "blog_post",
-    "scenario": "Blog posts must have complete structured data",
-    "description": "JSON-LD schema must be present and valid: BlogPosting, Person (author), FAQPage (if applicable), BreadcrumbList. Schema must validate against Google's structured data testing.",
-    "required_schemas": ["BlogPosting", "Person", "BreadcrumbList"],
-    "conditional_schemas": {"has_faq_section": "FAQPage"},
-    "forbidden_patterns": [
-      "missing_blogposting_schema",
-      "invalid_date_format",
-      "missing_author",
-      "wrong_publisher_name"
-    ],
-    "hard_requirements": [
-      "schema_validates_no_errors",
-      "publisher_equals_simply_enak"
-    ],
-    "weight": 0.6,
-    "notes": "JSON-LD schema: BlogPosting, Person, FAQPage, BreadcrumbList."
+    "notes": "Consolidated from blog_brand_voice. Extended to all content types. Banned words list and brand voice reference in Brilliant KB."
   },
   {
     "case_id": "image_pipeline_health",
@@ -177,25 +203,24 @@
     "notes": "CF Free plan = no Polish/Image Resizing. Sharp WebP + Payload sizes required."
   },
   {
-    "case_id": "i18n_full_coverage",
+    "case_id": "og_social_sharing",
     "content_type": "all",
-    "scenario": "All pages and content must have complete MS locale coverage",
-    "description": "Every route, tour, blog post, landing page, story must have a complete MS counterpart. No EN-only pages. Meta titles and descriptions also translated.",
-    "required_locales": ["en", "ms"],
-    "check_scope": ["routes", "tours", "landing_pages", "blog_posts", "stories", "meta_data"],
+    "scenario": "Every page must have correct Open Graph and Twitter Card tags",
+    "description": "OG tags enable rich link previews on social media and messaging apps. Required: og:title, og:description, og:image, og:url, og:type. Twitter Card: summary_large_image.",
+    "required_og_tags": ["og:title", "og:description", "og:image", "og:url", "og:type"],
+    "required_twitter_tags": ["twitter:card", "twitter:title", "twitter:description", "twitter:image"],
     "forbidden_patterns": [
-      "en_only_page_without_ms",
-      "ms_page_returns_404",
-      "ms_page_with_en_meta",
-      "translation_missing_in_template"
+      "missing_og_title",
+      "missing_og_image",
+      "og_description_longer_than_160",
+      "missing_twitter_card"
     ],
     "hard_requirements": [
-      "all_landing_pages_have_ms_routes",
-      "route_count_en_equals_ms",
-      "all_tour_translations_complete"
+      "og_image_exists_and_is_accessible",
+      "og_title_equals_or_contains_page_title"
     ],
-    "weight": 0.8,
-    "notes": "32 LP routes deployed en+ms. Ensure parity."
+    "weight": 0.6,
+    "notes": "Critical for social sharing of tours and blog posts."
   },
   {
     "case_id": "deploy_readiness_gate",
@@ -249,82 +274,59 @@
     "notes": "OpenViking at openviking.system.simplyenak.com. Brilliant MCP at brilliant-mcp.system.simplyenak.com."
   },
   {
-    "case_id": "og_social_sharing",
-    "content_type": "all",
-    "scenario": "Every page must have correct Open Graph and Twitter Card tags",
-    "description": "OG tags enable rich link previews on social media and messaging apps. Required: og:title, og:description, og:image, og:url, og:type. Twitter Card: summary_large_image.",
-    "required_og_tags": ["og:title", "og:description", "og:image", "og:url", "og:type"],
-    "required_twitter_tags": ["twitter:card", "twitter:title", "twitter:description", "twitter:image"],
-    "forbidden_patterns": [
-      "missing_og_title",
-      "missing_og_image",
-      "og_description_longer_than_160",
-      "missing_twitter_card"
-    ],
-    "hard_requirements": [
-      "og_image_exists_and_is_accessible",
-      "og_title_equals_or_contains_page_title"
-    ],
-    "weight": 0.6,
-    "notes": "Critical for social sharing of tours and blog posts."
-  },
-  {
-    "case_id": "staging_prod_parity",
+    "case_id": "infra_known_bug_regression",
     "content_type": "infrastructure",
-    "scenario": "Staging and production content must be in sync",
-    "description": "Staging should reflect production content. Any content published in production should exist in staging. No drift between environments causing different build outputs.",
-    "check_items": [
-      "tour_count_equal",
-      "landing_page_count_equal",
-      "blog_post_count_equal",
-      "media_files_synced"
+    "scenario": "Known infrastructure bugs must not regress",
+    "description": "Regression tests for infrastructure bugs fixed in prior sessions. Each test targets a specific root cause.",
+    "regression_tests": [
+      {"id": "draft_status_filter", "description": "Landing page query must not reject draft entries", "forbidden": "_status_filter_rejecting_draft_entries"},
+      {"id": "payload_locked_documents_rels", "description": "New Payload collections must add payload_locked_documents_rels", "forbidden": "missing_payload_locked_documents_rels"},
+      {"id": "field_collisions", "description": "No GraphQL type collisions across content types", "forbidden": "duplicate_field_names_across_types"},
+      {"id": "watchtower_deploy", "description": "Watchtower is monitor-only — deploys go through GH Actions", "forbidden": "relying_on_watchtower"},
+      {"id": "versions_drafts_collisions", "description": "Versions/drafts disabled on pages with known field collisions", "forbidden": "versions_drafts_enabled_on_pages_with_collisions"},
+      {"id": "hero_field_draft", "description": "Hero fields must not be null even when content is draft status", "forbidden": "payload_doc_with_null_treated_as_absent"}
     ],
-    "forbidden_patterns": [
-      "content_in_prod_not_in_staging",
-      "staging_missing_media",
-      "staging_build_differs_from_prod"
-    ],
-    "hard_requirements": [
-      "same_number_of_tours",
-      "all_core_pages_exist_in_both"
-    ],
-    "weight": 0.5,
-    "notes": "CF Pages has staging at separate URL."
+    "min_passed": 5,
+    "weight": 0.9,
+    "notes": "All fixed in prior sessions. Check for regressions on every deploy."
   },
   {
     "case_id": "a11y_basics",
     "content_type": "all",
     "scenario": "Accessibility fundamentals must be met",
-    "description": "Basic accessibility: all images have alt text, heading hierarchy is logical (H1→H2→H3), color contrast meets WCAG AA, form inputs have labels, keyboard navigation works.",
+    "description": "All images must have alt text. Heading hierarchy must be sequential (H1→H2→H3, no skips). Form inputs must have associated labels. Focus order must match visual order. No empty links or buttons.",
     "required_checks": [
       "all_images_have_alt_text",
-      "heading_hierarchy_logical",
+      "no_heading_level_skips",
       "form_inputs_have_labels",
-      "keyboard_navigable"
+      "no_empty_links",
+      "focus_order_matches_visual_order"
     ],
-    "min_checks_passed": 3,
+    "min_checks_passed": 4,
     "forbidden_patterns": [
       "images_without_alt",
       "missing_form_labels",
-      "empty_links",
-      "heading_level_skips"
+      "empty_links_or_buttons",
+      "heading_level_skips",
+      "missing_focus_indicator"
     ],
     "hard_requirements": [
-      "all_hero_images_have_alt_text"
+      "all_hero_images_have_alt_text",
+      "heading_hierarchy_starts_at_h1"
     ],
     "weight": 0.5,
-    "notes": "ADA compliance for tour booking and contact forms."
+    "notes": "Static checks only. Full a11y audit requires screen reader testing."
   },
   {
-    "case_id": "booking_flow_test",
+    "case_id": "booking_flow_integration",
     "content_type": "infrastructure",
     "scenario": "Booking and contact flows must work end-to-end",
-    "description": "Test the full funnel: tour page → CTA → enquiry form → submission. Contact form must submit successfully. Email notifications should be triggered. No 500 errors on form submission.",
+    "description": "HTTP integration test: tour page → CTA → enquiry form → submission → confirmation. Contact form must submit without 500 error. Email notifications trigger. Requires live server — not static file check.",
     "test_flows": [
       "tour_page_cta_clickable",
-      "enquiry_form_submits",
-      "newsletter_signup_works",
-      "contact_form_sends_email"
+      "enquiry_form_submits_without_error",
+      "newsletter_signup_accepts_input",
+      "contact_form_returns_confirmation"
     ],
     "forbidden_patterns": [
       "form_submission_500",
@@ -336,14 +338,16 @@
       "enquiry_form_reaches_backend",
       "cta_links_to_correct_booking_page"
     ],
-    "weight": 0.9,
-    "notes": "Critical path: tour page → enquiry → booking. Broken form = lost revenue."
+    "requires_integration": true,
+    "integration_type": "http_form_submit",
+    "notes": "Critical path: tour page → enquiry → booking. Requires HTTP test harness — runner skips this case in static mode and reports 'needs integration test run'.",
+    "weight": 0.9
   },
   {
     "case_id": "core_web_vitals_budget",
     "content_type": "infrastructure",
     "scenario": "Pages must meet performance budgets",
-    "description": "Astro builds must complete under 5 min. First Contentful Paint < 2.5s. Largest Contentful Paint < 4s. Total page weight < 1.5MB. Cumulative Layout Shift < 0.1.",
+    "description": "Astro builds must complete under 5 min. FCP < 2.5s. LCP < 4s. Page weight < 1.5MB. CLS < 0.1. These metrics require PageSpeed Insights API or Lighthouse CI — cannot be determined from static file checks alone.",
     "budgets": {
       "astro_build_time_seconds": {"max": 300},
       "first_contentful_paint_seconds": {"max": 2.5},
@@ -354,8 +358,10 @@
     },
     "forbidden_patterns": ["build_exceeds_5min", "page_over_2mb"],
     "hard_requirements": ["astro_build_completes", "no_javascript_errors"],
-    "weight": 0.6,
-    "notes": "CF Free plan limits. Build must fit within free tier CI minutes."
+    "requires_external": true,
+    "external_source": "pagespeed_insights_api_or_lighthouse_ci",
+    "notes": "Requires PageSpeed Insights API key + CI integration. Runner skips in static mode. Build-time checks (duration, JS errors) can run locally.",
+    "weight": 0.6
   },
   {
     "case_id": "landing_page_count",
@@ -369,5 +375,45 @@
     "min_count": 60,
     "weight": 0.7,
     "notes": "MS locale routes for all 32 segment landing pages added recently."
+  },
+  {
+    "case_id": "staging_prod_parity",
+    "content_type": "infrastructure",
+    "scenario": "Staging and production content must be in sync",
+    "description": "Staging should reflect production content. Checks tour count, page count, media files across both environments. Requires access to both CF Pages deployments.",
+    "check_items": ["tour_count_equal", "landing_page_count_equal", "blog_post_count_equal", "media_files_synced"],
+    "forbidden_patterns": ["content_in_prod_not_in_staging", "staging_missing_media", "staging_build_differs_from_prod"],
+    "hard_requirements": ["same_number_of_tours", "all_core_pages_exist_in_both"],
+    "requires_cross_env": true,
+    "environments": ["staging", "production"],
+    "notes": "CF Pages staging at separate URL. Runner skips if only one environment accessible.",
+    "weight": 0.5
+  },
+  {
+    "case_id": "benchmark_meta_integrity",
+    "content_type": "meta",
+    "scenario": "The benchmark file itself must be valid",
+    "description": "Meta-validation of the eval benchmark: all case_ids unique, JSON schema valid, weights between 0 and 1, all required fields present, no duplicate descriptions, no orphaned references.",
+    "meta_checks": [
+      "all_case_ids_unique",
+      "valid_json_schema",
+      "weights_in_0_to_1_range",
+      "no_empty_required_fields",
+      "all_case_ids_kebab_case",
+      "case_id_matches_file_naming_pattern"
+    ],
+    "forbidden_patterns": [
+      "duplicate_case_ids",
+      "invalid_json",
+      "weight_outside_range",
+      "missing_hard_requirements_field"
+    ],
+    "hard_requirements": [
+      "all_case_ids_unique",
+      "valid_json",
+      "weights_in_range"
+    ],
+    "weight": 0.3,
+    "notes": "Run this first. If meta-integrity fails, other results are unreliable."
   }
 ]
