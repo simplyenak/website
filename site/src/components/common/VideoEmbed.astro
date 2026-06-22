@@ -1,0 +1,37 @@
+---
+/**
+ * VideoEmbed.astro — YouTube video embed for tour detail pages.
+ * Renders a responsive 16:9 iframe when a YouTube URL is provided.
+ * Safe to render with null/empty url — returns null silently.
+ */
+interface Props {
+  url?: string | null;
+  title?: string;
+}
+
+const { url, title = 'Tour video' } = Astro.props;
+
+// Extract YouTube video ID from various URL formats
+const youtubeRegex = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+const match = url ? String(url).match(youtubeRegex) : null;
+const videoId = match?.[1] || null;
+
+// Validate URL: must be a YouTube URL with a valid 11-char ID
+const isValid = videoId !== null && !url?.includes('watch?v=') === false // handles all youtube.com patterns
+  && videoId !== null;
+// Simpler: just check we got an 11-char ID
+const showVideo = videoId !== null;
+---
+
+{showVideo && (
+  <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg bg-black">
+    <iframe
+      class="absolute inset-0 w-full h-full"
+      src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+      title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+)}
