@@ -2,7 +2,7 @@
   {
     "id": 346,
     "slug": "food-tours-for-families-kuala-lumpur",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Family Food Tours in Kuala Lumpur | Simply Enak",
     "meta_description": "Kid-friendly food tours in KL. Paced for families, engaging for children, delicious for everyone. Book a family food adventure.",
     "hero_title": "Food Tours for Families in Kuala Lumpur",
@@ -43,18 +43,74 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "在吉隆坡的家庭美食游览",
-        "hero_subtitle": "孩子和家长都喜欢的美食之旅",
-        "hero_description": "吉隆坡适合家庭的美食之旅，设有适合所有年龄段的站点。从椰浆饭到煎蕊，我们的路线让孩子们乐在其中，让家长们吃得饱饱的。",
-        "meta_title": "吉隆坡家庭美食之旅| 吉隆坡简单的埃纳克",
-        "meta_description": "吉隆坡适合儿童的美食之旅。适合家庭，适合儿童，适合每个人。预订家庭美食冒险之旅。"
+        "hero_title": "吉隆坡家庭美食之旅",
+        "hero_subtitle": "孩子和大人都爱上的美食之旅",
+        "hero_description": "吉隆坡的亲子美食之旅，精选各个年龄层都适合的站点。从椰浆饭到煎蕊，我们的路线让孩子乐在其中，大人也能吃个尽兴。",
+        "meta_title": "吉隆坡家庭美食之旅 | Simply Enak",
+        "meta_description": "吉隆坡专为亲子打造的美食之旅。节奏轻松，孩子玩得开心，大人吃得满足。立即预订您的家庭美食探险之旅。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Kulinarische Familientouren in Kuala Lumpur",
+        "hero_subtitle": "Food-Touren, die Kindern und Eltern gleichermaßen schmecken",
+        "hero_description": "Familienfreundliche Food-Touren in KL mit Stopps für jedes Alter. Von Nasi Lemak bis Cendol – unsere Routen begeistern Kinder und lassen Eltern genüsslich schlemmen.",
+        "meta_title": "Kulinarische Familientouren in Kuala Lumpur | Simply Enak",
+        "meta_description": "Kinderfreundliche Food-Touren in KL. Entspannt für Familien, spannend für Kinder, köstlich für alle. Bucht euer kulinarisches Familienabenteuer."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos en familia por Kuala Lumpur",
+        "hero_subtitle": "Tours gastronómicos que padres e hijos disfrutan por igual",
+        "hero_description": "Tours gastronómicos para toda la familia en KL con paradas pensadas para todas las edades. Desde nasi lemak hasta cendol, nuestras rutas mantienen a los niños entretenidos y a los padres satisfechos.",
+        "meta_title": "Tours gastronómicos en familia por Kuala Lumpur | Simply Enak",
+        "meta_description": "Tours gastronómicos para niños en KL. Al ritmo de las familias, entretenido para los niños, delicioso para todos. Reserva una aventura gastronómica familiar."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visites gastronomiques en famille à Kuala Lumpur",
+        "hero_subtitle": "Des visites gastronomiques que enfants et parents adorent",
+        "hero_description": "Visites gastronomiques familiales à KL avec des arrêts pour tous les âges. Du nasi lemak au cendol, nos parcours captivent les enfants et régalent les parents.",
+        "meta_title": "Visites gastronomiques familiales à Kuala Lumpur | Simply Enak",
+        "meta_description": "Visites gastronomiques adaptées aux enfants à KL. Un rythme pensé pour les familles, qui amuse les enfants et ravit tout le monde. Réservez votre aventure culinaire en famille."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Familierondleidingen in Kuala Lumpur",
+        "hero_subtitle": "Food Tours Kinderen en ouders genieten allebei",
+        "hero_description": "Gezinsvriendelijke foodtours in KL met stops die geschikt zijn voor alle leeftijden. Van nasi lemak tot cendol, onze routes houden kinderen betrokken en ouders goed gevoed.",
+        "meta_title": "Familierondleidingen in Kuala Lumpur | Gewoon Enak",
+        "meta_description": "Kindvriendelijke culinaire tours in KL. Geschikt voor gezinnen, aantrekkelijk voor kinderen, heerlijk voor iedereen. Boek een gezinsvoedselavontuur."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Куала-Лумпур: Семейные гастрономические туры",
+        "hero_subtitle": "Гастрономические туры, которые нравятся детям и родителям",
+        "hero_description": "Семейные гастрономические туры в КЛ с остановками, подходящими для всех возрастов. Наши маршруты от наси-лемака до цендола помогают детям занять себя, а родителей сыт.",
+        "meta_title": "Семейные гастрономические туры в Куала-Лумпуре | Просто Энак",
+        "meta_description": "Гастрономические туры для детей в КЛ. Динамичный для семей, интересный для детей, вкусный для всех. Закажите семейное гастрономическое приключение."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "クアラルンプールの家族向けグルメツアー",
+        "hero_subtitle": "親子で楽しめるグルメツアー",
+        "hero_description": "KL の家族向けグルメ ツアー。あらゆる年齢層が参加できる立ち寄りスポットがあります。ナシレマからチェンドルまで、私たちのルートはお子様を夢中にさせ、親は十分な食事を提供します。",
+        "meta_title": "クアラルンプールの家族向けグルメツアー |シンプリー・エナク",
+        "meta_description": "KLの子供向けグルメツアー。家族向けのペースで、子供向けの魅力的で、誰にとってもおいしい。家族向けの食の冒険を予約しましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas em família em Kuala Lumpur",
+        "hero_subtitle": "Passeios gastronômicos que crianças e pais gostam",
+        "hero_description": "Passeios gastronômicos para toda a família em KL com paradas que funcionam para todas as idades. Do nasi lemak ao cendol, nossas rotas mantêm as crianças envolvidas e os pais bem alimentados.",
+        "meta_title": "Passeios gastronômicos em família em Kuala Lumpur | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos para crianças em KL. Ritmo para famílias, envolvente para crianças, delicioso para todos. Reserve uma aventura gastronômica em família."
       }
     ]
   },
   {
     "id": 345,
     "slug": "food-tours-for-families-penang",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Family Food Tours in Penang | Simply Enak",
     "meta_description": "Kid-friendly food tours in Penang. Casual hawker dining, street art breaks, and dishes kids love. Book a family food adventure in George Town.",
     "hero_title": "Food Tours for Families in Penang",
@@ -95,18 +151,74 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "在槟城的家庭美食游览",
-        "hero_subtitle": "全家人都会去的乔治城美食之旅",
-        "hero_description": "适合家庭的槟城美食之旅，设有适合儿童和成人的站点。从炒粿条到艾斯红豆，我们的路线让每个人都满意。",
-        "meta_title": "槟城家庭美食之旅| 槟城简单的埃纳克",
-        "meta_description": "槟城适合儿童的美食之旅。休闲小贩餐饮、街头艺术休息以及孩子们喜爱的菜肴。预订乔治城的家庭美食冒险之旅。"
+        "hero_title": "槟城家庭美食之旅",
+        "hero_subtitle": "全家人都爱吃的乔治市美食之旅",
+        "hero_description": "槟城亲子美食之旅，兼具大人小孩都喜欢的停靠点——从炒粿条到红豆冰，我们的路线让全家尽兴。",
+        "meta_title": "槟城家庭美食之旅 | Simply Enak",
+        "meta_description": "槟城亲子美食之旅。自在的小贩美食体验、穿插街头艺术打卡，加上孩子们最爱的地道菜肴。现在就预订乔治市的家庭美食冒险吧。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food Tours für die ganze Familie in Penang",
+        "hero_subtitle": "George Town Food Tours, die der ganzen Familie schmecken",
+        "hero_description": "Familienfreundliche Food Tours in Penang mit Stopps, bei denen Kinder und Erwachsene gleichermaßen auf ihre Kosten kommen. Von Char Kway Teow bis Ais Kacang – hier sind alle begeistert.",
+        "meta_title": "Food Tours für die ganze Familie in Penang | Simply Enak",
+        "meta_description": "Kinderfreundliche Food Tours in Penang. Lockeres Hawker-Essen, Street-Art-Pausen und Gerichte, die Kinder lieben. Buche ein kulinarisches Familienabenteuer in George Town."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos familiares en Penang",
+        "hero_subtitle": "Tours gastronómicos por George Town que toda la familia disfrutará",
+        "hero_description": "Tours gastronómicos familiares en Penang con paradas pensadas para niños y adultos. Desde char kway teow hasta ais kacang, nuestras rutas contentan a todos.",
+        "meta_title": "Tours gastronómicos familiares en Penang | Simply Enak",
+        "meta_description": "Tours gastronómicos infantiles en Penang. Cena informal en puestos callejeros, descansos para ver arte urbano y platos que les encantan a los niños. Reserve una aventura gastronómica familiar en George Town."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Circuits gastronomiques en famille à Penang",
+        "hero_subtitle": "Circuits gastronomiques à George Town dont toute la famille se régalera",
+        "hero_description": "Circuits gastronomiques en famille à Penang avec des étapes qui plaisent aux enfants comme aux adultes. Du char kway teow à l'ais kacang, nos parcours mettent tout le monde d'accord.",
+        "meta_title": "Circuits gastronomiques en famille à Penang | Simply Enak",
+        "meta_description": "Circuits gastronomiques pour enfants à Penang. Street food dans les hawkers, pauses street art et plats que les enfants adorent. Réservez une aventure culinaire en famille à George Town."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Familierondleidingen in Penang",
+        "hero_subtitle": "George Town Food Tours waar het hele gezin van zal eten",
+        "hero_description": "Gezinsvriendelijke culinaire tours in Penang met stops die geschikt zijn voor kinderen en volwassenen. Van char kway teow tot ais kacang, onze routes houden iedereen tevreden.",
+        "meta_title": "Familierondleidingen in Penang | Gewoon Enak",
+        "meta_description": "Kindvriendelijke culinaire tours in Penang. Informeel venterdineren, straatkunstpauzes en gerechten waar kinderen dol op zijn. Boek een gezinsvoedselavontuur in George Town."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Пенанг: Семейные гастрономические туры",
+        "hero_subtitle": "Гастрономические туры Джорджтауна, где будет есть вся семья",
+        "hero_description": "Семейные гастрономические туры на Пенанг с остановками, подходящими для детей и взрослых. Наши маршруты от Чар Квай Теоу до Айс Каканг сделают всех счастливыми.",
+        "meta_title": "Family Food Tours in Penang | Просто Энак",
+        "meta_description": "Детские гастрономические туры на Пенанг. Простые уличные обеды, уличное искусство и блюда, которые нравятся детям. Забронируйте семейное гастрономическое приключение в Джорджтауне."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "ペナン州の家族向けグルメツアー",
+        "hero_subtitle": "家族全員で楽しめるジョージタウングルメツアー",
+        "hero_description": "子供から大人まで楽しめるペナンの家族向けグルメ ツアー。立ち寄りスポットもあります。チャー クウェイ ティオからアイス カチャンまで、私たちのルートは誰もが満足できます。",
+        "meta_title": "ペナンの家族向けグルメツアー |シンプリー・エナク",
+        "meta_description": "ペナンの子供向けグルメツアー。カジュアルな行商人の食事、ストリート アートの休憩、子供たちが大好きな料理。ジョージタウンで家族向けのグルメアドベンチャーを予約しましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas em família em Penang",
+        "hero_subtitle": "Passeios gastronômicos em George Town que toda a família comerá",
+        "hero_description": "Passeios gastronômicos para toda a família em Penang com paradas que funcionam para crianças e adultos. De char kway teow a ais kacang, nossas rotas deixam todos felizes.",
+        "meta_title": "Passeios gastronômicos em família em Penang | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos para crianças em Penang. Jantares casuais em vendedores ambulantes, pausas para arte de rua e pratos que as crianças adoram. Reserve uma aventura gastronômica em família em George Town."
       }
     ]
   },
   {
     "id": 344,
     "slug": "food-tours-for-couples-kuala-lumpur",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Food Tours for Couples in Kuala Lumpur | Simply Enak",
     "meta_description": "Romantic food tours in KL for couples. Private tours available. Share authentic Malaysian flavours with someone special.",
     "hero_title": "Food Tours for Couples in Kuala Lumpur",
@@ -147,18 +259,74 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "在吉隆坡的情侣美食游览",
-        "hero_subtitle": "吉隆坡美食街的约会之夜",
-        "hero_description": "专为吉隆坡情侣设计的美食之旅。与了解这座城市最浪漫美食站的导游一起步行穿过唐人街、甘榜巴鲁和小印度。",
-        "meta_title": "吉隆坡情侣美食之旅| 吉隆坡简单的埃纳克",
-        "meta_description": "适合情侣的吉隆坡浪漫美食之旅。提供私人旅游。与特别的人分享正宗的马来西亚风味。"
+        "hero_title": "吉隆坡情侣美食之旅",
+        "hero_subtitle": "穿行吉隆坡美食街的约会之夜",
+        "hero_description": "专为吉隆坡情侣打造的美食之旅。跟随熟悉城中浪漫美食据点的向导，漫步唐人街、甘榜巴鲁与小印度。",
+        "meta_title": "吉隆坡情侣美食之旅 | Simply Enak",
+        "meta_description": "吉隆坡专属情侣浪漫美食之旅，提供私人导览。与特别的人共享正宗马来西亚风味。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food Tours für Paare in Kuala Lumpur",
+        "hero_subtitle": "Ein Date-Abend durch KLs Food Streets",
+        "hero_description": "Food Tours für Paare in KL. Schlendern Sie durch Chinatown, Kampung Baru und Little India – ein Guide zeigt Ihnen die romantischsten Food-Spots der Stadt.",
+        "meta_title": "Food Tours für Paare in Kuala Lumpur | Simply Enak",
+        "meta_description": "Romantische Food Tours in KL für Paare. Private Touren auf Anfrage. Genießen Sie authentische malaysische Aromen mit jemand Besonderem."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos para parejas en Kuala Lumpur",
+        "hero_subtitle": "Una cita nocturna por los mercadillos gastronómicos de KL",
+        "hero_description": "Tours gastronómicos diseñados para parejas en KL. Recorran Chinatown, Kampung Baru y Little India con un guía que conoce los rincones más románticos para comer en la ciudad.",
+        "meta_title": "Tours gastronómicos para parejas en Kuala Lumpur | Simply Enak",
+        "meta_description": "Tours gastronómicos románticos en KL para parejas. Disponemos de tours privados. Compartan auténticos sabores malasios con alguien especial."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visites gastronomiques en couple à Kuala Lumpur",
+        "hero_subtitle": "Une soirée en amoureux dans les rues gourmandes de KL",
+        "hero_description": "Visites gastronomiques pour les couples à KL. Flânez dans Chinatown, Kampung Baru et Little India avec un guide qui connaît les meilleures adresses romantiques de la ville.",
+        "meta_title": "Visites gastronomiques en couple à Kuala Lumpur | simplement Enak",
+        "meta_description": "Visites gastronomiques romantiques à KL pour les couples. Visites privées disponibles. Partagez des saveurs malaisiennes authentiques avec l'être aimé."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Culinaire tours voor koppels in Kuala Lumpur",
+        "hero_subtitle": "Een date-avond door de eetstraten van KL",
+        "hero_description": "Foodtours ontworpen voor koppels in KL. Loop door Chinatown, Kampung Baru en Little India met een gids die de meest romantische eetstops in de stad kent.",
+        "meta_title": "Culinaire tours voor koppels in Kuala Lumpur | Gewoon Enak",
+        "meta_description": "Romantische foodtours in KL voor koppels. Privérondleidingen beschikbaar. Deel authentieke Maleisische smaken met een speciaal iemand."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Куала-Лумпур: Гастрономические туры для пар",
+        "hero_subtitle": "Свидание на улицах с едой в КЛ",
+        "hero_description": "Гастрономические туры, предназначенные для пар в КЛ. Прогуляйтесь по китайскому кварталу, Кампунг Бару и Маленькой Индии с гидом, который знает самые романтические гастрономические остановки в городе.",
+        "meta_title": "Гастрономические туры для пар в Куала-Лумпуре | Просто Энак",
+        "meta_description": "Романтические гастрономические туры в КЛ для пар. Возможны индивидуальные туры. Поделитесь настоящими малазийскими вкусами с кем-то особенным."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "クアラルンプールのカップル向けグルメ ツアー",
+        "hero_subtitle": "KLのフードストリートを巡るデートナイト",
+        "hero_description": "クアラルンプールのカップル向けのフード ツアー。市内で最もロマンチックなグルメスポットに詳しいガイドと一緒に、チャイナタウン、カンプン バル、リトル インディアを歩きましょう。",
+        "meta_title": "クアラルンプールのカップル向けグルメ ツアー |シンプリー・エナク",
+        "meta_description": "カップル向けのロマンチックなクアラルンプールのグルメツアー。プライベートツアーも可能です。本物のマレーシアの味を特別な人と共有しましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Passeios gastronômicos para casais em Kuala Lumpur",
+        "hero_subtitle": "Uma noite de encontro pelas ruas gastronômicas de KL",
+        "hero_description": "Passeios gastronômicos projetados para casais em KL. Caminhe por Chinatown, Kampung Baru e Little India com um guia que conhece as paradas gastronômicas mais românticas da cidade.",
+        "meta_title": "passeios gastronômicos para casais em Kuala Lumpur | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos românticos em KL para casais. Passeios privados disponíveis. Compartilhe sabores autênticos da Malásia com alguém especial."
       }
     ]
   },
   {
     "id": 343,
     "slug": "food-tours-for-couples-penang",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Food Tours for Couples in Penang | Simply Enak",
     "meta_description": "Romantic food tours in Penang for couples. Evening heritage walks, street food and cocktails, sunset at Chew Jetty. Book an unforgettable date night.",
     "hero_title": "Food Tours for Couples in Penang",
@@ -199,18 +367,74 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "槟城情侣美食游览",
-        "hero_subtitle": "乔治城灯笼，菜肴",
-        "hero_description": "专为槟城情侣设计的美食之旅。与了解这座城市最有气氛的美食站的导游一起漫步在乔治城的传统街道上。",
-        "meta_title": "槟城情侣美食之旅| 槟城简单的埃纳克",
-        "meta_description": "情侣槟城浪漫美食之旅。晚上在古迹散步，品尝街头美食和鸡尾酒，欣赏周码头的日落。预订一个难忘的约会之夜。"
+        "hero_title": "槟城情侣美食之旅",
+        "hero_subtitle": "乔治城灯笼夜色，一巷一味",
+        "hero_description": "专为槟城情侣打造的美食之旅。跟随最懂这座城市的向导，漫步乔治城历史老街，寻访最有氛围的街头美食。",
+        "meta_title": "槟城情侣美食之旅 | Simply Enak",
+        "meta_description": "专为情侣打造的槟城浪漫美食之旅。傍晚漫步历史街区，品尝街头美食与鸡尾酒，在姓周桥欣赏日落。预订一个难忘的约会之夜。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food Tours für Paare in Penang",
+        "hero_subtitle": "George Town im Laternenlicht, Gericht für Gericht",
+        "hero_description": "Food Tours für Paare in Penang. Schlendern Sie mit einem Guide durch George Towns historische Gassen – er kennt die stimmungsvollsten kulinarischen Stationen der Stadt.",
+        "meta_title": "Food Tours für Paare in Penang | Simply Enak",
+        "meta_description": "Romantische Food Tours in Penang für Paare. Abendliche Spaziergänge durch die Altstadt, Streetfood und Cocktails, Sonnenuntergang am Chew Jetty. Buchen Sie einen unvergesslichen Date-Abend."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos para parejas en Penang",
+        "hero_subtitle": "George Town a la luz del farol, plato a plato",
+        "hero_description": "Tours gastronómicos diseñados para parejas en Penang. Recorre las calles históricas de George Town con un guía que conoce los rincones con más ambiente de la ciudad.",
+        "meta_title": "Tours gastronómicos para parejas en Penang | Simply Enak",
+        "meta_description": "Tours gastronómicos románticos en Penang para parejas. Paseos nocturnos por el casco histórico, comida callejera y cócteles, atardecer en Chew Jetty. Reserva una velada inolvidable."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visites gastronomiques en couple à Penang",
+        "hero_subtitle": "George Town à la lanterne, plat par plat",
+        "hero_description": "Visites gastronomiques en couple à Penang. Parcourez les ruelles historiques de George Town avec un guide qui connaît les étapes gourmandes les plus charmantes de la ville.",
+        "meta_title": "Visites gastronomiques en couple à Penang | Simply Enak",
+        "meta_description": "Visites gastronomiques romantiques à Penang en couple. Balades nocturnes dans le vieux George Town, street food et cocktails, coucher de soleil à Chew Jetty. Réservez une soirée inoubliable en amoureux."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Culinaire rondleidingen voor koppels in Penang",
+        "hero_subtitle": "George Town bij Lantern, schotel bij schotel",
+        "hero_description": "Culinaire tours ontworpen voor koppels in Penang. Loop door de erfgoedstraten van George Town met een gids die de meest sfeervolle eetstops in de stad kent.",
+        "meta_title": "Culinaire rondleidingen voor koppels in Penang | Gewoon Enak",
+        "meta_description": "Romantische foodtours in Penang voor koppels. Avondwandelingen over het erfgoed, streetfood en cocktails, zonsondergang bij Chew Jetty. Boek een onvergetelijke date night."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Пенанг: Гастрономические туры для пар",
+        "hero_subtitle": "Джорджтаун у фонаря, блюдо за блюдом",
+        "hero_description": "Гастрономические туры на Пенанг для пар. Прогуляйтесь по историческим улицам Джорджтауна с гидом, который знает самые атмосферные гастрономические остановки в городе.",
+        "meta_title": "Гастрономические туры для пар на Пенанге | Просто Энак",
+        "meta_description": "Романтические гастрономические туры на Пенанг для пар. Вечерние прогулки по наследию, уличная еда и коктейли, закат на пристани Чу. Забронируйте незабываемое свидание."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "ペナン州のカップル向けグルメツアー",
+        "hero_subtitle": "ジョージ タウン バイ ランタン、ディッシュ バイ ディッシュ",
+        "hero_description": "ペナンのカップル向けのグルメツアー。ジョージ タウンの歴史ある通りを、市内で最も雰囲気のあるグルメスポットに詳しいガイドと一緒に歩きましょう。",
+        "meta_title": "ペナンのカップル向けグルメツアー |シンプリー・エナク",
+        "meta_description": "カップルのためのペナンのロマンチックなグルメ ツアー。夜の遺産散策、屋台の食べ物やカクテル、チュー桟橋の夕日。忘れられない夜のデートを予約しましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Passeios gastronômicos para casais em Penang",
+        "hero_subtitle": "George Town por Lanterna, Prato por Prato",
+        "hero_description": "Passeios gastronômicos projetados para casais em Penang. Caminhe pelas ruas históricas de George Town com um guia que conhece as paradas gastronômicas mais atmosféricas da cidade.",
+        "meta_title": "Passeios gastronômicos para casais em Penang | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos românticos em Penang para casais. Passeios noturnos pela herança, comida de rua e coquetéis, pôr do sol no Chew Jetty. Reserve um encontro noturno inesquecível."
       }
     ]
   },
   {
     "id": 342,
     "slug": "food-tours-for-foodies-kuala-lumpur",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Food Tours for Foodies in Kuala Lumpur | Simply Enak",
     "meta_description": "In-depth food tours for serious eaters in KL. Techniques, ingredients, and stories behind every dish with expert local guides.",
     "hero_title": "Food Tours for Foodies in Kuala Lumpur",
@@ -251,18 +475,74 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "吉隆坡美食之旅",
-        "hero_subtitle": "对于旅行吃饭的人",
-        "hero_description": "专为美食家打造的吉隆坡深度美食之旅。从黎明前的湿货市场到午夜的沙爹摊位，这些旅游行程满足了美食爱好者想去的地方。",
-        "meta_title": "吉隆坡美食之旅| 吉隆坡美食之旅简单的埃纳克",
-        "meta_description": "吉隆坡美食深度之旅。由当地专业导游讲解每道菜的技术、食材和背后的故事。"
+        "hero_title": "吉隆坡老饕美食之旅",
+        "hero_subtitle": "为美食而旅行的人",
+        "hero_description": "吉隆坡深度美食之旅，专为真正懂吃的人设计。从清晨的湿巴刹到深夜的沙爹摊，每个站点都是老饕们的心头好。",
+        "meta_title": "吉隆坡美食之旅 | Simply Enak",
+        "meta_description": "吉隆坡深度美食之旅。跟随本地美食向导，深入探索每道菜背后的技法、食材与故事。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food Tours für Feinschmecker in Kuala Lumpur",
+        "hero_subtitle": "Für alle, die zum Essen reisen",
+        "hero_description": "Deep-Dive Food-Touren in KL für echte Genießer. Von Nassmärkten im Morgengrauen bis zu Satay-Ständen um Mitternacht – diese Touren führen genau dorthin, wo Food-Liebhaber hinwollen.",
+        "meta_title": "Food Tours für Feinschmecker in Kuala Lumpur | Simply Enak",
+        "meta_description": "Fundierte Food-Touren für echte Feinschmecker in KL. Techniken, Zutaten und Geschichten hinter jedem Gericht – erzählt von erfahrenen lokalen Guides."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos para foodies en Kuala Lumpur",
+        "hero_subtitle": "Para quienes viajan por la comida",
+        "hero_description": "Tours gastronómicos en profundidad en KL para foodies exigentes. Desde mercados húmedos al amanecer hasta puestos de satay a medianoche, estos tours te llevan adonde todo amante de la comida quiere estar.",
+        "meta_title": "Tours gastronómicos para foodies en Kuala Lumpur | Simply Enak",
+        "meta_description": "Tours gastronómicos en profundidad para foodies en KL. Técnicas, ingredientes e historias detrás de cada plato con guías locales expertos."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Food tours pour gourmets à Kuala Lumpur",
+        "hero_subtitle": "Pour ceux qui voyagent pour manger",
+        "hero_description": "Food tours immersifs à KL pour les passionnés de cuisine. Des wet markets à l'aube aux stands de satay à minuit, ces circuits vous emmènent là où les foodies veulent être.",
+        "meta_title": "Food tours pour gourmets à Kuala Lumpur | Simply Enak",
+        "meta_description": "Food tours approfondis pour passionnés à KL. Techniques, ingrédients et histoires derrière chaque plat, avec des guides locaux experts."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Culinaire rondleidingen voor fijnproevers in Kuala Lumpur",
+        "hero_subtitle": "Voor mensen die reizen om te eten",
+        "hero_description": "Diepgaande foodtours in KL voor serieuze eters. Van natte markten vóór zonsopgang tot satékraampjes om middernacht, deze tours gaan waar voedselobsessieve mensen naartoe willen.",
+        "meta_title": "Culinaire tours voor fijnproevers in Kuala Lumpur | Gewoon Enak",
+        "meta_description": "Diepgaande foodtours voor serieuze eters in KL. Technieken, ingrediënten en verhalen achter elk gerecht met deskundige lokale gidsen."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Куала-Лумпур: Гастрономические туры для гурманов",
+        "hero_subtitle": "Для людей, которые путешествуют, чтобы поесть",
+        "hero_description": "Гастрономические туры в КЛ для любителей поесть. От предрассветных влажных рынков до полуночных сатэйских киосков — эти туры проходят туда, куда хотят пойти одержимые едой.",
+        "meta_title": "Гастрономические туры для гурманов в Куала-Лумпуре | Просто Энак",
+        "meta_description": "Углубленные гастрономические туры для серьезных едоков в КЛ. Техники, ингредиенты и истории каждого блюда с опытными местными гидами."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "クアラルンプールのグルメ ツアー",
+        "hero_subtitle": "食べるために旅行する人のために",
+        "hero_description": "本格的に食べる人のための、クアラルンプールのディープなグルメ ツアー。夜明け前の生鮮市場から真夜中のサテーの屋台まで、これらのツアーは食にこだわる人が行きたい場所へ行きます。",
+        "meta_title": "クアラルンプールの美食家向けフード ツアー |シンプリー・エナク",
+        "meta_description": "クアラルンプールでの本格的なグルメ向けの徹底したグルメ ツアー。専門の地元ガイドとともに、技術、食材、各料理の裏にある物語をご紹介します。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas para gourmets em Kuala Lumpur",
+        "hero_subtitle": "Para pessoas que viajam para comer",
+        "hero_description": "Passeios gastronômicos aprofundados em KL para comedores sérios. Dos mercados úmidos antes do amanhecer às barracas de satay à meia-noite, esses passeios vão aonde os obsessivos por comida querem ir.",
+        "meta_title": "Passeios gastronômicos para gourmets em Kuala Lumpur | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos detalhados para comedores sérios em KL. Técnicas, ingredientes e histórias por trás de cada prato com guias locais especializados."
       }
     ]
   },
   {
     "id": 341,
     "slug": "food-tours-for-foodies-penang",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Food Tours for Foodies in Penang | Simply Enak",
     "meta_description": "In-depth Penang food tours for serious eaters. Third-generation hawker recipes, regional specialties, and hidden gem stalls with expert guides.",
     "hero_title": "Food Tours for Foodies in Penang",
@@ -303,18 +583,74 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "槟城美食之旅",
-        "hero_subtitle": "槟城美食指南",
-        "hero_description": "为美食家提供的槟城深度美食之旅。从早上的湿货市场到午夜的小贩中心，这些旅游线路满足了美食爱好者想去的地方。",
-        "meta_title": "槟城美食之旅| 槟城美食之旅简单的埃纳克",
-        "meta_description": "为美食爱好者提供深入的槟城美食之旅。第三代小贩食谱、地方特色菜以及配有专家导游的隐藏宝石摊位。"
+        "hero_title": "槟城吃货美食之旅",
+        "hero_subtitle": "槟城资深食客指南",
+        "hero_description": "为资深食客打造的槟城深度美食之旅——从清晨的湿巴刹到深夜的小贩中心，只去真正美食爱好者想去的地方。",
+        "meta_title": "槟城美食之旅 | Simply Enak",
+        "meta_description": "专为资深食客设计的槟城深度美食行程：三代传承的小贩秘方、地方特色菜色、隐藏版宝藏摊位，由专家导览带你品味。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Kulinarische Touren für Feinschmecker in Penang",
+        "hero_subtitle": "Penang für anspruchsvolle Esser – Der Guide",
+        "hero_description": "Penang Food-Touren für anspruchsvolle Esser. Von morgendlichen Wet Markets bis zu nächtlichen Hawker Centern – diese Touren führen dorthin, wo Food-Liebhaber hingehen wollen.",
+        "meta_title": "Food-Touren für Feinschmecker in Penang | Simply Enak",
+        "meta_description": "Penang Food-Touren für anspruchsvolle Esser. Hawker-Rezepte der dritten Generation, regionale Spezialitäten und geheime Insider-Stände mit erfahrenen Guides."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos para foodies en Penang",
+        "hero_subtitle": "Guía para sibaritas en Penang",
+        "hero_description": "Tours gastronómicos en profundidad por Penang para sibaritas. Desde wet markets por la mañana hasta hawker centres a medianoche, estos tours llegan a donde los foodies más exigentes quieren ir.",
+        "meta_title": "Tours gastronómicos para foodies en Penang | Simply Enak",
+        "meta_description": "Tours gastronómicos en profundidad por Penang para sibaritas. Recetas de hawkers de tercera generación, especialidades regionales y puestos con joyas ocultas, de la mano de guías expertos."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visites gastronomiques à Penang pour les gourmets",
+        "hero_subtitle": "Le guide des épicuriens à Penang",
+        "hero_description": "Visites culinaires approfondies à Penang pour les vrais gourmets. Des marchés humides au petit matin jusqu'aux hawker centres à minuit, ces circuits vont là où les passionnés de food veulent aller.",
+        "meta_title": "Visites gastronomiques à Penang pour les gourmets | Simply Enak",
+        "meta_description": "Circuits culinaires approfondis à Penang pour les puristes. Recettes de hawkers de troisième génération, spécialités régionales et échoppes méconnues, avec des guides experts."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Eettours voor fijnproevers in Penang",
+        "hero_subtitle": "De serieuze etergids voor Penang",
+        "hero_description": "Diepgaande foodtours in Penang voor serieuze eters. Van natte markten in de ochtend tot middernachtelijke Hawker-centra: deze tours gaan waar voedselobsessieve mensen naartoe willen.",
+        "meta_title": "Culinaire rondleidingen voor fijnproevers in Penang | Gewoon Enak",
+        "meta_description": "Diepgaande Penang-foodtours voor serieuze eters. Venterrecepten van de derde generatie, regionale specialiteiten en kraampjes met verborgen juweeltjes met deskundige gidsen."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Пенанг: Гастрономические туры для гурманов",
+        "hero_subtitle": "Путеводитель по Пенангу для серьезного едока",
+        "hero_description": "Гастрономические туры на Пенанге для тех, кто серьезно ест. От утренних продуктовых рынков до полуночных торговых центров — эти туры проходят туда, куда хотят пойти одержимые едой.",
+        "meta_title": "Food Tours for Foodies in Penang | Просто Энак",
+        "meta_description": "Подробные гастрономические туры по Пенангу для тех, кто серьезно ест. Рецепты уличных торговцев третьего поколения, региональные деликатесы и киоски со скрытыми драгоценностями с опытными гидами."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "ペナン州のグルメ ツアー",
+        "hero_subtitle": "真剣に食べる人のためのペナンガイド",
+        "hero_description": "本格的に食べる人のためのペナンのディープなグルメ ツアー。朝の生鮮市場から深夜のホーカーセンターまで、これらのツアーは食にこだわる人が行きたい場所へ行きます。",
+        "meta_title": "ペナンの美食家のためのグルメツアー |シンプリー・エナク",
+        "meta_description": "本格的に食べる人のための、ペナンの徹底したグルメ ツアー。 3 代目の行商人のレシピ、地元の名物料理、専門ガイド付きの隠れた逸品の屋台。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas para gourmets em Penang",
+        "hero_subtitle": "O Guia do Comedor Sério para Penang",
+        "hero_description": "Passeios gastronômicos aprofundados em Penang para comedores sérios. Dos mercados matinais aos centros de vendedores ambulantes à meia-noite, esses passeios vão aonde os obsessivos por comida querem ir.",
+        "meta_title": "Passeios gastronômicos para gourmets em Penang | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos detalhados em Penang para comedores sérios. Receitas de vendedores ambulantes de terceira geração, especialidades regionais e barracas de joias escondidas com guias especializados."
       }
     ]
   },
   {
     "id": 340,
     "slug": "food-tours-for-chefs",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Food Tours for Chefs & Culinary Professionals | Simply Enak",
     "meta_description": "Market-to-table ingredient tours for chefs in KL. Wet market visits, spice blending demonstrations, and deep dives into Malay, Chinese, and Indian cooking traditions.",
     "hero_title": "Food Tours for Chefs",
@@ -355,18 +691,74 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "厨师和烹饪专业人士的美食之旅",
-        "hero_subtitle": "摊位后面和做饭的人",
-        "hero_description": "专为访问马来西亚的厨师和烹饪专业人士设计的美食之旅。走进摊位后面，与厨师见面，品尝马来西亚美食的烹饪技巧。",
-        "meta_title": "厨师和烹饪专业人士美食之旅|简单的埃纳克",
-        "meta_description": "吉隆坡厨师从市场到餐桌的食材之旅。参观菜市场、香料混合演示，并深入了解马来、中国和印度的烹饪传统。"
+        "hero_title": "专为厨师与餐饮专业人士打造的美食之旅",
+        "hero_subtitle": "走进摊位幕后，与掌勺人面对面",
+        "hero_description": "专为造访马来西亚的厨师与餐饮人士设计的美食之旅。深入摊位幕后，与掌勺人交流，品尝定义马来风味的地道技艺。",
+        "meta_title": "厨师与餐饮专业人士的美食之旅 | Simply Enak",
+        "meta_description": "为吉隆坡厨师打造的市场到餐桌食材之旅——走访湿巴刹、观摩香料调配示范，深入领略马来、中华与印度三大烹饪传统。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food-Touren für Köche und Küchenprofis",
+        "hero_subtitle": "Hinter die Stände – zu den Menschen, die kochen",
+        "hero_description": "Food-Touren für Köche und Küchenprofis in Malaysia: Hinter die Stände, zu den Köchen und zu den Techniken, die Malaysias Küche prägen.",
+        "meta_title": "Food-Touren für Köche und Küchenprofis | Simply Enak",
+        "meta_description": "Market-to-Table-Touren für Köche in KL: Nassmarkt-Besuche, Gewürzmischungen live erleben und tief eintauchen in malaiische, chinesische und indische Kochtraditionen."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos para chefs y profesionales de la cocina",
+        "hero_subtitle": "Detrás de los puestos, con quienes cocinan",
+        "hero_description": "Tours gastronómicos para chefs y profesionales de la cocina que visitan Malasia. Adéntrese tras los puestos, conozca a los cocineros y descubra las técnicas que definen la gastronomía malaya.",
+        "meta_title": "Tours gastronómicos para chefs y profesionales de la cocina | Simply Enak",
+        "meta_description": "Recorridos del mercado a la mesa para chefs en Kuala Lumpur. Visitas a mercados tradicionales, demostraciones de mezcla de especias e inmersión en las tradiciones culinarias malaya, china e india."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visites gastronomiques pour chefs et professionnels de la cuisine",
+        "hero_subtitle": "Derrière les étals avec ceux qui cuisinent",
+        "hero_description": "Des visites gastronomiques pour les chefs et professionnels de la cuisine en visite en Malaisie. Passez derrière les étals, rencontrez les cuisiniers, et découvrez par la dégustation les techniques qui définissent la cuisine malaisienne.",
+        "meta_title": "Visites gastronomiques pour chefs et professionnels de la cuisine | Simply Enak",
+        "meta_description": "Visites du marché à l'assiette pour chefs à KL. Immersion dans les marchés traditionnels, démonstrations de mélanges d'épices, et plongée au cœur des traditions culinaires malaise, chinoise et indienne."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Food Tours voor chef-koks en culinaire professionals",
+        "hero_subtitle": "Achter de kraampjes met de mensen die koken",
+        "hero_description": "Foodtours ontworpen voor chef-koks en culinaire professionals die Maleisië bezoeken. Ga achter de kraampjes staan, ontmoet de koks en proef de technieken die het Maleisische eten definiëren.",
+        "meta_title": "Culinaire tours voor chef-koks en culinaire professionals | Gewoon Enak",
+        "meta_description": "Van markt tot tafel ingrediëntenrondleidingen voor chef-koks in KL. Natte marktbezoeken, demonstraties van het mengen van kruiden en diepe duiken in Maleisische, Chinese en Indiase kooktradities."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономические туры для поваров и кулинаров",
+        "hero_subtitle": "За прилавком с людьми, которые готовят",
+        "hero_description": "Гастрономические туры, предназначенные для поваров и кулинаров, посещающих Малайзию. Зайдите за прилавки, познакомьтесь с поварами и попробуйте методы, которые определяют малазийскую кухню.",
+        "meta_title": "Гастрономические туры для шеф-поваров и кулинаров | Просто Энак",
+        "meta_description": "Туры с ингредиентами для шеф-поваров КЛ. Посещение рынков, демонстрация смешивания специй и глубокое погружение в малайские, китайские и индийские кулинарные традиции."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "シェフや料理専門家向けのグルメ ツアー",
+        "hero_subtitle": "屋台の裏で料理を作る人々と",
+        "hero_description": "マレーシアを訪れるシェフや料理専門家向けに企画されたグルメツアー。屋台の裏に行き、料理人に会って、マレーシア料理の特徴であるテクニックを味わってください。",
+        "meta_title": "シェフと料理専門家のためのグルメツアー |シンプリー・エナク",
+        "meta_description": "クアラルンプールのシェフのための市場から食卓までの食材ツアー。生鮮市場の訪問、スパイスの調合の実演、マレー料理、中華料理、インド料理の伝統を深く掘り下げます。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Tours gastronômicos para chefs e profissionais de culinária",
+        "hero_subtitle": "Atrás das barracas com quem cozinha",
+        "hero_description": "Passeios gastronômicos projetados para chefs e profissionais da culinária que visitam a Malásia. Vá atrás das barracas, conheça os cozinheiros e experimente as técnicas que definem a comida malaia.",
+        "meta_title": "Passeios gastronômicos para chefs e profissionais de culinária | Simplesmente Enak",
+        "meta_description": "Passeios de ingredientes do mercado à mesa para chefs em KL. Visitas ao mercado úmido, demonstrações de mistura de especiarias e mergulhos profundos nas tradições culinárias malaias, chinesas e indianas."
       }
     ]
   },
   {
     "id": 339,
     "slug": "food-tours-for-wedding-groups",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Private Food Tours for Wedding Groups | Simply Enak",
     "meta_description": "Private food tours for wedding parties in KL and Penang. Pre-wedding or post-wedding group dining experiences. Dietary needs accommodated. Book your celebration.",
     "hero_title": "Food Tours for Wedding Groups",
@@ -406,11 +798,67 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "婚礼团体私人美食之旅",
-        "hero_subtitle": "一起庆祝一桌马来西亚美食",
-        "hero_description": "为访问马来西亚的婚礼团体提供私人美食之旅。从彩排晚宴到婚后早午餐，我们打造让您的团队聚集在一起的美食体验。",
-        "meta_title": "婚礼团体私人美食之旅|简单的埃纳克",
-        "meta_description": "吉隆坡和槟城婚礼派对的私人美食之旅。婚前或婚后团体用餐体验。饮食需求得到满足。预订您的庆祝活动。"
+        "hero_title": "为婚礼宾客量身打造的私人美食之旅",
+        "hero_subtitle": "围坐一桌马来西亚美食，共庆美好时光",
+        "hero_description": "为到访马来西亚的婚礼团体打造私人美食之旅。从婚前晚宴到婚后早午餐，我们用美食串联起大家的欢聚时刻。",
+        "meta_title": "婚礼团体私人美食之旅 | Simply Enak",
+        "meta_description": "吉隆坡与槟城的婚礼团体私人美食之旅。无论婚前还是婚后团体聚餐，均可满足特殊饮食需求。即刻预订，庆祝属于你们的好日子。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Private Food-Touren für Hochzeitsgesellschaften",
+        "hero_subtitle": "Feiern Sie gemeinsam an einem Tisch voller malaysischer Köstlichkeiten",
+        "hero_description": "Private Food-Touren für Hochzeitsgesellschaften in Malaysia. Vom Probeessen bis zum Brunch nach der Hochzeit – wir gestalten kulinarische Erlebnisse, die Ihre Gruppe vereinen.",
+        "meta_title": "Private Food-Touren für Hochzeitsgesellschaften | Simply Enak",
+        "meta_description": "Private Food-Touren für Hochzeitsgesellschaften in KL und Penang. Gemeinsames Essen vor oder nach der Hochzeit. Wir berücksichtigen alle Ernährungsbedürfnisse. Buchen Sie jetzt Ihre Feier."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos privados para grupos de boda",
+        "hero_subtitle": "Celebren juntos alrededor de una mesa llena de comida malasia",
+        "hero_description": "Tours gastronómicos privados para grupos de boda que visitan Malasia. Desde cenas de ensayo hasta comidas post-boda, creamos experiencias gastronómicas que unen a todo el grupo.",
+        "meta_title": "Tours gastronómicos privados para grupos de boda | Simply Enak",
+        "meta_description": "Tours gastronómicos privados para celebraciones de boda en KL y Penang. Experiencias gastronómicas grupales antes o después de la boda. Nos adaptamos a cualquier necesidad dietética. Reserva tu celebración."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visites gastronomiques privées pour groupes de mariage",
+        "hero_subtitle": "Célébrez ensemble autour d'une table de plats malaisiens",
+        "hero_description": "Visites gastronomiques privées pour groupes de mariage en Malaisie. Des dîners de répétition aux brunchs post-mariage, nous créons des expériences culinaires qui réunissent votre groupe.",
+        "meta_title": "Visites gastronomiques privées pour groupes de mariage | Simply Enak",
+        "meta_description": "Visites gastronomiques privées pour groupes de mariage à KL et Penang. Expériences culinaires de groupe avant ou après le mariage. Nous nous adaptons à vos besoins alimentaires. Réservez votre fête."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Privérondleidingen voor trouwgroepen",
+        "hero_subtitle": "Vier samen feest aan een tafel vol Maleisisch eten",
+        "hero_description": "Privérondleidingen voor bruiloftsgroepen die Maleisië bezoeken. Van repetitiediners tot brunches na de bruiloft, wij bouwen eetervaringen die uw groep samenbrengen.",
+        "meta_title": "Privérondleidingen voor bruiloftsgroepen | Gewoon Enak",
+        "meta_description": "Privérondleidingen voor huwelijksfeesten in KL en Penang. Groepsdiners vóór of na de bruiloft. Er wordt rekening gehouden met dieetwensen. Boek uw feest."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Частные гастрономические туры для свадебных групп",
+        "hero_subtitle": "Празднуйте вместе за столом, полным малазийских блюд",
+        "hero_description": "Частные гастрономические туры для свадебных групп, посещающих Малайзию. От репетиционных ужинов до послесвадебных бранчей — мы создаем гастрономические впечатления, которые объединят вашу группу.",
+        "meta_title": "Частные гастрономические туры для свадебных групп | Просто Энак",
+        "meta_description": "Частные гастрономические туры для свадебных торжеств в КЛ и Пенанге. Групповые ужины перед свадьбой или после свадьбы. Диетические потребности учтены. Забронируйте свой праздник."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "結婚式のグループ向けのプライベート フード ツアー",
+        "hero_subtitle": "マレーシア料理を並べたテーブルで一緒にお祝いしましょう",
+        "hero_description": "マレーシアを訪れる結婚式のグループのためのプライベートフードツアー。リハーサルディナーから結婚式後のブランチまで、グループを一つにまとめる食の体験を構築します。",
+        "meta_title": "結婚式のグループ向けのプライベート フード ツアー |シンプリー・エナク",
+        "meta_description": "クアラルンプールとペナンでのウェディングパーティーのためのプライベートフードツアー。結婚式前または結婚式後のグループダイニング体験。食事のニーズに対応。お祝いを予約しましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Passeios gastronômicos privados para grupos de casamento",
+        "hero_subtitle": "Comemore juntos em uma mesa cheia de comida malaia",
+        "hero_description": "Passeios gastronômicos privados para grupos de casamento que visitam a Malásia. Desde jantares de ensaio até brunches pós-casamento, construímos experiências gastronômicas que unem o seu grupo.",
+        "meta_title": "Passeios gastronômicos privados para grupos de casamento | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos privados para festas de casamento em KL e Penang. Experiências gastronômicas em grupo antes ou depois do casamento. Necessidades dietéticas atendidas. Reserve sua comemoração."
       }
     ]
   }

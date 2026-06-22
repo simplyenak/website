@@ -2,7 +2,7 @@
   {
     "id": 326,
     "slug": "food-tours-kuala-lumpur",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Kuala Lumpur Food Tours | Simply Enak",
     "meta_description": "Guided food tours in Kuala Lumpur. Visit wet markets, Chinatown hawkers, and hidden speakeasies with local guides.",
     "hero_title": "Kuala Lumpur Food Tours",
@@ -39,20 +39,83 @@
       {
         "languages_code": "zh",
         "hero_title": "吉隆坡美食之旅",
-        "hero_subtitle": "在当地人吃饭的地方吃饭，而不是在旅游指南给您的地方吃饭",
-        "hero_description": "小团步行游览吉隆坡最有风味的街区。从菜市场和唐人街小贩到隐秘的地下酒吧，我们的导游将带您前往家庭经营的摊位，这些摊位几十年来一直在为社区提供食物。",
+        "hero_subtitle": "去当地人吃饭的地方，而不是旅游指南推荐的地方",
+        "hero_description": "小团徒步探索吉隆坡最有味道的街区——从菜市场、唐人街小贩到隐秘的地下酒吧，我们的导游将带您光顾那些几十年如一日、代代相传的家族小摊。",
         "intro_heading": "美食之旅在",
-        "meta_title": "吉隆坡美食之旅|简单的埃纳克",
-        "meta_description": "吉隆坡美食导览之旅。与当地导游一起参观菜市场、唐人街小贩和隐秘的地下酒吧。"
+        "meta_title": "吉隆坡美食之旅 | Simply Enak",
+        "meta_description": "跟随当地导游，探索吉隆坡的菜市场、唐人街小摊和隐秘的地下酒吧。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Kuala Lumpur Food Tours",
+        "hero_subtitle": "Essen, wo die Einheimischen essen – nicht, wo die Reiseführer Sie hinschicken",
+        "hero_description": "Kleingruppen-Touren durch KLs lebendigste Viertel. Von Nassmärkten und Chinatown-Hawkers bis zu versteckten Speakeasies – unsere Guides bringen Sie zu familiengeführten Ständen, die ihre Nachbarschaften seit Jahrzehnten bekochen.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Kuala Lumpur Food Tours | Simply Enak",
+        "meta_description": "Geführte Food Tours in Kuala Lumpur. Erkunden Sie Nassmärkte, Chinatown-Hawkers und versteckte Speakeasies mit lokalen Guides."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours de comida en Kuala Lumpur",
+        "hero_subtitle": "Come donde comen los locales, no donde te mandan las guías",
+        "hero_description": "Recorridos a pie en grupos pequeños por los barrios con más sabor de KL. Desde mercados húmedos y hawkers de Chinatown hasta speakeasies escondidos, nuestros guías te llevan a puestos familiares que llevan décadas dando de comer a sus barrios.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tours de comida en Kuala Lumpur | Simply Enak",
+        "meta_description": "Tours de comida guiados por Kuala Lumpur. Recorre mercados húmedos, hawkers de Chinatown y speakeasies ocultos con guías locales."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Circuit gourmand à Kuala Lumpur",
+        "hero_subtitle": "Mangez comme un local, pas comme un touriste",
+        "hero_description": "Visites à pied en petit groupe dans les quartiers les plus savoureux de Kuala Lumpur. Marchés humides, échoppes de Chinatown et speakeasies confidentiels : nos guides vous font découvrir des échoppes familiales qui nourrissent le quartier depuis des décennies.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Circuit gourmand à Kuala Lumpur | Simply Enak",
+        "meta_description": "Circuits gourmands guidés à Kuala Lumpur. Explorez les marchés humides, les échoppes de Chinatown et les speakeasies cachés avec des guides locaux."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Culinaire rondleidingen in Kuala Lumpur",
+        "hero_subtitle": "Eet waar de lokale bevolking eet, niet waar de reisgidsen je naartoe sturen",
+        "hero_description": "Wandeltochten in kleine groepen door de meest smaakvolle buurten van KL. Van natte markten en straatventers in Chinatown tot verborgen speakeasies, onze gidsen nemen je mee naar kraampjes die door een familie worden beheerd en die hun buurten al tientallen jaren van voedsel voorzien.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Culinaire rondleidingen in Kuala Lumpur | Gewoon Enak",
+        "meta_description": "Begeleide culinaire tours in Kuala Lumpur. Bezoek natte markten, straatventers in Chinatown en verborgen speakeasies met lokale gidsen."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Куала-Лумпур: гастрономические туры",
+        "hero_subtitle": "Ешьте там, где едят местные жители, а не там, где вас направляют путеводители",
+        "hero_description": "Пешеходные экскурсии для небольших групп по самым колоритным районам КЛ. От мокрых рынков и уличных торговцев в китайском квартале до скрытых баров — наши гиды проведут вас по семейным киоскам, которые десятилетиями кормили свои районы.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Куала-Лумпур Гастрономические туры | Просто Энак",
+        "meta_description": "Гастрономические туры в Куала-Лумпуре. Посетите мокрые рынки, уличных торговцев в китайском квартале и скрытые бары с местными гидами."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "クアラルンプールのグルメツアー",
+        "hero_subtitle": "ガイドブックに載っている場所ではなく、地元の人が食べる場所で食べる",
+        "hero_description": "クアラルンプールの最も風味豊かな地区を巡る少人数グループのウォーキング ツアーです。生鮮市場やチャイナタウンの行商人から隠れた隠れ酒場まで、私たちのガイドは、何十年もの間近所に食べ物を提供してきた家族経営の屋台にあなたを連れて行きます。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "クアラルンプールのグルメツアー |シンプリー・エナク",
+        "meta_description": "クアラルンプールのガイド付きグルメ ツアー。地元のガイドと一緒に、生鮮市場、チャイナタウンの行商人、隠れた密酒店を訪れましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas em Kuala Lumpur",
+        "hero_subtitle": "Coma onde os locais comem, não onde os guias lhe enviam",
+        "hero_description": "Passeios a pé em pequenos grupos pelos bairros mais saborosos de KL. De mercados úmidos e vendedores ambulantes de Chinatown a bares clandestinos escondidos, nossos guias levam você a barracas familiares que alimentam seus bairros há décadas.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Passeios gastronômicos em Kuala Lumpur | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos guiados em Kuala Lumpur. Visite mercados úmidos, vendedores ambulantes de Chinatown e bares clandestinos escondidos com guias locais."
       }
     ]
   },
   {
     "id": 325,
     "slug": "food-tours-penang",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Penang Food Tours | Simply Enak",
-    "meta_description": "Guided food tours in Penang. Taste Asia's best street food in George Town with local guides who know every stall.",
+    "meta_description": "Penang is Asia's street food capital. Taste the original char koay teow, unforgettable Assam Laksa, and Penang-exclusive dishes on guided food tours with local experts.",
     "hero_title": "Penang Food Tours",
     "hero_subtitle": "",
     "hero_description": "Penang has one of Asia's most diverse food scenes. Malay, Chinese, and Indian traditions overlap on every street. Our tours take you to the stalls where locals actually eat.",
@@ -61,7 +124,7 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "location_name": "Penang Food Tours",
-    "intro_heading": "Food tours  in penang",
+    "intro_heading": "The Street Food Capital of Asia",
     "intro_content": "",
     "travel_tips_heading": "",
     "travel_tips": [],
@@ -87,18 +150,81 @@
       {
         "languages_code": "zh",
         "hero_title": "槟城美食之旅",
-        "hero_subtitle": "亚洲街头小吃之都，做得对",
-        "hero_description": "在导游的带领下游览乔治市的传统街道和槟城最好的小贩摊位。在摊主 30 多年来不断完善单一菜肴的地方品尝炒粿条、亚参叻沙和煎蕊。",
+        "hero_subtitle": "亚洲街头美食之都，实至名归",
+        "hero_description": "跟随导游漫步乔治市老街，探访槟城最地道的小贩摊位。在那些三十多年如一日专注一道菜肴的摊位上，品尝炒粿条、亚参叻沙和煎蕊。",
         "intro_heading": "美食之旅在",
-        "meta_title": "槟城美食之旅|简单的埃纳克",
-        "meta_description": "槟城美食导览之旅。在熟悉每个摊位的当地导游的带领下，在乔治城品尝亚洲最好的街头美食。"
+        "meta_title": "槟城美食之旅 | Simply Enak",
+        "meta_description": "槟城美食之旅——由熟悉每一家摊位的当地导游带你品尝亚洲最棒的街头美食。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Penang Food Tours",
+        "hero_subtitle": "Asiens Streetfood-Hauptstadt – richtig gemacht",
+        "hero_description": "Geführte Food-Touren durch George Towns historische Gassen und zu den besten Hawker-Ständen in Penang. Probieren Sie Char Kway Teow, Assam Laksa und Cendol an den Ständen, an denen Hawker seit über 30 Jahren ein einziges Gericht perfektionieren.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Penang Food Tours | Simply Enak",
+        "meta_description": "Geführte Food-Touren in Penang. Probieren Sie Asiens bestes Streetfood in George Town mit lokalen Guides, die jeden Hawker-Stand kennen."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos por Penang",
+        "hero_subtitle": "La capital asiática de la comida callejera, como debe ser",
+        "hero_description": "Tours gastronómicos guiados por las calles históricas de George Town y los mejores puestos callejeros de Penang. Pruebe el char kway teow, el assam laksa y el cendol en los mismos sitios donde los cocineros llevan más de 30 años perfeccionando un solo plato.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tours gastronómicos por Penang | Simplemente Enak",
+        "meta_description": "Tours gastronómicos guiados en Penang. Pruebe la mejor comida callejera de Asia en George Town con guías locales que conocen cada puesto."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visites gastronomiques de Penang",
+        "hero_subtitle": "La capitale asiatique de la cuisine de rue, comme il se doit",
+        "hero_description": "Visites guidées dans les ruelles historiques de George Town sur les traces des meilleurs hawkers de Penang. Dégustez char kway teow, assam laksa et cendol là où les mêmes tenanciers perfectionnent leur plat unique depuis plus de 30 ans.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visites gastronomiques de Penang | Simply Enak",
+        "meta_description": "Visites guidées à Penang. Découvrez la meilleure cuisine de rue d'Asie à George Town avec des guides locaux qui connaissent chaque stand."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Penang-voedselrondleidingen",
+        "hero_subtitle": "De straatvoedselhoofdstad van Azië, goed gedaan",
+        "hero_description": "Begeleide culinaire rondleidingen door de historische straten van George Town en de beste kraampjes van Penang. Proef char kway teow, assam laksa en cendol op de plekken waar kraamhouders al meer dan 30 jaar één gerecht perfectioneren.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Penang-foodtours | Gewoon Enak",
+        "meta_description": "Begeleide culinaire tours in Penang. Proef het beste straatvoedsel van Azië in George Town met lokale gidsen die elk kraampje kennen."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономические туры на Пенанг",
+        "hero_subtitle": "Азиатская столица уличной еды, сделанная правильно",
+        "hero_description": "Гастрономические туры с гидом по историческим улицам Джорджтауна и лучшим лоткам Пенанга. Попробуйте чар куэй теоу, ассам лаксу и сендол в тех местах, где владельцы ларьков совершенствуют одно блюдо уже более 30 лет.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономические туры Пенанга | Просто Энак",
+        "meta_description": "Гастрономические туры на Пенанге. Попробуйте лучшую уличную еду Азии в Джорджтауне с местными гидами, которые знают каждый ларек."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "ペナングルメツアー",
+        "hero_subtitle": "アジアの屋台の首都、正しく行われています",
+        "hero_description": "ジョージ タウンの歴史的な通りやペナンで最高の行商人の屋台を巡るガイド付きグルメ ツアー。屋台の店主が 30 年以上にわたって 1 つの料理を完成させてきた場所で、チャー クウェイ ティオ、アッサム ラクサ、チェンドルを味わってください。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "ペナングルメツアー |シンプリー・エナク",
+        "meta_description": "ペナンのガイド付きグルメ ツアー。あらゆる屋台に精通した地元ガイドと一緒に、ジョージ タウンでアジア最高の屋台料理を味わいましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas em Penang",
+        "hero_subtitle": "A capital da comida de rua da Ásia, bem feita",
+        "hero_description": "Passeios gastronômicos guiados pelas ruas históricas de George Town e pelas melhores barracas de vendedores ambulantes de Penang. Prove char kway teow, assam laksa e cendol nos locais onde os feirantes aperfeiçoam um único prato há mais de 30 anos.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Passeios gastronômicos em Penang | Simplesmente Enak",
+        "meta_description": "Passeios gastronômicos guiados em Penang. Prove a melhor comida de rua da Ásia em George Town com guias locais que conhecem todas as barracas."
       }
     ]
   },
   {
     "id": 324,
     "slug": "food-tours-melaka",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Melaka Food Tours | Simply Enak",
     "meta_description": "Discover Melaka's unique Peranakan and Portuguese-Eurasian cuisine. Taste Nyonya laksa, chicken rice balls, and otak-otak on Jonker Street.",
     "hero_title": "Melaka Food Tours",
@@ -135,18 +261,81 @@
       {
         "languages_code": "zh",
         "hero_title": "马六甲美食之旅",
-        "hero_subtitle": "每道菜都有 600 年的融合美食",
-        "hero_description": "在导游的带领下穿越马六甲联合国教科文组织遗产街道，品尝土生华人（娘惹）美食、葡萄牙-欧亚魔鬼咖喱和马来甘榜食谱。这是世界上第一道融合美食，至今仍由创造它的家庭烹制。",
+        "hero_subtitle": "六百年的融合风味，尽在每一道菜中",
+        "hero_description": "跟随美食导览漫步马六甲联合国教科文组织世界遗产街区，品尝土生华人（娘惹）菜、葡式欧亚魔鬼咖喱和马来甘榜家常菜。这是世界上最早的融合料理，至今仍由创始家族亲手烹制。",
         "intro_heading": "美食之旅在",
-        "meta_title": "马六甲美食之旅|简单的埃纳克",
-        "meta_description": "探索马六甲独特的土生华人和葡萄牙-欧亚美食。在鸡场街 (Jonker Street) 品尝娘惹叻沙、鸡肉饭团和乌达乌达 (otak-otak)。"
+        "meta_title": "马六甲美食之旅 | Simply Enak",
+        "meta_description": "探索马六甲独特的土生华人和葡式欧亚美食。在鸡场街（Jonker Street）品尝娘惹叻沙、鸡饭团和 otak-otak。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food-Touren in Melaka",
+        "hero_subtitle": "600 Jahre Fusionsküche auf jedem Teller",
+        "hero_description": "Probieren Sie Peranakan-Küche (Nyonya), portugiesisch-eurasisches Devil's Curry und malaiische Kampung-Rezepte auf einer geführten Food-Tour durch Melakas UNESCO-Weltkulturerbe-Straßen. Es ist die erste Fusionsküche der Welt – noch immer gekocht von den Familien, die sie erfunden haben.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Food-Touren in Melaka | Simply Enak",
+        "meta_description": "Entdecken Sie Melakas einzigartige Peranakan- und portugiesisch-eurasische Küche. Probieren Sie Nyonya Laksa, Hähnchen-Reisbällchen und Otak-Otak in der Jonker Street."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Rutas gastronómicas por Melaka",
+        "hero_subtitle": "600 años de cocina de fusión en cada plato",
+        "hero_description": "Pruebe la cocina Peranakan (Nyonya), el curry devil portugués-eurasiático y las recetas kampung malayas en un recorrido gastronómico por las calles históricas de Melaka, Patrimonio de la Humanidad. Esta es la primera cocina de fusión del mundo, aún preparada por las familias que la crearon.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Rutas gastronómicas por Melaka | Simply Enak",
+        "meta_description": "Descubra la singular cocina Peranakan y portuguesa-eurasiática de Melaka. Pruebe el laksa Nyonya, las bolas de arroz con pollo y el otak-otak en Jonker Street."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Découverte culinaire de Melaka",
+        "hero_subtitle": "600 ans de cuisine fusion dans chaque assiette",
+        "hero_description": "Découvrez la cuisine peranakan (nyonya), le curry diable portugais-eurasien et les recettes de kampung malais lors d'une visite guidée dans les ruelles classées à l'UNESCO de Melaka. C'est la première cuisine fusion au monde, toujours préparée par les familles qui l'ont inventée.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visites gastronomiques de Melaka | Simply Enak",
+        "meta_description": "Découvrez l'unique cuisine peranakan et portugaise-eurasienne de Melaka. Goûtez au laksa nyonya, aux boulettes de riz poulet et à l'otak-otak sur Jonker Street."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Culinaire rondleidingen door Melaka",
+        "hero_subtitle": "600 jaar fusionkeuken op elk bord",
+        "hero_description": "Proef de Peranakan-keuken (Nyonya), Portugees-Euraziatische duivelscurry en Maleisische kampung-recepten tijdens een begeleide culinaire tour door de UNESCO-erfgoedstraten van Melaka. Dit is 's werelds eerste fusionkeuken, nog steeds bereid door de families die deze hebben gecreëerd.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Melaka-eettours | Gewoon Enak",
+        "meta_description": "Ontdek de unieke Peranakaanse en Portugees-Euraziatische keuken van Melaka. Proef Nyonya laksa, kiprijstballetjes en otak-otak in Jonker Street."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономические туры в Мелакку",
+        "hero_subtitle": "600 лет кухни фьюжн на каждой тарелке",
+        "hero_description": "Попробуйте кухню Перанакана (Ньонья), карри португальско-евразийского дьявола и малайские рецепты кампунга во время гастрономической экскурсии по улицам Малакки, внесенным в список наследия ЮНЕСКО. Это первая в мире кухня фьюжн, которую до сих пор готовят семьи, создавшие ее.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономические туры в Мелакку | Просто Энак",
+        "meta_description": "Откройте для себя уникальную перанаканскую и португальско-евразийскую кухню Малакки. Попробуйте ньонья лакса, куриные рисовые шарики и отак-отак на улице Джонкер."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "マラッカグルメツアー",
+        "hero_subtitle": "600 年にわたるフュージョン料理をすべての皿に盛り込む",
+        "hero_description": "マラッカのユネスコ世界遺産の通りを巡るガイド付きグルメ ツアーで、プラナカン (ニョニャ) 料理、ポルトガル・ユーラシア風悪魔のカレー、マレーのカンポンのレシピを味わいましょう。これは世界初のフュージョン料理で、今でもその料理を作った家族によって調理されています。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "マラッカのグルメツアー |シンプリー・エナク",
+        "meta_description": "マラッカのユニークなプラナカン料理とポルトガル・ユーラシア料理を満喫してください。ジョンカー ストリートでニョニャ ラクサ、チキン おにぎり、オタクオタクを味わってください。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Passeios gastronômicos em Malaca",
+        "hero_subtitle": "600 anos de cozinha de fusão em todos os pratos",
+        "hero_description": "Prove a culinária Peranakan (Nyonya), o curry do diabo luso-eurasiático e as receitas malaias de kampung em uma excursão gastronômica guiada pelas ruas tombadas pela UNESCO em Melaka. Esta é a primeira cozinha de fusão do mundo, ainda preparada pelas famílias que a criaram.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Passeios gastronômicos em Malaca | Simplesmente Enak",
+        "meta_description": "Descubra a culinária peranakan e luso-eurasiática única de Melaka. Prove Nyonya laksa, bolinhos de arroz com frango e otak-otak na Jonker Street."
       }
     ]
   },
   {
     "id": 323,
     "slug": "food-tours-ipoh",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Ipoh Food Tours | Simply Enak",
     "meta_description": "Explore Ipoh's famous white coffee, bean sprout chicken, and old-town kopitiams. Taste Ipoh hor fun, nasi ganja, and Hakka mee.",
     "hero_title": "Ipoh Food Tours",
@@ -183,18 +372,81 @@
       {
         "languages_code": "zh",
         "hero_title": "怡保美食之旅",
-        "hero_subtitle": "马来西亚中餐还是50年前的味道",
-        "hero_description": "探索怡保著名的白咖啡、豆芽鸡和老城区的咖啡店。我们的行程将带您参观客家家庭餐馆和咖喱面摊，这些摊位世代相传，以同样的方式烹饪。",
+        "hero_subtitle": "马来西亚华人美食，还是50年前的老味道",
+        "hero_description": "探索怡保著名的白咖啡、豆芽鸡和老城茶室。我们的行程将带您走进客家小馆和咖喱面摊，这些老店代代传承，古早风味始终如一。",
         "intro_heading": "美食之旅在",
-        "meta_title": "怡保美食之旅 |简单的埃纳克",
-        "meta_description": "探索怡保著名的白咖啡、豆芽鸡和老城区的咖啡店。品尝怡保河粉、椰浆饭和客家面。"
+        "meta_title": "怡保美食之旅 | Simply Enak",
+        "meta_description": "探索怡保著名的白咖啡、豆芽鸡和老城茶室。品尝怡保河粉、nasi ganja和客家面。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Ipoh Food Tours",
+        "hero_subtitle": "Malaysisch-chinesisches Essen, wie es vor 50 Jahren geschmeckt hat",
+        "hero_description": "Entdecken Sie Ipohs berühmten weißen Kaffee, Bean Sprout Chicken und traditionelle Altstadt-Kopitiams. Unsere Touren führen Sie zu Hakka-Familienrestaurants und Curry-Mee-Ständen, die seit Generationen nach den gleichen Rezepten kochen.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Ipoh Food Tours | Simply Enak",
+        "meta_description": "Entdecken Sie Ipohs berühmten weißen Kaffee, Bean Sprout Chicken und traditionelle Altstadt-Kopitiams. Probieren Sie Ipoh Hor Fun, Nasi Ganja und Hakka Mee."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos por Ipoh",
+        "hero_subtitle": "La comida china de Malasia, como se comía hace 50 años",
+        "hero_description": "Explore el famoso white coffee, el bean sprout chicken y los kopitiams del casco antiguo de Ipoh. Nuestros tours lo llevarán a restaurantes familiares hakka y puestos de curry mee que llevan cocinando igual desde hace generaciones.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tours gastronómicos por Ipoh | Simply Enak",
+        "meta_description": "Explore el famoso white coffee, el bean sprout chicken y los kopitiams del casco antiguo de Ipoh. Pruebe Ipoh hor fun, nasi ganja y Hakka mee."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Circuits gastronomiques à Ipoh",
+        "hero_subtitle": "La cuisine chinoise malaisienne, comme il y a 50 ans",
+        "hero_description": "Découvrez le célèbre café blanc d'Ipoh, le poulet aux pousses de soja et les kopitiams de la vieille ville. Nos circuits vous emmènent dans les échoppes familiales hakkas et les étals de curry mee qui perpétuent la même recette depuis des générations.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Circuits gastronomiques à Ipoh | Simply Enak",
+        "meta_description": "Découvrez le célèbre café blanc d'Ipoh, le poulet aux pousses de soja et les kopitiams de la vieille ville. Goûtez l'Ipoh hor fun, le nasi ganja et le Hakka mee."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Ipoh-foodtours",
+        "hero_subtitle": "Maleisisch Chinees eten zoals het 50 jaar geleden smaakte",
+        "hero_description": "Ontdek de beroemde witte koffie van Ipoh, kip met taugé en kopitiams uit de oude stad. Onze rondleidingen nemen je mee naar de eetgelegenheden van de familie Hakka en curry-mee-kraampjes waar al generaties lang op dezelfde manier wordt gekookt.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Ipoh-foodtours | Gewoon Enak",
+        "meta_description": "Ontdek de beroemde witte koffie van Ipoh, kip met taugé en kopitiams uit de oude stad. Proef Ipoh hor fun, nasi ganja en Hakka mee."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Ипох: гастрономические туры",
+        "hero_subtitle": "Малайзийская китайская еда такой, какой она была 50 лет назад",
+        "hero_description": "Исследуйте знаменитый белый кофе Ипоха, курицу из ростков фасоли и копитиамы старого города. Наши туры приведут вас в семейные закусочные Хакка и киоски с карри-ми, где на протяжении поколений готовят одинаково.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Ипох Гастрономические туры | Просто Энак",
+        "meta_description": "Исследуйте знаменитый белый кофе Ипоха, курицу из ростков фасоли и копитиамы старого города. Попробуйте Ипох хор-фан, наси-ганджа и хакка-ми."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "イポーのグルメツアー",
+        "hero_subtitle": "50年前の味のマレーシア中華料理",
+        "hero_description": "イポーの有名なホワイト コーヒー、もやしチキン、旧市街のコピティアムを探索しましょう。私たちのツアーでは、何世代にもわたって同じ方法で調理してきた客家の家庭料理店やカレーミーの屋台を訪れます。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "イポーのグルメツアー |シンプリー・エナク",
+        "meta_description": "イポーの有名なホワイト コーヒー、もやしチキン、旧市街のコピティアムを探索しましょう。イポーのホル ファン、ナシ ガンジャ、ハッカ ミーを味わってください。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas em Ipoh",
+        "hero_subtitle": "Comida chinesa da Malásia como era saborosa há 50 anos",
+        "hero_description": "Explore o famoso café branco de Ipoh, o frango com broto de feijão e os kopitiams da cidade velha. Nossos passeios levam você aos restaurantes da família Hakka e às barracas de curry mee que cozinham da mesma maneira há gerações.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Passeios gastronômicos em Ipoh | Simplesmente Enak",
+        "meta_description": "Explore o famoso café branco de Ipoh, o frango com broto de feijão e os kopitiams da cidade velha. Prove Ipoh hor fun, nasi ganja e Hakka mee."
       }
     ]
   },
   {
     "id": 322,
     "slug": "food-tours-klang",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Klang Food Tours | Simply Enak",
     "meta_description": "Discover Klang's famous bak kut teh and Hokkien culinary heritage. Taste Klang Hokkien mee, seafood, and banana leaf rice.",
     "hero_title": "Klang Food Tours",
@@ -232,17 +484,80 @@
         "languages_code": "zh",
         "hero_title": "巴生美食之旅",
         "hero_subtitle": "肉骨茶的发源地",
-        "hero_description": "探索巴生著名的肉骨茶和闽南烹饪传统。品尝巴生客家菜、海鲜和浓郁的排骨汤，使这座港口城市成为当地人驱车一小时就餐的美食目的地。",
+        "hero_description": "探索巴生最负盛名的肉骨茶与福建美食文化。品尝巴生客家菜、海鲜和那碗香气浓郁的肉骨茶——正是这道美味，让这座港口城市成为老饕们驱车一小时也要专程造访的美食圣地。",
         "intro_heading": "美食之旅在",
-        "meta_title": "巴生美食之旅 |简单的埃纳克",
-        "meta_description": "探索巴生著名的肉骨茶和福建烹饪传统。品尝巴生福建面、海鲜和蕉叶饭。"
+        "meta_title": "巴生美食之旅 | Simply Enak",
+        "meta_description": "探索巴生最负盛名的肉骨茶与福建美食传统。品尝地道的巴生福建面、海鲜和蕉叶饭。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Klang Food Touren",
+        "hero_subtitle": "Die Heimat des Bak Kut Teh",
+        "hero_description": "Entdecken Sie Klangs berühmtes Bak Kut Teh und die kulinarische Tradition der Hokkien. Genießen Sie Hakka-Spezialitäten aus Klang, Meeresfrüchte und die reichhaltige Schweinerippchensuppe, die aus dieser Hafenstadt ein Paradies für Feinschmecker gemacht hat – Einheimische fahren dafür gerne eine Stunde.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Klang Food Touren | Simply Enak",
+        "meta_description": "Entdecken Sie Klangs berühmtes Bak Kut Teh und das kulinarische Erbe der Hokkien. Probieren Sie Klang Hokkien Mee, Meeresfrüchte und Bananenblattreis."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tours gastronómicos por Klang",
+        "hero_subtitle": "La cuna del Bak Kut Teh",
+        "hero_description": "Descubra el famoso bak kut teh de Klang y la herencia culinaria hokkien. Pruebe la comida hakka de Klang, los mariscos y la rica sopa de costillas de cerdo que convirtieron a esta ciudad portuaria en un destino gastronómico al que los lugareños manejan una hora solo por venir a comer.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tours gastronómicos por Klang | Simplemente Enak",
+        "meta_description": "Descubra el famoso bak kut teh de Klang y la herencia culinaria hokkien. Pruebe el Hokkien mee de Klang, los mariscos y el arroz en hoja de plátano."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Klang Food Tours",
+        "hero_subtitle": "Le berceau du Bak Kut Teh",
+        "hero_description": "Découvrez le célèbre Bak Kut Teh de Klang et l'héritage culinaire hokkien. Savourez la cuisine hakka de Klang, les fruits de mer et la riche soupe de côtes de porc qui ont fait de cette ville portuaire une destination gastronomique — les habitants n'hésitent pas à parcourir une heure de route pour venir y manger.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Klang Food Tours | Simplement Enak",
+        "meta_description": "Découvrez le célèbre Bak Kut Teh de Klang et l'héritage culinaire hokkien. Goûtez au Hokkien Mee de Klang, aux fruits de mer et au riz aux feuilles de bananier."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Klang-foodtours",
+        "hero_subtitle": "De geboorteplaats van Bak Kut Teh",
+        "hero_description": "Ontdek Klang's beroemde bak kut teh en het culinaire erfgoed van Hokkian. Proef Klang Hakka-gerechten, zeevruchten en de rijke varkensribsoep die deze havenstad tot een eetbestemming maakte voor de lokale bevolking die een uur rijdt om hier te eten.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Klang-foodtours | Gewoon Enak",
+        "meta_description": "Ontdek Klang's beroemde bak kut teh en het culinaire erfgoed van Hokkien. Proef Klang Hokkien mee, zeevruchten en bananenbladrijst."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Кланг Гастрономические туры",
+        "hero_subtitle": "Место рождения Бак Кут Тех",
+        "hero_description": "Откройте для себя знаменитый баккут Кланга и кулинарное наследие Хокки. Попробуйте еду Кланг Хакка, морепродукты и насыщенный суп из свиных ребрышек, которые сделали этот портовый город местом питания для местных жителей, которые приезжают сюда на час, чтобы поесть.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Кланг Гастрономические туры | Просто Энак",
+        "meta_description": "Откройте для себя знаменитый баккут Кланга и кулинарное наследие Хоккиена. Попробуйте клан хоккиен ми, морепродукты и рис с банановыми листьями."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "クラングルメツアー",
+        "hero_subtitle": "バクテー発祥の地",
+        "hero_description": "クランの有名なバクテーとホッキ料理の伝統を発見してください。クラン客家料理、シーフード、濃厚な豚カルビのスープを味わってください。この港町を、ここで食べるためだけに車で 1 時間も車で来る地元の人々のグルメ目的地にしました。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "クラン フード ツアー |シンプリー・エナク",
+        "meta_description": "クランの有名なバクテーと福建料理の伝統を発見してください。クラン ホッケン ミー、シーフード、バナナ リーフ ライスを味わってください。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursões gastronômicas em Klang",
+        "hero_subtitle": "O local de nascimento de Bak Kut Teh",
+        "hero_description": "Descubra o famoso bak kut teh de Klang e a herança culinária hokkiana. Prove a comida Klang Hakka, frutos do mar e a rica sopa de costela de porco que fez desta cidade portuária um destino gastronômico para os moradores locais que dirigem uma hora só para comer aqui.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Passeios gastronômicos em Klang | Simplesmente Enak",
+        "meta_description": "Descubra o famoso bak kut teh de Klang e a herança culinária de Hokkien. Prove Klang Hokkien mee, frutos do mar e arroz de folhas de bananeira."
       }
     ]
   },
   {
     "id": 321,
     "slug": "chow-kit-market-food-tour",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Chow Kit Market Food Tour | Simply Enak",
     "meta_description": "Explore KL's oldest wet market. Taste nasi lemak, fried banana, and teh tarik at the heart of Malay food culture.",
     "hero_title": "Chow Kit Market Food Tours",
@@ -278,19 +593,82 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "邱奇市场美食之旅",
-        "hero_subtitle": "吉隆坡最古老的农贸市场，人潮涌动",
-        "hero_description": "探索吉隆坡最古老、最正宗的农贸市场。黎明前，在市场摊贩吃早餐的摊位上品尝椰浆饭、炸香蕉和拉茶。这才是真正的吉隆坡，不是旅游指南上的版本。",
+        "hero_title": "秋杰巴刹美食之旅",
+        "hero_subtitle": "吉隆坡最古老巴刹，趁早探访人潮未至的清晨",
+        "hero_description": "探索吉隆坡最古老、最地道的巴刹。在摊贩们天亮前光顾的档口，尝尝椰浆饭、炸香蕉和拉茶。这才是真实的吉隆坡，不是旅游书里写的那种。",
         "intro_heading": "美食之旅在",
-        "meta_title": "邱奇市场美食之旅|简单的埃纳克",
-        "meta_description": "探索吉隆坡最古老的湿市场。品尝马来风味的椰浆饭、炸香蕉和拉茶。"
+        "meta_title": "秋杰巴刹美食之旅 | Simply Enak",
+        "meta_description": "走进吉隆坡最古老的巴刹，在马来美食文化的心脏地带品尝椰浆饭、炸香蕉和拉茶。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Chow Kit Market Food Tour",
+        "hero_subtitle": "KLs ältester Nassmarkt, bevor die Massen kommen",
+        "hero_description": "Erkunden Sie KLs ältesten und authentischsten Nassmarkt. Probieren Sie Nasi Lemak, gebratene Bananen und Teh Tarik an den Ständen, an denen die Marktverkäufer vor Sonnenaufgang frühstücken. Das ist das echte Kuala Lumpur, nicht die Version aus dem Reiseführer.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Chow Kit Market Food Tour | Simply Enak",
+        "meta_description": "Entdecken Sie KLs ältesten Nassmarkt. Probieren Sie Nasi Lemak, gebratene Bananen und Teh Tarik – mitten im Herzen der malaysischen Esskultur."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico por el mercado de Chow Kit",
+        "hero_subtitle": "El mercado húmedo más antiguo de Kuala Lumpur, antes de que lleguen las multitudes",
+        "hero_description": "Explore el mercado húmedo más antiguo y auténtico de KL. Pruebe nasi lemak, plátano frito y teh tarik en los puestos donde desayunan los vendedores antes del amanecer. Esta es la Kuala Lumpur de verdad, no la de las guías turísticas.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico por el mercado de Chow Kit | Simply Enak",
+        "meta_description": "Explore el mercado húmedo más antiguo de KL. Pruebe nasi lemak, plátano frito y teh tarik en el corazón de la cultura gastronómica malaya."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visite gastronomique du marché Chow Kit",
+        "hero_subtitle": "Le plus vieux marché de KL, avant la foule",
+        "hero_description": "Parcourez le plus vieux et le plus authentique marché de KL. Goûtez au nasi lemak, aux bananes frites et au teh tarik sur les stands où les marchands prennent leur petit déjeuner avant l'aube. C'est le vrai Kuala Lumpur, pas celui des guides touristiques.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visite gastronomique du marché Chow Kit | Simply Enak",
+        "meta_description": "Parcourez le plus vieux marché de KL. Goûtez au nasi lemak, aux bananes frites et au teh tarik au cœur de la culture culinaire malaise."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Chow Kit-marktvoedseltour",
+        "hero_subtitle": "KL's oudste natte markt, vóór de drukte",
+        "hero_description": "Verken KL's oudste en meest authentieke natte markt. Proef nasi lemak, gebakken banaan en de tarik bij de kraampjes waar marktkooplieden voor zonsopgang hun ontbijt eten. Dit is het echte Kuala Lumpur, niet de versie in reisgidsen.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Chow Kit marktvoedseltour | Gewoon Enak",
+        "meta_description": "Verken KL's oudste natte markt. Proef nasi lemak, gebakken banaan en de tarik in het hart van de Maleisische eetcultuur."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур по рынку Чау-Кит",
+        "hero_subtitle": "Старейший мокрый рынок КЛ, перед толпой",
+        "hero_description": "Исследуйте старейший и самый аутентичный мокрый рынок КЛ. Попробуйте наси лемак, жареный банан и тарик в ларьках, где торговцы на рынке завтракают перед рассветом. Это настоящий Куала-Лумпур, а не тот, что пишут в путеводителях.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур по рынку Чау-Кит | Просто Энак",
+        "meta_description": "Исследуйте старейший мокрый рынок КЛ. Попробуйте наси лемак, жареный банан и тарик в самом сердце малайской кулинарной культуры."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "チョウ キット マーケットのグルメ ツアー",
+        "hero_subtitle": "混雑する前のクアラルンプール最古の生鮮市場",
+        "hero_description": "クアラルンプールで最も古く、最も本格的な生鮮市場を探索してください。夜明け前に市場の行商人が朝食を食べる屋台で、ナシレマ、揚げバナナ、テータリクを味わってください。これはガイドブックに載っているものではなく、本物のクアラルンプールです。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "チョウ キット マーケットのフード ツアー |シンプリー・エナク",
+        "meta_description": "クアラルンプール最古の生鮮市場を探索してみましょう。マレー食文化の中心であるナシレマ、揚げバナナ、テータリクを味わってください。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica no mercado Chow Kit",
+        "hero_subtitle": "O mercado úmido mais antigo de KL, antes das multidões",
+        "hero_description": "Explore o mercado úmido mais antigo e autêntico de KL. Prove nasi lemak, banana frita e tarik nas barracas onde os vendedores do mercado tomam seu café da manhã antes do amanhecer. Esta é a verdadeira Kuala Lumpur, não a versão dos guias turísticos.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Excursão gastronômica no mercado Chow Kit | Simplesmente Enak",
+        "meta_description": "Explore o mercado úmido mais antigo de KL. Prove nasi lemak, banana frita e tarik no coração da cultura alimentar malaia."
       }
     ]
   },
   {
     "id": 320,
     "slug": "chinatown-food-tour-kuala-lumpur",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Chinatown Food Tour Kuala Lumpur | Simply Enak",
     "meta_description": "Taste Hokkien mee, popiah, and dim sum on a guided food tour through KL's historic Chinatown.",
     "hero_title": "Chinatown Food Tours in Kuala Lumpur",
@@ -327,18 +705,81 @@
       {
         "languages_code": "zh",
         "hero_title": "吉隆坡唐人街美食之旅",
-        "hero_subtitle": "茨厂街的闽南语、粤语和客家文化",
-        "hero_description": "在导游的带领下穿越吉隆坡历史悠久的唐人街美食之旅，品尝福建面、薄饼和点心。这里的摊位已经为同一个家庭提供了三代人的食物，食谱也没有改变。",
+        "hero_subtitle": "茨厂街的福建、广东和客家文化",
+        "hero_description": "跟随导游穿梭在吉隆坡历史悠久的唐人街，品尝福建面、薄饼和点心。这些摊位三代相传，服务着同一批街坊老顾客，味道始终如一。",
         "intro_heading": "美食之旅在",
-        "meta_title": "吉隆坡唐人街美食之旅|简单的埃纳克",
-        "meta_description": "在导游的带领下穿越吉隆坡历史悠久的唐人街美食之旅，品尝福建面、薄饼和点心。"
+        "meta_title": "吉隆坡唐人街美食之旅 | Simply Enak",
+        "meta_description": "跟随导游穿梭在吉隆坡历史悠久的唐人街，品尝福建面、薄饼和点心。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food-Tour durch Chinatown in Kuala Lumpur",
+        "hero_subtitle": "Hokkien-, Kantonesisch- und Hakka-Erbe in der Petaling Street",
+        "hero_description": "Bei einer geführten Food-Tour durch das historische Chinatown von KL probieren Sie Hokkien Mee, Popiah und Dim Sum. Die Stände hier werden seit drei Generationen von denselben Familien betrieben, und die Rezepte sind unverändert.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Chinatown Food Tour Kuala Lumpur | Simply Enak",
+        "meta_description": "Bei einer geführten Food-Tour durch das historische Chinatown von KL probieren Sie Hokkien Mee, Popiah und Dim Sum."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico por el barrio chino de Kuala Lumpur",
+        "hero_subtitle": "Herencia hokkien, cantonesa y hakka en Petaling Street",
+        "hero_description": "Prueba Hokkien mee, popiah y dim sum en un tour guiado por el histórico barrio chino de Kuala Lumpur. Los puestos llevan tres generaciones dando de comer a las mismas familias y las recetas siguen intactas.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico por el barrio chino de Kuala Lumpur | Simply Enak",
+        "meta_description": "Prueba Hokkien mee, popiah y dim sum en un tour guiado por el histórico barrio chino de Kuala Lumpur."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visite gastronomique du quartier chinois de Kuala Lumpur",
+        "hero_subtitle": "Le patrimoine hokkien, cantonais et hakka de la Petaling Street",
+        "hero_description": "Savourez le Hokkien mee, le popiah et les dim sum lors d'une visite gastronomique dans le quartier chinois historique de Kuala Lumpur. Les échoppes y servent les mêmes familles depuis trois générations et les recettes n'ont pas changé.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visite gastronomique du quartier chinois de Kuala Lumpur | Simply Enak",
+        "meta_description": "Savourez le Hokkien mee, le popiah et les dim sum lors d'une visite gastronomique dans le quartier chinois historique de Kuala Lumpur."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Chinatown-foodtour in Kuala Lumpur",
+        "hero_subtitle": "Hokkien, Kantonees en Hakka Heritage in Petaling Street",
+        "hero_description": "Proef Hokkien mee, popiah en dim sum tijdens een begeleide foodtour door KL's historische Chinatown. De kraampjes hier voeden al drie generaties lang dezelfde families en de recepten zijn niet veranderd.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Chinatown Foodtour Kuala Lumpur | Gewoon Enak",
+        "meta_description": "Proef Hokkien mee, popiah en dim sum tijdens een begeleide foodtour door KL's historische Chinatown."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур в Чайнатаун ​​в Куала-Лумпуре",
+        "hero_subtitle": "Наследие хоккиен, кантонского диалекта и хакка на улице Петалинг",
+        "hero_description": "Попробуйте хоккиен ми, попию и димсам во время гастрономического тура по историческому китайскому кварталу КЛ. В киосках здесь кормят одни и те же семьи уже три поколения, и рецепты не изменились.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур в Чайнатаун ​​Куала-Лумпур | Просто Энак",
+        "meta_description": "Попробуйте хоккиен ми, попию и димсам во время гастрономического тура по историческому китайскому кварталу КЛ."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "クアラルンプールのチャイナタウングルメツアー",
+        "hero_subtitle": "ペタリン街にある福建語、広東語、客家の伝統",
+        "hero_description": "クアラルンプールの歴史的なチャイナタウンを巡るガイド付きグルメ ツアーで、ホッケンミー、ポピア、点心を味わいましょう。ここの屋台は三世代にわたって同じ家族に食事を提供しており、レシピは変わっていません。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "チャイナタウン フード ツアー クアラルンプール |シンプリー・エナク",
+        "meta_description": "クアラルンプールの歴史的なチャイナタウンを巡るガイド付きグルメ ツアーで、ホッケンミー、ポピア、点心を味わいましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica em Chinatown em Kuala Lumpur",
+        "hero_subtitle": "Herança Hokkien, Cantonesa e Hakka na Petaling Street",
+        "hero_description": "Prove Hokkien mee, popiah e dim sum em uma excursão gastronômica guiada pela histórica Chinatown de KL. As barracas aqui alimentam as mesmas famílias há três gerações e as receitas não mudaram.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Excursão gastronômica em Chinatown Kuala Lumpur | Simplesmente Enak",
+        "meta_description": "Prove Hokkien mee, popiah e dim sum em uma excursão gastronômica guiada pela histórica Chinatown de KL."
       }
     ]
   },
   {
     "id": 319,
     "slug": "little-india-food-tour-kuala-lumpur",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Little India Food Tour Kuala Lumpur | Simply Enak",
     "meta_description": "Taste banana leaf rice, fish head curry, and thosai on a guided food tour through KL's Brickfields.",
     "hero_title": "Little India Food Tours in Kuala Lumpur",
@@ -375,18 +816,81 @@
       {
         "languages_code": "zh",
         "hero_title": "吉隆坡小印度美食之旅",
-        "hero_subtitle": "香蕉叶、泥炉和吉隆坡最好的 Roti Canai",
-        "hero_description": "在导游的带领下，在吉隆坡十五碑 (Brickfields) 充满活力的小印度美食之旅中品尝香蕉叶饭、咖喱鱼头和 thosai。从南印度蕉叶店到穆斯林印度嘛嘛档，这里是吉隆坡最芳香的街区。",
+        "hero_subtitle": "蕉叶饭、坦都里烤饼，还有吉隆坡最销魂的 Roti Canai",
+        "hero_description": "跟随导游穿梭吉隆坡十五碑 (Brickfields) 的小印度街区，品尝香蕉叶饭、咖喱鱼头和 thosai。从南印度蕉叶饭店到穆斯林印裔嘛嘛档，这里是吉隆坡最有烟火气的美食街区。",
         "intro_heading": "美食之旅在",
-        "meta_title": "吉隆坡小印度美食之旅|简单的埃纳克",
-        "meta_description": "在吉隆坡十五碑 (Brickfields) 的美食导览之旅中品尝香蕉叶饭、咖喱鱼头和 thosai。"
+        "meta_title": "吉隆坡小印度美食之旅 | Simply Enak",
+        "meta_description": "跟随美食导览，穿梭吉隆坡十五碑 (Brickfields)，品尝香蕉叶饭、咖喱鱼头和 thosai。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Food Tour durch Little India in Kuala Lumpur",
+        "hero_subtitle": "Banana Leaf, Tandoor und das beste Roti Canai in KL",
+        "hero_description": "Probieren Sie Banana Leaf Rice, Fischkopf-Curry und Thosai auf einer geführten Food-Tour durch das pulsierende Little India in Brickfields, Kuala Lumpur. Von südindischen Banana-Leaf-Lokalen bis zu muslimisch-indischen Mamak-Ständen – das ist KLs aromatischstes Viertel.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Little India Food Tour Kuala Lumpur | Simply Enak",
+        "meta_description": "Probieren Sie Banana Leaf Rice, Fischkopf-Curry und Thosai auf einer geführten Food-Tour durch Brickfields in Kuala Lumpur."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico por Little India en Kuala Lumpur",
+        "hero_subtitle": "Banana Leaf, Tandoor y el mejor Roti Canai de KL",
+        "hero_description": "Pruebe arroz servido en hoja de plátano, curry de cabeza de pescado y thosai en un recorrido guiado por la vibrante Little India de KL en Brickfields. Desde restaurantes banana leaf del sur de la India hasta puestos mamak indomusulmanes, es el barrio más aromático de Kuala Lumpur.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico por Little India Kuala Lumpur | Simply Enak",
+        "meta_description": "Pruebe arroz servido en hoja de plátano, curry de cabeza de pescado y thosai en un recorrido guiado por Brickfields, Kuala Lumpur."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visite gastronomique du quartier Little India de Kuala Lumpur",
+        "hero_subtitle": "Banana Leaf, Tandoor et le meilleur Roti Canai de KL",
+        "hero_description": "Goûtez au riz banana leaf, au curry de tête de poisson et au thosai lors d'une visite guidée du quartier Little India de Brickfields, l'un des coins les plus parfumés de KL. Des restaurants banana leaf du Sud de l'Inde aux stands mamak indo-musulmans, c'est un festival d'arômes.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visite gastronomique de Little India à Kuala Lumpur | Simply Enak",
+        "meta_description": "Goûtez au riz banana leaf, au curry de tête de poisson et au thosai lors d'une visite guidée dans le quartier Brickfields de KL."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Little India Foodtour in Kuala Lumpur",
+        "hero_subtitle": "Bananenblad, Tandoor en de beste Roti Canai in KL",
+        "hero_description": "Proef bananenbladrijst, viskopcurry en thosai tijdens een begeleide foodtour door KL's levendige Little India in Brickfields. Van Zuid-Indiase bananenbladgewrichten tot moslim-Indiase mamak-kraampjes: dit is de meest aromatische wijk van KL.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Little India Foodtour Kuala Lumpur | Gewoon Enak",
+        "meta_description": "Proef bananenbladrijst, viskopcurry en thosai tijdens een begeleide foodtour door KL's Brickfields."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур «Маленькая Индия» в Куала-Лумпуре",
+        "hero_subtitle": "Банановый лист, тандыр и лучший роти-канай в КЛ",
+        "hero_description": "Попробуйте рис из банановых листьев, карри из рыбьей головы и тосаи во время гастрономического тура по оживленной Маленькой Индии в КЛ в Брикфилдс. От южно-индийских суставов банановых листьев до мусульманско-индийских ларьков с мамаком — это самый ароматный район КЛ.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур «Маленькая Индия» Куала-Лумпур | Просто Энак",
+        "meta_description": "Попробуйте рис из банановых листьев, карри из рыбьей головы и тосай во время гастрономической экскурсии по Brickfields в KL."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "クアラルンプールのリトル インディア フード ツアー",
+        "hero_subtitle": "バナナ リーフ、タンドール、そしてクアラルンプールで最高のロティ チャナイ",
+        "hero_description": "クアラルンプールのブリックフィールズにある活気あふれるリトル インディアを巡るガイド付きグルメ ツアーで、バナナ リーフ ライス、フィッシュ ヘッド カレー、トーサイを味わいましょう。南インドのバナナの葉っぱのジョイントからイスラム系インド人のママクの屋台まで、ここはクアラルンプールで最も香り豊かな地区です。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "リトル インディア フード ツアー クアラルンプール |シンプリー・エナク",
+        "meta_description": "KL のブリックフィールズを巡るガイド付きグルメ ツアーで、バナナ リーフ ライス、フィッシュ ヘッド カレー、トーサイを味わいましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica pela Pequena Índia em Kuala Lumpur",
+        "hero_subtitle": "Folha de Bananeira, Tandoor e o Melhor Roti Canai em KL",
+        "hero_description": "Prove arroz de folhas de bananeira, curry de cabeça de peixe e thosai em uma excursão gastronômica guiada pela vibrante Little India em Brickfields, em Kuala Lumpur. De bananeiras do sul da Índia a barracas de mamak muçulmanas e indianas, este é o bairro mais aromático de KL.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Excursão gastronômica pela Pequena Índia em Kuala Lumpur | Simplesmente Enak",
+        "meta_description": "Prove arroz de folhas de bananeira, curry de cabeça de peixe e thosai em um passeio gastronômico guiado por Brickfields, em KL."
       }
     ]
   },
   {
     "id": 318,
     "slug": "kampung-baru-food-tour",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Kampung Baru Food Tour | Simply Enak",
     "meta_description": "Explore KL's last Malay village. Taste authentic kampung recipes like nasi lemak, rendang, and satay.",
     "hero_title": "Kampung Baru Food Tours",
@@ -423,20 +927,83 @@
       {
         "languages_code": "zh",
         "hero_title": "甘榜巴鲁美食之旅",
-        "hero_subtitle": "吉隆坡最后的马来村庄，在双子塔下吃饭",
-        "hero_description": "探索甘榜巴鲁 (Kampung Baru)，这是吉隆坡仅存的马来村庄，周围环绕着摩天大楼。品尝正宗的甘榜食谱，如椰浆饭、沙爹和糕点，这些摊位在城市发展之前就已存在。",
+        "hero_subtitle": "吉隆坡最后的马来村庄，在双子塔下品尝地道风味",
+        "hero_description": "探索吉隆坡仅存的马来村落——甘榜巴鲁，四周摩天楼群环抱，却藏着最地道的市井烟火。穿行于老街摊位间，品尝正宗的甘榜家常味：椰浆饭、沙爹、传统糕点——这些味道早在城市扩张之前就已飘香于此。",
         "intro_heading": "美食之旅在",
-        "meta_title": "甘榜巴鲁美食之旅|简单的埃纳克",
-        "meta_description": "探索吉隆坡最后的马来村庄。品尝正宗的甘榜食谱，如椰浆饭、仁当和沙爹。"
+        "meta_title": "甘榜巴鲁美食之旅 | Simply Enak",
+        "meta_description": "探索吉隆坡最后的马来村庄，品尝地道甘榜风味——椰浆饭、仁当、沙爹。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Kulinarische Tour durch Kampung Baru",
+        "hero_subtitle": "KLs letztes malaiisches Dorf – Essen unter den Petronas Towers",
+        "hero_description": "Erkunden Sie Kampung Baru, Kuala Lumpurs letztes malaiisches Dorf, umgeben von Wolkenkratzern. Kosten Sie authentische Kampung-Gerichte wie Nasi Lemak, Satay und Kuih an Ständen, die es schon gab, bevor die Stadt um sie herum wuchs.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Kulinarische Tour durch Kampung Baru | Simply Enak",
+        "meta_description": "Erkunden Sie KLs letztes malaiisches Dorf. Probieren Sie authentische Kampung-Gerichte wie Nasi Lemak, Rendang und Satay."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico por Kampung Baru",
+        "hero_subtitle": "El último pueblo malayo de KL, donde se come bajo las torres Petronas",
+        "hero_description": "Descubre Kampung Baru, el último pueblo malayo de KL, rodeado de rascacielos. Prueba auténticas recetas de kampung como nasi lemak, satay y kuih en puestos que ya estaban aquí antes de que la ciudad creciera a su alrededor.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico por Kampung Baru | Simply Enak",
+        "meta_description": "Descubre el último pueblo malayo de KL. Prueba auténticas recetas de kampung como nasi lemak, rendang y satay."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visite gourmande de Kampung Baru",
+        "hero_subtitle": "Le dernier village malais de KL, où l'on mange sous les tours Petronas",
+        "hero_description": "Explorez Kampung Baru, le dernier village malais de KL, cerné de gratte-ciel. Goûtez aux recettes kampung authentiques — nasi lemak, satay, kuih — servies sur des stands déjà là avant que la ville ne pousse autour d'eux.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visite gastronomique de Kampung Baru | Simply Enak",
+        "meta_description": "Explorez le dernier village malais de KL. Savourez des recettes kampung authentiques : nasi lemak, rendang et satay."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Kampung Baru-foodtour",
+        "hero_subtitle": "KL's laatste Maleisische dorp, eten onder de Petronas Towers",
+        "hero_description": "Verken Kampung Baru, KL's laatste overgebleven Maleisische dorp, omringd door wolkenkrabbers. Proef authentieke kampungrecepten zoals nasi lemak, saté en kuih bij kraampjes die hier al stonden voordat de stad om hen heen groeide.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Kampung Baru-foodtour | Gewoon Enak",
+        "meta_description": "Verken KL's laatste Maleisische dorp. Proef authentieke kampungrecepten zoals nasi lemak, rendang en saté."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур в Кампунг Бару",
+        "hero_subtitle": "Последняя малайская деревня КЛ, еда под башнями Петронас",
+        "hero_description": "Исследуйте Кампунг Бару, последнюю сохранившуюся малайскую деревню КЛ, окруженную небоскребами. Попробуйте настоящие рецепты кампунга, такие как наси лемак, сатай и куих, в киосках, которые стояли здесь еще до того, как вокруг них вырос город.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур в Кампунг Бару | Просто Энак",
+        "meta_description": "Исследуйте последнюю малайскую деревню КЛ. Попробуйте настоящие рецепты кампунга, такие как наси лемак, ренданг и сатай."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "カンプン バル フード ツアー",
+        "hero_subtitle": "クアラルンプール最後のマレー人村、ペトロナス タワーの下で食事",
+        "hero_description": "高層ビルに囲まれた、クアラルンプールで最後に生き残ったマレー人の村、カンプン バルを探索してみましょう。街が発展する前からここにある屋台で、ナシレマ、サテー、クイなどの本格的なカンプンのレシピを味わってください。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "カンプン バル フード ツアー |シンプリー・エナク",
+        "meta_description": "クアラルンプール最後のマレー人の村を探索してください。ナシレマ、ルンダン、サテーなどの本格的なカンプンのレシピを味わってください。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica em Kampung Baru",
+        "hero_subtitle": "Última vila malaia de KL, comendo sob as Torres Petronas",
+        "hero_description": "Explore Kampung Baru, a última aldeia malaia sobrevivente de KL, cercada por arranha-céus. Prove receitas autênticas de kampung, como nasi lemak, satay e kuih, em barracas que estão aqui desde antes de a cidade crescer ao seu redor.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Excursão gastronômica em Kampung Baru | Simplesmente Enak",
+        "meta_description": "Explore a última aldeia malaia de KL. Prove receitas autênticas de kampung, como nasi lemak, rendang e satay."
       }
     ]
   },
   {
     "id": 317,
     "slug": "chowrasta-market-food-tour",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Chowrasta Market Food Tour | Simply Enak",
-    "meta_description": "Explore Penang's historic Chowrasta Market. Taste asam laksa, cendol, and more at this century-old institution.",
+    "meta_description": "Explore Chowrasta Market, Penang's historic wet market, on a guided morning food walk. Taste kuih, kopitiam breakfasts, Assam Laksa, and Penang-exclusive dishes.",
     "hero_title": "Chowrasta Market Food Tours",
     "hero_subtitle": "",
     "hero_description": "Chowrasta Market is Penang's oldest wet market. Spices, dried goods, and food stalls that have been serving George Town for over a century.",
@@ -445,7 +1012,7 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "location_name": "Chowrasta Market Food Tours",
-    "intro_heading": "Inside Chowrasta Market",
+    "intro_heading": "Morning at Penang's Oldest Market",
     "intro_content": "",
     "travel_tips_heading": "",
     "travel_tips": [],
@@ -470,21 +1037,84 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "乔拉斯塔市场美食之旅",
-        "hero_subtitle": "槟城历史悠久的市场，当地人排队等候",
-        "hero_description": "探索槟城历史悠久的 Chowrasta 市场。在乔治市最古老的市场之一品尝亚参叻沙、煎蕊和腌制肉豆蔻，一个多世纪以来，槟城人一直在这里购买早餐和小吃。",
+        "hero_title": "Chowrasta 市场美食之旅",
+        "hero_subtitle": "槟城百年老市场，本地人排队也要吃",
+        "hero_description": "到槟城历史悠久的 Chowrasta 市场逛一逛。在乔治市最古老的市集中品尝 asam laksa、cendol 和腌制豆蔻——一个多世纪以来，槟城人都在这买早餐、找小吃。",
         "intro_heading": "美食之旅在",
-        "meta_title": "乔拉斯塔市场美食之旅|简单的埃纳克",
-        "meta_description": "探索槟城历史悠久的 Chowrasta 市场。在这家百年老店品尝亚参叻沙、煎蕊等美食。"
+        "meta_title": "Chowrasta 市场美食之旅 | Simply Enak",
+        "meta_description": "到槟城历史悠久的 Chowrasta 市场逛一逛，在这座百年老市集品尝 asam laksa、cendol 等地道美食。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Chowrasta-Markt Food-Tour",
+        "hero_subtitle": "Penangs historischer Markt, an dem Einheimische Schlange stehen",
+        "hero_description": "Erkunden Sie Penangs historischen Chowrasta-Markt. Kosten Sie Asam Laksa, Cendol und eingelegte Muskatnuss auf einem der ältesten Märkte von George Town – wo sich Penangs Bewohner seit über 100 Jahren mit Frühstück und Snacks eindecken.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Chowrasta-Markt Food-Tour | Einfach Enak",
+        "meta_description": "Erkunden Sie Penangs historischen Chowrasta-Markt. Kosten Sie Asam Laksa, Cendol und mehr in diesem traditionsreichen Markt."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico por el mercado Chowrasta",
+        "hero_subtitle": "El histórico mercado de Penang, donde los lugareños hacen cola",
+        "hero_description": "Descubra el histórico mercado Chowrasta de Penang. Pruebe asam laksa, cendol y nuez moscada confitada en uno de los mercados más antiguos de George Town, donde los penangueses llevan más de un siglo comprando su desayuno y sus bocadillos.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico por el mercado Chowrasta | Simply Enak",
+        "meta_description": "Descubra el histórico mercado Chowrasta de Penang. Pruebe asam laksa, cendol y más en este mercado centenario."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visite gourmande du marché de Chowrasta",
+        "hero_subtitle": "Le marché historique de Penang, où les locaux font la queue",
+        "hero_description": "Explorez le marché historique de Chowrasta à Penang. Goûtez à l'asam laksa, au cendol et à la muscade confite sur l'un des plus anciens marchés de George Town, où les Penangites viennent chercher petit-déjeuner et en-cas depuis plus d'un siècle.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visite gastronomique du marché de Chowrasta | Simplement Enak",
+        "meta_description": "Explorez le marché historique de Chowrasta à Penang. Goûtez à l'asam laksa, au cendol et bien plus encore dans cette institution centenaire."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Chowrasta-marktvoedseltour",
+        "hero_subtitle": "De historische markt van Penang, waar de lokale bevolking in de rij staat",
+        "hero_description": "Verken de historische Chowrasta-markt van Penang. Proef asam laksa, cendol en geconserveerde nootmuskaat op een van de oudste markten van George Town, waar de Penangieten al meer dan een eeuw hun ontbijt en snacks kopen.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Chowrasta-marktvoedseltour | Gewoon Enak",
+        "meta_description": "Verken de historische Chowrasta-markt van Penang. Proef asam laksa, cendol en meer in dit eeuwenoude instituut."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур по рынку Чораста",
+        "hero_subtitle": "Исторический рынок Пенанга, где стоят в очереди местные жители",
+        "hero_description": "Исследуйте исторический рынок Чораста на Пенанге. Попробуйте асам лаксу, сендол и консервированный мускатный орех на одном из старейших рынков Джорджтауна, где пенангиты покупают завтрак и закуски уже более века.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур по рынку Чораста | Просто Энак",
+        "meta_description": "Исследуйте исторический рынок Чораста на Пенанге. Попробуйте асам лакшу, сендол и многое другое в этом заведении с вековой историей."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "チョウラスタ マーケットのグルメ ツアー",
+        "hero_subtitle": "地元の人が行列を作るペナンの歴史あるマーケット",
+        "hero_description": "ペナンの歴史的なチョーラスター マーケットを探索してください。ジョージ タウンで最も古い市場の 1 つで、アサム ラクサ、チェンドル、保存ナツメグを味わってください。ペナン人が 1 世紀以上にわたって朝食や軽食を購入してきた市場です。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "チョウラスタ マーケット フード ツアー |シンプリー・エナク",
+        "meta_description": "ペナンの歴史的なチョーラスター マーケットを探索してください。 100 年の歴史を持つこの店で、アサム ラクサやチェンドルなどを味わってください。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica no mercado Chowrasta",
+        "hero_subtitle": "Mercado histórico de Penang, onde os moradores locais fazem fila",
+        "hero_description": "Explore o histórico mercado Chowrasta de Penang. Prove asam laksa, cendol e noz-moscada em conserva em um dos mercados mais antigos de George Town, onde os penangitas compram seu café da manhã e lanches há mais de um século.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Excursão gastronômica no mercado Chowrasta | Simplesmente Enak",
+        "meta_description": "Explore o histórico mercado Chowrasta de Penang. Prove asam laksa, cendol e muito mais nesta instituição centenária."
       }
     ]
   },
   {
     "id": 316,
     "slug": "georgetown-heritage-food-tour",
-    "status": "draft",
+    "status": "published",
     "meta_title": "George Town Heritage Food Tour | Simply Enak",
-    "meta_description": "Taste Peranakan, Hokkien, and Malay cuisine on a heritage food tour through UNESCO-listed George Town.",
+    "meta_description": "Explore George Town's food heritage on a guided walk through UNESCO streets. Taste Peranakan kuih, Mee Sotong, and the legendary Penang Assam Laksa.",
     "hero_title": "George Town Heritage Food Tours",
     "hero_subtitle": "",
     "hero_description": "George Town's UNESCO heritage zone is a living museum of food. Peranakan, Hokkien, and Indian-Muslim stalls sit side by side in streets that haven't changed in decades.",
@@ -493,7 +1123,7 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "location_name": "George Town Heritage Food Tours",
-    "intro_heading": "Eating Through UNESCO George Town",
+    "intro_heading": "Eating Through 200 Years of History",
     "intro_content": "",
     "travel_tips_heading": "",
     "travel_tips": [],
@@ -518,21 +1148,84 @@
       },
       {
         "languages_code": "zh",
-        "hero_title": "乔治城遗产美食之旅",
-        "hero_subtitle": "联合国教科文组织街道，200 年美食史",
-        "hero_description": "在乔治城联合国教科文组织世界遗产街道的传统美食之旅中品尝土生华人、福建菜和马来美食。每一座店屋都讲述着移民、贸易和世世代代在这里做饭的家庭的故事。",
+        "hero_title": "乔治市文史美食之旅",
+        "hero_subtitle": "漫步世界遗产街区，寻味两百年美食史",
+        "hero_description": "跟随文史美食之旅，漫步乔治市 UNESCO 世界遗产街区，品尝 Peranakan、Hokkien 与 Malay 料理。每一间老店屋都在诉说移民与贸易的故事，见证代代相传的家族美味。",
         "intro_heading": "美食之旅在",
-        "meta_title": "乔治城遗产美食之旅|简单的埃纳克",
-        "meta_description": "在联合国教科文组织列为世界遗产的乔治城的传统美食之旅中品尝土生华人、福建菜和马来美食。"
+        "meta_title": "乔治市文史美食之旅 | Simply Enak",
+        "meta_description": "在 UNESCO 世界遗产乔治市，来一场文史美食之旅，品尝 Peranakan、Hokkien 与 Malay 料理。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Kulinarische Entdeckungstour durch das historische George Town",
+        "hero_subtitle": "UNESCO-Straßen, 200 Jahre Esskultur",
+        "hero_description": "Kosten Sie Peranakan-, Hokkien- und malaiische Küche auf einer kulinarischen Entdeckungstour durch George Towns UNESCO-Welterbestraßen. Jedes Ladenhaus erzählt eine Geschichte von Migration, Handel und Familien, die hier seit Generationen kochen.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "George Town Heritage Food Tour | Simply Enak",
+        "meta_description": "Entdecken Sie Peranakan-, Hokkien- und malaiische Küche auf einer Food-Tour durch das UNESCO-Welterbe George Town."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico patrimonial por George Town",
+        "hero_subtitle": "Calles UNESCO, 200 años de historia culinaria",
+        "hero_description": "Descubra la cocina Peranakan, Hokkien y malaya en un tour gastronómico por las calles de George Town, declaradas Patrimonio de la Humanidad por la UNESCO. Cada shophouse guarda historias de migración, comercio y familias que llevan generaciones cocinando aquí.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico patrimonial por George Town | Simply Enak",
+        "meta_description": "Descubra la cocina Peranakan, Hokkien y malaya en un tour gastronómico por el George Town declarado Patrimonio de la Humanidad por la UNESCO."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Circuit gastronomique du patrimoine de George Town",
+        "hero_subtitle": "Rues classées à l'UNESCO, 200 ans d'histoire culinaire",
+        "hero_description": "Découvrez les cuisines peranakan, hokkien et malaise lors d'un circuit gastronomique dans les rues de George Town, classées au patrimoine mondial de l'UNESCO. Chaque shophouse raconte une histoire de migration, de commerce et de familles qui y cuisinent depuis des générations.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Circuit gastronomique du patrimoine de George Town | Simply Enak",
+        "meta_description": "Découvrez les cuisines peranakan, hokkien et malaise lors d'un circuit gastronomique à travers George Town, classée au patrimoine mondial de l'UNESCO."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Erfgoedrondleiding door George Town",
+        "hero_subtitle": "UNESCO-straten, 200 jaar voedselgeschiedenis",
+        "hero_description": "Proef de Peranakan-, Hokkien- en Maleisische keuken tijdens een erfgoed-foodtour door de straten van George Town, die op de Werelderfgoedlijst van UNESCO staan. Elk winkelpand vertelt een verhaal over migratie, handel en de families die hier al generaties lang koken.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Erfgoedrondleiding door George Town | Gewoon Enak",
+        "meta_description": "Proef de Peranakan-, Hokkien- en Maleisische keuken tijdens een erfgoedvoedseltour door George Town, dat op de Werelderfgoedlijst van UNESCO staat."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур по наследию Джорджтауна",
+        "hero_subtitle": "Улицы ЮНЕСКО, 200-летняя история еды",
+        "hero_description": "Попробуйте перанаканскую, хоккиенскую и малайскую кухню во время гастрономического тура по улицам Джорджтауна, внесенным в список Всемирного наследия ЮНЕСКО. Каждый магазин рассказывает историю миграции, торговли и семей, которые готовили здесь на протяжении нескольких поколений.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур Джорджтауна | Просто Энак",
+        "meta_description": "Попробуйте перанаканскую, хоккиенскую и малайскую кухню во время гастрономического тура по Джорджтауну, внесенному в список Всемирного наследия ЮНЕСКО."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "ジョージ タウン ヘリテージ フード ツアー",
+        "hero_subtitle": "ユネスコの街路、200 年の食の歴史",
+        "hero_description": "ジョージ タウンのユネスコ世界遺産の通りを巡る伝統グルメ ツアーで、プラナカン料理、福建料理、マレー料理を味わいましょう。どのショップハウスも、移民、貿易、そして何世代にもわたってここで料理をしてきた家族の物語を伝えています。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "ジョージ タウン ヘリテージ フード ツアー |シンプリー・エナク",
+        "meta_description": "ユネスコ世界遺産のジョージ タウンを巡る伝統的なグルメ ツアーで、プラナカン料理、福建料理、マレー料理を味わいましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica histórica em George Town",
+        "hero_subtitle": "Ruas da UNESCO, 200 anos de história alimentar",
+        "hero_description": "Prove a culinária Peranakan, Hokkien e Malaia em um passeio gastronômico pelas ruas de George Town, Patrimônio Mundial da UNESCO. Cada loja conta uma história de migração, comércio e das famílias que cozinham aqui há gerações.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Excursão gastronômica histórica em George Town | Simplesmente Enak",
+        "meta_description": "Prove a culinária peranakan, hokkien e malaia em um passeio gastronômico histórico por George Town, patrimônio da UNESCO."
       }
     ]
   },
   {
     "id": 315,
     "slug": "gurney-drive-food-tour",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Gurney Drive Food Tour | Simply Enak",
-    "meta_description": "Taste char kway teow, assam laksa, and cendol at Penang's famous seaside hawker centre.",
+    "meta_description": "Taste Penang's best hawker food at Gurney Drive. World-famous char koay teow with wok hei, Assam Laksa, and fresh seafood by the sea with expert local guides.",
     "hero_title": "Gurney Drive Food Tours",
     "hero_subtitle": "",
     "hero_description": "Gurney Drive hawker centre is Penang's most famous eating spot. Char kway teow, assam laksa, and rojak under one roof, facing the sea.",
@@ -541,7 +1234,7 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "location_name": "Gurney Drive Food Tours",
-    "intro_heading": "Eating at Gurney Drive",
+    "intro_heading": "Iconic Hawker Dining by the Sea",
     "intro_content": "",
     "travel_tips_heading": "",
     "travel_tips": [],
@@ -567,20 +1260,83 @@
       {
         "languages_code": "zh",
         "hero_title": "新关仔角美食之旅",
-        "hero_subtitle": "槟城著名的海滨小贩中心",
-        "hero_description": "在槟城著名的新关仔角小贩中心品尝炒粿条、亚参叻沙和煎蕊。我们的夜间之旅将带您前往海滨最好的摊位，当地人每晚都会聚集在那里享用晚餐。",
+        "hero_subtitle": "槟城最著名的海边小贩中心",
+        "hero_description": "到槟城著名的新关仔角小贩中心，品尝炒粿条、亚参叻沙和煎蕊。我们的傍晚行程带你走访海边最棒的摊位——那里是当地人每晚聚餐的地方。",
         "intro_heading": "美食之旅在",
-        "meta_title": "新关仔角美食之旅|简单的埃纳克",
-        "meta_description": "在槟城著名的海滨小贩中心品尝炒粿条、亚参叻沙和煎蕊。"
+        "meta_title": "新关仔角美食之旅 | Simply Enak",
+        "meta_description": "在槟城著名的海边小贩中心，品尝炒粿条、亚参叻沙和煎蕊。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Gurney Drive Food Tour",
+        "hero_subtitle": "Penangs berühmtes Hawker-Center am Meer",
+        "hero_description": "Probieren Sie Char Kway Teow, Assam Laksa und Cendol im berühmten Hawker-Center am Gurney Drive in Penang. Unsere Abendtour führt Sie zu den besten Ständen entlang der Uferpromenade, wo sich die Einheimischen jeden Abend zum Abendessen treffen.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Gurney Drive Food Tour | Einfach Enak",
+        "meta_description": "Probieren Sie Char Kway Teow, Assam Laksa und Cendol in Penangs berühmtem Hawker-Center am Meer."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico por Gurney Drive",
+        "hero_subtitle": "El famoso mercado callejero frente al mar de Penang",
+        "hero_description": "Pruebe el char kway teow, el assam laksa y el cendol en el famoso mercado callejero de Gurney Drive en Penang. Nuestro tour nocturno lo lleva a los mejores puestos frente al mar, donde los lugareños se reúnen cada noche para cenar.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico por Gurney Drive | Simply Enak",
+        "meta_description": "Pruebe char kway teow, assam laksa y cendol en el famoso mercado callejero frente al mar de Penang."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visite gastronomique de Gurney Drive",
+        "hero_subtitle": "Le célèbre hawker centre en bord de mer de Penang",
+        "hero_description": "Dégustez du char kway teow, de l'assam laksa et du cendol au célèbre hawker centre de Gurney Drive, à Penang. Notre visite en soirée vous emmène aux meilleurs stands du bord de mer, où les habitants se retrouvent pour dîner tous les soirs.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visite gastronomique de Gurney Drive | Simply Enak",
+        "meta_description": "Dégustez du char kway teow, de l'assam laksa et du cendol au célèbre hawker centre en bord de mer de Penang."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Gurney Drive-foodtour",
+        "hero_subtitle": "Het beroemde Seaside Hawker Center van Penang",
+        "hero_description": "Proef char kway teow, assam laksa en cendol in het beroemde venterscentrum Gurney Drive in Penang. Onze avondtour neemt je mee naar de beste kraampjes langs de waterkant, waar de lokale bevolking elke avond samenkomt voor het diner.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Gurney Drive-foodtour | Gewoon Enak",
+        "meta_description": "Proef char kway teow, assam laksa en cendol in het beroemde Hawker-centrum aan de kust van Penang."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур по Герни Драйв",
+        "hero_subtitle": "Знаменитый приморский торговый центр Пенанга",
+        "hero_description": "Попробуйте чар-куэй-теоу, ассам-лакса и сендол в знаменитом торговом центре Герни-Драйв на Пенанге. Наша вечерняя экскурсия приведет вас к лучшим киоскам на набережной, где каждый вечер местные жители собираются на ужин.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур по Герни Драйв | Просто Энак",
+        "meta_description": "Попробуйте чар куэй теоу, ассам лаксу и сендол в знаменитом приморском торговом центре Пенанга."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "ガーニー ドライブ フード ツアー",
+        "hero_subtitle": "ペナンの有名なシーサイド ホーカー センター",
+        "hero_description": "ペナンの有名なガーニー ドライブ ホーカー センターで、チャー クウェイ ティオ、アッサム ラクサ、チェンドルを味わってください。私たちの夜のツアーでは、地元の人々が毎晩ディナーに集まるウォーターフロント沿いの最高の屋台を訪れます。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "ガーニードライブフードツアー |シンプリー・エナク",
+        "meta_description": "ペナンの有名な海辺のホーカー センターで、チャー クウェイ ティオ、アッサム ラクサ、チェンドルを味わってください。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica pela Gurney Drive",
+        "hero_subtitle": "Famoso Seaside Hawker Center de Penang",
+        "hero_description": "Prove char kway teow, assam laksa e cendol no famoso centro de vendedores ambulantes de Gurney Drive, em Penang. Nosso passeio noturno leva você às melhores barracas à beira-mar, onde os moradores locais se reúnem para jantar todas as noites.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Passeio gastronômico pela Gurney Drive | Simplesmente Enak",
+        "meta_description": "Prove char kway teow, assam laksa e cendol no famoso centro de vendedores ambulantes à beira-mar de Penang."
       }
     ]
   },
   {
     "id": 314,
     "slug": "little-india-food-tour-penang",
-    "status": "draft",
+    "status": "published",
     "meta_title": "Little India Food Tour Penang | Simply Enak",
-    "meta_description": "Taste nasi kandar, murtabak, and pasembur on a Mamak food tour of Penang's vibrant Little India on Lebuh Queen.",
+    "meta_description": "Taste Penang's legendary Indian-Muslim cuisine on a guided food tour of Little India. Nasi kandar, roti canai, murtabak, and the best cendol in Malaysia.",
     "hero_title": "Little India Food Tours in Penang",
     "hero_subtitle": "",
     "hero_description": "Little India  in penang is where you go for banana leaf rice, fresh roti canai, and curries that have been simmering since morning. The air smells of cardamom and ghee.",
@@ -589,7 +1345,7 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "location_name": "Little India Food Tours in Penang",
-    "intro_heading": "The Indian food hub in penang",
+    "intro_heading": "The Flavours of Penang's Little India",
     "intro_content": "",
     "travel_tips_heading": "",
     "travel_tips": [],
@@ -615,11 +1371,74 @@
       {
         "languages_code": "zh",
         "hero_title": "槟城小印度美食之旅",
-        "hero_subtitle": "乔治城最芳香的街道上的嘛嘛档经典",
-        "hero_description": "在槟城充满活力的小印度的 Mamak 美食之旅中品尝 nasi kandar、murtabak 和 pasembur。从泰米尔穆斯林街头小吃到南印度蕉叶，这个街区为乔治城增添了风味。",
+        "hero_subtitle": "乔治市街头香气最浓郁的嘛嘛档经典",
+        "hero_description": "参加槟城小印度区的嘛嘛档美食之旅，品尝 nasi kandar、murtabak 和 pasembur 等地道风味。从淡米尔穆斯林街头小吃到南印度蕉叶饭，这个街区正是乔治市辛香魅力的灵魂所在。",
         "intro_heading": "美食之旅在",
-        "meta_title": "槟城小印度美食之旅|简单的埃纳克",
-        "meta_description": "参加槟城皇后街充满活力的小印度的 Mamak 美食之旅，品尝 nasi kandar、murtabak 和 pasembur。"
+        "meta_title": "槟城小印度美食之旅 | Simply Enak",
+        "meta_description": "在槟城皇后街的小印度参加嘛嘛档美食之旅，品尝 nasi kandar、murtabak 和 pasembur 等经典街头美食。"
+      },
+      {
+        "languages_code": "de",
+        "hero_title": "Little India Food Tour in Penang",
+        "hero_subtitle": "Mamak-Klassiker in George Towns aromatischsten Straßen",
+        "hero_description": "Probieren Sie Nasi Kandar, Murtabak und Pasembur auf einer Mamak-Food-Tour durch Penangs pulsierendes Little India. Von tamilisch-muslimischem Streetfood bis zu südindischer Banana-Leaf-Küche – das ist das Viertel, das George Town seine Würze verleiht.",
+        "intro_heading": "Kulinarische Touren in",
+        "meta_title": "Little India Food Tour Penang | Einfach Enak",
+        "meta_description": "Probieren Sie Nasi Kandar, Murtabak und Pasembur auf einer Mamak-Food-Tour durch Penangs pulsierendes Little India in der Lebuh Queen."
+      },
+      {
+        "languages_code": "es",
+        "hero_title": "Tour gastronómico por Little India en Penang",
+        "hero_subtitle": "Clásicos mamak en las calles más aromáticas de George Town",
+        "hero_description": "Prueba nasi kandar, murtabak y pasembur en un recorrido gastronómico mamak por la vibrante Little India de Penang. Desde la comida callejera tamil musulmana hasta el banquete en hoja de plátano del sur de la India, este es el barrio que le da su sabor a George Town.",
+        "intro_heading": "Tours gastronómicos en",
+        "meta_title": "Tour gastronómico por Little India Penang | Simply Enak",
+        "meta_description": "Prueba nasi kandar, murtabak y pasembur en un recorrido gastronómico mamak por la vibrante Little India de Penang en Lebuh Queen."
+      },
+      {
+        "languages_code": "fr",
+        "hero_title": "Visite gastronomique de Little India à Penang",
+        "hero_subtitle": "Les classiques Mamak dans les rues les plus parfumées de George Town",
+        "hero_description": "Dégustez nasi kandar, murtabak et pasembur lors d'un circuit Mamak dans l'animé quartier Little India de Penang. De la cuisine de rue tamoule musulmane au banana leaf du Sud de l'Inde, ce quartier donne à George Town toute son âme épicée.",
+        "intro_heading": "Visites gastronomiques à",
+        "meta_title": "Visite gastronomique de Little India à Penang | Simply Enak",
+        "meta_description": "Dégustez nasi kandar, murtabak et pasembur lors d'un circuit Mamak dans l'animé quartier Little India de Penang, sur Lebuh Queen."
+      },
+      {
+        "languages_code": "nl",
+        "hero_title": "Little India Foodtour in Penang",
+        "hero_subtitle": "Mamak-klassiekers in de meest aromatische straten van George Town",
+        "hero_description": "Proef nasi kandar, murtabak en pasembur tijdens een Mamak-foodtour door het levendige Little India in Penang. Van Tamil-moslimstraatvoedsel tot Zuid-Indiaas bananenblad, dit is de buurt die George Town zijn pit geeft.",
+        "intro_heading": "Foodtours in",
+        "meta_title": "Little India Foodtour Penang | Gewoon Enak",
+        "meta_description": "Proef nasi kandar, murtabak en pasembur tijdens een Mamak-foodtour door het levendige Little India van Penang op Lebuh Queen."
+      },
+      {
+        "languages_code": "ru",
+        "hero_title": "Гастрономический тур «Маленькая Индия» на Пенанге",
+        "hero_subtitle": "Мамак Классика на самых ароматных улицах Джорджтауна",
+        "hero_description": "Попробуйте наси кандар, муртабак и пасембур во время гастрономического тура Мамака по оживленной Маленькой Индии Пенанга. От тамильской мусульманской уличной еды до бананового листа из Южной Индии — этот район придает Джорджтауну свою пикантность.",
+        "intro_heading": "Гастрономические туры в",
+        "meta_title": "Гастрономический тур «Маленькая Индия» на Пенанге | Просто Энак",
+        "meta_description": "Попробуйте наси кандар, муртабак и пасембур во время гастрономического тура Мамака по оживленной Маленькой Индии Пенанга на корабле Lebuh Queen."
+      },
+      {
+        "languages_code": "ja",
+        "hero_title": "ペナンのリトル インディア フード ツアー",
+        "hero_subtitle": "ジョージタウンの最も香り豊かな通りのママク クラシックス",
+        "hero_description": "ペナンの活気に満ちたリトル インディアのママク料理ツアーで、ナシ カンダル、ムルタバク、パセンブールを味わいましょう。タミール系イスラム教徒の屋台料理から南インドのバナナの葉まで、ジョージ タウンにスパイスを与えている地域です。",
+        "intro_heading": "のグルメツアー",
+        "meta_title": "リトル インディア フード ツアー ペナン |シンプリー・エナク",
+        "meta_description": "レブー クイーンにあるペナンの活気に満ちたリトル インディアのママク料理ツアーで、ナシ カンダル、ムルタバク、パセンブールを味わいましょう。"
+      },
+      {
+        "languages_code": "pt",
+        "hero_title": "Excursão gastronômica pela Pequena Índia em Penang",
+        "hero_subtitle": "Clássicos Mamak nas ruas mais aromáticas de George Town",
+        "hero_description": "Prove nasi kandar, murtabak e pasembur em um passeio gastronômico Mamak pela vibrante Little India de Penang. Da comida de rua muçulmana tâmil à folha de bananeira do sul da Índia, este é o bairro que dá tempero a George Town.",
+        "intro_heading": "Passeios gastronômicos em",
+        "meta_title": "Excursão gastronômica pela Pequena Índia em Penang | Simplesmente Enak",
+        "meta_description": "Prove nasi kandar, murtabak e pasembur em um passeio gastronômico Mamak pela vibrante Little India de Penang em Lebuh Queen."
       }
     ]
   }
