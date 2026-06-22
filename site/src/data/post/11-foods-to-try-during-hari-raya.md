@@ -8,7 +8,7 @@ tags: ["Hari Raya", "Malaysian Food", "Festivals", "Ramadan"]
 author: "Pauline"
 metadata:
   title: "11 Foods To Try During Hari Raya"
-  description: "From lemang to ketupat, rendang to dodol -  here are the Hari Raya dishes you must try in Malaysia. Updated with 2026 festival dates and tips."
+  description: "Eleven dishes to try during Hari Raya, from rendang and ketupat to dodol and serunding. Here is what each one is and where to find the most-loved versions."
 ---
 
 There's nothing in this world like the food you will find in Malaysia during Hari Raya. The delicacies served during Hari Raya Aidilfitri are at the top of most visitors' must-try lists.
@@ -19,7 +19,7 @@ Hari Raya marks the end of Ramadan -  the fasting month for Muslims worldwide. W
 
 ## Quick Reference: 11 Hari Raya Dishes
 
-| Dish | Type | Best With | Seasonal? |
+| Dish | Type | pairs well with | Seasonal? |
 |------|------|-----------|-----------|
 | Lemang | Sticky rice in bamboo | Rendang or serunding | Yes -  Hari Raya only |
 | Ketupat | Rice dumpling in palm | Rendang, satay | Yes -  Hari Raya only |
@@ -107,3 +107,7 @@ Ketupat (compressed rice cakes in woven palm leaves) served with rendang is the 
 
 **Are these dishes available all year?**
 Some -  like satay and rendang -  are available year-round at Malaysian restaurants. Others like Lemang, Ketupat, and Dodol are seasonal and primarily found during the Hari Raya period.
+
+---
+
+**Want to taste this for yourself?** [See our food tours](https://simplyenak.com/tours) or [read more stories](https://simplyenak.com/stories) from our guides. Have a question? [Ask us directly](https://simplyenak.com/contact).

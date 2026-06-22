@@ -8,14 +8,14 @@ tags: ["Vegetarian", "Kuala Lumpur", "Penang", "Ipoh", "Food Guide"]
 author: "Pauline"
 metadata:
   title: "How to Find Vegetarian Restaurants in KL, Penang and Ipoh"
-  description: "A guide to finding vegetarian food in KL, Penang and Ipoh: Buddhist temple canteens, Indian banana leaf stalls, and modern plant-based cafes."
+  description: "How to find vegetarian restaurants in Kuala Lumpur, Penang, and Ipoh. From banana leaf joints to Buddhist temple kitchens, here is where to eat."
 ---
 
 **Updated June 2026:** Malaysia's vegetarian scene keeps growing. Our guides have updated this with the latest spots.
 
 **TL;DR:** Vegetarian restaurants in Malaysia don't always advertise themselves. Many are attached to temples, run by Buddhist communities, and found through local knowledge. Once you know the signs to look for, the 素食 characters, the timing, the right neighbourhoods, they're everywhere. This guide shows you how to find them in KL, Penang and Ipoh.
 
-Here's the thing about the best vegetarian spots in Malaysia.
+Here's the thing about the most-loved vegetarian spots in Malaysia.
 
 They're not trying to attract you.
 
@@ -67,9 +67,9 @@ If you have flexibility on travel dates, this is worth factoring in. [Our Chinat
 
 ## The Apps and Tools That Help
 
-**[HappyCow](https://www.happycow.net/asia/malaysia/kuala-lumpur/)** is the most comprehensive tool for finding vegetarian and vegan restaurants across Malaysia. [Penang alone has 23 fully vegan and 151 vegetarian-friendly restaurants listed](https://www.happycow.net/best-vegan-restaurants/penang-malaysia). [Ipoh has 65](https://www.happycow.net/asia/malaysia/ipoh/). KL has hundreds.
+**[HappyCow](https://www.happycow.net/asia/malaysia/kuala-lumpur/)** is the most comprehensive tool for finding vegetarian and vegan restaurants across Malaysia. [Penang alone has 23 fully vegan and 151 vegetarian-friendly restaurants listed](https://www.happycow.net/most-loved-vegan-restaurants/penang-malaysia). [Ipoh has 65](https://www.happycow.net/asia/malaysia/ipoh/). KL has hundreds.
 
-The caveat: many of the best vegetarian spots in Malaysia, especially temple canteens and older 素食 stalls, are not listed anywhere. HappyCow is a starting point, not the full picture.
+The caveat: many of the most-loved vegetarian spots in Malaysia, especially temple canteens and older 素食 stalls, are not listed anywhere. HappyCow is a starting point, not the full picture.
 
 Google Maps is also useful. Search for "素食" directly in Chinese characters and you'll get results that an English search for "vegetarian" would miss entirely, because these places don't use English to describe themselves.
 
@@ -128,7 +128,7 @@ Yes. We've been navigating these cities and their food cultures for 14 years. Wh
 
 ## Frequently Asked Questions
 
-**Which Malaysian city has the best vegetarian food?**
+**Which Malaysian city has the most-loved vegetarian food?**
 Kuala Lumpur has the widest variety due to its large Chinese Buddhist and Indian Tamil communities. Penang comes a close second with excellent temple canteens. Ipoh has a smaller but quality selection of vegetarian options.
 
 **Are vegetarian restaurants in Malaysia expensive?**
