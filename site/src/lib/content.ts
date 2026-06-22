@@ -1062,7 +1062,7 @@ export function getLegalPage(slug: string) {
 
 export async function getLandingPages(locale?: string) {
   const pages = await resolveLandingPages(locale);
-  return pages.filter((p: any) => p._status === 'published' || !p._status);
+  return pages.filter((p: any) => !p._status || p._status === 'published' || p._status === 'draft');
 }
 
 export async function getLandingPagesByType(type: string, locale?: string) {
