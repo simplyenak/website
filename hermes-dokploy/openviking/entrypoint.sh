@@ -28,7 +28,8 @@ done
 
 # Pull nomic-embed-text if not already present
 echo "[entrypoint] Ensuring nomic-embed-text model is available..."
-if curl -sf "http://${OLLAMA_HOST}:${OLLAMA_PORT}/api/tags" | grep -q "nomic-embed-text"; then
+MODEL_LIST=$(curl -sf "http://${OLLAMA_HOST}:${OLLAMA_PORT}/api/tags" 2>/dev/null || echo "")
+if echo "$MODEL_LIST" | grep -q "nomic-embed-text"; then
     echo "[entrypoint] Model already present"
 else
     echo "[entrypoint] Pulling nomic-embed-text..."
@@ -38,4 +39,5 @@ else
       echo "[entrypoint] WARNING: Failed to pull model"
 fi
 
-exec openviking-server
+# Start OpenViking bound to 0.0.0.0
+exec openviking-server --host 0.0.0.0 --port 1933

@@ -1,12 +1,13 @@
 FROM python:3.12-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends gettext && \
+RUN apt-get update && apt-get install -y --no-install-recommends gettext curl && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir openviking
 
 EXPOSE 1933
 
 COPY openviking/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 COPY openviking/ov.conf /app/ov.conf.template
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \

@@ -3,6 +3,8 @@ version: "3.8"
 services:
   ollama:
     image: ollama/ollama:latest
+    environment:
+      - OLLAMA_HOST=0.0.0.0
     volumes:
       - ollama-data:/root/.ollama
     networks:
@@ -15,7 +17,10 @@ services:
           cpus: "1.0"
           memory: 1G
     healthcheck:
-      test: ["CMD", "ollama", "list"]
+      test:
+        - CMD
+        - ollama
+        - list
       interval: 30s
       timeout: 10s
       start_period: 120s
@@ -25,8 +30,8 @@ services:
     image: localhost:5000/openviking-server:latest
     environment:
       - OPENVIKING_WITH_BOT=0
-      - GLM_API_KEY=${GLM_API_KEY}
-      - OPENCODE_API_KEY=${OPENCODE_API_KEY}
+      - OPENVIKING_CONFIG_FILE=/app/ov.conf
+      - "GLM_API_KEY=***REMOVED***"
     volumes:
       - openviking-data:/data/openviking
     networks:
@@ -65,7 +70,6 @@ volumes:
 
 networks:
   openviking-network:
-    driver: overlay
-    attachable: true
+    external: true
   dokploy-network:
     external: true
