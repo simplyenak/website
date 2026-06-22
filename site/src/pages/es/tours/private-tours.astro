@@ -1,0 +1,231 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getAllTours } from '~/lib/content';
+
+let pageData: any = {};
+try {
+  pageData = (await import('~/data/content/private-tours-page.json')).default;
+} catch {}
+
+const allTours = await getAllTours();
+
+const whyPrivate = pageData.why_private || [];
+const audiences = pageData.audiences || [];
+const onEveryTour = pageData.on_every_tour || [];
+const privateExtras = pageData.private_extras || [];
+const faqs = pageData.faqs || [];
+
+const heroTitle = pageData.hero_title || 'A Tour Built Around You';
+const heroSubtitle = pageData.hero_subtitle || 'Your group, your pace, your guide  -  from just two people to a corporate team.';
+
+const meta = {
+  title: pageData.seo_title || 'Private Food Tours Malaysia | Simply Enak',
+  description: pageData.seo_description || 'Book a private food tour in Malaysia with Simply Enak.',
+};
+---
+
+<Layout metadata={meta}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/es/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/es/tours" class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Private Tours</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#2a1a1a] to-[#1a1a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Private Tours</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          {heroTitle}
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          {heroSubtitle}
+        </span>
+      </h1>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+a+private+food+tour"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          Get a Quote
+        </a>
+        <a href="#tours"
+           class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded hover:border-white/60 transition-colors text-sm">
+          View Available Tours
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Private -->
+  {whyPrivate.length > 0 && (
+    <section class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Private Experience</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.why_title || 'What a private tour means'}</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-3 text-sm">{pageData.why_subtitle || 'You book the guide. You get the guide. No strangers, no compromises.'}</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {whyPrivate.map((item: any) => (
+            <div class="text-center p-6 md:p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm">
+              <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5 text-2xl">
+                {item.icon || '✓'}
+              </div>
+              <h3 class="text-lg font-bold font-heading mb-2">{item.title}</h3>
+              <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Who Books -->
+  {audiences.length > 0 && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Who It's For</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.audiences_title || 'Who books private tours'}</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {audiences.map((item: any) => (
+            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+              <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">
+                {item.icon || '👤'}
+              </div>
+              <h3 class="font-bold font-heading text-default mb-2">{item.label}</h3>
+              <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Inclusions comparison -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <h3 class="text-lg font-bold font-heading mb-5">{pageData.on_every_tour_label || 'Every Simply Enak tour'}</h3>
+          <ul class="space-y-3">
+            {onEveryTour.map((item: string) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:check" class="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <h3 class="text-lg font-bold font-heading mb-5">{pageData.private_extras_label || "What changes when it's private"}</h3>
+          <ul class="space-y-3">
+            {privateExtras.map((item: string) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:star" class="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tour cards -->
+  <section class="bg-muted/30 py-16 scroll-mt-16" id="tours">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Private Tours</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.available_privately_heading || 'Every tour is available privately'}</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-4 text-sm">{pageData.available_privately_subtext || 'Choose the tour that fits your group, then tell us you\'d like it private.'}</p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {allTours.slice(0, 6).map((tour: any) => (
+          <a href={`/tours/${tour.slug}`} class="group block rounded-xl border bg-card shadow-sm overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
+            {tour.image && (
+              <div class="aspect-[16/9] overflow-hidden">
+                <img src={tour.image} alt={tour.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            )}
+            <div class="p-5">
+              <h3 class="text-lg font-bold font-heading group-hover:text-primary">{tour.name}</h3>
+              <p class="text-sm text-muted mt-1 line-clamp-2">{tour.tagline}</p>
+              <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
+                <span class="font-semibold text-foreground">{tour.price}</span>
+                {tour.duration && <span>{tour.duration}</span>}
+                {tour.schedule && <span>&middot; {tour.schedule}</span>}
+              </div>
+              <div class="mt-3">
+                <span class="inline-block text-accent text-xs font-semibold group-hover:underline">View Details &rarr;</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+a+private+food+tour"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          {pageData.pricing_cta_whatsapp || 'Contact us on WhatsApp'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {faqs.length > 0 && (
+    <section class="py-16 md:py-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{pageData.faq_eyebrow || 'Common Questions'}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.faq_heading || 'Private Tour FAQs'}</h2>
+        </div>
+        <div class="space-y-2">
+          {faqs.map((faq: any) => (
+            <details class="border border-gray-100 bg-card dark:border-white/10 overflow-hidden group rounded-lg">
+              <summary class="text-sm items-center flex cursor-pointer dark:hover:bg-white/5 hover:bg-gray-50 justify-between list-none p-4 transition-colors">
+                <span class="text-default font-semibold pr-4">{faq.name || faq.question || ''}</span>
+                <svg class="text-primary flex-shrink-0 group-open:rotate-180 h-4 transition-transform w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+              </summary>
+              <div class="px-4 pb-4"><p class="text-sm text-muted">{faq.answer || faq.a || ''}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Related links: KL and Penang private tours -->
+  <section class="py-16 bg-muted/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h3 class="text-xl font-bold font-heading mb-6">Private Tours by City</h3>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/es/tours/private-tours/private-food-tour-kuala-lumpur"
+           class="chip inline-block border-2 border-gray-300 dark:border-white/20 rounded-full px-5 py-2 text-sm font-semibold text-default hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+          Private Tour Kuala Lumpur
+        </a>
+        <a href="/es/tours/private-tours/private-food-tour-penang"
+           class="chip inline-block border-2 border-gray-300 dark:border-white/20 rounded-full px-5 py-2 text-sm font-semibold text-default hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+          Private Tour Penang
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

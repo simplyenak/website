@@ -1,0 +1,87 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { marked } from 'marked';
+import { getStoryBySlug, getImageUrl } from '~/lib/content';
+
+export async function getStaticPaths() {
+  const all = (await import('~/data/content/stories.json')).default as any[];
+  return all
+    .filter((s: any) => (s.workflowStatus === 'published' || s._status === 'published' || !s._status) && s.content_markdown)
+    .map((s: any) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const story = await getStoryBySlug(slug!, 'ms');
+if (!story) return Astro.redirect('/ms');
+
+const image = getImageUrl(story.featuredImage || '');
+const contentHtml = story.content_markdown ? marked.parse(story.content_markdown) : '';
+
+const meta = {
+  title: story.meta_title || story.title || '',
+  description: story.excerpt || '',
+};
+---
+
+<Layout metadata={meta}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/fr" class="hover:text-primary transition-colors">Laman Utama</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/fr/tours" class="hover:text-primary transition-colors">Pusingan</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">{story.title}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  {image && (
+    <div class="relative aspect-[21/9] md:aspect-[3/1] overflow-hidden">
+      <img src={image} alt={story.title || ''} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+        <div class="max-w-4xl mx-auto">
+          <span class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">PANDUAN</span>
+          <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold font-heading text-white leading-tight">{story.title}</h1>
+          {story.excerpt && (
+            <p class="text-white/80 text-sm md:text-base mt-4 max-w-2xl">{story.excerpt}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  )}
+
+  <!-- Content -->
+  <article class="py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      {!image && (
+        <>
+          <span class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">PANDUAN</span>
+          <h1 class="text-3xl md:text-4xl font-bold font-heading mb-6 leading-tight">{story.title}</h1>
+        </>
+      )}
+      {story.excerpt && image && (
+        <p class="text-muted text-lg mb-8 leading-relaxed">{story.excerpt}</p>
+      )}
+      {contentHtml ? (
+        <div class="prose prose-sm md:prose-base max-w-none prose-headings:font-heading prose-headings:font-bold prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl">
+          {contentHtml}
+        </div>
+      ) : (
+        <p class="text-muted italic">Kandungan penuh akan datang. Sementara itu, terokai pusingan makanan kami.</p>
+      )}
+
+      <!-- CTA -->
+      <div class="mt-12 pt-8 border-t border-gray-100 text-center">
+        <p class="text-lg font-semibold mb-4">Sedia untuk merasai sendiri?</p>
+        <a href="/fr/tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors">
+          Terokai Pusingan Kami
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>
