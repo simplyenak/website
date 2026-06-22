@@ -1,0 +1,397 @@
+---
+export const prerender = true;
+import Layout from '~/layouts/PageLayout.astro';
+import { getContactPage } from '~/lib/content';
+import { useTranslations } from '~/i18n/utils';
+
+const lang = 'de';
+const t = useTranslations(lang);
+const cp = await getContactPage(lang);
+
+const metadata = {
+  title: `${t('contact.pageTitle')} – Simply Enak ${t('contact.pageTitleSuffix')}`,
+  description: t('contact.pageDesc'),
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-20 md:py-28">
+    <div class="absolute inset-0">
+      <img src="https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-sm md:text-base uppercase tracking-[0.2em] font-bold mb-4">{cp.hero?.eyebrow ?? cp.hero_title ?? t('contact.heroEyebrow')}</p>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight" style="font-size: clamp(1.5rem, 5vw, 3.25rem);">
+        <span class="block text-white mb-2">{cp.hero?.heading ?? cp.hero_subtitle ?? t('contact.heroHeading')}<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">{t('contact.heroHeadingHighlight')}</span></span>
+      </h1>
+      <p class="text-xl text-white/80 max-w-2xl mx-auto">
+        {cp.hero?.description ?? cp.intro_subtitle ?? t('contact.heroDescription')}
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">{t('nav.home')}</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">{t('nav.contact')}</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Method Cards -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.contactMethods?.heading ?? "Bagaimana Kami Boleh Membantu?"}</h2>
+        <p class="text-muted">{cp.contactMethods?.description ?? "Pilih cara paling mudah untuk menghubungi kami. Kami membaca setiap mesej."}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {(cp.contactMethods?.items ?? [
+          { type: 'whatsapp', title: 'Berbual dengan Kami', subtitle: 'Respons terpantas', detail: '+60 17-287 8929', cta: { text: t('contact.openWhatsApp'), url: 'https://wa.me/60172878929' } },
+          { type: 'email', title: 'E-mel Kami', subtitle: 'Untuk rancangan terperinci', detail: 'booking@simplyenak.com', cta: { text: t('contact.copyEmail') } },
+          { type: 'phone', title: 'Hubungi Kami', subtitle: 'Untuk pertanyaan segera', detail: '+60 17-287 8929', cta: { text: t('contact.callNow'), url: 'tel:+60172878929' } },
+        ]).map((method: any, i: number) => {
+          const accentColors = ['bg-accent', 'bg-primary', 'bg-secondary'];
+          const bgTints = ['bg-amber-50/50', 'bg-primary/5', 'bg-secondary/5'];
+          const darkBgTints = ['dark:bg-[#2a2218]', 'dark:bg-primary/10', 'dark:bg-secondary/10'];
+          return (
+          <div class:list={[
+            'relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 group hover:shadow-lg hover:-translate-y-0.5',
+            bgTints[i] || 'bg-white',
+            darkBgTints[i] || 'dark:bg-[#1e1c1c]',
+            'border border-gray-100 dark:border-white/10',
+          ]}>
+            <div class={accentColors[i] + ' h-1.5'}></div>
+            <div class="p-8 text-center flex-1">
+              <div class:list={[
+                'w-14 h-14 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110',
+                i === 0 ? 'bg-accent/10' : 'bg-primary/10',
+              ]}>
+                {method.type === 'whatsapp' && (
+                  <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
+                  </svg>
+                )}
+                {method.type === 'email' && (
+                  <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488a2.25 2.25 0 01-2.178 0l-6.478-3.488A2.25 2.25 0 012.25 9.906V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V9"/>
+                  </svg>
+                )}
+                {method.type === 'phone' && (
+                  <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-xl font-bold font-heading text-default mb-1">{method.title}</h3>
+              <p class="text-sm text-muted mb-2">{method.subtitle}</p>
+              <p class="font-medium text-default mb-6">{method.detail}</p>
+              {method.type === 'whatsapp' && (
+                <a href={method.cta.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded-lg hover:bg-[#f0952e] transition-colors shadow-sm">
+                  {method.cta.text}
+                </a>
+              )}
+              {method.type === 'email' && (
+                <button
+                  id="copy-email-btn"
+                  data-email={method.detail}
+                  class="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-secondary transition-colors cursor-pointer shadow-sm"
+                >
+                  <span id="copy-email-text">{method.cta.text}</span>
+                </button>
+              )}
+              {method.type === 'phone' && (
+                <a href={method.cta.url} class="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-secondary transition-colors shadow-sm">
+                  {method.cta.text}
+                </a>
+              )}
+            </div>
+          </div>
+        )})}
+      </div>
+    </div>
+  </section>
+
+  <!-- Planning Scenarios -->
+  <section class="py-16 md:py-20 bg-primary/5 dark:bg-primary/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.planningScenarios?.heading ?? "Walau Apa Tahap Anda Sekarang"}</h2>
+        <p class="text-muted">{cp.planningScenarios?.description ?? "Kami telah membantu tetamu dari \"sekadar melihat\" hingga \"kami mendarat esok.\""}</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {(cp.planningScenarios?.items ?? [
+          { title: 'Sekadar Melihat', description: 'Belum pasti? Tiada tekanan. Tanya kami apa-apa tentang pusingan, makanan, atau kawasan kami.' },
+          { title: 'Merancang Perjalanan', description: 'Beritahu kami tarikh dan saiz kumpulan anda. Kami akan mengesyorkan pusingan yang sesuai untuk anda.' },
+          { title: 'Mendarat Esok', description: 'Menit terakhir? Kami sering mempunyai tempat kosong. WhatsApp kami untuk respons terpantas.' },
+          { title: 'Acara Kumpulan', description: 'Persidangan sedang berakhir? Kami akan bawa kumpulan anda ke suatu tempat yang tidak dapat dilupakan untuk malam itu. KL dan Pulau Pinang.' },
+        ]).map((scenario: any) => (
+          <div class="text-center p-6 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c] group hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 mx-auto mb-4 bg-primary/5 dark:bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/10 dark:group-hover:bg-primary/20 transition-colors">
+              {scenario.title === 'Sekadar Melihat' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
+                </svg>
+              )}
+              {scenario.title === 'Merancang Perjalanan' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
+                </svg>
+              )}
+              {scenario.title === 'Mendarat Esok' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              )}
+              {scenario.title === 'Acara Kumpulan' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+                </svg>
+              )}
+            </div>
+            <h3 class="text-lg font-bold font-heading text-default mb-2">{scenario.title}</h3>
+            <p class="text-sm text-muted">{scenario.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Promise + Form -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Our Promise -->
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.ourPromise?.title ?? "Janji Kami"}</h2>
+          <p class="text-muted text-lg mb-8">{cp.ourPromise?.description ?? "Apabila anda menghubungi Simply Enak, anda bercakap dengan orang sebenar yang benar-benar menjalankan pusingan."}</p>
+          <ul class="space-y-4">
+            {(cp.ourPromise?.highlights ?? [
+              "Kami membalas dalam masa 3 jam (selalunya lebih cepat di WhatsApp)",
+              "Tiada respons automatik. Orang sebenar membaca setiap mesej",
+              "Kami tidak akan memaksa anda menempah sesuatu yang tidak sesuai untuk anda",
+              "Jika kami tidak sesuai, kami akan beritahu anda dengan jujur",
+            ]).map((h: string) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-default">{h}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-10 p-6 rounded-lg bg-primary/5 dark:bg-primary/10 border border-primary/10">
+            <h3 class="font-bold font-heading text-default mb-2">Waktu Operasi</h3>
+            <p class="text-default">{cp.businessHours?.text ?? "Isn – Ahad: 9:00 – 20:00"}</p>
+            <p class="text-sm text-muted mt-1">{cp.businessHours?.timezone ?? "Waktu Malaysia (GMT+8)"}</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-default mb-8">{t('contact.sendMessage')}</h2>
+          <form id="contact-form" class="space-y-5">
+            <!-- Name + Email -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="cf-name" class="block text-sm font-medium text-default mb-1">{t('contact.fullName')} <span class="text-primary">*</span></label>
+                <input id="cf-name" type="text" name="fullName" required maxlength="255" autocomplete="name"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="cth. Sarah Chen" />
+              </div>
+              <div>
+                <label for="cf-email" class="block text-sm font-medium text-default mb-1">{t('contact.email')} <span class="text-primary">*</span></label>
+                <input id="cf-email" type="email" name="email" required maxlength="255" autocomplete="email"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="anda@contoh.com" />
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="cf-phone" class="block text-sm font-medium text-default mb-1">{t('contact.phoneWhatsApp')} <span class="text-muted font-normal">{t('common.optional')}</span></label>
+              <input id="cf-phone" type="tel" name="phoneNumber" maxlength="30" autocomplete="tel"
+                class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                placeholder="+60 17-287 8929" />
+            </div>
+
+            <!-- Company + Country -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="cf-company" class="block text-sm font-medium text-default mb-1">{t('contact.company')} <span class="text-muted font-normal">{t('common.optional')}</span></label>
+                <input id="cf-company" type="text" name="company" maxlength="255" autocomplete="organization"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="Nama syarikat anda" />
+              </div>
+              <div>
+                <label for="cf-country" class="block text-sm font-medium text-default mb-1">{t('contact.country')}</label>
+                <input id="cf-country" type="text" name="country" maxlength="100" autocomplete="country-name"
+                  class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  placeholder="cth. Australia" />
+              </div>
+            </div>
+
+            <!-- Inquiry Type -->
+            <div>
+              <label for="cf-inquiry" class="block text-sm font-medium text-default mb-1">Apa yang kami boleh bantu? <span class="text-primary">*</span></label>
+              <select id="cf-inquiry" name="inquiryType" required
+                class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors cursor-pointer">
+                <option value="">{t('common.selectOption')}…</option>
+                <option value="Public Tour">Sertai Pusingan Awam</option>
+                <option value="Private Tour">Pusingan Persendirian / Berkumpulan</option>
+                <option value="Food Experience">Pengalaman Makanan Tersuai</option>
+                <option value="Corporate Event">Acara Kumpulan</option>
+                <option value="Partnership">Pertanyaan Perkongsian</option>
+                <option value="Media">Pertanyaan Media</option>
+                <option value="General">Soalan Umum</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="cf-message" class="block text-sm font-medium text-default mb-1">{t('contact.yourMessage')} <span class="text-primary">*</span></label>
+              <textarea id="cf-message" name="message" rows="5" required maxlength="5000"
+                class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-y"
+                placeholder="Beritahu kami tentang kumpulan anda, tarikh pilihan, keperluan diet, atau apa-apa lagi yang anda ingin tahu..."></textarea>
+            </div>
+
+            <!-- Honeypot -->
+            <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;visibility:hidden;" aria-hidden="true">
+              <label for="honeypot_website">{t('contact.leaveBlank')}</label>
+              <input type="text" id="honeypot_website" name="honeypot_website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Turnstile widget -->
+            <div id="turnstile-wrapper" class="cf-turnstile" data-sitekey="0x4AAAAAAAQixyz123" data-theme="auto" data-size="normal"></div>
+
+            <button type="submit" id="cf-submit"
+              class="w-full py-4 bg-primary text-white font-bold rounded hover:bg-secondary transition-colors cursor-pointer flex items-center justify-center gap-2">
+              {t('contact.send')}
+            </button>
+
+            <!-- Submit feedback -->
+            <div id="cf-feedback" class="hidden p-4 rounded-lg font-medium text-center"></div>
+
+            <p class="text-xs text-muted text-center">
+              {t('contact.privacyNotice')}
+              <a href="/de/privacy" class="underline hover:text-primary transition-colors">{t('footer.privacy')}</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">Soalan Lazim</h2>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-4">
+        {(cp.faqs ?? [
+          { question: 'Berapa cepat anda membalas?', answer: 'Kami membalas dalam masa 3 jam semasa waktu operasi (9 pagi–8 malam waktu Malaysia). Di WhatsApp, biasanya dalam beberapa minit.' },
+          { question: 'Adakah saya perlu menempah lebih awal?', answer: 'Kami mengesyorkan menempah sekurang-kurangnya 24 jam lebih awal supaya kami boleh mengesahkan ketersediaan dengan vendor kami. Untuk permintaan saat akhir, WhatsApp adalah pilihan terbaik.' },
+          { question: 'Bolehkah anda mengakomodasi keperluan diet?', answer: 'Semestinya. Vegetarian, halal, bebas gluten, alergi. Beritahu kami semasa menempah dan kami akan pastikan setiap perhentian sesuai untuk anda.' },
+          { question: 'Apakah dasar pembatalan anda?', answer: 'Pembatalan percuma sehingga 24 jam sebelum pusingan anda. Selepas itu, kami menawarkan bayaran balik penuh atau penjadualan semula jika kami dapat mengisi tempat anda.' },
+          { question: 'Adakah anda menawarkan pusingan persendirian?', answer: 'Ya! Pusingan persendirian tersedia untuk pasangan, keluarga, dan kumpulan. Gunakan borang di atas atau WhatsApp kami untuk merancang pengalaman tersuai.' },
+        ]).map((faq: any) => (
+          <details class="group bg-white dark:bg-[#1e1c1c] rounded-lg shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-default hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+              <span>{faq.question}</span>
+              <svg class="w-5 h-5 text-muted transition-transform group-open:rotate-180 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-muted leading-relaxed">{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bg-[#1a1a1a] py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl font-bold font-heading text-white mb-4">{cp.ctaSection?.heading ?? t('contact.ctaHeading')}</h2>
+      <p class="text-white/80 mb-8">{cp.ctaSection?.description ?? t('contact.ctaDesc')}</p>
+      <a href={cp.ctaSection?.ctaUrl ?? "https://wa.me/60172878929"} target="_blank" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-all shadow-md">
+        {cp.ctaSection?.ctaText ?? t('contact.chatOnWhatsApp')}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  // Copy email
+  const copyBtn = document.getElementById('copy-email-btn');
+  const copyText = document.getElementById('copy-email-text');
+  if (copyBtn && copyText) {
+    const email = copyBtn.dataset.email || 'booking@simplyenak.com';
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+        copyText.textContent = 'Disalin!';
+        setTimeout(() => { copyText.textContent = 'Salin E-mel'; }, 2000);
+      } catch {
+        window.location.href = 'mailto:' + email;
+      }
+    });
+  }
+
+  // Form submission
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('cf-submit');
+  const feedback = document.getElementById('cf-feedback');
+
+  if (form && submitBtn && feedback) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Honeypot check
+      const honeypot = form.querySelector('#honeypot_website')?.value;
+      if (honeypot) return;
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      payload.submittedAt = new Date().toISOString();
+      payload.source = window.location.href;
+
+      submitBtn.textContent = 'Menghantar...';
+      submitBtn.setAttribute('disabled', 'true');
+      feedback.classList.add('hidden');
+
+      try {
+        const res = await fetch('https://formspree.io/f/xjkyqvpz', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+
+        feedback.textContent = 'Mesej dihantar! Kami akan membalas dalam masa 3 jam. Periksa peti masuk anda (dan folder spam).';
+        feedback.className = 'p-4 rounded-lg font-medium text-center bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800';
+        form.reset();
+        if (window.trackContactForm) window.trackContactForm();
+      } catch {
+        feedback.textContent = 'Ada masalah. Sila e-mel booking@simplyenak.com atau WhatsApp +60 17-287 8929.';
+        feedback.className = 'p-4 rounded-lg font-medium text-center bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800';
+      } finally {
+        submitBtn.textContent = 'Hantar Mesej';
+        submitBtn.removeAttribute('disabled');
+        feedback.classList.remove('hidden');
+      }
+    });
+  }
+</script>
