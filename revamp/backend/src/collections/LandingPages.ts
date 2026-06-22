@@ -156,6 +156,23 @@ export const LandingPages: CollectionConfig = {
         },
       ],
     },
+    // === SEO — standalone fields (not via SEO plugin, to avoid GraphQL collision with Pages) ===
+    {
+      name: 'meta_title',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO title (< 60 chars). Falls back to segment cache if empty.',
+      },
+    },
+    {
+      name: 'meta_description',
+      type: 'textarea',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO meta description (140-160 chars). Falls back to segment cache if empty.',
+      },
+    },
     {
       name: 'published_at',
       type: 'date',

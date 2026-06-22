@@ -5,8 +5,8 @@ import { getThankYouPage } from '~/lib/content';
 
 const d = getThankYouPage('thank-you-registration') || {} as any;
 const metadata = {
-  title: d.metaTitle || 'Thank You  -  Registration Confirmed',
-  description: d.metaDescription || '',
+  title: d?.seo?.metaTitle || d.metaTitle || 'Thank You  -  Registration Confirmed',
+  description: d?.seo?.metaDescription || d.metaDescription || '',
   robots: { index: false },
 };
 ---

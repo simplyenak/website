@@ -5,8 +5,8 @@ import { getThankYouPage } from '~/lib/content';
 
 const d = getThankYouPage('thank-you-inquiry') || {} as any;
 const metadata = {
-  title: d.metaTitle || 'Thank You  -  Inquiry Received',
-  description: d.metaDescription || '',
+  title: d?.seo?.metaTitle || d.metaTitle || 'Thank You  -  Inquiry Received',
+  description: d?.seo?.metaDescription || d.metaDescription || '',
   robots: { index: false },
 };
 ---

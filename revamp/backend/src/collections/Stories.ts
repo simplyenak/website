@@ -98,7 +98,23 @@ export const Stories: CollectionConfig = {
         description: 'Main story image — upload or select from media library',
       },
     },
-    // SEO fields are handled by seoPlugin
+    // SEO — standalone fields (frontend reads s.meta_title, not s.meta?.title)
+    {
+      name: 'meta_title',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO title (< 60 chars). Falls back to story title if empty.',
+      },
+    },
+    {
+      name: 'meta_description',
+      type: 'textarea',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO meta description (140-160 chars). Falls back to excerpt if empty.',
+      },
+    },
     {
       name: 'status',
       type: 'select',
