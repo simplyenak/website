@@ -29,11 +29,42 @@ const { metadata = {}, structuredData, lang: propLang } = Astro.props;
 const { language, textDirection } = I18N;
 const htmlLang = propLang || language;
 
-// Build hreflang links for en/ms locales
+// Build hreflang links for all languages
 const currentPath = Astro.url.pathname;
-const isMsPage = currentPath.startsWith('/ms');
-const enUrl = 'https://simplyenak.com' + (isMsPage ? currentPath.replace(/^\/ms/, '') || '/' : currentPath);
-const msUrl = 'https://simplyenak.com/ms' + (isMsPage ? currentPath.replace(/^\/ms/, '') || '/' : currentPath);
+const SITE = 'https://simplyenak.com';
+
+// Language code → URL prefix for hreflang
+const HREFLANG_PREFIXES: Record<string, string> = {
+  en: '',
+  ms: '/ms',
+  zh: '/zh',
+  de: '/de',
+  es: '/es',
+  fr: '/fr',
+  nl: '/nl',
+  ru: '/ru',
+  ja: '/ja',
+  pt: '/pt',
+};
+
+// Detect current language prefix and get the clean path (without language prefix)
+let cleanPath = currentPath;
+for (const [, prefix] of Object.entries(HREFLANG_PREFIXES)) {
+  if (prefix && currentPath.startsWith(prefix)) {
+    cleanPath = currentPath.slice(prefix.length) || '/';
+    break;
+  }
+}
+cleanPath = cleanPath.replace(/\/$/, '') || '/';
+
+// Generate hreflang URLs for all languages
+const hreflangUrls: Array<{ lang: string; url: string }> = [];
+for (const [lang, prefix] of Object.entries(HREFLANG_PREFIXES)) {
+  hreflangUrls.push({
+    lang,
+    url: `${SITE}${prefix}${cleanPath === '/' ? '' : cleanPath}`,
+  });
+}
 ---
 
 <!doctype html>
@@ -61,10 +92,11 @@ const msUrl = 'https://simplyenak.com/ms' + (isMsPage ? currentPath.replace(/^\/
       crossorigin="anonymous"
     ></script>
 
-    <!-- Hreflang — bilingual SEO for en/ms -->
-    <link rel="alternate" hreflang="en" href={enUrl} />
-    <link rel="alternate" hreflang="ms" href={msUrl} />
-    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <!-- Hreflang — multi-language SEO -->
+    {hreflangUrls.map(({ lang, url }) => (
+      <link rel="alternate" hreflang={lang} href={url} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={hreflangUrls.find(h => h.lang === 'en')?.url || 'https://simplyenak.com'} />
 
     <!-- IndexNow verification for Bing/Yandex -->
     <meta name="indexnow-key" content="8d67ae8f-2154-434e-aca7-68b3a7fa2ee0" />
