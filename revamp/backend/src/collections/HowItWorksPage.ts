@@ -17,14 +17,6 @@ export const HowItWorksPage: CollectionConfig = {
     update: ({ req: { user } }) => ['admin', 'editor', 'reviewer'].includes((user as any)?.role),
     delete: ({ req: { user } }) => (user as any)?.role === 'admin',
   },
-  versions: {
-    drafts: {
-      autosave: {
-        interval: 3000,
-      },
-    },
-    maxPerDoc: 20,
-  },
   fields: [
     {
       name: 'hero_title',
@@ -38,7 +30,7 @@ export const HowItWorksPage: CollectionConfig = {
             admin: { description: 'Hero subtitle' },
     },
     {
-      name: 'steps_section_title',
+      name: 'steps_title',
       type: 'text',
             admin: { description: 'Section title for tour steps' },
     },
