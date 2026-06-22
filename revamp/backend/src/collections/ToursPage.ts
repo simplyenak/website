@@ -43,7 +43,7 @@ export const ToursPage: CollectionConfig = {
       admin: { description: 'e.g. "YOUR CHOICE"' },
     },
     { name: 'three_ways_heading', type: 'text' },
-    { name: 'three_ways_description', type: 'textarea' },
+    { name: 'three_ways_section_description', type: 'textarea' },
     {
       name: 'three_ways',
       type: 'array',
@@ -175,7 +175,7 @@ export const ToursPage: CollectionConfig = {
       admin: { description: 'e.g. "FOR GROUPS"' },
     },
     { name: 'groups_heading', type: 'text' },
-    { name: 'groups_description', type: 'textarea' },
+    { name: 'groups_section_description', type: 'textarea' },
     {
       name: 'groups',
       type: 'array',
