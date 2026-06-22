@@ -45,13 +45,16 @@ services:
         - traefik.enable=true
         - traefik.swarm.lbswarm=true
         - traefik.swarm.network=dokploy-network
+        - traefik.http.middlewares.openviking-auth.basicauth.users=maarten:$$apr1$$A/DDaEo.$$0LndHQHLZrholn74FXaF2/
+        - traefik.http.middlewares.openviking-auth.basicauth.realm=OpenViking Context Database
         - traefik.http.routers.openviking-web.rule=Host(`openviking.system.simplyenak.com`)
         - traefik.http.routers.openviking-web.entrypoints=web
-        - traefik.http.routers.openviking-web.middlewares=redirect-to-https@file
+        - traefik.http.routers.openviking-web.middlewares=redirect-to-https@file,openviking-auth
         - traefik.http.routers.openviking-web.service=openviking-web
         - traefik.http.services.openviking-web.loadbalancer.server.port=1933
         - traefik.http.routers.openviking-websecure.rule=Host(`openviking.system.simplyenak.com`)
         - traefik.http.routers.openviking-websecure.entrypoints=websecure
+        - traefik.http.routers.openviking-websecure.middlewares=openviking-auth
         - traefik.http.routers.openviking-websecure.service=openviking-websecure
         - traefik.http.routers.openviking-websecure.tls.certresolver=letsencrypt
         - traefik.http.services.openviking-websecure.loadbalancer.server.port=1933
