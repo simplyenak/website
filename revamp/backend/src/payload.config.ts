@@ -201,7 +201,7 @@ export default buildConfig({
     }),
     // SEO Plugin
     seoPlugin({
-      collections: ['tours', 'stories', 'landing_pages', 'pages'],
+      collections: ['tours', 'stories', 'pages'],
       uploadsCollection: 'media',
     }),
     // Nested Docs Plugin
