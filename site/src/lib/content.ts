@@ -774,6 +774,15 @@ async function resolveTestimonials(locale?: string): Promise<any[]> {
 }
 
 async function resolveStories(locale?: string): Promise<any[]> {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotStories.length > 0) {
+    const translated = snapshotStories.map(item => applyLocaleTranslations(item, locale));
+    const hasTranslations = translated.some(item => {
+      const t = item.title;
+      return t && /[^\x00-\x7F]/.test(t);
+    });
+    if (hasTranslations) return translated;
+  }
   const live = await liveStories(locale);
   if (live && live.length > 0) return live;
   if (snapshotStories.length > 0) return snapshotStories;
