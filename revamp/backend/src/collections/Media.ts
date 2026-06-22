@@ -138,6 +138,10 @@ export const Media: CollectionConfig = {
         if (operation !== 'create' && operation !== 'update') return data
         if (!data?.filename) return data
 
+        // Bulk upload sends '' instead of null/undefined for select fields.
+        // Payload rejects '' as not a valid option value.
+        if (data.subject === '') data.subject = undefined
+
         // 1. Always sanitize the raw upload filename as a safety net
         const ext = data.filename.match(/\.([^.]+)$/)?.[1]?.toLowerCase() || ''
         const dotExt = ext ? `.${ext}` : ''
@@ -163,10 +167,24 @@ export const Media: CollectionConfig = {
             }
           }
 
+          // Extract trailing number from original filename for uniqueness
+          // e.g. "20260224_Secrets-of-KL-Food-Tour-001.jpg" -> "001"
+          const originalBase = data.filename.replace(/\.[^.]+$/, '')
+          const trailingNum = originalBase.match(/(\d+)$/)?.[1] || ''
+
           const parts: string[] = ['simply-enak']
           if (locName) parts.push(slugify(locName, 30))
           if (data.subject) parts.push(data.subject)
           if (data.custom_label) parts.push(slugify(data.custom_label, 40))
+          // Ensure uniqueness: append trailing number from original file,
+          // or a random 4-char hex if the original has no number.
+          // Without this, multiple uploads with the same selectors produce
+          // identical filenames and hit the unique constraint.
+          if (trailingNum) {
+            parts.push(trailingNum)
+          } else {
+            parts.push(Math.random().toString(36).slice(2, 6))
+          }
           if (data.credit) parts.push(`by-${slugify(data.credit, 30)}`)
 
           data.filename = parts.join('-') + dotExt
