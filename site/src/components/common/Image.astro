@@ -28,44 +28,71 @@ import type { ImageMetadata } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 import { transformUrl, parseUrl } from 'unpic';
 import { findImage } from '~/utils/images';
+import { getSrcsetFromMedia } from '~/lib/content';
 
 type Layout = 'constrained' | 'responsive' | 'fullWidth' | 'fixed' | 'cover';
 type Format = 'avif' | 'jpeg' | 'jpg' | 'png' | 'webp';
 
+export interface PayloadMedia {
+  url?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  sizes?: {
+    thumbnail?: { url?: string; width?: number; height?: number };
+    medium?: { url?: string; width?: number; height?: number };
+    large?: { url?: string; width?: number; height?: number };
+  };
+}
+
 interface Props extends Omit<HTMLAttributes<'img'>, 'src' | 'width' | 'height'> {
   src?: string | ImageMetadata | null;
+  /** Full Payload media object. Auto-extracts src, alt, w, h, and srcset from sizes. */
+  media?: PayloadMedia | null;
   width?: number | string;
   height?: number | string;
   widths?: number[];
   format?: Format;
   layout?: Layout;
-  /** Pre-built srcset string (e.g. from Payload image sizes), overrides automated CDN srcset. */
+  /** Pre-built srcset string, overrides automated and media-derived srcset. */
   srcset?: string;
   /** HTML sizes attribute for responsive images. */
   imgSizes?: string;
 }
 
-const { src, alt, width, height, widths, format, layout = 'constrained', srcset: propSrcset, imgSizes, ...rest } = Astro.props;
+const { src, media, alt: propAlt, width, height, widths, format, layout = 'constrained', srcset: propSrcset, imgSizes, ...rest } = Astro.props;
+
+// --- Resolve from Payload media object (if provided) ------------------------
+const mediaSrc = media?.url || src;
+const mediaAlt = media?.alt || propAlt;
+const [mediaW, mediaH] = media?.width && media?.height ? [media.width, media.height] : [undefined, undefined];
+const mediaSrcset = media ? getSrcsetFromMedia(media) : undefined;
+
+const effectiveSrc = mediaSrc;
+const effectiveAlt = mediaAlt || '';
+const effectiveSrcset = propSrcset || mediaSrcset || undefined;
+const effectiveW = width ?? mediaW;
+const effectiveH = height ?? mediaH;
 
 // --- Accessibility ---------------------------------------------------------
-if (alt === undefined || alt === null) {
+if (effectiveAlt === undefined || effectiveAlt === null) {
   throw new Error(
-    `Image: missing required \`alt\` prop (src=${String(src)}). ` + `Pass alt="" explicitly for decorative images.`
+    `Image: missing required \`alt\` prop (src=${String(effectiveSrc)}). ` + `Pass alt="" explicitly for decorative images.`
   );
 }
 
 // --- Prop coercion (tolerate stringified numbers) --------------------------
 const toNumber = (v: number | string | undefined): number | undefined =>
   typeof v === 'string' ? (Number.isFinite(Number(v)) ? Number(v) : undefined) : v;
-let w = toNumber(width);
-let h = toNumber(height);
+let w = toNumber(effectiveW);
+let h = toNumber(effectiveH);
 
 // --- Defaults --------------------------------------------------------------
 rest.loading ??= 'lazy';
 rest.decoding ??= 'async';
 
 // --- Resolve src (handles `~/assets/...` paths) ----------------------------
-const resolved = await findImage(src);
+const resolved = await findImage(effectiveSrc);
 
 const isCdnUrl =
   typeof resolved === 'string' &&
@@ -166,11 +193,11 @@ const cdnSrcSet =
   isCdnUrl ? (
     <img
       src={cdnSrc}
-      srcset={propSrcset || cdnSrcSet}
+      srcset={effectiveSrcset || cdnSrcSet}
       sizes={imgSizes}
       width={w}
       height={h}
-      alt={alt}
+      alt={effectiveAlt}
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
       {...rest}
@@ -186,7 +213,7 @@ const cdnSrcSet =
           src: resolved,
           width: w,
           height: h,
-          alt,
+          alt: effectiveAlt,
           widths,
           format,
           style: finalStyle,

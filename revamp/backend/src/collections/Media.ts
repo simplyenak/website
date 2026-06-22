@@ -226,11 +226,11 @@ export const Media: CollectionConfig = {
   },
   upload: {
     staticDir: 'media',
-    // Convert all uploads to WebP for web-optimized delivery.
-    // Quality 80 for main image — good balance of size vs fidelity.
+    // Convert all uploads to WebP. Conservative quality — the srcset does
+    // the heavy lifting by sending smaller sizes to smaller screens.
     formatOptions: {
       format: 'webp',
-      options: { quality: 80 },
+      options: { quality: 75 },
     },
     imageSizes: [
       {
@@ -240,7 +240,7 @@ export const Media: CollectionConfig = {
         position: 'centre',
         formatOptions: {
           format: 'webp',
-          options: { quality: 75 },
+          options: { quality: 65 },
         },
       },
       {
@@ -250,7 +250,7 @@ export const Media: CollectionConfig = {
         position: 'centre',
         formatOptions: {
           format: 'webp',
-          options: { quality: 80 },
+          options: { quality: 70 },
         },
       },
       {
@@ -260,7 +260,7 @@ export const Media: CollectionConfig = {
         position: 'centre',
         formatOptions: {
           format: 'webp',
-          options: { quality: 82 },
+          options: { quality: 72 },
         },
       },
     ],
