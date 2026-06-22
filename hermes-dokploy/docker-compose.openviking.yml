@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: openviking-ollama
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - openviking-network
+    deploy:
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 10s
+      start_period: 120s
+      retries: 5
+
+  openviking:
+    build:
+      context: .
+      dockerfile: Dockerfile.openviking
+    image: openviking-server:latest
+    container_name: openviking-server
+    environment:
+      - OPENVIKING_WITH_BOT=0
+      - GLM_API_KEY=${GLM_API_KEY}
+      - OPENCODE_API_KEY=${OPENCODE_API_KEY}
+    volumes:
+      - openviking-data:/data/openviking
+    networks:
+      - openviking-network
+      - dokploy-network
+    depends_on:
+      ollama:
+        condition: service_healthy
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.lbswarm=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.routers.openviking-web.rule=Host(`openviking.system.simplyenak.com`)
+        - traefik.http.routers.openviking-web.entrypoints=web
+        - traefik.http.routers.openviking-web.middlewares=redirect-to-https@file
+        - traefik.http.routers.openviking-web.service=openviking-web
+        - traefik.http.services.openviking-web.loadbalancer.server.port=1933
+        - traefik.http.routers.openviking-websecure.rule=Host(`openviking.system.simplyenak.com`)
+        - traefik.http.routers.openviking-websecure.entrypoints=websecure
+        - traefik.http.routers.openviking-websecure.service=openviking-websecure
+        - traefik.http.routers.openviking-websecure.tls.certresolver=letsencrypt
+        - traefik.http.services.openviking-websecure.loadbalancer.server.port=1933
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+volumes:
+  ollama-data:
+  openviking-data:
+
+networks:
+  openviking-network:
+    driver: bridge
+  dokploy-network:
+    external: true
