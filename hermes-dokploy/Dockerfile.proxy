@@ -1,0 +1,51 @@
+# =============================================================================
+# MemPalace MCP Proxy — HTTP/SSE bridge for MemPalace stdio MCP server
+# =============================================================================
+# Build: docker build -f Dockerfile.proxy -t hermes-simplyenak-mempalace:latest .
+# =============================================================================
+
+# Stage 1: Build MemPalace wheel
+FROM python:3.12-slim AS builder
+
+WORKDIR /build
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip wheel --no-cache-dir --wheel-dir=/wheels mempalace
+
+# Stage 2: Proxy builder (mcp-proxy = Node.js HTTP-to-stdio bridge)
+FROM node:22-slim AS proxy-builder
+RUN npm install -g mcp-proxy
+
+# Stage 3: Minimal runtime
+FROM python:3.12-slim
+
+# Copy mcp-proxy from Node builder
+COPY --from=proxy-builder /usr/local/lib/node_modules/mcp-proxy /usr/local/lib/node_modules/mcp-proxy
+COPY --from=proxy-builder /usr/local/bin/mcp-proxy /usr/local/bin/mcp-proxy
+
+# Install MemPalace from pre-built wheel + runtime deps
+COPY --from=builder /wheels /wheels
+RUN pip install --no-cache-dir --no-deps /wheels/*.whl \
+    && pip install --no-cache-dir chromadb httpx numpy pydantic \
+    && rm -rf /wheels
+
+# Unprivileged user
+RUN useradd -m -s /bin/bash mempalace
+RUN mkdir -p /home/mempalace/.mempalace \
+    && chown -R mempalace:mempalace /home/mempalace
+
+USER mempalace
+WORKDIR /home/mempalace
+
+# Optional: override via bind mount
+COPY --chown=mempalace:mempalace mempalace.yaml /home/mempalace/.mempalace.yaml
+
+EXPOSE 3456
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+    CMD python3 -c "import urllib.request; urllib.request.urlopen('http://localhost:3456/health')"
+
+CMD ["mcp-proxy", "--server", "python3 -m mempalace.mcp_server", "--port", "3456", "--host", "0.0.0.0"]

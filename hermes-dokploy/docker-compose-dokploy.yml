@@ -1,0 +1,251 @@
+# =============================================================================
+# Hermes Agent + MemPalace MCP Proxy + Hermes Workspace — Docker Compose for Dokploy
+#
+# Services:
+#   1. hermes (agent) — Telegram gateway + API server + dashboard
+#   2. mempalace-proxy — MCP server exposed via Traefik
+#   3. hermes-workspace — web UI (ghcr.io/outsourc-e/hermes-workspace:latest)
+#
+# Security: no host ports, Traefik TLS routing, basic auth on dashboard
+# Traefik configs: hermes-agent-traefik.yml, workspace-traefik.yml, mempalace-traefik.yml
+# DNS: hermes.system.simplyenak.com, workspace.system.simplyenak.com, mempalace.system.simplyenak.com
+# =============================================================================
+
+services:
+  hermes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hermes-agent
+    restart: unless-stopped
+
+    tmpfs:
+      - /tmp:noexec,nosuid,size=64m
+
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN        # chown volume mounts to hermes user
+      - DAC_OVERRIDE # root needs to stat files it doesn't own
+      - SETUID       # su hermes to drop privileges for gateway
+      - SETGID       # su hermes requires group switch
+      - NET_BIND_SERVICE # bind to API/dashboard ports
+    security_opt:
+      - no-new-privileges:true
+
+    deploy:
+      labels:
+        # Prevent Watchtower from auto-updating (we rebuild locally)
+        - com.centurylinklabs.watchtower.enable=false
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1024M
+          pids: 50
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+
+    networks:
+      - hermes-network
+      - hermes-services
+
+    volumes:
+      # Hermem's persistent data (sessions, skills, memory, backups)
+      - hermes-data:/home/hermes/.hermes
+      # Workspace for agent scratch space
+      - hermes-workspace:/home/hermes/workspace
+      # MemPalace memory store
+      - mempalace-data:/home/hermes/.mempalace
+      # Website repo — read-only so agent can read content for updates
+      - /var/home/maarten/website-optimization/website:/home/hermes/workspace/website:ro
+      # SSH deploy key for git push operations
+      - /home/maarten/.ssh/id_ed25519:/home/hermes/.ssh/deploy_key:ro
+      - /home/maarten/.ssh/id_ed25519.pub:/home/hermes/.ssh/deploy_key.pub:ro
+      - /home/maarten/.ssh/known_hosts:/home/hermes/.ssh/known_hosts:ro
+
+    environment:
+      - GLM_API_KEY=${GLM_API_KEY}
+      - NOVITA_API_KEY=***REMOVED***
+      - CROFAI_API_KEY=${CROFAI_API_KEY}
+      - CANOPYWAVE_API_KEY=${CANOPYWAVE_API_KEY}
+      - NOUS_API_KEY=${NOUS_API_KEY}
+      - TELEGRAM_BOT_TOKEN=***REMOVED***
+      - TELEGRAM_HOME_CHANNEL=${TELEGRAM_HOME_CHANNEL}
+      - TELEGRAM_ALLOWED_USERS=${TELEGRAM_ALLOWED_USERS}
+      - TELEGRAM_WEBHOOK_URL=https://hermes.system.simplyenak.com/telegram
+      - TELEGRAM_WEBHOOK_SECRET=***REMOVED***
+      - GATEWAY_ALLOW_ALL_USERS=false
+      - WEBHOOK_ENABLED=true
+      - WEBHOOK_PORT=8644
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - N8N_WEBHOOK_URL=http://n8n:5678/webhook
+      # Enable the HTTP API server so hermes-workspace can connect over Docker network
+      - API_SERVER_ENABLED=true
+      # Bind on all interfaces within the container so workspace can reach it
+      - API_SERVER_HOST=0.0.0.0
+      # API_SERVER_KEY — required for workspace auth since Phase 1 hardening
+      - API_SERVER_KEY=${API_SERVER_KEY}
+      # Brilliant knowledge base MCP — reaches brilliant-mcp over Docker network
+      - BRILLIANT_MCP_URL=http://brilliant-mcp:8002/mcp
+      - BRILLIANT_URL=https://brilliant.system.simplyenak.com
+      - BRILLIANT_API_KEY=${BRILLIANT_API_KEY}
+      # Session management (Phase 1)
+      - SESSION_RETENTION_DAYS=${SESSION_RETENTION_DAYS:-90}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      # Allow the workspace to read these from the agent env
+      - HERMES_WORKSPACE_PASSWORD=${HERMES_WORKSPACE_PASSWORD}
+
+    healthcheck:
+      test: ["CMD", "python", "/home/hermes/healthcheck.py"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+
+  # ─── MemPalace MCP Proxy — same network, no host ports ──────────────────────
+  # Single-purpose container: exposes MemPalace MCP over HTTP/SSE via Traefik
+  # Shares palace volume with Hermes — single source of truth
+  # Built from Dockerfile.proxy (Python + Node.js + mcp-proxy)
+
+  mempalace-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.proxy
+    container_name: mempalace-proxy
+    restart: unless-stopped
+
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1024M
+          pids: 50
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+
+    networks:
+      - hermes-network
+
+    volumes:
+      - mempalace-data:/home/mempalace/.mempalace
+
+    healthcheck:
+      test: ["CMD-SHELL", "python3 -c \"import urllib.request; urllib.request.urlopen('http://localhost:3456/sse')\" 2>/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3
+
+  # ─── Brilliant MCP proxy — exposes Brilliant knowledge base via Traefik ────
+  # Wraps cortex REST API as MCP tools: search, CRUD, governance, etc.
+  # Auth: Basic (same creds as mempalace), TLS termination via Traefik
+
+  brilliant-mcp:
+    build:
+      context: ./brilliant-mcp
+      dockerfile: Dockerfile
+    container_name: brilliant-mcp
+    restart: unless-stopped
+
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.middlewares.brilliant-mcp-auth.basicauth.users=maarten:$$apr1$$A/DDaEo.$$0LndHQHLZrholn74FXaF2/
+        - traefik.http.middlewares.brilliant-mcp-auth.basicauth.realm=Brilliant MCP
+        - traefik.http.routers.brilliant-mcp-web.rule=Host(`brilliant-mcp.system.simplyenak.com`)
+        - traefik.http.routers.brilliant-mcp-web.entrypoints=web
+        - traefik.http.routers.brilliant-mcp-web.middlewares=redirect-to-https@file,brilliant-mcp-auth
+        - traefik.http.services.brilliant-mcp-web.loadbalancer.server.port=8002
+        - traefik.http.routers.brilliant-mcp-websecure.rule=Host(`brilliant-mcp.system.simplyenak.com`)
+        - traefik.http.routers.brilliant-mcp-websecure.entrypoints=websecure
+        - traefik.http.routers.brilliant-mcp-websecure.middlewares=brilliant-mcp-auth
+        - traefik.http.routers.brilliant-mcp-websecure.service=brilliant-mcp-websecure
+        - traefik.http.routers.brilliant-mcp-websecure.tls.certresolver=letsencrypt
+        - traefik.http.services.brilliant-mcp-websecure.loadbalancer.server.port=8002
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 256M
+
+    environment:
+      # Pointing to the external Brilliant REST API — already deployed and working
+      - BRILLIANT_URL=https://brilliant.system.simplyenak.com
+      - BRILLIANT_API_KEY=${BRILLIANT_API_KEY}
+      - PORT=8002
+
+    networks:
+      - hermes-services
+
+  # ─── Hermes Workspace — web UI for chat, terminal, memory, skills ──────────
+  # Pre-built image from GitHub Container Registry — no build step needed.
+  # Connects to hermes-agent over Docker network on port 8642 (API server).
+  # The agent's built-in dashboard on port 9119 provides sessions/skills/config.
+  # Traefik routes workspace.simplyenak.com → this container on port 3000.
+
+  hermes-workspace:
+    image: ghcr.io/outsourc-e/hermes-workspace:latest
+    container_name: hermes-workspace
+    restart: unless-stopped
+
+    depends_on:
+      - hermes
+
+    networks:
+      - hermes-network
+
+    environment:
+      # Internal Docker network URL — workspace reaches the agent gateway here
+      - HERMES_API_URL=http://hermes-agent:8642
+      # Dashboard API for sessions, skills, config, jobs
+      - HERMES_DASHBOARD_URL=http://hermes-agent:9119
+      # Must match API_SERVER_KEY on the agent side (empty = no auth)
+      - HERMES_API_TOKEN=${API_SERVER_KEY}
+      # Password-protect the web UI — REQUIRED when binding off-loopback
+      - HERMES_PASSWORD=${HERMES_WORKSPACE_PASSWORD}
+      # Bind on all interfaces within the container for Traefik to reach it
+      - HOST=0.0.0.0
+      # Trust Traefik's forwarded headers for real IP / rate limiting
+      - TRUST_PROXY=1
+      # Secure cookies since Traefik terminates TLS
+      - COOKIE_SECURE=1
+      # SSE stream timeouts (ms) — generous for long-running agent responses
+      - STREAM_ACCEPTED_TIMEOUT_MS=120000
+      - STREAM_HANDOFF_TIMEOUT_MS=300000
+      # HermesWorld multiplayer hub
+      - VITE_PLAYGROUND_WS_URL=wss://hermes-playground-ws.myaurora-agi.workers.dev/playground
+      - VITE_PLAYGROUND_STATS_URL=https://hermes-playground-ws.myaurora-agi.workers.dev/stats
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:3000 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+
+volumes:
+  hermes-data:
+    driver: local
+  hermes-workspace:
+    driver: local
+  mempalace-data:
+    external: true
+    name: hermes-dokploy_mempalace-data
+
+networks:
+  hermes-network:
+    external: true
+  hermes-services:
+    external: true

@@ -1,0 +1,33 @@
+# MemPalace AI Memory Server configuration
+# https://github.com/your-org/mempalace
+# =========================================================
+
+palace:
+  name: "Simply Enak - Memory Palace"
+  description: "Knowledge base for Simply Enak food tour operations, guest preferences, and business intelligence"
+  version: "1.0"
+
+# Vector database configuration (ChromaDB)
+storage:
+  type: chromadb
+  path: /home/mempalace/.mempalace/chroma
+  persist: true
+
+# Memory limits
+limits:
+  maxEntries: 100000
+  embeddingModel: sentence-transformers/all-MiniLM-L6-v2
+  maxTokenLength: 500
+
+# Security
+authentication:
+  enabled: true
+  # Pre-computed Basic auth: maarten:SimplyEnak2026!
+  header: "Basic bWFhcnRlbjpTaW1wbHlFbmFrMjAyNiE="
+
+# Logging
+logging:
+  level: info
+  file: /home/mempalace/.mempalace/logs/palace.log
+  maxSize: 10MB
+  backupCount: 3

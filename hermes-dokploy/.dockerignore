@@ -1,0 +1,23 @@
+# Prevent secrets from being baked into the Docker image
+.env
+.env.example
+config/.env
+**/.env
+**/*.secret
+**/*.key
+**/secrets/
+**/credentials/
+**/id_*
+**/*.pem
+**/*.cert
+
+# Build artifacts
+__pycache__/
+*.pyc
+.git/
+.gitignore
+
+# Editor files
+*.swp
+*.swo
+*~

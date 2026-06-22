@@ -1,0 +1,114 @@
+# =============================================================================
+# Traefik routing for Hermes Agent — hermes.system.simplyenak.com
+#
+# Routes:
+#   /health    → health_server.py (port 8080)
+#   /webhooks  → webhook handler (port 8644)
+#   /dashboard → built-in hermes dashboard with TUI (port 9119)
+#   /api/      → dashboard API for sessions/skills/config (port 9119)
+#   /v1/       → agent API server for workspace chat/models (port 8642)
+#   default    → Telegram gateway (port 8443)
+#
+# The workspace UI lives on a separate domain (workspace.simplyenak.com)
+# and connects to the agent's API server over the Docker network.
+# See workspace-traefik.yml for that routing.
+# =============================================================================
+
+http:
+  routers:
+    hermes-agent-router-web:
+      rule: "Host(`hermes.system.simplyenak.com`)"
+      service: hermes-agent-service
+      middlewares:
+        - redirect-to-https
+      entryPoints:
+        - web
+    hermes-agent-router-websecure:
+      rule: "Host(`hermes.system.simplyenak.com`) && !Path(`/health`) && !PathPrefix(`/webhooks`) && !PathPrefix(`/dashboard`) && !PathPrefix(`/api/`) && !PathPrefix(`/v1/`)"
+      service: hermes-agent-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+    hermes-health-router:
+      rule: "Host(`hermes.system.simplyenak.com`) && Path(`/health`)"
+      service: hermes-health-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+    hermes-webhooks-router:
+      rule: "Host(`hermes.system.simplyenak.com`) && PathPrefix(`/webhooks`)"
+      service: hermes-webhooks-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+    hermes-dashboard-router:
+      rule: "Host(`hermes.system.simplyenak.com`) && PathPrefix(`/dashboard`)"
+      service: hermes-dashboard-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - hermes-strip-dashboard
+        - hermes-basic-auth
+    hermes-dashboard-api-router:
+      rule: "Host(`hermes.system.simplyenak.com`) && PathPrefix(`/api/`)"
+      service: hermes-dashboard-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - hermes-basic-auth
+    # Agent API server — OpenAI-compatible chat/models/completions
+    # Used by hermes-workspace for real-time streaming chat
+    hermes-api-router:
+      rule: "Host(`hermes.system.simplyenak.com`) && PathPrefix(`/v1/`)"
+      service: hermes-api-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+  services:
+    # Telegram gateway (webhook receiver + bot polling)
+    hermes-agent-service:
+      loadBalancer:
+        servers:
+          - url: http://hermes-agent:8443
+        passHostHeader: true
+    # Health check endpoint (lightweight Python HTTP server)
+    hermes-health-service:
+      loadBalancer:
+        servers:
+          - url: http://hermes-agent:8080
+        passHostHeader: true
+    # External webhook handler (n8n, cron triggers, etc.)
+    hermes-webhooks-service:
+      loadBalancer:
+        servers:
+          - url: http://hermes-agent:8644
+        passHostHeader: true
+    # Built-in dashboard with TUI (sessions, skills, config UI)
+    hermes-dashboard-service:
+      loadBalancer:
+        servers:
+          - url: http://hermes-agent:9119
+        passHostHeader: true
+    # Agent API server — OpenAI-compatible endpoints for workspace
+    hermes-api-service:
+      loadBalancer:
+        servers:
+          - url: http://hermes-agent:8642
+        passHostHeader: true
+  middlewares:
+    hermes-basic-auth:
+      basicAuth:
+        users:
+          - "admin:$2y$05$gkqB6cUnxtYhc47sOUdOJO.vdH1RoZukrCEc.ESi8cgeEZ4N21n5i"
+    hermes-strip-dashboard:
+      stripPrefix:
+        prefixes:
+          - "/dashboard"

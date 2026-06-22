@@ -1,0 +1,15 @@
+http:
+  routers:
+    mempalace-mcp-router:
+      rule: "Host(`mempalace.system.simplyenak.com`)"
+      service: mempalace-mcp-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+
+  services:
+    mempalace-mcp-service:
+      loadBalancer:
+        servers:
+          - url: "http://mempalace-proxy:3456"
