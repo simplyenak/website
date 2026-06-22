@@ -1,0 +1,293 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { useTranslations } from '~/i18n/utils';
+import { getAboutPage, getImageUrl } from '~/lib/content';
+
+const lang = 'zh';
+const t = useTranslations(lang);
+const ap = await getAboutPage(lang);
+
+const metadata = {
+  title: 'Tentang Simply Enak - Pusingan Makanan Malaysia Sejak 2011',
+  description: 'Sejak 2011, Simply Enak telah berkongsi warisan makanan Malaysia melalui pusingan jalan kaki berkumpulan kecil di Kuala Lumpur dan Pulau Pinang. Temui pemandu, temui peniaga, rasai Malaysia yang sebenar.',
+};
+export const prerender = true;
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-20 md:py-28">
+    <div class="absolute inset-0">
+      <img src={getImageUrl(ap.heroImage) || "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/Food_Experience_optimized_adc493606c.jpg"} alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs md:text-sm uppercase tracking-[0.25em] font-bold mb-5">{ap.heroEyebrow ?? "Cerita Kami"}</p>
+      <h1 class="text-3xl md:text-5xl font-bold font-heading leading-tight mb-6" style="font-size: clamp(1.75rem, 6vw, 3.5rem);">
+        {ap.heroHeading ?? "Lahir di Malaysia. Dibesarkan dengan "}<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.5deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">Makanan Jalanan</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+        {ap.heroDescription ?? "Apa yang bermula dengan membawa kawan-kawan ke pasar Chow Kit telah menjadi 14 tahun berkongsi Malaysia yang sebenar, satu hidangan pada satu masa."}
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/zh/" class="hover:text-primary transition-colors">{t('nav.home')}</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">{t('nav.about')}</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Founder Story -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">{ap.founderSection?.eyebrow ?? "Kenali Pauline"}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-6">
+            {ap.founderSection?.heading ?? "Dia Mula dengan Membawa Kawan ke Pasar"}
+          </h2>
+          <div class="space-y-4 text-default leading-relaxed">
+            {(ap.founderSection?.paragraphs ?? [
+              "Semasa membesar di Malaysia, saya menghabiskan pagi berjalan di pasar basah dengan ibu saya. Semasa dia menawar ikan yang paling segar, saya memerhatikan penjaja menyediakan hidangan yang telah diwarisi turun-temurun. Bunyi char kway teow di kuali panas. Awan aromatik kari. Seni melipat roti canai yang teliti. Inilah Malaysia saya.",
+              "Apabila saya mula membawa kawan-kawan dari luar negara, saya sedar mereka terlepas semua ini. Mereka makan di restoran berpendingin hawa dengan menu bergambar, tidak tahu bahawa dua jalan jauhnya, seorang nenek sedang membuat laksa dengan cara yang sama seperti ibunya mengajarnya 60 tahun yang lalu.",
+              "Simply Enak bermula pada 2011 kerana saya ingin berkongsi apa yang saya alami semasa membesar. Bukan Malaysia dalam buku panduan, tetapi Malaysia yang saya kenali. Pasar malam. Resipi keluarga. Peniaga yang ingat wajah anda dan hidangan kegemaran anda. Malaysia sebenar yang dilalui pelancong setiap hari."
+            ]).map((p: string) => (
+              <p>{p}</p>
+            ))}
+          </div>
+        </div>
+        <div class="relative">
+          <div class="rounded-xl overflow-hidden">
+            <img
+              src={ap.founderSection?.image || "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"}
+              alt="Pauline - Pengasas & Pemandu Utama Simply Enak"
+              class="w-full h-full object-cover aspect-[4/3]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="bg-primary/5 dark:bg-primary/10 py-12 border-y border-primary/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {(ap.stats ?? [
+          { number: '5,000+', label: 'Tetamu Gembira' },
+          { number: '4.9/5', label: 'Penilaian TripAdvisor' },
+          { number: '14 Tahun', label: 'Pengalaman' },
+          { number: 'Maks 8', label: 'Saiz Kumpulan' },
+        ]).map((stat: any) => (
+          <div>
+            <div class="text-3xl md:text-4xl font-bold font-heading text-primary">{stat.number}</div>
+            <div class="text-sm text-muted mt-1">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="py-16 md:py-24 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">{ap.philosophySection?.eyebrow ?? "Apa Yang Membimbing Kami"}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default">{ap.philosophySection?.heading ?? "Tiga Perkara Yang Kami Tidak Akan Berkompromi"}</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {(ap.philosophySection?.items ?? [
+          { number: "01", title: "Tiada Skrip", description: "Pemandu kami adalah profesional berlesen, tetapi mereka bercakap dengan anda seperti kawan. Cerita sebenar, bukan ucapan yang dihafal. Anda akan mendapat pusingan yang berbeza setiap kali kerana anda berbeza setiap kali." },
+          { number: "02", title: "Bersantai", description: "Kami berjalan. Kami berhenti. Kami mengambil masa untuk melihat perkara-perkara: seni bina, bau, bunyi kejiranan. Pusingan makanan tidak sepatutnya terasa seperti maraton." },
+          { number: "03", title: "Sokong Tempatan", description: "Kami memberi tumpuan kepada peniaga tempatan kecil - kebanyakannya dijalankan keluarga turun-temurun. Yuran pusingan anda pergi kepada penjaga warisan budaya makanan Malaysia - orang yang sama yang telah memberi makan kejiranan ini selama beberapa dekad." },
+        ]).map((item: any) => (
+          <div class="text-center p-8 rounded-xl border border-gray-100 dark:border-white/10 hover:shadow-md transition-shadow">
+            <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-5">
+              <span class="text-2xl font-bold text-accent">{item.number}</span>
+            </div>
+            <h3 class="text-xl font-bold font-heading text-default mb-3">{item.title}</h3>
+            <p class="text-muted leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Media Coverage Timeline -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">{ap.timelineSection?.eyebrow ?? "2011 - Kini"}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">{ap.timelineSection?.heading ?? "14 Tahun Simply Enak"}</h2>
+        <p class="text-muted max-w-2xl mx-auto">{ap.timelineSection?.description ?? "Dari jalan kaki makanan pertama melalui Chow Kit ke ciri dalam National Geographic, BBC, dan Lonely Planet. Beberapa perkara berlaku sepanjang perjalanan."}</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative">
+        <div class="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-primary to-primary/15"></div>
+
+        <div class="space-y-8">
+          {(ap.timelineSection?.milestones ?? [
+            { year: 'Today', title: "5,000+ tetamu dan masih makan", description: "Setiap minggu, pengembara dari seluruh dunia menyertai kami di gerai yang sama yang telah kami kunjungi selama 14 tahun. Pemandu kenal peniaga dengan nama. Peniaga kenal kami.", isToday: true },
+            { year: '2024', title: 'BBC World Service', description: "Pauline menyertai BBC World Service untuk berkongsi kisah di sebalik Simply Enak dan apa yang menjadikan budaya makanan Malaysia begitu unik di pentas dunia.", logo: '/images/press-logos/bbc.svg', url: 'https://www.bbc.co.uk/programmes/w3ct8sw1' },
+            { year: '2011', title: 'Simply Enak Ditubuhkan', description: "Pauline memimpin jalan kaki makanan pertamanya melalui pasar Chow Kit dengan sekumpulan kecil kawan. Tiada siapa yang memanggilnya pusingan lagi - ia hanya makan tengah hari.", logo: '/images/press-logos/simplyenak.com.png' },
+          ]).map((milestone: any, index: number) => {
+            const isEven = index % 2 === 0;
+            const isVideo = milestone.url?.includes('youtube.com') || milestone.url?.includes('9now.com.au');
+            const isPodcast = milestone.title?.toLowerCase().includes('podcast') || milestone.title?.toLowerCase().includes('bbc world');
+            const linkLabel = isVideo ? 'Tonton' : isPodcast ? 'Dengar' : 'Baca';
+            return (
+              <div class="relative flex flex-col md:flex-row md:items-center">
+                <div class:list={[
+                  isEven ? 'md:w-1/2 md:text-right md:pr-12 pl-12 md:pl-0' : 'md:w-1/2 md:pl-12 pl-12 md:ml-[50%]',
+                ]}>
+                  <div class:list={[
+                    milestone.isToday
+                      ? 'bg-accent/5 dark:bg-accent/10 border border-accent/20 dark:border-accent/30'
+                      : 'bg-white dark:bg-[#1e1c1c] border border-gray-100 dark:border-white/10',
+                    'p-6 rounded-lg shadow-sm inline-block',
+                  ]}>
+                    <div class:list={[
+                      'flex items-center gap-2 mb-1',
+                      isEven ? 'md:flex-row-reverse' : '',
+                    ]}>
+                      <p class="text-xs text-accent font-bold uppercase tracking-wider">{milestone.year === 'Today' ? 'Hari Ini' : milestone.year}</p>
+                      {milestone.logo && (
+                        <div class="w-10 h-10 rounded bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
+                          <img
+                            src={milestone.logo}
+                            alt={`${milestone.title} logo`}
+                            width="40"
+                            height="40"
+                            class="w-8 h-8 object-scale-down"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    <h3 class:list={[
+                      'text-lg font-bold font-heading mb-1',
+                      milestone.isToday ? 'text-accent' : 'text-default',
+                    ]}>
+                      {milestone.title}
+                    </h3>
+                    <p class="text-sm text-muted mt-1">{milestone.description}</p>
+
+                    {milestone.url && (
+                      <a
+                        href={milestone.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 mt-3 text-xs font-semibold text-primary hover:text-accent transition-colors duration-200"
+                      >
+                        {linkLabel}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" class="w-3 h-3" aria-hidden="true">
+                          <path d="M4.5 2.5a.5.5 0 0 0 0 1H7.793L2.146 9.146a.5.5 0 0 0 .708.708L9 3.707V7a.5.5 0 0 0 1 0V2.5H4.5Z"/>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div
+                  class:list={[
+                    'absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-page shadow',
+                    milestone.isToday ? 'bg-accent' : 'bg-primary',
+                  ]}
+                  style={milestone.isToday ? 'box-shadow: 0 0 0 4px rgba(255,163,51,0.2), 0 4px 12px rgba(181,45,56,0.25);' : ''}
+                ></div>
+
+                {isEven && <div class="hidden md:block md:w-1/2 md:pl-12"></div>}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">{ap.teamSection?.eyebrow ?? "Pasukan"}</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">{ap.teamSection?.heading ?? "Insan Di Sebalik Rasa"}</h2>
+        <p class="text-muted max-w-2xl mx-auto">{ap.teamSection?.description ?? "Kami adalah pasukan kecil, semuanya dilesenkan dengan Tourism Malaysia. Lebih penting lagi, kami membesar makan di gerai yang sama. Kami kenal peniaga dengan nama, kejiranan dengan hati, dan cerita di sebalik setiap hidangan."}</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {(ap.teamSection?.members ?? [
+          { name: 'Pauline', role: 'Pengasas & Pemandu Utama', specialty: '15 Tahun Membina Hubungan', description: 'Memulakan Simply Enak pada 2011 selepas melihat terlalu ramai pelancong terlepas Malaysia yang sebenar. Membesar berjalan di pasar basah dengan ibunya.', image: 'https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg' },
+          { name: 'Maarten', role: 'Rakan Kongsi', specialty: 'Operasi & Pembangunan', description: 'Menguruskan operasi dan pembangunan perniagaan, memastikan setiap aspek Simply Enak kekal pada standard yang sama: gerai yang kami akan bawa keluarga kami sendiri.', image: 'https://se-website-images.s3.nl-ams.scw.cloud/payload-media/maarten-portrait.jpg' },
+          { name: 'Trish', role: 'Pemandu Berlesen', specialty: 'Diperakui Tourism Malaysia', description: 'Membawa kehangatan dan pengetahuan tempatan yang mendalam ke setiap pusingan. Seorang pencerita semula jadi yang membuat setiap tetamu berasa seperti keluarga.', image: 'https://se-website-images.s3.nl-ams.scw.cloud/payload-media/trish-portrait.jpg' },
+        ]).map((member: any) => (
+          <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 aspect-[3/4]">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30">
+              <div class="w-full h-full flex items-center justify-center bg-primary/10">
+                {member.image ? (
+                  <img src={member.image} alt={member.name} class="w-full h-full object-cover" loading="lazy" />
+                ) : (
+                  <span class="text-6xl font-heading font-bold text-primary/30">{member.name.charAt(0)}</span>
+                )}
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-5 transition-opacity duration-300 group-hover:opacity-0">
+              <h3 class="text-lg font-bold text-white mb-0.5">{member.name}</h3>
+              <p class="text-sm text-white/90">{member.role}</p>
+            </div>
+            <div class="absolute inset-0 bg-primary/95 flex flex-col items-center justify-center p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-lg font-bold text-white mb-0.5 text-center">{member.name}</h3>
+              <p class="text-xs text-accent font-semibold mb-2 text-center uppercase tracking-wide">{member.specialty}</p>
+              <p class="text-sm text-white/85 text-center leading-relaxed">{member.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial highlight -->
+  <section class="py-16 md:py-20 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-sm uppercase tracking-[0.2em] font-bold mb-4">Apa Kata Tetamu</p>
+      <blockquote class="text-2xl md:text-3xl font-heading font-bold text-default leading-relaxed">
+        {(ap.testimonial?.text) ?? "\"Pusingan Warisan Penang melebihi jangkaan kami. Pemandu kami berkongsi cerita yang menakjubkan dan makanan yang luar biasa. Setiap hidangan ada cerita.\""}
+      </blockquote>
+      <div class="mt-6">
+        <div class="flex items-center justify-center gap-2 text-accent text-lg">★★★★★</div>
+        <p class="font-semibold text-default mt-2">{ap.testimonial?.name ?? "David Lee"}</p>
+        <p class="text-sm text-muted">{ap.testimonial?.location ?? "USA"}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#1a1a1a] py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-white mb-4">
+        {ap.ctaSection?.heading ?? "Sedia Makan Bersama Kami?"}
+      </h2>
+      <p class="text-white/70 text-lg mb-8">
+        {ap.ctaSection?.description ?? "Lihat pusingan kami, atau hantar mesej kepada kami di WhatsApp. Kami membalas dalam beberapa minit."}
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href={ap.ctaSection?.ctaPrimary?.url ?? "/zh/tours"} class="inline-flex items-center justify-center gap-2 bg-accent text-black font-bold px-8 py-4 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg">
+          {ap.ctaSection?.ctaPrimary?.text ?? "Lihat Pusingan"}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href={ap.ctaSection?.ctaSecondary?.url ?? "https://wa.me/60172878929"} target="_blank" class="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-bold px-8 py-4 rounded hover:bg-white/10 hover:border-white/50 transition-all text-sm">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          {ap.ctaSection?.ctaSecondary?.text ?? "WhatsApp Kami"}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,249 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+let pageData: any = {};
+try {
+  pageData = (await import('~/data/content/tailored-tours-page.json')).default;
+} catch {}
+
+const whatCards = pageData.what_cards || [];
+const differenceRows = pageData.difference_rows || [];
+const processSteps = pageData.process_steps || [];
+const useCases = pageData.use_cases || [];
+const examples = pageData.examples || [];
+const faqs = pageData.faqs || [];
+
+const heroTitle = pageData.hero_title || 'A Route Nobody Else Gets';
+const heroSubtitle = pageData.hero_subtitle || 'A completely custom route designed around your interests.';
+
+const meta = {
+  title: pageData.seo_title || 'Tailored Food Tours Malaysia | Simply Enak',
+  description: pageData.seo_description || 'Design a completely custom food tour in Malaysia.',
+};
+---
+
+<Layout metadata={meta}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/zh/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/zh/tours" class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Tailored Experience</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#1a2a1a] to-[#1a1a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Tailored Experience</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          {heroTitle}
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          {heroSubtitle}
+        </span>
+      </h1>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href={pageData.pricing_cta_whatsapp_message ? `https://wa.me/60172878929?text=${pageData.pricing_cta_whatsapp_message}` : 'https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+a+tailored+food+tour+experience'}
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          {pageData.hero_cta_primary_text || 'Start Planning'}
+        </a>
+        <a href="#examples"
+           class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded hover:border-white/60 transition-colors text-sm">
+          {pageData.hero_cta_secondary_text || 'See Examples'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What makes tailored different -->
+  {whatCards.length > 0 && (
+    <section class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">The Difference</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.what_title || 'What makes tailored different'}</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-3 text-sm">{pageData.what_subtitle}</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {whatCards.map((item: any) => (
+            <div class="text-center p-6 md:p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm">
+              <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5 text-2xl">
+                {item.icon || '✓'}
+              </div>
+              <h3 class="text-lg font-bold font-heading mb-2">{item.title}</h3>
+              <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Comparison table: Private vs Tailored -->
+  {differenceRows.length > 0 && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.difference_heading || 'Private tour vs tailored experience'}</h2>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-100 dark:border-white/10">
+                <th class="text-left p-4 font-heading text-default"></th>
+                <th class="text-left p-4 font-heading text-default">Private Tour</th>
+                <th class="text-left p-4 font-heading text-accent">Tailored Experience</th>
+              </tr>
+            </thead>
+            <tbody>
+              {differenceRows.map((row: any) => (
+                <tr class="border-b border-gray-50 dark:border-white/5 last:border-0">
+                  <td class="p-4 font-semibold text-default">{row.feature}</td>
+                  <td class="p-4 text-muted">{row.private_tour}</td>
+                  <td class="p-4 text-default font-medium">{row.tailored}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Process -->
+  {processSteps.length > 0 && (
+    <section class="py-16 md:py-20" id="process">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{pageData.process_eyebrow || 'How It Works'}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.process_heading || 'From idea to table'}</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+          {processSteps.map((step: any) => (
+            <div class="text-center">
+              <div class="w-12 h-12 rounded-full bg-accent text-black font-bold text-lg flex items-center justify-center mx-auto mb-4">
+                {step.number}
+              </div>
+              <h3 class="font-bold font-heading text-default mb-2">{step.title}</h3>
+              <p class="text-sm text-muted leading-relaxed">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Use cases -->
+  {useCases.length > 0 && (
+    <section class="py-16 md:py-20 bg-muted/30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.use_cases_heading || 'Who books tailored experiences'}</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {useCases.map((item: any) => (
+            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+              <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">
+                {item.icon || '🎯'}
+              </div>
+              <h3 class="font-bold font-heading text-default mb-2">{item.label}</h3>
+              <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Examples -->
+  {examples.length > 0 && (
+    <section class="py-16 md:py-20" id="examples">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Real Routes</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.examples_heading || 'Routes we have built'}</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-3 text-sm">{pageData.examples_subtext}</p>
+        </div>
+        <div class="grid gap-6">
+          {examples.map((item: any) => (
+            <div class="p-6 md:p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <h3 class="text-lg font-bold font-heading">{item.title}</h3>
+                {item.duration && <span class="shrink-0 text-xs font-semibold text-accent bg-accent/10 px-3 py-1 rounded-full">{item.duration}</span>}
+              </div>
+              <p class="text-sm text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Pricing CTA -->
+  <section class="py-16 md:py-20 bg-muted/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">{pageData.pricing_heading || 'Pricing is quoted per route'}</h2>
+      <p class="text-muted text-sm leading-relaxed mb-8 max-w-xl mx-auto">{pageData.pricing_body}</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href={pageData.pricing_cta_whatsapp_message ? `https://wa.me/60172878929?text=${pageData.pricing_cta_whatsapp_message}` : 'https://wa.me/60172878929'}
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          {pageData.pricing_cta_whatsapp || 'Start Planning on WhatsApp'}
+        </a>
+        <a href="/zh/contact"
+           class="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-white/20 text-default font-semibold px-6 py-3 rounded hover:border-primary hover:text-primary transition-colors text-sm">
+          {pageData.pricing_cta_message || 'Send us a message'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {faqs.length > 0 && (
+    <section class="py-16 md:py-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{pageData.faq_eyebrow || 'Common Questions'}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.faq_heading || 'Tailored Experience FAQs'}</h2>
+        </div>
+        <div class="space-y-2">
+          {faqs.map((faq: any) => (
+            <details class="border border-gray-100 bg-card dark:border-white/10 overflow-hidden group rounded-lg">
+              <summary class="text-sm items-center flex cursor-pointer dark:hover:bg-white/5 hover:bg-gray-50 justify-between list-none p-4 transition-colors">
+                <span class="text-default font-semibold pr-4">{faq.name || faq.question || ''}</span>
+                <svg class="text-primary flex-shrink-0 group-open:rotate-180 h-4 transition-transform w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+              </summary>
+              <div class="px-4 pb-4"><p class="text-sm text-muted">{faq.answer || faq.a || ''}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Cross-link to private tours -->
+  {pageData.private_callout && (
+    <section class="py-12 bg-muted/30">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-sm text-muted mb-4">{pageData.private_callout}</p>
+        <a href={pageData.private_cta_href || '/tours/private-tours/'}
+           class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
+          {pageData.private_cta_text || 'See Private Tours'}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+  )}
+</Layout>
