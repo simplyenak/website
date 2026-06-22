@@ -57,13 +57,14 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
+# Install postgresql client for schema drift fix
+RUN apk add --no-cache postgresql-client
+
 # Copy standalone output from build
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-
-# Copy package.json for any runtime scripts
-COPY --from=builder /app/package.json ./
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./
 
 USER nextjs
 
@@ -77,4 +78,6 @@ ENV HOSTNAME=0.0.0.0
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:3000/api/health || exit 1
 
-CMD ["node", "server.js"]
+# Startup: fix schema drift, then start Payload
+COPY --from=builder --chown=nextjs:nodejs /app/scripts ./scripts
+CMD ["sh", "./scripts/start.sh"]
