@@ -21,7 +21,7 @@ export const ContentBriefs: CollectionConfig = {
     useAsTitle: 'title',
     group: '📝 Content Pipeline',
     description: '📋 Question-driven content planning for landing pages and guides. Drag by changing status.',
-    defaultColumns: ['title', 'segmentType', 'status', 'questionsCount', 'updatedAt'],
+    defaultColumns: ['title', 'segmentType', 'status', 'updatedAt'],
     listSearchableFields: ['title', 'segmentType', 'landingPageSlugs'],
   },
   access: {
