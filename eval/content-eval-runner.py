@@ -234,7 +234,7 @@ def check_tour_data() -> dict:
     required = [
         ("name", "title / name"),
         ("shortDescription", "description"),
-        ("hero_image", "hero_image"),
+        ("heroImage", "hero_image"),
         ("price", "pricing"),
         ("meetingPoint", "meeting_point"),
         ("maxParticipants", "max_pax"),

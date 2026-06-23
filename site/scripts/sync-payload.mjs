@@ -570,6 +570,14 @@ function transformTour(tour) {
     promo_video_url: tour.promo_video_url || tour.promoVideoUrl || null,
     gallery_image_alts: tour.gallery_image_alts || unwrap(tour.galleryImageAlts, 'alt'),
     hero_image_alt: tour.hero_image_alt || tour.heroImageAlt || null,
+    // Gallery images — resolve media URLs, fall back to hardcoded
+    gallery_images: Array.isArray(tour.galleryImages)
+      ? tour.galleryImages.map((gi) => ({
+          src: resolveMediaUrl(gi.image),
+          alt: resolveMediaAlt(gi.image),
+          caption: gi.caption || '',
+        })).filter((gi) => gi.src)
+      : (tour.gallery_images || []),
   }
 }
 

@@ -271,13 +271,16 @@ const tourSchema = {
             tagline="Photos From This Tour"
             title={`${tour.name} Gallery`}
             images={[
+              // Tier 1: Payload gallery images
+              ...(Array.isArray(tour.galleryImages) && tour.galleryImages.length > 0
+                ? tour.galleryImages.map((gi) => ({
+                    src: gi.src || gi.url,
+                    alt: gi.alt || tour.name,
+                    caption: gi.caption || '',
+                  }))
+                : []),
+              // Tier 2: Fallback to hero image
               { src: heroImg, alt: tour.name, caption: tour.tagline || tour.name },
-              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg', alt: 'Malaysian hawker preparing sizzling street food over a flaming wok', caption: 'Morning market' },
-              { src: 'https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg', alt: 'Colourful spread of Penang hawker dishes served on a shared table', caption: 'Tasting flavours' },
-              { src: 'https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg', alt: 'Hidden speakeasy bar entrance lit by neon signs in downtown Kuala Lumpur', caption: 'Evening adventure' },
-              { src: 'https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg', alt: 'Bartender shaking a signature nutmeg cocktail tableside in Georgetown', caption: 'Heritage & food' },
-              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/kl-street-food.jpg', alt: 'Steaming bowls of Malaysian noodle soup at a street food stall', caption: 'Authentic dishes' },
-              { src: 'https://se-website-images.s3.nl-ams.scw.cloud/penang-heritage-tour.jpg', alt: 'Historic shophouses and street art along a Georgetown heritage lane', caption: 'Cultural trail' },
             ].filter(i => i.src)}
           />
         </section>
