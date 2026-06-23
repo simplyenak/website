@@ -148,13 +148,13 @@ export const Media: CollectionConfig = {
         const sanitized = slugify(data.filename.replace(/\.[^.]+$/, ''), 60) + dotExt
 
         // 2. If structured selectors are set, build a meaningful filename
+        //    Otherwise, use alt text or caption for the filename
         const hasSelectors = data.subject || data.custom_label || data.location_ref || data.credit
         if (hasSelectors) {
           let locName = ''
           if (typeof data.location_ref === 'object' && data.location_ref?.name) {
             locName = data.location_ref.name
           } else if ((typeof data.location_ref === 'number' || typeof data.location_ref === 'string') && req?.payload) {
-            // Relationship comes in as just the ID — fetch the location name
             try {
               const loc = await req.payload.findByID({
                 collection: 'locations',
@@ -162,13 +162,9 @@ export const Media: CollectionConfig = {
                 depth: 0,
               })
               if (loc?.name) locName = loc.name
-            } catch {
-              // Location lookup failed — proceed without location in filename
-            }
+            } catch { /* proceed without location */ }
           }
 
-          // Extract trailing number from original filename for uniqueness
-          // e.g. "20260224_Secrets-of-KL-Food-Tour-001.jpg" -> "001"
           const originalBase = data.filename.replace(/\.[^.]+$/, '')
           const trailingNum = originalBase.match(/(\d+)$/)?.[1] || ''
 
@@ -176,10 +172,6 @@ export const Media: CollectionConfig = {
           if (locName) parts.push(slugify(locName, 30))
           if (data.subject) parts.push(data.subject)
           if (data.custom_label) parts.push(slugify(data.custom_label, 40))
-          // Ensure uniqueness: append trailing number from original file,
-          // or a random 4-char hex if the original has no number.
-          // Without this, multiple uploads with the same selectors produce
-          // identical filenames and hit the unique constraint.
           if (trailingNum) {
             parts.push(trailingNum)
           } else {
@@ -188,6 +180,19 @@ export const Media: CollectionConfig = {
           if (data.credit) parts.push(`by-${slugify(data.credit, 30)}`)
 
           data.filename = parts.join('-') + dotExt
+        } else if (data.alt || data.caption) {
+          // No structured selectors — build filename from alt text or caption
+          const source = data.alt || data.caption
+          const originalBase = data.filename.replace(/\.[^.]+$/, '')
+          const trailingNum = originalBase.match(/(\d+)$/)?.[1] || ''
+          let namePart = slugify(source, 50)
+          // Ensure it's not empty after slugify
+          if (!namePart) namePart = slugify(originalBase, 50) || 'image'
+          if (trailingNum) {
+            data.filename = `${namePart}-${trailingNum}${dotExt}`
+          } else {
+            data.filename = `${namePart}-${Math.random().toString(36).slice(2, 6)}${dotExt}`
+          }
         } else {
           data.filename = sanitized
         }
