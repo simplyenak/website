@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { createHash } from 'crypto'
 import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 /**
@@ -166,17 +167,17 @@ export const Media: CollectionConfig = {
           }
 
           const originalBase = data.filename.replace(/\.[^.]+$/, '')
-          const trailingNum = originalBase.match(/(\d+)$/)?.[1] || ''
 
           const parts: string[] = ['simply-enak']
           if (locName) parts.push(slugify(locName, 30))
           if (data.subject) parts.push(data.subject)
           if (data.custom_label) parts.push(slugify(data.custom_label, 40))
-          if (trailingNum) {
-            parts.push(trailingNum)
-          } else {
-            parts.push(Math.random().toString(36).slice(2, 6))
-          }
+          // Stable suffix: hash of original filename to avoid regenerating on re-validation
+          const stableSuffix = createHash('md5')
+            ?.update(originalBase + (data.alt || ''))
+            ?.digest('hex')
+            ?.slice(0, 4) || Math.random().toString(36).slice(2, 6)
+          parts.push(stableSuffix)
           if (data.credit) parts.push(`by-${slugify(data.credit, 30)}`)
 
           data.filename = parts.join('-') + dotExt
@@ -188,10 +189,15 @@ export const Media: CollectionConfig = {
           let namePart = slugify(source, 50)
           // Ensure it's not empty after slugify
           if (!namePart) namePart = slugify(originalBase, 50) || 'image'
+          // Stable suffix: hash of original filename to avoid regenerating on re-validation
+          const stableSuffix2 = createHash('md5')
+            ?.update(originalBase + (source || ''))
+            ?.digest('hex')
+            ?.slice(0, 4) || Math.random().toString(36).slice(2, 6)
           if (trailingNum) {
             data.filename = `${namePart}-${trailingNum}${dotExt}`
           } else {
-            data.filename = `${namePart}-${Math.random().toString(36).slice(2, 6)}${dotExt}`
+            data.filename = `${namePart}-${stableSuffix2}${dotExt}`
           }
         } else {
           data.filename = sanitized
