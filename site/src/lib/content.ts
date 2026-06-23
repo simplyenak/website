@@ -1025,8 +1025,21 @@ export async function getHomePage(locale?: string) {
 export async function getAboutPage(locale?: string) {
   // Tier 1: Live Payload API
   const live = await liveAboutPage(locale);
-  if (live && Object.keys(live).length > 0) return live;
-  // Tier 2: JSON snapshot — use for all locales (English snapshot is better than empty)
+  if (live && Object.keys(live).length > 0) {
+    // If snapshot has more complete timeline milestones, use those instead
+    if (snapshotAboutPage?.timelineSection?.milestones?.length > 0) {
+      const liveMilestones = live.timelineSection?.milestones;
+      const snapshotMilestones = snapshotAboutPage.timelineSection.milestones;
+      if (!liveMilestones || liveMilestones.length < snapshotMilestones.length) {
+        live.timelineSection = {
+          ...(live.timelineSection || {}),
+          milestones: snapshotMilestones,
+        };
+      }
+    }
+    return live;
+  }
+  // Tier 2: JSON snapshot — use for all locales
   if (snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) return snapshotAboutPage;
   return {};
 }

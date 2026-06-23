@@ -1,0 +1,324 @@
+---
+import { useTranslations } from '~/i18n/utils';
+
+export interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const all = (await import('~/data/content/stories.json')).default as any[];
+
+// Filter published stories with content
+const published = all
+  .filter((s: any) => (s.workflowStatus === 'published' || !s._status) && s.content_markdown);
+
+// Apply locale translations
+const stories = published.map((s: any) => {
+  const tr = s.translations?.find((t: any) => t.languages_code === lang);
+  if (!tr) return s;
+  return {
+    ...s,
+    title: tr.title || s.title,
+    excerpt: tr.excerpt || s.excerpt,
+    meta_title: tr.meta_title || s.meta_title,
+    meta_description: tr.meta_description || s.meta_description,
+  };
+}).sort((a: any, b: any) => new Date(b.publishedDate || b.createdAt || 0).getTime() - new Date(a.publishedDate || a.createdAt || 0).getTime());
+
+// Categorize stories by their Payload category field (falls back to 'guides')
+const foodCulture = stories.filter((s: any) => s.category === 'Food & Culture Guides' || !s.category);
+const travelTips = stories.filter((s: any) => s.category === 'Travel Tips');
+const vendorStories = stories.filter((s: any) => s.category === 'Vendor Stories');
+
+// Featured = first published story overall
+const featured = stories[0];
+
+// Exclude featured from its section
+const foodCultureRest = foodCulture.filter((s: any) => s.slug !== featured?.slug);
+const travelTipsRest = travelTips.filter((s: any) => s.slug !== featured?.slug);
+const vendorStoriesRest = vendorStories.filter((s: any) => s.slug !== featured?.slug);
+
+const MAX_VISIBLE = 6;
+const foodCultureVisible = foodCultureRest.slice(0, MAX_VISIBLE);
+const foodCultureHidden = foodCultureRest.slice(MAX_VISIBLE);
+const travelTipsVisible = travelTipsRest.slice(0, MAX_VISIBLE);
+const travelTipsHidden = travelTipsRest.slice(MAX_VISIBLE);
+const vendorStoriesVisible = vendorStoriesRest.slice(0, MAX_VISIBLE);
+const vendorStoriesHidden = vendorStoriesRest.slice(MAX_VISIBLE);
+
+const getImageUrl = (img: any): string | null => {
+  if (!img) return null;
+  if (typeof img === 'string') return img;
+  return img.url || img.src || null;
+};
+
+const localePrefix = lang === 'en' ? '' : `/${lang}`;
+---
+
+<!-- Page Header -->
+<section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://se-website-images.s3.nl-ams.scw.cloud/payload-media/eatdrinkgeorgetown_1_263d654742.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="lazy" />
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/60 via-[#1a1a1a]/80 to-[#1a1a1a]"></div>
+  </div>
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <h1 class="text-4xl md:text-5xl font-bold font-heading mb-3 leading-tight">{t('stories.heroTitle', 'Stories')}</h1>
+    <p class="text-lg text-white/70 max-w-2xl">{t('stories.heroDesc', 'Local food knowledge, travel tips, and the people behind Malaysia\'s best flavours')}</p>
+  </div>
+</section>
+
+<!-- Sticky Category Nav -->
+<nav class="sticky top-0 z-30 bg-white dark:bg-[#1e1c1c] border-b border-gray-200 dark:border-white/10 shadow-sm" aria-label="Story categories">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-2 py-3 overflow-x-auto">
+      <a href="#featured" class="text-sm font-semibold px-4 py-1.5 rounded-full bg-primary text-white whitespace-nowrap">{t('nav.allStories', 'All Stories')}</a>
+      <a href="#food-culture" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">{t('nav.foodCulture', 'Food & Culture Guides')}</a>
+      <a href="#travel-tips" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">{t('nav.travelTips', 'Travel Tips')}</a>
+      <a href="#vendor-stories" class="text-sm font-semibold px-4 py-1.5 rounded-full border border-gray-200 dark:border-white/20 text-default hover:border-primary hover:text-primary transition-colors whitespace-nowrap">{t('nav.vendorStories', 'Vendor Stories')}</a>
+      <div class="ml-auto flex items-center gap-1.5 text-xs text-muted shrink-0">
+        <a href={localePrefix || '/'} class="hover:text-primary transition-colors">{t('nav.home', 'Home')}</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">{t('nav.stories', 'Stories')}</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+
+  {stories.length === 0 ? (
+    <section class="text-center py-16">
+      <p class="text-muted text-lg">{t('stories.empty', 'Stories coming soon. Malaysian heritage is rich with food traditions waiting to be explored.')}</p>
+      <a href={`${localePrefix}/tours`} class="inline-flex items-center gap-2 mt-6 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-[#e8922e] transition-colors text-sm">
+        {t('stories.emptyCta', 'Browse Tours Instead')}
+      </a>
+    </section>
+  ) : (
+    <>
+
+      <!-- Featured Story -->
+      {featured && (
+        <section id="featured" class="mb-16 scroll-mt-20">
+          <a href={`${localePrefix}/stories/${featured.slug}`} class="group block relative overflow-hidden rounded-xl aspect-[16/9] md:aspect-[21/9] shadow-lg">
+            <img src={getImageUrl(featured.featuredImage) || featured.image || ''} alt={featured.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+            <div class="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
+              <span class="inline-block self-start bg-accent text-black text-xs font-bold px-3 py-1 rounded-full mb-3">
+                {t('stories.featured', 'Featured Story')}
+              </span>
+              <h2 class="text-2xl md:text-4xl font-bold font-heading text-white mb-2 group-hover:text-accent transition-colors leading-snug max-w-3xl">{featured.title}</h2>
+              <p class="text-white/70 text-sm md:text-base max-w-2xl mb-2 line-clamp-2">{featured.excerpt}</p>
+              <span class="text-accent font-semibold text-sm">{t('stories.readMore', 'Read the story →')}</span>
+            </div>
+          </a>
+        </section>
+      )}
+
+      <!-- Food & Culture Guides -->
+      {foodCultureVisible.length > 0 && (
+        <section id="food-culture" class="mb-16 scroll-mt-20">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{t('stories.foodCultureEyebrow', 'Stories behind the dishes')}</p>
+              <h2 class="text-2xl md:text-3xl font-bold font-heading">{t('stories.foodCultureHeading', 'Food & Culture Guides')}</h2>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {foodCultureVisible.map((s: any, i: number) => (
+              <a href={`${localePrefix}/stories/${s.slug}`} class:list={[
+                'group block relative overflow-hidden rounded-xl shadow-md',
+                i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+              ]}>
+                <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                <div class:list={[
+                  'absolute inset-0 flex flex-col justify-end',
+                  i < 2 ? 'p-5 md:p-6' : 'p-5',
+                ]}>
+                  <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">{t('stories.foodCultureLabel', 'Food & Culture Guides')}</span>
+                  <h3 class:list={[
+                    'font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors',
+                    i < 2 ? 'text-lg md:text-xl' : 'text-base',
+                  ]}>{s.title}</h3>
+                  <p class="text-white/60 text-sm mt-1 line-clamp-2 hidden md:block">{s.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {foodCultureHidden.length > 0 && (
+            <>
+              <div class="mt-6 hidden food-culture-hidden-{lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {foodCultureHidden.map((s: any, i: number) => (
+                  <a href={`${localePrefix}/stories/${s.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                    <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-5">
+                      <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">{t('stories.foodCultureLabel', 'Food & Culture Guides')}</span>
+                      <h3 class="font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors text-base">{s.title}</h3>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <div class="text-center mt-8">
+                <button onclick={`document.querySelector('.food-culture-hidden-${lang}').classList.remove('hidden'); this.style.display='none';`}
+                  class="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-semibold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors text-sm">
+                  {t('stories.moreFoodCulture', 'Discover {count} more food & culture stories').replace('{count}', String(foodCultureHidden.length))}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            </>
+          )}
+        </section>
+      )}
+
+      <!-- Travel Tips -->
+      {travelTipsVisible.length > 0 && (
+        <section id="travel-tips" class="mb-16 scroll-mt-20">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{t('stories.travelTipsEyebrow', 'Plan like a local')}</p>
+              <h2 class="text-2xl md:text-3xl font-bold font-heading">{t('stories.travelTipsHeading', 'Travel Tips')}</h2>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {travelTipsVisible.map((s: any, i: number) => (
+              <a href={`${localePrefix}/stories/${s.slug}`} class:list={[
+                'group block relative overflow-hidden rounded-xl shadow-md',
+                i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+              ]}>
+                <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                <div class:list={[
+                  'absolute inset-0 flex flex-col justify-end',
+                  i < 2 ? 'p-5 md:p-6' : 'p-5',
+                ]}>
+                  <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">{t('stories.travelTipsLabel', 'Travel Tips')}</span>
+                  <h3 class:list={[
+                    'font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors',
+                    i < 2 ? 'text-lg md:text-xl' : 'text-base',
+                  ]}>{s.title}</h3>
+                  <p class="text-white/60 text-sm mt-1 line-clamp-2 hidden md:block">{s.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {travelTipsHidden.length > 0 && (
+            <>
+              <div class="mt-6 hidden travel-tips-hidden-{lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {travelTipsHidden.map((s: any, i: number) => (
+                  <a href={`${localePrefix}/stories/${s.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                    <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-5">
+                      <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">{t('stories.travelTipsLabel', 'Travel Tips')}</span>
+                      <h3 class="font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors text-base">{s.title}</h3>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <div class="text-center mt-8">
+                <button onclick={`document.querySelector('.travel-tips-hidden-${lang}').classList.remove('hidden'); this.style.display='none';`}
+                  class="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-semibold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors text-sm">
+                  {t('stories.moreTravelTips', 'Discover {count} more travel tips').replace('{count}', String(travelTipsHidden.length))}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            </>
+          )}
+        </section>
+      )}
+
+      <!-- Vendor Stories -->
+      {vendorStoriesVisible.length > 0 ? (
+        <section id="vendor-stories" class="mb-16 scroll-mt-20">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{t('stories.vendorEyebrow', 'The people behind the food')}</p>
+              <h2 class="text-2xl md:text-3xl font-bold font-heading">{t('stories.vendorHeading', 'Vendor Stories')}</h2>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {vendorStoriesVisible.map((s: any, i: number) => (
+              <a href={`${localePrefix}/stories/${s.slug}`} class:list={[
+                'group block relative overflow-hidden rounded-xl shadow-md',
+                i < 2 ? 'aspect-[16/10]' : 'aspect-[4/3]',
+              ]}>
+                <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                <div class:list={[
+                  'absolute inset-0 flex flex-col justify-end',
+                  i < 2 ? 'p-5 md:p-6' : 'p-5',
+                ]}>
+                  <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">{t('stories.vendorLabel', 'Vendor Stories')}</span>
+                  <h3 class:list={[
+                    'font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors',
+                    i < 2 ? 'text-lg md:text-xl' : 'text-base',
+                  ]}>{s.title}</h3>
+                  <p class="text-white/60 text-sm mt-1 line-clamp-2 hidden md:block">{s.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {vendorStoriesHidden.length > 0 && (
+            <>
+              <div class="mt-6 hidden vendor-stories-hidden-{lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {vendorStoriesHidden.map((s: any, i: number) => (
+                  <a href={`${localePrefix}/stories/${s.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
+                    <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-5">
+                      <span class="inline-block self-start text-accent text-xs font-bold uppercase tracking-wider mb-2">{t('stories.vendorLabel', 'Vendor Stories')}</span>
+                      <h3 class="font-bold font-heading text-white leading-snug group-hover:text-accent transition-colors text-base">{s.title}</h3>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <div class="text-center mt-8">
+                <button onclick={`document.querySelector('.vendor-stories-hidden-${lang}').classList.remove('hidden'); this.style.display='none';`}
+                  class="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-semibold px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors text-sm">
+                  {t('stories.moreVendor', 'Discover {count} more vendor stories').replace('{count}', String(vendorStoriesHidden.length))}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            </>
+          )}
+        </section>
+      ) : (
+        <section id="vendor-stories" class="mb-16 scroll-mt-20">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-1">{t('stories.vendorEyebrow', 'The people behind the food')}</p>
+              <h2 class="text-2xl md:text-3xl font-bold font-heading">{t('stories.vendorHeading', 'Vendor Stories')}</h2>
+            </div>
+          </div>
+          <div class="bg-gray-50 dark:bg-[#151313] rounded-xl border border-gray-100 dark:border-white/10 p-10 text-center">
+            <p class="text-muted mb-4">{t('stories.vendorEmpty', 'We\'re meeting the stall owners, market vendors, and home cooks who keep Malaysian food traditions alive. Their stories are coming soon.')}</p>
+            <a href={`${localePrefix}/tours`} class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:underline">
+              {t('stories.vendorEmptyCta', 'Meet them on a tour →')}
+            </a>
+          </div>
+        </section>
+      )}
+
+      <!-- Newsletter CTA -->
+      <section class="bg-[#1a1a1a] rounded-xl p-10 md:p-14 text-center mt-8">
+        <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">{t('stories.newsletterEyebrow', 'Hungry for More?')}</p>
+        <h2 class="text-3xl font-bold font-heading text-white mb-4">{t('stories.newsletterHeading', 'Get Stories in Your Inbox')}</h2>
+        <p class="text-white/60 max-w-md mx-auto mb-8">{t('stories.newsletterDesc', 'Local food knowledge, travel tips, and vendor stories straight from Malaysia. No spam, just the good stuff.')}</p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input type="email" placeholder={t('stories.newsletterPlaceholder', 'Your email address')} required class="flex-1 px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent text-sm" />
+          <button type="submit" class="px-6 py-3 bg-accent text-black font-bold rounded-lg hover:bg-[#e8922e] transition-colors text-sm whitespace-nowrap">{t('stories.newsletterButton', 'Subscribe')}</button>
+        </form>
+      </section>
+
+    </>
+  )}
+</div>
