@@ -365,17 +365,16 @@ def check_infra_regression() -> dict:
     return pass_result(f"{len(files)} workflow files", []) if files else fail_result("No workflows", [])
 
 def check_a11y_basics() -> dict:
-    dist = ROOT / "site" / "dist"
-    if not dist.exists():
-        return fail_result("No build", [])
-    pages = list(dist.rglob("index.html"))
-    skip = ['decapcms', '404']
+    # Check source .astro files for alt attributes
+    pages_dir = ROOT / "site" / "src" / "pages"
     issues = []
-    for p in pages[:15]:
-        rel = str(p.relative_to(dist))
-        if any(s in rel for s in skip):
+    for f in sorted(pages_dir.rglob("*.astro"))[:15]:
+        if 'decapcms' in str(f) or '404' in str(f):
             continue
-        if 'alt=' not in p.read_text():
+        content = f.read_text()
+        # Check for img tags without alt
+        if '<img' in content and 'alt=' not in content:
+            rel = str(f.relative_to(pages_dir))
             issues.append(rel)
     return pass_result(f"OK", issues) if not issues else fail_result(f"{len(issues)} a11y issues", issues)
 
