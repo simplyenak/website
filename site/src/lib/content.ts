@@ -260,6 +260,24 @@ function buildForYou(payloadTour: any) {
 // ── Tour data: merge Payload + hardcoded fallback ───────────────────────
 
 /**
+ * Flatten Payload gallery images to {src, alt, caption} format.
+ * Handles both flat (snapshot) and nested (live API) formats.
+ */
+function flattenGallery(images: any[]): any[] {
+  if (!Array.isArray(images)) return [];
+  return images.map((g: any) => {
+    if (g.src) return { src: g.src, alt: g.alt || '', caption: g.caption || '' };
+    // Nested Payload format: {id, image: {url, alt}}
+    const img = g.image || g;
+    return {
+      src: g.url || (typeof img === 'object' ? (img.url || img.src) : img) || '',
+      alt: g.alt || img.alt || '',
+      caption: g.caption || '',
+    };
+  }).filter((g: any) => g.src);
+}
+
+/**
  * Merge a single payload tour with its hardcoded counterpart.
  * Payload data takes priority where non-null; hardcoded fills gaps.
  */
@@ -292,7 +310,7 @@ function mergeTour(payload: any) {
       location: payload.location || '',
       image: typeof payload.heroImage === 'object' && payload.heroImage?.url ? payload.heroImage.url : (payload.heroImage || null),
       heroImageAlt: payload.heroImageAlt || '',
-      galleryImages: payload.gallery_images || [],
+      galleryImages: flattenGallery(payload.gallery_images || payload.galleryImages || []),
       highlights: unwrapHighlights(payload),
       itinerary: [],
       foods: [],
@@ -335,7 +353,7 @@ function mergeTour(payload: any) {
     location: payload.location || hardcoded.location,
     image: payload.heroImage?.url || payload.image || hardcoded.image,
     heroImageAlt: payload.heroImageAlt || '',
-    galleryImages: payload.gallery_images || (hardcoded as any).gallery_images || [],
+    galleryImages: flattenGallery(payload.gallery_images || payload.galleryImages || []) || (hardcoded as any).gallery_images || [],
     highlights: hardcoded.highlights && hardcoded.highlights.length > 0 ? hardcoded.highlights : unwrapHighlights(payload),
     itinerary: hardcoded.itinerary || [],
     foods: hardcoded.foods || [],
