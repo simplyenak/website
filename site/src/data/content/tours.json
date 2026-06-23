@@ -1,11 +1,11 @@
 [
   {
     "id": 5,
-    "name": null,
+    "name": "Secrets of KL - Nightlife, Street Art & Cocktails!",
     "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
-    "tagline": null,
-    "shortDescription": null,
-    "fullDescription": null,
+    "tagline": "Discover KL After Dark",
+    "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+    "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
     "price": 359,
     "currency": "MYR",
     "duration": "4 hours",
@@ -132,63 +132,19 @@
     "tailoredAvailable": true,
     "tailoredNotes": null,
     "heroImage": {
-      "id": 28,
-      "alt": null,
-      "caption": null,
-      "polaroidLabel": null,
-      "subject": "",
+      "id": 298,
+      "alt": "Secrets of KL tour starts with a delicious Roti Boy",
+      "caption": "Secrets of KL tour starts with a delicious Roti Boy",
+      "polaroidLabel": "Tour Starts",
+      "subject": "food",
       "custom_label": null,
-      "location_ref": null,
-      "credit": null,
-      "gps": {
-        "lat": null,
-        "lng": null,
-        "place": null
-      },
-      "usage": null,
-      "tags": [],
-      "prefix": "payload-media",
-      "updatedAt": "2026-05-19T10:01:51.539Z",
-      "createdAt": "2026-05-19T10:01:50.448Z",
-      "url": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg",
-      "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg",
-      "mimeType": "image/jpeg",
-      "filesize": 73554,
-      "width": 1024,
-      "height": 678,
-      "focalX": 50,
-      "focalY": 50,
-      "sizes": {
-        "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg",
-          "width": 400,
-          "height": 300,
-          "mimeType": "image/jpeg",
-          "filesize": 27968,
-          "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e-400x300.jpg"
-        },
-        "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/secrets_of_KL_Nightlife_Tour002_294155fa7e-800x600.jpg",
-          "width": 800,
-          "height": 600,
-          "mimeType": "image/jpeg",
-          "filesize": 84395,
-          "filename": "secrets_of_KL_Nightlife_Tour002_294155fa7e-800x600.jpg"
-        },
-        "large": {
-          "url": null,
-          "width": null,
-          "height": null,
-          "mimeType": null,
-          "filesize": null,
-          "filename": null
-        }
-      }
-    },
-    "galleryImages": [
-      {
-        "id": "6a350dcfea16cabe39498bc9",
+      "location_ref": {
+        "id": 14,
+        "name": "Kuala Lumpur",
+        "slug": "kuala-lumpur",
+        "icon": "🏙️",
+        "color": "#0ea5e9",
+        "description": null,
         "image": {
           "id": 136,
           "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
@@ -241,6 +197,306 @@
               "mimeType": "image/jpeg",
               "filesize": 122310,
               "filename": "DSC_9621-1200x800.jpg"
+            }
+          }
+        },
+        "status": "published",
+        "updatedAt": "2026-06-20T00:22:54.695Z",
+        "createdAt": "2026-05-19T08:33:20.569Z",
+        "_status": "published"
+      },
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
+      "usage": null,
+      "tags": [],
+      "prefix": "payload-media",
+      "updatedAt": "2026-06-23T02:58:23.514Z",
+      "createdAt": "2026-06-23T02:58:22.804Z",
+      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
+      "filename": "simply-enak-kuala-lumpur-food-vqwe.webp",
+      "mimeType": "image/webp",
+      "filesize": 29992,
+      "width": 602,
+      "height": 402,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/webp",
+          "filesize": 16794,
+          "filename": "simply-enak-tour-start-with-roti-boy-400x300.webp"
+        },
+        "medium": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    "galleryImages": [
+      {
+        "id": "6a350dcfea16cabe39498bc9",
+        "image": {
+          "id": 299,
+          "alt": "Cocktails on the Secrets of KL Tour with Simply Enak",
+          "caption": "Cocktails on the Secrets of KL Tour with Simply Enak",
+          "polaroidLabel": "Cocktails",
+          "subject": "food",
+          "custom_label": null,
+          "location_ref": {
+            "id": 14,
+            "name": "Kuala Lumpur",
+            "slug": "kuala-lumpur",
+            "icon": "🏙️",
+            "color": "#0ea5e9",
+            "description": null,
+            "image": {
+              "id": 136,
+              "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "polaroidLabel": null,
+              "subject": "landmark",
+              "custom_label": null,
+              "location_ref": null,
+              "credit": null,
+              "gps": {
+                "lat": null,
+                "lng": null,
+                "place": null
+              },
+              "usage": null,
+              "tags": [],
+              "prefix": "payload-media",
+              "updatedAt": "2026-06-19T00:18:02.769Z",
+              "createdAt": "2026-06-19T00:18:01.822Z",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "filename": "simply-enak-landmark.jpg",
+              "mimeType": "image/jpeg",
+              "filesize": 2305832,
+              "width": 2730,
+              "height": 4096,
+              "focalX": 50,
+              "focalY": 50,
+              "sizes": {
+                "thumbnail": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/jpeg",
+                  "filesize": 21170,
+                  "filename": "DSC_9621-400x300.jpg"
+                },
+                "medium": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "width": 800,
+                  "height": 600,
+                  "mimeType": "image/jpeg",
+                  "filesize": 68243,
+                  "filename": "DSC_9621-800x600.jpg"
+                },
+                "large": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "width": 1200,
+                  "height": 800,
+                  "mimeType": "image/jpeg",
+                  "filesize": 122310,
+                  "filename": "DSC_9621-1200x800.jpg"
+                }
+              }
+            },
+            "status": "published",
+            "updatedAt": "2026-06-20T00:22:54.695Z",
+            "createdAt": "2026-05-19T08:33:20.569Z",
+            "_status": "published"
+          },
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
+          "usage": null,
+          "tags": [],
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-23T02:59:37.820Z",
+          "createdAt": "2026-06-23T02:59:36.964Z",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-8.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-cocktail-time-400x300.webp",
+          "filename": "simply-enak-kuala-lumpur-food-8.webp",
+          "mimeType": "image/webp",
+          "filesize": 24066,
+          "width": 602,
+          "height": 903,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-cocktail-time-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 5968,
+              "filename": "simply-enak-secrets-of-kl-cocktail-time-400x300.webp"
+            },
+            "medium": {
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-cocktail-time-800x600.webp",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/webp",
+              "filesize": 13772,
+              "filename": "simply-enak-secrets-of-kl-cocktail-time-800x600.webp"
+            },
+            "large": {
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-cocktail-time-1200x800.webp",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/webp",
+              "filesize": 20752,
+              "filename": "simply-enak-secrets-of-kl-cocktail-time-1200x800.webp"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a39fe08916f8b921fafc4a2",
+        "image": {
+          "id": 300,
+          "alt": "Tasting Curry Puff Secrets of KL Tour - Simply Enak Kuala Lumpur",
+          "caption": "Tasting Curry Puff on the Secrets of KL Tour with Simply Enak",
+          "polaroidLabel": "Curry Puff Tasting",
+          "subject": "food",
+          "custom_label": null,
+          "location_ref": {
+            "id": 14,
+            "name": "Kuala Lumpur",
+            "slug": "kuala-lumpur",
+            "icon": "🏙️",
+            "color": "#0ea5e9",
+            "description": null,
+            "image": {
+              "id": 136,
+              "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "polaroidLabel": null,
+              "subject": "landmark",
+              "custom_label": null,
+              "location_ref": null,
+              "credit": null,
+              "gps": {
+                "lat": null,
+                "lng": null,
+                "place": null
+              },
+              "usage": null,
+              "tags": [],
+              "prefix": "payload-media",
+              "updatedAt": "2026-06-19T00:18:02.769Z",
+              "createdAt": "2026-06-19T00:18:01.822Z",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "filename": "simply-enak-landmark.jpg",
+              "mimeType": "image/jpeg",
+              "filesize": 2305832,
+              "width": 2730,
+              "height": 4096,
+              "focalX": 50,
+              "focalY": 50,
+              "sizes": {
+                "thumbnail": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/jpeg",
+                  "filesize": 21170,
+                  "filename": "DSC_9621-400x300.jpg"
+                },
+                "medium": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "width": 800,
+                  "height": 600,
+                  "mimeType": "image/jpeg",
+                  "filesize": 68243,
+                  "filename": "DSC_9621-800x600.jpg"
+                },
+                "large": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "width": 1200,
+                  "height": 800,
+                  "mimeType": "image/jpeg",
+                  "filesize": 122310,
+                  "filename": "DSC_9621-1200x800.jpg"
+                }
+              }
+            },
+            "status": "published",
+            "updatedAt": "2026-06-20T00:22:54.695Z",
+            "createdAt": "2026-05-19T08:33:20.569Z",
+            "_status": "published"
+          },
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
+          "usage": null,
+          "tags": [],
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-23T03:33:06.107Z",
+          "createdAt": "2026-06-23T03:32:07.129Z",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
+          "filename": "simply-enak-kuala-lumpur-food-m0li.webp",
+          "mimeType": "image/webp",
+          "filesize": 15936,
+          "width": 602,
+          "height": 402,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 9410,
+              "filename": "simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
             }
           }
         }
@@ -307,7 +563,12 @@
     "scheduledPublish": null,
     "cancellationPolicy": "24-hours in advance",
     "tourFrequency": "Daily",
-    "startTimes": [],
+    "startTimes": [
+      {
+        "id": "6a39f721916f8b921fafc4a1",
+        "time": "4:00 PM"
+      }
+    ],
     "dishesCount": 10,
     "difficulty": "easy",
     "walkingDistance": "2.5 km",
@@ -375,13 +636,13 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-06-19T14:55:38.514Z",
+    "updatedAt": "2026-06-23T03:33:20.716Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
     "is_bookable": true,
-    "short_description": null,
-    "full_description": null,
+    "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+    "full_description": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
@@ -471,7 +732,9 @@
     ],
     "cancellation_policy": "24-hours in advance",
     "tour_frequency": "Daily",
-    "start_times": [],
+    "start_times": [
+      "4:00 PM"
+    ],
     "dishes_count": 10,
     "walking_distance": "2.5 km",
     "directions_html": null,
@@ -520,11 +783,11 @@
   },
   {
     "id": 4,
-    "name": null,
+    "name": "Penang Street Food",
     "slug": "penang-street-food",
-    "tagline": null,
-    "shortDescription": null,
-    "fullDescription": null,
+    "tagline": "Penang Food Capital Tour",
+    "shortDescription": "What makes Penang the food capital of Malaysia?",
+    "fullDescription": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
     "price": 285,
     "currency": "MYR",
     "duration": "3.5 hours",
@@ -766,24 +1029,24 @@
     "whatsExcluded": [],
     "highlights": [
       {
-        "id": "6a2b8117396ee2000167d631",
-        "highlight": "Kopitiam breakfast experience"
+        "id": "hl-ps-1",
+        "highlight": "Chowrasta Market - feeding Georgetown since the 1890s"
       },
       {
-        "id": "6a2b8117396ee2000167d632",
-        "highlight": "Handcrafted popiah"
+        "id": "hl-ps-2",
+        "highlight": "Watch popiah skins handcrafted by a master with 50 years of practice"
       },
       {
-        "id": "6a2b8117396ee2000167d633",
-        "highlight": "Legendary Asam Laksa"
+        "id": "hl-ps-3",
+        "highlight": "Legendary Asam Laksa - perfectly balanced sweet, sour and savoury"
       },
       {
-        "id": "6a2b8117396ee2000167d634",
-        "highlight": "Peranakan kueh"
+        "id": "hl-ps-4",
+        "highlight": "Peranakan Nyonya kueh at Michelin-listed Moh Teng Pheow"
       },
       {
-        "id": "6a2b8117396ee2000167d635",
-        "highlight": "Chowrasta Market visit"
+        "id": "hl-ps-5",
+        "highlight": "Harmony Street - temples, mosques and churches side by side"
       }
     ],
     "ticketingHubId": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -791,14 +1054,57 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 10,
     "difficulty": "easy",
     "walkingDistance": "2.5 km",
     "directionsHtml": null,
-    "itinerary": [],
+    "itinerary": [
+      {
+        "id": "it-4-0",
+        "step": 0,
+        "title": "09:00 AM - Meet at MYDIN, Penang Road",
+        "description": "Start your Penang food adventure at the iconic emporium on Penang Road.",
+        "duration": null
+      },
+      {
+        "id": "it-4-1",
+        "step": 1,
+        "title": "09:15 AM - Chowrasta Market",
+        "description": "Explore Georgetown's oldest market - the heart of Penang's food culture since the 1890s.",
+        "duration": null
+      },
+      {
+        "id": "it-4-2",
+        "step": 2,
+        "title": "10:00 AM - Kopitiam & Popiah Demonstration",
+        "description": "Try Ngor Ka Sai, nutmeg pickles, and watch a master handcraft popiah skins.",
+        "duration": null
+      },
+      {
+        "id": "it-4-3",
+        "step": 3,
+        "title": "10:45 AM - Asam Laksa & Heritage Walk",
+        "description": "Taste legendary Asam Laksa on Harmony Street.",
+        "duration": null
+      },
+      {
+        "id": "it-4-4",
+        "step": 4,
+        "title": "11:30 AM - Peranakan Nyonya Koay",
+        "description": "Discover diverse kueh at Moh Teng Pheow - recipes unchanged since 1933.",
+        "duration": null
+      },
+      {
+        "id": "it-4-5",
+        "step": 5,
+        "title": "12:15 PM - Durian Dodol & Farewell",
+        "description": "End with sticky-sweet durian dodol and street art by Ernest Zacharevic.",
+        "duration": null
+      }
+    ],
     "differentiatorsTourist": [],
     "differentiatorsUs": [],
     "whatToBring": [],
@@ -825,8 +1131,8 @@
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
     "is_bookable": true,
-    "short_description": null,
-    "full_description": null,
+    "short_description": "What makes Penang the food capital of Malaysia?",
+    "full_description": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
     "duration_minutes": 210,
     "max_participants": 9,
     "min_participants": 2,
@@ -948,7 +1254,7 @@
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 10,
@@ -997,11 +1303,11 @@
   },
   {
     "id": 3,
-    "name": null,
+    "name": "Kuala Lumpur Street Food",
     "slug": "kuala-lumpur-street-food",
-    "tagline": null,
-    "shortDescription": null,
-    "fullDescription": null,
+    "tagline": "The Heart of KL Street Food",
+    "shortDescription": "Brand new to Malaysia? This is everything you need to know!",
+    "fullDescription": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat  -  from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
     "price": 285,
     "currency": "MYR",
     "duration": "3.5 hours",
@@ -1230,24 +1536,24 @@
     "whatsExcluded": [],
     "highlights": [
       {
-        "id": "6a2b8116396ee2000167d62c",
-        "highlight": "Visit Chinatown\\'s food lanes"
+        "id": "hl-kl-1",
+        "highlight": "Real connections with family-run vendors who remember our names"
       },
       {
-        "id": "6a2b8116396ee2000167d62d",
-        "highlight": "Taste 8-10 authentic dishes"
+        "id": "hl-kl-2",
+        "highlight": "Heritage + food storytelling - every dish has a story"
       },
       {
-        "id": "6a2b8116396ee2000167d62e",
-        "highlight": "Explore Little India"
+        "id": "hl-kl-3",
+        "highlight": "Traditional Chinese medicine experience"
       },
       {
-        "id": "6a2b8116396ee2000167d62f",
-        "highlight": "Learn about Malaysian food culture"
+        "id": "hl-kl-4",
+        "highlight": "Watch the last handmade BBQ buns being made"
       },
       {
-        "id": "6a2b8116396ee2000167d630",
-        "highlight": "Perfect introduction to KL"
+        "id": "hl-kl-5",
+        "highlight": "Hidden gems where locals actually eat, not tourist versions"
       }
     ],
     "ticketingHubId": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -1255,14 +1561,57 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 11,
     "difficulty": "easy",
     "walkingDistance": "2 km",
     "directionsHtml": null,
-    "itinerary": [],
+    "itinerary": [
+      {
+        "id": "it-3-0",
+        "step": 0,
+        "title": "09:15 AM - Meet at Pasar Seni LRT Station",
+        "description": "Meet your guide at Tealive, Pasar Seni LRT Station - the gateway to Chinatown.",
+        "duration": null
+      },
+      {
+        "id": "it-3-1",
+        "step": 1,
+        "title": "09:30 AM - Petaling Street & Heritage Zone",
+        "description": "Weave through Chinatown's historic lanes and hear how three cultures shaped KL's food scene.",
+        "duration": null
+      },
+      {
+        "id": "it-3-2",
+        "step": 2,
+        "title": "10:00 AM - Traditional Medicine & Handmade Buns",
+        "description": "Taste therapeutic herbal tea, watch the last handmade BBQ buns being made.",
+        "duration": null
+      },
+      {
+        "id": "it-3-3",
+        "step": 3,
+        "title": "10:30 AM - Temples & Street Food Tastings",
+        "description": "Visit temples between stops for legendary Hokkien mee and apam balik.",
+        "duration": null
+      },
+      {
+        "id": "it-3-4",
+        "step": 4,
+        "title": "11:15 AM - Kwai Chai Hong & REX KL",
+        "description": "Discover hidden street art alleys and the iconic bookstore.",
+        "duration": null
+      },
+      {
+        "id": "it-3-5",
+        "step": 5,
+        "title": "12:15 PM - Durian Tarts & Farewell",
+        "description": "End with a durian pastry and say goodbye at Jalan Sultan.",
+        "duration": null
+      }
+    ],
     "differentiatorsTourist": [],
     "differentiatorsUs": [],
     "whatToBring": [],
@@ -1289,8 +1638,8 @@
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
     "is_bookable": true,
-    "short_description": null,
-    "full_description": null,
+    "short_description": "Brand new to Malaysia? This is everything you need to know!",
+    "full_description": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat  -  from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
     "duration_minutes": 210,
     "max_participants": 9,
     "min_participants": 2,
@@ -1399,7 +1748,7 @@
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 11,
@@ -1448,11 +1797,11 @@
   },
   {
     "id": 2,
-    "name": null,
+    "name": "Flavours of Malaysia",
     "slug": "flavours-of-malaysia",
-    "tagline": null,
-    "shortDescription": null,
-    "fullDescription": null,
+    "tagline": "Market Culture and Hidden Flavours",
+    "shortDescription": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+    "fullDescription": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
     "price": 289,
     "currency": "MYR",
     "duration": "4 hours",
@@ -1694,24 +2043,24 @@
     "whatsExcluded": [],
     "highlights": [
       {
-        "id": "6a2b8115396ee2000167d622",
-        "highlight": "Visit one of KL\\'s largest wet markets"
+        "id": "hl-fm-1",
+        "highlight": "Visit Chow Kit - one of KL's largest traditional wet markets"
       },
       {
-        "id": "6a2b8115396ee2000167d623",
-        "highlight": "Taste 10 authentic Malaysian dishes"
+        "id": "hl-fm-2",
+        "highlight": "Watch \"aunties\" hand-making biscuits at Sin Hwa Bee Bakery"
       },
       {
-        "id": "6a2b8115396ee2000167d624",
-        "highlight": "Explore historic Chinatown lanes"
+        "id": "hl-fm-3",
+        "highlight": "Taste jamu, cham, and the best pan mee in town"
       },
       {
-        "id": "6a2b8115396ee2000167d625",
-        "highlight": "Learn about Malay, Chinese and Indian food culture"
+        "id": "hl-fm-4",
+        "highlight": "Walk through Kampung Periuk heritage village behind the skyline"
       },
       {
-        "id": "6a2b8115396ee2000167d626",
-        "highlight": "Small group  -  max 9 people"
+        "id": "hl-fm-5",
+        "highlight": "Real vendor connections - every family knows our faces"
       }
     ],
     "ticketingHubId": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -1719,14 +2068,57 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 10,
     "difficulty": "easy",
     "walkingDistance": "2 km",
     "directionsHtml": null,
-    "itinerary": [],
+    "itinerary": [
+      {
+        "id": "it-2-0",
+        "step": 0,
+        "title": "09:30 AM - Meet at Hilton Garden Inn North",
+        "description": "Your guide welcomes you at the hotel and sets the stage for a real KL market experience.",
+        "duration": null
+      },
+      {
+        "id": "it-2-1",
+        "step": 1,
+        "title": "09:45 AM - Jalan TAR & Chow Kit Market",
+        "description": "Explore one of KL's largest wet markets - nose-to-tail butchery, exotic produce, and the stories behind the stalls.",
+        "duration": null
+      },
+      {
+        "id": "it-2-2",
+        "step": 2,
+        "title": "10:45 AM - Sin Hwa Bee Bakery",
+        "description": "Watch aunties hand-making traditional biscuits the way they have for decades - living heritage in action.",
+        "duration": null
+      },
+      {
+        "id": "it-2-3",
+        "step": 3,
+        "title": "11:15 AM - Cham, Jamu & Local Flavours",
+        "description": "Taste KL's signature coffee-tea mix and learn about traditional Indonesian-Malay herbal medicine.",
+        "duration": null
+      },
+      {
+        "id": "it-2-4",
+        "step": 4,
+        "title": "11:45 AM - Best Pan Mee in Town",
+        "description": "Handmade noodles perfected over generations at a family-run stall - a Chow Kit institution.",
+        "duration": null
+      },
+      {
+        "id": "it-2-5",
+        "step": 5,
+        "title": "12:30 PM - Kampung Periuk Village Walk",
+        "description": "Walk through a heritage village behind KL's skyline - old Malaysia meeting new.",
+        "duration": null
+      }
+    ],
     "differentiatorsTourist": [],
     "differentiatorsUs": [],
     "whatToBring": [],
@@ -1753,8 +2145,8 @@
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
     "is_bookable": true,
-    "short_description": null,
-    "full_description": null,
+    "short_description": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+    "full_description": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
@@ -1876,7 +2268,7 @@
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 10,
@@ -1925,11 +2317,11 @@
   },
   {
     "id": 1,
-    "name": null,
+    "name": "Eat Drink George Town",
     "slug": "eat-drink-george-town",
-    "tagline": null,
-    "shortDescription": null,
-    "fullDescription": null,
+    "tagline": "Street Food and Cocktails in Penang",
+    "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+    "fullDescription": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
     "price": 359,
     "currency": "MYR",
     "duration": "4 hours",
@@ -2158,24 +2550,24 @@
     "whatsExcluded": [],
     "highlights": [
       {
-        "id": "6a2b8116396ee2000167d627",
-        "highlight": "Sizzling satay at a heritage stall"
+        "id": "hl-ed-1",
+        "highlight": "Sizzling satay at a heritage Malay restaurant"
       },
       {
-        "id": "6a2b8116396ee2000167d628",
-        "highlight": "Char kway teow at Chew Jetty"
+        "id": "hl-ed-2",
+        "highlight": "Watch roti jala handcrafted like golden lace"
       },
       {
-        "id": "6a2b8116396ee2000167d629",
-        "highlight": "Roti jala  -  net crepe"
+        "id": "hl-ed-3",
+        "highlight": "Best samosas in Malaysia (locals' claim, not ours!)"
       },
       {
-        "id": "6a2b8116396ee2000167d62a",
-        "highlight": "Secret society tales"
+        "id": "hl-ed-4",
+        "highlight": "Char kway teow at Chew Jetty at sunset"
       },
       {
-        "id": "6a2b8116396ee2000167d62b",
-        "highlight": "Signature Junglebird cocktail"
+        "id": "hl-ed-5",
+        "highlight": "Alcoholic drink in a heritage setting"
       }
     ],
     "ticketingHubId": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -2183,14 +2575,57 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 11,
     "difficulty": "easy",
     "walkingDistance": "2 km",
     "directionsHtml": null,
-    "itinerary": [],
+    "itinerary": [
+      {
+        "id": "it-1-0",
+        "step": 0,
+        "title": "16:00 PM - Meet at Masjid Kapitan Keling",
+        "description": "Meet your guide as Georgetown comes alive in the late afternoon.",
+        "duration": null
+      },
+      {
+        "id": "it-1-1",
+        "step": 1,
+        "title": "16:15 PM - Little India & Temples",
+        "description": "Pass temples of three religions side by side and taste the best samosas in Malaysia.",
+        "duration": null
+      },
+      {
+        "id": "it-1-2",
+        "step": 2,
+        "title": "17:00 PM - Heritage Malay Satay",
+        "description": "Sizzling satay and roti jala at a family-run Malay restaurant.",
+        "duration": null
+      },
+      {
+        "id": "it-1-3",
+        "step": 3,
+        "title": "17:45 PM - Chew Jetty Sunset",
+        "description": "Char kway teow fresh off the wok as the sun sets over the Straits - clan history included.",
+        "duration": null
+      },
+      {
+        "id": "it-1-4",
+        "step": 4,
+        "title": "18:30 PM - Clan Houses & Secret Society Tales",
+        "description": "Uncover how secret societies shaped Georgetown while tasting Penang Hokkien Mee.",
+        "duration": null
+      },
+      {
+        "id": "it-1-5",
+        "step": 5,
+        "title": "19:30 PM - Drink & Farewell",
+        "description": "Toast with an alcoholic drink at a secret heritage bar.",
+        "duration": null
+      }
+    ],
     "differentiatorsTourist": [],
     "differentiatorsUs": [],
     "whatToBring": [],
@@ -2217,8 +2652,8 @@
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
     "is_bookable": true,
-    "short_description": null,
-    "full_description": null,
+    "short_description": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+    "full_description": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
@@ -2340,7 +2775,7 @@
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 11,
