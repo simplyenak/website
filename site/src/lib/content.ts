@@ -164,7 +164,7 @@ async function liveLandingPages(locale?: string): Promise<any[] | null> {
 }
 
 async function liveAboutPage(locale?: string) {
-  return fetchSingleton('about_page', { locale });
+  return fetchSingleton('about_page', { depth: 10, locale });
 }
 
 async function liveContactPage(locale?: string) {
@@ -290,7 +290,7 @@ function mergeTour(payload: any) {
       cancellation: 'Free cancellation',
       difficulty: 'Easy',
       location: payload.location || '',
-      image: payload.heroImage || null,
+      image: typeof payload.heroImage === 'object' && payload.heroImage?.url ? payload.heroImage.url : (payload.heroImage || null),
       heroImageAlt: payload.heroImageAlt || '',
       highlights: unwrapHighlights(payload),
       itinerary: [],
@@ -332,7 +332,7 @@ function mergeTour(payload: any) {
     cancellation: hardcoded.cancellation || 'Free cancellation',
     difficulty: hardcoded.difficulty || 'Easy',
     location: payload.location || hardcoded.location,
-    image: payload.image || hardcoded.image,
+    image: payload.heroImage?.url || payload.image || hardcoded.image,
     heroImageAlt: payload.heroImageAlt || '',
     highlights: hardcoded.highlights && hardcoded.highlights.length > 0 ? hardcoded.highlights : unwrapHighlights(payload),
     itinerary: hardcoded.itinerary || [],
@@ -1026,8 +1026,8 @@ export async function getAboutPage(locale?: string) {
   // Tier 1: Live Payload API
   const live = await liveAboutPage(locale);
   if (live && Object.keys(live).length > 0) return live;
-  // Tier 2: JSON snapshot (English only)
-  if ((!locale || locale === 'en') && snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) return snapshotAboutPage;
+  // Tier 2: JSON snapshot — use for all locales (English snapshot is better than empty)
+  if (snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) return snapshotAboutPage;
   return {};
 }
 
@@ -1035,8 +1035,8 @@ export async function getContactPage(locale?: string) {
   // Tier 1: Live Payload API
   const live = await liveContactPage(locale);
   if (live && Object.keys(live).length > 0) return live;
-  // Tier 2: JSON snapshot (English only)
-  if ((!locale || locale === 'en') && snapshotContactPage && Object.keys(snapshotContactPage).length > 0) return snapshotContactPage;
+  // Tier 2: JSON snapshot — use for all locales
+  if (snapshotContactPage && Object.keys(snapshotContactPage).length > 0) return snapshotContactPage;
   return {};
 }
 
@@ -1044,8 +1044,8 @@ export async function getToursPage(locale?: string) {
   // Tier 1: Live Payload API
   const live = await liveToursPage(locale);
   if (live && Object.keys(live).length > 0) return live;
-  // Tier 2: JSON snapshot (English only)
-  if ((!locale || locale === 'en') && snapshotToursPage && Object.keys(snapshotToursPage).length > 0) return snapshotToursPage;
+  // Tier 2: JSON snapshot — use for all locales
+  if (snapshotToursPage && Object.keys(snapshotToursPage).length > 0) return snapshotToursPage;
   return {};
 }
 
