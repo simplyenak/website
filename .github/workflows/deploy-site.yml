@@ -19,6 +19,7 @@ on:
     branches: [main]
     paths:
       - 'site/**'
+      - 'eval/**'
       - '.github/workflows/deploy-site.yml'
   repository_dispatch:
     types: [deploy-staging]
