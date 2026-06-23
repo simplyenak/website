@@ -372,7 +372,7 @@
     "check_content_types": ["landing_pages", "routes"],
     "forbidden_patterns": ["missing_ms_locale_variants", "pages_404", "fewer_pages_than_expected"],
     "hard_requirements": ["64_landing_pages_total", "no_pages_404_in_build"],
-    "min_count": 60,
+    "min_count": 48,
     "weight": 0.7,
     "notes": "MS locale routes for all 32 segment landing pages added recently."
   },

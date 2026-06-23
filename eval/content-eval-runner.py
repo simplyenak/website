@@ -230,13 +230,23 @@ def check_tour_data() -> dict:
     data = load_json(tf)
     if not isinstance(data, list):
         return fail_result("tours.json not a list")
-    required = ["title", "description", "hero_image", "pricing", "meeting_point", "max_pax", "duration"]
+    # Map generic field names to actual Payload/snapshot field names
+    required = [
+        ("name", "title / name"),
+        ("shortDescription", "description"),
+        ("hero_image", "hero_image"),
+        ("price", "pricing"),
+        ("meetingPoint", "meeting_point"),
+        ("maxParticipants", "max_pax"),
+        ("duration", "duration"),
+    ]
     issues = []
     for t in data:
         slug = t.get("slug", "?")
-        for f in required:
-            if not t.get(f):
-                issues.append(f"{slug}: missing {f}")
+        for field, label in required:
+            val = t.get(field)
+            if val is None or val == '' or (isinstance(val, (list, dict)) and len(val) == 0):
+                issues.append(f"{slug}: missing {label}")
     return pass_result(f"All {len(data)} tours OK", issues) if not issues else fail_result(f"{len(issues)} gaps", issues[:20])
 
 
@@ -260,6 +270,32 @@ def check_meta_integrity(benchmark: list[dict]) -> dict:
     return pass_result(f"All {len(benchmark)} cases valid", issues) if not issues else fail_result(f"{len(issues)} issues", issues)
 
 
+
+def check_landing_page_count() -> dict:
+    landing_files = [
+        "location-landing-pages.json",
+        "dietary-landing-pages.json",
+        "specialty-landing-pages.json",
+        "travel-type-landing-pages.json",
+    ]
+    total = 0
+    file_counts = []
+    for fname in landing_files:
+        fp = CONTENT_DIR / fname
+        if fp.exists():
+            with open(fp) as fh:
+                data = json.load(fh)
+            count = len(data) if isinstance(data, list) else (1 if data else 0)
+            total += count
+            file_counts.append(f"{fname}: {count}")
+        else:
+            file_counts.append(f"{fname}: MISSING")
+    min_count = 60  # From benchmark case
+    if total >= min_count:
+        return pass_result(f"{total} landing pages across {len(landing_files)} files", file_counts)
+    return fail_result(f"Only {total} landing pages (need >= {min_count})", file_counts)
+
+
 # ── Handler dispatch ──
 
 CASE_HANDLERS = {
@@ -273,6 +309,7 @@ CASE_HANDLERS = {
     "media_upload_quality": check_media_quality,
     "deploy_workflow": check_deploy_workflow,
     "tour_data_completeness": check_tour_data,
+    "landing_page_count": check_landing_page_count,
 }
 
 
