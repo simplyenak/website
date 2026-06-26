@@ -858,13 +858,79 @@
         ]
       },
       {
-        "languages_code": "de"
+        "languages_code": "de",
+        "name": "Geheimnisse von KL - Nachtleben, Straßenkunst & Cocktails!",
+        "tagline": "Entdecken Sie KL bei Nacht",
+        "short_description": "Simply Enaks After-Dark-Tour enthüllt versteckte Speakeasy-Bars und verbotene Geschichten.",
+        "full_description": "Ihr Guide wird Ihnen verbotene Geschichten aus dem alten KL erzählen – von Gangster-Geschichten bis hin zu kolonialen Skandalen –, während Sie handgefertigte Cocktails schlürfen und einige der besten nächtlichen Streetfood-Gerichte der Stadt genießen.",
+        "whats_included": [
+          "Erfahrener lokaler Reiseführer",
+          "Kleingruppenerlebnis (max. 9)",
+          "Zugang zur versteckten Speakeasy-Bar",
+          "Detaillierte Anweisungen zum Treffpunkt"
+        ],
+        "whats_excluded": [
+          "Transport zum Treffpunkt",
+          "Zusätzliche Getränke über den inkludierten Cocktail / das inkludierte alkoholische Getränk hinaus",
+          "Persönliche Einkäufe"
+        ],
+        "highlights": [
+          "Versteckte Speakeasy-Bars",
+          "Schokoladenverkostung",
+          "Verbotene Geschichten aus dem alten KL",
+          "Straßenkunst bei Nacht",
+          "Handgefertigte Signature-Cocktails"
+        ]
       },
       {
-        "languages_code": "es"
+        "languages_code": "es",
+        "name": "Secretos de KL - Vida nocturna, arte callejero y cócteles!",
+        "tagline": "Descubre KL Después del Anochecer",
+        "short_description": "La ruta nocturna de Simply Enak revela bares clandestinos ocultos e historias prohibidas.",
+        "full_description": "Tu guía compartirá historias prohibidas de la vieja KL — desde historias de gánsteres hasta escándalos coloniales — mientras saboreas cócteles artesanales y degustas algunas de las mejores comidas callejeras nocturnas que la ciudad tiene para ofrecer.",
+        "whats_included": [
+          "Guía local experto",
+          "Experiencia en grupo reducido (máx. 9)",
+          "Acceso a bar clandestino oculto",
+          "Instrucciones detalladas del punto de encuentro"
+        ],
+        "whats_excluded": [
+          "Transporte al punto de encuentro",
+          "Bebidas adicionales fuera del cóctel / bebida alcohólica incluida",
+          "Compras personales"
+        ],
+        "highlights": [
+          "Bares clandestinos ocultos",
+          "Cata de chocolate",
+          "Cuentos prohibidos de la antigua KL",
+          "Arte callejero por la noche",
+          "Cócteles artesanales de la casa"
+        ]
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Secrets de KL - Vie nocturne, art de rue et cocktails !",
+        "tagline": "Découvrez KL une fois la nuit tombée",
+        "short_description": "La visite nocturne de Simply Enak révèle des bars clandestins cachés et des récits interdits.",
+        "full_description": "Votre guide partagera des récits interdits de l'ancien KL — des histoires de gangsters aux scandales coloniaux — pendant que vous siroterez des cocktails artisanaux et dégusterez certains des meilleurs plats de rue nocturnes que la ville a à offrir.",
+        "whats_included": [
+          "Guide local expert",
+          "Expérience en petit groupe (max 9)",
+          "Accès au bar speakeasy caché",
+          "Instructions détaillées du point de rencontre"
+        ],
+        "whats_excluded": [
+          "Transport au point de rendez-vous",
+          "Boissons supplémentaires au-delà du cocktail / de la boisson alcoolisée inclus",
+          "Achats personnels"
+        ],
+        "highlights": [
+          "Bars speakeasy cachés",
+          "Dégustation de chocolat",
+          "Contes interdits du vieux KL",
+          "Street art la nuit",
+          "Cocktails artisanaux signature"
+        ]
       },
       {
         "languages_code": "nl"
@@ -1416,13 +1482,46 @@
         ]
       },
       {
-        "languages_code": "de"
+        "languages_code": "de",
+        "name": "Penanger Straßenimbiss",
+        "tagline": "Penang Kulinarische Hauptstadt-Tour",
+        "short_description": "Was macht Penang zur Food-Hauptstadt Malaysiens?",
+        "full_description": "Probieren Sie legendäre Gerichte aus Penang wie Asam Laksa, Char Kway Teow und Cendol und erfahren Sie dabei mehr über das Erbe der Peranakan (Straßen-Chinesen), das die Esskultur Penangs so einzigartig macht.",
+        "highlights": [
+          "Chowrasta Market – ernährt Georgetown seit den 1890er Jahren",
+          "Beobachten Sie, wie Popiah-Hüllen von einem Meister mit 50 Jahren Erfahrung handgefertigt werden.",
+          "Legendäres Asam Laksa - perfekt ausgewogen süß, sauer und herzhaft",
+          "Peranakan-Nyonya-Kueh im Michelin-empfohlenen Moh Teng Pheow",
+          "Harmony Street – Tempel, Moscheen und Kirchen Seite an Seite"
+        ]
       },
       {
-        "languages_code": "es"
+        "languages_code": "es",
+        "name": "Comida callejera de Penang",
+        "tagline": "Tour por la Capital Gastronómica de Penang",
+        "short_description": "¿Qué convierte a Penang en la capital gastronómica de Malasia?",
+        "full_description": "Prueba legendarios platos de Penang como el Asam Laksa, el Char Kway Teow y el Cendol, todo mientras aprendes sobre la herencia peranakan (chino de los Estrechos) que hace que la cultura gastronómica de Penang sea única.",
+        "highlights": [
+          "Mercado Chowrasta - alimentando a Georgetown desde la década de 1890",
+          "Observa las pieles de popiah elaboradas a mano por un maestro con 50 años de práctica.",
+          "Legendario Asam Laksa - perfectamente equilibrado entre dulce, agrio y sabroso",
+          "Kueh nyonya peranakan en Moh Teng Pheow, en la lista Michelin",
+          "Calle de la Armonía: templos, mezquitas e iglesias uno al lado del otro"
+        ]
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Cuisine de rue de Penang",
+        "tagline": "Tour de la capitale gastronomique de Penang",
+        "short_description": "Qu'est-ce qui fait de Penang la capitale culinaire de la Malaisie ?",
+        "full_description": "Dégustez des plats légendaires de Penang tels que l'Asam Laksa, le Char Kway Teow et le Cendol, tout en découvrant l'héritage Peranakan (Chinois des Détroits) qui rend la culture culinaire de Penang unique.",
+        "highlights": [
+          "Chowrasta Market - nourrissant Georgetown depuis les années 1890",
+          "Regardez des peaux de popiah confectionnées à la main par un maître avec 50 ans de pratique",
+          "Légendaire Asam Laksa - parfaitement équilibré sucré, acide et salé",
+          "Gâteaux traditionnels kueh Peranakan Nyonya chez Moh Teng Pheow, recommandé par le guide Michelin",
+          "Rue de l'Harmonie - temples, mosquées et églises côte à côte"
+        ]
       },
       {
         "languages_code": "nl"
@@ -1948,13 +2047,46 @@
         ]
       },
       {
-        "languages_code": "de"
+        "languages_code": "de",
+        "name": "Kuala Lumpur Street Food",
+        "tagline": "Das Herz des Street Foods in KL",
+        "short_description": "Ganz neu in Malaysia? Das ist alles, was Sie wissen müssen!",
+        "full_description": "Ihr Guide zeigt Ihnen, wo die Einheimischen wirklich essen – von Dampfschiffnudeln bis Char Kway Teow, von Roti Canai bis Cendol. Jeder Halt hat eine Geschichte, und jedes Gericht verrät Ihnen etwas über Malaysias multikulturelle Seele.",
+        "highlights": [
+          "Echte Verbindungen zu familiengeführten Händlern, die sich an unsere Namen erinnern",
+          "Erbe + kulinarische Geschichten – jedes Gericht hat eine Geschichte",
+          "Erfahrung in der Traditionellen Chinesischen Medizin",
+          "Sehen Sie zu, wie die letzten handgemachten BBQ-Brötchen hergestellt werden",
+          "Geheimtipps, wo Einheimische tatsächlich essen – keine Touristenversionen"
+        ]
       },
       {
-        "languages_code": "es"
+        "languages_code": "es",
+        "name": "Comida callejera de Kuala Lumpur",
+        "tagline": "El Corazón de la Comida Callejera de KL",
+        "short_description": "¿Nuevo en Malasia? ¡Esto es todo lo que necesitas saber!",
+        "full_description": "Tu guía te mostrará dónde comen realmente los locales: desde fideos de olla de vapor hasta char kway teow, desde roti canai hasta cendol. Cada parada tiene una historia, y cada plato te dice algo sobre el alma multicultural de Malasia.",
+        "highlights": [
+          "Conexiones reales con proveedores familiares que recuerdan nuestros nombres",
+          "Patrimonio + narrativa culinaria - cada plato tiene una historia",
+          "Experiencia en medicina tradicional china",
+          "Mira cómo se hacen los últimos bollos de barbacoa hechos a mano",
+          "Joyas ocultas donde los lugareños realmente comen, no versiones turísticas"
+        ]
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Cuisine de rue de Kuala Lumpur",
+        "tagline": "L'Âme de la Cuisine de Rue de Kuala Lumpur",
+        "short_description": "Tout nouveau en Malaisie ? Voici tout ce que vous devez savoir !",
+        "full_description": "Votre guide vous montrera où les locaux mangent vraiment – des nouilles steam-boat au char kway teow, du roti canai au cendol. Chaque arrêt a une histoire, et chaque plat vous raconte quelque chose sur l'âme multiculturelle de la Malaisie.",
+        "highlights": [
+          "De véritables liens avec des commerçants familiaux qui retiennent nos prénoms",
+          "Patrimoine + narration culinaire - chaque plat a une histoire",
+          "Expérience en médecine traditionnelle chinoise",
+          "Regardez les derniers petits pains BBQ faits à la main en train d'être fabriqués.",
+          "Pépites cachées où les locaux mangent vraiment, pas des versions pour touristes"
+        ]
       },
       {
         "languages_code": "nl"
@@ -2506,13 +2638,46 @@
         ]
       },
       {
-        "languages_code": "de"
+        "languages_code": "de",
+        "name": "Aromen Malaysias",
+        "tagline": "Marktkultur und verborgene Aromen",
+        "short_description": "\"Brandneu in Malaysia? Das ist alles, was Sie wissen müssen! Perfekte Einführung in die malaysische Kultur.\"",
+        "full_description": "Beim Schlendern durch den Markt werden Sie beliebte malaysische Gerichte probieren und die wichtigsten Zutaten kennenlernen, die in den Küchen der drei Hauptkulturen Malaysias verwendet werden. Dieses Markterlebnis ist 100 % authentisch.",
+        "highlights": [
+          "Besuchen Sie Chow Kit – einen der größten traditionellen Nassmärkte in KL.",
+          "Beobachten Sie, wie „Tanten\" in der Bäckerei Sin Hwa Bee Kekse von Hand herstellen",
+          "Probieren Sie Jamu, Cham und die beste Pan Mee der Stadt",
+          "Spaziergang durch das Kulturerbe-Dorf Kampung Periuk hinter der Skyline",
+          "Echte Lieferantenverbindungen – jede Familie kennt unsere Gesichter"
+        ]
       },
       {
-        "languages_code": "es"
+        "languages_code": "es",
+        "name": "Sabores de Malasia",
+        "tagline": "Cultura de Mercado y Sabores Ocultos",
+        "short_description": "¿Totalmente nuevo en Malasia? ¡Esto es todo lo que necesitas saber! Introducción perfecta a la cultura malasia.",
+        "full_description": "Caminando por el mercado, probarás platos populares de Malasia y entenderás los ingredientes clave utilizados en las cocinas de las tres culturas principales de Malasia. Esta experiencia de mercado es 100% real.",
+        "highlights": [
+          "Visita Chow Kit - uno de los mercados húmedos tradicionales más grandes de Kuala Lumpur",
+          "Mira a las \"tías\" haciendo galletas a mano en Sin Hwa Bee Bakery",
+          "Prueba el jamu, el cham y el mejor pan mee de la ciudad",
+          "Camina por la aldea patrimonial de Kampung Periuk detrás del horizonte urbano",
+          "Conexiones reales con proveedores: cada familia conoce nuestras caras."
+        ]
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Saveurs de Malaisie",
+        "tagline": "Culture du marché et saveurs cachées",
+        "short_description": "Tout nouveau en Malaisie ? Voici tout ce que vous devez savoir ! Introduction parfaite à la culture malaisienne.",
+        "full_description": "En vous promenant dans le marché, vous goûterez à des plats populaires malaisiens et comprendrez les ingrédients clés utilisés dans les cuisines des trois principales cultures de Malaisie. Cette expérience au marché est 100 % authentique.",
+        "highlights": [
+          "Visitez Chow Kit - l'un des plus grands marchés traditionnels de KL",
+          "Regardez les « tantes » fabriquer des biscuits à la main à la boulangerie Sin Hwa Bee",
+          "Goûtez le jamu, le cham, et le meilleur pan mee en ville",
+          "Promenez-vous à travers le village patrimonial de Kampung Periuk, derrière la ligne d'horizon",
+          "De vraies connexions avec les fournisseurs - chaque famille connaît nos visages"
+        ]
       },
       {
         "languages_code": "nl"
@@ -3051,13 +3216,46 @@
         ]
       },
       {
-        "languages_code": "de"
+        "languages_code": "de",
+        "name": "Essen Trinken George Town",
+        "tagline": "Straßenessen und Cocktails in Penang",
+        "short_description": "Simply Enaks beliebteste Penang-Tour beginnt bei Sonnenuntergang.",
+        "full_description": "Ihr Guide führt Sie durch die historischen Straßen von George Town und erzählt Ihnen Geschichten über Geheimgesellschaften, die Kolonialgeschichte und das multikulturelle Erbe, das Penang zur kulinarischen Hauptstadt Malaysias macht.",
+        "highlights": [
+          "Brutzelndes Saté in einem traditionsreichen malaiischen Restaurant",
+          "Beobachte, wie Roti Jala handgefertigt wird wie goldene Spitze",
+          "Die besten Samosas in Malaysia (sagen die Einheimischen, nicht wir!)",
+          "Char kway teow am Chew Jetty bei Sonnenuntergang",
+          "Alkoholisches Getränk in historischem Ambiente"
+        ]
       },
       {
-        "languages_code": "es"
+        "languages_code": "es",
+        "name": "Come Bebe George Town",
+        "tagline": "Comida callejera y cócteles en Penang",
+        "short_description": "El tour más querido de Penang de Simply Enak comienza cuando se pone el sol.",
+        "full_description": "Tu guía te llevará por las calles históricas de George Town, compartiendo relatos de sociedades secretas, historia colonial y el patrimonio multicultural que convierte a Penang en la capital gastronómica de Malasia.",
+        "highlights": [
+          "Satay chisporroteante en un restaurante malayo tradicional",
+          "Mira el roti jala elaborado a mano como encaje dorado",
+          "Los mejores samosas de Malasia (¡según los locales, no nosotros!)",
+          "Char kway teow en Chew Jetty al atardecer",
+          "Bebida alcohólica en un entorno patrimonial"
+        ]
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Mangez Buvez George Town",
+        "tagline": "Cuisine de rue et cocktails à Penang",
+        "short_description": "La visite de Penang la plus appréciée de Simply Enak commence au coucher du soleil.",
+        "full_description": "Votre guide vous mènera à travers les rues historiques de George Town, partageant des récits sur les sociétés secrètes, l'histoire coloniale et le patrimoine multiculturel qui fait de Penang la capitale gastronomique de la Malaisie.",
+        "highlights": [
+          "Un satay grésillant dans un restaurant malais de tradition",
+          "Regardez le roti jala confectionné à la main comme de la dentelle dorée",
+          "Les meilleurs samosas de Malaisie (selon les locaux, pas nous !)",
+          "Char kway teow à Chew Jetty au coucher du soleil",
+          "Boisson alcoolisée dans un cadre patrimonial"
+        ]
       },
       {
         "languages_code": "nl"
