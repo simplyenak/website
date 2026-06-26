@@ -812,7 +812,25 @@
         "name": "Rahsia KL - Kehidupan Malam, Seni Jalanan & Koktel!",
         "tagline": "Terokai KL Selepas Gelap",
         "short_description": "Lawatan waktu malam Simply Enak mendedahkan bar-bar speakeasy tersembunyi dan kisah-kisah terlarang.",
-        "full_description": "Pemandu anda akan berkongsi kisah-kisah terlarang dari KL zaman dahulu — dari sejarah gangster hingga skandal kolonial — sementara anda menikmati koktel buatan tangan dan merasai antara makanan jalanan larut malam terbaik yang ditawarkan oleh kota ini."
+        "full_description": "Pemandu anda akan berkongsi kisah-kisah terlarang dari KL zaman dahulu — dari sejarah gangster hingga skandal kolonial — sementara anda menikmati koktel buatan tangan dan merasai antara makanan jalanan larut malam terbaik yang ditawarkan oleh kota ini.",
+        "whats_included": [
+          "Pemandu tempatan yang pakar",
+          "Pengalaman kumpulan kecil (maks 9)",
+          "Akses bar speakeasy tersembunyi",
+          "Arahan titik pertemuan terperinci"
+        ],
+        "whats_excluded": [
+          "Pengangkutan ke tempat pertemuan",
+          "Minuman tambahan selain daripada koktel / minuman beralkohol yang disertakan",
+          "Pembelian peribadi"
+        ],
+        "highlights": [
+          "Bar speakeasy tersembunyi",
+          "Pencucian coklat",
+          "Kisah terlarang KL lama",
+          "Seni jalanan pada waktu malam",
+          "Koktel kraf istimewa"
+        ]
       },
       {
         "languages_code": "zh"
@@ -1352,7 +1370,14 @@
         "name": "Makanan Jalanan Penang",
         "tagline": "Lawatan Ibu Kota Makanan Penang",
         "short_description": "Apakah yang menjadikan Penang ibu kota makanan di Malaysia?",
-        "full_description": "<p>Rasakan hidangan legenda Penang seperti Asam Laksa, Char Kway Teow, dan Cendol, sambil mempelajari warisan Peranakan (Cina Selat) yang menjadikan budaya makanan Penang unik.</p>"
+        "full_description": "<p>Rasakan hidangan legenda Penang seperti Asam Laksa, Char Kway Teow, dan Cendol, sambil mempelajari warisan Peranakan (Cina Selat) yang menjadikan budaya makanan Penang unik.</p>",
+        "highlights": [
+          "Pasar Chowrasta - menghidangkan makanan untuk Georgetown sejak 1890-an",
+          "Tonton kulit popiah yang dibuat dengan tangan oleh seorang tukang mahir dengan 50 tahun pengalaman",
+          "Lagenda Asam Laksa - manis, masam dan sedap yang seimbang dengan sempurna",
+          "Kuih Nyonya Peranakan di Moh Teng Pheow yang tersenarai dalam Michelin",
+          "Jalan Harmoni - tokong, masjid dan gereja bersebelahan"
+        ]
       },
       {
         "languages_code": "zh"
@@ -1866,7 +1891,14 @@
         "name": "Makanan Jalanan Kuala Lumpur",
         "tagline": "Jantung Makanan Jalanan KL",
         "short_description": "Baharu di Malaysia? Ini semua yang anda perlu tahu!",
-        "full_description": "Pemandu anda akan menunjukkan tempat sebenar orang tempatan makan - daripada steam-boat noodles sehingga char kway teow, daripada roti canai sehingga cendol. Setiap perhentian mempunyai kisahnya sendiri, dan setiap hidangan menceritakan sesuatu tentang jiwa pelbagai budaya Malaysia."
+        "full_description": "Pemandu anda akan menunjukkan tempat sebenar orang tempatan makan - daripada steam-boat noodles sehingga char kway teow, daripada roti canai sehingga cendol. Setiap perhentian mempunyai kisahnya sendiri, dan setiap hidangan menceritakan sesuatu tentang jiwa pelbagai budaya Malaysia.",
+        "highlights": [
+          "Hubungan sebenar dengan peniaga keluarga yang mengingati nama kita",
+          "Warisan + penceritaan makanan - setiap hidangan mempunyai cerita",
+          "Pengalaman perubatan tradisional Cina",
+          "Tonton roti BBQ buatan tangan yang terakhir sedang dibuat",
+          "Permata tersembunyi di mana orang tempatan benar-benar makan, bukan versi pelancong"
+        ]
       },
       {
         "languages_code": "zh"
@@ -2403,10 +2435,17 @@
       },
       {
         "languages_code": "ms",
-        "name": "The user wants me to translate \"Flavours of Malaysia\" to Malay, following specific brand voice and formatting rules. I need to preserve the title format and translate appropriately.\n\nRasa Malaysia",
+        "name": "Perisa Malaysia",
         "tagline": "Budaya Pasar dan Perisa Tersembunyi",
         "short_description": "Baharu di Malaysia? Ini semua yang anda perlu tahu! Pengenalan sempurna kepada budaya Malaysia.",
-        "full_description": "Semasa berjalan melalui pasar, anda akan merasai hidangan popular Malaysia dan memahami bahan-bahan utama yang digunakan di dapur tiga budaya utama di Malaysia. Pengalaman pasar ini adalah 100% tulen."
+        "full_description": "Semasa berjalan melalui pasar, anda akan merasai hidangan popular Malaysia dan memahami bahan-bahan utama yang digunakan di dapur tiga budaya utama di Malaysia. Pengalaman pasar ini adalah 100% tulen.",
+        "highlights": [
+          "Lawati Chow Kit – salah satu pasar basah tradisional terbesar di KL",
+          "Tonton makcik-makcik membuat biskut dengan tangan di Sin Hwa Bee Bakery",
+          "Rasakan jamu, cham, dan pan mee terbaik di bandar ini",
+          "Berjalan melalui kampung warisan Kampung Periuk di sebalik garis langit",
+          "Sambungan vendor sebenar - setiap keluarga mengenali wajah kami"
+        ]
       },
       {
         "languages_code": "zh"
@@ -2933,7 +2972,14 @@
         "name": "Makan Minum George Town",
         "tagline": "Makanan Jalanan dan Koktel di Penang",
         "short_description": "Lawatan Penang paling digemari Simply Enak bermula apabila matahari terbenam.",
-        "full_description": "Pemandu anda akan mengetuai anda melalui jalan-jalan bersejarah George Town, berkongsi cerita-cerita tentang pertubuhan rahsia, sejarah penjajahan, dan warisan pelbagai budaya yang menjadikan Penang ibu kota makanan Malaysia."
+        "full_description": "Pemandu anda akan mengetuai anda melalui jalan-jalan bersejarah George Town, berkongsi cerita-cerita tentang pertubuhan rahsia, sejarah penjajahan, dan warisan pelbagai budaya yang menjadikan Penang ibu kota makanan Malaysia.",
+        "highlights": [
+          "Satay yang meruap di restoran warisan Melayu",
+          "Tonton roti jala yang dianyam tangan seperti renda emas",
+          "Samosa terbaik di Malaysia (kata penduduk tempatan, bukan kami!)",
+          "Char kway teow di Chew Jetty ketika matahari terbenam",
+          "Minuman beralkohol dalam persekitaran warisan"
+        ]
       },
       {
         "languages_code": "zh"
