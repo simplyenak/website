@@ -762,7 +762,50 @@
     ],
     "translations": [
       {
-        "languages_code": "en"
+        "languages_code": "en",
+        "name": "Secrets of KL - Nightlife, Street Art & Cocktails!",
+        "tagline": "Discover KL After Dark",
+        "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
+        "full_description": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
+        "whats_included": [
+          {
+            "id": "6a321188055fbe0001981de5",
+            "item": "Expert local guide"
+          },
+          {
+            "id": "6a321188055fbe0001981de6",
+            "item": "Small group experience (max 9)"
+          },
+          {
+            "id": "6a321188055fbe0001981de7",
+            "item": "Hidden speakeasy bar access"
+          },
+          {
+            "id": "6a321188055fbe0001981de8",
+            "item": "Detailed meeting point instructions"
+          }
+        ],
+        "whats_excluded": [
+          {
+            "id": "6a321188055fbe0001981de9",
+            "item": "Transportation to meeting point"
+          },
+          {
+            "id": "6a321188055fbe0001981dea",
+            "item": "Additional drinks beyond included cocktail / alcoholic drink"
+          },
+          {
+            "id": "6a321188055fbe0001981deb",
+            "item": "Personal purchases"
+          }
+        ],
+        "highlights": [
+          "Hidden speakeasy bars",
+          "Chocolate tasting",
+          "Forbidden tales of old KL",
+          "Street art at night",
+          "Signature craft cocktails"
+        ]
       },
       {
         "languages_code": "ms"
@@ -1283,7 +1326,22 @@
     "gallery_images": [],
     "translations": [
       {
-        "languages_code": "en"
+        "languages_code": "en",
+        "name": "Penang Street Food",
+        "tagline": "Penang Food Capital Tour",
+        "short_description": "What makes Penang the food capital of Malaysia?",
+        "full_description": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
+        "whats_included": [],
+        "whats_excluded": [],
+        "highlights": [
+          "Chowrasta Market - feeding Georgetown since the 1890s",
+          "Watch popiah skins handcrafted by a master with 50 years of practice",
+          "Legendary Asam Laksa - perfectly balanced sweet, sour and savoury",
+          "Peranakan Nyonya kueh at Michelin-listed Moh Teng Pheow",
+          "Harmony Street - temples, mosques and churches side by side"
+        ],
+        "meta_title": "Penang Street Food | Simply Enak Food Tours",
+        "meta_description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls."
       },
       {
         "languages_code": "ms"
@@ -1778,7 +1836,22 @@
     "gallery_images": [],
     "translations": [
       {
-        "languages_code": "en"
+        "languages_code": "en",
+        "name": "Kuala Lumpur Street Food",
+        "tagline": "The Heart of KL Street Food",
+        "short_description": "Brand new to Malaysia? This is everything you need to know!",
+        "full_description": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat  -  from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
+        "whats_included": [],
+        "whats_excluded": [],
+        "highlights": [
+          "Real connections with family-run vendors who remember our names",
+          "Heritage + food storytelling - every dish has a story",
+          "Traditional Chinese medicine experience",
+          "Watch the last handmade BBQ buns being made",
+          "Hidden gems where locals actually eat, not tourist versions"
+        ],
+        "meta_title": "Kuala Lumpur Street Food | Simply Enak Food Tours",
+        "meta_description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes."
       },
       {
         "languages_code": "ms"
@@ -2299,7 +2372,22 @@
     "gallery_images": [],
     "translations": [
       {
-        "languages_code": "en"
+        "languages_code": "en",
+        "name": "Flavours of Malaysia",
+        "tagline": "Market Culture and Hidden Flavours",
+        "short_description": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+        "full_description": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
+        "whats_included": [],
+        "whats_excluded": [],
+        "highlights": [
+          "Visit Chow Kit - one of KL's largest traditional wet markets",
+          "Watch \"aunties\" hand-making biscuits at Sin Hwa Bee Bakery",
+          "Taste jamu, cham, and the best pan mee in town",
+          "Walk through Kampung Periuk heritage village behind the skyline",
+          "Real vendor connections - every family knows our faces"
+        ],
+        "meta_title": "Flavours of Malaysia | Simply Enak Food Tours",
+        "meta_description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine."
       },
       {
         "languages_code": "ms"
@@ -2807,7 +2895,22 @@
     "gallery_images": [],
     "translations": [
       {
-        "languages_code": "en"
+        "languages_code": "en",
+        "name": "Eat Drink George Town",
+        "tagline": "Street Food and Cocktails in Penang",
+        "short_description": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+        "full_description": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
+        "whats_included": [],
+        "whats_excluded": [],
+        "highlights": [
+          "Sizzling satay at a heritage Malay restaurant",
+          "Watch roti jala handcrafted like golden lace",
+          "Best samosas in Malaysia (locals' claim, not ours!)",
+          "Char kway teow at Chew Jetty at sunset",
+          "Alcoholic drink in a heritage setting"
+        ],
+        "meta_title": "Eat Drink George Town | Simply Enak Food Tours",
+        "meta_description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert."
       },
       {
         "languages_code": "ms"
