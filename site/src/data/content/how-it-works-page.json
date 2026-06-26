@@ -79,5 +79,39 @@
   "seo_description": "How Simply Enak food tours work — Simply Enak Malaysian food tours.",
   "updatedAt": "2026-05-19T09:59:17.490Z",
   "createdAt": "2026-05-19T09:59:17.489Z",
-  "_status": "published"
+  "_status": "published",
+  "translations": [
+    {
+      "languages_code": "en",
+      "hero_title": "How Our Food Tours Work",
+      "hero_subtitle": "From booking to the last bite, here is what happens on a Simply Enak tour."
+    },
+    {
+      "languages_code": "ms"
+    },
+    {
+      "languages_code": "zh"
+    },
+    {
+      "languages_code": "de"
+    },
+    {
+      "languages_code": "es"
+    },
+    {
+      "languages_code": "fr"
+    },
+    {
+      "languages_code": "nl"
+    },
+    {
+      "languages_code": "ru"
+    },
+    {
+      "languages_code": "ja"
+    },
+    {
+      "languages_code": "pt"
+    }
+  ]
 }

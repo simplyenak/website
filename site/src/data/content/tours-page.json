@@ -258,5 +258,38 @@
   "_status": "published",
   "hero_image": "https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg",
   "dietary_image": "https://se-website-images.s3.nl-ams.scw.cloud/vegetarian-heritage.jpg",
-  "tailor_image": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg"
+  "tailor_image": "https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+  "translations": [
+    {
+      "languages_code": "en",
+      "hero_title": "Food, Culture & Heritage Tours<br/>in {highlight}KL, Ipoh & Penang{/highlight}"
+    },
+    {
+      "languages_code": "ms"
+    },
+    {
+      "languages_code": "zh"
+    },
+    {
+      "languages_code": "de"
+    },
+    {
+      "languages_code": "es"
+    },
+    {
+      "languages_code": "fr"
+    },
+    {
+      "languages_code": "nl"
+    },
+    {
+      "languages_code": "ru"
+    },
+    {
+      "languages_code": "ja"
+    },
+    {
+      "languages_code": "pt"
+    }
+  ]
 }

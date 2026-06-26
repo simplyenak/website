@@ -20,5 +20,38 @@
   "empty_message": "Stories coming soon. Malaysian heritage is rich with food traditions waiting to be explored.",
   "empty_cta_text": "Browse Tours Instead",
   "empty_cta_href": "/tours",
-  "_status": "published"
+  "_status": "published",
+  "translations": [
+    {
+      "languages_code": "en",
+      "hero_title": "Stories"
+    },
+    {
+      "languages_code": "ms"
+    },
+    {
+      "languages_code": "zh"
+    },
+    {
+      "languages_code": "de"
+    },
+    {
+      "languages_code": "es"
+    },
+    {
+      "languages_code": "fr"
+    },
+    {
+      "languages_code": "nl"
+    },
+    {
+      "languages_code": "ru"
+    },
+    {
+      "languages_code": "ja"
+    },
+    {
+      "languages_code": "pt"
+    }
+  ]
 }

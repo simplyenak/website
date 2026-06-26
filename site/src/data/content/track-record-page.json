@@ -70,5 +70,39 @@
   "how_we_work_eyebrow": "How We Work",
   "updatedAt": "2026-05-19T09:59:20.980Z",
   "createdAt": "2026-05-19T09:59:20.980Z",
-  "_status": "published"
+  "_status": "published",
+  "translations": [
+    {
+      "languages_code": "en",
+      "hero_title": "Our Track Record",
+      "hero_subtitle": "Numbers that tell the story of what we do and who we serve."
+    },
+    {
+      "languages_code": "ms"
+    },
+    {
+      "languages_code": "zh"
+    },
+    {
+      "languages_code": "de"
+    },
+    {
+      "languages_code": "es"
+    },
+    {
+      "languages_code": "fr"
+    },
+    {
+      "languages_code": "nl"
+    },
+    {
+      "languages_code": "ru"
+    },
+    {
+      "languages_code": "ja"
+    },
+    {
+      "languages_code": "pt"
+    }
+  ]
 }

@@ -175,5 +175,39 @@
   "private_cta_href": "/tours/private-tours/",
   "updatedAt": "2026-06-20T00:56:06.475Z",
   "createdAt": "2026-06-20T00:56:06.475Z",
-  "_status": "published"
+  "_status": "published",
+  "translations": [
+    {
+      "languages_code": "en",
+      "hero_title": "A Route Nobody Else Gets",
+      "hero_subtitle": "Not an existing tour run privately. A completely custom route designed around your interests, your pace, and what you want to taste."
+    },
+    {
+      "languages_code": "ms"
+    },
+    {
+      "languages_code": "zh"
+    },
+    {
+      "languages_code": "de"
+    },
+    {
+      "languages_code": "es"
+    },
+    {
+      "languages_code": "fr"
+    },
+    {
+      "languages_code": "nl"
+    },
+    {
+      "languages_code": "ru"
+    },
+    {
+      "languages_code": "ja"
+    },
+    {
+      "languages_code": "pt"
+    }
+  ]
 }

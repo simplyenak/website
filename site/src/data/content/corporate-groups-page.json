@@ -88,5 +88,39 @@
   "cta_body": "Send us your group details and we'll come back with route recommendations and pricing within 24 hours.",
   "cta_email_label": "Email us",
   "cta_whatsapp_label": "WhatsApp us",
-  "_status": "published"
+  "_status": "published",
+  "translations": [
+    {
+      "languages_code": "en",
+      "hero_title": "Where Kuala Lumpur Actually Eats",
+      "hero_subtitle": "Team meals and client visits that don't feel like team meals. We take corporate groups to the stalls where the city feeds itself, not the restaurants on the tourist strip."
+    },
+    {
+      "languages_code": "ms"
+    },
+    {
+      "languages_code": "zh"
+    },
+    {
+      "languages_code": "de"
+    },
+    {
+      "languages_code": "es"
+    },
+    {
+      "languages_code": "fr"
+    },
+    {
+      "languages_code": "nl"
+    },
+    {
+      "languages_code": "ru"
+    },
+    {
+      "languages_code": "ja"
+    },
+    {
+      "languages_code": "pt"
+    }
+  ]
 }
