@@ -40,19 +40,29 @@
         "description": "Opciones 100% a base de plantas"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Végétalien",
+        "description": "Options 100 % végétales"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Veganistisch",
+        "description": "100% plantaardige opties"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Веганский",
+        "description": "100% растительные варианты"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "ヴィーガン",
+        "description": "100%植物性オプション"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Vegano",
+        "description": "Opções 100% à base de plantas"
       }
     ]
   },
@@ -97,19 +107,29 @@
         "description": "Pescado y marisco, pero no carne."
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "pescétarien",
+        "description": "Poisson et fruits de mer mais pas de viande"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Pescotariër",
+        "description": "Vis en zeevruchten, maar geen vlees."
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Пескетарианец",
+        "description": "Рыба и морепродукты, но не мясо"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "ペスカタリアン",
+        "description": "魚介類のみで、肉は除きます。"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Pescetariano",
+        "description": "Peixe e frutos do mar, mas sem carne."
       }
     ]
   },
@@ -154,19 +174,29 @@
         "description": "Opciones de comida picante para amantes del picante"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Épicé",
+        "description": "Options de plats épicés pour les amateurs de sensations fortes"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Pittig",
+        "description": "Pittige etensopties voor liefhebbers van hitte"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Острый",
+        "description": "Острые блюда для любителей огненного вкуса"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "辛い (からい)",
+        "description": "辛い食べ物好きのためのスパイシーな料理オプション"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Picante",
+        "description": "Opções de comida picante para os amantes do sabor ardido"
       }
     ]
   },
@@ -211,19 +241,29 @@
         "description": "Opciones bajas en sodio disponibles"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Faible en sodium",
+        "description": "Options à faible teneur en sodium disponibles"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Natriumarm",
+        "description": "Natriumarme opties beschikbaar"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Низкое содержание натрия",
+        "description": "Доступны варианты с низким содержанием натрия"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "低ナトリウム",
+        "description": "低ナトリウムのオプションもございます"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Baixo Sódio",
+        "description": "Opções com baixo teor de sódio disponíveis"
       }
     ]
   },
@@ -268,19 +308,29 @@
         "description": "Sin ingredientes de huevo"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Sans œufs",
+        "description": "Aucun ingrédient à base d'œuf"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Eivrij",
+        "description": "Geen eieringrediënten"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Без яиц",
+        "description": "Без яичных ингредиентов"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "卵不使用",
+        "description": "卵の材料なし"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Sem ovo",
+        "description": "Sem ingredientes de ovo"
       }
     ]
   },
@@ -325,19 +375,29 @@
         "description": "Platos aptos para vegetarianos"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Végétarien",
+        "description": "Plats végétariens"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Vegetarisch",
+        "description": "Vegetarisch vriendelijke gerechten"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Вегетарианец",
+        "description": "Блюда для вегетарианцев"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "ベジタリアン",
+        "description": "ベジタリアン向け料理"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Vegetariano",
+        "description": "Pratos vegetarianos"
       }
     ]
   },
@@ -382,19 +442,29 @@
         "description": "Preparaciones sin frutos secos"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Sans noix",
+        "description": "Préparations sans noix"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Notenvrij",
+        "description": "Notenvrije bereidingen"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Без орехов",
+        "description": "Без орехов"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "ナッツ不使用",
+        "description": "ナッツ不使用の調整"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Sem nozes",
+        "description": "Preparações sem nozes"
       }
     ]
   },
@@ -439,19 +509,29 @@
         "description": "Sin ingredientes lácteos"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Sans produits laitiers",
+        "description": "Aucun ingrédient laitier utilisé"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Zuivelvrij",
+        "description": "Geen zuivelingrediënten gebruikt"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Безмолочный",
+        "description": "Не содержат молочных ингредиентов"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "乳製品不使用",
+        "description": "乳成分は使用していません"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Sem Laticínios",
+        "description": "Sem ingredientes lácteos utilizados."
       }
     ]
   },
@@ -496,19 +576,29 @@
         "description": "Platos sin gluten disponibles"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Sans gluten",
+        "description": "Plats sans gluten disponibles"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Glutenvrij",
+        "description": "Glutenvrije gerechten verkrijgbaar"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Без глютена",
+        "description": "Безглютеновые блюда в наличии"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "グルテンフリー",
+        "description": "グルテンフリーの料理があります"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Sem Glúten",
+        "description": "Pratos sem glúten disponíveis"
       }
     ]
   },
@@ -553,19 +643,29 @@
         "description": "Opciones de alimentos certificados halal"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Halal",
+        "description": "Options alimentaires certifiées halal"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Halal",
+        "description": "Halal-gecertificeerde voedselopties"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Халяль",
+        "description": "Халяльная еда с сертификатом"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "ハラル",
+        "description": "ハラール認証食品の選択肢"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Halal (Lícito)",
+        "description": "Opções de alimentos certificados como halal"
       }
     ]
   },
@@ -610,19 +710,29 @@
         "description": "No se agrega glutamato monosódico a los platos."
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Sans MSG",
+        "description": "Aucun MSG ajouté aux plats"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Zonder MSG",
+        "description": "Geen MSG toegevoegd aan de gerechten"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Без глутамата натрия",
+        "description": "Без добавления глутамата натрия"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "MSG不使用",
+        "description": "料理にMSGは添加していません"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Sem MSG",
+        "description": "Sem MSG adicionado aos pratos"
       }
     ]
   },
@@ -667,19 +777,29 @@
         "description": "Opciones de comida kosher"
       },
       {
-        "languages_code": "fr"
+        "languages_code": "fr",
+        "name": "Casher",
+        "description": "Options alimentaires casher"
       },
       {
-        "languages_code": "nl"
+        "languages_code": "nl",
+        "name": "Koosjer",
+        "description": "Koosjere dieetopties"
       },
       {
-        "languages_code": "ru"
+        "languages_code": "ru",
+        "name": "Кошерный",
+        "description": "Кошерные варианты питания"
       },
       {
-        "languages_code": "ja"
+        "languages_code": "ja",
+        "name": "コーシャ",
+        "description": "コーシャー食の選択肢"
       },
       {
-        "languages_code": "pt"
+        "languages_code": "pt",
+        "name": "Kosher",
+        "description": "Opções de alimentação kosher"
       }
     ]
   }
