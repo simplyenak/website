@@ -38,8 +38,8 @@
   ],
   "timelineSection": {
     "eyebrow": "2011 - Present",
-    "heading": "15 Years of Simply Enak",
-    "description": "From a first food walk through Chow Kit to features in National Geographic, BBC, and Lonely Planet. This is our story.",
+    "heading": "",
+    "description": "",
     "milestones": [
       {
         "year": "Today",
@@ -139,69 +139,31 @@
     ]
   },
   "philosophySection": {
-    "eyebrow": "What Guides Us",
-    "heading": "Three Things We Won't Compromise On",
-    "items": [
-      {
-        "number": "01",
-        "title": "Unscripted & Human",
-        "description": "We don't do canned jokes or rehearsed speeches. Our guides are licensed professionals, but they talk to you like friends: sharing real stories, not scripts."
-      },
-      {
-        "number": "02",
-        "title": "Slow Travel",
-        "description": "We walk. We pause. We take the time to appreciate the details: the architecture, the smells, the sounds of the neighbourhood."
-      },
-      {
-        "number": "03",
-        "title": "Support Local",
-        "description": "We exclusively visit family-run businesses. Your tour fee directly supports the heritage keepers of our food culture."
-      }
-    ]
+    "eyebrow": "",
+    "heading": "",
+    "items": []
   },
   "teamSection": {
-    "eyebrow": "The Team",
-    "heading": "The People Behind the Flavours",
-    "description": "We're a small team, all licensed with Tourism Malaysia. We grew up eating at these same stalls.",
-    "members": [
-      {
-        "name": "Pauline",
-        "role": "Founder & Lead Guide",
-        "specialty": "15 Years Building Relationships",
-        "description": "Started Simply Enak in 2011 after watching too many tourists miss the real Malaysia. Grew up walking wet markets with her mom.",
-        "photo": "https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg"
-      },
-      {
-        "name": "Maarten",
-        "role": "Partner",
-        "specialty": "Operations & Growth",
-        "description": "Ensures every aspect of Simply Enak stays true to authentic Malaysian food experiences.",
-        "photo": ""
-      },
-      {
-        "name": "Trish",
-        "role": "Licensed Guide",
-        "specialty": "Tourism Malaysia Certified",
-        "description": "A natural storyteller who makes every guest feel like family.",
-        "photo": ""
-      }
-    ]
+    "eyebrow": "",
+    "heading": "",
+    "description": "",
+    "members": []
   },
   "testimonial": {
-    "text": "\"The Penang Heritage tour exceeded our expectations. Our guide shared amazing stories and the food was outstanding. Every dish had a story.\"",
-    "name": "David Lee",
-    "location": "USA"
+    "text": "",
+    "name": "Our Guests",
+    "location": ""
   },
   "ctaSection": {
-    "heading": "Ready to Eat With Us?",
-    "description": "Browse our tours, or message us on WhatsApp. We reply in minutes.",
+    "heading": "Ready to Taste Malaysia?",
+    "description": "",
     "ctaPrimary": {
-      "text": "Browse Tours",
+      "text": "Browse All Tours",
       "url": "/tours"
     },
     "ctaSecondary": {
-      "text": "WhatsApp Us",
-      "url": "https://wa.me/60172878929"
+      "text": "Contact Us",
+      "url": "/contact"
     }
   },
   "seo_title": "About Simply Enak  -  Malaysian Food Tours Since 2011",

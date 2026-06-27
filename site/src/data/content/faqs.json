@@ -3,32 +3,32 @@
     "id": 28,
     "question": "Can you handle dietary restrictions on a private tour?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "That's one of the main reasons people go private. On a join-in tour we work around what's available, but on a private tour we can build the entire route around your needs. Vegetarian, vegan, gluten-free, halal — we've done it all. Just let us know when you book.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "That's one of the main reasons people go private. On a join-in tour we work around dietary needs — on a private tour we build the entire route around them.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
     "category": "private_tours",
@@ -42,7 +42,7 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:44.421Z",
+    "updatedAt": "2026-06-27T07:36:57.044Z",
     "createdAt": "2026-06-17T02:59:15.298Z",
     "_status": "draft",
     "translations": [
@@ -130,32 +130,32 @@
     "id": 27,
     "question": "How far ahead should we book a private tour?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "A week ahead is comfortable, two is better. We've pulled tours together in 48 hours before, but the best routes take time to plan. For large groups or specific dietary needs, the earlier the better.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "A week ahead is comfortable, two is better. We've pulled tours together in 48 hours before, but the more notice we have, the better we can tailor the experience.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
     "category": "private_tours",
@@ -168,7 +168,7 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:43.764Z",
+    "updatedAt": "2026-06-27T07:36:58.337Z",
     "createdAt": "2026-06-17T02:59:14.686Z",
     "_status": "draft",
     "translations": [
@@ -256,32 +256,32 @@
     "id": 26,
     "question": "Can we change the route on a private tour?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "Once you book, your guide will reach out before the day to discuss preferences. Want more seafood? Less walking? A specific neighbourhood? It's your tour — we adjust.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "Once you book, your guide will reach out before the day to discuss preferences. Want more street food? Less walking? A specific dish you're dying to try? We'll adjust.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
     "category": "private_tours",
@@ -294,7 +294,7 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:43.054Z",
+    "updatedAt": "2026-06-27T07:36:59.656Z",
     "createdAt": "2026-06-17T02:59:14.005Z",
     "_status": "draft",
     "translations": [
@@ -380,34 +380,34 @@
   },
   {
     "id": 25,
-    "question": "What happens if it rains?",
+    "question": "What's the minimum group size for a private tour?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "We tour rain or shine — many of our best food discoveries are under covered walkways and indoor markets. In rare cases of extreme weather we'll reschedule or refund.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "Two people is fine — we've done it plenty of times. Most private groups run between 4 and 8 people.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
     "category": "private_tours",
@@ -421,120 +421,40 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:42.411Z",
+    "updatedAt": "2026-06-27T07:37:00.973Z",
     "createdAt": "2026-06-17T02:59:13.354Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "What happens if it rains?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "We tour rain or shine — many of our best food discoveries are under covered walkways and indoor markets. In rare cases of extreme weather we'll reschedule or refund.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apa akan jadi kalau hujan?",
-        "answer": "Kami menjalankan lawatan dalam apa-apa cuaca — banyak penemuan makanan terbaik kami adalah di bawah laluan berbumbung dan pasar dalaman. Dalam kes-kes cuaca ekstrem yang jarang berlaku, kami akan menjadualkan semula atau membuat pemulangan wang."
-      },
-      {
-        "languages_code": "zh",
-        "question": "如果下雨会怎么样？",
-        "answer": "无论晴雨我们都照常出团——我们许多最棒的美食发现都在有顶棚的走道和室内市场中。在极少数极端天气情况下，我们会改期或退款。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was passiert, wenn es regnet?",
-        "answer": "Wir touren bei jedem Wetter — viele unserer besten kulinarischen Entdeckungen machen wir unter überdachten Wegen und in überdachten Märkten. In seltenen Fällen von extremem Wetter werden wir den Termin verschieben oder eine Rückerstattung anbieten."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si llueve?",
-        "answer": "Realizamos el tour con lluvia o sol — muchos de nuestros mejores descubrimientos gastronómicos se encuentran bajo pasillos cubiertos y mercados interiores. En casos raros de clima extremo, reprogramaremos o reembolsaremos."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Que se passe-t-il s'il pleut ?",
-        "answer": "Nous faisons la visite qu'il pleuve ou qu'il fasse beau — bon nombre de nos meilleures découvertes culinaires se font sous des passages couverts et dans des marchés couverts. Dans de rares cas de conditions météorologiques extrêmes, nous reprogrammerons la visite ou rembourserons."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat gebeurt er als het regent?",
-        "answer": "We gaan op tour bij regen of zonneschijn — veel van onze beste culinaire ontdekkingen doen we onder overdekte passages en in binnenmarkten. In zeldzame gevallen van extreem weer verzetten we de tour of storten we het bedrag terug."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что произойдёт, если пойдёт дождь?",
-        "answer": "Мы проводим туры в любую погоду — многие из наших лучших гастрономических открытий ждут под крытыми переходами и на крытых рынках. В редких случаях экстремальной погоды мы переносим тур или возвращаем деньги."
-      },
-      {
-        "languages_code": "ja",
-        "question": "雨が降ったらどうなりますか？",
-        "answer": "雨でも晴れてでもツアーは開催します。私たちの最高の発見の多くは屋根のある通路や屋内の市場で見つかります。稀に極端な天候の場合のみ、日程変更または返金を行います。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O que acontece se chover?",
-        "answer": "Nós fazemos os tours com chuva ou sol — muitas das nossas melhores descobertas gastronómicas estão em passagens cobertas e mercados cobertos. Em casos raros de condições meteorológicas extremas, remarcamos ou fazemos reembolso."
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 24,
-    "question": "Do we get to meet the vendors?",
+    "question": "Is a private tour worth the extra cost?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "That's the whole point. We take you to family-run stalls where the owner will shake your hand, show you their technique, and share the story behind their recipe. It's not a restaurant visit — it's a visit to someone's life's work.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "That depends on what you're after. If you want to move at your own pace, have the guide all to yourselves, customise the route, or need specific dietary accommodation, a private tour is absolutely worth it.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
     "category": "private_tours",
@@ -548,120 +468,40 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:41.592Z",
+    "updatedAt": "2026-06-27T07:37:02.295Z",
     "createdAt": "2026-06-17T02:59:12.692Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "Do we get to meet the vendors?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "That's the whole point. We take you to family-run stalls where the owner will shake your hand, show you their technique, and share the story behind their recipe. It's not a restaurant visit — it's a visit to someone's life's work.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Adakah kita berpeluang berjumpa dengan penjual?",
-        "answer": "Inilah intipatinya. Kami membawa anda ke gerai yang diusahakan oleh keluarga di mana pemiliknya akan berjabat tangan dengan anda, menunjukkan teknik mereka, dan berkongsi kisah di sebalik resipi mereka. Ia bukan kunjungan ke restoran — ia adalah kunjungan ke tempat hasil kerja seumur hidup seseorang."
-      },
-      {
-        "languages_code": "zh",
-        "question": "我们能见到供应商吗？",
-        "answer": "这正是关键所在。我们带您前往家族经营的小摊位，老板会与您握手，向您展示他们的手艺，并分享食谱背后的故事。这不是一次餐厅之旅——而是一次对某人毕生心血的探访。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Bekommen wir die Möglichkeit, die Verkäufer kennenzulernen?",
-        "answer": "Das ist der ganze Sinn. Wir bringen Sie zu familiengeführten Ständen, wo der Besitzer Ihnen die Hand schüttelt, Ihnen seine Technik zeigt und die Geschichte hinter seinem Rezept erzählt. Es ist kein Restaurantbesuch — es ist ein Besuch bei jemandes Lebenswerk."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Conoceremos a los vendedores?",
-        "answer": "De eso se trata. Lo llevamos a puestos familiares donde el dueño le estrechará la mano, le mostrará su técnica y compartirá la historia detrás de su receta. No es una visita a un restaurante, es una visita a la obra de toda una vida de alguien."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Est-ce qu'on va pouvoir rencontrer les vendeurs ?",
-        "answer": "C'est là tout l'intérêt. Nous vous emmenons dans des échoppes familiales où le propriétaire vous serrera la main, vous montrera sa technique et vous racontera l'histoire derrière sa recette. Ce n'est pas une visite au restaurant — c'est une visite à l'œuvre d'une vie."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Krijgen we de kans om de leveranciers te ontmoeten?",
-        "answer": "Dat is precies de bedoeling. We nemen je mee naar familiekraampjes waar de eigenaar je de hand schudt, je hun techniek laat zien en het verhaal achter hun recept deelt. Het is geen restaurantbezoek — het is een bezoek aan het levenswerk van iemand."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Нам удастся встретиться с продавцами?",
-        "answer": "В этом и весь смысл. Мы отвозим вас к семейным лавкам, где хозяин пожмёт вам руку, покажет своё мастерство и расскажет историю своего рецепта. Это не поход в ресторан — это визит к чьему-то делу всей жизни."
-      },
-      {
-        "languages_code": "ja",
-        "question": "業者の方々と会うことはできますか？",
-        "answer": "「それがまさに重要なポイントです。家族で営むお店へとご案内します。店主があなたの手を握り、その技を見せ、レシピに込められた物語を語ってくれます。レストランを訪れるのとは異なります——それはまるで、誰かの人生の結晶を訪ねるようなものです。」"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Nós vamos conhecer os fornecedores?",
-        "answer": "É esse o ponto principal. Nós levamos você a barracas familiares, onde o dono apertará a sua mão, mostrará a sua técnica e compartilhará a história por trás da sua receita. Não é uma visita a um restaurante — é uma visita à obra de uma vida."
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 23,
-    "question": "Can children join the tour?",
+    "question": "Can I book a private tour?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "Absolutely. Kids under 6 join free, and our guides know how to keep them engaged. The walking pace is gentle with plenty of seating stops. Let us know ages when booking so we can prepare.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "Yes. Private tours are available for groups, families, and corporate events. Contact us for pricing and availability. Private tours give you flexibility on timing, route, and pace.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
     "category": "private_tours",
@@ -676,1265 +516,8 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:40.737Z",
+    "updatedAt": "2026-06-27T07:37:03.620Z",
     "createdAt": "2026-06-17T02:59:12.076Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "Can children join the tour?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Absolutely. Kids under 6 join free, and our guides know how to keep them engaged. The walking pace is gentle with plenty of seating stops. Let us know ages when booking so we can prepare.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Bolehkah kanak-kanak menyertai lawatan ini?",
-        "answer": "Sudah tentu. Kanak-kanak bawah umur 6 tahun menyertai secara percuma, dan pemandu kami tahu cara untuk memastikan mereka sentiasa terlibat. Kadar berjalan adalah perlahan dengan banyak tempat berhenti untuk berehat. Sila beritahu umur mereka semasa membuat tempahan agar kami dapat membuat persediaan."
-      },
-      {
-        "languages_code": "zh",
-        "question": "儿童可以参加这个旅游团吗？",
-        "answer": "当然可以。6岁以下儿童免费参加，我们的导游知道如何让孩子们保持兴趣。步行节奏轻松，并设有充足的休息座位。预订时请告知孩子们的年龄，以便我们做好准备。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder an der Tour teilnehmen?",
-        "answer": "Absolut. Kinder unter 6 Jahren nehmen kostenlos teil, und unsere Guides wissen, wie man sie bei Laune hält. Das Gehtempo ist gemütlich mit vielen Sitzpausen. Bitte geben Sie uns bei der Buchung die Altersangaben an, damit wir uns entsprechend vorbereiten können."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Pueden los niños unirse al tour?",
-        "answer": "Por supuesto. Los niños menores de 6 años entran gratis, y nuestros guías saben cómo mantenerlos entretenidos. El ritmo de la caminata es tranquilo con muchas paradas para sentarse. Indíquenos las edades al reservar para que podamos prepararnos."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à la visite ?",
-        "answer": "Absolument. Les enfants de moins de 6 ans participent gratuitement, et nos guides savent comment les garder captivés. Le rythme de marche est doux avec de nombreux arrêts pour s'asseoir. Faites-nous connaître les âges lors de la réservation afin que nous puissions nous préparer."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan de tour?",
-        "answer": "Absoluut. Kinderen onder de 6 jaar mogen gratis mee, en onze gidsen weten hoe ze hen betrokken kunnen houden. Het wandeltempo is rustig met voldoende stops om te zitten. Laat ons de leeftijden weten bij het boeken, zodat we ons kunnen voorbereiden."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Могут ли дети присоединиться к экскурсии?",
-        "answer": "Конечно. Дети до 6 лет проходят бесплатно, а наши гиды знают, как их увлечь. Темп прогулки спокойный, с множеством остановок для отдыха. Сообщите нам возраст детей при бронировании, чтобы мы могли подготовиться."
-      },
-      {
-        "languages_code": "ja",
-        "question": "子供はツアーに参加できますか？",
-        "answer": "はい、もちろんです。6歳未満のお子様は無料でご参加いただけますし、ガイドはお子様たちの興味を引きつけるコツを知っています。歩行ペースはゆったりしており、座って休憩できる場所も多くあります。予約時にお子様の年齢をお知らせいただければ、適切な準備をさせていただきます。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Crianças podem participar do passeio?",
-        "answer": "Com certeza. Crianças menores de 6 anos participam gratuitamente, e nossos guias sabem como mantê-las engajadas. O ritmo da caminhada é suave, com várias paradas para descanso. Informe-nos as idades no momento da reserva para que possamos nos preparar."
-      }
-    ]
-  },
-  {
-    "id": 22,
-    "question": "What if I have a food allergy?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "Flag it when you book and we'll brief your guide. Malaysian cooking uses peanuts, shrimp paste, and soy frequently — but we know which stalls can accommodate and which to avoid. We take allergies seriously.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "booking",
-    "page_visibility": [
-      "home",
-      "faq",
-      "tour-detail"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 1,
-    "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:40.059Z",
-    "createdAt": "2026-06-17T02:59:11.263Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "What if I have a food allergy?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Flag it when you book and we'll brief your guide. Malaysian cooking uses peanuts, shrimp paste, and soy frequently — but we know which stalls can accommodate and which to avoid. We take allergies seriously.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Bagaimana jika saya mempunyai alahan makanan?",
-        "answer": "Beri tahu kami semasa membuat tempahan dan kami akan memaklumkan pemandu pelancong anda. Masakan Malaysia kerap menggunakan kacang, belacan, dan kicap — tetapi kami tahu gerai mana yang boleh memenuhi keperluan anda dan yang perlu dielakkan. Kami memandang serius tentang alergi."
-      },
-      {
-        "languages_code": "zh",
-        "question": "如果我有食物过敏怎么办？",
-        "answer": "请在预订时注明，我们会提前告知您的导游。马来西亚菜经常使用花生、虾酱和大豆——但我们知道哪些摊位可以满足要求，哪些应该避开。我们对食物过敏问题非常重视。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was ist, wenn ich eine Lebensmittelallergie habe?",
-        "answer": "Geben Sie dies bei der Buchung an und wir informieren Ihren Reiseleiter. In der malaysischen Küche werden häufig Erdnüsse, Garnelenpaste und Soja verwendet — aber wir wissen, welche Stände darauf eingehen können und welche zu meiden sind. Wir nehmen Allergien ernst."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Y si tengo una alergia alimentaria?",
-        "answer": "Indícalo al reservar y le informaremos a tu guía. La cocina malasia usa cacahuetes, pasta de camarón y soya con frecuencia, pero sabemos qué puestos pueden adaptarse y cuáles evitar. Nos tomamos las alergias en serio."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Et si j'ai une allergie alimentaire ?",
-        "answer": "Signalez-le lors de votre réservation et nous en informerons votre guide. La cuisine malaisienne utilise fréquemment des cacahuètes, de la pâte de crevettes et du soja — mais nous savons quels stands peuvent s'adapter et lesquels éviter. Nous prenons les allergies au sérieux."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat als ik een voedselallergie heb?",
-        "answer": "Geef het door bij het boeken en wij lichten je gids in. De Maleisische keuken gebruikt vaak pinda's, garnalenpasta en soja — maar wij weten welke kraampjes rekening kunnen houden met allergieën en welke je beter kunt vermijden. We nemen allergieën serieus."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что если у меня пищевая аллергия?",
-        "answer": "Сообщите об этом при бронировании, и мы проинструктируем вашего гида. В малайзийской кухне часто используются арахис, креветочная паста и соя — но мы знаем, какие лавки могут подойти, а каких стоит избегать. Мы серьёзно относимся к аллергиям."
-      },
-      {
-        "languages_code": "ja",
-        "question": "食物アレルギーがある場合はどうすればよいですか？",
-        "answer": "ご予約時にお知らせいただければ、ガイドにブリーフィングいたします。マレーシア料理にはピーナッツ、エビペースト、醤油が頻繁に使用されますが、対応可能な屋台と避けるべき屋台を把握しております。アレルギーには真剣に取り組んでおります。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "E se eu tiver uma alergia alimentar?",
-        "answer": "Sinalize ao reservar e informaremos o seu guia. A culinária malaia utiliza amendoim, pasta de camarão e soja com frequência — mas sabemos quais barracas podem acomodar e quais evitar. Levamos as alergias a sério."
-      }
-    ]
-  },
-  {
-    "id": 21,
-    "question": "Is the tour suitable for solo travellers?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "Very much so. Around 30% of our guests come alone. You'll be in a small group of 2-8 people, and our guides are experts at bringing everyone into the conversation. Many solo travellers tell us it's the highlight of their trip.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "general",
-    "page_visibility": [
-      "home",
-      "faq",
-      "tour-detail"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 1,
-    "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:39.339Z",
-    "createdAt": "2026-06-17T02:59:10.639Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "Is the tour suitable for solo travellers?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Very much so. Around 30% of our guests come alone. You'll be in a small group of 2-8 people, and our guides are experts at bringing everyone into the conversation. Many solo travellers tell us it's the highlight of their trip.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Adakah lawatan ini sesuai untuk pengembara yang bersendirian?",
-        "answer": "Sangat ya. Kira-kira 30% tetamu kami datang bersendirian. Anda akan berada dalam kumpulan kecil 2-8 orang, dan pemandu kami mahir dalam melibatkan semua orang dalam perbualan. Ramai pengembara solo memberitahu kami bahawa ini adalah sorotan percutian mereka."
-      },
-      {
-        "languages_code": "zh",
-        "question": "这个旅游团适合独自出行的游客吗？",
-        "answer": "确实如此。我们大约30%的客人都是独自出行。您会被安排在一个2到8人的小团里，我们的导游非常善于引导大家参与交流。许多独自旅行的游客告诉我们，这是他们旅途中最难忘的亮点。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Ist die Tour für Einzelreisende geeignet?",
-        "answer": "Auf jeden Fall. Etwa 30 % unserer Gäste kommen alleine. Sie sind in einer kleinen Gruppe von 2–8 Personen, und unsere Guides sind Expertinnen und Experten darin, alle ins Gespräch einzubeziehen. Viele Alleinreisende sagen uns, es sei das Highlight ihrer Reise."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Es el tour adecuado para viajeros que viajan solos?",
-        "answer": "Muchísimo. Alrededor del 30% de nuestros huéspedes vienen solos. Estarás en un grupo pequeño de 2 a 8 personas, y nuestros guías son expertos en integrar a todos en la conversación. Muchos viajeros solos nos dicen que es lo más destacado de su viaje."
-      },
-      {
-        "languages_code": "fr",
-        "question": "La visite convient-elle aux voyageurs en solo ?",
-        "answer": "Tout à fait. Environ 30 % de nos clients viennent seuls. Vous serez dans un petit groupe de 2 à 8 personnes, et nos guides sont experts pour intégrer tout le monde à la conversation. Beaucoup de voyageurs solo nous disent que c'est le point fort de leur voyage."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Is de tour geschikt voor soloreizigers?",
-        "answer": "Zeker weten. Ongeveer 30% van onze gasten komt alleen. Je komt in een kleine groep van 2-8 personen, en onze gidsen zijn experts in het betrekken van iedereen bij het gesprek. Veel alleenreizigers vertellen ons dat dit het hoogtepunt van hun reis is."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Подходит ли тур для одиночных путешественников?",
-        "answer": "Совершенно верно. Около 30% наших гостей приезжают в одиночку. Вы окажетесь в небольшой группе из 2-8 человек, а наши гиды умеют как никто вовлекать всех в разговор. Многие одиночные путешественники говорят нам, что именно это становится лучшей частью их поездки."
-      },
-      {
-        "languages_code": "ja",
-        "question": "このツアーは一人旅に適していますか？",
-        "answer": "もちろんです。お客様の約30%は一人でのご参加です。グループは2〜8名の少人数制で、ガイドは全員を会話に参加させるのが得意です。一人旅の多くのお客様から、旅の中で一番のハイライトだったというお声をいただいています。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O tour é adequado para viajantes que viajam sozinhos?",
-        "answer": "Com certeza. Cerca de 30% dos nossos hóspedes viajam sozinhos. Você fará parte de um pequeno grupo de 2 a 8 pessoas, e nossos guias são especialistas em incluir todos na conversa. Muitos viajantes solo nos dizem que esse é o ponto alto da viagem deles."
-      }
-    ]
-  },
-  {
-    "id": 20,
-    "question": "What's included in a private tour?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "mode": "normal",
-                "text": "Everything on a join-in tour, plus a fully customisable route, your own dedicated guide, flexible timing, and the freedom to linger where you want. It's your evening — you set the pace.",
-                "type": "text",
-                "style": "",
-                "detail": 0,
-                "format": 0,
-                "version": 1
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "dietary",
-    "page_visibility": [
-      "home",
-      "faq",
-      "tour-detail",
-      "dietary"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 1,
-    "workflowStatus": "published",
-    "updatedAt": "2026-06-17T03:00:38.432Z",
-    "createdAt": "2026-06-17T02:59:09.921Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "What's included in a private tour?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Everything on a join-in tour, plus a fully customisable route, your own dedicated guide, flexible timing, and the freedom to linger where you want. It's your evening — you set the pace.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apakah yang termasuk dalam lawatan persendirian?",
-        "answer": "Segala-galanya dalam lawatan berkumpulan, ditambah dengan laluan yang boleh disesuaikan sepenuhnya, pemandu pelancong khas anda sendiri, masa yang fleksibel, dan kebebasan untuk berlama-lama di tempat yang anda kehendaki. Ini adalah petang anda — anda yang menentukan rentaknya."
-      },
-      {
-        "languages_code": "zh",
-        "question": "私人定制游包含哪些内容？",
-        "answer": "参加拼团游的所有项目都包含在内，此外还有完全可定制的路线、专属导游、灵活的时间安排，以及在您心仪之处自由停留的自在。这是属于您的夜晚——节奏由您来定。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was ist in einer privaten Tour enthalten?",
-        "answer": "Alles wie bei einer Gruppentour, plus eine vollständig anpassbare Route, Ihr eigener persönlicher Guide, flexible Zeiteinteilung und die Freiheit, dort zu verweilen, wo Sie möchten. Es ist Ihr Abend — Sie bestimmen das Tempo."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué incluye un tour privado?",
-        "answer": "Todo lo de un tour grupal, además de una ruta totalmente personalizable, tu propio guía dedicado, horarios flexibles y la libertad de quedarte donde quieras. Es tu noche — tú marcas el ritmo."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Que comprend une visite privée ?",
-        "answer": "Tout ce qu'inclut une visite partagée, plus un itinéraire entièrement personnalisable, votre propre guide dédié, des horaires flexibles et la liberté de vous attarder où vous le souhaitez. C'est votre soirée — vous en fixez le rythme."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat is inbegrepen bij een privérondleiding?",
-        "answer": "Alles van een groepsrondleiding, plus een volledig aanpasbare route, uw eigen persoonlijke gids, flexibele tijdstippen en de vrijheid om te blijven waar u wilt. Het is uw avond — u bepaalt het tempo."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что включено в индивидуальную экскурсию?",
-        "answer": "Всё, что входит в групповой тур, плюс полностью настраиваемый маршрут, ваш персональный гид, гибкий график и свобода задерживаться там, где хочется. Это ваш вечер — вы задаёте темп."
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーには何が含まれていますか？",
-        "answer": "通常の参加型ツアーのすべてに加えて、ルートを自由にカスタマイズでき、専属ガイドがつき、時間の調整も柔軟に対応、好きな場所でのんびりと滞在する自由も楽しめます。お客様ご自身の夜の時間です — ペースはお客様でお決めください。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O que está incluído em um tour privado?",
-        "answer": "Tudo em um tour em grupo, além de um roteiro totalmente personalizável, seu próprio guia dedicado, horários flexíveis e a liberdade de permanecer onde quiser. É a sua noite — você define o ritmo."
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "question": "Do you offer private tours?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "Your guide will confirm the exact meeting point after booking. We always meet at a recognisable landmark — a train station exit or a well-known building — with clear directions.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "general",
-    "page_visibility": [
-      "all"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 16,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:22:05.099Z",
-    "createdAt": "2026-05-19T08:33:38.923Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "Do you offer private tours?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "text": "Your guide will confirm the exact meeting point after booking. We always meet at a recognisable landmark — a train station exit or a well-known building — with clear directions.",
-                    "type": "text",
-                    "version": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Adakah anda menawarkan lawatan persendirian?",
-        "answer": "Pemandu anda akan mengesahkan titik pertemuan yang tepat selepas tempahan. Kami sentiasa bertemu di tempat mercu tanda yang dikenali — pintu keluar stesen kereta api atau bangunan yang terkenal — dengan arah yang jelas."
-      },
-      {
-        "languages_code": "zh",
-        "question": "你们提供私人定制游吗？",
-        "answer": "您的向导将在预订后确认确切的具体集合地点。我们总是在一个易于识别的地标处集合——例如火车站出口或知名建筑——并提供清晰的指引。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Bieten Sie private Touren an?",
-        "answer": "Ihr Guide wird den genauen Treffpunkt nach der Buchung bestätigen. Wir treffen uns immer an einem erkennbaren Orientierungspunkt — einem Bahnhofsausgang oder einem bekannten Gebäude — mit klaren Wegbeschreibungen."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Ofrecen tours privados?",
-        "answer": "Tu guía confirmará el punto de encuentro exacto después de la reserva. Siempre nos encontramos en un lugar reconocible (la salida de una estación de tren o un edificio conocido) con indicaciones claras."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Proposez-vous des visites privées ?",
-        "answer": "Votre guide confirmera le point de rencontre exact après la réservation. Nous nous retrouvons toujours à un point de repère reconnaissable — une sortie de gare ou un bâtiment bien connu — avec des indications claires."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Biedt u privérondleidingen aan?",
-        "answer": "Uw gids bevestigt het exacte ontmoetingspunt na de boeking. We spreken altijd af bij een herkenbaar oriëntatiepunt — een uitgang van een treinstation of een bekend gebouw — met duidelijke aanwijzingen."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Вы предлагаете частные туры?",
-        "answer": "Ваш гид подтвердит точное место встречи после бронирования. Мы всегда встречаемся у узнаваемого ориентира — у выхода из вокзала или у известного здания — с понятными указаниями."
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーはありますか？",
-        "answer": "予約後、ガイドが正確な集合場所を確認します。いつも分かりやすい目印——駅の出入り口や有名な建物など——があり、明確な案内のある場所で集合します。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Vocês oferecem passeios privados?",
-        "answer": "Seu guia confirmará o ponto de encontro exato após a reserva. Sempre nos encontramos em um ponto de referência reconhecível — uma saída de estação de trem ou um edifício bem conhecido — com direções claras."
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "question": "What's your cancellation policy?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "No stress. Message your guide and they'll adjust the route so you don't miss the best parts. We build buffer time into every tour.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "dietary",
-    "page_visibility": [
-      "all"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 10,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:22:04.308Z",
-    "createdAt": "2026-05-19T08:33:38.363Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "What's your cancellation policy?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "text": "No stress. Message your guide and they'll adjust the route so you don't miss the best parts. We build buffer time into every tour.",
-                    "type": "text",
-                    "version": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apakah dasar pembatalan anda?",
-        "answer": "Jangan risau. Hantar mesej kepada pemandu pelancong anda dan mereka akan mengubah suai laluan supaya anda tidak terlepas bahagian terbaik. Kami menyediakan masa tambahan dalam setiap lawatan."
-      },
-      {
-        "languages_code": "zh",
-        "question": "你们的取消政策是什么？",
-        "answer": "别担心。给您的向导发消息，他们会调整路线，确保您不会错过最精彩的行程。我们在每趟旅程中都预留了缓冲时间。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie ist Ihre Stornierungsrichtlinie?",
-        "answer": "Kein Stress. Schreiben Sie Ihrem Guide, und er passt die Route an, damit Sie die besten Teile nicht verpassen. Wir bauen in jede Tour Pufferzeit ein."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Cuál es su política de cancelación?",
-        "answer": "Sin estrés. Envíale un mensaje a tu guía y ajustará la ruta para que no te pierdas las mejores partes. Incluimos tiempo de margen en cada tour."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Quelle est votre politique d'annulation ?",
-        "answer": "Pas de stress. Envoyez un message à votre guide et il ajustera l'itinéraire pour que vous ne manquiez pas les meilleurs endroits. Nous prévoyons du temps tampon dans chaque visite."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat is uw annuleringsbeleid?",
-        "answer": "Geen stress. Stuur je gids een bericht en ze passen de route aan zodat je niets van het beste mist. We bouwen buffertijd in bij elke rondleiding."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Какова ваша политика отмены?",
-        "answer": "Без стресса. Напишите своему гиду, и он скорректирует маршрут, чтобы вы не пропустили самое интересное. Мы закладываем запас времени в каждый тур."
-      },
-      {
-        "languages_code": "ja",
-        "question": "キャンセルポリシーはどのようになっていますか？",
-        "answer": "ストレスフリーで安心です。ガイドにメッセージを送れば、ルートを調整してくれるので、最高のスポットを見逃しません。すべてのツアーには余裕を持った時間を組み込んでいます。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Qual é a sua política de cancelamento?",
-        "answer": "Sem estresse. Mande uma mensagem ao seu guia e ele ajustará o roteiro para que você não perca as melhores partes. Incluímos um tempo de margem em cada passeio."
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "question": "Do I need to book in advance?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "We recommend booking at least 24 hours ahead so we can confirm availability with our vendors.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "general",
-    "page_visibility": [
-      "all"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 10,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:22:03.485Z",
-    "createdAt": "2026-05-19T08:33:37.797Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "Do I need to book in advance?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "text": "We recommend booking at least 24 hours ahead so we can confirm availability with our vendors.",
-                    "type": "text",
-                    "version": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Adakah saya perlu membuat tempahan terlebih dahulu?",
-        "answer": "Kami mengesyorkan agar anda membuat tempahan sekurang-kurangnya 24 jam lebih awal supaya kami dapat mengesahkan ketersediaan dengan vendor kami."
-      },
-      {
-        "languages_code": "zh",
-        "question": "我需要提前预订吗？",
-        "answer": "我们建议您至少提前24小时预订，以便我们与供应商确认是否有空房。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Muss ich im Voraus buchen?",
-        "answer": "Wir empfehlen, mindestens 24 Stunden im Voraus zu buchen, damit wir die Verfügbarkeit bei unseren Anbietern bestätigen können."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Necesito reservar con anticipación?",
-        "answer": "Recomendamos reservar con al menos 24 horas de anticipación para que podamos confirmar la disponibilidad con nuestros proveedores."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Dois-je réserver à l'avance ?",
-        "answer": "Nous vous recommandons de réserver au moins 24 heures à l'avance afin que nous puissions confirmer la disponibilité auprès de nos fournisseurs."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Moet ik vooraf reserveren?",
-        "answer": "We raden aan om minstens 24 uur van tevoren te boeken, zodat we de beschikbaarheid bij onze leveranciers kunnen bevestigen."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Нужно ли бронировать заранее?",
-        "answer": "Мы рекомендуем бронировать как минимум за 24 часа, чтобы мы могли подтвердить наличие у наших поставщиков."
-      },
-      {
-        "languages_code": "ja",
-        "question": "事前に予約する必要がありますか？",
-        "answer": "少なくとも24時間前のご予約をおすすめします。そうすることで、ベンダーとの空き状況を確認できます。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Preciso reservar com antecedência?",
-        "answer": "Recomendamos reservar com pelo menos 24 horas de antecedência para que possamos confirmar a disponibilidade com nossos fornecedores."
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "question": "How quickly do you respond?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "We reply within 3 hours during business hours (9am-8pm Malaysia time). On WhatsApp it is usually within minutes.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "booking",
-    "page_visibility": [
-      "all"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 1,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:22:02.676Z",
-    "createdAt": "2026-05-19T08:33:37.234Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "How quickly do you respond?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "text": "We reply within 3 hours during business hours (9am-8pm Malaysia time). On WhatsApp it is usually within minutes.",
-                    "type": "text",
-                    "version": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Berapa cepat anda membalas?",
-        "answer": "Kami membalas dalam masa 3 jam pada waktu perniagaan (9 pagi - 8 malam waktu Malaysia). Di WhatsApp, biasanya dalam beberapa minit sahaja."
-      },
-      {
-        "languages_code": "zh",
-        "question": "你们的回复速度有多快？",
-        "answer": "在营业时间内（马来西亚时间上午9点至晚上8点），我们会在3小时内回复。在WhatsApp上通常在几分钟内回复。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie schnell antworten Sie?",
-        "answer": "Wir antworten innerhalb von 3 Stunden während der Geschäftszeiten (9–20 Uhr Malaysia-Zeit). Auf WhatsApp ist es normalerweise innerhalb weniger Minuten."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué tan rápido respondes?",
-        "answer": "Respondemos en un plazo de 3 horas durante el horario comercial (9am-8pm hora de Malasia). En WhatsApp suele ser en cuestión de minutos."
-      },
-      {
-        "languages_code": "fr",
-        "question": "À quelle vitesse répondez-vous ?",
-        "answer": "Nous répondons dans les 3 heures pendant les heures de bureau (9h-20h, heure de Malaisie). Sur WhatsApp, c'est généralement en quelques minutes."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Hoe snel reageert u?",
-        "answer": "We reageren binnen 3 uur tijdens kantooruren (9u-20u Maleisische tijd). Op WhatsApp is dit meestal binnen enkele minuten."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Как быстро вы отвечаете?",
-        "answer": "Мы отвечаем в течение 3 часов в рабочее время (с 9:00 до 20:00 по малайзийскому времени). В WhatsApp обычно отвечаем в течение нескольких минут."
-      },
-      {
-        "languages_code": "ja",
-        "question": "どのくらいの速さで返信しますか？",
-        "answer": "営業時間内（マレーシア時間 午前9時～午後8時）は3時間以内に返信します。WhatsAppの場合は通常数分以内に返信します。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Com que rapidez você responde?",
-        "answer": "Respondemos em até 3 horas durante o horário comercial (9h-20h, horário da Malásia). No WhatsApp, geralmente é em questão de minutos."
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "question": "What happens if it rains?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we will reschedule.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "general",
-    "page_visibility": [
-      "all"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 4,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:22:01.857Z",
-    "createdAt": "2026-05-19T08:33:36.650Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "What happens if it rains?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "text": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we will reschedule.",
-                    "type": "text",
-                    "version": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apa yang akan berlaku jika hujan?",
-        "answer": "Lawatan dijalankan hujan atau panas. Banyak perhentian makanan mempunyai tempat duduk berbumbung. Dalam cuaca yang melampau, kami akan menjadualkan semula."
-      },
-      {
-        "languages_code": "zh",
-        "question": "如果下雨会怎么样？",
-        "answer": "行程风雨无阻。许多美食站点设有遮蔽座位。遇极端天气，我们将重新安排行程。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was passiert, wenn es regnet?",
-        "answer": "Touren finden bei jedem Wetter statt. Viele Essensstationen verfügen über überdachte Sitzgelegenheiten. Bei extremen Wetterbedingungen werden wir den Termin verschieben."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si llueve?",
-        "answer": "Los tours se realizan con lluvia o sol. Muchas paradas gastronómicas tienen asientos cubiertos. En caso de clima extremo, reprogramaremos."
-      },
-      {
-        "languages_code": "fr",
-        "question": "Que se passe-t-il s'il pleut ?",
-        "answer": "Les visites ont lieu beau temps, mauvais temps. De nombreux arrêts gastronomiques disposent de places assises couvertes. En cas de conditions météorologiques extrêmes, nous reprogrammerons la visite."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat gebeurt er als het regent?",
-        "answer": "Rondleidingen gaan door bij elke weersomstandigheid. Veel eetstops hebben overdekte zitplaatsen. Bij extreem weer verplaatsen we de rondleiding."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что произойдёт, если пойдёт дождь?",
-        "answer": "Туры проводятся в любую погоду. Во многих пунктах остановки для еды есть крытые места для сидения. В экстремальных погодных условиях мы переносим тур."
-      },
-      {
-        "languages_code": "ja",
-        "question": "雨が降ったらどうなる？",
-        "answer": "ツアーは雨天決行です。多くの飲食スポットには屋根付きの席があります。悪天候の場合、日程を変更いたします。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O que acontece se chover?",
-        "answer": "Os passeios acontecem com chuva ou sol. Muitas paradas para refeições têm assentos cobertos. Em condições climáticas extremas, remarcaremos."
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "question": "Is the food spicy?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "booking",
-    "page_visibility": [
-      "all"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 2,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:22:01.022Z",
-    "createdAt": "2026-05-19T08:33:36.077Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en",
-        "question": "Is the food spicy?",
-        "answer": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "text": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available.",
-                    "type": "text",
-                    "version": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0
-                  }
-                ],
-                "direction": "ltr"
-              }
-            ],
-            "direction": "ltr"
-          }
-        }
-      },
-      {
-        "languages_code": "ms",
-        "question": "Adakah makanan itu pedas?",
-        "answer": "Makanan Malaysia memang pedas, tetapi panduan anda akan membantu menguruskan tahap rempah. Pilihan yang kurang pedas sentiasa tersedia."
-      },
-      {
-        "languages_code": "zh",
-        "question": "食物辣吗？",
-        "answer": "马来西亚食物比较辛辣，但您的向导会帮助您了解辣度等级。温和口味的菜品随时可供选择。"
-      },
-      {
-        "languages_code": "de",
-        "question": "Ist das Essen scharf?",
-        "answer": "Malaysisches Essen hat Schärfe, aber Ihr Guide wird Ihnen helfen, die Gewürzstufen zu meistern. Milde Optionen sind immer verfügbar."
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Está picante la comida?",
-        "answer": "La comida malasia tiene picante, pero tu guía te ayudará a navegar por los niveles de especias. Siempre hay opciones suaves disponibles."
-      },
-      {
-        "languages_code": "fr",
-        "question": "La nourriture est-elle épicée ?",
-        "answer": "La cuisine malaisienne est relevée, mais votre guide vous aidera à vous y retrouver parmi les niveaux d'épices. Des options douces sont toujours disponibles."
-      },
-      {
-        "languages_code": "nl",
-        "question": "Is het eten pittig?",
-        "answer": "Maleisisch eten is pittig, maar uw gids helpt u bij het navigeren door de kruidigheidsniveaus. Milde opties zijn altijd beschikbaar."
-      },
-      {
-        "languages_code": "ru",
-        "question": "Еда острая?",
-        "answer": "Малайзийская еда острая, но ваш гид поможет разобраться с уровнем пряности. Неострые варианты всегда доступны."
-      },
-      {
-        "languages_code": "ja",
-        "question": "食べ物は辛いですか？",
-        "answer": "マレーシア料理は辛いものが多いですが、ガイドが辛さのレベルをご案内します。辛さの控えめなメニューもご用意しています。"
-      },
-      {
-        "languages_code": "pt",
-        "question": "A comida é picante?",
-        "answer": "A comida malaia é picante, mas o seu guia o ajudará a navegar pelos níveis de especiarias. Opções suaves estão sempre disponíveis."
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "question": "Can I book a private tour?",
-    "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "Yes. Private tours are available for groups, families, and corporate events. Contact us for a custom experience.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "category": "booking",
-    "page_visibility": [
-      "all"
-    ],
-    "tags": [],
-    "relatedTour": null,
-    "relatedStory": null,
-    "sort_order": 18,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:22:00.209Z",
-    "createdAt": "2026-05-19T08:33:35.493Z",
     "_status": "draft",
     "translations": [
       {
@@ -2018,53 +601,55 @@
     ]
   },
   {
-    "id": 4,
-    "question": "How much walking is involved?",
+    "id": 22,
+    "question": "What happens if it rains?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "About 2km of easy walking with frequent stops. Suitable for most fitness levels.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we'll adjust the route to include more sheltered spots — but a bit of rain has never stopped a Malaysian from eating.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
-    "category": "general",
+    "category": "booking",
     "page_visibility": [
-      "all"
+      "home",
+      "faq",
+      "tour-detail"
     ],
     "tags": [],
     "relatedTour": null,
     "relatedStory": null,
-    "sort_order": 10,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:21:59.394Z",
-    "createdAt": "2026-05-19T08:33:34.927Z",
+    "sort_order": 1,
+    "workflowStatus": "published",
+    "updatedAt": "2026-06-27T07:37:04.937Z",
+    "createdAt": "2026-06-17T02:59:11.263Z",
     "_status": "draft",
     "translations": [
       {
         "languages_code": "en",
-        "question": "How much walking is involved?",
+        "question": "What happens if it rains?",
         "answer": {
           "root": {
             "type": "root",
@@ -2079,7 +664,7 @@
                 "version": 1,
                 "children": [
                   {
-                    "text": "About 2km of easy walking with frequent stops. Suitable for most fitness levels.",
+                    "text": "Tours run rain or shine. Many food stops have covered seating. In extreme weather we will reschedule.",
                     "type": "text",
                     "version": 1,
                     "mode": "normal",
@@ -2097,94 +682,224 @@
       },
       {
         "languages_code": "ms",
-        "question": "Berapa banyak berjalan yang terlibat?",
-        "answer": "Kira-kira 2km berjalan kaki yang mudah dengan hentian yang kerap. Sesuai untuk kebanyakan tahap kecergasan."
+        "question": "Apa yang akan berlaku jika hujan?",
+        "answer": "Lawatan dijalankan hujan atau panas. Banyak perhentian makanan mempunyai tempat duduk berbumbung. Dalam cuaca yang melampau, kami akan menjadualkan semula."
       },
       {
         "languages_code": "zh",
-        "question": "需要走多少路？",
-        "answer": "轻松步行约2公里,途中多次停留。适合大多数体能水平的人。"
+        "question": "如果下雨会怎么样？",
+        "answer": "行程风雨无阻。许多美食站点设有遮蔽座位。遇极端天气，我们将重新安排行程。"
       },
       {
         "languages_code": "de",
-        "question": "Wie viel Laufen ist dabei?",
-        "answer": "Etwa 2 km einfaches Gehen mit häufigen Pausen. Für die meisten Fitnesslevel geeignet."
+        "question": "Was passiert, wenn es regnet?",
+        "answer": "Touren finden bei jedem Wetter statt. Viele Essensstationen verfügen über überdachte Sitzgelegenheiten. Bei extremen Wetterbedingungen werden wir den Termin verschieben."
       },
       {
         "languages_code": "es",
-        "question": "¿Cuánta caminata se requiere?",
-        "answer": "Unos 2 km de caminata fácil con paradas frecuentes. Apto para la mayoría de los niveles de condición física."
+        "question": "¿Qué pasa si llueve?",
+        "answer": "Los tours se realizan con lluvia o sol. Muchas paradas gastronómicas tienen asientos cubiertos. En caso de clima extremo, reprogramaremos."
       },
       {
         "languages_code": "fr",
-        "question": "Combien de marche y a-t-il ?",
-        "answer": "Environ 2 km de marche facile avec des arrêts fréquents. Convient à la plupart des niveaux de forme physique."
+        "question": "Que se passe-t-il s'il pleut ?",
+        "answer": "Les visites ont lieu beau temps, mauvais temps. De nombreux arrêts gastronomiques disposent de places assises couvertes. En cas de conditions météorologiques extrêmes, nous reprogrammerons la visite."
       },
       {
         "languages_code": "nl",
-        "question": "Hoeveel wandelen komt erbij kijken?",
-        "answer": "Ongeveer 2 km gemakkelijk wandelen met regelmatige pauzes. Geschikt voor de meeste conditieniveaus."
+        "question": "Wat gebeurt er als het regent?",
+        "answer": "Rondleidingen gaan door bij elke weersomstandigheid. Veel eetstops hebben overdekte zitplaatsen. Bij extreem weer verplaatsen we de rondleiding."
       },
       {
         "languages_code": "ru",
-        "question": "Сколько нужно ходить пешком?",
-        "answer": "Около 2 км лёгкой ходьбы с частыми остановками. Подходит для большинства уровней физической подготовки."
+        "question": "Что произойдёт, если пойдёт дождь?",
+        "answer": "Туры проводятся в любую погоду. Во многих пунктах остановки для еды есть крытые места для сидения. В экстремальных погодных условиях мы переносим тур."
       },
       {
         "languages_code": "ja",
-        "question": "どのくらいの歩行が必要ですか？",
-        "answer": "約2kmの簡単なウォーキングで、頻繁に休憩があります。ほとんどの体力レベルに適しています。"
+        "question": "雨が降ったらどうなる？",
+        "answer": "ツアーは雨天決行です。多くの飲食スポットには屋根付きの席があります。悪天候の場合、日程を変更いたします。"
       },
       {
         "languages_code": "pt",
-        "question": "Quanta caminhada está envolvida?",
-        "answer": "Cerca de 2 km de caminhada fácil com paradas frequentes. Adequado para a maioria dos níveis de condicionamento físico."
+        "question": "O que acontece se chover?",
+        "answer": "Os passeios acontecem com chuva ou sol. Muitas paradas para refeições têm assentos cobertos. Em condições climáticas extremas, remarcaremos."
       }
     ]
   },
   {
-    "id": 3,
-    "question": "What dietary options do you accommodate?",
+    "id": 21,
+    "question": "Is the food spicy?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available and we'll warn you before anything particularly spicy arrives.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "home",
+      "faq",
+      "tour-detail"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 1,
+    "workflowStatus": "published",
+    "updatedAt": "2026-06-27T07:37:06.278Z",
+    "createdAt": "2026-06-17T02:59:10.639Z",
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en",
+        "question": "Is the food spicy?",
+        "answer": {
+          "root": {
+            "type": "root",
             "format": "",
             "indent": 0,
             "version": 1,
             "children": [
               {
-                "text": "We accommodate vegetarian, halal, nut-allergy, and gluten-sensitive diets. Just let us know when booking.",
-                "type": "text",
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
                 "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
+                "children": [
+                  {
+                    "text": "Malaysian food has heat, but your guide will help navigate spice levels. Mild options are always available.",
+                    "type": "text",
+                    "version": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0
+                  }
+                ],
+                "direction": "ltr"
               }
             ],
             "direction": "ltr"
           }
-        ],
-        "direction": "ltr"
+        }
+      },
+      {
+        "languages_code": "ms",
+        "question": "Adakah makanan itu pedas?",
+        "answer": "Makanan Malaysia memang pedas, tetapi panduan anda akan membantu menguruskan tahap rempah. Pilihan yang kurang pedas sentiasa tersedia."
+      },
+      {
+        "languages_code": "zh",
+        "question": "食物辣吗？",
+        "answer": "马来西亚食物比较辛辣，但您的向导会帮助您了解辣度等级。温和口味的菜品随时可供选择。"
+      },
+      {
+        "languages_code": "de",
+        "question": "Ist das Essen scharf?",
+        "answer": "Malaysisches Essen hat Schärfe, aber Ihr Guide wird Ihnen helfen, die Gewürzstufen zu meistern. Milde Optionen sind immer verfügbar."
+      },
+      {
+        "languages_code": "es",
+        "question": "¿Está picante la comida?",
+        "answer": "La comida malasia tiene picante, pero tu guía te ayudará a navegar por los niveles de especias. Siempre hay opciones suaves disponibles."
+      },
+      {
+        "languages_code": "fr",
+        "question": "La nourriture est-elle épicée ?",
+        "answer": "La cuisine malaisienne est relevée, mais votre guide vous aidera à vous y retrouver parmi les niveaux d'épices. Des options douces sont toujours disponibles."
+      },
+      {
+        "languages_code": "nl",
+        "question": "Is het eten pittig?",
+        "answer": "Maleisisch eten is pittig, maar uw gids helpt u bij het navigeren door de kruidigheidsniveaus. Milde opties zijn altijd beschikbaar."
+      },
+      {
+        "languages_code": "ru",
+        "question": "Еда острая?",
+        "answer": "Малайзийская еда острая, но ваш гид поможет разобраться с уровнем пряности. Неострые варианты всегда доступны."
+      },
+      {
+        "languages_code": "ja",
+        "question": "食べ物は辛いですか？",
+        "answer": "マレーシア料理は辛いものが多いですが、ガイドが辛さのレベルをご案内します。辛さの控えめなメニューもご用意しています。"
+      },
+      {
+        "languages_code": "pt",
+        "question": "A comida é picante?",
+        "answer": "A comida malaia é picante, mas o seu guia o ajudará a navegar pelos níveis de especiarias. Opções suaves estão sempre disponíveis."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What dietary options do you accommodate?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "text": "We accommodate vegetarian, halal, vegan, gluten-free, and most dietary needs. Just let us know when you book. Our guides work with each food stall to ensure your meal is prepared correctly.",
+                  "type": "text",
+                  "style": "",
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "textStyle": ""
+            }
+          ],
+          "direction": null
+        }
       }
     },
-    "category": "private_tours",
+    "category": "dietary",
     "page_visibility": [
-      "all"
+      "home",
+      "faq",
+      "tour-detail",
+      "dietary"
     ],
     "tags": [],
     "relatedTour": null,
     "relatedStory": null,
-    "sort_order": 17,
-    "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:21:58.601Z",
-    "createdAt": "2026-05-19T08:33:34.359Z",
+    "sort_order": 1,
+    "workflowStatus": "published",
+    "updatedAt": "2026-06-27T07:37:07.582Z",
+    "createdAt": "2026-06-17T02:59:09.921Z",
     "_status": "draft",
     "translations": [
       {
@@ -2268,35 +983,131 @@
     ]
   },
   {
-    "id": 2,
-    "question": "How long are the tours?",
+    "id": 11,
+    "question": "I have mobility issues. Can I still join?",
     "answer": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "text": "Most tours run 3.5 to 4 hours. We cover about 2km of walking at a relaxed pace with plenty of seating at each stop.",
-                "type": "text",
-                "version": 1,
-                "mode": "normal",
-                "style": "",
-                "detail": 0,
-                "format": 0
-              }
-            ],
-            "direction": "ltr"
-          }
-        ],
-        "direction": "ltr"
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Yes. We walk about 3km at a relaxed pace with frequent stops, and most food stalls are at ground level. If you have specific mobility concerns, [let us know](/contact/) when booking. We can shorten the route or choose stalls with easier access. Our [private tours](/tours/private-tours/) offer the most flexibility for adapting the pace and route.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 16,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:09.111Z",
+    "createdAt": "2026-05-19T08:33:38.923Z",
+    "_status": "draft"
+  },
+  {
+    "id": 10,
+    "question": "I have food allergies. Is it safe?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "We take allergies seriously. Let us know when booking about any allergies  -  peanuts, shellfish, gluten, etc. We'll adjust the route and inform each vendor. Some vendors have dedicated allergen-free prep areas. For severe allergies, we carry epinephrine and know the nearest clinic. Your safety comes first.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "dietary",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:10.550Z",
+    "createdAt": "2026-05-19T08:33:38.363Z",
+    "_status": "draft"
+  },
+  {
+    "id": 9,
+    "question": "How much walking is involved?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Approximately 3km walking distance over 4-5 hours, at a leisurely pace with plenty of stops. We pause at each stall for 20-30 minutes, giving you time to digest, take photos, and listen to vendor stories. Not a power walk  -  more like a stroll through the neighborhood with friends.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
       }
     },
     "category": "general",
@@ -2308,8 +1119,182 @@
     "relatedStory": null,
     "sort_order": 10,
     "workflowStatus": "draft",
-    "updatedAt": "2026-06-20T00:21:57.743Z",
-    "createdAt": "2026-05-19T08:33:33.788Z",
+    "updatedAt": "2026-06-27T07:37:11.975Z",
+    "createdAt": "2026-05-19T08:33:37.797Z",
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en",
+        "question": "How much walking is involved?",
+        "answer": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "About 2km of easy walking with frequent stops. Suitable for most fitness levels.",
+                    "type": "text",
+                    "version": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0
+                  }
+                ],
+                "direction": "ltr"
+              }
+            ],
+            "direction": "ltr"
+          }
+        }
+      },
+      {
+        "languages_code": "ms",
+        "question": "Berapa banyak berjalan yang terlibat?",
+        "answer": "Kira-kira 2km berjalan kaki yang mudah dengan hentian yang kerap. Sesuai untuk kebanyakan tahap kecergasan."
+      },
+      {
+        "languages_code": "zh",
+        "question": "需要走多少路？",
+        "answer": "轻松步行约2公里,途中多次停留。适合大多数体能水平的人。"
+      },
+      {
+        "languages_code": "de",
+        "question": "Wie viel Laufen ist dabei?",
+        "answer": "Etwa 2 km einfaches Gehen mit häufigen Pausen. Für die meisten Fitnesslevel geeignet."
+      },
+      {
+        "languages_code": "es",
+        "question": "¿Cuánta caminata se requiere?",
+        "answer": "Unos 2 km de caminata fácil con paradas frecuentes. Apto para la mayoría de los niveles de condición física."
+      },
+      {
+        "languages_code": "fr",
+        "question": "Combien de marche y a-t-il ?",
+        "answer": "Environ 2 km de marche facile avec des arrêts fréquents. Convient à la plupart des niveaux de forme physique."
+      },
+      {
+        "languages_code": "nl",
+        "question": "Hoeveel wandelen komt erbij kijken?",
+        "answer": "Ongeveer 2 km gemakkelijk wandelen met regelmatige pauzes. Geschikt voor de meeste conditieniveaus."
+      },
+      {
+        "languages_code": "ru",
+        "question": "Сколько нужно ходить пешком?",
+        "answer": "Около 2 км лёгкой ходьбы с частыми остановками. Подходит для большинства уровней физической подготовки."
+      },
+      {
+        "languages_code": "ja",
+        "question": "どのくらいの歩行が必要ですか？",
+        "answer": "約2kmの簡単なウォーキングで、頻繁に休憩があります。ほとんどの体力レベルに適しています。"
+      },
+      {
+        "languages_code": "pt",
+        "question": "Quanta caminhada está envolvida?",
+        "answer": "Cerca de 2 km de caminhada fácil com paradas frequentes. Adequado para a maioria dos níveis de condicionamento físico."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "How much does a food tour in KL cost?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Join-in tours are RM 285 to RM 359 per person, depending on which tour you choose. Private tours are quoted on request, usually for groups of four or more. Send us a message on WhatsApp and we'll put together something that works for your group.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "booking",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 1,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:13.517Z",
+    "createdAt": "2026-05-19T08:33:37.234Z",
+    "_status": "draft"
+  },
+  {
+    "id": 7,
+    "question": "How long are the tours?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Most tours run 4 to 5 hours at a leisurely pace. We pace based on your group's energy and curiosity  -  we're not watching a clock. If a vendor has a story worth hearing about their 40 years of cooking, we stop and hear it. That's the Simply Enak difference.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 4,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:14.833Z",
+    "createdAt": "2026-05-19T08:33:36.650Z",
     "_status": "draft",
     "translations": [
       {
@@ -2391,5 +1376,240 @@
         "answer": "A maioria dos passeios dura de 3,5 a 4 horas. Percorremos cerca de 2 km a pé em um ritmo tranquilo, com bastante assentos em cada parada."
       }
     ]
+  },
+  {
+    "id": 6,
+    "question": "How do I book?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Book directly on the tour page at simplyenak.com or message us on WhatsApp at +60 12-345-6789. We confirm within 3 hours during business hours, often sooner. No third-party platforms, no booking fees, no hidden costs  -  we keep it direct so there are no markups.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "booking",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 2,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:16.377Z",
+    "createdAt": "2026-05-19T08:33:36.077Z",
+    "_status": "draft"
+  },
+  {
+    "id": 5,
+    "question": "Do you offer hotel pickup?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Hotel pickup is available as an add-on for [private and tailored tours](/tours/private-tours/). For join-in tours, we meet at a central location that is easy to reach by Grab or public transport. We send detailed directions after booking, including [how to get there](/how-to-prepare/).",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "booking",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 18,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:17.693Z",
+    "createdAt": "2026-05-19T08:33:35.493Z",
+    "_status": "draft"
+  },
+  {
+    "id": 4,
+    "question": "Can I take photos during the tour?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Absolutely! We encourage photos  -  most guests want to remember Aunty Lim's smile or Uncle Tan's wok skills. Vendors are proud of their food and happy to be photographed. We'll also take group photos and can help you capture the perfect shot for Instagram or TripAdvisor.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:19.015Z",
+    "createdAt": "2026-05-19T08:33:34.927Z",
+    "_status": "draft"
+  },
+  {
+    "id": 3,
+    "question": "Can I book a tour as a private experience?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Every tour can be run privately for your group. Private tours mean your own guide, flexible start time, and a route tailored to your interests and dietary needs. Groups of 4 or more. [See private tour options](/tours/private-tours/) or [message us](/contact/) to plan your tour.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "private_tours",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 17,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:20.322Z",
+    "createdAt": "2026-05-19T08:33:34.359Z",
+    "_status": "draft"
+  },
+  {
+    "id": 2,
+    "question": "Are there toilet breaks during the tour?",
+    "answer": {
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Yes! We start near a toilet facility and have bathroom breaks planned at 2-3 points during the tour. Most stalls have basic facilities, and we know which shopping centers have clean restrooms along the route. We pace the tour so you're never rushing or uncomfortable.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            }
+          ],
+          "direction": null
+        }
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "all"
+    ],
+    "tags": [],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": 10,
+    "workflowStatus": "draft",
+    "updatedAt": "2026-06-27T07:37:21.797Z",
+    "createdAt": "2026-05-19T08:33:33.788Z",
+    "_status": "draft"
   }
 ]
