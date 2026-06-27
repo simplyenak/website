@@ -10,7 +10,40 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:43:09.797Z",
     "createdAt": "2026-05-19T08:33:23.425Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Solo"
+      },
+      {
+        "languages_code": "ms"
+      },
+      {
+        "languages_code": "zh"
+      },
+      {
+        "languages_code": "de"
+      },
+      {
+        "languages_code": "es"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 3,
@@ -23,7 +56,40 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:43:22.225Z",
     "createdAt": "2026-05-19T08:33:22.863Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Foodie"
+      },
+      {
+        "languages_code": "ms"
+      },
+      {
+        "languages_code": "zh"
+      },
+      {
+        "languages_code": "de"
+      },
+      {
+        "languages_code": "es"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 2,
@@ -36,7 +102,40 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:43:44.060Z",
     "createdAt": "2026-05-19T08:33:22.293Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Family"
+      },
+      {
+        "languages_code": "ms"
+      },
+      {
+        "languages_code": "zh"
+      },
+      {
+        "languages_code": "de"
+      },
+      {
+        "languages_code": "es"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 1,
@@ -49,6 +148,39 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:43:56.093Z",
     "createdAt": "2026-05-19T08:33:21.708Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Couples"
+      },
+      {
+        "languages_code": "ms"
+      },
+      {
+        "languages_code": "zh"
+      },
+      {
+        "languages_code": "de"
+      },
+      {
+        "languages_code": "es"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   }
 ]

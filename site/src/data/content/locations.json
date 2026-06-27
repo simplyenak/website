@@ -10,7 +10,49 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:47:04.194Z",
     "createdAt": "2026-05-19T09:42:40.082Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Ipoh",
+        "description": "Famous for white coffee"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Ipoh",
+        "description": "Terkenal dengan kopi putih."
+      },
+      {
+        "languages_code": "zh",
+        "name": "怡保",
+        "description": "以白咖啡闻名"
+      },
+      {
+        "languages_code": "de",
+        "name": "Ipoh",
+        "description": "Berühmt für weißen Kaffee"
+      },
+      {
+        "languages_code": "es",
+        "name": "Ipoh",
+        "description": "Famoso por el café blanco"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 15,
@@ -23,7 +65,44 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:47:24.022Z",
     "createdAt": "2026-05-19T08:33:21.134Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Penang"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Pulau Pinang"
+      },
+      {
+        "languages_code": "zh",
+        "name": "槟城"
+      },
+      {
+        "languages_code": "de",
+        "name": "Penang"
+      },
+      {
+        "languages_code": "es",
+        "name": "Penang"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 14,
@@ -90,6 +169,43 @@
     "status": "published",
     "updatedAt": "2026-06-20T00:22:54.695Z",
     "createdAt": "2026-05-19T08:33:20.569Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Kuala Lumpur"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Kuala Lumpur"
+      },
+      {
+        "languages_code": "zh",
+        "name": "吉隆坡"
+      },
+      {
+        "languages_code": "de",
+        "name": "Kuala Lumpur"
+      },
+      {
+        "languages_code": "es",
+        "name": "Kuala Lumpur"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   }
 ]

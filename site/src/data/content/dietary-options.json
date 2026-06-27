@@ -12,7 +12,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:37:43.922Z",
     "createdAt": "2026-05-19T08:33:30.320Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Vegan",
+        "description": "100% plant-based options"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Vegan",
+        "description": "Pilihan 100% berasaskan tumbuhan"
+      },
+      {
+        "languages_code": "zh",
+        "name": "纯素",
+        "description": "100%植物基选项"
+      },
+      {
+        "languages_code": "de",
+        "name": "Vegan",
+        "description": "100 % pflanzliche Optionen"
+      },
+      {
+        "languages_code": "es",
+        "name": "Vegano",
+        "description": "Opciones 100% a base de plantas"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 11,
@@ -27,7 +69,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-20T00:09:08.106Z",
     "createdAt": "2026-05-19T08:33:29.735Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Pescatarian",
+        "description": "Fish and seafood but no meat"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Pescatarian",
+        "description": "Ikan dan makanan laut tetapi tiada daging."
+      },
+      {
+        "languages_code": "zh",
+        "name": "鱼素者",
+        "description": "鱼和海鲜，但不要肉"
+      },
+      {
+        "languages_code": "de",
+        "name": "Pescetarier",
+        "description": "Fisch und Meeresfrüchte, aber kein Fleisch"
+      },
+      {
+        "languages_code": "es",
+        "name": "Pescetariano",
+        "description": "Pescado y marisco, pero no carne."
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 10,
@@ -42,7 +126,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:39:13.182Z",
     "createdAt": "2026-05-19T08:33:29.096Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Spicy",
+        "description": "Spicy food options for heat lovers"
+      },
+      {
+        "languages_code": "ms",
+        "name": "pedas",
+        "description": "Pilihan makanan pedas untuk pencinta kepedasan"
+      },
+      {
+        "languages_code": "zh",
+        "name": "辣",
+        "description": "辣食选择，献给热爱火辣刺激的食客"
+      },
+      {
+        "languages_code": "de",
+        "name": "Scharf",
+        "description": "Scharfe Speisen für Liebhaber von Schärfe"
+      },
+      {
+        "languages_code": "es",
+        "name": "Picante",
+        "description": "Opciones de comida picante para amantes del picante"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 9,
@@ -57,7 +183,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:39:31.988Z",
     "createdAt": "2026-05-19T08:33:28.506Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Low Sodium",
+        "description": "Low sodium options available"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Rendah Natrium",
+        "description": "Pilihan rendah sodium tersedia"
+      },
+      {
+        "languages_code": "zh",
+        "name": "低钠",
+        "description": "低钠选择可供"
+      },
+      {
+        "languages_code": "de",
+        "name": "Salzarm",
+        "description": "Natriumarme Optionen verfügbar"
+      },
+      {
+        "languages_code": "es",
+        "name": "Bajo en Sodio",
+        "description": "Opciones bajas en sodio disponibles"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 8,
@@ -72,7 +240,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:39:59.853Z",
     "createdAt": "2026-05-19T08:33:27.939Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Egg-Free",
+        "description": "No egg ingredients"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Tanpa Telur",
+        "description": "Tiada ramuan telur"
+      },
+      {
+        "languages_code": "zh",
+        "name": "无蛋",
+        "description": "无蛋成分"
+      },
+      {
+        "languages_code": "de",
+        "name": "Eifrei",
+        "description": "Keine Eizutaten"
+      },
+      {
+        "languages_code": "es",
+        "name": "Sin huevos",
+        "description": "Sin ingredientes de huevo"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 7,
@@ -87,7 +297,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:40:18.126Z",
     "createdAt": "2026-05-19T08:33:27.383Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Vegetarian",
+        "description": "Vegetarian-friendly dishes"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Sayur",
+        "description": "Hidangan mesra vegetarian"
+      },
+      {
+        "languages_code": "zh",
+        "name": "素食者",
+        "description": "素食友好菜品"
+      },
+      {
+        "languages_code": "de",
+        "name": "Vegetarier (noun) / vegetarisch (adjective)",
+        "description": "Vegetarierfreundliche Gerichte"
+      },
+      {
+        "languages_code": "es",
+        "name": "Vegetariano",
+        "description": "Platos aptos para vegetarianos"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 6,
@@ -102,7 +354,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:40:47.352Z",
     "createdAt": "2026-05-19T08:33:26.827Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Nut-Free",
+        "description": "Nut-free preparations"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Bebas Kacang",
+        "description": "Penyediaan tanpa kacang"
+      },
+      {
+        "languages_code": "zh",
+        "name": "无坚果",
+        "description": "不含坚果的食品"
+      },
+      {
+        "languages_code": "de",
+        "name": "Nussfrei",
+        "description": "Nussfreie Zubereitungen"
+      },
+      {
+        "languages_code": "es",
+        "name": "Sin nueces",
+        "description": "Preparaciones sin frutos secos"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 5,
@@ -117,7 +411,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:41:08.254Z",
     "createdAt": "2026-05-19T08:33:26.266Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Dairy-Free",
+        "description": "No dairy ingredients used"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Tanpa Tenusu",
+        "description": "Tiada bahan tenusu digunakan"
+      },
+      {
+        "languages_code": "zh",
+        "name": "不含乳制品",
+        "description": "不含乳制品成分"
+      },
+      {
+        "languages_code": "de",
+        "name": "Milchfrei",
+        "description": "Keine Milchzutaten verwendet"
+      },
+      {
+        "languages_code": "es",
+        "name": "Sin lácteos",
+        "description": "Sin ingredientes lácteos"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 4,
@@ -132,7 +468,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:41:27.332Z",
     "createdAt": "2026-05-19T08:33:25.703Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Gluten-Free",
+        "description": "Gluten-free dishes available"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Bebas Gluten",
+        "description": "Hidangan bebas gluten tersedia"
+      },
+      {
+        "languages_code": "zh",
+        "name": "无麸质",
+        "description": "无麸质菜肴供应"
+      },
+      {
+        "languages_code": "de",
+        "name": "glutenfrei",
+        "description": "Glutenfreie Gerichte verfügbar"
+      },
+      {
+        "languages_code": "es",
+        "name": "Sin Gluten",
+        "description": "Platos sin gluten disponibles"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 3,
@@ -147,7 +525,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:41:44.523Z",
     "createdAt": "2026-05-19T08:33:25.146Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Halal",
+        "description": "Halal-certified food options"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Halal",
+        "description": "Pilihan makanan yang diperakui halal"
+      },
+      {
+        "languages_code": "zh",
+        "name": "清真",
+        "description": "清真认证食品选项"
+      },
+      {
+        "languages_code": "de",
+        "name": "Halal",
+        "description": "Halal-zertifizierte Lebensmitteloptionen"
+      },
+      {
+        "languages_code": "es",
+        "name": "Halal",
+        "description": "Opciones de alimentos certificados halal"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 2,
@@ -162,7 +582,49 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:42:01.796Z",
     "createdAt": "2026-05-19T08:33:24.583Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "No MSG",
+        "description": "No MSG added to dishes"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Tanpa MSG",
+        "description": "Tiada MSG ditambah ke dalam hidangan"
+      },
+      {
+        "languages_code": "zh",
+        "name": "不含味精",
+        "description": "菜品不添加味精"
+      },
+      {
+        "languages_code": "de",
+        "name": "Ohne Geschmacksverstärker",
+        "description": "Kein MSG zugesetzt"
+      },
+      {
+        "languages_code": "es",
+        "name": "Sin GMS.",
+        "description": "No se agrega glutamato monosódico a los platos."
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 1,
@@ -177,6 +639,48 @@
     "publishedAt": null,
     "updatedAt": "2026-06-19T14:42:17.515Z",
     "createdAt": "2026-05-19T08:33:24.004Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Kosher",
+        "description": "Kosher dietary options"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Kosher",
+        "description": "Pilihan pemakanan kosher"
+      },
+      {
+        "languages_code": "zh",
+        "name": "犹太洁食",
+        "description": "犹太洁食选项"
+      },
+      {
+        "languages_code": "de",
+        "name": "Koscher",
+        "description": "Koschere Ernährungsoptionen"
+      },
+      {
+        "languages_code": "es",
+        "name": "Kosher",
+        "description": "Opciones de comida kosher"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   }
 ]

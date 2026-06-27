@@ -10,7 +10,44 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:44:21.390Z",
     "createdAt": "2026-05-19T08:33:32.602Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Street food"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Makanan jalanan"
+      },
+      {
+        "languages_code": "zh",
+        "name": "街头小吃"
+      },
+      {
+        "languages_code": "de",
+        "name": "Straßenessen"
+      },
+      {
+        "languages_code": "es",
+        "name": "Comida callejera"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 3,
@@ -23,7 +60,44 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:45:44.828Z",
     "createdAt": "2026-05-19T08:33:32.030Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Night tour"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Lawatan malam"
+      },
+      {
+        "languages_code": "zh",
+        "name": "夜游"
+      },
+      {
+        "languages_code": "de",
+        "name": "Nachttour"
+      },
+      {
+        "languages_code": "es",
+        "name": "Tour nocturno"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 2,
@@ -36,7 +110,44 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:46:14.340Z",
     "createdAt": "2026-05-19T08:33:31.461Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Market tour"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Lawatan pasar"
+      },
+      {
+        "languages_code": "zh",
+        "name": "市场参观"
+      },
+      {
+        "languages_code": "de",
+        "name": "Markttour"
+      },
+      {
+        "languages_code": "es",
+        "name": "Tour de mercado"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   },
   {
     "id": 1,
@@ -49,6 +160,43 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:46:46.161Z",
     "createdAt": "2026-05-19T08:33:30.893Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en",
+        "name": "Heritage"
+      },
+      {
+        "languages_code": "ms",
+        "name": "Warisan"
+      },
+      {
+        "languages_code": "zh",
+        "name": "遗产"
+      },
+      {
+        "languages_code": "de",
+        "name": "Erbe"
+      },
+      {
+        "languages_code": "es",
+        "name": "Patrimonio"
+      },
+      {
+        "languages_code": "fr"
+      },
+      {
+        "languages_code": "nl"
+      },
+      {
+        "languages_code": "ru"
+      },
+      {
+        "languages_code": "ja"
+      },
+      {
+        "languages_code": "pt"
+      }
+    ]
   }
 ]

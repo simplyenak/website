@@ -9,5 +9,57 @@
   "general_tips": [],
   "updatedAt": "2026-05-19T09:59:19.831Z",
   "createdAt": "2026-05-19T09:59:19.830Z",
-  "_status": "published"
+  "_status": "published",
+  "translations": [
+    {
+      "languages_code": "en",
+      "hero_title": "Meeting Points & Directions",
+      "hero_description": "Where to meet your guide for each Simply Enak food tour. Detailed directions, landmarks, and transport information.",
+      "seo_title": "directions_page | Simply Enak",
+      "seo_description": "Meeting points and directions — Simply Enak Malaysian food tours."
+    },
+    {
+      "languages_code": "ms",
+      "hero_title": "Titik Pertemuan & Arah",
+      "hero_description": "Di mana untuk bertemu pemandu anda untuk setiap lawatan makanan Simply Enak. Arahan terperinci, mercu tanda, dan maklumat pengangkutan.",
+      "seo_title": "halaman_arah | Simply Enak",
+      "seo_description": "Titik pertemuan dan arah — Simply Enak Malaysian food tours."
+    },
+    {
+      "languages_code": "zh",
+      "hero_title": "集合点与方向",
+      "hero_description": "Simply Enak美食之旅的向导集合地点。详细的路线指引、地标和交通信息。",
+      "seo_title": "路线页面 | Simply Enak",
+      "seo_description": "集合点与路线指引 — Simply Enak 马来西亚美食之旅"
+    },
+    {
+      "languages_code": "de",
+      "hero_title": "Treffpunkte & Wegbeschreibungen",
+      "hero_description": "Wo Sie Ihren Guide für jede Simply Enak Food-Tour treffen. Detaillierte Wegbeschreibungen, Orientierungspunkte und Informationen zur Anreise.",
+      "seo_title": "Anleitungsseite | Simply Enak",
+      "seo_description": "Treffpunkte und Wegbeschreibungen — Simply Enak Malaysische Food-Touren."
+    },
+    {
+      "languages_code": "es",
+      "hero_title": "Puntos de Encuentro e Indicaciones",
+      "hero_description": "Dónde encontrar a tu guía para cada tour gastronómico de Simply Enak. Indicaciones detalladas, puntos de referencia e información sobre transporte.",
+      "seo_title": "página_de_instrucciones | Simplemente Enak",
+      "seo_description": "Puntos de encuentro e indicaciones — Tours gastronómicos malayos Simply Enak."
+    },
+    {
+      "languages_code": "fr"
+    },
+    {
+      "languages_code": "nl"
+    },
+    {
+      "languages_code": "ru"
+    },
+    {
+      "languages_code": "ja"
+    },
+    {
+      "languages_code": "pt"
+    }
+  ]
 }
