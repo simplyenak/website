@@ -32,7 +32,12 @@
     "translations": [
       {
         "languages_code": "en",
-        "title": "Welcome to the Simply Enak Family"
+        "title": "Welcome to the Simply Enak Family",
+        "type": "newsletter",
+        "slug": "thank-you-registration",
+        "status": "published",
+        "updatedAt": "2026-06-27T07:39:25.089Z",
+        "createdAt": "2026-06-09T14:59:52.263Z"
       },
       {
         "languages_code": "ms",
@@ -114,7 +119,12 @@
     "translations": [
       {
         "languages_code": "en",
-        "title": "Thanks for Your Interest"
+        "title": "Thanks for Your Interest",
+        "type": "tour_inquiry",
+        "slug": "thank-you-inquiry",
+        "status": "published",
+        "updatedAt": "2026-06-27T07:39:26.448Z",
+        "createdAt": "2026-06-09T14:59:49.933Z"
       },
       {
         "languages_code": "ms",
@@ -196,7 +206,12 @@
     "translations": [
       {
         "languages_code": "en",
-        "title": "We Can't Wait to Show You Our Malaysia"
+        "title": "We Can't Wait to Show You Our Malaysia",
+        "type": "booking",
+        "slug": "thank-you-booking-penang",
+        "status": "published",
+        "updatedAt": "2026-06-27T07:39:27.941Z",
+        "createdAt": "2026-06-09T14:59:44.942Z"
       },
       {
         "languages_code": "ms",
@@ -278,7 +293,12 @@
     "translations": [
       {
         "languages_code": "en",
-        "title": "We Can't Wait to Show You Our Malaysia"
+        "title": "We Can't Wait to Show You Our Malaysia",
+        "type": "booking",
+        "slug": "thank-you-booking-kuala-lumpur",
+        "status": "published",
+        "updatedAt": "2026-06-27T07:39:29.486Z",
+        "createdAt": "2026-06-09T14:59:42.310Z"
       },
       {
         "languages_code": "ms",
@@ -360,7 +380,12 @@
     "translations": [
       {
         "languages_code": "en",
-        "title": "Thank You"
+        "title": "Thank You",
+        "type": "custom",
+        "slug": "thank-you",
+        "status": "published",
+        "updatedAt": "2026-06-27T07:39:30.797Z",
+        "createdAt": "2026-06-09T14:59:37.349Z"
       },
       {
         "languages_code": "ms",
@@ -442,7 +467,12 @@
     "translations": [
       {
         "languages_code": "en",
-        "title": "Thanks for Reaching Out"
+        "title": "Thanks for Reaching Out",
+        "type": "contact",
+        "slug": "thank-you-contact",
+        "status": "published",
+        "updatedAt": "2026-06-27T07:39:32.120Z",
+        "createdAt": "2026-06-09T14:58:19.170Z"
       },
       {
         "languages_code": "ms",
@@ -524,7 +554,12 @@
     "translations": [
       {
         "languages_code": "en",
-        "title": "We Can't Wait to Show You Our Malaysia"
+        "title": "We Can't Wait to Show You Our Malaysia",
+        "type": "booking",
+        "slug": "thank-you-booking",
+        "status": "published",
+        "updatedAt": "2026-06-27T07:39:33.449Z",
+        "createdAt": "2026-06-09T14:58:12.138Z"
       },
       {
         "languages_code": "ms",
