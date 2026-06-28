@@ -609,7 +609,7 @@ async function resolveTours(locale?: string): Promise<any[]> {
   if (locale && locale !== 'en' && snapshotTours.length > 0) {
     const translated = snapshotTours.map(item => {
       const t = applyLocaleTranslations(item, locale);
-      return t.name && /[^\x00-\x7F]/.test(t.name) ? t : item;
+      return t.name && t.name !== item.name ? t : item;
     });
     return translated
       .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
@@ -644,7 +644,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotHomePage && Object.keys(snapshotHomePage).length > 0) {
     const translated = applyLocaleTranslations(snapshotHomePage, locale);
-    if (translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title)) {
+    if (translated.hero_title && translated.hero_title !== snapshotHomePage.hero_title) {
       raw = translated;
       // Skip Payload tier 1 & block mapping, go straight to flat field mapping below
     }
@@ -807,9 +807,9 @@ async function resolveFAQs(locale?: string): Promise<any[]> {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotFAQs.length > 0) {
     const translated = snapshotFAQs.map(item => applyLocaleTranslations(item, locale));
-    const hasTranslations = translated.some(item => {
+    const hasTranslations = translated.some((item, i) => {
       const q = item.question;
-      return q && /[^\x00-\x7F]/.test(q);
+      return q && q !== (snapshotFAQs[i] && snapshotFAQs[i].question);
     });
     if (hasTranslations) return translated;
   }
@@ -824,9 +824,10 @@ async function resolveTestimonials(locale?: string): Promise<any[]> {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotTestimonials.length > 0) {
     const translated = snapshotTestimonials.map(item => applyLocaleTranslations(item, locale));
-    const hasTranslations = translated.some(item => {
+    const hasTranslations = translated.some((item, i) => {
       const rt = item.review_title || item.author_name;
-      return rt && /[^\x00-\x7F]/.test(rt);
+      const orig = snapshotTestimonials[i];
+      return rt && rt !== (orig && (orig.review_title || orig.author_name));
     });
     if (hasTranslations) return translated;
   }
@@ -840,9 +841,9 @@ async function resolveStories(locale?: string): Promise<any[]> {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotStories.length > 0) {
     const translated = snapshotStories.map(item => applyLocaleTranslations(item, locale));
-    const hasTranslations = translated.some(item => {
+    const hasTranslations = translated.some((item, i) => {
       const t = item.title;
-      return t && /[^\x00-\x7F]/.test(t);
+      return t && t !== (snapshotStories[i] && snapshotStories[i].title);
     });
     if (hasTranslations) return translated;
   }
@@ -891,10 +892,10 @@ async function resolveLandingPages(locale?: string): Promise<any[]> {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotLandingPages.length > 0) {
     const translated = snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
-    // Only use snapshots if we actually have BM translations
-    const hasTranslations = translated.some(item => {
+    // Only use snapshots if we actually have translated content
+    const hasTranslations = translated.some((item, i) => {
       const ht = item.hero_title;
-      return ht && /[^\x00-\x7F]/.test(ht);
+      return ht && ht !== (snapshotLandingPages[i] && snapshotLandingPages[i].hero_title);
     });
     if (hasTranslations) return translated;
   }
@@ -1089,7 +1090,7 @@ export async function getAboutPage(locale?: string) {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) {
     const translated = applyLocaleTranslations(snapshotAboutPage, locale);
-    if (translated.heroHeading && /[^\x00-\x7F]/.test(translated.heroHeading)) return translated;
+    if (translated.heroHeading && translated.heroHeading !== snapshotAboutPage.heroHeading) return translated;
   }
   // Tier 1: Live Payload API
   const live = await liveAboutPage(locale);
@@ -1116,7 +1117,7 @@ export async function getContactPage(locale?: string) {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotContactPage && Object.keys(snapshotContactPage).length > 0) {
     const translated = applyLocaleTranslations(snapshotContactPage, locale);
-    if (translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title)) return translated;
+    if (translated.hero_title && translated.hero_title !== snapshotContactPage.hero_title) return translated;
   }
   // Tier 1: Live Payload API
   const live = await liveContactPage(locale);
@@ -1130,7 +1131,7 @@ export async function getToursPage(locale?: string) {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotToursPage && Object.keys(snapshotToursPage).length > 0) {
     const translated = applyLocaleTranslations(snapshotToursPage, locale);
-    if (translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title)) return translated;
+    if (translated.hero_title && translated.hero_title !== snapshotToursPage.hero_title) return translated;
   }
   // Tier 1: Live Payload API
   const live = await liveToursPage(locale);
@@ -1146,7 +1147,7 @@ export async function getStoriesPage(locale?: string) {
   if (snapshotStoriesPage && Object.keys(snapshotStoriesPage).length > 0) {
     if (locale && locale !== 'en') {
       const translated = applyLocaleTranslations(snapshotStoriesPage, locale);
-      const hasTranslations = translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title);
+      const hasTranslations = translated.hero_title && translated.hero_title !== snapshotStoriesPage.hero_title;
       if (hasTranslations) return translated;
     }
     return snapshotStoriesPage;
@@ -1243,6 +1244,14 @@ export function getImageUrl(url: any) {
   if (url.includes('s3.nl-ams.scw.cloud/se-website-images')) {
     const filename = url.split('/').pop();
     return filename ? `${CDN_DOMAIN}/${CDN_PREFIX}/${filename}` : url;
+  }
+
+  // Payload API media path → rewrite to CDN with payload-media prefix
+  // e.g. /api/media/file/filename.jpg?prefix=payload-media → https://cdn.simplyenak.com/payload-media/filename.jpg
+  if (url.startsWith('/api/media/') || url.includes('prefix=payload-media')) {
+    // Extract filename from URL (after last /, before ?)
+    const filename = url.split('/').pop()?.split('?')[0];
+    if (filename) return `${CDN_DOMAIN}/${CDN_PREFIX}/${filename}`;
   }
 
   // Relative path starting with / → prepend CDN domain
