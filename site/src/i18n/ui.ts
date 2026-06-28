@@ -1462,7 +1462,7 @@ export const ui = {
     "tour.starts": "開始時間",
     "tour.tastingsCount": "試食品数",
     "tour.whatGuestsSay": "お客様の声",
-    "tour.whatYouTaste": "お味見いいただくもの",
+    "tour.whatYouTaste": "お味見いただくもの",
     "tour.youMayAlsoEnjoy": "こちらもおすすめ",
     "stories.foodCultureHeading": "Food & Culture Guides",
     "stories.foodCultureLabel": "食と文化のガイド",
