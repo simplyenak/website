@@ -155,7 +155,7 @@ const tourSchema = {
             { id: 'overview', label: t('tour.overview') },
             { id: 'itinerary-section', label: 'Itinerary' },
             { id: 'tour-gallery', label: t('tour.gallery') },
-            { id: 'food', label: "What You'll Taste" },
+            { id: 'food', label: t('tour.whatYouTaste') },
             { id: 'faq', label: 'FAQ' },
           ].filter(s => {
             if (s.id === 'food' && foods.length === 0) return false;
@@ -232,7 +232,7 @@ const tourSchema = {
       <div class="md:col-span-3 min-w-0">
           <!-- Overview -->
           <section id="overview" class="mb-16 scroll-mt-20">
-            <h2 class="font-bold font-heading text-default text-2xl md:text-3xl mb-6">About This Tour</h2>
+            <h2 class="font-bold font-heading text-default text-2xl md:text-3xl mb-6">{t('tour.aboutThisTour')}</h2>
             <div class="text-default leading-relaxed space-y-4">
               {tour.shortDesc && <p class="text-muted">{tour.shortDesc}</p>}
               {tour.fullDesc && <div class="text-muted space-y-4 set-html-content" set:html={tour.fullDesc} />}
@@ -240,7 +240,7 @@ const tourSchema = {
 
           {highlights.length > 0 && (
             <div class="mt-8">
-              <h3 class="font-bold font-heading text-default text-xl mb-4">Tour Highlights</h3>
+              <h3 class="font-bold font-heading text-default text-xl mb-4">{t('tour.highlights')}</h3>
               <ul class="space-y-3">
                 {highlights.map((h) => (
                   <li class="flex items-start gap-3 text-muted">
@@ -258,7 +258,7 @@ const tourSchema = {
           <section id="itinerary-section" class="mb-16 scroll-mt-20">
             <div class="text-center mb-10">
               <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">What You'll Experience</p>
-              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">Tour Itinerary</h2>
+              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">{t('tour.itinerary')}</h2>
             </div>
             <div class="relative">
               <div class="absolute bg-primary/20 bottom-0 left-[19px] top-0 w-0.5"></div>
@@ -335,7 +335,7 @@ const tourSchema = {
         <!-- FAQ -->
         <section id="faq" class="mb-16 scroll-mt-20">
           <div class="text-center mb-10">
-            <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">Common Questions</p>
+            <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">{t('tour.commonQuestions')}</p>
             <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">Questions We Often Hear</h2>
           </div>
           <div class="space-y-2 max-w-2xl mx-auto">
@@ -368,7 +368,7 @@ const tourSchema = {
 
         <!-- Related tours in same city -->
         <section class="mb-16">
-          <h2 class="font-bold font-heading text-default text-2xl mb-8 text-center">You May Also Enjoy</h2>
+          <h2 class="font-bold font-heading text-default text-2xl mb-8 text-center">{t('tour.youMayAlsoEnjoy')}</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {sameCityTours.length > 0 ? sameCityTours.map((related: any) => (
               <a href={`/tours/${related.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
@@ -498,8 +498,8 @@ const tourSchema = {
     <section class="py-16 bg-gradient-to-b from-transparent to-muted/20">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-10">
-          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">What Guests Say</p>
-          <h2 class="text-3xl md:text-4xl font-bold font-heading">Real Reviews from Real Guests</h2>
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">{t('tour.whatGuestsSay')}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading">{t('tour.realReviews')}</h2>
           <p class="text-muted max-w-2xl mx-auto mt-4 text-sm">What our guests say about tours in {tourLocation}</p>
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
