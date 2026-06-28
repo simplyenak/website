@@ -18,14 +18,6 @@ export const FoodItems: CollectionConfig = {
     update: ({ req: { user } }) => ['admin', 'editor', 'reviewer'].includes((user as any)?.role),
     delete: ({ req: { user } }) => (user as any)?.role === 'admin',
   },
-  versions: {
-    drafts: {
-      autosave: {
-        interval: 300000,
-      },
-    },
-    maxPerDoc: 50,
-  },
   fields: [
     {
       name: 'name',
