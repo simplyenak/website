@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { tour } = Astro.props;
 const allTours = await getAllTours('fr');
-const t = useTranslations('en');
+const t = useTranslations('fr');
 const faqs = await getFAQs();
 const dietaryOptions = await getDietaryOptionList();
 const travelTypes = await getTravelTypeList();
