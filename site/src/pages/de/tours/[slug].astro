@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList, getImageUrl } from '~/lib/content';
 import PlayfulGallery from '~/components/widgets/PlayfulGallery.astro';
+import { useTranslations } from '~/i18n/utils';
 import reviews from '~/data/content/reviews.json';
 
 export async function getStaticPaths() {
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
 
 const { tour } = Astro.props;
 const allTours = await getAllTours('de');
+const t = useTranslations('en');
 const faqs = await getFAQs();
 const dietaryOptions = await getDietaryOptionList();
 const travelTypes = await getTravelTypeList();
@@ -150,9 +152,9 @@ const tourSchema = {
       <div class="md:flex md:items-center md:gap-4 py-3">
         <nav class="flex gap-2 overflow-x-auto" aria-label="Tour sections">
           {[
-            { id: 'overview', label: 'Overview' },
+            { id: 'overview', label: t('tour.overview') },
             { id: 'itinerary-section', label: 'Itinerary' },
-            { id: 'tour-gallery', label: 'Gallery' },
+            { id: 'tour-gallery', label: t('tour.gallery') },
             { id: 'food', label: "What You'll Taste" },
             { id: 'faq', label: 'FAQ' },
           ].filter(s => {
