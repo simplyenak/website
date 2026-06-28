@@ -1,0 +1,33 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import ThankYou from '~/components/ThankYou.astro';
+import { getThankYouPage } from '~/lib/content';
+
+import { useTranslations } from '~/i18n/utils';
+
+const d = getThankYouPage('thank-you') || {} as any;
+
+const t = useTranslations('nl');
+const metadata = {
+  title: d?.seo?.metaTitle || d.metaTitle || 'Thank You',
+  description: d?.seo?.metaDescription || d.metaDescription || '',
+  robots: { index: false },
+};
+---
+
+<Layout metadata={metadata}>
+  <ThankYou
+    title={d.title ?? t('thankyou.title')}
+    subtitle={d.subtitle ?? "Received"}
+    paragraphs={d.paragraphs ?? ["Your submission has been received."]}
+    nextSteps={d.nextSteps ?? [
+      { title: t('thankyou.checkEmail'), description: 'A confirmation is on its way' },
+      { title: t('thankyou.weFollowUp'), description: 'We respond within 24 hours' },
+    ]}
+    ctaText={d.ctaText ?? "We'll be in touch soon!"}
+    buttons={d.buttons ?? [
+      { title: 'Browse Our Tours', href: '/tours' },
+      { title: t('thankyou.backHome'), href: '/' },
+    ]}
+  />
+</Layout>

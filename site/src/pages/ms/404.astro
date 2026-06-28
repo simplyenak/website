@@ -1,0 +1,34 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE } from 'astrowind:config';
+import { useTranslations } from '~/i18n/utils';
+
+const t = useTranslations('ms');
+
+const c = {
+  eyebrow: 'Lost? That is OK.',
+  title: 'Street Food',
+  description: "The page you're looking for doesn't exist, but a bowl of the best laksa of your life definitely does. Let's get you back on track.",
+  ctaPrimary: { text: 'Browse Our Tours', url: '/tours' },
+  ctaSecondary: { text: 'Go Home', url: '/' },
+};
+
+const links = [
+  { text: t('common.streetFood'), url: '/tours/locations/food-tours-kuala-lumpur' },
+  { text: t('common.trackRecord'), url: '/track-record' },
+  { text: t('common.privateTours'), url: '/tours/private-tours' },
+  { text: t('common.tailoredExperiences'), url: '/tours/tailored-tours' },
+  { text: t('common.ourStory'), url: '/about' },
+  { text: t('common.browseTours'), url: '/tours' },
+  { text: t('404.whatsapp'), url: 'https://wa.me/60172878929', accent: true },
+];
+
+const headingLines = ['Page Not Found', t('common.streetFood')];
+const highlightIdx = 1;
+
+const metadata = {
+  title: '404 - Page Not Found | Simply Enak',
+  description: "The page you're looking for doesn't exist - but the best food in Malaysia does.",
+};
+---

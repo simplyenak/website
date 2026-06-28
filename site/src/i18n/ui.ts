@@ -25,7 +25,14 @@ export const defaultLang: Language = "en";
 
 export const ui = {
   en: {
-    // Navigation
+    // Component labels
+    "component.toggleMenu": "Toggle Menu",
+    "component.toggleTheme": "Toggle between Dark and Light mode",
+    "component.switchLanguage": "Switch language",
+    "component.language": "Language",
+    "component.bookNow": "Book Now",
+    "component.skipToContent": "Skip to main content",
+    "component.allTours": "All Tours",
     "nav.home": "Home",
     "nav.tours": "Tours",
     "nav.stories": "Stories",
