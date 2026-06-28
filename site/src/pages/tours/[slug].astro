@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
-import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList } from '~/lib/content';
+import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList, getImageUrl } from '~/lib/content';
 import PlayfulGallery from '~/components/widgets/PlayfulGallery.astro';
 import reviews from '~/data/content/reviews.json';
 
@@ -33,11 +33,12 @@ const tourReviews = reviews.filter((r: any) => r.location === tourLocation).slic
 
 if (!tour) return Astro.redirect('/tours');
 
-// Hero image: handle Payload media object or plain URL
+// Hero image: handle Payload media object or plain URL, rewrite to CDN
 const heroImgRaw = tour.image || tour.heroImage || '';
-const heroImg = typeof heroImgRaw === 'object' && heroImgRaw !== null
+const heroImgUrl = typeof heroImgRaw === 'object' && heroImgRaw !== null
   ? (heroImgRaw.url || heroImgRaw.src || '')
   : heroImgRaw;
+const heroImg = getImageUrl(heroImgUrl) || '';
 const foods = tour.foods || [];
 const foodDescriptions = tour.foodDescriptions || {};
 const itinerary = tour.itinerary || [];
@@ -86,14 +87,21 @@ const meta = {
 };
 
 // Build Tour schema (TouristTrip + Product + map signal)
-const mapUrls: Record<string, string> = {
+// Use meeting point for precise map link, fall back to city-level
+const meetingPoint = tour.meetingPoint || tour.meeting_point || '';
+let mapUrl = 'https://maps.google.com/maps?q=Malaysia&z=10';
+if (meetingPoint) {
+  mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(meetingPoint)}&z=16`;
+} else {
+  const mapUrls: Record<string, string> = {
   'kuala lumpur': 'https://maps.google.com/maps?q=Kuala+Lumpur+Malaysia&z=13',
   'kl': 'https://maps.google.com/maps?q=Kuala+Lumpur+Malaysia&z=13',
   'penang': 'https://maps.google.com/maps?q=George+Town+Penang+Malaysia&z=13',
   'penang road': 'https://maps.google.com/maps?q=Penang+Road+Malaysia&z=13',
-};
-const locKey = (tour.location || 'kl').toLowerCase();
-const mapUrl = mapUrls[locKey] || 'https://maps.google.com/maps?q=Malaysia&z=10';
+  };
+  const locKey = (tour.location || 'kl').toLowerCase();
+  mapUrl = mapUrls[locKey] || 'https://maps.google.com/maps?q=Malaysia&z=10';
+}
 
 const tourSchema = {
   '@context': 'https://schema.org',
