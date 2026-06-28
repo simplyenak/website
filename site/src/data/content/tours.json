@@ -1,5 +1,94 @@
 [
   {
+    "id": 8,
+    "name": "Inside Pudu",
+    "slug": "inside-pudu",
+    "tagline": null,
+    "shortDescription": null,
+    "fullDescription": null,
+    "price": null,
+    "currency": "MYR",
+    "duration": null,
+    "durationMinutes": null,
+    "location": null,
+    "meetingPoint": null,
+    "maxParticipants": null,
+    "minParticipants": 2,
+    "dietaryOptions": [],
+    "travelTypes": [],
+    "specialtyExperiences": [],
+    "foodItems": [],
+    "tailoredAvailable": false,
+    "tailoredNotes": null,
+    "heroImage": null,
+    "galleryImages": [],
+    "whatsIncluded": null,
+    "whatsExcluded": null,
+    "highlights": null,
+    "ticketingHubId": null,
+    "isBookable": false,
+    "bookingUrl": null,
+    "instantConfirmation": true,
+    "scheduledPublish": null,
+    "cancellationPolicy": null,
+    "tourFrequency": null,
+    "startTimes": [],
+    "dishesCount": null,
+    "difficulty": "easy",
+    "walkingDistance": null,
+    "directionsHtml": null,
+    "itinerary": [],
+    "differentiatorsTourist": null,
+    "differentiatorsUs": null,
+    "whatToBring": null,
+    "languagesOffered": [],
+    "segmentTags": [],
+    "promoVideoUrl": null,
+    "galleryImageAlts": [],
+    "heroImageAlt": null,
+    "featured": false,
+    "popular": false,
+    "new": false,
+    "badgeLabel": null,
+    "publishedAt": null,
+    "status": "draft",
+    "workflowStatus": "draft",
+    "meta": {
+      "title": null,
+      "description": null,
+      "image": null
+    },
+    "updatedAt": "2026-06-28T14:06:30.017Z",
+    "createdAt": "2026-06-28T14:06:11.936Z",
+    "_status": "published",
+    "ticketing_hub_id": null,
+    "is_bookable": false,
+    "short_description": null,
+    "full_description": null,
+    "duration_minutes": null,
+    "max_participants": null,
+    "min_participants": 2,
+    "dietary_options": [],
+    "specialty_experiences": [],
+    "whats_included": [],
+    "whats_excluded": [],
+    "cancellation_policy": null,
+    "tour_frequency": null,
+    "start_times": [],
+    "dishes_count": null,
+    "walking_distance": null,
+    "directions_html": null,
+    "differentiators_tourist": [],
+    "differentiators_us": [],
+    "what_to_bring": [],
+    "languages_offered": [],
+    "segment_tags": [],
+    "promo_video_url": null,
+    "gallery_image_alts": [],
+    "hero_image_alt": null,
+    "gallery_images": []
+  },
+  {
     "id": 5,
     "name": "Secrets of KL - Nightlife, Street Art & Cocktails!",
     "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
@@ -2693,48 +2782,274 @@
     "tailoredAvailable": true,
     "tailoredNotes": null,
     "heroImage": {
-      "id": 47,
+      "id": 341,
       "usage": null,
       "prefix": "payload-media",
-      "updatedAt": "2026-05-19T10:03:37.416Z",
-      "createdAt": "2026-05-19T10:03:36.811Z",
-      "url": "/api/media/file/Flavours_of_Malaysia001_41094a74f7.jpg?prefix=payload-media",
-      "thumbnailURL": "/api/media/file/Flavours_of_Malaysia001_41094a74f7-400x300.webp",
-      "filename": "Flavours_of_Malaysia001_41094a74f7.jpg",
-      "mimeType": "image/jpeg",
-      "filesize": 54836,
-      "width": 994,
-      "height": 660,
+      "updatedAt": "2026-06-28T13:56:08.208Z",
+      "createdAt": "2026-06-28T13:56:07.504Z",
+      "url": "/api/media/file/Flavours_of_Malaysia_001.png?prefix=payload-media",
+      "thumbnailURL": "/api/media/file/Flavours_of_Malaysia_001-400x300.png",
+      "filename": "Flavours_of_Malaysia_001.png",
+      "mimeType": "image/png",
+      "filesize": 3057046,
+      "width": 1199,
+      "height": 1600,
       "focalX": 50,
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/Flavours_of_Malaysia001_41094a74f7-400x300.webp?prefix=payload-media",
+          "url": "/api/media/file/Flavours_of_Malaysia_001-400x300.png?prefix=payload-media",
           "width": 400,
           "height": 300,
-          "mimeType": "image/webp",
-          "filesize": 24978,
-          "filename": "Flavours_of_Malaysia001_41094a74f7-400x300.webp"
+          "mimeType": "image/png",
+          "filesize": 347992,
+          "filename": "Flavours_of_Malaysia_001-400x300.png"
         },
         "medium": {
-          "url": "/api/media/file/Flavours_of_Malaysia001_41094a74f7-800x600.webp?prefix=payload-media",
+          "url": "/api/media/file/Flavours_of_Malaysia_001-800x600.png?prefix=payload-media",
           "width": 800,
           "height": 600,
-          "mimeType": "image/webp",
-          "filesize": 59030,
-          "filename": "Flavours_of_Malaysia001_41094a74f7-800x600.webp"
+          "mimeType": "image/png",
+          "filesize": 1355427,
+          "filename": "Flavours_of_Malaysia_001-800x600.png"
         },
         "large": {
-          "url": null,
-          "width": null,
-          "height": null,
-          "mimeType": null,
-          "filesize": null,
-          "filename": null
+          "url": "/api/media/file/Flavours_of_Malaysia_001-1200x800.png?prefix=payload-media",
+          "width": 1200,
+          "height": 800,
+          "mimeType": "image/png",
+          "filesize": 2656342,
+          "filename": "Flavours_of_Malaysia_001-1200x800.png"
         }
       }
     },
-    "galleryImages": [],
+    "galleryImages": [
+      {
+        "id": "6a4127777faf8e4b3d61b34c",
+        "image": {
+          "id": 340,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:56:06.160Z",
+          "createdAt": "2026-06-28T13:56:05.512Z",
+          "url": "/api/media/file/Enak-13.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/Enak-13-400x300.jpg",
+          "filename": "Enak-13.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 1344627,
+          "width": 2659,
+          "height": 4006,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/Enak-13-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 33129,
+              "filename": "Enak-13-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/Enak-13-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 99811,
+              "filename": "Enak-13-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/Enak-13-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 172866,
+              "filename": "Enak-13-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a41297e7faf8e4b3d61b34d",
+        "image": {
+          "id": 337,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:56:00.183Z",
+          "createdAt": "2026-06-28T13:55:59.576Z",
+          "url": "/api/media/file/Copy%20of%20Enak-4.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/Copy%20of%20Enak-4-400x300.jpg",
+          "filename": "Copy of Enak-4.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 1598024,
+          "width": 3418,
+          "height": 1962,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/Copy%20of%20Enak-4-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 30687,
+              "filename": "Copy of Enak-4-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/Copy%20of%20Enak-4-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 95008,
+              "filename": "Copy of Enak-4-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/Copy%20of%20Enak-4-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 163961,
+              "filename": "Copy of Enak-4-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4129907faf8e4b3d61b34e",
+        "image": {
+          "id": 330,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:39:20.817Z",
+          "createdAt": "2026-06-28T13:39:20.438Z",
+          "url": "/api/media/file/pl1TEZ0Zz86.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/pl1TEZ0Zz86-400x300.jpg",
+          "filename": "pl1TEZ0Zz86.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 75971,
+          "width": 480,
+          "height": 720,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/pl1TEZ0Zz86-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 27568,
+              "filename": "pl1TEZ0Zz86-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/pl1TEZ0Zz86-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 72258,
+              "filename": "pl1TEZ0Zz86-800x600.jpg"
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4129a37faf8e4b3d61b34f",
+        "image": {
+          "id": 331,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:39:21.319Z",
+          "createdAt": "2026-06-28T13:39:21.099Z",
+          "url": "/api/media/file/pl1TEZwb662.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/pl1TEZwb662-400x300.jpg",
+          "filename": "pl1TEZwb662.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 83853,
+          "width": 720,
+          "height": 480,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/pl1TEZwb662-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 31768,
+              "filename": "pl1TEZwb662-400x300.jpg"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4129b37faf8e4b3d61b350",
+        "image": {
+          "id": 345,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:56:14.920Z",
+          "createdAt": "2026-06-28T13:56:14.665Z",
+          "url": "/api/media/file/PXL_20231121_001919164-1.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/PXL_20231121_001919164-1-400x300.jpg",
+          "filename": "PXL_20231121_001919164-1.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 2264987,
+          "width": 1920,
+          "height": 2560,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/PXL_20231121_001919164-1-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 43415,
+              "filename": "PXL_20231121_001919164-1-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/PXL_20231121_001919164-1-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 160237,
+              "filename": "PXL_20231121_001919164-1-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/PXL_20231121_001919164-1-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 300713,
+              "filename": "PXL_20231121_001919164-1-1200x800.jpg"
+            }
+          }
+        }
+      }
+    ],
     "whatsIncluded": null,
     "whatsExcluded": null,
     "highlights": [
@@ -2835,7 +3150,7 @@
       "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
       "image": null
     },
-    "updatedAt": "2026-06-28T08:58:55.654Z",
+    "updatedAt": "2026-06-28T14:03:45.499Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -2981,7 +3296,33 @@
     "promo_video_url": null,
     "gallery_image_alts": [],
     "hero_image_alt": null,
-    "gallery_images": [],
+    "gallery_images": [
+      {
+        "src": "/api/media/file/Enak-13.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/Copy%20of%20Enak-4.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/pl1TEZ0Zz86.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/pl1TEZwb662.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/PXL_20231121_001919164-1.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
