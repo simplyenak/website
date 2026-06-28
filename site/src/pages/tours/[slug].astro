@@ -180,7 +180,7 @@ const tourSchema = {
   <section class="bg-[#1a1a1a] relative text-white">
     <div class="max-w-7xl mx-auto">
       <div class="md:grid md:grid-cols-2 md:min-h-[450px]">
-        <div class="overflow-hidden relative h-72 md:h-auto">
+        <div class="overflow-hidden relative h-72 md:h-full md:max-h-[500px]">
           {heroImg && <img src={heroImg} alt={tour.tagline || tour.name} class="w-full h-full object-cover" />}
           <div class="absolute inset-0 bg-gradient-to-r from-black/60 hidden md:block to-transparent"></div>
         </div>
