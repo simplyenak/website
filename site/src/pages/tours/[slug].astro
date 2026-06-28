@@ -286,7 +286,7 @@ const tourSchema = {
               // Tier 1: gallery_images (flat format from sync: [{src, alt, caption}])
               ...(Array.isArray(tour.gallery_images) && tour.gallery_images.length > 0
                 ? tour.gallery_images.map((gi: any) => ({
-                    src: gi.src || gi.url,
+                    src: getImageUrl(gi.src || gi.url),
                     alt: gi.alt || tour.name,
                     caption: gi.caption || '',
                   }))
@@ -296,7 +296,7 @@ const tourSchema = {
                 ? tour.galleryImages.map((gi: any) => {
                     const img = gi.image || gi;
                     return {
-                      src: gi.src || gi.url || (typeof img === 'object' ? (img.url || img.src) : img) || '',
+                      src: getImageUrl(gi.src || gi.url || (typeof img === 'object' ? (img.url || img.src) : img) || ''),
                       alt: gi.alt || img.alt || tour.name,
                       caption: gi.caption || '',
                     };
@@ -371,7 +371,7 @@ const tourSchema = {
             {sameCityTours.length > 0 ? sameCityTours.map((related: any) => (
               <a href={`/tours/${related.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
                 <div class="h-40 overflow-hidden relative">
-                  {related.image && <img src={related.image} alt={related.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />}
+                  {related.image && <img src={getImageUrl(related.image)} alt={related.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />}
                 </div>
                 <div class="p-4">
                   <h3 class="text-sm font-bold font-heading text-default mb-1 group-hover:text-primary transition-colors">{related.name}</h3>
