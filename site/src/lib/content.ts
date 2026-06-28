@@ -199,6 +199,20 @@ function applyLocaleTranslations(item: any, locale?: string): any {
       (merged as any)[key] = val;
     }
   }
+  // Map snake_case translation fields to camelCase that mergeTour expects
+  const snakeToCamel: Record<string, string> = {
+    short_description: 'shortDescription',
+    full_description: 'fullDescription',
+    meeting_point: 'meetingPoint',
+    meta_title: 'metaTitle',
+    meta_description: 'metaDescription',
+    hero_title: 'heroTitle',
+  };
+  for (const [snake, camel] of Object.entries(snakeToCamel)) {
+    if ((merged as any)[snake] && !(merged as any)[camel]) {
+      (merged as any)[camel] = (merged as any)[snake];
+    }
+  }
   return merged;
 }
 
