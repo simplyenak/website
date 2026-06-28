@@ -1161,48 +1161,274 @@
     "tailoredAvailable": true,
     "tailoredNotes": null,
     "heroImage": {
-      "id": 45,
+      "id": 320,
       "usage": null,
       "prefix": "payload-media",
-      "updatedAt": "2026-05-19T10:03:26.380Z",
-      "createdAt": "2026-05-19T10:03:25.607Z",
-      "url": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4.jpg?prefix=payload-media",
-      "thumbnailURL": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4-400x300.webp",
-      "filename": "Eat_Drink_Georgetown001_c0188c50e4.jpg",
+      "updatedAt": "2026-06-28T13:39:12.115Z",
+      "createdAt": "2026-06-28T13:39:11.630Z",
+      "url": "/api/media/file/Penang004.jpg?prefix=payload-media",
+      "thumbnailURL": "/api/media/file/Penang004-400x300.jpg",
+      "filename": "Penang004.jpg",
       "mimeType": "image/jpeg",
-      "filesize": 40554,
-      "width": 768,
-      "height": 576,
+      "filesize": 354812,
+      "width": 1600,
+      "height": 1066,
       "focalX": 50,
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/Eat_Drink_Georgetown001_c0188c50e4-400x300.webp?prefix=payload-media",
+          "url": "/api/media/file/Penang004-400x300.jpg?prefix=payload-media",
           "width": 400,
           "height": 300,
-          "mimeType": "image/webp",
-          "filesize": 18262,
-          "filename": "Eat_Drink_Georgetown001_c0188c50e4-400x300.webp"
+          "mimeType": "image/jpeg",
+          "filesize": 28001,
+          "filename": "Penang004-400x300.jpg"
         },
         "medium": {
-          "url": null,
-          "width": null,
-          "height": null,
-          "mimeType": null,
-          "filesize": null,
-          "filename": null
+          "url": "/api/media/file/Penang004-800x600.jpg?prefix=payload-media",
+          "width": 800,
+          "height": 600,
+          "mimeType": "image/jpeg",
+          "filesize": 83529,
+          "filename": "Penang004-800x600.jpg"
         },
         "large": {
-          "url": null,
-          "width": null,
-          "height": null,
-          "mimeType": null,
-          "filesize": null,
-          "filename": null
+          "url": "/api/media/file/Penang004-1200x800.jpg?prefix=payload-media",
+          "width": 1200,
+          "height": 800,
+          "mimeType": "image/jpeg",
+          "filesize": 142391,
+          "filename": "Penang004-1200x800.jpg"
         }
       }
     },
-    "galleryImages": [],
+    "galleryImages": [
+      {
+        "id": "6a4126d97faf8e4b3d61b347",
+        "image": {
+          "id": 333,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:39:24.388Z",
+          "createdAt": "2026-06-28T13:39:24.008Z",
+          "url": "/api/media/file/PXL_20231121_001919164.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/PXL_20231121_001919164-400x300.jpg",
+          "filename": "PXL_20231121_001919164.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 2264987,
+          "width": 1920,
+          "height": 2560,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/PXL_20231121_001919164-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 43415,
+              "filename": "PXL_20231121_001919164-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/PXL_20231121_001919164-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 160237,
+              "filename": "PXL_20231121_001919164-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/PXL_20231121_001919164-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 300713,
+              "filename": "PXL_20231121_001919164-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4126ea7faf8e4b3d61b348",
+        "image": {
+          "id": 324,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:39:15.573Z",
+          "createdAt": "2026-06-28T13:39:14.369Z",
+          "url": "/api/media/file/Penang008.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/Penang008-400x300.jpg",
+          "filename": "Penang008.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 287389,
+          "width": 1600,
+          "height": 1066,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/Penang008-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 22289,
+              "filename": "Penang008-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/Penang008-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 63871,
+              "filename": "Penang008-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/Penang008-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 106799,
+              "filename": "Penang008-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4127117faf8e4b3d61b349",
+        "image": {
+          "id": 320,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:39:12.115Z",
+          "createdAt": "2026-06-28T13:39:11.630Z",
+          "url": "/api/media/file/Penang004.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/Penang004-400x300.jpg",
+          "filename": "Penang004.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 354812,
+          "width": 1600,
+          "height": 1066,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/Penang004-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 28001,
+              "filename": "Penang004-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/Penang004-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 83529,
+              "filename": "Penang004-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/Penang004-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 142391,
+              "filename": "Penang004-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4127207faf8e4b3d61b34a",
+        "image": {
+          "id": 327,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:39:18.590Z",
+          "createdAt": "2026-06-28T13:39:17.569Z",
+          "url": "/api/media/file/pl1TEZ0db40.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/pl1TEZ0db40-400x300.jpg",
+          "filename": "pl1TEZ0db40.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 120640,
+          "width": 720,
+          "height": 480,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/pl1TEZ0db40-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 39185,
+              "filename": "pl1TEZ0db40-400x300.jpg"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4127327faf8e4b3d61b34b",
+        "image": {
+          "id": 317,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T13:39:09.338Z",
+          "createdAt": "2026-06-28T13:39:09.104Z",
+          "url": "/api/media/file/Penang001.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/Penang001-400x300.jpg",
+          "filename": "Penang001.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 409310,
+          "width": 1600,
+          "height": 1066,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/Penang001-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 34085,
+              "filename": "Penang001-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/Penang001-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 99757,
+              "filename": "Penang001-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/Penang001-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 168212,
+              "filename": "Penang001-1200x800.jpg"
+            }
+          }
+        }
+      }
+    ],
     "whatsIncluded": null,
     "whatsExcluded": null,
     "highlights": [
@@ -1303,7 +1529,7 @@
       "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-06-28T08:58:53.956Z",
+    "updatedAt": "2026-06-28T13:53:26.074Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -1449,7 +1675,33 @@
     "promo_video_url": null,
     "gallery_image_alts": [],
     "hero_image_alt": null,
-    "gallery_images": [],
+    "gallery_images": [
+      {
+        "src": "/api/media/file/PXL_20231121_001919164.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/Penang008.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/Penang004.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/pl1TEZ0db40.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/Penang001.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
