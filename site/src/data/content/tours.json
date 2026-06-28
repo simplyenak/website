@@ -1103,7 +1103,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -1667,7 +1667,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -2010,7 +2010,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -2333,7 +2333,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -2635,7 +2635,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -3199,7 +3199,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -3542,7 +3542,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -3674,48 +3674,229 @@
     "tailoredAvailable": true,
     "tailoredNotes": null,
     "heroImage": {
-      "id": 6,
+      "id": 353,
       "usage": null,
       "prefix": "payload-media",
-      "updatedAt": "2026-05-19T09:59:56.971Z",
-      "createdAt": "2026-05-19T09:59:56.436Z",
-      "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg?prefix=payload-media",
-      "thumbnailURL": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp",
-      "filename": "Eat_Drink_George_Town_Bart_1527cf1f89.jpeg",
+      "updatedAt": "2026-06-28T14:13:51.835Z",
+      "createdAt": "2026-06-28T14:13:51.391Z",
+      "url": "/api/media/file/DSC_6661%20(1).JPG?prefix=payload-media",
+      "thumbnailURL": "/api/media/file/DSC_6661%20(1)-400x300.jpg",
+      "filename": "DSC_6661 (1).JPG",
       "mimeType": "image/jpeg",
-      "filesize": 158252,
-      "width": 1920,
-      "height": 1440,
+      "filesize": 3071941,
+      "width": 3965,
+      "height": 2642,
       "focalX": 50,
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp?prefix=payload-media",
+          "url": "/api/media/file/DSC_6661%20(1)-400x300.jpg?prefix=payload-media",
           "width": 400,
           "height": 300,
-          "mimeType": "image/webp",
-          "filesize": 22280,
-          "filename": "Eat_Drink_George_Town_Bart_1527cf1f89-400x300.webp"
+          "mimeType": "image/jpeg",
+          "filesize": 33109,
+          "filename": "DSC_6661 (1)-400x300.jpg"
         },
         "medium": {
-          "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89-800x600.webp?prefix=payload-media",
+          "url": "/api/media/file/DSC_6661%20(1)-800x600.jpg?prefix=payload-media",
           "width": 800,
           "height": 600,
-          "mimeType": "image/webp",
-          "filesize": 61692,
-          "filename": "Eat_Drink_George_Town_Bart_1527cf1f89-800x600.webp"
+          "mimeType": "image/jpeg",
+          "filesize": 111006,
+          "filename": "DSC_6661 (1)-800x600.jpg"
         },
         "large": {
-          "url": "/api/media/file/Eat_Drink_George_Town_Bart_1527cf1f89-1200x800.webp?prefix=payload-media",
+          "url": "/api/media/file/DSC_6661%20(1)-1200x800.jpg?prefix=payload-media",
           "width": 1200,
           "height": 800,
-          "mimeType": "image/webp",
-          "filesize": 91380,
-          "filename": "Eat_Drink_George_Town_Bart_1527cf1f89-1200x800.webp"
+          "mimeType": "image/jpeg",
+          "filesize": 203008,
+          "filename": "DSC_6661 (1)-1200x800.jpg"
         }
       }
     },
-    "galleryImages": [],
+    "galleryImages": [
+      {
+        "id": "6a412bca7faf8e4b3d61b351",
+        "image": {
+          "id": 350,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T14:13:45.139Z",
+          "createdAt": "2026-06-28T14:13:44.640Z",
+          "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+          "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 999686,
+          "width": 2688,
+          "height": 1512,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 32314,
+              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 108375,
+              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 194669,
+              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a412ced7faf8e4b3d61b352",
+        "image": {
+          "id": 355,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T14:13:54.483Z",
+          "createdAt": "2026-06-28T14:13:53.991Z",
+          "url": "/api/media/file/hin2.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/hin2-400x300.jpg",
+          "filename": "hin2.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 1030719,
+          "width": 1458,
+          "height": 2592,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/hin2-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 43894,
+              "filename": "hin2-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/hin2-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 148509,
+              "filename": "hin2-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/hin2-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 250533,
+              "filename": "hin2-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a412cff7faf8e4b3d61b353",
+        "image": {
+          "id": 356,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T14:13:56.565Z",
+          "createdAt": "2026-06-28T14:13:55.942Z",
+          "url": "/api/media/file/PXL_20230703_082939063.MP.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/PXL_20230703_082939063.MP-400x300.jpg",
+          "filename": "PXL_20230703_082939063.MP.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 3572168,
+          "width": 2560,
+          "height": 1920,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/PXL_20230703_082939063.MP-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 36026,
+              "filename": "PXL_20230703_082939063.MP-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/PXL_20230703_082939063.MP-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 117342,
+              "filename": "PXL_20230703_082939063.MP-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/PXL_20230703_082939063.MP-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 207252,
+              "filename": "PXL_20230703_082939063.MP-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a412d107faf8e4b3d61b354",
+        "image": {
+          "id": 351,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T14:13:47.134Z",
+          "createdAt": "2026-06-28T14:13:46.473Z",
+          "url": "/api/media/file/DSC_5051-opq3007862668.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/DSC_5051-opq3007862668-400x300.jpg",
+          "filename": "DSC_5051-opq3007862668.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 2143737,
+          "width": 2625,
+          "height": 3939,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/DSC_5051-opq3007862668-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 24871,
+              "filename": "DSC_5051-opq3007862668-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/DSC_5051-opq3007862668-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 68511,
+              "filename": "DSC_5051-opq3007862668-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/DSC_5051-opq3007862668-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 111011,
+              "filename": "DSC_5051-opq3007862668-1200x800.jpg"
+            }
+          }
+        }
+      }
+    ],
     "whatsIncluded": null,
     "whatsExcluded": null,
     "highlights": [
@@ -3816,7 +3997,7 @@
       "description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert.",
       "image": null
     },
-    "updatedAt": "2026-06-28T12:00:07.299Z",
+    "updatedAt": "2026-06-28T14:18:19.422Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -3865,7 +4046,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:37:43.922Z",
+        "updatedAt": "2026-06-28T14:16:26.881Z",
         "createdAt": "2026-05-19T08:33:30.320Z",
         "_status": "published"
       },
@@ -3962,7 +4143,28 @@
     "promo_video_url": null,
     "gallery_image_alts": [],
     "hero_image_alt": null,
-    "gallery_images": [],
+    "gallery_images": [
+      {
+        "src": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/hin2.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/PXL_20230703_082939063.MP.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/DSC_5051-opq3007862668.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
