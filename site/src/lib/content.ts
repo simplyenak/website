@@ -209,7 +209,7 @@ function applyLocaleTranslations(item: any, locale?: string): any {
     hero_title: 'heroTitle',
   };
   for (const [snake, camel] of Object.entries(snakeToCamel)) {
-    if ((merged as any)[snake] && !(merged as any)[camel]) {
+    if ((merged as any)[snake]) {
       (merged as any)[camel] = (merged as any)[snake];
     }
   }
