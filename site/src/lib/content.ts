@@ -565,10 +565,10 @@ function shapeHomePage(raw: any): HomePageData {
       ],
     },
     testimonialsSection: {
-      eyebrow: raw.testimonialsSection?.eyebrow ?? "14+ years of sharing Malaysia's best flavours",
+      eyebrow: raw.testimonialsSection?.eyebrow ?? "15+ years of sharing Malaysia's best flavours",
       heading: raw.testimonialsSection?.heading ?? 'Trusted by Thousands of Food Lovers',
       stats: raw.testimonialsSection?.stats ?? [
-        { number: '14+', label: 'Years Experience' },
+        { number: '15+', label: 'Years Experience' },
         { number: '5,000+', label: 'Happy Guests' },
         { number: '4.9', label: 'TripAdvisor Rating' },
         { number: '5', label: 'Tour Options' },
@@ -605,6 +605,18 @@ function shapeHomePage(raw: any): HomePageData {
 // then to hardcoded data where applicable.
 
 async function resolveTours(locale?: string): Promise<any[]> {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotTours.length > 0) {
+    const translated = snapshotTours.map(item => {
+      const t = applyLocaleTranslations(item, locale);
+      return t.name && /[^\x00-\x7F]/.test(t.name) ? t : item;
+    });
+    return translated
+      .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
+      .map(mergeTour)
+      .filter(Boolean) as any[];
+  }
+
   // Tier 1: Live Payload API
   const live = await liveTours(locale);
   if (live && live.length > 0) {
@@ -614,7 +626,7 @@ async function resolveTours(locale?: string): Promise<any[]> {
       .filter(Boolean) as any[];
   }
 
-  // Tier 2: JSON snapshots (fallback for all locales)
+  // Tier 2: JSON snapshots (fallback)
   if (snapshotTours.length > 0) {
     return snapshotTours
       .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
@@ -628,10 +640,23 @@ async function resolveTours(locale?: string): Promise<any[]> {
 
 async function resolveHomePage(locale?: string): Promise<HomePageData> {
   let raw: any;
-  const live = await liveHomePage(locale);
-  if (live && Object.keys(live).length > 0) raw = live;
-  else if (snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
-  else raw = {};
+
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotHomePage && Object.keys(snapshotHomePage).length > 0) {
+    const translated = applyLocaleTranslations(snapshotHomePage, locale);
+    if (translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title)) {
+      raw = translated;
+      // Skip Payload tier 1 & block mapping, go straight to flat field mapping below
+    }
+  }
+
+  if (!raw) {
+    // Tier 1: Live Payload API
+    const live = await liveHomePage(locale);
+    if (live && Object.keys(live).length > 0) raw = live;
+    else if (snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
+    else raw = {};
+  }
 
   // Map Payload block structure to flat keys that shapeHomePage expects.
   // Payload stores: heroSection[{block with fields}]
@@ -779,6 +804,15 @@ async function resolvePages(locale?: string): Promise<any[]> {
 }
 
 async function resolveFAQs(locale?: string): Promise<any[]> {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotFAQs.length > 0) {
+    const translated = snapshotFAQs.map(item => applyLocaleTranslations(item, locale));
+    const hasTranslations = translated.some(item => {
+      const q = item.question;
+      return q && /[^\x00-\x7F]/.test(q);
+    });
+    if (hasTranslations) return translated;
+  }
   const live = await liveFAQs(locale);
   if (live && live.length > 0) return live;
   if (snapshotFAQs.length > 0) return snapshotFAQs;
@@ -787,6 +821,15 @@ async function resolveFAQs(locale?: string): Promise<any[]> {
 }
 
 async function resolveTestimonials(locale?: string): Promise<any[]> {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotTestimonials.length > 0) {
+    const translated = snapshotTestimonials.map(item => applyLocaleTranslations(item, locale));
+    const hasTranslations = translated.some(item => {
+      const rt = item.review_title || item.author_name;
+      return rt && /[^\x00-\x7F]/.test(rt);
+    });
+    if (hasTranslations) return translated;
+  }
   const live = await liveTestimonials(locale);
   if (live && live.length > 0) return live;
   if (snapshotTestimonials.length > 0) return snapshotTestimonials;
@@ -1043,6 +1086,11 @@ export async function getHomePage(locale?: string) {
 }
 
 export async function getAboutPage(locale?: string) {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) {
+    const translated = applyLocaleTranslations(snapshotAboutPage, locale);
+    if (translated.heroHeading && /[^\x00-\x7F]/.test(translated.heroHeading)) return translated;
+  }
   // Tier 1: Live Payload API
   const live = await liveAboutPage(locale);
   if (live && Object.keys(live).length > 0) {
@@ -1059,25 +1107,35 @@ export async function getAboutPage(locale?: string) {
     }
     return live;
   }
-  // Tier 2: JSON snapshot — use for all locales
+  // Tier 2: JSON snapshot
   if (snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) return snapshotAboutPage;
   return {};
 }
 
 export async function getContactPage(locale?: string) {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotContactPage && Object.keys(snapshotContactPage).length > 0) {
+    const translated = applyLocaleTranslations(snapshotContactPage, locale);
+    if (translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title)) return translated;
+  }
   // Tier 1: Live Payload API
   const live = await liveContactPage(locale);
   if (live && Object.keys(live).length > 0) return live;
-  // Tier 2: JSON snapshot — use for all locales
+  // Tier 2: JSON snapshot
   if (snapshotContactPage && Object.keys(snapshotContactPage).length > 0) return snapshotContactPage;
   return {};
 }
 
 export async function getToursPage(locale?: string) {
+  // For non-EN locales, prefer snapshot translations over Payload's English fallback
+  if (locale && locale !== 'en' && snapshotToursPage && Object.keys(snapshotToursPage).length > 0) {
+    const translated = applyLocaleTranslations(snapshotToursPage, locale);
+    if (translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title)) return translated;
+  }
   // Tier 1: Live Payload API
   const live = await liveToursPage(locale);
   if (live && Object.keys(live).length > 0) return live;
-  // Tier 2: JSON snapshot — use for all locales
+  // Tier 2: JSON snapshot
   if (snapshotToursPage && Object.keys(snapshotToursPage).length > 0) return snapshotToursPage;
   return {};
 }
@@ -1085,7 +1143,14 @@ export async function getToursPage(locale?: string) {
 export async function getStoriesPage(locale?: string) {
   const live = await liveStoriesPage(locale);
   if (live && Object.keys(live).length > 0) return live;
-  if ((!locale || locale === 'en') && snapshotStoriesPage && Object.keys(snapshotStoriesPage).length > 0) return snapshotStoriesPage;
+  if (snapshotStoriesPage && Object.keys(snapshotStoriesPage).length > 0) {
+    if (locale && locale !== 'en') {
+      const translated = applyLocaleTranslations(snapshotStoriesPage, locale);
+      const hasTranslations = translated.hero_title && /[^\x00-\x7F]/.test(translated.hero_title);
+      if (hasTranslations) return translated;
+    }
+    return snapshotStoriesPage;
+  }
   return {};
 }
 
