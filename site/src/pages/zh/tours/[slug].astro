@@ -371,7 +371,7 @@ const tourSchema = {
           <h2 class="font-bold font-heading text-default text-2xl mb-8 text-center">{t('tour.youMayAlsoEnjoy')}</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {sameCityTours.length > 0 ? sameCityTours.map((related: any) => (
-              <a href={`/tours/${related.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
+              <a href={`/zh/tours/${related.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
                 <div class="h-40 overflow-hidden relative">
                   {related.image && <img src={getImageUrl(related.image)} alt={related.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />}
                 </div>
