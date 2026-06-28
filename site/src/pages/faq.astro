@@ -2,8 +2,12 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { getFAQsByPage } from '~/lib/content';
 
+import { useTranslations } from '~/i18n/utils';
+
 const faqs = await getFAQsByPage('faq');
 
+
+const t = useTranslations('en');
 const metadata = {
   title: 'Frequently Asked Questions About Malaysian Food Tours',
   description: "Everything you need to know about Simply Enak's food tours in Kuala Lumpur and Penang. Dietary requirements, group sizes, pricing, cancellation policy, and more.",

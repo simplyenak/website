@@ -2,8 +2,12 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { getPageBySlug } from '~/lib/content';
 
+import { useTranslations } from '~/i18n/utils';
+
 const page = await getPageBySlug('404');
 const c = page?.content || {};
+
+const t = useTranslations('en');
 const metadata = {
   title: page?.metaTitle || 'Page Not Found',
   description: page?.metaDescription || "This page doesn't exist  -  but the best food in Malaysia does.",
@@ -23,11 +27,11 @@ const highlightIdx = headingLines.findIndex((l: string) => l.includes('Street Fo
         <span class="text-8xl md:text-9xl font-black font-heading text-primary/10 dark:text-primary/5 select-none">404</span>
       </div>
 
-      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-4">{c.eyebrow ?? "Lost? That's OK."}</p>
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-4">{c.eyebrow ?? "{t('common.lostHelp')}"}</p>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-default mb-6 leading-tight">
         {headingLines.map((line: string, i: number) => (
           i === highlightIdx ? (
-            <>{line.replace('Street Food', '<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">Street Food</span>')}<br /></>
+            <>{line.replace('{t('common.streetFood')}', '<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">{t('common.streetFood')}</span>')}<br /></>
           ) : (
             <>{line}<br /></>
           )
@@ -39,11 +43,11 @@ const highlightIdx = headingLines.findIndex((l: string) => l.includes('Street Fo
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
         <a href={c.ctaPrimary?.url || "/tours"} class="inline-flex items-center justify-center gap-2 bg-accent text-black font-bold px-8 py-4 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg">
-          {c.ctaPrimary?.text || "Browse Our Tours"}
+          {c.ctaPrimary?.text || "{t('404.browseTours')}"}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
         <a href={c.ctaSecondary?.url || "/"} class="inline-flex items-center justify-center gap-2 border-2 border-gray-200 dark:border-white/20 text-default font-bold px-8 py-4 rounded hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-sm">
-          {c.ctaSecondary?.text || "Go Home"}
+          {c.ctaSecondary?.text || "{t('common.goHome')}"}
         </a>
       </div>
 
@@ -52,11 +56,11 @@ const highlightIdx = headingLines.findIndex((l: string) => l.includes('Street Fo
         <div class="flex flex-wrap justify-center gap-3">
           {(c.quickLinks ?? [
             { text: 'All Tours', url: '/tours' },
-            { text: 'Private Tours', url: '/tours' },
-            { text: 'Tailored Experiences', url: '/tours' },
-            { text: 'Our Story', url: '/about' },
+            { text: '{t('common.privateTours')}', url: '/tours' },
+            { text: '{t('common.tailoredExperiences')}', url: '/tours' },
+            { text: '{t('common.ourStory')}', url: '/about' },
             { text: 'Contact', url: '/contact' },
-            { text: 'WhatsApp Us', url: 'https://wa.me/60172878929', accent: true },
+            { text: '{t('404.whatsapp')}', url: 'https://wa.me/60172878929', accent: true },
           ]).map((link: any, i: number) => (
             <>
               {i > 0 && <span class="text-muted/30">·</span>}

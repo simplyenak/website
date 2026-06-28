@@ -2,6 +2,8 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 
+import { useTranslations } from '~/i18n/utils';
+
 let pageData: any = {};
 try {
   pageData = (await import('~/data/content/directions-page.json')).default;

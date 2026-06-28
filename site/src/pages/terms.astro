@@ -2,7 +2,11 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { getLegalPage } from '~/lib/content';
 
+import { useTranslations } from '~/i18n/utils';
+
 const page = getLegalPage('terms-conditions');
+
+const t = useTranslations('en');
 const metadata = {
   title: page?.metaTitle || page?.headline || 'Terms & Conditions',
   description: page?.metaDescription || 'Terms and conditions for Simply Enak Food Experiences. Booking policies, cancellation terms, and participant requirements.',
@@ -17,7 +21,7 @@ const title = page?.headline || 'Terms & Conditions';
       <div class="flex items-center gap-1.5 text-xs text-muted">
         <a href="/" class="hover:text-primary transition-colors">Home</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        <span class="text-default font-semibold">Terms & Conditions</span>
+        <span class="text-default font-semibold">{t('terms.title')}</span>
       </div>
     </div>
   </nav>

@@ -2,6 +2,8 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 
+import { useTranslations } from '~/i18n/utils';
+
 let quizData: any = {};
 try {
   quizData = (await import('~/data/content/tour-quiz.json')).default;
@@ -40,7 +42,7 @@ const meta = {
       <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Find Your Tour</p>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
         <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
-          Find Your Perfect Food Tour
+          {t('tour_quiz.title')}
         </span>
         <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
           Answer a few quick questions and we'll match you with the perfect Malaysian food experience.
@@ -259,7 +261,7 @@ const meta = {
         html += '<div class="mb-8">';
         if (headline) {
           html += '<p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">YOUR RESULT</p>';
-          html += '<h2 class="text-2xl md:text-3xl font-bold font-heading mb-2">' + (headline.headline || 'Your Perfect Match') + '</h2>';
+          html += '<h2 class="text-2xl md:text-3xl font-bold font-heading mb-2">' + (headline.headline || '{t('tour_quiz.perfectMatch')}') + '</h2>';
           if (headline.subtext) {
             html += '<p class="text-muted text-sm max-w-md mx-auto">' + headline.subtext + '</p>';
           }
@@ -314,11 +316,11 @@ const meta = {
           '<div class="flex flex-wrap gap-4 justify-center">' +
             '<a href="/nl/tours" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3 rounded-lg hover:bg-accent/90 transition-colors">' +
               '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>' +
-              'Browse All Tours' +
+              '{t('tour_quiz.browseAll')}' +
             '</a>' +
             '<button type="button" id="quiz-restart" class="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-white/20 text-default font-semibold px-8 py-3 rounded-lg hover:border-accent transition-colors">' +
               '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>' +
-              'Take Quiz Again' +
+              '{t('tour_quiz.takeAgain')}' +
             '</button>' +
           '</div>';
 
