@@ -17,17 +17,17 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <ThankYou
-    title={d.title ?? "{t('thankyou.title')}"}
+    title={d.title ?? t('thankyou.title')}
     subtitle={d.subtitle ?? "Received"}
     paragraphs={d.paragraphs ?? ["Your submission has been received."]}
     nextSteps={d.nextSteps ?? [
-      { title: '{t('thankyou.checkEmail')}', description: 'A confirmation is on its way' },
-      { title: "{t('thankyou.weFollowUp')}", description: 'We respond within 24 hours' },
+      { title: t('thankyou.checkEmail'), description: 'A confirmation is on its way' },
+      { title: t('thankyou.weFollowUp'), description: 'We respond within 24 hours' },
     ]}
     ctaText={d.ctaText ?? "We'll be in touch soon!"}
     buttons={d.buttons ?? [
       { title: 'Browse Our Tours', href: '/tours' },
-      { title: '{t('thankyou.backHome')}', href: '/' },
+      { title: t('thankyou.backHome'), href: '/' },
     ]}
   />
 </Layout>
