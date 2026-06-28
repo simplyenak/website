@@ -25,7 +25,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       },
@@ -273,6 +273,141 @@
             }
           }
         }
+      },
+      {
+        "id": "6a41116a7faf8e4b3d61b343",
+        "image": {
+          "id": 298,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-23T02:58:23.514Z",
+          "createdAt": "2026-06-23T02:58:22.804Z",
+          "url": "/api/media/file/simply-enak-kuala-lumpur-food-vqwe.webp?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/simply-enak-tour-start-with-roti-boy-400x300.webp",
+          "filename": "simply-enak-kuala-lumpur-food-vqwe.webp",
+          "mimeType": "image/webp",
+          "filesize": 29992,
+          "width": 602,
+          "height": 402,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/simply-enak-tour-start-with-roti-boy-400x300.webp?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 16794,
+              "filename": "simply-enak-tour-start-with-roti-boy-400x300.webp"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4111767faf8e4b3d61b344",
+        "image": {
+          "id": 297,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-22T03:07:14.582Z",
+          "createdAt": "2026-06-22T03:07:13.849Z",
+          "url": "/api/media/file/dsc-2763.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/DSC_2763-400x300.jpg",
+          "filename": "dsc-2763.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 2214861,
+          "width": 4096,
+          "height": 2730,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/DSC_2763-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 31664,
+              "filename": "DSC_2763-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/DSC_2763-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 93526,
+              "filename": "DSC_2763-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/DSC_2763-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 158179,
+              "filename": "DSC_2763-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a41117e7faf8e4b3d61b345",
+        "image": {
+          "id": 245,
+          "usage": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-22T02:16:11.303Z",
+          "createdAt": "2026-06-22T02:16:10.561Z",
+          "url": "/api/media/file/simply-enak-kuala-lumpur-dish.jpg?prefix=payload-media",
+          "thumbnailURL": "/api/media/file/DSC_1867-400x300.jpg",
+          "filename": "simply-enak-kuala-lumpur-dish.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 2428680,
+          "width": 4096,
+          "height": 2730,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "/api/media/file/DSC_1867-400x300.jpg?prefix=payload-media",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 26852,
+              "filename": "DSC_1867-400x300.jpg"
+            },
+            "medium": {
+              "url": "/api/media/file/DSC_1867-800x600.jpg?prefix=payload-media",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 84002,
+              "filename": "DSC_1867-800x600.jpg"
+            },
+            "large": {
+              "url": "/api/media/file/DSC_1867-1200x800.jpg?prefix=payload-media",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 146791,
+              "filename": "DSC_1867-1200x800.jpg"
+            }
+          }
+        }
       }
     ],
     "whatsIncluded": [
@@ -408,9 +543,9 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-06-28T08:58:52.989Z",
+    "updatedAt": "2026-06-28T12:20:33.250Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
-    "_status": "draft",
+    "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
     "is_bookable": true,
     "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
@@ -429,7 +564,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       },
@@ -532,6 +667,21 @@
       },
       {
         "src": "/api/media/file/simply-enak-kuala-lumpur-landscape.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/simply-enak-kuala-lumpur-food-vqwe.webp?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/dsc-2763.jpg?prefix=payload-media",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "/api/media/file/simply-enak-kuala-lumpur-dish.jpg?prefix=payload-media",
         "alt": "",
         "caption": ""
       }
@@ -878,7 +1028,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -1216,7 +1366,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -1533,7 +1683,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -1856,7 +2006,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -2158,7 +2308,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -2496,7 +2646,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -2813,7 +2963,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
@@ -3136,7 +3286,7 @@
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
-        "updatedAt": "2026-06-19T14:41:27.332Z",
+        "updatedAt": "2026-06-28T12:21:48.552Z",
         "createdAt": "2026-05-19T08:33:25.703Z",
         "_status": "published"
       }
