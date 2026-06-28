@@ -243,6 +243,10 @@ def check_tour_data() -> dict:
     issues = []
     for t in data:
         slug = t.get("slug", "?")
+        # Skip draft tours — they're incomplete by design
+        status = t.get("status", t.get("_status", ""))
+        if status == "draft":
+            continue
         for field, label in required:
             val = t.get(field)
             if val is None or val == '' or (isinstance(val, (list, dict)) and len(val) == 0):
