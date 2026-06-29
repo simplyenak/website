@@ -41,6 +41,13 @@ const heroImgUrl = typeof heroImgRaw === 'object' && heroImgRaw !== null
   ? (heroImgRaw.url || heroImgRaw.src || '')
   : heroImgRaw;
 const heroImg = getImageUrl(heroImgUrl) || '';
+
+// Fallback: if CDN blocks the hero image (problematic chars), use first gallery image
+const isHeroBlocked = heroImg.includes('%20') || heroImg.includes('(') || heroImg.includes(')');
+const galleryImages = [...(Array.isArray(tour.gallery_images) ? tour.gallery_images : []), ...(Array.isArray(tour.galleryImages) ? tour.galleryImages : [])];
+const firstGalleryImg = galleryImages[0];
+const fallbackImg = firstGalleryImg ? getImageUrl(firstGalleryImg.src || firstGalleryImg.url || '') : '';
+const heroImgFinal = (isHeroBlocked && fallbackImg) ? fallbackImg : heroImg;
 const foods = tour.foods || [];
 const foodDescriptions = tour.foodDescriptions || {};
 const itinerary = tour.itinerary || [];
@@ -111,7 +118,7 @@ const tourSchema = {
   name: tour.name,
   description: tour.shortDesc || tour.tagline || '',
   url: `https://simplyenak.com/tours/${tour.slug}`,
-  image: heroImg || 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+  image: heroImgFinal || 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
   location: {
     '@type': 'Place',
     name: tour.location || 'Kuala Lumpur',
@@ -183,7 +190,7 @@ const tourSchema = {
     <div class="max-w-7xl mx-auto">
       <div class="md:grid md:grid-cols-2 md:min-h-[450px]">
         <div class="overflow-hidden relative h-72 md:h-full md:max-h-[500px]">
-          {heroImg && <img src={heroImg} alt={tour.tagline || tour.name} class="w-full h-full object-cover" />}
+          {heroImgFinal && <img src={heroImgFinal} alt={tour.tagline || tour.name} class="w-full h-full object-cover" />}
           <div class="absolute inset-0 bg-gradient-to-r from-black/60 hidden md:block to-transparent"></div>
         </div>
         <div class="flex justify-center flex-col bg-[#1a1a1a] md:p-10 p-8">
@@ -305,7 +312,7 @@ const tourSchema = {
                   })
                 : []),
               // Tier 3: Fallback to hero image
-              ...(heroImg ? [{ src: heroImg, alt: tour.name, caption: tour.tagline || tour.name }] : []),
+              ...(heroImgFinal ? [{ src: heroImgFinal, alt: tour.name, caption: tour.tagline || tour.name }] : []),
             ].filter(i => i.src)}
           />
         </section>
