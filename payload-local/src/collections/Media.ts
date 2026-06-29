@@ -1,18 +1,7 @@
 import type { CollectionConfig } from 'payload'
-import { S3Client, CopyObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3'
-
-const s3 = new S3Client({
-  credentials: {
-    accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
-    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
-  },
-  endpoint: process.env.S3_ENDPOINT || '',
-  region: process.env.S3_REGION || '',
-  forcePathStyle: true,
-})
+import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 const S3_BUCKET = process.env.S3_BUCKET || ''
-const CDN_DOMAIN = 'https://cdn.simplyenak.com'
 const PREFIX = 'payload-media'
 
 export const Media: CollectionConfig = {
@@ -25,26 +14,107 @@ export const Media: CollectionConfig = {
     description: '📸 Image and media library for all content',
   },
   fields: [
+    // ── SEO / ADA ──
     {
       name: 'alt',
       type: 'text',
-      required: false,
       admin: {
-        description: 'Alt text for accessibility',
+        description: 'Alt text for accessibility (SEO + ADA). Auto-filled from filename if left empty.',
       },
     },
     {
       name: 'caption',
       type: 'text',
       admin: {
-        description: 'Optional caption',
+        description: 'Optional caption — include photo credit here if needed.',
       },
     },
+    {
+      name: 'polaroidLabel',
+      type: 'text',
+      admin: {
+        description: 'Short label shown on the polaroid card (e.g., "Morning market"). Keep it brief — space is tight.',
+      },
+    },
+    {
+      name: 'credit',
+      type: 'text',
+      admin: {
+        description: 'Photographer name for attribution.',
+      },
+    },
+
+    // ── Taxonomy Relationships ──
+    {
+      name: 'location_ref',
+      type: 'relationship',
+      relationTo: 'locations',
+      hasMany: false,
+      admin: {
+        description: 'Which Simply Enak location does this image belong to? (e.g. Kuala Lumpur, Penang)',
+      },
+    },
+    {
+      name: 'neighbourhood_ref',
+      type: 'relationship',
+      relationTo: 'neighborhoods',
+      hasMany: true,
+      admin: {
+        description: 'Neighbourhoods shown in this image (e.g. Chinatown, Kampung Baru)',
+      },
+    },
+    {
+      name: 'food_ref',
+      type: 'relationship',
+      relationTo: 'food_items',
+      hasMany: true,
+      admin: {
+        description: 'Dishes / food items shown in this image',
+      },
+    },
+    {
+      name: 'dietary_ref',
+      type: 'relationship',
+      relationTo: 'dietary_options',
+      hasMany: true,
+      admin: {
+        description: 'Dietary options relevant to this image (Vegan, Halal, etc.)',
+      },
+    },
+    {
+      name: 'travel_type_ref',
+      type: 'relationship',
+      relationTo: 'travel_types',
+      hasMany: true,
+      admin: {
+        description: 'Travel types this image represents (Couples, Solo, Family, Foodie)',
+      },
+    },
+    {
+      name: 'specialty_ref',
+      type: 'relationship',
+      relationTo: 'specialty_experiences',
+      hasMany: true,
+      admin: {
+        description: 'Specialty experiences shown (Heritage, Street Food, Night Tour, Market)',
+      },
+    },
+    {
+      name: 'vendor_ref',
+      type: 'relationship',
+      relationTo: 'vendors',
+      hasMany: true,
+      admin: {
+        description: 'Vendors / hawkers shown in this image',
+      },
+    },
+
+    // ── Organisational ──
     {
       name: 'usage',
       type: 'text',
       admin: {
-        description: 'Where is this image used? (e.g., tours, stories, etc.)',
+        description: 'Where is this image used? (e.g., tours, stories, hero, gallery)',
       },
     },
     {
@@ -52,33 +122,92 @@ export const Media: CollectionConfig = {
       type: 'text',
       hasMany: true,
       admin: {
-        description: 'Tags for organizing and filtering media (e.g., vendor-name, tour-kl, hero, gallery)',
+        description: 'Free-form tags for filtering (photos, ambience, crowd, etc.)',
       },
     },
+
+    // ── Rename Tool ──
     {
       name: 'renameTo',
       type: 'text',
       admin: {
-        description: 'Rename file: enter new filename (e.g., "my-image.jpg") then save. The file on S3 will be renamed.',
+        description: 'Enter new filename (e.g., "clean-name.jpg") then Save. The file on S3 will be renamed, including all image sizes.',
       },
     },
   ],
   upload: {
     staticDir: 'media',
+    // Convert all uploads to WebP. Conservative quality — the srcset does
+    // the heavy lifting by sending smaller sizes to smaller screens.
+    formatOptions: {
+      format: 'webp',
+      options: { quality: 75 },
+    },
     imageSizes: [
-      { name: 'thumbnail', width: 400, height: 300, position: 'centre' },
-      { name: 'medium', width: 800, height: 600, position: 'centre' },
-      { name: 'large', width: 1200, height: 800, position: 'centre' },
+      {
+        name: 'thumbnail',
+        width: 400,
+        height: 300,
+        position: 'centre',
+        formatOptions: {
+          format: 'webp',
+          options: { quality: 65 },
+        },
+      },
+      {
+        name: 'medium',
+        width: 800,
+        height: 600,
+        position: 'centre',
+        formatOptions: {
+          format: 'webp',
+          options: { quality: 70 },
+        },
+      },
+      {
+        name: 'large',
+        width: 1200,
+        height: 800,
+        position: 'centre',
+        formatOptions: {
+          format: 'webp',
+          options: { quality: 72 },
+        },
+      },
     ],
     adminThumbnail: 'thumbnail',
     mimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'],
   },
   hooks: {
     beforeChange: [
+      // Auto-fill alt text from filename if empty
+      ({ data }: { data: Record<string, any> }) => {
+        if (!data?.alt && data?.filename) {
+          data.alt = data.filename
+            .replace(/\.[^.]+$/, '')
+            .replace(/[-_]+/g, ' ')
+            .replace(/\b\w/g, (c: string) => c.toUpperCase())
+            .trim()
+        }
+        return data
+      },
+      // Rename file on S3 if renameTo is set
       async ({ data, originalDoc, req }) => {
         const newName = data?.renameTo?.trim()
         if (!newName || !originalDoc?.filename) return data
         if (newName === originalDoc.filename) return data
+
+        // Lazy import — env vars not available at Docker build time
+        const { S3Client, CopyObjectCommand, DeleteObjectCommand } = await import('@aws-sdk/client-s3')
+        const s3 = new S3Client({
+          credentials: {
+            accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+            secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+          },
+          endpoint: process.env.S3_ENDPOINT || '',
+          region: process.env.S3_REGION || 'us-east-1',
+          forcePathStyle: true,
+        })
 
         const oldKey = `${PREFIX}/${originalDoc.filename}`
         const newKey = `${PREFIX}/${newName}`
@@ -92,26 +221,21 @@ export const Media: CollectionConfig = {
           }))
 
           // Copy all image sizes
-          for (const size of ['thumbnail', 'medium', 'large']) {
-            const oldSizeKey = `${PREFIX}/${originalDoc.filename.replace(/(\.\w+)$/, `-400x300$1`)}`
-            const newSizeKey = `${PREFIX}/${newName.replace(/(\.\w+)$/, `-400x300$1`)}`
-            // Only try if the size file likely exists (Payload names sizes as: filename-WxH.ext)
-            // The actual size suffix depends on the config: 400x300 for thumbnail, 800x600 for medium, 1200x800 for large
-            const sizeSuffixes: Record<string, string> = {
-              thumbnail: '400x300',
-              medium: '800x600',
-              large: '1200x800',
-            }
-            const suffix = sizeSuffixes[size]
-            const oldSizeKey2 = `${PREFIX}/${originalDoc.filename.replace(/(\.\w+)$/, `-${suffix}$1`)}`
-            const newSizeKey2 = `${PREFIX}/${newName.replace(/(\.\w+)$/, `-${suffix}$1`)}`
+          const sizeSuffixes: Record<string, string> = {
+            thumbnail: '400x300',
+            medium: '800x600',
+            large: '1200x800',
+          }
+          for (const suffix of Object.values(sizeSuffixes)) {
+            const oldSizeKey = `${PREFIX}/${originalDoc.filename.replace(/(\.\w+)$/, `-${suffix}$1`)}`
+            const newSizeKey = `${PREFIX}/${newName.replace(/(\.\w+)$/, `-${suffix}$1`)}`
             try {
               await s3.send(new CopyObjectCommand({
                 Bucket: S3_BUCKET,
-                CopySource: `/${S3_BUCKET}/${oldSizeKey2}`,
-                Key: newSizeKey2,
+                CopySource: `/${S3_BUCKET}/${oldSizeKey}`,
+                Key: newSizeKey,
               }))
-              await s3.send(new DeleteObjectCommand({ Bucket: S3_BUCKET, Key: oldSizeKey2 }))
+              await s3.send(new DeleteObjectCommand({ Bucket: S3_BUCKET, Key: oldSizeKey }))
             } catch { /* size file may not exist */ }
           }
 
@@ -120,9 +244,6 @@ export const Media: CollectionConfig = {
 
           // Update returned data with new filename
           data.filename = newName
-          data.url = `/api/media/file/${newName}?prefix=${PREFIX}`
-          data.thumbnailURL = `/api/media/file/${newName.replace(/(\.\w+)$/, '-400x300$1')}`
-          // Clear the renameTo field so it doesn't trigger again
           data.renameTo = ''
 
           req.payload.logger?.info?.('🗂️  File renamed on S3: ' + originalDoc.filename + ' → ' + newName)
@@ -131,6 +252,22 @@ export const Media: CollectionConfig = {
         }
 
         return data
+      },
+    ],
+    afterChange: [triggerStagingDeploy],
+    afterRead: [
+      ({ doc }) => {
+        // Payload's internal thumbnailURL is a relative path (/api/media/file/...)
+        // which reads from local disk. Since we use S3-only, the local file
+        // doesn't exist. Use the thumbnail size URL instead, which is already
+        // an S3 or CDN URL from the S3 storage plugin.
+        if (doc?.thumbnailURL && !doc.thumbnailURL.startsWith('http')) {
+          const thumb = doc.sizes?.thumbnail
+          if (thumb?.url) {
+            doc.thumbnailURL = thumb.url
+          }
+        }
+        return doc
       },
     ],
   },
