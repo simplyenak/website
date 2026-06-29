@@ -16,7 +16,7 @@ on:
         required: false
         default: 'Deploy site update'
   push:
-    branches: [main]
+    branches: [main, production]
     paths:
       - 'site/**'
       - 'eval/**'
@@ -68,12 +68,15 @@ jobs:
       - name: Determine project name
         id: project
         run: |
-          if [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "repository_dispatch" || "${{ inputs.target }}" == "staging" ]]; then
+          if [[ "${{ github.ref }}" == "refs/heads/production" ]]; then
+            echo "name=website" >> $GITHUB_OUTPUT
+            echo "branch=production" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "repository_dispatch" || "${{ inputs.target }}" == "staging" ]]; then
             echo "name=staging" >> $GITHUB_OUTPUT
             echo "branch=main" >> $GITHUB_OUTPUT
           else
             echo "name=website" >> $GITHUB_OUTPUT
-            echo "branch=main" >> $GITHUB_OUTPUT
+            echo "branch=production" >> $GITHUB_OUTPUT
           fi
 
       - name: Deploy to Cloudflare Pages
