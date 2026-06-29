@@ -72,7 +72,7 @@ jobs:
             echo "name=staging" >> $GITHUB_OUTPUT
             echo "branch=main" >> $GITHUB_OUTPUT
           else
-            echo "name=simplyenak-astrowind" >> $GITHUB_OUTPUT
+            echo "name=production" >> $GITHUB_OUTPUT
             echo "branch=main" >> $GITHUB_OUTPUT
           fi
 
