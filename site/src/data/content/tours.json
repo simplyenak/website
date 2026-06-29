@@ -20,7 +20,11 @@
     "foodItems": [],
     "tailoredAvailable": true,
     "tailoredNotes": null,
-    "heroImage": null,
+    "heroImage": {
+      "id": 237,
+      "alt": "Pudu Market, Kuala Lumpur's largest wet market",
+      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-market.jpg"
+    },
     "galleryImages": [],
     "whatsIncluded": [],
     "whatsExcluded": [],
@@ -1069,7 +1073,7 @@
     "duration": "3.5 hours",
     "durationMinutes": 210,
     "location": "Penang Road",
-    "meetingPoint": null,
+    "meetingPoint": "MYDIN, Penang Road (Jalan Penang)",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -2587,7 +2591,7 @@
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "Kuala Lumpur",
-    "meetingPoint": null,
+    "meetingPoint": "Hilton Garden Inn, Jalan Tuanku Abdul Rahman",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -3495,7 +3499,7 @@
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "Penang",
-    "meetingPoint": null,
+    "meetingPoint": "Masjid Kapitan Keling, George Town",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
