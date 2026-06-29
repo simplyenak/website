@@ -1263,9 +1263,12 @@ export function getImageUrl(url: any) {
   // Payload API media path → rewrite to CDN with payload-media prefix
   // e.g. /api/media/file/filename.jpg?prefix=payload-media → https://cdn.simplyenak.com/payload-media/filename.jpg
   if (url.startsWith('/api/media/') || url.includes('prefix=payload-media')) {
-    // Extract filename from URL (after last /, before ?)
-    const filename = url.split('/').pop()?.split('?')[0];
-    if (filename) return `${CDN_DOMAIN}/${CDN_PREFIX}/${filename}`;
+    // Extract filename from URL (after last /, before ?), then URL-decode
+    const raw = url.split('/').pop()?.split('?')[0];
+    if (raw) {
+      const filename = decodeURIComponent(raw);
+      return `${CDN_DOMAIN}/${CDN_PREFIX}/${filename}`;
+    }
   }
 
   // Relative path starting with / → prepend CDN domain
