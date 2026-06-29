@@ -59,7 +59,8 @@ export const Media: CollectionConfig = {
       name: 'renameTo',
       type: 'text',
       admin: {
-        description: 'Rename file: enter new filename (e.g., "my-image.jpg") then save. The file on S3 will be renamed.',
+        description: 'Enter new filename (e.g., "clean-name.jpg") then Save. The file on S3 will be renamed.',
+        position: 'sidebar',
       },
     },
   ],
