@@ -1271,11 +1271,14 @@ export function getImageUrl(url: any) {
     }
   }
 
+  // Direct S3 URL → rewrite to CDN with payload-media prefix
+  if (url.includes('s3.nl-ams.scw.cloud/se-website-images')) {
+    const filename = url.split('/').pop();
+    return filename ? `${CDN_DOMAIN}/${CDN_PREFIX}/${filename}` : url;
+  }
+
   // Relative path starting with / → prepend CDN domain
   if (url.startsWith('/')) return `${CDN_DOMAIN}${url}`;
-
-  // Other http/https (e.g. external URLs) — pass through
-  if (url.startsWith('http://') || url.startsWith('https://')) return url;
 
   // Anything else — assume relative, prepend CDN
   return `${CDN_DOMAIN}/${url}`;
