@@ -22,9 +22,9 @@
     "tailoredNotes": null,
     "heroImage": null,
     "galleryImages": [],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
-    "highlights": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
+    "highlights": [],
     "ticketingHubId": null,
     "isBookable": false,
     "bookingUrl": null,
@@ -38,15 +38,16 @@
     "walkingDistance": null,
     "directionsHtml": null,
     "itinerary": [],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": false,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -100,7 +101,7 @@
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "KL",
-    "meetingPoint": "Pasar Seni MRT Station, Exit B, Level G. Meet at the ticketing counters.",
+    "meetingPoint": "KL: Pasar Seni MRT",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -110,13 +111,13 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       },
       {
         "id": 11,
@@ -124,107 +125,95 @@
         "slug": "pescatarian",
         "icon": "🐟",
         "color": "#06b6d4",
-        "description": "No meat or poultry, but fish and seafood are allowed.",
+        "description": "Fish and seafood but no meat",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-20T00:09:08.106Z",
-        "createdAt": "2026-05-19T08:33:29.735Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:29.735Z"
       }
     ],
     "travelTypes": [
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 1,
-          "name": "Couples",
-          "slug": "couples",
-          "icon": "💑",
-          "color": "#ec4899",
-          "description": "Romantic food experiences for two",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:56.093Z",
-          "createdAt": "2026-05-19T08:33:21.708Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Couples",
+        "slug": "couples",
+        "icon": "💑",
+        "color": "#ec4899",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:56.093Z",
+        "createdAt": "2026-05-19T08:33:21.708Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 4,
-          "name": "Solo Traveler",
-          "slug": "solo",
-          "icon": "🎒",
-          "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:09.797Z",
-          "createdAt": "2026-05-19T08:33:23.425Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Solo",
+        "slug": "solo",
+        "icon": "🎒",
+        "color": "#8b5cf6",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:09.797Z",
+        "createdAt": "2026-05-19T08:33:23.425Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 3,
-          "name": "Foodie",
-          "slug": "foodie",
-          "icon": "🍜",
-          "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:22.225Z",
-          "createdAt": "2026-05-19T08:33:22.863Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Foodie",
+        "slug": "foodie",
+        "icon": "🍜",
+        "color": "#ef4444",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:22.225Z",
+        "createdAt": "2026-05-19T08:33:22.863Z",
+        "_status": "published"
       }
     ],
     "specialtyExperiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 3,
-          "name": "Night Tour",
-          "slug": "night-tour",
-          "icon": "🌙",
-          "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:45:44.828Z",
-          "createdAt": "2026-05-19T08:33:32.030Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Night tour",
+        "slug": "night-tour",
+        "icon": "🌙",
+        "color": "#6366f1",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:45:44.828Z",
+        "createdAt": "2026-05-19T08:33:32.030Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "foodItems": [],
@@ -232,11 +221,15 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 297,
+      "alt": "Dsc 2763",
+      "caption": null,
       "usage": null,
+      "tags": [],
+      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-22T03:07:14.582Z",
       "createdAt": "2026-06-22T03:07:13.849Z",
-      "url": "/api/media/file/dsc-2763.jpg?prefix=payload-media",
+      "url": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
       "thumbnailURL": "/api/media/file/DSC_2763-400x300.jpg",
       "filename": "dsc-2763.jpg",
       "mimeType": "image/jpeg",
@@ -247,7 +240,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/DSC_2763-400x300.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -255,7 +248,7 @@
           "filename": "DSC_2763-400x300.jpg"
         },
         "medium": {
-          "url": "/api/media/file/DSC_2763-800x600.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -263,7 +256,7 @@
           "filename": "DSC_2763-800x600.jpg"
         },
         "large": {
-          "url": "/api/media/file/DSC_2763-1200x800.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -277,11 +270,15 @@
         "id": "6a350dcfea16cabe39498bc9",
         "image": {
           "id": 300,
+          "alt": "Tasting Curry Puff Secrets of KL Tour - Simply Enak Kuala Lumpur",
+          "caption": "Tasting Curry Puff on the Secrets of KL Tour with Simply Enak",
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-23T03:33:06.107Z",
           "createdAt": "2026-06-23T03:32:07.129Z",
-          "url": "/api/media/file/simply-enak-kuala-lumpur-food-m0li.webp?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
           "thumbnailURL": "/api/media/file/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
           "filename": "simply-enak-kuala-lumpur-food-m0li.webp",
           "mimeType": "image/webp",
@@ -292,7 +289,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -322,11 +319,15 @@
         "id": "6a39fe08916f8b921fafc4a2",
         "image": {
           "id": 249,
+          "alt": "Simply Enak Kuala Lumpur Landscape",
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-22T02:16:15.393Z",
           "createdAt": "2026-06-22T02:16:14.688Z",
-          "url": "/api/media/file/simply-enak-kuala-lumpur-landscape.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-landscape.jpg",
           "thumbnailURL": "/api/media/file/DSC_2380-400x300.jpg",
           "filename": "simply-enak-kuala-lumpur-landscape.jpg",
           "mimeType": "image/jpeg",
@@ -337,7 +338,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/DSC_2380-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_2380-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -345,7 +346,7 @@
               "filename": "DSC_2380-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/DSC_2380-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_2380-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -353,7 +354,7 @@
               "filename": "DSC_2380-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/DSC_2380-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_2380-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -367,11 +368,15 @@
         "id": "6a41116a7faf8e4b3d61b343",
         "image": {
           "id": 298,
+          "alt": "Secrets of KL tour starts with a delicious Roti Boy",
+          "caption": "Secrets of KL tour starts with a delicious Roti Boy",
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-23T02:58:23.514Z",
           "createdAt": "2026-06-23T02:58:22.804Z",
-          "url": "/api/media/file/simply-enak-kuala-lumpur-food-vqwe.webp?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
           "thumbnailURL": "/api/media/file/simply-enak-tour-start-with-roti-boy-400x300.webp",
           "filename": "simply-enak-kuala-lumpur-food-vqwe.webp",
           "mimeType": "image/webp",
@@ -382,7 +387,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/simply-enak-tour-start-with-roti-boy-400x300.webp?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -412,11 +417,15 @@
         "id": "6a4111767faf8e4b3d61b344",
         "image": {
           "id": 297,
+          "alt": "Dsc 2763",
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-22T03:07:14.582Z",
           "createdAt": "2026-06-22T03:07:13.849Z",
-          "url": "/api/media/file/dsc-2763.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
           "thumbnailURL": "/api/media/file/DSC_2763-400x300.jpg",
           "filename": "dsc-2763.jpg",
           "mimeType": "image/jpeg",
@@ -427,7 +436,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/DSC_2763-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -435,7 +444,7 @@
               "filename": "DSC_2763-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/DSC_2763-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -443,7 +452,7 @@
               "filename": "DSC_2763-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/DSC_2763-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -457,11 +466,15 @@
         "id": "6a41117e7faf8e4b3d61b345",
         "image": {
           "id": 245,
+          "alt": "Simply Enak Kuala Lumpur Dish",
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-22T02:16:11.303Z",
           "createdAt": "2026-06-22T02:16:10.561Z",
-          "url": "/api/media/file/simply-enak-kuala-lumpur-dish.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-dish.jpg",
           "thumbnailURL": "/api/media/file/DSC_1867-400x300.jpg",
           "filename": "simply-enak-kuala-lumpur-dish.jpg",
           "mimeType": "image/jpeg",
@@ -472,7 +485,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/DSC_1867-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_1867-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -480,7 +493,7 @@
               "filename": "DSC_1867-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/DSC_1867-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_1867-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -488,7 +501,7 @@
               "filename": "DSC_1867-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/DSC_1867-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_1867-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -501,56 +514,56 @@
     ],
     "whatsIncluded": [
       {
-        "item": "Expert local guide",
-        "id": "6a321188055fbe0001981de5"
+        "id": "6a321188055fbe0001981de5",
+        "item": "Expert local guide"
       },
       {
-        "item": "Small group experience (max 9)",
-        "id": "6a321188055fbe0001981de6"
+        "id": "6a321188055fbe0001981de6",
+        "item": "Small group experience (max 9)"
       },
       {
-        "item": "Hidden speakeasy bar access",
-        "id": "6a321188055fbe0001981de7"
+        "id": "6a321188055fbe0001981de7",
+        "item": "Hidden speakeasy bar access"
       },
       {
-        "item": "Detailed meeting point instructions",
-        "id": "6a321188055fbe0001981de8"
+        "id": "6a321188055fbe0001981de8",
+        "item": "Detailed meeting point instructions"
       }
     ],
     "whatsExcluded": [
       {
-        "item": "Transportation to meeting point",
-        "id": "6a321188055fbe0001981de9"
+        "id": "6a321188055fbe0001981de9",
+        "item": "Transportation to meeting point"
       },
       {
-        "item": "Additional drinks beyond included cocktail / alcoholic drink",
-        "id": "6a321188055fbe0001981dea"
+        "id": "6a321188055fbe0001981dea",
+        "item": "Additional drinks beyond included cocktail / alcoholic drink"
       },
       {
-        "item": "Personal purchases",
-        "id": "6a321188055fbe0001981deb"
+        "id": "6a321188055fbe0001981deb",
+        "item": "Personal purchases"
       }
     ],
     "highlights": [
       {
-        "highlight": "Hidden speakeasy bars",
-        "id": "6a2b8118396ee2000167d636"
+        "id": "6a2b8118396ee2000167d636",
+        "highlight": "Hidden speakeasy bars"
       },
       {
-        "highlight": "Chocolate tasting",
-        "id": "6a2b8118396ee2000167d637"
+        "id": "6a2b8118396ee2000167d637",
+        "highlight": "Chocolate tasting"
       },
       {
-        "highlight": "Forbidden tales of old KL",
-        "id": "6a2b8118396ee2000167d638"
+        "id": "6a2b8118396ee2000167d638",
+        "highlight": "Forbidden tales of old KL"
       },
       {
-        "highlight": "Street art at night",
-        "id": "6a2b8118396ee2000167d639"
+        "id": "6a2b8118396ee2000167d639",
+        "highlight": "Street art at night"
       },
       {
-        "highlight": "Signature craft cocktails",
-        "id": "6a2b8118396ee2000167d63a"
+        "id": "6a2b8118396ee2000167d63a",
+        "highlight": "Signature craft cocktails"
       }
     ],
     "ticketingHubId": "148305db-44f6-4e6b-b8ec-dedfa9154716",
@@ -558,7 +571,7 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "24-hours in advance",
     "tourFrequency": "Daily",
     "startTimes": [
       {
@@ -572,44 +585,44 @@
     "directionsHtml": null,
     "itinerary": [
       {
+        "id": "it_5_0",
         "step": 1,
         "title": "Meet at Pasar Seni MRT",
         "description": "Meet your guide at Pasar Seni MRT Station. We'll start with an introduction to KL's street art scene before exploring the nightlife.\n\nPasar Seni (Central Market) is the heart of KL's arts district. From here, we'll explore the backstreets where KL's street art was born.",
-        "duration": null,
-        "id": "it_5_0"
+        "duration": null
       },
       {
+        "id": "it_5_1",
         "step": 2,
         "title": "Street Art in Chinatown",
         "description": "Discover hidden street art murals in Chinatown's backstreets. Learn about the artists and the stories behind each mural.\n\nTastings: Local street snacks\n\nKL's street art scene exploded after 2010, when Lithuanian artist Ernest Zacharevic created murals in Georgetown. KL's artists followed suit, transforming Chinatown's backstreets.",
-        "duration": null,
-        "id": "it_5_1"
+        "duration": null
       },
       {
+        "id": "it_5_2",
         "step": 3,
         "title": "Rooftop Sunset Drinks",
         "description": "Enjoy sunset drinks at a hidden rooftop bar with panoramic views of KL's skyline. Learn about the city's transformation from mining camp to metropolis.\n\nTastings: Welcome cocktail, Local appetizers\n\nKL's rooftop bar scene is relatively new — most opened in the last 10 years. This one offers the best view of Merdeka 118, Southeast Asia's tallest building.",
-        "duration": null,
-        "id": "it_5_2"
+        "duration": null
       },
       {
+        "id": "it_5_3",
         "step": 4,
         "title": "Speakeasy Cocktail Experience",
         "description": "Discover a hidden speakeasy bar behind an unmarked door. Learn about KL's growing craft cocktail scene and the bartenders pushing boundaries.\n\nTastings: Signature craft cocktail, Bar snacks\n\nKL's speakeasy scene started around 2015, when bartenders began hiding bars behind bookshelves, phone booths, and unmarked doors. This one is ranked among Asia's 50 best bars.",
-        "duration": null,
-        "id": "it_5_3"
+        "duration": null
       },
       {
+        "id": "it_5_4",
         "step": 5,
         "title": "Late Night Hawker Supper",
         "description": "End with a late-night hawker supper at a stall that only opens after dark. This is where KL's nightlife crowd comes to refuel.\n\nTastings: Char kway teow, Satay, Fresh sugarcane juice\n\nLate-night hawker stalls are KL's best-kept secret. They serve the night crowd — taxi drivers, bar staff, and party-goers looking for authentic food after midnight.",
-        "duration": null,
-        "id": "it_5_4"
+        "duration": null
       }
     ],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [
       {
         "id": "6a351021c27e6480a3614964",
@@ -619,8 +632,9 @@
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
-    "heroImageAlt": null,
+    "heroImageAlt": "Nightlife cocktail bar in Kuala Lumpur with creative drinks and city lights",
     "featured": false,
+    "showInMenu": true,
     "popular": true,
     "new": false,
     "badgeLabel": null,
@@ -649,13 +663,13 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       },
       {
         "id": 11,
@@ -663,60 +677,54 @@
         "slug": "pescatarian",
         "icon": "🐟",
         "color": "#06b6d4",
-        "description": "No meat or poultry, but fish and seafood are allowed.",
+        "description": "Fish and seafood but no meat",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-20T00:09:08.106Z",
-        "createdAt": "2026-05-19T08:33:29.735Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:29.735Z"
       }
     ],
     "specialty_experiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 3,
-          "name": "Night Tour",
-          "slug": "night-tour",
-          "icon": "🌙",
-          "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:45:44.828Z",
-          "createdAt": "2026-05-19T08:33:32.030Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Night tour",
+        "slug": "night-tour",
+        "icon": "🌙",
+        "color": "#6366f1",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:45:44.828Z",
+        "createdAt": "2026-05-19T08:33:32.030Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "whats_included": [
@@ -730,7 +738,7 @@
       "Additional drinks beyond included cocktail / alcoholic drink",
       "Personal purchases"
     ],
-    "cancellation_policy": null,
+    "cancellation_policy": "24-hours in advance",
     "tour_frequency": "Daily",
     "start_times": [
       "4:00 PM"
@@ -747,31 +755,31 @@
     "segment_tags": [],
     "promo_video_url": null,
     "gallery_image_alts": [],
-    "hero_image_alt": null,
+    "hero_image_alt": "Nightlife cocktail bar in Kuala Lumpur with creative drinks and city lights",
     "gallery_images": [
       {
-        "src": "/api/media/file/simply-enak-kuala-lumpur-food-m0li.webp?prefix=payload-media",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
+        "alt": "Tasting Curry Puff Secrets of KL Tour - Simply Enak Kuala Lumpur",
         "caption": ""
       },
       {
-        "src": "/api/media/file/simply-enak-kuala-lumpur-landscape.jpg?prefix=payload-media",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-landscape.jpg",
+        "alt": "Simply Enak Kuala Lumpur Landscape",
         "caption": ""
       },
       {
-        "src": "/api/media/file/simply-enak-kuala-lumpur-food-vqwe.webp?prefix=payload-media",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
+        "alt": "Secrets of KL tour starts with a delicious Roti Boy",
         "caption": ""
       },
       {
-        "src": "/api/media/file/dsc-2763.jpg?prefix=payload-media",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
+        "alt": "Dsc 2763",
         "caption": ""
       },
       {
-        "src": "/api/media/file/simply-enak-kuala-lumpur-dish.jpg?prefix=payload-media",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-dish.jpg",
+        "alt": "Simply Enak Kuala Lumpur Dish",
         "caption": ""
       }
     ],
@@ -1061,7 +1069,7 @@
     "duration": "3.5 hours",
     "durationMinutes": 210,
     "location": "Penang Road",
-    "meetingPoint": "George Town - Gurney Drive Hawker Centre main entrance along Persiaran Gurney.",
+    "meetingPoint": "Penang Road: MYDIN Emporium",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -1071,13 +1079,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -1085,13 +1093,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -1099,13 +1107,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -1113,137 +1121,121 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "travelTypes": [
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 2,
-          "name": "Family-Friendly",
-          "slug": "family",
-          "icon": "👨‍👩‍👧‍👦",
-          "color": "#f59e0b",
-          "description": "Tours suitable for all ages",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:44.060Z",
-          "createdAt": "2026-05-19T08:33:22.293Z",
-          "_status": "published"
-        }
+        "id": 2,
+        "name": "Family",
+        "slug": "family",
+        "icon": "👨‍👩‍👧‍👦",
+        "color": "#f59e0b",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:44.060Z",
+        "createdAt": "2026-05-19T08:33:22.293Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 1,
-          "name": "Couples",
-          "slug": "couples",
-          "icon": "💑",
-          "color": "#ec4899",
-          "description": "Romantic food experiences for two",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:56.093Z",
-          "createdAt": "2026-05-19T08:33:21.708Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Couples",
+        "slug": "couples",
+        "icon": "💑",
+        "color": "#ec4899",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:56.093Z",
+        "createdAt": "2026-05-19T08:33:21.708Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 4,
-          "name": "Solo Traveler",
-          "slug": "solo",
-          "icon": "🎒",
-          "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:09.797Z",
-          "createdAt": "2026-05-19T08:33:23.425Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Solo",
+        "slug": "solo",
+        "icon": "🎒",
+        "color": "#8b5cf6",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:09.797Z",
+        "createdAt": "2026-05-19T08:33:23.425Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 3,
-          "name": "Foodie",
-          "slug": "foodie",
-          "icon": "🍜",
-          "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:22.225Z",
-          "createdAt": "2026-05-19T08:33:22.863Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Foodie",
+        "slug": "foodie",
+        "icon": "🍜",
+        "color": "#ef4444",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:22.225Z",
+        "createdAt": "2026-05-19T08:33:22.863Z",
+        "_status": "published"
       }
     ],
     "specialtyExperiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 2,
-          "name": "Market Tour",
-          "slug": "market-tour",
-          "icon": "🏪",
-          "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:14.340Z",
-          "createdAt": "2026-05-19T08:33:31.461Z",
-          "_status": "published"
-        }
+        "id": 2,
+        "name": "Market tour",
+        "slug": "market-tour",
+        "icon": "🏪",
+        "color": "#22c55e",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:14.340Z",
+        "createdAt": "2026-05-19T08:33:31.461Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "foodItems": [],
@@ -1251,11 +1243,15 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 320,
+      "alt": null,
+      "caption": null,
       "usage": null,
+      "tags": [],
+      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-28T13:39:12.115Z",
       "createdAt": "2026-06-28T13:39:11.630Z",
-      "url": "/api/media/file/Penang004.jpg?prefix=payload-media",
+      "url": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
       "thumbnailURL": "/api/media/file/Penang004-400x300.jpg",
       "filename": "Penang004.jpg",
       "mimeType": "image/jpeg",
@@ -1266,7 +1262,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/Penang004-400x300.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -1274,7 +1270,7 @@
           "filename": "Penang004-400x300.jpg"
         },
         "medium": {
-          "url": "/api/media/file/Penang004-800x600.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Penang004-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -1282,7 +1278,7 @@
           "filename": "Penang004-800x600.jpg"
         },
         "large": {
-          "url": "/api/media/file/Penang004-1200x800.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Penang004-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -1296,11 +1292,15 @@
         "id": "6a4126d97faf8e4b3d61b347",
         "image": {
           "id": 333,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:24.388Z",
           "createdAt": "2026-06-28T13:39:24.008Z",
-          "url": "/api/media/file/PXL_20231121_001919164.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164.jpg",
           "thumbnailURL": "/api/media/file/PXL_20231121_001919164-400x300.jpg",
           "filename": "PXL_20231121_001919164.jpg",
           "mimeType": "image/jpeg",
@@ -1311,7 +1311,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/PXL_20231121_001919164-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1319,7 +1319,7 @@
               "filename": "PXL_20231121_001919164-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/PXL_20231121_001919164-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -1327,7 +1327,7 @@
               "filename": "PXL_20231121_001919164-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/PXL_20231121_001919164-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1341,11 +1341,15 @@
         "id": "6a4126ea7faf8e4b3d61b348",
         "image": {
           "id": 324,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:15.573Z",
           "createdAt": "2026-06-28T13:39:14.369Z",
-          "url": "/api/media/file/Penang008.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Penang008.jpg",
           "thumbnailURL": "/api/media/file/Penang008-400x300.jpg",
           "filename": "Penang008.jpg",
           "mimeType": "image/jpeg",
@@ -1356,7 +1360,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/Penang008-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang008-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1364,7 +1368,7 @@
               "filename": "Penang008-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/Penang008-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang008-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -1372,7 +1376,7 @@
               "filename": "Penang008-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/Penang008-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang008-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1386,11 +1390,15 @@
         "id": "6a4127117faf8e4b3d61b349",
         "image": {
           "id": 320,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:12.115Z",
           "createdAt": "2026-06-28T13:39:11.630Z",
-          "url": "/api/media/file/Penang004.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
           "thumbnailURL": "/api/media/file/Penang004-400x300.jpg",
           "filename": "Penang004.jpg",
           "mimeType": "image/jpeg",
@@ -1401,7 +1409,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/Penang004-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1409,7 +1417,7 @@
               "filename": "Penang004-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/Penang004-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang004-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -1417,7 +1425,7 @@
               "filename": "Penang004-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/Penang004-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang004-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1431,11 +1439,15 @@
         "id": "6a4127207faf8e4b3d61b34a",
         "image": {
           "id": 327,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:18.590Z",
           "createdAt": "2026-06-28T13:39:17.569Z",
-          "url": "/api/media/file/pl1TEZ0db40.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40.jpg",
           "thumbnailURL": "/api/media/file/pl1TEZ0db40-400x300.jpg",
           "filename": "pl1TEZ0db40.jpg",
           "mimeType": "image/jpeg",
@@ -1446,7 +1458,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/pl1TEZ0db40-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1476,11 +1488,15 @@
         "id": "6a4127327faf8e4b3d61b34b",
         "image": {
           "id": 317,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:09.338Z",
           "createdAt": "2026-06-28T13:39:09.104Z",
-          "url": "/api/media/file/Penang001.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Penang001.jpg",
           "thumbnailURL": "/api/media/file/Penang001-400x300.jpg",
           "filename": "Penang001.jpg",
           "mimeType": "image/jpeg",
@@ -1491,7 +1507,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/Penang001-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang001-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1499,7 +1515,7 @@
               "filename": "Penang001-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/Penang001-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang001-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -1507,7 +1523,7 @@
               "filename": "Penang001-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/Penang001-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Penang001-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1518,28 +1534,28 @@
         }
       }
     ],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Chowrasta Market - feeding Georgetown since the 1890s",
-        "id": "406"
+        "id": "406",
+        "highlight": "Chowrasta Market - feeding Georgetown since the 1890s"
       },
       {
-        "highlight": "Watch popiah skins handcrafted by a master with 50 years of practice",
-        "id": "407"
+        "id": "407",
+        "highlight": "Watch popiah skins handcrafted by a master with 50 years of practice"
       },
       {
-        "highlight": "Legendary Asam Laksa - perfectly balanced sweet, sour and savoury",
-        "id": "408"
+        "id": "408",
+        "highlight": "Legendary Asam Laksa - perfectly balanced sweet, sour and savoury"
       },
       {
-        "highlight": "Peranakan Nyonya kueh at Michelin-listed Moh Teng Pheow",
-        "id": "409"
+        "id": "409",
+        "highlight": "Peranakan Nyonya kueh at Michelin-listed Moh Teng Pheow"
       },
       {
-        "highlight": "Harmony Street - temples, mosques and churches side by side",
-        "id": "410"
+        "id": "410",
+        "highlight": "Harmony Street - temples, mosques and churches side by side"
       }
     ],
     "ticketingHubId": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -1547,7 +1563,7 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 10,
@@ -1556,57 +1572,58 @@
     "directionsHtml": null,
     "itinerary": [
       {
+        "id": "194",
         "step": 0,
         "title": "09:00 AM - Meet at MYDIN, Penang Road",
         "description": "Start at the iconic emporium on Penang Road.",
-        "duration": null,
-        "id": "194"
+        "duration": null
       },
       {
+        "id": "195",
         "step": 1,
         "title": "09:15 AM - Chowrasta Market",
         "description": "Explore Georgetown's oldest market.",
-        "duration": null,
-        "id": "195"
+        "duration": null
       },
       {
+        "id": "196",
         "step": 2,
         "title": "10:00 AM - Kopitiam & Popiah Demonstration",
         "description": "Try local drinks and watch popiah being handcrafted.",
-        "duration": null,
-        "id": "196"
+        "duration": null
       },
       {
+        "id": "197",
         "step": 3,
         "title": "10:45 AM - Asam Laksa & Heritage Walk",
         "description": "Taste legendary Asam Laksa.",
-        "duration": null,
-        "id": "197"
+        "duration": null
       },
       {
+        "id": "198",
         "step": 4,
         "title": "11:30 AM - Peranakan Nyonya Koay",
         "description": "Discover kueh at Moh Teng Pheow.",
-        "duration": null,
-        "id": "198"
+        "duration": null
       },
       {
+        "id": "199",
         "step": 5,
         "title": "12:15 PM - Durian Dodol & Farewell",
         "description": "End with durian dodol and street art.",
-        "duration": null,
-        "id": "199"
+        "duration": null
       }
     ],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -1635,13 +1652,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -1649,13 +1666,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -1663,13 +1680,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -1677,80 +1694,72 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "specialty_experiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 2,
-          "name": "Market Tour",
-          "slug": "market-tour",
-          "icon": "🏪",
-          "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:14.340Z",
-          "createdAt": "2026-05-19T08:33:31.461Z",
-          "_status": "published"
-        }
+        "id": 2,
+        "name": "Market tour",
+        "slug": "market-tour",
+        "icon": "🏪",
+        "color": "#22c55e",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:14.340Z",
+        "createdAt": "2026-05-19T08:33:31.461Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 10,
@@ -1766,27 +1775,27 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "/api/media/file/PXL_20231121_001919164.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/Penang008.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/Penang008.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/Penang004.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/pl1TEZ0db40.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/Penang001.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/Penang001.jpg",
         "alt": "",
         "caption": ""
       }
@@ -1968,7 +1977,7 @@
     "duration": "3.5 hours",
     "durationMinutes": 210,
     "location": "KL",
-    "meetingPoint": "Petaling Street Market arch entrance (Jalan Hang Kasturi side, opposite Central Market).",
+    "meetingPoint": "KL: Pasar Seni LRT Station",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -1978,13 +1987,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -1992,13 +2001,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -2006,13 +2015,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -2020,122 +2029,108 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "travelTypes": [
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 2,
-          "name": "Family-Friendly",
-          "slug": "family",
-          "icon": "👨‍👩‍👧‍👦",
-          "color": "#f59e0b",
-          "description": "Tours suitable for all ages",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:44.060Z",
-          "createdAt": "2026-05-19T08:33:22.293Z",
-          "_status": "published"
-        }
+        "id": 2,
+        "name": "Family",
+        "slug": "family",
+        "icon": "👨‍👩‍👧‍👦",
+        "color": "#f59e0b",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:44.060Z",
+        "createdAt": "2026-05-19T08:33:22.293Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 1,
-          "name": "Couples",
-          "slug": "couples",
-          "icon": "💑",
-          "color": "#ec4899",
-          "description": "Romantic food experiences for two",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:56.093Z",
-          "createdAt": "2026-05-19T08:33:21.708Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Couples",
+        "slug": "couples",
+        "icon": "💑",
+        "color": "#ec4899",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:56.093Z",
+        "createdAt": "2026-05-19T08:33:21.708Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 4,
-          "name": "Solo Traveler",
-          "slug": "solo",
-          "icon": "🎒",
-          "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:09.797Z",
-          "createdAt": "2026-05-19T08:33:23.425Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Solo",
+        "slug": "solo",
+        "icon": "🎒",
+        "color": "#8b5cf6",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:09.797Z",
+        "createdAt": "2026-05-19T08:33:23.425Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 3,
-          "name": "Foodie",
-          "slug": "foodie",
-          "icon": "🍜",
-          "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:22.225Z",
-          "createdAt": "2026-05-19T08:33:22.863Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Foodie",
+        "slug": "foodie",
+        "icon": "🍜",
+        "color": "#ef4444",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:22.225Z",
+        "createdAt": "2026-05-19T08:33:22.863Z",
+        "_status": "published"
       }
     ],
     "specialtyExperiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "foodItems": [],
@@ -2143,11 +2138,15 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 4,
+      "alt": null,
+      "caption": null,
       "usage": null,
+      "tags": [],
+      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-05-19T09:59:42.545Z",
       "createdAt": "2026-05-19T09:59:41.726Z",
-      "url": "/api/media/file/kuala_lumpur_street_food_cd4fad4122.jpg?prefix=payload-media",
+      "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122.jpg",
       "thumbnailURL": "/api/media/file/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
       "filename": "kuala_lumpur_street_food_cd4fad4122.jpg",
       "mimeType": "image/jpeg",
@@ -2158,7 +2157,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/kuala_lumpur_street_food_cd4fad4122-400x300.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -2166,7 +2165,7 @@
           "filename": "kuala_lumpur_street_food_cd4fad4122-400x300.jpg"
         },
         "medium": {
-          "url": "/api/media/file/kuala_lumpur_street_food_cd4fad4122-800x600.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -2174,7 +2173,7 @@
           "filename": "kuala_lumpur_street_food_cd4fad4122-800x600.jpg"
         },
         "large": {
-          "url": "/api/media/file/kuala_lumpur_street_food_cd4fad4122-1200x800.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -2184,28 +2183,28 @@
       }
     },
     "galleryImages": [],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Real connections with family-run vendors who remember our names",
-        "id": "401"
+        "id": "401",
+        "highlight": "Real connections with family-run vendors who remember our names"
       },
       {
-        "highlight": "Heritage + food storytelling - every dish has a story",
-        "id": "402"
+        "id": "402",
+        "highlight": "Heritage + food storytelling - every dish has a story"
       },
       {
-        "highlight": "Traditional Chinese medicine experience",
-        "id": "403"
+        "id": "403",
+        "highlight": "Traditional Chinese medicine experience"
       },
       {
-        "highlight": "Watch the last handmade BBQ buns being made",
-        "id": "404"
+        "id": "404",
+        "highlight": "Watch the last handmade BBQ buns being made"
       },
       {
-        "highlight": "Hidden gems where locals actually eat, not tourist versions",
-        "id": "405"
+        "id": "405",
+        "highlight": "Hidden gems where locals actually eat, not tourist versions"
       }
     ],
     "ticketingHubId": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -2213,7 +2212,7 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 11,
@@ -2222,57 +2221,58 @@
     "directionsHtml": null,
     "itinerary": [
       {
+        "id": "188",
         "step": 0,
         "title": "09:15 AM - Meet at Pasar Seni LRT Station",
         "description": "Meet your guide at the gateway to Chinatown.",
-        "duration": null,
-        "id": "188"
+        "duration": null
       },
       {
+        "id": "189",
         "step": 1,
         "title": "09:30 AM - Petaling Street & Heritage Zone",
         "description": "Weave through Chinatown's historic lanes.",
-        "duration": null,
-        "id": "189"
+        "duration": null
       },
       {
+        "id": "190",
         "step": 2,
         "title": "10:00 AM - Traditional Medicine & Handmade Buns",
         "description": "Taste herbal tea and watch BBQ buns being made.",
-        "duration": null,
-        "id": "190"
+        "duration": null
       },
       {
+        "id": "191",
         "step": 3,
         "title": "10:30 AM - Temples & Street Food Tastings",
         "description": "Legendary Hokkien mee and apam balik.",
-        "duration": null,
-        "id": "191"
+        "duration": null
       },
       {
+        "id": "192",
         "step": 4,
         "title": "11:15 AM - Kwai Chai Hong & REX KL",
         "description": "Hidden street art alleys.",
-        "duration": null,
-        "id": "192"
+        "duration": null
       },
       {
+        "id": "193",
         "step": 5,
         "title": "12:15 PM - Durian Tarts & Farewell",
         "description": "End with a durian pastry at Jalan Sultan.",
-        "duration": null,
-        "id": "193"
+        "duration": null
       }
     ],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -2301,13 +2301,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -2315,13 +2315,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -2329,13 +2329,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -2343,65 +2343,59 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "specialty_experiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 11,
@@ -2593,7 +2587,7 @@
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "Kuala Lumpur",
-    "meetingPoint": "Chow Kit Market main entrance (Jalan Haji Hussein 1, next to the fruit stalls).",
+    "meetingPoint": "KL: Hilton Garden Inn North",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -2603,13 +2597,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -2617,13 +2611,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -2631,13 +2625,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -2645,137 +2639,121 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "travelTypes": [
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 2,
-          "name": "Family-Friendly",
-          "slug": "family",
-          "icon": "👨‍👩‍👧‍👦",
-          "color": "#f59e0b",
-          "description": "Tours suitable for all ages",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:44.060Z",
-          "createdAt": "2026-05-19T08:33:22.293Z",
-          "_status": "published"
-        }
+        "id": 2,
+        "name": "Family",
+        "slug": "family",
+        "icon": "👨‍👩‍👧‍👦",
+        "color": "#f59e0b",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:44.060Z",
+        "createdAt": "2026-05-19T08:33:22.293Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 1,
-          "name": "Couples",
-          "slug": "couples",
-          "icon": "💑",
-          "color": "#ec4899",
-          "description": "Romantic food experiences for two",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:56.093Z",
-          "createdAt": "2026-05-19T08:33:21.708Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Couples",
+        "slug": "couples",
+        "icon": "💑",
+        "color": "#ec4899",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:56.093Z",
+        "createdAt": "2026-05-19T08:33:21.708Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 4,
-          "name": "Solo Traveler",
-          "slug": "solo",
-          "icon": "🎒",
-          "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:09.797Z",
-          "createdAt": "2026-05-19T08:33:23.425Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Solo",
+        "slug": "solo",
+        "icon": "🎒",
+        "color": "#8b5cf6",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:09.797Z",
+        "createdAt": "2026-05-19T08:33:23.425Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 3,
-          "name": "Foodie",
-          "slug": "foodie",
-          "icon": "🍜",
-          "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:22.225Z",
-          "createdAt": "2026-05-19T08:33:22.863Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Foodie",
+        "slug": "foodie",
+        "icon": "🍜",
+        "color": "#ef4444",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:22.225Z",
+        "createdAt": "2026-05-19T08:33:22.863Z",
+        "_status": "published"
       }
     ],
     "specialtyExperiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 2,
-          "name": "Market Tour",
-          "slug": "market-tour",
-          "icon": "🏪",
-          "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:14.340Z",
-          "createdAt": "2026-05-19T08:33:31.461Z",
-          "_status": "published"
-        }
+        "id": 2,
+        "name": "Market tour",
+        "slug": "market-tour",
+        "icon": "🏪",
+        "color": "#22c55e",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:14.340Z",
+        "createdAt": "2026-05-19T08:33:31.461Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "foodItems": [],
@@ -2783,11 +2761,15 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 341,
+      "alt": null,
+      "caption": null,
       "usage": null,
+      "tags": [],
+      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-28T13:56:08.208Z",
       "createdAt": "2026-06-28T13:56:07.504Z",
-      "url": "/api/media/file/Flavours_of_Malaysia_001.png?prefix=payload-media",
+      "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001.png",
       "thumbnailURL": "/api/media/file/Flavours_of_Malaysia_001-400x300.png",
       "filename": "Flavours_of_Malaysia_001.png",
       "mimeType": "image/png",
@@ -2798,7 +2780,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/Flavours_of_Malaysia_001-400x300.png?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -2806,7 +2788,7 @@
           "filename": "Flavours_of_Malaysia_001-400x300.png"
         },
         "medium": {
-          "url": "/api/media/file/Flavours_of_Malaysia_001-800x600.png?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-800x600.png",
           "width": 800,
           "height": 600,
           "mimeType": "image/png",
@@ -2814,7 +2796,7 @@
           "filename": "Flavours_of_Malaysia_001-800x600.png"
         },
         "large": {
-          "url": "/api/media/file/Flavours_of_Malaysia_001-1200x800.png?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-1200x800.png",
           "width": 1200,
           "height": 800,
           "mimeType": "image/png",
@@ -2828,11 +2810,15 @@
         "id": "6a4127777faf8e4b3d61b34c",
         "image": {
           "id": 340,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:06.160Z",
           "createdAt": "2026-06-28T13:56:05.512Z",
-          "url": "/api/media/file/Enak-13.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Enak-13.jpg",
           "thumbnailURL": "/api/media/file/Enak-13-400x300.jpg",
           "filename": "Enak-13.jpg",
           "mimeType": "image/jpeg",
@@ -2843,7 +2829,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/Enak-13-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Enak-13-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -2851,7 +2837,7 @@
               "filename": "Enak-13-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/Enak-13-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Enak-13-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -2859,7 +2845,7 @@
               "filename": "Enak-13-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/Enak-13-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Enak-13-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -2873,11 +2859,15 @@
         "id": "6a41297e7faf8e4b3d61b34d",
         "image": {
           "id": 337,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:00.183Z",
           "createdAt": "2026-06-28T13:55:59.576Z",
-          "url": "/api/media/file/Copy%20of%20Enak-4.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4.jpg",
           "thumbnailURL": "/api/media/file/Copy%20of%20Enak-4-400x300.jpg",
           "filename": "Copy of Enak-4.jpg",
           "mimeType": "image/jpeg",
@@ -2888,7 +2878,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/Copy%20of%20Enak-4-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -2896,7 +2886,7 @@
               "filename": "Copy of Enak-4-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/Copy%20of%20Enak-4-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -2904,7 +2894,7 @@
               "filename": "Copy of Enak-4-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/Copy%20of%20Enak-4-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -2918,11 +2908,15 @@
         "id": "6a4129907faf8e4b3d61b34e",
         "image": {
           "id": 330,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:20.817Z",
           "createdAt": "2026-06-28T13:39:20.438Z",
-          "url": "/api/media/file/pl1TEZ0Zz86.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86.jpg",
           "thumbnailURL": "/api/media/file/pl1TEZ0Zz86-400x300.jpg",
           "filename": "pl1TEZ0Zz86.jpg",
           "mimeType": "image/jpeg",
@@ -2933,7 +2927,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/pl1TEZ0Zz86-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -2941,7 +2935,7 @@
               "filename": "pl1TEZ0Zz86-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/pl1TEZ0Zz86-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -2963,11 +2957,15 @@
         "id": "6a4129a37faf8e4b3d61b34f",
         "image": {
           "id": 331,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:21.319Z",
           "createdAt": "2026-06-28T13:39:21.099Z",
-          "url": "/api/media/file/pl1TEZwb662.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662.jpg",
           "thumbnailURL": "/api/media/file/pl1TEZwb662-400x300.jpg",
           "filename": "pl1TEZwb662.jpg",
           "mimeType": "image/jpeg",
@@ -2978,7 +2976,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/pl1TEZwb662-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3008,11 +3006,15 @@
         "id": "6a4129b37faf8e4b3d61b350",
         "image": {
           "id": 345,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:14.920Z",
           "createdAt": "2026-06-28T13:56:14.665Z",
-          "url": "/api/media/file/PXL_20231121_001919164-1.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1.jpg",
           "thumbnailURL": "/api/media/file/PXL_20231121_001919164-1-400x300.jpg",
           "filename": "PXL_20231121_001919164-1.jpg",
           "mimeType": "image/jpeg",
@@ -3023,7 +3025,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/PXL_20231121_001919164-1-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3031,7 +3033,7 @@
               "filename": "PXL_20231121_001919164-1-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/PXL_20231121_001919164-1-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3039,7 +3041,7 @@
               "filename": "PXL_20231121_001919164-1-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/PXL_20231121_001919164-1-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3050,28 +3052,28 @@
         }
       }
     ],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Visit Chow Kit - one of KL's largest traditional wet markets",
-        "id": "396"
+        "id": "396",
+        "highlight": "Visit Chow Kit - one of KL's largest traditional wet markets"
       },
       {
-        "highlight": "Watch \"aunties\" hand-making biscuits at Sin Hwa Bee Bakery",
-        "id": "397"
+        "id": "397",
+        "highlight": "Watch \"aunties\" hand-making biscuits at Sin Hwa Bee Bakery"
       },
       {
-        "highlight": "Taste jamu, cham, and the best pan mee in town",
-        "id": "398"
+        "id": "398",
+        "highlight": "Taste jamu, cham, and the best pan mee in town"
       },
       {
-        "highlight": "Walk through Kampung Periuk heritage village behind the skyline",
-        "id": "399"
+        "id": "399",
+        "highlight": "Walk through Kampung Periuk heritage village behind the skyline"
       },
       {
-        "highlight": "Real vendor connections - every family knows our faces",
-        "id": "400"
+        "id": "400",
+        "highlight": "Real vendor connections - every family knows our faces"
       }
     ],
     "ticketingHubId": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -3079,7 +3081,7 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 10,
@@ -3088,57 +3090,58 @@
     "directionsHtml": null,
     "itinerary": [
       {
+        "id": "182",
         "step": 0,
         "title": "09:30 AM - Meet at Hilton Garden Inn North",
         "description": "Your guide welcomes you at the hotel and sets the stage for a real KL market experience.",
-        "duration": null,
-        "id": "182"
+        "duration": null
       },
       {
+        "id": "183",
         "step": 1,
         "title": "09:45 AM - Jalan TAR & Chow Kit Market",
         "description": "Explore one of KL's largest wet markets.",
-        "duration": null,
-        "id": "183"
+        "duration": null
       },
       {
+        "id": "184",
         "step": 2,
         "title": "10:45 AM - Sin Hwa Bee Bakery",
         "description": "Watch aunties hand-making traditional biscuits the way they have for decades.",
-        "duration": null,
-        "id": "184"
+        "duration": null
       },
       {
+        "id": "185",
         "step": 3,
         "title": "11:15 AM - Cham, Jamu & Local Flavours",
         "description": "Taste KL's signature coffee-tea mix and traditional herbal medicine.",
-        "duration": null,
-        "id": "185"
+        "duration": null
       },
       {
+        "id": "186",
         "step": 4,
         "title": "11:45 AM - Best Pan Mee in Town",
         "description": "Handmade noodles perfected over generations at a family-run stall.",
-        "duration": null,
-        "id": "186"
+        "duration": null
       },
       {
+        "id": "187",
         "step": 5,
         "title": "12:30 PM - Kampung Periuk Village Walk",
         "description": "Walk through a heritage village behind KL's skyline.",
-        "duration": null,
-        "id": "187"
+        "duration": null
       }
     ],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -3167,13 +3170,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -3181,13 +3184,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -3195,13 +3198,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -3209,80 +3212,72 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "specialty_experiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 2,
-          "name": "Market Tour",
-          "slug": "market-tour",
-          "icon": "🏪",
-          "color": "#22c55e",
-          "description": "Wet markets, spice shops, and local producers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:14.340Z",
-          "createdAt": "2026-05-19T08:33:31.461Z",
-          "_status": "published"
-        }
+        "id": 2,
+        "name": "Market tour",
+        "slug": "market-tour",
+        "icon": "🏪",
+        "color": "#22c55e",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:14.340Z",
+        "createdAt": "2026-05-19T08:33:31.461Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 10,
@@ -3298,27 +3293,27 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "/api/media/file/Enak-13.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/Enak-13.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/Copy%20of%20Enak-4.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/pl1TEZ0Zz86.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/pl1TEZwb662.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/PXL_20231121_001919164-1.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1.jpg",
         "alt": "",
         "caption": ""
       }
@@ -3500,7 +3495,7 @@
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "Penang",
-    "meetingPoint": "George Town - Armenian St. Heritage Town Hall, in front of the white building at 7 Armenian Street.",
+    "meetingPoint": "Penang: Masjid Kapitan Keling",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -3510,13 +3505,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -3524,13 +3519,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -3538,13 +3533,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -3552,122 +3547,108 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "travelTypes": [
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 1,
-          "name": "Couples",
-          "slug": "couples",
-          "icon": "💑",
-          "color": "#ec4899",
-          "description": "Romantic food experiences for two",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:56.093Z",
-          "createdAt": "2026-05-19T08:33:21.708Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Couples",
+        "slug": "couples",
+        "icon": "💑",
+        "color": "#ec4899",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:56.093Z",
+        "createdAt": "2026-05-19T08:33:21.708Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 4,
-          "name": "Solo Traveler",
-          "slug": "solo",
-          "icon": "🎒",
-          "color": "#8b5cf6",
-          "description": "Perfect for independent explorers",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:09.797Z",
-          "createdAt": "2026-05-19T08:33:23.425Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Solo",
+        "slug": "solo",
+        "icon": "🎒",
+        "color": "#8b5cf6",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:09.797Z",
+        "createdAt": "2026-05-19T08:33:23.425Z",
+        "_status": "published"
       },
       {
-        "relationTo": "travel_types",
-        "value": {
-          "id": 3,
-          "name": "Foodie",
-          "slug": "foodie",
-          "icon": "🍜",
-          "color": "#ef4444",
-          "description": "Deep dives into Malaysian cuisine",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:43:22.225Z",
-          "createdAt": "2026-05-19T08:33:22.863Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Foodie",
+        "slug": "foodie",
+        "icon": "🍜",
+        "color": "#ef4444",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:22.225Z",
+        "createdAt": "2026-05-19T08:33:22.863Z",
+        "_status": "published"
       }
     ],
     "specialtyExperiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 3,
-          "name": "Night Tour",
-          "slug": "night-tour",
-          "icon": "🌙",
-          "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:45:44.828Z",
-          "createdAt": "2026-05-19T08:33:32.030Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Night tour",
+        "slug": "night-tour",
+        "icon": "🌙",
+        "color": "#6366f1",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:45:44.828Z",
+        "createdAt": "2026-05-19T08:33:32.030Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "foodItems": [],
@@ -3675,13 +3656,15 @@
     "tailoredNotes": null,
     "heroImage": {
       "id": 353,
-      "alt": "Eat Drink George Town Tour Hero Image Simply Enak",
-      "caption": "Eat Drink George Town Tour Hero Image Simply Enak",
+      "alt": null,
+      "caption": null,
       "usage": null,
+      "tags": [],
+      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-29T02:01:19.736Z",
       "createdAt": "2026-06-28T14:13:51.391Z",
-      "url": "/api/media/file/DSC_6661%20(1).JPG?prefix=payload-media",
+      "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
       "thumbnailURL": "/api/media/file/DSC_6661%20(1)-400x300.jpg",
       "filename": "DSC_6661 (1).JPG",
       "mimeType": "image/jpeg",
@@ -3692,7 +3675,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "/api/media/file/DSC_6661%20(1)-400x300.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -3700,7 +3683,7 @@
           "filename": "DSC_6661 (1)-400x300.jpg"
         },
         "medium": {
-          "url": "/api/media/file/DSC_6661%20(1)-800x600.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -3708,7 +3691,7 @@
           "filename": "DSC_6661 (1)-800x600.jpg"
         },
         "large": {
-          "url": "/api/media/file/DSC_6661%20(1)-1200x800.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -3722,11 +3705,15 @@
         "id": "6a412bca7faf8e4b3d61b351",
         "image": {
           "id": 350,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:45.139Z",
           "createdAt": "2026-06-28T14:13:44.640Z",
-          "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
           "thumbnailURL": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
           "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
           "mimeType": "image/jpeg",
@@ -3737,7 +3724,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3745,7 +3732,7 @@
               "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3753,7 +3740,7 @@
               "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3767,11 +3754,15 @@
         "id": "6a412ced7faf8e4b3d61b352",
         "image": {
           "id": 355,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:54.483Z",
           "createdAt": "2026-06-28T14:13:53.991Z",
-          "url": "/api/media/file/hin2.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
           "thumbnailURL": "/api/media/file/hin2-400x300.jpg",
           "filename": "hin2.jpg",
           "mimeType": "image/jpeg",
@@ -3782,7 +3773,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/hin2-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3790,7 +3781,7 @@
               "filename": "hin2-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/hin2-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/hin2-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3798,7 +3789,7 @@
               "filename": "hin2-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/hin2-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/hin2-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3812,13 +3803,17 @@
         "id": "6a412cff7faf8e4b3d61b353",
         "image": {
           "id": 356,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": "",
           "prefix": "payload-media",
-          "updatedAt": "2026-06-28T14:13:56.565Z",
+          "updatedAt": "2026-06-29T03:53:39.722Z",
           "createdAt": "2026-06-28T14:13:55.942Z",
-          "url": "/api/media/file/PXL_20230703_082939063.MP.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
           "thumbnailURL": "/api/media/file/PXL_20230703_082939063.MP-400x300.jpg",
-          "filename": "PXL_20230703_082939063.MP.jpg",
+          "filename": "simply-enak-guide-explaining.jpg",
           "mimeType": "image/jpeg",
           "filesize": 3572168,
           "width": 2560,
@@ -3827,7 +3822,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/PXL_20230703_082939063.MP-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3835,7 +3830,7 @@
               "filename": "PXL_20230703_082939063.MP-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/PXL_20230703_082939063.MP-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3843,7 +3838,7 @@
               "filename": "PXL_20230703_082939063.MP-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/PXL_20230703_082939063.MP-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3857,11 +3852,15 @@
         "id": "6a412d107faf8e4b3d61b354",
         "image": {
           "id": 351,
+          "alt": null,
+          "caption": null,
           "usage": null,
+          "tags": [],
+          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:47.134Z",
           "createdAt": "2026-06-28T14:13:46.473Z",
-          "url": "/api/media/file/DSC_5051-opq3007862668.jpg?prefix=payload-media",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
           "thumbnailURL": "/api/media/file/DSC_5051-opq3007862668-400x300.jpg",
           "filename": "DSC_5051-opq3007862668.jpg",
           "mimeType": "image/jpeg",
@@ -3872,7 +3871,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "/api/media/file/DSC_5051-opq3007862668-400x300.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3880,7 +3879,7 @@
               "filename": "DSC_5051-opq3007862668-400x300.jpg"
             },
             "medium": {
-              "url": "/api/media/file/DSC_5051-opq3007862668-800x600.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3888,7 +3887,7 @@
               "filename": "DSC_5051-opq3007862668-800x600.jpg"
             },
             "large": {
-              "url": "/api/media/file/DSC_5051-opq3007862668-1200x800.jpg?prefix=payload-media",
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3899,28 +3898,28 @@
         }
       }
     ],
-    "whatsIncluded": null,
-    "whatsExcluded": null,
+    "whatsIncluded": [],
+    "whatsExcluded": [],
     "highlights": [
       {
-        "highlight": "Sizzling satay at a heritage Malay restaurant",
-        "id": "391"
+        "id": "391",
+        "highlight": "Sizzling satay at a heritage Malay restaurant"
       },
       {
-        "highlight": "Watch roti jala handcrafted like golden lace",
-        "id": "392"
+        "id": "392",
+        "highlight": "Watch roti jala handcrafted like golden lace"
       },
       {
-        "highlight": "Best samosas in Malaysia (locals' claim, not ours!)",
-        "id": "393"
+        "id": "393",
+        "highlight": "Best samosas in Malaysia (locals' claim, not ours!)"
       },
       {
-        "highlight": "Char kway teow at Chew Jetty at sunset",
-        "id": "394"
+        "id": "394",
+        "highlight": "Char kway teow at Chew Jetty at sunset"
       },
       {
-        "highlight": "Alcoholic drink in a heritage setting",
-        "id": "395"
+        "id": "395",
+        "highlight": "Alcoholic drink in a heritage setting"
       }
     ],
     "ticketingHubId": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -3928,7 +3927,7 @@
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": null,
+    "cancellationPolicy": "Free cancellation",
     "tourFrequency": "Daily",
     "startTimes": [],
     "dishesCount": 11,
@@ -3937,57 +3936,58 @@
     "directionsHtml": null,
     "itinerary": [
       {
+        "id": "176",
         "step": 0,
         "title": "16:00 PM - Meet at Masjid Kapitan Keling",
         "description": "Meet your guide as Georgetown comes alive in the late afternoon.",
-        "duration": null,
-        "id": "176"
+        "duration": null
       },
       {
+        "id": "177",
         "step": 1,
         "title": "16:15 PM - Little India & Temples",
         "description": "Pass temples of three religions side by side and taste the best samosas in Malaysia.",
-        "duration": null,
-        "id": "177"
+        "duration": null
       },
       {
+        "id": "178",
         "step": 2,
         "title": "17:00 PM - Heritage Malay Satay",
         "description": "Sizzling satay and roti jala at a family-run Malay restaurant.",
-        "duration": null,
-        "id": "178"
+        "duration": null
       },
       {
+        "id": "179",
         "step": 3,
         "title": "17:45 PM - Chew Jetty Sunset",
         "description": "Char kway teow fresh off the wok as the sun sets over the Straits - clan history included.",
-        "duration": null,
-        "id": "179"
+        "duration": null
       },
       {
+        "id": "180",
         "step": 4,
         "title": "18:30 PM - Clan Houses & Secret Society Tales",
         "description": "Uncover how secret societies shaped Georgetown while tasting Penang Hokkien Mee.",
-        "duration": null,
-        "id": "180"
+        "duration": null
       },
       {
+        "id": "181",
         "step": 5,
         "title": "19:30 PM - Drink & Farewell",
         "description": "Toast with an alcoholic drink at a secret heritage bar.",
-        "duration": null,
-        "id": "181"
+        "duration": null
       }
     ],
-    "differentiatorsTourist": null,
-    "differentiatorsUs": null,
-    "whatToBring": null,
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -4016,13 +4016,13 @@
         "slug": "vegetarian",
         "icon": "🥬",
         "color": "#4caf50",
-        "description": "No meat, poultry, or fish. May include dairy and eggs depending on the type.",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:27.383Z"
       },
       {
         "id": 3,
@@ -4030,13 +4030,13 @@
         "slug": "halal",
         "icon": "🥩",
         "color": "#2d8a4e",
-        "description": "Prepared according to Islamic dietary law. No pork, no alcohol, meat from certified sources.",
+        "description": "Halal-certified food options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.146Z"
       },
       {
         "id": 12,
@@ -4044,13 +4044,13 @@
         "slug": "vegan",
         "icon": "🌱",
         "color": "#8bc34a",
-        "description": "No animal products whatsoever  -  no meat, dairy, eggs, honey, or gelatin.",
+        "description": "100% plant-based options",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:30.320Z"
       },
       {
         "id": 4,
@@ -4058,80 +4058,72 @@
         "slug": "gluten-free",
         "icon": "🌾",
         "color": "#ff9800",
-        "description": "No wheat, barley, rye, or other gluten-containing ingredients.",
+        "description": "Gluten-free dishes available",
+        "image": null,
         "status": "published",
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z",
-        "_status": "published"
+        "createdAt": "2026-05-19T08:33:25.703Z"
       }
     ],
     "specialty_experiences": [
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 4,
-          "name": "Street Food",
-          "slug": "street-food",
-          "icon": "🍢",
-          "color": "#f97316",
-          "description": "Hawker stalls and roadside vendors",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:44:21.390Z",
-          "createdAt": "2026-05-19T08:33:32.602Z",
-          "_status": "published"
-        }
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 3,
-          "name": "Night Tour",
-          "slug": "night-tour",
-          "icon": "🌙",
-          "color": "#6366f1",
-          "description": "Evening food adventures and night markets",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:45:44.828Z",
-          "createdAt": "2026-05-19T08:33:32.030Z",
-          "_status": "published"
-        }
+        "id": 3,
+        "name": "Night tour",
+        "slug": "night-tour",
+        "icon": "🌙",
+        "color": "#6366f1",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:45:44.828Z",
+        "createdAt": "2026-05-19T08:33:32.030Z",
+        "_status": "published"
       },
       {
-        "relationTo": "specialty_experiences",
-        "value": {
-          "id": 1,
-          "name": "Heritage",
-          "slug": "heritage",
-          "icon": "🏛️",
-          "color": "#0ea5e9",
-          "description": "Historic neighborhoods and traditional recipes",
-          "status": "published",
-          "updatedAt": "2026-06-19T14:46:46.161Z",
-          "createdAt": "2026-05-19T08:33:30.893Z",
-          "_status": "published"
-        }
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
       }
     ],
     "whats_included": [],
     "whats_excluded": [],
-    "cancellation_policy": null,
+    "cancellation_policy": "Free cancellation",
     "tour_frequency": "Daily",
     "start_times": [],
     "dishes_count": 11,
@@ -4147,22 +4139,22 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/hin2.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/PXL_20230703_082939063.MP.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "/api/media/file/DSC_5051-opq3007862668.jpg?prefix=payload-media",
+        "src": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
         "alt": "",
         "caption": ""
       }

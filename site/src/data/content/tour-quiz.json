@@ -1,8 +1,8 @@
 {
   "id": 1,
-  "intro_title": "What Type of Malaysian Foodie Are You?",
-  "intro_description": "Tell us about your Malaysian food experience and we'll reveal your foodie personality  -  plus match you with the perfect tour.",
-  "intro_button_label": "Take the Quiz",
+  "intro_title": null,
+  "intro_description": null,
+  "intro_button_label": null,
   "steps": [
     {
       "id": "1",
@@ -177,44 +177,44 @@
   ],
   "personalities": [
     {
+      "id": "1",
       "key": "spice_tourist",
       "title": "The Spice Tourist",
       "emoji": "🌶️",
       "description": "You're new to Malaysian food  -  and that's exciting! You want the must-try dishes with a warm intro. No overwhelming spice levels, no mystery meats. Think nasi lemak with a side of storytelling.",
-      "tour_match": "Gentle introduction tours",
-      "id": "1"
+      "tour_match": "Gentle introduction tours"
     },
     {
+      "id": "2",
       "key": "heritage_hunter",
       "title": "The Heritage Hunter",
       "emoji": "🏛️",
       "description": "You don't want to just eat  -  you want to know WHO made it, HOW long, and WHY the recipe hasn't changed since 1952. Every stall has a story.",
-      "tour_match": "Tours with generational vendors",
-      "id": "2"
+      "tour_match": "Tours with generational vendors"
     },
     {
+      "id": "3",
       "key": "hawker_hero",
       "title": "The Hawker Hero",
       "emoji": "🍜",
       "description": "You live for the night market energy  -  satay smoke, clattering woks, the uncle who remembers your order. Maximum variety, maximum atmosphere.",
-      "tour_match": "High-energy street food tours",
-      "id": "3"
+      "tour_match": "High-energy street food tours"
     },
     {
+      "id": "4",
       "key": "durian_daredevil",
       "title": "The Durian Daredevil",
       "emoji": "🔥",
       "description": "You don't read menus  -  you point. Durian? Yes. Chicken feet? Absolutely. You're the friend who tries the weird stuff first.",
-      "tour_match": "Bold, less-travelled tours",
-      "id": "4"
+      "tour_match": "Bold, less-travelled tours"
     },
     {
+      "id": "5",
       "key": "culture_connector",
       "title": "The Culture Connector",
       "emoji": "🌏",
       "description": "You're here for the people. The kopi maker at 4am. The satay uncle with a never-ending story. Food is your passport into someone else's story.",
-      "tour_match": "Tours blending food with culture",
-      "id": "5"
+      "tour_match": "Tours blending food with culture"
     }
   ],
   "scoring_weights": [
@@ -461,34 +461,34 @@
   ],
   "result_headlines": [
     {
+      "id": "1",
       "key": "no_match",
       "headline": "We Think You'll Love These",
-      "subtext": "Based on your answers, these tours feel most like your kind of food experience.",
-      "id": "1"
+      "subtext": "Based on your answers, these tours feel most like your kind of food experience."
     },
     {
+      "id": "2",
       "key": "single_match",
       "headline": "This One's Made For You",
-      "subtext": "We found the perfect match.",
-      "id": "2"
+      "subtext": "We found the perfect match."
     },
     {
+      "id": "3",
       "key": "multi_match",
       "headline": "We Found Your Perfect Matches",
-      "subtext": "A few tours stood out.",
-      "id": "3"
+      "subtext": "A few tours stood out."
     },
     {
+      "id": "4",
       "key": "fallback",
       "headline": "Our Top Picks For You",
-      "subtext": "These are the tours our guests love most.",
-      "id": "4"
+      "subtext": "These are the tours our guests love most."
     }
   ],
-  "fallback_headline": "Our Top Picks For You",
+  "fallback_headline": null,
   "fallback_tours": [],
-  "contact_cta_text": "Still not sure which tour is right for you?",
-  "contact_cta_button": "Let Us Help You Choose",
+  "contact_cta_text": null,
+  "contact_cta_button": null,
   "updatedAt": "2026-05-19T08:34:29.395Z",
   "createdAt": "2026-05-19T08:34:29.394Z",
   "_status": "published"
