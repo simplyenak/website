@@ -2,7 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { useTranslations } from '~/i18n/utils';
 import { segmentChips } from '~/data/segments';
-import { getAllTours, getHomePage } from '~/lib/content';
+import { getAllTours, getHomePage, getImageUrl } from '~/lib/content';
 import { SITE } from 'astrowind:config';
 import reviews from '~/data/content/reviews.json';
 
@@ -27,7 +27,7 @@ export const prerender = true;
   <!-- Hero -->
   <section class="relative not-prose bg-[#1a1a1a] overflow-hidden text-white">
     <div class="absolute inset-0">
-      <img alt="" class="w-full h-full object-cover opacity-40" src={hp.hero.heroImage} />
+      <img alt="" class="w-full h-full object-cover opacity-40" src={getImageUrl(hp.hero.heroImage)} />
       <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(26,26,26,.78) 0,rgba(26,26,26,.42) 38%,rgba(26,26,26,.6) 65%,rgba(26,26,26,.94) 100%)"></div>
     </div>
     <div class="relative mx-auto px-4 max-w-7xl sm:px-6" style="min-height:max(80svh,500px)">
