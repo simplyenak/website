@@ -1,18 +1,6 @@
 import type { CollectionConfig } from 'payload'
-import { S3Client, CopyObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3'
-
-const s3 = new S3Client({
-  credentials: {
-    accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
-    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
-  },
-  endpoint: process.env.S3_ENDPOINT || '',
-  region: process.env.S3_REGION || '',
-  forcePathStyle: true,
-})
 
 const S3_BUCKET = process.env.S3_BUCKET || ''
-const CDN_DOMAIN = 'https://cdn.simplyenak.com'
 const PREFIX = 'payload-media'
 
 export const Media: CollectionConfig = {
@@ -79,6 +67,17 @@ export const Media: CollectionConfig = {
         const newName = data?.renameTo?.trim()
         if (!newName || !originalDoc?.filename) return data
         if (newName === originalDoc.filename) return data
+
+        const { S3Client, CopyObjectCommand, DeleteObjectCommand } = await import('@aws-sdk/client-s3')
+        const s3 = new S3Client({
+          credentials: {
+            accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+            secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+          },
+          endpoint: process.env.S3_ENDPOINT || '',
+          region: process.env.S3_REGION || 'us-east-1',
+          forcePathStyle: true,
+        })
 
         const oldKey = `${PREFIX}/${originalDoc.filename}`
         const newKey = `${PREFIX}/${newName}`
