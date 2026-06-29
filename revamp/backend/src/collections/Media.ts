@@ -1,19 +1,19 @@
 import type { CollectionConfig } from 'payload'
-import { createHash } from 'crypto'
-import { triggerStagingDeploy } from '../hooks/deployTrigger'
+import { S3Client, CopyObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3'
 
-/**
- * Slugify any string for use as a URL/filename segment.
- * Only lowercase letters, numbers, and hyphens.
- */
-function slugify(str: string, maxLen = 40): string {
-  return str
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, maxLen)
-    .replace(/-+$/g, '')
-}
+const s3 = new S3Client({
+  credentials: {
+    accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+  },
+  endpoint: process.env.S3_ENDPOINT || '',
+  region: process.env.S3_REGION || '',
+  forcePathStyle: true,
+})
+
+const S3_BUCKET = process.env.S3_BUCKET || ''
+const CDN_DOMAIN = 'https://cdn.simplyenak.com'
+const PREFIX = 'payload-media'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -25,103 +25,26 @@ export const Media: CollectionConfig = {
     description: '📸 Image and media library for all content',
   },
   fields: [
-    // ── SEO / ADA ──
     {
       name: 'alt',
       type: 'text',
+      required: false,
       admin: {
-        description: 'Alt text for accessibility (SEO + ADA). Auto-filled from filename if left empty.',
+        description: 'Alt text for accessibility',
       },
     },
     {
       name: 'caption',
       type: 'text',
       admin: {
-        description: 'Optional caption — include photo credit here if needed.',
+        description: 'Optional caption',
       },
     },
-    {
-      name: 'polaroidLabel',
-      type: 'text',
-      admin: {
-        description: 'Short label shown on the polaroid card (e.g., "Morning market"). Keep it brief — space is tight.',
-      },
-    },
-
-    // ── Filename builders ──
-    {
-      type: 'row',
-      fields: [
-        {
-          name: 'subject',
-          type: 'select',
-          admin: {
-            description: 'What is this image about? Becomes a filename segment.',
-            width: '50%',
-          },
-          options: [
-            { label: '🍜 Food / Dish', value: 'food' },
-            { label: '🏪 Market / Stall', value: 'market' },
-            { label: '👨‍🍳 Vendor / Hawker', value: 'vendor' },
-            { label: '🏛️ Landmark / Street', value: 'landmark' },
-            { label: '👥 Tour Group', value: 'group' },
-            { label: '🧑‍🏫 Guide / Team', value: 'guide' },
-            { label: '🖼️ Hero / Banner', value: 'hero' },
-            { label: '🌆 Landscape / Cityscape', value: 'landscape' },
-            { label: '🍽️ Plated Dish', value: 'dish' },
-            { label: '🔍 Detail / Close-up', value: 'detail' },
-            { label: '📦 Logo / Brand', value: 'logo' },
-            { label: '🏠 Interior', value: 'interior' },
-            { label: '📰 Press / Media', value: 'press' },
-          ],
-        },
-        {
-          name: 'custom_label',
-          type: 'text',
-          admin: {
-            description: 'Short specific label (e.g. "petaling-street-char-koay-teow"). Appears in filename.',
-            width: '50%',
-          },
-        },
-      ],
-    },
-    {
-      name: 'location_ref',
-      type: 'relationship',
-      relationTo: 'locations',
-      hasMany: false,
-      admin: {
-        description: 'Which Simply Enak location? Becomes a filename segment → "kuala-lumpur"',
-      },
-    },
-    {
-      name: 'credit',
-      type: 'text',
-      admin: {
-        description: 'Photographer name → adds "by-john-doe" to the filename',
-      },
-    },
-
-    // ── Geo / GPS ──
-    {
-      name: 'gps',
-      type: 'group',
-      admin: {
-        description: 'GPS coordinates (manual). EXIF is NOT stripped — photographer copyright stays intact.',
-      },
-      fields: [
-        { name: 'lat', type: 'number', admin: { description: 'Latitude' } },
-        { name: 'lng', type: 'number', admin: { description: 'Longitude' } },
-        { name: 'place', type: 'text', admin: { description: 'Place name' } },
-      ],
-    },
-
-    // ── Organisational ──
     {
       name: 'usage',
       type: 'text',
       admin: {
-        description: 'Where is this image used? (e.g., tours, stories, about, hero)',
+        description: 'Where is this image used? (e.g., tours, stories, etc.)',
       },
     },
     {
@@ -129,159 +52,86 @@ export const Media: CollectionConfig = {
       type: 'text',
       hasMany: true,
       admin: {
-        description: 'Tags for organizing and filtering media',
+        description: 'Tags for organizing and filtering media (e.g., vendor-name, tour-kl, hero, gallery)',
+      },
+    },
+    {
+      name: 'renameTo',
+      type: 'text',
+      admin: {
+        description: 'Rename file: enter new filename (e.g., "my-image.jpg") then save. The file on S3 will be renamed.',
       },
     },
   ],
-  hooks: {
-    beforeValidate: [
-      async ({ data, req, operation }: any) => {
-        if (operation !== 'create' && operation !== 'update') return data
-        if (!data?.filename) return data
-
-        // Bulk upload sends '' instead of null/undefined for select fields.
-        // Payload rejects '' as not a valid option value.
-        if (data.subject === '') data.subject = undefined
-
-        // 1. Always sanitize the raw upload filename as a safety net
-        const ext = data.filename.match(/\.([^.]+)$/)?.[1]?.toLowerCase() || ''
-        const dotExt = ext ? `.${ext}` : ''
-        const sanitized = slugify(data.filename.replace(/\.[^.]+$/, ''), 60) + dotExt
-
-        // 2. If structured selectors are set, build a meaningful filename
-        //    Otherwise, use alt text or caption for the filename
-        const hasSelectors = data.subject || data.custom_label || data.location_ref || data.credit
-        if (hasSelectors) {
-          let locName = ''
-          if (typeof data.location_ref === 'object' && data.location_ref?.name) {
-            locName = data.location_ref.name
-          } else if ((typeof data.location_ref === 'number' || typeof data.location_ref === 'string') && req?.payload) {
-            try {
-              const loc = await req.payload.findByID({
-                collection: 'locations',
-                id: data.location_ref,
-                depth: 0,
-              })
-              if (loc?.name) locName = loc.name
-            } catch { /* proceed without location */ }
-          }
-
-          const originalBase = data.filename.replace(/\.[^.]+$/, '')
-
-          const parts: string[] = ['simply-enak']
-          if (locName) parts.push(slugify(locName, 30))
-          if (data.subject) parts.push(data.subject)
-          if (data.custom_label) parts.push(slugify(data.custom_label, 40))
-          // Stable suffix: hash of original filename to avoid regenerating on re-validation
-          const stableSuffix = createHash('md5')
-            ?.update(originalBase + (data.alt || ''))
-            ?.digest('hex')
-            ?.slice(0, 4) || Math.random().toString(36).slice(2, 6)
-          parts.push(stableSuffix)
-          if (data.credit) parts.push(`by-${slugify(data.credit, 30)}`)
-
-          data.filename = parts.join('-') + dotExt
-        } else if (data.alt || data.caption) {
-          // No structured selectors — build filename from alt text or caption
-          const source = data.alt || data.caption
-          const originalBase = data.filename.replace(/\.[^.]+$/, '')
-          const trailingNum = originalBase.match(/(\d+)$/)?.[1] || ''
-          let namePart = slugify(source, 50)
-          // Ensure it's not empty after slugify
-          if (!namePart) namePart = slugify(originalBase, 50) || 'image'
-          // Stable suffix: hash of original filename to avoid regenerating on re-validation
-          const stableSuffix2 = createHash('md5')
-            ?.update(originalBase + (source || ''))
-            ?.digest('hex')
-            ?.slice(0, 4) || Math.random().toString(36).slice(2, 6)
-          if (trailingNum) {
-            data.filename = `${namePart}-${trailingNum}${dotExt}`
-          } else {
-            data.filename = `${namePart}-${stableSuffix2}${dotExt}`
-          }
-        } else {
-          data.filename = sanitized
-        }
-
-        return data
-      },
-    ],
-    beforeChange: [
-      ({ data }: { data: Record<string, any> }) => {
-        if (!data?.alt && data?.filename) {
-          data.alt = data.filename
-            .replace(/\.[^.]+$/, '')
-            .replace(/[-_]+/g, ' ')
-            .replace(/\b\w/g, (c: string) => c.toUpperCase())
-            .trim()
-        }
-        return data
-      },
-    ],
-    afterChange: [triggerStagingDeploy],
-    afterRead: [
-      ({ doc }) => {
-        // Payload's internal thumbnailURL is a relative path (/api/media/file/...)
-        // which reads from local disk. Since we use S3-only, the local file
-        // doesn't exist. Use the thumbnail size URL instead, which is already
-        // an S3 or CDN URL from the S3 storage plugin.
-        if (doc?.thumbnailURL && !doc.thumbnailURL.startsWith('http')) {
-          const thumb = doc.sizes?.thumbnail
-          if (thumb?.url) {
-            doc.thumbnailURL = thumb.url
-          }
-        }
-        return doc
-      },
-    ],
-  },
   upload: {
     staticDir: 'media',
-    // Convert all uploads to WebP. Conservative quality — the srcset does
-    // the heavy lifting by sending smaller sizes to smaller screens.
-    formatOptions: {
-      format: 'webp',
-      options: { quality: 75 },
-    },
     imageSizes: [
-      {
-        name: 'thumbnail',
-        width: 400,
-        height: 300,
-        position: 'centre',
-        formatOptions: {
-          format: 'webp',
-          options: { quality: 65 },
-        },
-      },
-      {
-        name: 'medium',
-        width: 800,
-        height: 600,
-        position: 'centre',
-        formatOptions: {
-          format: 'webp',
-          options: { quality: 70 },
-        },
-      },
-      {
-        name: 'large',
-        width: 1200,
-        height: 800,
-        position: 'centre',
-        formatOptions: {
-          format: 'webp',
-          options: { quality: 72 },
-        },
-      },
+      { name: 'thumbnail', width: 400, height: 300, position: 'centre' },
+      { name: 'medium', width: 800, height: 600, position: 'centre' },
+      { name: 'large', width: 1200, height: 800, position: 'centre' },
     ],
     adminThumbnail: 'thumbnail',
-    mimeTypes: [
-      'image/jpeg',
-      'image/png',
-      'image/gif',
-      'image/svg+xml',
-      'image/webp',
+    mimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'],
+  },
+  hooks: {
+    beforeChange: [
+      async ({ data, originalDoc, req }) => {
+        const newName = data?.renameTo?.trim()
+        if (!newName || !originalDoc?.filename) return data
+        if (newName === originalDoc.filename) return data
+
+        const oldKey = `${PREFIX}/${originalDoc.filename}`
+        const newKey = `${PREFIX}/${newName}`
+
+        try {
+          // Copy original file to new name
+          await s3.send(new CopyObjectCommand({
+            Bucket: S3_BUCKET,
+            CopySource: `/${S3_BUCKET}/${oldKey}`,
+            Key: newKey,
+          }))
+
+          // Copy all image sizes
+          for (const size of ['thumbnail', 'medium', 'large']) {
+            const oldSizeKey = `${PREFIX}/${originalDoc.filename.replace(/(\.\w+)$/, `-400x300$1`)}`
+            const newSizeKey = `${PREFIX}/${newName.replace(/(\.\w+)$/, `-400x300$1`)}`
+            // Only try if the size file likely exists (Payload names sizes as: filename-WxH.ext)
+            // The actual size suffix depends on the config: 400x300 for thumbnail, 800x600 for medium, 1200x800 for large
+            const sizeSuffixes: Record<string, string> = {
+              thumbnail: '400x300',
+              medium: '800x600',
+              large: '1200x800',
+            }
+            const suffix = sizeSuffixes[size]
+            const oldSizeKey2 = `${PREFIX}/${originalDoc.filename.replace(/(\.\w+)$/, `-${suffix}$1`)}`
+            const newSizeKey2 = `${PREFIX}/${newName.replace(/(\.\w+)$/, `-${suffix}$1`)}`
+            try {
+              await s3.send(new CopyObjectCommand({
+                Bucket: S3_BUCKET,
+                CopySource: `/${S3_BUCKET}/${oldSizeKey2}`,
+                Key: newSizeKey2,
+              }))
+              await s3.send(new DeleteObjectCommand({ Bucket: S3_BUCKET, Key: oldSizeKey2 }))
+            } catch { /* size file may not exist */ }
+          }
+
+          // Delete old file
+          await s3.send(new DeleteObjectCommand({ Bucket: S3_BUCKET, Key: oldKey }))
+
+          // Update returned data with new filename
+          data.filename = newName
+          data.url = `/api/media/file/${newName}?prefix=${PREFIX}`
+          data.thumbnailURL = `/api/media/file/${newName.replace(/(\.\w+)$/, '-400x300$1')}`
+          // Clear the renameTo field so it doesn't trigger again
+          data.renameTo = ''
+
+          req.payload.logger?.info?.('🗂️  File renamed on S3: ' + originalDoc.filename + ' → ' + newName)
+        } catch (err: any) {
+          req.payload.logger?.error?.('❌ Failed to rename file: ' + err.message)
+        }
+
+        return data
+      },
     ],
   },
 }
