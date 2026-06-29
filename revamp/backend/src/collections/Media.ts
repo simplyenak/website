@@ -60,7 +60,6 @@ export const Media: CollectionConfig = {
       type: 'text',
       admin: {
         description: 'Enter new filename (e.g., "clean-name.jpg") then Save. The file on S3 will be renamed.',
-        position: 'sidebar',
       },
     },
   ],
