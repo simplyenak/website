@@ -1,0 +1,149 @@
+---
+import { Icon } from 'astro-icon/components';
+export interface Props {
+  widgetId: string;
+  tourName: string;
+  tourSlug: string;
+}
+
+const { widgetId, tourName, tourSlug } = Astro.props;
+const waMsg = `Hi Simply Enak, I'm interested in ${tourName.replace(/["']/g, '')}`;
+const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
+---
+
+{widgetId ? (
+  <!-- TicketingHub checkout widget -->
+  <div class="mx-auto max-w-fit" id={`widget-container-${widgetId}`}>
+    <script src="https://assets.ticketinghub.com/checkout.js" async data-widget={widgetId}></script>
+  </div>
+) : (
+  <!-- Contact form for tours without TicketingHub booking -->
+  <div class="space-y-4">
+    <div class="text-center">
+      <p class="text-sm font-bold text-default">Interested in this tour?</p>
+      <p class="text-xs text-muted">Send us a message and we'll get back to you within 3 hours.</p>
+    </div>
+
+    <form class="tour-contact-form space-y-3" data-tour={tourName}>
+      <input type="hidden" name="inquiryType" value="Public Tour" />
+      <input type="hidden" name="tour" value={tourName} />
+
+      <div>
+        <input type="text" name="fullName" required placeholder="Your name"
+          class="w-full px-3 py-2.5 text-sm rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
+      </div>
+      <div>
+        <input type="email" name="email" required placeholder="Your email"
+          class="w-full px-3 py-2.5 text-sm rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <input type="date" name="preferredDate" placeholder="Preferred date"
+            class="w-full px-3 py-2.5 text-sm rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
+        </div>
+        <div>
+          <input type="number" name="participants" min="1" max="20" placeholder="How many?"
+            class="w-full px-3 py-2.5 text-sm rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
+        </div>
+      </div>
+      <div>
+        <textarea name="message" rows="2" required
+          placeholder="Any questions? Dietary needs, specific requests…"
+          class="w-full px-3 py-2.5 text-sm rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-y"
+        >Hi, I'm interested in {tourName}. Please send me more details including availability and pricing.</textarea>
+      </div>
+      <input type="hidden" name="submittedAt" />
+      <input type="hidden" name="source" value={`https://simplyenak.com/tours/${tourSlug}`} />
+
+      <!-- Honeypot -->
+      <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;" aria-hidden="true">
+        <input type="text" name="honeypot_website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <!-- Turnstile anti-spam -->
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAAQixyz123" data-theme="auto" data-size="compact"></div>
+
+      <button type="submit"
+        class="w-full bg-primary text-white font-bold py-2.5 px-4 rounded-lg hover:bg-primary/90 transition-colors text-sm">
+        Send Message
+      </button>
+      <p class="tour-contact-feedback text-xs text-center hidden"></p>
+    </form>
+
+    <div class="relative my-3">
+      <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200 dark:border-white/10"></div></div>
+      <div class="relative flex justify-center"><span class="bg-white dark:bg-[#1e1c1c] px-3 text-xs text-muted">or</span></div>
+    </div>
+
+    <a href={waUrl} target="_blank"
+      class="inline-flex items-center justify-center gap-2 w-full border-2 border-primary text-primary font-bold px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors text-sm">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+)}
+
+<!-- Always show Private Tour link -->
+<a href="/tours/private-tours"
+  class="inline-flex items-center justify-center gap-2 w-full border border-gray-300 dark:border-white/20 text-muted font-semibold px-5 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-sm">
+  <Icon name="tabler:users" class="w-4 h-4" />
+  Book as a Private Tour
+</a>
+
+<script is:inline>
+(function() {
+  const forms = document.querySelectorAll('.tour-contact-form');
+  forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Honeypot check
+      const honeypot = form.querySelector('input[name="honeypot_website"]')?.value;
+      if (honeypot) return;
+
+      // Turnstile check
+      const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]')?.value;
+      if (!turnstileResponse) return;
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      payload.submittedAt = new Date().toISOString();
+
+      const btn = form.querySelector('button[type="submit"]');
+      const feedback = form.querySelector('.tour-contact-feedback');
+      const origText = btn?.textContent;
+
+      if (btn) { btn.textContent = 'Sending…'; btn.setAttribute('disabled', 'true'); }
+      if (feedback) feedback.classList.add('hidden');
+
+      try {
+        const res = await fetch('https://formspree.io/f/xjkyqvpz', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (feedback) {
+          feedback.textContent = '✓ Sent! We\'ll reply within 3 hours.';
+          feedback.className = 'tour-contact-feedback text-xs text-center p-2 rounded bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300';
+          feedback.classList.remove('hidden');
+        }
+        form.reset();
+        // Reset Turnstile widget
+        const turnstileWidget = form.querySelector('.cf-turnstile');
+        if (turnstileWidget && window.turnstile) {
+          window.turnstile.reset(turnstileWidget);
+        }
+      } catch {
+        if (feedback) {
+          feedback.textContent = 'Please email booking@simplyenak.com or WhatsApp +60 17-287 8929.';
+          feedback.className = 'tour-contact-feedback text-xs text-center p-2 rounded bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300';
+          feedback.classList.remove('hidden');
+        }
+      } finally {
+        if (btn) { btn.textContent = origText || 'Send Message'; btn.removeAttribute('disabled'); }
+      }
+    });
+  });
+})();
+</script>
