@@ -25,7 +25,7 @@ export const headerData = {
         },
         {
           text: 'Eat Drink George Town',
-          href: getPermalink('/tours/eat-drink-george-town'),
+          href: getPermalink('/tours/georgetown-night-food-durian'),
         },
         {
           text: 'Penang Street Food',
@@ -71,7 +71,7 @@ export const footerData = {
         { text: 'All Tours', href: '/tours' },
         { text: 'Flavours of Malaysia', href: '/tours/flavours-of-malaysia' },
         { text: 'KL Street Food', href: '/tours/kuala-lumpur-street-food' },
-        { text: 'Eat Drink George Town', href: '/tours/eat-drink-george-town' },
+        { text: 'Eat Drink George Town', href: '/tours/georgetown-night-food-durian' },
         { text: 'Penang Street Food', href: '/tours/penang-street-food' },
         { text: 'Secrets of KL', href: '/tours/secrets-of-kl-nightlife-street-art-and-cocktails' },
         { text: 'Tour Comparison', href: '/tours/why-simply-enak' },

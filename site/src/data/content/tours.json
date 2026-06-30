@@ -26,6 +26,7 @@
     "whatsExcluded": [],
     "highlights": [],
     "ticketingHubId": null,
+    "tourType": "private",
     "isBookable": false,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -117,7 +118,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       },
       {
         "id": 11,
@@ -131,7 +133,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-20T00:09:08.106Z",
-        "createdAt": "2026-05-19T08:33:29.735Z"
+        "createdAt": "2026-05-19T08:33:29.735Z",
+        "_status": "published"
       }
     ],
     "travelTypes": [
@@ -223,14 +226,23 @@
       "id": 297,
       "alt": "Dsc 2763",
       "caption": null,
+      "polaroidLabel": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
       "tags": [],
-      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-22T03:07:14.582Z",
       "createdAt": "2026-06-22T03:07:13.849Z",
       "url": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
-      "thumbnailURL": "/api/media/file/DSC_2763-400x300.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
       "filename": "dsc-2763.jpg",
       "mimeType": "image/jpeg",
       "filesize": 2214861,
@@ -272,14 +284,89 @@
           "id": 300,
           "alt": "Tasting Curry Puff Secrets of KL Tour - Simply Enak Kuala Lumpur",
           "caption": "Tasting Curry Puff on the Secrets of KL Tour with Simply Enak",
+          "polaroidLabel": "Curry Puff Tasting",
+          "subject": "food",
+          "custom_label": null,
+          "location_ref": {
+            "id": 14,
+            "name": "Kuala Lumpur",
+            "slug": "kuala-lumpur",
+            "icon": "🏙️",
+            "color": "#0ea5e9",
+            "description": null,
+            "image": {
+              "id": 136,
+              "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "polaroidLabel": null,
+              "subject": "landmark",
+              "custom_label": null,
+              "location_ref": null,
+              "credit": null,
+              "gps": {
+                "lat": null,
+                "lng": null,
+                "place": null
+              },
+              "usage": null,
+              "tags": [],
+              "prefix": "payload-media",
+              "updatedAt": "2026-06-19T00:18:02.769Z",
+              "createdAt": "2026-06-19T00:18:01.822Z",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "filename": "simply-enak-landmark.jpg",
+              "mimeType": "image/jpeg",
+              "filesize": 2305832,
+              "width": 2730,
+              "height": 4096,
+              "focalX": 50,
+              "focalY": 50,
+              "sizes": {
+                "thumbnail": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/jpeg",
+                  "filesize": 21170,
+                  "filename": "DSC_9621-400x300.jpg"
+                },
+                "medium": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "width": 800,
+                  "height": 600,
+                  "mimeType": "image/jpeg",
+                  "filesize": 68243,
+                  "filename": "DSC_9621-800x600.jpg"
+                },
+                "large": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "width": 1200,
+                  "height": 800,
+                  "mimeType": "image/jpeg",
+                  "filesize": 122310,
+                  "filename": "DSC_9621-1200x800.jpg"
+                }
+              }
+            },
+            "status": "published",
+            "updatedAt": "2026-06-20T00:22:54.695Z",
+            "createdAt": "2026-05-19T08:33:20.569Z",
+            "_status": "published"
+          },
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-23T03:33:06.107Z",
           "createdAt": "2026-06-23T03:32:07.129Z",
           "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
-          "thumbnailURL": "/api/media/file/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
           "filename": "simply-enak-kuala-lumpur-food-m0li.webp",
           "mimeType": "image/webp",
           "filesize": 15936,
@@ -321,14 +408,89 @@
           "id": 249,
           "alt": "Simply Enak Kuala Lumpur Landscape",
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "landscape",
+          "custom_label": null,
+          "location_ref": {
+            "id": 14,
+            "name": "Kuala Lumpur",
+            "slug": "kuala-lumpur",
+            "icon": "🏙️",
+            "color": "#0ea5e9",
+            "description": null,
+            "image": {
+              "id": 136,
+              "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "polaroidLabel": null,
+              "subject": "landmark",
+              "custom_label": null,
+              "location_ref": null,
+              "credit": null,
+              "gps": {
+                "lat": null,
+                "lng": null,
+                "place": null
+              },
+              "usage": null,
+              "tags": [],
+              "prefix": "payload-media",
+              "updatedAt": "2026-06-19T00:18:02.769Z",
+              "createdAt": "2026-06-19T00:18:01.822Z",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "filename": "simply-enak-landmark.jpg",
+              "mimeType": "image/jpeg",
+              "filesize": 2305832,
+              "width": 2730,
+              "height": 4096,
+              "focalX": 50,
+              "focalY": 50,
+              "sizes": {
+                "thumbnail": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/jpeg",
+                  "filesize": 21170,
+                  "filename": "DSC_9621-400x300.jpg"
+                },
+                "medium": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "width": 800,
+                  "height": 600,
+                  "mimeType": "image/jpeg",
+                  "filesize": 68243,
+                  "filename": "DSC_9621-800x600.jpg"
+                },
+                "large": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "width": 1200,
+                  "height": 800,
+                  "mimeType": "image/jpeg",
+                  "filesize": 122310,
+                  "filename": "DSC_9621-1200x800.jpg"
+                }
+              }
+            },
+            "status": "published",
+            "updatedAt": "2026-06-20T00:22:54.695Z",
+            "createdAt": "2026-05-19T08:33:20.569Z",
+            "_status": "published"
+          },
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-22T02:16:15.393Z",
           "createdAt": "2026-06-22T02:16:14.688Z",
           "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-landscape.jpg",
-          "thumbnailURL": "/api/media/file/DSC_2380-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_2380-400x300.jpg",
           "filename": "simply-enak-kuala-lumpur-landscape.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2672366,
@@ -370,14 +532,89 @@
           "id": 298,
           "alt": "Secrets of KL tour starts with a delicious Roti Boy",
           "caption": "Secrets of KL tour starts with a delicious Roti Boy",
+          "polaroidLabel": "Tour Starts",
+          "subject": "food",
+          "custom_label": null,
+          "location_ref": {
+            "id": 14,
+            "name": "Kuala Lumpur",
+            "slug": "kuala-lumpur",
+            "icon": "🏙️",
+            "color": "#0ea5e9",
+            "description": null,
+            "image": {
+              "id": 136,
+              "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "polaroidLabel": null,
+              "subject": "landmark",
+              "custom_label": null,
+              "location_ref": null,
+              "credit": null,
+              "gps": {
+                "lat": null,
+                "lng": null,
+                "place": null
+              },
+              "usage": null,
+              "tags": [],
+              "prefix": "payload-media",
+              "updatedAt": "2026-06-19T00:18:02.769Z",
+              "createdAt": "2026-06-19T00:18:01.822Z",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "filename": "simply-enak-landmark.jpg",
+              "mimeType": "image/jpeg",
+              "filesize": 2305832,
+              "width": 2730,
+              "height": 4096,
+              "focalX": 50,
+              "focalY": 50,
+              "sizes": {
+                "thumbnail": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/jpeg",
+                  "filesize": 21170,
+                  "filename": "DSC_9621-400x300.jpg"
+                },
+                "medium": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "width": 800,
+                  "height": 600,
+                  "mimeType": "image/jpeg",
+                  "filesize": 68243,
+                  "filename": "DSC_9621-800x600.jpg"
+                },
+                "large": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "width": 1200,
+                  "height": 800,
+                  "mimeType": "image/jpeg",
+                  "filesize": 122310,
+                  "filename": "DSC_9621-1200x800.jpg"
+                }
+              }
+            },
+            "status": "published",
+            "updatedAt": "2026-06-20T00:22:54.695Z",
+            "createdAt": "2026-05-19T08:33:20.569Z",
+            "_status": "published"
+          },
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-23T02:58:23.514Z",
           "createdAt": "2026-06-23T02:58:22.804Z",
           "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
-          "thumbnailURL": "/api/media/file/simply-enak-tour-start-with-roti-boy-400x300.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
           "filename": "simply-enak-kuala-lumpur-food-vqwe.webp",
           "mimeType": "image/webp",
           "filesize": 29992,
@@ -419,14 +656,23 @@
           "id": 297,
           "alt": "Dsc 2763",
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-22T03:07:14.582Z",
           "createdAt": "2026-06-22T03:07:13.849Z",
           "url": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
-          "thumbnailURL": "/api/media/file/DSC_2763-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
           "filename": "dsc-2763.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2214861,
@@ -468,14 +714,89 @@
           "id": 245,
           "alt": "Simply Enak Kuala Lumpur Dish",
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "dish",
+          "custom_label": null,
+          "location_ref": {
+            "id": 14,
+            "name": "Kuala Lumpur",
+            "slug": "kuala-lumpur",
+            "icon": "🏙️",
+            "color": "#0ea5e9",
+            "description": null,
+            "image": {
+              "id": 136,
+              "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+              "polaroidLabel": null,
+              "subject": "landmark",
+              "custom_label": null,
+              "location_ref": null,
+              "credit": null,
+              "gps": {
+                "lat": null,
+                "lng": null,
+                "place": null
+              },
+              "usage": null,
+              "tags": [],
+              "prefix": "payload-media",
+              "updatedAt": "2026-06-19T00:18:02.769Z",
+              "createdAt": "2026-06-19T00:18:01.822Z",
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "filename": "simply-enak-landmark.jpg",
+              "mimeType": "image/jpeg",
+              "filesize": 2305832,
+              "width": 2730,
+              "height": 4096,
+              "focalX": 50,
+              "focalY": 50,
+              "sizes": {
+                "thumbnail": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/jpeg",
+                  "filesize": 21170,
+                  "filename": "DSC_9621-400x300.jpg"
+                },
+                "medium": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "width": 800,
+                  "height": 600,
+                  "mimeType": "image/jpeg",
+                  "filesize": 68243,
+                  "filename": "DSC_9621-800x600.jpg"
+                },
+                "large": {
+                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "width": 1200,
+                  "height": 800,
+                  "mimeType": "image/jpeg",
+                  "filesize": 122310,
+                  "filename": "DSC_9621-1200x800.jpg"
+                }
+              }
+            },
+            "status": "published",
+            "updatedAt": "2026-06-20T00:22:54.695Z",
+            "createdAt": "2026-05-19T08:33:20.569Z",
+            "_status": "published"
+          },
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-22T02:16:11.303Z",
           "createdAt": "2026-06-22T02:16:10.561Z",
           "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-dish.jpg",
-          "thumbnailURL": "/api/media/file/DSC_1867-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_1867-400x300.jpg",
           "filename": "simply-enak-kuala-lumpur-dish.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2428680,
@@ -567,6 +888,7 @@
       }
     ],
     "ticketingHubId": "148305db-44f6-4e6b-b8ec-dedfa9154716",
+    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -669,7 +991,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       },
       {
         "id": 11,
@@ -683,7 +1006,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-20T00:09:08.106Z",
-        "createdAt": "2026-05-19T08:33:29.735Z"
+        "createdAt": "2026-05-19T08:33:29.735Z",
+        "_status": "published"
       }
     ],
     "specialty_experiences": [
@@ -1069,7 +1393,7 @@
     "duration": "3.5 hours",
     "durationMinutes": 210,
     "location": "Penang Road",
-    "meetingPoint": null,
+    "meetingPoint": "Penang Road: MYDIN Emporium",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -1085,7 +1409,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 3,
@@ -1099,7 +1424,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z"
+        "createdAt": "2026-05-19T08:33:25.146Z",
+        "_status": "published"
       },
       {
         "id": 12,
@@ -1113,7 +1439,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z"
+        "createdAt": "2026-05-19T08:33:30.320Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -1127,7 +1454,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       }
     ],
     "travelTypes": [
@@ -1245,14 +1573,23 @@
       "id": 320,
       "alt": null,
       "caption": null,
+      "polaroidLabel": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
       "tags": [],
-      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-28T13:39:12.115Z",
       "createdAt": "2026-06-28T13:39:11.630Z",
       "url": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
-      "thumbnailURL": "/api/media/file/Penang004-400x300.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
       "filename": "Penang004.jpg",
       "mimeType": "image/jpeg",
       "filesize": 354812,
@@ -1294,14 +1631,23 @@
           "id": 333,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:24.388Z",
           "createdAt": "2026-06-28T13:39:24.008Z",
           "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164.jpg",
-          "thumbnailURL": "/api/media/file/PXL_20231121_001919164-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-400x300.jpg",
           "filename": "PXL_20231121_001919164.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2264987,
@@ -1343,14 +1689,23 @@
           "id": 324,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:15.573Z",
           "createdAt": "2026-06-28T13:39:14.369Z",
           "url": "https://cdn.simplyenak.com/payload-media/Penang008.jpg",
-          "thumbnailURL": "/api/media/file/Penang008-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang008-400x300.jpg",
           "filename": "Penang008.jpg",
           "mimeType": "image/jpeg",
           "filesize": 287389,
@@ -1392,14 +1747,23 @@
           "id": 320,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:12.115Z",
           "createdAt": "2026-06-28T13:39:11.630Z",
           "url": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
-          "thumbnailURL": "/api/media/file/Penang004-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
           "filename": "Penang004.jpg",
           "mimeType": "image/jpeg",
           "filesize": 354812,
@@ -1441,14 +1805,23 @@
           "id": 327,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:18.590Z",
           "createdAt": "2026-06-28T13:39:17.569Z",
           "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40.jpg",
-          "thumbnailURL": "/api/media/file/pl1TEZ0db40-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40-400x300.jpg",
           "filename": "pl1TEZ0db40.jpg",
           "mimeType": "image/jpeg",
           "filesize": 120640,
@@ -1490,14 +1863,23 @@
           "id": 317,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:09.338Z",
           "createdAt": "2026-06-28T13:39:09.104Z",
           "url": "https://cdn.simplyenak.com/payload-media/Penang001.jpg",
-          "thumbnailURL": "/api/media/file/Penang001-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang001-400x300.jpg",
           "filename": "Penang001.jpg",
           "mimeType": "image/jpeg",
           "filesize": 409310,
@@ -1559,6 +1941,7 @@
       }
     ],
     "ticketingHubId": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
+    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -1658,7 +2041,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 3,
@@ -1672,7 +2056,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z"
+        "createdAt": "2026-05-19T08:33:25.146Z",
+        "_status": "published"
       },
       {
         "id": 12,
@@ -1686,7 +2071,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z"
+        "createdAt": "2026-05-19T08:33:30.320Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -1700,7 +2086,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       }
     ],
     "specialty_experiences": [
@@ -1993,7 +2380,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 3,
@@ -2007,7 +2395,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z"
+        "createdAt": "2026-05-19T08:33:25.146Z",
+        "_status": "published"
       },
       {
         "id": 12,
@@ -2021,7 +2410,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z"
+        "createdAt": "2026-05-19T08:33:30.320Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -2035,7 +2425,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       }
     ],
     "travelTypes": [
@@ -2140,14 +2531,23 @@
       "id": 4,
       "alt": null,
       "caption": null,
+      "polaroidLabel": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
       "tags": [],
-      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-05-19T09:59:42.545Z",
       "createdAt": "2026-05-19T09:59:41.726Z",
       "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122.jpg",
-      "thumbnailURL": "/api/media/file/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
       "filename": "kuala_lumpur_street_food_cd4fad4122.jpg",
       "mimeType": "image/jpeg",
       "filesize": 66068,
@@ -2208,6 +2608,7 @@
       }
     ],
     "ticketingHubId": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
+    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -2307,7 +2708,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 3,
@@ -2321,7 +2723,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z"
+        "createdAt": "2026-05-19T08:33:25.146Z",
+        "_status": "published"
       },
       {
         "id": 12,
@@ -2335,7 +2738,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z"
+        "createdAt": "2026-05-19T08:33:30.320Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -2349,7 +2753,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       }
     ],
     "specialty_experiences": [
@@ -2587,7 +2992,7 @@
     "duration": "4 hours",
     "durationMinutes": 240,
     "location": "Kuala Lumpur",
-    "meetingPoint": null,
+    "meetingPoint": "KL: Hilton Garden Inn North",
     "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
@@ -2603,7 +3008,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 3,
@@ -2617,7 +3023,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z"
+        "createdAt": "2026-05-19T08:33:25.146Z",
+        "_status": "published"
       },
       {
         "id": 12,
@@ -2631,7 +3038,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z"
+        "createdAt": "2026-05-19T08:33:30.320Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -2645,7 +3053,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       }
     ],
     "travelTypes": [
@@ -2763,14 +3172,23 @@
       "id": 341,
       "alt": null,
       "caption": null,
+      "polaroidLabel": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
       "tags": [],
-      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-28T13:56:08.208Z",
       "createdAt": "2026-06-28T13:56:07.504Z",
       "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001.png",
-      "thumbnailURL": "/api/media/file/Flavours_of_Malaysia_001-400x300.png",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-400x300.png",
       "filename": "Flavours_of_Malaysia_001.png",
       "mimeType": "image/png",
       "filesize": 3057046,
@@ -2812,14 +3230,23 @@
           "id": 340,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:06.160Z",
           "createdAt": "2026-06-28T13:56:05.512Z",
           "url": "https://cdn.simplyenak.com/payload-media/Enak-13.jpg",
-          "thumbnailURL": "/api/media/file/Enak-13-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Enak-13-400x300.jpg",
           "filename": "Enak-13.jpg",
           "mimeType": "image/jpeg",
           "filesize": 1344627,
@@ -2861,14 +3288,23 @@
           "id": 337,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:00.183Z",
           "createdAt": "2026-06-28T13:55:59.576Z",
           "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4.jpg",
-          "thumbnailURL": "/api/media/file/Copy%20of%20Enak-4-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-400x300.jpg",
           "filename": "Copy of Enak-4.jpg",
           "mimeType": "image/jpeg",
           "filesize": 1598024,
@@ -2910,14 +3346,23 @@
           "id": 330,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:20.817Z",
           "createdAt": "2026-06-28T13:39:20.438Z",
           "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86.jpg",
-          "thumbnailURL": "/api/media/file/pl1TEZ0Zz86-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86-400x300.jpg",
           "filename": "pl1TEZ0Zz86.jpg",
           "mimeType": "image/jpeg",
           "filesize": 75971,
@@ -2959,14 +3404,23 @@
           "id": 331,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:21.319Z",
           "createdAt": "2026-06-28T13:39:21.099Z",
           "url": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662.jpg",
-          "thumbnailURL": "/api/media/file/pl1TEZwb662-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662-400x300.jpg",
           "filename": "pl1TEZwb662.jpg",
           "mimeType": "image/jpeg",
           "filesize": 83853,
@@ -3008,14 +3462,23 @@
           "id": 345,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:14.920Z",
           "createdAt": "2026-06-28T13:56:14.665Z",
           "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1.jpg",
-          "thumbnailURL": "/api/media/file/PXL_20231121_001919164-1-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-400x300.jpg",
           "filename": "PXL_20231121_001919164-1.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2264987,
@@ -3077,6 +3540,7 @@
       }
     ],
     "ticketingHubId": "8be588c6-3879-4950-bc69-5d006cdf9152",
+    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -3176,7 +3640,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 3,
@@ -3190,7 +3655,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:44.523Z",
-        "createdAt": "2026-05-19T08:33:25.146Z"
+        "createdAt": "2026-05-19T08:33:25.146Z",
+        "_status": "published"
       },
       {
         "id": 12,
@@ -3204,7 +3670,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T14:16:26.881Z",
-        "createdAt": "2026-05-19T08:33:30.320Z"
+        "createdAt": "2026-05-19T08:33:30.320Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -3218,7 +3685,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       }
     ],
     "specialty_experiences": [
@@ -3486,7 +3954,7 @@
   {
     "id": 1,
     "name": "Georgetown's Best Hawkers and the Durian Strip",
-    "slug": "eat-drink-george-town",
+    "slug": "georgetown-night-food-durian",
     "tagline": "Experience Penang after dark",
     "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
     "fullDescription": "George Town comes alive as the heat of the day fades. This tour starts at sunset, when the city hawkers begin arriving at their evening spots and the colonial-era streets take on a different character.\n\nWe start at a popiah stall in the heart of the UNESCO zone. Popiah is a fresh spring roll - thin rice paper wrapper stuffed with jicama, carrot, tofu, bean sprouts, and chilli, topped with shallots and a sweet soy glaze. The auntie who makes them has been doing this since 1985.\n\nNext, we walk through Little India as the jewellery shops wind down and the banana leaf rice restaurants fill up. We stop at a corner stall that serves the best vadai in George Town - crunchy lentil fritters with a coconut chutney made using the same recipe for three generations.\n\nThe tour continues through the Armenian Street heritage area, where we taste cendol and apom from street vendors in front of pre-war shophouses. Your guide will point out the street art and share stories about Penang history.\n\nWe end at a clan jetty - one of the six wooden villages built over the water by Chinese immigrant clans in the 19th century. Here, a third-generation resident serves home-cooked Peranakan food: buah keluak, inchi kabin, and acar. The view of the mainland lights across the channel is worth the walk alone.\n\nThroughout the tour, your guide will connect each dish to George Town history as a British trading post, a Chinese immigrant gateway, and a Malay fishing village.",
@@ -3511,7 +3979,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -3525,7 +3994,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       },
       {
         "id": 6,
@@ -3539,7 +4009,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:47.352Z",
-        "createdAt": "2026-05-19T08:33:26.827Z"
+        "createdAt": "2026-05-19T08:33:26.827Z",
+        "_status": "published"
       },
       {
         "id": 8,
@@ -3553,7 +4024,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:39:59.853Z",
-        "createdAt": "2026-05-19T08:33:27.939Z"
+        "createdAt": "2026-05-19T08:33:27.939Z",
+        "_status": "published"
       },
       {
         "id": 5,
@@ -3567,7 +4039,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:08.254Z",
-        "createdAt": "2026-05-19T08:33:26.266Z"
+        "createdAt": "2026-05-19T08:33:26.266Z",
+        "_status": "published"
       },
       {
         "id": 11,
@@ -3581,7 +4054,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-20T00:09:08.106Z",
-        "createdAt": "2026-05-19T08:33:29.735Z"
+        "createdAt": "2026-05-19T08:33:29.735Z",
+        "_status": "published"
       }
     ],
     "travelTypes": [
@@ -3742,7 +4216,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-30T06:53:12.499Z",
-        "createdAt": "2026-06-30T06:53:12.498Z"
+        "createdAt": "2026-06-30T06:53:12.498Z",
+        "_status": "draft"
       },
       {
         "id": 7,
@@ -3780,7 +4255,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-30T06:54:44.436Z",
-        "createdAt": "2026-06-30T06:54:44.436Z"
+        "createdAt": "2026-06-30T06:54:44.436Z",
+        "_status": "draft"
       },
       {
         "id": 8,
@@ -3811,7 +4287,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-30T06:55:48.930Z",
-        "createdAt": "2026-06-30T06:55:48.930Z"
+        "createdAt": "2026-06-30T06:55:48.930Z",
+        "_status": "draft"
       },
       {
         "id": 9,
@@ -3842,7 +4319,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-30T06:56:55.295Z",
-        "createdAt": "2026-06-30T06:56:55.295Z"
+        "createdAt": "2026-06-30T06:56:55.295Z",
+        "_status": "draft"
       },
       {
         "id": 10,
@@ -3880,7 +4358,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-30T06:57:56.887Z",
-        "createdAt": "2026-06-30T06:57:56.887Z"
+        "createdAt": "2026-06-30T06:57:56.887Z",
+        "_status": "draft"
       },
       {
         "id": 11,
@@ -3911,7 +4390,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-30T06:59:18.920Z",
-        "createdAt": "2026-06-30T06:59:18.920Z"
+        "createdAt": "2026-06-30T06:59:18.920Z",
+        "_status": "draft"
       }
     ],
     "tailoredAvailable": true,
@@ -3920,14 +4400,23 @@
       "id": 353,
       "alt": null,
       "caption": null,
+      "polaroidLabel": null,
+      "subject": "",
+      "custom_label": null,
+      "location_ref": null,
+      "credit": null,
+      "gps": {
+        "lat": null,
+        "lng": null,
+        "place": null
+      },
       "usage": null,
       "tags": [],
-      "renameTo": null,
       "prefix": "payload-media",
       "updatedAt": "2026-06-29T02:01:19.736Z",
       "createdAt": "2026-06-28T14:13:51.391Z",
       "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
-      "thumbnailURL": "/api/media/file/DSC_6661%20(1)-400x300.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
       "filename": "DSC_6661 (1).JPG",
       "mimeType": "image/jpeg",
       "filesize": 3071941,
@@ -3969,14 +4458,23 @@
           "id": 350,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:45.139Z",
           "createdAt": "2026-06-28T14:13:44.640Z",
           "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-          "thumbnailURL": "/api/media/file/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
           "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
           "mimeType": "image/jpeg",
           "filesize": 999686,
@@ -4018,14 +4516,23 @@
           "id": 355,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:54.483Z",
           "createdAt": "2026-06-28T14:13:53.991Z",
           "url": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
-          "thumbnailURL": "/api/media/file/hin2-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
           "filename": "hin2.jpg",
           "mimeType": "image/jpeg",
           "filesize": 1030719,
@@ -4067,14 +4574,23 @@
           "id": 356,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": "",
           "prefix": "payload-media",
           "updatedAt": "2026-06-29T03:53:39.722Z",
           "createdAt": "2026-06-28T14:13:55.942Z",
           "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
-          "thumbnailURL": "/api/media/file/PXL_20230703_082939063.MP-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-400x300.jpg",
           "filename": "simply-enak-guide-explaining.jpg",
           "mimeType": "image/jpeg",
           "filesize": 3572168,
@@ -4116,14 +4632,23 @@
           "id": 351,
           "alt": null,
           "caption": null,
+          "polaroidLabel": null,
+          "subject": "",
+          "custom_label": null,
+          "location_ref": null,
+          "credit": null,
+          "gps": {
+            "lat": null,
+            "lng": null,
+            "place": null
+          },
           "usage": null,
           "tags": [],
-          "renameTo": null,
           "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:47.134Z",
           "createdAt": "2026-06-28T14:13:46.473Z",
           "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
-          "thumbnailURL": "/api/media/file/DSC_5051-opq3007862668-400x300.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
           "filename": "DSC_5051-opq3007862668.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2143737,
@@ -4185,6 +4710,7 @@
       }
     ],
     "ticketingHubId": "7c6293c6-b979-4092-a577-66dfbad5c88e",
+    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -4273,14 +4799,23 @@
         "id": 353,
         "alt": null,
         "caption": null,
+        "polaroidLabel": null,
+        "subject": "",
+        "custom_label": null,
+        "location_ref": null,
+        "credit": null,
+        "gps": {
+          "lat": null,
+          "lng": null,
+          "place": null
+        },
         "usage": null,
         "tags": [],
-        "renameTo": null,
         "prefix": "payload-media",
         "updatedAt": "2026-06-29T02:01:19.736Z",
         "createdAt": "2026-06-28T14:13:51.391Z",
         "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
-        "thumbnailURL": "/api/media/file/DSC_6661%20(1)-400x300.jpg",
+        "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
         "filename": "DSC_6661 (1).JPG",
         "mimeType": "image/jpeg",
         "filesize": 3071941,
@@ -4339,7 +4874,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:18.126Z",
-        "createdAt": "2026-05-19T08:33:27.383Z"
+        "createdAt": "2026-05-19T08:33:27.383Z",
+        "_status": "published"
       },
       {
         "id": 4,
@@ -4353,7 +4889,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-28T12:21:48.552Z",
-        "createdAt": "2026-05-19T08:33:25.703Z"
+        "createdAt": "2026-05-19T08:33:25.703Z",
+        "_status": "published"
       },
       {
         "id": 6,
@@ -4367,7 +4904,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:40:47.352Z",
-        "createdAt": "2026-05-19T08:33:26.827Z"
+        "createdAt": "2026-05-19T08:33:26.827Z",
+        "_status": "published"
       },
       {
         "id": 8,
@@ -4381,7 +4919,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:39:59.853Z",
-        "createdAt": "2026-05-19T08:33:27.939Z"
+        "createdAt": "2026-05-19T08:33:27.939Z",
+        "_status": "published"
       },
       {
         "id": 5,
@@ -4395,7 +4934,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-19T14:41:08.254Z",
-        "createdAt": "2026-05-19T08:33:26.266Z"
+        "createdAt": "2026-05-19T08:33:26.266Z",
+        "_status": "published"
       },
       {
         "id": 11,
@@ -4409,7 +4949,8 @@
         "scheduledPublish": null,
         "publishedAt": null,
         "updatedAt": "2026-06-20T00:09:08.106Z",
-        "createdAt": "2026-05-19T08:33:29.735Z"
+        "createdAt": "2026-05-19T08:33:29.735Z",
+        "_status": "published"
       }
     ],
     "specialty_experiences": [
@@ -4506,170 +5047,6 @@
         "src": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
         "alt": "",
         "caption": ""
-      }
-    ],
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Eat Drink George Town",
-        "tagline": "Street Food and Cocktails in Penang",
-        "short_description": "Simply Enak's most-loved Penang tour starts as the sun sets.",
-        "full_description": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
-        "whats_included": [],
-        "whats_excluded": [],
-        "highlights": [
-          "Sizzling satay at a heritage Malay restaurant",
-          "Watch roti jala handcrafted like golden lace",
-          "Best samosas in Malaysia (locals' claim, not ours!)",
-          "Char kway teow at Chew Jetty at sunset",
-          "Alcoholic drink in a heritage setting"
-        ],
-        "meta_title": "Eat Drink George Town | Simply Enak Food Tours",
-        "meta_description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert."
-      },
-      {
-        "languages_code": "ms",
-        "name": "Makan Minum George Town",
-        "tagline": "Makanan Jalanan dan Koktel di Penang",
-        "short_description": "Lawatan Penang paling digemari Simply Enak bermula apabila matahari terbenam.",
-        "full_description": "Pemandu anda akan mengetuai anda melalui jalan-jalan bersejarah George Town, berkongsi cerita-cerita tentang pertubuhan rahsia, sejarah penjajahan, dan warisan pelbagai budaya yang menjadikan Penang ibu kota makanan Malaysia.",
-        "highlights": [
-          "Satay yang meruap di restoran warisan Melayu",
-          "Tonton roti jala yang dianyam tangan seperti renda emas",
-          "Samosa terbaik di Malaysia (kata penduduk tempatan, bukan kami!)",
-          "Char kway teow di Chew Jetty ketika matahari terbenam",
-          "Minuman beralkohol dalam persekitaran warisan"
-        ],
-        "meta_title": "Makan Minum George Town | Simply Enak Food Tours",
-        "meta_description": "Terokai makanan jalanan Penang dalam lawatan berjalan kaki berpandu. Rasai hidangan Malaysia yang asli di George Town dengan pakar tempatan."
-      },
-      {
-        "languages_code": "zh",
-        "name": "吃在乔治市",
-        "tagline": "槟城街头小吃与鸡尾酒",
-        "short_description": "Simply Enak 最受欢迎的槟城之旅在日落时分开始。",
-        "full_description": "您的向导将带领您穿越乔治市的古老街巷，讲述秘密社团的传奇、殖民时代的历史，以及造就槟城成为马来西亚美食之都的多元文化遗产。",
-        "highlights": [
-          "在传统马来餐厅享用滋滋作响的沙爹",
-          "观看手工制作的金色蕾丝般的网饼",
-          "马来西亚最好吃的咖喱角（当地人说的，不代表我们！）",
-          "日落时分的周氏桥炒粿条",
-          "在历史遗产环境中饮酒"
-        ],
-        "meta_title": "吃喝乔治市 | Simply Enak 美食之旅",
-        "meta_description": "在导游带领下步行游览槟城街头美食。与当地专家一起在乔治市品尝正宗的马来西亚菜肴。"
-      },
-      {
-        "languages_code": "de",
-        "name": "Essen Trinken George Town",
-        "tagline": "Straßenessen und Cocktails in Penang",
-        "short_description": "Simply Enaks beliebteste Penang-Tour beginnt bei Sonnenuntergang.",
-        "full_description": "Ihr Guide führt Sie durch die historischen Straßen von George Town und erzählt Ihnen Geschichten über Geheimgesellschaften, die Kolonialgeschichte und das multikulturelle Erbe, das Penang zur kulinarischen Hauptstadt Malaysias macht.",
-        "highlights": [
-          "Brutzelndes Saté in einem traditionsreichen malaiischen Restaurant",
-          "Beobachte, wie Roti Jala handgefertigt wird wie goldene Spitze",
-          "Die besten Samosas in Malaysia (sagen die Einheimischen, nicht wir!)",
-          "Char kway teow am Chew Jetty bei Sonnenuntergang",
-          "Alkoholisches Getränk in historischem Ambiente"
-        ],
-        "meta_title": "Essen Trinken George Town | Simply Enak Food-Touren",
-        "meta_description": "Entdecken Sie die Streetfood-Szene von Penang auf einer geführten Wanderung. Probieren Sie authentische malaysische Gerichte in George Town mit einem lokalen Experten."
-      },
-      {
-        "languages_code": "es",
-        "name": "Come Bebe George Town",
-        "tagline": "Comida callejera y cócteles en Penang",
-        "short_description": "El tour más querido de Penang de Simply Enak comienza cuando se pone el sol.",
-        "full_description": "Tu guía te llevará por las calles históricas de George Town, compartiendo relatos de sociedades secretas, historia colonial y el patrimonio multicultural que convierte a Penang en la capital gastronómica de Malasia.",
-        "highlights": [
-          "Satay chisporroteante en un restaurante malayo tradicional",
-          "Mira el roti jala elaborado a mano como encaje dorado",
-          "Los mejores samosas de Malasia (¡según los locales, no nosotros!)",
-          "Char kway teow en Chew Jetty al atardecer",
-          "Bebida alcohólica en un entorno patrimonial"
-        ],
-        "meta_title": "Come Bebe George Town | Simply Enak Food Tours",
-        "meta_description": "Explora la comida callejera de Penang en una visita guiada a pie. Saborea auténticos platos malayos en George Town con un experto local."
-      },
-      {
-        "languages_code": "fr",
-        "name": "Mangez Buvez George Town",
-        "tagline": "Cuisine de rue et cocktails à Penang",
-        "short_description": "La visite de Penang la plus appréciée de Simply Enak commence au coucher du soleil.",
-        "full_description": "Votre guide vous mènera à travers les rues historiques de George Town, partageant des récits sur les sociétés secrètes, l'histoire coloniale et le patrimoine multiculturel qui fait de Penang la capitale gastronomique de la Malaisie.",
-        "highlights": [
-          "Un satay grésillant dans un restaurant malais de tradition",
-          "Regardez le roti jala confectionné à la main comme de la dentelle dorée",
-          "Les meilleurs samosas de Malaisie (selon les locaux, pas nous !)",
-          "Char kway teow à Chew Jetty au coucher du soleil",
-          "Boisson alcoolisée dans un cadre patrimonial"
-        ],
-        "meta_title": "Manger & Boire George Town | Simply Enak Visites Culinaires",
-        "meta_description": "Explorez la cuisine de rue de Penang lors d'une visite guidée à pied. Dégustez des plats malaisiens authentiques à George Town avec un expert local."
-      },
-      {
-        "languages_code": "nl",
-        "name": "Eet Drink George Town",
-        "tagline": "Street food en cocktails in Penang",
-        "short_description": "Simply Enak's meest geliefde Penang-tour begint wanneer de zon ondergaat.",
-        "full_description": "Uw gids leidt u door de historische straten van George Town en vertelt over geheime genootschappen, koloniale geschiedenis en het multiculturele erfgoed dat Penang tot de culinaire hoofdstad van Maleisië maakt.",
-        "highlights": [
-          "Sissende saté in een traditioneel Maleisisch restaurant",
-          "Kijk naar roti jala, handgemaakt als gouden kant",
-          "Beste samosas in Maleisië (volgens de locals, niet volgens ons!)",
-          "Char kway teow bij Chew Jetty bij zonsondergang",
-          "Alcoholische drank in een historische omgeving"
-        ],
-        "meta_title": "Eet & Drink George Town | Simply Enak Etenstours",
-        "meta_description": "Verken straatvoedsel in Penang tijdens een begeleide wandeltocht. Proef authentieke Maleisische gerechten in George Town met een lokale expert."
-      },
-      {
-        "languages_code": "ru",
-        "name": "Ешьте. Пейте. Джорджтаун.",
-        "tagline": "Уличная еда и коктейли в Пенанге",
-        "short_description": "Самый любимый тур Simply Enak по Пенангу начинается на закате.",
-        "full_description": "Ваш гид проведёт вас по историческим улицам Джорджтауна, рассказывая истории о тайных обществах, колониальном прошлом и мультикультурном наследии, которые делают Пенанг гастрономической столицей Малайзии.",
-        "highlights": [
-          "Шипящий сатай в традиционном малайзийском ресторане",
-          "Смотрите, роти джала, изготовленная вручную как золотое кружево",
-          "Лучшие самосы в Малайзии (по словам местных, не нашим!)",
-          "Чар куай тео в Чью Джетти на закате",
-          "Алкогольный напиток в исторической обстановке"
-        ],
-        "meta_title": "Ешьте Пейте Джорджтаун | Просто Вкусные Гастрономические Туры",
-        "meta_description": "Откройте для себя уличную еду Пенанга на экскурсии с гидом. Попробуйте настоящие малайзийские блюда в Джорджтауне с местным экспертом."
-      },
-      {
-        "languages_code": "ja",
-        "name": "食べて、飲んで、ジョージタウン",
-        "tagline": "ペナンのストリートフードとカクテル",
-        "short_description": "Simply Enakの一番人気のペナンツアーは、夕暮れ時に始まります。",
-        "full_description": "ガイドがジョージタウンの歴史的な通りを案内し、秘密結社の逸話、植民地時代の歴史、そしてペナンをマレーシアの美食の首都たらしめている多文化遺産について語ります。",
-        "highlights": [
-          "伝統あるマレー料理のレストランでジュージュー焼けるサテ",
-          "金色のレースのように手編みされたロティ・ジャラをご覧ください",
-          "マレーシアで最高のサモサ（地元の人々の主張であって、私たちのものではありません！）",
-          "夕暮れのチュー・ジェティでのチャークイティウ",
-          "歴史的な空間でのお酒"
-        ],
-        "meta_title": "食べる・飲む ジョージタウン | シンプル・エナック フードツアー",
-        "meta_description": "ペナンストリートフードをガイド付きウォーキングツアーで探索。地元の専門家と一緒にジョージタウンで本格的なマレーシア料理を試食。"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Coma Beba George Town",
-        "tagline": "Comida de Rua e Coquetéis em Penang",
-        "short_description": "O tour mais amado da Simply Enak em Penang começa ao pôr do sol.",
-        "full_description": "Seu guia irá conduzi-lo pelas ruas históricas de George Town, compartilhando histórias de sociedades secretas, história colonial e a herança multicultural que faz de Penang a capital gastronômica da Malásia.",
-        "highlights": [
-          "Espetinhos de satay crepitantes em um restaurante malaio histórico",
-          "Veja a roti jala feita à mão como renda dourada",
-          "Melhores samosas da Malásia (afirmação dos locais, não nossa!)",
-          "Char kway teow em Chew Jetty ao pôr do sol",
-          "Bebida alcoólica em ambiente histórico"
-        ],
-        "meta_title": "Comer e Beber em George Town | Passeios Gastronômicos Simplesmente Deliciosos",
-        "meta_description": "Explore a comida de rua de Penang em um passeio guiado a pé. Saboreie pratos autênticos da Malásia em George Town com um especialista local."
       }
     ]
   }

@@ -9,10 +9,14 @@ import reviews from '~/data/content/reviews.json';
 
 export async function getStaticPaths() {
   const tours = await getAllTours();
-  return tours.map((tour: any) => ({ params: { slug: tour.slug }, props: { tour } }));
+  const paths = tours.map((tour: any) => ({ params: { slug: tour.slug }, props: { tour } }));
+  // 301 redirect: eat-drink-george-town -> georgetown-night-food-durian
+  paths.push({ params: { slug: 'eat-drink-george-town' }, props: { tour: null, redirect: '/tours/georgetown-night-food-durian' } });
+  return paths;
 }
 
-const { tour } = Astro.props;
+const { tour, redirect } = Astro.props;
+if (redirect) { return Astro.redirect(redirect, 301); }
 const allTours = await getAllTours();
 const t = useTranslations('en');
 const faqs = await getFAQs();

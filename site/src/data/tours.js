@@ -179,7 +179,7 @@ We'll pass temples, mosques, and churches on Harmony Street - proof of the peace
  ],
  },
  {
- slug: 'eat-drink-george-town',
+ slug: 'georgetown-night-food-durian',
  ticketingHubId: '8be588c6-3879-4950-bc69-5d006cdf9152',
  name: 'Eat Drink George Town',
  price: 'RM 359',

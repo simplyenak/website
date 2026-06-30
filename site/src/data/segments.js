@@ -70,7 +70,7 @@ export const dietarySegments = [
  description: 'Penang\'s vegetarian food scene is vibrant and diverse. Our guides know the best plant-based hawker stalls.',
  heroSubtitle: 'Plant-based delights in Asia\'s food capital',
  metaTitle: 'Vegetarian Food Tours in Penang',
- tours: ['penang-street-food', 'eat-drink-george-town'],
+ tours: ['penang-street-food', 'georgetown-night-food-durian'],
  },
  {
  slug: 'halal-food-tours-kuala-lumpur',
@@ -88,7 +88,7 @@ export const dietarySegments = [
  description: 'Discover Penang\'s best halal food - from nasi kandar to street-side satay.',
  heroSubtitle: 'Halal food adventures in Penang',
  metaTitle: 'Halal Food Tours in Penang',
- tours: ['penang-street-food', 'eat-drink-george-town'],
+ tours: ['penang-street-food', 'georgetown-night-food-durian'],
  },
  {
  slug: 'gluten-free-food-tours-kuala-lumpur',
@@ -106,7 +106,7 @@ export const dietarySegments = [
  description: 'Rice, rice, and more rice. Penang\'s gluten-free food scene is a dream.',
  heroSubtitle: 'Gluten-free eating in food capital',
  metaTitle: 'Gluten-Free Food Tours in Penang',
- tours: ['penang-street-food', 'eat-drink-george-town'],
+ tours: ['penang-street-food', 'georgetown-night-food-durian'],
  },
  {
  slug: 'vegan-food-tours-kuala-lumpur',
@@ -126,7 +126,7 @@ export const dietarySegments = [
  description: 'Penang is surprisingly vegan-friendly. From coconut-based curries to fruit desserts.',
  heroSubtitle: 'Vegan eats in Penang',
  metaTitle: 'Vegan Food Tours in Penang',
- tours: ['penang-street-food', 'eat-drink-george-town'],
+ tours: ['penang-street-food', 'georgetown-night-food-durian'],
  },
  {
  slug: 'jain-food-tours-kuala-lumpur',
@@ -155,7 +155,7 @@ export const dietarySegments = [
    description: 'From Buddhist zhai kitchens to Indian pure-veg banana leaf rice, Malaysian vegetarian food is a world of its own.',
    heroSubtitle: 'Plant-based eating across Malaysia',
    metaTitle: 'Vegetarian Food Tours in Malaysia',
-   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'eat-drink-george-town'],
+   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'georgetown-night-food-durian'],
    cityVariants: ['vegetarian-food-tours-kuala-lumpur', 'vegetarian-food-tours-penang'],
  },
  {
@@ -165,7 +165,7 @@ export const dietarySegments = [
    description: 'Malaysia is a halal food paradise. We only visit vendors that Muslim Malaysians trust.',
    heroSubtitle: 'Trusted halal food tours across Malaysia',
    metaTitle: 'Halal Food Tours in Malaysia',
-   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'eat-drink-george-town'],
+   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'georgetown-night-food-durian'],
    cityVariants: ['halal-food-tours-kuala-lumpur', 'halal-food-tours-penang'],
  },
  {
@@ -175,7 +175,7 @@ export const dietarySegments = [
    description: 'Rice, coconut, and tapioca — Malaysian cuisine is naturally gluten-free friendly once you know where to look.',
    heroSubtitle: 'Gluten-free eating across Malaysia',
    metaTitle: 'Gluten-Free Food Tours in Malaysia',
-   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'eat-drink-george-town'],
+   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'georgetown-night-food-durian'],
    cityVariants: ['gluten-free-food-tours-kuala-lumpur', 'gluten-free-food-tours-penang'],
  },
  {
@@ -185,7 +185,7 @@ export const dietarySegments = [
    description: 'From Buddhist vegan mock meats to coconut-based curries, Malaysia offers surprising depth for plant-based eaters.',
    heroSubtitle: 'Vegan-friendly eating across Malaysia',
    metaTitle: 'Vegan Food Tours in Malaysia',
-   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'eat-drink-george-town'],
+   tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'georgetown-night-food-durian'],
    cityVariants: ['vegan-food-tours-kuala-lumpur', 'vegan-food-tours-penang'],
  },
  {
@@ -216,7 +216,7 @@ export const locationSegments = [
  description: "Penang is Malaysia's food capital. Discover why on our guided street food tours.",
  heroSubtitle: "Asia's food capital awaits",
  metaTitle: 'Food Tours in Penang',
- tours: ['eat-drink-george-town', 'penang-street-food'],
+ tours: ['georgetown-night-food-durian', 'penang-street-food'],
  },
  {
  slug: 'food-tours-melaka',
@@ -278,7 +278,7 @@ export const locationSegments = [
  description: 'Penang\'s famous market has been feeding the island for over a century.',
  heroSubtitle: 'Penang\'s historic market experience',
  metaTitle: 'Chowrasta Market Food Tour Penang',
- tours: ['penang-street-food', 'eat-drink-george-town'],
+ tours: ['penang-street-food', 'georgetown-night-food-durian'],
  },
  {
  slug: 'georgetown-heritage-food-tour',
@@ -286,7 +286,7 @@ export const locationSegments = [
  description: 'UNESCO-listed George Town is a melting pot of cultures. Taste Peranakan, Hokkien, and Malay cuisine.',
  heroSubtitle: 'George Town\'s heritage food scene',
  metaTitle: 'Georgetown Heritage Food Tour Penang',
- tours: ['eat-drink-george-town', 'penang-street-food'],
+ tours: ['georgetown-night-food-durian', 'penang-street-food'],
  },
  {
  slug: 'gurney-drive-food-tour',
@@ -302,7 +302,7 @@ export const locationSegments = [
  description: 'Penang\'s Little India on Lebuh Queen is a riot of colour, spice, and flavour.',
  heroSubtitle: 'Penang Little India food adventure',
  metaTitle: 'Little India Food Tour Penang',
- tours: ['eat-drink-george-town', 'penang-street-food'],
+ tours: ['georgetown-night-food-durian', 'penang-street-food'],
  },
 ];
 
@@ -323,7 +323,7 @@ export const specialtySegments = [
 
  description: 'Gurney Drive at dusk, Chulia Street late-night hawkers, Air Itam morning market. Three different Penang food experiences.',
  metaTitle: 'Street Food Tours in Penang',
- tours: ['eat-drink-george-town', 'penang-street-food'],
+ tours: ['georgetown-night-food-durian', 'penang-street-food'],
  },
  {
  slug: 'market-tours-kuala-lumpur',
@@ -339,7 +339,7 @@ export const specialtySegments = [
  nameFull: 'Market Food Tours in Penang',
  description: "Penang's markets are a feast for the senses. From spices to fresh seafood.",
  metaTitle: 'Market Food Tours in Penang',
- tours: ['penang-street-food', 'eat-drink-george-town'],
+ tours: ['penang-street-food', 'georgetown-night-food-durian'],
  },
  {
  slug: 'heritage-food-tours-kuala-lumpur',
@@ -355,7 +355,7 @@ export const specialtySegments = [
  nameFull: 'Heritage Food Tours in Penang',
  description: 'Penang\'s food heritage is unmatched. Taste 200 years of Peranakan, Malay, and Chinese culinary tradition.',
  metaTitle: 'Heritage Food Tours in Penang',
- tours: ['eat-drink-george-town', 'penang-street-food'],
+ tours: ['georgetown-night-food-durian', 'penang-street-food'],
  },
  {
  slug: 'night-food-tours-kuala-lumpur',
@@ -373,7 +373,7 @@ export const specialtySegments = [
 
  description: 'Gurney Drive evening hawker centre, Chulia Street late supper, night market snacks. Penang after dark is a different food city.',
  metaTitle: 'Night Food Tours in Penang',
- tours: ['eat-drink-george-town'],
+ tours: ['georgetown-night-food-durian'],
  },
  // Generic experience pages (not city-specific) - used in "Tours by Experience" section
  {
@@ -384,7 +384,7 @@ export const specialtySegments = [
  heroSubtitle: "The Soul of Malaysian Food Culture",
  metaTitle: 'Street Food Tours in Malaysia',
  heroImage: 'https://se-website-images.s3.nl-ams.scw.cloud/kuala_lumpur_street_food_cd4fad4122.jpg',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'eat-drink-george-town', 'penang-street-food'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'georgetown-night-food-durian', 'penang-street-food'],
  cityVariants: ['street-food-tours-kuala-lumpur', 'street-food-tours-penang'],
  },
  {
@@ -395,7 +395,7 @@ export const specialtySegments = [
  heroSubtitle: "Where Malaysian Food Begins",
  metaTitle: 'Market Food Tours in Malaysia',
  heroImage: 'https://se-website-images.s3.nl-ams.scw.cloud/Flavours_of_Malaysia001_41094a74f7.jpg',
- tours: ['flavours-of-malaysia', 'eat-drink-george-town'],
+ tours: ['flavours-of-malaysia', 'georgetown-night-food-durian'],
  cityVariants: ['market-tours-kuala-lumpur', 'market-tours-penang'],
  },
  {
@@ -406,7 +406,7 @@ export const specialtySegments = [
  heroSubtitle: "Recipes Passed Through Generations",
  metaTitle: 'Heritage Food Tours in Malaysia',
  heroImage: 'https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_Georgetown1_72aaaf12b6.jpg',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'eat-drink-george-town', 'penang-street-food'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'georgetown-night-food-durian', 'penang-street-food'],
  cityVariants: ['heritage-food-tours-kuala-lumpur', 'heritage-food-tours-penang'],
  },
  {
@@ -417,7 +417,7 @@ export const specialtySegments = [
  heroSubtitle: "Malaysia After Dark",
  metaTitle: 'Night Food Tours in Malaysia',
  heroImage: 'https://se-website-images.s3.nl-ams.scw.cloud/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg',
- tours: ['secrets-of-kl-nightlife', 'eat-drink-george-town'],
+ tours: ['secrets-of-kl-nightlife', 'georgetown-night-food-durian'],
  cityVariants: ['night-food-tours-kuala-lumpur', 'night-food-tours-penang'],
  },
 ];
@@ -438,7 +438,7 @@ export const travelTypeSegments = [
  nameFull: 'Food Tours for Families in Penang',
  description: 'Penang is perfect for family food adventures. Kid-friendly hawker food and engaging stories.',
  metaTitle: 'Food Tours for Families in Penang',
- tours: ['eat-drink-george-town', 'penang-street-food'],
+ tours: ['georgetown-night-food-durian', 'penang-street-food'],
  },
  {
  slug: 'food-tours-for-couples-kuala-lumpur',
@@ -454,7 +454,7 @@ export const travelTypeSegments = [
  nameFull: 'Food Tours for Couples in Penang',
  description: 'A romantic evening exploring Penang\'s best street food and heritage laneways.',
  metaTitle: 'Food Tours for Couples in Penang',
- tours: ['eat-drink-george-town'],
+ tours: ['georgetown-night-food-durian'],
  },
  {
  slug: 'food-tours-for-foodies-kuala-lumpur',
@@ -470,7 +470,7 @@ export const travelTypeSegments = [
  nameFull: 'Food Tours for Foodies in Penang',
  description: 'For serious eaters. Explore Penang\'s most legendary hawker stalls and hidden gems.',
  metaTitle: 'Food Tours for Foodies in Penang',
- tours: ['eat-drink-george-town', 'penang-street-food'],
+ tours: ['georgetown-night-food-durian', 'penang-street-food'],
  },
  {
  slug: 'food-tours-for-chefs',
@@ -490,6 +490,6 @@ export const travelTypeSegments = [
  description: 'Pre-wedding or post-wedding food adventures for your guests. A unique way to celebrate with family and friends in Malaysia.',
  heroSubtitle: 'Celebrate Together, Eat Together',
  metaTitle: 'Wedding Group Food Tours in Malaysia',
- tours: ['flavours-of-malaysia', 'eat-drink-george-town'],
+ tours: ['flavours-of-malaysia', 'georgetown-night-food-durian'],
  },
 ];
