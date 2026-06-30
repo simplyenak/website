@@ -140,6 +140,11 @@ travelTypeRefs.forEach((s: any) => { if (s.image) travelTypeImageMap[s.slug] = g
                 <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">{tour.duration}</span>
                 <span class="bg-accent text-black text-xs font-bold px-2 py-1 rounded">{tour.tastings || '8-10 tastings'}</span>
               </div>
+              {tour.tourType === 'private' && (
+                <div class="absolute top-2 left-2">
+                  <span class="bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">Private Tour</span>
+                </div>
+              )}
             </div>
             <div class="p-4">
               <h3 class="font-bold font-heading text-lg group-hover:text-primary">{tour.name}</h3>

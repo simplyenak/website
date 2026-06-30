@@ -197,6 +197,14 @@ const tourSchema = {
         </div>
         <div class="flex justify-center flex-col bg-[#1a1a1a] md:p-10 p-8">
           <p class="font-bold text-xs uppercase mb-2 tracking-[0.2em] text-accent/80">{tour.tagline || 'Food Tour'}</p>
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            {tour.tourType === 'private' && (
+              <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Private Tour</span>
+            )}
+            {tour.tourType === 'both' && (
+              <span class="bg-teal-700 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Join-In</span>
+            )}
+          </div>
           <h1 class="font-bold font-heading text-3xl md:text-4xl leading-tight lg:text-5xl mb-2" style="font-size:clamp(1.5rem, 4.5vw, 3rem)">
             <span class="text-white">
               <span class="px-4 bg-accent font-black inline-block py-1 rounded-sm shadow-xl text-black" style="transform:rotate(-.7deg);font-size:clamp(1.3rem, 4.5vw, 3rem)">
@@ -442,7 +450,7 @@ const tourSchema = {
                   <Icon name="tabler:users" class="w-4 h-4 text-muted" />
                   <span class="text-muted">Group</span>
                 </div>
-                <p class="text-default font-semibold">{tour.groupSize || '2–9 people'}</p>
+                <p class="text-default font-semibold">{tour.tourType === 'private' ? 'Your group only' : tour.groupSize || '2–9 people'}</p>
               </div>
               <div>
                 <div class="flex items-center gap-1.5">
@@ -464,6 +472,9 @@ const tourSchema = {
           </div>
           <div class="p-6 space-y-3">
             <TourContactCTA widgetId={widgetId} tourName={tour.name || tour.tagline || ''} tourSlug={tour.slug} />
+            {tour.tourType === 'both' && (
+              <p class="text-xs text-muted text-center">Also available as a <a href="/tours/private-tours" class="text-accent hover:underline font-semibold">Private Tour</a></p>
+            )}
           </div>
           <!-- Map embed — signal to Google Maps (no API key needed) -->
           <div class="border-t border-gray-100 dark:border-white/10 p-6">

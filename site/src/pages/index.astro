@@ -48,6 +48,11 @@ const reviewSchemaItems = realReviews.map((r, i) => ({
   '@type': 'Review',
   '@id': `https://simplyenak.com/#review-${i + 1}`,
   author: { '@type': 'Person', name: r.author },
+  itemReviewed: {
+    '@type': 'LocalBusiness',
+    name: 'Simply Enak',
+    url: 'https://simplyenak.com',
+  },
   reviewRating: {
     '@type': 'Rating',
     ratingValue: r.rating || 5,

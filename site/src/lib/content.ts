@@ -342,6 +342,7 @@ function mergeTour(payload: any) {
       showInMenu: payload.showInMenu === true,
       publishedAt: payload.publishedAt || null,
       status: payload.status || 'published',
+      tourType: payload.tourType || 'both',
     };
   }
 
@@ -384,6 +385,7 @@ function mergeTour(payload: any) {
     new: payload.new === true,
     publishedAt: payload.publishedAt || null,
     status: payload.status || 'published',
+    tourType: payload.tourType || hardcoded.tourType || 'both',
   };
 }
 

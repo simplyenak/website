@@ -156,7 +156,7 @@ const meta = {
       </div>
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {allTours.slice(0, 6).map((tour: any) => (
+        {allTours.filter((t: any) => t.tourType === 'private' || t.tourType === 'both').slice(0, 6).map((tour: any) => (
           <a href={`/tours/${tour.slug}`} class="group block rounded-xl border bg-card shadow-sm overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
             {tour.image && (
               <div class="aspect-[16/9] overflow-hidden">

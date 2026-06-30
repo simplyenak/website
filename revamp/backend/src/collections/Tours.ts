@@ -266,6 +266,20 @@ export const Tours: CollectionConfig = {
       },
     },
     {
+      name: 'tourType',
+      type: 'select',
+      options: [
+        { label: 'Join-In', value: 'join-in' },
+        { label: 'Private', value: 'private' },
+        { label: 'Both (Join-In + Private)', value: 'both' },
+      ],
+      defaultValue: 'both',
+      admin: {
+        description: 'How this tour can be booked. "Both" shows join-in as primary with private-as-option.',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'isBookable',
       type: 'checkbox',
       defaultValue: false,

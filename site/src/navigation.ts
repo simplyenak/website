@@ -35,11 +35,21 @@ export const headerData = {
           text: 'Secrets of KL',
           href: getPermalink('/tours/secrets-of-kl-nightlife-street-art-and-cocktails'),
         },
+        { text: '───', href: '' },
+        {
+          text: 'Private Tours',
+          href: getPermalink('/tours/private-tours'),
+          icon: 'tabler:lock',
+        },
       ],
     },
     {
       text: 'Stories',
       href: getBlogPermalink(),
+    },
+    {
+      text: 'Private Tours',
+      href: getPermalink('/tours/private-tours'),
     },
     {
       text: 'About',
