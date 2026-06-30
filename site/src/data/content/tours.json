@@ -4262,16 +4262,61 @@
     "showInMenu": true,
     "popular": false,
     "new": false,
-    "badgeLabel": null,
-    "publishedAt": null,
+    "badgeLabel": "New",
+    "publishedAt": "2026-06-30T12:00:00.000Z",
     "status": "published",
     "workflowStatus": "published",
     "meta": {
       "title": "Georgetown's Best Hawkers &  Durian Strip | Simply Enak Food Tours",
       "description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert.",
-      "image": null
+      "image": {
+        "id": 353,
+        "alt": null,
+        "caption": null,
+        "usage": null,
+        "tags": [],
+        "renameTo": null,
+        "prefix": "payload-media",
+        "updatedAt": "2026-06-29T02:01:19.736Z",
+        "createdAt": "2026-06-28T14:13:51.391Z",
+        "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
+        "thumbnailURL": "/api/media/file/DSC_6661%20(1)-400x300.jpg",
+        "filename": "DSC_6661 (1).JPG",
+        "mimeType": "image/jpeg",
+        "filesize": 3071941,
+        "width": 3965,
+        "height": 2642,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
+            "width": 400,
+            "height": 300,
+            "mimeType": "image/jpeg",
+            "filesize": 33109,
+            "filename": "DSC_6661 (1)-400x300.jpg"
+          },
+          "medium": {
+            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-800x600.jpg",
+            "width": 800,
+            "height": 600,
+            "mimeType": "image/jpeg",
+            "filesize": 111006,
+            "filename": "DSC_6661 (1)-800x600.jpg"
+          },
+          "large": {
+            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-1200x800.jpg",
+            "width": 1200,
+            "height": 800,
+            "mimeType": "image/jpeg",
+            "filesize": 203008,
+            "filename": "DSC_6661 (1)-1200x800.jpg"
+          }
+        }
+      }
     },
-    "updatedAt": "2026-06-30T07:15:04.660Z",
+    "updatedAt": "2026-06-30T07:37:27.068Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
