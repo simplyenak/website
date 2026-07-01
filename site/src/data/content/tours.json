@@ -1,11 +1,11 @@
 [
   {
     "id": 8,
-    "name": "Inside Pudu",
+    "name": null,
     "slug": "inside-pudu",
-    "tagline": "Pudu Market & Street Food Walk",
-    "shortDescription": "Explore KL's largest wet market and eat where locals have eaten for generations — Pudu's side-street stalls serve dishes perfected over decades.",
-    "fullDescription": "Pudu is the neighbourhood that Jalan Alor used to be before the tourists found it. It sits just south of Chinatown, a dense warren of streets where residential apartments sit above ground-floor shops and the street food is made for people who live here, not for visitors passing through.\n\nWe meet at the main entrance of Pudu Market — KL's largest wet market, open since 4 AM. Your guide walks you through the market's morning chaos: the spice piles, the seafood buckets, the poultry section where vendors have had the same spots for thirty years. You taste fresh-cut fruits and sample local snacks as you go.\n\nFirst proper stop: the apam balik stall at the corner of Jalan Pasar and Jalan Sayur. This crispy pancake filled with sweet corn and crushed peanuts has been operating since the 1980s.\n\nNext: the popiah stall at the market entrance. Each spring roll is rolled to order — the skin so thin you can see the filling through it.\n\nThe main event is Hokkien mee from Stall 15 along the market's exterior wall. Thick yellow noodles stir-fried in dark soy sauce with pork, squid, and cabbage — cooked in pork lard for a richness vegetable oil cannot match.\n\nWe finish at the morning hawker section for wantan mee: springy noodles, caramelised char siew, and wantan dumplings filled with pork and prawn.\n\nThis tour runs from 8am to 11am. Limited to 8 people. All food and drinks included.",
+    "tagline": null,
+    "shortDescription": null,
+    "fullDescription": null,
     "price": 285,
     "currency": "MYR",
     "duration": "3 hours",
@@ -50,11 +50,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-19T00:18:02.769Z",
           "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-landmark.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
           "filename": "simply-enak-landmark.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2305832,
@@ -64,7 +63,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -72,7 +71,7 @@
               "filename": "DSC_9621-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -80,7 +79,7 @@
               "filename": "DSC_9621-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -102,11 +101,10 @@
       },
       "usage": null,
       "tags": [],
-      "prefix": "payload-media",
       "updatedAt": "2026-06-22T02:15:59.601Z",
       "createdAt": "2026-06-22T02:15:58.539Z",
-      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-market.jpg",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_0657-400x300.jpg",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-market.jpg",
+      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_0657-400x300.jpg",
       "filename": "simply-enak-kuala-lumpur-market.jpg",
       "mimeType": "image/jpeg",
       "filesize": 3811376,
@@ -116,7 +114,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_0657-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_0657-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -124,7 +122,7 @@
           "filename": "DSC_0657-400x300.jpg"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_0657-800x600.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_0657-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -132,7 +130,7 @@
           "filename": "DSC_0657-800x600.jpg"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_0657-1200x800.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_0657-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -146,7 +144,6 @@
     "whatsExcluded": [],
     "highlights": [],
     "ticketingHubId": null,
-    "tourType": "private",
     "isBookable": false,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -175,18 +172,13 @@
     "publishedAt": "2026-06-29T06:00:00.000Z",
     "status": "published",
     "workflowStatus": "published",
-    "meta": {
-      "title": null,
-      "description": null,
-      "image": null
-    },
     "updatedAt": "2026-06-29T05:41:02.596Z",
     "createdAt": "2026-06-28T14:06:11.936Z",
     "_status": "published",
     "ticketing_hub_id": null,
     "is_bookable": false,
-    "short_description": "Explore KL's largest wet market and eat where locals have eaten for generations — Pudu's side-street stalls serve dishes perfected over decades.",
-    "full_description": "Pudu is the neighbourhood that Jalan Alor used to be before the tourists found it. It sits just south of Chinatown, a dense warren of streets where residential apartments sit above ground-floor shops and the street food is made for people who live here, not for visitors passing through.\n\nWe meet at the main entrance of Pudu Market — KL's largest wet market, open since 4 AM. Your guide walks you through the market's morning chaos: the spice piles, the seafood buckets, the poultry section where vendors have had the same spots for thirty years. You taste fresh-cut fruits and sample local snacks as you go.\n\nFirst proper stop: the apam balik stall at the corner of Jalan Pasar and Jalan Sayur. This crispy pancake filled with sweet corn and crushed peanuts has been operating since the 1980s.\n\nNext: the popiah stall at the market entrance. Each spring roll is rolled to order — the skin so thin you can see the filling through it.\n\nThe main event is Hokkien mee from Stall 15 along the market's exterior wall. Thick yellow noodles stir-fried in dark soy sauce with pork, squid, and cabbage — cooked in pork lard for a richness vegetable oil cannot match.\n\nWe finish at the morning hawker section for wantan mee: springy noodles, caramelised char siew, and wantan dumplings filled with pork and prawn.\n\nThis tour runs from 8am to 11am. Limited to 8 people. All food and drinks included.",
+    "short_description": null,
+    "full_description": null,
     "duration_minutes": 180,
     "max_participants": 8,
     "min_participants": 2,
@@ -216,7 +208,7 @@
     "slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
     "tagline": "Discover KL After Dark",
     "shortDescription": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
-    "fullDescription": "KL after dark is a different city. The day's heat fades, the street art catches the last light, and hidden doors open to bars that were invisible at noon.\n\nWe meet at Pasar Seni MRT station - the gateway to KL's arts district. From here, we walk through the backstreets of Chinatown as the street art murals emerge in the evening light. Your guide will tell you about the artists behind each piece - local talents who turned KL's alleyways into an open-air gallery.\n\nFirst stop: a rooftop bar overlooking Merdeka 118, Southeast Asia's tallest building. We watch the sunset with handcrafted cocktails and local appetisers.\n\nNext, we find a speakeasy hidden behind what looks like a phone booth. Inside, it's one of Asia's 50 Best Bars. The bartenders use local ingredients - palm sugar, pandan, young coconut, and Malaysian tea.\n\nBetween bars, we follow backstreet routes through KL's old core. Your guide shares stories of the gangster history of Petaling Street, the colonial scandals, and how KL went from mining camp to metropolis.\n\nWe end the night at a late-night hawker spot that only opens after 10pm. Taxi drivers, bar staff, and club-goers come here to refuel. We share satay, char kway teow, and sugarcane juice while your guide tells you why this stall has been feeding the night crowd for thirty years.\n\nThis tour runs from 4pm to 8pm. Limited to 8 people. Includes one welcome cocktail, two speakeasy drinks, and a full late-night meal.",
+    "fullDescription": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
     "price": 359,
     "currency": "MYR",
     "duration": "4 hours",
@@ -358,11 +350,10 @@
       },
       "usage": null,
       "tags": [],
-      "prefix": "payload-media",
       "updatedAt": "2026-06-22T03:07:14.582Z",
       "createdAt": "2026-06-22T03:07:13.849Z",
-      "url": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/dsc-2763.jpg",
+      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-400x300.jpg",
       "filename": "dsc-2763.jpg",
       "mimeType": "image/jpeg",
       "filesize": 2214861,
@@ -372,7 +363,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -380,7 +371,7 @@
           "filename": "DSC_2763-400x300.jpg"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-800x600.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -388,7 +379,7 @@
           "filename": "DSC_2763-800x600.jpg"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-1200x800.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -430,11 +421,10 @@
               },
               "usage": null,
               "tags": [],
-              "prefix": "payload-media",
               "updatedAt": "2026-06-19T00:18:02.769Z",
               "createdAt": "2026-06-19T00:18:01.822Z",
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
               "filename": "simply-enak-landmark.jpg",
               "mimeType": "image/jpeg",
               "filesize": 2305832,
@@ -444,7 +434,7 @@
               "focalY": 50,
               "sizes": {
                 "thumbnail": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
                   "width": 400,
                   "height": 300,
                   "mimeType": "image/jpeg",
@@ -452,7 +442,7 @@
                   "filename": "DSC_9621-400x300.jpg"
                 },
                 "medium": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-800x600.jpg",
                   "width": 800,
                   "height": 600,
                   "mimeType": "image/jpeg",
@@ -460,7 +450,7 @@
                   "filename": "DSC_9621-800x600.jpg"
                 },
                 "large": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-1200x800.jpg",
                   "width": 1200,
                   "height": 800,
                   "mimeType": "image/jpeg",
@@ -482,11 +472,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-23T03:33:06.107Z",
           "createdAt": "2026-06-23T03:32:07.129Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
           "filename": "simply-enak-kuala-lumpur-food-m0li.webp",
           "mimeType": "image/webp",
           "filesize": 15936,
@@ -496,7 +485,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-secrets-of-kl-tasting-durian-tarts-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -554,11 +543,10 @@
               },
               "usage": null,
               "tags": [],
-              "prefix": "payload-media",
               "updatedAt": "2026-06-19T00:18:02.769Z",
               "createdAt": "2026-06-19T00:18:01.822Z",
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
               "filename": "simply-enak-landmark.jpg",
               "mimeType": "image/jpeg",
               "filesize": 2305832,
@@ -568,7 +556,7 @@
               "focalY": 50,
               "sizes": {
                 "thumbnail": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
                   "width": 400,
                   "height": 300,
                   "mimeType": "image/jpeg",
@@ -576,7 +564,7 @@
                   "filename": "DSC_9621-400x300.jpg"
                 },
                 "medium": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-800x600.jpg",
                   "width": 800,
                   "height": 600,
                   "mimeType": "image/jpeg",
@@ -584,7 +572,7 @@
                   "filename": "DSC_9621-800x600.jpg"
                 },
                 "large": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-1200x800.jpg",
                   "width": 1200,
                   "height": 800,
                   "mimeType": "image/jpeg",
@@ -606,11 +594,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-22T02:16:15.393Z",
           "createdAt": "2026-06-22T02:16:14.688Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-landscape.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_2380-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-landscape.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2380-400x300.jpg",
           "filename": "simply-enak-kuala-lumpur-landscape.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2672366,
@@ -620,7 +607,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_2380-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2380-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -628,7 +615,7 @@
               "filename": "DSC_2380-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_2380-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2380-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -636,7 +623,7 @@
               "filename": "DSC_2380-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_2380-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2380-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -678,11 +665,10 @@
               },
               "usage": null,
               "tags": [],
-              "prefix": "payload-media",
               "updatedAt": "2026-06-19T00:18:02.769Z",
               "createdAt": "2026-06-19T00:18:01.822Z",
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
               "filename": "simply-enak-landmark.jpg",
               "mimeType": "image/jpeg",
               "filesize": 2305832,
@@ -692,7 +678,7 @@
               "focalY": 50,
               "sizes": {
                 "thumbnail": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
                   "width": 400,
                   "height": 300,
                   "mimeType": "image/jpeg",
@@ -700,7 +686,7 @@
                   "filename": "DSC_9621-400x300.jpg"
                 },
                 "medium": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-800x600.jpg",
                   "width": 800,
                   "height": 600,
                   "mimeType": "image/jpeg",
@@ -708,7 +694,7 @@
                   "filename": "DSC_9621-800x600.jpg"
                 },
                 "large": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-1200x800.jpg",
                   "width": 1200,
                   "height": 800,
                   "mimeType": "image/jpeg",
@@ -730,11 +716,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-23T02:58:23.514Z",
           "createdAt": "2026-06-23T02:58:22.804Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
           "filename": "simply-enak-kuala-lumpur-food-vqwe.webp",
           "mimeType": "image/webp",
           "filesize": 29992,
@@ -744,7 +729,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-tour-start-with-roti-boy-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -788,11 +773,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-22T03:07:14.582Z",
           "createdAt": "2026-06-22T03:07:13.849Z",
-          "url": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/dsc-2763.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-400x300.jpg",
           "filename": "dsc-2763.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2214861,
@@ -802,7 +786,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -810,7 +794,7 @@
               "filename": "DSC_2763-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -818,7 +802,7 @@
               "filename": "DSC_2763-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_2763-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_2763-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -860,11 +844,10 @@
               },
               "usage": null,
               "tags": [],
-              "prefix": "payload-media",
               "updatedAt": "2026-06-19T00:18:02.769Z",
               "createdAt": "2026-06-19T00:18:01.822Z",
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-              "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-landmark.jpg",
+              "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
               "filename": "simply-enak-landmark.jpg",
               "mimeType": "image/jpeg",
               "filesize": 2305832,
@@ -874,7 +857,7 @@
               "focalY": 50,
               "sizes": {
                 "thumbnail": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
                   "width": 400,
                   "height": 300,
                   "mimeType": "image/jpeg",
@@ -882,7 +865,7 @@
                   "filename": "DSC_9621-400x300.jpg"
                 },
                 "medium": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-800x600.jpg",
                   "width": 800,
                   "height": 600,
                   "mimeType": "image/jpeg",
@@ -890,7 +873,7 @@
                   "filename": "DSC_9621-800x600.jpg"
                 },
                 "large": {
-                  "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+                  "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-1200x800.jpg",
                   "width": 1200,
                   "height": 800,
                   "mimeType": "image/jpeg",
@@ -912,11 +895,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-22T02:16:11.303Z",
           "createdAt": "2026-06-22T02:16:10.561Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-dish.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_1867-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-dish.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_1867-400x300.jpg",
           "filename": "simply-enak-kuala-lumpur-dish.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2428680,
@@ -926,7 +908,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_1867-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_1867-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -934,7 +916,7 @@
               "filename": "DSC_1867-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_1867-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_1867-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -942,7 +924,7 @@
               "filename": "DSC_1867-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_1867-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_1867-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1008,7 +990,6 @@
       }
     ],
     "ticketingHubId": "148305db-44f6-4e6b-b8ec-dedfa9154716",
-    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -1083,18 +1064,13 @@
     "publishedAt": null,
     "status": "published",
     "workflowStatus": "published",
-    "meta": {
-      "title": null,
-      "description": null,
-      "image": null
-    },
     "updatedAt": "2026-06-28T12:20:33.250Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
     "is_bookable": true,
     "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
-    "full_description": "KL after dark is a different city. The day's heat fades, the street art catches the last light, and hidden doors open to bars that were invisible at noon.\n\nWe meet at Pasar Seni MRT station - the gateway to KL's arts district. From here, we walk through the backstreets of Chinatown as the street art murals emerge in the evening light. Your guide will tell you about the artists behind each piece - local talents who turned KL's alleyways into an open-air gallery.\n\nFirst stop: a rooftop bar overlooking Merdeka 118, Southeast Asia's tallest building. We watch the sunset with handcrafted cocktails and local appetisers.\n\nNext, we find a speakeasy hidden behind what looks like a phone booth. Inside, it's one of Asia's 50 Best Bars. The bartenders use local ingredients - palm sugar, pandan, young coconut, and Malaysian tea.\n\nBetween bars, we follow backstreet routes through KL's old core. Your guide shares stories of the gangster history of Petaling Street, the colonial scandals, and how KL went from mining camp to metropolis.\n\nWe end the night at a late-night hawker spot that only opens after 10pm. Taxi drivers, bar staff, and club-goers come here to refuel. We share satay, char kway teow, and sugarcane juice while your guide tells you why this stall has been feeding the night crowd for thirty years.\n\nThis tour runs from 4pm to 8pm. Limited to 8 people. Includes one welcome cocktail, two speakeasy drinks, and a full late-night meal.",
+    "full_description": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
@@ -1202,27 +1178,27 @@
     "hero_image_alt": "Nightlife cocktail bar in Kuala Lumpur with creative drinks and city lights",
     "gallery_images": [
       {
-        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-food-m0li.webp",
         "alt": "Tasting Curry Puff Secrets of KL Tour - Simply Enak Kuala Lumpur",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-landscape.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-landscape.jpg",
         "alt": "Simply Enak Kuala Lumpur Landscape",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-food-vqwe.webp",
         "alt": "Secrets of KL tour starts with a delicious Roti Boy",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/dsc-2763.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/dsc-2763.jpg",
         "alt": "Dsc 2763",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-dish.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-kuala-lumpur-dish.jpg",
         "alt": "Simply Enak Kuala Lumpur Dish",
         "caption": ""
       }
@@ -1507,7 +1483,7 @@
     "slug": "penang-street-food",
     "tagline": "Penang Food Capital Tour",
     "shortDescription": "What makes Penang the food capital of Malaysia?",
-    "fullDescription": "Penang has been called the food capital of Malaysia - and for good reason. On this tour, you will taste why.\n\nWe start at a noodle stall that has been serving customers for over forty years. The uncle behind the stall still uses a charcoal fire, insisting it gives the noodles a smokier flavour than gas ever could. Watch him toss flat rice noodles with prawns, cockles, bean sprouts, and a dark soy-based sauce - the most photographed dish in Penang.\n\nFrom there, we visit a family-run chendol stall. The grandmother makes the green jelly noodles herself every morning. Shaved ice, coconut milk, gula melaka, kidney beans - it is the most refreshing thing you will eat in tropical heat.\n\nNext, we explore the Little India neighbourhood. Banana leaf rice restaurants where white rice is served on a banana leaf with vegetables, pickles, papadum, and your choice of curry. You eat with your right hand - your guide will show you how.\n\nNo Penang food tour is complete without assam laksa. We take you to a stall that won a spot on CNN World's 50 Best Foods list. The broth is made with mackerel, tamarind, lemongrass, and galangal - sour, spicy, and nothing like the coconut-based laksas elsewhere.\n\nWe end at a morning market where you can sample local fruits, freshly made kuih, and Penang famous white coffee. Your guide will share stories about Penang Peranakan heritage and how the island's history as a trading port shaped its unique food culture.",
+    "fullDescription": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
     "price": 285,
     "currency": "MYR",
     "duration": "3.5 hours",
@@ -1705,11 +1681,10 @@
       },
       "usage": null,
       "tags": [],
-      "prefix": "payload-media",
       "updatedAt": "2026-06-28T13:39:12.115Z",
       "createdAt": "2026-06-28T13:39:11.630Z",
-      "url": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004.jpg",
+      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-400x300.jpg",
       "filename": "Penang004.jpg",
       "mimeType": "image/jpeg",
       "filesize": 354812,
@@ -1719,7 +1694,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -1727,7 +1702,7 @@
           "filename": "Penang004-400x300.jpg"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/Penang004-800x600.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -1735,7 +1710,7 @@
           "filename": "Penang004-800x600.jpg"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/Penang004-1200x800.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -1763,11 +1738,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:24.388Z",
           "createdAt": "2026-06-28T13:39:24.008Z",
-          "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-400x300.jpg",
           "filename": "PXL_20231121_001919164.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2264987,
@@ -1777,7 +1751,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1785,7 +1759,7 @@
               "filename": "PXL_20231121_001919164-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -1793,7 +1767,7 @@
               "filename": "PXL_20231121_001919164-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1821,11 +1795,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:15.573Z",
           "createdAt": "2026-06-28T13:39:14.369Z",
-          "url": "https://cdn.simplyenak.com/payload-media/Penang008.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang008-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang008.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang008-400x300.jpg",
           "filename": "Penang008.jpg",
           "mimeType": "image/jpeg",
           "filesize": 287389,
@@ -1835,7 +1808,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang008-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang008-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1843,7 +1816,7 @@
               "filename": "Penang008-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang008-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang008-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -1851,7 +1824,7 @@
               "filename": "Penang008-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang008-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang008-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1879,11 +1852,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:12.115Z",
           "createdAt": "2026-06-28T13:39:11.630Z",
-          "url": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-400x300.jpg",
           "filename": "Penang004.jpg",
           "mimeType": "image/jpeg",
           "filesize": 354812,
@@ -1893,7 +1865,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang004-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1901,7 +1873,7 @@
               "filename": "Penang004-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang004-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -1909,7 +1881,7 @@
               "filename": "Penang004-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang004-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -1937,11 +1909,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:18.590Z",
           "createdAt": "2026-06-28T13:39:17.569Z",
-          "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0db40.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0db40-400x300.jpg",
           "filename": "pl1TEZ0db40.jpg",
           "mimeType": "image/jpeg",
           "filesize": 120640,
@@ -1951,7 +1922,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0db40-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -1995,11 +1966,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:09.338Z",
           "createdAt": "2026-06-28T13:39:09.104Z",
-          "url": "https://cdn.simplyenak.com/payload-media/Penang001.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Penang001-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang001.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang001-400x300.jpg",
           "filename": "Penang001.jpg",
           "mimeType": "image/jpeg",
           "filesize": 409310,
@@ -2009,7 +1979,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang001-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang001-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -2017,7 +1987,7 @@
               "filename": "Penang001-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang001-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang001-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -2025,7 +1995,7 @@
               "filename": "Penang001-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/Penang001-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang001-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -2061,7 +2031,6 @@
       }
     ],
     "ticketingHubId": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
-    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -2133,18 +2102,13 @@
     "publishedAt": null,
     "status": "published",
     "workflowStatus": "published",
-    "meta": {
-      "title": "Penang Street Food | Simply Enak Food Tours",
-      "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
-      "image": null
-    },
     "updatedAt": "2026-06-29T05:59:36.962Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
     "is_bookable": true,
     "short_description": "What makes Penang the food capital of Malaysia?",
-    "full_description": "Penang has been called the food capital of Malaysia - and for good reason. On this tour, you will taste why.\n\nWe start at a noodle stall that has been serving customers for over forty years. The uncle behind the stall still uses a charcoal fire, insisting it gives the noodles a smokier flavour than gas ever could. Watch him toss flat rice noodles with prawns, cockles, bean sprouts, and a dark soy-based sauce - the most photographed dish in Penang.\n\nFrom there, we visit a family-run chendol stall. The grandmother makes the green jelly noodles herself every morning. Shaved ice, coconut milk, gula melaka, kidney beans - it is the most refreshing thing you will eat in tropical heat.\n\nNext, we explore the Little India neighbourhood. Banana leaf rice restaurants where white rice is served on a banana leaf with vegetables, pickles, papadum, and your choice of curry. You eat with your right hand - your guide will show you how.\n\nNo Penang food tour is complete without assam laksa. We take you to a stall that won a spot on CNN World's 50 Best Foods list. The broth is made with mackerel, tamarind, lemongrass, and galangal - sour, spicy, and nothing like the coconut-based laksas elsewhere.\n\nWe end at a morning market where you can sample local fruits, freshly made kuih, and Penang famous white coffee. Your guide will share stories about Penang Peranakan heritage and how the island's history as a trading port shaped its unique food culture.",
+    "full_description": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
     "duration_minutes": 210,
     "max_participants": 9,
     "min_participants": 2,
@@ -2282,27 +2246,27 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/Penang008.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang008.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/Penang004.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang004.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/pl1TEZ0db40.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0db40.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/Penang001.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Penang001.jpg",
         "alt": "",
         "caption": ""
       }
@@ -2478,7 +2442,7 @@
     "slug": "kuala-lumpur-street-food",
     "tagline": "The Heart of KL Street Food",
     "shortDescription": "Brand new to Malaysia? This is everything you need to know!",
-    "fullDescription": "Start where KL food story begins: Petaling Street market. This is Chinatown busiest thoroughfare - a covered alley of sizzling woks, hanging roasted meats, and hawkers who have been cooking the same dish for forty years.\n\nOver three hours, you will taste eight dishes across five stops. We start at a family-run stall that has been making yong tau foo since 1978 - stuffed tofu, bitter gourd, and eggplant, served with noodles in a light soy-based broth. Your guide will show you how to order and which chilli sauce to ask for.\n\nNext, we cross into the wet market section where butchers, fishmongers, and herbal medicine sellers have worked for generations. You will smell dried shrimp, star anise, and the distinct aroma of belacan (fermented shrimp paste) - the backbone of Malaysian cooking.\n\nFrom there, it is a short walk to a kopitiam where a third-generation toast master makes kaya butter toast on a charcoal fire and pulls teh tarik - Malaysia iconic pulled milk tea.\n\nThe tour ends at a bustling hawker centre where we share plates of char kway teow and cendol. Your guide will explain how each dish reflects Malaysia multicultural history.\n\nThroughout the tour, you will walk through KL oldest neighbourhoods - Petaling Street, the Central Market area, and the historic core. We keep groups small (max 8) so you can talk to the vendors and ask questions.",
+    "fullDescription": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat  -  from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
     "price": 285,
     "currency": "MYR",
     "duration": "3.5 hours",
@@ -2663,11 +2627,10 @@
       },
       "usage": null,
       "tags": [],
-      "prefix": "payload-media",
       "updatedAt": "2026-05-19T09:59:42.545Z",
       "createdAt": "2026-05-19T09:59:41.726Z",
-      "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122.jpg",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122.jpg",
+      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
       "filename": "kuala_lumpur_street_food_cd4fad4122.jpg",
       "mimeType": "image/jpeg",
       "filesize": 66068,
@@ -2677,7 +2640,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -2685,7 +2648,7 @@
           "filename": "kuala_lumpur_street_food_cd4fad4122-400x300.jpg"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-800x600.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -2693,7 +2656,7 @@
           "filename": "kuala_lumpur_street_food_cd4fad4122-800x600.jpg"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/kuala_lumpur_street_food_cd4fad4122-1200x800.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/kuala_lumpur_street_food_cd4fad4122-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -2728,7 +2691,6 @@
       }
     ],
     "ticketingHubId": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
-    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -2800,18 +2762,13 @@
     "publishedAt": null,
     "status": "published",
     "workflowStatus": "published",
-    "meta": {
-      "title": "Kuala Lumpur Street Food | Simply Enak Food Tours",
-      "description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes.",
-      "image": null
-    },
     "updatedAt": "2026-06-28T08:58:54.826Z",
     "createdAt": "2026-05-19T08:33:48.280Z",
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
     "is_bookable": true,
     "short_description": "Brand new to Malaysia? This is everything you need to know!",
-    "full_description": "Start where KL food story begins: Petaling Street market. This is Chinatown busiest thoroughfare - a covered alley of sizzling woks, hanging roasted meats, and hawkers who have been cooking the same dish for forty years.\n\nOver three hours, you will taste eight dishes across five stops. We start at a family-run stall that has been making yong tau foo since 1978 - stuffed tofu, bitter gourd, and eggplant, served with noodles in a light soy-based broth. Your guide will show you how to order and which chilli sauce to ask for.\n\nNext, we cross into the wet market section where butchers, fishmongers, and herbal medicine sellers have worked for generations. You will smell dried shrimp, star anise, and the distinct aroma of belacan (fermented shrimp paste) - the backbone of Malaysian cooking.\n\nFrom there, it is a short walk to a kopitiam where a third-generation toast master makes kaya butter toast on a charcoal fire and pulls teh tarik - Malaysia iconic pulled milk tea.\n\nThe tour ends at a bustling hawker centre where we share plates of char kway teow and cendol. Your guide will explain how each dish reflects Malaysia multicultural history.\n\nThroughout the tour, you will walk through KL oldest neighbourhoods - Petaling Street, the Central Market area, and the historic core. We keep groups small (max 8) so you can talk to the vendors and ask questions.",
+    "full_description": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat  -  from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
     "duration_minutes": 210,
     "max_participants": 9,
     "min_participants": 2,
@@ -3106,7 +3063,7 @@
     "slug": "flavours-of-malaysia",
     "tagline": "Market Culture and Hidden Flavours",
     "shortDescription": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
-    "fullDescription": "This is our most comprehensive tour - a deep dive into Malaysia food culture across two very different neighbourhoods.\n\nWe start in Chow Kit, KL oldest wet market. This is where the city real food happens - not the polished stalls tourists see, but the wholesale market where restaurant owners shop before dawn. Your guide will walk you through the fish section, the spice stalls (tasting belacan and dried chillies), and the produce area where local farmers sell direct.\n\nHere you will taste nasi lemak the way it was meant to be eaten - coconut rice wrapped in banana leaf with sambal, fried anchovies, peanuts, hard-boiled egg, and fried chicken. This is Malaysia national dish.\n\nFrom Chow Kit, we walk to Kampung Baru - a Malay enclave that has survived in the heart of KL for over a century. The wooden houses and street mosques are a world apart from the skyscrapers visible in the distance.\n\nIn Kampung Baru, you will taste dishes that Malay grandmothers have been cooking for generations. We stop at a family home that serves nasi dagang (fragrant rice with fish curry) and at a roadside stall famous for its cendol. Your guide will explain how Kampung Baru became a Malay agricultural settlement in the 1900s and why it remains a cultural stronghold today.\n\nThis tour includes ten tastings across six stops. It runs in the morning when both neighbourhoods are at their liveliest.",
+    "fullDescription": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
     "price": 289,
     "currency": "MYR",
     "duration": "4 hours",
@@ -3304,11 +3261,10 @@
       },
       "usage": null,
       "tags": [],
-      "prefix": "payload-media",
       "updatedAt": "2026-06-28T13:56:08.208Z",
       "createdAt": "2026-06-28T13:56:07.504Z",
-      "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001.png",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-400x300.png",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia_001.png",
+      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia_001-400x300.png",
       "filename": "Flavours_of_Malaysia_001.png",
       "mimeType": "image/png",
       "filesize": 3057046,
@@ -3318,7 +3274,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-400x300.png",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia_001-400x300.png",
           "width": 400,
           "height": 300,
           "mimeType": "image/png",
@@ -3326,7 +3282,7 @@
           "filename": "Flavours_of_Malaysia_001-400x300.png"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-800x600.png",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia_001-800x600.png",
           "width": 800,
           "height": 600,
           "mimeType": "image/png",
@@ -3334,7 +3290,7 @@
           "filename": "Flavours_of_Malaysia_001-800x600.png"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/Flavours_of_Malaysia_001-1200x800.png",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Flavours_of_Malaysia_001-1200x800.png",
           "width": 1200,
           "height": 800,
           "mimeType": "image/png",
@@ -3362,11 +3318,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:06.160Z",
           "createdAt": "2026-06-28T13:56:05.512Z",
-          "url": "https://cdn.simplyenak.com/payload-media/Enak-13.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Enak-13-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Enak-13.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Enak-13-400x300.jpg",
           "filename": "Enak-13.jpg",
           "mimeType": "image/jpeg",
           "filesize": 1344627,
@@ -3376,7 +3331,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/Enak-13-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Enak-13-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3384,7 +3339,7 @@
               "filename": "Enak-13-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/Enak-13-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Enak-13-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3392,7 +3347,7 @@
               "filename": "Enak-13-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/Enak-13-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Enak-13-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3420,11 +3375,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:00.183Z",
           "createdAt": "2026-06-28T13:55:59.576Z",
-          "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Copy of Enak-4.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Copy of Enak-4-400x300.jpg",
           "filename": "Copy of Enak-4.jpg",
           "mimeType": "image/jpeg",
           "filesize": 1598024,
@@ -3434,7 +3388,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Copy of Enak-4-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3442,7 +3396,7 @@
               "filename": "Copy of Enak-4-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Copy of Enak-4-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3450,7 +3404,7 @@
               "filename": "Copy of Enak-4-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Copy of Enak-4-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3478,11 +3432,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:20.817Z",
           "createdAt": "2026-06-28T13:39:20.438Z",
-          "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0Zz86.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0Zz86-400x300.jpg",
           "filename": "pl1TEZ0Zz86.jpg",
           "mimeType": "image/jpeg",
           "filesize": 75971,
@@ -3492,7 +3445,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0Zz86-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3500,7 +3453,7 @@
               "filename": "pl1TEZ0Zz86-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0Zz86-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3536,11 +3489,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:39:21.319Z",
           "createdAt": "2026-06-28T13:39:21.099Z",
-          "url": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZwb662.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZwb662-400x300.jpg",
           "filename": "pl1TEZwb662.jpg",
           "mimeType": "image/jpeg",
           "filesize": 83853,
@@ -3550,7 +3502,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZwb662-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3594,11 +3546,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T13:56:14.920Z",
           "createdAt": "2026-06-28T13:56:14.665Z",
-          "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-1.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-1-400x300.jpg",
           "filename": "PXL_20231121_001919164-1.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2264987,
@@ -3608,7 +3559,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-1-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3616,7 +3567,7 @@
               "filename": "PXL_20231121_001919164-1-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-1-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -3624,7 +3575,7 @@
               "filename": "PXL_20231121_001919164-1-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-1-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -3660,7 +3611,6 @@
       }
     ],
     "ticketingHubId": "8be588c6-3879-4950-bc69-5d006cdf9152",
-    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -3732,18 +3682,13 @@
     "publishedAt": null,
     "status": "published",
     "workflowStatus": "published",
-    "meta": {
-      "title": "Flavours of Malaysia | Simply Enak Food Tours",
-      "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
-      "image": null
-    },
     "updatedAt": "2026-06-29T05:59:38.518Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
     "is_bookable": true,
     "short_description": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
-    "full_description": "This is our most comprehensive tour - a deep dive into Malaysia food culture across two very different neighbourhoods.\n\nWe start in Chow Kit, KL oldest wet market. This is where the city real food happens - not the polished stalls tourists see, but the wholesale market where restaurant owners shop before dawn. Your guide will walk you through the fish section, the spice stalls (tasting belacan and dried chillies), and the produce area where local farmers sell direct.\n\nHere you will taste nasi lemak the way it was meant to be eaten - coconut rice wrapped in banana leaf with sambal, fried anchovies, peanuts, hard-boiled egg, and fried chicken. This is Malaysia national dish.\n\nFrom Chow Kit, we walk to Kampung Baru - a Malay enclave that has survived in the heart of KL for over a century. The wooden houses and street mosques are a world apart from the skyscrapers visible in the distance.\n\nIn Kampung Baru, you will taste dishes that Malay grandmothers have been cooking for generations. We stop at a family home that serves nasi dagang (fragrant rice with fish curry) and at a roadside stall famous for its cendol. Your guide will explain how Kampung Baru became a Malay agricultural settlement in the 1900s and why it remains a cultural stronghold today.\n\nThis tour includes ten tastings across six stops. It runs in the morning when both neighbourhoods are at their liveliest.",
+    "full_description": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
     "duration_minutes": 240,
     "max_participants": 9,
     "min_participants": 2,
@@ -3881,27 +3826,27 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "https://cdn.simplyenak.com/payload-media/Enak-13.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Enak-13.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/Copy of Enak-4.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/Copy of Enak-4.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/pl1TEZ0Zz86.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZ0Zz86.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/pl1TEZwb662.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/pl1TEZwb662.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20231121_001919164-1.jpg",
         "alt": "",
         "caption": ""
       }
@@ -4073,11 +4018,11 @@
   },
   {
     "id": 1,
-    "name": "Georgetown's Best Hawkers and the Durian Strip",
+    "name": "Eat Drink George Town",
     "slug": "georgetown-night-food-durian",
-    "tagline": "Experience Penang after dark",
+    "tagline": "Street Food and Cocktails in Penang",
     "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
-    "fullDescription": "George Town comes alive as the heat of the day fades. This tour starts at sunset, when the city hawkers begin arriving at their evening spots and the colonial-era streets take on a different character.\n\nWe start at a popiah stall in the heart of the UNESCO zone. Popiah is a fresh spring roll - thin rice paper wrapper stuffed with jicama, carrot, tofu, bean sprouts, and chilli, topped with shallots and a sweet soy glaze. The auntie who makes them has been doing this since 1985.\n\nNext, we walk through Little India as the jewellery shops wind down and the banana leaf rice restaurants fill up. We stop at a corner stall that serves the best vadai in George Town - crunchy lentil fritters with a coconut chutney made using the same recipe for three generations.\n\nThe tour continues through the Armenian Street heritage area, where we taste cendol and apom from street vendors in front of pre-war shophouses. Your guide will point out the street art and share stories about Penang history.\n\nWe end at a clan jetty - one of the six wooden villages built over the water by Chinese immigrant clans in the 19th century. Here, a third-generation resident serves home-cooked Peranakan food: buah keluak, inchi kabin, and acar. The view of the mainland lights across the channel is worth the walk alone.\n\nThroughout the tour, your guide will connect each dish to George Town history as a British trading post, a Chinese immigrant gateway, and a Malay fishing village.",
+    "fullDescription": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
     "price": 289,
     "currency": "MYR",
     "duration": "4 hours",
@@ -4532,11 +4477,10 @@
       },
       "usage": null,
       "tags": [],
-      "prefix": "payload-media",
       "updatedAt": "2026-06-29T02:01:19.736Z",
       "createdAt": "2026-06-28T14:13:51.391Z",
-      "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_6661 (1).JPG",
+      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_6661 (1)-400x300.jpg",
       "filename": "DSC_6661 (1).JPG",
       "mimeType": "image/jpeg",
       "filesize": 3071941,
@@ -4546,7 +4490,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_6661 (1)-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -4554,7 +4498,7 @@
           "filename": "DSC_6661 (1)-400x300.jpg"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-800x600.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_6661 (1)-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -4562,7 +4506,7 @@
           "filename": "DSC_6661 (1)-800x600.jpg"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-1200x800.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_6661 (1)-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
@@ -4590,11 +4534,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:45.139Z",
           "createdAt": "2026-06-28T14:13:44.640Z",
-          "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
           "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
           "mimeType": "image/jpeg",
           "filesize": 999686,
@@ -4604,7 +4547,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -4612,7 +4555,7 @@
               "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -4620,7 +4563,7 @@
               "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -4648,11 +4591,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:54.483Z",
           "createdAt": "2026-06-28T14:13:53.991Z",
-          "url": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/hin2.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/hin2-400x300.jpg",
           "filename": "hin2.jpg",
           "mimeType": "image/jpeg",
           "filesize": 1030719,
@@ -4662,7 +4604,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/hin2-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -4670,7 +4612,7 @@
               "filename": "hin2-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/hin2-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -4678,7 +4620,7 @@
               "filename": "hin2-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/hin2-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -4706,11 +4648,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-29T03:53:39.722Z",
           "createdAt": "2026-06-28T14:13:55.942Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-guide-explaining.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20230703_082939063.MP-400x300.jpg",
           "filename": "simply-enak-guide-explaining.jpg",
           "mimeType": "image/jpeg",
           "filesize": 3572168,
@@ -4720,7 +4661,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20230703_082939063.MP-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -4728,7 +4669,7 @@
               "filename": "PXL_20230703_082939063.MP-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20230703_082939063.MP-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -4736,7 +4677,7 @@
               "filename": "PXL_20230703_082939063.MP-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/PXL_20230703_082939063.MP-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/PXL_20230703_082939063.MP-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -4764,11 +4705,10 @@
           },
           "usage": null,
           "tags": [],
-          "prefix": "payload-media",
           "updatedAt": "2026-06-28T14:13:47.134Z",
           "createdAt": "2026-06-28T14:13:46.473Z",
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_5051-opq3007862668.jpg",
+          "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_5051-opq3007862668-400x300.jpg",
           "filename": "DSC_5051-opq3007862668.jpg",
           "mimeType": "image/jpeg",
           "filesize": 2143737,
@@ -4778,7 +4718,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_5051-opq3007862668-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -4786,7 +4726,7 @@
               "filename": "DSC_5051-opq3007862668-400x300.jpg"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-800x600.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_5051-opq3007862668-800x600.jpg",
               "width": 800,
               "height": 600,
               "mimeType": "image/jpeg",
@@ -4794,7 +4734,7 @@
               "filename": "DSC_5051-opq3007862668-800x600.jpg"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-1200x800.jpg",
+              "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_5051-opq3007862668-1200x800.jpg",
               "width": 1200,
               "height": 800,
               "mimeType": "image/jpeg",
@@ -4830,7 +4770,6 @@
       }
     ],
     "ticketingHubId": "7c6293c6-b979-4092-a577-66dfbad5c88e",
-    "tourType": "both",
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
@@ -4912,72 +4851,13 @@
     "publishedAt": "2026-06-30T12:00:00.000Z",
     "status": "published",
     "workflowStatus": "published",
-    "meta": {
-      "title": "Georgetown's Best Hawkers &  Durian Strip | Simply Enak Food Tours",
-      "description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert.",
-      "image": {
-        "id": 353,
-        "alt": null,
-        "caption": null,
-        "polaroidLabel": null,
-        "subject": "",
-        "custom_label": null,
-        "location_ref": null,
-        "credit": null,
-        "gps": {
-          "lat": null,
-          "lng": null,
-          "place": null
-        },
-        "usage": null,
-        "tags": [],
-        "prefix": "payload-media",
-        "updatedAt": "2026-06-29T02:01:19.736Z",
-        "createdAt": "2026-06-28T14:13:51.391Z",
-        "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
-        "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
-        "filename": "DSC_6661 (1).JPG",
-        "mimeType": "image/jpeg",
-        "filesize": 3071941,
-        "width": 3965,
-        "height": 2642,
-        "focalX": 50,
-        "focalY": 50,
-        "sizes": {
-          "thumbnail": {
-            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
-            "width": 400,
-            "height": 300,
-            "mimeType": "image/jpeg",
-            "filesize": 33109,
-            "filename": "DSC_6661 (1)-400x300.jpg"
-          },
-          "medium": {
-            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-800x600.jpg",
-            "width": 800,
-            "height": 600,
-            "mimeType": "image/jpeg",
-            "filesize": 111006,
-            "filename": "DSC_6661 (1)-800x600.jpg"
-          },
-          "large": {
-            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-1200x800.jpg",
-            "width": 1200,
-            "height": 800,
-            "mimeType": "image/jpeg",
-            "filesize": 203008,
-            "filename": "DSC_6661 (1)-1200x800.jpg"
-          }
-        }
-      }
-    },
     "updatedAt": "2026-06-30T07:37:27.068Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
     "is_bookable": true,
     "short_description": "Simply Enak's most-loved Penang tour starts as the sun sets.",
-    "full_description": "George Town comes alive as the heat of the day fades. This tour starts at sunset, when the city hawkers begin arriving at their evening spots and the colonial-era streets take on a different character.\n\nWe start at a popiah stall in the heart of the UNESCO zone. Popiah is a fresh spring roll - thin rice paper wrapper stuffed with jicama, carrot, tofu, bean sprouts, and chilli, topped with shallots and a sweet soy glaze. The auntie who makes them has been doing this since 1985.\n\nNext, we walk through Little India as the jewellery shops wind down and the banana leaf rice restaurants fill up. We stop at a corner stall that serves the best vadai in George Town - crunchy lentil fritters with a coconut chutney made using the same recipe for three generations.\n\nThe tour continues through the Armenian Street heritage area, where we taste cendol and apom from street vendors in front of pre-war shophouses. Your guide will point out the street art and share stories about Penang history.\n\nWe end at a clan jetty - one of the six wooden villages built over the water by Chinese immigrant clans in the 19th century. Here, a third-generation resident serves home-cooked Peranakan food: buah keluak, inchi kabin, and acar. The view of the mainland lights across the channel is worth the walk alone.\n\nThroughout the tour, your guide will connect each dish to George Town history as a British trading post, a Chinese immigrant gateway, and a Malay fishing village.",
+    "full_description": "Eat Drink George Town is the perfect food trail for small groups who would like to taste Penang's street food while discovering the city's hidden stories. As night falls, Penang's street food scene comes alive with sizzling woks and bustling hawker stalls.\n\nYour guide will lead you through the historic streets of George Town, sharing tales of secret societies, colonial history, and the multicultural heritage that makes Penang Malaysia's food capital.",
     "duration_minutes": 240,
     "max_participants": 7,
     "min_participants": 2,
@@ -5149,22 +5029,22 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/hin2.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-guide-explaining.jpg",
         "alt": "",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
+        "src": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_5051-opq3007862668.jpg",
         "alt": "",
         "caption": ""
       }

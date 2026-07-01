@@ -13,8 +13,8 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Vegetarian Food Tours in Malaysia",
-    "icon": "",
-    "color": "",
+    "icon": "leaf",
+    "color": "#4caf50",
     "challenges_heading": "",
     "challenges": [],
     "options_heading": "",
@@ -133,8 +133,8 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Vegan Food Tours in Malaysia",
-    "icon": "",
-    "color": "",
+    "icon": "leaf",
+    "color": "#8bc34a",
     "challenges_heading": "",
     "challenges": [],
     "options_heading": "",
@@ -253,8 +253,8 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Jain Food Tours in Malaysia",
-    "icon": "",
-    "color": "",
+    "icon": "star",
+    "color": "#1565c0",
     "challenges_heading": "",
     "challenges": [],
     "options_heading": "",
@@ -373,8 +373,8 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Halal Food Tours in Malaysia",
-    "icon": "",
-    "color": "",
+    "icon": "moon",
+    "color": "#2d8a4e",
     "challenges_heading": "",
     "challenges": [],
     "options_heading": "",
@@ -493,8 +493,8 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Gluten-Free Food Tours in Malaysia",
-    "icon": "",
-    "color": "",
+    "icon": "grain",
+    "color": "#ff9800",
     "challenges_heading": "",
     "challenges": [],
     "options_heading": "",
@@ -613,19 +613,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Vegetarian Food Tours in Kuala Lumpur",
-    "icon": "",
-    "color": "",
+    "icon": "🌱",
+    "color": "#4CAF50",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Fish Sauce and Shrimp Paste",
+        "description": "Belacan (shrimp paste) and fish sauce are the umami backbone of Malaysian cooking. Even 'vegetable' dishes often contain them."
+      },
+      {
+        "title": "Lard in Chinese Cooking",
+        "description": "Chinese Malaysian hawkers frequently use lard for frying noodles and vegetables. 'Vegetarian' doesn't always mean meat-free."
+      },
+      {
+        "title": "Limited Pure-Veg Vendors",
+        "description": "Unlike India, Malaysia doesn't have dedicated vegetarian hawker centres. Good options exist — but you need to know where."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Say 'Saya Vegetarian'",
+        "content": "This Malay phrase means 'I am vegetarian.' Your guide handles all communication, but it's useful to know."
+      },
+      {
+        "title": "Look for Buddhist Vegetarian Signs",
+        "content": "Signs with '素食' or '齋' indicate Buddhist vegetarian restaurants — these kitchens use no meat, fish, or egg."
+      },
+      {
+        "title": "Indian Banana Leaf is Your Friend",
+        "content": "Order 'sayur sahaja' (vegetables only) at Indian restaurants for a filling, affordable, and genuinely delicious meal."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Roti Canai",
+        "description": "Flaky flatbread — order 'kosong' (plain) or with dhal curry"
+      },
+      {
+        "name": "Thosai & Sambar",
+        "description": "Crispy rice-lentil crepes with spiced lentil dip — a South Indian staple"
+      },
+      {
+        "name": "Pasembur",
+        "description": "Penang's signature salad with tofu, cucumber, and sweet potato in peanut sauce"
+      },
+      {
+        "name": "Popiah",
+        "description": "Fresh spring rolls filled with jicama, tofu, and vegetables"
+      },
+      {
+        "name": "Rojak Buah",
+        "description": "Mixed fruit salad with crushed peanuts and palm sugar — refreshing and filling"
+      },
+      {
+        "name": "Cendol",
+        "description": "Pandan jelly noodles in coconut milk with palm sugar — Malaysia's favourite dessert"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Nasi Lemak Sambal",
+        "description": "The sambal almost always contains belacan (shrimp paste)"
+      },
+      {
+        "name": "Char Kway Teow",
+        "description": "Cooked with lard, cockles, and often fish sauce"
+      },
+      {
+        "name": "Laksa",
+        "description": "Fish-based broth — even 'vegetarian' versions often use fish stock"
+      },
+      {
+        "name": "Mee Goreng",
+        "description": "May contain lard, shrimp paste, or fish sauce in the seasoning"
+      },
+      {
+        "name": "Kangkung Belacan",
+        "description": "Water spinach stir-fried with shrimp paste — a very common 'vegetable' dish"
+      },
+      {
+        "name": "Wonton Noodle Soup",
+        "description": "Pork wontons in meat-based broth — avoid at Chinese hawkers"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -731,19 +807,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Vegetarian Food Tours in Penang",
-    "icon": "",
-    "color": "",
+    "icon": "🌱",
+    "color": "#4CAF50",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Fish Sauce and Shrimp Paste",
+        "description": "Belacan (shrimp paste) and fish sauce are the umami backbone of Malaysian cooking. Even 'vegetable' dishes often contain them."
+      },
+      {
+        "title": "Lard in Chinese Cooking",
+        "description": "Chinese Malaysian hawkers frequently use lard for frying noodles and vegetables. 'Vegetarian' doesn't always mean meat-free."
+      },
+      {
+        "title": "Limited Pure-Veg Vendors",
+        "description": "Unlike India, Malaysia doesn't have dedicated vegetarian hawker centres. Good options exist — but you need to know where."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Say 'Saya Vegetarian'",
+        "content": "This Malay phrase means 'I am vegetarian.' Your guide handles all communication, but it's useful to know."
+      },
+      {
+        "title": "Look for Buddhist Vegetarian Signs",
+        "content": "Signs with '素食' or '齋' indicate Buddhist vegetarian restaurants — these kitchens use no meat, fish, or egg."
+      },
+      {
+        "title": "Indian Banana Leaf is Your Friend",
+        "content": "Order 'sayur sahaja' (vegetables only) at Indian restaurants for a filling, affordable, and genuinely delicious meal."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Roti Canai",
+        "description": "Flaky flatbread — order 'kosong' (plain) or with dhal curry"
+      },
+      {
+        "name": "Thosai & Sambar",
+        "description": "Crispy rice-lentil crepes with spiced lentil dip — a South Indian staple"
+      },
+      {
+        "name": "Pasembur",
+        "description": "Penang's signature salad with tofu, cucumber, and sweet potato in peanut sauce"
+      },
+      {
+        "name": "Popiah",
+        "description": "Fresh spring rolls filled with jicama, tofu, and vegetables"
+      },
+      {
+        "name": "Rojak Buah",
+        "description": "Mixed fruit salad with crushed peanuts and palm sugar — refreshing and filling"
+      },
+      {
+        "name": "Cendol",
+        "description": "Pandan jelly noodles in coconut milk with palm sugar — Malaysia's favourite dessert"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Nasi Lemak Sambal",
+        "description": "The sambal almost always contains belacan (shrimp paste)"
+      },
+      {
+        "name": "Char Kway Teow",
+        "description": "Cooked with lard, cockles, and often fish sauce"
+      },
+      {
+        "name": "Laksa",
+        "description": "Fish-based broth — even 'vegetarian' versions often use fish stock"
+      },
+      {
+        "name": "Mee Goreng",
+        "description": "May contain lard, shrimp paste, or fish sauce in the seasoning"
+      },
+      {
+        "name": "Kangkung Belacan",
+        "description": "Water spinach stir-fried with shrimp paste — a very common 'vegetable' dish"
+      },
+      {
+        "name": "Wonton Noodle Soup",
+        "description": "Pork wontons in meat-based broth — avoid at Chinese hawkers"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -839,19 +991,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Halal Food Tours in Kuala Lumpur",
-    "icon": "",
-    "color": "",
+    "icon": "verified",
+    "color": "#00A651",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "JAKIM vs Self-Certified",
+        "description": "Only JAKIM-certified vendors have official halal status. Many 'Muslim-owned' stalls follow halal practices but lack certification — we know which is which."
+      },
+      {
+        "title": "Cross-Contamination at Mixed Hawkers",
+        "description": "Hawker centres often have halal and non-halal stalls side by side. Shared utensils and prep areas are a real concern."
+      },
+      {
+        "title": "Hidden Pork and Lard",
+        "description": "Chinese Malaysian cooking frequently uses lard and pork-based ingredients. Even 'chicken' dishes may be cooked in pork fat."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Look for the JAKIM Logo",
+        "content": "The official halal certification is a green logo with white Arabic script. Not all good halal food has it, but it's the gold standard."
+      },
+      {
+        "title": "Mamak Stalls Are Usually Safe",
+        "content": "Indian Muslim (Mamak) restaurants and stalls are a cornerstone of Malaysian halal food culture — open 24 hours, reliably halal."
+      },
+      {
+        "title": "Chinese Hawkers Require Caution",
+        "content": "Even chicken or beef dishes at Chinese stalls may be cooked with lard or cross-contaminated. We only include Chinese vendors we've personally verified."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Nasi Lemak",
+        "description": "Malaysia's national dish — coconut rice, sambal, peanuts, and anchovies (skip ikan bilis if strict)"
+      },
+      {
+        "name": "Satay",
+        "description": "Grilled meat skewers with peanut sauce — always halal at Muslim vendors"
+      },
+      {
+        "name": "Roti Canai",
+        "description": "Flaky flatbread at Mamak stalls — cooked in vegetable oil or ghee"
+      },
+      {
+        "name": "Nasi Kandar",
+        "description": "Rice with curried meat and vegetables — Penang's iconic halal dish"
+      },
+      {
+        "name": "Mee Goreng Mamak",
+        "description": "Indian Muslim-style fried noodles — a mamak classic"
+      },
+      {
+        "name": "Teh Tarik",
+        "description": "Pulled milk tea — the national drink, halal at Muslim stalls"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Char Siew",
+        "description": "Sweet barbecued pork — one of Malaysia's most famous non-halal dishes"
+      },
+      {
+        "name": "Bak Kut Teh",
+        "description": "Pork rib soup in herbal broth — a Chinese Malaysian specialty"
+      },
+      {
+        "name": "Chinese Sausages (Lap Cheong)",
+        "description": "Preserved pork sausages found in many rice dishes"
+      },
+      {
+        "name": "Lard-Fried Noodles",
+        "description": "Many Chinese stalls fry noodles in pork fat for flavour"
+      },
+      {
+        "name": "Hokkien Mee (Some)",
+        "description": "Some versions use pork broth or lard — verify before eating"
+      },
+      {
+        "name": "Wantan Mee (Some)",
+        "description": "Pork dumplings and char siew are standard toppings"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -947,19 +1175,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Halal Food Tours in Penang",
-    "icon": "",
-    "color": "",
+    "icon": "verified",
+    "color": "#00A651",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "JAKIM vs Self-Certified",
+        "description": "Only JAKIM-certified vendors have official halal status. Many 'Muslim-owned' stalls follow halal practices but lack certification — we know which is which."
+      },
+      {
+        "title": "Cross-Contamination at Mixed Hawkers",
+        "description": "Hawker centres often have halal and non-halal stalls side by side. Shared utensils and prep areas are a real concern."
+      },
+      {
+        "title": "Hidden Pork and Lard",
+        "description": "Chinese Malaysian cooking frequently uses lard and pork-based ingredients. Even 'chicken' dishes may be cooked in pork fat."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Look for the JAKIM Logo",
+        "content": "The official halal certification is a green logo with white Arabic script. Not all good halal food has it, but it's the gold standard."
+      },
+      {
+        "title": "Mamak Stalls Are Usually Safe",
+        "content": "Indian Muslim (Mamak) restaurants and stalls are a cornerstone of Malaysian halal food culture — open 24 hours, reliably halal."
+      },
+      {
+        "title": "Chinese Hawkers Require Caution",
+        "content": "Even chicken or beef dishes at Chinese stalls may be cooked with lard or cross-contaminated. We only include Chinese vendors we've personally verified."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Nasi Lemak",
+        "description": "Malaysia's national dish — coconut rice, sambal, peanuts, and anchovies (skip ikan bilis if strict)"
+      },
+      {
+        "name": "Satay",
+        "description": "Grilled meat skewers with peanut sauce — always halal at Muslim vendors"
+      },
+      {
+        "name": "Roti Canai",
+        "description": "Flaky flatbread at Mamak stalls — cooked in vegetable oil or ghee"
+      },
+      {
+        "name": "Nasi Kandar",
+        "description": "Rice with curried meat and vegetables — Penang's iconic halal dish"
+      },
+      {
+        "name": "Mee Goreng Mamak",
+        "description": "Indian Muslim-style fried noodles — a mamak classic"
+      },
+      {
+        "name": "Teh Tarik",
+        "description": "Pulled milk tea — the national drink, halal at Muslim stalls"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Char Siew",
+        "description": "Sweet barbecued pork — one of Malaysia's most famous non-halal dishes"
+      },
+      {
+        "name": "Bak Kut Teh",
+        "description": "Pork rib soup in herbal broth — a Chinese Malaysian specialty"
+      },
+      {
+        "name": "Chinese Sausages (Lap Cheong)",
+        "description": "Preserved pork sausages found in many rice dishes"
+      },
+      {
+        "name": "Lard-Fried Noodles",
+        "description": "Many Chinese stalls fry noodles in pork fat for flavour"
+      },
+      {
+        "name": "Hokkien Mee (Some)",
+        "description": "Some versions use pork broth or lard — verify before eating"
+      },
+      {
+        "name": "Wantan Mee (Some)",
+        "description": "Pork dumplings and char siew are standard toppings"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -1055,19 +1359,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Gluten-Free Food Tours in Kuala Lumpur",
-    "icon": "",
-    "color": "",
+    "icon": "grain",
+    "color": "#F59E0B",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Soy Sauce is Everywhere",
+        "description": "Most stir-fried noodles and rice dishes use kicap manis (sweet soy sauce) or regular soy sauce as a base seasoning."
+      },
+      {
+        "title": "Hidden Wheat Thickeners",
+        "description": "Some curries and sauces use wheat flour as a thickening agent, especially in Chinese Malaysian cooking."
+      },
+      {
+        "title": "Cross-Contamination",
+        "description": "Shared woks and frying oil mean even a 'safe' dish may pick up gluten from previous orders."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Stick to Rice-Based Cuisines",
+        "content": "Malay nasi campur and Indian banana leaf rice are your safest bets — both built around rice, not wheat."
+      },
+      {
+        "title": "Avoid Dark Sauces",
+        "content": "If a dish looks dark brown, it probably contains soy sauce. Clear or yellow-tinted sauces are usually safer."
+      },
+      {
+        "title": "Tapioca is Your Friend",
+        "content": "Many Malaysian snacks — like kuih and putu mayam — use tapioca or rice flour instead of wheat."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Nasi Lemak (Plain)",
+        "description": "Coconut rice with cucumber and peanuts — skip the sambal if sensitive to trace shrimp"
+      },
+      {
+        "name": "Banana Leaf Rice",
+        "description": "Rice with vegetable curries — confirm no wheat in curry base"
+      },
+      {
+        "name": "Satay (Grilled Meat)",
+        "description": "Grilled skewers — the peanut sauce is usually gluten-free, but confirm"
+      },
+      {
+        "name": "Popiah (Fresh)",
+        "description": "Fresh spring roll with vegetables — wrapper is wheat, so skip this one"
+      },
+      {
+        "name": "Cendol",
+        "description": "Naturally gluten-free dessert of pandan jelly and coconut milk"
+      },
+      {
+        "name": "Kuih (Most Types)",
+        "description": "Rice and tapioca flour cakes — verify ingredients per stall"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Char Kway Teow",
+        "description": "Dark soy sauce is essential to the flavour"
+      },
+      {
+        "name": "Hokkien Mee",
+        "description": "Thick wheat noodles in dark soy sauce broth"
+      },
+      {
+        "name": "Wonton Mee",
+        "description": "Egg wheat noodles with soy sauce seasoning"
+      },
+      {
+        "name": "Mee Goreng",
+        "description": "Wheat noodles with soy sauce and tomato ketchup"
+      },
+      {
+        "name": "Roti Canai",
+        "description": "Made with wheat flour dough"
+      },
+      {
+        "name": "Curry Puff",
+        "description": "Pastry shell is wheat-based"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -1163,19 +1543,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Gluten-Free Food Tours in Penang",
-    "icon": "",
-    "color": "",
+    "icon": "grain",
+    "color": "#F59E0B",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Soy Sauce is Everywhere",
+        "description": "Most stir-fried noodles and rice dishes use kicap manis (sweet soy sauce) or regular soy sauce as a base seasoning."
+      },
+      {
+        "title": "Hidden Wheat Thickeners",
+        "description": "Some curries and sauces use wheat flour as a thickening agent, especially in Chinese Malaysian cooking."
+      },
+      {
+        "title": "Cross-Contamination",
+        "description": "Shared woks and frying oil mean even a 'safe' dish may pick up gluten from previous orders."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Stick to Rice-Based Cuisines",
+        "content": "Malay nasi campur and Indian banana leaf rice are your safest bets — both built around rice, not wheat."
+      },
+      {
+        "title": "Avoid Dark Sauces",
+        "content": "If a dish looks dark brown, it probably contains soy sauce. Clear or yellow-tinted sauces are usually safer."
+      },
+      {
+        "title": "Tapioca is Your Friend",
+        "content": "Many Malaysian snacks — like kuih and putu mayam — use tapioca or rice flour instead of wheat."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Nasi Lemak (Plain)",
+        "description": "Coconut rice with cucumber and peanuts — skip the sambal if sensitive to trace shrimp"
+      },
+      {
+        "name": "Banana Leaf Rice",
+        "description": "Rice with vegetable curries — confirm no wheat in curry base"
+      },
+      {
+        "name": "Satay (Grilled Meat)",
+        "description": "Grilled skewers — the peanut sauce is usually gluten-free, but confirm"
+      },
+      {
+        "name": "Popiah (Fresh)",
+        "description": "Fresh spring roll with vegetables — wrapper is wheat, so skip this one"
+      },
+      {
+        "name": "Cendol",
+        "description": "Naturally gluten-free dessert of pandan jelly and coconut milk"
+      },
+      {
+        "name": "Kuih (Most Types)",
+        "description": "Rice and tapioca flour cakes — verify ingredients per stall"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Char Kway Teow",
+        "description": "Dark soy sauce is essential to the flavour"
+      },
+      {
+        "name": "Hokkien Mee",
+        "description": "Thick wheat noodles in dark soy sauce broth"
+      },
+      {
+        "name": "Wonton Mee",
+        "description": "Egg wheat noodles with soy sauce seasoning"
+      },
+      {
+        "name": "Mee Goreng",
+        "description": "Wheat noodles with soy sauce and tomato ketchup"
+      },
+      {
+        "name": "Roti Canai",
+        "description": "Made with wheat flour dough"
+      },
+      {
+        "name": "Curry Puff",
+        "description": "Pastry shell is wheat-based"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -1271,19 +1727,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Vegan Food Tours in Kuala Lumpur",
-    "icon": "",
-    "color": "",
+    "icon": "eco",
+    "color": "#10B981",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Hidden Animal Products",
+        "description": "Shrimp paste (belacan), fish sauce, egg noodles, and ghee hide in dishes that look vegan. Our guides know exactly what to ask."
+      },
+      {
+        "title": "Dairy in Indian Cuisine",
+        "description": "Ghee, paneer, and yogurt are staples in many Indian Malaysian dishes. We know which stalls cook with oil instead."
+      },
+      {
+        "title": "Egg in Noodles",
+        "description": "Many Malaysian noodles — especially wonton mee and some kway teow — contain egg. We steer you to egg-free alternatives."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Learn 'Sayur Sahaja'",
+        "content": "This Malay phrase means 'vegetables only' — useful, though your guide handles all communication."
+      },
+      {
+        "title": "Chinese Buddhist Restaurants Are Gold",
+        "content": "Look for signs saying '素食' (vegetarian) or '齋' (Buddhist vegetarian) — these kitchens use no animal products at all."
+      },
+      {
+        "title": "Watch Out for Kaya",
+        "content": "This popular coconut jam spread contains egg. Ask for plain butter or peanut butter on toast instead."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Roti Canai (Plain)",
+        "description": "Flaky flatbread cooked in oil — confirm no ghee or egg"
+      },
+      {
+        "name": "Thosai & Sambar",
+        "description": "Rice-lentil crepes with spiced lentil dip — naturally vegan"
+      },
+      {
+        "name": "Pasembur",
+        "description": "Penang salad with julienned vegetables, tofu, and sweet potato — verify sauce"
+      },
+      {
+        "name": "Popiah (Fresh)",
+        "description": "Fresh spring roll with jicama, tofu, and vegetables — avoid fried versions"
+      },
+      {
+        "name": "Rojak Buah",
+        "description": "Fruit salad with peanut sauce — delicious and refreshing"
+      },
+      {
+        "name": "Cendol",
+        "description": "Pandan jelly, coconut milk, and palm sugar dessert"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Nasi Lemak",
+        "description": "Sambal contains belacan (shrimp paste); egg is standard"
+      },
+      {
+        "name": "Char Kway Teow",
+        "description": "Cooked with lard, egg, and often fish sauce"
+      },
+      {
+        "name": "Laksa",
+        "description": "Fish-based broth with shrimp paste"
+      },
+      {
+        "name": "Mee Goreng Mamak",
+        "description": "Usually contains egg and may use ghee"
+      },
+      {
+        "name": "Kaya Toast",
+        "description": "Kaya jam contains egg — a beloved but non-vegan staple"
+      },
+      {
+        "name": "Ice Kacang (Some)",
+        "description": "May contain condensed milk — request coconut milk version"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -1379,19 +1911,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Vegan Food Tours in Penang",
-    "icon": "",
-    "color": "",
+    "icon": "eco",
+    "color": "#10B981",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Hidden Animal Products",
+        "description": "Shrimp paste (belacan), fish sauce, egg noodles, and ghee hide in dishes that look vegan. Our guides know exactly what to ask."
+      },
+      {
+        "title": "Dairy in Indian Cuisine",
+        "description": "Ghee, paneer, and yogurt are staples in many Indian Malaysian dishes. We know which stalls cook with oil instead."
+      },
+      {
+        "title": "Egg in Noodles",
+        "description": "Many Malaysian noodles — especially wonton mee and some kway teow — contain egg. We steer you to egg-free alternatives."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Learn 'Sayur Sahaja'",
+        "content": "This Malay phrase means 'vegetables only' — useful, though your guide handles all communication."
+      },
+      {
+        "title": "Chinese Buddhist Restaurants Are Gold",
+        "content": "Look for signs saying '素食' (vegetarian) or '齋' (Buddhist vegetarian) — these kitchens use no animal products at all."
+      },
+      {
+        "title": "Watch Out for Kaya",
+        "content": "This popular coconut jam spread contains egg. Ask for plain butter or peanut butter on toast instead."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Roti Canai (Plain)",
+        "description": "Flaky flatbread cooked in oil — confirm no ghee or egg"
+      },
+      {
+        "name": "Thosai & Sambar",
+        "description": "Rice-lentil crepes with spiced lentil dip — naturally vegan"
+      },
+      {
+        "name": "Pasembur",
+        "description": "Penang salad with julienned vegetables, tofu, and sweet potato — verify sauce"
+      },
+      {
+        "name": "Popiah (Fresh)",
+        "description": "Fresh spring roll with jicama, tofu, and vegetables — avoid fried versions"
+      },
+      {
+        "name": "Rojak Buah",
+        "description": "Fruit salad with peanut sauce — delicious and refreshing"
+      },
+      {
+        "name": "Cendol",
+        "description": "Pandan jelly, coconut milk, and palm sugar dessert"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Nasi Lemak",
+        "description": "Sambal contains belacan (shrimp paste); egg is standard"
+      },
+      {
+        "name": "Char Kway Teow",
+        "description": "Cooked with lard, egg, and often fish sauce"
+      },
+      {
+        "name": "Laksa",
+        "description": "Fish-based broth with shrimp paste"
+      },
+      {
+        "name": "Mee Goreng Mamak",
+        "description": "Usually contains egg and may use ghee"
+      },
+      {
+        "name": "Kaya Toast",
+        "description": "Kaya jam contains egg — a beloved but non-vegan staple"
+      },
+      {
+        "name": "Ice Kacang (Some)",
+        "description": "May contain condensed milk — request coconut milk version"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -1487,19 +2095,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Jain Food Tours in Kuala Lumpur",
-    "icon": "",
-    "color": "",
+    "icon": "self_improvement",
+    "color": "#F59E0B",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Root Vegetables Hide Everywhere",
+        "description": "Onions and garlic form the base of most Malaysian curries, sambals, and stir-fries. Finding dishes cooked without them requires knowing the right vendors."
+      },
+      {
+        "title": "Cross-Contamination Risk",
+        "description": "Shared woks and prep surfaces mean even a 'vegetarian' dish may have traces of non-Jain ingredients. We only visit stalls with dedicated practices."
+      },
+      {
+        "title": "Limited Jain-Specific Options",
+        "description": "Unlike India, Malaysia has few dedicated Jain restaurants. Most options require advance arrangement with trusted vendors who understand the requirements."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Brickfields is Your Best Bet",
+        "content": "KL's Little India has the highest concentration of Jain-friendly vendors, especially along Jalan Berhala and near the Jain temple."
+      },
+      {
+        "title": "South Indian Cuisine is Safest",
+        "content": "Pure veg South Indian restaurants are more likely to accommodate no-onion-no-garlic requests than Chinese or Malay stalls."
+      },
+      {
+        "title": "Private Tours Recommended",
+        "content": "Join-in tours cannot guarantee Jain compliance at every stop. A private tour lets us curate every vendor in advance."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Plain Roti Canai",
+        "description": "Freshly made flatbread without egg or ghee — confirm oil used"
+      },
+      {
+        "name": "Thosai / Dosa",
+        "description": "Fermented rice-lentil crepe, naturally vegan and Jain-friendly"
+      },
+      {
+        "name": "Idli",
+        "description": "Steamed rice cakes — simple, clean, and widely available"
+      },
+      {
+        "name": "Fresh Fruit Rojak",
+        "description": "Mixed fruit salad with peanut sauce (verify no shrimp paste)"
+      },
+      {
+        "name": "Putu Mayam",
+        "description": "String hoppers with grated coconut and jaggery"
+      },
+      {
+        "name": "Cendol (Custom)",
+        "description": "Pandan jelly dessert — request without red beans if strict"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Nasi Lemak Sambal",
+        "description": "Almost always contains belacan (shrimp paste) and garlic"
+      },
+      {
+        "name": "Char Kway Teow",
+        "description": "Cooked with garlic, lard, and often egg"
+      },
+      {
+        "name": "Laksa",
+        "description": "Fish-based broth with shrimp paste and garlic"
+      },
+      {
+        "name": "Mee Goreng",
+        "description": "Contains garlic, onion, and often shrimp paste in the sauce"
+      },
+      {
+        "name": "Rendang",
+        "description": "Slow-cooked with onion, garlic, and usually beef or chicken"
+      },
+      {
+        "name": "Satay Sauce",
+        "description": "Peanut sauce often contains shrimp paste and garlic"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",
@@ -1595,19 +2279,95 @@
     "hero_image_width": null,
     "hero_image_height": null,
     "dietary_name": "Jain Food Tours in Penang",
-    "icon": "",
-    "color": "",
+    "icon": "self_improvement",
+    "color": "#F59E0B",
     "challenges_heading": "",
-    "challenges": [],
+    "challenges": [
+      {
+        "title": "Root Vegetables Hide Everywhere",
+        "description": "Onions and garlic form the base of most Malaysian curries, sambals, and stir-fries. Finding dishes cooked without them requires knowing the right vendors."
+      },
+      {
+        "title": "Cross-Contamination Risk",
+        "description": "Shared woks and prep surfaces mean even a 'vegetarian' dish may have traces of non-Jain ingredients. We only visit stalls with dedicated practices."
+      },
+      {
+        "title": "Limited Jain-Specific Options",
+        "description": "Unlike India, Malaysia has few dedicated Jain restaurants. Most options require advance arrangement with trusted vendors who understand the requirements."
+      }
+    ],
     "options_heading": "",
     "options_content": "",
     "tips_heading": "",
     "tips_content": "",
-    "tips": [],
+    "tips": [
+      {
+        "title": "Brickfields is Your Best Bet",
+        "content": "KL's Little India has the highest concentration of Jain-friendly vendors, especially along Jalan Berhala and near the Jain temple."
+      },
+      {
+        "title": "South Indian Cuisine is Safest",
+        "content": "Pure veg South Indian restaurants are more likely to accommodate no-onion-no-garlic requests than Chinese or Malay stalls."
+      },
+      {
+        "title": "Private Tours Recommended",
+        "content": "Join-in tours cannot guarantee Jain compliance at every stop. A private tour lets us curate every vendor in advance."
+      }
+    ],
     "safe_dishes_heading": "",
-    "safe_dishes": [],
+    "safe_dishes": [
+      {
+        "name": "Plain Roti Canai",
+        "description": "Freshly made flatbread without egg or ghee — confirm oil used"
+      },
+      {
+        "name": "Thosai / Dosa",
+        "description": "Fermented rice-lentil crepe, naturally vegan and Jain-friendly"
+      },
+      {
+        "name": "Idli",
+        "description": "Steamed rice cakes — simple, clean, and widely available"
+      },
+      {
+        "name": "Fresh Fruit Rojak",
+        "description": "Mixed fruit salad with peanut sauce (verify no shrimp paste)"
+      },
+      {
+        "name": "Putu Mayam",
+        "description": "String hoppers with grated coconut and jaggery"
+      },
+      {
+        "name": "Cendol (Custom)",
+        "description": "Pandan jelly dessert — request without red beans if strict"
+      }
+    ],
     "avoid_dishes_heading": "",
-    "avoid_dishes": [],
+    "avoid_dishes": [
+      {
+        "name": "Nasi Lemak Sambal",
+        "description": "Almost always contains belacan (shrimp paste) and garlic"
+      },
+      {
+        "name": "Char Kway Teow",
+        "description": "Cooked with garlic, lard, and often egg"
+      },
+      {
+        "name": "Laksa",
+        "description": "Fish-based broth with shrimp paste and garlic"
+      },
+      {
+        "name": "Mee Goreng",
+        "description": "Contains garlic, onion, and often shrimp paste in the sauce"
+      },
+      {
+        "name": "Rendang",
+        "description": "Slow-cooked with onion, garlic, and usually beef or chicken"
+      },
+      {
+        "name": "Satay Sauce",
+        "description": "Peanut sauce often contains shrimp paste and garlic"
+      }
+    ],
     "translations": [
       {
         "languages_code": "en",

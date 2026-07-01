@@ -142,11 +142,10 @@
       },
       "usage": null,
       "tags": [],
-      "prefix": "payload-media",
       "updatedAt": "2026-06-19T00:18:02.769Z",
       "createdAt": "2026-06-19T00:18:01.822Z",
-      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-landmark.jpg",
+      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
       "filename": "simply-enak-landmark.jpg",
       "mimeType": "image/jpeg",
       "filesize": 2305832,
@@ -156,7 +155,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -164,7 +163,7 @@
           "filename": "DSC_9621-400x300.jpg"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -172,7 +171,7 @@
           "filename": "DSC_9621-800x600.jpg"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",
