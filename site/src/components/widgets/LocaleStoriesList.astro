@@ -27,9 +27,22 @@ const stories = published.map((s: any) => {
   };
 }).sort((a: any, b: any) => new Date(b.publishedDate || b.createdAt || 0).getTime() - new Date(a.publishedDate || a.createdAt || 0).getTime());
 
-// Categorize stories by their Payload category field (falls back to 'guides')
-const foodCulture = stories.filter((s: any) => s.category === 'Food & Culture Guides' || !s.category);
-const travelTips = stories.filter((s: any) => s.category === 'Travel Tips');
+// Categorize stories — none have Payload category set, so split by slug pattern
+const travelTipSlugs = [
+  'street-food-guide-malaysia', 'street-food-guide-kuala-lumpur',
+  'night-food-guide-penang', 'night-food-guide-malaysia', 'night-food-guide-kuala-lumpur',
+  'food-guide-penang', 'food-guide-melaka', 'food-guide-kuala-lumpur',
+  'food-guide-klang', 'food-guide-kampung-baru', 'food-guide-ipoh',
+  'food-guide-gurney-drive', 'food-guide-george-town',
+  'food-guide-chowrasta-penang', 'food-guide-chow-kit', 'food-guide-chinatown-kl',
+  'food-guide-little-india-penang', 'food-guide-little-india-kl',
+  'families-guide-penang', 'families-guide-kuala-lumpur',
+  'couples-guide-penang', 'couples-guide-kuala-lumpur',
+  'chefs-guide-kuala-lumpur',
+];
+
+const foodCulture = stories.filter((s: any) => !travelTipSlugs.includes(s.slug));
+const travelTips = stories.filter((s: any) => travelTipSlugs.includes(s.slug));
 const vendorStories = stories.filter((s: any) => s.category === 'Vendor Stories');
 
 // Featured = first published story overall
@@ -151,7 +164,7 @@ const localePrefix = lang === 'en' ? '' : `/${lang}`;
 
           {foodCultureHidden.length > 0 && (
             <>
-              <div class="mt-6 hidden food-culture-hidden-{lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class={`mt-6 hidden food-culture-hidden-${lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6`}>
                 {foodCultureHidden.map((s: any, i: number) => (
                   <a href={`${localePrefix}/stories/${s.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
                     <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -210,7 +223,7 @@ const localePrefix = lang === 'en' ? '' : `/${lang}`;
 
           {travelTipsHidden.length > 0 && (
             <>
-              <div class="mt-6 hidden travel-tips-hidden-{lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class={`mt-6 hidden travel-tips-hidden-${lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6`}>
                 {travelTipsHidden.map((s: any, i: number) => (
                   <a href={`${localePrefix}/stories/${s.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
                     <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -269,7 +282,7 @@ const localePrefix = lang === 'en' ? '' : `/${lang}`;
 
           {vendorStoriesHidden.length > 0 && (
             <>
-              <div class="mt-6 hidden vendor-stories-hidden-{lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class={`mt-6 hidden vendor-stories-hidden-${lang} grid sm:grid-cols-2 lg:grid-cols-3 gap-6`}>
                 {vendorStoriesHidden.map((s: any, i: number) => (
                   <a href={`${localePrefix}/stories/${s.slug}`} class="group block relative overflow-hidden rounded-xl shadow-md aspect-[4/3]">
                     <img src={getImageUrl(s.featuredImage) || s.image || ''} alt={s.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />

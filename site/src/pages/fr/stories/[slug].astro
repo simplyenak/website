@@ -32,9 +32,7 @@ const post = {
   title: story.title || '',
   excerpt: story.excerpt || '',
   image: image,
-  author: typeof story.author === 'object' && story.author !== null
-    ? (story.author.fullName || story.author.name || 'Simply Enak')
-    : (story.author || 'Simply Enak Team'),
+  author: 'Pauline',
   category: story.category
     ? { title: story.category, slug: story.category.toLowerCase().replace(/\s+/g, '-') }
     : { title: 'Food & Culture Guides', slug: 'food-culture-guides' },
@@ -53,7 +51,7 @@ const meta = {
 
 <Layout metadata={meta}>
   <SinglePost post={post} url={url}>
-    <div class="prose prose-sm md:prose-base max-w-none prose-headings:font-heading prose-headings:font-bold prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl" set:html={contentHtml} />
+    <div class="prose prose-sm md:prose-base max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-default prose-blockquote:font-medium prose-blockquote:text-lg prose-li:my-1 dark:prose-blockquote:bg-accent/10 dark:prose-blockquote:text-white" set:html={contentHtml} />
   </SinglePost>
   <ToBlogLink />
   <RelatedPosts post={post} />
