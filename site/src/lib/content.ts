@@ -380,6 +380,7 @@ function mergeTour(payload: any) {
     segmentTags: (hardcoded as any).segment_tags || [],
     whatsIncluded: unwrap(payload.whatsIncluded),
     whatsExcluded: unwrap(payload.whatsExcluded),
+    showInMenu: payload.showInMenu === true,
     featured: payload.featured === true,
     popular: payload.popular === true,
     new: payload.new === true,
