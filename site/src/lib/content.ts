@@ -1094,7 +1094,7 @@ export async function getStories(locale?: string) {
 
 export async function getStoryBySlug(slug: string, locale?: string) {
   const all = await resolveStories(locale);
-  return all.find((s: any) => s.slug === slug && (!s._status || s._status === 'published')) || null;
+  return all.find((s: any) => s.slug === slug && (s.workflowStatus === 'published' || s._status === 'published' || !s._status)) || null;
 }
 
 // -- Pages (home, about, contact) --
