@@ -48,10 +48,6 @@ export const headerData = {
       href: getBlogPermalink(),
     },
     {
-      text: 'Private Tours',
-      href: getPermalink('/tours/private-tours'),
-    },
-    {
       text: 'About',
       href: getPermalink('/about'),
     },
@@ -163,6 +159,8 @@ export function getHeaderData(lang: Language) {
           { text: t('nav.eatDrinkGeorgeTown'), href: p('/tours/eat-drink-george-town') },
           { text: t('nav.penangStreetFood'), href: p('/tours/penang-street-food') },
           { text: t('nav.secretsOfKl'), href: p('/tours/secrets-of-kl-nightlife-street-art-and-cocktails') },
+          { text: '───', href: '' },
+          { text: t('nav.privateTours'), href: p('/tours/private-tours'), icon: 'tabler:lock' },
         ],
       },
       {

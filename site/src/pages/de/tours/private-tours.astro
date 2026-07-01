@@ -23,6 +23,24 @@ const meta = {
   title: pageData.seo_title || 'Private Food Tours Malaysia | Simply Enak',
   description: pageData.seo_description || 'Book a private food tour in Malaysia with Simply Enak.',
 };
+
+// Emoji → Tabler icon name mapping
+const iconMap: Record<string, string> = {
+  '🧭': 'users-group',
+  '⏰': 'clock',
+  '🗣️': 'message-language',
+  '👨‍👩‍👧‍👦': 'users',
+  '💑': 'heart-handshake',
+  '🏢': 'building-community',
+  '🎉': 'confetti',
+};
+
+// Render an icon from Payload data — Tabler if mapped, raw emoji if not
+function renderIcon(emoji: string | undefined) {
+  const name = iconMap[emoji || ''];
+  if (!name) return emoji || '✓';
+  return `<Icon name="tabler:${name}" class="w-6 h-6" />`;
+}
 ---
 
 <Layout metadata={meta}>
@@ -79,15 +97,21 @@ const meta = {
           <p class="text-muted max-w-2xl mx-auto mt-3 text-sm">{pageData.why_subtitle || 'You book the guide. You get the guide. No strangers, no compromises.'}</p>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
-          {whyPrivate.map((item: any) => (
-            <div class="text-center p-6 md:p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm">
-              <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5 text-2xl">
-                {item.icon || '✓'}
+          {whyPrivate.map((item: any) => {
+            const iconName = iconMap[item.icon || ''];
+            return (
+              <div class="text-center p-6 md:p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card shadow-sm">
+                <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
+                  {iconName
+                    ? <Icon name={`tabler:${iconName}`} class="w-6 h-6 text-accent" />
+                    : <span class="text-2xl">{item.icon || '✓'}</span>
+                  }
+                </div>
+                <h3 class="text-lg font-bold font-heading mb-2">{item.title}</h3>
+                <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
               </div>
-              <h3 class="text-lg font-bold font-heading mb-2">{item.title}</h3>
-              <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -102,15 +126,21 @@ const meta = {
           <h2 class="text-3xl md:text-4xl font-bold font-heading">{pageData.audiences_title || 'Who books private tours'}</h2>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {audiences.map((item: any) => (
-            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
-              <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">
-                {item.icon || '👤'}
+          {audiences.map((item: any) => {
+            const iconName = iconMap[item.icon || ''];
+            return (
+              <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+                <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                  {iconName
+                    ? <Icon name={`tabler:${iconName}`} class="w-5 h-5 text-accent" />
+                    : <span class="text-xl">{item.icon || '👤'}</span>
+                  }
+                </div>
+                <h3 class="font-bold font-heading text-default mb-2">{item.label}</h3>
+                <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
               </div>
-              <h3 class="font-bold font-heading text-default mb-2">{item.label}</h3>
-              <p class="text-sm text-muted leading-relaxed">{item.detail}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

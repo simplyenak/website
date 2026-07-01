@@ -39,6 +39,8 @@ if (menuTours && menuTours.length > 0) {
         text: t.tagline || t.name || t.slug,
         href: getPermalink(`/tours/${t.slug}`),
       })),
+      { text: '───', href: '' },
+      { text: 'Private Tours', href: getPermalink('/tours/private-tours'), icon: 'tabler:lock' },
     ].filter(Boolean);
   }
 }
