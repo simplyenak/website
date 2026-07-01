@@ -1,0 +1,17 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import LocaleStoriesList from '~/components/widgets/LocaleStoriesList.astro';
+import { useTranslations } from '~/i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+
+const metadata = {
+  title: t('stories.heroTitle') + ' — Simply Enak',
+  description: t('stories.heroDesc'),
+};
+---
+
+<Layout metadata={metadata}>
+  <LocaleStoriesList lang={lang} />
+</Layout>
