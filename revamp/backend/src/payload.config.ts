@@ -132,6 +132,11 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+  // Increase file upload timeout (busboy default 60s — too short for 5MB+ over slow links)
+  // 5 minutes comfortably handles large images and slow Scaleway S3 connections
+  upload: {
+    uploadTimeout: 5 * 60 * 1000,
+  },
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
@@ -179,6 +184,7 @@ export default buildConfig({
     }),
     // S3 Storage
     s3Storage({
+      acl: 'public-read', // ensures uploaded files are publicly readable via the CDN
       collections: {
         media: {
           prefix: 'payload-media',
