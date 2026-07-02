@@ -51,7 +51,8 @@ const bgImages = [
   'https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg',
   'https://cdn.simplyenak.com/secrets_of_KL_Nightlife_Tour002_294155fa7e.jpg',
 ];
-const heroBg = landingPage?.heroImage || bgImages[Math.floor(Math.random() * bgImages.length)];
+const heroBg = landingPage?.heroImage || landingPage?.hero_image || bgImages[Math.floor(Math.random() * bgImages.length)];
+const heroBgAlt = landingPage?.heroImageAlt || landingPage?.hero_image_alt || '';
 
 // Story hooks — PAS problem + bold hook, per segment type
 const getHook = () => {
@@ -219,7 +220,7 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
 <!-- 1. HERO — Hook with a bold statement -->
 <section class="relative min-h-[60vh] flex items-center bg-[#1a1a1a] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src={getImageUrl(heroBg)} alt="" class="w-full h-full object-cover opacity-40" loading="eager" fetchpriority="high" />
+    <img src={getImageUrl(heroBg)} alt={heroBgAlt} class="w-full h-full object-cover opacity-40" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/65 to-black/90"></div>
   </div>
   <div class="relative w-full max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
