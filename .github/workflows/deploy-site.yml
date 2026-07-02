@@ -22,7 +22,10 @@ on:
       - 'eval/**'
       - '.github/workflows/deploy-site.yml'
   repository_dispatch:
-    types: [deploy-staging]
+    types: [deploy-staging, deploy-production]
+  schedule:
+    # Auto-sync from Payload every 30 minutes — deploys to both staging + production
+    - cron: '*/30 * * * *'
 
 concurrency:
   group: deploy-site
@@ -35,7 +38,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Build and Deploy
+    name: Sync, Build and Deploy
 
     steps:
       - name: Checkout
@@ -56,32 +59,37 @@ jobs:
         working-directory: site
         run: npm ci
 
-      - name: Build site
+      - name: Sync content from Payload CMS
         working-directory: site
-        run: npm run build
+        run: npm run sync
         env:
           PAYLOAD_URL: https://cms.system.simplyenak.com
           PAYLOAD_TOKEN: ${{ secrets.PAYLOAD_TOKEN }}
           PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
           PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
 
-      - name: Determine project name
-        id: project
-        run: |
-          if [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "repository_dispatch" || "${{ inputs.target }}" == "staging" ]]; then
-            echo "name=staging" >> $GITHUB_OUTPUT
-            echo "branch=main" >> $GITHUB_OUTPUT
-          else
-            echo "name=website" >> $GITHUB_OUTPUT
-            echo "branch=production" >> $GITHUB_OUTPUT
-          fi
+      - name: Build site
+        working-directory: site
+        run: npm run build
+        env:
+          PAYLOAD_URL: https://cms.system.simplyenak.com
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to staging
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ steps.project.outputs.name }}
+          projectName: staging
           directory: site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.project.outputs.branch }}
+          branch: main
+
+      - name: Deploy to production
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: website
+          directory: site/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: production
