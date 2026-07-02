@@ -59,14 +59,20 @@ jobs:
         working-directory: site
         run: npm ci
 
+      - name: Create .env from secrets
+        working-directory: site
+        run: |
+          cat > .env <<'EOF'
+          PAYLOAD_URL=https://cms.system.simplyenak.com
+          PAYLOAD_TOKEN=${{ secrets.PAYLOAD_TOKEN }}
+          PAYLOAD_EMAIL=${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD=${{ secrets.PAYLOAD_PASSWORD }}
+          PUBLIC_SITE_URL=https://simplyenak.com
+          EOF
+
       - name: Sync content from Payload CMS
         working-directory: site
         run: npm run sync
-        env:
-          PAYLOAD_URL: https://cms.system.simplyenak.com
-          PAYLOAD_TOKEN: ${{ secrets.PAYLOAD_TOKEN }}
-          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
-          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
 
       - name: Build site
         working-directory: site
