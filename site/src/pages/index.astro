@@ -297,7 +297,12 @@ const finalStructuredData = structuredData.length > 0 ? structuredData : undefin
               </div>
             </div>
             <div class="p-5">
-              <h3 class="font-bold text-default font-heading text-lg mb-1">{tour.name}</h3>
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-bold text-default font-heading text-lg">{tour.name}</h3>
+                {(tour.tourType === 'private' || tour.tourType === 'both') && (
+                  <span class="font-bold text-[10px] px-2 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30 shrink-0">Private</span>
+                )}
+              </div>
               <div class="flex items-center justify-between">
                 <div>
                   <span class="text-muted text-xs">from</span>

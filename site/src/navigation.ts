@@ -40,6 +40,7 @@ export const headerData = {
           text: 'Private Tours',
           href: getPermalink('/tours/private-tours'),
           icon: 'tabler:lock',
+          class: 'font-bold text-accent md:bg-accent/10 md:-mx-2 md:px-7 md:rounded-md md:border md:border-accent/20',
         },
       ],
     },
