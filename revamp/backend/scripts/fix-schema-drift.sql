@@ -109,6 +109,34 @@ ALTER TABLE how_it_works_page ADD COLUMN IF NOT EXISTS seo_title TEXT;
 ALTER TABLE how_it_works_page ADD COLUMN IF NOT EXISTS seo_description TEXT;
 
 -- ============================================================
+-- Fix array sub-tables: _locale NOT NULL constraint on non-localized collections
+-- Payload 3 may create array sub-tables with NOT NULL _locale even on
+-- collections WITHOUT localization enabled. This causes inserts to fail
+-- with "null value in column _locale violates not-null constraint".
+-- ============================================================
+
+DO $$ BEGIN
+  RAISE NOTICE 'Fixing _locale NOT NULL on array sub-tables...';
+END $$;
+
+ALTER TABLE how_to_prepare_page_what_to_wear ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE how_to_prepare_page_what_to_bring ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE how_to_prepare_page_what_to_expect ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE how_to_prepare_page_dietary_notes ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE how_it_works_page_steps ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE how_it_works_page_inclusions ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE how_it_works_page_formats ALTER COLUMN _locale DROP NOT NULL;
+
+-- Also fix version sub-tables
+ALTER TABLE _how_to_prepare_page_v_version_what_to_wear ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE _how_to_prepare_page_v_version_what_to_bring ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE _how_to_prepare_page_v_version_what_to_expect ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE _how_to_prepare_page_v_version_dietary_notes ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE _how_it_works_page_v_version_steps ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE _how_it_works_page_v_version_inclusions ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE _how_it_works_page_v_version_formats ALTER COLUMN _locale DROP NOT NULL;
+
+-- ============================================================
 -- Add missing version_* columns to any version table that lacks them
 DO $$
 DECLARE
