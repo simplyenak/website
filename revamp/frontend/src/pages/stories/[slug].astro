@@ -487,4 +487,78 @@ const relatedStories = categoryMatches.length > 0 ? categoryMatches : substantia
       });
     });
   </script>
+
+  <!-- Blog analytics: scroll depth, CTA clicks, newsletter engagement -->
+  <script define:vars={{ storySlug: story.slug, storyTitle: story.title }}>
+    (function () {
+      // — Scroll depth tracking (25%, 50%, 75%, 100%) —
+      var scrollMarkers = { 25: false, 50: false, 75: false, 100: false };
+
+      document.addEventListener(
+        "scroll",
+        function () {
+          if (!window._ga4Initialized) return;
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight <= 0) return;
+          var pct = Math.min(100, Math.round((scrollTop / docHeight) * 100));
+
+          // Fire at thresholds
+          [25, 50, 75, 100].forEach(function (t) {
+            if (pct >= t && !scrollMarkers[t]) {
+              scrollMarkers[t] = true;
+              gtag("event", "content_scroll", {
+                scroll_threshold: t + "%",
+                content_type: "story",
+                content_title: storyTitle,
+              });
+            }
+          });
+        },
+        { passive: true }
+      );
+
+      // — Track tour CTA clicks within story content —
+      document.addEventListener("click", function (e) {
+        if (!window._ga4Initialized) return;
+
+        // Tour links inside the article (anchor tags pointing to /tours/)
+        var tourLink = e.target.closest('a[href*="/tours/"]');
+        if (tourLink) {
+          gtag("event", "content_cta_click", {
+            content_type: "story",
+            content_title: storyTitle,
+            cta_type: "tour_link",
+            cta_label: tourLink.textContent.trim().slice(0, 100),
+            cta_url: tourLink.getAttribute("href"),
+          });
+          return;
+        }
+
+        // WhatsApp links in the article
+        var waLink = e.target.closest('a[href*="wa.me"]');
+        if (waLink) {
+          gtag("event", "content_cta_click", {
+            content_type: "story",
+            content_title: storyTitle,
+            cta_type: "whatsapp",
+          });
+          return;
+        }
+      });
+
+      // — Newsletter signup tracking from stories —
+      var nlForm = document.getElementById("story-newsletter-form");
+      if (nlForm) {
+        nlForm.addEventListener("submit", function () {
+          if (!window._ga4Initialized) return;
+          gtag("event", "newsletter_signup", {
+            content_type: "story",
+            content_title: storyTitle,
+            source: "story_article",
+          });
+        });
+      }
+    })();
+  </script>
 </Layout>

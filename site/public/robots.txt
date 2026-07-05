@@ -1,2 +1,63 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disable admin/preview paths
+Disallow: /_astro/
+Disallow: /api/
+Disallow: /Payload/
+Disallow: /preview/
+
+# Traditional search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# ── AI crawlers (explicitly allow for AI search visibility) ──
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: DeepSeekBot
+Allow: /
+
+User-agent: QwenBot
+Allow: /
+
+# Allow AI crawlers to discover our AI-optimized content
+Llms-txt: https://simplyenak.com/llms.txt
+
+Sitemap: https://simplyenak.com/sitemap-index.xml
