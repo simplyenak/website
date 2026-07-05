@@ -7,6 +7,7 @@ import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStoryBySlug, getImageUrl } from '~/lib/content';
 import type { ImageMetadata } from 'astro';
+import RelatedTours from '~/components/blog/RelatedTours.astro';
 
 export async function getStaticPaths() {
   const all = (await import('~/data/content/stories.json')).default as any[];
@@ -55,4 +56,5 @@ const meta = {
   </SinglePost>
   <ToBlogLink />
   <RelatedPosts post={post} />
+  <RelatedTours specialtyIds={story.specialtyExperiences?.map((s: any) => typeof s === 'object' ? s.id : s) || []} />
 </Layout>

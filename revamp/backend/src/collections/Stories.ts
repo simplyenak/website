@@ -52,6 +52,16 @@ export const Stories: CollectionConfig = {
       },
     },
     {
+      name: 'specialtyExperiences',
+      type: 'relationship',
+      relationTo: 'specialty_experiences',
+      hasMany: true,
+      admin: {
+        description: 'Tag this story with specialty experiences (e.g. First Time Visitors, Street Food)',
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'author',
       type: 'relationship',
       relationTo: 'users',

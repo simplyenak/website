@@ -1,0 +1,76 @@
+---
+// RelatedTours.astro — shows tours matching a story's specialty experiences
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  specialtyIds?: number[];
+}
+
+const { specialtyIds = [] } = Astro.props;
+
+let tours: any[] = [];
+try {
+  tours = (await import('~/data/content/tours.json')).default as any[];
+} catch {
+  tours = [];
+}
+
+// Filter tours that share at least one specialty experience ID with this story
+const matchingTours = tours.filter((tour: any) => {
+  if (!tour.specialtyExperiences || !Array.isArray(tour.specialtyExperiences)) return false;
+  const tourIds = tour.specialtyExperiences.map((s: any) => (typeof s === 'object' ? s.id : s));
+  return specialtyIds.some((id: number) => tourIds.includes(id));
+});
+---
+
+{
+  matchingTours.length > 0 && (
+    <section class="py-16 md:py-20 border-t border-gray-100 dark:border-white/10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">Tours</p>
+          <h2 class="text-2xl md:text-3xl font-bold font-heading">Tours mentioned in this guide</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {matchingTours.map((tour: any) => (
+            <a
+              href={`/tours/${tour.slug}/`}
+              class="group block p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card hover:shadow-md hover:border-accent/30 transition-all"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                {tour.specialtyExperiences?.slice(0, 2).map((se: any) => {
+                  const exp = typeof se === 'object' ? se : {};
+                  return (
+                    <span class="text-xs px-2 py-0.5 rounded-full bg-accent/10 text-accent font-medium">
+                      {exp.icon || ''} {exp.name || ''}
+                    </span>
+                  );
+                })}
+              </div>
+              <h3 class="font-bold font-heading text-default group-hover:text-accent transition-colors mb-2">
+                {tour.name || 'Food Tour'}
+              </h3>
+              {tour.shortDescription && (
+                <p class="text-sm text-muted leading-relaxed line-clamp-3">{tour.shortDescription}</p>
+              )}
+              <div class="flex items-center gap-4 mt-4 text-sm text-muted">
+                {tour.duration && (
+                  <span class="flex items-center gap-1">
+                    <Icon name="tabler:clock" class="w-3.5 h-3.5" />
+                    {tour.duration}
+                  </span>
+                )}
+                {tour.price && (
+                  <span class="flex items-center gap-1 font-semibold text-default">
+                    <Icon name="tabler:currency-ringgit" class="w-3.5 h-3.5" />
+                    {tour.price}
+                  </span>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
