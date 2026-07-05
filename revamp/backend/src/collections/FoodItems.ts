@@ -95,6 +95,11 @@ export const FoodItems: CollectionConfig = {
         { label: 'Noodles', value: 'noodles' },
         { label: 'Rice Dish', value: 'rice' },
         { label: 'Satay/Grilled', value: 'grilled' },
+        // ─── NEW ───
+        { label: 'Herb', value: 'herb' },
+        { label: 'Ingredient', value: 'ingredient' },
+        { label: 'Sweetener', value: 'sweetener' },
+        { label: 'Seafood', value: 'seafood' },
       ],
       required: true,
       admin: {
@@ -113,6 +118,9 @@ export const FoodItems: CollectionConfig = {
         { label: 'Indonesian', value: 'indonesian' },
         { label: 'Fusion', value: 'fusion' },
         { label: 'International', value: 'international' },
+        // ─── NEW ───
+        { label: 'Southeast Asian', value: 'southeast_asian' },
+        { label: 'Universal', value: 'universal' },
       ],
       required: true,
       admin: {
