@@ -129,7 +129,7 @@
   "currency_rate_cad": 0.351,
   "currency_rate_chf": 0.203,
   "currency_rate_cny": 1.58,
-  "currency_rates_fetched_at": "2026-05-13",
+  "currency_rates_fetched_at": "2026-07-03",
   "contact_page_title": "{\"en\":\"Contact Simply Enak\"}",
   "contact_page_description": "{\"en\":\"Get in touch with Simply Enak for food tour bookings, private events, and media enquiries in Kuala Lumpur and Penang.\"}",
   "faq_page_title": "{\"en\":\"Frequently Asked Questions\"}",
@@ -168,5 +168,7 @@
     "body": null,
     "cta_label": null,
     "cta_url": null
-  }
+  },
+  "currency_usd_rate": 0.2456,
+  "currency_aud_rate": 0.354
 }

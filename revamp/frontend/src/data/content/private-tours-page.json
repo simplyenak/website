@@ -1,76 +1,36 @@
 {
+  "id": 3,
   "seo_title": "Private Food Tours Malaysia | Simply Enak",
   "seo_description": "Book a private food tour in Malaysia with Simply Enak. Your group only, your pace, your guide.",
   "hero_title": "A Tour Built Around You",
   "hero_highlight": "Around You",
-  "hero_subtitle": "Your group, your pace, your guide — from just two people to a corporate team.",
+  "hero_subtitle": "Your group, your pace, your guide  -  from just two people to a corporate team.",
   "hero_cta_primary_text": "Get a Quote",
   "hero_cta_primary_href": "#pricing",
   "hero_cta_secondary_text": "See Available Tours",
   "hero_cta_secondary_href": "#tours",
-  "hero_image": "https://picsum.photos/seed/simply-enak-private/1400/700",
-  "hero_image_alt": "Private food tour group in Kuala Lumpur (placeholder)",
-  "comparison_eyebrow": "Three ways to join us",
-  "comparison_heading": "Which one is right for you?",
-  "comparison_joinin_label": "Join-in",
-  "comparison_private_label": "Private",
-  "comparison_tailored_label": "Tailored",
-  "comparison_rows": [
-    { "label": "Who's on the tour", "joinin": "You + other guests", "private": "Your group only", "tailored": "Your group only" },
-    { "label": "The route", "joinin": "Our standard route", "private": "Our standard route", "tailored": "Designed around you" },
-    { "label": "Your guide", "joinin": "Shared with the group", "private": "Dedicated to you", "tailored": "Dedicated to you" },
-    { "label": "Customisation", "joinin": "Dietary needs noted", "private": "Pace, stops & dietary", "tailored": "Everything" },
-    { "label": "Start time", "joinin": "Fixed", "private": "Flexible", "tailored": "Flexible" },
-    { "label": "Pricing", "joinin": "Per person", "private": "Per group (quote)", "tailored": "Per group (quote)" }
-  ],
-  "comparison_joinin_cta": "See join-in tours",
-  "comparison_joinin_href": "/tours/join-in-tours/",
-  "comparison_tailored_cta": "Design your tour",
-  "tailored_example_eyebrow": "A recent tailored tour",
-  "tailored_example_occasion": "Penang · July 2024",
-  "tailored_example_logo": "/logos/worldfish-logo.png",
-  "tailored_example_logo_alt": "WorldFish — host of IIFET 2024 Penang",
-  "testimonials_eyebrow": "What guests say about going private",
-  "testimonials_intro": "Most guests who book a private tour tell us afterwards they wish they'd done it from the start. Here's what a few recent groups said.",
-  "private_testimonial_quote": "",
-  "private_testimonial_name": "",
-  "private_testimonial_detail": "",
-  "tailored_example_heading": "A conference full of fisheries researchers wanted to eat what they study",
-  "tailored_example_body": "The 21st International Fisheries Economics & Trade Conference brought researchers from 40 countries to Georgetown. A group of attendees reached out: they'd spent three days in conference rooms talking about aquatic food systems and wanted to actually handle one.\n\nWe took them to the wet market first thing in the morning — not to eat, but to shop. They moved through the fish stalls with the focused attention of people who understood exactly what they were looking at: threadfin, grouper, stingray. They bought for the whole group.\n\nThen we drove inland to Balik Pulau. The tourists don't come this way. We visited a working belacan factory — fermented shrimp paste, the base of most Malaysian cooking — and the smell alone was worth the drive. A local restaurant cooked the fish they'd bought that morning. After lunch we walked a quiet fishing harbour before driving back to Georgetown.\n\nThe tour existed because they asked for it. We'd never run it before.",
-  "tailored_example_cta": "Design a tour like this",
-  "tailored_example_image": "https://picsum.photos/seed/penang-market/900/600",
-  "tailored_example_image_alt": "Penang wet market — IIFET 2024 tailored tour (placeholder)",
-  "tour_types_eyebrow": "Two ways to go private",
-  "tour_types_heading": "Private, or tailored?",
-  "tour_types_intro": "Depending on what you're after, we can go one of two ways.",
-  "private_type_label": "Private tour",
-  "private_type_description": "You choose one of our tours — the same stalls, the same commentary, the same guide — but the whole thing runs just for your group. No other guests, no compromises on pace, no waiting around. If someone in your group can't eat something, we sort it out with your guide before the day. That's it.",
-  "private_type_cta": "See the tours",
-  "tailored_type_label": "Tailored tour",
-  "tailored_type_description": "We start from scratch. You tell us who you are, what you want to eat, how long you want to walk, and what you'd love to take home from the day. We design a route around that — new stalls, cooking demonstrations, market visits, a sit-down meal, whatever makes sense for your group. Tailored tours suit celebrations, return visitors, and corporate groups who want something nobody else has done.",
-  "tailored_type_cta": "Design your tour",
   "why_title": "What a private tour means",
   "why_subtitle": "You book the guide. You get the guide. No strangers, no compromises.",
   "why_private": [
     {
       "icon": "🧭",
       "title": "Your guide, your group",
-      "detail": "No other guests on your tour. Your guide's full attention stays on your group all day — adjusting pace, answering questions, staying as long as you want at a stall."
+      "detail": "No other guests on your tour. Your guide's full attention stays on your group all day  -  adjusting pace, answering questions, staying as long as you want at a stall."
     },
     {
       "icon": "⏰",
       "title": "Your schedule",
-      "detail": "We set start times around you. Morning, late morning, evening — whatever works, and you're not waiting on strangers or cutting a stall short because someone else is tired."
+      "detail": "We set start times around you. Morning, late morning, evening  -  whatever works, and you're not waiting on strangers or cutting a stall short because someone else is tired."
     },
     {
       "icon": "🗣️",
       "title": "Your interests",
-      "detail": "Dietary needs, languages, how much you want to walk — we work all of this out with your guide before the day, not on it. Nothing is an afterthought."
+      "detail": "Dietary needs, languages, how much you want to walk  -  we work all of this out with your guide before the day, not on it. Nothing is an afterthought."
     }
   ],
   "configurator_eyebrow": "Try It Now",
   "configurator_heading": "Design Your Private Tour",
-  "configurator_body": "Tell us who you are and what matters — we'll sketch a route and refine it on WhatsApp.",
+  "configurator_body": "Tell us who you are and what matters  -  we'll sketch a route and refine it on WhatsApp.",
   "audiences_title": "Who books private tours",
   "audiences": [
     {
@@ -81,12 +41,12 @@
     {
       "icon": "💑",
       "label": "Couples",
-      "detail": "No schedule pressure, no waiting for a group. A private tour is one of the more memorable ways to spend a day somewhere new — unhurried and genuinely yours."
+      "detail": "No schedule pressure, no waiting for a group. A private tour is one of the more memorable ways to spend a day somewhere new  -  unhurried and genuinely yours."
     },
     {
       "icon": "🏢",
       "label": "Corporate groups",
-      "detail": "Team meals and client visits that don't feel like team meals. We take groups to the stalls where Kuala Lumpur actually eats — not the restaurants on the tourist strip."
+      "detail": "Team meals and client visits that don't feel like team meals. We take groups to the stalls where Kuala Lumpur actually eats  -  not the restaurants on the tourist strip."
     },
     {
       "icon": "🎉",
@@ -94,26 +54,24 @@
       "detail": "Birthdays, anniversaries, farewell trips. We've marked all of them. Tell us what the occasion is and we'll shape the day around it."
     }
   ],
-  "audiences_image": "https://picsum.photos/seed/private-group-tour/1200/500",
-  "audiences_image_alt": "A private group on a Simply Enak food tour (placeholder)",
   "inclusions_heading": "What's included",
   "on_every_tour_label": "Every Simply Enak tour",
-  "private_extras_label": "What changes when it's private",
   "on_every_tour": [
     "Certified local guide",
     "Food samples at every stop",
     "Cultural commentary at each stall",
-    "Local prices — no tourist markups"
+    "Local prices  -  no tourist markups"
   ],
+  "private_extras_label": "What changes when it's private",
   "private_extras": [
     "Pre-tour WhatsApp planning call with your guide",
-    "Flexible route — we adjust on the day if you want to linger",
+    "Flexible route  -  we adjust on the day if you want to linger",
     "Dietary needs briefed in advance, not as an afterthought",
     "Group photo stops whenever you want them",
     "Start time that works for your schedule"
   ],
   "pricing_heading": "Pricing depends on group size and tour",
-  "pricing_body": "Private tours are priced per group, not per head — so the more of you there are, the less each person pays. Send us your dates and group size and we'll come back with a quote within a few hours.",
+  "pricing_body": "Private tours are priced per group, not per head  -  so the more of you there are, the less each person pays. Send us your dates and group size and we'll come back with a quote within a few hours.",
   "pricing_cta_whatsapp": "WhatsApp us",
   "pricing_cta_whatsapp_message": "Hi%2C+I%27m+interested+in+a+private+food+tour",
   "pricing_cta_message": "Send us a message",
@@ -124,20 +82,18 @@
   "corporate_cta_href": "/tours/corporate-groups/",
   "faq_eyebrow": "Common Questions",
   "faq_heading": "Private Tour FAQs",
-  "internal_links_heading": "More Options",
-  "view_all_tours_text": "View all tours",
   "faqs": [
     {
       "name": "Is a private tour worth the extra cost?",
-      "answer": "That depends on what you're after. If you want to move at your own pace, have the guide's full attention, and not worry about anyone else's dietary needs or energy levels — then yes, it's worth it. Most guests who book a private tour tell us afterwards they wish they'd done it from the start. If you're happy meeting other travellers and sharing the experience, a join-in tour gives you the same stalls and the same guides for less."
+      "answer": "That depends on what you're after. If you want to move at your own pace, have the guide's full attention, and not worry about anyone else's dietary needs or energy levels  -  then yes, it's worth it. Most guests who book a private tour tell us afterwards they wish they'd done it from the start. If you're happy meeting other travellers and sharing the experience, a join-in tour gives you the same stalls and the same guides for less."
     },
     {
       "name": "What's the minimum group size?",
-      "answer": "Two people is fine — we've done it plenty of times. Most private groups run between 4 and 8. If there are two of you, you'll split the full tour rate between you rather than across a larger group, so it works out to more per head. Still worth it for a lot of couples."
+      "answer": "Two people is fine  -  we've done it plenty of times. Most private groups run between 4 and 8. If there are two of you, you'll split the full tour rate between you rather than across a larger group, so it works out to more per head. Still worth it for a lot of couples."
     },
     {
       "name": "Can we change the route?",
-      "answer": "Once you book, your guide will reach out on WhatsApp before the day to go through the plan. If you'd like to add a stop, skip one, or linger somewhere longer, that's the time to say so. On the day itself we can adjust too — if you're loving a stall and want to stay, we stay."
+      "answer": "Once you book, your guide will reach out on WhatsApp before the day to go through the plan. If you'd like to add a stop, skip one, or linger somewhere longer, that's the time to say so. On the day itself we can adjust too  -  if you're loving a stall and want to stay, we stay."
     },
     {
       "name": "How far ahead should we book?",
@@ -145,9 +101,14 @@
     },
     {
       "name": "Can you handle dietary restrictions?",
-      "answer": "That's one of the main reasons people go private. On a join-in tour we work around dietary needs on the day — on a private tour, we brief your guide and the stalls in advance so nothing is a surprise or an afterthought. Vegetarian, halal, allergies, strong dislikes — tell us when you enquire."
+      "answer": "That's one of the main reasons people go private. On a join-in tour we work around dietary needs on the day  -  on a private tour, we brief your guide and the stalls in advance so nothing is a surprise or an afterthought. Vegetarian, halal, allergies, strong dislikes  -  tell us when you enquire."
     }
   ],
+  "internal_links_heading": "More Options",
+  "view_all_tours_text": "View all tours",
+  "updatedAt": "2026-06-20T00:19:04.717Z",
+  "createdAt": "2026-05-19T10:37:43.404Z",
+  "_status": "published",
   "translations": [
     {
       "languages_code": "en",

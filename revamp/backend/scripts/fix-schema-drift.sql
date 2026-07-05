@@ -244,6 +244,29 @@ BEGIN
     END LOOP;
 END $$;
 
+-- Create stories_rels — missing relation table from specialty_experiences field addition
+CREATE TABLE IF NOT EXISTS stories_rels (
+    id INTEGER NOT NULL DEFAULT nextval('stories_rels_id_seq'::regclass),
+    "order" INTEGER,
+    parent_id INTEGER NOT NULL,
+    path VARCHAR(255) NOT NULL,
+    specialty_experiences_id INTEGER
+);
+ALTER TABLE stories_rels ADD PRIMARY KEY IF NOT EXISTS (id);
+CREATE INDEX IF NOT EXISTS stories_rels_parent_idx ON stories_rels (parent_id);
+CREATE INDEX IF NOT EXISTS stories_rels_path_idx ON stories_rels (path);
+CREATE INDEX IF NOT EXISTS stories_rels_order_idx ON stories_rels ("order");
+CREATE INDEX IF NOT EXISTS stories_rels_specialty_experiences_idx ON stories_rels (specialty_experiences_id);
+
+-- Also create the version table if it doesn't exist
+CREATE TABLE IF NOT EXISTS _stories_v_rels (
+    id INTEGER,
+    "order" INTEGER,
+    parent_id INTEGER,
+    path VARCHAR(255),
+    specialty_experiences_id INTEGER
+);
+
 DO $$ BEGIN
   RAISE NOTICE 'Schema drift fix complete.';
 END $$;

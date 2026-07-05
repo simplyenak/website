@@ -1,24 +1,95 @@
 [
   {
-    "id": 1,
-    "name": "Kuala Lumpur",
-    "slug": "kuala-lumpur",
-    "icon": "🏙️",
-    "color": "#0ea5e9",
-    "description": "The capital city — diverse food scene from Malay, Chinese, and Indian traditions",
+    "id": 16,
+    "name": "Ipoh",
+    "slug": "ipoh",
+    "icon": "🏛️",
+    "color": "#a855f7",
+    "description": "Famous for white coffee",
+    "image": null,
     "status": "published",
-    "updatedAt": "2026-04-03T07:08:39.101Z",
-    "createdAt": "2026-04-03T07:08:39.101Z"
+    "updatedAt": "2026-06-19T14:47:04.194Z",
+    "createdAt": "2026-05-19T09:42:40.082Z",
+    "_status": "published"
   },
   {
-    "id": 2,
+    "id": 15,
     "name": "Penang",
     "slug": "penang",
     "icon": "🏝️",
     "color": "#22c55e",
-    "description": "Malaysia's food capital — Peranakan heritage, hawker culture, and island charm",
+    "description": null,
+    "image": null,
     "status": "published",
-    "updatedAt": "2026-04-03T07:08:39.101Z",
-    "createdAt": "2026-04-03T07:08:39.101Z"
+    "updatedAt": "2026-06-19T14:47:24.022Z",
+    "createdAt": "2026-05-19T08:33:21.134Z",
+    "_status": "published"
+  },
+  {
+    "id": 14,
+    "name": "Kuala Lumpur",
+    "slug": "kuala-lumpur",
+    "icon": "🏙️",
+    "color": "#0ea5e9",
+    "description": null,
+    "image": {
+      "id": 136,
+      "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+      "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+      "polaroidLabel": null,
+      "credit": null,
+      "location_ref": null,
+      "neighbourhood_ref": [],
+      "food_ref": [],
+      "dietary_ref": [],
+      "travel_type_ref": [],
+      "specialty_ref": [],
+      "vendor_ref": [],
+      "usage": null,
+      "tags": [],
+      "renameTo": null,
+      "prefix": "payload-media",
+      "updatedAt": "2026-06-19T00:18:02.769Z",
+      "createdAt": "2026-06-19T00:18:01.822Z",
+      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+      "filename": "simply-enak-landmark.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 2305832,
+      "width": 2730,
+      "height": 4096,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 21170,
+          "filename": "DSC_9621-400x300.jpg"
+        },
+        "medium": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
+          "width": 800,
+          "height": 600,
+          "mimeType": "image/jpeg",
+          "filesize": 68243,
+          "filename": "DSC_9621-800x600.jpg"
+        },
+        "large": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
+          "width": 1200,
+          "height": 800,
+          "mimeType": "image/jpeg",
+          "filesize": 122310,
+          "filename": "DSC_9621-1200x800.jpg"
+        }
+      }
+    },
+    "status": "published",
+    "updatedAt": "2026-06-20T00:22:54.695Z",
+    "createdAt": "2026-05-19T08:33:20.569Z",
+    "_status": "published"
   }
 ]

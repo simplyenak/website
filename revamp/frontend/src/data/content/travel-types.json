@@ -1,25 +1,29 @@
 [
   {
-    "id": 1,
-    "name": "Couples",
-    "slug": "couples",
-    "icon": "💑",
-    "color": "#ec4899",
-    "description": "Romantic food experiences for two",
+    "id": 5,
+    "name": "Chefs",
+    "slug": "chefs",
+    "icon": null,
+    "color": null,
+    "description": null,
+    "image": null,
     "status": "published",
-    "updatedAt": "2026-04-03T07:08:39.087Z",
-    "createdAt": "2026-04-03T07:08:39.087Z"
+    "updatedAt": "2026-06-30T06:50:42.395Z",
+    "createdAt": "2026-06-30T06:50:42.395Z",
+    "_status": "published"
   },
   {
-    "id": 2,
-    "name": "Family-Friendly",
-    "slug": "family",
-    "icon": "👨‍👩‍👧‍👦",
-    "color": "#f59e0b",
-    "description": "Tours suitable for all ages",
+    "id": 4,
+    "name": "Solo",
+    "slug": "solo",
+    "icon": "🎒",
+    "color": "#8b5cf6",
+    "description": null,
+    "image": null,
     "status": "published",
-    "updatedAt": "2026-04-03T07:08:39.087Z",
-    "createdAt": "2026-04-03T07:08:39.087Z"
+    "updatedAt": "2026-06-19T14:43:09.797Z",
+    "createdAt": "2026-05-19T08:33:23.425Z",
+    "_status": "published"
   },
   {
     "id": 3,
@@ -27,20 +31,37 @@
     "slug": "foodie",
     "icon": "🍜",
     "color": "#ef4444",
-    "description": "Deep dives into Malaysian cuisine",
+    "description": null,
+    "image": null,
     "status": "published",
-    "updatedAt": "2026-04-03T07:08:39.087Z",
-    "createdAt": "2026-04-03T07:08:39.087Z"
+    "updatedAt": "2026-06-19T14:43:22.225Z",
+    "createdAt": "2026-05-19T08:33:22.863Z",
+    "_status": "published"
   },
   {
-    "id": 4,
-    "name": "Solo Traveler",
-    "slug": "solo",
-    "icon": "🎒",
-    "color": "#8b5cf6",
-    "description": "Perfect for independent explorers",
+    "id": 2,
+    "name": "Family",
+    "slug": "family",
+    "icon": "👨‍👩‍👧‍👦",
+    "color": "#f59e0b",
+    "description": null,
+    "image": null,
     "status": "published",
-    "updatedAt": "2026-04-03T07:08:39.087Z",
-    "createdAt": "2026-04-03T07:08:39.087Z"
+    "updatedAt": "2026-06-19T14:43:44.060Z",
+    "createdAt": "2026-05-19T08:33:22.293Z",
+    "_status": "published"
+  },
+  {
+    "id": 1,
+    "name": "Couples",
+    "slug": "couples",
+    "icon": "💑",
+    "color": "#ec4899",
+    "description": null,
+    "image": null,
+    "status": "published",
+    "updatedAt": "2026-06-19T14:43:56.093Z",
+    "createdAt": "2026-05-19T08:33:21.708Z",
+    "_status": "published"
   }
 ]
