@@ -4,7 +4,7 @@
     "name": "Inside Pudu",
     "slug": "inside-pudu",
     "tagline": null,
-    "shortDescription": "Explore Pudu, KL's hidden Chinese food heartland, where multi-generation families have been making Yong Tau Foo for 86 years, rolling popiah since 1985, and serving Tong Sui desserts from a five-generation-old recipe. This is the KL most visitors never find.",
+    "shortDescription": null,
     "fullDescription": "Let's cross the city and head into Pudu. This is the neighbourhood where KL's Chinese immigrant families built a food culture so good no-one has touched it for tourists.\nWe’ll meet at the last remaining gate of Pudu Jail, built by the British between 1891 and 1895. It sits on top of a former Chinese burial ground but most visitors walk straight past it. From here, we'll walk into Pudu itself, past old printing streets where heavy old-school machinery still operates behind open shopfronts. It’s part of the living heritage most of KL has forgotten.\nOur first stop is a three-generation Hakka family business that started selling yong tau foo from a pushcart 86 years ago. You'll taste house-made fish paste stuffed into tofu and bitter gourd, paired with silky chee cheong fun drizzled with sweet “tim cheong” and crunchy dried shrimp. Then comes fiery Curry Laksa with home-made sambal that hits you before you're ready.\nAt a traditional kopitiam bakery (est. 1935), you'll experience real dabao (takeaway) culture. Clip your own bread and egg tarts from the rack, just like locals have done for generations. Then we'll head to the only hawker centre of its kind in KL. Here you'll taste Hainanese kopi at Ah Weng Koh (a KL institution since the 1960s, now run by the founder's granddaughter), bite into crispy-edged popiah Auntie Mei's been rolling since 1985, and if you're lucky, you might catch a master folding yellow wine buns by hand, a Cantonese-Hakka craft that is slowly disappearing.\nWe'll finish at a fifth-generation dessert house where the family has been making black sesame paste, almond paste and walnut desserts from a recipe they've never shared. Forget latte art. You’ll see Tong Sui art. By the end of the tour, you'll leave knowing a side of KL most visitors never find.\n",
     "price": 289,
     "currency": "MYR",
@@ -14,29 +14,434 @@
     "meetingPoint": "Pudu Jail Gate",
     "maxParticipants": 7,
     "minParticipants": 2,
-    "dietaryOptions": [],
-    "travelTypes": [],
-    "specialtyExperiences": [],
-    "foodItems": [],
+    "dietaryOptions": [
+      {
+        "id": 7,
+        "name": "Vegetarian",
+        "slug": "vegetarian",
+        "icon": "🥬",
+        "color": "#4caf50",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:18.126Z",
+        "createdAt": "2026-05-19T08:33:27.383Z"
+      },
+      {
+        "id": 8,
+        "name": "Egg-Free",
+        "slug": "egg-free",
+        "icon": "🥚",
+        "color": "#fff176",
+        "description": "No egg ingredients",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:39:59.853Z",
+        "createdAt": "2026-05-19T08:33:27.939Z"
+      },
+      {
+        "id": 6,
+        "name": "Nut-Free",
+        "slug": "nut-free",
+        "icon": "🥜",
+        "color": "#795548",
+        "description": "Nut-free preparations",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:47.352Z",
+        "createdAt": "2026-05-19T08:33:26.827Z"
+      },
+      {
+        "id": 11,
+        "name": "Pescatarian",
+        "slug": "pescatarian",
+        "icon": "🐟",
+        "color": "#06b6d4",
+        "description": "Fish and seafood but no meat",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-20T00:09:08.106Z",
+        "createdAt": "2026-05-19T08:33:29.735Z"
+      },
+      {
+        "id": 5,
+        "name": "Dairy-Free",
+        "slug": "dairy-free",
+        "icon": "🧀",
+        "color": "#2196f3",
+        "description": "No dairy ingredients used",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:41:08.254Z",
+        "createdAt": "2026-05-19T08:33:26.266Z"
+      },
+      {
+        "id": 4,
+        "name": "Gluten-Free",
+        "slug": "gluten-free",
+        "icon": "🌾",
+        "color": "#ff9800",
+        "description": "Gluten-free dishes available",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-28T12:21:48.552Z",
+        "createdAt": "2026-05-19T08:33:25.703Z"
+      }
+    ],
+    "travelTypes": [
+      {
+        "id": 5,
+        "name": "Chefs",
+        "slug": "chefs",
+        "icon": null,
+        "color": null,
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-30T06:50:42.395Z",
+        "createdAt": "2026-06-30T06:50:42.395Z",
+        "_status": "published"
+      },
+      {
+        "id": 1,
+        "name": "Couples",
+        "slug": "couples",
+        "icon": "💑",
+        "color": "#ec4899",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:56.093Z",
+        "createdAt": "2026-05-19T08:33:21.708Z",
+        "_status": "published"
+      },
+      {
+        "id": 3,
+        "name": "Foodie",
+        "slug": "foodie",
+        "icon": "🍜",
+        "color": "#ef4444",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:22.225Z",
+        "createdAt": "2026-05-19T08:33:22.863Z",
+        "_status": "published"
+      },
+      {
+        "id": 4,
+        "name": "Solo",
+        "slug": "solo",
+        "icon": "🎒",
+        "color": "#8b5cf6",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:09.797Z",
+        "createdAt": "2026-05-19T08:33:23.425Z",
+        "_status": "published"
+      },
+      {
+        "id": 2,
+        "name": "Family",
+        "slug": "family",
+        "icon": "👨‍👩‍👧‍👦",
+        "color": "#f59e0b",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:44.060Z",
+        "createdAt": "2026-05-19T08:33:22.293Z",
+        "_status": "published"
+      }
+    ],
+    "specialtyExperiences": [
+      {
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
+      },
+      {
+        "id": 2,
+        "name": "Market tour",
+        "slug": "market-tour",
+        "icon": "🏪",
+        "color": "#22c55e",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:14.340Z",
+        "createdAt": "2026-05-19T08:33:31.461Z",
+        "_status": "published"
+      },
+      {
+        "id": 5,
+        "name": "Off the beaten track",
+        "slug": "off-the-beaten-track",
+        "icon": null,
+        "color": null,
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-07-02T04:34:20.747Z",
+        "createdAt": "2026-07-02T04:34:20.747Z",
+        "_status": "published"
+      },
+      {
+        "id": 6,
+        "name": "Culture",
+        "slug": "culture",
+        "icon": null,
+        "color": null,
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-07-02T04:34:56.157Z",
+        "createdAt": "2026-07-02T04:34:56.157Z",
+        "_status": "published"
+      }
+    ],
+    "foodItems": [
+      {
+        "id": 12,
+        "name": "Cham",
+        "slug": "cham",
+        "localNames": [],
+        "description": "cham",
+        "category": "coffee_tea",
+        "origin": "chinese",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-07-02T04:41:10.533Z",
+        "createdAt": "2026-07-02T04:41:10.533Z"
+      },
+      {
+        "id": 13,
+        "name": "Kaya Toast",
+        "slug": "kaya-toast",
+        "localNames": [],
+        "description": "baked or steamed with half boiled egg.",
+        "category": "main",
+        "origin": "chinese",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-07-02T04:42:26.873Z",
+        "createdAt": "2026-07-02T04:42:26.873Z"
+      },
+      {
+        "id": 14,
+        "name": "Chicken and Pork Rice",
+        "slug": "chicken-pork-rice",
+        "localNames": [],
+        "description": "Chicken and Pork Rice",
+        "category": "main",
+        "origin": "chinese",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-07-02T04:43:36.896Z",
+        "createdAt": "2026-07-02T04:43:36.896Z"
+      },
+      {
+        "id": 15,
+        "name": "Popiah",
+        "slug": "popiah",
+        "localNames": [],
+        "description": "popiah",
+        "category": "main",
+        "origin": "chinese",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-07-02T04:44:50.297Z",
+        "createdAt": "2026-07-02T04:44:50.296Z"
+      },
+      {
+        "id": 16,
+        "name": "Dim Sum",
+        "slug": "dim-sum",
+        "localNames": [],
+        "description": "dim sum",
+        "category": "main",
+        "origin": "chinese",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-07-02T04:48:29.389Z",
+        "createdAt": "2026-07-02T04:48:29.389Z"
+      }
+    ],
     "tailoredAvailable": true,
     "tailoredNotes": null,
     "heroImage": {
-      "id": 237,
-      "alt": "Simply Enak Kuala Lumpur Market",
+      "id": 366,
+      "alt": "0167 Pl1T4uNUkd4",
       "caption": null,
       "polaroidLabel": null,
       "credit": null,
-      "location_ref": {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": null,
+      "location_ref": null,
+      "neighbourhood_ref": [],
+      "food_ref": [],
+      "dietary_ref": [],
+      "travel_type_ref": [],
+      "specialty_ref": [],
+      "vendor_ref": [],
+      "usage": null,
+      "tags": [],
+      "renameTo": null,
+      "prefix": "payload-media",
+      "updatedAt": "2026-07-02T10:48:26.687Z",
+      "createdAt": "2026-07-02T10:48:25.853Z",
+      "url": "https://cdn.simplyenak.com/payload-media/0167_pl1T4uNUkd4.webp",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0167_pl1T4uNUkd4-400x300.webp",
+      "filename": "0167_pl1T4uNUkd4.webp",
+      "mimeType": "image/webp",
+      "filesize": 35538,
+      "width": 480,
+      "height": 720,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "https://cdn.simplyenak.com/payload-media/0167_pl1T4uNUkd4-400x300.webp",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/webp",
+          "filesize": 13584,
+          "filename": "0167_pl1T4uNUkd4-400x300.webp"
+        },
+        "medium": {
+          "url": "https://cdn.simplyenak.com/payload-media/0167_pl1T4uNUkd4-800x600.webp",
+          "width": 800,
+          "height": 600,
+          "mimeType": "image/webp",
+          "filesize": 30394,
+          "filename": "0167_pl1T4uNUkd4-800x600.webp"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    "galleryImages": [
+      {
+        "id": "6a46492d5ebeb47ef8dd61cb",
         "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
+          "id": 372,
+          "alt": "0391 Pl1T4uNBe13",
+          "caption": null,
           "polaroidLabel": null,
           "credit": null,
           "location_ref": null,
@@ -50,98 +455,336 @@
           "tags": [],
           "renameTo": null,
           "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
+          "updatedAt": "2026-07-02T10:48:33.684Z",
+          "createdAt": "2026-07-02T10:48:33.477Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0391_pl1T4uNBe13.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0391_pl1T4uNBe13-400x300.webp",
+          "filename": "0391_pl1T4uNBe13.webp",
+          "mimeType": "image/webp",
+          "filesize": 43336,
+          "width": 720,
+          "height": 480,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0391_pl1T4uNBe13-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 15724,
+              "filename": "0391_pl1T4uNBe13-400x300.webp"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
             }
           }
-        },
-        "status": "published",
-        "updatedAt": "2026-06-20T00:22:54.695Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
+        }
       },
-      "neighbourhood_ref": [],
-      "food_ref": [],
-      "dietary_ref": [],
-      "travel_type_ref": [],
-      "specialty_ref": [],
-      "vendor_ref": [],
-      "usage": null,
-      "tags": [],
-      "renameTo": null,
-      "prefix": "payload-media",
-      "updatedAt": "2026-06-22T02:15:59.601Z",
-      "createdAt": "2026-06-22T02:15:58.539Z",
-      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-kuala-lumpur-market.jpg",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_0657-400x300.jpg",
-      "filename": "simply-enak-kuala-lumpur-market.jpg",
-      "mimeType": "image/jpeg",
-      "filesize": 3811376,
-      "width": 4096,
-      "height": 2730,
-      "focalX": 50,
-      "focalY": 50,
-      "sizes": {
-        "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_0657-400x300.jpg",
-          "width": 400,
-          "height": 300,
-          "mimeType": "image/jpeg",
-          "filesize": 47983,
-          "filename": "DSC_0657-400x300.jpg"
-        },
-        "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_0657-800x600.jpg",
-          "width": 800,
-          "height": 600,
-          "mimeType": "image/jpeg",
-          "filesize": 159254,
-          "filename": "DSC_0657-800x600.jpg"
-        },
-        "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_0657-1200x800.jpg",
-          "width": 1200,
-          "height": 800,
-          "mimeType": "image/jpeg",
-          "filesize": 284630,
-          "filename": "DSC_0657-1200x800.jpg"
+      {
+        "id": "6a4649355ebeb47ef8dd61cc",
+        "image": {
+          "id": 371,
+          "alt": "0347 Pl1T4unSY56",
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-07-02T10:48:32.792Z",
+          "createdAt": "2026-07-02T10:48:32.340Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0347_pl1T4unSY56.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0347_pl1T4unSY56-400x300.webp",
+          "filename": "0347_pl1T4unSY56.webp",
+          "mimeType": "image/webp",
+          "filesize": 73672,
+          "width": 720,
+          "height": 480,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/0347_pl1T4unSY56-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 28268,
+              "filename": "0347_pl1T4unSY56-400x300.webp"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a46493a5ebeb47ef8dd61cd",
+        "image": {
+          "id": 367,
+          "alt": "0238 Pl1T4uNUzeb",
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-07-02T10:48:27.868Z",
+          "createdAt": "2026-07-02T10:48:27.289Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0238_pl1T4uNUzeb.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0238_pl1T4uNUzeb-400x300.webp",
+          "filename": "0238_pl1T4uNUzeb.webp",
+          "mimeType": "image/webp",
+          "filesize": 14484,
+          "width": 720,
+          "height": 480,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/0238_pl1T4uNUzeb-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 6696,
+              "filename": "0238_pl1T4uNUzeb-400x300.webp"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4649435ebeb47ef8dd61ce",
+        "image": {
+          "id": 369,
+          "alt": "0345 Pl1T4unSJ47",
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-07-02T10:48:30.423Z",
+          "createdAt": "2026-07-02T10:48:29.982Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0345_pl1T4unSJ47.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0345_pl1T4unSJ47-400x300.webp",
+          "filename": "0345_pl1T4unSJ47.webp",
+          "mimeType": "image/webp",
+          "filesize": 63048,
+          "width": 720,
+          "height": 480,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/0345_pl1T4unSJ47-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 25698,
+              "filename": "0345_pl1T4unSJ47-400x300.webp"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a46494f5ebeb47ef8dd61cf",
+        "image": {
+          "id": 363,
+          "alt": "0129 Pl1T4uNmVe7",
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-07-02T10:48:22.159Z",
+          "createdAt": "2026-07-02T10:48:21.789Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0129_pl1T4uNmVe7.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0129_pl1T4uNmVe7-400x300.webp",
+          "filename": "0129_pl1T4uNmVe7.webp",
+          "mimeType": "image/webp",
+          "filesize": 67844,
+          "width": 720,
+          "height": 480,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/0129_pl1T4uNmVe7-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 25724,
+              "filename": "0129_pl1T4uNmVe7-400x300.webp"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4649565ebeb47ef8dd61d0",
+        "image": {
+          "id": 362,
+          "alt": "0123 Pl1T4uNm842",
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-07-02T10:48:20.572Z",
+          "createdAt": "2026-07-02T10:48:19.363Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0123_pl1T4uNm842.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0123_pl1T4uNm842-400x300.webp",
+          "filename": "0123_pl1T4uNm842.webp",
+          "mimeType": "image/webp",
+          "filesize": 52716,
+          "width": 720,
+          "height": 480,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/0123_pl1T4uNm842-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 21154,
+              "filename": "0123_pl1T4uNm842-400x300.webp"
+            },
+            "medium": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "large": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
         }
       }
-    },
-    "galleryImages": [],
+    ],
     "whatsIncluded": [],
     "whatsExcluded": [],
     "highlights": [
@@ -171,19 +814,32 @@
       }
     ],
     "ticketingHubId": null,
-    "tourType": null,
+    "tourType": "join-in",
     "isBookable": false,
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
     "cancellationPolicy": null,
-    "tourFrequency": null,
-    "startTimes": [],
+    "tourFrequency": "Daily except on Mondays",
+    "startTimes": [
+      {
+        "id": "6a45e8c7f403157afdff49ad",
+        "time": "9:30 AM"
+      }
+    ],
     "dishesCount": null,
-    "difficulty": "easy",
-    "walkingDistance": null,
+    "difficulty": "moderate",
+    "walkingDistance": "2.5km",
     "directionsHtml": null,
-    "itinerary": [],
+    "itinerary": [
+      {
+        "id": "6a45eb1c3c2b18c9c4a6a001",
+        "step": 0,
+        "title": "We meet Pudu Jail Gate",
+        "description": "",
+        "duration": null
+      }
+    ],
     "differentiatorsTourist": [],
     "differentiatorsUs": [],
     "whatToBring": [],
@@ -205,25 +861,165 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-07-02T04:23:00.718Z",
+    "updatedAt": "2026-07-02T11:20:29.632Z",
     "createdAt": "2026-06-28T14:06:11.936Z",
     "_status": "published",
     "ticketing_hub_id": null,
     "is_bookable": false,
-    "short_description": "Explore Pudu, KL's hidden Chinese food heartland, where multi-generation families have been making Yong Tau Foo for 86 years, rolling popiah since 1985, and serving Tong Sui desserts from a five-generation-old recipe. This is the KL most visitors never find.",
+    "short_description": null,
     "full_description": "Let's cross the city and head into Pudu. This is the neighbourhood where KL's Chinese immigrant families built a food culture so good no-one has touched it for tourists.\nWe’ll meet at the last remaining gate of Pudu Jail, built by the British between 1891 and 1895. It sits on top of a former Chinese burial ground but most visitors walk straight past it. From here, we'll walk into Pudu itself, past old printing streets where heavy old-school machinery still operates behind open shopfronts. It’s part of the living heritage most of KL has forgotten.\nOur first stop is a three-generation Hakka family business that started selling yong tau foo from a pushcart 86 years ago. You'll taste house-made fish paste stuffed into tofu and bitter gourd, paired with silky chee cheong fun drizzled with sweet “tim cheong” and crunchy dried shrimp. Then comes fiery Curry Laksa with home-made sambal that hits you before you're ready.\nAt a traditional kopitiam bakery (est. 1935), you'll experience real dabao (takeaway) culture. Clip your own bread and egg tarts from the rack, just like locals have done for generations. Then we'll head to the only hawker centre of its kind in KL. Here you'll taste Hainanese kopi at Ah Weng Koh (a KL institution since the 1960s, now run by the founder's granddaughter), bite into crispy-edged popiah Auntie Mei's been rolling since 1985, and if you're lucky, you might catch a master folding yellow wine buns by hand, a Cantonese-Hakka craft that is slowly disappearing.\nWe'll finish at a fifth-generation dessert house where the family has been making black sesame paste, almond paste and walnut desserts from a recipe they've never shared. Forget latte art. You’ll see Tong Sui art. By the end of the tour, you'll leave knowing a side of KL most visitors never find.\n",
     "duration_minutes": 210,
     "max_participants": 7,
     "min_participants": 2,
-    "dietary_options": [],
-    "specialty_experiences": [],
+    "dietary_options": [
+      {
+        "id": 7,
+        "name": "Vegetarian",
+        "slug": "vegetarian",
+        "icon": "🥬",
+        "color": "#4caf50",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:18.126Z",
+        "createdAt": "2026-05-19T08:33:27.383Z"
+      },
+      {
+        "id": 8,
+        "name": "Egg-Free",
+        "slug": "egg-free",
+        "icon": "🥚",
+        "color": "#fff176",
+        "description": "No egg ingredients",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:39:59.853Z",
+        "createdAt": "2026-05-19T08:33:27.939Z"
+      },
+      {
+        "id": 6,
+        "name": "Nut-Free",
+        "slug": "nut-free",
+        "icon": "🥜",
+        "color": "#795548",
+        "description": "Nut-free preparations",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:47.352Z",
+        "createdAt": "2026-05-19T08:33:26.827Z"
+      },
+      {
+        "id": 11,
+        "name": "Pescatarian",
+        "slug": "pescatarian",
+        "icon": "🐟",
+        "color": "#06b6d4",
+        "description": "Fish and seafood but no meat",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-20T00:09:08.106Z",
+        "createdAt": "2026-05-19T08:33:29.735Z"
+      },
+      {
+        "id": 5,
+        "name": "Dairy-Free",
+        "slug": "dairy-free",
+        "icon": "🧀",
+        "color": "#2196f3",
+        "description": "No dairy ingredients used",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:41:08.254Z",
+        "createdAt": "2026-05-19T08:33:26.266Z"
+      },
+      {
+        "id": 4,
+        "name": "Gluten-Free",
+        "slug": "gluten-free",
+        "icon": "🌾",
+        "color": "#ff9800",
+        "description": "Gluten-free dishes available",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-28T12:21:48.552Z",
+        "createdAt": "2026-05-19T08:33:25.703Z"
+      }
+    ],
+    "specialty_experiences": [
+      {
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
+      },
+      {
+        "id": 2,
+        "name": "Market tour",
+        "slug": "market-tour",
+        "icon": "🏪",
+        "color": "#22c55e",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:14.340Z",
+        "createdAt": "2026-05-19T08:33:31.461Z",
+        "_status": "published"
+      },
+      {
+        "id": 5,
+        "name": "Off the beaten track",
+        "slug": "off-the-beaten-track",
+        "icon": null,
+        "color": null,
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-07-02T04:34:20.747Z",
+        "createdAt": "2026-07-02T04:34:20.747Z",
+        "_status": "published"
+      },
+      {
+        "id": 6,
+        "name": "Culture",
+        "slug": "culture",
+        "icon": null,
+        "color": null,
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-07-02T04:34:56.157Z",
+        "createdAt": "2026-07-02T04:34:56.157Z",
+        "_status": "published"
+      }
+    ],
     "whats_included": [],
     "whats_excluded": [],
     "cancellation_policy": null,
-    "tour_frequency": null,
-    "start_times": [],
+    "tour_frequency": "Daily except on Mondays",
+    "start_times": [
+      "9:30 AM"
+    ],
     "dishes_count": null,
-    "walking_distance": null,
+    "walking_distance": "2.5km",
     "directions_html": null,
     "differentiators_tourist": [],
     "differentiators_us": [],
@@ -233,7 +1029,38 @@
     "promo_video_url": null,
     "gallery_image_alts": [],
     "hero_image_alt": null,
-    "gallery_images": []
+    "gallery_images": [
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/0391_pl1T4uNBe13.webp",
+        "alt": "0391 Pl1T4uNBe13",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/0347_pl1T4unSY56.webp",
+        "alt": "0347 Pl1T4unSY56",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/0238_pl1T4uNUzeb.webp",
+        "alt": "0238 Pl1T4uNUzeb",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/0345_pl1T4unSJ47.webp",
+        "alt": "0345 Pl1T4unSJ47",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/0129_pl1T4uNmVe7.webp",
+        "alt": "0129 Pl1T4uNmVe7",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/0123_pl1T4uNm842.webp",
+        "alt": "0123 Pl1T4uNm842",
+        "caption": ""
+      }
+    ]
   },
   {
     "id": 5,
@@ -1247,279 +2074,6 @@
         "alt": "Simply Enak Kuala Lumpur Dish",
         "caption": ""
       }
-    ],
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Secrets of KL - Nightlife, Street Art & Cocktails!",
-        "tagline": "Discover KL After Dark",
-        "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
-        "full_description": "Are you ready to step into the hidden corners of Kuala Lumpur's nightlife? This tour takes you beyond the tourist trail and into the city's secret drinking dens, hidden speakeasies, and late-night street food spots.\n\nYour guide will share forbidden tales of old KL  -  from gangster histories to colonial scandals  -  while you sip handcrafted cocktails and eat some of the best late-night street food the city has to offer.",
-        "whats_included": [
-          {
-            "id": "6a321188055fbe0001981de5",
-            "item": "Expert local guide"
-          },
-          {
-            "id": "6a321188055fbe0001981de6",
-            "item": "Small group experience (max 9)"
-          },
-          {
-            "id": "6a321188055fbe0001981de7",
-            "item": "Hidden speakeasy bar access"
-          },
-          {
-            "id": "6a321188055fbe0001981de8",
-            "item": "Detailed meeting point instructions"
-          }
-        ],
-        "whats_excluded": [
-          {
-            "id": "6a321188055fbe0001981de9",
-            "item": "Transportation to meeting point"
-          },
-          {
-            "id": "6a321188055fbe0001981dea",
-            "item": "Additional drinks beyond included cocktail / alcoholic drink"
-          },
-          {
-            "id": "6a321188055fbe0001981deb",
-            "item": "Personal purchases"
-          }
-        ],
-        "highlights": [
-          "Hidden speakeasy bars",
-          "Chocolate tasting",
-          "Forbidden tales of old KL",
-          "Street art at night",
-          "Signature craft cocktails"
-        ]
-      },
-      {
-        "languages_code": "ms",
-        "name": "Rahsia KL - Kehidupan Malam, Seni Jalanan & Koktel!",
-        "tagline": "Terokai KL Selepas Gelap",
-        "short_description": "Lawatan waktu malam Simply Enak mendedahkan bar-bar speakeasy tersembunyi dan kisah-kisah terlarang.",
-        "full_description": "Pemandu anda akan berkongsi kisah-kisah terlarang dari KL zaman dahulu — dari sejarah gangster hingga skandal kolonial — sementara anda menikmati koktel buatan tangan dan merasai antara makanan jalanan larut malam terbaik yang ditawarkan oleh kota ini.",
-        "whats_included": [
-          "Pemandu tempatan yang pakar",
-          "Pengalaman kumpulan kecil (maks 9)",
-          "Akses bar speakeasy tersembunyi",
-          "Arahan titik pertemuan terperinci"
-        ],
-        "whats_excluded": [
-          "Pengangkutan ke tempat pertemuan",
-          "Minuman tambahan selain daripada koktel / minuman beralkohol yang disertakan",
-          "Pembelian peribadi"
-        ],
-        "highlights": [
-          "Bar speakeasy tersembunyi",
-          "Pencucian coklat",
-          "Kisah terlarang KL lama",
-          "Seni jalanan pada waktu malam",
-          "Koktel kraf istimewa"
-        ]
-      },
-      {
-        "languages_code": "zh",
-        "name": "吉隆坡的秘密 - 夜生活、街头艺术与鸡尾酒！",
-        "tagline": "探索吉隆坡夜色",
-        "short_description": "Simply Enak 的夜间漫游之旅，揭开了隐秘的地下酒吧和禁忌故事。",
-        "full_description": "在您品尝手工调制的鸡尾酒、享用这座城市最棒的深夜街头小吃的同时，您的向导将为您讲述老吉隆坡的禁忌往事——从黑帮秘史到殖民时代的风流丑闻。",
-        "whats_included": [
-          "专业当地导游",
-          "小团体验（最多9人）",
-          "隐秘的地下酒吧通道",
-          "详细集合地点说明"
-        ],
-        "whats_excluded": [
-          "前往集合点的交通",
-          "包含的鸡尾酒/酒精饮品之外的额外饮料",
-          "个人购买"
-        ],
-        "highlights": [
-          "隐藏式酒吧",
-          "巧克力品鉴",
-          "吉隆坡的禁忌传说",
-          "夜晚的街头艺术",
-          "招牌手工鸡尾酒"
-        ]
-      },
-      {
-        "languages_code": "de",
-        "name": "Geheimnisse von KL - Nachtleben, Straßenkunst & Cocktails!",
-        "tagline": "Entdecken Sie KL bei Nacht",
-        "short_description": "Simply Enaks After-Dark-Tour enthüllt versteckte Speakeasy-Bars und verbotene Geschichten.",
-        "full_description": "Ihr Guide wird Ihnen verbotene Geschichten aus dem alten KL erzählen – von Gangster-Geschichten bis hin zu kolonialen Skandalen –, während Sie handgefertigte Cocktails schlürfen und einige der besten nächtlichen Streetfood-Gerichte der Stadt genießen.",
-        "whats_included": [
-          "Erfahrener lokaler Reiseführer",
-          "Kleingruppenerlebnis (max. 9)",
-          "Zugang zur versteckten Speakeasy-Bar",
-          "Detaillierte Anweisungen zum Treffpunkt"
-        ],
-        "whats_excluded": [
-          "Transport zum Treffpunkt",
-          "Zusätzliche Getränke über den inkludierten Cocktail / das inkludierte alkoholische Getränk hinaus",
-          "Persönliche Einkäufe"
-        ],
-        "highlights": [
-          "Versteckte Speakeasy-Bars",
-          "Schokoladenverkostung",
-          "Verbotene Geschichten aus dem alten KL",
-          "Straßenkunst bei Nacht",
-          "Handgefertigte Signature-Cocktails"
-        ]
-      },
-      {
-        "languages_code": "es",
-        "name": "Secretos de KL - Vida nocturna, arte callejero y cócteles!",
-        "tagline": "Descubre KL Después del Anochecer",
-        "short_description": "La ruta nocturna de Simply Enak revela bares clandestinos ocultos e historias prohibidas.",
-        "full_description": "Tu guía compartirá historias prohibidas de la vieja KL — desde historias de gánsteres hasta escándalos coloniales — mientras saboreas cócteles artesanales y degustas algunas de las mejores comidas callejeras nocturnas que la ciudad tiene para ofrecer.",
-        "whats_included": [
-          "Guía local experto",
-          "Experiencia en grupo reducido (máx. 9)",
-          "Acceso a bar clandestino oculto",
-          "Instrucciones detalladas del punto de encuentro"
-        ],
-        "whats_excluded": [
-          "Transporte al punto de encuentro",
-          "Bebidas adicionales fuera del cóctel / bebida alcohólica incluida",
-          "Compras personales"
-        ],
-        "highlights": [
-          "Bares clandestinos ocultos",
-          "Cata de chocolate",
-          "Cuentos prohibidos de la antigua KL",
-          "Arte callejero por la noche",
-          "Cócteles artesanales de la casa"
-        ]
-      },
-      {
-        "languages_code": "fr",
-        "name": "Secrets de KL - Vie nocturne, art de rue et cocktails !",
-        "tagline": "Découvrez KL une fois la nuit tombée",
-        "short_description": "La visite nocturne de Simply Enak révèle des bars clandestins cachés et des récits interdits.",
-        "full_description": "Votre guide partagera des récits interdits de l'ancien KL — des histoires de gangsters aux scandales coloniaux — pendant que vous siroterez des cocktails artisanaux et dégusterez certains des meilleurs plats de rue nocturnes que la ville a à offrir.",
-        "whats_included": [
-          "Guide local expert",
-          "Expérience en petit groupe (max 9)",
-          "Accès au bar speakeasy caché",
-          "Instructions détaillées du point de rencontre"
-        ],
-        "whats_excluded": [
-          "Transport au point de rendez-vous",
-          "Boissons supplémentaires au-delà du cocktail / de la boisson alcoolisée inclus",
-          "Achats personnels"
-        ],
-        "highlights": [
-          "Bars speakeasy cachés",
-          "Dégustation de chocolat",
-          "Contes interdits du vieux KL",
-          "Street art la nuit",
-          "Cocktails artisanaux signature"
-        ]
-      },
-      {
-        "languages_code": "nl",
-        "name": "Geheimen van KL - Nachtleven, Straatkunst & Cocktails!",
-        "tagline": "Ontdek KL Na Donker",
-        "short_description": "Simply Enak's after-dark kroegentocht onthult verborgen speakeasy-bars en verboden verhalen.",
-        "full_description": "Je gids deelt verboden verhalen over het oude KL - van gangstergeschiedenissen tot koloniale schandalen - terwijl je geniet van handgemaakte cocktails en enkele van de beste late-night straatgerechten die de stad te bieden heeft.",
-        "whats_included": [
-          "Deskundige lokale gids",
-          "Ervaring in kleine groep (max. 9)",
-          "Toegang tot verborgen speakeasybar",
-          "Gedetailleerde instructies voor het ontmoetingspunt"
-        ],
-        "whats_excluded": [
-          "Vervoer naar verzamelpunt",
-          "Extra drankjes buiten de inbegrepen cocktail / alcoholische drank",
-          "Persoonlijke aankopen"
-        ],
-        "highlights": [
-          "Verborgen speakeasy bars",
-          "Chocoladeproeverij",
-          "Verboden verhalen van het oude KL",
-          "Straatkunst 's nachts",
-          "Ambachtelijke signature cocktails"
-        ]
-      },
-      {
-        "languages_code": "ru",
-        "name": "Секреты Куала-Лумпура — Ночная жизнь, стрит-арт и коктейли!",
-        "tagline": "Откройте для себя KL после заката",
-        "short_description": "Ночной маршрут Simply Enak открывает скрытые бары-подполья и запретные истории.",
-        "full_description": "Ваш гид поделится запретными историями старого KL — от гангстерских хроник до колониальных скандалов — пока вы потягиваете авторские коктейли и пробуете лучшую ночную уличную еду, которую может предложить город.",
-        "whats_included": [
-          "Опытный местный гид",
-          "Опыт в малых группах (макс. 9)",
-          "Доступ в скрытый бар-спикизи",
-          "Подробные инструкции о месте встречи"
-        ],
-        "whats_excluded": [
-          "Транспорт до места встречи",
-          "Дополнительные напитки помимо включённого коктейля / алкогольного напитка",
-          "Личные покупки"
-        ],
-        "highlights": [
-          "Скрытые спикизи-бары",
-          "Дегустация шоколада",
-          "Запретные рассказы старого Куала-Лумпура",
-          "Уличное искусство ночью",
-          "Фирменные авторские коктейли"
-        ]
-      },
-      {
-        "languages_code": "ja",
-        "name": "KLの秘密 - ナイトライフ、ストリートアート＆カクテル！",
-        "tagline": "夜のKLを発見しよう",
-        "short_description": "Simply Enakの夜の巡りは、隠されたスピークイージーバーと禁断の物語を明らかにする。",
-        "full_description": "クアラルンプールの夜の隠れた一角に足を踏み入れる準備はできていますか?このツアーでは定番の観光ルートを離れ、秘密の酒場、隠れたスピークイージー、深夜のストリートフードの名店へとご案内します。ガイドが、ギャングたちの歴史から植民地時代のスキャンダルまで、古きKLの禁断のエピソードを語りながら、手作りカクテルと、この街が誇る最高の深夜ストリートフードをご提供します。",
-        "whats_included": [
-          "現地のベテランガイド",
-          "小グループ体験（最大9名）",
-          "隠れ家speakeasyバーへのアクセス",
-          "詳細な集合場所のご案内"
-        ],
-        "whats_excluded": [
-          "集合場所への交通手段",
-          "含まれているカクテル／アルコール飲料以外の追加のドリンク",
-          "個人購入"
-        ],
-        "highlights": [
-          "隠れ家的なスピークイージーバー",
-          "チョコレートの試食",
-          "禁断の古都KL譚",
-          "夜のストリートアート",
-          "シグネチャークラフトカクテル"
-        ]
-      },
-      {
-        "languages_code": "pt",
-        "name": "Segredos de KL - Vida Noturna, Arte de Rua & Coquetéis!",
-        "tagline": "Descubra KL à Noite",
-        "short_description": "O passeio noturno da Simply Enak revela bares escondidos do tipo speakeasy e histórias proibidas.",
-        "full_description": "Seu guia compartilhará histórias proibidas da antiga KL — desde histórias de gângsteres até escândalos coloniais — enquanto você saboreia coquetéis artesanais e experimenta algumas das melhores comidas de rua noturnas que a cidade tem a oferecer.",
-        "whats_included": [
-          "Guia local especializado",
-          "Experiência em pequenos grupos (máx. 9)",
-          "Acesso a bar clandestino escondido",
-          "Instruções detalhadas do ponto de encontro"
-        ],
-        "whats_excluded": [
-          "Transporte para o ponto de encontro",
-          "Bebidas adicionais além do coquetel / bebida alcoólica incluída",
-          "Compras pessoais"
-        ],
-        "highlights": [
-          "Bares speakeasy escondidos",
-          "Degustação de chocolate",
-          "Contos proibidos da antiga KL",
-          "Arte de rua à noite",
-          "Coquetéis artesanais exclusivos"
-        ]
-      }
     ]
   },
   {
@@ -2319,170 +2873,6 @@
         "alt": "",
         "caption": ""
       }
-    ],
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Penang Street Food",
-        "tagline": "Penang Food Capital Tour",
-        "short_description": "What makes Penang the food capital of Malaysia?",
-        "full_description": "Penang is known as the food capital of Malaysia, and what better way to discover it than to eat your way through its most iconic streets. This tour takes you from the famous Penang Road to hidden gems that only locals know.\n\nTaste legendary Penang dishes like Asam Laksa, Char Kway Teow, and Cendol, all while learning about the Peranakan (Straits Chinese) heritage that makes Penang's food culture unique.",
-        "whats_included": [],
-        "whats_excluded": [],
-        "highlights": [
-          "Chowrasta Market - feeding Georgetown since the 1890s",
-          "Watch popiah skins handcrafted by a master with 50 years of practice",
-          "Legendary Asam Laksa - perfectly balanced sweet, sour and savoury",
-          "Peranakan Nyonya kueh at Michelin-listed Moh Teng Pheow",
-          "Harmony Street - temples, mosques and churches side by side"
-        ],
-        "meta_title": "Penang Street Food | Simply Enak Food Tours",
-        "meta_description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls."
-      },
-      {
-        "languages_code": "ms",
-        "name": "Makanan Jalanan Penang",
-        "tagline": "Lawatan Ibu Kota Makanan Penang",
-        "short_description": "Apakah yang menjadikan Penang ibu kota makanan di Malaysia?",
-        "full_description": "<p>Rasakan hidangan legenda Penang seperti Asam Laksa, Char Kway Teow, dan Cendol, sambil mempelajari warisan Peranakan (Cina Selat) yang menjadikan budaya makanan Penang unik.</p>",
-        "highlights": [
-          "Pasar Chowrasta - menghidangkan makanan untuk Georgetown sejak 1890-an",
-          "Tonton kulit popiah yang dibuat dengan tangan oleh seorang tukang mahir dengan 50 tahun pengalaman",
-          "Lagenda Asam Laksa - manis, masam dan sedap yang seimbang dengan sempurna",
-          "Kuih Nyonya Peranakan di Moh Teng Pheow yang tersenarai dalam Michelin",
-          "Jalan Harmoni - tokong, masjid dan gereja bersebelahan"
-        ],
-        "meta_title": "Makanan Jalanan Pulau Pinang | Lawatan Makanan Simply Enak",
-        "meta_description": "Rasakan sendiri pengalaman menjelajah pemandangan makanan jalanan legenda Pulau Pinang melalui lawatan berjalan kaki berpandu ke gerai-gerai penjaja di George Town."
-      },
-      {
-        "languages_code": "zh",
-        "name": "槟城街头美食",
-        "tagline": "槟城美食之都之旅",
-        "short_description": "是什么让槟城成为马来西亚的美食之都？",
-        "full_description": "品尝传奇的槟城美食，如亚参叻沙、炒粿条和煎蕊，同时了解娘惹（海峡华人）文化传统，正是它造就了槟城独一无二的饮食文化。",
-        "highlights": [
-          "牛干冬市场——自19世纪90年代起滋养乔治市",
-          "观看一位拥有50年经验的师傅手工制作薄饼皮",
-          "传奇亚参叻沙 - 甜酸咸鲜完美平衡",
-          "米其林推荐的莫登标娘惹糕",
-          "和谐街——寺庙、清真寺与教堂比邻而居"
-        ],
-        "meta_title": "槟城街头小吃 | Simply Enak 美食之旅",
-        "meta_description": "在乔治市小贩摊位的导览步行之旅中，品尝槟城传奇的街头美食。"
-      },
-      {
-        "languages_code": "de",
-        "name": "Penanger Straßenimbiss",
-        "tagline": "Penang Kulinarische Hauptstadt-Tour",
-        "short_description": "Was macht Penang zur Food-Hauptstadt Malaysiens?",
-        "full_description": "Probieren Sie legendäre Gerichte aus Penang wie Asam Laksa, Char Kway Teow und Cendol und erfahren Sie dabei mehr über das Erbe der Peranakan (Straßen-Chinesen), das die Esskultur Penangs so einzigartig macht.",
-        "highlights": [
-          "Chowrasta Market – ernährt Georgetown seit den 1890er Jahren",
-          "Beobachten Sie, wie Popiah-Hüllen von einem Meister mit 50 Jahren Erfahrung handgefertigt werden.",
-          "Legendäres Asam Laksa - perfekt ausgewogen süß, sauer und herzhaft",
-          "Peranakan-Nyonya-Kueh im Michelin-empfohlenen Moh Teng Pheow",
-          "Harmony Street – Tempel, Moscheen und Kirchen Seite an Seite"
-        ],
-        "meta_title": "Penang Straßenessen | Simply Enak Food Tours",
-        "meta_description": "Schlendern Sie auf einer geführten Wandertour durch die legendäre Straßenküche von Penang und probieren Sie sich durch die Hawker-Stände von George Town."
-      },
-      {
-        "languages_code": "es",
-        "name": "Comida callejera de Penang",
-        "tagline": "Tour por la Capital Gastronómica de Penang",
-        "short_description": "¿Qué convierte a Penang en la capital gastronómica de Malasia?",
-        "full_description": "Prueba legendarios platos de Penang como el Asam Laksa, el Char Kway Teow y el Cendol, todo mientras aprendes sobre la herencia peranakan (chino de los Estrechos) que hace que la cultura gastronómica de Penang sea única.",
-        "highlights": [
-          "Mercado Chowrasta - alimentando a Georgetown desde la década de 1890",
-          "Observa las pieles de popiah elaboradas a mano por un maestro con 50 años de práctica.",
-          "Legendario Asam Laksa - perfectamente equilibrado entre dulce, agrio y sabroso",
-          "Kueh nyonya peranakan en Moh Teng Pheow, en la lista Michelin",
-          "Calle de la Armonía: templos, mezquitas e iglesias uno al lado del otro"
-        ],
-        "meta_title": "Comida callejera de Penang | Simply Enak Tours Gastronómicos",
-        "meta_description": "Degusta la legendaria escena de comida callejera de Penang en una visita guiada a pie por los puestos de vendedores ambulantes de George Town."
-      },
-      {
-        "languages_code": "fr",
-        "name": "Cuisine de rue de Penang",
-        "tagline": "Tour de la capitale gastronomique de Penang",
-        "short_description": "Qu'est-ce qui fait de Penang la capitale culinaire de la Malaisie ?",
-        "full_description": "Dégustez des plats légendaires de Penang tels que l'Asam Laksa, le Char Kway Teow et le Cendol, tout en découvrant l'héritage Peranakan (Chinois des Détroits) qui rend la culture culinaire de Penang unique.",
-        "highlights": [
-          "Chowrasta Market - nourrissant Georgetown depuis les années 1890",
-          "Regardez des peaux de popiah confectionnées à la main par un maître avec 50 ans de pratique",
-          "Légendaire Asam Laksa - parfaitement équilibré sucré, acide et salé",
-          "Gâteaux traditionnels kueh Peranakan Nyonya chez Moh Teng Pheow, recommandé par le guide Michelin",
-          "Rue de l'Harmonie - temples, mosquées et églises côte à côte"
-        ],
-        "meta_title": "Cuisine de rue de Penang | Visites gastronomiques Simply Enak",
-        "meta_description": "Découvrez la légendaire cuisine de rue de Penang lors d'une visite guidée à pied des étals des marchands ambulants de George Town."
-      },
-      {
-        "languages_code": "nl",
-        "name": "Penang Straatvoedsel",
-        "tagline": "Penang Eten Hoofdstad Tour",
-        "short_description": "Wat maakt Penang de culinaire hoofdstad van Maleisië?",
-        "full_description": "Proef legendarische gerechten uit Penang zoals Asam Laksa, Char Kway Teow en Cendol, terwijl je meer leert over het Peranakan-erfgoed (Straat-Chinezen) dat de eetcultuur van Penang zo uniek maakt.",
-        "highlights": [
-          "Chowrasta Market - voedt Georgetown sinds de jaren 1890",
-          "Bekijk popiah-vellen die met de hand worden gemaakt door een meester met 50 jaar ervaring.",
-          "Legendarische Asam Laksa - perfect uitgebalanceerd in zoet, zuur en hartig",
-          "Peranakan Nyonya kueh bij het in de Michelingids opgenomen Moh Teng Pheow",
-          "Harmoniestraat - tempels, moskeeën en kerken naast elkaar"
-        ],
-        "meta_title": "Straatvoedsel uit Penang | Simply Enak Food Tours",
-        "meta_description": "Proef je een weg door de legendarische straatvoedselwereld van Penang tijdens een begeleide wandeltocht langs de hawkerkraampjes van George Town."
-      },
-      {
-        "languages_code": "ru",
-        "name": "Уличная еда Пенанга",
-        "tagline": "Тур по кулинарной столице Пенанг",
-        "short_description": "Что делает Пенанг столицей кулинарии Малайзии?",
-        "full_description": "Попробуйте легендарные блюда Пенанга, такие как асам-лакса, чар квай теу и чендол, и узнайте о наследии перанакан (проливных китайцев), которое делает кулинарную культуру Пенанга уникальной.",
-        "highlights": [
-          "Рынок Чоураста — кормит Джорджтаун с 1890-х годов",
-          "Посмотрите, как мастер с 50-летним стажем вручную изготавливает блинчики попиа",
-          "Легендарный Асам Лакса — идеально сбалансированный сладкий, кислый и пикантный вкус",
-          "Ньонья-куэ перанакан в заведении Moh Teng Pheow, отмеченном гидом Мишлен",
-          "Улица Гармонии — храмы, мечети и церкви бок о бок"
-        ],
-        "meta_title": "Уличная еда Пенанга | Просто Вкусно — Гастротуры",
-        "meta_description": "Попробуйте легендарную уличную еду Пенанга во время пешеходной экскурсии по лоткам уличной торговли в Джорджтауне."
-      },
-      {
-        "languages_code": "ja",
-        "name": "ペナンの屋台料理",
-        "tagline": "ペナン食の都ツアー",
-        "short_description": "ペナンをマレーシアの美食の都にしているのは何ですか?",
-        "full_description": "伝説的なペナンの料理、アッサム・ラクサ、チャークイティオ、チェンドルなどを味わいながら、ペナンの食文化を唯一無二のものにしているペナナン（海峡華人）の遺産について学ぶことができます。",
-        "highlights": [
-          "チョウラスタ市場 - 1890年代からジョージタウンの食を支える",
-          "50年の経験を持つ名人による手作りのポピアの皮",
-          "伝説のアサムラクサ - 完璧にバランスの取れた甘味、酸味、旨味",
-          "ミシュラン掲載のMoh Teng Pheowでいただくペナンニョニャのクエ",
-          "ハーモニー通り ― 寺院、モスク、教会が並び立つ街"
-        ],
-        "meta_title": "ペナンストリートフード | シンプルに・エナック・フードツアー",
-        "meta_description": "ガイド付きウォーキングツアーでジョージタウンの屋台を巡り、ペナンの伝説的なストリートフードを味わい尽くそう。"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Comida de Rua de Penang",
-        "tagline": "Tour pela Capital Gastronômica de Penang",
-        "short_description": "O que faz de Penang a capital da comida da Malásia?",
-        "full_description": "Prove pratos lendários de Penang como Asam Laksa, Char Kway Teow e Cendol, tudo isso enquanto aprende sobre a herança Peranakan (Chineses do Estreito) que torna a cultura gastronômica de Penang única.",
-        "highlights": [
-          "Mercado Chowrasta - alimentando Georgetown desde a década de 1890",
-          "Observe as folhas de popiah feitas artesanalmente por um mestre com 50 anos de prática.",
-          "Lendário Asam Laksa - perfeitamente equilibrado entre doce, azedo e salgado",
-          "Kueh Nyonya Peranakan no Moh Teng Pheow, listado no Guia Michelin",
-          "Harmony Street - templos, mesquitas e igrejas lado a lado"
-        ],
-        "meta_title": "Comida de Rua de Penang | Simply Enak Food Tours",
-        "meta_description": "Descubra os sabores da lendária cena gastronômica de rua de Penang em um passeio guiado a pé pelas barracas de vendedores ambulantes de George Town."
-      }
     ]
   },
   {
@@ -2490,7 +2880,7 @@
     "name": "Kuala Lumpur Street Food",
     "slug": "kuala-lumpur-street-food",
     "tagline": "The Heart of KL Street Food",
-    "shortDescription": "Brand new to Malaysia? This is everything you need to know!",
+    "shortDescription": "The essential Kuala Lumpur food tour for first-time visitors. Walk through Chinatown's back lanes, sample 15-18 dishes across heritage stalls, and leave with a map of where to eat for the rest of your trip. Guides who grew up in these neighbourhoods.",
     "fullDescription": "Start where KL food story begins: Petaling Street market. This is Chinatown busiest thoroughfare - a covered alley of sizzling woks, hanging roasted meats, and hawkers who have been cooking the same dish for forty years.\n\nOver three hours, you will taste eight dishes across five stops. We start at a family-run stall that has been making yong tau foo since 1978 - stuffed tofu, bitter gourd, and eggplant, served with noodles in a light soy-based broth. Your guide will show you how to order and which chilli sauce to ask for.\n\nNext, we cross into the wet market section where butchers, fishmongers, and herbal medicine sellers have worked for generations. You will smell dried shrimp, star anise, and the distinct aroma of belacan (fermented shrimp paste) - the backbone of Malaysian cooking.\n\nFrom there, it is a short walk to a kopitiam where a third-generation toast master makes kaya butter toast on a charcoal fire and pulls teh tarik - Malaysia iconic pulled milk tea.\n\nThe tour ends at a bustling hawker centre where we share plates of char kway teow and cendol. Your guide will explain how each dish reflects Malaysia multicultural history.\n\nThroughout the tour, you will walk through KL oldest neighbourhoods - Petaling Street, the Central Market area, and the historic core. We keep groups small (max 8) so you can talk to the vendors and ask questions.",
     "price": 285,
     "currency": "MYR",
@@ -2883,7 +3273,7 @@
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
     "is_bookable": true,
-    "short_description": "Brand new to Malaysia? This is everything you need to know!",
+    "short_description": "The essential Kuala Lumpur food tour for first-time visitors. Walk through Chinatown's back lanes, sample 15-18 dishes across heritage stalls, and leave with a map of where to eat for the rest of your trip. Guides who grew up in these neighbourhoods.",
     "full_description": "Start where KL food story begins: Petaling Street market. This is Chinatown busiest thoroughfare - a covered alley of sizzling woks, hanging roasted meats, and hawkers who have been cooking the same dish for forty years.\n\nOver three hours, you will taste eight dishes across five stops. We start at a family-run stall that has been making yong tau foo since 1978 - stuffed tofu, bitter gourd, and eggplant, served with noodles in a light soy-based broth. Your guide will show you how to order and which chilli sauce to ask for.\n\nNext, we cross into the wet market section where butchers, fishmongers, and herbal medicine sellers have worked for generations. You will smell dried shrimp, star anise, and the distinct aroma of belacan (fermented shrimp paste) - the backbone of Malaysian cooking.\n\nFrom there, it is a short walk to a kopitiam where a third-generation toast master makes kaya butter toast on a charcoal fire and pulls teh tarik - Malaysia iconic pulled milk tea.\n\nThe tour ends at a bustling hawker centre where we share plates of char kway teow and cendol. Your guide will explain how each dish reflects Malaysia multicultural history.\n\nThroughout the tour, you will walk through KL oldest neighbourhoods - Petaling Street, the Central Market area, and the historic core. We keep groups small (max 8) so you can talk to the vendors and ask questions.",
     "duration_minutes": 210,
     "max_participants": 7,
@@ -3011,170 +3401,6 @@
         "alt": "",
         "caption": ""
       }
-    ],
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Kuala Lumpur Street Food",
-        "tagline": "The Heart of KL Street Food",
-        "short_description": "Brand new to Malaysia? This is everything you need to know!",
-        "full_description": "When you think of Malaysia, you think of Street Food! This tour takes you through the beating heart of Kuala Lumpur's street food scene. Starting at Pasar Seni, you'll weave through the historic lanes of Chinatown and Little India.\n\nYour guide will show you where locals really eat  -  from steam-boat noodles to char kway teow, from roti canai to cendol. Every stop has a story, and every dish tells you something about Malaysia's multicultural soul.",
-        "whats_included": [],
-        "whats_excluded": [],
-        "highlights": [
-          "Real connections with family-run vendors who remember our names",
-          "Heritage + food storytelling - every dish has a story",
-          "Traditional Chinese medicine experience",
-          "Watch the last handmade BBQ buns being made",
-          "Hidden gems where locals actually eat, not tourist versions"
-        ],
-        "meta_title": "Kuala Lumpur Street Food | Simply Enak Food Tours",
-        "meta_description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes."
-      },
-      {
-        "languages_code": "ms",
-        "name": "Makanan Jalanan Kuala Lumpur",
-        "tagline": "Jantung Makanan Jalanan KL",
-        "short_description": "Baharu di Malaysia? Ini semua yang anda perlu tahu!",
-        "full_description": "Pemandu anda akan menunjukkan tempat sebenar orang tempatan makan - daripada steam-boat noodles sehingga char kway teow, daripada roti canai sehingga cendol. Setiap perhentian mempunyai kisahnya sendiri, dan setiap hidangan menceritakan sesuatu tentang jiwa pelbagai budaya Malaysia.",
-        "highlights": [
-          "Hubungan sebenar dengan peniaga keluarga yang mengingati nama kita",
-          "Warisan + penceritaan makanan - setiap hidangan mempunyai cerita",
-          "Pengalaman perubatan tradisional Cina",
-          "Tonton roti BBQ buatan tangan yang terakhir sedang dibuat",
-          "Permata tersembunyi di mana orang tempatan benar-benar makan, bukan versi pelancong"
-        ],
-        "meta_title": "Makanan Jalanan Kuala Lumpur | Lawatan Makanan Simply Enak",
-        "meta_description": "Terokai permata makanan jalanan tersembunyi di KL bersama pemandu tempatan. Lawati penjaja warisan dan rasa hidangan Malaysia yang asli."
-      },
-      {
-        "languages_code": "zh",
-        "name": "吉隆坡街头美食",
-        "tagline": "吉隆坡街头美食的灵魂",
-        "short_description": "刚到马来西亚？这就是你所需要了解的一切！",
-        "full_description": "你的向导将带你探寻当地人真正爱去的食肆 —— 从火锅面到炒粿条，从印度飞饼到煎蕊（cendol）。每一个停留点都有一个故事，每一道菜肴都诉说着马来西亚多元文化的灵魂。",
-        "highlights": [
-          "与那些能记住我们名字的家族经营商贩建立真正的联系",
-          "传承 + 美食故事 — 每道菜都有一个故事",
-          "中医经验",
-          "观看最后一批手工烧烤包的制作过程",
-          "当地人真正爱去的隐藏美食地，而不是游客专供版"
-        ],
-        "meta_title": "吉隆坡街头美食 | Simply Enak 美食之旅",
-        "meta_description": "与当地向导一起探索吉隆坡隐藏的街头美食瑰宝。探访传承老店，品尝正宗马来西亚佳肴。"
-      },
-      {
-        "languages_code": "de",
-        "name": "Kuala Lumpur Street Food Tour",
-        "tagline": "Das Herz des Street Foods in KL",
-        "short_description": "Ganz neu in Malaysia? Das ist alles, was Sie wissen müssen!",
-        "full_description": "Ihr Guide zeigt Ihnen, wo die Einheimischen wirklich essen – von Dampfschiffnudeln bis Char Kway Teow, von Roti Canai bis Cendol. Jeder Halt hat eine Geschichte, und jedes Gericht verrät Ihnen etwas über Malaysias multikulturelle Seele.",
-        "highlights": [
-          "Echte Verbindungen zu familiengeführten Händlern, die sich an unsere Namen erinnern",
-          "Erbe + kulinarische Geschichten – jedes Gericht hat eine Geschichte",
-          "Erfahrung in der Traditionellen Chinesischen Medizin",
-          "Sehen Sie zu, wie die letzten handgemachten BBQ-Brötchen hergestellt werden",
-          "Geheimtipps, wo Einheimische tatsächlich essen – keine Touristenversionen"
-        ],
-        "meta_title": "Straßenessen in Kuala Lumpur | Simply Enak Food Tours",
-        "meta_description": "Entdecke mit einem einheimischen Guide die versteckten Street-Food-Schätze von KL. Besuche traditionsreiche Hawker und probiere authentische malaysische Gerichte."
-      },
-      {
-        "languages_code": "es",
-        "name": "Comida callejera de Kuala Lumpur",
-        "tagline": "El Corazón de la Comida Callejera de KL",
-        "short_description": "¿Nuevo en Malasia? ¡Esto es todo lo que necesitas saber!",
-        "full_description": "Tu guía te mostrará dónde comen realmente los locales: desde fideos de olla de vapor hasta char kway teow, desde roti canai hasta cendol. Cada parada tiene una historia, y cada plato te dice algo sobre el alma multicultural de Malasia.",
-        "highlights": [
-          "Conexiones reales con proveedores familiares que recuerdan nuestros nombres",
-          "Patrimonio + narrativa culinaria - cada plato tiene una historia",
-          "Experiencia en medicina tradicional china",
-          "Mira cómo se hacen los últimos bollos de barbacoa hechos a mano",
-          "Joyas ocultas donde los lugareños realmente comen, no versiones turísticas"
-        ],
-        "meta_title": "Comida Callejera de Kuala Lumpur | Simply Enak Food Tours",
-        "meta_description": "Descubre las joyas ocultas de la comida callejera de KL con un guía local. Visita vendedores ambulantes patrimoniales y prueba auténticos platos malayos."
-      },
-      {
-        "languages_code": "fr",
-        "name": "Cuisine de rue de Kuala Lumpur",
-        "tagline": "L'Âme de la Cuisine de Rue de Kuala Lumpur",
-        "short_description": "Tout nouveau en Malaisie ? Voici tout ce que vous devez savoir !",
-        "full_description": "Votre guide vous montrera où les locaux mangent vraiment – des nouilles steam-boat au char kway teow, du roti canai au cendol. Chaque arrêt a une histoire, et chaque plat vous raconte quelque chose sur l'âme multiculturelle de la Malaisie.",
-        "highlights": [
-          "De véritables liens avec des commerçants familiaux qui retiennent nos prénoms",
-          "Patrimoine + narration culinaire - chaque plat a une histoire",
-          "Expérience en médecine traditionnelle chinoise",
-          "Regardez les derniers petits pains BBQ faits à la main en train d'être fabriqués.",
-          "Pépites cachées où les locaux mangent vraiment, pas des versions pour touristes"
-        ],
-        "meta_title": "Street Food de Kuala Lumpur | Visites gourmandes Simply Enak",
-        "meta_description": "Découvrez les joyaux cachés de la street food de KL avec un guide local. Visitez des marchands patrimoniaux et goûtez aux plats authentiques malaisiens."
-      },
-      {
-        "languages_code": "nl",
-        "name": "Kuala Lumpur Streetfood Tour",
-        "tagline": "Het Hart van het Straatvoedsel van KL",
-        "short_description": "Helemaal nieuw in Maleisië? Dit is alles wat je moet weten!",
-        "full_description": "Uw gids laat u zien waar de locals echt eten  -  van stoombootnoedels tot char kway teow, van roti canai tot cendol. Elke stop heeft een verhaal, en elk gerecht vertelt u iets over de multiculturele ziel van Maleisië.",
-        "highlights": [
-          "Echte verbindingen met familiebedrijven die onze namen onthouden",
-          "Erfgoed + culinaire verhalen - elk gerecht heeft een verhaal",
-          "Ervaring met Traditionele Chinese Geneeskunde",
-          "Bekijk hoe de laatste handgemaakte BBQ-buns worden gemaakt",
-          "Verborgen parels waar locals echt eten, niet de toeristische versies"
-        ],
-        "meta_title": "Kuala Lumpur Street Food | Simply Enak Food Tours",
-        "meta_description": "Ontdek verborgen straatvoedseljuwelen van KL met een lokale gids. Bezoek traditionele hawkers en proef authentieke Maleisische gerechten."
-      },
-      {
-        "languages_code": "ru",
-        "name": "Уличная еда Куала-Лумпура",
-        "tagline": "Сердце уличной еды Куала-Лумпура",
-        "short_description": "Впервые в Малайзии? Вот всё, что вам нужно знать!",
-        "full_description": "Ваш гид покажет вам, где действительно едят местные — от паровой лапши до чар квай тео, от роти канаи до чендола. У каждой остановки есть своя история, и каждое блюдо рассказывает вам что-то о мультикультурной душе Малайзии.",
-        "highlights": [
-          "Настоящие связи с семейными поставщиками, которые помнят наши имена",
-          "Наследие + гастрономические истории — у каждого блюда есть своя история",
-          "Опыт традиционной китайской медицины",
-          "Смотрите, как делают последние булочки для барбекю ручной работы",
-          "Скрытые жемчужины, где едят сами местные, а не туристические заведения"
-        ],
-        "meta_title": "Куала-Лумпур уличная еда | Simply Enak Food Tours",
-        "meta_description": "Откройте для себя скрытые жемчужины уличной еды Куала-Лумпура с местным гидом. Посетите наследственных уличных торговцев и попробуйте настоящие малайзийские блюда."
-      },
-      {
-        "languages_code": "ja",
-        "name": "クアラルンプールストリートフード",
-        "tagline": "クアラルンプール屋台料理の中心",
-        "short_description": "Malaysiaは初めてですか？これさえ読めば全てわかります！",
-        "full_description": "ガイドが地元の人が本当に通う店へと案内してくれます。スチームボート麺やチャークィーテォー、ロティ・チャナイやチェンドルまで。すべての立ち寄り場所には物語があり、すべての料理がマレーシアの多文化的な魂を物語っています。",
-        "highlights": [
-          "家族経営の業者と名前を覚えていてくれるような、本当のつながり",
-          "伝統 × 食のストーリー ― 一皿一皿に物語がある",
-          "中医学の経験",
-          "最後の手作りのBBQバンズが作られる様子を見る",
-          "地元の人々が実際に通う隠れた名店、観光客向けではない店"
-        ],
-        "meta_title": "クアラルンプール ストリートフード | Simply Enak フードツアー",
-        "meta_description": "現地のガイドと一緒に、KL（クアラルンプール）の隠れたストリートフードの名店を発見しましょう。歴史あるホーカー（屋台）を訪れ、本格的なマレーシア料理を味わってください。"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Comida de Rua de Kuala Lumpur",
-        "tagline": "O Coração da Comida de Rua de KL",
-        "short_description": "Novinho na Malásia? Isto é tudo o que precisas saber!",
-        "full_description": "O seu guia vai mostrar-lhe onde os locais realmente comem – desde noodles em panela quente até char kway teow, desde roti canai até cendol. Cada paragem tem uma história, e cada prato conta-lhe algo sobre a alma multicultural da Malásia.",
-        "highlights": [
-          "Conexões reais com vendedores familiares que lembram nossos nomes",
-          "Herança + narrativa gastronômica - cada prato tem uma história",
-          "Experiência em medicina tradicional chinesa",
-          "Veja os últimos pães de churrasco feitos à mão sendo preparados",
-          "Joias escondidas onde os locais realmente comem, não versões para turistas"
-        ],
-        "meta_title": "Comida de Rua de Kuala Lumpur | Simply Enak Food Tours",
-        "meta_description": "Descubra joias escondidas da comida de rua em KL com um guia local. Visite vendedores ambulantes tradicionais e saboreie pratos autênticos da Malásia."
-      }
     ]
   },
   {
@@ -3182,7 +3408,7 @@
     "name": "Flavours of Malaysia",
     "slug": "flavours-of-malaysia",
     "tagline": "Market Culture and Hidden Flavours",
-    "shortDescription": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+    "shortDescription": "Tour through KL's largest wet market — one of the biggest in the city. Explore its maze of stalls, taste 10-12 dishes across heritage vendors, and learn how Malaysia's four culinary cultures — Malay, Chinese, Indian, and Nyonya — come together on one plate. Led by a guide who grew up shopping here.",
     "fullDescription": "This is our most comprehensive tour - a deep dive into Malaysia food culture across two very different neighbourhoods.\n\nWe start in Chow Kit, KL oldest wet market. This is where the city real food happens - not the polished stalls tourists see, but the wholesale market where restaurant owners shop before dawn. Your guide will walk you through the fish section, the spice stalls (tasting belacan and dried chillies), and the produce area where local farmers sell direct.\n\nHere you will taste nasi lemak the way it was meant to be eaten - coconut rice wrapped in banana leaf with sambal, fried anchovies, peanuts, hard-boiled egg, and fried chicken. This is Malaysia national dish.\n\nFrom Chow Kit, we walk to Kampung Baru - a Malay enclave that has survived in the heart of KL for over a century. The wooden houses and street mosques are a world apart from the skyscrapers visible in the distance.\n\nIn Kampung Baru, you will taste dishes that Malay grandmothers have been cooking for generations. We stop at a family home that serves nasi dagang (fragrant rice with fish curry) and at a roadside stall famous for its cendol. Your guide will explain how Kampung Baru became a Malay agricultural settlement in the 1900s and why it remains a cultural stronghold today.\n\nThis tour includes ten tastings across six stops. It runs in the morning when both neighbourhoods are at their liveliest.",
     "price": 289,
     "currency": "MYR",
@@ -3815,7 +4041,7 @@
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
     "is_bookable": true,
-    "short_description": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
+    "short_description": "Tour through KL's largest wet market — one of the biggest in the city. Explore its maze of stalls, taste 10-12 dishes across heritage vendors, and learn how Malaysia's four culinary cultures come together on one plate.",
     "full_description": "This is our most comprehensive tour - a deep dive into Malaysia food culture across two very different neighbourhoods.\n\nWe start in Chow Kit, KL oldest wet market. This is where the city real food happens - not the polished stalls tourists see, but the wholesale market where restaurant owners shop before dawn. Your guide will walk you through the fish section, the spice stalls (tasting belacan and dried chillies), and the produce area where local farmers sell direct.\n\nHere you will taste nasi lemak the way it was meant to be eaten - coconut rice wrapped in banana leaf with sambal, fried anchovies, peanuts, hard-boiled egg, and fried chicken. This is Malaysia national dish.\n\nFrom Chow Kit, we walk to Kampung Baru - a Malay enclave that has survived in the heart of KL for over a century. The wooden houses and street mosques are a world apart from the skyscrapers visible in the distance.\n\nIn Kampung Baru, you will taste dishes that Malay grandmothers have been cooking for generations. We stop at a family home that serves nasi dagang (fragrant rice with fish curry) and at a roadside stall famous for its cendol. Your guide will explain how Kampung Baru became a Malay agricultural settlement in the 1900s and why it remains a cultural stronghold today.\n\nThis tour includes ten tastings across six stops. It runs in the morning when both neighbourhoods are at their liveliest.",
     "duration_minutes": 240,
     "max_participants": 9,
@@ -3973,170 +4199,6 @@
         "src": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164-1.jpg",
         "alt": "",
         "caption": ""
-      }
-    ],
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Flavours of Malaysia",
-        "tagline": "Market Culture and Hidden Flavours",
-        "short_description": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
-        "full_description": "What's a better place to experience a country than a market? On this excursion, we take you through one of the largest wet markets in Kuala Lumpur. You will experience first-hand the sights, smells and flavours of the different cultures of Malaysia.\n\nWalking through the market, you'll taste popular Malaysian dishes and understand the key ingredients used in the kitchens of the three main cultures of Malaysia. This market experience is 100% real.",
-        "whats_included": [],
-        "whats_excluded": [],
-        "highlights": [
-          "Visit Chow Kit - one of KL's largest traditional wet markets",
-          "Watch \"aunties\" hand-making biscuits at Sin Hwa Bee Bakery",
-          "Taste jamu, cham, and the best pan mee in town",
-          "Walk through Kampung Periuk heritage village behind the skyline",
-          "Real vendor connections - every family knows our faces"
-        ],
-        "meta_title": "Flavours of Malaysia | Simply Enak Food Tours",
-        "meta_description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine."
-      },
-      {
-        "languages_code": "ms",
-        "name": "Perisa Malaysia",
-        "tagline": "Budaya Pasar dan Perisa Tersembunyi",
-        "short_description": "Baharu di Malaysia? Ini semua yang anda perlu tahu! Pengenalan sempurna kepada budaya Malaysia.",
-        "full_description": "Semasa berjalan melalui pasar, anda akan merasai hidangan popular Malaysia dan memahami bahan-bahan utama yang digunakan di dapur tiga budaya utama di Malaysia. Pengalaman pasar ini adalah 100% tulen.",
-        "highlights": [
-          "Lawati Chow Kit – salah satu pasar basah tradisional terbesar di KL",
-          "Tonton makcik-makcik membuat biskut dengan tangan di Sin Hwa Bee Bakery",
-          "Rasakan jamu, cham, dan pan mee terbaik di bandar ini",
-          "Berjalan melalui kampung warisan Kampung Periuk di sebalik garis langit",
-          "Sambungan vendor sebenar - setiap keluarga mengenali wajah kami"
-        ],
-        "meta_title": "Rasa Malaysia | Lawatan Makanan Simply Enak",
-        "meta_description": "Alami warisan makanan pelbagai budaya Malaysia dalam lawatan sehari penuh, daripada masakan Melayu ke Cina hingga ke India."
-      },
-      {
-        "languages_code": "zh",
-        "name": "马来西亚风味",
-        "tagline": "市场文化与隐藏风味",
-        "short_description": "初来马来西亚？这里有您需要了解的一切！是介绍马来西亚文化的完美指南。",
-        "full_description": "漫步于市场之中，您将品尝到备受欢迎的马来西亚美食，并了解马来西亚三大主要文化厨房中所使用的关键食材。这次市场体验百分之百真实。",
-        "highlights": [
-          "游览秋杰市场——吉隆坡最大的传统湿货市场之一",
-          "去新和美饼家看阿姨们手工制作饼干",
-          "品尝jamu、cham和镇上最好吃的板面",
-          "漫步穿越天际线背后的甘榜伯鲁克传统村落",
-          "真正的供应商关系 - 家家户户都认识我们"
-        ],
-        "meta_title": "马来西亚风味 | 纯美味美食之旅",
-        "meta_description": "参加全天之旅，体验马来西亚多元文化美食传承，从马来菜到中餐再到印度菜。"
-      },
-      {
-        "languages_code": "de",
-        "name": "Aromen Malaysias",
-        "tagline": "Marktkultur und verborgene Aromen",
-        "short_description": "\"Brandneu in Malaysia? Das ist alles, was Sie wissen müssen! Perfekte Einführung in die malaysische Kultur.\"",
-        "full_description": "Beim Schlendern durch den Markt werden Sie beliebte malaysische Gerichte probieren und die wichtigsten Zutaten kennenlernen, die in den Küchen der drei Hauptkulturen Malaysias verwendet werden. Dieses Markterlebnis ist 100 % authentisch.",
-        "highlights": [
-          "Besuchen Sie Chow Kit – einen der größten traditionellen Nassmärkte in KL.",
-          "Beobachten Sie, wie „Tanten\" in der Bäckerei Sin Hwa Bee Kekse von Hand herstellen",
-          "Probieren Sie Jamu, Cham und die beste Pan Mee der Stadt",
-          "Spaziergang durch das Kulturerbe-Dorf Kampung Periuk hinter der Skyline",
-          "Echte Lieferantenverbindungen – jede Familie kennt unsere Gesichter"
-        ],
-        "meta_title": "Geschmäcker Malaysias | Simply Enak Food Tours",
-        "meta_description": "Erleben Sie Malaysias multikulturelles kulinarisches Erbe auf einer ganztägigen Tour von malaysischer über chinesische bis hin zu indischer Küche."
-      },
-      {
-        "languages_code": "es",
-        "name": "Sabores de Malasia",
-        "tagline": "Cultura de Mercado y Sabores Ocultos",
-        "short_description": "¿Totalmente nuevo en Malasia? ¡Esto es todo lo que necesitas saber! Introducción perfecta a la cultura malasia.",
-        "full_description": "Caminando por el mercado, probarás platos populares de Malasia y entenderás los ingredientes clave utilizados en las cocinas de las tres culturas principales de Malasia. Esta experiencia de mercado es 100% real.",
-        "highlights": [
-          "Visita Chow Kit - uno de los mercados húmedos tradicionales más grandes de Kuala Lumpur",
-          "Mira a las \"tías\" haciendo galletas a mano en Sin Hwa Bee Bakery",
-          "Prueba el jamu, el cham y el mejor pan mee de la ciudad",
-          "Camina por la aldea patrimonial de Kampung Periuk detrás del horizonte urbano",
-          "Conexiones reales con proveedores: cada familia conoce nuestras caras."
-        ],
-        "meta_title": "Sabores de Malasia | Simplemente Enak Food Tours",
-        "meta_description": "Experimente la herencia culinaria multicultural de Malasia en una visita de un día completo, desde la cocina malaya hasta la china y la india."
-      },
-      {
-        "languages_code": "fr",
-        "name": "Saveurs de Malaisie",
-        "tagline": "Culture du marché et saveurs cachées",
-        "short_description": "Tout nouveau en Malaisie ? Voici tout ce que vous devez savoir ! Introduction parfaite à la culture malaisienne.",
-        "full_description": "En vous promenant dans le marché, vous goûterez à des plats populaires malaisiens et comprendrez les ingrédients clés utilisés dans les cuisines des trois principales cultures de Malaisie. Cette expérience au marché est 100 % authentique.",
-        "highlights": [
-          "Visitez Chow Kit - l'un des plus grands marchés traditionnels de KL",
-          "Regardez les « tantes » fabriquer des biscuits à la main à la boulangerie Sin Hwa Bee",
-          "Goûtez le jamu, le cham, et le meilleur pan mee en ville",
-          "Promenez-vous à travers le village patrimonial de Kampung Periuk, derrière la ligne d'horizon",
-          "De vraies connexions avec les fournisseurs - chaque famille connaît nos visages"
-        ],
-        "meta_title": "Saveurs de Malaisie | Visites gastronomiques Simply Enak",
-        "meta_description": "Découvrez le patrimoine culinaire multiculturel de la Malaisie lors d'une excursion d'une journée, de la cuisine malaise à la cuisine chinoise en passant par la cuisine indienne."
-      },
-      {
-        "languages_code": "nl",
-        "name": "Smaken van Maleisië",
-        "tagline": "Marktcultuur en Verborgen Smaken",
-        "short_description": "Helemaal nieuw in Maleisië? Dit is alles wat je moet weten! Perfecte introductie tot de Maleisische cultuur.",
-        "full_description": "Terwijl je door de markt wandelt, proef je populaire Maleisische gerechten en leer je de belangrijkste ingrediënten kennen die worden gebruikt in de keukens van de drie belangrijkste culturen van Maleisië. Deze marktervaring is 100% echt.",
-        "highlights": [
-          "Bezoek Chow Kit - een van de grootste traditionele natte markten van KL",
-          "Bekijk hoe 'tantes' koekjes met de hand maken bij Sin Hwa Bee Bakery",
-          "Proef jamu, cham en de beste pan mee in de stad",
-          "Wandel door het erfgoeddorp Kampung Periuk achter de skyline",
-          "Echte contacten met leveranciers - elke familie kent onze gezichten"
-        ],
-        "meta_title": "Smaken van Maleisië | Simply Enak Food Tours",
-        "meta_description": "Ervaar de multiculturele culinaire erfenis van Maleisië tijdens een dagvullende rondleiding van de Maleisische tot de Chinese tot de Indiase keuken."
-      },
-      {
-        "languages_code": "ru",
-        "name": "Вкусы Малайзии",
-        "tagline": "Рыночная культура и скрытые вкусы",
-        "short_description": "Впервые в Малайзии? Это всё, что вам нужно знать! Идеальное знакомство с малайзийской культурой.",
-        "full_description": "Гуляя по рынку, вы попробуете популярные малайзийские блюда и узнаете об основных ингредиентах, используемых на кухнях трёх основных культур Малайзии. Этот опыт посещения рынка — на 100% настоящий.",
-        "highlights": [
-          "Посетите Чоу Кит — один из крупнейших традиционных мокрых рынков Куала-Лумпура",
-          "Посмотрите, как \"тётушки\" вручную готовят печенье в пекарне Sin Hwa Bee",
-          "Попробуйте джаму, чам и лучший пан ми в городе",
-          "Прогулка по исторической деревне Кампунг Периук на фоне городского силуэта",
-          "Настоящие связи с поставщиками — каждая семья знает нас в лицо"
-        ],
-        "meta_title": "Вкусы Малайзии | Гастрономические туры Simply Enak",
-        "meta_description": "Познайте мультикультурное кулинарное наследие Малайзии в ходе однодневного тура — от малайской до китайской и индийской кухни."
-      },
-      {
-        "languages_code": "ja",
-        "name": "マレーシアの風味",
-        "tagline": "市場文化と隠れた味",
-        "short_description": "マレーシアは初めてですか？知っておくべきことをすべてご紹介します！マレーシア文化の完璧な入門編です。",
-        "full_description": "市場を歩きながら、人気のマレーシア料理を味わいつつ、マレーシアの三大文化のキッチンで使われる主要な食材について理解を深めます。この市場体験は、100% リアルなものです。",
-        "highlights": [
-          "チョウキットへ - クアラルンプール最大級の伝統的なウェットマーケット",
-          "シン・ファ・ビー・ベーカリーでおばちゃんたちがビスケットを手作りする様子を見る",
-          "ジャム、チャム、そして町で一番のパンミーを味わう",
-          "スカイラインの後ろにあるカンプン・ペルイク遺産村を歩いて通り抜ける",
-          "確かな業者との繋がり ― どのご家族も私たちの顔を知っています"
-        ],
-        "meta_title": "マレーシアの風味 | シンプルに・エナック フードツアー",
-        "meta_description": "マレー料理から中国料理、インド料理まで、マレーシアの多文化的な食文化遺産を一日ツアーで体験しましょう。"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Sabores da Malásia",
-        "tagline": "Cultura de Mercado e Sabores Ocultos",
-        "short_description": "Completamente novo na Malásia? Isto é tudo o que você precisa saber! Introdução perfeita à cultura malaia.",
-        "full_description": "Ao caminhar pelo mercado, você irá provar pratos populares da Malásia e entender os ingredientes-chave usados nas cozinhas das três principais culturas do país. Esta experiência de mercado é 100% autêntica.",
-        "highlights": [
-          "Visite Chow Kit - um dos maiores mercados tradicionais de Kuala Lumpur",
-          "Assista as \"tias\" fazendo biscoitos à mão na Padaria Sin Hwa Bee",
-          "Saboreie jamu, cham e o melhor pan mee da cidade",
-          "Caminhe pela aldeia patrimonial Kampung Periuk por trás do horizonte urbano",
-          "Conexões reais com fornecedores - cada família conhece nossos rostos"
-        ],
-        "meta_title": "Sabores da Malásia | Simply Enak Food Tours",
-        "meta_description": "Experimente a herança culinária multicultural da Malásia em um passeio de dia inteiro, da culinária malaia à chinesa e indiana."
       }
     ]
   },
