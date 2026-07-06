@@ -59,5 +59,6 @@ Allow: /
 
 # Allow AI crawlers to discover our AI-optimized content
 Llms-txt: https://simplyenak.com/llms.txt
+Okf: https://simplyenak.com/okf/
 
 Sitemap: https://simplyenak.com/sitemap-index.xml
