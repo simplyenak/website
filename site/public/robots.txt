@@ -1,9 +1,6 @@
 User-agent: *
 Allow: /
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
-
 # Disable admin/preview paths
 Disallow: /_astro/
 Disallow: /api/

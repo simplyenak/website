@@ -10,6 +10,41 @@
  * snapshots, then to hardcoded data.
  */
 
+/**
+ * Extract plain text from Payload/Lexical rich-text content.
+ * Handles: string, { root: { children: [...] } }, { en: { root: ... } },
+ * and arbitrary nesting (paragraphs, headings, lists, text nodes).
+ */
+export function extractLexicalText(content: any): string {
+  if (!content) return '';
+  if (typeof content === 'string') return content;
+
+  // Unwrap locale wrapper: { en: { root: ... } }
+  const root = content.root ?? content.en?.root ?? content;
+  if (!root?.children) return '';
+
+  return extractLexicalNodes(root.children);
+}
+
+function extractLexicalNodes(nodes: any[]): string {
+  if (!Array.isArray(nodes)) return '';
+  return nodes
+    .map((node: any) => {
+      if (!node) return '';
+      // Direct text node
+      if (node.type === 'text' && node.text) return node.text;
+      // Recurse into children (paragraphs, headings, list items, etc.)
+      if (node.children) {
+        const inner = extractLexicalNodes(node.children);
+        // Add line breaks between block elements
+        return inner + (node.type === 'paragraph' || node.type === 'heading' ? ' ' : '');
+      }
+      return '';
+    })
+    .join('')
+    .trim();
+}
+
 import { tours as hardcodedTours } from '~/data/tours';
 import {
   dietarySegments,
@@ -731,7 +766,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
     raw.faqSection = {
       eyebrow: 'Frequently Asked Questions',
       heading: 'Everything you need to know',
-      items: raw.faqs.map((f: any) => ({ question: f.question || '', answer: f.answer || '' })),
+      items: raw.faqs.map((f: any) => ({ question: f.question || '', answer: extractLexicalText(f.answer) })),
     };
   }
 
@@ -789,7 +824,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
   if (raw.faqs && Array.isArray(raw.faqs) && raw.faqs.length > 0 && !raw.faqSection) {
     raw.faqSection = { items: raw.faqs.map((f: any) => ({
       question: f.question || '',
-      answer: f.answer || '',
+      answer: extractLexicalText(f.answer),
     }))};
   }
 
@@ -803,7 +838,7 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
           heading: 'Everything you need to know',
           items: faqs.slice(0, 8).map((f: any) => ({
             question: f.question || '',
-            answer: typeof f.answer === 'object' ? f.answer?.en?.root?.children?.[0]?.children?.[0]?.text || '' : f.answer || '',
+            answer: extractLexicalText(f.answer),
           })),
         };
       }

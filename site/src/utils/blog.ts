@@ -117,7 +117,7 @@ const load = async function (): Promise<Array<Post>> {
       .map((s: any) => ({
         id: 'payload-' + s.id,
         slug: s.slug,
-        permalink: s.slug,
+        permalink: 'stories/' + s.slug,
         publishDate: new Date(s.publishedDate || s.createdAt || Date.now()),
         title: s.title || '',
         excerpt: s.excerpt || '',

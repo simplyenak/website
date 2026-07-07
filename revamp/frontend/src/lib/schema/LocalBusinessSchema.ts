@@ -135,8 +135,8 @@ export function createLocalBusinessSchema(data: any): LocalBusinessSchema {
   // Aggregate rating (placeholder - would come from reviews)
   const aggregateRating = {
     "@type": "AggregateRating",
-    ratingValue: siteSettings?.average_rating || 4.8,
-    reviewCount: siteSettings?.review_count || 1250
+    ratingValue: siteSettings?.average_rating || 5.0,
+    reviewCount: siteSettings?.review_count || 76
   };
   
   // Social media profiles

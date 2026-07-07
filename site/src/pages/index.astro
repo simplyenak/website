@@ -39,7 +39,7 @@ const iconPaths: Record<string, string> = {
 };
 
 const metadata = {
-  title: 'Malaysian Food Tours in KL & Penang  -  Simply Enak',
+  title: 'Malaysian Food Tours in KL & Penang',
   description: 'Small-group food tours in KL and Penang with guides who grew up here. Eat at family-run stalls, hear the stories behind each dish. 5,000+ guests since 2011.',
 };
 
@@ -65,18 +65,18 @@ const structuredData = reviewSchemaItems.length > 0
   ? [{ '@type': 'ItemList', itemListElement: reviewSchemaItems.map((item, i) => ({ '@type': 'ListItem', position: i + 1, item })) }]
   : [];
 
-// Add FAQPage schema from homepage FAQs
-const faqItems = hp.faqSection?.items;
-if (faqItems && faqItems.length > 0) {
+// Add FAQPage schema from homepage FAQs (filter out empty answers)
+const faqItems = (hp.faqSection?.items || []).filter((faq: any) => faq.question && faq.answer);
+if (faqItems.length > 0) {
   structuredData.push({
     '@type': 'FAQPage',
     '@id': 'https://simplyenak.com/#faq',
     mainEntity: faqItems.map((faq: any) => ({
       '@type': 'Question',
-      name: faq.question || '',
+      name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer || '',
+        text: faq.answer,
       },
     })),
   });
