@@ -32,3 +32,37 @@ const metadata = {
   description: "The page you're looking for doesn't exist - but the best food in Malaysia does.",
 };
 ---
+
+<Layout metadata={metadata}>
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden min-h-[60vh] flex items-center justify-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
+      <p class="text-accent text-sm uppercase tracking-[0.2em] font-bold mb-4">{c.eyebrow}</p>
+      <h1 class="text-5xl md:text-7xl font-bold font-heading mb-4">404</h1>
+      <p class="text-3xl font-bold font-heading mb-6">
+        {c.title}<br />
+        <span class="text-accent">{t('common.streetFood')}</span>
+      </p>
+      <p class="text-white/70 max-w-xl mx-auto mb-8 text-lg">{c.description}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={c.ctaPrimary.url} class="btn-primary">{c.ctaPrimary.text}</a>
+        <a href={c.ctaSecondary.url} class="btn-secondary">{c.ctaSecondary.text}</a>
+      </div>
+      <div class="mt-12">
+        <p class="text-white/50 text-sm mb-4">Or try these:</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {links.map((link: any) => (
+            <a href={link.url}
+               class:list={[
+                 'px-4 py-2 rounded-full text-sm font-semibold transition-colors',
+                 link.accent
+                   ? 'bg-accent text-black hover:bg-[#e8922e]'
+                   : 'bg-white/10 text-white/80 hover:bg-white/20',
+               ]}>
+              {link.text}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
