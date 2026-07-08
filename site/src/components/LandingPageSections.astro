@@ -274,7 +274,7 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
 })()}
 
 <!-- 3. TOURS FIRST — show the solution immediately -->
-{tourCount > 0 && (
+{tourCount > 0 ? (
   <section class="py-16 bg-white dark:bg-[#1e1c1c]" id="tours">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="mb-10">
@@ -324,6 +324,28 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
           <span class="text-muted">|</span>
           <a href="/contact" class="text-accent text-sm font-semibold hover:underline">Ask us directly &rarr;</a>
         </div>
+      </div>
+    </div>
+  </section>
+) : (
+  <!-- No matching tours — offer tailored experience -->
+  <section class="py-16 bg-white dark:bg-[#1e1c1c]" id="tours">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">
+        A Tour Built Around You
+      </h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto mb-8">
+        We do not have a fixed tour here yet, but that does not mean you miss out. Our
+        <a href="/tours/tailored-tours" class="text-accent font-semibold hover:underline"> Tailored Experience</a>
+        lets you build a private tour around what you want to eat, see, and learn. Tell us your group size, dietary needs, and preferred neighbourhoods, and we will design a route with our best local guides.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="https://wa.me/60172878929" class="bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm">
+          Chat with Us
+        </a>
+        <a href="/tours/tailored-tours" class="border-2 border-gray-300 dark:border-white/20 text-default font-semibold px-8 py-3.5 rounded hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-sm">
+          Learn More
+        </a>
       </div>
     </div>
   </section>
