@@ -117,6 +117,30 @@ if (meetingPoint) {
   mapUrl = mapUrls[locKey] || 'https://maps.google.com/maps?q=Malaysia&z=10';
 }
 
+// Convert duration like "4 hours" or "3.5 hours" to ISO 8601 (PThH or PThHmM)
+function toIsoDuration(dur: string): string {
+  if (!dur) return '';
+  const hMatch = dur.match(/([\d.]+)\s*hours?/);
+  const minMatch = dur.match(/([\d.]+)\s*minutes?/);
+  if (!hMatch && !minMatch) return '';
+  const h = hMatch ? Math.floor(parseFloat(hMatch[1])) : 0;
+  const min = hMatch ? Math.round((parseFloat(hMatch[1]) - h) * 60) : (minMatch ? parseInt(minMatch[1]) : 0);
+  return `PT${h > 0 ? `${h}H` : ''}${min > 0 ? `${min}M` : ''}`;
+}
+const isoDuration = toIsoDuration(tour.duration || '');
+
+// Build audience list from travel types
+const audienceTypes: Record<string, string> = {
+  solo: 'https://schema.org/PeopleAudience',
+  couples: 'https://schema.org/PeopleAudience',
+  family: 'https://schema.org/FamilyGroupAudience',
+  foodie: 'https://schema.org/PeopleAudience',
+};
+const tourAudience = (tour.travelTypes || [])
+  .map((tt: any) => typeof tt === 'string' ? tt : tt.slug)
+  .filter(Boolean)
+  .slice(0, 3);
+
 const tourSchema = {
   '@context': 'https://schema.org',
   '@type': ['TouristTrip', 'Product'],
@@ -124,6 +148,13 @@ const tourSchema = {
   description: tour.shortDesc || tour.tagline || '',
   url: `https://simplyenak.com/tours/${tour.slug}`,
   image: heroImgFinal || 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+  ...(isoDuration ? { duration: isoDuration } : {}),
+  ...(tourAudience.length > 0 ? {
+    audience: tourAudience.map((a: string) => ({
+      '@type': audienceTypes[a] || 'PeopleAudience',
+      name: a.charAt(0).toUpperCase() + a.slice(1),
+    })),
+  } : {}),
   location: {
     '@type': 'Place',
     name: tour.location || 'Kuala Lumpur',
@@ -136,10 +167,11 @@ const tourSchema = {
   },
   offers: {
     '@type': 'Offer',
-    price: tour.price ? tour.price.replace('RM ', '') : '285',
+    price: tour.price ? String(tour.price).replace('RM ', '') : '285',
     priceCurrency: 'MYR',
     availability: 'https://schema.org/InStock',
     url: `https://simplyenak.com/tours/${tour.slug}`,
+    cancellationPolicy: 'Free cancellation with 24 hours advance notice. Full price charged for cancellations with less than 24 hours notice or no-shows.',
   },
   itinerary: tour.itinerary?.map((stop: any) => ({
     '@type': 'TouristAttraction',
