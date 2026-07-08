@@ -171,7 +171,7 @@ const tourSchema = {
     priceCurrency: 'MYR',
     availability: 'https://schema.org/InStock',
     url: `https://simplyenak.com/tours/${tour.slug}`,
-    cancellationPolicy: 'Free cancellation with 24 hours advance notice. Full price charged for cancellations with less than 24 hours notice or no-shows.',
+    ...(tour.cancellationPolicy ? { cancellationPolicy: tour.cancellationPolicy } : {}),
   },
   itinerary: tour.itinerary?.map((stop: any) => ({
     '@type': 'TouristAttraction',
