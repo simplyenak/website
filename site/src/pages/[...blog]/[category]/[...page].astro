@@ -1,6 +1,6 @@
 ---
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
-import { blogCategoryRobots, getStaticPathsBlogCategory } from '~/utils/blog';
+import { getStaticPathsBlogCategory } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
@@ -16,15 +16,11 @@ export const getStaticPaths = (async ({ paginate }) => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths> & { category: Record<string, string> };
 
 const { page, category } = Astro.props as Props;
-
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Category '${category.title}' ${currentPage > 1 ? `  -  Page ${currentPage}` : ''}`,
-  robots: {
-    index: blogCategoryRobots?.index,
-    follow: blogCategoryRobots?.follow,
-  },
+  title: category.title || 'Category',
+  robots: currentPage > 1 ? { index: false, follow: true } : {},
 };
 ---
 

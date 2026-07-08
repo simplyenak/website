@@ -27,7 +27,14 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        // Exclude pagination pages and locale 404s from sitemap
+        if (page.includes('/404')) return false;
+        if (page.includes('/category/') || page.includes('/tag/')) return false;
+        return true;
+      },
+    }),
     mdx(),
     icon({
       include: {
