@@ -170,7 +170,81 @@
       "faq_eyebrow": "Soalan Lazim",
       "faq_heading": "Soalan Lazim Lawatan Peribadi",
       "internal_links_heading": "Lebih Banyak Pilihan",
-      "view_all_tours_text": "Lihat semua lawatan"
+      "view_all_tours_text": "Lihat semua lawatan",
+      "on_every_tour": [
+        "Pemandu tempatan berlesen",
+        "Rasa makanan di setiap perhentian",
+        "Cerita budaya di setiap gerai",
+        "Harga tempatan  -  tiada caj tambahan untuk pelancong"
+      ],
+      "private_extras": [
+        "Panggilan perancangan WhatsApp sebelum lawatan bersama pemandu anda",
+        "Laluan fleksibel  -  kami sesuaikan pada hari itu jika anda mahu berlama-lama",
+        "Keperluan diet dimaklumkan lebih awal, bukan sekadar difikir kemudian",
+        "Henti bergambar berkumpulan bila-bila anda mahu",
+        "Waktu mula yang sesuai dengan jadual anda"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "Pemandu anda, kumpulan anda",
+          "detail": "Tiada tetamu lain dalam lawatan anda. Perhatian penuh pemandu anda hanya pada kumpulan anda sepanjang hari  -  menyesuaikan rentak, menjawab soalan, tinggal selama yang anda mahu di gerai."
+        },
+        {
+          "icon": "⏰",
+          "title": "Jadual anda",
+          "detail": "Kami tetapkan masa mula mengikut anda. Pagi, lewat pagi, petang - apa-apa yang sesuai, dan anda tidak perlu menunggu orang yang tidak dikenali atau memendekkan masa di gerai kerana orang lain letih."
+        },
+        {
+          "icon": "🗣️",
+          "title": "Minat anda",
+          "detail": "Keperluan pemakanan, bahasa, sejauh mana anda mahu berjalan  -  kami uruskan semua ini dengan pemandu anda sebelum hari tersebut, bukan pada hari itu. Tiada apa yang difikirkan kemudian."
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Keluarga",
+          "detail": "Ikut rentak anak-anak. Berhenti bila perlu. Kami pernah mengendalikan lawatan persendirian bersama kanak-kanak serendah usia empat tahun, dan menyesuaikan laluan serta penerangan mengikut mereka."
+        },
+        {
+          "icon": "💑",
+          "label": "Pasangan",
+          "detail": "Tiada tekanan jadual, tiada perlu menunggu kumpulan. Lawatan persendirian adalah salah satu cara yang lebih diingati untuk meluangkan sehari di tempat baharu – santai dan benar-benar milik anda."
+        },
+        {
+          "icon": "🏢",
+          "label": "Kumpulan korporat",
+          "detail": "Makan bersama pasukan dan lawatan pelanggan yang tak rasa macam acara rasmi. Kami bawa kumpulan anda ke gerai tempat orang Kuala Lumpur betul-betul makan — bukan restoran di kawasan pelancong."
+        },
+        {
+          "icon": "🎉",
+          "label": "Majlis istimewa",
+          "detail": "Hari lahir, ulang tahun, perjalanan perpisahan. Kami dah tandakan semuanya. Bagitahu kami acaranya, dan kami akan sesuaikan harinya."
+        }
+      ],
+      "faqs": [
+        {
+          "name": "Adakah tour persendirian berbaloi dengan kos tambahannya?",
+          "answer": "Itu bergantung pada apa yang anda cari. Kalau anda nak bergerak ikut rentak sendiri, dapat perhatian penuh pemandu, dan tak perlu risau tentang pantang makan atau tahap tenaga orang lain — maka ya, memang berbaloi. Kebanyakan tetamu yang tempah tour persendirian bagitahu kami lepas tu yang mereka menyesal tak buat begitu dari awal. Kalau anda suka jumpa pengembara lain dan kongsi pengalaman, tour berkumpulan tetap bawa anda ke gerai yang sama dengan pemandu yang sama, cuma kosnya lebih rendah."
+        },
+        {
+          "name": "Berapa saiz minimum kumpulan?",
+          "answer": "Dua orang pun okay  -  kami dah banyak kali buat. Kebanyakan kumpulan persendirian dalam lingkungan 4 hingga 8 orang. Kalau korang berdua, korang perlu bahagikan harga penuh lawatan sesama sendiri, bukan dikongsi dengan kumpulan yang lebih besar, jadi kos per kepala lebih tinggi. Masih berbaloi untuk ramai pasangan."
+        },
+        {
+          "name": "Boleh kita ubah laluan?",
+          "answer": "Sebaik sahaja anda buat tempahan, pemandu anda akan menghubungi anda melalui WhatsApp sebelum hari tersebut untuk menyemak pelan perjalanan. Jika anda ingin menambah hentian, melangkau satu, atau berlama-lama di suatu tempat, itulah masanya untuk beritahu. Pada hari itu sendiri kami juga boleh sesuaikan  -  jika anda sedang seronok di suatu gerai dan mahu tinggal lebih lama, kami akan ikut."
+        },
+        {
+          "name": "Berapa awal kami perlu buat tempahan?",
+          "answer": "Seminggu lebih awal itu selesa, dua minggu lebih baik. Kami pernah aturkan lawatan dalam 48 jam bila terpaksa, tapi bila ada lebih masa pemandu pelancong anda dapat bersedia lebih rapi dan menerangkan serba sedikit tentang gerai-gerai yang akan dikunjungi. Untuk kumpulan 8 orang atau lebih, tiga minggu paling ideal."
+        },
+        {
+          "name": "Boleh tak kami uruskan pantang larang makanan?",
+          "answer": "Itulah salah satu sebab utama orang pilih private tour. Dalam tour join-in, kami sesuaikan keperluan diet pada hari tersebut  -  untuk private tour, kami beri taklimat kepada pemandu dan gerai-gerai terlebih dahulu supaya tiada kejutan atau perkara yang difikirkan kemudian. Vegetarian, halal, alahan, makanan yang sangat tidak disukai  -  beritahu kami bila kamu bertanya."
+        }
+      ]
     },
     {
       "languages_code": "zh",
@@ -201,7 +275,81 @@
       "faq_eyebrow": "常见问题",
       "faq_heading": "私人游常见问题",
       "internal_links_heading": "更多选项",
-      "view_all_tours_text": "查看所有旅游路线"
+      "view_all_tours_text": "查看所有旅游路线",
+      "on_every_tour": [
+        "认证本地向导",
+        "每站都有试吃",
+        "每个摊位附文化讲解",
+        "本地价格  -  无游客加价"
+      ],
+      "private_extras": [
+        "出发前与向导的WhatsApp规划通话",
+        "灵活的路线  -  当天想多待一会儿，我们随时调整。",
+        "饮食需求提前沟通，不做事后补救。",
+        "想拍合照随时停下。",
+        "出发时间以你方便为准。"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "专属向导，专属团队",
+          "detail": "没有其他客人。你的向导一整天都会全心关注你的团队  -  调整节奏，回答问题，在摊位想待多久就待多久。"
+        },
+        {
+          "icon": "⏰",
+          "title": "你的时间表",
+          "detail": "出发时间由你定。早上、上午、傍晚 —— 哪个时间方便就哪个，不用等人齐，也不会因为别人累了而匆匆收摊。"
+        },
+        {
+          "icon": "🗣️",
+          "title": "你的兴趣",
+          "detail": "饮食需求、语言、你想走多少路——这些我们都会在当天之前和你的向导一起敲定，而不是当天才临时安排。一切都不马虎。"
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "家庭",
+          "detail": "设定一个孩子们能跟上的节奏。随时停下来休息。我们接待过小至四岁的孩子，私人团的路线和解说都会相应调整。"
+        },
+        {
+          "icon": "💑",
+          "label": "情侣",
+          "detail": "没有行程压力，不需要等别人。私人行程是探索新地方最难忘的方式之一 - 不慌不忙，完全属于你们。"
+        },
+        {
+          "icon": "🏢",
+          "label": "企业团队",
+          "detail": "不让人觉得是团队聚餐的团建饭局和客户招待。我们把大家带到吉隆坡本地人真正去吃的摊位 - 而不是游客街那些餐馆。"
+        },
+        {
+          "icon": "🎉",
+          "label": "特别的日子",
+          "detail": "生日、纪念日、送别之旅。我们都记着呢。告诉我们是什么特别的日子，我们就围绕它来安排这一天的活动。"
+        }
+      ],
+      "faqs": [
+        {
+          "name": "私人团值得多花点钱吗？",
+          "answer": "这要看你想怎么玩。如果你喜欢按自己的节奏走，想要导游全心照顾你，不想操心别人的饮食禁忌或体力好不好，那确实值得。大多数订私人团的客人事后都跟我们说，真希望一开始就选了它。如果你不介意认识其他旅客、一起分享体验，参加拼团也能吃到同样的小摊、跟着同样的向导，花费还更少。"
+        },
+        {
+          "name": "最少几个人成团？",
+          "answer": "两个人也行，我们做过很多次了。私人团大多在4到8人之间。如果就你们两位，全团费用就由你们两人分摊，而不是更多人一起分担，所以人均会高一些。对很多情侣来说，还是很值得的。"
+        },
+        {
+          "name": "我们可以换路线吗？",
+          "answer": "预订后，向导会在出发前用 WhatsApp 跟您联系，一起把行程过一遍。如果你想加个停留点、跳过某个地方，或者在某处多待一会儿，这时候就可以提出来。当天我们也可以调整 - 如果你特别喜欢某个摊位，想多待一会儿，我们就多待一会儿。"
+        },
+        {
+          "name": "我们应该提前多久预订？",
+          "answer": "提前一周比较轻松，两周更好。我们曾在必须时48小时内凑齐行程，但提前预订能让导游有更多时间准备并与摊主沟通。对于8人或以上的团体，三周是最理想的。"
+        },
+        {
+          "name": "能照顾饮食限制吗？",
+          "answer": "参加拼团游时，我们会在当天灵活调整以满足饮食需求。私人团的话，我们会提前通知导游和摊位，不留意外，不做事后补救。素食、清真、过敏、特别不喜欢的食物，都请在咨询时告诉我们。"
+        }
+      ]
     },
     {
       "languages_code": "de",
@@ -232,7 +380,81 @@
       "faq_eyebrow": "Häufig gestellte Fragen",
       "faq_heading": "FAQs zu Privattouren",
       "internal_links_heading": "Weitere Optionen",
-      "view_all_tours_text": "Alle Touren anzeigen"
+      "view_all_tours_text": "Alle Touren anzeigen",
+      "on_every_tour": [
+        "Zertifizierter lokaler Guide",
+        "Kostproben an jedem Halt",
+        "Kulturkommentar an jedem Stand",
+        "Lokale Preise  -  keine Touristenaufschläge"
+      ],
+      "private_extras": [
+        "Vorab ein WhatsApp-Gespräch mit deinem Guide zur Planung",
+        "Flexible Route  -  wir passen sie am Tag an, falls du länger bleiben möchtest",
+        "Ernährungsbedürfnisse vorab geklärt, nicht erst als Nebengedanke",
+        "Gruppenfoto-Stopps, wann immer du willst",
+        "Startzeit, die zu deinem Zeitplan passt"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "Dein Guide, deine Gruppe",
+          "detail": "Keine anderen Gäste auf deiner Tour. Die volle Aufmerksamkeit deines Guides bleibt den ganzen Tag bei deiner Gruppe  -  Tempo anpassen, Fragen beantworten, so lange an einem Stand bleiben, wie du möchtest."
+        },
+        {
+          "icon": "⏰",
+          "title": "Dein Zeitplan",
+          "detail": "Wir legen die Startzeiten nach dir fest. Morgens, vormittags, abends  -  ganz wie es passt, und du wartest nicht auf Fremde und brichst keinen Standbesuch ab, weil jemand anderes müde ist."
+        },
+        {
+          "icon": "🗣️",
+          "title": "Deine Interessen",
+          "detail": "Ernährungsbedürfnisse, Sprachen, wie viel du laufen möchtest  -  all das klären wir mit deinem Guide vor dem Tag, nicht erst am Tag selbst. Nichts ist ein nachträglicher Einfall."
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Familien",
+          "detail": "Legt ein Tempo fest, das die Kinder mitgehen können. Macht Pause, wenn nötig. Wir haben private Touren mit Kindern ab vier Jahren gemacht und die Route und die Kommentare entsprechend angepasst."
+        },
+        {
+          "icon": "💑",
+          "label": "Paare",
+          "detail": "Kein Zeitdruck, kein Warten auf eine Gruppe. Eine private Tour ist eine der schönsten Arten, einen Tag an einem neuen Ort zu verbringen  -  ohne Hetze und ganz für Sie allein."
+        },
+        {
+          "icon": "🏢",
+          "label": "Firmengruppen",
+          "detail": "Teamessen und Kundenbesuche, die sich nicht wie Teamessen anfühlen. Wir bringen Gruppen zu den Ständen, wo Kuala Lumpur wirklich isst  -  nicht zu den Restaurants auf der Touristenmeile."
+        },
+        {
+          "icon": "🎉",
+          "label": "Besondere Anlässe",
+          "detail": "Geburtstage, Jahrestage, Abschiedsreisen. Wir haben sie alle schon gefeiert. Sag uns, um welchen Anlass es geht, und wir richten den Tag ganz darauf aus."
+        }
+      ],
+      "faqs": [
+        {
+          "name": "Ist eine private Tour den Aufpreis wert?",
+          "answer": "Das hängt davon ab, was du suchst. Wenn du in deinem eigenen Tempo unterwegs sein möchtest, die volle Aufmerksamkeit des Guides hast und dich nicht um die Ernährungsbedürfnisse oder das Energielevel anderer kümmern musst, dann ja, das lohnt sich. Die meisten Gäste, die eine private Tour buchen, erzählen uns hinterher, dass sie es gleich von Anfang an so gemacht hätten. Wenn du gerne andere Reisende triffst und das Erlebnis teilst, bekommst du bei einer Gruppentour dieselben Stände und dieselben Guides für weniger Geld."
+        },
+        {
+          "name": "Wie viele Personen braucht es mindestens?",
+          "answer": "Zwei Personen sind in Ordnung – das haben wir schon oft gemacht. Die meisten privaten Gruppen haben zwischen 4 und 8 Leute. Wenn ihr zu zweit seid, teilt ihr den vollen Tourenpreis unter euch auf und nicht auf eine größere Gruppe, dadurch wird es pro Kopf teurer. Für viele Paare lohnt es sich trotzdem."
+        },
+        {
+          "name": "Können wir die Route ändern?",
+          "answer": "Sobald du buchst, meldet sich dein Guide vor dem Tag per WhatsApp, um den Plan durchzugehen. Wenn du einen Stopp hinzufügen, einen auslassen oder irgendwo länger verweilen möchtest, ist das der Moment, es zu sagen. Am Tag selbst können wir auch noch anpassen  -  wenn dir ein Stand so gut gefällt, dass du bleiben willst, dann bleiben wir."
+        },
+        {
+          "name": "Wie weit im Voraus sollten wir buchen?",
+          "answer": "Eine Woche im Voraus ist angenehm, zwei sind besser. Wir haben Touren schon in 48 Stunden auf die Beine gestellt, wenn es sein musste, aber mehr Zeit gibt deinem Guide die Gelegenheit, die Stände vorzubereiten und zu briefen. Für Gruppen ab 8 Personen sind drei Wochen ideal."
+        },
+        {
+          "name": "Könnt ihr mit Ernährungseinschränkungen umgehen?",
+          "answer": "Das ist einer der Hauptgründe, warum Leute eine Privattour buchen. Bei einer Gruppentour finden wir am Tag selbst Lösungen für Ernährungsbedürfnisse  -  bei einer Privattour weisen wir deinen Guide und die Stände im Voraus ein, damit nichts überraschend kommt oder erst im Nachhinein bedacht wird. Vegetarisch, halal, Allergien, starke Abneigungen  -  sag es uns bei deiner Anfrage."
+        }
+      ]
     },
     {
       "languages_code": "es",
@@ -263,7 +485,81 @@
       "faq_eyebrow": "Preguntas Frecuentes",
       "faq_heading": "Preguntas Frecuentes sobre Tours Privados",
       "internal_links_heading": "Más opciones",
-      "view_all_tours_text": "Ver todos los tours"
+      "view_all_tours_text": "Ver todos los tours",
+      "on_every_tour": [
+        "Guía local certificado",
+        "Degustación en cada parada",
+        "Comentarios culturales en cada puesto",
+        "Precios locales, sin recargo turístico"
+      ],
+      "private_extras": [
+        "Llamada por WhatsApp con tu guía para planificar el tour antes de salir.",
+        "Ruta flexible: la ajustamos el mismo día si quieres quedarte más rato.",
+        "Tus necesidades alimenticias las dejamos claras con tiempo, no son una idea de último momento.",
+        "Paradas para la foto de grupo cuando tú quieras.",
+        "Hora de inicio que encaja con tu horario."
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "Tu guía, tu grupo",
+          "detail": "Sin otros invitados en tu tour. La atención completa de tu guía se queda con tu grupo todo el día  -  ajustando el ritmo, respondiendo preguntas, quedándote todo el tiempo que quieras en un puesto."
+        },
+        {
+          "icon": "⏰",
+          "title": "Tu horario",
+          "detail": "Adaptamos los horarios a ti. Mañana, media mañana, tarde… lo que mejor te venga, sin esperar a desconocidos ni tener que acortar la visita a un puesto porque alguien se cansó."
+        },
+        {
+          "icon": "🗣️",
+          "title": "Tus intereses",
+          "detail": "Necesidades alimentarias, idiomas, cuánto quieres caminar  -  todo esto lo resolvemos con tu guía antes del día, no durante. Nada lo dejamos para después."
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Familias",
+          "detail": "Marca un ritmo que los niños puedan seguir. Detente cuando lo necesites. Hemos realizado tours privados con niños de tan solo cuatro años y adaptamos la ruta y los comentarios para ellos."
+        },
+        {
+          "icon": "💑",
+          "label": "Parejas",
+          "detail": "Sin presiones de horario, sin esperar a un grupo. Un tour privado es una de las maneras más memorables de pasar un día en un lugar nuevo - sin prisas y verdaderamente tuyo."
+        },
+        {
+          "icon": "🏢",
+          "label": "Grupos corporativos",
+          "detail": "Comidas de equipo y visitas de clientes que no parecen comidas de equipo. Llevamos a los grupos a los puestos donde realmente come Kuala Lumpur  -  no a los restaurantes de la zona turística."
+        },
+        {
+          "icon": "🎉",
+          "label": "Ocasiones especiales",
+          "detail": "Cumpleaños, aniversarios, viajes de despedida. Los hemos celebrado todos. Dinos cuál es la ocasión y moldearemos el día alrededor de ella."
+        }
+      ],
+      "faqs": [
+        {
+          "name": "¿Vale la pena el costo extra de un tour privado?",
+          "answer": "Eso depende de lo que buscas. Si quieres ir a tu propio ritmo, tener toda la atención del guía y no preocuparte por las necesidades alimentarias o niveles de energía de los demás  -  entonces sí, vale la pena. La mayoría de los huéspedes que reservan un tour privado nos dicen después que ojalá lo hubieran hecho desde el principio. Si te gusta conocer a otros viajeros y compartir la experiencia, un tour en grupo te ofrece los mismos puestos y los mismos guías por menos."
+        },
+        {
+          "name": "¿Cuál es el tamaño mínimo del grupo?",
+          "answer": "Dos personas está bien  -  lo hemos hecho muchas veces. La mayoría de los grupos privados son de entre 4 y 8. Si son dos, dividirán la tarifa completa del tour entre ustedes en lugar de repartirla entre un grupo más grande, así que sale a más por persona. Aun así, merece la pena para muchas parejas."
+        },
+        {
+          "name": "¿Podemos cambiar la ruta?",
+          "answer": "Una vez que reserves, tu guía se pondrá en contacto por WhatsApp antes del día para repasar el plan. Si quieres añadir una parada, saltarte alguna o quedarte más tiempo en algún sitio, ese es el momento de decirlo. El mismo día también podemos ajustar: si te encanta un puesto y quieres quedarte, nos quedamos."
+        },
+        {
+          "name": "¿Con cuánta antelación deberíamos reservar?",
+          "answer": "Una semana de antelación es cómoda, dos es mejor. Hemos armado tours en 48 horas cuando fue necesario, pero darle más tiempo a tu guía le permite prepararse y avisar a los puestos. Para grupos de 8 o más, lo ideal son tres semanas."
+        },
+        {
+          "name": "¿Pueden adaptarse a restricciones alimentarias?",
+          "answer": "Esa es una de las razones principales por las que la gente elige el tour privado. En un tour grupal nos las arreglamos con las necesidades alimentarias sobre la marcha  -  en un tour privado, avisamos a tu guía y a los puestos con antelación para que nada sea una sorpresa ni una ocurrencia de último minuto. Vegetariano, halal, alergias, aversiones fuertes  -  cuéntanoslo al hacer tu consulta."
+        }
+      ]
     },
     {
       "languages_code": "fr",
@@ -294,7 +590,81 @@
       "faq_eyebrow": "Questions fréquentes",
       "faq_heading": "Visites privées - Questions fréquentes",
       "internal_links_heading": "Plus d'options",
-      "view_all_tours_text": "Voir tous les tours"
+      "view_all_tours_text": "Voir tous les tours",
+      "on_every_tour": [
+        "Guide local certifié",
+        "Dégustations à chaque arrêt",
+        "Commentaire culturel à chaque stand",
+        "Prix locaux  -  sans surcoût touristique"
+      ],
+      "private_extras": [
+        "Appel WhatsApp avant la visite pour tout préparer avec votre guide",
+        "Itinéraire flexible  -  on s'adapte le jour même si vous avez envie de flâner",
+        "Vos besoins alimentaires sont anticipés, jamais traités à la dernière minute",
+        "Arrêts photos de groupe à tout moment, selon vos envies",
+        "Heure de départ qui correspond à votre emploi du temps"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "Votre guide, votre groupe",
+          "detail": "Aucun autre invité lors de votre visite. Toute l’attention de votre guide est sur votre groupe, toute la journée : il ajuste le rythme, répond à vos questions, reste aussi longtemps que vous voulez à un stand."
+        },
+        {
+          "icon": "⏰",
+          "title": "Ton planning",
+          "detail": "Nous adaptons les horaires à toi. Matin, fin de matinée, soir - ce qui te convient, et tu n'as pas à attendre d'inconnus ni à écourter un stand parce que quelqu'un d'autre est fatigué."
+        },
+        {
+          "icon": "🗣️",
+          "title": "Vos centres d’intérêt",
+          "detail": "Besoins alimentaires, langues, distance que vous souhaitez marcher  -  nous réglons tout cela avec votre guide avant le jour J, pas le jour même. Rien n’est laissé au hasard."
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Familles",
+          "detail": "Adoptez un rythme que les enfants peuvent suivre. Arrêtez-vous quand vous en avez besoin. Nous avons organisé des visites privées avec des enfants dès quatre ans et adapté le parcours et les commentaires en conséquence."
+        },
+        {
+          "icon": "💑",
+          "label": "Couples",
+          "detail": "Pas de pression horaire, pas d'attente pour un groupe. Une visite privée est l'une des façons les plus mémorables de passer une journée dans un nouvel endroit  -  sans hâte et vraiment la vôtre."
+        },
+        {
+          "icon": "🏢",
+          "label": "Groupes d'entreprise",
+          "detail": "Des repas d'équipe et des visites clients qui n'ont pas l'air de repas d'équipe. Nous emmenons les groupes dans les étals où Kuala Lumpur mange vraiment  -  pas les restaurants de la zone touristique."
+        },
+        {
+          "icon": "🎉",
+          "label": "Occasions spéciales",
+          "detail": "Anniversaires de naissance, anniversaires de mariage, voyages d'adieu. Nous les avons tous fêtés. Dites-nous de quelle occasion il s'agit et nous adapterons la journée en fonction."
+        }
+      ],
+      "faqs": [
+        {
+          "name": "Une visite privée vaut-elle le supplément ?",
+          "answer": "Ça dépend de ce que tu recherches. Si tu veux avancer à ton rythme, avoir toute l'attention du guide et ne pas te soucier des besoins alimentaires ou du niveau d'énergie des autres  -  alors oui, ça vaut le coup. La plupart des personnes qui réservent une visite privée nous disent ensuite qu'elles auraient aimé le faire dès le début. Si ça te va de rencontrer d'autres voyageurs et de partager l'expérience, une visite en groupe te donne les mêmes étals et les mêmes guides pour moins cher."
+        },
+        {
+          "name": "Quel est le nombre minimum de participants ?",
+          "answer": "Deux personnes, c'est parfait  -  nous l'avons fait plein de fois. La plupart des groupes privés comptent entre 4 et 8 personnes. Si vous êtes deux, vous partagerez le tarif total de la visite entre vous plutôt qu'avec un groupe plus grand, ce qui revient à un coût par personne plus élevé. Mais ça vaut toujours le coup pour beaucoup de couples."
+        },
+        {
+          "name": "On peut changer l'itinéraire ?",
+          "answer": "Dès que vous réservez, votre guide vous contactera sur WhatsApp avant le jour J pour passer en revue le programme. Si vous souhaitez ajouter un arrêt, en sauter un ou vous attarder quelque part plus longtemps, c'est le moment de le dire. Le jour même, on peut aussi s'adapter  -  si vous adorez un stand et que vous voulez rester, on reste."
+        },
+        {
+          "name": "Combien de temps à l’avance faut-il réserver ?",
+          "answer": "Une semaine à l’avance, c’est confortable, deux c’est mieux. Nous avons déjà monté une visite en 48 heures quand il le fallait, mais cela donne à votre guide plus de temps pour se préparer et briefer les stands. Pour les groupes de 8 personnes ou plus, trois semaines, c’est l’idéal."
+        },
+        {
+          "name": "Pouvez-vous gérer les restrictions alimentaires ?",
+          "answer": "C’est l’une des principales raisons pour lesquelles les gens optent pour une visite privée. Lors d’un join-in tour, nous nous adaptons aux besoins alimentaires le jour même  -  lors d’une visite privée, nous briefons votre guide et les stands à l’avance pour que rien ne soit une surprise ou une réflexion après coup. Végétarien, halal, allergies, fortes aversions  -  dites-le-nous lors de votre demande."
+        }
+      ]
     },
     {
       "languages_code": "nl",
@@ -325,7 +695,81 @@
       "faq_eyebrow": "Veelgestelde vragen",
       "faq_heading": "Veelgestelde vragen over privérondleidingen",
       "internal_links_heading": "Meer opties",
-      "view_all_tours_text": "Bekijk alle rondleidingen"
+      "view_all_tours_text": "Bekijk alle rondleidingen",
+      "on_every_tour": [
+        "Gecertificeerde lokale gids",
+        "Hapjes bij elke stop",
+        "Culturele verhalen bij elke kraam",
+        "Lokale prijzen  -  geen toeristentoeslagen"
+      ],
+      "private_extras": [
+        "Vooraf even bellen via WhatsApp met je gids",
+        "Flexibele route - we passen hem op de dag aan als je ergens langer wilt blijven hangen",
+        "Dieetwensen vooraf besproken, geen last-minute gedoe",
+        "Stoppen voor groepsfoto's wanneer jij dat wilt",
+        "Starttijd die past bij jouw planning"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "Jouw gids, jouw groep",
+          "detail": "Geen andere gasten op je tour. De volledige aandacht van je gids blijft de hele dag bij jouw groep  -  tempo aanpassen, vragen beantwoorden, zo lang blijven als je wilt bij een kraampje."
+        },
+        {
+          "icon": "⏰",
+          "title": "Jouw planning",
+          "detail": "We stemmen de starttijden op jou af. Ochtend, late ochtend, avond, wat maar werkt, en je wacht niet op onbekenden en je hoeft een kraambezoek niet in te korten omdat iemand anders moe is."
+        },
+        {
+          "icon": "🗣️",
+          "title": "Jouw interesses",
+          "detail": "Dieetwensen, talen, hoeveel je wilt lopen  -  we stemmen dit allemaal af met je gids vóór de dag, niet op de dag. Niets is een bijzaak."
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Families",
+          "detail": "Kies een tempo dat de kinderen aankunnen. Stop wanneer je dat nodig hebt. We hebben privétours gedaan met kinderen van slechts vier jaar en pasten de route en onze verhalen aan."
+        },
+        {
+          "icon": "💑",
+          "label": "Stellen",
+          "detail": "Geen tijdsdruk, niet wachten op een groep. Een privétour is een van de meest memorabele manieren om een dag door te brengen op een nieuwe plek  -  ongedwongen en helemaal van jou."
+        },
+        {
+          "icon": "🏢",
+          "label": "Zakelijke groepen",
+          "detail": "Teammeals en klantenbezoeken die niet aanvoelen als teammeals. We nemen groepen mee naar de kraampjes waar Kuala Lumpur echt eet  -  niet de restaurants op de toeristenstrip."
+        },
+        {
+          "icon": "🎉",
+          "label": "Speciale gelegenheden",
+          "detail": "Verjaardagen, jubilea, afscheidsuitstapjes. We hebben ze allemaal meegemaakt. Vertel ons wat de gelegenheid is en we stemmen de dag erop af."
+        }
+      ],
+      "faqs": [
+        {
+          "name": "Is een privétour de extra kosten waard?",
+          "answer": "Dat hangt ervan af wat je zoekt. Als je in je eigen tempo wilt bewegen, de volledige aandacht van de gids wilt, en je geen zorgen wilt maken over andermans dieetwensen of energie  -  dan is het het waard. De meeste gasten die een privétour boeken, vertellen ons achteraf dat ze wilden dat ze het meteen hadden gedaan. Als je het leuk vindt om andere reizigers te ontmoeten en de ervaring te delen, geeft een join-in tour je dezelfde kraampjes en dezelfde gidsen voor minder."
+        },
+        {
+          "name": "Wat is de minimale groepsgrootte?",
+          "answer": "Twee personen is prima, dat hebben we al vaak gedaan. De meeste privégroepen bestaan uit 4 tot 8 personen. Als jullie met z’n tweeën zijn, delen jullie het volledige tourtarief samen, in plaats van over een grotere groep, dus per persoon betaal je wat meer. Voor veel stellen is het nog steeds de moeite waard."
+        },
+        {
+          "name": "Kunnen we de route aanpassen?",
+          "answer": "Zodra je boekt, neemt je gids voor de dag contact met je op via WhatsApp om het plan door te nemen. Als je een stop wilt toevoegen, er eentje wilt overslaan of ergens langer wilt blijven hangen, is dat het moment om het te zeggen. Op de dag zelf kunnen we ook nog aanpassen - als je een kraampje geweldig vindt en wilt blijven, blijven we."
+        },
+        {
+          "name": "Hoe ver van tevoren moeten we boeken?",
+          "answer": "Een week van tevoren is prettig, twee is beter. We hebben weleens in 48 uur een tour geregeld als het moest, maar met wat meer tijd kan je gids alles rustig voorbereiden en de kraampjes briefen. Voor groepen van 8 of meer is drie weken ideaal."
+        },
+        {
+          "name": "Houden jullie rekening met dieetbeperkingen?",
+          "answer": "Dat is een van de belangrijkste redenen waarom mensen voor een privétour kiezen. Bij een groepstour spelen we op de dag zelf in op dieetwensen. Bij een privétour lichten we de gids en de kraampjes van tevoren in, zodat niets een verrassing of een bijzaak is. Vegetarisch, halal, allergieën, sterke afkeuren: vertel het ons bij je aanvraag."
+        }
+      ]
     },
     {
       "languages_code": "ru",
@@ -356,7 +800,81 @@
       "faq_eyebrow": "Часто задаваемые вопросы",
       "faq_heading": "Часто задаваемые вопросы о частных турах",
       "internal_links_heading": "Дополнительные параметры",
-      "view_all_tours_text": "Посмотреть все туры"
+      "view_all_tours_text": "Посмотреть все туры",
+      "on_every_tour": [
+        "Сертифицированный местный гид",
+        "Пробы блюд на каждой остановке",
+        "Рассказы о культуре у каждого прилавка",
+        "Местные цены  -  без туристических наценок"
+      ],
+      "private_extras": [
+        "Созвон с гидом по WhatsApp для планирования перед туром",
+        "Гибкий маршрут  -  корректируем на ходу, если захотите задержаться",
+        "Пищевые предпочтения выясняем заранее, а не в последний момент",
+        "Остановки для общих фото, когда захотите",
+        "Начало в удобное для вас время"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "Ваш гид, ваша группа",
+          "detail": "Никаких других гостей на вашем туре. Всё внимание вашего гида весь день будет уделено только вашей группе  -  подстраивая темп, отвечая на вопросы, оставаясь у прилавка столько, сколько захотите."
+        },
+        {
+          "icon": "⏰",
+          "title": "Ваш график",
+          "detail": "Мы подстраиваем время начала под вас. Утро, позднее утро, вечер: любое удобное время. Вам не придётся ждать незнакомцев и сокращать время у лотка из-за чьей-то усталости."
+        },
+        {
+          "icon": "🗣️",
+          "title": "Ваши интересы",
+          "detail": "Диетические потребности, языки, сколько вы хотите ходить пешком  -  всё это мы обговариваем с вашим гидом заранее, а не в день тура. Ничто не остаётся без внимания."
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Семьи",
+          "detail": "Задайте темп, подходящий детям. Останавливайтесь, когда надо. Мы проводили частные экскурсии с детьми от четырёх лет и адаптировали маршрут и рассказ под них."
+        },
+        {
+          "icon": "💑",
+          "label": "Пары",
+          "detail": "Никакого давления расписания, никакого ожидания группы. Частный тур — один из самых запоминающихся способов провести день в новом месте  -  неспешный и по-настоящему ваш."
+        },
+        {
+          "icon": "🏢",
+          "label": "Корпоративные группы",
+          "detail": "Командные обеды и встречи с клиентами, которые не похожи на скучные деловые посиделки. Мы ведём группы к лоткам, где на самом деле едят в Куала-Лумпуре  -  не в рестораны на туристических улицах."
+        },
+        {
+          "icon": "🎉",
+          "label": "Особые случаи",
+          "detail": "Дни рождения, годовщины, прощальные поездки. Мы все их отметили. Расскажите, что за повод, и мы подстроим день."
+        }
+      ],
+      "faqs": [
+        {
+          "name": "Стоит ли переплачивать за частный тур?",
+          "answer": "Это зависит от того, что вам нужно. Если вы хотите двигаться в своём темпе, получать всё внимание гида и не беспокоиться о чужих диетических предпочтениях или уровне энергии  -  то да, оно того стоит. Большинство гостей, которые заказывают частный тур, потом рассказывают, что жалеют, что не сделали этого с самого начала. Если вам комфортно знакомиться с другими путешественниками и делить впечатления, групповой тур даёт те же прилавки и тех же гидов за меньшие деньги."
+        },
+        {
+          "name": "Какое минимальное количество человек в группе?",
+          "answer": "Два человека — отлично. Мы так делали много раз. Чаще всего в частных группах от 4 до 8 человек. Если вас двое, вы делите полную стоимость тура между собой, а не на большую компанию, так что на человека выходит дороже. Для многих пар это всё равно стоит того."
+        },
+        {
+          "name": "Можно поменять маршрут?",
+          "answer": "Как только ты забронируешь, твой гид напишет тебе в WhatsApp накануне, чтобы обсудить план. Если захочешь добавить остановку, пропустить какую-то или задержаться подольше, — самое время сказать. В сам день тоже подстроимся  -  если тебе понравилась точка и хочется остаться, мы остаёмся."
+        },
+        {
+          "name": "Насколько заранее бронировать?",
+          "answer": "За неделю комфортно, за две лучше. Мы собирали туры и за 48 часов, когда приходилось, но чем раньше, тем больше времени у гида подготовиться и обговорить детали с хозяевами лотков. Для групп от 8 человек идеально за три недели."
+        },
+        {
+          "name": "Вы учитываете диетические ограничения?",
+          "answer": "Это одна из главных причин, почему люди выбирают индивидуальный тур. В групповом туре мы подстраиваемся под ваши пищевые потребности прямо на месте  -  а на индивидуальном туре мы заранее договариваемся с гидом и продавцами, чтобы для вас не было сюрпризов и ничего не упускалось из виду. Вегетарианство, халяль, аллергии, стойкая нелюбовь к продуктам  -  сообщите нам при запросе."
+        }
+      ]
     },
     {
       "languages_code": "ja",
@@ -387,7 +905,81 @@
       "faq_eyebrow": "よくあるご質問",
       "faq_heading": "プライベートツアーFAQ",
       "internal_links_heading": "その他のオプション",
-      "view_all_tours_text": "すべてのツアーを表示"
+      "view_all_tours_text": "すべてのツアーを表示",
+      "on_every_tour": [
+        "公認地元ガイド",
+        "各ストップで試食あり",
+        "各屋台で文化のお話",
+        "地元価格  -  観光客向けの上乗せなし"
+      ],
+      "private_extras": [
+        "ツアー前にガイドとWhatsAppで打ち合わせ",
+        "フレキシブルなルート  -  ゆっくりしたいときはその場で調整します",
+        "食事制限は事前に伺います。後回しにしません",
+        "グループ写真、撮りたい時にいつでも止まります",
+        "あなたのスケジュールに合ったスタート時間"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "あなただけのガイド、あなただけのグループ",
+          "detail": "ツアーに他のお客様は一切いません。ガイドは一日中、あなたのグループに全力で向き合います。歩くペースを調整したり、質問に答えたり、屋台で好きなだけ過ごせます。"
+        },
+        {
+          "icon": "⏰",
+          "title": "あなたのスケジュール",
+          "detail": "開始時間はあなたに合わせます。朝でも、遅めの朝でも、夜でも、都合の良い時間に。知らない人を待ったり、誰かが疲れたからといって屋台を途中で切り上げたりすることはありません。"
+        },
+        {
+          "icon": "🗣️",
+          "title": "あなたの興味",
+          "detail": "食事の制限、言語、どのくらい歩きたいか。これらは当日ではなく、事前にガイドと一緒に決めます。後回しにはしません。"
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "家族",
+          "detail": "子どもたちが無理なく歩けるペースにしましょう。必要なときは休憩を。私たちは、4歳の小さなお子さん連れのプライベートツアーを実施し、ルートや案内内容をそれに合わせて調整してきました。"
+        },
+        {
+          "icon": "💑",
+          "label": "カップル",
+          "detail": "スケジュールに追われることなく、グループを待つ必要もありません。プライベートツアーは、新しい場所で一日を過ごす、より思い出深い方法のひとつです  -  あわてず、自分たちだけの時間を。"
+        },
+        {
+          "icon": "🏢",
+          "label": "企業グループ",
+          "detail": "チームでの食事やクライアント訪問を、いかにもなランチにしません。Kuala Lumpurの人が本当に食べに行く屋台へご案内します  -  観光地のレストランじゃないんです。"
+        },
+        {
+          "icon": "🎉",
+          "label": "特別な日",
+          "detail": "誕生日、記念日、送別旅行。どれもお祝いしてきました。どんな機会か教えてください。その日に合わせて一日をコーディネートします。"
+        }
+      ],
+      "faqs": [
+        {
+          "name": "プライベートツアーは追加料金を払う価値がある？",
+          "answer": "それは何を求めるか次第。自分のペースで回りたい、ガイドを独り占めしたい、他の人の食べ物の好みや体力を気にしたくないなら、その価値はあるよ。プライベートツアーを予約したほとんどの人が、あとで「最初からこうすればよかった」と言ってくれる。他の旅行者と出会って一緒に楽しみたいなら、ジョインツアーでも同じ屋台、同じガイドでもっと安く行ける。"
+        },
+        {
+          "name": "最低、何人からですか？",
+          "answer": "2名でも大丈夫です  -  何度もやってきました。大抵のプライベートグループは4名から8名です。お二人だと、ツアー料金の全額をお二人で割る形になるので、お一人あたりの金額は高くなります。それでも、多くのカップルにご満足いただいています。"
+        },
+        {
+          "name": "ルートを変更できますか？",
+          "answer": "ご予約後、当日前にガイドがWhatsAppでご連絡し、プランを確認します。立ち寄り先を追加したい、どこかをスキップしたい、あるいはもう少し長く滞在したい場合は、その時にお知らせください。当日も調整できます。気に入った屋台があって、もっと居たいなら、そのまま居ましょう。"
+        },
+        {
+          "name": "どのくらい前に予約すればいいですか？",
+          "answer": "1週間前なら安心、2週間前だとより余裕があります。必要に迫られて48時間でツアーを組み立てたこともありますが、早めに知らせてもらえると、ガイドが屋台との打ち合わせや準備に時間をかけられます。8名以上のグループなら、3週間前が理想的です。"
+        },
+        {
+          "name": "食事制限は対応できますか？",
+          "answer": "多くの方がプライベートツアーを選ぶのは、これが大きな理由のひとつです。ジョインツアーでは、当日に食事制限に合わせてやりくりします  -  プライベートツアーなら、事前にガイドと屋台に伝えておくので、驚かされることも、後手に回ることもありません。ベジタリアン、ハラル、アレルギー、苦手なもの  -  お問い合わせの際にお知らせください。"
+        }
+      ]
     },
     {
       "languages_code": "pt",
@@ -418,7 +1010,81 @@
       "faq_eyebrow": "Perguntas Frequentes",
       "faq_heading": "Perguntas Frequentes sobre Tours Privados",
       "internal_links_heading": "Mais opções",
-      "view_all_tours_text": "Ver todos os passeios"
+      "view_all_tours_text": "Ver todos os passeios",
+      "on_every_tour": [
+        "Guia local certificado",
+        "Amostras de comida em cada paragem",
+        "Comentário cultural em cada barraca",
+        "Preços locais  -  sem acréscimo para turistas"
+      ],
+      "private_extras": [
+        "Chamada de planejamento pelo WhatsApp com o seu guia antes do tour",
+        "Rota flexível  -  a gente ajusta no dia se você quiser demorar mais",
+        "Restrições alimentares avisadas com antecedência, não deixadas para depois",
+        "Paradas para foto em grupo sempre que você quiser",
+        "Horário de início que funciona para a sua agenda"
+      ],
+      "why_private": [
+        {
+          "icon": "🧭",
+          "title": "O seu guia, o seu grupo",
+          "detail": "Nenhum outro convidado no seu tour. A atenção total do seu guia fica no seu grupo o dia todo - ajustando o ritmo, respondendo perguntas, ficando o tempo que quiserem numa banca."
+        },
+        {
+          "icon": "⏰",
+          "title": "O seu horário",
+          "detail": "Adaptamos a hora de início a si. Manhã, fim de manhã, fim de tarde  -  o que lhe der jeito, sem esperar por estranhos nem ter de abreviar uma banca porque outra pessoa já está cansada."
+        },
+        {
+          "icon": "🗣️",
+          "title": "Os seus interesses",
+          "detail": "Necessidades alimentares, idiomas, quanto quer caminhar  -  trabalhamos tudo isto com o seu guia antes do dia, não no próprio dia. Nada é deixado ao acaso."
+        }
+      ],
+      "audiences": [
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "label": "Famílias",
+          "detail": "Define um ritmo que as crianças consigam acompanhar. Pára quando precisares. Já fizemos passeios privados com crianças de apenas quatro anos e adaptámos o percurso e os comentários para elas."
+        },
+        {
+          "icon": "💑",
+          "label": "Casais",
+          "detail": "Sem pressão de horário, sem esperar por um grupo. Um tour privado é uma das formas mais memoráveis de passar um dia num lugar novo  -  sem pressa e genuinamente seu."
+        },
+        {
+          "icon": "🏢",
+          "label": "Grupos corporativos",
+          "detail": "Refeições de equipa e visitas de clientes que não parecem refeições de equipa. Levamos grupos às bancas onde Kuala Lumpur realmente come, não aos restaurantes da zona turística."
+        },
+        {
+          "icon": "🎉",
+          "label": "Ocasiões especiais",
+          "detail": "Aniversários, comemorações, viagens de despedida. Marcámos todas. Diz-nos qual é a ocasião e moldamos o dia à volta dela."
+        }
+      ],
+      "faqs": [
+        {
+          "name": "Vale a pena o custo extra de um tour privado?",
+          "answer": "Isso depende do que você procura. Se quiser ir no seu próprio ritmo, ter a atenção total do guia e não se preocupar com as necessidades alimentares ou o nível de energia dos outros, então sim, vale a pena. A maioria dos hóspedes que reservam um tour privado nos dizem depois que gostariam de ter feito isso desde o início. Se você está feliz em conhecer outros viajantes e compartilhar a experiência, um tour em grupo oferece as mesmas bancas e os mesmos guias por menos."
+        },
+        {
+          "name": "Qual é o número mínimo de pessoas no grupo?",
+          "answer": "Duas pessoas está ótimo  -  já fizemos isso muitas vezes. A maioria dos grupos privados tem entre 4 e 8. Se forem apenas dois, vocês dividem o valor total do tour entre si, em vez de dividir por um grupo maior, então o custo por pessoa fica mais alto. Ainda assim, vale a pena para muitos casais."
+        },
+        {
+          "name": "Podemos mudar o roteiro?",
+          "answer": "Assim que você reservar, seu guia entrará em contato pelo WhatsApp antes do dia do passeio para repassar o plano. Se quiser adicionar uma parada, pular uma ou ficar mais tempo em algum lugar, essa é a hora de avisar. No próprio dia, também podemos ajustar  -  se você estiver amando uma barraca e quiser ficar, a gente fica."
+        },
+        {
+          "name": "Com quanta antecedência devemos reservar?",
+          "answer": "Uma semana é confortável, duas é melhor. Já organizámos tours em 48 horas quando foi preciso, mas dar mais tempo permite ao guia preparar-se e avisar os vendedores. Para grupos de 8 ou mais, três semanas é o ideal."
+        },
+        {
+          "name": "Vocês conseguem lidar com restrições alimentares?",
+          "answer": "Essa é uma das principais razões pelas quais as pessoas optam por tours privados. Nos tours em grupo a gente adapta-se às necessidades alimentares no momento  -  no tour privado, a gente combina com o guia e as barracas com antecedência para que nada seja surpresa ou fique para depois. Vegetariano, halal, alergias, aversões fortes  -  avise-nos quando nos contactar."
+        }
+      ]
     }
   ]
 }

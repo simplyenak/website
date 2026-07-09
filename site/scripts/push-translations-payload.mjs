@@ -60,10 +60,10 @@ const COLLECTION_SLUGS = {
   join_in_tours_page: 'join-in-tours-pages',
   stories_index_page: 'stories-index-pages',
   stories_archive_page: 'stories-archive-pages',
-  landing_pages_dietary: 'dietary-landing-pages',
-  landing_pages_specialty: 'specialty-landing-pages',
-  landing_pages_travel_type: 'travel-type-landing-pages',
-  landing_pages_location: 'location-landing-pages',
+  landing_pages_dietary: 'landing_pages',
+  landing_pages_specialty: 'landing_pages',
+  landing_pages_travel_type: 'landing_pages',
+  landing_pages_location: 'landing_pages',
 };
 
 function loadJson(filePath) {
