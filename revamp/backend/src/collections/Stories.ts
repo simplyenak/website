@@ -153,5 +153,15 @@ export const Stories: CollectionConfig = {
         },
       },
     },
+    // Relationship to specialty experiences for cross-linking on tour pages
+    {
+      name: 'specialtyExperiences',
+      type: 'relationship',
+      relationTo: ['landing_pages', 'specialty_experiences'],
+      hasMany: true,
+      admin: {
+        description: 'Link this story to specialty experience types',
+      },
+    },
   ],
 }

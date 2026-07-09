@@ -140,5 +140,14 @@ export const Stories: CollectionConfig = {
         },
       },
     },
+    {
+      name: 'specialtyExperiences',
+      type: 'relationship',
+      relationTo: ['landing_pages', 'specialty_experiences'],
+      hasMany: true,
+      admin: {
+        description: 'Select specialty experiences (Heritage, Street Food, Night Tour, Market)',
+      },
+    },
   ],
 }
