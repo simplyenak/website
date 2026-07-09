@@ -1,5 +1,1079 @@
 [
   {
+    "id": 12,
+    "name": "Georgetown's Best Hawkers and the Durian Strip",
+    "slug": "georgetown-night-food-durian - Copy",
+    "tagline": "Experience Penang after dark",
+    "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+    "fullDescription": "George Town comes alive as the heat of the day fades. This tour starts at sunset, when the city hawkers begin arriving at their evening spots and the colonial-era streets take on a different character.\n\nWe start at a popiah stall in the heart of the UNESCO zone. Popiah is a fresh spring roll - thin rice paper wrapper stuffed with jicama, carrot, tofu, bean sprouts, and chilli, topped with shallots and a sweet soy glaze. The auntie who makes them has been doing this since 1985.\n\nNext, we walk through Little India as the jewellery shops wind down and the banana leaf rice restaurants fill up. We stop at a corner stall that serves the best vadai in George Town - crunchy lentil fritters with a coconut chutney made using the same recipe for three generations.\n\nThe tour continues through the Armenian Street heritage area, where we taste cendol and apom from street vendors in front of pre-war shophouses. Your guide will point out the street art and share stories about Penang history.\n\nWe end at a clan jetty - one of the six wooden villages built over the water by Chinese immigrant clans in the 19th century. Here, a third-generation resident serves home-cooked Peranakan food: buah keluak, inchi kabin, and acar. The view of the mainland lights across the channel is worth the walk alone.\n\nThroughout the tour, your guide will connect each dish to George Town history as a British trading post, a Chinese immigrant gateway, and a Malay fishing village.",
+    "price": 289,
+    "currency": "MYR",
+    "duration": "4 hours",
+    "durationMinutes": 240,
+    "location": "Penang",
+    "meetingPoint": "Sun Yat-Sen \"Memorial Centre\" at 65, Jalan Macalister",
+    "maxParticipants": 7,
+    "minParticipants": 2,
+    "dietaryOptions": [
+      {
+        "id": 7,
+        "name": "Vegetarian",
+        "slug": "vegetarian",
+        "icon": "🥬",
+        "color": "#4caf50",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:18.126Z",
+        "createdAt": "2026-05-19T08:33:27.383Z"
+      },
+      {
+        "id": 4,
+        "name": "Gluten-Free",
+        "slug": "gluten-free",
+        "icon": "🌾",
+        "color": "#ff9800",
+        "description": "Gluten-free dishes available",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-28T12:21:48.552Z",
+        "createdAt": "2026-05-19T08:33:25.703Z"
+      },
+      {
+        "id": 6,
+        "name": "Nut-Free",
+        "slug": "nut-free",
+        "icon": "🥜",
+        "color": "#795548",
+        "description": "Nut-free preparations",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:47.352Z",
+        "createdAt": "2026-05-19T08:33:26.827Z"
+      },
+      {
+        "id": 8,
+        "name": "Egg-Free",
+        "slug": "egg-free",
+        "icon": "🥚",
+        "color": "#fff176",
+        "description": "No egg ingredients",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:39:59.853Z",
+        "createdAt": "2026-05-19T08:33:27.939Z"
+      },
+      {
+        "id": 5,
+        "name": "Dairy-Free",
+        "slug": "dairy-free",
+        "icon": "🧀",
+        "color": "#2196f3",
+        "description": "No dairy ingredients used",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:41:08.254Z",
+        "createdAt": "2026-05-19T08:33:26.266Z"
+      },
+      {
+        "id": 11,
+        "name": "Pescatarian",
+        "slug": "pescatarian",
+        "icon": "🐟",
+        "color": "#06b6d4",
+        "description": "Fish and seafood but no meat",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-20T00:09:08.106Z",
+        "createdAt": "2026-05-19T08:33:29.735Z"
+      }
+    ],
+    "travelTypes": [
+      {
+        "id": 1,
+        "name": "Couples",
+        "slug": "couples",
+        "icon": "💑",
+        "color": "#ec4899",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:56.093Z",
+        "createdAt": "2026-05-19T08:33:21.708Z",
+        "_status": "published"
+      },
+      {
+        "id": 4,
+        "name": "Solo",
+        "slug": "solo",
+        "icon": "🎒",
+        "color": "#8b5cf6",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:09.797Z",
+        "createdAt": "2026-05-19T08:33:23.425Z",
+        "_status": "published"
+      },
+      {
+        "id": 3,
+        "name": "Foodie",
+        "slug": "foodie",
+        "icon": "🍜",
+        "color": "#ef4444",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:22.225Z",
+        "createdAt": "2026-05-19T08:33:22.863Z",
+        "_status": "published"
+      },
+      {
+        "id": 2,
+        "name": "Family",
+        "slug": "family",
+        "icon": "👨‍👩‍👧‍👦",
+        "color": "#f59e0b",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:43:44.060Z",
+        "createdAt": "2026-05-19T08:33:22.293Z",
+        "_status": "published"
+      },
+      {
+        "id": 5,
+        "name": "Chefs",
+        "slug": "chefs",
+        "icon": null,
+        "color": null,
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-30T06:50:42.395Z",
+        "createdAt": "2026-06-30T06:50:42.395Z",
+        "_status": "published"
+      }
+    ],
+    "specialtyExperiences": [
+      {
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
+      },
+      {
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
+      },
+      {
+        "id": 3,
+        "name": "Night tour",
+        "slug": "night-tour",
+        "icon": "🌙",
+        "color": "#6366f1",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:45:44.828Z",
+        "createdAt": "2026-05-19T08:33:32.030Z",
+        "_status": "published"
+      },
+      {
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
+      }
+    ],
+    "foodItems": [
+      {
+        "id": 6,
+        "name": "Hokkien Mee",
+        "slug": "hokkien-mee",
+        "localNames": [
+          {
+            "id": "6a4367baee1f89845262d3a4",
+            "language": "en",
+            "name": "Prawn Noodles",
+            "script": null
+          }
+        ],
+        "description": "Hokkien mee",
+        "category": "main",
+        "origin": "chinese",
+        "region": "Penang",
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-30T06:53:12.499Z",
+        "createdAt": "2026-06-30T06:53:12.498Z"
+      },
+      {
+        "id": 7,
+        "name": "Ais Kacang",
+        "slug": "ais-kacang",
+        "localNames": [
+          {
+            "id": "6a4367f0ee1f89845262d3a5",
+            "language": "ms",
+            "name": "ABC",
+            "script": null
+          }
+        ],
+        "description": "Ais Kacang",
+        "category": "dessert",
+        "origin": "malay",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-30T06:54:44.436Z",
+        "createdAt": "2026-06-30T06:54:44.436Z"
+      },
+      {
+        "id": 8,
+        "name": "Penang Char Keow Teow",
+        "slug": "penang-char-keow-teow",
+        "localNames": [],
+        "description": "Penang Char Keow Teow",
+        "category": "main",
+        "origin": "chinese",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-30T06:55:48.930Z",
+        "createdAt": "2026-06-30T06:55:48.930Z"
+      },
+      {
+        "id": 9,
+        "name": "Apam Balik",
+        "slug": "apam-balik",
+        "localNames": [],
+        "description": "Apam Balik",
+        "category": "snack",
+        "origin": "fusion",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-30T06:56:55.295Z",
+        "createdAt": "2026-06-30T06:56:55.295Z"
+      },
+      {
+        "id": 10,
+        "name": "Lor Bak",
+        "slug": "lor-bak",
+        "localNames": [
+          {
+            "id": "6a4368cbee1f89845262d3a7",
+            "language": "en",
+            "name": "Penang Chinese Sausage",
+            "script": null
+          }
+        ],
+        "description": "Lor Bak",
+        "category": "snack",
+        "origin": "chinese",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-30T06:57:56.887Z",
+        "createdAt": "2026-06-30T06:57:56.887Z"
+      },
+      {
+        "id": 11,
+        "name": "Durian",
+        "slug": "durian",
+        "localNames": [],
+        "description": "durian",
+        "category": "juice",
+        "origin": "malay",
+        "region": null,
+        "ingredients": [],
+        "allergens": [],
+        "dietaryTags": [],
+        "spiceLevel": "0",
+        "flavorProfile": [],
+        "preparationMethod": null,
+        "typicalPrice": null,
+        "availability": "year_round",
+        "image": null,
+        "galleryImages": [],
+        "culturalSignificance": null,
+        "servingSuggestions": null,
+        "popularVariations": null,
+        "pairings": null,
+        "vendorNotes": null,
+        "status": "draft",
+        "featured": false,
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-30T06:59:18.920Z",
+        "createdAt": "2026-06-30T06:59:18.920Z"
+      }
+    ],
+    "tailoredAvailable": true,
+    "tailoredNotes": null,
+    "heroImage": {
+      "id": 353,
+      "alt": null,
+      "caption": null,
+      "polaroidLabel": null,
+      "credit": null,
+      "location_ref": null,
+      "neighbourhood_ref": [],
+      "food_ref": [],
+      "dietary_ref": [],
+      "travel_type_ref": [],
+      "specialty_ref": [],
+      "vendor_ref": [],
+      "usage": null,
+      "tags": [],
+      "renameTo": null,
+      "prefix": "payload-media",
+      "updatedAt": "2026-06-29T02:01:19.736Z",
+      "createdAt": "2026-06-28T14:13:51.391Z",
+      "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
+      "filename": "DSC_6661 (1).JPG",
+      "mimeType": "image/jpeg",
+      "filesize": 3071941,
+      "width": 3965,
+      "height": 2642,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 33109,
+          "filename": "DSC_6661 (1)-400x300.jpg"
+        },
+        "medium": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-800x600.jpg",
+          "width": 800,
+          "height": 600,
+          "mimeType": "image/jpeg",
+          "filesize": 111006,
+          "filename": "DSC_6661 (1)-800x600.jpg"
+        },
+        "large": {
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-1200x800.jpg",
+          "width": 1200,
+          "height": 800,
+          "mimeType": "image/jpeg",
+          "filesize": 203008,
+          "filename": "DSC_6661 (1)-1200x800.jpg"
+        }
+      }
+    },
+    "galleryImages": [
+      {
+        "id": "6a4f6d549fb587000184c71c",
+        "image": {
+          "id": 350,
+          "alt": null,
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T14:13:45.139Z",
+          "createdAt": "2026-06-28T14:13:44.640Z",
+          "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+          "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 999686,
+          "width": 2688,
+          "height": 1512,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 32314,
+              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg"
+            },
+            "medium": {
+              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 108375,
+              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg"
+            },
+            "large": {
+              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 194669,
+              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4f6d549fb587000184c71d",
+        "image": {
+          "id": 355,
+          "alt": null,
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T14:13:54.483Z",
+          "createdAt": "2026-06-28T14:13:53.991Z",
+          "url": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
+          "filename": "hin2.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 1030719,
+          "width": 1458,
+          "height": 2592,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 43894,
+              "filename": "hin2-400x300.jpg"
+            },
+            "medium": {
+              "url": "https://cdn.simplyenak.com/payload-media/hin2-800x600.jpg",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 148509,
+              "filename": "hin2-800x600.jpg"
+            },
+            "large": {
+              "url": "https://cdn.simplyenak.com/payload-media/hin2-1200x800.jpg",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 250533,
+              "filename": "hin2-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4f6d549fb587000184c71e",
+        "image": {
+          "id": 356,
+          "alt": null,
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": "",
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-29T03:53:39.722Z",
+          "createdAt": "2026-06-28T14:13:55.942Z",
+          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-400x300.jpg",
+          "filename": "simply-enak-guide-explaining.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 3572168,
+          "width": 2560,
+          "height": 1920,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-400x300.jpg",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 36026,
+              "filename": "simply-enak-guide-explaining-400x300.jpg"
+            },
+            "medium": {
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-800x600.jpg",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 117342,
+              "filename": "simply-enak-guide-explaining-800x600.jpg"
+            },
+            "large": {
+              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-1200x800.jpg",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 207252,
+              "filename": "simply-enak-guide-explaining-1200x800.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a4f6d549fb587000184c71f",
+        "image": {
+          "id": 351,
+          "alt": null,
+          "caption": null,
+          "polaroidLabel": null,
+          "credit": null,
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-06-28T14:13:47.134Z",
+          "createdAt": "2026-06-28T14:13:46.473Z",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
+          "filename": "DSC_5051-opq3007862668.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 2143737,
+          "width": 2625,
+          "height": 3939,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 24871,
+              "filename": "DSC_5051-opq3007862668-400x300.jpg"
+            },
+            "medium": {
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-800x600.jpg",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/jpeg",
+              "filesize": 68511,
+              "filename": "DSC_5051-opq3007862668-800x600.jpg"
+            },
+            "large": {
+              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-1200x800.jpg",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/jpeg",
+              "filesize": 111011,
+              "filename": "DSC_5051-opq3007862668-1200x800.jpg"
+            }
+          }
+        }
+      }
+    ],
+    "whatsIncluded": [],
+    "whatsExcluded": [],
+    "highlights": [
+      {
+        "id": "6a4f6d549fb587000184c720",
+        "highlight": "Try Loh Bak, Penang's famous crispy five-spice meat roll"
+      },
+      {
+        "id": "6a4f6d549fb587000184c721",
+        "highlight": "Taste Hokkien Mee at a legendary open-air hawker centre"
+      },
+      {
+        "id": "6a4f6d549fb587000184c722",
+        "highlight": "Pass by a street ranked one of the most beautiful in the world"
+      },
+      {
+        "id": "6a4f6d549fb587000184c723",
+        "highlight": "Climb to a hidden rooftop for views over Georgetown"
+      },
+      {
+        "id": "6a4f6d549fb587000184c724",
+        "highlight": "Get a durian masterclass from the vendors of Jalan Macalister"
+      }
+    ],
+    "ticketingHubId": "7c6293c6-b979-4092-a577-66dfbad5c88e",
+    "tourType": "both",
+    "isBookable": true,
+    "bookingUrl": null,
+    "instantConfirmation": true,
+    "scheduledPublish": null,
+    "cancellationPolicy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
+    "tourFrequency": "Daily except Wednesdays",
+    "startTimes": [
+      {
+        "id": "6a4f6d549fb587000184c725",
+        "time": "5:00 pm"
+      }
+    ],
+    "dishesCount": null,
+    "difficulty": "easy",
+    "walkingDistance": "2.5 km",
+    "directionsHtml": null,
+    "itinerary": [
+      {
+        "id": "6a4f6d549fb587000184c726",
+        "step": 0,
+        "title": "Meet at Sun Yat-Sen \"Memorial Centre\" at 65, Jalan Macalister",
+        "description": "Meet your guide as Georgetown comes alive in the late afternoon.",
+        "duration": null
+      },
+      {
+        "id": "6a4f6d549fb587000184c727",
+        "step": 1,
+        "title": "16:15 PM - Masjid  ",
+        "description": "Pass temples of three religions side by side and taste the best samosas in Malaysia.",
+        "duration": null
+      },
+      {
+        "id": "6a4f6d549fb587000184c728",
+        "step": 2,
+        "title": "17:00 PM - Heritage Malay Satay",
+        "description": "Sizzling satay and roti jala at a family-run Malay restaurant.",
+        "duration": null
+      },
+      {
+        "id": "6a4f6d549fb587000184c729",
+        "step": 3,
+        "title": "Chew Jetty Sunset",
+        "description": "Char kway teow fresh off the wok as the sun sets over the Straits - clan history included.",
+        "duration": null
+      },
+      {
+        "id": "6a4f6d549fb587000184c72a",
+        "step": 4,
+        "title": "Clan Houses & Secret Society Tales",
+        "description": "Uncover how secret societies shaped Georgetown while tasting Penang Hokkien Mee.",
+        "duration": null
+      }
+    ],
+    "differentiatorsTourist": [],
+    "differentiatorsUs": [],
+    "whatToBring": [],
+    "languagesOffered": [
+      {
+        "id": "6a4f6d549fb587000184c72b",
+        "language": "English"
+      }
+    ],
+    "segmentTags": [],
+    "promoVideoUrl": null,
+    "galleryImageAlts": [],
+    "heroImageAlt": null,
+    "featured": false,
+    "showInMenu": true,
+    "popular": false,
+    "new": true,
+    "badgeLabel": "New",
+    "publishedAt": "2026-06-30T12:00:00.000Z",
+    "status": "published",
+    "workflowStatus": "draft",
+    "meta": {
+      "title": "Georgetown's Best Hawkers &  Durian Strip | Simply Enak Food Tours",
+      "description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert.",
+      "image": {
+        "id": 353,
+        "alt": null,
+        "caption": null,
+        "polaroidLabel": null,
+        "credit": null,
+        "location_ref": null,
+        "neighbourhood_ref": [],
+        "food_ref": [],
+        "dietary_ref": [],
+        "travel_type_ref": [],
+        "specialty_ref": [],
+        "vendor_ref": [],
+        "usage": null,
+        "tags": [],
+        "renameTo": null,
+        "prefix": "payload-media",
+        "updatedAt": "2026-06-29T02:01:19.736Z",
+        "createdAt": "2026-06-28T14:13:51.391Z",
+        "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1).JPG",
+        "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
+        "filename": "DSC_6661 (1).JPG",
+        "mimeType": "image/jpeg",
+        "filesize": 3071941,
+        "width": 3965,
+        "height": 2642,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-400x300.jpg",
+            "width": 400,
+            "height": 300,
+            "mimeType": "image/jpeg",
+            "filesize": 33109,
+            "filename": "DSC_6661 (1)-400x300.jpg"
+          },
+          "medium": {
+            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-800x600.jpg",
+            "width": 800,
+            "height": 600,
+            "mimeType": "image/jpeg",
+            "filesize": 111006,
+            "filename": "DSC_6661 (1)-800x600.jpg"
+          },
+          "large": {
+            "url": "https://cdn.simplyenak.com/payload-media/DSC_6661 (1)-1200x800.jpg",
+            "width": 1200,
+            "height": 800,
+            "mimeType": "image/jpeg",
+            "filesize": 203008,
+            "filename": "DSC_6661 (1)-1200x800.jpg"
+          }
+        }
+      }
+    },
+    "updatedAt": "2026-07-09T10:00:08.932Z",
+    "createdAt": "2026-07-09T09:43:48.772Z",
+    "_status": "published",
+    "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
+    "is_bookable": true,
+    "short_description": "Simply Enak's most-loved Penang tour starts as the sun sets.",
+    "full_description": "George Town comes alive as the heat of the day fades. This tour starts at sunset, when the city hawkers begin arriving at their evening spots and the colonial-era streets take on a different character.\n\nWe start at a popiah stall in the heart of the UNESCO zone. Popiah is a fresh spring roll - thin rice paper wrapper stuffed with jicama, carrot, tofu, bean sprouts, and chilli, topped with shallots and a sweet soy glaze. The auntie who makes them has been doing this since 1985.\n\nNext, we walk through Little India as the jewellery shops wind down and the banana leaf rice restaurants fill up. We stop at a corner stall that serves the best vadai in George Town - crunchy lentil fritters with a coconut chutney made using the same recipe for three generations.\n\nThe tour continues through the Armenian Street heritage area, where we taste cendol and apom from street vendors in front of pre-war shophouses. Your guide will point out the street art and share stories about Penang history.\n\nWe end at a clan jetty - one of the six wooden villages built over the water by Chinese immigrant clans in the 19th century. Here, a third-generation resident serves home-cooked Peranakan food: buah keluak, inchi kabin, and acar. The view of the mainland lights across the channel is worth the walk alone.\n\nThroughout the tour, your guide will connect each dish to George Town history as a British trading post, a Chinese immigrant gateway, and a Malay fishing village.",
+    "duration_minutes": 240,
+    "max_participants": 7,
+    "min_participants": 2,
+    "dietary_options": [
+      {
+        "id": 7,
+        "name": "Vegetarian",
+        "slug": "vegetarian",
+        "icon": "🥬",
+        "color": "#4caf50",
+        "description": "Vegetarian-friendly dishes",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:18.126Z",
+        "createdAt": "2026-05-19T08:33:27.383Z"
+      },
+      {
+        "id": 4,
+        "name": "Gluten-Free",
+        "slug": "gluten-free",
+        "icon": "🌾",
+        "color": "#ff9800",
+        "description": "Gluten-free dishes available",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-28T12:21:48.552Z",
+        "createdAt": "2026-05-19T08:33:25.703Z"
+      },
+      {
+        "id": 6,
+        "name": "Nut-Free",
+        "slug": "nut-free",
+        "icon": "🥜",
+        "color": "#795548",
+        "description": "Nut-free preparations",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:40:47.352Z",
+        "createdAt": "2026-05-19T08:33:26.827Z"
+      },
+      {
+        "id": 8,
+        "name": "Egg-Free",
+        "slug": "egg-free",
+        "icon": "🥚",
+        "color": "#fff176",
+        "description": "No egg ingredients",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:39:59.853Z",
+        "createdAt": "2026-05-19T08:33:27.939Z"
+      },
+      {
+        "id": 5,
+        "name": "Dairy-Free",
+        "slug": "dairy-free",
+        "icon": "🧀",
+        "color": "#2196f3",
+        "description": "No dairy ingredients used",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-19T14:41:08.254Z",
+        "createdAt": "2026-05-19T08:33:26.266Z"
+      },
+      {
+        "id": 11,
+        "name": "Pescatarian",
+        "slug": "pescatarian",
+        "icon": "🐟",
+        "color": "#06b6d4",
+        "description": "Fish and seafood but no meat",
+        "image": null,
+        "status": "published",
+        "scheduledPublish": null,
+        "publishedAt": null,
+        "updatedAt": "2026-06-20T00:09:08.106Z",
+        "createdAt": "2026-05-19T08:33:29.735Z"
+      }
+    ],
+    "specialty_experiences": [
+      {
+        "id": 4,
+        "name": "Street food",
+        "slug": "street-food",
+        "icon": "🍢",
+        "color": "#f97316",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:44:21.390Z",
+        "createdAt": "2026-05-19T08:33:32.602Z",
+        "_status": "published"
+      },
+      {
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
+      },
+      {
+        "id": 3,
+        "name": "Night tour",
+        "slug": "night-tour",
+        "icon": "🌙",
+        "color": "#6366f1",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:45:44.828Z",
+        "createdAt": "2026-05-19T08:33:32.030Z",
+        "_status": "published"
+      },
+      {
+        "id": 1,
+        "name": "Heritage",
+        "slug": "heritage",
+        "icon": "🏛️",
+        "color": "#0ea5e9",
+        "description": null,
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-06-19T14:46:46.161Z",
+        "createdAt": "2026-05-19T08:33:30.893Z",
+        "_status": "published"
+      }
+    ],
+    "whats_included": [],
+    "whats_excluded": [],
+    "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
+    "tour_frequency": "Daily except Wednesdays",
+    "start_times": [
+      "5:00 pm"
+    ],
+    "dishes_count": null,
+    "walking_distance": "2.5 km",
+    "directions_html": null,
+    "differentiators_tourist": [],
+    "differentiators_us": [],
+    "what_to_bring": [],
+    "languages_offered": [
+      "English"
+    ],
+    "segment_tags": [],
+    "promo_video_url": null,
+    "gallery_image_alts": [],
+    "hero_image_alt": null,
+    "gallery_images": [
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
+        "alt": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
     "id": 11,
     "name": "Navigate Malaysia's Vegetarian Scene Like a Local",
     "slug": "kl-vegetarian-food-tour",
@@ -481,7 +1555,7 @@
         "time": "9:00 AM"
       }
     ],
-    "dishesCount": null,
+    "dishesCount": 15,
     "difficulty": "easy",
     "walkingDistance": "3km",
     "directionsHtml": null,
@@ -507,7 +1581,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-07-08T05:24:38.911Z",
+    "updatedAt": "2026-07-09T12:47:07.333Z",
     "createdAt": "2026-07-05T07:15:14.782Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -669,7 +1743,7 @@
     "start_times": [
       "9:00 AM"
     ],
-    "dishes_count": null,
+    "dishes_count": 15,
     "walking_distance": "3km",
     "directions_html": null,
     "differentiators_tourist": [],
@@ -1526,7 +2600,7 @@
         "time": "9:30 AM"
       }
     ],
-    "dishesCount": null,
+    "dishesCount": 15,
     "difficulty": "moderate",
     "walkingDistance": "2.5km",
     "directionsHtml": null,
@@ -1548,7 +2622,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": false,
     "popular": false,
     "new": true,
     "badgeLabel": "New Tour",
@@ -1560,7 +2634,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-07-08T05:24:39.135Z",
+    "updatedAt": "2026-07-09T12:45:22.915Z",
     "createdAt": "2026-06-28T14:06:11.936Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -1717,7 +2791,7 @@
     "start_times": [
       "9:30 AM"
     ],
-    "dishes_count": null,
+    "dishes_count": 15,
     "walking_distance": "2.5km",
     "directions_html": null,
     "differentiators_tourist": [],
@@ -1774,7 +2848,7 @@
     "durationMinutes": 240,
     "location": "KL",
     "meetingPoint": "KL: Pasar Seni MRT",
-    "maxParticipants": 9,
+    "maxParticipants": 7,
     "minParticipants": 2,
     "dietaryOptions": [
       {
@@ -2625,7 +3699,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": "Nightlife cocktail bar in Kuala Lumpur with creative drinks and city lights",
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": false,
     "popular": true,
     "new": false,
     "badgeLabel": null,
@@ -2637,7 +3711,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-07-08T05:24:39.353Z",
+    "updatedAt": "2026-07-09T12:45:21.259Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
@@ -2645,7 +3719,7 @@
     "short_description": "Simply Enak's after-dark crawl reveals hidden speakeasy bars and forbidden tales.",
     "full_description": "KL after dark is a different city. The day's heat fades, the street art catches the last light, and hidden doors open to bars that were invisible at noon.\n\nWe meet at Pasar Seni MRT station - the gateway to KL's arts district. From here, we walk through the backstreets of Chinatown as the street art murals emerge in the evening light. Your guide will tell you about the artists behind each piece - local talents who turned KL's alleyways into an open-air gallery.\n\nFirst stop: a rooftop bar overlooking Merdeka 118, Southeast Asia's tallest building. We watch the sunset with handcrafted cocktails and local appetisers.\n\nNext, we find a speakeasy hidden behind what looks like a phone booth. Inside, it's one of Asia's 50 Best Bars. The bartenders use local ingredients - palm sugar, pandan, young coconut, and Malaysian tea.\n\nBetween bars, we follow backstreet routes through KL's old core. Your guide shares stories of the gangster history of Petaling Street, the colonial scandals, and how KL went from mining camp to metropolis.\n\nWe end the night at a late-night hawker spot that only opens after 10pm. Taxi drivers, bar staff, and club-goers come here to refuel. We share satay, char kway teow, and sugarcane juice while your guide tells you why this stall has been feeding the night crowd for thirty years.\n\nThis tour runs from 4pm to 8pm. Limited to 8 people. Includes one welcome cocktail, two speakeasy drinks, and a full late-night meal.",
     "duration_minutes": 240,
-    "max_participants": 9,
+    "max_participants": 7,
     "min_participants": 2,
     "dietary_options": [
       {
@@ -2788,7 +3862,7 @@
     "durationMinutes": 210,
     "location": "Penang Road",
     "meetingPoint": "Penang Road: MYDIN Emporium",
-    "maxParticipants": 9,
+    "maxParticipants": 7,
     "minParticipants": 2,
     "dietaryOptions": [
       {
@@ -3338,8 +4412,13 @@
     "scheduledPublish": null,
     "cancellationPolicy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tourFrequency": "Daily",
-    "startTimes": [],
-    "dishesCount": 10,
+    "startTimes": [
+      {
+        "id": "6a4f4ef09fb587000184c71b",
+        "time": "9:00 AM"
+      }
+    ],
+    "dishesCount": 15,
     "difficulty": "easy",
     "walkingDistance": "2.5 km",
     "directionsHtml": null,
@@ -3396,7 +4475,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": false,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -3408,7 +4487,7 @@
       "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-07-08T05:24:39.548Z",
+    "updatedAt": "2026-07-09T12:45:17.390Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -3416,7 +4495,7 @@
     "short_description": "What makes Penang the food capital of Malaysia?",
     "full_description": "Penang has been called the food capital of Malaysia - and for good reason. On this tour, you will taste why.\n\nWe start at a noodle stall that has been serving customers for over forty years. The uncle behind the stall still uses a charcoal fire, insisting it gives the noodles a smokier flavour than gas ever could. Watch him toss flat rice noodles with prawns, cockles, bean sprouts, and a dark soy-based sauce - the most photographed dish in Penang.\n\nFrom there, we visit a family-run chendol stall. The grandmother makes the green jelly noodles herself every morning. Shaved ice, coconut milk, gula melaka, kidney beans - it is the most refreshing thing you will eat in tropical heat.\n\nNext, we explore the Little India neighbourhood. Banana leaf rice restaurants where white rice is served on a banana leaf with vegetables, pickles, papadum, and your choice of curry. You eat with your right hand - your guide will show you how.\n\nNo Penang food tour is complete without assam laksa. We take you to a stall that won a spot on CNN World's 50 Best Foods list. The broth is made with mackerel, tamarind, lemongrass, and galangal - sour, spicy, and nothing like the coconut-based laksas elsewhere.\n\nWe end at a morning market where you can sample local fruits, freshly made kuih, and Penang famous white coffee. Your guide will share stories about Penang Peranakan heritage and how the island's history as a trading port shaped its unique food culture.",
     "duration_minutes": 210,
-    "max_participants": 9,
+    "max_participants": 7,
     "min_participants": 2,
     "dietary_options": [
       {
@@ -3534,8 +4613,10 @@
     "whats_excluded": [],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
-    "start_times": [],
-    "dishes_count": 10,
+    "start_times": [
+      "9:00 AM"
+    ],
+    "dishes_count": 15,
     "walking_distance": "2.5 km",
     "directions_html": null,
     "differentiators_tourist": [],
@@ -3898,7 +4979,7 @@
         "time": "9:15 AM"
       }
     ],
-    "dishesCount": 11,
+    "dishesCount": 15,
     "difficulty": "easy",
     "walkingDistance": "2 km",
     "directionsHtml": null,
@@ -3955,7 +5036,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": false,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -3967,7 +5048,7 @@
       "description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes.",
       "image": null
     },
-    "updatedAt": "2026-07-08T05:24:39.744Z",
+    "updatedAt": "2026-07-09T12:45:15.785Z",
     "createdAt": "2026-05-19T08:33:48.280Z",
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -4083,7 +5164,7 @@
     "start_times": [
       "9:15 AM"
     ],
-    "dishes_count": 11,
+    "dishes_count": 15,
     "walking_distance": "2 km",
     "directions_html": null,
     "differentiators_tourist": [],
@@ -4115,7 +5196,7 @@
     "durationMinutes": 240,
     "location": "Kuala Lumpur",
     "meetingPoint": "KL: Hilton Garden Inn North",
-    "maxParticipants": 9,
+    "maxParticipants": 7,
     "minParticipants": 2,
     "dietaryOptions": [
       {
@@ -4665,7 +5746,12 @@
     "scheduledPublish": null,
     "cancellationPolicy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tourFrequency": "Daily",
-    "startTimes": [],
+    "startTimes": [
+      {
+        "id": "6a4f4eb09fb587000184c718",
+        "time": "9:30 AM"
+      }
+    ],
     "dishesCount": 10,
     "difficulty": "easy",
     "walkingDistance": "2 km",
@@ -4723,7 +5809,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": false,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -4735,7 +5821,7 @@
       "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
       "image": null
     },
-    "updatedAt": "2026-07-08T05:24:39.944Z",
+    "updatedAt": "2026-07-09T12:45:12.445Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "draft",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -4743,7 +5829,7 @@
     "short_description": "Brand new to Malaysia? This is everything you need to know! Perfect introduction to Malaysian culture.",
     "full_description": "This is our most comprehensive tour - a deep dive into Malaysia food culture across two very different neighbourhoods.\n\nWe start in Chow Kit, KL oldest wet market. This is where the city real food happens - not the polished stalls tourists see, but the wholesale market where restaurant owners shop before dawn. Your guide will walk you through the fish section, the spice stalls (tasting belacan and dried chillies), and the produce area where local farmers sell direct.\n\nHere you will taste nasi lemak the way it was meant to be eaten - coconut rice wrapped in banana leaf with sambal, fried anchovies, peanuts, hard-boiled egg, and fried chicken. This is Malaysia national dish.\n\nFrom Chow Kit, we walk to Kampung Baru - a Malay enclave that has survived in the heart of KL for over a century. The wooden houses and street mosques are a world apart from the skyscrapers visible in the distance.\n\nIn Kampung Baru, you will taste dishes that Malay grandmothers have been cooking for generations. We stop at a family home that serves nasi dagang (fragrant rice with fish curry) and at a roadside stall famous for its cendol. Your guide will explain how Kampung Baru became a Malay agricultural settlement in the 1900s and why it remains a cultural stronghold today.\n\nThis tour includes ten tastings across six stops. It runs in the morning when both neighbourhoods are at their liveliest.",
     "duration_minutes": 240,
-    "max_participants": 9,
+    "max_participants": 7,
     "min_participants": 2,
     "dietary_options": [
       {
@@ -4861,7 +5947,9 @@
     "whats_excluded": [],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
-    "start_times": [],
+    "start_times": [
+      "9:30 AM"
+    ],
     "dishes_count": 10,
     "walking_distance": "2 km",
     "directions_html": null,
@@ -4906,8 +5994,8 @@
     "name": "Georgetown's Best Hawkers and the Durian Strip",
     "slug": "georgetown-night-food-durian",
     "tagline": "Experience Penang after dark",
-    "shortDescription": "Simply Enak's most-loved Penang tour starts as the sun sets.",
-    "fullDescription": "George Town comes alive as the heat of the day fades. This tour starts at sunset, when the city hawkers begin arriving at their evening spots and the colonial-era streets take on a different character.\n\nWe start at a popiah stall in the heart of the UNESCO zone. Popiah is a fresh spring roll - thin rice paper wrapper stuffed with jicama, carrot, tofu, bean sprouts, and chilli, topped with shallots and a sweet soy glaze. The auntie who makes them has been doing this since 1985.\n\nNext, we walk through Little India as the jewellery shops wind down and the banana leaf rice restaurants fill up. We stop at a corner stall that serves the best vadai in George Town - crunchy lentil fritters with a coconut chutney made using the same recipe for three generations.\n\nThe tour continues through the Armenian Street heritage area, where we taste cendol and apom from street vendors in front of pre-war shophouses. Your guide will point out the street art and share stories about Penang history.\n\nWe end at a clan jetty - one of the six wooden villages built over the water by Chinese immigrant clans in the 19th century. Here, a third-generation resident serves home-cooked Peranakan food: buah keluak, inchi kabin, and acar. The view of the mainland lights across the channel is worth the walk alone.\n\nThroughout the tour, your guide will connect each dish to George Town history as a British trading post, a Chinese immigrant gateway, and a Malay fishing village.",
+    "shortDescription": "From open-air hawker stalls with charcoal fires to a hidden rooftop and the Jalan Macalister durian strip — Georgetown after dark is a different city.",
+    "fullDescription": "This evening walk through Georgetown's Presgrave neighbourhood starts at the hawker centre.\n\nAs the sun drops and the charcoal fires light up, we take you to an open-air hawker centre where the cooking happens right in front of you. Watch Hokkien Mee tossed over open flames until the prawn broth turns smoky and dark, try fried carrot cake sticky and caramelised from the pan, bite into loh bak, Penang's famous crispy five-spice meat roll, and if you dare, oyster omelette — crispy at the edges and custardy inside. For the adventurous, there's curry mee with pig's blood tofu, silky and deeply savoury. Your guide will teach you the unwritten seating rules here, the ones that separate regulars from tourists, so you can come back on your own and order like you've been coming for years.\n\nBetween the food, we walk a street of eclectic shophouses ranked as one of the most beautiful in the world. Named after the first president of the Penang Chinese Chamber of Commerce, this road layers four centuries — a Malay fishing village below British shophouses, above a Chinese mercantile empire, all alive at once. We pass the Sun Yat-Sen Museum, the Masjid Pakistan, and the Penang State Museum heritage corridor before climbing to a hidden rooftop above Penang's first shopping mall, built in 1967. The Georgetown skyline from this angle rewards the climb.\n\nThen comes the durian. Jalan Macalister, named after Penang's 19th century governor, is a one-kilometre stretch of owner-operated stalls where we teach you the durian dictionary: how to read a shell, smell for grade, and tell a Musang King from a D24. If you're lucky, the Catholic church on Macalister Road chimes while you eat.\n\nYou'll leave with a full stomach, a good story, and the confidence to come back and do it all on your own.",
     "price": 289,
     "currency": "MYR",
     "duration": "4 hours",
@@ -5627,24 +6715,24 @@
     "whatsExcluded": [],
     "highlights": [
       {
-        "id": "391",
-        "highlight": "Sizzling satay at a heritage Malay restaurant"
+        "id": "6a4fa0b29fb587000184c758",
+        "highlight": "Try Loh Bak, Penang's famous crispy five-spice meat roll"
       },
       {
-        "id": "392",
-        "highlight": "Watch roti jala handcrafted like golden lace"
+        "id": "6a4fa0b29fb587000184c759",
+        "highlight": "Taste Hokkien Mee at a legendary open-air hawker centre"
       },
       {
-        "id": "393",
-        "highlight": "Best samosas in Malaysia (locals' claim, not ours!)"
+        "id": "6a4fa0b29fb587000184c75a",
+        "highlight": "Pass by a street ranked one of the most beautiful in the world"
       },
       {
-        "id": "394",
-        "highlight": "Char kway teow at Chew Jetty at sunset"
+        "id": "6a4fa0b29fb587000184c75b",
+        "highlight": "Climb to a hidden rooftop for views over Georgetown"
       },
       {
-        "id": "395",
-        "highlight": "Alcoholic drink in a heritage setting"
+        "id": "6a4fa0b29fb587000184c75c",
+        "highlight": "Get a durian masterclass from the vendors of Jalan Macalister"
       }
     ],
     "ticketingHubId": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -5661,51 +6749,51 @@
         "time": "5:00 pm"
       }
     ],
-    "dishesCount": null,
+    "dishesCount": 10,
     "difficulty": "easy",
     "walkingDistance": "2.5 km",
     "directionsHtml": null,
     "itinerary": [
       {
-        "id": "176",
+        "id": "6a4fa0af9fb587000184c752",
         "step": 0,
-        "title": "16:00 PM - Meet at Sun Yat-Sen \"Memorial Centre\" at 65, Jalan Macalister",
-        "description": "Meet your guide as Georgetown comes alive in the late afternoon.",
+        "title": "Meet at Sun Yat-Sen Memorial Centre",
+        "description": "Meet your guide at 65, Jalan Macalister as Georgetown comes alive in the late afternoon.",
         "duration": null
       },
       {
-        "id": "177",
+        "id": "6a4fa0af9fb587000184c753",
         "step": 1,
-        "title": "16:15 PM - Masjid  ",
-        "description": "Pass temples of three religions side by side and taste the best samosas in Malaysia.",
+        "title": "Presgrave Hawker Centre",
+        "description": "Watch Hokkien Mee tossed over open flames until the prawn broth turns smoky and dark. Try fried carrot cake, loh bak, oyster omelette, and curry mee with pig's blood tofu. Your guide teaches you the unwritten seating rules so you can come back like a regular.",
         "duration": null
       },
       {
-        "id": "178",
+        "id": "6a4fa0af9fb587000184c754",
         "step": 2,
-        "title": "17:00 PM - Heritage Malay Satay",
-        "description": "Sizzling satay and roti jala at a family-run Malay restaurant.",
+        "title": "One of the World's Most Beautiful Streets",
+        "description": "Walk a shophouse-lined street named after the first president of the Penang Chinese Chamber of Commerce. Layers of history in every facade.",
         "duration": null
       },
       {
-        "id": "179",
+        "id": "6a4fa0af9fb587000184c755",
         "step": 3,
-        "title": "17:45 PM - Chew Jetty Sunset",
-        "description": "Char kway teow fresh off the wok as the sun sets over the Straits - clan history included.",
+        "title": "Museums & Heritage Corridor",
+        "description": "Pass the Sun Yat-Sen Museum, Masjid Pakistan, and Penang State Museum heritage corridor.",
         "duration": null
       },
       {
-        "id": "180",
+        "id": "6a4fa0af9fb587000184c756",
         "step": 4,
-        "title": "18:30 PM - Clan Houses & Secret Society Tales",
-        "description": "Uncover how secret societies shaped Georgetown while tasting Penang Hokkien Mee.",
+        "title": "Hidden Rooftop Viewpoint",
+        "description": "Climb to a rooftop above Penang's first shopping mall (1967). The Georgetown skyline from this angle rewards the climb.",
         "duration": null
       },
       {
-        "id": "181",
+        "id": "6a4fa0af9fb587000184c757",
         "step": 5,
-        "title": "19:30 PM - Drink & Farewell",
-        "description": "Toast with an alcoholic drink at a secret heritage bar.",
+        "title": "Jalan Macalister Durian Strip",
+        "description": "A one-kilometre stretch of owner-operated stalls where you learn the durian dictionary: how to read a shell, smell for grade, and tell a Musang King from a D24.",
         "duration": null
       }
     ],
@@ -5725,14 +6813,14 @@
     "featured": false,
     "showInMenu": true,
     "popular": false,
-    "new": false,
+    "new": true,
     "badgeLabel": "New",
     "publishedAt": "2026-06-30T12:00:00.000Z",
     "status": "published",
     "workflowStatus": "published",
     "meta": {
-      "title": "Georgetown's Best Hawkers &  Durian Strip | Simply Enak Food Tours",
-      "description": "Explore Penang street food on a guided walking tour. Taste authentic Malaysian dishes in George Town with a local expert.",
+      "title": "Georgetown's Best Hawkers & Durian Strip | Simply Enak Food Tours",
+      "description": "Explore Georgetown after dark — open-air hawker stalls, heritage streets, hidden rooftop, and the Jalan Macalister durian strip. Book your Penang night tour.",
       "image": {
         "id": 353,
         "alt": null,
@@ -5789,13 +6877,13 @@
         }
       }
     },
-    "updatedAt": "2026-07-08T05:24:40.128Z",
+    "updatedAt": "2026-07-09T13:31:55.374Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
     "is_bookable": true,
-    "short_description": "Simply Enak's most-loved Penang tour starts as the sun sets.",
-    "full_description": "George Town comes alive as the heat of the day fades. This tour starts at sunset, when the city hawkers begin arriving at their evening spots and the colonial-era streets take on a different character.\n\nWe start at a popiah stall in the heart of the UNESCO zone. Popiah is a fresh spring roll - thin rice paper wrapper stuffed with jicama, carrot, tofu, bean sprouts, and chilli, topped with shallots and a sweet soy glaze. The auntie who makes them has been doing this since 1985.\n\nNext, we walk through Little India as the jewellery shops wind down and the banana leaf rice restaurants fill up. We stop at a corner stall that serves the best vadai in George Town - crunchy lentil fritters with a coconut chutney made using the same recipe for three generations.\n\nThe tour continues through the Armenian Street heritage area, where we taste cendol and apom from street vendors in front of pre-war shophouses. Your guide will point out the street art and share stories about Penang history.\n\nWe end at a clan jetty - one of the six wooden villages built over the water by Chinese immigrant clans in the 19th century. Here, a third-generation resident serves home-cooked Peranakan food: buah keluak, inchi kabin, and acar. The view of the mainland lights across the channel is worth the walk alone.\n\nThroughout the tour, your guide will connect each dish to George Town history as a British trading post, a Chinese immigrant gateway, and a Malay fishing village.",
+    "short_description": "From open-air hawker stalls with charcoal fires to a hidden rooftop and the Jalan Macalister durian strip — Georgetown after dark is a different city.",
+    "full_description": "This evening walk through Georgetown's Presgrave neighbourhood starts at the hawker centre.\n\nAs the sun drops and the charcoal fires light up, we take you to an open-air hawker centre where the cooking happens right in front of you. Watch Hokkien Mee tossed over open flames until the prawn broth turns smoky and dark, try fried carrot cake sticky and caramelised from the pan, bite into loh bak, Penang's famous crispy five-spice meat roll, and if you dare, oyster omelette — crispy at the edges and custardy inside. For the adventurous, there's curry mee with pig's blood tofu, silky and deeply savoury. Your guide will teach you the unwritten seating rules here, the ones that separate regulars from tourists, so you can come back on your own and order like you've been coming for years.\n\nBetween the food, we walk a street of eclectic shophouses ranked as one of the most beautiful in the world. Named after the first president of the Penang Chinese Chamber of Commerce, this road layers four centuries — a Malay fishing village below British shophouses, above a Chinese mercantile empire, all alive at once. We pass the Sun Yat-Sen Museum, the Masjid Pakistan, and the Penang State Museum heritage corridor before climbing to a hidden rooftop above Penang's first shopping mall, built in 1967. The Georgetown skyline from this angle rewards the climb.\n\nThen comes the durian. Jalan Macalister, named after Penang's 19th century governor, is a one-kilometre stretch of owner-operated stalls where we teach you the durian dictionary: how to read a shell, smell for grade, and tell a Musang King from a D24. If you're lucky, the Catholic church on Macalister Road chimes while you eat.\n\nYou'll leave with a full stomach, a good story, and the confidence to come back and do it all on your own.",
     "duration_minutes": 240,
     "max_participants": 7,
     "min_participants": 2,
@@ -5946,7 +7034,7 @@
     "start_times": [
       "5:00 pm"
     ],
-    "dishes_count": null,
+    "dishes_count": 10,
     "walking_distance": "2.5 km",
     "directions_html": null,
     "differentiators_tourist": [],

@@ -327,6 +327,44 @@ function flattenGallery(images: any[]): any[] {
 }
 
 /**
+ * Map Payload foodItems to the {name, desc} format the template expects.
+ */
+function mapFoodItems(payload: any): any[] {
+  const items = payload.foodItems || [];
+  if (!Array.isArray(items) || items.length === 0) return [];
+  return items.map((f: any) => ({
+    name: f.name || '',
+    desc: f.description || f.desc || '',
+  })).filter((f: any) => f.name);
+}
+
+/**
+ * Map Payload itinerary to the {time, title, description} format.
+ * Payload may embed the time in the title like "09:15 AM - Meet at...".
+ */
+function mapItinerary(payload: any): any[] {
+  const raw = payload.itinerary || [];
+  if (!Array.isArray(raw) || raw.length === 0) return [];
+  return raw.map((stop: any) => {
+    let title = stop.title || '';
+    let time = stop.time || '';
+    // Extract time from title if embedded: "09:15 AM - Title here"
+    if (!time && title) {
+      const match = title.match(/^(\d{1,2}:\d{2}\s*(?:AM|PM))\s*[-–—]\s*/i);
+      if (match) {
+        time = match[1];
+        title = title.slice(match[0].length);
+      }
+    }
+    return {
+      time,
+      title,
+      description: stop.description || stop.desc || '',
+    };
+  }).filter((s: any) => s.title);
+}
+
+/**
  * Merge a single payload tour with its hardcoded counterpart.
  * Payload data takes priority where non-null; hardcoded fills gaps.
  */
@@ -340,6 +378,7 @@ function mergeTour(payload: any) {
   if (!hardcoded) {
     // No hardcoded fallback — return Payload data shaped like hardcoded tours
     return {
+      id: payload.id,
       slug: payload.slug,
       ticketingHubId: payload.ticketingHubId || null,
       isBookable: payload.isBookable === true,
@@ -351,18 +390,19 @@ function mergeTour(payload: any) {
       currency: payload.currency || 'MYR',
       duration: payload.duration || '',
       schedule: 'Daily',
-      groupSize: payload.maxParticipants ? `2–${payload.maxParticipants} people` : '2–9 people',
-      tastings: null,
-      walkingDistance: null,
-      cancellation: 'Free cancellation',
-      difficulty: 'Easy',
+      startTime: (payload.startTimes?.[0]?.time) || (payload.start_times?.[0]) || null,
+      groupSize: payload.maxParticipants ? `2–${payload.maxParticipants} participants` : '2–7 participants',
+      tastings: payload.dishesCount || payload.dishes_count || null,
+      walkingDistance: payload.walkingDistance || payload.walking_distance || null,
+      cancellation: payload.cancellationPolicy || payload.cancellation_policy || 'Free cancellation',
+      difficulty: payload.difficulty || 'Easy',
       location: payload.location || '',
       image: typeof payload.heroImage === 'object' && payload.heroImage?.url ? payload.heroImage.url : (payload.heroImage || null),
       heroImageAlt: payload.heroImageAlt || '',
       galleryImages: flattenGallery(payload.gallery_images || payload.galleryImages || []),
       highlights: unwrapHighlights(payload),
-      itinerary: [],
-      foods: [],
+      itinerary: mapItinerary(payload),
+      foods: mapFoodItems(payload),
       forYou: buildForYou(payload),
       dietaryOptions: unwrap(payload.dietaryOptions, 'slug'),
       specialtyExperiences: unwrap(payload.specialtyExperiences, 'slug'),
@@ -381,7 +421,18 @@ function mergeTour(payload: any) {
     };
   }
 
+  // Resolve foods: Payload takes priority, hardcoded fills gaps
+  const mergedFoods = mapFoodItems(payload).length > 0
+    ? mapFoodItems(payload)
+    : (hardcoded.foods || []);
+
+  // Resolve itinerary: Payload takes priority, hardcoded fills gaps
+  const mergedItinerary = mapItinerary(payload).length > 0
+    ? mapItinerary(payload)
+    : (hardcoded.itinerary || []);
+
   return {
+    id: payload.id,
     slug: payload.slug || hardcoded.slug,
     ticketingHubId: payload.ticketingHubId || hardcoded.ticketingHubId || null,
     isBookable: payload.isBookable === true,
@@ -393,21 +444,22 @@ function mergeTour(payload: any) {
     currency: payload.currency || 'MYR',
     duration: payload.duration || hardcoded.duration,
     schedule: hardcoded.schedule || 'Daily',
+    startTime: (payload.startTimes?.[0]?.time) || (payload.start_times?.[0]) || null,
     groupSize: payload.maxParticipants
-      ? `2–${payload.maxParticipants} people`
+      ? `2–${payload.maxParticipants} participants`
       : hardcoded.groupSize,
-    tastings: hardcoded.tastings || null,
-    walkingDistance: hardcoded.walkingDistance || null,
-    cancellation: hardcoded.cancellation || 'Free cancellation',
-    difficulty: hardcoded.difficulty || 'Easy',
+    tastings: payload.dishesCount || payload.dishes_count || hardcoded.tastings || null,
+    walkingDistance: payload.walkingDistance || payload.walking_distance || hardcoded.walkingDistance || null,
+    cancellation: payload.cancellationPolicy || payload.cancellation_policy || hardcoded.cancellation || 'Free cancellation',
+    difficulty: payload.difficulty || hardcoded.difficulty || 'Easy',
     location: payload.location || hardcoded.location,
     image: payload.heroImage?.url || payload.image || hardcoded.image,
     heroImageAlt: payload.heroImageAlt || '',
     galleryImages: flattenGallery(payload.gallery_images || payload.galleryImages || []) || (hardcoded as any).gallery_images || [],
-    highlights: hardcoded.highlights && hardcoded.highlights.length > 0 ? hardcoded.highlights : unwrapHighlights(payload),
-    itinerary: hardcoded.itinerary || [],
-    foods: hardcoded.foods || [],
-    forYou: hardcoded.forYou && hardcoded.forYou.length > 0 ? hardcoded.forYou : buildForYou(payload),
+    highlights: unwrapHighlights(payload).length > 0 ? unwrapHighlights(payload) : (hardcoded.highlights || []),
+    itinerary: mergedItinerary,
+    foods: mergedFoods,
+    forYou: typeof buildForYou(payload) === 'object' && buildForYou(payload).length > 0 ? buildForYou(payload) : (hardcoded.forYou || []),
     dietaryOptions: (payload.dietaryOptions && payload.dietaryOptions.length > 0) ? unwrap(payload.dietaryOptions, 'slug') : (hardcoded.dietaryOptions || []),
     specialtyExperiences: (payload.specialtyExperiences && payload.specialtyExperiences.length > 0) ? unwrap(payload.specialtyExperiences, 'slug') : (hardcoded.specialtyExperiences || []),
     locations: (payload.locations && payload.locations.length > 0) ? unwrap(payload.locations, 'slug') : (hardcoded.locations || []),
