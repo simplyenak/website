@@ -51,15 +51,11 @@ jobs:
       - name: Push translations to Payload CMS
         working-directory: site
         run: |
-          cat > .env.push <<'PEOF'
-          PAYLOAD_URL=https://cms.system.simplyenak.com
-          PAYLOAD_TOKEN=${{ secrets.PAYLOAD_TOKEN }}
-          PAYLOAD_EMAIL=${{ secrets.PAYLOAD_EMAIL }}
-          PAYLOAD_PASSWORD=${{ secrets.PAYLOAD_PASSWORD }}
-          PEOF
           node scripts/push-translations-payload.mjs 2>&1 || echo "⚠️ Push failed (non-fatal)"
         env:
-          PAYLOAD_TOKEN: ${{ secrets.PAYLOAD_TOKEN }}
+          PAYLOAD_URL: https://cms.system.simplyenak.com
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
