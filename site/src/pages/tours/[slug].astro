@@ -99,7 +99,7 @@ const startTime = tour.startTime || '';
 let tourTime = 'Daily';
 if (startTime) {
   const hour = parseInt(startTime.split(':')[0], 10);
-  const ampm = startTime.includes('PM') ? 'PM' : 'AM';
+  const ampm = startTime.toLowerCase().includes('pm') ? 'PM' : 'AM';
   const hour24 = ampm === 'PM' && hour !== 12 ? hour + 12 : (ampm === 'AM' && hour === 12 ? 0 : hour);
   if (hour24 < 12) tourTime = 'Morning';
   else if (hour24 < 17) tourTime = 'Afternoon';
