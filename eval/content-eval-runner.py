@@ -239,7 +239,7 @@ def check_tour_data() -> dict:
     # Map generic field names to actual Payload/snapshot field names
     required = [
         ("name", "title / name"),
-        ("shortDescription", "description"),
+        (["shortDescription", "fullDescription", "short_description", "full_description"], "description"),
         ("heroImage", "hero_image"),
         ("price", "pricing"),
         ("meetingPoint", "meeting_point"),
@@ -253,9 +253,16 @@ def check_tour_data() -> dict:
         status = t.get("status", t.get("_status", ""))
         if status == "draft":
             continue
-        for field, label in required:
-            val = t.get(field)
-            if val is None or val == '' or (isinstance(val, (list, dict)) and len(val) == 0):
+        for field_or_list, label in required:
+            # Support multiple field names (accept any of them)
+            fields = field_or_list if isinstance(field_or_list, list) else [field_or_list]
+            found = False
+            for field in fields:
+                val = t.get(field)
+                if val is not None and val != '' and not (isinstance(val, (list, dict)) and len(val) == 0):
+                    found = True
+                    break
+            if not found:
                 issues.append(f"{slug}: missing {label}")
     return pass_result(f"All {len(data)} tours OK", issues) if not issues else fail_result(f"{len(issues)} gaps", issues[:20])
 
