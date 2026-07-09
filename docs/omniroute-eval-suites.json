@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Content Gen — Simply Enak",
+    "description": "Test models on generating tourism content in Simply Enak's brand voice",
+    "cases": [
+      {
+        "name": "Tour description",
+        "input": "Write a 100-word description for a 'Penang Street Food Safari' tour. Include night market visit and 3 dishes.",
+        "expected_strategy": "contains",
+        "expected_value": "char koay teow"
+      },
+      {
+        "name": "Tour description MS",
+        "input": "Tulis penerangan 100 patah perkataan untuk lawatan 'Penang Street Food Safari'. Sertakan lawatan pasar malam dan 3 hidangan.",
+        "expected_strategy": "contains",
+        "expected_value": "pasar malam"
+      },
+      {
+        "name": "Hero section",
+        "input": "Write a 40-word hero section for a Kuala Lumpur landing page about hidden food gems. Include a CTA.",
+        "expected_strategy": "length_between",
+        "expected_value": "30-60"
+      },
+      {
+        "name": "Alt text",
+        "input": "Write alt text for an image of nasi lemak wrapped in banana leaf",
+        "expected_strategy": "max_length",
+        "expected_value": "15"
+      },
+      {
+        "name": "Brand voice check",
+        "input": "Describe why someone should visit Malaysia for food",
+        "expected_strategy": "no_contains",
+        "expected_value": "we're not"
+      },
+      {
+        "name": "CTA generation",
+        "input": "Generate 3 CTAs for a 'Book Now' button on a food tour page",
+        "expected_strategy": "contains",
+        "expected_value": "Book"
+      }
+    ]
+  },
+  {
+    "name": "Translations — EN ↔ MS & ZH",
+    "description": "Test translation quality for Malaysian tourism content across languages",
+    "cases": [
+      {
+        "name": "EN → MS street food",
+        "input": "Translate to Malay: 'Experience the vibrant street food scene in George Town'",
+        "expected_strategy": "contains",
+        "expected_value": "makanan"
+      },
+      {
+        "name": "EN → MS cultural",
+        "input": "Translate to Malay: 'This dish has been passed down for three generations'",
+        "expected_strategy": "contains",
+        "expected_value": "tiga generasi"
+      },
+      {
+        "name": "EN → ZH food",
+        "input": "Translate to Chinese: 'The best laksa you'll ever taste'",
+        "expected_strategy": "contains",
+        "expected_value": "叻沙"
+      },
+      {
+        "name": "MS → EN taste",
+        "input": "Translate to English: 'Makanan ini sangat sedap dan unik, tidak akan dijumpai di tempat lain'",
+        "expected_strategy": "contains",
+        "expected_value": "delicious"
+      },
+      {
+        "name": "MS → EN warmth",
+        "input": "Translate to English: 'Kami menyambut tetamu dengan senyuman dan hati yang terbuka'",
+        "expected_strategy": "max_length",
+        "expected_value": "20"
+      },
+      {
+        "name": "ZH → EN",
+        "input": "Translate to English: '这家餐厅已经营业了50年'",
+        "expected_strategy": "contains",
+        "expected_value": "50"
+      }
+    ]
+  },
+  {
+    "name": "SEO — Meta & Slugs",
+    "description": "Test SEO metadata generation including titles, descriptions, and URL slugs",
+    "cases": [
+      {
+        "name": "Meta title",
+        "input": "Generate a meta title for a 'Batu Caves Day Trip' page",
+        "expected_strategy": "max_length",
+        "expected_value": "60"
+      },
+      {
+        "name": "Meta title 2",
+        "input": "Generate a meta title for a 'Malaysian Cooking Class' page",
+        "expected_strategy": "contains",
+        "expected_value": "Cooking"
+      },
+      {
+        "name": "Meta description",
+        "input": "Generate a 140-char meta description for a 'Kuala Lumpur Food Tour'",
+        "expected_strategy": "length_between",
+        "expected_value": "120-160"
+      },
+      {
+        "name": "Meta description 2",
+        "input": "Generate a meta description for a 'Penang Heritage Walk'",
+        "expected_strategy": "min_length",
+        "expected_value": "120"
+      },
+      {
+        "name": "URL slug",
+        "input": "Generate a URL slug for 'Authentic Malaysian Cooking Class in Kuala Lumpur'",
+        "expected_strategy": "max_length",
+        "expected_value": "30"
+      },
+      {
+        "name": "URL slug 2",
+        "input": "Generate a URL slug for 'Penang Street Food Night Market Tour'",
+        "expected_strategy": "contains",
+        "expected_value": "penang"
+      }
+    ]
+  }
+]

@@ -1,6 +1,86 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
 
-# Archived Directus files
-ARCHIVED/directus-old/
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+target/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# AI Agent working directories
+.agents/
+.agent/
+.claude/
+.claude-flow/
+.claude/agents/
+.claude/commands/
+.claude/helpers/
+.claude/skills/
+.headroom/
+.qwen/
+.swarm/
+
+# Archived / Legacy
+ARCHIVED/
+claude-brain-archived/
+
+# Side experiments
+beautiful-html-templates/
+claw-code/
+conscious-malaysia/
+copaw-docker/
+frontend-slides/
+gallery_*/
+itinerary-planner/
+memU/
+memU-server/
+memU-ui/
+mempalace-dokploy/
+mempalace-obsidian/
+nanoclaw/
+ollama-docker/
+personaplex/
+seomachine/
+ui-ux-pro-max-skill/
+agency-agents/
+agent-rules-books/
+auto-cpufreq/
+keychron-config/
+omiroute/
+Johnny.Decimal/
+
+# System / Infra
+anytype-network.yml
+
+# Hermes agent clone (separate repo)
+hermes-agent/
+
+# Payload local
 payload-local/
-revamp/guides-astro
-site/src/data/content/.translate-backup/
+
+# Random scripts (not project-specific)
+scripts/*.py
+scripts/*.sh
+scripts/*.md
+scripts/seo-automation/
