@@ -814,12 +814,12 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": false,
     "popular": false,
     "new": true,
     "badgeLabel": "New",
     "publishedAt": "2026-06-30T12:00:00.000Z",
-    "status": "published",
+    "status": "draft",
     "workflowStatus": "draft",
     "meta": {
       "title": "Georgetown's Best Hawkers &  Durian Strip | Simply Enak Food Tours",
@@ -880,7 +880,7 @@
         }
       }
     },
-    "updatedAt": "2026-07-09T14:03:44.047Z",
+    "updatedAt": "2026-07-09T15:27:29.734Z",
     "createdAt": "2026-07-09T09:43:48.772Z",
     "_status": "draft",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -7200,7 +7200,7 @@
         }
       }
     },
-    "updatedAt": "2026-07-09T15:22:45.944Z",
+    "updatedAt": "2026-07-09T15:27:26.474Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",

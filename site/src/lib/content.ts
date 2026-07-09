@@ -716,7 +716,7 @@ async function resolveTours(locale?: string): Promise<any[]> {
       return t.name && t.name !== item.name ? t : item;
     });
     return translated
-      .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
+      .filter((t: any) => t.slug && (t._status === 'published' || !t._status))
       .map(mergeTour)
       .filter(Boolean) as any[];
   }
@@ -725,7 +725,7 @@ async function resolveTours(locale?: string): Promise<any[]> {
   const live = await liveTours(locale);
   if (live && live.length > 0) {
     return live
-      .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
+      .filter((t: any) => t.slug && (t._status === 'published' || !t._status))
       .map(mergeTour)
       .filter(Boolean) as any[];
   }
@@ -733,7 +733,7 @@ async function resolveTours(locale?: string): Promise<any[]> {
   // Tier 2: JSON snapshots (fallback)
   if (snapshotTours.length > 0) {
     return snapshotTours
-      .filter((t: any) => t.slug && (t.status === 'published' || !t.status))
+      .filter((t: any) => t.slug && (t._status === 'published' || !t._status))
       .map(mergeTour)
       .filter(Boolean) as any[];
   }
