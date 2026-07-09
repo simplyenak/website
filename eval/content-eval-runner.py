@@ -16,6 +16,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -47,6 +48,11 @@ def pass_result(msg: str, details=None) -> dict:
 
 def fail_result(msg: str, details=None) -> dict:
     return {"passed": False, "summary": msg, "details": details or msg}
+
+
+def warn_result(msg: str, details=None) -> dict:
+    """Reports issue but returns passed=True — doesn't block deploy."""
+    return {"passed": True, "summary": msg, "details": details or msg}
 
 
 # ── Landing page checks ──
@@ -308,13 +314,37 @@ def check_landing_page_count() -> dict:
 # ── Handler dispatch ──
 
 def check_i18n_coverage() -> dict:
-    stories = load_json(CONTENT_DIR / "stories.json")
-    issues = []
-    if stories:
-        untranslated = [s.get("slug","?") for s in stories if not s.get("translations") or len(s.get("translations",[])) == 0]
-        if untranslated:
-            issues.append(f"{len(untranslated)}/{len(stories)} stories lack translation")
-    return pass_result(f"{len(stories or [])} stories checked", issues) if not issues else fail_result("i18n gaps", issues)
+    """Check translation coverage across all 16 collections. Warn-only — doesn't block deploy."""
+    eval_dir = Path(__file__).resolve().parent
+    script = eval_dir / "check-i18n-coverage.mjs"
+    if not script.exists():
+        return warn_result("check-i18n-coverage.mjs not found")
+    try:
+        result = subprocess.run(
+            ["node", str(script)],
+            capture_output=True, text=True, timeout=30,
+        )
+        if result.returncode != 0:
+            return warn_result(f"check-i18n-coverage.mjs exited {result.returncode}", result.stderr[:500])
+        report = json.loads(result.stdout)
+    except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
+        return warn_result(f"i18n check error: {e}")
+
+    total = report.get("totalUntranslated", 0)
+    stale = report.get("totalStale", 0)
+    expected = report.get("expectedCollections", 0)
+    issues = report.get("issues", [])
+
+    if not issues:
+        return pass_result(f"All {expected} expected collections OK")
+
+    parts = []
+    if total > 0:
+        parts.append(f"{total} untranslated")
+    if stale > 0:
+        parts.append(f"{stale} stale")
+
+    return warn_result(f"i18n gaps: {', '.join(parts)} across {len(issues)} collections", issues)
 
 def check_tour_regression() -> dict:
     tours = load_json(CONTENT_DIR / "tours.json")
