@@ -56,9 +56,10 @@ const TARGET_LANGS = LANG_ARG ? LANG_ARG.split(',').map(l => l.trim()).filter(l 
 
 // ─── Translation Provider ────────────────────────────────────────────────────
 //
-// Supports two providers (set TRANSLATE_PROVIDER env var):
+// Supports three providers (set TRANSLATE_PROVIDER env var):
 //   "gemini"      (default) — Google Gemini Flash via REST API
 //   "openrouter"  — OpenRouter free models via OpenAI-compatible API
+//   "omniroute"   — Omniroute AI gateway via OpenAI-compatible API
 //
 // Keys:
 //   GEMINI_API_KEY=key1,key2,...       — for gemini provider (round-robin)
@@ -90,16 +91,23 @@ const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY || '';
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'meta-llama/llama-4-maverick:free';
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
+// ─── Omniroute (OpenAI-compatible, Simply Enak AI gateway) ─────────────────────
+const OMNIROUTE_KEY = process.env.OMNIROUTE_API_KEY || '';
+const OMNIROUTE_MODEL = process.env.OMNIROUTE_MODEL || 'auto/best-coding';
+const OMNIROUTE_URL = (process.env.OMNIROUTE_BASE_URL || 'https://omniroute.system.simplyenak.com') + '/v1/chat/completions';
+
 // Fields longer than this are sent individually; shorter ones are batched.
 const LONG_FIELD_THRESHOLD = 500;
 
 // Rate limiting
 let lastCallTime = 0;
 const MIN_INTERVAL_MS = TRANSLATE_PROVIDER === 'openrouter' ? 2000
+  : TRANSLATE_PROVIDER === 'omniroute' ? 1000
   : Math.max(2000, Math.round(60000 / (15 * Math.max(GEMINI_KEYS.length, 1))));
 
 async function llmCall(prompt) {
   if (TRANSLATE_PROVIDER === 'openrouter') return openrouterCall(prompt);
+  if (TRANSLATE_PROVIDER === 'omniroute') return omnirouteCall(prompt);
   return geminiCall(prompt);
 }
 
@@ -215,6 +223,62 @@ async function openrouterCall(prompt) {
     }
   }
   throw new Error('OpenRouter call exhausted all retries without returning');
+}
+
+// ─── Omniroute (OpenAI-compatible) ────────────────────────────────────────────
+async function omnirouteCall(prompt) {
+  if (!OMNIROUTE_KEY) throw new Error('OMNIROUTE_API_KEY not set');
+
+  const elapsed = Date.now() - lastCallTime;
+  if (elapsed < MIN_INTERVAL_MS) {
+    await new Promise(r => setTimeout(r, MIN_INTERVAL_MS - elapsed));
+  }
+
+  let attempts = 0;
+  const MAX_ATTEMPTS = 3;
+  while (attempts < MAX_ATTEMPTS) {
+    try {
+      lastCallTime = Date.now();
+      const res = await fetch(OMNIROUTE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OMNIROUTE_KEY}`,
+        },
+        body: JSON.stringify({
+          model: OMNIROUTE_MODEL,
+          messages: [{ role: 'user', content: prompt }],
+          temperature: 0.3,
+          max_tokens: 8192,
+        }),
+      });
+
+      if (res.status === 429) {
+        const waitSec = 5 * Math.pow(2, attempts);
+        console.log(`  ⏳ Rate limited (Omniroute), waiting ${waitSec}s...`);
+        await new Promise(r => setTimeout(r, waitSec * 1000));
+        attempts++;
+        continue;
+      }
+
+      if (!res.ok) {
+        const body = await res.text();
+        throw new Error(`Omniroute API ${res.status}: ${body.slice(0, 300)}`);
+      }
+
+      const data = await res.json();
+      const text = data?.choices?.[0]?.message?.content;
+      if (!text) {
+        throw new Error(`Empty Omniroute response: ${JSON.stringify(data).slice(0, 200)}`);
+      }
+      return text;
+    } catch (err) {
+      attempts++;
+      if (attempts >= MAX_ATTEMPTS) throw new Error(`Omniroute failed after ${MAX_ATTEMPTS} attempts: ${err.message}`);
+      await new Promise(r => setTimeout(r, 3000 * attempts));
+    }
+  }
+  throw new Error('Omniroute call exhausted all retries without returning');
 }
 
 // Translate a single field — plain text in, plain text out.

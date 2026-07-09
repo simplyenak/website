@@ -7,7 +7,8 @@
 #   3. Push translations to Payload via REST API
 #   4. Commit and push to GitHub → triggers redeploy
 #
-# Env: PAYLOAD_URL, PAYLOAD_TOKEN, GEMINI_API_KEY
+# Env: PAYLOAD_URL, PAYLOAD_TOKEN, OMNIROUTE_API_KEY (or GEMINI_API_KEY)
+# Set TRANSLATE_PROVIDER=omniroute to use Omniroute (default: gemini)
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -30,7 +31,7 @@ echo "  Found ${UNTRANSLATED} untranslated + ${STALE} stale items."
 
 echo ""
 echo "▸ Translating missing and stale content..."
-node scripts/translate-content.mjs --smart 2>&1 | tail -10
+TRANSLATE_PROVIDER="${TRANSLATE_PROVIDER:-omniroute}" node scripts/translate-content.mjs --smart 2>&1 | tail -10
 echo "  ✅ Translation complete"
 
 echo ""
