@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList, getImageUrl } from '~/lib/content';
 import PlayfulGallery from '~/components/widgets/PlayfulGallery.astro';
 import TourContactCTA from '~/components/tours/TourContactCTA.astro';
+import VideoEmbed from '~/components/common/VideoEmbed.astro';
 import { useTranslations } from '~/i18n/utils';
 import reviews from '~/data/content/reviews.json';
 
@@ -308,6 +309,17 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
             </div>
           )}
         </section>
+
+        <!-- Promo Video -->
+        {tour.promo_video_url && (
+          <section class="mb-16 scroll-mt-20">
+            <div class="text-center mb-10">
+              <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">Watch</p>
+              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">See the Tour in Action</h2>
+            </div>
+            <VideoEmbed url={tour.promo_video_url} title={tour.name} />
+          </section>
+        )}
 
         <!-- Itinerary -->
         {tour.itinerary && tour.itinerary.length > 0 && (

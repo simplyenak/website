@@ -4,17 +4,21 @@ import { Icon } from 'astro-icon/components';
 import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList, getImageUrl } from '~/lib/content';
 import PlayfulGallery from '~/components/widgets/PlayfulGallery.astro';
 import TourContactCTA from '~/components/tours/TourContactCTA.astro';
+import VideoEmbed from '~/components/common/VideoEmbed.astro';
 import { useTranslations } from '~/i18n/utils';
 import reviews from '~/data/content/reviews.json';
 
 export async function getStaticPaths() {
-  const tours = await getAllTours('pt');
-  return tours.map((tour: any) => ({ params: { slug: tour.slug }, props: { tour } }));
+  const tours = await getAllTours();
+  const paths = tours.map((tour: any) => ({ params: { slug: tour.slug }, props: { tour } }));
+  // 301 redirect: eat-drink-george-town -> georgetown-night-food-durian
+  paths.push({ params: { slug: 'eat-drink-george-town' }, props: { tour: null, redirect: '/tours/georgetown-night-food-durian' } });
+  return paths;
 }
 
-const { tour } = Astro.props;
-const allTours = await getAllTours('pt');
-const locale = 'pt';
+const { tour, redirect } = Astro.props;
+if (redirect) { return Astro.redirect(redirect, 301); }
+const allTours = await getAllTours();
 const t = useTranslations('pt');
 const faqs = await getFAQs();
 const dietaryOptions = await getDietaryOptionList();
@@ -114,6 +118,30 @@ if (meetingPoint) {
   mapUrl = mapUrls[locKey] || 'https://maps.google.com/maps?q=Malaysia&z=10';
 }
 
+// Convert duration like "4 hours" or "3.5 hours" to ISO 8601 (PThH or PThHmM)
+function toIsoDuration(dur: string): string {
+  if (!dur) return '';
+  const hMatch = dur.match(/([\d.]+)\s*hours?/);
+  const minMatch = dur.match(/([\d.]+)\s*minutes?/);
+  if (!hMatch && !minMatch) return '';
+  const h = hMatch ? Math.floor(parseFloat(hMatch[1])) : 0;
+  const min = hMatch ? Math.round((parseFloat(hMatch[1]) - h) * 60) : (minMatch ? parseInt(minMatch[1]) : 0);
+  return `PT${h > 0 ? `${h}H` : ''}${min > 0 ? `${min}M` : ''}`;
+}
+const isoDuration = toIsoDuration(tour.duration || '');
+
+// Build audience list from travel types
+const audienceTypes: Record<string, string> = {
+  solo: 'https://schema.org/PeopleAudience',
+  couples: 'https://schema.org/PeopleAudience',
+  family: 'https://schema.org/FamilyGroupAudience',
+  foodie: 'https://schema.org/PeopleAudience',
+};
+const tourAudience = (tour.travelTypes || [])
+  .map((tt: any) => typeof tt === 'string' ? tt : tt.slug)
+  .filter(Boolean)
+  .slice(0, 3);
+
 const tourSchema = {
   '@context': 'https://schema.org',
   '@type': ['TouristTrip', 'Product'],
@@ -121,6 +149,13 @@ const tourSchema = {
   description: tour.shortDesc || tour.tagline || '',
   url: `https://simplyenak.com/tours/${tour.slug}`,
   image: heroImgFinal || 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+  ...(isoDuration ? { duration: isoDuration } : {}),
+  ...(tourAudience.length > 0 ? {
+    audience: tourAudience.map((a: string) => ({
+      '@type': audienceTypes[a] || 'PeopleAudience',
+      name: a.charAt(0).toUpperCase() + a.slice(1),
+    })),
+  } : {}),
   location: {
     '@type': 'Place',
     name: tour.location || 'Kuala Lumpur',
@@ -133,10 +168,11 @@ const tourSchema = {
   },
   offers: {
     '@type': 'Offer',
-    price: tour.price ? tour.price.replace('RM ', '') : '285',
+    price: tour.price ? String(tour.price).replace('RM ', '') : '285',
     priceCurrency: 'MYR',
     availability: 'https://schema.org/InStock',
     url: `https://simplyenak.com/tours/${tour.slug}`,
+    ...(tour.cancellationPolicy ? { cancellationPolicy: tour.cancellationPolicy } : {}),
   },
   itinerary: tour.itinerary?.map((stop: any) => ({
     '@type': 'TouristAttraction',
@@ -150,6 +186,10 @@ const tourSchema = {
     telephone: '+60 17-287 8929',
   },
 };
+
+// WhatsApp URL for tour enquiries
+const waMsg = `Hi Simply Enak, I'm interested in ${(tour.name || tour.tagline || '').replace(/["']/g, '')}`;
+const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
 ---
 
 <Layout metadata={meta}>
@@ -270,6 +310,17 @@ const tourSchema = {
           )}
         </section>
 
+        <!-- Promo Video -->
+        {tour.promo_video_url && (
+          <section class="mb-16 scroll-mt-20">
+            <div class="text-center mb-10">
+              <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">Watch</p>
+              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">See the Tour in Action</h2>
+            </div>
+            <VideoEmbed url={tour.promo_video_url} title={tour.name} />
+          </section>
+        )}
+
         <!-- Itinerary -->
         {tour.itinerary && tour.itinerary.length > 0 && (
           <section id="itinerary-section" class="mb-16 scroll-mt-20">
@@ -388,7 +439,7 @@ const tourSchema = {
           <h2 class="font-bold font-heading text-default text-2xl mb-8 text-center">{t('tour.youMayAlsoEnjoy')}</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {sameCityTours.length > 0 ? sameCityTours.map((related: any) => (
-              <a href={`/pt/tours/${related.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
+              <a href={`/tours/${related.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
                 <div class="h-40 overflow-hidden relative">
                   {related.image && <img src={getImageUrl(related.image)} alt={related.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />}
                 </div>
@@ -422,7 +473,7 @@ const tourSchema = {
                   <Icon name="tabler:clock" class="w-4 h-4 text-muted" />
                   <span class="text-muted">Duration</span>
                 </div>
-                <p class="text-default font-semibold">{tour.duration || '3.5 hours'}</p>
+                <p class="text-default font-semibold">{tour.tourType === 'private' ? 'Your group only' : tour.groupSize || '2–9 people'}</p>
               </div>
               <div>
                 <div class="flex items-center gap-1.5">
@@ -534,7 +585,50 @@ const tourSchema = {
       </div>
     </section>
   )}
+
+  <!-- Post-reviews CTA -->
+  <section class="py-16 bg-primary/5 dark:bg-primary/10">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-4">Ready to experience {tour.name || 'this tour'}?</h2>
+      <p class="text-muted mb-8 max-w-lg mx-auto">Book now or chat with us — we'll answer any questions and help you plan your visit.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href={waUrl} target="_blank"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href={`/tours/${tour.slug}`} class="border-2 border-gray-300 dark:border-white/20 text-default font-semibold px-8 py-3.5 rounded hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-sm">
+          Back to Details
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<!-- Mobile sticky booking bar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-[#1a1818] border-t border-gray-200 dark:border-white/10 shadow-2xl px-4 py-3" style="padding-bottom:max(0.75rem,env(safe-area-inset-bottom,0.75rem))">
+  <div class="flex items-center justify-between max-w-lg mx-auto">
+    <div>
+      <p class="text-lg font-bold text-primary">{tour.price}<span class="text-xs text-muted font-normal ml-1">{tour.currency || 'MYR'}</span></p>
+      <p class="text-xs text-muted">per person</p>
+    </div>
+    <div class="flex gap-2">
+      <a href={waUrl} target="_blank"
+         class="inline-flex items-center gap-1.5 bg-accent text-black font-bold px-5 py-2.5 rounded-lg hover:bg-[#e8922e] transition-colors text-xs">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        Enquire Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Push content up to avoid overlap with sticky bar -->
+<style is:global>
+  @media (max-width: 767px) {
+    body { padding-bottom: 68px; }
+  }
+</style>
+
 <script is:inline>
   if (window.trackTourInterest) window.trackTourInterest('{tour.name || tour.tagline || ''}');
 </script>
