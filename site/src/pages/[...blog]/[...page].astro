@@ -44,6 +44,7 @@ const vendorStoriesHidden = vendorStoriesRest.slice(MAX_VISIBLE);
 const metadata = {
   title: sp.seo_title || `Stories${currentPage > 1 ? `  -  Page ${currentPage}` : ''}`,
   description: sp.seo_description || 'Local food knowledge, travel tips, and the vendors who keep Malaysian traditions alive.',
+  robots: currentPage > 1 ? { index: false, follow: true } : {},
 };
 ---
 

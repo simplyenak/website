@@ -28,10 +28,31 @@ export default defineConfig({
 
   integrations: [
     sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          ms: 'ms',
+          zh: 'zh',
+          de: 'de',
+          es: 'es',
+          fr: 'fr',
+          nl: 'nl',
+          ru: 'ru',
+          ja: 'ja',
+          pt: 'pt',
+        },
+      },
       filter: (page) => {
-        // Exclude pagination pages and locale 404s from sitemap
+        // Exclude non-SEO pages from sitemap to focus crawl budget on real content
         if (page.includes('/404')) return false;
         if (page.includes('/category/') || page.includes('/tag/')) return false;
+        // Post-conversion thank-you pages — no SEO value, already noindex
+        if (page.includes('/thank-you')) return false;
+        // Pagination pages (/stories/2, /de/stories/3, etc.) — thin content
+        if (/\/stories\/\d+$/.test(page)) return false;
+        // Duplicate slug from content system
+        if (page.includes('%20-%20Copy')) return false;
         return true;
       },
     }),
