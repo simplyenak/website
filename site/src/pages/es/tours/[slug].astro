@@ -7,6 +7,7 @@ import TourContactCTA from '~/components/tours/TourContactCTA.astro';
 import VideoEmbed from '~/components/common/VideoEmbed.astro';
 import { useTranslations } from '~/i18n/utils';
 import reviews from '~/data/content/reviews.json';
+import stories from '~/data/content/stories.json';
 
 export async function getStaticPaths() {
   const tours = await getAllTours();
@@ -34,6 +35,35 @@ const extractCity = (loc: string) => {
 };
 const currentCity = extractCity(tour.location || '');
 const sameCityTours = allTours.filter((t: any) => t.slug !== tour.slug && extractCity(t.location || '') === currentCity).slice(0, 4);
+
+// Match related food guides by location and dietary tags
+const extractStoryCity = (slug: string): string => {
+  if (!slug) return '';
+  if (slug.includes('penang')) return 'Penang';
+  if (slug.includes('kuala-lumpur') || slug.includes('kl-')) return 'Kuala Lumpur';
+  if (slug.includes('ipoh')) return 'Ipoh';
+  return '';
+};
+const currentCitySlug = tour.location?.toLowerCase().includes('penang') ? 'penang' : 'kuala-lumpur';
+const dietaryTags = (tour.dietaryOptions || []).map((d: any) => (typeof d === 'string' ? d : (d.slug || d.name || '')).toLowerCase());
+const relatedStories: any[] = [];
+for (const story of (stories || [])) {
+  if (story.status !== 'published' || story.workflowStatus !== 'published') continue;
+  const storyCity = extractStoryCity(story.slug || '');
+  if (!storyCity || extractCity(storyCity) !== currentCity) continue;
+  // Score: location match = 1, dietary keyword match = 2 each
+  const slugLower = (story.slug || '').toLowerCase();
+  const titleLower = (story.title || '').toLowerCase();
+  let score = 1;
+  for (const tag of dietaryTags) {
+    if (tag && (slugLower.includes(tag.slice(0, 4)) || titleLower.includes(tag.slice(0, 4)))) {
+      score += 2;
+    }
+  }
+  relatedStories.push({ story, score });
+}
+relatedStories.sort((a, b) => b.score - a.score);
+const topStories = relatedStories.slice(0, 4).map((r: any) => r.story);
 
 // Filter reviews matching this tour's location
 const tourLocation = tour.location?.toLowerCase().includes('penang') ? 'Penang' : 'KL';
@@ -64,12 +94,12 @@ const normalizedItinerary = itinerary.map((stop: any) => ({
   description: stop.description || stop.desc || '',
 }));
 
-// Determine tour time of day from first itinerary stop
-const firstTime = normalizedItinerary.length > 0 ? normalizedItinerary[0].time : '';
+// Determine tour time of day from start time
+const startTime = tour.startTime || '';
 let tourTime = 'Daily';
-if (firstTime) {
-  const hour = parseInt(firstTime.split(':')[0], 10);
-  const ampm = firstTime.includes('PM') ? 'PM' : 'AM';
+if (startTime) {
+  const hour = parseInt(startTime.split(':')[0], 10);
+  const ampm = startTime.includes('PM') ? 'PM' : 'AM';
   const hour24 = ampm === 'PM' && hour !== 12 ? hour + 12 : (ampm === 'AM' && hour === 12 ? 0 : hour);
   if (hour24 < 12) tourTime = 'Morning';
   else if (hour24 < 17) tourTime = 'Afternoon';
@@ -414,7 +444,17 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                 'secrets-of-kl-nightlife-street-art-and-cocktails': 'secrets-of-kl-nightlife',
               };
               const pageKey = tourSlugMap[tour.slug] || tour.slug;
-              return vis.length === 0 || vis.includes('all') || vis.includes('tour-detail') || vis.includes(pageKey);
+              // Resolve relatedTour to a slug — it may be a full object (snapshot)
+              // or a numeric ID (live API)
+              const relatedTourSlug = f.relatedTour
+                ? (typeof f.relatedTour === 'object'
+                    ? f.relatedTour.slug
+                    : typeof f.relatedTour === 'number'
+                      ? allTours.find((t: any) => t.id === f.relatedTour)?.slug || null
+                      : null)
+                : null;
+              // Show if: no visibility set, matches page type, matches tour specifically, or is linked via relatedTour
+              return vis.length === 0 || vis.includes('all') || vis.includes('tour-detail') || vis.includes(pageKey) || (relatedTourSlug && relatedTourSlug === tour.slug);
             }).slice(0, 12).map((faq: any) => {
               const question = faq.question || faq.q || '';
               let answer = faq.answer || faq.a || '';
@@ -427,7 +467,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                   <span class="text-default font-semibold pr-4">{question}</span>
                   <svg class="text-primary flex-shrink-0 group-open:rotate-180 h-4 transition-transform w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
                 </summary>
-                <div class="px-4 pb-4"><p class="text-sm text-muted">{answer}</p></div>
+                <div class="px-4 pb-4"><p class="text-sm text-muted" set:html={answer}></p></div>
               </details>
               );
             })}
@@ -456,6 +496,25 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
             )}
           </div>
         </section>
+
+        <!-- Related food guides -->
+        {topStories.length > 0 && (
+          <section class="mb-16">
+            <h2 class="font-bold font-heading text-default text-2xl mb-8 text-center">{t('tour.relatedGuides') || 'Food Guides for Your Tour'}</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {topStories.map((guide: any) => (
+                <a href={`/stories/${guide.slug}`} class="border border-gray-100 bg-white overflow-hidden group block hover:shadow-md rounded shadow-sm transition-all">
+                  <div class="p-4">
+                    <h3 class="text-sm font-bold font-heading text-default mb-1 group-hover:text-primary transition-colors">{guide.title}</h3>
+                    {guide.excerpt && <p class="text-xs text-muted line-clamp-2">{guide.excerpt}</p>}
+                    <span class="text-muted text-xs group-hover:text-primary transition-colors mt-2 inline-block">Read guide →</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
       </div>
 
       <!-- Right: Sidebar -->
@@ -473,21 +532,23 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                   <Icon name="tabler:clock" class="w-4 h-4 text-muted" />
                   <span class="text-muted">Duration</span>
                 </div>
-                <p class="text-default font-semibold">{tour.tourType === 'private' ? 'Your group only' : tour.groupSize || '2–9 people'}</p>
+                <p class="text-default font-semibold">{tour.duration || '3.5 hours'}</p>
               </div>
+              {tour.tastings && (
               <div>
                 <div class="flex items-center gap-1.5">
                   <Icon name="tabler:bowl-chopsticks" class="w-4 h-4 text-muted" />
                   <span class="text-muted">Tastings</span>
                 </div>
-                <p class="text-default font-semibold">{tour.tastings || foods.length + ' dishes'}</p>
+                <p class="text-default font-semibold">{tour.tastings}</p>
               </div>
+              )}
               <div>
                 <div class="flex items-center gap-1.5">
                   <Icon name="tabler:calendar-time" class="w-4 h-4 text-muted" />
                   <span class="text-muted">Start</span>
                 </div>
-                <p class="text-default font-semibold">{firstTime || tour.schedule || 'Daily'}</p>
+                <p class="text-default font-semibold">{tour.startTime || tour.schedule || 'Daily'}</p>
               </div>
               <div>
                 <div class="flex items-center gap-1.5">
@@ -501,7 +562,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                   <Icon name="tabler:users" class="w-4 h-4 text-muted" />
                   <span class="text-muted">Group</span>
                 </div>
-                <p class="text-default font-semibold">{tour.tourType === 'private' ? 'Your group only' : tour.groupSize || '2–9 people'}</p>
+                <p class="text-default font-semibold">{tour.tourType === 'private' ? 'Your group only' : tour.groupSize || '2–7 participants'}</p>
               </div>
               <div>
                 <div class="flex items-center gap-1.5">
@@ -592,7 +653,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
       <h2 class="text-2xl md:text-3xl font-bold font-heading mb-4">Ready to experience {tour.name || 'this tour'}?</h2>
       <p class="text-muted mb-8 max-w-lg mx-auto">Book now or chat with us — we'll answer any questions and help you plan your visit.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href={waUrl} target="_blank"
+        <a href={waUrl} target="_blank" data-track-source="post-reviews-cta"
            class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-colors text-sm">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
           Chat on WhatsApp
@@ -613,7 +674,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
       <p class="text-xs text-muted">per person</p>
     </div>
     <div class="flex gap-2">
-      <a href={waUrl} target="_blank"
+      <a href={waUrl} target="_blank" data-track-source="sticky-booking-bar"
          class="inline-flex items-center gap-1.5 bg-accent text-black font-bold px-5 py-2.5 rounded-lg hover:bg-[#e8922e] transition-colors text-xs">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
         Enquire Now
