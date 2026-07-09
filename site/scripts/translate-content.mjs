@@ -250,6 +250,7 @@ async function omnirouteCall(prompt) {
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.3,
           max_tokens: 8192,
+          stream: false,
         }),
       });
 
@@ -648,7 +649,13 @@ function exportMonitoringFiles() {
 
 async function main() {
   // Validate provider config
-  if (TRANSLATE_PROVIDER === 'openrouter') {
+  if (TRANSLATE_PROVIDER === 'omniroute') {
+    if (!OMNIROUTE_KEY) {
+      console.error('❌ OMNIROUTE_API_KEY not set.');
+      console.error('   Set it in your environment');
+      process.exit(1);
+    }
+  } else if (TRANSLATE_PROVIDER === 'openrouter') {
     if (!OPENROUTER_KEY) {
       console.error('❌ OPENROUTER_API_KEY not set.');
       console.error('   Get a free key at https://openrouter.ai/keys');
@@ -666,11 +673,15 @@ async function main() {
 
   const providerLabel = TRANSLATE_PROVIDER === 'openrouter'
     ? `OpenRouter (${OPENROUTER_MODEL})`
+    : TRANSLATE_PROVIDER === 'omniroute'
+    ? `Omniroute (${OMNIROUTE_MODEL || 'auto/best-coding'})`
     : `Gemini Flash (${GEMINI_KEYS.length} key${GEMINI_KEYS.length > 1 ? 's' : ''})`;
   console.log(`🌐 Simply Enak — Content Translation Agent (via ${providerLabel})`);
   console.log(`   Content dir: ${CONTENT_DIR}`);
   if (TRANSLATE_PROVIDER === 'openrouter') {
     console.log(`   Model: ${OPENROUTER_MODEL}`);
+  } else if (TRANSLATE_PROVIDER === 'omniroute') {
+    console.log(`   Model: ${OMNIROUTE_MODEL || 'auto/best-coding'}`);
   } else {
     console.log(`   API keys: ${GEMINI_KEYS.length} (${GEMINI_KEYS.length * 1500} requests/day capacity)`);
   }
