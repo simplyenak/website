@@ -9,76 +9,23 @@
   "contact_hours": "Mon - Sun: 9:00 - 20:00 Malaysia Time GMT+8",
   "whatsapp_number": "+60 17-287 8929",
   "contactMethods": {
-    "heading": "How Can We Help?",
-    "description": "Choose the easiest way to reach us. We read every message.",
-    "items": [
-      {
-        "type": "whatsapp",
-        "title": "Chat with Us",
-        "subtitle": "Fastest response",
-        "detail": "+60 17-287 8929",
-        "cta": {
-          "text": "Open WhatsApp",
-          "url": "https://wa.me/60172878929"
-        }
-      },
-      {
-        "type": "email",
-        "title": "Email Us",
-        "subtitle": "For detailed plans",
-        "detail": "booking@simplyenak.com",
-        "cta": {
-          "text": "Copy Email",
-          "url": ""
-        }
-      },
-      {
-        "type": "phone",
-        "title": "Call Us",
-        "subtitle": "For urgent queries",
-        "detail": "+60 17-287 8929",
-        "cta": {
-          "text": "Call Now",
-          "url": "tel:+60172878929"
-        }
-      }
-    ]
+    "heading": "",
+    "description": "",
+    "items": []
   },
   "planningScenarios": {
-    "heading": "Whatever Stage You're At",
-    "description": "We've helped guests from just browsing to we land tomorrow.",
-    "items": [
-      {
-        "title": "Just Browsing",
-        "description": "Not sure yet? No pressure. Ask us anything about our tours, food, or neighbourhoods."
-      },
-      {
-        "title": "Planning a Trip",
-        "description": "Tell us your dates and group size. We will recommend the right tour for you."
-      },
-      {
-        "title": "Landing Tomorrow",
-        "description": "Last-minute? We often have spots available. WhatsApp us for the fastest response."
-      },
-      {
-        "title": "Team Event",
-        "description": "Conference wrapping up? We will take your team somewhere memorable for the evening, with time to actually talk. KL and Penang."
-      }
-    ]
+    "heading": "",
+    "description": "",
+    "items": []
   },
   "ourPromise": {
-    "title": "Our Promise",
-    "description": "When you reach out to Simply Enak, you are talking to real people who actually run the tours.",
-    "highlights": [
-      "We reply within 3 hours (often faster on WhatsApp)",
-      "No automated responses. A real person reads every message",
-      "We will never push you to book something that is not right for you",
-      "If we are not the right fit, we will tell you honestly"
-    ]
+    "title": "",
+    "description": "",
+    "highlights": []
   },
   "businessHours": {
-    "text": "Mon - Sun: 9:00 - 20:00",
-    "timezone": "Malaysia Time (GMT+8)"
+    "text": "",
+    "timezone": ""
   },
   "created_at": "2026-05-19T08:34:28.206Z",
   "updated_at": "2026-06-27T07:36:55.709Z",

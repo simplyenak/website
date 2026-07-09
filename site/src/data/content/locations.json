@@ -131,21 +131,22 @@
       "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
       "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
       "polaroidLabel": null,
-      "subject": "landmark",
-      "custom_label": null,
-      "location_ref": null,
       "credit": null,
-      "gps": {
-        "lat": null,
-        "lng": null,
-        "place": null
-      },
+      "location_ref": null,
+      "neighbourhood_ref": [],
+      "food_ref": [],
+      "dietary_ref": [],
+      "travel_type_ref": [],
+      "specialty_ref": [],
+      "vendor_ref": [],
       "usage": null,
       "tags": [],
+      "renameTo": null,
+      "prefix": "payload-media",
       "updatedAt": "2026-06-19T00:18:02.769Z",
       "createdAt": "2026-06-19T00:18:01.822Z",
-      "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/simply-enak-landmark.jpg",
-      "thumbnailURL": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
+      "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
       "filename": "simply-enak-landmark.jpg",
       "mimeType": "image/jpeg",
       "filesize": 2305832,
@@ -155,7 +156,7 @@
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-400x300.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
           "width": 400,
           "height": 300,
           "mimeType": "image/jpeg",
@@ -163,7 +164,7 @@
           "filename": "DSC_9621-400x300.jpg"
         },
         "medium": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-800x600.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
           "width": 800,
           "height": 600,
           "mimeType": "image/jpeg",
@@ -171,7 +172,7 @@
           "filename": "DSC_9621-800x600.jpg"
         },
         "large": {
-          "url": "https://s3.nl-ams.scw.cloud/se-website-images/payload-media/DSC_9621-1200x800.jpg",
+          "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
           "width": 1200,
           "height": 800,
           "mimeType": "image/jpeg",

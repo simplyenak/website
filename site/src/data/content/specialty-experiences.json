@@ -1,5 +1,44 @@
 [
   {
+    "id": 7,
+    "name": "First time visitors",
+    "slug": "first-time-visitors",
+    "icon": "🌏",
+    "color": null,
+    "description": null,
+    "image": null,
+    "status": "published",
+    "updatedAt": "2026-07-05T08:13:11.196Z",
+    "createdAt": "2026-07-05T08:13:11.196Z",
+    "_status": "draft"
+  },
+  {
+    "id": 6,
+    "name": "Culture",
+    "slug": "culture",
+    "icon": null,
+    "color": null,
+    "description": null,
+    "image": null,
+    "status": "published",
+    "updatedAt": "2026-07-02T04:34:56.157Z",
+    "createdAt": "2026-07-02T04:34:56.157Z",
+    "_status": "published"
+  },
+  {
+    "id": 5,
+    "name": "Off the beaten track",
+    "slug": "off-the-beaten-track",
+    "icon": null,
+    "color": null,
+    "description": null,
+    "image": null,
+    "status": "published",
+    "updatedAt": "2026-07-02T04:34:20.747Z",
+    "createdAt": "2026-07-02T04:34:20.747Z",
+    "_status": "published"
+  },
+  {
     "id": 4,
     "name": "Street food",
     "slug": "street-food",
