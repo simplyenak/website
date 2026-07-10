@@ -97,7 +97,7 @@ async function patchItem(collectionSlug, itemId, body) {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`,
+      Authorization: `users API-Key ${authToken}`,
     },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(30000),
