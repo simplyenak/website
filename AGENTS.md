@@ -5,26 +5,27 @@
 - **CMS**: Payload CMS 3 (PostgreSQL), at cms.system.simplyenak.com
 - **Images**: S3 (Scaleway) → CDN (cdn.simplyenak.com)
 
-## Critical Architecture — Cloudflare Worker intercepts everything
+## Critical Architecture — Cloudflare Worker & redirects
 
-A zone-level Worker (`simplyenak-cdn-rewriter`) runs on `simplyenak.com/*` and catches ALL requests BEFORE they reach Pages. It:
-1. Checks a static `REDIRECTS` map for 301 redirects
-2. Fetches the page from the Pages origin (`website-40z.pages.dev`)
-3. Rewrites HTML: replaces S3 URLs with CDN URLs, removes "in the media" sections
-4. Uses `redirect: "manual"` so Pages `_redirects` pass through
+A zone-level Worker (`simplyenak-cdn-rewriter`) runs on `simplyenak.com/*` and catches ALL requests before Pages. It:
+
+1. Checks a static `REDIRECTS` map for 301 redirects (single source of truth)
+2. Skips non-HTML requests early (no Worker overhead for images/JS/CSS)
+3. Fetches the page from the Pages origin (`website-40z.pages.dev`)
+4. Rewrites HTML: replaces S3 URLs with CDN URLs
+5. Uses `redirect: "manual"` so Pages `_redirects` pass through when applicable
 
 **This means:**
-- `_redirects` file and Pages Functions do NOT work on the custom domain (Worker catches requests first)
-- ALL redirects must go in the Worker's `REDIRECTS` map at `site/workers/cdn-rewriter.js`
-- The Worker is deployed via Cloudflare API (not through GitHub Actions)
-- Add redirects to the `REDIRECTS` object in the Worker, then update via API
+- `_redirects` file and Pages Functions do NOT work on the custom domain (Worker catches first)
+- ALL redirects must go in the Worker's `REDIRECTS` map — source at `site/workers/cdn-rewriter.js`
+- Updates are deployed via Cloudflare API, NOT through GitHub Actions
 
-## Worker deployment API
+## Worker deployment
 ```bash
-# Upload new version (token needs Workers Scripts > Edit)
+# Upload via API (token needs Workers Scripts > Edit)
 PUT /accounts/{account_id}/workers/scripts/simplyenak-cdn-rewriter
 Content-Type: multipart/form-data
-Parts: worker.js (the script), metadata (body_part: "worker.js")
+Parts: worker.js + metadata
 ```
 
 ## Key environment
@@ -34,12 +35,12 @@ Parts: worker.js (the script), metadata (body_part: "worker.js")
 - Running CMS image: `simplyenak/website-backend:noloc2`
 - CMS service: `simplyenakbackend_payload`
 
-## Build path
-- Payload Docker image: built from `revamp/backend/` in GitHub, pushed as `:noloc2`
-- Site: built from `site/`, deployed to `website` project on Pages
+## Build paths
+- Payload Docker image: built from `revamp/backend/` in GitHub, pushed as `simplyenak/website-backend:noloc2`
+- To update: push to repo → GitHub Actions builds image → `docker service update --with-registry-auth --image simplyenak/website-backend:noloc2 simplyenakbackend_payload`
+- Site: built from `site/`, deployed to `website` project on Cloudflare Pages
 
 ## Known quirks
-- `_redirects` on custom domain only works if no zone-level Worker intercepts the route
 - Draft/status: use `_status` (Payload version status), not `status` (custom field)
 - PM check in template: `startTime.includes('PM')` is case-sensitive; values are lowercase "pm"
 - Tours snapshot at `site/src/data/content/tours.json` — synced from Payload, never edit directly
