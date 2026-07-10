@@ -7,7 +7,10 @@ export const Users: CollectionConfig = {
     group: 'Settings & Config',
     description: '👤 User accounts and authentication',
   },
-  auth: true,
+  auth: {
+    useAPIKey: true,
+    tokenExpiration: 7200,
+  },
   fields: [
     // Email added by default
     {
