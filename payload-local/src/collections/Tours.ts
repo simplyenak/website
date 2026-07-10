@@ -245,6 +245,20 @@ export const Tours: CollectionConfig = {
       ],
     },
     {
+      name: 'whatToBring',
+      type: 'array',
+      admin: {
+        description: 'What guests should bring on the tour',
+      },
+      fields: [
+        {
+          name: 'item',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
+    {
       name: 'highlights',
       type: 'array',
       admin: {

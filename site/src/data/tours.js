@@ -205,12 +205,13 @@ Between food stops, you'll pass temples of three religions side by side, underst
 
 The evening ends with an alcoholic drink in a heritage setting where old Penang meets new. You'll leave full of incredible food, knowing exactly why Georgetown earned its UNESCO status.`,
  highlights: [
- 'Sizzling satay at a heritage Malay restaurant',
- 'Watch roti jala handcrafted like golden lace',
- 'Best samosas in Malaysia (locals\' claim, not ours!)',
- 'Char kway teow at Chew Jetty at sunset',
- 'Alcoholic drink in a heritage setting',
- ],
+     'Sizzling satay at a heritage Malay restaurant',
+     'Watch roti jala handcrafted like golden lace',
+     'Best samosas in Malaysia (locals\' claim, not ours!)',
+     'Char kway teow at Chew Jetty at sunset',
+     'Guided durian tasting — 5 Balik Pulau varieties',
+     'Alcoholic drink in a heritage setting',
+   ],
  itinerary: [
  { time: '16:00 PM', title: 'Meet at Masjid Kapitan Keling', desc: 'Meet your guide as Georgetown comes alive in the late afternoon.' },
  { time: '16:15 PM', title: 'Little India & Temples', desc: 'Pass temples of three religions side by side and taste the best samosas in Malaysia.' },

@@ -51,7 +51,7 @@ const baseSchema = {
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '5.0',
-        reviewCount: 76,
+        reviewCount: {reviews.length},
         bestRating: '5',
         worstRating: '1',
       },
