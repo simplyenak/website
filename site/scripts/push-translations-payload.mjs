@@ -56,7 +56,7 @@ const COLLECTION_SLUGS = {
   about_page: 'about_page',
   tours_index_page: 'tour-index-pages',
   faq_page: 'faq-pages',
-  private_tours_page: 'private-tours-pages',
+  private_tours_page: 'private_tours_page',
   join_in_tours_page: 'join-in-tours-pages',
   stories_index_page: 'stories-index-pages',
   stories_archive_page: 'stories-archive-pages',
@@ -152,6 +152,9 @@ async function pushCollection(name, cfg) {
     const msTrans = translations.find(t =>
       (t.languages_code || t.locale) === MANDATORY_LANG
     );
+    const enTrans = translations.find(t =>
+      (t.languages_code || t.locale) === 'en'
+    );
 
     if (!msTrans) {
       skippedCount++;
@@ -162,8 +165,17 @@ async function pushCollection(name, cfg) {
     const body = {};
     let hasContent = false;
     const ignoreKeys = new Set(['id', 'languages_code', 'locale', 'updatedAt', 'createdAt']);
+    const htmlFields = new Set(cfg.htmlFields || []);
 
     for (const field of cfg.translatableFields) {
+      if (htmlFields.has(field)) {
+        // Include original English value for required rich text fields to satisfy validation
+        const origVal = item[field] || (enTrans || {})[field];
+        if (origVal !== undefined && origVal !== null) {
+          body[field] = origVal;
+        }
+        continue;
+      }
       if (msTrans[field] !== undefined && msTrans[field] !== null) {
         body[field] = msTrans[field];
         hasContent = true;
