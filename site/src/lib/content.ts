@@ -244,7 +244,9 @@ function applyLocaleTranslations(item: any, locale?: string): any {
     hero_title: 'heroTitle',
   };
   for (const [snake, camel] of Object.entries(snakeToCamel)) {
-    if ((merged as any)[snake]) {
+    // Only copy snake_case translation → camelCase if camelCase is empty
+    // Prevents translated content (e.g. Portuguese) from overwriting English
+    if ((merged as any)[snake] && !(merged as any)[camel]) {
       (merged as any)[camel] = (merged as any)[snake];
     }
   }
