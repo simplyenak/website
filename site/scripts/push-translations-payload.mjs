@@ -38,7 +38,9 @@ const ONLY_COLLECTION = process.argv.includes('--collection')
 
 const { COLLECTIONS, ALL_LANGS } = await import('./lib/translation-collections.mjs');
 
-const MANDATORY_LANG = 'ms';
+// Language filter: --lang ms,zh  or --lang all  (default: all)
+const LANG_ARG = process.argv.find(a => a.startsWith('--lang='));
+const TARGET_LANGS = LANG_ARG ? LANG_ARG.split('=')[1].split(',').map(l => l.trim()).filter(l => ALL_LANGS.includes(l)) : ALL_LANGS;
 let authToken = PAYLOAD_TOKEN;
 
 // Stats
@@ -91,8 +93,8 @@ async function authenticate() {
   if (!authToken) throw new Error('Login returned no token');
 }
 
-async function patchItem(collectionSlug, itemId, body) {
-  const url = `${PAYLOAD_URL}/api/${collectionSlug}/${itemId}?locale=${MANDATORY_LANG}&depth=0`;
+async function patchItem(collectionSlug, itemId, body, locale) {
+  const url = `${PAYLOAD_URL}/api/${collectionSlug}/${itemId}?locale=${locale}&depth=0`;
   const res = await fetch(url, {
     method: 'PATCH',
     headers: {
@@ -109,7 +111,7 @@ async function patchItem(collectionSlug, itemId, body) {
   return res.json();
 }
 
-async function pushCollection(name, cfg) {
+async function pushCollection(name, cfg, locale) {
   const slug = COLLECTION_SLUGS[name];
   if (!slug) {
     console.log(`  ⚠  No Payload collection slug for '${name}' — skipping`);
@@ -142,21 +144,21 @@ async function pushCollection(name, cfg) {
       continue;
     }
 
-    // Find the MS translation
+    // Find the target locale translation
     const translations = item.translations;
     if (!translations || !Array.isArray(translations)) {
       skippedCount++;
       continue;
     }
 
-    const msTrans = translations.find(t =>
-      (t.languages_code || t.locale) === MANDATORY_LANG
+    const targetTrans = translations.find(t =>
+      (t.languages_code || t.locale) === locale
     );
     const enTrans = translations.find(t =>
       (t.languages_code || t.locale) === 'en'
     );
 
-    if (!msTrans) {
+    if (!targetTrans) {
       skippedCount++;
       continue;
     }
@@ -176,8 +178,8 @@ async function pushCollection(name, cfg) {
         }
         continue;
       }
-      if (msTrans[field] !== undefined && msTrans[field] !== null) {
-        body[field] = msTrans[field];
+      if (targetTrans[field] !== undefined && targetTrans[field] !== null) {
+        body[field] = targetTrans[field];
         hasContent = true;
       }
     }
@@ -196,7 +198,7 @@ async function pushCollection(name, cfg) {
     }
 
     try {
-      await patchItem(slug, itemId, body);
+      await patchItem(slug, itemId, body, locale);
       updatedCount++;
     } catch (err) {
       console.log(`\n    ✗ ${slug}/${itemId}: ${err.message}`);
@@ -215,7 +217,7 @@ async function pushCollection(name, cfg) {
 
 // ─── Main ────────────────────────────────────────────────────
 
-console.log(`\nPushing MS translations to Payload: ${DRY_RUN ? 'DRY RUN' : 'LIVE'}\n`);
+console.log(`\nPushing translations to Payload: ${DRY_RUN ? 'DRY RUN' : 'LIVE'}\n  Languages: ${TARGET_LANGS.join(', ')}\n`);
 
 try {
   await authenticate();
@@ -224,9 +226,12 @@ try {
   process.exit(1);
 }
 
-for (const [name, cfg] of Object.entries(COLLECTIONS)) {
-  if (ONLY_COLLECTION && name !== ONLY_COLLECTION) continue;
-  await pushCollection(name, cfg);
+for (const locale of TARGET_LANGS) {
+  console.log(`\n── Locale: ${locale} ──\n`);
+  for (const [name, cfg] of Object.entries(COLLECTIONS)) {
+    if (ONLY_COLLECTION && name !== ONLY_COLLECTION) continue;
+    await pushCollection(name, cfg, locale);
+  }
 }
 
 console.log(`\nDone: ${updated} updated, ${skipped} skipped, ${errors} errors\n`);
