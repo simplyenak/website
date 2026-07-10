@@ -98,6 +98,7 @@ jobs:
           directory: site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
+          clean: true
 
       - name: Deploy to production
         uses: cloudflare/pages-action@v1
@@ -108,3 +109,4 @@ jobs:
           directory: site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: production
+          clean: true
