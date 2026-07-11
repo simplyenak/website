@@ -42,53 +42,110 @@ def main():
             existing = yaml.safe_load(f) or {}
         print(f"Read existing config ({len(existing)} keys)")
     else:
-        print("No existing config — starting fresh")
+        print("No existing config -- starting fresh")
 
     # 2. Build provider config from env vars
+
+    # Omniroute models (auto-routed via gateway)
+    omniroute_models = [
+        "auto/best-coding",
+        "auto/best-reasoning",
+        "auto/best-fast",
+        "auto/best-vision",
+        "auto/best-chat",
+        "auto/best-coding-fast",
+        "auto/pro-coding",
+        "auto/pro-reasoning",
+        "opencode-go/deepseek-v4-flash",
+        "opencode-go/deepseek-v4-pro",
+        "opencode-go/kimi-k2.7-code",
+        "opencode-go/glm-5.2",
+        "zai/glm-5.2",
+        "zai/glm-5.1",
+        "zai/glm-5-turbo",
+        "ds/deepseek-v4-flash",
+        "ds/deepseek-v4-pro",
+        "lc/LongCat-2.0",
+        "github/claude-sonnet-4.6",
+        "github/gpt-5.5",
+        "github/gemini-3.5-flash",
+    ]
+
+    omniroute_url = os.environ.get("OMNIROUTE_URL", "http://omniroute:20129/v1")
+    omniroute_key = os.environ.get("OMNIROUTE_API_KEY", "")
+
+    # OpenCode Go models (direct, bypass Omniroute)
+    opencode_models = [
+        "deepseek-v4-flash",
+        "deepseek-v4-pro",
+        "kimi-k2.7-code",
+        "kimi-k2.6",
+        "glm-5.2",
+        "glm-5.1",
+        "minimax-m3",
+        "qwen3.7-max",
+    ]
+    opencode_key = os.environ.get("OPENCODE_API_KEY") or os.environ.get("OPENCODE_GO_API_KEY", "")
+
+    # Build custom_providers list
     providers = []
-    for entry in (
-        ("CANOPYWAVE_API_KEY", "Canopy Wave", "https://inference.canopywave.io/v1", ["moonshotai/kimi-k2.6"]),
-        ("NOVITA_API_KEY",     "Novita",      "https://api.novita.ai/v3/openai",    ["inclusionai/ring-2.6-1t"]),
-        ("CROFAI_API_KEY",     "CrofAI",      "https://crof.ai/v1",                 [
-            "glm-5.1-precision", "glm-5.1", "kimi-k2.6",
-            "deepseek-v4-flash", "deepseek-v4-pro", "mimo-v2.5-pro",
-            "glm-4.7-flash", "qwen3.5-397b-a17b", "minimax-m2.5",
-        ]),
-        ("GLM_API_KEY",        "GLM",         "https://api.z.ai/api/coding/paas/v4", [
-            "glm-5.1", "glm-5.1-precision", "glm-5", "glm-4.7-flash", "kimi-k2.6",
-        ]),
-        ("NOUS_API_KEY",       "nous",        "https://inference-api.nousresearch.com/v1", [
-            "deepseek/deepseek-v4-flash", "deepseek/deepseek-v4-pro",
-        ]),
-    ):
-        p = _prov_from_key(*entry)
-        if p and p not in providers:
-            providers.append(p)
 
-    explicit_provider = os.environ.get("HERMES_PROVIDER")
-    if explicit_provider:
-        provider = explicit_provider
-    elif providers:
-        first = providers[0]
-        provider = f"custom:{first['name'].lower().replace(' ', '')}"
-    else:
-        provider = "custom:glm"
+    # Omniroute first (primary)
+    if omniroute_key:
+        providers.append({
+            "name": "omniroute",
+            "base_url": omniroute_url,
+            "api_key": omniroute_key,
+            "model": "auto/best-coding",
+            "models": omniroute_models,
+        })
 
-    explicit_model = os.environ.get("HERMES_MODEL")
-    if explicit_model:
-        default_model = explicit_model
-    elif providers:
-        first_models = providers[0].get("models", [])
-        default_model = first_models[0] if first_models else "glm-5.1"
-    else:
-        default_model = "glm-5.1"
+    # OpenCode Go (fallback / direct)
+    if opencode_key:
+        providers.append({
+            "name": "opencode-go",
+            "base_url": "https://opencode.ai/zen/go/v1",
+            "api_key": opencode_key,
+            "model": "deepseek-v4-flash",
+            "models": opencode_models,
+        })
+
+    explicit_provider = os.environ.get("HERMES_PROVIDER", "custom:omniroute")
+    explicit_model = os.environ.get("HERMES_MODEL", "auto/best-coding")
 
     # 3. Build the override config (these keys replace/add to existing)
     overrides = {
-        "model": {"default": default_model, "provider": provider},
+        "model": {
+            "default": explicit_model,
+            "provider": explicit_provider,
+            "models": omniroute_models,
+        },
         "general": {"log_level": os.environ.get("LOG_LEVEL", "info")},
-        "providers": {},
+        "providers": {
+            "omniroute": {
+                "base_url": omniroute_url,
+                "api_key": omniroute_key,
+                "models": omniroute_models,
+            },
+            "opencode-go": {
+                "base_url": "https://opencode.ai/zen/go/v1",
+                "api_key": opencode_key,
+                "models": opencode_models,
+            },
+        },
         "custom_providers": providers,
+        "delegation": {
+            "model": "opencode-go/deepseek-v4-flash",
+            "provider": explicit_provider,
+            "base_url": omniroute_url,
+            # Read delegation-specific key, fall back to main Omniroute key
+            "api_key": os.environ.get("DELEGATION_API_KEY") or omniroute_key,
+            "max_iterations": 50,
+            "reasoning_effort": "low",
+        },
+        "fallback_providers": [
+            {"provider": "custom:opencode-go", "model": "deepseek-v4-flash"},
+        ],
         "gateway": {
             "api_server_enabled": os.environ.get("API_SERVER_ENABLED", "true") == "true",
             "api_server_host": os.environ.get("API_SERVER_HOST", "0.0.0.0"),
@@ -108,7 +165,8 @@ def main():
             "workspacePassword": os.environ.get("HERMES_WORKSPACE_PASSWORD", ""),
         },
         "telegram": {
-            "webhook_mode": True,
+            # Auto-detect: if webhook URL is set, use webhook mode; otherwise polling
+            "webhook_mode": bool(os.environ.get("TELEGRAM_WEBHOOK_URL", "")),
             "webhook_url": os.environ.get("TELEGRAM_WEBHOOK_URL", ""),
             "webhook_port": int(os.environ.get("TELEGRAM_WEBHOOK_PORT", "8443")),
             "webhook_secret": os.environ.get("TELEGRAM_WEBHOOK_SECRET", ""),
@@ -127,7 +185,7 @@ def main():
             "api_key": os.environ.get("BRILLIANT_API_KEY", ""),
         },
 
-        # Phase 1 Hardening — approval gates
+        # Phase 1 Hardening -- approval gates
         "tool_loop_guardrails": {
             "warnings_enabled": True,
             "hard_stop_enabled": True,
@@ -135,7 +193,7 @@ def main():
             "hard_stop_after": {"exact_failure": 3, "same_tool_failure": 5, "idempotent_no_progress": 3},
         },
 
-        # Phase 1 Hardening — approvals
+        # Phase 1 Hardening -- approvals
         "approvals": {
             "mode": "manual",
             "timeout": 60,
@@ -143,7 +201,7 @@ def main():
             "destructive_slash_confirm": True,
         },
 
-        # Phase 1 Hardening — security
+        # Phase 1 Hardening -- security
         "security": {
             "redact_secrets": True,
             "tirith_enabled": True,
@@ -151,7 +209,7 @@ def main():
             "allow_private_urls": False,
         },
 
-        # Phase 1 Hardening — session management
+        # Phase 1 Hardening -- session management
         "sessions": {
             "auto_prune": True,
             "retention_days": int(os.environ.get("SESSION_RETENTION_DAYS", "90")),
@@ -160,6 +218,7 @@ def main():
         },
     }
 
+    # Fallback providers from env (overrides hardcoded list if set)
     fb = os.environ.get("FALLBACK_PROVIDERS")
     if fb:
         overrides["fallback_providers"] = [x.strip() for x in fb.split(",") if x.strip()]

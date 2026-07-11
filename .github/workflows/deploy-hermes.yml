@@ -1,0 +1,50 @@
+name: Build and Deploy Hermes Agent
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'hermes-dokploy/**'
+      - '.github/workflows/deploy-hermes.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          port: ${{ secrets.SERVER_PORT || '4040' }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -e
+            echo "=== Pulling latest code ==="
+            cd /home/maarten/website-optimization
+            git pull origin main
+
+            echo "=== Building Docker image ==="
+            cd hermes-dokploy
+            docker build --no-cache -t hermes-simplyenak:latest -t localhost:5000/hermes-simplyenak:latest .
+
+            echo "=== Pushing to local registry ==="
+            docker push localhost:5000/hermes-simplyenak:latest
+
+            echo "=== Updating Dokploy-managed Swarm service ==="
+            # Force the compose-index-auxiliary stack to redeploy with the new image
+            docker service update --force --image localhost:5000/hermes-simplyenak:latest compose-index-auxiliary-program-qm58zh_hermes || \
+              docker service update --force --image localhost:5000/hermes-simplyenak:latest hermes-dokploy_hermes || \
+              echo "Note: Neither service found — may need a Dokploy redeploy via UI"
+
+            echo "=== Done ==="

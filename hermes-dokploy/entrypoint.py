@@ -1,25 +1,52 @@
 #!/usr/bin/env python3
-"""Hermes Agent entrypoint — handles volume permissions, config bootstrap, health server, and gateway."""
+"""Hermes Agent entrypoint — handles volume permissions, config bootstrap, health server, and gateway.
+
+Swarm-zero-capability-safe: the locks directory is pre-created with 777 permissions
+at build time so the gateway can write there even with cap_drop: ALL.
+"""
 import os
-import stat
 import subprocess
 import sys
-import time
 
 HOME = "/home/hermes"
 HERMES_DIR = f"{HOME}/.hermes"
 WORKSPACE = f"{HOME}/workspace"
 SSH_DIR = f"{HOME}/.ssh"
+LOCKS_DIR = f"{HOME}/.local/state/hermes/gateway-locks"
 
 
 def fix_permissions(path):
-    """Ensure volume path is accessible (Swarm workaround — chmod only, keep root ownership)."""
+    """Ensure volume path is accessible (Swarm workaround — chmod only, keep root ownership).
+    
+    Uses a generous timeout since volumes with accumulated data (cron, sessions, logs)
+    can take 30-60s to chmod recursively.
+    """
     try:
         subprocess.run(
             ["chmod", "-R", "755", path],
-            check=False, capture_output=True, timeout=5
+            check=False, capture_output=True, timeout=120
         )
     except (FileNotFoundError, PermissionError):
+        pass
+    except subprocess.TimeoutExpired:
+        # Still running — let it continue, skip the check to avoid crashing
+        print(f"Warning: chmod -R on {path} is taking long, continuing anyway", flush=True)
+
+
+def ensure_lock_dir():
+    """Ensure the gateway-locks directory exists and is world-writable.
+
+    At build time the Dockerfile creates this with 777, but at first startup
+    (fresh volume) it may not exist yet. Without DAC_OVERRIDE, root can't
+    create subdirs on the overlay — so we have the healthcheck bootstrap it
+    IF it happens to be writable, otherwise we rely on build-time creation.
+    """
+    try:
+        os.makedirs(LOCKS_DIR, mode=0o777, exist_ok=True)
+        # Make sure it's world-writable even if it already existed
+        os.chmod(LOCKS_DIR, 0o777)
+    except PermissionError:
+        # Expected when cap_drop: ALL — the dir must be pre-created at build time
         pass
 
 
@@ -29,7 +56,7 @@ def patch_provider_models():
         import yaml
         from hermes_cli import models as m
 
-        config_path = "/home/hermes/.hermes/config.yaml"
+        config_path = f"{HERMES_DIR}/config.yaml"
         with open(config_path) as f:
             cfg = yaml.safe_load(f)
 
@@ -49,9 +76,9 @@ def patch_provider_models():
 
 
 def main():
-    print("=== Hermes Agent v0.18.0 Entrypoint ===", flush=True)
+    print("=== Hermes Agent v0.18.2 Entrypoint ===", flush=True)
 
-    # Fix volume permissions (best effort)
+    # Fix volume permissions (best effort — may fail without CAP_CHOWN/DAC_OVERRIDE)
     fix_permissions(HERMES_DIR)
     fix_permissions(WORKSPACE)
 
@@ -79,7 +106,11 @@ def main():
         except Exception:
             pass
 
-    # Start health server in background (best effort)
+    # Restore SOUL.md from volume — it's NOT baked into the Docker image.
+    # The volume backup includes SOUL.md. For full recovery from a server
+    # reset, the restore script (scripts/restore-hermes.sh) handles it.
+
+    # Start health server in background
     try:
         health_proc = subprocess.Popen(
             [sys.executable, "/home/hermes/health_server.py"]
@@ -88,7 +119,7 @@ def main():
     except Exception as e:
         print(f"Health server failed: {e}", flush=True)
 
-    # Start dashboard in background (best effort)
+    # Start dashboard in background
     try:
         dashboard_proc = subprocess.Popen(
             [sys.executable, "-m", "hermes_cli.main", "dashboard",
@@ -99,9 +130,10 @@ def main():
         print(f"Dashboard failed: {e}", flush=True)
 
     # Point HOME at the volume mount so the gateway reads/writes state directly.
-    # This eliminates the fragile startup-copy + lost-on-restart pattern.
-    # The volume is mounted at /home/hermes/.hermes/ and owned by root:root.
     os.environ["HOME"] = "/home/hermes"
+
+    # Ensure gateway-locks directory exists (build-time pre-created, but be safe)
+    ensure_lock_dir()
 
     # Patch provider models INLINE (same process — survives into gateway)
     patch_provider_models()

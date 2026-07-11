@@ -1,0 +1,14 @@
+# hermes-dokploy .gitignore
+# Docker build artifacts
+*.pyc
+__pycache__/
+*.egg-info/
+
+# Environment files (credentials)
+.env
+
+# SSH keys
+**/ssh_key*
+**/deploy_key*
+
+# Keep the .env.example if it exists but not .env

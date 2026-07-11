@@ -1,30 +1,14 @@
 #!/usr/bin/env python3
-"""Lightweight health check for Hermes Agent container."""
-
-import sys
-import urllib.request
-import urllib.error
-
-
+"""Docker HEALTHCHECK - verifies agent is responsive."""
+import sys, urllib.request
 def check():
-    try:
-        req = urllib.request.Request("http://localhost:8080/health")
-        resp = urllib.request.urlopen(req, timeout=3)
-        if resp.status == 200:
-            sys.exit(0)
-    except Exception:
-        pass
-
-    try:
-        with open("/proc/1/cmdline", "r") as f:
-            cmdline = f.read()
-            if "hermes" in cmdline or "gateway" in cmdline:
-                sys.exit(0)
-    except Exception:
-        pass
-
-    sys.exit(1)
-
-
+    for url in ["http://localhost:8080/health", "http://localhost:8642/health"]:
+        try:
+            r = urllib.request.urlopen(url, timeout=5)
+            if r.status == 200:
+                return True
+        except Exception:
+            pass
+    return False
 if __name__ == "__main__":
-    check()
+    sys.exit(0 if check() else 1)
