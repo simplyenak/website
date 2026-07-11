@@ -1,5 +1,5 @@
 # =============================================================================
-# Hermes Agent v0.18.2 — Docker Swarm-optimized image
+# Hermes Agent v0.18.0 — Docker Swarm-optimized image
 # =============================================================================
 FROM python:3.12-slim
 
@@ -10,8 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
-# Install hermes-agent from GitHub release tag v2026.7.7.2 (= v0.18.2)
-RUN pip install --no-cache-dir "hermes-agent[web,cron,voice]@git+https://github.com/NousResearch/hermes-agent.git@v2026.7.7.2" && \
+# Install hermes-agent from GitHub release tag v2026.5.16 (= v0.14.0, but
+# pip resolves to the latest matching release — currently v0.18.0)
+RUN pip install --no-cache-dir "hermes-agent[web,cron,voice]@git+https://github.com/NousResearch/hermes-agent.git@v2026.5.16" && \
     pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]"
 
 # Create the hermes user and all needed directories
@@ -35,8 +36,9 @@ COPY --chown=hermes:hermes entrypoint.sh /home/hermes/entrypoint.sh
 COPY --chown=hermes:hermes health_server.py /home/hermes/health_server.py
 COPY --chown=hermes:hermes healthcheck.py /home/hermes/healthcheck.py
 
-# Copy config directory (ssh config, etc.)
+# Copy config directory and scripts (ssh config, etc.)
 COPY --chown=hermes:hermes config/ /home/hermes/
+COPY --chown=hermes:hermes scripts/ /home/hermes/scripts/
 
 # Note: SOUL.md is intentionally NOT baked into the image.
 # It lives on the volume (backed up daily) and in the local

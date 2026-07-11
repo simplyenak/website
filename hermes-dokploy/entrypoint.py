@@ -75,8 +75,81 @@ def patch_provider_models():
         print(f"Model patch skipped: {e}", flush=True)
 
 
+def _bootstrap_scripts():
+    """Copy baked-in scripts to the volume and auto-register cron jobs.
+
+    Image-build scripts live at /home/hermes/scripts/ (from COPY in Dockerfile).
+    On first startup they are copied to the persistent volume at HERMES_DIR/scripts/.
+    Known cron-job scripts are registered as no_agent=True jobs if not already present.
+    """
+    import json, shutil
+
+    baked_dir = "/home/hermes/scripts"
+    volume_dir = f"{HERMES_DIR}/scripts"
+
+    # 1. Copy baked scripts to volume (if baked dir exists)
+    if os.path.isdir(baked_dir):
+        os.makedirs(volume_dir, exist_ok=True)
+        for fname in os.listdir(baked_dir):
+            src = os.path.join(baked_dir, fname)
+            dst = os.path.join(volume_dir, fname)
+            if os.path.isfile(src) and fname.endswith(".py") or fname.endswith(".sh"):
+                try:
+                    shutil.copy2(src, dst)
+                    os.chmod(dst, 0o755)
+                    print(f"  Script deployed: {fname}", flush=True)
+                except Exception as e:
+                    print(f"  Script deploy failed for {fname}: {e}", flush=True)
+
+    # 2. Auto-register known cron jobs if not already present
+    cron_file = f"{HERMES_DIR}/cron/jobs.json"
+    try:
+        if os.path.exists(cron_file):
+            with open(cron_file) as f:
+                existing = json.load(f)
+            existing_jobs = existing.get("jobs", existing) if isinstance(existing, dict) else existing
+        else:
+            existing_jobs = []
+
+        existing_names = {j.get("name", "") for j in existing_jobs if isinstance(j, dict)}
+
+        # The credential health monitor
+        auto_jobs = [
+            {
+                "name": "Credential Health Monitor",
+                "id": "credential-health-monitor",
+                "schedule": "*/30 * * * *",
+                "script": "provider-health.py",
+                "no_agent": True,
+                "enabled": True,
+                "deliver": "all",
+            },
+        ]
+
+        added = 0
+        for job in auto_jobs:
+            if job["name"] not in existing_names:
+                existing_jobs.append(job)
+                added += 1
+                print(f"  Cron registered: {job['name']}", flush=True)
+
+        if added:
+            # Write back
+            if isinstance(existing, dict):
+                existing["jobs"] = existing_jobs
+                data = existing
+            else:
+                data = existing_jobs
+            os.makedirs(f"{HERMES_DIR}/cron", exist_ok=True)
+            with open(cron_file, "w") as f:
+                json.dump(data, f, indent=2)
+            print(f"  Added {added} cron job(s) to {cron_file}", flush=True)
+    except Exception as e:
+        print(f"  Cron auto-register skipped: {e}", flush=True)
+
+
 def main():
-    print("=== Hermes Agent v0.18.2 Entrypoint ===", flush=True)
+    print("=== Hermes Agent v0.18.0 Entrypoint ===", flush=True)
 
     # Fix volume permissions (best effort — may fail without CAP_CHOWN/DAC_OVERRIDE)
     fix_permissions(HERMES_DIR)
@@ -109,6 +182,9 @@ def main():
     # Restore SOUL.md from volume — it's NOT baked into the Docker image.
     # The volume backup includes SOUL.md. For full recovery from a server
     # reset, the restore script (scripts/restore-hermes.sh) handles it.
+
+    # Bootstrap scripts onto the volume and auto-register cron jobs
+    _bootstrap_scripts()
 
     # Start health server in background
     try:
