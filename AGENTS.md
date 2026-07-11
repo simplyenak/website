@@ -37,7 +37,7 @@ Parts: worker.js + metadata
 
 ## Build paths
 - Payload Docker image: built from `revamp/backend/` in GitHub, pushed as `simplyenak/website-backend:noloc2`
-- To update: push to repo → GitHub Actions builds image → `docker service update --with-registry-auth --image simplyenak/website-backend:noloc2 simplyenakbackend_payload`
+- Hermes Docker image: built from `hermes-dokploy/` via GitHub Actions — never build on server directly
 - Site: built from `site/`, deployed to `website` project on Cloudflare Pages
 
 ## Known quirks
