@@ -1,9 +1,15 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { segmentChips } from '~/data/segments';
-import { getAllTours, getHomePage, getImageUrl } from '~/lib/content';
+import { getAllTours, getHomePage, getImageUrl, getStories } from '~/lib/content';
 import { SITE } from 'astrowind:config';
 import reviews from '~/data/content/reviews.json';
+
+// Fetch published stories for the food guides section
+const allStories = await getStories('en');
+const guideStories = allStories
+  .filter((s: any) => (s.workflowStatus === 'published' || s._status === 'published') && s.content_markdown)
+  .slice(0, 6);
 
 const tours = await getAllTours();
 const hp = await getHomePage();
@@ -322,6 +328,39 @@ const finalStructuredData = structuredData.length > 0 ? structuredData : undefin
       </div>
     </div>
   </section>
+
+  <!-- Food Guides -->
+  {guideStories.length > 0 && (
+  <section class="bg-white md:py-24 py-16">
+    <div class="sm:px-6 px-4 mx-auto max-w-7xl">
+      <div class="text-center mb-12">
+        <p class="font-bold uppercase text-primary mb-3 text-sm tracking-[0.2em]">FOOD GUIDES</p>
+        <h2 class="font-bold text-default font-heading md:text-4xl text-3xl">Explore Malaysia Through Food</h2>
+        <p class="text-muted mt-3 mx-auto max-w-2xl">Local guides, insider tips, and the stories behind the dishes you love.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {guideStories.map((s: any) => (
+          <a class="rounded block bg-white border border-gray-100 duration-300 group hover:shadow-xl overflow-hidden shadow-md transition-all" href={`/stories/${s.slug}`}>
+            <div class="relative overflow-hidden h-48">
+              <img alt={s.title} class="w-full h-full object-cover duration-500 group-hover:scale-105 transition-transform" src={getImageUrl(s.featuredImage)} loading="lazy" />
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-default font-heading text-lg mb-1 leading-snug">{s.title}</h3>
+              {s.excerpt && <p class="text-muted text-sm line-clamp-2">{s.excerpt}</p>}
+              <span class="inline-block mt-3 text-sm font-semibold text-accent group-hover:text-primary transition-colors">Read Guide →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a class="font-bold rounded bg-primary text-white hover:bg-[#a02830] gap-2 inline-flex items-center px-8 shadow-md duration-300 hover:shadow-lg py-3.5 transition-all" href="/stories">
+          View All Guides
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  )}
 
   <!-- How Would You Like to Experience? — Comparison Cards -->
   <section class="bg-gray-50 dark:bg-[#151313] md:py-20 py-16">

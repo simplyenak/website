@@ -9,6 +9,9 @@ export interface Props {
 
 const { items } = Astro.props;
 
+// Load reviews snapshot for aggregate rating count
+const reviews = (await import('~/data/content/reviews.json')).default as any[];
+
 const BASE_URL = 'https://simplyenak.com';
 
 const sameAs = [
@@ -51,7 +54,7 @@ const baseSchema = {
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '5.0',
-        reviewCount: {reviews.length},
+        reviewCount: reviews.length,
         bestRating: '5',
         worstRating: '1',
       },

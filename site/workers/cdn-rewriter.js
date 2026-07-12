@@ -71,9 +71,14 @@ async function handleRequest(request) {
   html = html.replace(/https:\/\/se-website-images\.s3\.nl-ams\.scw\.cloud/g, CDN_ROOT);
   if (html.indexOf(CDN_ROOT) >= 0) didReplace = true;
 
-  if (!didReplace && html.indexOf("S3_ORIGIN") === -1) {
-    // No changes needed — return original response
-    return response;
+  if (!didReplace && html.indexOf("S3_ORIGIN") == -1) {
+    // No changes needed — return with edge caching
+    var noChangeHeaders = new Headers(response.headers);
+    noChangeHeaders.set("cache-control", "public, s-maxage=300, max-age=0, must-revalidate");
+    return new Response(html, {
+      status: response.status,
+      headers: noChangeHeaders
+    });
   }
 
   // HTML pages: cache for 5 minutes at the edge (for revalidation)
