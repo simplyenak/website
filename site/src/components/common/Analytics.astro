@@ -4,8 +4,14 @@
 // Exposes tracking functions: trackTourBooking, trackTourInterest, trackWhatsApp, trackContactForm
 
 import { ANALYTICS } from 'astrowind:config';
+import { getSiteSettings } from '~/lib/content';
 
-const gaId = ANALYTICS?.vendors?.googleAnalytics?.id ? String(ANALYTICS.vendors.googleAnalytics.id) : 'G-262711985';
+// Prefer GA ID from Payload site_settings (manageable via CMS admin),
+// fall back to config.yaml, then hardcoded default.
+const siteSettings = await getSiteSettings('en');
+const payloadGaId = siteSettings?.google_analytics_id;
+const configGaId = ANALYTICS?.vendors?.googleAnalytics?.id ? String(ANALYTICS.vendors.googleAnalytics.id) : null;
+const gaId = payloadGaId || configGaId || 'G-262711985';
 const partytown = !!ANALYTICS?.vendors?.googleAnalytics?.partytown;
 const scriptType = partytown ? 'text/partytown' : undefined;
 ---
