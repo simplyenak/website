@@ -1,8 +1,9 @@
 ---
-// Analytics — consent-gated GA4 + Meta Pixel.
-// Does NOT fire until visitor accepts cookies (via CookieBanner).
-// Exposes tracking functions: trackTourBooking, trackTourInterest, trackWhatsApp, trackContactForm
-
+// Analytics — Google Analytics 4 with Consent Mode v2.
+// Loads gtag.js immediately with default-denied consent.
+// Cookieless pings fire for all visitors (aggregate traffic
+// counts). Full cookie-based tracking activates when the visitor
+// accepts via CookieBanner.astro.
 import { ANALYTICS } from 'astrowind:config';
 import { getSiteSettings } from '~/lib/content';
 
@@ -12,77 +13,118 @@ const siteSettings = await getSiteSettings('en');
 const payloadGaId = siteSettings?.google_analytics_id;
 const configGaId = ANALYTICS?.vendors?.googleAnalytics?.id ? String(ANALYTICS.vendors.googleAnalytics.id) : null;
 const gaId = payloadGaId || configGaId || 'G-262711985';
-// Partytown removed — gating is handled by consent, not worker thread.
-const scriptType = undefined;
 ---
 
-<script is:inline id="ga-init" data-ga-id={gaId} type={scriptType}>
-  (function () {
-    var gaId = document.getElementById('ga-init').dataset.gaId;
-    if (!gaId) return;
+<!-- GA4 library — Consent Mode v2 requires this loaded early -->
+<script is:inline async id="ga-lib" data-ga-id={gaId} src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { window.dataLayer.push(arguments); }
-    window.gtag = gtag;
+<script is:inline id="ga-init" data-ga-id={gaId}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
 
-    function initGA4(id) {
-      if (window._ga4Initialized) return;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', id, {
-        send_page_view: true,
-        custom_map: { tour_type: 'custom_parameter_1', booking_source: 'custom_parameter_2' },
-      });
-      window._ga4Initialized = true;
-    }
+  // ── Consent Mode v2 ──────────────────────────────────────────
+  // Default: denied for all Google services. GA4 still receives
+  // cookieless pings (aggregated, no client identifiers) so you
+  // get traffic counts even before consent. When the visitor
+  // accepts via CookieBanner, consent upgrades to granted and
+  // full cookie-based tracking begins.
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500,
+    url_passthrough: true,
+  });
 
-    // Return visitor who already accepted
+  // Returning visitor who already accepted — upgrade immediately
+  // so consented users get full tracking from first paint.
+  try {
     if (localStorage.getItem('se_cookie_consent') === 'accepted') {
-      initGA4(gaId);
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted',
+      });
+      window._ga4Consented = true;
     }
+  } catch (e) {}
 
-    // First-time visitor who accepts during this session
-    document.addEventListener('cookieConsent:accepted', function () {
-      initGA4(gaId);
+  var gaId = document.getElementById('ga-init').dataset.gaId;
+
+  gtag('js', new Date());
+  gtag('config', gaId, {
+    send_page_view: true,
+    anonymize_ip: true,
+    custom_map: { tour_type: 'custom_parameter_1', booking_source: 'custom_parameter_2' },
+  });
+
+  // ── Tracking helpers ─────────────────────────────────────────
+  // Conversion events fire only after consent (they need cookies
+  // for attribution). Pageviews fire cookieless regardless.
+
+  window.trackTourBooking = function (tourName, tourPrice, bookingId) {
+    if (!window._ga4Consented) return;
+    gtag('event', 'purchase', {
+      transaction_id: bookingId, value: tourPrice, currency: 'MYR',
+      items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours', quantity: 1, price: tourPrice }],
     });
+  };
 
-    // ── Tracking helpers (silent no-ops if consent not given) ──
-
-    window.trackTourBooking = function (tourName, tourPrice, bookingId) {
-      if (!window._ga4Initialized) return;
-      gtag('event', 'purchase', {
-        transaction_id: bookingId, value: tourPrice, currency: 'MYR',
-        items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours', quantity: 1, price: tourPrice }],
-      });
-    };
-
-    window.trackTourInterest = function (tourName) {
-      if (!window._ga4Initialized) return;
-      gtag('event', 'view_item', {
-        currency: 'MYR', value: 0,
-        items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours' }],
-      });
-    };
-
-    window.trackContactForm = function () {
-      if (!window._ga4Initialized) return;
-      gtag('event', 'generate_lead', { currency: 'MYR', value: 0, method: 'contact_form' });
-    };
-
-    window.trackWhatsApp = function (source) {
-      if (!window._ga4Initialized) return;
-      gtag('event', 'contact', { method: 'whatsapp', event_label: source || 'unknown' });
-    };
-
-    // Global WhatsApp click tracker — catches all wa.me links
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a[href*="wa.me"]');
-      if (!a) return;
-      var source = a.dataset.trackSource || document.title || 'site';
-      if (window.trackWhatsApp) window.trackWhatsApp(source);
+  window.trackTourInterest = function (tourName) {
+    if (!window._ga4Consented) return;
+    gtag('event', 'view_item', {
+      currency: 'MYR', value: 0,
+      items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours' }],
     });
-  })();
+  };
+
+  window.trackContactForm = function () {
+    if (!window._ga4Consented) return;
+    gtag('event', 'generate_lead', { currency: 'MYR', value: 0, method: 'contact_form' });
+  };
+
+  window.trackWhatsApp = function (source) {
+    if (!window._ga4Consented) return;
+    gtag('event', 'contact', { method: 'whatsapp', event_label: source || 'unknown' });
+  };
+
+  // Global WhatsApp click tracker — catches all wa.me links
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href*="wa.me"]');
+    if (!a) return;
+    var source = a.dataset.trackSource || document.title || 'site';
+    if (window.trackWhatsApp) window.trackWhatsApp(source);
+  });
+
+  // ── Consent state changes from CookieBanner ──────────────────
+  document.addEventListener('cookieConsent:accepted', function () {
+    gtag('consent', 'update', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted',
+    });
+    window._ga4Consented = true;
+  });
+
+  document.addEventListener('cookieConsent:declined', function () {
+    gtag('consent', 'update', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+    });
+    window._ga4Consented = false;
+  });
+
+  // ── SPA navigation pageviews (Astro View Transitions) ────────
+  document.addEventListener('astro:after-swap', function () {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+  });
 </script>

@@ -68,15 +68,7 @@
     declineBtn?.addEventListener('click', () => {
       localStorage.setItem(CONSENT_KEY, 'declined');
       hideBanner();
-      // Delete any GA4 cookies already set
-      document.cookie.split(';').forEach((c) => {
-        const name = c.trim().split('=')[0];
-        if (name.startsWith('_ga') || name === '_gid') {
-          const expired = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=' + location.hostname;
-          document.cookie = expired;
-          document.cookie = expired.replace('domain=' + location.hostname, 'domain=.' + location.hostname);
-        }
-      });
+      document.dispatchEvent(new Event('cookieConsent:declined'));
     });
   }
 
