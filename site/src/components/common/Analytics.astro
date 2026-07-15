@@ -12,8 +12,8 @@ const siteSettings = await getSiteSettings('en');
 const payloadGaId = siteSettings?.google_analytics_id;
 const configGaId = ANALYTICS?.vendors?.googleAnalytics?.id ? String(ANALYTICS.vendors.googleAnalytics.id) : null;
 const gaId = payloadGaId || configGaId || 'G-262711985';
-const partytown = !!ANALYTICS?.vendors?.googleAnalytics?.partytown;
-const scriptType = partytown ? 'text/partytown' : undefined;
+// Partytown removed — gating is handled by consent, not worker thread.
+const scriptType = undefined;
 ---
 
 <script is:inline id="ga-init" data-ga-id={gaId} type={scriptType}>
