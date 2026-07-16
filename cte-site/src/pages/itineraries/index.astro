@@ -1,0 +1,95 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+---
+
+<PageLayout title="Itineraries" description="Sample itineraries across Malaysia: 3-day Penang, 3-day Kuala Lumpur, 5-day multi-region. Starting points you can adapt for your clients.">
+
+  <!-- Hero -->
+  <section class="bg-brand-800 text-white py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-white max-w-2xl">Sample Itineraries</h1>
+      <p class="mt-6 text-lg text-white/85 max-w-3xl">Starting points you can adapt. Each one is a real programme we have run, not something we made up for a brochure. Adjust the pacing, swap restaurants, add rest days, or combine them into a longer trip.</p>
+    </div>
+  </section>
+
+  <!-- Itinerary Cards -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <a href="/itineraries/3-days-penang.html" class="block bg-white rounded-xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+          <img src="https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg" alt="Penang laksa" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <span class="text-accent text-xs font-semibold uppercase tracking-wide">3 Days</span>
+            <h3 class="mt-2 text-xl font-serif font-semibold text-brand-900">Penang</h3>
+            <p class="mt-2 text-brand-700">George Town heritage food, Nyonya home cooking, fishing village breakfast, durian farm, and a spice garden. The island's food culture from market to table.</p>
+            <span class="mt-4 inline-block text-accent font-medium">View full itinerary &rarr;</span>
+          </div>
+        </a>
+        <a href="/itineraries/3-days-kuala-lumpur.html" class="block bg-white rounded-xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+          <img src="https://cdn.simplyenak.com/payload-media/kl-street-food-tour-chinatown-char-siu-bao-hidden-vendor-steamer.jpg" alt="Petaling Street, Kuala Lumpur" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <span class="text-accent text-xs font-semibold uppercase tracking-wide">3 Days</span>
+            <h3 class="mt-2 text-xl font-serif font-semibold text-brand-900">Kuala Lumpur</h3>
+            <p class="mt-2 text-brand-700">Wholesale markets at dawn, Kampung Baru nasi lemak, Mamak culture, banana leaf lunch, and a kampung cooking session. The capital through its food.</p>
+            <span class="mt-4 inline-block text-accent font-medium">View full itinerary &rarr;</span>
+          </div>
+        </a>
+        <a href="/itineraries/5-days-malaysia.html" class="block bg-white rounded-xl border border-brand-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+          <div class="w-full h-48 bg-gradient-to-br from-brand-200 to-brand-400 flex items-center justify-center">
+            <span class="text-white font-serif text-lg font-semibold">KL → Penang → Melaka</span>
+          </div>
+          <div class="p-6">
+            <span class="text-accent text-xs font-semibold uppercase tracking-wide">5 Days</span>
+            <h3 class="mt-2 text-xl font-serif font-semibold text-brand-900">KL → Penang → Melaka</h3>
+            <p class="mt-2 text-brand-700">A cross-region trip covering the three main food centres of peninsular Malaysia. Train to Penang, drive to Melaka, fly home from KL.</p>
+            <span class="mt-4 inline-block text-accent font-medium">View full itinerary &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 md:py-24 bg-brand-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block text-accent text-sm font-semibold tracking-wide uppercase mb-2">How It Works</span>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-900 max-w-2xl">From sample to sold.</h2>
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-white rounded-xl border border-brand-100">
+          <span class="text-accent text-xs font-semibold uppercase tracking-wide">Step 1</span>
+          <h3 class="mt-2 text-lg font-serif font-semibold text-brand-900">Pick a Starting Point</h3>
+          <p class="mt-2 text-brand-700">Choose one of the sample itineraries, or ask us to build something from scratch.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border border-brand-100">
+          <span class="text-accent text-xs font-semibold uppercase tracking-wide">Step 2</span>
+          <h3 class="mt-2 text-lg font-serif font-semibold text-brand-900">Tell Us About Your Client</h3>
+          <p class="mt-2 text-brand-700">Group size, dietary needs, budget, travel dates, fitness level. The details that turn a template into a real programme.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border border-brand-100">
+          <span class="text-accent text-xs font-semibold uppercase tracking-wide">Step 3</span>
+          <h3 class="mt-2 text-lg font-serif font-semibold text-brand-900">We Adapt</h3>
+          <p class="mt-2 text-brand-700">Swap restaurants for halal options, add rest time for older travellers, tighten the pacing for a faster group.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border border-brand-100">
+          <span class="text-accent text-xs font-semibold uppercase tracking-wide">Step 4</span>
+          <h3 class="mt-2 text-lg font-serif font-semibold text-brand-900">We Run It</h3>
+          <p class="mt-2 text-brand-700">Dedicated guide, printed programme, 24/7 support on the ground. Your client has a direct number.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 bg-brand-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold">Need something different?</h2>
+      <p class="mt-4 text-lg text-white/80 max-w-2xl mx-auto">These are starting points. We build custom programmes all the time. Different regions, durations, themes, group sizes.</p>
+      <div class="mt-8">
+        <a href="/contact.html" class="inline-flex items-center px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

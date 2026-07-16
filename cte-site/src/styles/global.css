@@ -1,0 +1,51 @@
+@theme {
+  --color-brand-50: #f8f5f0;
+  --color-brand-100: #f0e8db;
+  --color-brand-200: #e0d0b8;
+  --color-brand-300: #c9b08e;
+  --color-brand-400: #b08d64;
+  --color-brand-500: #8c6a45;
+  --color-brand-600: #6b5036;
+  --color-brand-700: #4a3825;
+  --color-brand-800: #3a2c1e;
+  --color-brand-900: #2a2015;
+
+  --color-warm-50: #fdf8f3;
+  --color-warm-100: #f8ede0;
+  --color-warm-200: #f0d8b8;
+  --color-warm-300: #e0bd85;
+  --color-warm-400: #d4a155;
+  --color-warm-500: #c88a32;
+  --color-warm-600: #a06d24;
+  --color-warm-700: #7a5320;
+  --color-warm-800: #533a1a;
+
+  --color-accent: #c88a32;
+  --color-accent-hover: #a06d24;
+
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-warm-50);
+  color: var(--color-brand-900);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Cookie banner transition */
+#cookie-banner {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#cookie-banner.hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
