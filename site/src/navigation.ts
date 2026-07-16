@@ -130,7 +130,7 @@ export const footerData = {
     { ariaLabel: 'WhatsApp', icon: 'tabler:brand-whatsapp', href: 'https://wa.me/60172878929' },
   ],
   footNote: `
-    COPYRIGHT © 2026 SIMPLY ENAK FOOD EXPERIENCES. ALL RIGHTS RESERVED.
+    © 2026 Local Culinary Travel Experiences Sdn. Bhd.
   `,
 };
 
