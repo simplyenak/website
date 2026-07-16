@@ -19,13 +19,17 @@ jobs:
             echo "Removing route for ${SCRIPT_NAME}..."
 
             # Find the route ID
-            ROUTE_ID=$(curl -s "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/workers/routes" \
+            ROUTES_RESP=$(curl -s "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/workers/routes" \
               -H "Authorization: Bearer ${TOKEN}" \
-              -H "Content-Type: application/json" | \
-              python3 -c "
+              -H "Content-Type: application/json")
+
+            echo "Routes response: $ROUTES_RESP"
+
+            ROUTE_ID=$(echo "$ROUTES_RESP" | python3 -c "
           import sys, json
           data = json.load(sys.stdin)
-          for r in data.get('result', []):
+          results = data.get('result') or []
+          for r in results:
               if r.get('script') == '${SCRIPT_NAME}':
                   print(r['id'])
           ")
@@ -39,6 +43,8 @@ jobs:
             RESPONSE=$(curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/workers/routes/${ROUTE_ID}" \
               -H "Authorization: Bearer ${TOKEN}" \
               -H "Content-Type: application/json")
+
+            echo "Delete response: $RESPONSE"
 
             SUCCESS=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success',False))")
             if [ "$SUCCESS" != "True" ]; then
@@ -59,6 +65,8 @@ jobs:
             RESPONSE=$(curl -s -X DELETE "https://api.cloudflare.com/client/v4/accounts/${ACCT_ID}/workers/scripts/${SCRIPT_NAME}" \
               -H "Authorization: Bearer ${TOKEN}" \
               -H "Content-Type: application/json")
+
+            echo "Response: $RESPONSE"
 
             SUCCESS=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success',False))")
             if [ "$SUCCESS" != "True" ]; then
