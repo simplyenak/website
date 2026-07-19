@@ -11,6 +11,10 @@ metadata:
   description: "Do Malaysians eat dog meat? The short answer is no. The cultural reasons reveal a lot about Malaysia's relationship with food, religion, and animals."
 ---
 
+
+
+**> Do Malaysians eat dog meat?** No, dog meat is not part of mainstream Malaysian cuisine. This guide covers where the myth comes from and a few genuinely unusual Malaysian dishes you might encounter.
+
 **Updated June 2026:** This question comes up on almost every tour. Here is the latest answer based on what our guides hear from guests every week.
 
 Every once in a while on a tour I get the odd question, based on what I call global rumors. One such question and rumor is: Do Malaysians eat dog meat?
@@ -63,9 +67,9 @@ So Malaysians may not eat dogs, but they do have some dishes that make their way
 
 Did I miss any dish you enjoyed on your visit to Malaysia? Or anything that shocked you even more than the above? Let me know in the comments below.
 
-All this effort does pay off beautifully at the end when you bite into an incredibly rich and flavourful dessert that’s as popular with adults as it is with children. Doldol can also be found in durian, soursop, apple, jackfruit, and milk flavours.
+All this effort does pay off beautifully at the end when you bite into an incredibly rich and flavorful dessert that’s as popular with adults as it is with children. Doldol can also be found in durian, soursop, apple, jackfruit, and milk flavours.
 
-Interestingly, rendang contains natural preservatives due to its recipe which calls for a distinctive fusion of ground spices and coconut milk, which gives the dish a shelf life up to four weeks.
+Interestingly, rendang contains natural preservatives due to its recipe which calls for a notable fusion of ground spices and coconut milk, which gives the dish a shelf life up to four weeks.
 
 Lontong is a combination of nasi impit, vegetables and meat, served together with a savory coconut milk base. Lotong can be eaten as a full meal since it has everything included in it.
 
@@ -93,7 +97,7 @@ The above list is just a sampling of some of the traditional foods you’ll find
 
 There are so many ways besides food to enjoy the month of Hari Raya as a tourist. Here are a few to think about.
 
-A favorite way of many of our tourists is to get invited to an open house to experience first hand how to celebrate alongside a Muslim family and indulge in all the delicacies. It’s not difficult to make remarkable Muslim friends in Malaysia and in their faith they do receive extra blessings for inviting a foreigner into their homes for food and celebration.
+A favorite way of many of our tourists is to get invited to an open house to experience first hand how to celebrate alongside a Muslim family and indulge in all the delicacies. It’s not difficult to make impressive Muslim friends in Malaysia and in their faith they do receive extra blessings for inviting a foreigner into their homes for food and celebration.
 
 Even our government organizes a National Open House for the public to come and enjoy the food.
 

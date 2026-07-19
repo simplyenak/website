@@ -11,9 +11,13 @@ metadata:
   description: "Malaysia's major festivals and the most-loved times to visit. From Chinese New Year to Hari Raya and Deepavali, here is what to expect during each celebration."
 ---
 
+
+
+**> What festivals does Malaysia celebrate:** From Hari Raya and Chinese New Year to Deepavali and Harvest Festival - here is a guide to each celebration and what food to expect during your visit.
+
 **Updated June 2026:** Festival dates shift each year with the lunar and Islamic calendars. Here are the confirmed dates for the coming year.
 
-An experience to Malaysia is exciting. There are so many new things to see, taste, smell and do. There’s the beach, foods, great people to meet, hundreds of different ethnic groups to learn about, and remarkable nightlife. But there is more to experience in Malaysia than just everyday life. For instance, New Orleans is a great town to visit year-round, but the most-loved time to visit is of course on Mardi Gras.
+An experience to Malaysia is exciting. There are so many new things to see, taste, smell and do. There’s the beach, foods, great people to meet, hundreds of different ethnic groups to learn about, and impressive nightlife. But there is more to experience in Malaysia than just everyday life. For instance, New Orleans is a great town to visit year-round, but the most popular time to visit is of course on Mardi Gras.
 
 I’m talking about my favorite times of the year. Festival time.
 
@@ -59,7 +63,7 @@ People will rise early, attend a sermon at the Mosque then head home for a day-l
 
 Mosques are decorated with lights and firecrackers are sometimes set off at night.
 
-This is the ideal time to see the distinctive architecture of the mosques and see how the meat is prepared in the slaughterhouses. Non-Muslims and even tourists are often invited to meals as a way to introduce them to Islamic culture.
+This is the ideal time to see the notable architecture of the mosques and see how the meat is prepared in the slaughterhouses. Non-Muslims and even tourists are often invited to meals as a way to introduce them to Islamic culture.
 
 ## When: Dates vary from mid-October to November
 
@@ -71,9 +75,9 @@ The background has several different legends in Hindu texts. The most common tel
 
 Another one is to honour Lakshmi, the Hindu goddess of prosperity. Clay lanterns are lit and placed all around asking the goddess to bless them. The main significance of the “festival of lights” is to signify the triumph of good over evil.
 
-This is an remarkable time of lights and celebrations. There are firework displays at night and street food stalls are packed with Indian food, so this is the perfect time to indulge. A majority of the Hindu population is in West Malaysia and the capital Kuala Lumpur has two “little India” districts.
+This is an impressive time of lights and celebrations. There are firework displays at night and street food stalls are packed with Indian food, so this is the perfect time to indulge. A majority of the Hindu population is in West Malaysia and the capital Kuala Lumpur has two “little India” districts.
 
-Don’t forget to stop in and visit the remarkable Hindu temples while you enjoy Deepavali.
+Don’t forget to stop in and visit the impressive Hindu temples while you enjoy Deepavali.
 
 ## When: late January/ early February
 
@@ -81,7 +85,7 @@ Don’t forget to stop in and visit the remarkable Hindu temples while you enjoy
 
 Temple, Penang, and other shrines and locations nationwide.
 
-This is the most distinctive festival on this list, but I have to warn you, it’s not for the squeamish person. This Tamil celebration is held during the full moon and commemorates Lord Murugan (Hindu god of war) defeating an evil spirit called Soorapadman.
+This is the most notable festival on this list, but I have to warn you, it’s not for the squeamish person. This Tamil celebration is held during the full moon and commemorates Lord Murugan (Hindu god of war) defeating an evil spirit called Soorapadman.
 
 As a tourist, this is something you will most likely not see again in your lifetime so I highly recommend this festival. Many on our tours have been skeptical about attending, but after they were happy they did.
 
@@ -89,7 +93,7 @@ This celebration involves a parade through the streets of Kuala Lumpur led by a 
 
 Not all devotees pierce their skin, though. Many just make offerings of fruit or flowers or other gifts. Batu caves are the most popular and largest shrine, but there are shrines all throughout Malaysia that celebrate Thaipusam.
 
-According to my friend Shoba, Penang Waterfall temple is the most-loved place other than the Batu caves to experience Thaipusam.
+According to my friend Shoba, Penang Waterfall temple is the most popular place other than the Batu caves to experience Thaipusam.
 
 ## When: End of September or early October
 

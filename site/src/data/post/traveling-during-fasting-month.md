@@ -11,17 +11,21 @@ metadata:
   description: "Visiting Malaysia during Ramadan is rewarding. Here is what stays open, what closes, and where to eat after sundown during the fasting month."
 ---
 
+
+
+**> What is it like to visit Malaysia during Ramadan:** Ramadan transforms Malaysia's daily rhythm - many stalls open only after sunset for iftar. Here is what to expect and how to make the most of your visit.
+
 **Updated May 2026:** Ramadan dates shift each year. Here is what travellers should know for the upcoming fasting month.
 
 Malaysia has a high population of Muslims citizens, more than half the country, making the month of Ramadan a special time nationwide. Many tourists find this as the ideal time for their Malaysian getaway. Some have friends who they visit on Hari Raya, and others just want to have the rich experience of visiting Malaysia during the month of Ramadan.
 
-Some may get the idea that by traveling to Malaysia for vacation during Ramadan month, that they‘ll be an intrusion as a non-muslim. This is not the case. In fact, Malaysia is a multicultural mix of cultures with many different types of religions, beliefs and ethnic people that live together. Here in Malaysia, we do more than just tolerate one another, we live in harmony and respect of each other and share our most-loved traditions. So even as a non-muslim, there is still plenty to do and enjoy during Ramadan month.
+Some may get the idea that by traveling to Malaysia for vacation during Ramadan month, that they‘ll be an intrusion as a non-muslim. This is not the case. In fact, Malaysia is a multicultural mix of cultures with many different types of religions, beliefs and ethnic people that live together. Here in Malaysia, we do more than just tolerate one another, we live in harmony and respect of each other and share our most popular traditions. So even as a non-muslim, there is still plenty to do and enjoy during Ramadan month.
 
 > "The flavours of Traveling Malaysia During Ramadan: What To Expect tell a story of Malaysia's rich cultural heritage."
 
 There may be a few slight restrictions to consider when you come during Ramadan month, however. For instance, Muslim restaurants and some businesses and shops will be closed. But again, don’t let that dissuade you from coming and enjoying the great things Ramadan month in Malaysia has to offer.
 
-Ramadan (also known as Ramadhan or Ramzan) is the ninth month in the Islamic calendar and is a holy month observed by Muslims worldwide. The word Ramadan comes from the Arabic root ramiḍa or ar-ramaḍ, which means scorching heat or dry ground without food or water.It commemorates the month during which Muhammad received the initial revelations of what would become the Quran and is one of the Five Pillars of Islam. This is what Muslims call “the most-loved of times”.
+Ramadan (also known as Ramadhan or Ramzan) is the ninth month in the Islamic calendar and is a holy month observed by Muslims worldwide. The word Ramadan comes from the Arabic root ramiḍa or ar-ramaḍ, which means scorching heat or dry ground without food or water.It commemorates the month during which Muhammad received the initial revelations of what would become the Quran and is one of the Five Pillars of Islam. This is what Muslims call “the most popular of times”.
 
 During the month of Ramadan, Muslims abstain from eating or drinking at dawn and sunset. This fasting is a way to attain taqwa, the fear of God. The goal is to bring oneself closer to Allah, or God. It is believed that God explained to the prophet Muhammad that fasting was an obligatory practice that should be observed by those who wish “oneness” with Him.
 
@@ -53,7 +57,7 @@ Some stay up after Sahur and take the time to reflect and pray, while others wil
 
 Tourists can experience sahur at any mosque and also many Muslim restaurants do prepare a meal for Sahur, then close afterward. Sahur can be a variety of foods like coconut pancakes or BBQ chicken wings, or just a simple baked macaroni or corn coconut pudding.
 
-This is the most-loved time of the day. After fasting the whole day all Muslims will celebrate the day by breakfasting. Here the term “breakfast” does not refer to the morning meal as it has come to be recognized, but the meaning is the same. Buka Puasa is “breaking the fast”.
+This is the most popular time of the day. After fasting the whole day all Muslims will celebrate the day by breakfasting. Here the term “breakfast” does not refer to the morning meal as it has come to be recognized, but the meaning is the same. Buka Puasa is “breaking the fast”.
 
 Traditionally, dates are the first thing eaten to break the day’s fast. This is a remembrance of how Muhammad broke his own fast by eating dates. After that, they generally gather for the Maghrib prayer, the fourth of the five daily prayers, after which the main meal is served.
 
@@ -61,7 +65,7 @@ Its all about sharing and giving. There are no restrictions for non-Muslims to j
 
 Depending on some city councils, do organize public breakfasts meaning they will sponsor food for the public or even anyone to come and join the breakfast. And you will sit together will the locals and enjoy a meal at that particular area. You have to just find out if there are any in your area.
 
-During the month of Ramadan, it’s very common to see mosques occupied with people 24/7. Many of our tourists are amazed to see this type of devotion and dedication. What’s distinctive about visiting the mosque during Ramadan month is its the only time throughout the year you will hear the Tarawih Prayer being recited. However, it’s not obligatory to recite them.
+During the month of Ramadan, it’s very common to see mosques occupied with people 24/7. Many of our tourists are amazed to see this type of devotion and dedication. What’s notable about visiting the mosque during Ramadan month is its the only time throughout the year you will hear the Tarawih Prayer being recited. However, it’s not obligatory to recite them.
 
 Usually, after the prayer, there will be some religious lectures that is also open to the public. If you are visiting one of the beautiful mosques during Ramadan month, you may even be invited inside to experience it firsthand.
 
@@ -77,7 +81,7 @@ Different kind of rice from other states, different colours and tastes. Here you
 
 You’ll also find local delicacies ranging from sweet to savory. Try popia goreng, kuih puteri mandi, pulut panggang. These are some dishes that you won’t be able to find normally. Cold drinks are also served. The Bazaar normally opens at 4:30 am then closes around 7:30 am. It will re-open as early as 4pm so people can gather what they need for breakfasting.
 
-If you are fortunate enough to be in Malaysia for Hari Raya, prepare for an remarkable experience. This is the end of Ramadan month and the end of the fasting. As soon as the new moon is seen on the last day of Ramadan, the fasting is over and the celebration begins.
+If you are fortunate enough to be in Malaysia for Hari Raya, prepare for an impressive experience. This is the end of Ramadan month and the end of the fasting. As soon as the new moon is seen on the last day of Ramadan, the fasting is over and the celebration begins.
 
 However, most Muslims have already been planning and preparing for Hari Raya way in advance. They stock food, buy new clothes and gifts and really let the excitement build. On the morning of Hari Raya, the men perform prayers at the mosque while children ask for forgiveness from their parents. The children also receive small green packets stuffed with cash. After prayers, it’s time to eat and visit with friends.
 
@@ -97,7 +101,7 @@ Doldol may seem tame given the ingredients are only coconut milk, cane sugar and
 
 This is a soup that is also quite popular during the Ramadan month as well as Hari Raya. Anise, cardamom, cinnamon and black pepper, among other spices are simmered along with certain vegetables and meat depending on what region or part of Malaysia you are in
 
-Lontong is an remarkable Hari Raya dish that has its roots in Indonesia. It’s a coconut soup that’s a combination of nasi impit, vegetables and meat, served in a savoury coconut milk base. Again depending on where you are, there will be variations. Some cooks put peanut sauce in the soup while others add tempeh or a hard-boiled egg. Its served with rice cakes.
+Lontong is an impressive Hari Raya dish that has its roots in Indonesia. It’s a coconut soup that’s a combination of nasi impit, vegetables and meat, served in a savoury coconut milk base. Again depending on where you are, there will be variations. Some cooks put peanut sauce in the soup while others add tempeh or a hard-boiled egg. Its served with rice cakes.
 
 • Take note that shops and malls will be pretty packed the week before Ramadan. People like to stock up, especially on dates, which is served every night at breakfasting
 
@@ -120,7 +124,7 @@ Ramadan 2026 is expected to begin around February 28 and end around March 30, de
 Not at all. While Muslim-owned stalls are closed during the day, non-Muslim restaurants and hotels continue serving as usual. Food courts in shopping malls and Chinese/Indian eateries remain open.
 
 **What is a Ramadan bazaar?**
-Ramadan bazaars are temporary food markets that spring up across Malaysia in the late afternoon. They sell an incredible variety of dishes for breaking fast. As a tourist, this is one of the most-loved food experiences you can have in Malaysia.
+Ramadan bazaars are temporary food markets that spring up across Malaysia in the late afternoon. They sell an incredible variety of dishes for breaking fast. As a tourist, this is one of the most popular food experiences you can have in Malaysia.
 
 **Want to taste Malaysian food with a local guide?** [Browse our tours](/tours) and join us for a meal you will not forget.
 

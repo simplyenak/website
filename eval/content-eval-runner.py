@@ -42,17 +42,37 @@ def load_json(path: Path) -> Any:
 
 # ── Helpers ──
 
+PASS = "pass"
+FAIL = "fail"
+WARN = "warn"
+
+
 def pass_result(msg: str, details=None) -> dict:
-    return {"passed": True, "summary": msg, "details": details or msg}
+    return {"passed": True, "status": PASS, "summary": msg, "details": details or msg}
 
 
 def fail_result(msg: str, details=None) -> dict:
-    return {"passed": False, "summary": msg, "details": details or msg}
+    return {"passed": False, "status": FAIL, "summary": msg, "details": details or msg}
 
 
 def warn_result(msg: str, details=None) -> dict:
     """Reports issue but returns passed=True — doesn't block deploy."""
-    return {"passed": True, "summary": msg, "details": details or msg}
+    return {"passed": True, "status": WARN, "summary": msg, "details": details or msg}
+
+
+def extract_text_from_rich_text(node) -> list[str]:
+    """Recursively extract all text from Payload CMS Lexical rich text format."""
+    texts = []
+    if isinstance(node, dict):
+        if node.get("type") == "text" and isinstance(node.get("text"), str):
+            texts.append(node["text"])
+        for val in node.values():
+            if isinstance(val, (dict, list)):
+                texts.extend(extract_text_from_rich_text(val))
+    elif isinstance(node, list):
+        for item in node:
+            texts.extend(extract_text_from_rich_text(item))
+    return texts
 
 
 # ── Landing page checks ──
@@ -139,6 +159,11 @@ def check_image_optimization() -> dict:
 
 # ── Blog checks ──
 
+AI_SUMMARY_PATTERN = re.compile(
+    r'^\*\*.*?(?:summary|quick|tl;dr|key takeaway|in short).*?\*\*[\s\S]{0,500}?(?:\n\n|\n#|\n---)',
+    re.MULTILINE | re.IGNORECASE
+)
+
 def check_blog_seo_basics() -> dict:
     posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
     issues = []
@@ -175,6 +200,92 @@ def check_blog_seo_basics() -> dict:
         if links < 2:
             issues.append({"file": post.name, "issue": f"Only {links} internal links"})
     return pass_result(f"All {len(posts)} posts OK", issues) if not issues else fail_result(f"{len(issues)} issues across {len(posts)} posts", issues[:20])
+
+
+def check_blog_ai_summary() -> dict:
+    """Check every blog post has a 2-3 sentence AI-optimized summary at the top.
+
+    Rationale (per SEO research, 2026):
+    - Google AI Overviews and ChatGPT citations favour pages with a concise
+      answer-summary in the first visible paragraph
+    - A 2-3 sentence TL;DR that answers the core query improves AI snippet
+      extraction and drives both organic and AI-referred traffic
+    - The summary should appear before any introductory paragraphs and be
+      clearly scannable (bold lead-in or blockquote)
+    """
+    posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
+    if not posts:
+        return warn_result("No blog posts to check")
+
+    issues = []
+    total = 0
+    for post in posts:
+        content = post.read_text(encoding="utf-8")
+        parts = content.split("---", 2)
+        if len(parts) < 3:
+            continue
+        body = parts[2].strip()
+        total += 1
+
+        # Check first 300 chars after frontmatter for a summary marker
+        opening = body[:300]
+
+        # Detect summary patterns: "**> Question**" or "> TL;DR" or "**Summary:**"
+        has_summary_marker = bool(re.search(
+            r'>\s*(?:tl;dr|summary|quick|key takeaway|in short|what|can|do|is|are|where|how|when|why)',
+            opening[:150], re.IGNORECASE
+        ))
+        has_bold_summary = bool(re.search(
+            r'\*\*[>:\s]*(?:tldr|summary|quick|in short|key takeaway|what|can|do|is|are|where|how|when|why)',
+            opening[:150], re.IGNORECASE
+        ))
+
+        if not has_summary_marker and not has_bold_summary:
+            # Check if first paragraph is 2-4 sentences answering 'what/why/how'
+            first_para = opening.split('\n\n')[0].strip()
+            sentences = [s.strip() for s in re.split(r'[.!?]+', first_para) if len(s.strip()) > 20]
+            if len(sentences) < 2 or len(sentences) > 5:
+                issues.append({"file": post.name, "issue": "No detectable AI-optimized summary at top"})
+                continue
+            # Check first sentence answers a question (who/what/why/how)
+            if not re.search(r'\b(what|how|why|whether|when|where|here.?s|this guide covers|learn about)\b',
+                             sentences[0], re.IGNORECASE):
+                issues.append({"file": post.name, "issue": "First paragraph doesn't read as an answer-summary"})
+
+    if issues:
+        return fail_result(f"{len(issues)}/{total} posts missing AI-optimized summary", issues[:20])
+    return pass_result(f"All {total} posts have AI-optimized summaries")
+
+
+def check_blog_content_depth() -> dict:
+    """Check every blog post meets minimum word count for SEO depth.
+
+    Rationale (per SEO research, 2026):
+    - Pages that rank #1 typically have 3-4x the word count of positions 5-10
+    - Minimum 1,500 words ensures the content comprehensively answers user intent
+    - Posts under 1,200 words are unlikely to rank for competitive terms
+    """
+    posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
+    if not posts:
+        return warn_result("No blog posts to check")
+
+    MIN_WORDS = 1200
+    issues = []
+    total = 0
+    for post in posts:
+        content = post.read_text(encoding="utf-8")
+        parts = content.split("---", 2)
+        if len(parts) < 3:
+            continue
+        body = parts[2]
+        word_count = len(body.split())
+        total += 1
+        if word_count < MIN_WORDS:
+            issues.append({"file": post.name, "words": word_count, "issue": f"Only {word_count} words (min {MIN_WORDS})"})
+
+    if issues:
+        return fail_result(f"{len(issues)}/{total} posts below {MIN_WORDS}-word minimum", issues)
+    return pass_result(f"All {total} posts above {MIN_WORDS}-word minimum (avg {sum(len(p.read_text(encoding='utf-8').split('---',2)[2].split()) if len(p.read_text(encoding='utf-8').split('---',2)) >= 3 else 0 for p in posts)//max(total,1)} words)")
 
 
 def check_brand_voice() -> dict:
@@ -420,6 +531,94 @@ def check_a11y_basics() -> dict:
     return pass_result(f"OK", issues) if not issues else fail_result(f"{len(issues)} a11y issues", issues)
 
 
+# ── Stories collection checks (Discover-ready editorial) ──
+
+# Banned words that signal AI-generated or brand-incompatible copy
+BANNED_WORDS = ["authentic", "premium", "luxury", "discover", "explore", "immerse",
+                 "customer", "delicious", "unique", "best", "amazing", "adventure",
+                 "journey", "award-winning", "world-class", "unforgettable", "breathtaking"]
+
+# Keyword-stock title patterns that work for SEO but not Discover
+KEYWORD_TITLE_PATTERNS = [
+    r'^what\s+(?:are|is|to|you\s+need)',
+    r'^how\s+to',
+    r'guide\s+to',
+    r'\bguide\b']
+# Emotion/promise title patterns that stop a scroll
+EMOTION_PATTERNS = [
+    r'\b(I|we|my|our)\b',          # First-person experience
+    r'["\u201c\u201d]',               # Direct quotes
+    r'\?$',                          # Questions that hook
+    r'!\s*$',                        # Exclamation for energy
+    r'\b(hidden|forgot|secret|never|always|every|nobody|somebody)\b',
+    r'\b(thing|stuff|moment|memory|story|stories|time|day|night|morning)\b']
+
+
+def check_stories_quality() -> dict:
+    """Warn-only: check Stories collection for Discover-readiness. Doesn't block deploy.
+
+    Discover optimization (per research):
+    - Title: 70-95 chars, emotion + promise (not keyword-stock)
+    - Image: featured image exists (human faces = top attention trigger)
+    - Body: no banned AI-sounding words, brand voice compliant
+    - Information gain: content has unique angle, not generic listicle
+    """
+    sf = CONTENT_DIR / "stories.json"
+    if not sf.exists():
+        return warn_result("stories.json not found")
+    data = load_json(sf)
+    if not isinstance(data, list) or not data:
+        return warn_result("stories.json empty or not a list")
+
+    issues = []
+    for story in data:
+        slug = story.get("slug", "?")
+        title = story.get("title", "")
+        content_root = story.get("content", {})
+        status = story.get("status", story.get("_status", ""))
+        story_issues = []
+
+        # 1. Title hook check
+        title_len = len(title)
+        if title_len > 0:
+            if title_len < 70 or title_len > 95:
+                story_issues.append(f"title {title_len} chars (Discover sweet spot: 70-95)")
+
+            is_keyword_title = any(re.search(p, title, re.IGNORECASE) for p in KEYWORD_TITLE_PATTERNS)
+            has_emotion = any(re.search(p, title) for p in EMOTION_PATTERNS)
+            if is_keyword_title and not has_emotion:
+                story_issues.append("keyword-stock title (listicle/SEO format, not emotion-driven)")
+
+        # 2. Featured image check (Discover: image + title > content)
+        hero_image = story.get("heroImage") or story.get("hero_image") or story.get("featuredImage") or story.get("image")
+        if not hero_image:
+            story_issues.append("no featured image (Discover: scroll-stopping image = 30-50% CTR boost)")
+
+        # 3. Body brand voice check (reuse banned-word list)
+        body_texts = extract_text_from_rich_text(content_root)
+        body_combined = " ".join(body_texts).lower()
+        if body_combined:
+            found_banned = [w for w in BANNED_WORDS if re.search(rf"\b{re.escape(w)}\b", body_combined)]
+            if found_banned:
+                story_issues.append(f"banned words: {', '.join(found_banned[:5])}")
+
+        # 4. Information gain — generic listicle titles without unique angle
+        generic_markers = ["guide", "ultimate", "complete", "everything you need"]
+        if any(m in title.lower() for m in generic_markers) and not re.search(r'\b(I|my|we)\b', body_combined[:500]):
+            story_issues.append("generic listicle title + no first-person experience (low information gain)")
+
+        if story_issues:
+            issues.append({"slug": slug, "title": title[:60], "issues": story_issues})
+
+    if not issues:
+        return pass_result(f"All {len(data)} stories pass Discover-readiness checks")
+
+    return warn_result(
+        f"{len(issues)}/{len(data)} stories have Discover-readiness gaps",
+        issues[:20]
+    )
+
+
 CASE_HANDLERS = {
     "lp_hero_fields_populated": lambda: check_lp_hero_fields(load_json(CONTENT_DIR / "location-landing-pages.json")),
     "lp_eight_section_arc": lambda: check_lp_eight_section_arc(load_json(CONTENT_DIR / "location-landing-pages.json")),
@@ -428,6 +627,8 @@ CASE_HANDLERS = {
     "lp_image_optimization": check_image_optimization,
     "blog_seo_basics": check_blog_seo_basics,
     "blog_brand_voice": check_brand_voice,
+    "blog_ai_summary": check_blog_ai_summary,
+    "blog_content_depth": check_blog_content_depth,
     "media_upload_quality": check_media_quality,
     "deploy_workflow": check_deploy_workflow,
     "tour_data_completeness": check_tour_data,
@@ -443,6 +644,7 @@ CASE_HANDLERS = {
     "memory_provider_health": check_memory_provider,
     "infra_known_bug_regression": check_infra_regression,
     "a11y_basics": check_a11y_basics,
+    "stories_quality": check_stories_quality,
 }
 
 

@@ -11,6 +11,10 @@ metadata:
   description: "Arriving at Port Klang and heading to Kuala Lumpur? Here is everything you need about transport options, timing, costs, and what to eat along the way."
 ---
 
+
+
+**> How to get from Port Klang to KL:** Whether arriving by cruise ship or train, getting to KL city centre takes 40-90 minutes. Here are your options and what to do during a layover.
+
 **Updated May 2026:** Transport options between Port Klang and KL have improved. Here is the latest on how to make the trip.
 
 Taking a cruise to Malaysia is a fun and exciting way to arrive. You’ll get to see the many forested islands as you weave your way up the Malacca Strait and dock at Port Klang just south-west of Kuala Lumpur. And once you dock, there are a few things you can do and although I strongly suggest a day trip to Kuala Lumpur to get a real feel for Malaysia and its capital, I do recommend understanding the travel times to make sure the cruise doesn’t leave without you.
@@ -31,17 +35,17 @@ Today, cruise ships normally dock at Port Klang Cruise Centre, however, there ar
 
 The nearby town of Klang has a lot to offer. There are street markets, plenty of historical sites and beautiful temples to visit. Even the port itself has a number of shops and restaurants serving up local delicacies like steamed crayfish and salt-baked crab. An excursion to nearby Crab Island could be a great way to spend your time near Klang. Catch the ferry to Crab Island if you are looking for a tranquil day of fun and seafood.
 
-The biggest destination for most tourists coming into Port Klang, is a day trip to Kuala Lumpur. It’s a bit of a walk and the trip getting there and back will take up some of your shore leave time, but in my opinion it’s well worth it. Kuala Lumpur has a distinctive blend of history and culture that you will surely not want to pass up.
+The biggest destination for most tourists coming into Port Klang, is a day trip to Kuala Lumpur. It’s a bit of a walk and the trip getting there and back will take up some of your shore leave time, but in my opinion it’s well worth it. Kuala Lumpur has a notable blend of history and culture that you will surely not want to pass up.
 
 Some cruise lines offer a shuttle service to Kuala Lumpur. Although convenient, I have heard from many tourists that it can get quite expensive at upwards of US$60 per person as of this writing. I cannot vouch for this price for every cruise line, so as always, safest to  with the front desk on your ship. The biggest complaint about the shuttle service I have heard is that it does not stop at any of the sites. It merely picks you up and drops you off at the shopping mall.
 
-If your cruise line doesn’t offer shuttle service, or you are looking for a less expensive way to enjoy Kuala Lumpur for the day there are three other options. train, bus or taxi/grab. All three will take about the same amount of time, it just depends on your exact destination. The Port Klang Cruise Center will be able to help you make the most-loved decision.
+If your cruise line doesn’t offer shuttle service, or you are looking for a less expensive way to enjoy Kuala Lumpur for the day there are three other options. train, bus or taxi/grab. All three will take about the same amount of time, it just depends on your exact destination. The Port Klang Cruise Center will be able to help you make the most popular decision.
 
 When traveling to Kuala Lumpur, you have to keep in mind that even though it’s a tourist destination, it’s also a thriving metropolis and the capital of Malaysia. You’ll be well aware of this as you get closer to the city and see the high rises and skyscrapers. So taking into account the regular city traffic expects some delays now and again.
 
 Usually, peak hours for traffic starting at 7 am and can last until 9:30 am, while in the evening it will start around 4:30 pm and can stay congested until after 8 pm. Lunch time can also get a little heavy, so safest to  track of the time and take these periods into account when making plans.
 
-The roads are not always in the most-loved of repair. They are bumpy and full of potholes. I’m not trying to dissuade you from taking the trip at all. I just want to give it to you straight so you know what to expect. Visiting Kuala Lumpur is worth a little traffic and discomfort for an hour.
+The roads are not always in the most popular of repair. They are bumpy and full of potholes. I’m not trying to dissuade you from taking the trip at all. I just want to give it to you straight so you know what to expect. Visiting Kuala Lumpur is worth a little traffic and discomfort for an hour.
 
 Let’s take a look at the different choices and see how they compare.
 
@@ -51,7 +55,7 @@ The train is a favorite simply because most of the sites to see are close to eac
 
 Unless you’re willing spend most of your day sitting on the bus, this option is unfortunately not a viable way for anyone to get to Kuala Lumpur.
 
-Booking a ride on an e-hailing app or arranging a taxi is the most-loved option for most travellers arriving at Klang Cruise Terminal. The ride to Kuala Lumpur takes about 1h30min, however this really depends on traffic situations. With daily afternoon monsoon rains potentially complicating the walk back to the Cruise Terminal.
+Booking a ride on an e-hailing app or arranging a taxi is the most popular option for most travellers arriving at Klang Cruise Terminal. The ride to Kuala Lumpur takes about 1h30min, however this really depends on traffic situations. With daily afternoon monsoon rains potentially complicating the walk back to the Cruise Terminal.
 
 The most common apps for e-hailing are Grab, AirAsia, inDrive and MyCar. Pricing for rides to Kuala Lumpur vary depending on traffic and rider availability, expect to spend at least RM110 in each direction.
 

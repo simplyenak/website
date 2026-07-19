@@ -11,6 +11,10 @@ metadata:
   description: "What vegetarian actually means in Kuala Lumpur, where the term covers everything from strict vegan to occasional meat-eater. Here is how to order."
 ---
 
+
+
+**> Is vegetarian the same in Malaysia as back home:** Not exactly - it can mean Buddhist vegan (no onion, no garlic) or Indian lacto-vegetarian. Here is what to look for on menus and how to order safely.
+
 **Updated June 2026:** This guide has been refreshed with the latest insights from our guides, who take guests through KL's vegetarian food spots every week.
 
 **TL;DR:** Vegetarian food in KL is nothing like vegetarian food back home. Here, it's rooted in Buddhist and Hindu spiritual practice, not health trends, and that changes everything about what ends up on your plate. Some dishes include eggs. Some exclude onion and garlic entirely. Some Buddhists only eat vegetarian twice a month. Read this before you order, and you'll eat far better.
@@ -79,7 +83,7 @@ The Tamil Hindu tradition arrived with South Indian labourers and traders. The b
 
 Walk through [Kuala Lumpur's food neighbourhoods](https://simplyenak.com/tours/locations/kuala-lumpur) and you're walking through that layered history. It's there in the signage, in the ingredients, in the way certain stalls smell different from the ones next to them.
 
-Our Chow Kit Market tour puts you right in the middle of it. The [Chow Kit wet market](https://simplyenak.com/tours/chow-kit-market) is where you see the raw ingredients of both traditions side by side: the tofu blocks and mock meat products from the Buddhist suppliers, the fresh curry leaves and dried lentils from the Indian grocers. It's the most-loved single place in KL to understand how these food cultures coexist.
+Our Chow Kit Market tour puts you right in the middle of it. The [Chow Kit wet market](https://simplyenak.com/tours/chow-kit-market) is where you see the raw ingredients of both traditions side by side: the tofu blocks and mock meat products from the Buddhist suppliers, the fresh curry leaves and dried lentils from the Indian grocers. It's the most popular single place in KL to understand how these food cultures coexist.
 
 The [plant-based food industry in Malaysia is growing at 18% annually](https://malaysiaexpatguide.com/plant-based-eating-in-malaysia/) right now, driven partly by a new generation of health-conscious Malaysians. But what makes KL's vegetarian scene genuinely interesting isn't the new wave. It's the century-old foundation underneath it.
 

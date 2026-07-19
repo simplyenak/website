@@ -11,6 +11,10 @@ metadata:
   description: "Eleven dishes to try during Hari Raya, from rendang and ketupat to dodol and serunding. Here is what each one is and where to find the most-loved versions."
 ---
 
+
+
+**> What to eat during Hari Raya:** Hari Raya Aidilfitri brings out Malaysia's most festive dishes, from lemang and ketupat to rendang and dodol. Here are 11 dishes you should try and why they only appear this time of year.
+
 There's nothing in this world like the food you will find in Malaysia during Hari Raya. The delicacies served during Hari Raya Aidilfitri are at the top of most visitors' must-try lists.
 
 Hari Raya marks the end of Ramadan -  the fasting month for Muslims worldwide. What follows a month of fasting is a whole month of celebrations and incredible dishes, many of which can only be found this time of year.

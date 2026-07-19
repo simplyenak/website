@@ -11,6 +11,10 @@ metadata:
   description: "Malaysia's language landscape blends Bahasa Malaysia, English, Mandarin, and Tamil. Here is what to expect and how to communicate on your visit."
 ---
 
+
+
+**> Can you get by with English in Malaysia:** Yes, English is widely spoken across Malaysia, especially in KL and Penang. This guide covers what to expect from Malaysian English and how Manglish works.
+
 **Updated June 2026:** Malaysia continues to be one of the most English-friendly countries in Southeast Asia for travellers. Here is what has changed and what has stayed the same.
 
 As a tour guide, it’s always fun to watch the amazed and delighted expressions on tourists’ faces when they have their first real experience interacting with the locals.
@@ -139,7 +143,7 @@ Other Dialects and Influences The British were not the only outside culture to m
 
 Tamil is another popular language used by the Indian-Malaysians. Sinhalese is a language mainly by the Sri Lankan population and Thai is spoken in some parts but is considered a minority language.
 
-There are over 30 native tribes in Malaysia each with its own distinctive ancestral language including sub-dialects. Kazadandusuns and Iban are the most recognizable among the native languages.
+There are over 30 native tribes in Malaysia each with its own notable ancestral language including sub-dialects. Kazadandusuns and Iban are the most recognizable among the native languages.
 
 Don’t feel pressured to learn a whole new language before your vacation. Although the locals do appreciate the respect for their mother tongue, they are always more than happy to practice their English with a real westerner.
 

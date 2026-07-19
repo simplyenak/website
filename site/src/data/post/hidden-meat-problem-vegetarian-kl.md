@@ -11,6 +11,10 @@ metadata:
   description: "Vegetarian food in Kuala Lumpur is harder to find than you think. Hidden meat in sauces and broths is common. Here is how to eat with confidence."
 ---
 
+
+
+**> Can vegetarians eat Malaysian street food:** KL and Penang have genuine vegetarian options if you know where to look. This guide covers safe dishes, hidden ingredients to watch for, and the best vegetarian-friendly stalls.
+
 **Updated June 2026:** Our guides still hear this question every week. Here is the latest advice for vegetarian visitors.
 
 **TL;DR:** Ordering vegetables at a mixed hawker stall in KL doesn't make your meal vegetarian. Belacan (shrimp paste) is in almost every Malay vegetable dish. Lard is the default cooking fat at many Chinese stalls. Broths are usually pork-based. Oyster sauce is on almost every plate of Chinese greens. This post shows you where the animal products hide and how to navigate them.

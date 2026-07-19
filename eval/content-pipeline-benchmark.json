@@ -390,6 +390,44 @@
     "weight": 0.5
   },
   {
+    "case_id": "stories_quality",
+    "content_type": "stories",
+    "scenario": "Stories collection must be Discover-ready — scroll-stopping titles, featured images, no banned words, unique angle",
+    "description": "Google Discover traffic requires different optimization than SEO: emotion-driven titles (70-95 chars), human-face/scroll-stopping images, no AI-sounding banned words, and information gain (unique first-person angle, not generic listicle). This check is warn-only — reports gaps but never blocks deploy.",
+    "expected_title_length": {"min": 70, "max": 95, "note": "Discover sweet spot per publisher research"},
+    "forbidden_patterns": [
+      "keyword-stock_title_no_emotion",
+      "missing_featured_image",
+      "banned_word_in_body",
+      "generic_listicle_no_unique_angle"
+    ],
+    "hard_requirements": [
+      "title_not_keyword_stock_or_has_emotion",
+      "featured_image_present",
+      "no_banned_words_in_body"
+    ],
+    "weight": 0.6,
+    "notes": "Added Jul 2026. Discover optimization per Charles Float / Guim Shavein research. Stories are the primary editorial collection for algorithmic traffic. Warn-only because Discover-readiness is progressive content polish, not a deploy-blocking issue."
+  },
+  {
+    "case_id": "blog_ai_summary",
+    "content_type": "blog_post",
+    "scenario": "Every blog post must have an AI-optimized 2-3 sentence summary at the top",
+    "description": "A concise answer-summary in the first visible paragraph improves AI overview extraction (Google SGE, ChatGPT citations). The summary should answer the core question in 2-4 sentences before any introductory prose. Pattern: bold 'TL;DR' lead-in, blockquote, or a question-answering first paragraph.",
+    "check_fields": ["has_summary_marker", "first_para_answers_question", "first_para_2_4_sentences"],
+    "weight": 0.7,
+    "notes": "From SEO video research, Jul 2026: 2-sentence summary at top led to #1 ranking + ChatGPT citation in <8 hours."
+  },
+  {
+    "case_id": "blog_content_depth",
+    "content_type": "blog_post",
+    "scenario": "Blog posts must meet minimum word count for SEO depth",
+    "description": "Content depth correlates with ranking position. Minimum 1,200 words for non-competitive terms ensures comprehensive answer. Posts under 1,000 words rarely rank for competitive food/travel keywords.",
+    "min_word_count": 1200,
+    "weight": 0.6,
+    "notes": "From SEO video research, Jul 2026: 5,600-word post outranked 1,400-word competitor in under 8 hours."
+  },
+  {
     "case_id": "benchmark_meta_integrity",
     "content_type": "meta",
     "scenario": "The benchmark file itself must be valid",
