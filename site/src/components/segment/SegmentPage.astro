@@ -51,15 +51,15 @@ const canonicalUrl = `${urlPrefix}/tours/${segmentType === 'travel_type' ? 'segm
 
 const meta = {
   title: cleanPageTitle(segment.metaTitle || segment.nameFull || landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`),
-  description: landingPage?.meta_description || landingPage?.metaDescription || segment.description || '',
+  description: segment.description || landingPage?.meta_description || landingPage?.metaDescription || '',
 };
 ---
 
 <Layout metadata={meta} structuredData={{
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`,
-  description: landingPage?.meta_description || landingPage?.metaDescription || segment.description || '',
+  name: `${segment.name} Tours`,
+  description: segment.description || '',
   url: `https://simplyenak.com${canonicalUrl}`,
 }}>
   <!-- Breadcrumb -->

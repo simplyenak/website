@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+  publishDate: Date;
+  updateDate?: Date;
+  authorName: string;
+}
+const {
+  title,
+  description,
+  url,
+  image,
+  publishDate,
+  updateDate,
+  authorName,
+} = Astro.props;
+
+const siteName = "Simply Enak";
+const publisherLogo = "https://cdn.simplyenak.com/simply-enak-logo.png";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: description,
+  image: image || "https://cdn.simplyenak.com/simply-enak-og-image.jpg",
+  datePublished: publishDate.toISOString(),
+  dateModified: (updateDate || publishDate).toISOString(),
+  author: {
+    "@type": "Person",
+    name: authorName,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: siteName,
+    logo: {
+      "@type": "ImageObject",
+      url: publisherLogo,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": url,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />

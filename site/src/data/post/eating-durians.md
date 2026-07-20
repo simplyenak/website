@@ -1,14 +1,14 @@
 ---
-publishDate: 2026-06-06T00:00:00Z
-title: "Durian in Malaysia: Types, Season & Where to Eat"
-excerpt: "A complete guide to eating durian in Malaysia. Learn about popular varieties like Musang King and D24, when durian season is, how to pick a good one, and where to find the top durians in KL and Penang."
+|publishDate: 2026-06-06T00:00:00Z
+title: "What Happens When You Eat Durian in Malaysia? A First-Timer's Guide"
+excerpt: "A complete guide to eating durian in Malaysia. Learn about popular varieties like Musang King and D24, when durian season is, how to pick a good one, and where to find the best durians in KL and Penang."
 image: "https://cdn.simplyenak.com/durian_6fef5626bc.jpg"
 category: "Food & Culture Guides"
 tags: ["Durian", "Malaysian Food", "Fruit", "Food Guide"]
 author: "Pauline"
 metadata:
-  title: "Durian in Malaysia: Types, Season & Where to Eat"
-  description: "A complete guide to eating durian in Malaysia: varieties, seasons, selection tips, and where to find the top durians in KL and Penang."
+  title: "What Happens When You Eat Durian in Malaysia? A First-Timer's Guide"
+  description: "A complete guide to eating durian in Malaysia: varieties, seasons, selection tips, and where to find the best durians in KL and Penang."
 ---
 
 

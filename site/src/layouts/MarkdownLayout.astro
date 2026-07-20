@@ -1,11 +1,17 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import BlogSchema from '~/components/common/BlogSchema.astro';
 
 import type { MetaData } from '~/types';
 
 export interface Props {
   frontmatter: {
     title?: string;
+    publishDate?: Date;
+    updateDate?: Date;
+    excerpt?: string;
+    image?: string;
+    author?: string;
   };
 }
 
@@ -14,9 +20,24 @@ const { frontmatter } = Astro.props;
 const metadata: MetaData = {
   title: frontmatter?.title,
 };
+
+const publishDate = frontmatter?.publishDate ? new Date(frontmatter.publishDate) : new Date();
+const updateDate = frontmatter?.updateDate ? new Date(frontmatter.updateDate) : undefined;
+const description = frontmatter?.excerpt || '';
+const pageUrl = Astro.url.href;
+const authorName = frontmatter?.author || 'Simply Enak';
 ---
 
 <Layout metadata={metadata}>
+  <BlogSchema
+    title={frontmatter?.title || ''}
+    description={description}
+    url={pageUrl}
+    image={frontmatter?.image}
+    publishDate={publishDate}
+    updateDate={updateDate}
+    authorName={authorName}
+  />
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
     <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">{frontmatter.title}</h1>
     <div

@@ -58,6 +58,37 @@
           "contextual_link_url": "/blog/how-to-eat-durian/"
         }
       ]
+    },
+    {
+      "id": "penang-colony",
+      "pages": [
+        {
+          "slug": "penang-food-tours",
+          "title": "What Are the Best Food Tours in Penang? A Local Guide",
+          "url": "/blog/penang-food-tours/",
+          "target_keyword": "penang food tours",
+          "status": "planned",
+          "links_to": "penang-street-food",
+          "linked_from": null,
+          "payload_type": "story",
+          "contextual_link_phrase": "Once you know what tours are worth your time, here is what you should understand about",
+          "contextual_link_text": "Penang street food",
+          "contextual_link_url": "/blog/penang-street-food/"
+        },
+        {
+          "slug": "penang-street-food",
+          "title": "Penang Street Food: What Locals Eat and Where",
+          "url": "/blog/penang-street-food/",
+          "target_keyword": "penang street food",
+          "status": "planned",
+          "links_to": null,
+          "linked_from": "penang-food-tours",
+          "payload_type": "story",
+          "contextual_link_phrase": "When you head to these stalls, ask your guide for tips on",
+          "contextual_link_text": "what else to order",
+          "contextual_link_url": "/tours/penang-street-food/"
+        }
+      ]
     }
   ]
 }

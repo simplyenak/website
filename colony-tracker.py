@@ -129,10 +129,9 @@ def payload_get_story_by_slug(slug):
         return None
 
 def payload_create_story(slug, title, content_md, excerpt=""):
-    """Create a new Story in Payload. Must include both content_markdown AND content (richText)."""
+    """Create a new Story in Payload and submit to GSC for indexing."""
     token = payload_login()
     if not token: return None
-    # Provide minimal richText content alongside content_markdown (Payload requires content field)
     minimal_rich_text = {
         "root": {"type": "root", "format": "", "indent": 0, "version": 1,
             "children": [{"type": "paragraph",
@@ -154,7 +153,19 @@ def payload_create_story(slug, title, content_md, excerpt=""):
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"})
     try:
         resp = json.loads(urllib.request.urlopen(req, timeout=30).read())
-        print(f"  ✓ Story created: {slug} (id={resp.get('id','?')})")
+        story_id = resp.get('id', '?')
+        print(f"  ✓ Story created: {slug} (id={story_id})")
+        # Auto-submit to GSC for indexing
+        story_url = f"https://simplyenak.com/stories/{slug}/"
+        gsc_script = REPO_ROOT / "scripts" / "gsc-auto-index.py"
+        if gsc_script.exists():
+            subprocess.run(["python3", str(gsc_script), f"--url={story_url}"], timeout=30, capture_output=True)
+            print(f"  ✓ Submitted {story_url} to GSC for indexing")
+        else:
+            alt_gsc = REPO_ROOT / "gsc-auto-index.py"
+            if alt_gsc.exists():
+                subprocess.run(["python3", str(alt_gsc), f"--url={story_url}"], timeout=30, capture_output=True)
+                print(f"  ✓ Submitted {story_url} to GSC for indexing")
         return resp
     except urllib.error.HTTPError as e:
         body = e.read().decode()
