@@ -13,7 +13,7 @@ metadata:
 
 
 
-**> Can vegetarians eat Malaysian street food:** KL and Penang have genuine vegetarian options if you know where to look. This guide covers safe dishes, hidden ingredients to watch for, and the best vegetarian-friendly stalls.
+**> Can vegetarians eat Malaysian street food:** KL and Penang have genuine vegetarian options if you know where to look. This guide covers safe dishes, hidden ingredients to watch for, and the top vegetarian-friendly stalls.
 
 **Updated June 2026:** Our guides still hear this question every week. Here is the latest advice for vegetarian visitors.
 
@@ -95,6 +95,13 @@ Knowing this changes how you navigate it. You're not looking for vendors who for
 
 That's exactly what [we show people on our tours in Kuala Lumpur](https://simplyenak.com/tours/locations/kuala-lumpur). Not how to negotiate with mixed stalls, but how to find the stalls that already work beautifully for you.
 
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Vegetarian_cuisine).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
+
 ## Frequently Asked Questions
 
 **Is belacan in all Malay vegetable dishes?**
@@ -111,6 +118,13 @@ Some can and will. Others use lard as part of the base preparation and can't sep
 
 **Do Indian vegetarian restaurants in KL use belacan or lard?**
 No. South Indian and Tamil vegetarian cooking has its own tradition that does not include belacan, lard, or pork-based ingredients. These restaurants are a safe option for vegetarians, though it's worth asking about eggs and dairy depending on your needs.
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Vegetarian_cuisine).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

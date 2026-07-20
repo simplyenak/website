@@ -67,13 +67,20 @@ Some private drivers offer their services in their personal vehicles, it’s adv
 
 Whatever option you choose, it’s advised to allow plenty of time to get back to your ship and avoid trying to cut it close. You won’t be able to see everything in one day, so leave some sights for next time if it’s starting to get late. There have been tourists who have missed their port call because of traffic. It’s a messy situation and requires them to get a hotel room for the night and make further arrangements with the cruise lines which could cost them more cash.
 
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Port_Klang).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
+
 ## Frequently Asked Questions
 
 **What is the fastest way from Port Klang to KL?**
 The KLIA Transit train from KL Sentral to KLIA takes 28 minutes. From KLIA, a Grab or taxi to Port Klang cruise terminal takes another 45-60 minutes. Total walk time is about 1.5-2 hours from city centre to port.
 
 **How much time do I need for a day trip from Port Klang?**
-If your ship docks by 8 AM and departs by 6 PM, you have roughly 7-8 hours in KL. That is enough for a food tour in Chinatown or a visit to the Petronas Towers area. Just account for 1 hour each way for transport.
+If your ship docks by 8 AM and departs by 6 PM, you have roughly 7-8 hours in KL. That's enough for a food tour in Chinatown or a visit to the Petronas Towers area. Just account for 1 hour each way for transport.
 
 **Can I book a tour that picks me up from Port Klang?**
 Yes, Simply Enak offers private tours with hotel pickup. For cruise passengers, we can arrange transport from Port Klang as part of a private tour experience.

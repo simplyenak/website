@@ -69,13 +69,20 @@ The museum is open daily and free to get in. In my opinion, it’s a worthwhile 
 
 For those who read my post on souvenirs, this is one of the places you’ll be able to find the mooncake moulders and a few of the other items that you foodies will love. Yat Hang Trading has been in business for over 100 years and has everything from typical Chinese utensils, to decades-old hand-painted ceramics. Anything that could be used in a traditional Chinese home or eatery.
 
-Many of the other local Chinese restaurants and bars get their utensils from Yat Hang Trading. In fact, if you stop at the PS150 bar, the snack bowls on the bar came from there. There’s plenty of time-honoured Malaysian- Chinese merchandise to choose from so if you’re looking around for that one perfect Malaysian souvenir that can also be useful in the home, this is the place to check out. You’ll also get to experience some of Kuala Lumpur history.
+Many of the other local Chinese restaurants and bars get their utensils from Yat Hang Trading. In fact, if you stop at the PS150 bar, the snack bowls on the bar came from there. There’s plenty of time-honoured Malaysian- Chinese merchandise to choose from so if you’re looking around for that one perfect Malaysian souvenir that can also be useful in the home, this is the place to check out. You’ll also get to tour some of Kuala Lumpur history.
 
 When you visit Malaysia you are bound to try the national dish. In fact, with all the tourists on our tours I insist that they do. So why not try it at the place that has the finest, traditional recipes in all of Kuala Lumpur? I just talked to a tourist couple yesterday who have been here once a year for the last 4 years and they told me they go to the Arch Cafe inside Kl City Gallery on their first day here and their last day. And they always get the Nasi Lemak.
 
 The food isn’t the only thing that attracts visitors to the Arch Cafe. The tables and chairs are over a century old and were collected from the oldest coffee shop in old Market square and pudu. They have been used not only by prominent politicians, judges and other figures in Malaysian history, but also by the notorious Chinese gangsters from that era.
 
 So these are our picks for the local spots of Kuala Lumpur. What gems have you found around Kuala Lumpur? Let us know and we’ll update this post.
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Kuala_Lumpur).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

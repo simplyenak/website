@@ -107,6 +107,13 @@ Once you understand the cultural logic, the food makes beautiful sense. It's not
 
 We've been navigating this for 14 years. Come eat with us, and we'll show you the spots, the stalls, and the stories that don't make it onto any map. [Have a look at what we do together.](https://simplyenak.com/tours/dietary/vegetarian)
 
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Malaysian_cuisine).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
+
 ## Frequently Asked Questions
 
 **Is KL good for vegetarians?**
@@ -123,6 +130,13 @@ Many Malaysian Chinese Buddhists observe vegetarian days on the 1st and 15th of 
 
 **Can Simply Enak accommodate vegetarian guests on their tours?**
 Yes, completely. We've been accommodating vegetarian guests for 14 years, and we know exactly where to take you. Our tours include stops that work beautifully for vegetarians, from the Chow Kit Market to Chinatown's Buddhist stalls. Just let us know when you book and we'll make sure every stop works for you.
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Malaysian_cuisine).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

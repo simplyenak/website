@@ -1,14 +1,14 @@
 ---
 publishDate: 2026-06-06T00:00:00Z
 title: "Durian in Malaysia: Types, Season & Where to Eat"
-excerpt: "A complete guide to eating durian in Malaysia. Learn about popular varieties like Musang King and D24, when durian season is, how to pick a good one, and where to find the best durians in KL and Penang."
+excerpt: "A complete guide to eating durian in Malaysia. Learn about popular varieties like Musang King and D24, when durian season is, how to pick a good one, and where to find the top durians in KL and Penang."
 image: "https://cdn.simplyenak.com/durian_6fef5626bc.jpg"
 category: "Food & Culture Guides"
 tags: ["Durian", "Malaysian Food", "Fruit", "Food Guide"]
 author: "Pauline"
 metadata:
   title: "Durian in Malaysia: Types, Season & Where to Eat"
-  description: "A complete guide to eating durian in Malaysia: varieties, seasons, selection tips, and where to find the best durians in KL and Penang."
+  description: "A complete guide to eating durian in Malaysia: varieties, seasons, selection tips, and where to find the top durians in KL and Penang."
 ---
 
 
@@ -47,13 +47,13 @@ I recently spoke with a tourist couple who just got back from Temerloh, Pahang w
 
 Tempoyak is a Malaysian condiment made by mixing some salt with the flesh of the durian and letting it ferment at room temperature for three to five days. Its normally made with the lower class durian during peak season when they are in excess. Another great dish to try is Tempoyak with Petai beans.
 
-## Durian are like apples, in a way
+## How Are Durians Like Apples?
 
 Like apples, durians come in different varieties, so don’t expect them all to taste the same or to taste like any other fruit you have ever tried in the West. They have a notable explosion of multi-dimensional flavours that’s a combination of sweet, savoury and creamy all at once.
 
 Some have compared it to whipped cream with a hint of chives, whereas others have said it’s like garlic and caramelized sugar. Everyone’s palate is different and will detect different things. I sat with some tourists a while ago as they tasted durian for the first time. One said it was like butterscotch pudding with almonds, but another guy said it was like red wine simmered in onions.
 
-So which variety of durian is most popular? Again it’s like apples. Some prefer the pulpy Washington red whereas others like the crispness of a granny smith. You will have to decide which you like most popular.
+So which variety of durian is most popular? Again it’s like apples. Some prefer the pulpy Washington red whereas others like the crispness of a granny smith. You'll have to decide which you like most popular.
 
 Durian kampung, Probably the least expensive to find is the durian kampung. It tends to be sweeter, but the taste can be a bit unpredictable. It may not necessarily have the most flesh and some may contain big seeds so it may not be as filling as expected, which is a good thing so you have room to try more.
 
@@ -136,6 +136,13 @@ Fireworks are always a part of Hari Raya which can be both fun and dangerous. In
 Since it is a season of giving, you may hear about or encounter (or even get one yourself!) a “green packet”. These little packets are tokens given by the older generation to the young singles around them. What’s inside? Joy. It could be cash or some other trinket to bring luck and happiness.
 
 Even though Hari Raya is a celebration, it still hold a special significance to the Muslim community and they take it just as seriously as they do with Ramadan. Charity is openly practiced especially on the last day of Ramadan and all through Hari Raya you can see families giving food and money to the poor or even inviting them into their homes so they can all celebrate together. Come and visit us in Malaysia during Hari Raya and you will surely get invited. Let’s eat!
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Durian).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

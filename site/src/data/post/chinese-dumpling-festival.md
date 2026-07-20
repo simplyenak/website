@@ -1,14 +1,14 @@
 ---
 publishDate: 2026-05-25T00:00:00Z
 title: "Bak Chang Festival & Chinese Dumplings in Malaysia"
-excerpt: "Everything about bak chang (Chinese dumplings) in Malaysia. What they mean during the Dragon Boat Festival, where to find the best ones, and why every family has a different recipe."
+excerpt: "Everything about bak chang (Chinese dumplings) in Malaysia. What they mean during the Dragon Boat Festival, where to find the top ones, and why every family has a different recipe."
 image: "https://cdn.simplyenak.com/Bakchang_Zhong_Festival_Malaysia_3dc7f416db.jpeg"
 category: "Food & Culture Guides"
 tags: ["Chinese Cuisine", "Festivals", "Dumplings", "Malaysian Food"]
 author: "Pauline"
 metadata:
   title: "Bak Chang Festival & Chinese Dumplings in Malaysia"
-  description: "Bak Chang dumplings explained: what they mean in Malaysia during the Dragon Boat Festival, where to find the best ones, and why every family has a different recipe."
+  description: "Bak Chang dumplings explained: what they mean in Malaysia during the Dragon Boat Festival, where to find the top ones, and why every family has a different recipe."
 ---
 
 
@@ -102,6 +102,13 @@ Fireworks are always a part of Hari Raya which can be both fun and dangerous. In
 Since it is a season of giving, you may hear about or encounter (or even get one yourself!) a “green packet”. These little packets are tokens given by the older generation to the young singles around them. What’s inside? Joy. It could be cash or some other trinket to bring luck and happiness.
 
 Even though Hari Raya is a celebration, it still hold a special significance to the Muslim community and they take it just as seriously as they do with Ramadan. Charity is openly practiced especially on the last day of Ramadan and all through Hari Raya you can see families giving food and money to the poor or even inviting them into their homes so they can all celebrate together. Come and visit us in Malaysia during Hari Raya and you will surely get invited. Let’s eat!
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Dragon_Boat_Festival).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

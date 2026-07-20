@@ -27,7 +27,7 @@ There are about two festivals a month throughout the year in different parts of 
 
 East and West Malaysia may have separate cultural events and some may have open houses with dancing and lots of food spread out for everyone to enjoy, yet others are a time of fasting and prayer and visiting the temple or mosque.
 
-Here are ten worth-the-trip festivals in Malaysia to plan your experience around.
+Here are ten worth-the-trip festivals in Malaysia to plan your tour around.
 
 ![Food and drinks at a local restaurant](https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg)
 
@@ -93,7 +93,7 @@ This celebration involves a parade through the streets of Kuala Lumpur led by a 
 
 Not all devotees pierce their skin, though. Many just make offerings of fruit or flowers or other gifts. Batu caves are the most popular and largest shrine, but there are shrines all throughout Malaysia that celebrate Thaipusam.
 
-According to my friend Shoba, Penang Waterfall temple is the most popular place other than the Batu caves to experience Thaipusam.
+According to my friend Shoba, Penang Waterfall temple is the most popular place other than the Batu caves to taste Thaipusam.
 
 ## When: End of September or early October
 
@@ -119,7 +119,7 @@ Traditionally, this festival is a time for farmers and their families to thank t
 
 Nowadays, it’s a celebration of food, fun, dancing and music. Expect a lot of Tapai and Lihing, or rice wine, to be flowing. Other favorites include hinava (fermented fish) and bambangan (a kind of pickled fruit similar to mango).
 
-In Unduk Ngadau, an annual beauty contest is held and the winner is announced at the end of the festival, and in other parts of the state, there are exhibits, public events. Most tourists love traditional dances and ethnic clothing. Not an experience to pass up.
+In Unduk Ngadau, an annual beauty contest is held and the winner is announced at the end of the festival, and in other parts of the state, there are exhibits, public events. Most tourists love traditional dances and ethnic clothing. Not an meal to pass up.
 
 When: December
 
@@ -135,13 +135,20 @@ When: Sept-Oct
 
 This Taoist festival in Penang is not one to miss. Like Thaipusam, it’s a nine-day event that features devotees performing firewalking and piercing their cheeks with long rods. They are awaiting the arrival of the nine Taoist gods and the temple is brilliantly lit and packed with followers dressed in white and carrying incense. It ends with a long procession on the ninth day from the temple to the beachfront to send the goods back home.
 
-The temple, also known as Rumah Berhala Tow Boo Kong, was started as a small shrine in 1971 which has grown into an elaborate and ornate temple completed in 2000. Many of our tourists ask about it and do visit year-round, but to really get a powerful experience you have to come and see the festival.
+The temple, also known as Rumah Berhala Tow Boo Kong, was started as a small shrine in 1971 which has grown into an elaborate and ornate temple completed in 2000. Many of our tourists ask about it and do visit year-round, but to really get a powerful visit you have to come and see the festival.
 
 So there are ten popular festivals to plan your vacation around, however, there’s a ton more to find depending on where and when you visit.
 
 Some others include Wesak Day (May), Rainforest World Music Festival, Kuching, Sarawak (mid-July), Prophet Muhammad’s Birthday and of course Christmas.
 
 I’d love to hear about your favorite festival to visit in Malaysia, drop me a note in the comments below.
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Festivals_of_Malaysia).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 
@@ -152,7 +159,7 @@ Malaysia celebrates dozens of festivals annually across its Malay, Chinese, Indi
 Hari Raya Aidilfitri (Eid) is the largest celebration, marking the end of Ramadan. Chinese New Year and Deepavali are also major public holidays with nationwide celebrations.
 
 **Can tourists participate in religious festivals?**
-Yes, most festivals welcome visitors. Open houses during Hari Raya, Chinese New Year visits, and Deepavali celebrations all include invitations for non-Muslims and tourists. It is a core part of Malaysian hospitality.
+Yes, most festivals welcome visitors. Open houses during Hari Raya, Chinese New Year visits, and Deepavali celebrations all include invitations for non-Muslims and tourists. It's a core part of Malaysian hospitality.
 
 **Want to taste Malaysian food with a local guide?** [Browse our tours](/tours) and join us for a meal you will not forget.
 

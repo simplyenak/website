@@ -37,7 +37,7 @@ Hari Raya marks the end of Ramadan -  the fasting month for Muslims worldwide. W
 | Air Katira | Rose milk drink | On its own | Yes -  Hari Raya only |
 | Bubur Lambuk | Savoury porridge | Topped with fried shallots | Ramadan into Raya |
 
-## Lemang
+## What Is Lemang and How Is It Cooked?
 
 ![Lemang bamboo rice](https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg)
 
@@ -45,27 +45,27 @@ Lemang can take four to five hours just to cook, and it is well worth the wait. 
 
 You will know Lemang when you see them lined up in a row being cooked at stalls, set against the fire slightly slanted and turned so everything cooks evenly. Lemang is served with shredded beef, chicken, or curries.
 
-## Ketupat
+## What Makes Ketupat the Symbol of Hari Raya?
 
 Ketupat is the symbol of Hari Raya. Like Lemang, it is a way to enjoy rice that replaces regular steamed rice. Ketupat is like a dumpling where rice is packed into a diamond-shaped pocket made from woven palm leaves, then boiled. Once fully cooked, the woven palm wrapper is cut and peeled away so the rice inside can be sliced and served with rendang.
 
-## Rendang
+## Why Is Rendang the Star of the Hari Raya Table?
 
 ![Rendang slow-cooked curry](https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg)
 
 Rendang is a slow-cooked dry curry that is the star of any Hari Raya table. Beef is simmered for hours in coconut milk and a paste of lemongrass, galangal, turmeric, ginger, garlic, and chilies until the liquid evaporates and the meat is coated in aromatic spices. The slow cooking process makes the beef incredibly tender. Rendang keeps well and often tastes even better the next day.
 
-## Serunding
+## What Is Serunding?
 
 Serunding is a dry, shredded meat floss -  usually beef or chicken -  cooked with spices, coconut, and kerisik (toasted grated coconut). It has a texture similar to floss and is packed with flavour. Serunding is commonly eaten with Ketupat or Lemang, and adds a savoury, nutty crunch to any dish.
 
 > "The texture of serunding is unlike anything else in Malaysian cuisine -  fine, dry, intensely flavoured, and completely addictive when sprinkled over ketupat."
 
-## Dodol
+## What Makes Dodol So Special?
 
 Dodol is a sticky, sweet toffee-like confection made from coconut milk, jaggery (palm sugar), and rice flour. It requires hours of continuous stirring over a low fire -  traditionally done in a large wok by several people taking turns. Dodol is a Hari Raya staple, sold in blocks that you slice into small pieces.
 
-## Kuih Raya (Hari Raya Cookies)
+## What Are Kuih Raya?
 
 No Hari Raya celebration is complete without an assortment of cookies. Kuih Raya includes varieties like:
 
@@ -76,27 +76,34 @@ No Hari Raya celebration is complete without an assortment of cookies. Kuih Raya
 
 These cookies are typically stored in large decorative jars and offered to every visitor who comes to call during the festive period.
 
-## Lontong
+## What Is Lontong?
 
 Lontong is a dish of compressed rice cakes served in a mild, creamy coconut vegetable curry. Unlike Ketupat, which uses woven palm leaves, Lontong rice cakes are wrapped in banana leaves and boiled. The rice cakes are sliced and served with a lightly spiced coconut gravy containing vegetables like cabbage, long beans, and carrots.
 
-## Acar
+## What Is Acar?
 
 Acar is a pickled vegetable relish that cuts through the richness of the other dishes on the Hari Raya table. It is made from cucumbers, carrots, and pineapples pickled with vinegar, sugar, turmeric, and chili. The sweet, sour, and spicy flavours provide contrast to the heavy, savoury dishes.
 
-## Sate (Satay)
+## What Is Satay?
 
 ![Satay grilling](https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg)
 
 Satay makes an appearance during Hari Raya, with families firing up grills to cook skewers of marinated beef or chicken. The skewers are served with a rich peanut sauce, cucumber and onion pieces, and Ketupat. Satay is a social food -  people gather around the grill while the skewers cook.
 
-## Air Katira
+## What Is Air Katira?
 
 Air Katira is a refreshing Hari Raya drink made from rose syrup, milk, basil seeds, and ice. The basil seeds swell into little gelatinous pearls that float in the sweet, floral drink. It is served to guests as a welcoming beverage and provides relief from the tropical heat.
 
-## Bubur Lambuk
+## What Is Bubur Lambuk?
 
 Bubur Lambuk is a savoury porridge traditionally distributed during Ramadan, but leftovers and variations carry into Hari Raya. It is made from rice cooked with chicken or beef broth, lemongrass, ginger, and spices, and topped with fried shallots, spring onions, and kerisik.
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Hari_Raya_Aidilfitri).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

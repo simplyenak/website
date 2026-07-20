@@ -113,6 +113,13 @@ Apps get you started. The 素食 sign gets you most of the way. But the temple c
 
 That's what we've been building for 14 years. [Come eat with us](https://simplyenak.com/tours), and we'll show you the ones worth finding.
 
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Malaysian_cuisine).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
+
 ## Frequently Asked Questions
 
 **What does 素食 mean, and how do I use it to find vegetarian restaurants?**
@@ -129,6 +136,13 @@ Different rather than better. Penang has a more concentrated vegetarian scene wi
 
 **Can Simply Enak help me find vegetarian food in KL, Penang and Ipoh?**
 Yes. We've been navigating these cities and their food cultures for 14 years. Whether you join a tour or just want advice, we're happy to point you toward the spots we eat at ourselves.
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Malaysian_cuisine).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

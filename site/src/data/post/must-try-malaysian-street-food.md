@@ -13,7 +13,7 @@ metadata:
 
 
 
-**> What street food should you try in Malaysia:** From nasi lemak and char kway teow to satay and cendol - here is a guide to the dishes locals actually eat and where to find the best versions.
+**> What street food should you try in Malaysia:** From nasi lemak and char kway teow to satay and cendol - here is a guide to the dishes locals actually eat and where to find the top versions.
 
 **Updated June 2026:** Malaysia's street food scene is always evolving. Here are the dishes our guides are recommending this year.
 
@@ -63,7 +63,7 @@ Bee Hoon is rice noodles, or vermicelli, which is soaked then stir-fried with so
 
 Similar to a turnover, Murtabak is a popular snack that was originally sold in Indian Muslim stalls and restaurants. Now it is offered nationwide and with many variations.
 
-The classic Murtabak is a pancake or pan-fried bread stuffed with minced beef or chicken, garlic, egg and onion. It is served with your choice of curry or gravy, sliced cucumber, syrup-pickled onions or tomato sauce.
+The classic Murtabak is a pancake or pan-fried bread stuffed with minced beef or chicken, garlic, egg and onion. It's served with your choice of curry or gravy, sliced cucumber, syrup-pickled onions or tomato sauce.
 
 The simplest and most affordable street food on this list is Koay Teow Th’ng. This soup is a clear broth with either duck, pork or chicken depending on the shop you visit. At most places, you can top it up with fish balls. This dish is completed by a garnish of lettuce and chopped spring onions.
 
@@ -144,6 +144,13 @@ What’s notable about Teh Tarik is the way it’s prepared. First, the tea and 
 Teh Tarik is a great accompaniment to Roti canai and is a very popular and traditional breakfast among Malaysians.
 
 And that sums up my list of must-eat Street Food when visiting Malaysia. Do you have a favorite or have I missed a dish? Let me know in the comments below.
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Malaysian_street_food).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

@@ -61,7 +61,7 @@ Look for the busier stalls that have the most locals in line. This means they wi
 
 Bubur Lambuk is a type of porridge that has many variations, however Kuma, or date powder, is often the main ingredient. It really depends where in Malaysia you go, ut all of the tourists who have tried the many variations say they are all . The recipe traditionally calls for a flavorful combination of anise, cardamom, cinnamon and black pepper, among other spices. Vegetables and meat are added as well.
 
-This is a dish that can actually be found being served for free at many Mosques and food banks during the month of Ramadan. It is a symbol of the tradition of feeding the poor during the Holy month, which is one of the pillars of the faith.
+This is a dish that can actually be found being served for free at many Mosques and food banks during the month of Ramadan. It's a symbol of the tradition of feeding the poor during the Holy month, which is one of the pillars of the faith.
 
 While the base ingredients to make this sweet Hari Raya dessert - coconut milk, cane sugar and rice flour - appear unassuming enough, in truth this is one of the most challenging recipes on this list. The cooking process involves continuously stirring the sticky mixture in a hot wok for nine hours. Then it is rolled, portioned out and individually wrapped.
 
@@ -108,6 +108,13 @@ Fireworks are always a part of Hari Raya which can be both fun and dangerous. In
 Since it is a season of giving, you may hear about or encounter (or even get one yourself!) a “green packet”. These little packets are tokens given by the older generation to the young singles around them. What’s inside? Joy. It could be cash or some other trinket to bring luck and happiness.
 
 Even though Hari Raya is a celebration, it still hold a special significance to the Muslim community and they take it just as seriously as they do with Ramadan. Charity is openly practiced especially on the last day of Ramadan and all through Hari Raya you can see families giving food and money to the poor or even inviting them into their homes so they can all celebrate together. Come and visit us in Malaysia during Hari Raya and you will surely get invited. Let’s eat!
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Street_food).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

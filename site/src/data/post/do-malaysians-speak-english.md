@@ -147,16 +147,23 @@ There are over 30 native tribes in Malaysia each with its own notable ancestral 
 
 Don’t feel pressured to learn a whole new language before your vacation. Although the locals do appreciate the respect for their mother tongue, they are always more than happy to practice their English with a real westerner.
 
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Malaysian_English).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
+
 ## Frequently Asked Questions
 
 **What percentage of Malaysians speak English?**
-English is widely spoken in Malaysia, particularly in urban areas like Kuala Lumpur and Penang. It is a compulsory subject in all schools and used in business, legal, and medical settings.
+English is widely spoken in Malaysia, particularly in urban areas like Kuala Lumpur and Penang. It's a compulsory subject in all schools and used in business, legal, and medical settings.
 
 **Will I have trouble communicating outside of KL?**
 In smaller towns and rural areas, English proficiency is lower. Learning a few basic Malay phrases like "terima kasih" (thank you) and "berapa" (how much) goes a long way.
 
 **What is Manglish?**
-Manglish is Malaysian Colloquial English, a blend of English with Malay, Chinese dialects, and Tamil. You will hear it in everyday conversation. It is friendly and informal, and most speakers can switch to standard English when needed.
+Manglish is Malaysian Colloquial English, a blend of English with Malay, Chinese dialects, and Tamil. You'll hear it in everyday conversation. It is friendly and informal, and most speakers can switch to standard English when needed.
 
 **Want to taste Malaysian food with a local guide?** [Browse our tours](/tours) and join us for a meal you will not forget.
 

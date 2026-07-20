@@ -57,7 +57,7 @@ The smooth, custard flavor of these normal-looking meatballs is definitely an ac
 
 Internal organs seem to be a hit in South East Asian countries, and Malaysia fits right in there. It’s not particularly a bad thing when you consider that it’s better than letting it go to waste.
 
-Cow’s lung is a popular dish commonly called paru or paru Goreng. It is cow lung, brushed with seasoning then fried and goes great with nasi (rice).
+Cow’s lung is a popular dish commonly called paru or paru Goreng. It's cow lung, brushed with seasoning then fried and goes great with nasi (rice).
 
 This is one that shocked me more than the Sago grubs. But when you stop and think about the nutritional value and can get past the psychological barriers, it makes sense to give these a try.
 
@@ -110,6 +110,13 @@ Fireworks are always a part of Hari Raya which can be both fun and dangerous. In
 Since it is a season of giving, you may hear about or encounter (or even get one yourself!) a “green packet”. These little packets are tokens given by the older generation to the young singles around them. What’s inside? Joy. It could be cash or some other trinket to bring luck and happiness.
 
 Even though Hari Raya is a celebration, it still hold a special significance to the Muslim community and they take it just as seriously as they do with Ramadan. Charity is openly practiced especially on the last day of Ramadan and all through Hari Raya you can see families giving food and money to the poor or even inviting them into their homes so they can all celebrate together. Come and visit us in Malaysia during Hari Raya and you will surely get invited. Let’s eat!
+
+
+For further reading, check out [Learn more](https://www.malaymail.com/).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 

@@ -13,7 +13,7 @@ metadata:
 
 
 
-**> What food souvenirs to bring home from Malaysia:** From belacan and sambal to durian products and Malaysian tea - here are edible souvenirs that travel well and the best shops in KL to find them.
+**> What food souvenirs to bring home from Malaysia:** From belacan and sambal to durian products and Malaysian tea - here are edible souvenirs that travel well and the top shops in KL to find them.
 
 **Updated May 2026:** Airport duty-free options and online availability have changed. Here is where to find the most popular food souvenirs now.
 
@@ -123,7 +123,7 @@ The above list is just a sampling of some of the traditional foods you’ll find
 
 There are so many ways besides food to enjoy the month of Hari Raya as a tourist. Here are a few to think about.
 
-A favorite way of many of our tourists is to get invited to an open house to experience first hand how to celebrate alongside a Muslim family and indulge in all the delicacies. It’s not difficult to make impressive Muslim friends in Malaysia and in their faith they do receive extra blessings for inviting a foreigner into their homes for food and celebration.
+A favorite way of many of our tourists is to get invited to an open house to tour first hand how to celebrate alongside a Muslim family and indulge in all the delicacies. It’s not difficult to make impressive Muslim friends in Malaysia and in their faith they do receive extra blessings for inviting a foreigner into their homes for food and celebration.
 
 Even our government organizes a National Open House for the public to come and enjoy the food.
 
@@ -136,6 +136,13 @@ Fireworks are always a part of Hari Raya which can be both fun and dangerous. In
 Since it is a season of giving, you may hear about or encounter (or even get one yourself!) a “green packet”. These little packets are tokens given by the older generation to the young singles around them. What’s inside? Joy. It could be cash or some other trinket to bring luck and happiness.
 
 Even though Hari Raya is a celebration, it still hold a special significance to the Muslim community and they take it just as seriously as they do with Ramadan. Charity is openly practiced especially on the last day of Ramadan and all through Hari Raya you can see families giving food and money to the poor or even inviting them into their homes so they can all celebrate together. Come and visit us in Malaysia during Hari Raya and you will surely get invited. Let’s eat!
+
+
+For further reading, check out [Learn more](https://en.wikipedia.org/wiki/Malaysian_cuisine).
+
+## About the Author
+
+Pauline has been guiding food tours in Kuala Lumpur and Penang since 2014. She founded Simply Enak to share Malaysia's street food and hawker culture with visitors who want to eat where locals eat.
 
 ## Frequently Asked Questions
 
