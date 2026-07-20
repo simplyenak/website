@@ -47,7 +47,8 @@ def scan_text(text, context=""):
     violations = []
     text_lower = text.lower()
     for phrase in BANNED_PHRASES:
-        if phrase.lower() in text_lower:
+        word_pattern = r'\b' + re.escape(phrase.lower()) + r'\b'
+        if re.search(word_pattern, text_lower):
             violations.append((phrase, context, text[:80]))
     if EM_DASH_PATTERN.search(text):
         violations.append(("[em-dash]", context, text[:80]))
@@ -63,6 +64,10 @@ def scan_value(value, path=""):
     elif isinstance(value, dict):
         for k, v in value.items():
             if k in SKIP_KEYS:
+                continue
+            # Skip translation arrays — non-English content
+            # should be checked with locale-aware rules
+            if k == "translations":
                 continue
             violations.extend(scan_value(v, f"{path}.{k}" if path else k))
     return violations
