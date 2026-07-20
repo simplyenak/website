@@ -48,10 +48,29 @@ def generate(topic, article_file=None):
     if clean.endswith("?"):
         clean = clean[:-1]
     
+    # Extract core noun (last meaningful word) for patterns that need it
+    words = clean.split()
+    core = words[-1] if words else clean
+    # Build a natural phrase (lowercase for mid-sentence use)
+    phrase = " ".join(words).lower()
+    
     titles = []
     for pattern in PATTERNS:
-        title = pattern.format(topic=clean)
-        # Keep under 60 chars for SERP display
+        # Use phrase for patterns that read naturally, core for others
+        if "{topic}" in pattern:
+            # Patterns like "What Happens When {topic}" need event-like topics
+            # Skip if topic is a static noun that doesn't work with "when"
+            if "When {topic}" in pattern and not any(w in phrase for w in ["season", "festival", "ramadan", "event", "time", "month"]):
+                # Try with just the core noun + "in Malaysia" for static topics
+                if len(words) > 1:
+                    title = pattern.format(topic=core + " in Malaysia")
+                else:
+                    continue  # Skip this pattern for static topics
+            else:
+                title = pattern.format(topic=clean)
+        else:
+            title = pattern.format(topic=clean)
+        # Keep under 65 chars for SERP display
         if len(title) <= 65:
             titles.append(title)
     
