@@ -4,7 +4,9 @@
 import re, sys
 from pathlib import Path
 
-for filepath in sorted(Path(__file__).parent.parent.joinpath("site/src/data/post").glob("*.md")):
+POSTS_DIR = Path(__file__).parent / ".." / "src" / "data" / "post"
+
+for filepath in sorted(POSTS_DIR.resolve().glob("*.md")):
     text = filepath.read_text(encoding="utf-8")
     
     # Strip || prefix from YAML frontmatter fields

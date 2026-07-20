@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-05-30T00:00:00Z
-|title: "How to Get from Port Klang to KL (Without the Tourist Traps)"
+title: "How to Get from Port Klang to KL (Without the Tourist Traps)"
 excerpt: "A practical guide for cruise passengers and day-trippers arriving at Port Klang: transport options, travel times, and how to make the most of your time in KL."
 image: "https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg"
 category: "Travel Tips"

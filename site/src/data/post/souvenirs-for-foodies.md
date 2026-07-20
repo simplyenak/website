@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-05-28T00:00:00Z
-|title: "10 Souvenirs for Food Lovers (That Actually Travel Well)"
+title: "10 Souvenirs for Food Lovers (That Actually Travel Well)"
 excerpt: "The Top edible souvenirs and food-themed gifts to bring home from Malaysia, recommended by local guides who know what travels well."
 image: "https://cdn.simplyenak.com/malaysian-souvenirs-foodies-featured.jpg"
 category: "Travel Tips"

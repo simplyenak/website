@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-06-03T00:00:00Z
-|title: "Why Malaysian Festivals Change How You Travel"
+title: "Why Malaysian Festivals Change How You Travel"
 excerpt: "From Chinese New Year to Hari Raya, Deepavali to Thaipusam, here are the festivals worth planning your Malaysia trip around."
 image: "https://cdn.simplyenak.com/2_b669a096f4.webp"
 category: "Food & Culture Guides"

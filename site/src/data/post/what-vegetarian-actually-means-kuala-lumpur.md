@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-06-09T00:00:00Z
-|title: "Is 'Vegetarian' the Same in Malaysia as Back Home?"
+title: "Is 'Vegetarian' the Same in Malaysia as Back Home?"
 excerpt: "In KL, vegetarian food is rooted in Buddhist and Hindu spiritual practice, not wellness trends. The rules are completely different depending on who cooked your food. Here is what you need to know before you order."
 image: "https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg"
 category: "Food & Culture Guides"

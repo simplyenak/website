@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-06-09T00:00:00Z
-|title: "The Hidden Meat Problem in KL (What Vegetarians Miss)"
+title: "The Hidden Meat Problem in KL (What Vegetarians Miss)"
 excerpt: "That vegetable dish might contain shrimp paste, lard, or anchovy stock. Here is how to navigate KL's hidden meat problem as a vegetarian or vegan visitor."
 image: "https://cdn.simplyenak.com/Eat_Drink_Georgetown1_72aaaf12b6.jpg"
 category: "Food & Culture Guides"

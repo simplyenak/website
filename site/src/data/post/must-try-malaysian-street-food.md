@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-06-01T00:00:00Z
-|title: "What Most People Get Wrong About Malaysian Street Food"
+title: "What Most People Get Wrong About Malaysian Street Food"
 excerpt: "The dishes you should not miss on a food trip to Malaysia, from nasi lemak to char kway teow, explained by local guides who eat them every day."
 image: "https://cdn.simplyenak.com/kuala_lumpur_street_food_cd4fad4122.jpg"
 category: "Food & Culture Guides"

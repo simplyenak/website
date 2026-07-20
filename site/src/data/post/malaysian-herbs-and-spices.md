@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-06-02T00:00:00Z
-|title: "What Most People Get Wrong About Malaysian Spices"
+title: "What Most People Get Wrong About Malaysian Spices"
 excerpt: "The herbs and spices that define Malaysian cooking: what they are, how they taste, and where they come from."
 image: "https://cdn.simplyenak.com/malaysian-herbs-spices-blog-featured.jpeg"
 category: "Food & Culture Guides"
