@@ -77,7 +77,7 @@ const meta = {
 
   <LandingPageSections
     {segment}
-    {landingPage}
+    landingPage={locale === 'en' ? undefined : landingPage}
     matchingTours={matchingTours}
     featuredReviews={featuredReviews}
     segmentType={segConfig.type}
