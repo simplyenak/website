@@ -607,6 +607,13 @@ def check_stories_quality() -> dict:
         if any(m in title.lower() for m in generic_markers) and not re.search(r'\b(I|my|we)\b', body_combined[:500]):
             story_issues.append("generic listicle title + no first-person experience (low information gain)")
 
+        # 5. AI summary check — first paragraph should answer the core question
+        if body_texts:
+            first_para = body_texts[0][:200].lower() if body_texts else ""
+            if not re.search(r'(tldr|summary|tl;dr|in short|key takeaway|what (you|is|are|does)|how (to|does|can)|why (does|is|do))',
+                             first_para[:100]):
+                story_issues.append("no TL;DR/answer-summary at top of content (AI Overview optimization)")
+
         if story_issues:
             issues.append({"slug": slug, "title": title[:60], "issues": story_issues})
 
