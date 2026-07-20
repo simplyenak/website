@@ -19,22 +19,23 @@ const { post, url } = Astro.props;
 const readingTime = Math.max(1, Math.ceil((post.Content?.length || 1000) / 2000));
 const siteUrl = 'https://simplyenak.com';
 const blogSlug = typeof url === 'string' ? url.replace(siteUrl, '') : (url.pathname || '');
+const authorName = post.author || 'Simply Enak';
 ---
 
 <section class="mx-auto">
-  <!-- BlogPosting Schema -->
+  <!-- BlogPosting Schema (Google Discover eligibility) -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
-    "image": post.image,
+    "image": post.image || "https://cdn.simplyenak.com/simply-enak-og-image.jpg",
     "datePublished": post.publishDate,
-    "dateModified": post.publishDate,
+    "dateModified": post.updateDate || post.publishDate,
     "author": {
       "@type": "Person",
-      "name": post.author || "Simply Enak",
-      "description": post.author ? `Guide at Simply Enak` : "Simply Enak food tours team"
+      "name": authorName,
+      "description": post.author ? `${post.author} — food tour guide at Simply Enak` : "Simply Enak food tours team"
     },
     "publisher": {
       "@type": "Organization",
