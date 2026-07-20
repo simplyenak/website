@@ -1,6 +1,6 @@
 ---
 publishDate: 2026-06-06T00:00:00Z
-|title: "What Happens When Durian Season Hits Malaysia"
+title: "What Happens When Durian Season Hits Malaysia"
 excerpt: "Durian season transforms Malaysia: vendors appear overnight, prices spike, and locals queue for hours. Here is how to find the best Musang King, when to go, and what to expect your first time."
 image: "https://cdn.simplyenak.com/durian_6fef5626bc.jpg"
 category: "Food & Culture Guides"
