@@ -1,0 +1,63 @@
+{
+  "threshold": {
+    "max_position": 10,
+    "min_impressions_weekly": 100,
+    "min_clicks_weekly": 1,
+    "sustain_weeks": 2
+  },
+  "colonies": [
+    {
+      "id": "durian-colony",
+      "pages": [
+        {
+          "slug": "eating-durians",
+          "title": "Durian in Malaysia: Types, Season & Where to Eat",
+          "url": "/blog/eating-durians/",
+          "target_keyword": "durian season malaysia",
+          "status": "planted",
+          "links_to": "malaysia-durian-guide",
+          "linked_from": null,
+          "contextual_link_phrase": "If you want to know which variety to look for, our",
+          "contextual_link_text": "Malaysian Durian Guide",
+          "contextual_link_url": "/blog/malaysia-durian-guide/"
+        },
+        {
+          "slug": "malaysia-durian-guide",
+          "title": "Malaysian Durian Guide: Varieties & Where to Find Them",
+          "url": "/blog/malaysia-durian-guide/",
+          "target_keyword": "malaysia durian",
+          "status": "planned",
+          "links_to": "durian-season-malaysia",
+          "linked_from": "eating-durians",
+          "contextual_link_phrase": "Once you know the varieties, here is what to expect during",
+          "contextual_link_text": "durian season in Malaysia",
+          "contextual_link_url": "/blog/durian-season-malaysia/"
+        },
+        {
+          "slug": "durian-season-malaysia",
+          "title": "When Is Durian Season in Malaysia? A Complete Guide",
+          "url": "/blog/durian-season-malaysia/",
+          "target_keyword": "durian season in malaysia",
+          "status": "planned",
+          "links_to": null,
+          "linked_from": "malaysia-durian-guide",
+          "contextual_link_phrase": "When the season arrives, you will want to know",
+          "contextual_link_text": "how to pick a good durian",
+          "contextual_link_url": "/blog/how-to-pick-durian/"
+        },
+        {
+          "slug": "how-to-pick-durian",
+          "title": "How to Pick a Good Durian: A First-Timer's Guide",
+          "url": "/blog/how-to-pick-durian/",
+          "target_keyword": "how to pick durian",
+          "status": "planned",
+          "links_to": null,
+          "linked_from": "durian-season-malaysia",
+          "contextual_link_phrase": "With a good fruit in hand, the next step is learning",
+          "contextual_link_text": "how to open and eat durian",
+          "contextual_link_url": "/blog/how-to-eat-durian/"
+        }
+      ]
+    }
+  ]
+}
