@@ -1214,12 +1214,12 @@ async function sync() {
   const { dietary, specialty, travelType, location } = transformLandingPages(landingDocs)
 
   // Merge translations from existing committed snapshots
-  const mergeExistingTranslations = (newDocs: any[], fileName: string) => {
+  function mergeExistingTranslations(newDocs, fileName) {
     const existingPath = path.join(CONTENT_DIR, fileName)
     if (!fs.existsSync(existingPath)) return newDocs
     const existing = JSON.parse(fs.readFileSync(existingPath, 'utf-8'))
-    const existingBySlug = new Map(existing.map((d: any) => [d.slug, d]))
-    return newDocs.map((doc: any) => {
+    const existingBySlug = new Map(existing.map((d => [d.slug, d]))
+    return newDocs.map((doc => {
       const existingDoc = existingBySlug.get(doc.slug)
       if (existingDoc && Array.isArray(existingDoc.translations) && existingDoc.translations.length > 0) {
         return { ...doc, translations: existingDoc.translations }
