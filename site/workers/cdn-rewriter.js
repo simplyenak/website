@@ -68,12 +68,12 @@ async function handleRequest(request) {
     return Response.redirect("https://simplyenak.com" + redirectTarget, 301);
   }
 
-  // ── Skip non-page requests early ──
-  // Only HTML pages need rewriting. Pass everything else straight
-  // through to Pages without the Worker overhead.
-  var method = request.method;
+  // ── Skip non-page requests
+  // Only HTML pages need rewriting. Static assets, images, JSON, API
+  // calls — pass straight through without the Worker overhead.
   var accept = request.headers.get("accept") || "";
-  if (accept.indexOf("text/html") === -1 && method === "GET") {
+  var contentType = request.headers.get("content-type") || "";
+  if (accept.indexOf("text/html") === -1 && contentType.indexOf("text/html") === -1) {
     var originResponse = await fetch(new Request(new URL(url.pathname + url.search, PAGES_ORIGIN).toString(), {
       method: "GET",
       headers: request.headers,
@@ -85,9 +85,9 @@ async function handleRequest(request) {
   // ── Fetch from Pages origin ──
   var originUrl = new URL(url.pathname + url.search, PAGES_ORIGIN);
   var originRequest = new Request(originUrl.toString(), {
-    method: method,
+    method: request.method,
     headers: request.headers,
-    body: ["GET", "HEAD"].includes(method) ? null : request.body,
+    body: ["GET", "HEAD"].includes(request.method) ? null : request.body,
     redirect: "manual"
   });
   var response = await fetch(originRequest);
@@ -98,8 +98,8 @@ async function handleRequest(request) {
   }
 
   // Non-HTML responses from this path also get caching
-  var contentType = (response.headers.get("content-type") || "").toLowerCase();
-  if (contentType.indexOf("text/html") === -1) {
+  var responseContentType = (response.headers.get("content-type") || "").toLowerCase();
+  if (responseContentType.indexOf("text/html") === -1) {
     return addCaching(response, url.pathname);
   }
 
@@ -107,6 +107,8 @@ async function handleRequest(request) {
   var html = await response.text();
 
   // Replace S3 origin URLs with CDN URLs
+  // NOTE: This should be moved to a Cloudflare Transform Rule —
+  // it's free, faster, and doesn't require a Worker invocation.
   var didReplace = false;
   html = html.replace(/https:\/\/se-website-images\.s3\.nl-ams\.scw\.cloud/g, CDN_ROOT);
   if (html.indexOf(CDN_ROOT) >= 0) didReplace = true;

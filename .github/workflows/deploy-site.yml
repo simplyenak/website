@@ -48,6 +48,10 @@ jobs:
         run: python3 eval/content-eval-runner.py --json
         # Exit 0 = all pass. Exit 1 = failure — blocks deploy.
 
+      - name: Brand voice gate
+        run: python3 scripts/brand-voice-gate.py
+        # Checks for AI-speak and brand violations in content JSON
+
       - name: Push translations to Payload CMS
         working-directory: site
         run: |
