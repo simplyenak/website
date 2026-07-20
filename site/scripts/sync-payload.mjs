@@ -1206,13 +1206,32 @@ async function sync() {
   }
 
   // ── Landing Pages (unified → 4 files) ──
+  // Note: Payload API does NOT expose translations for landing_pages.
+  // We must preserve existing translations from committed snapshots
+  // and merge them into the synced output, otherwise EN content is lost.
   log('🗺️  Landing Pages...')
   const landingDocs = await fetchCollection('landing_pages')
   const { dietary, specialty, travelType, location } = transformLandingPages(landingDocs)
-  writeJSON('dietary-landing-pages.json', dietary)
-  writeJSON('specialty-landing-pages.json', specialty)
-  writeJSON('travel-type-landing-pages.json', travelType)
-  writeJSON('location-landing-pages.json', location)
+
+  // Merge translations from existing committed snapshots
+  const mergeExistingTranslations = (newDocs: any[], fileName: string) => {
+    const existingPath = path.join(CONTENT_DIR, fileName)
+    if (!fs.existsSync(existingPath)) return newDocs
+    const existing = JSON.parse(fs.readFileSync(existingPath, 'utf-8'))
+    const existingBySlug = new Map(existing.map((d: any) => [d.slug, d]))
+    return newDocs.map((doc: any) => {
+      const existingDoc = existingBySlug.get(doc.slug)
+      if (existingDoc && Array.isArray(existingDoc.translations) && existingDoc.translations.length > 0) {
+        return { ...doc, translations: existingDoc.translations }
+      }
+      return doc
+    })
+  }
+
+  writeJSON('dietary-landing-pages.json', mergeExistingTranslations(dietary, 'dietary-landing-pages.json'))
+  writeJSON('specialty-landing-pages.json', mergeExistingTranslations(specialty, 'specialty-landing-pages.json'))
+  writeJSON('travel-type-landing-pages.json', mergeExistingTranslations(travelType, 'travel-type-landing-pages.json'))
+  writeJSON('location-landing-pages.json', mergeExistingTranslations(location, 'location-landing-pages.json'))
 
   // ── Currency Rates (live fetch from Frankfurter — free, no API key) ──
   log('💱 Currency rates (Frankfurter)...')
