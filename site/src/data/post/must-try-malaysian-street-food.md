@@ -1,14 +1,14 @@
 ---
 publishDate: 2026-06-01T00:00:00Z
-title: "Malaysian Street Food Checklist"
+|title: "What Most People Get Wrong About Malaysian Street Food"
 excerpt: "The dishes you should not miss on a food trip to Malaysia, from nasi lemak to char kway teow, explained by local guides who eat them every day."
 image: "https://cdn.simplyenak.com/kuala_lumpur_street_food_cd4fad4122.jpg"
 category: "Food & Culture Guides"
 tags: ["Street Food", "Malaysian Food", "Kuala Lumpur", "Penang", "Food Guide"]
 author: "Pauline"
 metadata:
-  title: "Malaysian Street Food Checklist"
-  description: "A checklist of Malaysian street food to try at least once, from nasi lemak and char kway teow to roti canai. Here is what to order and where to find it."
+  title: "What Most People Get Wrong About Malaysian Street Food"
+  description: "A guide to Malaysian street food to try at least once, from nasi lemak and char kway teow to roti canai. Here is what to order and where to find it."
 ---
 
 

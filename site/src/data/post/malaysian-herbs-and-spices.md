@@ -1,13 +1,13 @@
 ---
 publishDate: 2026-06-02T00:00:00Z
-title: "Malaysian Herbs and Spices: A Guide to the Flavours"
+|title: "What Most People Get Wrong About Malaysian Spices"
 excerpt: "The herbs and spices that define Malaysian cooking: what they are, how they taste, and where they come from."
 image: "https://cdn.simplyenak.com/malaysian-herbs-spices-blog-featured.jpeg"
 category: "Food & Culture Guides"
 tags: ["Malaysian Food", "Spices", "Herbs", "Food Guide"]
 author: "Pauline"
 metadata:
-  title: "Malaysian Herbs and Spices: A Guide to the Flavours"
+  title: "What Most People Get Wrong About Malaysian Spices"
   description: "The herbs and spices that define Malaysian cooking, from pandan to wild betel leaf. Here is what each one tastes like and how locals use them."
 ---
 

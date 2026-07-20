@@ -1,14 +1,14 @@
 ---
 publishDate: 2026-05-25T00:00:00Z
-title: "Bak Chang Festival & Chinese Dumplings in Malaysia"
-excerpt: "Everything about bak chang (Chinese dumplings) in Malaysia. What they mean during the Dragon Boat Festival, where to find the top ones, and why every family has a different recipe."
+title: "The Truth About Bak Chang Nobody Tells You"
+excerpt: "Everything about bak chang (Chinese dumplings) in Malaysia. What they mean during the Dragon Boat Festival, where to find the best ones, and why every family has a different recipe."
 image: "https://cdn.simplyenak.com/Bakchang_Zhong_Festival_Malaysia_3dc7f416db.jpeg"
 category: "Food & Culture Guides"
 tags: ["Chinese Cuisine", "Festivals", "Dumplings", "Malaysian Food"]
 author: "Pauline"
 metadata:
-  title: "Bak Chang Festival & Chinese Dumplings in Malaysia"
-  description: "Bak Chang dumplings explained: what they mean in Malaysia during the Dragon Boat Festival, where to find the top ones, and why every family has a different recipe."
+  title: "The Truth About Bak Chang Nobody Tells You"
+  description: "Bak Chang dumplings explained: what they mean in Malaysia during the Dragon Boat Festival, where to find the best ones, and why every family has a different recipe."
 ---
 
 

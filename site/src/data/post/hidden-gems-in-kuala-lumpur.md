@@ -1,13 +1,13 @@
 ---
 publishDate: 2026-05-20T00:00:00Z
-title: "9 distinctive Spots To Visit In Kuala Lumpur"
+title: "9 KL Spots Most Visitors Miss"
 excerpt: "Beyond the Petronas Towers: a local's guide to the neighbourhoods, bars, and food stalls that make KL worth coming back to. Updated for 2026."
 image: "https://cdn.simplyenak.com/kuala_lumpur_street_food_cd4fad4122.jpg"
 category: "Travel Tips"
 tags: ["Kuala Lumpur", "Travel Tips", "Local Guides", "Neighbourhoods"]
 author: "Pauline"
 metadata:
-  title: "9 distinctive Spots To Visit In Kuala Lumpur"
+  title: "9 KL Spots Most Visitors Miss"
   description: "Nine distinctive spots in Kuala Lumpur that most visitors never find, from pre-war shophouses to markets where locals have shopped for generations."
 ---
 

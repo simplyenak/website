@@ -1,13 +1,13 @@
 ---
 publishDate: 2026-05-30T00:00:00Z
-title: "Port Klang to Kuala Lumpur: Transport Guide"
+|title: "How to Get from Port Klang to KL (Without the Tourist Traps)"
 excerpt: "A practical guide for cruise passengers and day-trippers arriving at Port Klang: transport options, travel times, and how to make the most of your time in KL."
 image: "https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg"
 category: "Travel Tips"
 tags: ["Travel Tips", "Kuala Lumpur", "Port Klang", "Transport", "Cruise"]
 author: "Pauline"
 metadata:
-  title: "Port Klang to Kuala Lumpur: Transport Guide"
+  title: "How to Get from Port Klang to KL (Without the Tourist Traps)"
   description: "Arriving at Port Klang and heading to Kuala Lumpur? Here is everything you need about transport options, timing, costs, and what to eat along the way."
 ---
 

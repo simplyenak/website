@@ -1,13 +1,13 @@
 ---
 publishDate: 2026-05-26T00:00:00Z
-title: "Traveling Malaysia During Ramadan: What To Expect"
+|title: "What Happens in Malaysia During Ramadan"
 excerpt: "What it is like to visit Malaysia during Ramadan: how it affects food, transport, and sightseeing, and why it can be one of the most-loved times to experience Malaysian culture."
 image: "https://cdn.simplyenak.com/ramadan_in_malaysia_80d21d0aad.jpg"
 category: "Food & Culture Guides"
 tags: ["Travel Tips", "Ramadan", "Malaysia", "Culture", "Festivals"]
 author: "Pauline"
 metadata:
-  title: "Traveling Malaysia During Ramadan: What To Expect"
+  title: "What Happens in Malaysia During Ramadan"
   description: "Visiting Malaysia during Ramadan is rewarding. Here is what stays open, what closes, and where to eat after sundown during the fasting month."
 ---
 

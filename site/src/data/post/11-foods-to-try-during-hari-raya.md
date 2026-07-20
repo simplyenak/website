@@ -1,14 +1,14 @@
 ---
 publishDate: 2026-06-09T00:00:00Z
-title: "11 Foods To Try During Hari Raya"
+title: "What Happens at a Hari Raya Table (That Will Surprise You)"
 excerpt: "From lemang to ketupat, rendang to dodol -  here are the Hari Raya dishes you should try in Malaysia. Updated with 2026 festival tips."
 image: "https://cdn.simplyenak.com/2_b669a096f4.webp"
 category: "Food & Culture Guides"
 tags: ["Hari Raya", "Malaysian Food", "Festivals", "Ramadan"]
 author: "Pauline"
 metadata:
-  title: "11 Foods To Try During Hari Raya"
-  description: "Eleven dishes to try during Hari Raya, from rendang and ketupat to dodol and serunding. Here is what each one is and where to find the most-loved versions."
+  title: "What Happens at a Hari Raya Table (That Will Surprise You)"
+  description: "Eleven dishes to try during Hari Raya, from rendang and ketupat to dodol and serunding. Here is what each one is and where to find the most popular versions."
 ---
 
 

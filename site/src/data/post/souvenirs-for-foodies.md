@@ -1,13 +1,13 @@
 ---
 publishDate: 2026-05-28T00:00:00Z
-title: "10 Souvenirs for Food Lovers To Bring Back From Malaysia"
+|title: "10 Souvenirs for Food Lovers (That Actually Travel Well)"
 excerpt: "The Top edible souvenirs and food-themed gifts to bring home from Malaysia, recommended by local guides who know what travels well."
 image: "https://cdn.simplyenak.com/malaysian-souvenirs-foodies-featured.jpg"
 category: "Travel Tips"
 tags: ["Travel Tips", "Souvenirs", "Malaysian Food", "Shopping"]
 author: "Pauline"
 metadata:
-  title: "10 Souvenirs for Food Lovers To Bring Back From Malaysia"
+  title: "10 Souvenirs for Food Lovers (That Actually Travel Well)"
   description: "Ten food souvenirs worth bringing home from Malaysia, from white coffee and kaya to dried spices. Here is where to find each one and how to pack them."
 ---
 

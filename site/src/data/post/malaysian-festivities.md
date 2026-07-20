@@ -1,14 +1,14 @@
 ---
 publishDate: 2026-06-03T00:00:00Z
-title: "Plan Your Trip Around These Festivals in Malaysia"
+|title: "Why Malaysian Festivals Change How You Travel"
 excerpt: "From Chinese New Year to Hari Raya, Deepavali to Thaipusam, here are the festivals worth planning your Malaysia trip around."
 image: "https://cdn.simplyenak.com/2_b669a096f4.webp"
 category: "Food & Culture Guides"
 tags: ["Festivals", "Malaysia", "Travel Tips", "Culture"]
 author: "Pauline"
 metadata:
-  title: "Plan Your Trip Around These Festivals in Malaysia"
-  description: "Malaysia's major festivals and the most-loved times to visit. From Chinese New Year to Hari Raya and Deepavali, here is what to expect during each celebration."
+  title: "Why Malaysian Festivals Change How You Travel"
+  description: "Malaysia's major festivals and the most popular times to visit. From Chinese New Year to Hari Raya and Deepavali, here is what to expect during each celebration."
 ---
 
 
