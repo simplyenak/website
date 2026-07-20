@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const Tours: CollectionConfig = {
   slug: 'tours',
+  localization: true,
   admin: {
     useAsTitle: 'name',
     group: 'Tours & Booking',

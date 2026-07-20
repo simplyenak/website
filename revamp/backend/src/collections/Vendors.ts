@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const Vendors: CollectionConfig = {
   slug: 'vendors',
+  localization: true,
   admin: {
     useAsTitle: 'name',
     group: 'Reference Data',

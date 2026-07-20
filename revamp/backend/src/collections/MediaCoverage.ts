@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const MediaCoverage: CollectionConfig = {
   slug: 'media_coverage',
+  localization: true,
   admin: {
     useAsTitle: 'outlet',
     group: 'Content',

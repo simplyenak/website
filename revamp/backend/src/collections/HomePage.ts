@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const HomePage: CollectionConfig = {
   slug: 'home_page',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },
@@ -30,6 +31,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'heroBlock',
+          localization: true,
           labels: { singular: 'Hero Block', plural: 'Hero Blocks' },
           fields: [
             { name: 'title', type: 'text' },
@@ -67,6 +69,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'manifestoBlock',
+          localization: true,
           labels: { singular: 'Manifesto Block', plural: 'Manifesto Blocks' },
           fields: [
             { name: 'eyebrow', type: 'text' },
@@ -90,6 +93,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'pillarsBlock',
+          localization: true,
           labels: { singular: 'Pillars Block', plural: 'Pillars Blocks' },
           fields: [
             { name: 'intro', type: 'text' },
@@ -120,6 +124,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'vendorsBlock',
+          localization: true,
           labels: { singular: 'Vendors Block', plural: 'Vendors Blocks' },
           fields: [
             { name: 'eyebrow', type: 'text' },
@@ -151,6 +156,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'segmentsBlock',
+          localization: true,
           labels: { singular: 'Segments Block', plural: 'Segments Blocks' },
           fields: [
             { name: 'heading', type: 'text' },
@@ -172,6 +178,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'aboutBlock',
+          localization: true,
           labels: { singular: 'About Block', plural: 'About Blocks' },
           fields: [
             { name: 'eyebrow', type: 'text' },
@@ -201,6 +208,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'statsBlock',
+          localization: true,
           labels: { singular: 'Stats Block', plural: 'Stats Blocks' },
           fields: [
             { name: 'title', type: 'text' },
@@ -232,6 +240,7 @@ export const HomePage: CollectionConfig = {
       blocks: [
         {
           slug: 'ctaBlock',
+          localization: true,
           labels: { singular: 'CTA Block', plural: 'CTA Blocks' },
           fields: [
             { name: 'eyebrow', type: 'text' },

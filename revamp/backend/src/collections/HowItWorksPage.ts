@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const HowItWorksPage: CollectionConfig = {
   slug: 'how_it_works_page',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },

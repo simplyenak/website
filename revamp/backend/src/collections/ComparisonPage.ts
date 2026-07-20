@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const ComparisonPage: CollectionConfig = {
   slug: 'comparison_page',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },

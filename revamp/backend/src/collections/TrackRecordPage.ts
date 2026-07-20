@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const TrackRecordPage: CollectionConfig = {
   slug: 'track_record_page',
+  localization: true,
   admin: {
     useAsTitle: 'seo_title',
     group: 'Pages',

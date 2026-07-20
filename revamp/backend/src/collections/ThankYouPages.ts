@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const ThankYouPages: CollectionConfig = {
   slug: 'thank_you_pages',
+  localization: true,
   admin: {
     group: 'Pages',
     description: '🎉 Thank you pages for form submissions',

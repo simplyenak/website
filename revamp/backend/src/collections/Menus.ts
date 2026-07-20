@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const Menus: CollectionConfig = {
   slug: 'menus',
+  localization: true,
   admin: {
     group: 'Settings & Config',
     description: '🧭 Manage site navigation menus',

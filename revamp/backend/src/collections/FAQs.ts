@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const FAQs: CollectionConfig = {
   slug: 'faqs',
+  localization: true,
   admin: {
     useAsTitle: 'question',
     group: 'Content',

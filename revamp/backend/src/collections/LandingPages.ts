@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const LandingPages: CollectionConfig = {
   slug: 'landing_pages',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },

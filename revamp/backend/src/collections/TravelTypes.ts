@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const TravelTypes: CollectionConfig = {
   slug: 'travel_types',
+  localization: true,
   admin: {
     group: 'Reference Data',
     description: '🧳 Traveler type references (Couples, Solo, Family, Foodie)',

@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const SiteSettings: CollectionConfig = {
   slug: 'site_settings',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },

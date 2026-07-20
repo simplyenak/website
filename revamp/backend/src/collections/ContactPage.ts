@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const ContactPage: CollectionConfig = {
   slug: 'contact_page',
+  localization: true,
   admin: {
     useAsTitle: 'hero_title',
     group: 'Pages',

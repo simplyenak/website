@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const StoriesPage: CollectionConfig = {
   slug: 'stories_page',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },

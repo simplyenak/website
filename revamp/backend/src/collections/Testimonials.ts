@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
+  localization: true,
   admin: {
     useAsTitle: 'author_name',
     group: 'Content',

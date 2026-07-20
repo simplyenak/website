@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const AboutPage: CollectionConfig = {
   slug: 'about_page',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },
@@ -27,6 +28,7 @@ export const AboutPage: CollectionConfig = {
             admin: { description: 'Page hero with title and subtitle' },
       blocks: [{
         slug: 'heroBlock',
+        localization: true,
         labels: { singular: 'Hero Block', plural: 'Hero Blocks' },
         fields: [
           { name: 'title', type: 'text' },
@@ -46,6 +48,7 @@ export const AboutPage: CollectionConfig = {
             admin: { description: 'Founder story with title and rich text content' },
       blocks: [{
         slug: 'founderStoryBlock',
+        localization: true,
         labels: { singular: 'Founder Story Block', plural: 'Founder Story Blocks' },
         fields: [
           { name: 'title', type: 'text' },
@@ -66,6 +69,7 @@ export const AboutPage: CollectionConfig = {
             admin: { description: 'Key statistics about Simply Enak' },
       blocks: [{
         slug: 'statsBlock',
+        localization: true,
         labels: { singular: 'Stats Block', plural: 'Stats Blocks' },
         fields: [
           {
@@ -90,6 +94,7 @@ export const AboutPage: CollectionConfig = {
             admin: { description: 'Company history timeline' },
       blocks: [{
         slug: 'timelineBlock',
+        localization: true,
         labels: { singular: 'Timeline Block', plural: 'Timeline Blocks' },
         fields: [
           {
@@ -118,6 +123,7 @@ export const AboutPage: CollectionConfig = {
             admin: { description: 'Company philosophy/mission' },
       blocks: [{
         slug: 'philosophyBlock',
+        localization: true,
         labels: { singular: 'Philosophy Block', plural: 'Philosophy Blocks' },
         fields: [
           {
@@ -146,6 +152,7 @@ export const AboutPage: CollectionConfig = {
             admin: { description: 'Team members' },
       blocks: [{
         slug: 'teamBlock',
+        localization: true,
         labels: { singular: 'Team Block', plural: 'Team Blocks' },
         fields: [
           {

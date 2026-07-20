@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const Locations: CollectionConfig = {
   slug: 'locations',
+  localization: true,
   admin: {
     group: 'Reference Data',
     description: '📍 Location references (Kuala Lumpur, Penang, Ipoh)',

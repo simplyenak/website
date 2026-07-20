@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const LegalPages: CollectionConfig = {
   slug: 'legal_pages',
+  localization: true,
   admin: {
     group: 'Pages',
     description: '📜 Legal pages (Privacy Policy, Terms, etc.)',

@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const FoodItems: CollectionConfig = {
   slug: 'food_items',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },

@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const SpecialtyExperiences: CollectionConfig = {
   slug: 'specialty_experiences',
+  localization: true,
   admin: {
     group: 'Reference Data',
     description: '⭐ Specialty experience references (Heritage, Street Food, Night Tour, Market)',

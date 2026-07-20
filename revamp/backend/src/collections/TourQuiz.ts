@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const TourQuiz: CollectionConfig = {
   slug: 'tour_quiz',
+  localization: true,
   admin: {
     group: 'Pages',
     description: '🧩 "What Type of Malaysian Foodie Are You?" quiz',

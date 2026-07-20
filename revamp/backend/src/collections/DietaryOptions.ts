@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const DietaryOptions: CollectionConfig = {
   slug: 'dietary_options',
+  localization: true,
   admin: {
     useAsTitle: 'name',
     group: 'Reference Data',

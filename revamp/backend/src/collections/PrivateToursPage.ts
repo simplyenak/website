@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const PrivateToursPage: CollectionConfig = {
   slug: 'private_tours_page',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },

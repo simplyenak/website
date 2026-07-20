@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const Neighborhoods: CollectionConfig = {
   slug: 'neighborhoods',
+  localization: true,
   admin: {
     group: 'Reference Data',
     description: '🏘️ Neighborhoods and districts featured on tours',

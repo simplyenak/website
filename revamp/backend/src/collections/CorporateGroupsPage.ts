@@ -3,6 +3,7 @@ import { triggerStagingDeploy } from '../hooks/deployTrigger'
 
 export const CorporateGroupsPage: CollectionConfig = {
   slug: 'corporate_groups_page',
+  localization: true,
   hooks: {
     afterChange: [triggerStagingDeploy],
   },
