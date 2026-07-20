@@ -16,7 +16,7 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
-const readingTime = Math.max(1, Math.ceil((post.contents?.length || 1000) / 2000));
+const readingTime = Math.max(1, Math.ceil((post.Content?.length || 1000) / 2000));
 const siteUrl = 'https://simplyenak.com';
 const blogSlug = typeof url === 'string' ? url.replace(siteUrl, '') : (url.pathname || '');
 ---

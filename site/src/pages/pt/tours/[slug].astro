@@ -30,8 +30,8 @@ const extractCity = (loc: string) => {
   if (l.includes('kl') || l.includes('kuala lumpur')) return 'Kuala Lumpur';
   return loc.split(':')[0]?.trim() || loc;
 };
-const currentCity = extractCity(tour.location || '');
-const sameCityTours = allTours.filter((t: any) => t.slug !== tour.slug && extractCity(t.location || '') === currentCity).slice(0, 4);
+const currentCity = extractCity(tour.location || "");
+const sameCityTours = allTours.filter((t: any) => t.slug !== tour.slug && extractCity(t.location || "") === currentCity).slice(0, 4);
 
 // Match related food guides by location and dietary tags
 const extractStoryCity = (slug: string): string => {
@@ -42,15 +42,15 @@ const extractStoryCity = (slug: string): string => {
   return '';
 };
 const currentCitySlug = tour.location?.toLowerCase().includes('penang') ? 'penang' : 'kuala-lumpur';
-const dietaryTags = (tour.dietaryOptions || []).map((d: any) => (typeof d === 'string' ? d : (d.slug || d.name || '')).toLowerCase());
+const dietaryTags = (tour.dietaryOptions || []).map((d: any) => (typeof d === 'string' ? d : (d.slug || d.name || "")).toLowerCase());
 const relatedStories: any[] = [];
 for (const story of (stories || [])) {
   if (story.status !== 'published' || story.workflowStatus !== 'published') continue;
-  const storyCity = extractStoryCity(story.slug || '');
+  const storyCity = extractStoryCity(story.slug || "");
   if (!storyCity || extractCity(storyCity) !== currentCity) continue;
   // Score: location match = 1, dietary keyword match = 2 each
-  const slugLower = (story.slug || '').toLowerCase();
-  const titleLower = (story.title || '').toLowerCase();
+  const slugLower = (story.slug || "").toLowerCase();
+  const titleLower = (story.title || "").toLowerCase();
   let score = 1;
   for (const tag of dietaryTags) {
     if (tag && (slugLower.includes(tag.slice(0, 4)) || titleLower.includes(tag.slice(0, 4)))) {
@@ -69,17 +69,17 @@ const tourReviews = reviews.filter((r: any) => r.location === tourLocation).slic
 if (!tour) return Astro.redirect('/tours');
 
 // Hero image: handle Payload media object or plain URL, rewrite to CDN
-const heroImgRaw = tour.image || tour.heroImage || '';
+const heroImgRaw = tour.image || tour.heroImage || "";
 const heroImgUrl = typeof heroImgRaw === 'object' && heroImgRaw !== null
-  ? (heroImgRaw.url || heroImgRaw.src || '')
+  ? (heroImgRaw.url || heroImgRaw.src || "")
   : heroImgRaw;
-const heroImg = getImageUrl(heroImgUrl) || '';
+const heroImg = getImageUrl(heroImgUrl) || "";
 
 // Fallback: if CDN blocks the hero image (problematic chars), use first gallery image
 const isHeroBlocked = heroImg.includes('%20') || heroImg.includes('(') || heroImg.includes(')');
 const galleryImages = [...(Array.isArray(tour.gallery_images) ? tour.gallery_images : []), ...(Array.isArray(tour.galleryImages) ? tour.galleryImages : [])];
 const firstGalleryImg = galleryImages[0];
-const fallbackImg = firstGalleryImg ? getImageUrl(firstGalleryImg.src || firstGalleryImg.url || '') : '';
+const fallbackImg = firstGalleryImg ? getImageUrl(firstGalleryImg.src || firstGalleryImg.url || "") : '';
 const heroImgFinal = (isHeroBlocked && fallbackImg) ? fallbackImg : heroImg;
 const foods = tour.foods || [];
 const foodDescriptions = tour.foodDescriptions || {};
@@ -88,11 +88,11 @@ const itinerary = tour.itinerary || [];
 const normalizedItinerary = itinerary.map((stop: any) => ({
   time: stop.time,
   title: stop.title,
-  description: stop.description || stop.desc || '',
+  description: stop.description || stop.desc || "",
 }));
 
 // Determine tour time of day from start time
-const startTime = tour.startTime || '';
+const startTime = tour.startTime || "";
 let tourTime = 'Daily';
 if (startTime) {
   const hour = parseInt(startTime.split(':')[0], 10);
@@ -102,7 +102,7 @@ if (startTime) {
   else if (hour24 < 17) tourTime = 'Afternoon';
   else tourTime = 'Evening';
 }
-const widgetId = tour.widgetId || tour.ticketingHubId || '';
+const widgetId = tour.widgetId || tour.ticketingHubId || "";
 const highlights = tour.highlights || [];
 
 // Premium Icon mapping — Tabler SVG icons instead of emoji
@@ -125,12 +125,12 @@ const travelUrl = (slug: string) => {
 
 const meta = {
   title: `${tour.tagline || tour.name}  -  Simply Enak`,
-  description: tour.shortDesc || tour.tagline || '',
+  description: tour.shortDesc || tour.tagline || "",
 };
 
 // Build Tour schema (TouristTrip + Product + map signal)
 // Use meeting point for precise map link, fall back to city-level
-const meetingPoint = tour.meetingPoint || tour.meeting_point || '';
+const meetingPoint = tour.meetingPoint || tour.meeting_point || "";
 let mapUrl = 'https://maps.google.com/maps?q=Malaysia&z=10';
 if (meetingPoint) {
   mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(meetingPoint)}&z=16`;
@@ -155,7 +155,7 @@ function toIsoDuration(dur: string): string {
   const min = hMatch ? Math.round((parseFloat(hMatch[1]) - h) * 60) : (minMatch ? parseInt(minMatch[1]) : 0);
   return `PT${h > 0 ? `${h}H` : ''}${min > 0 ? `${min}M` : ''}`;
 }
-const isoDuration = toIsoDuration(tour.duration || '');
+const isoDuration = toIsoDuration(tour.duration || "");
 
 // Build audience list from travel types
 const audienceTypes: Record<string, string> = {
@@ -173,7 +173,7 @@ const tourSchema = {
   '@context': 'https://schema.org',
   '@type': ['TouristTrip', 'Product'],
   name: tour.name,
-  description: tour.shortDesc || tour.tagline || '',
+  description: tour.shortDesc || tour.tagline || "",
   url: `https://simplyenak.com/tours/${tour.slug}`,
   image: heroImgFinal || 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
   ...(isoDuration ? { duration: isoDuration } : {}),
@@ -204,7 +204,7 @@ const tourSchema = {
   itinerary: tour.itinerary?.map((stop: any) => ({
     '@type': 'TouristAttraction',
     name: stop.title,
-    description: stop.description || stop.desc || '',
+    description: stop.description || stop.desc || "",
   })) || undefined,
   provider: {
     '@type': 'TravelAgency',
@@ -215,7 +215,7 @@ const tourSchema = {
 };
 
 // WhatsApp URL for tour enquiries
-const waMsg = `Hi Simply Enak, I'm interested in ${(tour.name || tour.tagline || '').replace(/["']/g, '')}`;
+const waMsg = `Hi Simply Enak, I'm interested in ${(tour.name || tour.tagline || "").replace(/["']/g, '')}`;
 const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
 ---
 
@@ -385,7 +385,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                 ? tour.gallery_images.map((gi: any) => ({
                     src: getImageUrl(gi.src || gi.url),
                     alt: gi.alt || tour.name,
-                    caption: gi.caption || '',
+                    caption: gi.caption || "",
                   }))
                 : []),
               // Tier 2: galleryImages (nested Payload format: [{id, image: {url, alt}}])
@@ -393,9 +393,9 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                 ? tour.galleryImages.map((gi: any) => {
                     const img = gi.image || gi;
                     return {
-                      src: getImageUrl(gi.src || gi.url || (typeof img === 'object' ? (img.url || img.src) : img) || ''),
+                      src: getImageUrl(gi.src || gi.url || (typeof img === 'object' ? (img.url || img.src) : img) || ""),
                       alt: gi.alt || img.alt || tour.name,
-                      caption: gi.caption || '',
+                      caption: gi.caption || "",
                     };
                   })
                 : []),
@@ -453,10 +453,10 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
               // Show if: no visibility set, matches page type, matches tour specifically, or is linked via relatedTour
               return vis.length === 0 || vis.includes('all') || vis.includes('tour-detail') || vis.includes(pageKey) || (relatedTourSlug && relatedTourSlug === tour.slug);
             }).slice(0, 12).map((faq: any) => {
-              const question = faq.question || faq.q || '';
-              let answer = faq.answer || faq.a || '';
+              const question = faq.question || faq.q || "";
+              let answer = faq.answer || faq.a || "";
               if (typeof answer === 'object' && answer?.root?.children) {
-                answer = answer.root.children.map((c: any) => c.children?.map((ch: any) => ch.text).join('') || '').join(' ');
+                answer = answer.root.children.map((c: any) => c.children?.map((ch: any) => ch.text).join('') || "").join(' ');
               }
               return (
               <details class="border border-gray-100 bg-white dark:bg-[#1e1c1c] dark:border-white/10 overflow-hidden group rounded-lg">
@@ -580,7 +580,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
             </div>
           </div>
           <div class="p-6 space-y-3">
-            <TourContactCTA widgetId={widgetId} tourName={tour.name || tour.tagline || ''} tourSlug={tour.slug} />
+            <TourContactCTA widgetId={widgetId} tourName={tour.name || tour.tagline || ""} tourSlug={tour.slug} />
             {tour.tourType === 'both' && (
               <p class="text-xs text-muted text-center">Also available as a <a href="/tours/private-tours" class="text-accent hover:underline font-semibold">Private Tour</a></p>
             )}
@@ -688,7 +688,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
 </style>
 
 <script is:inline>
-  if (window.trackTourInterest) window.trackTourInterest('{tour.name || tour.tagline || ''}');
+  if (window.trackTourInterest) window.trackTourInterest('{tour.name || tour.tagline || ""}');
 </script>
 <style is:global>
   .set-html-content img,

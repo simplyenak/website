@@ -5,6 +5,8 @@ import { locationSegments } from '~/data/segments';
 import reviews from '~/data/content/reviews.json';
 import LandingPageSections from '~/components/LandingPageSections.astro';
 
+const locale = 'en';
+
 export async function getStaticPaths() {
   return locationSegments.map((s: any) => ({
     params: { slug: s.slug },
@@ -16,7 +18,7 @@ const { segment } = Astro.props;
 // Smart matching: auto-link tours by location name, dietary options, specialties, etc.
 const matchingTours = await getToursByTag(segment.slug);
 
-const landingPage = await getLandingPageBySlug(segment.slug);
+const landingPage = await getLandingPageBySlug(segment.slug, locale);
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 const featuredReviews = reviews.filter((r: any) => r.location === 'KL').slice(0, 6);
 

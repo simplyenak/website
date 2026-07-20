@@ -36,10 +36,10 @@ export function getLangFromUrl(url: URL): Language {
  *   <h1>{t('nav.tours')}</h1>
  */
 export function useTranslations(lang: Language) {
-  return function t(key: UiKey): string {
+  return function t(key: UiKey, fallback?: string): string {
     const langStrings = ui[lang] as Record<string, string> | undefined;
     const enStrings = ui[defaultLang] as Record<string, string>;
-    return langStrings?.[key] ?? enStrings[key] ?? key;
+    return langStrings?.[key] ?? enStrings[key] ?? fallback ?? key;
   };
 }
 

@@ -8,6 +8,46 @@ var STATIC_TTL = 2592000; // 30 days in seconds
 // The site _redirects file and Pages Functions don't fire because
 // this Worker catches requests first — put all redirects here.
 var REDIRECTS = {
+  // ── Priority 1 — Stories with existing live targets (7,334 imps/mo) ──
+  "/eating-durians": "/stories/eating-durians",
+  "/eating-durians/": "/stories/eating-durians",
+  "/pt/stories/eating-durians/": "/stories/eating-durians",
+  "/do-malaysians-speak-english": "/stories/do-malaysians-speak-english",
+  "/do-malaysians-speak-english/": "/stories/do-malaysians-speak-english",
+  "/ms/stories/chinese-dumpling-festival/": "/stories/chinese-dumpling-festival",
+
+  // ── Priority 3a — Renamed tours (727 imps/mo) ──
+  "/tours/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
+  "/tours/flavours-of-malaysia-off-the-beaten-track/": "/tours/flavours-of-malaysia",
+  "/tours/eat-drink-georgetown": "/tours/penang-street-food",
+  "/tours/eat-drink-georgetown/": "/tours/penang-street-food",
+  "/tours/secrets-of-kl-nightlife-street-art-cocktails": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
+  "/tours/secrets-of-kl-nightlife-street-art-cocktails/": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
+  "/tours/melaka-cultural-food-journey": "/tours/locations/food-tours-melaka",
+  "/kuala-lumpur-food-tour": "/tours/kuala-lumpur-street-food",
+  "/kuala-lumpur-food-tour/": "/tours/kuala-lumpur-street-food",
+  "/vegetarian-food-tours": "/tours/dietary/vegetarian-food-tours",
+  "/vegetarian-food-tours/": "/tours/dietary/vegetarian-food-tours",
+
+  // ── Priority 3b — Static/legal (77 imps/mo) ──
+  "/terms-conditions": "/terms",
+  "/terms-conditions/": "/terms",
+  "/privacy-policy": "/privacy",
+  "/privacy-policy/": "/privacy",
+  "/local-farming-partnerships": "/about",
+  "/local-farming-partnerships/": "/about",
+  "/street-food-culture": "/stories/must-try-malaysian-street-food",
+  "/street-food-culture/": "/stories/must-try-malaysian-street-food",
+  "/why-we-care-about-sustainability": "/about",
+  "/why-we-care-about-sustainability/": "/about",
+  "/custom-tours/media": "/tours/tailored-tours",
+  "/custom-tours/media/": "/tours/tailored-tours",
+  "/ms/stories/food-safety": "/stories/food-safety",
+  "/ms/stories/food-safety/": "/stories/food-safety",
+  "/ms/stories/must-try-malaysian-street-food": "/stories/must-try-malaysian-street-food",
+  "/ms/stories/must-try-malaysian-street-food/": "/stories/must-try-malaysian-street-food",
+
+  // ── Legacy redirects (existing) ──
   "/tours/eat-drink-george-town": "/tours/georgetown-night-food-durian",
   "/tours/eat-drink-george-town/": "/tours/georgetown-night-food-durian",
 };

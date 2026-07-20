@@ -67,7 +67,7 @@ const reviewSchemaItems = realReviews.map((r, i) => ({
   description: (r.text || '').slice(0, 200),
 }));
 
-const structuredData = reviewSchemaItems.length > 0
+const structuredData: any[] = reviewSchemaItems.length > 0
   ? [{ '@type': 'ItemList', itemListElement: reviewSchemaItems.map((item, i) => ({ '@type': 'ListItem', position: i + 1, item })) }]
   : [];
 

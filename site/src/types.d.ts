@@ -225,6 +225,7 @@ export interface VendorItem {
 
 export interface Vendors extends Omit<Headline, 'classes'>, Widget {
   items?: Array<VendorItem>;
+  footerText?: string;
 }
 
 export interface Features extends Omit<Headline, 'classes'>, Widget {

@@ -1,8 +1,9 @@
 ---
 import { useTranslations } from '~/i18n/utils';
+import type { Language } from '~/i18n/ui';
 
 export interface Props {
-  lang: string;
+  lang: Language;
 }
 
 const { lang } = Astro.props;

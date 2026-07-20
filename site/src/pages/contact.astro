@@ -362,7 +362,7 @@ const metadata = {
         feedback.textContent = '✓ Message sent! We\'ll reply within 3 hours. Check your inbox (and spam folder).';
         feedback.className = 'p-4 rounded-lg font-medium text-center bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800';
         form.reset();
-        if (window.trackContactForm) window.trackContactForm();
+        if ((window as any).trackContactForm) (window as any).trackContactForm();
       } catch {
         feedback.textContent = 'Something went wrong. Please email booking@simplyenak.com or WhatsApp +60 17-287 8929.';
         feedback.className = 'p-4 rounded-lg font-medium text-center bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800';

@@ -5,6 +5,8 @@ import { dietarySegments } from '~/data/segments';
 import reviews from '~/data/content/reviews.json';
 import LandingPageSections from '~/components/LandingPageSections.astro';
 
+const locale = 'en';
+
 export async function getStaticPaths() {
   return dietarySegments.map((s: any) => ({
     params: { slug: s.slug },
@@ -15,7 +17,7 @@ export async function getStaticPaths() {
 const { segment } = Astro.props;
 const matchingTours = await getToursByTag(segment.slug);
 
-const landingPage = await getLandingPageBySlug(segment.slug);
+const landingPage = await getLandingPageBySlug(segment.slug, locale);
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 
 // Filter reviews mentioning dietary keywords

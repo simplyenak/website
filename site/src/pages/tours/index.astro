@@ -23,13 +23,13 @@ const signatureTours = tours.slice(0, 5);
 
 // Build image lookups from Payload reference data — managed in Payload admin, not code
 const locationImageMap: Record<string, string> = {};
-locationRefs.forEach((s: any) => { if (s.image) locationImageMap[s.slug] = getImageUrl(s.image); });
+locationRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) locationImageMap[s.slug] = url; });
 const dietaryImageMap: Record<string, string> = {};
-dietaryRefs.forEach((s: any) => { if (s.image) dietaryImageMap[s.slug] = getImageUrl(s.image); });
+dietaryRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) dietaryImageMap[s.slug] = url; });
 const specialtyImageMap: Record<string, string> = {};
-specialtyRefs.forEach((s: any) => { if (s.image) specialtyImageMap[s.slug] = getImageUrl(s.image); });
+specialtyRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) specialtyImageMap[s.slug] = url; });
 const travelTypeImageMap: Record<string, string> = {};
-travelTypeRefs.forEach((s: any) => { if (s.image) travelTypeImageMap[s.slug] = getImageUrl(s.image); });
+travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) travelTypeImageMap[s.slug] = url; });
 ---
 
 <Layout metadata={metadata}>

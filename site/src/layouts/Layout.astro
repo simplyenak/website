@@ -129,12 +129,14 @@ for (const [lang, prefix] of Object.entries(HREFLANG_PREFIXES)) {
           t.type = "text/javascript";
           t.async = true;
           t.src = "https://livechat.myalice.ai/index.js";
-          var a = document.body.getElementsByTagName("script");
-          a = a[a.length - 1];
-          a.parentNode.insertBefore(t, a);
-          a.parentNode.insertBefore(e, a);
+          var scripts = document.body.getElementsByTagName("script");
+          var lastScript = scripts[scripts.length - 1];
+          if (lastScript && lastScript.parentNode) {
+            lastScript.parentNode.insertBefore(t, lastScript);
+            lastScript.parentNode.insertBefore(e, lastScript);
+          }
           t.addEventListener("load", function () {
-            MyAliceWebChat.init({
+            (window as any).MyAliceWebChat.init({
               selector: "#myAliceWebChat",
               platformId: "12818",
               primaryId: "7b296d7e658e11edac5dc275f55bff6f",
