@@ -223,7 +223,7 @@ async function liveStoriesPage(locale?: string) {
  * so the frontend reads the BM content from the expected top-level fields.
  */
 function applyLocaleTranslations(item: any, locale?: string): any {
-  if (!item || !locale || locale === 'en') return item;
+  if (!item || !locale) return item;
   const trans = item.translations?.find((t: any) => t.languages_code === locale);
   if (!trans) return item;
   // Merge translation fields on top of English — don't overwrite null/empty with null/empty
@@ -996,7 +996,7 @@ async function resolveTravelTypes(locale?: string): Promise<any[]> {
 
 async function resolveLandingPages(locale?: string): Promise<any[]> {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
-  if (locale && locale !== 'en' && snapshotLandingPages.length > 0) {
+  if (locale && snapshotLandingPages.length > 0) {
     const translated = snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
     // Only use snapshots if we actually have translated content
     const hasTranslations = translated.some((item, i) => {
@@ -1010,7 +1010,7 @@ async function resolveLandingPages(locale?: string): Promise<any[]> {
   if (live && live.length > 0) return live;
   // Tier 2: JSON snapshots (fallback for all locales)
   if (snapshotLandingPages.length > 0) {
-    if (!locale || locale === 'en') return snapshotLandingPages;
+    if (!locale) return snapshotLandingPages;
     return snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
   }
   return [];

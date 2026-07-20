@@ -1,0 +1,90 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getToursByTag, getLandingPageBySlug, cleanPageTitle } from '~/lib/content';
+import { dietarySegments, locationSegments, specialtySegments, travelTypeSegments } from '~/data/segments';
+import reviews from '~/data/content/reviews.json';
+import LandingPageSections from '~/components/LandingPageSections.astro';
+
+export interface Props {
+  locale: string;
+  segmentType: 'dietary' | 'location' | 'specialty' | 'travel_type';
+  segment: any;
+}
+
+const { locale, segmentType, segment } = Astro.props;
+
+// Select the right segment data and metadata
+const SEGMENT_MAP = {
+  dietary: { data: dietarySegments, type: 'dietary' as const, label: 'Dietary' },
+  location: { data: locationSegments, type: 'location' as const, label: 'Location' },
+  specialty: { data: specialtySegments, type: 'specialty' as const, label: 'Experience' },
+  travel_type: { data: travelTypeSegments, type: 'travel_type' as const, label: 'Travel Style' },
+};
+
+const segConfig = SEGMENT_MAP[segmentType];
+
+const matchingTours = await getToursByTag(segment.slug);
+const landingPage = await getLandingPageBySlug(segment.slug, locale);
+const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
+
+// Dietary pages filter reviews by keyword; others use location-based
+const dietaryKeywords: Record<string, string> = {
+  'vegetarian-food-tours-kuala-lumpur': 'vegetarian',
+  'halal-food-tours-kuala-lumpur': 'halal',
+  'gluten-free-food-tours-kuala-lumpur': 'gluten free',
+  'vegan-food-tours-kuala-lumpur': 'vegan',
+  'jain-food-tours-kuala-lumpur': 'jain',
+};
+const dietKeyword = dietaryKeywords[segment.slug] || '';
+const dietaryReviews = dietKeyword
+  ? reviews.filter((r: any) => r.text?.toLowerCase().includes(dietKeyword))
+  : [];
+const featuredReviews =
+  segmentType === 'dietary' && dietaryReviews.length > 0
+    ? dietaryReviews.slice(0, 6)
+    : reviews.filter((r: any) => r.location === 'KL').slice(0, 6);
+
+// Build the localized URL segment
+const urlPrefix = locale === 'en' ? '' : `/${locale}`;
+const toursSegmentsUrl = `${urlPrefix}/tours/${segmentType === 'travel_type' ? 'segments' : `${segmentType}s`}`;
+const canonicalUrl = `${urlPrefix}/tours/${segmentType === 'travel_type' ? 'segments' : `${segmentType}s`}/${segment.slug}`;
+
+const meta = {
+  title: cleanPageTitle(segment.metaTitle || segment.nameFull || landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`),
+  description: landingPage?.meta_description || landingPage?.metaDescription || segment.description || '',
+};
+---
+
+<Layout metadata={meta} structuredData={{
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`,
+  description: landingPage?.meta_description || landingPage?.metaDescription || segment.description || '',
+  url: `https://simplyenak.com${canonicalUrl}`,
+}}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href={urlPrefix || '/'} class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href={toursSegmentsUrl} class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">{segment.name}</span>
+      </div>
+    </div>
+  </div>
+
+  <LandingPageSections
+    {segment}
+    {landingPage}
+    matchingTours={matchingTours}
+    featuredReviews={featuredReviews}
+    segmentType={segConfig.type}
+    allSegments={segConfig.data}
+  />
+</Layout>
+
+<script is:inline>
+  if (window.trackTourInterest) window.trackTourInterest('{segment.name} Tours');
+</script>

@@ -64,13 +64,14 @@ const meta = {
     </div>
   </section>
 
+  <span id="quiz-payload" data-payload={JSON.stringify({steps, personalities, scoringWeights, resultHeadlines})} style="display:none"></span>
   <script is:inline>
     (function() {
-      // ── Data from Astro imported JSON ───────────────────────────────
-      const STEPS = {JSON.stringify(steps)};
-      const PERSONALITIES = {JSON.stringify(personalities)};
-      const SCORING_WEIGHTS = {JSON.stringify(scoringWeights)};
-      const RESULT_HEADLINES = {JSON.stringify(resultHeadlines)};
+      var _qp = JSON.parse(document.getElementById('quiz-payload').getAttribute('data-payload'));
+      const STEPS = _qp.steps;
+      const PERSONALITIES = _qp.personalities;
+      const SCORING_WEIGHTS = _qp.scoringWeights;
+      const RESULT_HEADLINES = _qp.resultHeadlines;
 
       const quizContainer = document.getElementById('quiz-container');
       const progressEl = document.getElementById('quiz-progress');

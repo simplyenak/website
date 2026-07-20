@@ -80,6 +80,7 @@ jobs:
           EOF
 
       - name: Sync content from Payload CMS
+        if: github.event_name != 'push'
         working-directory: site
         run: npm run sync
 
