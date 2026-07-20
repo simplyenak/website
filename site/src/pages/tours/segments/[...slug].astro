@@ -22,7 +22,7 @@ const intro = landingPage?.hero_description || landingPage?.introduction || segm
 const featuredReviews = reviews.filter((r: any) => r.location === 'KL').slice(0, 6);
 
 const meta = {
-  title: cleanPageTitle(landingPage?.meta_title || landingPage?.metaTitle || segment.metaTitle || segment.nameFull || `${segment.name} Tours`),
+  title: cleanPageTitle(segment.metaTitle || segment.nameFull || landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`),
   description: landingPage?.meta_description || landingPage?.metaDescription || segment.description || '',
 };
 ---
