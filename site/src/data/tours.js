@@ -123,7 +123,7 @@ You'll leave understanding Malaysian ingredients and the communities preserving 
  ticketingHubId: 'bbb1b38a-fe29-4912-b7d7-602cf3013cd5',
  widgetId: 'bbb1b38a-fe29-4912-b7d7-602cf3013cd5',
  name: 'Penang Street Food',
- price: 'RM 285',
+ price: 'RM 289',
  duration: '3.5 hours',
  schedule: 'Daily',
  groupSize: '2-9 people',
