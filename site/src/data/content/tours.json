@@ -3948,18 +3948,18 @@
   },
   {
     "id": 4,
-    "name": null,
+    "name": "Penang Street Food",
     "slug": "penang-street-food",
-    "tagline": null,
-    "shortDescription": null,
-    "fullDescription": null,
+    "tagline": "Penang Food Capital Tour",
+    "shortDescription": "What makes Penang the \"food capital\" of Malaysia? Simply Enak will guide you through the cultural fusion that created dishes you'll only find here. At Chowrasta Market, we'll dare you to try kopitiam \"Ngor Ka Sai\".",
+    "fullDescription": "Penang is known in Malaysia as the food capital and what better way than to eat your way through the street food this island has to offer? As we walk past the monuments of Penang we take a step back to the time when Penang was formed as a settlement.\n\nAs we try different dishes we step into the traditions and culture that make Penang food the kind you remember months later. Have a light (or no) breakfast to prepare for all the local favorites such as Roti Chennai, Penang Laksa, Nasi Lemak and more.",
     "price": 289,
     "currency": "MYR",
     "duration": "3.5 hours",
     "durationMinutes": 210,
-    "location": "Penang Road",
-    "meetingPoint": "Penang Road: MYDIN Emporium",
-    "maxParticipants": 7,
+    "location": "Penang",
+    "meetingPoint": "Mydin, Penang Road",
+    "maxParticipants": 9,
     "minParticipants": 2,
     "dietaryOptions": [
       {
@@ -4485,115 +4485,50 @@
     ],
     "highlights": [
       {
-        "id": "406",
-        "highlight": "Chowrasta Market - feeding Georgetown since the 1890s"
+        "id": "69cf3377d670e2eb55428327",
+        "highlight": "Kopitiam \"Ngor Ka Sai\" - signature nutmeg pickles"
       },
       {
-        "id": "407",
-        "highlight": "Watch popiah skins handcrafted by a master with 50 years of practice"
+        "id": "69cf3377d670e2eb55428328",
+        "highlight": "Watch master handcraft popiah skin"
       },
       {
-        "id": "408",
-        "highlight": "Legendary Asam Laksa - perfectly balanced sweet, sour and savoury"
+        "id": "69cf3377d670e2eb55428329",
+        "highlight": "Legendary Asam Laksa - sweet, sour, savoury"
       },
       {
-        "id": "409",
-        "highlight": "Peranakan Nyonya kueh at Michelin-listed Moh Teng Pheow"
+        "id": "69cf3377d670e2eb5542832a",
+        "highlight": "Peranakan culture through colourful kuey"
       },
       {
-        "id": "410",
-        "highlight": "Harmony Street - temples, mosques and churches side by side"
+        "id": "69cf3377d670e2eb5542832b",
+        "highlight": "Chowrasta Market with exotic fruits and spices"
       }
     ],
     "ticketingHubId": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
-    "tourType": "both",
+    "tourType": null,
     "isBookable": true,
     "bookingUrl": null,
     "instantConfirmation": true,
     "scheduledPublish": null,
-    "cancellationPolicy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
-    "tourFrequency": "Daily",
-    "startTimes": [
-      {
-        "id": "6a4f4ef09fb587000184c71b",
-        "time": "9:00 AM"
-      }
-    ],
-    "dishesCount": 15,
+    "cancellationPolicy": null,
+    "tourFrequency": null,
+    "startTimes": [],
+    "dishesCount": 10,
     "difficulty": "easy",
     "walkingDistance": "2.5 km",
     "directionsHtml": null,
-    "itinerary": [
-      {
-        "id": "194",
-        "step": 0,
-        "title": "09:00 AM - Meet at MYDIN, Penang Road",
-        "description": "Start at the iconic emporium on Penang Road.",
-        "duration": null
-      },
-      {
-        "id": "195",
-        "step": 1,
-        "title": "09:15 AM - Chowrasta Market",
-        "description": "Explore Georgetown's oldest market.",
-        "duration": null
-      },
-      {
-        "id": "196",
-        "step": 2,
-        "title": "10:00 AM - Kopitiam & Popiah Demonstration",
-        "description": "Try local drinks and watch popiah being handcrafted.",
-        "duration": null
-      },
-      {
-        "id": "197",
-        "step": 3,
-        "title": "10:45 AM - Asam Laksa & Heritage Walk",
-        "description": "Taste legendary Asam Laksa.",
-        "duration": null
-      },
-      {
-        "id": "198",
-        "step": 4,
-        "title": "11:30 AM - Peranakan Nyonya Koay",
-        "description": "Discover kueh at Moh Teng Pheow.",
-        "duration": null
-      },
-      {
-        "id": "199",
-        "step": 5,
-        "title": "12:15 PM - Durian Dodol & Farewell",
-        "description": "End with durian dodol and street art.",
-        "duration": null
-      }
-    ],
+    "itinerary": [],
     "differentiatorsTourist": [],
     "differentiatorsUs": [],
-    "whatToBring": [
-      {
-        "id": "6a4fb8003a88a400019de07e",
-        "item": "Comfortable walking shoes"
-      },
-      {
-        "id": "6a4fb8003a88a400019de07f",
-        "item": "Camera"
-      },
-      {
-        "id": "6a4fb8003a88a400019de080",
-        "item": "Hat or sunscreen"
-      },
-      {
-        "id": "6a4fb8003a88a400019de081",
-        "item": "An adventurous appetite"
-      }
-    ],
+    "whatToBring": [],
     "languagesOffered": [],
     "segmentTags": [],
     "promoVideoUrl": null,
     "galleryImageAlts": [],
-    "heroImageAlt": null,
+    "heroImageAlt": "Freshly wok-fried char kway teow at a Penang hawker stall",
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": null,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -4605,15 +4540,15 @@
       "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-07-20T09:24:58.074Z",
+    "updatedAt": "2026-07-21T12:44:58.118Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
-    "_status": "draft",
+    "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
     "is_bookable": true,
-    "short_description": null,
-    "full_description": null,
+    "short_description": "What makes Penang the \"food capital\" of Malaysia? Simply Enak will guide you through the cultural fusion that created dishes you'll only find here. At Chowrasta Market, we'll dare you to try kopitiam \"Ngor Ka Sai\".",
+    "full_description": "Penang is known in Malaysia as the food capital and what better way than to eat your way through the street food this island has to offer? As we walk past the monuments of Penang we take a step back to the time when Penang was formed as a settlement.\n\nAs we try different dishes we step into the traditions and culture that make Penang food the kind you remember months later. Have a light (or no) breakfast to prepare for all the local favorites such as Roti Chennai, Penang Laksa, Nasi Lemak and more.",
     "duration_minutes": 210,
-    "max_participants": 7,
+    "max_participants": 9,
     "min_participants": 2,
     "dietary_options": [
       {
@@ -4725,27 +4660,20 @@
       "Hotel pickup and drop-off",
       "Personal purchases"
     ],
-    "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
-    "tour_frequency": "Daily",
-    "start_times": [
-      "9:00 AM"
-    ],
-    "dishes_count": 15,
+    "cancellation_policy": null,
+    "tour_frequency": null,
+    "start_times": [],
+    "dishes_count": 10,
     "walking_distance": "2.5 km",
     "directions_html": null,
     "differentiators_tourist": [],
     "differentiators_us": [],
-    "what_to_bring": [
-      "Comfortable walking shoes",
-      "Camera",
-      "Hat or sunscreen",
-      "An adventurous appetite"
-    ],
+    "what_to_bring": [],
     "languages_offered": [],
     "segment_tags": [],
     "promo_video_url": null,
     "gallery_image_alts": [],
-    "hero_image_alt": null,
+    "hero_image_alt": "Freshly wok-fried char kway teow at a Penang hawker stall",
     "gallery_images": [
       {
         "src": "https://cdn.simplyenak.com/payload-media/PXL_20231121_001919164.jpg",
