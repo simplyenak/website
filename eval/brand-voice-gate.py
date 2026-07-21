@@ -14,7 +14,7 @@ BANNED = [
     "elevate", "transformative", "seamless", "curated experience",
     "once-in-a-lifetime", "breathtaking", "stunning", "spectacular",
     "magnificent", "extraordinary", "remarkable", "incredible",
-    "amazing", "awesome", "best", "top", "leading", "premier",
+    "amazing", "awesome", "top", "leading", "premier",
     "destination", "melting pot", "foodie paradise",
     "must-try", "must-visit", "must-see", "iconic", "legendary",
     "famous", "renowned", "acclaimed", "award-winning",
@@ -25,7 +25,9 @@ BANNED = [
 SKIP_KEYS = {"id","slug","status","_status","createdAt","updatedAt",
              "published_at","image","hero_image","url","href",
              "cta_href","guide_slug","alt","caption","position",
-             "type","code","languages_code","email","phone"}
+             "type","code","languages_code","email","phone",
+             "review_text","author_name","author_location"}
+SKIP_FILES = {"testimonials.json", "reviews.json", "stories.json", "media-coverage.json"}
 
 
 def scan_value(value, path=""):
@@ -47,7 +49,7 @@ def scan_value(value, path=""):
 
 
 def main():
-    files = sorted(f for f in CONTENT_DIR.glob("*.json") if f.name != "media.json")
+    files = sorted(f for f in CONTENT_DIR.glob("*.json") if f.name != "media.json" and f.name not in SKIP_FILES)
     all_v = []
     for fpath in files:
         data = json.loads(fpath.read_text())

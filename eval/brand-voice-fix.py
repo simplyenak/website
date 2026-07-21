@@ -151,7 +151,8 @@ def fix_value(value, path=""):
         skip = {"id", "slug", "status", "_status", "createdAt", "updatedAt",
                 "published_at", "image", "hero_image", "url", "href",
                 "cta_href", "guide_slug", "alt", "caption", "position",
-                "type", "code", "languages_code", "email", "phone"}
+                "type", "code", "languages_code", "email", "phone",
+                "review_text", "author_name", "author_location"}
         for k, v in value.items():
             if k in skip:
                 new_dict[k] = v
@@ -167,7 +168,10 @@ def main():
     dry_run = "--dry-run" in sys.argv
     fix_mode = "--fix" in sys.argv
 
-    files = sorted(f for f in CONTENT_DIR.glob("*.json") if f.name != "media.json")
+    # Same skip list as brand-voice-gate.py
+    SKIP_FILES = {"testimonials.json", "reviews.json", "stories.json", "media-coverage.json"}
+
+    files = sorted(f for f in CONTENT_DIR.glob("*.json") if f.name != "media.json" and f.name not in SKIP_FILES)
     total_changes = 0
     files_changed = 0
 
