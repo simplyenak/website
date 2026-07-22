@@ -1,5 +1,5 @@
 # =============================================================================
-# Hermes Agent v0.18.0 — Docker Swarm-optimized image
+# Hermes Agent v0.19.0 — Docker Swarm-optimized image
 # =============================================================================
 FROM python:3.12-slim
 
@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
-# Install hermes-agent v0.18.2 (latest stable)
-RUN pip install --no-cache-dir "hermes-agent[web,cron,voice]==0.18.2" && \
+# Install hermes-agent v0.19.0 (latest stable)
+RUN pip install --no-cache-dir "hermes-agent[web,cron,voice]==0.19.0" && \
     pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]"
 
 # Create the hermes user and all needed directories
