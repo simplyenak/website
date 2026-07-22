@@ -105,6 +105,7 @@ export const footerData = {
   ],
   companyLinks: [
     { text: 'About Simply Enak', href: '/about' },
+    { text: 'Guest Reviews', href: '/testimonials' },
     { text: 'Our Track Record', href: '/track-record' },
     { text: 'Stories & Blog', href: '/stories' },
     { text: 'How It Works', href: '/how-it-works' },
@@ -231,6 +232,7 @@ export function getFooterData(lang: Language) {
     ],
     companyLinks: [
       { text: t('footer.about'), href: p('/about') },
+      { text: t('footer.testimonials'), href: p('/testimonials') },
       { text: t('footer.stories'), href: p('/stories') },
       { text: t('footer.contact'), href: p('/contact') },
       { text: t('footer.faq'), href: p('/faq') },

@@ -1,0 +1,227 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import testimonials from '~/data/content/testimonials.json';
+
+// Filter published testimonials
+const published = testimonials.filter((t: any) => t._status === 'published' && t.workflowStatus === 'published');
+
+// Stats
+const totalCount = published.length;
+const fiveStarCount = published.filter((t: any) => t.rating === 5).length;
+const verifiedCount = published.filter((t: any) => t.visibility?.verified).length;
+
+// Group by location
+const locations = new Map<string, any[]>();
+for (const t of published) {
+  const loc = t.author_location || 'Other';
+  if (!locations.has(loc)) locations.set(loc, []);
+  locations.get(loc)!.push(t);
+}
+
+// Group by platform
+const byPlatform: Record<string, number> = {};
+for (const t of published) {
+  const p = t.platform || 'Other';
+  byPlatform[p] = (byPlatform[p] || 0) + 1;
+}
+
+// Get unique locations sorted by count
+const locationOrder = [...locations.entries()].sort((a, b) => b[1].length - a[1].length);
+
+// Platform icon map
+const platformIcons: Record<string, string> = {
+  'Google': 'tabler:brand-google',
+  'TripAdvisor': 'tabler:star',
+  'Facebook': 'tabler:brand-facebook',
+};
+
+const metadata = {
+  title: 'Testimonials  -  What Our Guests Say  -  Simply Enak',
+  description: `${totalCount}+ verified 5-star reviews from guests who've taken our food tours in Kuala Lumpur, Penang, and Ipoh. Real feedback about real food experiences.`,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center">
+      <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">TRUSTED BY FOOD LOVERS</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4 leading-tight">
+        {totalCount} Five-Star Reviews
+      </h1>
+      <p class="text-white/70 max-w-2xl mx-auto text-sm md:text-base">
+        Real reviews from real guests who've walked through Malaysia's markets, eaten at family-run stalls, and taken our food tours since 2011. Every review here is from an actual guest — no fake testimonials.
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="bg-page py-4 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+      <nav class="flex items-center text-sm text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-4 h-4 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-primary font-medium">Testimonials</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Stats Bar -->
+  <section class="py-10 bg-muted/30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+          <p class="text-2xl md:text-3xl font-black text-primary">{totalCount}</p>
+          <p class="text-xs text-muted font-semibold mt-1">5-Star Reviews</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+          <p class="text-2xl md:text-3xl font-black text-primary">5,000+</p>
+          <p class="text-xs text-muted font-semibold mt-1">Happy Guests Since 2011</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+          <p class="text-2xl md:text-3xl font-black text-primary">4.9</p>
+          <p class="text-xs text-muted font-semibold mt-1">TripAdvisor Rating</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+          <p class="text-2xl md:text-3xl font-black text-primary">{verifiedCount}</p>
+          <p class="text-xs text-muted font-semibold mt-1">Verified Reviews</p>
+        </div>
+      </div>
+
+      <!-- Platform badges -->
+      <div class="flex flex-wrap justify-center gap-3 mt-6">
+        {Object.entries(byPlatform).map(([platform, count]) => (
+          <span class="inline-flex items-center gap-1.5 bg-white text-xs font-semibold text-default px-3 py-1.5 rounded-full border border-gray-100 shadow-sm">
+            {platformIcons[platform] && <Icon name={platformIcons[platform]} class="w-3.5 h-3.5" />}
+            {platform}: {count}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Media Coverage -->
+  <section class="py-10 bg-page">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">AS FEATURED IN</p>
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-muted font-semibold">
+        <span class="px-4 py-2 bg-white rounded-lg border border-gray-100 shadow-sm">National Geographic</span>
+        <span class="px-4 py-2 bg-white rounded-lg border border-gray-100 shadow-sm">BBC World Service</span>
+        <span class="px-4 py-2 bg-white rounded-lg border border-gray-100 shadow-sm">Lonely Planet</span>
+        <span class="px-4 py-2 bg-white rounded-lg border border-gray-100 shadow-sm">Time Out</span>
+        <span class="px-4 py-2 bg-white rounded-lg border border-gray-100 shadow-sm">TripAdvisor</span>
+        <span class="px-4 py-2 bg-white rounded-lg border border-gray-100 shadow-sm">TLC / Discovery</span>
+        <span class="px-4 py-2 bg-white rounded-lg border border-gray-100 shadow-sm">Channel 9 Australia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Testimonials (top ones) -->
+  <section class="py-10 bg-muted/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">WHAT GUESTS SAY</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-heading text-default">Real People, Real Experiences</h2>
+        <p class="text-muted max-w-lg mx-auto mt-2 text-sm">Every review is from a verified guest who actually took our tour. No scripts, no staged photos, no fake names.</p>
+      </div>
+
+      <!-- Location filter tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10">
+        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-primary text-white" data-filter="all" onclick="filterTestimonials('all')">All ({totalCount})</button>
+        {locationOrder.map(([loc, items]) => (
+          <button class="px-4 py-2 rounded-full text-sm font-semibold bg-white border border-gray-200 text-default hover:border-primary hover:text-primary transition-colors" data-filter={loc} onclick={`filterTestimonials('${loc}')`}>{loc} ({items.length})</button>
+        ))}
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div id="testimonials-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {published.map((t: any) => {
+          const location = t.author_location || '';
+          const quote = t.review_text || '';
+          const author = t.author_name || 'Guest';
+          const platform = t.platform || '';
+          const rating = t.rating || 5;
+          const verified = t.visibility?.verified;
+          
+          return (
+            <div class="flex h-auto bg-white rounded-xl border border-gray-100 shadow-sm" data-location={location}>
+              <div class="flex flex-col p-5 w-full">
+                <!-- Rating Stars -->
+                <div class="flex items-center gap-0.5 mb-3">
+                  {Array.from({ length: rating }).map(() => (
+                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                  ))}
+                  {verified && (
+                    <span class="ml-auto inline-flex items-center gap-1 text-xs text-green-600 font-semibold">
+                      <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                      Verified
+                    </span>
+                  )}
+                </div>
+                
+                <!-- Quote -->
+                <blockquote class="flex-auto">
+                  <p class="text-sm text-default leading-relaxed">"{quote}"</p>
+                </blockquote>
+
+                <!-- Author -->
+                <div class="mt-4 pt-3 border-t border-gray-50">
+                  <p class="text-sm font-semibold text-default">{author}</p>
+                  <div class="flex items-center gap-2 text-xs text-muted">
+                    {location && <span>{location}</span>}
+                    {platform && <span>· {platform}</span>}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: Book a Tour -->
+  <section class="py-16 bg-[#1a1a1a] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">READY TO EAT?</p>
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-4">Join {totalCount}+ Happy Guests</h2>
+      <p class="text-white/70 max-w-lg mx-auto mb-8 text-sm">See for yourself why {published.length} people gave us 5 stars. Book a food tour in Kuala Lumpur or Penang and taste the real Malaysia.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/tours" class="bg-accent text-black font-bold px-8 py-3.5 rounded-lg hover:bg-accent/90 transition-colors">
+          Browse All Tours
+        </a>
+        <a href="https://wa.me/60172878929" target="_blank" class="border border-white/30 text-white font-semibold px-8 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
+          Ask Our Team
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  // Simple client-side filter for testimonials by location
+  function filterTestimonials(location) {
+    var grid = document.getElementById('testimonials-grid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('[data-location]');
+    
+    // Update button styles
+    document.querySelectorAll('[data-filter]').forEach(function(btn) {
+      if (btn.getAttribute('data-filter') === location) {
+        btn.className = 'px-4 py-2 rounded-full text-sm font-semibold bg-primary text-white';
+      } else {
+        btn.className = 'px-4 py-2 rounded-full text-sm font-semibold bg-white border border-gray-200 text-default hover:border-primary hover:text-primary transition-colors';
+      }
+    });
+    
+    // Filter cards
+    cards.forEach(function(card) {
+      if (location === 'all' || card.getAttribute('data-location') === location) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
