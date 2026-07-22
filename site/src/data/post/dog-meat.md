@@ -17,7 +17,7 @@ metadata:
 
 **Updated June 2026:** This question comes up on almost every tour. Here is the latest answer based on what our guides hear from guests every week.
 
-Every once in a while on a tour I get the odd question, based on what I call global rumors. One such question and rumor is: Do Malaysians eat dog meat?
+No, Malaysians do not eat dog meat. It is not part of mainstream Malaysian cuisine, and the idea that it is ranks among the most common misconceptions visitors bring to KL. Dog meat appears on menus in some neighbouring countries, but in Malaysia the cultural and religious landscape — majority Muslim, with large Chinese and Indian communities — means dogs are not considered food.
 
 Although not illegal in Malaysia, the short answer is, no. Malaysians do not eat dog (or cats). This is a major misconception since dogs and cats can at times be found on the menu in other Asian countries like China, South Korea, and Viet Nam.
 

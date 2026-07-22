@@ -17,7 +17,7 @@ metadata:
 
 **Updated June 2026:** Malaysian cooking draws on centuries of spice trade history. Our guides have refreshed this guide with the latest context.
 
-Malaysian cooking sits at a crossroads of Malay, Chinese, and Indian traditions. The herbs and spices here are not interchangeable with Thai or Indian kitchens - Malaysia has its own combinations, built around ingredients brought by traders from across Asia.
+Malaysian cooking sits at a crossroads of Malay, Chinese, and Indian traditions. The herbs and spices here are not interchangeable with Thai or Indian kitchens — Malaysia has its own combinations, built around ingredients brought by traders from across Asia. Here to share it is Pauline Belmans, co-founder of Simply Enak, a Malaysian food tour company established in 2011. She has spent 14 years walking visitors through KL's hawker stalls and wet markets, learning the specific names and tastes that define each dish.
 
 ## What Are the Five Core Herbs in Malaysian Cooking?
 

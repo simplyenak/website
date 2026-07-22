@@ -17,17 +17,9 @@ metadata:
 
 **Updated June 2026:** Street food safety standards in Malaysia continue to improve. Here is what you need to know for 2026.
 
-Last week I was out with guests on a tour from the West and, after my typical lengthy descriptions of the most popular street foods to eat, one of my friends pulls me aside and whispered:
+Yes, Malaysian street food is generally safe to eat. After 14 years of running food tours in KL, Penang, and Ipoh, I've seen very few cases of serious illness among our guests. The key is knowing which stalls to trust. Look for busy stalls with high turnover — long queues mean fresh food and short waits at the stall. Avoid pre-cut fruit displayed in open air, and stick to cooked-to-order dishes at halal-certified or dedicated vegetarian vendors when possible.
 
-“Looks great, but, is it safe to eat?”
-
-> "This is the Malaysia that most tourists never see. And it is extraordinary."
-
-I actually get that question quite a bit. We’ve all heard horror stories about the dangers of eating when traveling abroad. Especially to underdeveloped nations that may not have the strict food safety laws and guidelines that most Western countries do. Many people are concerned they might die from food poisoning or end up spending their entire trip clinging to a bottle of Pepto.
-
-It’s not an uncommon fear and there’s always a risk. However, if you follow just a few rules of thumb listed below and pay closer attention to things you most likely do already, like washing your hands before you eat, then you should have no trouble enjoying all the great street foods Malaysia has to offer.
-
-Here are some things to consider before heading out to the hawker:
+Here are the practical rules our guides share with every tour group.
 
 ![Wet market scene in Kuala Lumpur](https://cdn.simplyenak.com/Flavours_of_Malaysia001_41094a74f7.jpg)
 

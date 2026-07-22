@@ -17,19 +17,7 @@ metadata:
 
 **Updated June 2026:** Our guides still hear this question every week. Here is the latest advice for vegetarian visitors.
 
-**TL;DR:** Ordering vegetables at a mixed hawker stall in KL doesn't make your meal vegetarian. Belacan (shrimp paste) is in almost every Malay vegetable dish. Lard is the default cooking fat at many Chinese stalls. Broths are usually pork-based. Oyster sauce is on almost every plate of Chinese greens. This post shows you where the animal products hide and how to navigate them.
-
-Here's something that surprises almost every vegetarian visitor to KL.
-
-You sit down at a hawker stall. You point to the vegetable dish. It looks perfectly innocent: kangkung, stir-fried with chilli and garlic. No meat in sight.
-
-> "Ask any local and they will tell you -  The Hidden Meat Problem: Why Vegetables in KL Are Not Always What They Seem is not to be missed."
-
-What you can't see is the belacan.
-
-Belacan is fermented shrimp paste. It goes into the wok before the vegetables do, and it's in a huge proportion of Malay vegetable dishes. [Sambal belacan is to Malaysians what ketchup is to the West](https://www.linsfood.com/sambal-belacan-malay-chilli-paste/): ubiquitous, invisible if you don't know to ask, and packed with umami from fermented seafood.
-
-If you're vegetarian and eating at mixed hawker stalls in KL, this is the guide you need. We've been navigating this for 14 years, and we want to save you the discovery.
+KL and Penang have genuine vegetarian options if you know where to look. But ordering vegetables at a mixed hawker stall in KL doesn't make your meal vegetarian. Belacan (shrimp paste) is in almost every Malay vegetable dish. Lard is the default cooking fat at many Chinese stalls. Broths are usually pork-based. Oyster sauce is on almost every plate of Chinese greens. This post shows you where the animal products hide and how to navigate them.
 
 ## What Is Belacan, and Why Is It Everywhere?
 

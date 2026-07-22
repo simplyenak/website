@@ -17,17 +17,7 @@ metadata:
 
 **Updated June 2026:** Festival dates shift each year with the lunar and Islamic calendars. Here are the confirmed dates for the coming year.
 
-An experience to Malaysia is exciting. There are so many new things to see, taste, smell and do. There’s the beach, foods, great people to meet, hundreds of different ethnic groups to learn about, and impressive nightlife. But there is more to experience in Malaysia than just everyday life. For instance, New Orleans is a great town to visit year-round, but the most popular time to visit is of course on Mardi Gras.
-
-I’m talking about my favorite times of the year. Festival time.
-
-> "The flavours of Plan Your Trip Around These Festivals in Malaysia tell a story of Malaysia's rich cultural heritage."
-
-There are about two festivals a month throughout the year in different parts of Malaysia. Most festivals revolve around culture or religion and since Malaysia is a great blend of religions including Hindus, Muslims, Christians, Sikhs, and Buddhists and hundreds of different ethnic groups there is always something going on.
-
-East and West Malaysia may have separate cultural events and some may have open houses with dancing and lots of food spread out for everyone to enjoy, yet others are a time of fasting and prayer and visiting the temple or mosque.
-
-Here are ten worth-the-trip festivals in Malaysia to plan your tour around.
+Malaysians celebrate about two festivals a month throughout the year in different parts of the country. Hari Raya, Chinese New Year, Deepavali, Thaipusam, and the Harvest Festival each transform what you eat and where you can eat it. During Ramadan, day-long fasting gives way to dusk markets loaded with slick, oil-bright murtabak and ais krim rose. At monsoon-season Gurney Drive, stalls that serve char kway teow and laksa behind plastic sheeting become unlikely gathering points. These rhythms change the texture of a visit more than any hotel upgrade.
 
 ![Food and drinks at a local restaurant](https://cdn.simplyenak.com/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg)
 

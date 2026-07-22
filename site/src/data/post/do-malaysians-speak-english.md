@@ -17,17 +17,9 @@ metadata:
 
 **Updated June 2026:** Malaysia continues to be one of the most English-friendly countries in Southeast Asia for travellers. Here is what has changed and what has stayed the same.
 
-As a tour guide, it’s always fun to watch the amazed and delighted expressions on tourists’ faces when they have their first real experience interacting with the locals.
+Yes, Malaysians speak English. It is widely spoken across Malaysia, especially in KL and Penang, and it is one of the most visitor-friendly things about travelling here. As a tour guide, I’ve watched hundreds of tourists approach local vendors expecting silence or confusion. The Malaysian local usually smiles and responds in clear, if sometimes creatively structured, English. The warm, relaxed atmosphere of Malaysian conversation makes visitors feel at ease quickly.
 
-When it comes to the airport staff and guides, they expect them to speak English, it’s their job, but when they approach a vendor or any random person on the street they prepare to spill out broken sentences backed with exaggerated hand gestures. The Malaysian local smiles and speaks to them in perfect English.
-
-> "Do Malaysians Speak English? A Visitor Guide (2026) is something every visitor to Malaysia should experience."
-
-Well, nearly perfect. It’s called Malaysian English.
-
-And the response from the tourist is almost always the same.
-
-“Oh, I didn’t know Malaysians can speak such good English!
+But there is a catch. It is called Malaysian English, or Manglish, and it has its own rhythm, vocabulary, and rules that differ from what most visitors expect. Once you understand how it works, your interactions get smoother and a lot more fun.
 
 ![Malaysian food culture](https://cdn.simplyenak.com/2_b669a096f4.webp)
 

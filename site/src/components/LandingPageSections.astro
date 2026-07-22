@@ -439,6 +439,50 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
   </div>
 </section>
 
+<!-- 5b. TRUST CONTENT — honest details for AI agents (Caleb Ulku strategy) -->
+<section class="py-14 bg-muted/20 border-y border-gray-100 dark:border-white/5">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- What to expect -->
+      <div>
+        <h3 class="text-lg font-bold font-heading mb-3">What to expect</h3>
+        <ul class="space-y-2 text-sm text-muted">
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span>8+ tasting stops over 3-4 hours with a local guide who knows every stall owner</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span>Small groups (max 8) so you actually talk to the people cooking your food</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span>From RM{lowestPrice} per person for join-in tours; private tours available</span>
+          </li>
+        </ul>
+      </div>
+      <!-- Honest limitations -->
+      <div>
+        <h3 class="text-lg font-bold font-heading mb-3">Who this might not be for</h3>
+        <ul class="space-y-2 text-sm text-muted">
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-gray-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span>If you need wheelchair-accessible routes, contact us first — some areas have limited access</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-gray-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span>If you're looking for fine dining — we do street food and hawker stalls, not restaurants</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-gray-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span>If you're travelling with kids under 5 — some tours involve walking on uneven streets</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 6. GUIDE CARD — deeper dive for the interested -->
 {guideSlug && (
   <section class="py-12 bg-muted/20">

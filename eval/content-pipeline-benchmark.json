@@ -456,5 +456,53 @@
     ],
     "weight": 0.3,
     "notes": "Run this first. If meta-integrity fails, other results are unreliable."
+  },
+  {
+    "case_id": "first_paragraph_rule",
+    "content_type": "blog_post",
+    "scenario": "Blog posts must address the searcher immediately in the first paragraph (Caleb Ulku, Jul 2026)",
+    "description": "From Caleb Ulku SEO podcast (Jul 2026): The first paragraph is the #1 missed opportunity. No 'history lesson' intros about founding year. Must contain target keyword in first 40 words. Must address what the searcher actually wants. Must include specific details (names, numbers, places).",
+    "required_checks": [
+      "no_history_lesson_intro",
+      "keyword_in_first_40_words",
+      "contains_specific_details",
+      "written_for_ai_agents"
+    ],
+    "forbidden_patterns": [
+      "history_lesson_intro",
+      "keyword_missing_from_first_40_words",
+      "generic_first_paragraph"
+    ],
+    "hard_requirements": [
+      "keyword_in_first_40_words",
+      "contains_specific_details"
+    ],
+    "weight": 0.9,
+    "notes": "Caleb: title tag > H1 > first paragraph. Nobody searches 'plumber Houston' to read history lessons. Same applies to food tour content."
+  },
+  {
+    "case_id": "attribute_matching",
+    "content_type": "blog_post",
+    "scenario": "Blog posts must include specific attributes for AI agent recommendations (Caleb Ulku, Jul 2026)",
+    "description": "From Caleb Ulku SEO podcast (Jul 2026): AI agents use attribute matching to recommend businesses. 'Halal food tour' — if you don't say 'halal-certified', you might not get recommended. Each post should include: specific dish names, location details, sensory descriptors, and dietary specificity. Google mass-deindexed AI slop that lacked real attributes.",
+    "required_attributes": [
+      "specific_dish_names",
+      "location_details",
+      "sensory_descriptors",
+      "dietary_specificity"
+    ],
+    "min_attributes_present": 3,
+    "forbidden_patterns": [
+      "generic_dish_references",
+      "no_sensory_language",
+      "dietary_claim_without_specifics",
+      "generic_ai_slop"
+    ],
+    "hard_requirements": [
+      "mentions_specific_dishes",
+      "includes_sensory_descriptors"
+    ],
+    "weight": 0.8,
+    "notes": "Caleb: Study the language that ranking pages use and mirror it. Make a list of required attributes for each piece. AI agents read your ENTIRE page and extract the most important parts."
   }
 ]

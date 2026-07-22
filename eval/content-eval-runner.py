@@ -308,6 +308,197 @@ def check_brand_voice() -> dict:
     return pass_result(f"All {len(posts)} posts compliant", per) if not total else fail_result(f"{total} violations across {len(posts)} posts", per[:20])
 
 
+# ── First Paragraph Rule (Caleb Ulku podcast Jul 2026) ──
+
+def check_first_paragraph_rule() -> dict:
+    """Check that blog posts address the searcher immediately in the first paragraph.
+
+    Rules from SEO podcast:
+    - No "history lesson" intros (founding year, grandfather stories)
+    - Must contain target keyword/entity in first 40 words
+    - Must address what the searcher actually wants
+    - Written for AI agents to extract, not just humans to skim
+    """
+    posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
+    if not posts:
+        return warn_result("No blog posts to check")
+
+    issues = []
+    history_starters = [
+        r"^founded\s+in",
+        r"^since\s+\d{4}",
+        r"^established\s+in",
+        r"^our\s+(story|journey|history)\s+(begins|starts|is)",
+        r"^welcome\s+to\s+simply\s+enak",
+        r"^for\s+(over\s+)?\d+\s+years",
+        r"^did\s+you\s+know",
+    ]
+
+    for post in posts:
+        content = post.read_text(encoding="utf-8")
+        parts = content.split("---", 2)
+        if len(parts) < 3:
+            continue
+        fm, body = parts[1], parts[2].strip()
+
+        # Get target keyword from frontmatter title
+        tm = re.search(r'^title:\s*"([^"]+)"', fm, re.MULTILINE) or re.search(r"^title:\s*'([^']+)'", fm, re.MULTILINE)
+        title = tm.group(1) if tm else ""
+
+        # Get first paragraph (first block of text before next heading or blank line break)
+        first_para = ""
+        lines = body.split("\n")
+        for line in lines:
+            stripped = line.strip()
+            if stripped.startswith("#") or stripped.startswith("**>") or stripped.startswith(">"):
+                continue
+            # Skip editorial notes like "**Updated June 2026:**" or "**TL;DR:**"
+            if "Updated" in stripped and stripped.startswith("**"):
+                continue
+            if "TL;DR" in stripped and stripped.startswith("**"):
+                continue
+            if stripped == "":
+                if first_para:
+                    break
+                continue
+            first_para += " " + stripped
+
+        first_para = first_para.strip()
+        if not first_para:
+            continue
+
+        # Get first 40 words
+        first_words = first_para.split()[:40]
+        first_40 = " ".join(first_words).lower()
+
+        post_issues = []
+
+        # Check 1: No history lesson starters
+        for pattern in history_starters:
+            if re.search(pattern, first_para, re.IGNORECASE | re.MULTILINE):
+                post_issues.append("History lesson intro (address searcher, not company history)")
+                break
+
+        # Check 2: Keyword must appear in first 40 words
+        if title:
+            keyword_words = set(re.findall(r'\w+', title.lower()))
+            # Remove stopwords
+            stopwords = {"what", "the", "a", "an", "is", "are", "was", "were", "do", "does", "did", "will", "would", "could", "should", "may", "might", "can", "to", "of", "in", "on", "at", "for", "with", "from", "by", "and", "or", "but", "not", "this", "that", "these", "those", "your", "my", "his", "her", "their", "our", "its", "you", "he", "she", "it", "they", "we", "i", "me", "guide", "how", "why", "when", "where"}
+            meaningful_words = keyword_words - stopwords
+            # At least one meaningful keyword word should be in first 40
+            found = meaningful_words & set(re.findall(r'\w+', first_40))
+            if not found and meaningful_words:
+                post_issues.append(f"Target keyword not in first 40 words (need: {', '.join(list(meaningful_words)[:3])})")
+
+        # Check 3: First paragraph should be specific (contain named entities, numbers, or cultural terms)
+        has_specifics = bool(re.search(r'\b\d+\b|[A-Z][a-z]+(?:\s[A-Z][a-z]+)+', first_para))
+        # Also recognize single cultural/ethnic terms, country names, city names
+        if not has_specifics:
+            has_specifics = bool(re.search(r'\b(?:Malaysia|Malaysian|KL|Kuala\s+Lumpur|Penang|Ipoh|Melaka|Singapore|Thai|Chinese|Indian|Malay|Muslim|Buddhist|Hindu|Christian|Ramadan|Hari\s+Raya|Chinese\s+New\s+Year|Deepavali)\b', first_para, re.IGNORECASE))
+        if not has_specifics:
+            post_issues.append("First paragraph lacks specific details (names, numbers, places)")
+
+        if post_issues:
+            issues.append({"file": post.name, "title": title[:50], "issues": post_issues})
+
+    if issues:
+        return fail_result(f"{len(issues)}/{len(posts)} posts fail first-paragraph rule", issues[:20])
+    return pass_result(f"All {len(posts)} posts pass first-paragraph rule")
+
+
+# ── Attribute Matching (Caleb Ulku podcast Jul 2026) ──
+
+ATTRIBUTE_CATEGORIES = {
+    "dishes": ["nasi lemak", "char kway teow", "laksa", "satay", "roti canai",
+               "cendol", "hainanese chicken rice", "bak kut teh", "dim sum",
+               "nasi kandar", "mee goreng", "popiah", "tau sar pneah",
+               "curry laksa", "asam laksa", "wantan mee", "mee rebus",
+               "banana leaf rice", "dosa", "thosai", "idli", "vadai",
+               "biryani", "naan", "tandoori", "murtabak", "rendang",
+               "kuih", "nyonya laksa", "hokkien mee", "mee rebus",
+               "ayam goreng", "ikan bakar", "sambal", "kaya", "chendol"],
+    "locations": ["chow kit", "jalan alor", "petaling street", "georgetown",
+                  "penang", "kuala lumpur", "ipoh", "melaka", "kampung baru",
+                  "brickfields", "little india", "chinatown", "bangsar",
+                  "jalan ampang", "klcc", "pulau tikus", "george town",
+                  "old town", "petaling street", "ss2", "damansara",
+                  "mont kiara", "bkt bintang", "gurney drive"],
+    "dietary": ["halal", "vegetarian", "vegan", "gluten-free", "jain",
+                "halal-certified", "muslim-owned", "plant-based",
+                "素食", "sù shí", "buddhist vegetarian", "indian vegetarian"],
+    "sensory": ["crispy", "spicy", "sweet", "sour", "smoky", "chartery",
+                "fragrant", "tender", "crunchy", "aromatic", "silky",
+                "velvety", "rich", "custardy", "buttery", "zesty",
+                "tangy", "savory", "umami", "fresh", "slick", "bright",
+                "oily", "juicy", "succulent", "tender", "crisp", "creamy",
+                "caramelized", "toasted", "fermented", "fluffy", "dense"],
+}
+
+def check_attribute_matching() -> dict:
+    """Check that blog posts include attributes AI agents use for recommendations.
+
+    From SEO podcast: AI agents use attribute matching to recommend businesses.
+    "Halal food tour" — if you don't say "halal-certified", you might not get recommended.
+    "Vegetarian food tour" — if you don't name specific dishes, you're generic.
+    """
+    posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
+    if not posts:
+        return warn_result("No blog posts to check")
+
+    issues = []
+    for post in posts:
+        content = post.read_text(encoding="utf-8")
+        parts = content.split("---", 2)
+        if len(parts) < 3:
+            continue
+        fm, body = parts[1], parts[2].strip()
+
+        # Get target keyword from title
+        tm = re.search(r'^title:\s*"([^"]+)"', fm, re.MULTILINE) or re.search(r"^title:\s*'([^']+)'", fm, re.MULTILINE)
+        title = tm.group(1) if tm else ""
+        if not title:
+            continue
+
+        title_lower = title.lower()
+        body_lower = body.lower()
+        full_text = title_lower + " " + body_lower
+
+        post_issues = []
+
+        # If title mentions dietary terms, check body has specifics
+        dietary_in_title = [d for d in ATTRIBUTE_CATEGORIES["dietary"] if d in title_lower]
+        if dietary_in_title:
+            # Check if body also mentions specific dishes or verification
+            dishes_in_body = [d for d in ATTRIBUTE_CATEGORIES["dishes"] if d in body_lower]
+            if not dishes_in_body:
+                post_issues.append(f"Title mentions {dietary_in_title[0]} but body lacks specific dish names (AI needs these for recommendation)")
+
+        # If title mentions location, check body has location specifics
+        locations_in_title = [l for l in ATTRIBUTE_CATEGORIES["locations"] if l in title_lower]
+        if locations_in_title:
+            locations_in_body = [l for l in ATTRIBUTE_CATEGORIES["locations"] if l in body_lower]
+            # Should have MORE locations in body than just the one in title
+            if len(locations_in_body) < 2:
+                post_issues.append(f"Title mentions {locations_in_title[0]} but body needs more location specifics for AI context")
+
+        # Check for sensory language (signals real experience, not AI slop)
+        # Only apply to food/cultural content, not transport/language tips
+        is_food_content = any(tag in title_lower for tag in ['food', 'eat', 'dish', 'spice', 'herb', 'cook', 'restaurant', 'hawker', 'street food', 'market', 'vegetarian', 'halal', 'vegan'])
+        if not is_food_content:
+            is_food_content = any(tag in body_lower[:500] for tag in ['food', 'eat', 'dish', 'spice', 'herb', 'cook', 'restaurant', 'hawker', 'street food', 'market'])
+        
+        sensory_count = sum(1 for s in ATTRIBUTE_CATEGORIES["sensory"] if s in body_lower)
+        if is_food_content and sensory_count < 2:
+            post_issues.append(f"Only {sensory_count} sensory descriptors (need 2+ for AI trust signals)")
+
+        if post_issues:
+            issues.append({"file": post.name, "title": title[:50], "issues": post_issues})
+
+    if issues:
+        return fail_result(f"{len(issues)}/{len(posts)} posts have attribute gaps", issues[:20])
+    return pass_result(f"All {len(posts)} posts have sufficient attribute coverage")
+
+
 # ── Media ──
 
 def check_media_quality() -> dict:
@@ -652,6 +843,8 @@ CASE_HANDLERS = {
     "infra_known_bug_regression": check_infra_regression,
     "a11y_basics": check_a11y_basics,
     "stories_quality": check_stories_quality,
+    "first_paragraph_rule": check_first_paragraph_rule,
+    "attribute_matching": check_attribute_matching,
 }
 
 

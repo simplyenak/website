@@ -33,7 +33,7 @@ Before the railway was put in, the trip from Klang to Kuala Lumpur was horse or 
 
 Today, cruise ships normally dock at Port Klang Cruise Centre, however, there are sometimes exceptions. It’s safest to  with the front desk onboard your ship to find out exactly where you will dock. When you get off the ship, first check in with The Port Klang Cruise Centre. There you will find everything you’ll need for your daytrip to Kuala Lumpur: currency exchange, wi-fi, taxi information desk, ATM, tourist information and souvenir shops.
 
-The nearby town of Klang has a lot to offer. There are street markets, plenty of historical sites and beautiful temples to visit. Even the port itself has a number of shops and restaurants serving up local delicacies like steamed crayfish and salt-baked crab. An excursion to nearby Crab Island could be a great way to spend your time near Klang. Catch the ferry to Crab Island if you are looking for a tranquil day of fun and seafood.
+The nearby town of Klang has a lot to offer. There are street markets, plenty of historical sites and beautiful temples to visit. Even the port itself has a number of shops and restaurants serving up fragrant, steaming local delicacies like crayfish and salt-baked crab. An excursion to nearby Crab Island could be a great way to spend your time near Klang. Catch the ferry to Crab Island if you are looking for a tranquil day of fresh seafood.
 
 The biggest destination for most tourists coming into Port Klang, is a day trip to Kuala Lumpur. It’s a bit of a walk and the trip getting there and back will take up some of your shore leave time, but in my opinion it’s well worth it. Kuala Lumpur has a notable blend of history and culture that you will surely not want to pass up.
 
