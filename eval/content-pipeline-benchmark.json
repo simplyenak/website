@@ -118,7 +118,10 @@
     "hard_requirements": [
       "json_ld_breadcrumblist_present",
       "all_images_have_alt_text",
-      "title_contains_city_or_tour_name"
+      "title_contains_city_or_tour_name",
+      "title_follows_keyword_benefit_brand_format",
+      "no_accidental_noindex",
+      "crawl_depth_under_4_from_homepage"
     ],
     "weight": 0.8,
     "notes": "Applies to all: tours, landing pages (32+), blog posts, stories."
