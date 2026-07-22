@@ -1,85 +1,113 @@
 {
-  "id": 1,
   "seo_title": "Directions & Meeting Points | Find Your Tour Starting Location",
-  "seo_description": "Meeting points and directions, Simply Enak Malaysian food tours.",
+  "seo_description": "Find your Simply Enak tour meeting point in Kuala Lumpur or Penang. Directions, landmarks, parking info, and public transport options for every tour.",
   "hero_title": "Meeting Points & Directions",
-  "hero_description": "Where to meet your guide for each Simply Enak food tour. Detailed directions, landmarks, and transport information.",
-  "hero_image": null,
-  "meeting_points": [],
-  "general_tips": [],
-  "updatedAt": "2026-05-19T09:59:19.831Z",
-  "createdAt": "2026-05-19T09:59:19.830Z",
-  "_status": "published",
-  "translations": [
+  "hero_description": "Find your meeting point and get ready for an authentic Malaysian food adventure. All locations are central, safe, and easy to reach.",
+  "meeting_points": [
     {
-      "languages_code": "en",
-      "hero_title": "Meeting Points & Directions",
-      "hero_description": "Where to meet your guide for each Simply Enak food tour. Detailed directions, landmarks, and transport information.",
-      "seo_title": "Directions & Meeting Points | Find Your Tour Starting Location",
-      "seo_description": "Meeting points and directions, Simply Enak Malaysian food tours."
+      "tour": "Navigate Malaysia's Vegetarian Scene Like a Local",
+      "tour_slug": "kl-vegetarian-food-tour",
+      "location_name": "Oriental Building",
+      "city": "Kuala Lumpur",
+      "address": "Oriental Building",
+      "directions": "Meet at the Oriental Building near Pasar Seni. Your guide will share the exact meeting point after booking.",
+      "landmark": "Oriental Building — near Pasar Seni and Central Market",
+      "parking_info": "Paid parking available at nearby shopping malls and public car parks.",
+      "public_transport": "Accessible via MRT/LRT. Your guide will send the exact station exit before the tour.",
+      "map_url": "https://www.google.com/maps/search/Oriental+Building+Malaysia"
     },
     {
-      "languages_code": "ms",
-      "hero_title": "Titik Pertemuan & Arah",
-      "hero_description": "Di mana untuk bertemu pemandu anda untuk setiap lawatan makanan Simply Enak. Arahan terperinci, mercu tanda, dan maklumat pengangkutan.",
-      "seo_title": "halaman_arah | Simply Enak",
-      "seo_description": "Titik pertemuan dan arah, Simply Enak Malaysian food tours."
+      "tour": "Inside Pudu",
+      "tour_slug": "inside-pudu",
+      "location_name": "Pudu Jail Gate",
+      "city": "Kuala Lumpur",
+      "address": "Pudu Jail Gate",
+      "directions": "Take a Grab or taxi to Pudu Jail Gate (the old prison gate on Jalan Hang Tuah). It's the last remaining gate of the British-era prison. Your guide will be waiting there.",
+      "landmark": "Pudu Jail Gate — historic prison gate on Jalan Hang Tuah",
+      "parking_info": "Paid parking available at nearby shopping malls and public car parks.",
+      "public_transport": "Accessible via MRT/LRT. Your guide will send the exact station exit before the tour.",
+      "map_url": "https://www.google.com/maps/search/Pudu+Jail+Gate+Malaysia"
     },
     {
-      "languages_code": "zh",
-      "hero_title": "集合点与方向",
-      "hero_description": "Simply Enak美食之旅的向导集合地点。详细的路线指引、地标和交通信息。",
-      "seo_title": "路线页面 | Simply Enak",
-      "seo_description": "集合点与路线指引, Simply Enak 马来西亚美食之旅"
+      "tour": "Secrets of KL - Nightlife, Street Art & Cocktails!",
+      "tour_slug": "secrets-of-kl-nightlife-street-art-and-cocktails",
+      "location_name": "KL: Pasar Seni MRT",
+      "city": "KL",
+      "address": "KL: Pasar Seni MRT",
+      "directions": "Take the MRT to Pasar Seni station. Exit at Entrance A and your guide will be waiting there. The station connects directly to Chinatown.",
+      "landmark": "Pasar Seni MRT Station — gateway to Chinatown and Merdeka Square",
+      "parking_info": "Paid parking available at nearby shopping malls and public car parks.",
+      "public_transport": "Accessible via MRT/LRT. Your guide will send the exact station exit before the tour.",
+      "map_url": "https://www.google.com/maps/search/KL:+Pasar+Seni+MRT+Malaysia"
     },
     {
-      "languages_code": "de",
-      "hero_title": "Treffpunkte & Wegbeschreibungen",
-      "hero_description": "Wo Sie Ihren Guide für jede Simply Enak Food-Tour treffen. Detaillierte Wegbeschreibungen, Orientierungspunkte und Informationen zur Anreise.",
-      "seo_title": "Anleitungsseite | Simply Enak",
-      "seo_description": "Treffpunkte und Wegbeschreibungen, Simply Enak Malaysische Food-Touren."
+      "tour": "Penang Street Food",
+      "tour_slug": "penang-street-food",
+      "location_name": "Mydin, Penang Road",
+      "city": "Penang",
+      "address": "Mydin, Penang Road",
+      "directions": "From the ferry terminal or Komtar, take a short Grab ride to Penang Road. MYDIN Emporium is a well-known landmark — your driver will know it. Your guide will be waiting near the main entrance.",
+      "landmark": "MYDIN Emporium — a large department store on Penang Road",
+      "parking_info": "Paid street parking available nearby. MYDIN Emporium has a parking lot.",
+      "public_transport": "Grab or taxi from anywhere in George Town — approximately 10-15 minutes.",
+      "map_url": "https://www.google.com/maps/search/Mydin,+Penang+Road+Malaysia"
     },
     {
-      "languages_code": "es",
-      "hero_title": "Puntos de Encuentro e Indicaciones",
-      "hero_description": "Dónde encontrar a tu guía para cada tour gastronómico de Simply Enak. Indicaciones detalladas, puntos de referencia e información sobre transporte.",
-      "seo_title": "página_de_instrucciones | Simplemente Enak",
-      "seo_description": "Puntos de encuentro e indicaciones, Tours gastronómicos malayos Simply Enak."
+      "tour": "Kuala Lumpur Street Food",
+      "tour_slug": "kuala-lumpur-street-food",
+      "location_name": "KL: Pasar Seni LRT Station",
+      "city": "Kuala Lumpur",
+      "address": "KL: Pasar Seni LRT Station",
+      "directions": "Take the LRT to Pasar Seni station (Kelana Jaya Line). Exit at the main entrance and look for Tealive — your guide will be waiting there. Alternatively, take a Grab to Pasar Seni LRT.",
+      "landmark": "Pasar Seni LRT Station — next to Central Market and Petaling Street",
+      "parking_info": "Paid parking available at nearby shopping malls and public car parks.",
+      "public_transport": "Accessible via MRT/LRT. Your guide will send the exact station exit before the tour.",
+      "map_url": "https://www.google.com/maps/search/KL:+Pasar+Seni+LRT+Station+Malaysia"
     },
     {
-      "languages_code": "fr",
-      "hero_title": "Points de rencontre et directions",
-      "hero_description": "Où retrouver votre guide pour chaque visite gastronomique Simply Enak. Indications détaillées, points de repère et informations sur les transports.",
-      "seo_title": "page_d'instructions | Simply Enak",
-      "seo_description": "Points de rencontre et indications, Visites gastronomiques malaisiennes Simply Enak."
+      "tour": "Flavours of Malaysia",
+      "tour_slug": "flavours-of-malaysia",
+      "location_name": "KL: Hilton Garden Inn North",
+      "city": "Kuala Lumpur",
+      "address": "KL: Hilton Garden Inn North",
+      "directions": "Take a Grab or taxi to Hilton Garden Inn North, Jalan Tuanku Abdul Rahman. The hotel entrance faces the main road. Your guide will meet you in the lobby area.",
+      "landmark": "Hilton Garden Inn North — between Masjid India and Chow Kit",
+      "parking_info": "Paid parking available at nearby shopping malls and public car parks.",
+      "public_transport": "Accessible via MRT/LRT. Your guide will send the exact station exit before the tour.",
+      "map_url": "https://www.google.com/maps/search/KL:+Hilton+Garden+Inn+North+Malaysia"
     },
     {
-      "languages_code": "nl",
-      "hero_title": "Ontmoetingspunten & Routebeschrijving",
-      "hero_description": "Waar u uw gids ontmoet voor elke Simply Enak foodtour. Gedetailleerde routebeschrijving, oriëntatiepunten en vervoersinformatie.",
-      "seo_title": "routebeschrijving_pagina | Simply Enak",
-      "seo_description": "Ontmoetingspunten en routebeschrijvingen, Simply Enak Maleisisse food tours."
-    },
-    {
-      "languages_code": "ru",
-      "hero_title": "Точки встречи и направления",
-      "hero_description": "Где встретиться с вашим гидом для каждого гастрономического тура Simply Enak. Подробные указания, ориентиры и информация о транспорте.",
-      "seo_title": "направления | Simply Enak",
-      "seo_description": "Точки сбора и направления, гастрономические туры по Малайзии Simply Enak."
-    },
-    {
-      "languages_code": "ja",
-      "hero_title": "集合場所と道順",
-      "hero_description": "各Simply Enakフードツアーでのガイドとの集合場所。詳しい道順、ランドマーク、交通情報のご案内。",
-      "seo_title": "案内ページ | Simply Enak",
-      "seo_description": "集合場所と道順, Simply Enak マレーシア料理ツアー"
-    },
-    {
-      "languages_code": "pt",
-      "hero_title": "Pontos de Encontro e Direções",
-      "hero_description": "Onde encontrar o seu guia para cada tour gastronômico Simply Enak. Direções detalhadas, pontos de referência e informações de transporte.",
-      "seo_title": "página_de_instruções | Simply Enak",
-      "seo_description": "Pontos de encontro e direções, Simply Enak Tours gastronômicos malaios."
+      "tour": "Georgetown's Best Hawkers and the Durian Strip",
+      "tour_slug": "georgetown-night-food-durian",
+      "location_name": "Sun Yat-Sen \"Memorial Centre\" at 65, Jalan Macalister",
+      "city": "Penang",
+      "address": "Sun Yat-Sen \"Memorial Centre\" at 65, Jalan Macalister",
+      "directions": "Take a Grab to the Sun Yat-Sen Memorial Centre at 65 Jalan Macalister. This is a well-known colonial building. Your guide will be waiting at the entrance.",
+      "landmark": "Sun Yat-Sen Memorial Centre — colonial building on Jalan Macalister",
+      "parking_info": "Paid street parking available nearby. MYDIN Emporium has a parking lot.",
+      "public_transport": "Grab or taxi from anywhere in George Town — approximately 10-15 minutes.",
+      "map_url": "https://www.google.com/maps/search/Sun+Yat-Sen+\"Memorial+Centre\"+at+65,+Jalan+Macalister+Malaysia"
     }
-  ]
+  ],
+  "general_tips": [
+    {
+      "tip": "All meeting points are accessible via Grab (Southeast Asia's Uber). Download the app before your trip."
+    },
+    {
+      "tip": "Your guide will send a WhatsApp message the day before your tour with the exact meeting point and their contact number."
+    },
+    {
+      "tip": "If you're running late, message your guide directly on WhatsApp. They'll wait for you."
+    },
+    {
+      "tip": "The KL tours are within walking distance of LRT/MRT stations. Penang tours are best reached by Grab."
+    },
+    {
+      "tip": "Most meeting points have nearby cafes where you can wait with a drink before the tour starts."
+    },
+    {
+      "tip": "If you can't find your guide, message the Simply Enak WhatsApp line at +60 17-287 8929."
+    }
+  ],
+  "_status": "published"
 }
