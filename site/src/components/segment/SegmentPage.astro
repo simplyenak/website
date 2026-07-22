@@ -51,7 +51,7 @@ const canonicalUrl = `${urlPrefix}/tours/${segmentType === 'travel_type' ? 'segm
 
 const meta = {
   title: cleanPageTitle(segment.metaTitle || segment.nameFull || landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`),
-  description: segment.description || landingPage?.meta_description || landingPage?.metaDescription || '',
+  description: segment.metaDescription || segment.description || landingPage?.meta_description || landingPage?.metaDescription || '',
 };
 ---
 
