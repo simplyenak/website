@@ -44,12 +44,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: site/package-lock.json
+
       - name: Quality gate (content pipeline eval)
         run: python3 eval/content-eval-runner.py --json
         # Exit 0 = all pass. Exit 1 = failure — blocks deploy.
 
       - name: Setup Python
         run: python3 -m pip install --quiet requests || true
+
+      - name: Create .env from secrets
+        working-directory: site
+        run: |
+          cat > .env <<'EOF'
+          PAYLOAD_URL=https://cms.system.simplyenak.com
+          PAYLOAD_TOKEN=${{ secrets.PAYLOAD_TOKEN }}
+          PAYLOAD_EMAIL=${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD=${{ secrets.PAYLOAD_PASSWORD }}
+          PUBLIC_SITE_URL=https://simplyenak.com
+          EOF
 
       - name: Sync content from Payload CMS
         if: github.event_name != 'push'
@@ -83,27 +101,9 @@ jobs:
           PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
           PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-          cache-dependency-path: site/package-lock.json
-
       - name: Install dependencies
         working-directory: site
         run: npm ci
-
-      - name: Create .env from secrets
-        working-directory: site
-        run: |
-          cat > .env <<'EOF'
-          PAYLOAD_URL=https://cms.system.simplyenak.com
-          PAYLOAD_TOKEN=${{ secrets.PAYLOAD_TOKEN }}
-          PAYLOAD_EMAIL=${{ secrets.PAYLOAD_EMAIL }}
-          PAYLOAD_PASSWORD=${{ secrets.PAYLOAD_PASSWORD }}
-          PUBLIC_SITE_URL=https://simplyenak.com
-          EOF
 
       - name: Build site
         working-directory: site
