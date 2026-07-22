@@ -56,13 +56,23 @@ jobs:
         working-directory: site
         run: npm run sync
 
-      - name: Brand voice fix (auto-clean Payload content)
-        run: python3 eval/brand-voice-fix.py --fix
-        # Auto-fixes common AI-speak violations in content synced from Payload
-
-      - name: Brand voice gate
-        run: python3 eval/brand-voice-gate.py
-        # Checks for remaining AI-speak and brand violations after fix
+      - name: Fix brand voice violations + gate (retry up to 3 times)
+        run: |
+          max_attempts=3
+          attempt=1
+          while [ $attempt -le $max_attempts ]; do
+            echo "--- Attempt $attempt of $max_attempts ---"
+            python3 eval/brand-voice-fix.py --fix
+            if python3 eval/brand-voice-gate.py; then
+              echo "✅ Brand voice gate passed."
+              exit 0
+            fi
+            echo "⚠️  Gate failed, will retry fix..."
+            attempt=$((attempt + 1))
+          done
+          echo "❌ Brand voice gate failed after $max_attempts attempts."
+          exit 1
+        # Auto-fix violations, then gate. Loop up to 3x until clean.
 
       - name: Push translations to Payload CMS
         working-directory: site
