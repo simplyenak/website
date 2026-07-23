@@ -1,0 +1,356 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const meta = {
+  title: 'Kuala Lumpur Food Experience — 4-Day Multi-Day Food Tour Package',
+  description: 'A 4-day private food tour through Kuala Lumpur. Market mornings, cooking classes, street food crawls, and a day trip to Kuala Selangor.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Kuala Lumpur Food Experience — 4-Day Package',
+  description: 'A 4-day private multi-day food tour exploring Kuala Lumpur\'s markets, street food, and cooking traditions. All food, drinks, and guide included.',
+  url: 'https://simplyenak.com/tours/packages/kuala-lumpur-food-experience',
+  image: 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+  offers: {
+    '@type': 'Offer',
+    price: '3500',
+    priceCurrency: 'MYR',
+    priceValidUntil: '2027-12-31',
+    availability: 'https://schema.org/InStock',
+    url: 'https://simplyenak.com/tours/packages/kuala-lumpur-food-experience',
+  },
+  brand: {
+    '@type': 'Brand',
+    name: 'Simply Enak',
+  },
+};
+
+const days = [
+  {
+    day: 1,
+    title: 'Arrival — Evening Street Food Welcome',
+    location: 'Kuala Lumpur',
+    stops: [
+      { time: 'Afternoon', title: 'Airport pickup & hotel check-in', desc: 'Your guide meets you at KLIA. Private transfer to your hotel in the city centre.' },
+      { time: '6:30 PM', title: 'Welcome dinner: Jalan Alor street food', desc: 'The most famous food street in KL. Your guide walks you through the stalls, explaining what to order and how it is cooked. Satay, grilled seafood, and Hokkien mee.' },
+      { time: '9:00 PM', title: 'Dessert walk through Bukit Bintang', desc: 'Cendol, ABC (ice kacang), and apam balik from the night stalls. A sweet introduction to Malaysian street desserts.' },
+    ],
+  },
+  {
+    day: 2,
+    title: 'Market Morning — Kampung Baru Lunch — Cooking Class Afternoon',
+    location: 'Kuala Lumpur',
+    stops: [
+      { time: '7:00 AM', title: 'Chow Kit wet market tour', desc: 'Your guide walks you through KL\'s largest traditional market. See the day\'s catch, the spice traders, and the produce that fuels the city\'s kitchens.' },
+      { time: '9:00 AM', title: 'Kampung Baru breakfast', desc: 'A Malay enclave in the heart of KL. Nasi lemak, roti jala, and kuih from stalls that have served the community for generations.' },
+      { time: '12:00 PM', title: 'Cooking class with a local chef', desc: 'Prepare three Malaysian dishes at a home-style cooking studio. Nasi lemak, beef rendang, and a fresh sambal. Lunch is what you cook.' },
+      { time: '4:00 PM', title: 'Rest and free time', desc: 'Return to your hotel. Your guide can recommend nearby sights if you want to explore on your own.' },
+      { time: '7:00 PM', title: 'Indian food walk in Brickfields', desc: 'KL\'s Little India after dark. Banana leaf rice, thosai, and freshly made murukku from shops along the main strip.' },
+    ],
+  },
+  {
+    day: 3,
+    title: 'Day Trip — Kuala Selangor or Batu Caves',
+    location: 'Kuala Lumpur',
+    stops: [
+      { time: '8:00 AM', title: 'Choose your adventure', desc: 'Option A: Kuala Selangor nature day trip. Option B: Batu Caves and Indian food exploration. Your guide helps you choose based on your interests.' },
+      { time: '10:00 AM', title: 'Option A: Kuala Selangor seafood', desc: 'Drive 90 minutes to the coast. Visit a fishing village, sample fresh seafood at a waterside restaurant, and stop at a shrimp paste factory.' },
+      { time: '1:00 PM', title: 'Option A: Firefly sanctuary', desc: 'After lunch, rest at a local café. At dusk, take a boat through the mangroves to see thousands of fireflies synchronising in the berembang trees.' },
+      { time: '10:00 AM', title: 'Option B: Batu Caves & Indian KL', desc: 'Climb 272 steps to the Hindu temple in the limestone cave. Then explore the surrounding area for some of KL\'s best banana leaf rice and Indian snacks.' },
+      { time: '7:00 PM', title: 'Return to KL for dinner', desc: 'Either route ends with a meal back in the city. Your guide picks a spot based on the day\'s theme.' },
+    ],
+  },
+  {
+    day: 4,
+    title: 'Last Tastes — Departure',
+    location: 'Kuala Lumpur',
+    stops: [
+      { time: '8:00 AM', title: 'Morning food hunt', desc: 'One final walk through the neighbourhood near your hotel. Your guide chooses a route based on what you have enjoyed most so far.' },
+      { time: '11:00 AM', title: 'Market pickup: spices and sauces', desc: 'Visit a spice shop or market to pick up local ingredients to take home. Your guide helps you shop and haggle.' },
+      { time: '1:00 PM', title: 'Airport transfer & departure', desc: 'Private transfer to Kuala Lumpur International Airport.' },
+    ],
+  },
+];
+
+const included = [
+  'Private English-speaking guide for all 4 days',
+  'All food and drinks listed in the itinerary',
+  'Cooking class with ingredients and instruction',
+  'Day trip transport (Kuala Selangor or Batu Caves option)',
+  'Private airport transfers on arrival and departure',
+  'Hotel pickups and drop-offs within city centre',
+  'Bottled water throughout',
+];
+
+const notIncluded = [
+  'Flights to and from Malaysia',
+  'Hotel accommodations (recommendations provided upon booking)',
+  'Personal expenses and souvenirs',
+  'Travel insurance',
+  'Optional gratuities for guide',
+];
+
+const testimonials = [
+  { name: 'James K.', location: 'San Francisco, USA', text: 'The cooking class was the highlight of our trip. Rendang takes patience and our chef taught us why every step matters. We cook it at home now.' },
+  { name: 'Mei-Ling C.', location: 'Singapore', text: 'Chow Kit market before 8am is a different world. Our guide knew every vendor by name and explained ingredients I had never seen before.' },
+  { name: 'Tom & Rachel', location: 'Sydney, Australia', text: 'We chose the Kuala Selangor option. The fireflies at dusk were spectacular and the seafood lunch was the best we had in Malaysia.' },
+];
+
+const faqs = [
+  { q: 'What is the maximum group size?', a: 'This is a private tour, so the group size is entirely up to you. Groups of more than 8 people can be accommodated with advance notice.' },
+  { q: 'Can dietary restrictions be accommodated?', a: 'Yes. Vegetarian, vegan, halal, and gluten-free diets can be managed. Please let us know 48 hours before the tour starts.' },
+  { q: 'Is this tour suitable for children?', a: 'Absolutely. Families with children aged 6 and up regularly take this tour. The cooking class is particularly popular with kids.' },
+  { q: 'Can I book this as a solo traveller?', a: 'Yes. Solo travellers are welcome. You get a private guide and all the same inclusions at the solo rate.' },
+  { q: 'Which day trip option is best?', a: 'Kuala Selangor is ideal for nature lovers and seafood fans. Batu Caves is better for those interested in Hindu culture and Indian food. Let your guide know your preference.' },
+  { q: 'What is the best season?', a: 'KL is warm year-round. December to February and June to July offer the driest weather. Rain is common in the afternoons regardless of season.' },
+  { q: 'How much walking is involved?', a: 'Moderate walking across 4 days. The market mornings involve about 2 hours on foot. Comfortable walking shoes recommended.' },
+  { q: 'Can I extend this package?', a: 'Yes. Many guests add a Penang extension or extra days for side trips. Contact us for a custom extension.' },
+];
+---
+
+<Layout metadata={meta} structuredData={structuredData}>
+  <!-- Sticky CTA for mobile -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 bg-page border-t border-gray-100 dark:border-white/10 p-3 md:hidden shadow-lg">
+    <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+the+Kuala+Lumpur+Food+Experience+4-day+package"
+       class="flex items-center justify-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded-lg w-full text-sm hover:bg-accent/90 transition-colors">
+      <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+      Book This Package
+    </a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/tours" class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Kuala Lumpur Food Experience</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#1a1a2a] via-[#1a1a1a] to-[#1a2a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/80 text-xs uppercase tracking-[0.2em] font-bold mb-3">4 Days &middot; 3 Nights &middot; Kuala Lumpur</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          Kuala Lumpur Food Experience
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          Markets, cooking class, street food, and a day trip. Four days in KL with a private guide.
+        </span>
+      </h1>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+the+Kuala+Lumpur+Food+Experience+4-day+package"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          Book This Package
+        </a>
+        <a href="#itinerary"
+           class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded hover:border-white/60 transition-colors text-sm">
+          View Itinerary
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- At-a-glance stats bar -->
+  <section class="border-b border-gray-100 dark:border-white/10 bg-card">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <Icon name="tabler:clock" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">4 Days</p>
+          <p class="text-xs text-muted">3 nights</p>
+        </div>
+        <div>
+          <Icon name="tabler:map-pin" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">Kuala Lumpur</p>
+          <p class="text-xs text-muted">+ day trip option</p>
+        </div>
+        <div>
+          <Icon name="tabler:users" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">Private Tour</p>
+          <p class="text-xs text-muted">Your group only</p>
+        </div>
+        <div>
+          <Icon name="tabler:coin" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">From RM 3,500</p>
+          <p class="text-xs text-muted">per person</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Overview</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">Four days inside KL's food scene</h2>
+      </div>
+      <div class="text-sm text-muted leading-relaxed space-y-4 max-w-3xl mx-auto">
+        <p>This four-day package takes you deep into Kuala Lumpur's food culture. You start before dawn at Chow Kit market, learn to cook rendang in a proper cooking class, and spend a full day exploring beyond the city. The itinerary is structured but flexible, with a day trip option that lets you choose between nature and culture.</p>
+        <p>Your private guide stays with you throughout. They do not rotate. Every meal, market visit, and activity is included, so you can focus on tasting and learning rather than logistics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day-by-day itinerary -->
+  <section id="itinerary" class="py-16 md:py-20 bg-muted/30 scroll-mt-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Itinerary</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">Day-by-day breakdown</h2>
+      </div>
+
+      <div class="space-y-12">
+        {days.map((d) => (
+          <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
+            <div class="bg-accent/10 px-6 py-4 border-b border-gray-100 dark:border-white/10">
+              <div class="flex items-center gap-3">
+                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-black font-bold font-heading text-sm">Day {d.day}</span>
+                <div>
+                  <h3 class="font-bold font-heading text-default">{d.title}</h3>
+                  <p class="text-xs text-muted mt-0.5">
+                    <Icon name="tabler:map-pin" class="w-3 h-3 inline-block -mt-0.5" /> {d.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="relative pl-8 space-y-6">
+                <div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-accent/30"></div>
+                {d.stops.map((stop) => (
+                  <div class="relative">
+                    <div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-accent ring-2 ring-accent/30"></div>
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider">{stop.time}</p>
+                    <h4 class="font-bold font-heading text-default text-sm mt-0.5">{stop.title}</h4>
+                    <p class="text-sm text-muted mt-1 leading-relaxed">{stop.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included / Not Included -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Details</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">What's included</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <h3 class="text-lg font-bold font-heading mb-5 flex items-center gap-2">
+            <Icon name="tabler:check" class="w-5 h-5 text-green-500" />
+            Included
+          </h3>
+          <ul class="space-y-3">
+            {included.map((item) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:check" class="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <h3 class="text-lg font-bold font-heading mb-5 flex items-center gap-2">
+            <Icon name="tabler:x" class="w-5 h-5 text-red-400" />
+            Not included
+          </h3>
+          <ul class="space-y-3">
+            {notIncluded.map((item) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:x" class="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 p-6 rounded-xl border border-accent/20 bg-accent/5 text-center">
+        <p class="text-sm text-default font-semibold">Price: from RM 3,500 per person (private group of 2).</p>
+        <p class="text-xs text-muted mt-1">Larger groups receive a reduced per-person rate. Contact us for a custom quote.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 md:py-20 bg-muted/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Testimonials</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">What guests say</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((t) => (
+          <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+            <div class="flex items-center gap-1 mb-3">
+              {[1,2,3,4,5].map(() => (
+                <Icon name="tabler:star" class="w-3.5 h-3.5 text-yellow-500 fill-current" />
+              ))}
+            </div>
+            <p class="text-sm text-muted leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
+            <div class="text-xs">
+              <p class="font-bold text-default">{t.name}</p>
+              <p class="text-muted">{t.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">Common questions</h2>
+      </div>
+      <div class="space-y-2">
+        {faqs.map((faq) => (
+          <details class="border border-gray-100 dark:border-white/10 overflow-hidden group rounded-lg bg-card">
+            <summary class="text-sm items-center flex cursor-pointer dark:hover:bg-white/5 hover:bg-gray-50 justify-between list-none p-4 transition-colors">
+              <span class="text-default font-semibold pr-4">{faq.q}</span>
+              <svg class="text-primary flex-shrink-0 group-open:rotate-180 h-4 transition-transform w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-4 pb-4">
+              <p class="text-sm text-muted">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1a1a1a] text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Spend four days eating through KL</h2>
+      <p class="text-white/70 text-sm mb-8 max-w-xl mx-auto">Book this package and explore Kuala Lumpur's food culture with a guide who knows every corner of the city's kitchen.</p>
+      <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+the+Kuala+Lumpur+Food+Experience+4-day+package"
+         class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-colors text-sm">
+        <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+        Book This Package
+      </a>
+      <p class="text-white/40 text-xs mt-4">Questions? Whatsapp us at +60 17-287 8929</p>
+    </div>
+  </section>
+</Layout>

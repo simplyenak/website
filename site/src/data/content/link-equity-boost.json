@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-23T09:50:29.189667+00:00",
+  "target_pages": [
+    "/tours/specialty/market-tours-penang/"
+  ],
+  "recommendations": [
+    {
+      "target_path": "/tours/specialty/market-tours-penang/",
+      "target_title": "Market Tour",
+      "link_text": " Tours",
+      "sources": [
+        "/stories/vegan-guide-kuala-lumpur/",
+        "/eating-durians/",
+        "/stories/jain-guide-penang/"
+      ],
+      "priority": 4.5
+    }
+  ],
+  "source_pages": [
+    "/eating-durians/",
+    "/stories/jain-guide-penang/",
+    "/stories/vegan-guide-kuala-lumpur/"
+  ]
+}

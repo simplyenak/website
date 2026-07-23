@@ -384,7 +384,7 @@ def cmd_inject():
         print("  Nothing to inject")
 
 def cmd_create_story(slug):
-    """Create a colony page as a Payload Story. Reads content from track context."""
+    """Create a colony page as a Payload Story with specific, valuable content."""
     d = load()
     page = None
     for c in d["colonies"]:
@@ -393,54 +393,429 @@ def cmd_create_story(slug):
     if not page:
         print(f"Colony page '{slug}' not found in tracker. Register it first.")
         return
-    
+
     # Check if already exists in Payload
     existing = payload_get_story_by_slug(slug)
     if existing:
         print(f"  Story already exists in Payload: {slug} (id={existing.get('id')})")
         return
-    
-    # Content template for a colony page
-    excerpt = f"Your guide to {page['target_keyword']} in Malaysia."
-    content = f"""**> What you need to know about {page['target_keyword']}:** This guide covers everything you need to know, from what to look for to where to find the best options in Malaysia.
 
-## What Is It?
+    kw = page['target_keyword']
+    title = page['title']
+    excerpt = f"Your practical guide to {kw} in Malaysia — specific recommendations, local tips, and what to expect."
 
-Malaysia is known for its incredible food scene, and {page['target_keyword']} is a topic that comes up with almost every visitor. Here is what you need to know.
+    # ── Build content per topic ──
+    content = build_colony_content(kw)
+    if not content:
+        print(f"  Could not generate content for '{kw}'")
+        return
 
-## Why It Matters
-
-Understanding {page['target_keyword']} helps you make the most of your time in Malaysia. Whether you are a first-time visitor or returning for more, knowing what to expect makes all the difference.
-
-## Where to Find the Best
-
-The best places in Kuala Lumpur and Penang have been serving locals for generations. Ask your Simply Enak guide for recommendations — they know every street and stall.
-
-## A Local's Perspective
-
-Our guides have been taking visitors through Malaysia's food scene since 2011. When it comes to {page['target_keyword']}, there is no substitute for local knowledge.
-
-## Frequently Asked Questions
-
-**When is the best time for this?**
-The best time depends on the season and your preferences. Your guide can advise based on current conditions.
-
-**Where do locals go for this?**
-The most popular spots are often the ones without big signs or English menus — the places where the queue tells you everything.
-
-**Can I find this on a tour?**
-Yes — many of our tours include stops at the most popular locations for this.
-
----
-
-*Want to experience this for yourself? Join one of our food tours in Kuala Lumpur or Penang. Our guides know every vendor and every story.*
-"""
-    
     result = payload_create_story(slug, page["title"], content, excerpt)
     if result:
         page["status"] = "planted"
         save(d)
-        print(f"  Colony page '{slug}' created in Payload and marked as planted.")
+
+
+def build_colony_content(keyword):
+    """Generate specific, valuable content for a colony page based on topic.
+    
+    Returns markdown string, or None if topic isn't recognised.
+    Each template includes real specifics: dish names, locations, prices, times.
+    """
+    kw = keyword.lower().strip()
+
+    # ── Durian ──
+    if "durian" in kw:
+        if "season" in kw:
+            return (
+                f"## When Is Durian Season in Malaysia?\n\n"
+                f"Durian season in Malaysia runs from **June to August**, with a "
+                f"smaller window from December to January. The peak months are "
+                f"July and August, when the best Musang King and D24 varieties "
+                f"are harvested.\n\n"
+                f"During peak season, durian stalls pop up across Kuala Lumpur — "
+                f"SS2 in Petaling Jaya has a famous stretch with 10+ vendors. "
+                f"A good Musang King costs around RM 40-70 per fruit. "
+                f"Off-season, prices double and quality drops.\n\n"
+                f"## Where to Eat Durian in KL\n\n"
+                f"**SS2 Durian Stalls** (Petaling Jaya) — The most famous cluster. "
+                f"Open daily during season, 10am to midnight. Vendors let you "
+                f"choose your fruit and open it in front of you.\n\n"
+                f"**Durian Man** (Cheras) — A sit-down durian restaurant. "
+                f"Good for first-timers who want air conditioning and proper seating. "
+                f"Open year-round.\n\n"
+                f"**Jin Xian Hong** (Pudu) — Known for high-quality Musang King. "
+                f"More expensive but worth it for connoisseurs.\n\n"
+                f"## Tips for First-Timers\n\n"
+                f"- A good durian feels heavy for its size\n"
+                f"- The stem should be fresh and green, not dry\n"
+                f"- Press the spikes — they should give slightly\n"
+                f"- If you hear seeds rattling when shaken, it is overripe\n"
+                f"- Start with Musang King (creamy, sweet) if you are new\n"
+            )
+        if "how to pick" in kw or "choose" in kw:
+            return (
+                f"## How to Choose a Good Durian in Malaysia\n\n"
+                f"Picking a good durian takes practice, but these four checks "
+                f"will get you 90% of the way there:\n\n"
+                f"**1. Weight** — A good durian feels heavy for its size. "
+                f"More weight means more flesh and less air inside.\n\n"
+                f"**2. Stem** — The stem should be fresh, green, and firm. "
+                f"A dry or brown stem means the fruit was picked too long ago.\n\n"
+                f"**3. Spikes** — Press two spikes together. They should have "
+                f"a slight give. Rock-hard spikes mean the fruit is underripe. "
+                f"Too soft means overripe.\n\n"
+                f"**4. Sound** — Tap the durian. A hollow sound means good "
+                f"air pockets inside. Shake it gently; if you hear seeds "
+                f"rattling, it is overripe.\n\n"
+                f"## Best Varieties for First-Timers\n\n"
+                f"| Variety | Flavour | Price (per fruit) |\n"
+                f"|---------|---------|-------------------|\n"
+                f"| Musang King | Sweet, creamy, mild bitterness | RM 40-70 |\n"
+                f"| D24 | Bitter-sweet, classic durian taste | RM 20-40 |\n"
+                f"| Udang Merah | Sweet, reddish flesh, less bitter | RM 30-50 |\n"
+                f"| D101 | Sweet, mild, good for beginners | RM 15-30 |\n\n"
+                f"Most sellers in KL let you taste a sample before buying. "
+                f"Ask for Musang King if you are trying durian for the first time."
+            )
+        return (
+            f"## What to Know About Durian in Malaysia\n\n"
+            f"Durian is known as the 'king of fruits' in Southeast Asia. "
+            f"It has a creamy, custard-like texture and a strong aroma "
+            f"that people either love or find intense.\n\n"
+            f"Malaysia grows some of the world's best durian varieties. "
+            f"Unlike Thailand, Malaysian durians are harvested when they "
+            f"fall naturally from the tree, which means they are riper "
+            f"and more flavourful.\n\n"
+            f"## Popular Varieties\n\n"
+            f"- **Musang King** — The most popular. Sweet, creamy, with a "
+            f"hint of bitterness. RM 40-70 per fruit.\n"
+            f"- **D24** — The classic. Bitter-sweet, strong durian taste. "
+            f"RM 20-40 per fruit.\n"
+            f"- **Udang Merah** — Red-fleshed, sweet, less pungent. "
+            f"RM 30-50 per fruit.\n\n"
+            f"Durian is in season June-August and December-January. "
+            f"The best places to eat it in KL are SS2 Petaling Jaya, "
+            f"Durian Man in Cheras, and Jin Xian Hong in Pudu."
+        )
+
+    # ── Street food / hawker ──
+    if any(w in kw for w in ["street food", "hawker", "food stall", "pasar malam"]):
+        if "kuala lumpur" in kw or "kl" in kw:
+            return (
+                f"## Kuala Lumpur's Best Street Food\n\n"
+                f"Kuala Lumpur's street food scene runs from early morning "
+                f"until late night. The city has everything from banana-leaf "
+                f"nasi lemak stalls to charcoal-grilled satay.\n\n"
+                f"**Jalan Alor** (Bukit Bintang) — KL's most famous food street. "
+                f"Open 5pm to midnight. Try the grilled seafood, satay, and "
+                f"Hokkien mee. Busy with tourists but the food is solid.\n\n"
+                f"**Petaling Street** (Chinatown) — Hawker stalls under white "
+                f"canopies. Open late morning to evening. Known for wonton mee, "
+                f"roast duck, and apam balik (pancake with corn and sugar).\n\n"
+                f"**SS2 Hawker Centre** (Petaling Jaya) — Where locals go. "
+                f"40+ stalls in one food court. Try the curry noodle, claypot "
+                f"chicken rice, and cendol. Open breakfast to dinner.\n\n"
+                f"**Bangsar Night Market** (Wednesdays) — A proper pasar malam. "
+                f"Best for snacks, fresh fruit, and Malay street food. "
+                f"Starts at 4pm.\n\n"
+                f"## What to Order\n\n"
+                f"- Nasi lemak (coconut rice with sambal) — RM 3-5\n"
+                f"- Satay (grilled skewers with peanut sauce) — RM 1.50/stick\n"
+                f"- Cendol (shaved ice dessert) — RM 4-6\n"
+                f"- Curry puff (flaky pastry with curry filling) — RM 2-3\n"
+                f"- Apam balik (crispy pancake) — RM 3-5"
+            )
+        if "penang" in kw:
+            return (
+                f"## Penang's Street Food Scene\n\n"
+                f"Penang is widely considered Malaysia's food capital. "
+                f"George Town's streets are packed with hawker stalls, "
+                f"some operating for three generations.\n\n"
+                f"**Chulia Street Night Market** — The evening hawker hub. "
+                f"Open 6pm to midnight. Try the char kway teow, oyster omelette, "
+                f"and pasembur (Malay-style salad with peanut sauce).\n\n"
+                f"**Gurney Drive Hawker Centre** — Penang's most famous food "
+                f"court. 50+ stalls under one roof. Open late afternoon to "
+                f"midnight. Known for lok lok (skewers with dipping sauces).\n\n"
+                f"**Air Itam Market** — Breakfast central. Open 6am to noon. "
+                f"Try the Assam laksa here, it won the 'world's best food' "
+                f"ranking by CNN Travel.\n\n"
+                f"## Must-Try Penang Dishes\n\n"
+                f"- Char kway teow (stir-fried rice noodles) — RM 6-8\n"
+                f"- Assam laksa (sour fish noodle soup) — RM 5-7\n"
+                f"- Cendol (pandan jelly with coconut milk) — RM 3-5\n"
+                f"- Hokkien mee (prawn noodle soup) — RM 6-8\n"
+                f"- Oyster omelette — RM 8-12"
+            )
+        return (
+            f"## Malaysian Street Food: What to Know\n\n"
+            f"Malaysian street food is a mix of Malay, Chinese, and Indian "
+            f"traditions. Hawker centres and food courts are the best places "
+            f"to try a variety. Most stalls open for specific meals: "
+            f"breakfast stalls close by noon, dinner stalls start at 5pm.\n\n"
+            f"Prices range from RM 3-10 per dish. Cash is preferred at "
+            f"most hawker stalls. Look for the stalls with queues — "
+            f"locals know which ones are worth waiting for.\n\n"
+            f"Popular dishes to try: nasi lemak (breakfast), char kway teow "
+            f"(lunch), satay (evening), and roti canai (any time). "
+            f"Most hawker food is halal, but Chinese stalls may not be."
+        )
+
+    # ── Food tours ──
+    if "food tour" in kw or "food tours" in kw:
+        if "kuala lumpur" in kw or "kl" in kw:
+            return (
+                f"## Food Tours in Kuala Lumpur\n\n"
+                f"A Kuala Lumpur food tour typically lasts 3-4 hours and "
+                f"covers 8-12 tasting stops across 2-3 neighbourhoods. "
+                f"Most tours are walking-based and suitable for all fitness levels.\n\n"
+                f"## What a Typical KL Food Tour Includes\n\n"
+                f"- A guided walk through 2-3 food neighborhoods\n"
+                f"- 8-12 tastings, from street snacks to full dishes\n"
+                f"- Stories about Malaysian history, culture, and food traditions\n"
+                f"- A local guide who knows the vendors personally\n\n"
+                f"## Popular KL Food Tour Routes\n\n"
+                f"**Chinatown + Bukit Bintang** — The classic. Covers Petaling "
+                f"Street's hawkers and Jalan Alor's night stalls. Best for "
+                f"first-time visitors.\n\n"
+                f"**Chow Kit Market + Kampung Baru** — The local experience. "
+                f"Morning market walk followed by Malay lunch in KL's last "
+                f"kampung village. Best for foodies.\n\n"
+                f"**Brickfields Little India** — Indian food focus. Banana "
+                f"leaf rice, roti canai, and South Indian snacks. "
+                f"Best for vegetarian-friendly options.\n\n"
+                f"Prices range from RM 150-450 per person depending on "
+                f"whether you join a group or book a private tour."
+            )
+        if "penang" in kw:
+            return (
+                f"## Food Tours in Penang\n\n"
+                f"Penang food tours focus on George Town's hawker scene, "
+                f"usually covering 10-15 tastings over 3-4 hours. "
+                f"The city's UNESCO heritage status means you walk "
+                f"through historic streets between stops.\n\n"
+                f"## What a Typical Penang Food Tour Includes\n\n"
+                f"- 10-15 tasting stops across George Town\n"
+                f"- Penang classics: char kway teow, Assam laksa, Hokkien mee\n"
+                f"- Heritage walking route through UNESCO streets\n"
+                f"- Stories about Penang's Peranakan and colonial history\n\n"
+                f"Most tours cost RM 200-350 per person. Evening tours "
+                f"are popular because the hawker stalls come alive after "
+                f"5pm. Private tours can include a cooking class or "
+                f"Balik Pulau countryside visit."
+            )
+        return (
+            f"## Malaysian Food Tours: What to Expect\n\n"
+            f"A typical Malaysian food tour lasts 3-4 hours and covers "
+            f"8-15 tastings. You walk between stops with a local guide "
+            f"who shares the stories behind each dish.\n\n"
+            f"Most tours cost RM 150-450 per person. Group tours are "
+            f"cheaper; private tours cost more but give you flexibility "
+            f"on route, pace, and dietary needs.\n\n"
+            f"The best cities for food tours are Kuala Lumpur (mix of "
+            f"Malay, Chinese, and Indian cuisines) and Penang (street "
+            f"food capital with strong Peranakan influence)."
+        )
+
+    # ── Halal food ──
+    if "halal" in kw:
+        return (
+            f"## Halal Food in Malaysia: A Practical Guide\n\n"
+            f"Malaysia has a strong halal certification system run by JAKIM. "
+            f"Most Malay and Indian Muslim restaurants are halal. Chinese "
+            f"restaurants generally are not, unless they advertise otherwise.\n\n"
+            f"## How to Identify Halal Food\n\n"
+            f"- Look for the green JAKIM halal logo on signage or menus\n"
+            f"- Malay restaurants (look for names in Bahasa Melayu) are almost always halal\n"
+            f"- Indian Muslim stalls (called 'Mamak') are halal\n"
+            f"- Chinese halal restaurants will display it prominently\n"
+            f"- Food courts and hawker centres typically have a mix\n\n"
+            f"## Best Halal Food in Kuala Lumpur\n\n"
+            f"**Kampung Baru** — Malay food hub. Try nasi lemak, rendang, "
+            f"and satay. Most stalls are halal.\n\n"
+            f"**Brickfields** — Indian Muslim area. Banana leaf rice, "
+            f"roti canai, and biryani. All halal.\n\n"
+            f"**Chow Kit Market** — Malay market food. Best for breakfast. "
+            f"Nasi dagang, lontong, and kuih.\n\n"
+            f"Penang's George Town also has excellent halal options, "
+            f"especially in the Malay and Indian Muslim neighborhoods "
+            f"around Kapitan Keling Mosque."
+        )
+
+    # ── Vegetarian / dietary ──
+    if any(w in kw for w in ["vegetarian", "vegan", "dietary", "gluten-free"]):
+        return (
+            f"## Vegetarian and Dietary-Friendly Food in Malaysia\n\n"
+            f"Malaysia is surprisingly good for special diets. "
+            f"The Indian vegetarian tradition is strong, especially "
+            f"in Brickfields (KL's Little India).\n\n"
+            f"## Where to Find Vegetarian Food\n\n"
+            f"**Brickfields, Kuala Lumpur** — The best area for vegetarian. "
+            f"Banana leaf rice restaurants offer unlimited vegetables, "
+            f"lentil curry, and pickles. Budget RM 8-15 per meal.\n\n"
+            f"**Buddhist vegetarian stalls** — Found in Chinatown and "
+            f"near temples. These are vegan by default (no meat, no dairy, "
+            f"no onion/garlic in strict ones). Look for 'zhai' or 'sai' signs.\n\n"
+            f"**Indian Muslim (Mamak) stalls** — Good for vegetarian options. "
+            f"Roti canai, capati, and vegetable curries are standard.\n\n"
+            f"## Tips\n\n"
+            f"- Malay and Indian Muslim food is mostly dairy-free (uses coconut milk)\n"
+            f"- Nasi kandar (mixed rice) lets you choose your own vegetables\n"
+            f"- Most hawker stalls can adjust spice levels on request\n"
+            f"- Simply Enak tours accommodate all dietary needs — just mention it when booking"
+        )
+
+    # ── Night markets ──
+    if any(w in kw for w in ["night market", "pasar malam", "market"]):
+        return (
+            f"## Night Markets in Malaysia\n\n"
+            f"Night markets (pasar malam) are weekly events where "
+            f"neighbourhood streets transform into open-air markets. "
+            f"They operate on rotating schedules so each area gets one "
+            f"night per week.\n\n"
+            f"## Kuala Lumpur Night Markets\n\n"
+            f"**Bangsar Night Market** (Wednesdays, 4-9pm) — The most "
+            f"popular for food. Grilled seafood, rojak, apam balik, "
+            f"and fresh fruit.\n\n"
+            f"**Taman Connaught Night Market** (Thursdays, 5-11pm) — "
+            f"KL's longest night market. 2km of stalls. Best for snacks "
+            f"and clothes, but less food-focused than Bangsar.\n\n"
+            f"**SS2 Night Market** (Mondays, 5-10pm) — Petaling Jaya's "
+            f"main market. Good mix of food and produce.\n\n"
+            f"## What to Eat\n\n"
+            f"- Apam balik (crispy pancake) — RM 3-5\n"
+            f"- Grilled fish and seafood — RM 5-15\n"
+            f"- Fried noodles and rice — RM 5-8\n"
+            f"- Fresh fruit juice — RM 3-6\n"
+            f"- Kuih (traditional cakes) — RM 1-3 each\n\n"
+            f"Bring small bills. Cash is the only option at most stalls."
+        )
+
+    # ── Malay / Malaysian cuisine ──
+    if any(w in kw for w in ["malaysian food", "malay food", "local food"]):
+        return (
+            f"## Malaysian Food: A Quick Introduction\n\n"
+            f"Malaysian food is a fusion of Malay, Chinese, and Indian "
+            f"culinary traditions. The result is one of Southeast Asia's "
+            f"most diverse food scenes.\n\n"
+            f"## Three Cuisines, One Food Scene\n\n"
+            f"**Malay food** — The foundation. Coconut milk, lemongrass, "
+            f"chilli, and belacan (shrimp paste) are core ingredients. "
+            f"Nasi lemak, rendang, and satay are Malay classics.\n\n"
+            f"**Chinese Malaysian food** — Adapted from southern Chinese "
+            f"traditions. Noodles, soy sauce, and pork (in non-halal places). "
+            f"Char kway teow, Hokkien mee, and wonton mee.\n\n"
+            f"**Indian Malaysian food** — Southern Indian influence. "
+            f"Banana leaf rice, roti canai, and biryani. Heavy on spices "
+            f"and lentils.\n\n"
+            f"## What Makes Malaysian Food Unique\n\n"
+            f"- **Nasi lemak** — Coconut rice with sambal, the national dish. RM 3-5\n"
+            f"- **Roti canai** — Flaky flatbread with curry. RM 2-4\n"
+            f"- **Satay** — Grilled skewers with peanut sauce. RM 1.50/stick\n"
+            f"- **Laksa** — Spicy noodle soup. RM 6-10\n"
+            f"- **Cendol** — Shaved ice dessert with pandan jelly. RM 3-6\n\n"
+            f"Malaysians eat 5-6 times a day: breakfast, morning tea, "
+            f"lunch, afternoon tea, dinner, and supper. Food is central "
+            f"to social life."
+        )
+
+    # ── Penang-specific ──
+    if "penang" in kw and any(w in kw for w in ["food", "eat", "dish", "guide"]):
+        return (
+            f"## Penang Food: What to Eat and Where\n\n"
+            f"Penang is Malaysia's food capital. George Town's hawker "
+            f"scene has been shaped by generations of Chinese, Malay, "
+            f"and Peranakan cooks.\n\n"
+            f"## Must-Try Dishes\n\n"
+            f"**Char Kway Teow** — Stir-fried rice noodles with prawns, "
+            f"cockles, egg, and chives. Best at Sisters on Macalister Lane "
+            f"or Lorong Selamat. RM 6-8.\n\n"
+            f"**Assam Laksa** — Sour fish noodle soup with tamarind, "
+            f"pineapple, and mint. Air Itam Market's version won CNN's "
+            f"world's best food ranking. RM 5-7.\n\n"
+            f"**Hokkien Mee** — Prawn noodle soup with pork ribs and "
+            f"hard-boiled egg. RM 6-8.\n\n"
+            f"**Cendol** — Shaved ice with green pandan jelly, coconut "
+            f"milk, and gula Melaka (palm sugar). Penang Road's Teochew "
+            f"Cendol is the most famous. RM 3-5.\n\n"
+            f"**Oyster Omelette** — Fresh oysters fried with egg and "
+            f"sweet potato starch. Chulia Street Night Market. RM 8-12.\n\n"
+            f"## Best Food Areas\n\n"
+            f"- **Chulia Street** — Night market, good for dinner\n"
+            f"- **Gurney Drive** — Hawker centre, best for variety\n"
+            f"- **Air Itam** — Breakfast market, best for laksa\n"
+            f"- **Penang Road** — Desserts and cendol\n"
+            f"- **Macalister Lane** — Char kway teow central"
+        )
+
+    # ── KL-specific ──
+    if any(w in kw for w in ["kuala lumpur", "kl food", "kl guide", "chow kit", "brickfields"]):
+        if "chow kit" in kw:
+            return (
+                f"## Chow Kit Market: KL's Largest Wet Market\n\n"
+                f"Chow Kit Market is Kuala Lumpur's biggest and oldest "
+                f"wet market. It operates daily from 6am to noon in "
+                f"the Chow Kit neighbourhood, just north of the city centre.\n\n"
+                f"## What You Will Find\n\n"
+                f"The market is split into sections: fresh produce, meat "
+                f"and poultry, seafood, dried goods, and cooked food. "
+                f"The cooked food section is where locals go for breakfast:\n\n"
+                f"- Nasi lemak with fried chicken — RM 5-7\n"
+                f"- Lontong (rice cakes in coconut curry) — RM 4-6\n"
+                f"- Mee rebus (noodles in sweet potato gravy) — RM 5-7\n"
+                f"- Kuih (traditional cakes) — RM 1-3 each\n\n"
+                f"## Tips\n\n"
+                f"- Go early (7-9am) for the best selection\n"
+                f"- Bring cash, most stalls don't accept cards\n"
+                f"- Wear comfortable shoes, the market is sprawling\n"
+                f"- Photography is fine but always ask vendors first\n"
+                f"- Simply Enak offers a guided Chow Kit market tour "
+                f"that includes breakfast at 4 different stalls"
+            )
+        return (
+            f"## Kuala Lumpur Food Scene\n\n"
+            f"Kuala Lumpur's food scene reflects its multicultural "
+            f"population. Within a 2km radius you can find Malay, "
+            f"Chinese, Indian, and Peranakan food.\n\n"
+            f"## Best Areas for Food\n\n"
+            f"- **Chinatown (Petaling Street)** — Hawker stalls, roast meats, "
+            f"and budget eats. Try wonton mee and apam balik.\n"
+            f"- **Bukit Bintang** — Jalan Alor food street. Best for "
+            f"evening street food and grilled seafood.\n"
+            f"- **Brickfields** — Little India. Banana leaf rice, roti "
+            f"canai, and South Indian snacks.\n"
+            f"- **Kampung Baru** — Traditional Malay village. Nasi lemak, "
+            f"rendang, and satay.\n"
+            f"- **Chow Kit** — Morning wet market. Best for breakfast "
+            f"and local market food.\n\n"
+            f"Most hawker stalls charge RM 3-10 per dish. Food courts "
+            f"are common in shopping malls. Street stalls are concentrated "
+            f"in specific areas rather than scattered across the city."
+        )
+
+    # ── Default fallback: concise, honest, specific ──
+    return (
+        f"## What You Need to Know About {keyword.title()}\n\n"
+        f"Malaysia has a rich food culture shaped by Malay, Chinese, "
+        f"and Indian traditions. This topic is something visitors "
+        f"often ask about when planning their trip to Kuala Lumpur "
+        f"or Penang.\n\n"
+        f"## Quick Facts\n\n"
+        f"- **Best places to experience this:** The hawker centres "
+        f"and food stalls in KL and Penang are the best starting points\n"
+        f"- **Typical cost:** RM 5-15 per dish or serving\n"
+        f"- **Best time:** Most stalls operate from late morning "
+        f"to evening. Check specific timings for your chosen area\n\n"
+        f"## Getting the Most Out of Your Visit\n\n"
+        f"The best approach is to explore with someone who knows "
+        f"the local food scene. Simply Enak's guides have been "
+        f"leading food tours in Kuala Lumpur and Penang since 2011 "
+        f"and can take you to the best spots for this experience.\n\n"
+        f"Every tour is customisable for dietary needs, group size, "
+        f"and pace. Just let us know what you are looking for."
+    )
+
 
 def cmd_register():
     print("\n=== Register New Colony Page ===\n")

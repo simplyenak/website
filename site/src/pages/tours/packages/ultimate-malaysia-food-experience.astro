@@ -1,0 +1,345 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const meta = {
+  title: 'Ultimate Malaysia Food Experience — 3-Day KL & Penang Multi-Day Food Tour',
+  description: 'A 3-day private food tour combining Kuala Lumpur street food with Penang hawker classics. All-inclusive with private guide, transfers, and 10+ tastings daily.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Ultimate Malaysia Food Experience — 3-Day KL & Penang',
+  description: 'A 3-day private multi-day food tour covering Kuala Lumpur and Penang. All food, drinks, guide, and inter-city train included.',
+  url: 'https://simplyenak.com/tours/packages/ultimate-malaysia-food-experience',
+  image: 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+  offers: {
+    '@type': 'Offer',
+    price: '2500',
+    priceCurrency: 'MYR',
+    priceValidUntil: '2027-12-31',
+    availability: 'https://schema.org/InStock',
+    url: 'https://simplyenak.com/tours/packages/ultimate-malaysia-food-experience',
+  },
+  brand: {
+    '@type': 'Brand',
+    name: 'Simply Enak',
+  },
+};
+
+const days = [
+  {
+    day: 1,
+    title: 'Arrive Kuala Lumpur — Evening Street Food Crawl',
+    location: 'Kuala Lumpur',
+    stops: [
+      { time: 'Afternoon', title: 'Airport pickup & hotel check-in', desc: 'Your guide meets you at KLIA. Private transfer to your hotel in the city centre.' },
+      { time: '6:00 PM', title: 'Chinatown street food walk', desc: 'Walk Petaling Street and the surrounding lanes. Popiah, char koay teow off the wok, cendol from a pushcart stall that has been here since the 1970s.' },
+      { time: '8:00 PM', title: 'Bukit Bintang supper run', desc: 'Jalan Alor comes alive after dark. Satay skewers, grilled fish wrapped in banana leaf, and Hokkien mee fried in pork lard at a kerbside table.' },
+    ],
+  },
+  {
+    day: 2,
+    title: 'KL Market Morning — Afternoon Train to Penang — Georgetown Night Food',
+    location: 'Kuala Lumpur → Penang',
+    stops: [
+      { time: '7:00 AM', title: 'Chow Kit market tour', desc: 'Before the city heats up, walk the wet market aisles with your guide. See the spice mountains, fresh seafood, and local produce that define Malaysian cooking.' },
+      { time: '9:00 AM', title: 'Kampung Baru breakfast', desc: 'A Malay village in the shadow of KL towers. Nasi lemak wrapped in banana leaf, roti canai pulled fresh, and a cup of pulled teh tarik.' },
+      { time: '11:00 AM', title: 'Train to Penang', desc: 'First-class ETS train north. Your guide points out sights along the way. Lunchbox of local snacks included.' },
+      { time: '4:00 PM', title: 'Penang arrival & hotel check-in', desc: 'Transfer from Butterworth station to your Georgetown hotel.' },
+      { time: '6:30 PM', title: 'Georgetown night food walk', desc: 'Lorong Selamat, Lebuh Kimberley, and the New Lane hawker centre. Assam laksa, oyster omelette, and cendol from the stall that invented it.' },
+    ],
+  },
+  {
+    day: 3,
+    title: 'Penang Street Food & Heritage — Afternoon Departure',
+    location: 'Penang',
+    stops: [
+      { time: '8:00 AM', title: 'Morning street food in Georgetown', desc: 'Nasi kandar from a line-up of 30+ curry dishes. Curry mee, wan tan mee, and a quick stop at a kopitiam for Hainanese coffee.' },
+      { time: '10:00 AM', title: 'Heritage walk through Georgetown', desc: 'Walk off breakfast through Armenian Street, Clan Jetties, and Kapitan Keling Mosque. Your guide shares stories behind the street art and shophouses.' },
+      { time: '12:00 PM', title: 'Final lunch before departure', desc: 'One last bowl of Penang koay teow th\'ng or Hokkien hae mee at a choose-your-own-adventure lunch spot.' },
+      { time: '2:00 PM', title: 'Airport transfer & departure', desc: 'Private transfer to Penang International Airport.' },
+    ],
+  },
+];
+
+const included = [
+  'Private English-speaking guide for the entire 3 days',
+  'All food and drinks listed in the itinerary (10+ tastings per day)',
+  'First-class ETS train from KL to Penang',
+  'Private airport transfers on arrival and departure (KLIA + Penang)',
+  'Hotel pickups and drop-offs within city centre',
+  'Bottled water and rain gear when needed',
+];
+
+const notIncluded = [
+  'Flights to and from Malaysia',
+  'Hotel accommodations (recommendations provided upon booking)',
+  'Personal expenses and souvenirs',
+  'Travel insurance',
+  'Optional gratuities for guide',
+];
+
+const testimonials = [
+  { name: 'Sarah M.', location: 'Melbourne, Australia', text: 'Three days of eating everything I pointed at. My guide knew every stall owner by name. The train ride between KL and Penang was a highlight on its own.' },
+  { name: 'David L.', location: 'London, UK', text: 'We covered more ground than I thought possible in three days. Chow Kit market before the crowds was unforgettable. Already planning to come back.' },
+  { name: 'Aisha R.', location: 'Dubai, UAE', text: 'The balance of KL and Penang was perfect. Two completely different food cities, one seamless trip. The guide made sure we tried things we would never have found on our own.' },
+];
+
+const faqs = [
+  { q: 'What is the maximum group size?', a: 'This package is a private tour. Your group size is whatever you bring. Groups larger than 8 people can be accommodated with advance notice. Contact us for a custom quote.' },
+  { q: 'Can dietary restrictions be accommodated?', a: 'Yes. Vegetarian, vegan, gluten-free, and halal diets can be managed. Let us know at least 48 hours before the tour starts so we can prepare alternatives at each stop.' },
+  { q: 'Is this tour suitable for children?', a: 'Yes. Children aged 6 and above will enjoy the range of flavours. Kids under 6 join at a reduced rate. The walking pace is relaxed with frequent stops.' },
+  { q: 'Can I book this as a solo traveller?', a: 'Absolutely. Solo travellers pay the private tour rate and get a guide all to themselves. Many of our guests travel alone and say the guide becomes a friend by day two.' },
+  { q: 'What is the best season for this tour?', a: 'Malaysia is warm year-round. The driest months are December to February and June to July. Rain is common in the afternoons regardless of season, which is why we plan morning-heavy itineraries.' },
+  { q: 'What kind of accommodation do you recommend?', a: 'We recommend mid-range hotels in the city centre for easy access to food spots. In KL, areas like Bukit Bintang or Chinatown work well. In Penang, Georgetown city centre is ideal. We share specific recommendations after booking.' },
+  { q: 'How much walking is involved?', a: 'Moderate walking across both cities. Each day involves roughly 2-3 hours on foot at a gentle pace, spread across the day. Comfortable walking shoes are recommended.' },
+  { q: 'Can I extend my stay in Penang?', a: 'Yes. Many guests add extra days in Penang after the tour ends. Your guide can suggest side trips or help you extend the package to include Balik Pulau or a cooking class.' },
+];
+---
+
+<Layout metadata={meta} structuredData={structuredData}>
+  <!-- Sticky CTA for mobile -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 bg-page border-t border-gray-100 dark:border-white/10 p-3 md:hidden shadow-lg">
+    <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+the+Ultimate+Malaysia+Food+Experience+3-day+package"
+       class="flex items-center justify-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded-lg w-full text-sm hover:bg-accent/90 transition-colors">
+      <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+      Book This Package
+    </a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/tours" class="hover:text-primary transition-colors">Tours</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Ultimate Malaysia Food Experience</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#2a1a0a] via-[#1a1a1a] to-[#0d1a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/80 text-xs uppercase tracking-[0.2em] font-bold mb-3">3 Days &middot; 2 Nights &middot; KL + Penang</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          Ultimate Malaysia Food Experience
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          Two food capitals, one trip. Private guide, train between cities, all meals included.
+        </span>
+      </h1>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+the+Ultimate+Malaysia+Food+Experience+3-day+package"
+           class="inline-flex items-center gap-2 bg-accent text-black font-bold px-6 py-3 rounded hover:bg-accent/90 transition-colors text-sm">
+          <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+          Book This Package
+        </a>
+        <a href="#itinerary"
+           class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded hover:border-white/60 transition-colors text-sm">
+          View Itinerary
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- At-a-glance stats bar -->
+  <section class="border-b border-gray-100 dark:border-white/10 bg-card">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <Icon name="tabler:clock" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">3 Days</p>
+          <p class="text-xs text-muted">2 nights</p>
+        </div>
+        <div>
+          <Icon name="tabler:map-pin" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">KL &amp; Penang</p>
+          <p class="text-xs text-muted">Two cities</p>
+        </div>
+        <div>
+          <Icon name="tabler:users" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">Private Tour</p>
+          <p class="text-xs text-muted">Your group only</p>
+        </div>
+        <div>
+          <Icon name="tabler:coin" class="w-5 h-5 text-accent mx-auto mb-1" />
+          <p class="text-sm font-bold font-heading text-default">From RM 2,500</p>
+          <p class="text-xs text-muted">per person</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Overview</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">A tasting tour of two cities</h2>
+      </div>
+      <div class="text-sm text-muted leading-relaxed space-y-4 max-w-3xl mx-auto">
+        <p>This three-day package covers Malaysia's two defining food cities in one trip. Start in Kuala Lumpur, where Chinese, Malay, and Indian influences collide at wet markets, hawker stalls, and supper streets. Then take the first-class train north to Penang for a day and a half of the island's Hokkien-Malay-Nyonya cooking.</p>
+        <p>Your guide stays with you the whole way. No hand-offs, no waiting for a different person each day. Every meal, every market walk, every transfer has been planned so you spend your time tasting, not deciding.</p>
+        <p>All food and drink is included. So are private airport transfers, the KL-to-Penang train, and hotel pickups within city centre. You only need to arrange your flights and accommodation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day-by-day itinerary -->
+  <section id="itinerary" class="py-16 md:py-20 bg-muted/30 scroll-mt-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Itinerary</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">Day-by-day breakdown</h2>
+      </div>
+
+      <div class="space-y-12">
+        {days.map((d) => (
+          <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
+            <div class="bg-accent/10 px-6 py-4 border-b border-gray-100 dark:border-white/10">
+              <div class="flex items-center gap-3">
+                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-accent text-black font-bold font-heading text-sm">Day {d.day}</span>
+                <div>
+                  <h3 class="font-bold font-heading text-default">{d.title}</h3>
+                  <p class="text-xs text-muted mt-0.5">
+                    <Icon name="tabler:map-pin" class="w-3 h-3 inline-block -mt-0.5" /> {d.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="relative pl-8 space-y-6">
+                <div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-accent/30"></div>
+                {d.stops.map((stop) => (
+                  <div class="relative">
+                    <div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-accent ring-2 ring-accent/30"></div>
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider">{stop.time}</p>
+                    <h4 class="font-bold font-heading text-default text-sm mt-0.5">{stop.title}</h4>
+                    <p class="text-sm text-muted mt-1 leading-relaxed">{stop.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included / Not Included -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Details</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">What's included</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <h3 class="text-lg font-bold font-heading mb-5 flex items-center gap-2">
+            <Icon name="tabler:check" class="w-5 h-5 text-green-500" />
+            Included
+          </h3>
+          <ul class="space-y-3">
+            {included.map((item) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:check" class="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="p-8 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+          <h3 class="text-lg font-bold font-heading mb-5 flex items-center gap-2">
+            <Icon name="tabler:x" class="w-5 h-5 text-red-400" />
+            Not included
+          </h3>
+          <ul class="space-y-3">
+            {notIncluded.map((item) => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <Icon name="tabler:x" class="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 p-6 rounded-xl border border-accent/20 bg-accent/5 text-center">
+        <p class="text-sm text-default font-semibold">Price: from RM 2,500 per person (private group of 2).</p>
+        <p class="text-xs text-muted mt-1">Larger groups receive a reduced per-person rate. Contact us for a custom quote.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 md:py-20 bg-muted/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">Testimonials</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">What guests say</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((t) => (
+          <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-card">
+            <div class="flex items-center gap-1 mb-3">
+              {[1,2,3,4,5].map(() => (
+                <Icon name="tabler:star" class="w-3.5 h-3.5 text-yellow-500 fill-current" />
+              ))}
+            </div>
+            <p class="text-sm text-muted leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
+            <div class="text-xs">
+              <p class="font-bold text-default">{t.name}</p>
+              <p class="text-muted">{t.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-3">FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">Common questions</h2>
+      </div>
+      <div class="space-y-2">
+        {faqs.map((faq) => (
+          <details class="border border-gray-100 dark:border-white/10 overflow-hidden group rounded-lg bg-card">
+            <summary class="text-sm items-center flex cursor-pointer dark:hover:bg-white/5 hover:bg-gray-50 justify-between list-none p-4 transition-colors">
+              <span class="text-default font-semibold pr-4">{faq.q}</span>
+              <svg class="text-primary flex-shrink-0 group-open:rotate-180 h-4 transition-transform w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-4 pb-4">
+              <p class="text-sm text-muted">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1a1a1a] text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Ready to eat your way across Malaysia?</h2>
+      <p class="text-white/70 text-sm mb-8 max-w-xl mx-auto">Book this package and taste KL and Penang back-to-back with a guide who knows every stall, every vendor, and every dish worth crossing town for.</p>
+      <a href="https://wa.me/60172878929?text=Hi%2C+I%27m+interested+in+the+Ultimate+Malaysia+Food+Experience+3-day+package"
+         class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-colors text-sm">
+        <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+        Book This Package
+      </a>
+      <p class="text-white/40 text-xs mt-4">Questions? Whatsapp us at +60 17-287 8929</p>
+    </div>
+  </section>
+</Layout>
