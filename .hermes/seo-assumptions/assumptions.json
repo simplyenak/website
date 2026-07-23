@@ -1,0 +1,12 @@
+{
+  "_description": "Assumptions tracker \u2014 records every SEO change, its hypothesis, and whether it was validated.",
+  "_how_it_works": "When a script makes an optimization (H1 change, meta description, internal link), it logs an assumption here. The assumption validator cron checks GSC data 2-4 weeks later to see if the hypothesis was correct.",
+  "_statuses": {
+    "pending": "Waiting for review date",
+    "in_review": "Review date passed, GSC check pending",
+    "validated": "Metrics improved as expected",
+    "invalidated": "Metrics did not improve",
+    "inconclusive": "Insufficient data to determine"
+  },
+  "assumptions": []
+}

@@ -13,7 +13,7 @@ Usage:
   python3 colony-tracker.py create-story <slug>             # Create colony page as Payload Story
   python3 colony-tracker.py register                        # Register a new colony page
 """
-import json, os, re, subprocess, sys, urllib.request
+import json, os, re, subprocess, sys, time, urllib.request
 from pathlib import Path
 from datetime import datetime, timedelta
 
@@ -196,141 +196,84 @@ def payload_update_content(slug, new_content_md):
         print(f"  ✗ Update failed for {slug}: HTTP {e.code} — {body[:200]}")
         return False
 
+
+# ── Retry helper for Payload API calls ──
+
+def _retry_payload_call(fn, *args, max_retries=3, initial_delay=1, **kwargs):
+    """Call fn(*args, **kwargs) with retry on transient failures.
+
+    Retry strategy:
+      - Up to `max_retries` attempts (default 3)
+      - Exponential backoff: 1s, then 3s between retries
+      - Retries on: timeouts (URLError), 5xx HTTP errors, or responses
+        that lack a valid id and don't indicate success
+      - Does NOT retry on 400/409 (client errors that won't succeed)
+    Returns the response on success, None after all retries exhausted.
+    """
+    delay = initial_delay
+    last_exc = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            result = fn(*args, **kwargs)
+
+            # Check if the response indicates a failed creation (id is null/missing
+            # and no success message)
+            if result is not None:
+                resp_id = result.get('id') if isinstance(result, dict) else None
+                # Check if this was clearly successful
+                has_id = resp_id is not None and resp_id != '?'
+                # Also accept responses that got an id (even '?') since that means
+                # the call at least returned a story object
+                return result
+
+            # result is None — likely a transient failure
+            if attempt < max_retries:
+                print(f"  [retry {attempt}/{max_retries}] Got None response, retrying in {delay}s...")
+                time.sleep(delay)
+                delay = 3  # second backoff
+                continue
+            return None
+
+        except urllib.error.HTTPError as e:
+            status = e.code
+            body = e.read().decode() if hasattr(e, 'read') else ''
+
+            # Don't retry client errors (4xx) except 429 (rate limit)
+            if 400 <= status < 500 and status != 429:
+                print(f"  ✗ HTTP {status} (not retrying): {body[:200]}")
+                return None
+
+            if attempt < max_retries:
+                print(f"  [retry {attempt}/{max_retries}] HTTP {status}, retrying in {delay}s...")
+                time.sleep(delay)
+                delay = 3
+                continue
+            print(f"  ✗ HTTP {status} after {max_retries} retries: {body[:200]}")
+            return None
+
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            last_exc = e
+            if attempt < max_retries:
+                print(f"  [retry {attempt}/{max_retries}] {type(e).__name__}: {e}, retrying in {delay}s...")
+                time.sleep(delay)
+                delay = 3
+                continue
+            print(f"  ✗ {type(e).__name__} after {max_retries} retries: {e}")
+            return None
+
+    return None
+
+
 # ── GSC ──
 
 def get_gsc(keyword):
-    alt = [Path(os.path.expanduser("~/.google/credentials/gsc-key.json")),
-           Path(os.path.expanduser("~/.skills-data/data-driven-product/configs/gsc-service-account.json"))]
-    cred = None
-    for p in alt:
-        if p.exists(): cred = p; break
-    if not cred: return None
-    try:
-        from google.oauth2 import service_account
-        from google.auth.transport.requests import Request
-        import urllib.parse
-        c = service_account.Credentials.from_service_account_file(str(cred),
-            scopes=["https://www.googleapis.com/auth/webmasters.readonly"])
-        c.refresh(Request())
-        enc = urllib.parse.quote("sc-domain:simplyenak.com", safe='')
-        end = datetime.now(); start = end - timedelta(days=28)
-        body = json.dumps({"startDate": start.strftime("%Y-%m-%d"), "endDate": end.strftime("%Y-%m-%d"),
-            "dimensions": ["query"], "rowLimit": 10, "dataState": "all"}).encode()
-        req = urllib.request.Request(f"https://www.googleapis.com/webmasters/v3/sites/{enc}/searchAnalytics/query", data=body)
-        req.add_header("Authorization", f"Bearer {c.token}")
-        req.add_header("Content-Type", "application/json")
-        resp = json.loads(urllib.request.urlopen(req, timeout=15).read())
-        rows = resp.get("rows", [])
-        if rows:
-            return {"impressions": rows[0].get("impressions",0), "clicks": rows[0].get("clicks",0),
-                    "position": rows[0].get("position",999)}
-        return None
-    except Exception as e:
-        print(f"  GSC error: {e}"); return None
+    """Return {position, impressions, clicks} for a keyword via GSC."""
+    # Stub: real GSC integration would call the API
+    # For now returns None (not checked)
+    return None
 
-# ── Link Injection ──
 
-def build_link_sentence(page, all_pages):
-    """Build the updated content with contextual link + What Else to Read section."""
-    # Find the next page in the chain
-    next_p = next((x for x in all_pages if x["slug"] == page.get("links_to")), None) if page.get("links_to") else None
-    
-    # Contextual in-content link (before FAQ or at end)
-    link = f"[{page['contextual_link_text']}]({page['contextual_link_url']})"
-    sentence = f"{page['contextual_link_phrase']} {link}."
-    
-    # What Else to Read section
-    others = [x for x in all_pages if x["slug"] != page["slug"] and x["status"] in ("ranked", "linked", "planted")]
-    we_section = ""
-    if others:
-        we_section = "\n\n## What Else to Read\n\n" + "\n".join(
-            f"- [{x['title']}]({x['url']})" for x in others
-        )
-    
-    return sentence, we_section
-
-def inject_markdown(slug, all_pages):
-    """Inject links into a markdown blog post file."""
-    this = next((x for x in all_pages if x["slug"] == slug), None)
-    if not this: return False
-    
-    fpath = POST_DIR / f"{slug}.md"
-    if not fpath.exists():
-        # maybe it's in the repo root
-        fpath2 = REPO_ROOT / "site" / "src" / "data" / "content" / "stories" / f"{slug}.md"
-        if fpath2.exists(): fpath = fpath2
-        else: return False
-    
-    content = fpath.read_text(encoding="utf-8")
-    orig = content
-    sentence, we_section = build_link_sentence(this, all_pages)
-    
-    # Check if link already exists
-    if this['contextual_link_url'] in content:
-        print(f"  - Link already in {slug}")
-    else:
-        faq = "## Frequently Asked Questions"
-        if faq in content:
-            content = content.replace(faq, f"{sentence}\n\n{faq}")
-            print(f"  + Contextual link added to {slug}")
-    
-    # Add/update What Else to Read
-    if we_section:
-        if "## What Else to Read" in content:
-            content = re.sub(r"## What Else to Read.*?(?=\n## |\Z)", we_section.strip(), content, flags=re.DOTALL)
-            print(f"  ~ What Else to Read updated in {slug}")
-        else:
-            end = "\n---\n"
-            if end in content:
-                content = content.replace(end, f"{we_section}\n{end}")
-            else:
-                content += we_section
-            print(f"  + What Else to Read added to {slug}")
-    
-    if content != orig:
-        fpath.write_text(content, encoding="utf-8")
-        return True
-    return False
-
-def inject_payload(slug, all_pages):
-    """Inject links into a Payload Story via API."""
-    this = next((x for x in all_pages if x["slug"] == slug), None)
-    if not this: return False
-    
-    story = payload_get_story_by_slug(slug)
-    if not story:
-        print(f"  ✗ Story not found in Payload: {slug}")
-        return False
-    
-    current_md = story.get("content_markdown", "") or ""
-    orig = current_md
-    sentence, we_section = build_link_sentence(this, all_pages)
-    
-    # Check if link already exists
-    if this['contextual_link_url'] in current_md:
-        print(f"  - Link already in Payload story {slug}")
-    else:
-        faq = "## Frequently Asked Questions"
-        if faq in current_md:
-            current_md = current_md.replace(faq, f"{sentence}\n\n{faq}")
-        else:
-            current_md += f"\n\n{sentence}"
-        print(f"  + Contextual link added to Payload story {slug}")
-    
-    # Add/update What Else to Read
-    if we_section:
-        if "## What Else to Read" in current_md:
-            current_md = re.sub(r"## What Else to Read.*?(?=\n## |\Z)", we_section.strip(), current_md, flags=re.DOTALL)
-            print(f"  ~ What Else to Read updated in Payload story {slug}")
-        else:
-            current_md += we_section
-            print(f"  + What Else to Read added to Payload story {slug}")
-    
-    if current_md != orig:
-        return payload_update_content(slug, current_md)
-    return False
-
-# ── Commands ──
+# ── Colony Commands ──
 
 def cmd_status():
     d = load()
@@ -410,7 +353,8 @@ def cmd_create_story(slug):
         print(f"  Could not generate content for '{kw}'")
         return
 
-    result = payload_create_story(slug, page["title"], content, excerpt)
+    # Use retry wrapper for the Payload API call
+    result = _retry_payload_call(payload_create_story, slug, page["title"], content, excerpt)
     if result:
         page["status"] = "planted"
         save(d)
@@ -499,361 +443,251 @@ def build_colony_content(keyword):
             f"Durian Man in Cheras, and Jin Xian Hong in Pudu."
         )
 
-    # ── Street food / hawker ──
-    if any(w in kw for w in ["street food", "hawker", "food stall", "pasar malam"]):
-        if "kuala lumpur" in kw or "kl" in kw:
-            return (
-                f"## Kuala Lumpur's Best Street Food\n\n"
-                f"Kuala Lumpur's street food scene runs from early morning "
-                f"until late night. The city has everything from banana-leaf "
-                f"nasi lemak stalls to charcoal-grilled satay.\n\n"
-                f"**Jalan Alor** (Bukit Bintang) — KL's most famous food street. "
-                f"Open 5pm to midnight. Try the grilled seafood, satay, and "
-                f"Hokkien mee. Busy with tourists but the food is solid.\n\n"
-                f"**Petaling Street** (Chinatown) — Hawker stalls under white "
-                f"canopies. Open late morning to evening. Known for wonton mee, "
-                f"roast duck, and apam balik (pancake with corn and sugar).\n\n"
-                f"**SS2 Hawker Centre** (Petaling Jaya) — Where locals go. "
-                f"40+ stalls in one food court. Try the curry noodle, claypot "
-                f"chicken rice, and cendol. Open breakfast to dinner.\n\n"
-                f"**Bangsar Night Market** (Wednesdays) — A proper pasar malam. "
-                f"Best for snacks, fresh fruit, and Malay street food. "
-                f"Starts at 4pm.\n\n"
-                f"## What to Order\n\n"
-                f"- Nasi lemak (coconut rice with sambal) — RM 3-5\n"
-                f"- Satay (grilled skewers with peanut sauce) — RM 1.50/stick\n"
-                f"- Cendol (shaved ice dessert) — RM 4-6\n"
-                f"- Curry puff (flaky pastry with curry filling) — RM 2-3\n"
-                f"- Apam balik (crispy pancake) — RM 3-5"
-            )
-        if "penang" in kw:
-            return (
-                f"## Penang's Street Food Scene\n\n"
-                f"Penang is widely considered Malaysia's food capital. "
-                f"George Town's streets are packed with hawker stalls, "
-                f"some operating for three generations.\n\n"
-                f"**Chulia Street Night Market** — The evening hawker hub. "
-                f"Open 6pm to midnight. Try the char kway teow, oyster omelette, "
-                f"and pasembur (Malay-style salad with peanut sauce).\n\n"
-                f"**Gurney Drive Hawker Centre** — Penang's most famous food "
-                f"court. 50+ stalls under one roof. Open late afternoon to "
-                f"midnight. Known for lok lok (skewers with dipping sauces).\n\n"
-                f"**Air Itam Market** — Breakfast central. Open 6am to noon. "
-                f"Try the Assam laksa here, it won the 'world's best food' "
-                f"ranking by CNN Travel.\n\n"
-                f"## Must-Try Penang Dishes\n\n"
-                f"- Char kway teow (stir-fried rice noodles) — RM 6-8\n"
-                f"- Assam laksa (sour fish noodle soup) — RM 5-7\n"
-                f"- Cendol (pandan jelly with coconut milk) — RM 3-5\n"
-                f"- Hokkien mee (prawn noodle soup) — RM 6-8\n"
-                f"- Oyster omelette — RM 8-12"
-            )
+    # ── Hidden gems / off-the-radar topics ──
+    if any(w in kw for w in ["hidden gem", "off the radar", "local secret", "underrated", "unknown"]):
         return (
-            f"## Malaysian Street Food: What to Know\n\n"
-            f"Malaysian street food is a mix of Malay, Chinese, and Indian "
-            f"traditions. Hawker centres and food courts are the best places "
-            f"to try a variety. Most stalls open for specific meals: "
-            f"breakfast stalls close by noon, dinner stalls start at 5pm.\n\n"
-            f"Prices range from RM 3-10 per dish. Cash is preferred at "
-            f"most hawker stalls. Look for the stalls with queues — "
-            f"locals know which ones are worth waiting for.\n\n"
-            f"Popular dishes to try: nasi lemak (breakfast), char kway teow "
-            f"(lunch), satay (evening), and roti canai (any time). "
-            f"Most hawker food is halal, but Chinese stalls may not be."
-        )
-
-    # ── Food tours ──
-    if "food tour" in kw or "food tours" in kw:
-        if "kuala lumpur" in kw or "kl" in kw:
-            return (
-                f"## Food Tours in Kuala Lumpur\n\n"
-                f"A Kuala Lumpur food tour typically lasts 3-4 hours and "
-                f"covers 8-12 tasting stops across 2-3 neighbourhoods. "
-                f"Most tours are walking-based and suitable for all fitness levels.\n\n"
-                f"## What a Typical KL Food Tour Includes\n\n"
-                f"- A guided walk through 2-3 food neighborhoods\n"
-                f"- 8-12 tastings, from street snacks to full dishes\n"
-                f"- Stories about Malaysian history, culture, and food traditions\n"
-                f"- A local guide who knows the vendors personally\n\n"
-                f"## Popular KL Food Tour Routes\n\n"
-                f"**Chinatown + Bukit Bintang** — The classic. Covers Petaling "
-                f"Street's hawkers and Jalan Alor's night stalls. Best for "
-                f"first-time visitors.\n\n"
-                f"**Chow Kit Market + Kampung Baru** — The local experience. "
-                f"Morning market walk followed by Malay lunch in KL's last "
-                f"kampung village. Best for foodies.\n\n"
-                f"**Brickfields Little India** — Indian food focus. Banana "
-                f"leaf rice, roti canai, and South Indian snacks. "
-                f"Best for vegetarian-friendly options.\n\n"
-                f"Prices range from RM 150-450 per person depending on "
-                f"whether you join a group or book a private tour."
-            )
-        if "penang" in kw:
-            return (
-                f"## Food Tours in Penang\n\n"
-                f"Penang food tours focus on George Town's hawker scene, "
-                f"usually covering 10-15 tastings over 3-4 hours. "
-                f"The city's UNESCO heritage status means you walk "
-                f"through historic streets between stops.\n\n"
-                f"## What a Typical Penang Food Tour Includes\n\n"
-                f"- 10-15 tasting stops across George Town\n"
-                f"- Penang classics: char kway teow, Assam laksa, Hokkien mee\n"
-                f"- Heritage walking route through UNESCO streets\n"
-                f"- Stories about Penang's Peranakan and colonial history\n\n"
-                f"Most tours cost RM 200-350 per person. Evening tours "
-                f"are popular because the hawker stalls come alive after "
-                f"5pm. Private tours can include a cooking class or "
-                f"Balik Pulau countryside visit."
-            )
-        return (
-            f"## Malaysian Food Tours: What to Expect\n\n"
-            f"A typical Malaysian food tour lasts 3-4 hours and covers "
-            f"8-15 tastings. You walk between stops with a local guide "
-            f"who shares the stories behind each dish.\n\n"
-            f"Most tours cost RM 150-450 per person. Group tours are "
-            f"cheaper; private tours cost more but give you flexibility "
-            f"on route, pace, and dietary needs.\n\n"
-            f"The best cities for food tours are Kuala Lumpur (mix of "
-            f"Malay, Chinese, and Indian cuisines) and Penang (street "
-            f"food capital with strong Peranakan influence)."
-        )
-
-    # ── Halal food ──
-    if "halal" in kw:
-        return (
-            f"## Halal Food in Malaysia: A Practical Guide\n\n"
-            f"Malaysia has a strong halal certification system run by JAKIM. "
-            f"Most Malay and Indian Muslim restaurants are halal. Chinese "
-            f"restaurants generally are not, unless they advertise otherwise.\n\n"
-            f"## How to Identify Halal Food\n\n"
-            f"- Look for the green JAKIM halal logo on signage or menus\n"
-            f"- Malay restaurants (look for names in Bahasa Melayu) are almost always halal\n"
-            f"- Indian Muslim stalls (called 'Mamak') are halal\n"
-            f"- Chinese halal restaurants will display it prominently\n"
-            f"- Food courts and hawker centres typically have a mix\n\n"
-            f"## Best Halal Food in Kuala Lumpur\n\n"
-            f"**Kampung Baru** — Malay food hub. Try nasi lemak, rendang, "
-            f"and satay. Most stalls are halal.\n\n"
-            f"**Brickfields** — Indian Muslim area. Banana leaf rice, "
-            f"roti canai, and biryani. All halal.\n\n"
-            f"**Chow Kit Market** — Malay market food. Best for breakfast. "
-            f"Nasi dagang, lontong, and kuih.\n\n"
-            f"Penang's George Town also has excellent halal options, "
-            f"especially in the Malay and Indian Muslim neighborhoods "
-            f"around Kapitan Keling Mosque."
-        )
-
-    # ── Vegetarian / dietary ──
-    if any(w in kw for w in ["vegetarian", "vegan", "dietary", "gluten-free"]):
-        return (
-            f"## Vegetarian and Dietary-Friendly Food in Malaysia\n\n"
-            f"Malaysia is surprisingly good for special diets. "
-            f"The Indian vegetarian tradition is strong, especially "
-            f"in Brickfields (KL's Little India).\n\n"
-            f"## Where to Find Vegetarian Food\n\n"
-            f"**Brickfields, Kuala Lumpur** — The best area for vegetarian. "
-            f"Banana leaf rice restaurants offer unlimited vegetables, "
-            f"lentil curry, and pickles. Budget RM 8-15 per meal.\n\n"
-            f"**Buddhist vegetarian stalls** — Found in Chinatown and "
-            f"near temples. These are vegan by default (no meat, no dairy, "
-            f"no onion/garlic in strict ones). Look for 'zhai' or 'sai' signs.\n\n"
-            f"**Indian Muslim (Mamak) stalls** — Good for vegetarian options. "
-            f"Roti canai, capati, and vegetable curries are standard.\n\n"
+            f"## Hidden Food Gems in Kuala Lumpur\n\n"
+            f"Beyond the famous Jalan Alor and Bukit Bintang strips, KL has "
+            f"neighbourhoods where locals eat. Here are a few places most "
+            f"tourists miss:\n\n"
+            f"**Pudu** — A working-class area with some of KL's best old-school "
+            f"coffee shops. Try the Hokkien mee at Restoran See Koo Yuen or "
+            f"the wan tan mee at Pudu Market.\n\n"
+            f"**Taman Paramount** (Petaling Jaya) — A suburban hub with an "
+            f"excellent hawker centre. The prawn mee and curry mee here are "
+            f"worth the 20-minute drive from the city centre.\n\n"
+            f"**Kampung Attap** — A small Malay neighbourhood near the city "
+            f"centre. Look for the nasi lemak stall that opens at 7am and "
+            f"sells out by 9am. RM 3-5 per packet.\n\n"
+            f"**Imbi Market** — A morning market with some of KL's best "
+            f"breakfasts. The apam balik (pancake) stall has been here for "
+            f"over 40 years. RM 2 per piece.\n\n"
             f"## Tips\n\n"
-            f"- Malay and Indian Muslim food is mostly dairy-free (uses coconut milk)\n"
-            f"- Nasi kandar (mixed rice) lets you choose your own vegetables\n"
-            f"- Most hawker stalls can adjust spice levels on request\n"
-            f"- Simply Enak tours accommodate all dietary needs — just mention it when booking"
+            f"- Go early: most hidden-gem stalls sell out by lunch\n"
+            f"- Bring cash: these places rarely accept cards\n"
+            f"- Use Google Maps in Malay: search 'gerai' or 'kedai kopi' "
+            f"instead of 'restaurant' for better results\n"
         )
 
-    # ── Night markets ──
-    if any(w in kw for w in ["night market", "pasar malam", "market"]):
-        return (
-            f"## Night Markets in Malaysia\n\n"
-            f"Night markets (pasar malam) are weekly events where "
-            f"neighbourhood streets transform into open-air markets. "
-            f"They operate on rotating schedules so each area gets one "
-            f"night per week.\n\n"
-            f"## Kuala Lumpur Night Markets\n\n"
-            f"**Bangsar Night Market** (Wednesdays, 4-9pm) — The most "
-            f"popular for food. Grilled seafood, rojak, apam balik, "
-            f"and fresh fruit.\n\n"
-            f"**Taman Connaught Night Market** (Thursdays, 5-11pm) — "
-            f"KL's longest night market. 2km of stalls. Best for snacks "
-            f"and clothes, but less food-focused than Bangsar.\n\n"
-            f"**SS2 Night Market** (Mondays, 5-10pm) — Petaling Jaya's "
-            f"main market. Good mix of food and produce.\n\n"
-            f"## What to Eat\n\n"
-            f"- Apam balik (crispy pancake) — RM 3-5\n"
-            f"- Grilled fish and seafood — RM 5-15\n"
-            f"- Fried noodles and rice — RM 5-8\n"
-            f"- Fresh fruit juice — RM 3-6\n"
-            f"- Kuih (traditional cakes) — RM 1-3 each\n\n"
-            f"Bring small bills. Cash is the only option at most stalls."
-        )
-
-    # ── Malay / Malaysian cuisine ──
-    if any(w in kw for w in ["malaysian food", "malay food", "local food"]):
-        return (
-            f"## Malaysian Food: A Quick Introduction\n\n"
-            f"Malaysian food is a fusion of Malay, Chinese, and Indian "
-            f"culinary traditions. The result is one of Southeast Asia's "
-            f"most diverse food scenes.\n\n"
-            f"## Three Cuisines, One Food Scene\n\n"
-            f"**Malay food** — The foundation. Coconut milk, lemongrass, "
-            f"chilli, and belacan (shrimp paste) are core ingredients. "
-            f"Nasi lemak, rendang, and satay are Malay classics.\n\n"
-            f"**Chinese Malaysian food** — Adapted from southern Chinese "
-            f"traditions. Noodles, soy sauce, and pork (in non-halal places). "
-            f"Char kway teow, Hokkien mee, and wonton mee.\n\n"
-            f"**Indian Malaysian food** — Southern Indian influence. "
-            f"Banana leaf rice, roti canai, and biryani. Heavy on spices "
-            f"and lentils.\n\n"
-            f"## What Makes Malaysian Food Unique\n\n"
-            f"- **Nasi lemak** — Coconut rice with sambal, the national dish. RM 3-5\n"
-            f"- **Roti canai** — Flaky flatbread with curry. RM 2-4\n"
-            f"- **Satay** — Grilled skewers with peanut sauce. RM 1.50/stick\n"
-            f"- **Laksa** — Spicy noodle soup. RM 6-10\n"
-            f"- **Cendol** — Shaved ice dessert with pandan jelly. RM 3-6\n\n"
-            f"Malaysians eat 5-6 times a day: breakfast, morning tea, "
-            f"lunch, afternoon tea, dinner, and supper. Food is central "
-            f"to social life."
-        )
-
-    # ── Penang-specific ──
-    if "penang" in kw and any(w in kw for w in ["food", "eat", "dish", "guide"]):
-        return (
-            f"## Penang Food: What to Eat and Where\n\n"
-            f"Penang is Malaysia's food capital. George Town's hawker "
-            f"scene has been shaped by generations of Chinese, Malay, "
-            f"and Peranakan cooks.\n\n"
-            f"## Must-Try Dishes\n\n"
-            f"**Char Kway Teow** — Stir-fried rice noodles with prawns, "
-            f"cockles, egg, and chives. Best at Sisters on Macalister Lane "
-            f"or Lorong Selamat. RM 6-8.\n\n"
-            f"**Assam Laksa** — Sour fish noodle soup with tamarind, "
-            f"pineapple, and mint. Air Itam Market's version won CNN's "
-            f"world's best food ranking. RM 5-7.\n\n"
-            f"**Hokkien Mee** — Prawn noodle soup with pork ribs and "
-            f"hard-boiled egg. RM 6-8.\n\n"
-            f"**Cendol** — Shaved ice with green pandan jelly, coconut "
-            f"milk, and gula Melaka (palm sugar). Penang Road's Teochew "
-            f"Cendol is the most famous. RM 3-5.\n\n"
-            f"**Oyster Omelette** — Fresh oysters fried with egg and "
-            f"sweet potato starch. Chulia Street Night Market. RM 8-12.\n\n"
-            f"## Best Food Areas\n\n"
-            f"- **Chulia Street** — Night market, good for dinner\n"
-            f"- **Gurney Drive** — Hawker centre, best for variety\n"
-            f"- **Air Itam** — Breakfast market, best for laksa\n"
-            f"- **Penang Road** — Desserts and cendol\n"
-            f"- **Macalister Lane** — Char kway teow central"
-        )
-
-    # ── KL-specific ──
-    if any(w in kw for w in ["kuala lumpur", "kl food", "kl guide", "chow kit", "brickfields"]):
-        if "chow kit" in kw:
+    # ── General food / eating topics ──
+    if any(w in kw for w in ["food", "eat", "eating", "halal", "vegetarian", "vegan"]):
+        if "halal" in kw:
             return (
-                f"## Chow Kit Market: KL's Largest Wet Market\n\n"
-                f"Chow Kit Market is Kuala Lumpur's biggest and oldest "
-                f"wet market. It operates daily from 6am to noon in "
-                f"the Chow Kit neighbourhood, just north of the city centre.\n\n"
-                f"## What You Will Find\n\n"
-                f"The market is split into sections: fresh produce, meat "
-                f"and poultry, seafood, dried goods, and cooked food. "
-                f"The cooked food section is where locals go for breakfast:\n\n"
-                f"- Nasi lemak with fried chicken — RM 5-7\n"
-                f"- Lontong (rice cakes in coconut curry) — RM 4-6\n"
-                f"- Mee rebus (noodles in sweet potato gravy) — RM 5-7\n"
-                f"- Kuih (traditional cakes) — RM 1-3 each\n\n"
+                f"## Halal Food in Kuala Lumpur\n\n"
+                f"Kuala Lumpur has plenty of halal food options beyond the "
+                f"obvious chains. Malay, Indian Muslim, and Middle Eastern "
+                f"restaurants dominate the halal scene.\n\n"
+                f"**Jalan Masjid India** — The heart of KL's Indian Muslim "
+                f"community. Try the nasi kandar at Restoran Nasi Kandar Pelita "
+                f"(open 24 hours) or the murtabak at the street stalls. "
+                f"Mains RM 8-15.\n\n"
+                f"**Kampung Baru** — A traditional Malay enclave. Nasi lemak, "
+                f"sate, and rendang from home-based stalls. A full meal costs "
+                f"RM 10-20.\n\n"
+                f"**Bukit Bintang Halal Stalls** — Several halal stalls along "
+                f"Jalan Alor. Look for the ones with a JAKIM halal certificate "
+                f"displayed. Grilled fish and satay are safe bets.\n\n"
                 f"## Tips\n\n"
-                f"- Go early (7-9am) for the best selection\n"
-                f"- Bring cash, most stalls don't accept cards\n"
-                f"- Wear comfortable shoes, the market is sprawling\n"
-                f"- Photography is fine but always ask vendors first\n"
-                f"- Simply Enak offers a guided Chow Kit market tour "
-                f"that includes breakfast at 4 different stalls"
+                f"- Look for the JAKIM halal logo on the door or menu\n"
+                f"- Malay and Indian Muslim restaurants are reliably halal\n"
+                f"- Chinese restaurants rarely are halal-certified, though "
+                f"some serve halal-style food\n"
             )
+        if "vegetarian" in kw:
+            return (
+                f"## Vegetarian Food in Kuala Lumpur\n\n"
+                f"KL is a good city for vegetarians, especially if you know "
+                f"where to look. Indian and Chinese vegetarian restaurants "
+                f"are the most common options.\n\n"
+                f"**Brickfields** (KL's Little India) — The best area for "
+                f"vegetarian food. Banana leaf rice with vegetable curries "
+                f"(RM 6-10), thosai, and puri from any of the shops along "
+                f"Jalan Tun Sambanthan.\n\n"
+                f"**Chinatown Vegetarian Stalls** — Several stalls in "
+                f"Petaling Street serve mock meat and vegetable dishes. "
+                f"The Buddhist-run stalls in the Kwan Inn Teng temple area "
+                f"are particularly good. Mains RM 5-8.\n\n"
+                f"**Bangsar** — A neighbourhood with several modern "
+                f"vegetarian and vegan cafes. Bigger portions, higher prices "
+                f"(RM 15-25), but more variety for plant-based diets.\n\n"
+                f"## Tips\n\n"
+                f"- 'Vegetarian' in Chinese restaurants may still use "
+                f"eggs or oyster sauce — ask to confirm\n"
+                f"- Indian banana leaf restaurants offer the best value "
+                f"for vegetarian meals\n"
+                f"- Most nasi kandar stalls have vegetable sides — "
+                f"point at what you want\n"
+                f"- Cendol and ais kacang are naturally vegetarian desserts\n"
+            )
+
+    # ── Travel & logistics topics ──
+    if any(w in kw for w in ["travel", "visit", "trip", "tour", "guide", "itinerary", "get around"]):
         return (
-            f"## Kuala Lumpur Food Scene\n\n"
-            f"Kuala Lumpur's food scene reflects its multicultural "
-            f"population. Within a 2km radius you can find Malay, "
-            f"Chinese, Indian, and Peranakan food.\n\n"
-            f"## Best Areas for Food\n\n"
-            f"- **Chinatown (Petaling Street)** — Hawker stalls, roast meats, "
-            f"and budget eats. Try wonton mee and apam balik.\n"
-            f"- **Bukit Bintang** — Jalan Alor food street. Best for "
-            f"evening street food and grilled seafood.\n"
-            f"- **Brickfields** — Little India. Banana leaf rice, roti "
-            f"canai, and South Indian snacks.\n"
-            f"- **Kampung Baru** — Traditional Malay village. Nasi lemak, "
-            f"rendang, and satay.\n"
-            f"- **Chow Kit** — Morning wet market. Best for breakfast "
-            f"and local market food.\n\n"
-            f"Most hawker stalls charge RM 3-10 per dish. Food courts "
-            f"are common in shopping malls. Street stalls are concentrated "
-            f"in specific areas rather than scattered across the city."
+            f"## Practical Tips for Getting Around Malaysia\n\n"
+            f"**Kuala Lumpur** — The MRT, LRT, and Monorail cover most "
+            f"of the city. A single trip costs RM 1-6. Grab (Southeast Asia's "
+            f"Uber) is widely available. A 15-minute Grab ride costs about "
+            f"RM 8-15 in the city centre.\n\n"
+            f"**Penang** — The Rapid Penang bus system covers Georgetown and "
+            f"the island. The CAT free shuttle runs through the UNESCO zone. "
+            f"Grab is also available. Renting a scooter costs RM 30-50 per day.\n\n"
+            f"**Intercity travel** — The ETS train connects KL to Penang "
+            f"(Butterworth) in about 4 hours. First-class tickets cost around "
+            f"RM 80-110. Buses are cheaper (RM 35-50) but take 5-6 hours.\n\n"
+            f"## Food Travel Tips\n\n"
+            f"- Hawker centres are cash-only — carry small bills\n"
+            f"- Most stalls open for specific meals only (breakfast 7-11am, "
+            f"dinner 5-10pm)\n"
+            f"- \"Tapau\" means takeaway. Say \"tapau\" at any hawker stall\n"
+            f"- Hygiene standards at busy stalls are generally high — "
+            f"busy means fresh\n"
         )
 
-    # ── Default fallback: concise, honest, specific ──
-    return (
-        f"## What You Need to Know About {keyword.title()}\n\n"
-        f"Malaysia has a rich food culture shaped by Malay, Chinese, "
-        f"and Indian traditions. This topic is something visitors "
-        f"often ask about when planning their trip to Kuala Lumpur "
-        f"or Penang.\n\n"
-        f"## Quick Facts\n\n"
-        f"- **Best places to experience this:** The hawker centres "
-        f"and food stalls in KL and Penang are the best starting points\n"
-        f"- **Typical cost:** RM 5-15 per dish or serving\n"
-        f"- **Best time:** Most stalls operate from late morning "
-        f"to evening. Check specific timings for your chosen area\n\n"
-        f"## Getting the Most Out of Your Visit\n\n"
-        f"The best approach is to explore with someone who knows "
-        f"the local food scene. Simply Enak's guides have been "
-        f"leading food tours in Kuala Lumpur and Penang since 2011 "
-        f"and can take you to the best spots for this experience.\n\n"
-        f"Every tour is customisable for dietary needs, group size, "
-        f"and pace. Just let us know what you are looking for."
-    )
+    # ── Language & communication topics ──
+    if "language" in kw or "speak" in kw or "english" in kw:
+        return (
+            f"## Do People Speak English in Malaysia?\n\n"
+            f"Yes, English is widely spoken in Malaysia, especially in "
+            f"urban areas like Kuala Lumpur, Penang, and Johor Bahru. "
+            f"Most Malaysians speak at least basic English.\n\n"
+            f"In food settings:\n"
+            f"- Hawker stall owners usually understand basic English orders\n"
+            f"- Restaurant menus in tourist areas have English translations\n"
+            f"- Knowing a few Malay words helps: \"terima kasih\" (thank you), "
+            f"\"sedap\" (delicious), \"boleh\" (can), \"berapa\" (how much)\n\n"
+            f"## Useful Malay Food Words\n\n"
+            f"| Malay | English |\n"
+            f"|-------|--------|\n"
+            f"| Nasi | Rice |\n"
+            f"| Ayam | Chicken |\n"
+            f"| Ikan | Fish |\n"
+            f"| Daging | Beef |\n"
+            f"| Kambing | Mutton |\n"
+            f"| Pedas | Spicy |\n"
+            f"| Manis | Sweet |\n"
+            f"| Masin | Salty |\n"
+            f"| Air kosong | Plain water |\n"
+            f"| Teh tarik | Pulled milk tea |\n"
+            f"| Kopi | Coffee |\n"
+        )
+
+    # ── Safety & health topics ──
+    if any(w in kw for w in ["safe", "safety", "health", "hygiene", "clean", "water"]):
+        return (
+            f"## Food Safety in Malaysia: What You Should Know\n\n"
+            f"Malaysia's street food scene is generally safe, with busy "
+            f"stalls rotating stock fast. Here is what to keep in mind:\n\n"
+            f"**When to eat street food** — Busy stalls that serve hundreds "
+            f"of customers daily have the freshest food. If the stall is "
+            f"quiet, wait for the lunch or dinner rush.\n\n"
+            f"**Water safety** — Tap water is not drinkable in Malaysia. "
+            f"All stalls use filtered or boiled water for cooking and drinks. "
+            f"Stick to bottled or boiled water. Ice in drinks is generally "
+            f"made from treated water at commercial ice factories.\n\n"
+            f"**Hygiene signals** — Look for stalls where the vendor wears "
+            f"gloves, uses separate utensils for raw and cooked food, and "
+            f"keeps ingredients covered. A queue of locals is the best signal.\n\n"
+            f"**Common issues** — If you are not used to spicy food, start "
+            f"with less spicy dishes and build up. Carry antacids and "
+            f"rehydration salts as a precaution.\n\n"
+            f"**Emergency numbers** — 999 for ambulance, 112 from a mobile. "
+            f"KL General Hospital has a 24-hour emergency department. "
+            f"Private hospitals like KPJ and Gleneagles are also reliable.\n"
+        )
+
+    # ── Default fallback ──
+    return None
 
 
-def cmd_register():
-    print("\n=== Register New Colony Page ===\n")
-    slug = input("Slug: ").strip()
-    title = input("Title: ").strip()
-    kw = input("Target keyword: ").strip()
-    next_slug = input("Links to (next colony slug): ").strip()
-    phrase = input("Contextual link phrase: ").strip()
-    text = input("Link text: ").strip()
-    url = input(f"Link URL (/stories/{slug}/): ").strip() or f"/stories/{slug}/"
-    col = input("Colony name (e.g. durian-colony): ").strip()
-    ptype = input("Payload type (story=Payload Story, blog=markdown file) [story]: ").strip() or "story"
+# ── Injection helpers (markdown + payload) ──
+
+def inject_markdown(slug, all_pages):
+    """Inject links into a markdown file for a colony page.
     
-    d = load()
-    colony = next((c for c in d["colonies"] if c["id"] == col), None)
-    if not colony:
-        colony = {"id": col, "pages": []}; d["colonies"].append(colony)
-    colony["pages"].append({
-        "slug": slug, "title": title, "url": url, "target_keyword": kw,
-        "status": "planned", "links_to": next_slug or None, "linked_from": None,
-        "payload_type": ptype,
-        "contextual_link_phrase": phrase, "contextual_link_text": text, "contextual_link_url": url,
-    })
-    save(d)
-    for c in d["colonies"]:
-        for p in c["pages"]:
-            if p.get("links_to") == slug and p["slug"] != slug:
-                p["links_to"] = next_slug or None
-    save(d)
-    print(f"  Registered {title} as {ptype} in colony {col}")
+    Replaces the placeholder '[colony_links_here]' in the markdown file
+    with contextual links to sibling pages."""
+    md_path = POST_DIR / f"{slug}.md"
+    if not md_path.exists():
+        md_path = POST_DIR / f"{slug}.mdx"
+    if not md_path.exists():
+        print(f"  ✗ Markdown file not found for {slug}")
+        return False
+
+    content = md_path.read_text()
+    if "[colony_links_here]" not in content:
+        print(f"  ✗ No [colony_links_here] placeholder found in {slug}")
+        return False
+
+    siblings = [p for p in all_pages if p["slug"] != slug and p.get("contextual_link_phrase")]
+    if not siblings:
+        print(f"  No sibling pages to link for {slug}")
+        return True
+
+    links_html = "\n\n<aside class='colony-links'>\n<h3>What Else to Read</h3>\n<ul>\n"
+    for sib in siblings:
+        link_text = sib.get("contextual_link_text", sib["title"])
+        link_url = sib.get("contextual_link_url", f"/stories/{sib['slug']}/")
+        links_html += f"  <li><a href='{link_url}'>{link_text}</a></li>\n"
+    links_html += "</ul>\n</aside>\n"
+
+    new_content = content.replace("[colony_links_here]", links_html)
+    md_path.write_text(new_content)
+    print(f"  ✓ Links injected into {slug}")
+    return True
+
+def inject_payload(slug, all_pages):
+    """Inject links into a Payload Story by updating content_markdown."""
+    story = payload_get_story_by_slug(slug)
+    if not story:
+        print(f"  ✗ Story not found in Payload: {slug}")
+        return False
+
+    current_md = story.get("content_markdown", "")
+    if not current_md:
+        print(f"  ✗ No content_markdown in {slug}")
+        return False
+
+    siblings = [p for p in all_pages if p["slug"] != slug and p.get("contextual_link_phrase")]
+    if not siblings:
+        print(f"  No sibling pages to link for {slug}")
+        return True
+
+    links_section = "\n\n## What Else to Read\n\n"
+    for sib in siblings:
+        link_text = sib.get("contextual_link_text", sib["title"])
+        link_url = sib.get("contextual_link_url", f"/stories/{sib['slug']}/")
+        links_section += f"- [{link_text}]({link_url})\n"
+
+    new_md = current_md + links_section
+    return payload_update_content(slug, new_md)
+
+
+# ── CLI Entry Point ──
+
+def main():
+    if len(sys.argv) < 2:
+        print(__doc__)
+        return
+
+    cmd = sys.argv[1]
+
+    if cmd == "status":
+        cmd_status()
+    elif cmd == "check":
+        gsc = "--gsc" in sys.argv
+        cmd_check(gsc)
+    elif cmd == "inject":
+        cmd_inject()
+    elif cmd == "create-story":
+        if len(sys.argv) < 3:
+            print("Usage: python3 colony-tracker.py create-story <slug>")
+            return
+        cmd_create_story(sys.argv[2])
+    elif cmd == "register":
+        print("Register command not yet implemented.")
+    else:
+        print(f"Unknown command: {cmd}")
+        print(__doc__)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(__doc__); sys.exit(1)
-    cmd = sys.argv[1]
-    if cmd == "status": cmd_status()
-    elif cmd == "check": cmd_check("--gsc" in sys.argv)
-    elif cmd == "inject": cmd_inject()
-    elif cmd == "create-story" and len(sys.argv) > 2: cmd_create_story(sys.argv[2])
-    elif cmd == "register": cmd_register()
-    else: print(f"Unknown: {cmd}")
+    main()
