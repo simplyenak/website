@@ -1,0 +1,155 @@
+{
+  "generated_at": "2026-07-23T16:37:42.884312",
+  "scan_period": {
+    "start": "2026-06-25",
+    "end": "2026-07-23"
+  },
+  "total_queries_scanned": 1864,
+  "total_bofu_candidates": 9,
+  "top_candidates": [
+    {
+      "query": "food festivals near me",
+      "impressions": 312,
+      "clicks": 0,
+      "position": 1.4,
+      "ctr": 0,
+      "commercial_score": 4,
+      "matched_signals": [
+        "near me"
+      ],
+      "opportunity_score": 895117.2,
+      "landing_title": "Food Festivals Near Me: Complete Guide",
+      "landing_slug": "food-festivals-near-me-guide",
+      "recommended_tour": "KL Food Tour by Simply Enak"
+    },
+    {
+      "query": "malaysia food tours",
+      "impressions": 238,
+      "clicks": 0,
+      "position": 14.7,
+      "ctr": 0,
+      "commercial_score": 15,
+      "matched_signals": [
+        "tour",
+        "tours",
+        "food tour"
+      ],
+      "opportunity_score": 243037.8,
+      "landing_title": "Malaysia Food Tours: The Ultimate Experience Guide",
+      "landing_slug": "malaysia-food-tours-guide",
+      "recommended_tour": "KL Food Tour"
+    },
+    {
+      "query": "food tour penang george town",
+      "impressions": 54,
+      "clicks": 0,
+      "position": 5.7,
+      "ctr": 0,
+      "commercial_score": 13,
+      "matched_signals": [
+        "or",
+        "tour",
+        "food tour"
+      ],
+      "opportunity_score": 123077.9,
+      "landing_title": "Food Tour Penang George Town: The Ultimate Experience Guide",
+      "landing_slug": "food-tour-penang-george-town-guide",
+      "recommended_tour": "Penang Food Tour"
+    },
+    {
+      "query": "penang food tours",
+      "impressions": 162,
+      "clicks": 1,
+      "position": 8.0,
+      "ctr": 0.62,
+      "commercial_score": 15,
+      "matched_signals": [
+        "tour",
+        "tours",
+        "food tour"
+      ],
+      "opportunity_score": 49169.6,
+      "landing_title": "Penang Food Tours: The Ultimate Experience Guide",
+      "landing_slug": "penang-food-tours-guide",
+      "recommended_tour": "Penang Food Tour"
+    },
+    {
+      "query": "best time to eat durian",
+      "impressions": 70,
+      "clicks": 0,
+      "position": 6.4,
+      "ctr": 0,
+      "commercial_score": 4,
+      "matched_signals": [
+        "best"
+      ],
+      "opportunity_score": 43459.0,
+      "landing_title": "Best time to eat durian in Malaysia: Top Picks for 2026",
+      "landing_slug": "best-time-to-eat-durian-malaysia",
+      "recommended_tour": "KL Food Tour by Simply Enak"
+    },
+    {
+      "query": "best durian",
+      "impressions": 70,
+      "clicks": 0,
+      "position": 6.9,
+      "ctr": 0,
+      "commercial_score": 4,
+      "matched_signals": [
+        "best"
+      ],
+      "opportunity_score": 40495.9,
+      "landing_title": "Best durian in Malaysia: Top Picks for 2026",
+      "landing_slug": "best-durian-malaysia",
+      "recommended_tour": "KL Food Tour by Simply Enak"
+    },
+    {
+      "query": "food tour kuala lumpur",
+      "impressions": 157,
+      "clicks": 1,
+      "position": 14.3,
+      "ctr": 0.64,
+      "commercial_score": 10,
+      "matched_signals": [
+        "tour",
+        "food tour"
+      ],
+      "opportunity_score": 17184.2,
+      "landing_title": "Food Tour Kuala Lumpur: The Ultimate Experience Guide",
+      "landing_slug": "food-tour-kuala-lumpur-guide",
+      "recommended_tour": "Kuala Lumpur Food Tour"
+    },
+    {
+      "query": "penang food tour",
+      "impressions": 193,
+      "clicks": 3,
+      "position": 12.6,
+      "ctr": 1.55,
+      "commercial_score": 10,
+      "matched_signals": [
+        "tour",
+        "food tour"
+      ],
+      "opportunity_score": 9869.7,
+      "landing_title": "Penang Food Tour: The Ultimate Experience Guide",
+      "landing_slug": "penang-food-tour-guide",
+      "recommended_tour": "Penang Food Tour"
+    },
+    {
+      "query": "simply enak @ kangar jaya reviews",
+      "impressions": 92,
+      "clicks": 1,
+      "position": 6.9,
+      "ctr": 1.09,
+      "commercial_score": 8,
+      "matched_signals": [
+        "review",
+        "reviews"
+      ],
+      "opportunity_score": 9810.2,
+      "landing_title": "Simply Enak @ Kangar Jaya Reviews \u2013 Honest Review & Guide",
+      "landing_slug": "simply-enak-kangar-jaya-reviews-review",
+      "recommended_tour": "KL Food Tour by Simply Enak"
+    }
+  ]
+}

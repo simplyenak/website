@@ -239,7 +239,7 @@ export const locationSegments = [
  slug: 'food-tours-melaka',
  name: 'Melaka',
  description: "Discover Melaka's 600-year Peranakan food heritage - a unique blend of Malay, Chinese, and Portuguese influences.",
- metaTitle: 'Food Tours in Melaka',
+ metaTitle: 'Food Tours in Melaka | Peranakan Heritage Walk',
  tours: ['flavours-of-malaysia'],
  },
  {
