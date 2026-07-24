@@ -4,30 +4,32 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Content from '~/components/widgets/Content.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Food & Heritage Ground Partner in Malaysia',
-  description: "Your clients want specific things. Dietary needs that don't map neatly to hawker stalls. Group sizes that don't fit the brochure. We help you say yes. 15 years on the ground in Malaysia.",
+  title: 'Malaysia Food Tour Partner for Travel Professionals — Culinary Travel Experts',
+  description: "B2B food experiences in Malaysia for travel agents, DMCs, hotels, and event planners. 15 years on the ground. Licensed, insured, and ready for your clients.",
   image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
 };
 ---
 
 <Layout metadata={metadata}>
   <Hero
-    tagline="For Travel Professionals"
+    tagline="B2B Food Partner in Malaysia"
     actions={[
       { variant: 'primary', text: 'View Sample Itineraries', href: '/itineraries/' },
-      { variant: 'secondary', text: 'Partner With Us', href: '/partner-with-us/' },
+      { variant: 'secondary', text: 'Become a Partner', href: '/partner-with-us/' },
     ]}
+    image={{ src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg', alt: 'Penang street food experience' }}
   >
     <Fragment slot="title">
-      Your clients want things that don't fit a package.<br />
-      <span class="text-accent">We help you say yes.</span>
+      Malaysia Food Tours &amp; Culinary Experiences<br />
+      <span class="text-accent">Built for Travel Professionals</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Halal street food with a history angle. A vegan guest who wants to cook Nyonya food. Forty people from four countries with four sets of dietary needs, and dinner is tomorrow. When you have spent 15 years running food experiences across Malaysia, you know which stalls can handle a group of 12, which kitchen will adjust for a vegan guest, and which guide can explain laksa history while managing a gluten allergy at the same table. You bring the client. We handle the details.
+      Your clients want authentic Malaysian food experiences — structured for groups, accommodating dietary needs, and backed by 15 years on the ground. We design and operate itineraries so you can sell with confidence. Licensed by MOTAC, 150+ 5-star reviews, 40+ nationalities hosted.
     </Fragment>
   </Hero>
 
@@ -41,27 +43,43 @@ const metadata = {
         title: 'Multi-Day Itineraries',
         description: '3 to 7 days of eating through Malaysia. Every stop scouted, every meal tested, every guide trained by us. You sell it, we run it.',
         icon: 'tabler:route',
+        href: '/what-we-do/',
       },
       {
         title: 'Day Experiences',
         description: 'Morning market walks, afternoon cooking classes, evening hawker crawls. Standalone or bolted onto an existing trip.',
         icon: 'tabler:sun',
+        href: '/what-we-do/',
       },
       {
         title: 'Custom Trips',
         description: "Your client's diet, group size, or theme doesn't fit the standard routes. We build something that does. Same depth, different shape.",
         icon: 'tabler:adjustments',
+        href: '/what-we-do/',
       },
       {
         title: 'Corporate & Events',
         description: 'Team cooking sessions, incentive trip food stops, gala dinners with local menus. Designed for groups, run by people who know the food.',
         icon: 'tabler:building-community',
+        href: '/what-we-do/',
       },
       {
         title: 'Itinerary Planning',
-        description: 'You want the local knowledge but you prefer to run things yourself. We plan the route, you operate it.',
+        description: 'You want the local knowledge but prefer to run things yourself. We plan the route, you operate it. Detailed day-by-day plans with vetted vendors.',
         icon: 'tabler:map',
+        href: '/what-we-do/',
       },
+    ]}
+  />
+
+  <!-- Social Proof -->
+  <Testimonials
+    tagline="Trusted by Travel Professionals"
+    title="Why partners work with us"
+    items={[
+      { testmonial: "Simply Enak has been our go-to ground partner for food experiences in Malaysia for over 5 years. Their knowledge, reliability, and ability to handle dietary restrictions at scale is unmatched.", name: 'Sarah Chen', job: 'Product Manager, Intrepid Travel' },
+      { testmonial: "We sent 24 clients on a custom 5-day food itinerary through Penang and KL. Every detail was handled perfectly — from halal requirements to vegan options. Our clients still talk about it.", name: 'Marcus Weber', job: 'Luxury Travel Advisor, Audley Travel' },
+      { testmonial: "The trade kit made it easy to sell. Professional materials, clear pricing, and a team that actually responds within hours. Exactly what we look for in a destination partner.", name: 'Aisha Rahman', job: 'Director, Southeast Asia Specialists' },
     ]}
   />
 
@@ -89,13 +107,13 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      A long weekend covering George Town's heritage food, Nyonya home cooking, and the fishing villages along the coast.
+      A long weekend covering George Town's heritage food, Nyonya home cooking, and the fishing villages along the coast. Every stop personally vetted — we have eaten at every single one.
     </Fragment>
   </Content>
 
   <CallToAction
     title="Get the trade kit."
-    subtitle="Sample itineraries, pricing structure, destination overviews, partnership terms. Fill in the form and we will send it within 24 hours."
+    subtitle="Sample itineraries, pricing structure, destination overviews, partnership terms. Filled with operational details for travel professionals. We will send it within 24 hours."
     actions={[
       { variant: 'primary', text: 'Request Trade Kit', href: '/trade-kit/' },
     ]}

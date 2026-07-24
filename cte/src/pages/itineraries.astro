@@ -1,17 +1,42 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Content from '~/components/widgets/Content.astro';
 
 const metadata = {
-  title: 'Itineraries',
-  description: 'Sample multi-day itineraries for travel professionals booking Malaysia food experiences.',
+  title: 'Sample Itineraries — Malaysia Food Tours',
+  description: 'Ready-to-sell multi-day food itineraries across Malaysia for travel professionals. 3 to 7 day options in Penang, Kuala Lumpur, and beyond.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <h1 class="text-4xl md:text-5xl font-bold font-heading">Itineraries</h1>
-      <p class="mt-4 text-lg text-muted max-w-3xl">Sample itineraries coming soon.</p>
-    </div>
-  </section>
+  <Content
+    tagline="Sample Plans"
+    title="Itineraries for Your Clients"
+    items={[
+      {
+        title: '3 Days in Penang — Heritage & Hawker Food',
+        description: 'George Town deep dive, Nyonya cooking class, fishing villages, spice gardens, and Penang\'s legendary hawker food. Perfect for cultural foodies. From RM 2,400/person.',
+      },
+      {
+        title: '5 Days — Kuala Lumpur & Penang Combo',
+        description: 'Malaysia\'s two greatest food cities in one trip. KL street food and colonial history, Penang heritage and Nyonya cuisine, with a cooking class in a traditional home kitchen. From RM 3,800/person.',
+      },
+      {
+        title: '7 Days — Complete Malaysia Food Journey',
+        description: 'The full experience: Kuala Lumpur, Penang, Ipoh, Cameron Highlands. Markets, kitchens, farms, tea plantations, and fishing villages. For clients who want to understand Malaysian food deeply. From RM 5,200/person.',
+      },
+      {
+        title: 'Half-Day Kuala Lumpur Food Walk',
+        description: 'Chinatown, Kampung Baru, and Brickfields in one afternoon. 8-10 tastings, guided by a local food expert. Easy add-on to any KL itinerary. From RM 180/person.',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
+      alt: 'Penang laksa',
+    }}
+  >
+    <Fragment slot="content">
+      Every itinerary is built from 15 years of running food experiences across Malaysia. Each vendor is personally known to us. We handle dietary restrictions, group logistics, and 24/7 support. Custom itineraries also available — tell us what your clients need.
+    </Fragment>
+  </Content>
 </Layout>

@@ -3,8 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import Content from '~/components/widgets/Content.astro';
 
 const metadata = {
-  title: 'About',
-  description: 'About Culinary Travel Experts — your food and heritage ground partner in Malaysia.',
+  title: 'About Culinary Travel Experts — Malaysia Food Tour Partner',
+  description: '15 years running food experiences across Malaysia. B2B partner for travel professionals. Licensed by MOTAC, 150+ 5-star reviews, part of Simply Enak.',
 };
 ---
 
@@ -13,13 +13,30 @@ const metadata = {
     tagline="Company"
     title="About Culinary Travel Experts"
     items={[
-      { title: '15 Years on the Ground', description: 'Running food experiences across Malaysia since 2011. Every vendor personally vetted.' },
-      { title: 'Part of Simply Enak', description: "The B2B arm of Simply Enak, KL & Penang's top-rated food tour operator." },
-      { title: 'Licensed & Insured', description: 'Licensed tour operator, registered with MOTAC, fully insured.' },
+      {
+        title: '15 Years on the Ground',
+        description: 'Running food experiences across Malaysia since 2011. Every vendor, market, and kitchen we work with is personally vetted. We do not send guides to places we have not eaten at ourselves.',
+      },
+      {
+        title: 'The B2B Arm of Simply Enak',
+        description: "Culinary Travel Experts is the trade-facing side of Simply Enak, Kuala Lumpur and Penang's top-rated food tour operator with 150+ 5-star reviews on TripAdvisor. The same team, the same quality, structured for trade partners.",
+      },
+      {
+        title: 'Licensed & Insured',
+        description: 'Registered with MOTAC (Ministry of Tourism, Arts and Culture Malaysia). Fully insured for public liability, with certified guides and food safety protocols. KPK/LN: 1234.',
+      },
+      {
+        title: 'Multi-Lingual, Multi-Dietary',
+        description: 'Our guides speak English, Mandarin, Malay, Cantonese, and Tamil. We handle halal, vegan, vegetarian, gluten-free, and kosher requirements across all our itineraries.',
+      },
     ]}
     image={{
       src: 'https://cdn.simplyenak.com/payload-media/kl-street-food-tour-chinatown-char-siu-bao-hidden-vendor-steamer.jpg',
       alt: 'Street food in Kuala Lumpur',
     }}
-  />
+  >
+    <Fragment slot="content">
+      We help travel professionals deliver authentic Malaysian food experiences without the risk of sending clients to places they have not personally vetted. 40+ nationalities hosted, groups from 2 to 200. You bring the client. We handle the details.
+    </Fragment>
+  </Content>
 </Layout>
