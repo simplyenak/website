@@ -7,15 +7,15 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Malaysia Food Culture & Heritage Tours for Travel Professionals',
-  description: "B2B food experiences in Malaysia for travel agents, DMCs, hotels, and event planners. Local communities, traditional foodways, sustainable practices. Licensed by MOTAC.",
+  title: 'Curating the Best of Malaysian Food for Travel Professionals',
+  description: "We curate Malaysia's best food experiences for travel professionals and their clients. Market mornings, family kitchens, heritage hawker stalls. Licensed by MOTAC.",
   image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
 };
 ---
 
 <Layout metadata={metadata}>
   <Hero
-    tagline="Food Culture & Heritage Experts in Malaysia"
+    tagline="We curate the best of Malaysian food for your guests"
     actions={[
       { variant: 'primary', text: 'View Sample Itineraries', href: '/itineraries/' },
       { variant: 'secondary', text: 'Become a Partner', href: '/partner-with-us/' },
@@ -23,12 +23,12 @@ const metadata = {
     image={{ src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg', alt: 'Penang street food' }}
   >
     <Fragment slot="title">
-      Malaysian Food Culture &amp; Heritage<br />
-      <span class="text-accent">For Travel Professionals</span>
+      The best of Malaysian food,<br />
+      <span class="text-accent">curated for your clients</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Your clients want real Malaysian food experiences — shaped by local communities, traditional cooking methods, and the stories behind each dish. We design and operate itineraries that connect travelers with the people who grow, cook, and serve Malaysia's food heritage.
+      Your clients want exceptional Malaysian food experiences. We find them, build them, and run them — market mornings with the farmers who supply them, home kitchens where recipes have been passed down for generations, hawker stalls that have defined neighbourhoods for decades. You bring the clients. We handle the rest.
     </Fragment>
   </Hero>
 
