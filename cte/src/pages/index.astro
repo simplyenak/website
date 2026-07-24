@@ -7,15 +7,15 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Curating the Best of Malaysian Food for Travel Professionals',
-  description: "We curate Malaysia's best food experiences for travel professionals and their clients. Market mornings, family kitchens, heritage hawker stalls. Licensed by MOTAC.",
+  title: 'Curating the Best of Malaysian Culinary Heritage for Travel Professionals',
+  description: "We curate Malaysia's best culinary, heritage and culture experiences for travel professionals and their clients. Market mornings, family kitchens, heritage hawker stalls. Licensed by MOTAC.",
   image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
 };
 ---
 
 <Layout metadata={metadata}>
   <Hero
-    tagline="We curate the best of Malaysian food for your guests"
+    tagline="We curate the best of Malaysian culinary heritage for your guests"
     actions={[
       { variant: 'primary', text: 'View Sample Itineraries', href: '/itineraries/' },
       { variant: 'secondary', text: 'Become a Partner', href: '/partner-with-us/' },
@@ -23,12 +23,12 @@ const metadata = {
     image={{ src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg', alt: 'Penang street food' }}
   >
     <Fragment slot="title">
-      The best of Malaysian food,<br />
+      The best of Malaysian culinary heritage and culture,<br />
       <span class="text-accent">curated for your clients</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Your clients want exceptional Malaysian food experiences. We find them, build them, and run them — market mornings with the farmers who supply them, home kitchens where recipes have been passed down for generations, hawker stalls that have defined neighbourhoods for decades. You bring the clients. We handle the rest.
+      Your clients want exceptional Malaysian experiences — culinary, heritage and culture. We find them, build them, and run them — market mornings with the farmers who supply them, home kitchens where recipes have been passed down for generations, heritage walks through neighbourhoods shaped by centuries of trade and migration. You bring the clients. We handle the rest.
     </Fragment>
   </Hero>
 
