@@ -13,7 +13,7 @@
     "build:okf": "python3 scripts/generate-okf-bundle.py",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/split-sitemap.mjs || true",
     "preview": "astro preview",
     "astro": "astro",
     "sync": "node --env-file=.env scripts/sync-payload.mjs",
