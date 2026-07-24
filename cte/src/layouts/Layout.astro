@@ -1,0 +1,142 @@
+---
+import '~/styles/global.css';
+
+import { I18N } from 'astrowind:config';
+
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import Analytics from '~/components/common/Analytics.astro';
+import CookieBanner from '~/components/common/CookieBanner.astro';
+import BasicScripts from '~/components/common/BasicScripts.astro';
+
+const { title, description, image, imageAlt, noindex } = Astro.props;
+const { language, textDirection } = I18N;
+const SITE = 'Culinary Travel Experts';
+
+const fullTitle = title ? `${title} — ${SITE}` : SITE;
+const fullDescription = description || 'Food and heritage ground partner in Malaysia for travel professionals. 15 years on the ground, structured for trade partners.';
+const metaImage = image || 'https://cdn.simplyenak.com/cte-default-og-image.webp';
+const currentPath = Astro.url.pathname;
+const canonicalURL = `https://culinarytravelexperts.com${currentPath}`;
+---
+
+<!doctype html>
+<html lang={language} dir={textDirection}>
+  <head>
+    <CommonMeta />
+    <ApplyColorMode />
+    <Metadata title={fullTitle} description={fullDescription} image={metaImage} canonicalURL={canonicalURL} />
+    <SiteVerification />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <!-- Performance: Preconnect to critical origins -->
+    <link rel="preconnect" href="https://cdn.simplyenak.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+
+    <Analytics />
+  </head>
+
+  <body class="antialiased font-sans text-brand-900 bg-warm-50 tracking-tight min-h-screen flex flex-col">
+    <!-- Skip to main content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-white focus:text-brand-700 focus:font-bold focus:rounded focus:shadow-lg focus:outline focus:outline-2 focus:outline-brand-700">
+      Skip to main content
+    </a>
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur border-b border-brand-100 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 no-underline">
+          <span class="font-serif text-lg sm:text-xl font-semibold text-brand-800">
+            Culinary <span class="text-accent">Travel</span> Experts
+          </span>
+        </a>
+        <button id="nav-toggle" class="md:hidden p-2 cursor-pointer" aria-label="Toggle navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div id="nav-links" class="hidden md:flex items-center gap-6">
+          <a href="/what-we-do/" class="text-sm font-medium text-brand-700 hover:text-accent transition-colors no-underline">What We Do</a>
+          <a href="/itineraries/" class="text-sm font-medium text-brand-700 hover:text-accent transition-colors no-underline">Itineraries</a>
+          <a href="/partner-with-us/" class="text-sm font-medium text-brand-700 hover:text-accent transition-colors no-underline">Partner With Us</a>
+          <a href="/destinations/" class="text-sm font-medium text-brand-700 hover:text-accent transition-colors no-underline">Destinations</a>
+          <a href="/about/" class="text-sm font-medium text-brand-700 hover:text-accent transition-colors no-underline">About</a>
+          <a href="/trade-kit/" class="text-sm font-medium text-brand-700 hover:text-accent transition-colors no-underline">Trade Kit</a>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="nav-mobile" class="hidden md:hidden border-t border-brand-100 bg-white/95 backdrop-blur">
+        <div class="px-4 py-3 space-y-2">
+          <a href="/what-we-do/" class="block py-2 text-sm font-medium text-brand-700 no-underline">What We Do</a>
+          <a href="/itineraries/" class="block py-2 text-sm font-medium text-brand-700 no-underline">Itineraries</a>
+          <a href="/partner-with-us/" class="block py-2 text-sm font-medium text-brand-700 no-underline">Partner With Us</a>
+          <a href="/destinations/" class="block py-2 text-sm font-medium text-brand-700 no-underline">Destinations</a>
+          <a href="/about/" class="block py-2 text-sm font-medium text-brand-700 no-underline">About</a>
+          <a href="/trade-kit/" class="block py-2 text-sm font-medium text-brand-700 no-underline">Trade Kit</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-800 text-white/80 mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <p class="font-serif text-lg text-white">
+              Culinary <span class="text-accent">Travel</span> Experts
+            </p>
+            <p class="mt-2 text-sm text-white/60">
+              Food and heritage ground partner in Malaysia. The trade-facing side of Simply Enak's 15 years of local knowledge.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-3">Pages</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/what-we-do/" class="hover:text-accent transition-colors no-underline">What We Do</a></li>
+              <li><a href="/itineraries/" class="hover:text-accent transition-colors no-underline">Itineraries</a></li>
+              <li><a href="/partner-with-us/" class="hover:text-accent transition-colors no-underline">Partner With Us</a></li>
+              <li><a href="/destinations/" class="hover:text-accent transition-colors no-underline">Destinations</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-3">Company</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/about/" class="hover:text-accent transition-colors no-underline">About</a></li>
+              <li><a href="/contact/" class="hover:text-accent transition-colors no-underline">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-white/10 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/50">
+          <span>&copy; {new Date().getFullYear()} Local Culinary Travel Experiences Sdn. Bhd.</span>
+          <span>Part of <a href="https://simplyenak.com" class="text-accent hover:underline no-underline">Simply Enak</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <CookieBanner />
+    <BasicScripts />
+
+    <!-- Mobile nav toggle + Cookie consent logic -->
+    <script>
+      const navToggle = document.getElementById('nav-toggle');
+      const navMobile = document.getElementById('nav-mobile');
+      if (navToggle && navMobile) {
+        navToggle.addEventListener('click', () => {
+          const isOpen = !navMobile.classList.contains('hidden');
+          navMobile.classList.toggle('hidden');
+          navToggle.setAttribute('aria-expanded', String(!isOpen));
+        });
+      }
+    </script>
+  </body>
+</html>

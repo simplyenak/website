@@ -1,0 +1,40 @@
+---
+import { ANALYTICS } from 'astrowind:config';
+
+const gaId = ANALYTICS?.vendors?.googleAnalytics?.id || 'G-KL53TYM1YR';
+---
+
+<!-- GA4 with Consent Mode v2 -->
+<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500,
+    url_passthrough: true,
+  });
+
+  try {
+    if (localStorage.getItem('se_cte_cookie_consent') === 'accepted') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted',
+      });
+      window._ga4Consented = true;
+    }
+  } catch (e) {}
+
+  gtag('js', new Date());
+  gtag('config', '${gaId}', {
+    send_page_view: true,
+    anonymize_ip: true,
+  });
+</script>

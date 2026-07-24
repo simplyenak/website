@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'cte-site/**'
+      - 'cte/**'
       - '.github/workflows/deploy-cte.yml'
 
 concurrency:
@@ -30,14 +30,14 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: cte-site/package-lock.json
+          cache-dependency-path: cte/package-lock.json
 
       - name: Install dependencies
-        working-directory: cte-site
+        working-directory: cte
         run: npm ci
 
       - name: Build site
-        working-directory: cte-site
+        working-directory: cte
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
@@ -46,7 +46,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: culinary-travel-experts
-          directory: cte-site/dist
+          directory: cte/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
           clean: true

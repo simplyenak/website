@@ -1,0 +1,44 @@
+site:
+  name: Culinary Travel Experts
+  site: 'https://culinarytravelexperts.com'
+  base: '/'
+  trailingSlash: false
+
+  googleSiteVerificationId: ''
+  bingSiteVerificationId: 'A88276EA5E41B5AD53A2F1D787A395E5'
+
+metadata:
+  title:
+    default: Culinary Travel Experts
+    template: '%s — Culinary Travel Experts'
+  description: "Food and heritage ground partner in Malaysia for travel professionals. 15 years on the ground, structured for trade partners."
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: Culinary Travel Experts
+    images:
+      - url: 'https://cdn.simplyenak.com/cte-default-og-image.webp'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: '@culinarytravelexperts'
+    site: '@culinarytravelexperts'
+    cardType: summary_large_image
+
+i18n:
+  language: en
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: false
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: G-KL53TYM1YR
+
+ui:
+  theme: 'light'

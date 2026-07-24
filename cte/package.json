@@ -1,0 +1,34 @@
+{
+  "name": "cte-astrowind",
+  "version": "1.0.0",
+  "description": "Culinary Travel Experts — AstroWind",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^6.4.2",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/mdx": "^6.0.1",
+    "tailwindcss": "4.3.0",
+    "@tailwindcss/vite": "4.3.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "astro-compress": "^2.4.1",
+    "astro-icon": "^1.1.5",
+    "lodash.merge": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/lodash.merge": "^4.6.9",
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^5.7.0"
+  }
+}

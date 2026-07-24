@@ -1,0 +1,12 @@
+---
+// Simplified Image component for CTE
+export interface Props {
+  src: string;
+  alt?: string;
+  class?: string;
+}
+
+const { src, alt, class: className } = Astro.props;
+---
+
+{src && <img src={src} alt={alt || ''} class={className || ''} loading="lazy" />}

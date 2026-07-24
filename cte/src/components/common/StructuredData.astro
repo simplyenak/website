@@ -1,0 +1,141 @@
+---
+// Structured Data (JSON-LD) — injected on every page for rich search results.
+// Provides LocalBusiness (TravelAgency), Organization, Person, and WebSite schemas.
+// Per-page schemas (FAQ, Product, TouristTrip) can be passed via the `items` prop.
+
+export interface Props {
+  items?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { items } = Astro.props;
+
+// Load reviews snapshot for aggregate rating count
+const reviews = (await import('~/data/content/reviews.json')).default as any[];
+
+const BASE_URL = 'https://simplyenak.com';
+
+const sameAs = [
+  'https://www.facebook.com/SimplyEnak',
+  'https://www.instagram.com/simply.enak/',
+  'https://www.youtube.com/channel/UCgRvAZ86vyYwkk6-bvnDRCg',
+  'https://www.tripadvisor.com/Attraction_Review-g298570-d2414763-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html',
+  'https://www.linkedin.com/company/simply-enak/',
+  'https://www.getyourguide.com/simply-enak-food-experiences-s4050/',
+  'https://www.viator.com/tours/Penang-Island/Eat-Drink-Georgetown/d50882-17908P1',
+];
+
+const baseSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'TravelAgency'],
+      '@id': `${BASE_URL}/#localbusiness`,
+      name: 'Simply Enak',
+      url: BASE_URL,
+      logo: `${BASE_URL}/logo.png`,
+      image: 'https://cdn.simplyenak.com/simply_enak_logo_5e7725db1d.webp',
+      description:
+        'Simply Enak offers authentic Malaysian food tours in Kuala Lumpur and Penang. Small-group walking tours through neighbourhoods where locals actually eat.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Kuala Lumpur City Centre',
+        addressLocality: 'Kuala Lumpur',
+        addressCountry: 'MY',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: '3.1570',
+        longitude: '101.7123',
+      },
+      telephone: '+60 17-287 8929',
+      email: 'booking@simplyenak.com',
+      priceRange: 'RM 285–359',
+      foundingDate: '2011',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '5.0',
+        reviewCount: reviews.length,
+        bestRating: '5',
+        worstRating: '1',
+      },
+      areaServed: ['Kuala Lumpur', 'Penang', 'Melaka', 'Malaysia'],
+      knowsLanguage: ['English', 'Malay', 'Mandarin', 'Cantonese'],
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '09:00',
+          closes: '20:00',
+        },
+      ],
+      sameAs,
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${BASE_URL}/#organization`,
+      name: 'Simply Enak',
+      url: BASE_URL,
+      logo: `${BASE_URL}/logo.png`,
+      description:
+        'Simply Enak offers authentic Malaysian food tours in Kuala Lumpur and Penang. Small-group walking tours through neighbourhoods where locals actually eat.',
+      foundingDate: '2011',
+      founder: [
+        { '@id': `${BASE_URL}/#pauline` },
+        { '@id': `${BASE_URL}/#maarten` },
+      ],
+      sameAs,
+    },
+    {
+      '@type': 'Person',
+      '@id': `${BASE_URL}/#pauline`,
+      name: 'Pauline',
+      jobTitle: 'Founder & Lead Guide',
+      url: `${BASE_URL}/about/`,
+      description:
+        'Co-founder of Simply Enak. Local food guide and storyteller sharing Malaysia\'s food heritage since 2011.',
+      worksFor: { '@id': `${BASE_URL}/#organization` },
+      sameAs: ['https://www.linkedin.com/in/pauline-simplyenak/'],
+    },
+    {
+      '@type': 'Person',
+      '@id': `${BASE_URL}/#maarten`,
+      name: 'Maarten Belmans',
+      jobTitle: 'Partner',
+      url: `${BASE_URL}/about/`,
+      description:
+        'Co-founder of Simply Enak. Has been running food tours in Malaysia since 2011.',
+      worksFor: { '@id': `${BASE_URL}/#organization` },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${BASE_URL}/#website`,
+      url: BASE_URL,
+      name: 'Simply Enak Food Tours',
+      description:
+        'Malaysian food tours in Kuala Lumpur and Penang with local guides. Small-group walking tours through family-run stalls and neighbourhood markets.',
+      publisher: { '@id': `${BASE_URL}/#organization` },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${BASE_URL}/tours/?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ],
+};
+
+// Merge per-page items if provided
+const extraItems = items
+  ? Array.isArray(items)
+    ? items
+    : [items]
+  : [];
+
+const finalData = extraItems.length > 0
+  ? { ...baseSchema, '@graph': [...baseSchema['@graph'], ...extraItems] }
+  : baseSchema;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(finalData)} />
