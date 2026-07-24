@@ -1,4 +1,10 @@
-@theme {
+/* CTE Site Styles
+   TailwindCSS 4 @theme directive isn't processed by @tailwindcss/vite
+   due to a rolldown/vite compatibility issue. Variables are defined
+   directly as CSS custom properties instead.
+*/
+
+:root {
   --color-brand-50: #f8f5f0;
   --color-brand-100: #f0e8db;
   --color-brand-200: #e0d0b8;
