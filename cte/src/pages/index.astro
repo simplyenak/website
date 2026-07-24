@@ -7,66 +7,61 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Malaysia Food Tour Partner for Travel Professionals — Culinary Travel Experts',
-  description: "B2B food experiences in Malaysia for travel agents, DMCs, hotels, and event planners. Licensed by MOTAC. Part of Simply Enak.",
+  title: 'Malaysia Food Culture & Heritage Tours for Travel Professionals',
+  description: "B2B food experiences in Malaysia for travel agents, DMCs, hotels, and event planners. Local communities, traditional foodways, sustainable practices. Licensed by MOTAC.",
   image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
 };
 ---
 
 <Layout metadata={metadata}>
   <Hero
-    tagline="B2B Food Partner in Malaysia"
+    tagline="Food Culture & Heritage Experts in Malaysia"
     actions={[
       { variant: 'primary', text: 'View Sample Itineraries', href: '/itineraries/' },
       { variant: 'secondary', text: 'Become a Partner', href: '/partner-with-us/' },
     ]}
-    image={{ src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg', alt: 'Penang street food experience' }}
+    image={{ src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg', alt: 'Penang street food' }}
   >
     <Fragment slot="title">
-      Malaysia Food Tours &amp; Culinary Experiences<br />
-      <span class="text-accent">Built for Travel Professionals</span>
+      Malaysian Food Culture &amp; Heritage<br />
+      <span class="text-accent">For Travel Professionals</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Your clients want authentic Malaysian food experiences — structured for groups and accommodating dietary needs. We design and operate itineraries so you can sell with confidence. Licensed by MOTAC, TripAdvisor 5-star rated.
+      Your clients want real Malaysian food experiences — shaped by local communities, traditional cooking methods, and the stories behind each dish. We design and operate itineraries that connect travelers with the people who grow, cook, and serve Malaysia's food heritage.
     </Fragment>
   </Hero>
 
   <Features
     id="services"
     tagline="What We Handle"
-    title="Whatever your client needs, we can probably build it."
+    title="Food experiences built around culture, community, and craft"
     columns="3"
     items={[
       {
         title: 'Multi-Day Itineraries',
-        description: '3 to 7 days of eating through Malaysia. Every stop scouted, every meal tested, every guide trained by us. You sell it, we run it.',
+        description: '3 to 7 days exploring Malaysia through its food culture. Market visits, home cooking sessions, heritage eateries, and producers who have been feeding their communities for generations.',
         icon: 'tabler:route',
-        href: '/what-we-do/',
       },
       {
         title: 'Day Experiences',
-        description: 'Morning market walks, afternoon cooking classes, evening hawker crawls. Standalone or bolted onto an existing trip.',
+        description: 'Morning market walks, afternoon cooking classes with home cooks, evening hawker crawls through neighborhoods that have fed Kuala Lumpur for decades.',
         icon: 'tabler:sun',
-        href: '/what-we-do/',
       },
       {
-        title: 'Custom Trips',
-        description: "Your client's diet, group size, or theme doesn't fit the standard routes. We build something that does. Same depth, different shape.",
-        icon: 'tabler:adjustments',
-        href: '/what-we-do/',
+        title: 'Custom & Sustainable Trips',
+        description: "Dietary needs, special interests, or a focus on sustainable food systems. We build itineraries that support local economies and preserve traditional food knowledge.",
+        icon: 'tabler:leaf',
       },
       {
         title: 'Corporate & Events',
-        description: 'Team cooking sessions, incentive trip food stops, gala dinners with local menus. Designed for groups, run by people who know the food.',
+        description: 'Team cooking with local ingredients, incentive trips that support village communities, gala dinners featuring heritage recipes from Malaysia's diverse cultures.',
         icon: 'tabler:building-community',
-        href: '/what-we-do/',
       },
       {
         title: 'Itinerary Planning',
-        description: 'You want the local knowledge but prefer to run things yourself. We plan the route, you operate it. Detailed day-by-day plans with vetted vendors.',
+        description: 'You want the local knowledge but prefer to operate it yourself. We plan the route with vetted vendors who practice sustainable and traditional food preparation methods.',
         icon: 'tabler:map',
-        href: '/what-we-do/',
       },
     ]}
   />
@@ -77,16 +72,16 @@ const metadata = {
     title="3 Days in Penang"
     items={[
       {
-        title: 'Day 1 — George Town Deep Dive',
-        description: 'Pulau Tikus morning market, Transfer Road roti canai, Little India lunch, Nyonya home restaurant dinner, hawker centre crawl by night.',
+        title: 'Day 1 — George Town Heritage Food',
+        description: 'Pulau Tikus morning market with local producers, Transfer Road roti canai made the same way for 60 years, Nyonya home restaurant featuring family recipes passed down through generations.',
       },
       {
-        title: 'Day 2 — Markets & Nyonya Kitchen',
-        description: 'Balat morning market, Nyonya cooking class in a home kitchen, afternoon tea at a heritage mansion, sunset at a fishing village.',
+        title: 'Day 2 — Markets, Kitchens & Communities',
+        description: 'Balat morning market where farmers sell direct, Nyonya cooking class in a family kitchen, sunset at a fishing village that still uses traditional methods.',
       },
       {
-        title: 'Day 3 — Fishing Village & Spice Road',
-        description: 'Fishing village breakfast with grilled fish and kerabu, durian farm visit, kampung cooking session, tropical spice garden walk.',
+        title: 'Day 3 — Fishermen, Farmers & Spice',
+        description: 'Fishing village breakfast with the day's catch, family-owned durian farm visit, kampung cooking session using garden-grown ingredients, tropical spice garden walk.',
       },
     ]}
     image={{
@@ -95,13 +90,13 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      A long weekend covering George Town's heritage food, Nyonya home cooking, and the fishing villages along the coast. Every stop personally vetted — we have eaten at every single one.
+      Every itinerary connects travelers to the people behind the food. Family recipes, traditional techniques, local producers. We have been eating at these places for years.
     </Fragment>
   </Content>
 
   <CallToAction
     title="Get the trade kit."
-    subtitle="Sample itineraries, pricing structure, destination overviews, partnership terms. Filled with operational details for travel professionals. We will send it within 24 hours."
+    subtitle="Sample itineraries, pricing, destination overviews, and partnership terms. Designed for travel professionals who value authentic food culture and responsible travel."
     actions={[
       { variant: 'primary', text: 'Request Trade Kit', href: '/trade-kit/' },
     ]}
