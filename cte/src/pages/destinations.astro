@@ -1,13 +1,17 @@
 ---
-import Layout from '~/layouts/Layout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Destinations',
+  description: 'Malaysia destinations we operate in — Kuala Lumpur, Penang, Ipoh, and beyond.',
+};
 ---
 
-<Layout title="Destinations" description="Malaysia destinations we operate in — Kuala Lumpur, Penang, Ipoh, and beyond.">
+<Layout metadata={metadata}>
   <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="inline-block text-accent text-sm font-semibold tracking-wide uppercase mb-2">Places</span>
-      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-900">Destinations</h1>
-      <p class="mt-4 text-lg text-brand-700 max-w-3xl">Coming soon — destination guides.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h1 class="text-4xl md:text-5xl font-bold font-heading">Destinations</h1>
+      <p class="mt-4 text-lg text-muted max-w-3xl">Destination guides coming soon.</p>
     </div>
   </section>
 </Layout>

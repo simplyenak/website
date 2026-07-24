@@ -1,40 +1,21 @@
 ---
 import { ANALYTICS } from 'astrowind:config';
 
-const gaId = ANALYTICS?.vendors?.googleAnalytics?.id || 'G-KL53TYM1YR';
+const id = ANALYTICS?.vendors?.googleAnalytics?.id ? String(ANALYTICS.vendors.googleAnalytics.id) : '';
+const partytown = !!ANALYTICS?.vendors?.googleAnalytics?.partytown;
+const scriptType = partytown ? 'text/partytown' : undefined;
 ---
 
-<!-- GA4 with Consent Mode v2 -->
-<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  window.gtag = gtag;
+{id && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} type={scriptType} />}
 
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-    wait_for_update: 500,
-    url_passthrough: true,
-  });
-
-  try {
-    if (localStorage.getItem('se_cte_cookie_consent') === 'accepted') {
-      gtag('consent', 'update', {
-        ad_storage: 'granted',
-        ad_user_data: 'granted',
-        ad_personalization: 'granted',
-        analytics_storage: 'granted',
-      });
-      window._ga4Consented = true;
-    }
-  } catch (e) {}
-
-  gtag('js', new Date());
-  gtag('config', '${gaId}', {
-    send_page_view: true,
-    anonymize_ip: true,
-  });
+<script is:inline id="ga-init" data-id={id} type={id ? scriptType : undefined}>
+  if (document.getElementById('ga-init').dataset.id) {
+    var d = document.getElementById('ga-init').dataset.id;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      dataLayer.push(arguments);
+    };
+    window.gtag('js', new Date());
+    window.gtag('config', d);
+  }
 </script>

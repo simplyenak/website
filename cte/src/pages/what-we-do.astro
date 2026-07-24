@@ -1,13 +1,17 @@
 ---
-import Layout from '~/layouts/Layout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'What We Do',
+  description: 'Food and heritage ground partner services in Malaysia for travel professionals.',
+};
 ---
 
-<Layout title="What We Do" description="Food and heritage ground partner services in Malaysia for travel professionals.">
+<Layout metadata={metadata}>
   <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="inline-block text-accent text-sm font-semibold tracking-wide uppercase mb-2">Services</span>
-      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-900">What We Do</h1>
-      <p class="mt-4 text-lg text-brand-700 max-w-3xl">Coming soon — detailed service breakdown.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h1 class="text-4xl md:text-5xl font-bold font-heading">What We Do</h1>
+      <p class="mt-4 text-lg text-muted max-w-3xl">Full service breakdown coming soon.</p>
     </div>
   </section>
 </Layout>

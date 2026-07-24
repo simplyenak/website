@@ -1,15 +1,24 @@
 ---
 import Layout from '~/layouts/Layout.astro';
+import { getHomePermalink } from '~/utils/permalinks';
+
+const title = `Error 404`;
 ---
 
-<Layout title="Page Not Found">
-  <section class="py-24 md:py-32 text-center">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-6xl font-serif font-bold text-brand-900">404</h1>
-      <p class="mt-4 text-lg text-brand-700">Page not found.</p>
-      <a href="/" class="mt-8 inline-flex items-center px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors no-underline">
-        Back to home
-      </a>
+<Layout metadata={{ title }}>
+  <section class="flex items-center h-full p-16">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+      <div class="max-w-md text-center">
+        <h2 class="mb-8 font-bold text-9xl">
+          <span class="sr-only">Error</span>
+          <span class="text-primary">404</span>
+        </h2>
+        <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
+          But don't worry, you can find plenty of other things on our homepage.
+        </p>
+        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+      </div>
     </div>
   </section>
 </Layout>

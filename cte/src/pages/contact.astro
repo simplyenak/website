@@ -1,13 +1,17 @@
 ---
-import Layout from '~/layouts/Layout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Contact',
+  description: 'Contact Culinary Travel Experts — your food and heritage ground partner in Malaysia.',
+};
 ---
 
-<Layout title="Contact" description="Contact Culinary Travel Experts — your food and heritage ground partner in Malaysia.">
+<Layout metadata={metadata}>
   <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="inline-block text-accent text-sm font-semibold tracking-wide uppercase mb-2">Get in Touch</span>
-      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-900">Contact</h1>
-      <p class="mt-4 text-lg text-brand-700 max-w-3xl">Coming soon — contact information and form.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h1 class="text-4xl md:text-5xl font-bold font-heading">Contact</h1>
+      <p class="mt-4 text-lg text-muted max-w-3xl">Contact information and form coming soon.</p>
     </div>
   </section>
 </Layout>
