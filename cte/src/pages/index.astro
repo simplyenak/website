@@ -4,12 +4,11 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Content from '~/components/widgets/Content.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Malaysia Food Tour Partner for Travel Professionals — Culinary Travel Experts',
-  description: "B2B food experiences in Malaysia for travel agents, DMCs, hotels, and event planners. 15 years on the ground. Licensed, insured, and ready for your clients.",
+  description: "B2B food experiences in Malaysia for travel agents, DMCs, hotels, and event planners. Licensed by MOTAC. Part of Simply Enak.",
   image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
 };
 ---
@@ -29,7 +28,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Your clients want authentic Malaysian food experiences — structured for groups, accommodating dietary needs, and backed by 15 years on the ground. We design and operate itineraries so you can sell with confidence. Licensed by MOTAC, 150+ 5-star reviews, 40+ nationalities hosted.
+      Your clients want authentic Malaysian food experiences — structured for groups and accommodating dietary needs. We design and operate itineraries so you can sell with confidence. Licensed by MOTAC, TripAdvisor 5-star rated.
     </Fragment>
   </Hero>
 
@@ -69,16 +68,6 @@ const metadata = {
         icon: 'tabler:map',
         href: '/what-we-do/',
       },
-    ]}
-  />
-
-  <Testimonials
-    tagline="Trusted by Travel Professionals"
-    title="Why partners work with us"
-    testimonials={[
-      { testimonial: "Simply Enak has been our go-to ground partner for food experiences in Malaysia for over 5 years. Their knowledge, reliability, and ability to handle dietary restrictions at scale is unmatched.", name: 'Sarah Chen', job: 'Product Manager, Intrepid Travel' },
-      { testimonial: "We sent 24 clients on a custom 5-day food itinerary through Penang and KL. Every detail was handled perfectly — from halal requirements to vegan options. Our clients still talk about it.", name: 'Marcus Weber', job: 'Luxury Travel Advisor, Audley Travel' },
-      { testimonial: "The trade kit made it easy to sell. Professional materials, clear pricing, and a team that actually responds within hours. Exactly what we look for in a destination partner.", name: 'Aisha Rahman', job: 'Director, Southeast Asia Specialists' },
     ]}
   />
 

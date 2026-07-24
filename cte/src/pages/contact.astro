@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Contact Culinary Travel Experts — Malaysia Food Tour Partner',
-  description: 'Get in touch with Culinary Travel Experts. Malaysia food experiences for travel professionals. Response within 24 hours.',
+  description: 'Get in touch with Culinary Travel Experts. Malaysia food experiences for travel professionals.',
 };
 ---
 
@@ -12,9 +12,9 @@ const metadata = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <span class="text-accent font-semibold tracking-wide uppercase text-sm">Get in Touch</span>
       <h1 class="mt-2 text-4xl md:text-5xl font-bold font-heading">Contact Us</h1>
-      <p class="mt-4 text-lg text-muted max-w-2xl">Ready to discuss a partnership? Send us a message and we will respond within 24 hours.</p>
+      <p class="mt-4 text-lg text-muted max-w-2xl">Send us a message and we will respond.</p>
       <div class="mt-10 grid md:grid-cols-2 gap-12 max-w-4xl">
-        <form method="POST" action="https://formspree.io/f/your-form-id" netlify>
+        <form>
           <div class="space-y-4">
             <div>
               <label for="name" class="block text-sm font-medium text-default">Name</label>
@@ -26,7 +26,7 @@ const metadata = {
             </div>
             <div>
               <label for="message" class="block text-sm font-medium text-default">Message</label>
-              <textarea id="message" name="message" rows="4" required placeholder="Tell us about your requirements — group size, preferred destinations, dates..." class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default"></textarea>
+              <textarea id="message" name="message" rows="4" required placeholder="Tell us about your requirements..." class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default"></textarea>
             </div>
             <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-secondary transition-colors cursor-pointer">Send Message</button>
           </div>
@@ -38,15 +38,11 @@ const metadata = {
           </div>
           <div>
             <h3 class="font-bold font-heading text-lg">Based In</h3>
-            <p class="text-muted mt-1">Kuala Lumpur, Malaysia<br />Operating across Peninsular Malaysia</p>
+            <p class="text-muted mt-1">Kuala Lumpur, Malaysia</p>
           </div>
           <div>
             <h3 class="font-bold font-heading text-lg">Part of</h3>
-            <p class="text-muted mt-1"><a href="https://simplyenak.com" class="text-accent hover:underline">Simply Enak</a> — Kuala Lumpur & Penang's top-rated food tour operator</p>
-          </div>
-          <div>
-            <h3 class="font-bold font-heading text-lg">Licensed</h3>
-            <p class="text-muted mt-1">MOTAC Registered &bullet; Fully Insured &bullet; Since 2011</p>
+            <p class="text-muted mt-1"><a href="https://simplyenak.com" class="text-accent hover:underline">Simply Enak</a></p>
           </div>
         </div>
       </div>
