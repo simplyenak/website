@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import { extractLexicalText } from '~/lib/content';
 
 const generatePermalink = async ({
   id,
@@ -113,7 +114,7 @@ const load = async function (): Promise<Array<Post>> {
   try {
     const payloadStories = (await import('~/data/content/stories.json')).default as any[] || [];
     const payloadPosts = payloadStories
-      .filter((s: any) => (s.workflowStatus === 'published' || s._status === 'published') && s.content_markdown)
+      .filter((s: any) => (s.workflowStatus === 'published' || s._status === 'published') && (s.content_markdown || s.content))
       .map((s: any) => ({
         id: 'payload-' + s.id,
         slug: s.slug,
@@ -127,9 +128,9 @@ const load = async function (): Promise<Array<Post>> {
         category: { title: 'Food & Culture Guides', slug: 'food-culture-guides' },
         metadata: { title: s.meta_title || s.title, description: s.excerpt || '' },
         tags: [],
-        contents: s.content_markdown || '',
+        contents: s.content_markdown || extractLexicalText(s.content) || '',
         _fromPayload: true,
-        _mdContent: s.content_markdown || '',
+        _mdContent: s.content_markdown || extractLexicalText(s.content) || '',
       })) as Post[];
 
     results.push(...payloadPosts.sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf()));
