@@ -17,6 +17,13 @@ const hp = await getHomePage();
 // Use real reviews from JSON, shuffled
 const realReviews = [...reviews].sort(() => Math.random() - 0.5).slice(0, 6);
 
+// Load link equity boost recommendations
+let boostRecommendations: any[] = [];
+try {
+  const boostData = (await import('~/data/content/link-equity-boost.json')).default;
+  boostRecommendations = boostData?.recommendations || [];
+} catch {}
+
 const philosophyCards = [
   {
     title: 'The People',
@@ -360,6 +367,28 @@ const finalStructuredData = structuredData.length > 0 ? structuredData : undefin
       </div>
     </div>
   </section>
+  )}
+
+  <!-- Link Equity Boost — Contextual links to pages that need authority -->
+  {boostRecommendations && boostRecommendations.length > 0 && (
+    <section class="bg-white dark:bg-[#1e1c1c] py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="border border-gray-100 dark:border-white/10 rounded-2xl p-6 md:p-8 bg-gray-50/50 dark:bg-[#151313]/50">
+          <p class="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-2">You might also explore</p>
+          <div class="flex flex-wrap gap-3">
+            {boostRecommendations.map((r: any) => (
+              <a
+                href={r.target_path}
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 dark:border-white/10 bg-white dark:bg-[#1e1c1c] text-sm font-medium text-default hover:border-accent hover:text-accent transition-colors"
+              >
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                {r.link_text}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   )}
 
   <!-- How Would You Like to Experience? — Comparison Cards -->

@@ -20,6 +20,13 @@ const readingTime = Math.max(1, Math.ceil((post.Content?.length || 1000) / 2000)
 const siteUrl = 'https://simplyenak.com';
 const blogSlug = typeof url === 'string' ? url.replace(siteUrl, '') : (url.pathname || '');
 const authorName = post.author || 'Simply Enak';
+
+// Load link equity boost recommendations
+let linkEquityRecs: any[] = [];
+try {
+  const boostData = (await import('~/data/content/link-equity-boost.json')).default;
+  linkEquityRecs = boostData?.recommendations || [];
+} catch {}
 ---
 
 <section class="mx-auto">
@@ -166,6 +173,23 @@ const authorName = post.author || 'Simply Enak';
           <SocialShare url={url} text={post.title} class="align-middle text-gray-500 dark:text-slate-600" />
         </div>
       </div>
+
+      <!-- Link Equity Boost — Contextual links to pages that need authority -->
+      {linkEquityRecs && linkEquityRecs.length > 0 && (
+        <div class="mt-8 p-4 bg-gray-50/50 dark:bg-[#151313]/50 rounded-xl border border-gray-100 dark:border-white/10">
+          <p class="text-xs uppercase tracking-[0.15em] text-muted font-semibold mb-2">You might also like</p>
+          <div class="flex flex-wrap gap-2">
+            {linkEquityRecs.map((r: any) => (
+              <a
+                href={r.target_path}
+                class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-gray-200 dark:border-white/10 text-xs text-muted hover:text-accent hover:border-accent/30 transition-colors"
+              >
+                {r.link_text}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
       <!-- Related posts hint -->
       <div class="mt-12 p-6 bg-gray-50 dark:bg-[#151313] rounded-xl border border-gray-100 dark:border-white/10 text-center">
