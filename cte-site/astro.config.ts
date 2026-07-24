@@ -30,7 +30,7 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
