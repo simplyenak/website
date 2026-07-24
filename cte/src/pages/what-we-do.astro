@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Content from '~/components/widgets/Content.astro';
 
 const metadata = {
   title: 'What We Do',
@@ -8,10 +9,34 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <h1 class="text-4xl md:text-5xl font-bold font-heading">What We Do</h1>
-      <p class="mt-4 text-lg text-muted max-w-3xl">Full service breakdown coming soon.</p>
-    </div>
-  </section>
+  <Content
+    tagline="Services"
+    title="What We Do"
+    items={[
+      {
+        title: 'Multi-Day Itineraries',
+        description: '3 to 7 days of eating through Malaysia. Every stop scouted, every meal tested, every guide trained by us.',
+      },
+      {
+        title: 'Day Experiences',
+        description: 'Morning market walks, afternoon cooking classes, evening hawker crawls. Half-day and full-day options.',
+      },
+      {
+        title: 'Custom Trips',
+        description: "Your client's diet, group size, or theme doesn't fit the standard routes. We build something that does.",
+      },
+      {
+        title: 'Corporate & Events',
+        description: 'Team cooking sessions, incentive trip food stops, gala dinners with local menus. Groups from 10 to 200.',
+      },
+      {
+        title: 'Itinerary Planning',
+        description: 'You want the local knowledge but prefer to run things yourself. We plan the route, you operate it.',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.simplyenak.com/payload-media/Penang008.jpg',
+      alt: 'Street food in Penang',
+    }}
+  />
 </Layout>

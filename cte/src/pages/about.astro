@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Content from '~/components/widgets/Content.astro';
 
 const metadata = {
   title: 'About',
@@ -8,10 +9,17 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <h1 class="text-4xl md:text-5xl font-bold font-heading">About</h1>
-      <p class="mt-4 text-lg text-muted max-w-3xl">Company information coming soon.</p>
-    </div>
-  </section>
+  <Content
+    tagline="Company"
+    title="About Culinary Travel Experts"
+    items={[
+      { title: '15 Years on the Ground', description: 'Running food experiences across Malaysia since 2011. Every vendor personally vetted.' },
+      { title: 'Part of Simply Enak', description: "The B2B arm of Simply Enak, KL & Penang's top-rated food tour operator." },
+      { title: 'Licensed & Insured', description: 'Licensed tour operator, registered with MOTAC, fully insured.' },
+    ]}
+    image={{
+      src: 'https://cdn.simplyenak.com/payload-media/kl-street-food-tour-chinatown-char-siu-bao-hidden-vendor-steamer.jpg',
+      alt: 'Street food in Kuala Lumpur',
+    }}
+  />
 </Layout>

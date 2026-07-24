@@ -27,7 +27,7 @@ export const headerData = {
       href: getPermalink('/trade-kit'),
     },
   ],
-  actions: [{ text: 'Contact', href: getPermalink('/contact'), variant: 'primary' }],
+  actions: [{ text: 'Contact', href: getPermalink('/contact') }],
 };
 
 export const footerData = {
@@ -49,8 +49,6 @@ export const footerData = {
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'Privacy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   footNote: `&copy; ${new Date().getFullYear()} Local Culinary Travel Experiences Sdn. Bhd. Part of <a class="text-accent hover:underline" href="https://simplyenak.com">Simply Enak</a>`,
 };

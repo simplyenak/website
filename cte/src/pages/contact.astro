@@ -3,15 +3,30 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Contact',
-  description: 'Contact Culinary Travel Experts — your food and heritage ground partner in Malaysia.',
+  description: 'Contact Culinary Travel Experts.',
 };
 ---
 
 <Layout metadata={metadata}>
   <section class="py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <h1 class="text-4xl md:text-5xl font-bold font-heading">Contact</h1>
-      <p class="mt-4 text-lg text-muted max-w-3xl">Contact information and form coming soon.</p>
+      <span class="text-accent font-semibold tracking-wide uppercase text-sm">Get in Touch</span>
+      <h1 class="mt-2 text-4xl md:text-5xl font-bold font-heading">Contact</h1>
+      <div class="mt-10 grid md:grid-cols-2 gap-12 max-w-4xl">
+        <form>
+          <div class="space-y-4">
+            <input type="text" placeholder="Name" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent" />
+            <input type="email" placeholder="Email" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent" />
+            <textarea placeholder="Message" rows="4" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent"></textarea>
+            <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-secondary transition-colors cursor-pointer">Send</button>
+          </div>
+        </form>
+        <div class="space-y-6">
+          <div><h3 class="font-bold font-heading">Email</h3><p class="text-muted mt-1"><a href="mailto:hello@culinarytravelexperts.com" class="text-accent hover:underline">hello@culinarytravelexperts.com</a></p></div>
+          <div><h3 class="font-bold font-heading">Based In</h3><p class="text-muted mt-1">Kuala Lumpur, Malaysia</p></div>
+          <div><h3 class="font-bold font-heading">Part of</h3><p class="text-muted mt-1"><a href="https://simplyenak.com" class="text-accent hover:underline">Simply Enak</a></p></div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
