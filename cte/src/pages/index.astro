@@ -17,8 +17,8 @@ const metadata = {
   <Hero
     tagline="Your clients. Our Malaysia. Experiences that stay with them."
     actions={[
-      { variant: 'primary', text: 'View Sample Itineraries', href: '/itineraries/' },
-      { variant: 'secondary', text: 'Become a Partner', href: '/partner-with-us/' },
+      { variant: 'primary', text: 'View Sample Itineraries', href: '#itineraries' },
+      { variant: 'secondary', text: 'Become a Partner', href: '#partner' },
     ]}
     image={{ src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg', alt: 'Penang street food' }}
   >
@@ -28,14 +28,15 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Every experience we design is built on relationships we have spent years developing. The fish cracker maker who has been working the same street for four decades. The Nyonya home cook who learned from her grandmother. The market vendors who practise methods their mothers taught them. We find these people, earn their trust, and build experiences around their knowledge. Your clients get more than a tour — they get access to people who have been living Malaysia's culinary and heritage traditions every day of their lives.
+      Every experience we design is built on relationships we have spent years developing. The fish cracker maker who has been working the same street for four decades. The Nyonya home cook who learned from her grandmother. The market vendors who practise methods their mothers taught them. We find these people, earn their trust, and build experiences around their knowledge. Your clients get more than a tour. They get access to people who have been living Malaysia's culinary and heritage traditions every day of their lives.
     </Fragment>
   </Hero>
 
+  <!-- Services -->
   <Features
     id="services"
     tagline="What We Handle"
-    title="Food experiences built around culture, community, and craft"
+    title="Culinary and heritage experiences, built around community and tradition"
     columns="3"
     items={[
       {
@@ -49,26 +50,27 @@ const metadata = {
         icon: 'tabler:sun',
       },
       {
-        title: 'Custom & Sustainable Trips',
-        description: "Dietary needs, special interests, or a focus on sustainable food systems. We build itineraries that support local economies and preserve traditional food knowledge.",
+        title: 'Custom and Sustainable Trips',
+        description: 'Dietary needs, special interests, or a focus on sustainable food systems. We build itineraries that support local economies and preserve traditional food knowledge.',
         icon: 'tabler:leaf',
       },
       {
-        title: 'Corporate & Events',
-        description: 'Team cooking with local ingredients, incentive trips that support village communities, gala dinners featuring heritage recipes from Malaysia's diverse cultures.',
+        title: 'Corporate and Events',
+        description: 'Team cooking with local ingredients, incentive trips that support village communities, gala dinners featuring heritage recipes from across Malaysia.',
         icon: 'tabler:building-community',
       },
       {
         title: 'Itinerary Planning',
-        description: 'You want the local knowledge but prefer to operate it yourself. We plan the route with vetted vendors who practice sustainable and traditional food preparation methods.',
+        description: 'You want the local knowledge but prefer to operate it yourself. We plan the route with vetted vendors who practise traditional methods and source locally.',
         icon: 'tabler:map',
       },
     ]}
   />
 
+  <!-- What makes an experience memorable -->
   <Content
     tagline="What makes an experience stay with you"
-    title="Meaningful experiences don't come from a checklist"
+    title="Meaningful experiences do not come from a checklist"
     items={[
       {
         title: 'It starts with people, not places',
@@ -97,7 +99,26 @@ const metadata = {
     </Fragment>
   </Content>
 
+  <!-- Destinations -->
+  <section id="destinations" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <p class="text-accent font-semibold tracking-wide uppercase text-sm text-center">Places</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-bold font-heading text-center">Destinations We Operate In</h2>
+      <p class="mt-4 text-lg text-muted max-w-3xl mx-auto text-center">Each destination has its own food culture, shaped by history, community, and tradition.</p>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Kuala Lumpur</h3><p class="mt-2 text-muted">Street food from three cultures, wet markets that have operated for generations, family-run hawker stalls in the communities that keep traditional food alive.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Penang</h3><p class="mt-2 text-muted">George Town heritage food, Nyonya home cooking passed down through families, fishing villages using traditional methods, family-owned durian orchards.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Ipoh</h3><p class="mt-2 text-muted">White coffee from original Hainanese coffee shops, bean sprout chicken from farms using traditional methods, Hakka cuisine preserved by the community for over a century.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Cameron Highlands</h3><p class="mt-2 text-muted">Family-run tea plantations, small-scale strawberry farms, steamboat dinners using locally grown vegetables, highland food traditions.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Melaka</h3><p class="mt-2 text-muted">Baba Nyonya heritage cuisine, Portuguese Eurasian dishes preserved for 500 years, Jonker Street's traditional food vendors.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Johor Bahru</h3><p class="mt-2 text-muted">Laksa Johor made with traditional spice pastes, murtabak from families who have been making them for generations, the food culture of Malaysia's southern gateway.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Itinerary -->
   <Content
+    id="itineraries"
     isReversed
     tagline="Sample Itinerary"
     title="3 Days in Penang"
@@ -107,12 +128,12 @@ const metadata = {
         description: 'Pulau Tikus morning market with local producers, Transfer Road roti canai made the same way for 60 years, Nyonya home restaurant featuring family recipes passed down through generations.',
       },
       {
-        title: 'Day 2. Markets, Kitchens & Communities',
+        title: 'Day 2. Markets, Kitchens and Communities',
         description: 'Balat morning market where farmers sell direct, Nyonya cooking class in a family kitchen, sunset at a fishing village that still uses traditional methods.',
       },
       {
-        title: 'Day 3. Fishermen, Farmers & Spice',
-        description: 'Fishing village breakfast with the day's catch, family-owned durian farm visit, kampung cooking session using garden-grown ingredients, tropical spice garden walk.',
+        title: 'Day 3. Fishermen, Farmers and Spice',
+        description: 'Fishing village breakfast with the daily catch, family-owned durian farm visit, kampung cooking session using garden-grown ingredients, tropical spice garden walk.',
       },
     ]}
     image={{
@@ -125,11 +146,80 @@ const metadata = {
     </Fragment>
   </Content>
 
+  <!-- Partner With Us -->
+  <section id="partner" class="py-16 md:py-24 bg-brand-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <p class="text-accent font-semibold tracking-wide uppercase text-sm text-center">Partnerships</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-bold font-heading text-center">Partner With Us</h2>
+      <p class="mt-4 text-lg text-muted max-w-3xl mx-auto text-center">We are Malaysia's B2B food experience partner, structured for trade. Licensed by MOTAC. Part of Simply Enak.</p>
+      <div class="mt-10 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Travel Agents</h3><p class="mt-2 text-muted">Sell our itineraries to your clients. Commission structure, marketing materials, and a dedicated account manager.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">DMCs and Tour Operators</h3><p class="mt-2 text-muted">Your Malaysia ground partner for food experiences. FIT and group capabilities, licensed and insured.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Hotels and Resorts</h3><p class="mt-2 text-muted">Offer guests curated food experiences without building your own program. We handle booking and logistics.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Event and Incentive Planners</h3><p class="mt-2 text-muted">Corporate dinners, team building, incentive groups. We design food-focused experiences.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <Content
+    id="about"
+    tagline="Company"
+    title="About Culinary Travel Experts"
+    items={[
+      {
+        title: 'Built on Real Food Culture',
+        description: 'We have been connecting travelers with Malaysia food heritage since 2011. Every vendor we work with is personally known to us. Family recipes, traditional techniques, local producers who have been feeding their communities for generations.',
+      },
+      {
+        title: 'Part of Simply Enak',
+        description: "Culinary Travel Experts is the trade-facing side of Simply Enak, rated 5 stars on TripAdvisor. The same guides, the same community relationships, structured for trade partners.",
+      },
+      {
+        title: 'Licensed and Insured',
+        description: 'Registered with MOTAC (Ministry of Tourism, Arts and Culture Malaysia). Fully insured for public liability, with certified guides and food safety protocols.',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.simplyenak.com/payload-media/kl-street-food-tour-chinatown-char-siu-bao-hidden-vendor-steamer.jpg',
+      alt: 'Street food in Kuala Lumpur',
+    }}
+  >
+    <Fragment slot="content">
+      We help travel professionals deliver Malaysian food experiences rooted in culture and community. You bring the client. We handle the details.
+    </Fragment>
+  </Content>
+
+  <!-- Trade Kit CTA -->
   <CallToAction
+    id="trade-kit"
     title="Get the trade kit."
     subtitle="Sample itineraries, pricing, destination overviews, and partnership terms. Designed for travel professionals who value real food culture and responsible travel."
     actions={[
-      { variant: 'primary', text: 'Request Trade Kit', href: '/trade-kit/' },
+      { variant: 'primary', text: 'Request Trade Kit', href: '#contact' },
     ]}
   />
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <p class="text-accent font-semibold tracking-wide uppercase text-sm text-center">Get in Touch</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-bold font-heading text-center">Contact Us</h2>
+      <div class="mt-10 grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <form>
+          <div class="space-y-4">
+            <input type="text" placeholder="Name" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+            <input type="email" placeholder="Email" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+            <textarea placeholder="Tell us about your requirements" rows="4" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default"></textarea>
+            <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-secondary transition-colors cursor-pointer">Send Message</button>
+          </div>
+        </form>
+        <div class="space-y-8">
+          <div><h3 class="font-bold font-heading text-lg">Email</h3><p class="text-muted mt-1"><a href="mailto:hello@culinarytravelexperts.com" class="text-accent hover:underline">hello@culinarytravelexperts.com</a></p></div>
+          <div><h3 class="font-bold font-heading text-lg">Based In</h3><p class="text-muted mt-1">Kuala Lumpur, Malaysia</p></div>
+          <div><h3 class="font-bold font-heading text-lg">Part of</h3><p class="text-muted mt-1"><a href="https://simplyenak.com" class="text-accent hover:underline">Simply Enak</a></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

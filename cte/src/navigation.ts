@@ -3,31 +3,27 @@ import { getPermalink } from '~/utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'What We Do',
-      href: getPermalink('/what-we-do'),
-    },
-    {
-      text: 'Itineraries',
-      href: getPermalink('/itineraries'),
-    },
-    {
-      text: 'Partner With Us',
-      href: getPermalink('/partner-with-us'),
+      text: 'Services',
+      href: '#services',
     },
     {
       text: 'Destinations',
-      href: getPermalink('/destinations'),
+      href: '#destinations',
+    },
+    {
+      text: 'Partner With Us',
+      href: '#partner',
     },
     {
       text: 'About',
-      href: getPermalink('/about'),
+      href: '#about',
     },
     {
       text: 'Trade Kit',
-      href: getPermalink('/trade-kit'),
+      href: '#trade-kit',
     },
   ],
-  actions: [{ text: 'Contact', href: getPermalink('/contact') }],
+  actions: [{ text: 'Contact', href: '#contact' }],
 };
 
 export const footerData = {
@@ -35,17 +31,17 @@ export const footerData = {
     {
       title: 'Pages',
       links: [
-        { text: 'What We Do', href: getPermalink('/what-we-do') },
-        { text: 'Itineraries', href: getPermalink('/itineraries') },
-        { text: 'Partner With Us', href: getPermalink('/partner-with-us') },
-        { text: 'Destinations', href: getPermalink('/destinations') },
+        { text: 'Services', href: '#services' },
+        { text: 'Destinations', href: '#destinations' },
+        { text: 'Partner With Us', href: '#partner' },
+        { text: 'About', href: '#about' },
       ],
     },
     {
       title: 'Company',
       links: [
-        { text: 'About', href: getPermalink('/about') },
-        { text: 'Contact', href: getPermalink('/contact') },
+        { text: 'Contact', href: '#contact' },
+        { text: 'Trade Kit', href: '#trade-kit' },
       ],
     },
   ],
