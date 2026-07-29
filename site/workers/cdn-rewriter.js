@@ -9,9 +9,9 @@ var STATIC_TTL = 2592000; // 30 days in seconds
 // this Worker catches requests first — put all redirects here.
 var REDIRECTS = {
   // ── Priority 1 — Stories with existing live targets (7,334 imps/mo) ──
-  "/eating-durians": "/stories/eating-durians",
-  "/eating-durians/": "/stories/eating-durians",
-  "/pt/stories/eating-durians/": "/stories/eating-durians",
+  "/stories/eating-durians": "/eating-durians/",
+  "/stories/eating-durians/": "/eating-durians/",
+  "/pt/stories/eating-durians/": "/eating-durians/",
   "/do-malaysians-speak-english": "/stories/do-malaysians-speak-english",
   "/do-malaysians-speak-english/": "/stories/do-malaysians-speak-english",
   "/ms/stories/chinese-dumpling-festival/": "/stories/chinese-dumpling-festival",
@@ -50,6 +50,9 @@ var REDIRECTS = {
   // ── Legacy redirects (existing) ──
   "/tours/eat-drink-george-town": "/tours/georgetown-night-food-durian",
   "/tours/eat-drink-george-town/": "/tours/georgetown-night-food-durian",
+
+  // ── Canonicalize trailing slash ──
+  "/directions": "/directions/",
 };
 
 // Static file extensions that can be cached at the edge for 30 days
