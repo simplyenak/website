@@ -82,5 +82,13 @@ payload-local/
 # Random scripts (not project-specific)
 scripts/*.py
 scripts/*.sh
+# — Re-enable project-critical scripts (negate wildcard above) —
+!scripts/paa-content-factory.py
+!scripts/seo-ranking-pipeline.py
+!scripts/bofu-landing-factory.py
+!scripts/colony-tracker.py
+!scripts/striking-to-colony.py
+!scripts/fix-pt-meta.py
+!scripts/fix-meta-title-dms.py
 scripts/*.md
 scripts/seo-automation/
