@@ -1,7 +1,7 @@
 {
   "id": 1,
-  "seo_title": "How to Prepare for Your Food Tour | Simply Enak",
-  "seo_description": "How to prepare for your food tour, Simply Enak Malaysian food tours.",
+  "seo_title": "How to Prepare for Your Food Tour",
+  "seo_description": "Prepare for your Simply Enak food tour in Malaysia. What to wear, what to bring, dietary notes, and what to expect.",
   "hero_title": "How to Prepare for Your Food Tour",
   "hero_description": "A few practical tips to help you get the most out of your Simply Enak food tour.",
   "hero_image": null,
@@ -54,13 +54,60 @@
       "description": null
     }
   ],
-  "whatToExpect": [],
+  "whatToExpect": [
+    {
+      "id": "exp1",
+      "title": "Small group size",
+      "description": "Tours are kept to 12 people max. You get personal attention and can actually hear your guide at busy stalls."
+    },
+    {
+      "id": "exp2",
+      "title": "3-4 hours of eating",
+      "description": "Expect to stop at 6-8 tasting points. Come hungry — the portions add up to a full meal and then some."
+    },
+    {
+      "id": "exp3",
+      "title": "Lots of walking",
+      "description": "Most tours cover 1-2 km on foot, mostly in backlanes and markets. Pace is relaxed with plenty of stops to eat and listen."
+    },
+    {
+      "id": "exp4",
+      "title": "Rain or shine",
+      "description": "Tours run in all weather. Markets have cover but you will get wet. That is part of the experience."
+    },
+    {
+      "id": "exp5",
+      "title": "Your guide orders for you",
+      "description": "No menus, no decisions. Your guide picks the best dishes at each stop. Just say if you cannot eat something."
+    }
+  ],
   "dietary_heading": "Dietary Requirements",
   "dietary_intro": "Tell us about any dietary needs when you book. We accommodate vegetarian, vegan, halal, gluten-free, and Jain diets on every tour.",
-  "dietary_notes": [],
+  "dietary_notes": [
+    {
+      "id": "dn1",
+      "title": "Vegetarian & vegan",
+      "description": "Malaysia has strong Indian vegetarian and Chinese vegan traditions. You will eat well."
+    },
+    {
+      "id": "dn2",
+      "title": "Halal",
+      "description": "All our tours are halal-friendly. We avoid non-halal establishments and point out what to watch for."
+    },
+    {
+      "id": "dn3",
+      "title": "Gluten-free",
+      "description": "Rice is the base of most dishes. We avoid wheat-based sauces and let you know which dishes are safe."
+    },
+    {
+      "id": "dn4",
+      "title": "Allergies",
+      "description": "Severe allergies are hard to manage in street-food settings. We will be honest about risk at each stop."
+    }
+  ],
   "directions_cta_text": "Need help finding the meeting point?",
-  "directions_cta_button": "View Meeting Points",
-  "updatedAt": "2026-06-27T07:39:19.356Z",
+  "directions_cta_button": "View Directions",
+  "updatedAt": "2026-07-29T08:47:59.880Z",
   "createdAt": "2026-05-19T09:59:18.660Z",
   "_status": "draft"
 }
