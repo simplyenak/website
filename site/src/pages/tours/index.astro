@@ -16,6 +16,7 @@ const travelTypeRefs = await getTravelTypeList();
 const metadata = {
   title: tp.seo_title || 'Food Tours in Malaysia',
   description: tp.seo_description || 'Explore our range of authentic Malaysian food and culture tours in Kuala Lumpur, Penang, Melaka, Ipoh and beyond.',
+  canonical: 'https://simplyenak.com/tours',
 };
 
 // All 5 signature tours
@@ -36,7 +37,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
   <!-- Hero Section -->
   <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
     <div class="absolute inset-0">
-      <img src={getImageUrl(tp.hero_image) || 'https://se-website-images.s3.nl-ams.scw.cloud/Food_Experience_optimized_adc493606c.jpg'} alt="" class="w-full h-full object-cover opacity-40" />
+      <img src={getImageUrl(tp.hero_image) || ''} alt="" class="w-full h-full object-cover opacity-40" />
       <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center">
@@ -135,7 +136,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
         {signatureTours.map((tour: any) => (
           <a href={`/tours/${tour.slug}`} class="group block bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
             <div class="relative aspect-[16/10] overflow-hidden">
-              <img src={tour.image} alt={tour.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={tour.image} alt={tour.name} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute bottom-2 left-2 flex gap-2">
                 <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">{tour.duration}</span>
                 <span class="bg-accent text-black text-xs font-bold px-2 py-1 rounded">{tour.tastings || '8-10 tastings'}</span>
@@ -177,7 +178,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
         {(tp.cities || []).map((city: any) => (
           <a href={city.href || '/tours'} class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[16/9]">
             <div class="absolute inset-0">
-              <img src={locationImageMap[city.slug] || getImageUrl(city.image) || ''} alt={city.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src={locationImageMap[city.slug] || getImageUrl(city.image) || ''} alt={city.name} loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
             </div>
             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
@@ -207,7 +208,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
         ).map((s: any) => (
           <a href={`/tours/dietary/${s.slug}`} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
-              <img src={dietaryImageMap[s.slug] || getImageUrl(tp.dietary_image) || 'https://se-website-images.s3.nl-ams.scw.cloud/vegetarian-heritage.jpg'} alt={s.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={dietaryImageMap[s.slug] || getImageUrl(tp.dietary_image) || ''} alt={s.name} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute inset-0 p-4 flex flex-col justify-end text-white">
@@ -233,7 +234,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
         {(tp.experiences || []).map((exp: any) => (
           <a href={exp.href || '/tours'} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
-              <img src={specialtyImageMap[exp.specialty_slug] || getImageUrl(exp.image) || ''} alt={exp.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={specialtyImageMap[exp.specialty_slug] || getImageUrl(exp.image) || ''} alt={exp.name} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute inset-0 p-4 flex flex-col justify-end text-white">
@@ -259,7 +260,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
         {(tp.travel_with_options || []).map((opt: any) => (
           <a href={opt.href || '/tours'} class="group relative overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
-              <img src={travelTypeImageMap[opt.name] || getImageUrl(opt.image) || ''} alt={opt.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={travelTypeImageMap[opt.name] || getImageUrl(opt.image) || ''} alt={opt.name} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
             </div>
             <div class="absolute inset-0 p-4 flex flex-col justify-end text-white">
@@ -285,7 +286,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
         {(tp.groups || []).map((group: any) => (
           <a href={group.href || '/tours'} class="group relative overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 aspect-[4/3]">
             <div class="absolute inset-0">
-              <img src={getImageUrl(group.image) || ''} alt={group.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src={getImageUrl(group.image) || ''} alt={group.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
             </div>
             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
@@ -304,7 +305,7 @@ travelTypeRefs.forEach((s: any) => { const url = getImageUrl(s.image); if (url) 
       <div class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-xl">
         <div class="grid md:grid-cols-2">
           <div class="relative aspect-[16/9] md:aspect-auto">
-            <img src={getImageUrl(tp.tailor_image) || 'https://se-website-images.s3.nl-ams.scw.cloud/Eat_Drink_George_Town_Bart_1527cf1f89.jpeg'} alt="Tailor Make Your Own Tour" class="w-full h-full object-cover" />
+            <img src={getImageUrl(tp.tailor_image) || ''} alt="Tailor Make Your Own Tour" loading="lazy" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-transparent to-transparent md:block hidden"></div>
           </div>
           <div class="p-8 md:p-12 text-white flex flex-col justify-center">
