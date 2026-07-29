@@ -132,3 +132,16 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: production
           clean: true
+
+      - name: Deploy CDN Worker
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          METADATA='{"main_module":"cdn-rewriter.js","bindings":[],"compatibility_date":"2024-12-01"}'
+          curl -s -X PUT \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/scripts/simplyenak-cdn-rewriter" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -F "metadata=${METADATA};type=application/json" \
+            -F "worker.js=@site/workers/cdn-rewriter.js;type=application/javascript+module" \
+            | python3 -c "import sys,json; r=json.load(sys.stdin); print('Worker deploy:', 'OK' if r.get('success') else 'FAILED: '+str(r.get('errors',[])))"
