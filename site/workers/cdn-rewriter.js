@@ -75,6 +75,8 @@ var REDIRECTS = {
   "/food-safety/tours": "/stories/food-safety",
   "/eat-drink-georgetown": "/tours/penang-street-food",
   "/eat-drink-georgetown/": "/tours/penang-street-food",
+  "/eat-drink-george-town": "/tours/penang-street-food",
+  "/eat-drink-george-town/": "/tours/penang-street-food",
   "/secrets-of-kl-nightlife": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
   "/secrets-of-kl-nightlife/": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
   "/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
