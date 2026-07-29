@@ -49,49 +49,7 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:44:21.390Z",
     "createdAt": "2026-05-19T08:33:32.602Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Street food"
-      },
-      {
-        "languages_code": "ms",
-        "name": "Makanan jalanan"
-      },
-      {
-        "languages_code": "zh",
-        "name": "街头小吃"
-      },
-      {
-        "languages_code": "de",
-        "name": "Straßenessen"
-      },
-      {
-        "languages_code": "es",
-        "name": "Comida callejera"
-      },
-      {
-        "languages_code": "fr",
-        "name": "Cuisine de rue"
-      },
-      {
-        "languages_code": "nl",
-        "name": "Straatvoedsel"
-      },
-      {
-        "languages_code": "ru",
-        "name": "Уличная еда"
-      },
-      {
-        "languages_code": "ja",
-        "name": "屋台料理"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Comida de rua"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 3,
@@ -104,49 +62,7 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:45:44.828Z",
     "createdAt": "2026-05-19T08:33:32.030Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Night tour"
-      },
-      {
-        "languages_code": "ms",
-        "name": "Lawatan malam"
-      },
-      {
-        "languages_code": "zh",
-        "name": "夜游"
-      },
-      {
-        "languages_code": "de",
-        "name": "Nachttour"
-      },
-      {
-        "languages_code": "es",
-        "name": "Tour nocturno"
-      },
-      {
-        "languages_code": "fr",
-        "name": "Visite nocturne"
-      },
-      {
-        "languages_code": "nl",
-        "name": "Nachtrondleiding"
-      },
-      {
-        "languages_code": "ru",
-        "name": "Ночная экскурсия"
-      },
-      {
-        "languages_code": "ja",
-        "name": "ナイトツアー"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Passeio noturno"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 2,
@@ -159,49 +75,7 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:46:14.340Z",
     "createdAt": "2026-05-19T08:33:31.461Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Market tour"
-      },
-      {
-        "languages_code": "ms",
-        "name": "Lawatan pasar"
-      },
-      {
-        "languages_code": "zh",
-        "name": "市场参观"
-      },
-      {
-        "languages_code": "de",
-        "name": "Markttour"
-      },
-      {
-        "languages_code": "es",
-        "name": "Tour de mercado"
-      },
-      {
-        "languages_code": "fr",
-        "name": "Visite du marché"
-      },
-      {
-        "languages_code": "nl",
-        "name": "Marktrondleiding"
-      },
-      {
-        "languages_code": "ru",
-        "name": "Экскурсия по рынку"
-      },
-      {
-        "languages_code": "ja",
-        "name": "市場ツアー"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Tour pelo mercado"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 1,
@@ -214,48 +88,6 @@
     "status": "published",
     "updatedAt": "2026-06-19T14:46:46.161Z",
     "createdAt": "2026-05-19T08:33:30.893Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en",
-        "name": "Heritage"
-      },
-      {
-        "languages_code": "ms",
-        "name": "Warisan"
-      },
-      {
-        "languages_code": "zh",
-        "name": "遗产"
-      },
-      {
-        "languages_code": "de",
-        "name": "Erbe"
-      },
-      {
-        "languages_code": "es",
-        "name": "Patrimonio"
-      },
-      {
-        "languages_code": "fr",
-        "name": "Patrimoine"
-      },
-      {
-        "languages_code": "nl",
-        "name": "Erfgoed"
-      },
-      {
-        "languages_code": "ru",
-        "name": "Наследие"
-      },
-      {
-        "languages_code": "ja",
-        "name": "遺産"
-      },
-      {
-        "languages_code": "pt",
-        "name": "Patrimônio"
-      }
-    ]
+    "_status": "published"
   }
 ]

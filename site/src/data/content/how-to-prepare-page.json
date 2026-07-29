@@ -3,62 +3,62 @@
   "seo_title": "How to Prepare for Your Food Tour",
   "seo_description": "Prepare for your Simply Enak food tour in Malaysia. What to wear, what to bring, dietary notes, and what to expect.",
   "hero_title": "How to Prepare for Your Food Tour",
-  "hero_description": "A few practical tips to help you get the most out of your Simply Enak food tour.",
+  "hero_description": "A few practical tips to help you get the most out of your Simply Enak food tour — whether you join a group tour or book a private experience.",
   "hero_image": null,
   "whatToWear": [
     {
-      "id": "6a0c34768bb5600001c237a1",
+      "id": "w1",
+      "title": "Comfortable shoes",
+      "description": "You will be walking 1-2 km through markets and backlanes. Closed-toe is best — things get slippery."
+    },
+    {
+      "id": "w2",
+      "title": "Not too revealing",
+      "description": "Malaysia is a modest country, especially in markets and around religious sites. Cover shoulders and knees to blend in and show respect."
+    },
+    {
+      "id": "w3",
       "title": "Light, breathable clothing",
-      "description": null
+      "description": "It is hot and humid year-round. Cotton or moisture-wicking fabrics help."
     },
     {
-      "id": "6a0c34768bb5600001c237a2",
-      "title": "Comfortable closed-toe shoes",
-      "description": null
-    },
-    {
-      "id": "6a0c34768bb5600001c237a3",
-      "title": "Modest dress appreciated",
-      "description": null
-    },
-    {
-      "id": "6a0c34768bb5600001c237a4",
+      "id": "w4",
       "title": "Rain jacket (monsoon months)",
-      "description": null
+      "description": "October to March brings afternoon downpours. A light packable layer is worth it."
     },
     {
-      "id": "6a0c34768bb5600001c237a5",
+      "id": "w5",
       "title": "Avoid wearing white",
-      "description": null
+      "description": "Food stains are part of the deal. Darker colours hide the evidence."
     }
   ],
   "whatToBring": [
     {
-      "id": "6a0c34768bb5600001c237a6",
-      "title": "Cash (Malaysian ringgit)",
-      "description": null
-    },
-    {
-      "id": "6a0c34768bb5600001c237a7",
+      "id": "b1",
       "title": "Reusable water bottle",
-      "description": null
+      "description": "Stay hydrated and cut down on plastic waste. Refill stations are easy to find."
     },
     {
-      "id": "6a0c34768bb5600001c237a8",
+      "id": "b2",
+      "title": "Cash (Malaysian ringgit)",
+      "description": "Most hawkers and small stalls do not take cards. Small notes are easiest."
+    },
+    {
+      "id": "b3",
       "title": "Camera or phone",
-      "description": null
+      "description": "You will want to document the food. Keep it secure — markets can be crowded."
     },
     {
-      "id": "6a0c34768bb5600001c237a9",
+      "id": "b4",
       "title": "Small daypack",
-      "description": null
+      "description": "Hands-free is better when you are eating at a hawker stall with one hand and holding a drink in the other."
     }
   ],
   "whatToExpect": [
     {
       "id": "exp1",
       "title": "Small group size",
-      "description": "Tours are kept to 12 people max. You get personal attention and can actually hear your guide at busy stalls."
+      "description": "Join-in tours are kept to 7 people max. You get personal attention and can actually hear your guide at busy stalls. Private tours are just your group — size is up to you."
     },
     {
       "id": "exp2",
@@ -79,35 +79,19 @@
       "id": "exp5",
       "title": "Your guide orders for you",
       "description": "No menus, no decisions. Your guide picks the best dishes at each stop. Just say if you cannot eat something."
+    },
+    {
+      "id": "exp6",
+      "title": "Morning of the tour",
+      "description": "Have no breakfast or a light one. You will be eating a lot over 3-4 hours. Come hungry."
     }
   ],
   "dietary_heading": "Dietary Requirements",
-  "dietary_intro": "Tell us about any dietary needs when you book. We accommodate vegetarian, vegan, halal, gluten-free, and Jain diets on every tour.",
-  "dietary_notes": [
-    {
-      "id": "dn1",
-      "title": "Vegetarian & vegan",
-      "description": "Malaysia has strong Indian vegetarian and Chinese vegan traditions. You will eat well."
-    },
-    {
-      "id": "dn2",
-      "title": "Halal",
-      "description": "All our tours are halal-friendly. We avoid non-halal establishments and point out what to watch for."
-    },
-    {
-      "id": "dn3",
-      "title": "Gluten-free",
-      "description": "Rice is the base of most dishes. We avoid wheat-based sauces and let you know which dishes are safe."
-    },
-    {
-      "id": "dn4",
-      "title": "Allergies",
-      "description": "Severe allergies are hard to manage in street-food settings. We will be honest about risk at each stop."
-    }
-  ],
+  "dietary_intro": "Let us know about any dietary needs when you book. We accommodate vegetarian, vegan, halal, gluten-free, and other requirements on every tour.",
+  "dietary_notes": [],
   "directions_cta_text": "Need help finding the meeting point?",
   "directions_cta_button": "View Directions",
-  "updatedAt": "2026-07-29T08:47:59.880Z",
+  "updatedAt": "2026-07-29T09:08:22.815Z",
   "createdAt": "2026-05-19T09:59:18.660Z",
   "_status": "draft"
 }

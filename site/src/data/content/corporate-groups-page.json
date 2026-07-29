@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "seo_title": "Corporate & Group Food Tours Malaysia | Simply Enak",
+  "seo_title": "Corporate & Group Food Tours Malaysia",
   "seo_description": "Corporate food tours in Kuala Lumpur and Penang. Take your team to the stalls where locals actually eat. Team building, client entertainment, retreats.",
   "hero_eyebrow": "Groups & Corporate",
   "hero_title": "Where Kuala Lumpur Actually Eats",
@@ -10,46 +10,30 @@
   "offer_body_1": "Your team has seen the inside of enough hotel ballrooms and convention centres. We take them somewhere different: the hawker stalls, night markets, and heritage coffee shops where Kuala Lumpur and Penang have been feeding themselves for generations.",
   "offer_perfect_for": [
     {
+      "id": "6a0c34748bb5600001c2378b",
       "item": "Work colleagues visiting KL or Penang at the same time"
     },
     {
+      "id": "6a0c34748bb5600001c2378c",
       "item": "Corporate groups who want to eat where locals eat, not where tourists are sent"
     },
     {
-      "item": "Teams wanting an active, engaging activity that builds real connections"
+      "id": "6a0c34748bb5600001c2378d",
+      "item": "Teams wanting an active, engaging activity"
     },
     {
-      "item": "International visitors wanting to understand Malaysian culture through food"
+      "id": "6a0c34748bb5600001c2378e",
+      "item": "International visitors wanting to understand Malaysian culture"
     },
     {
-      "item": "Remote teams meeting up for retreats and offsites"
+      "id": "6a0c34748bb5600001c2378f",
+      "item": "Remote teams meeting up for retreats"
     }
   ],
   "offer_body_2": "Every tour is led by a certified local guide who knows the vendors personally. We handle dietary requirements, transport logistics, and timing so your team can focus on the experience.",
   "benefits_eyebrow": "Why Teams Choose Us",
   "benefits_title": "What makes our corporate tours different",
-  "benefit_cards": [
-    {
-      "icon": "🤝",
-      "title": "Vendor relationships",
-      "description": "We eat at these stalls ourselves. Your group gets the same welcome we do."
-    },
-    {
-      "icon": "📋",
-      "title": "Logistics handled",
-      "description": "Dietary needs, transport, timing, group photos. We coordinate everything."
-    },
-    {
-      "icon": "🌏",
-      "title": "Cultural translation",
-      "description": "Your guide explains what you're eating, where it came from, and why it matters."
-    },
-    {
-      "icon": "📞",
-      "title": "Single point of contact",
-      "description": "One person handles your booking from enquiry to the last bite. No handoffs."
-    }
-  ],
+  "benefit_cards": [],
   "kl_section": {
     "eyebrow": "Kuala Lumpur",
     "heading": "KL Corporate Tours",
@@ -58,87 +42,41 @@
   "penang_section": {
     "eyebrow": "Penang",
     "heading": "Penang Corporate Tours",
-    "subtext": "George Town's street food scene is one of the popular in Asia. We navigate your group through Chowrasta Market, Little India, and the heritage streets, stopping at stalls that have been feeding Penang for decades."
+    "subtext": "George Town's street food scene is one of the best in Asia. We navigate your group through Chowrasta Market, Little India, and the heritage streets, stopping at stalls that have been feeding Penang for decades."
   },
-  "how_eyebrow": "Booking Process",
-  "how_heading": "How it works",
+  "how_eyebrow": null,
+  "how_heading": null,
   "how_steps": [
     {
-      "number": 1,
+      "id": "6a0c34748bb5600001c23790",
+      "number": null,
       "title": "Contact Us",
-      "description": "Send your dates, group size, and any dietary requirements. We respond within 24 hours."
+      "description": null
     },
     {
-      "number": 2,
-      "title": "We Recommend Tours",
-      "description": "Based on your group size and goals, we suggest routes and provide a per-person or per-group quote."
+      "id": "6a0c34748bb5600001c23791",
+      "number": null,
+      "title": "We'll Recommend Tours",
+      "description": null
     },
     {
-      "number": 3,
+      "id": "6a0c34748bb5600001c23792",
+      "number": null,
       "title": "Confirm & Pay",
-      "description": "Invoice provided. We can accommodate purchase orders and corporate payment terms."
+      "description": null
     },
     {
-      "number": 4,
+      "id": "6a0c34748bb5600001c23793",
+      "number": null,
       "title": "Enjoy the Experience",
-      "description": "Your guide meets your group at the agreed location. Everything from there is handled."
+      "description": null
     }
   ],
-  "cta_heading": "Ready to book your team?",
-  "cta_body": "Send us your group details and we'll come back with route recommendations and pricing within 24 hours.",
-  "cta_email_label": "Email us",
-  "cta_whatsapp_label": "WhatsApp us",
-  "_status": "published",
-  "translations": [
-    {
-      "languages_code": "en",
-      "hero_title": "Where Kuala Lumpur Actually Eats",
-      "hero_subtitle": "Team meals and client visits that don't feel like team meals. We take corporate groups to the stalls where the city feeds itself, not the restaurants on the tourist strip."
-    },
-    {
-      "languages_code": "ms",
-      "hero_title": "Di Mana Kuala Lumpur Sebenarnya Makan",
-      "hero_subtitle": "Makan beramai-ramai bersama pasukan dan lawatan pelanggan yang tidak terasa seperti makan beramai-ramai biasa. Kami membawa kumpulan korporat ke gerai-gerai di mana kota benar-benar menjamu selera, bukan ke restoran di laluan pelancong."
-    },
-    {
-      "languages_code": "zh",
-      "hero_title": "吉隆坡人真正吃饭的地方",
-      "hero_subtitle": "不像团队餐的团队餐和客户拜访。我们带企业团去这座城市日常吃饭的摊位,而不是旅游街区上的餐厅。"
-    },
-    {
-      "languages_code": "de",
-      "hero_title": "Wo Kuala Lumpur wirklich isst",
-      "hero_subtitle": "Teamessen und Kundenbesuche, die sich nicht wie Teamessen anfühlen. Wir bringen Firmengruppen zu den Ständen, an denen sich die Stadt selbst verpflegt, nicht zu den Restaurants in der Touristenmeile."
-    },
-    {
-      "languages_code": "es",
-      "hero_title": "Dónde Come Realmente Kuala Lumpur",
-      "hero_subtitle": "Comidas de equipo y visitas con clientes que no parecen comidas de equipo. Llevamos a grupos corporativos a los puestos donde se alimenta la ciudad, no a los restaurantes de la zona turística."
-    },
-    {
-      "languages_code": "fr",
-      "hero_title": "Où mange vraiment Kuala Lumpur",
-      "hero_subtitle": "Des repas d'équipe et des visites de clients qui ne ressemblent pas à des repas d'équipe. Nous emmenons les groupes d'entreprise dans les stands où la ville se restaure, pas dans les restaurants du quartier touristique."
-    },
-    {
-      "languages_code": "nl",
-      "hero_title": "Waar Kuala Lumpur Echt Eet",
-      "hero_subtitle": "Teammaaltijden en klantbezoeken die niet aanvoelen als teammaaltijden. We nemen bedrijfsgroepen mee naar de kraampjes waar de stad zich voedt, niet naar de restaurants op de toeristische strook."
-    },
-    {
-      "languages_code": "ru",
-      "hero_title": "Где на самом деле едят в Куала-Лумпуре",
-      "hero_subtitle": "Командные обеды и визиты клиентов, которые не похожи на обычные командные обеды. Мы водим корпоративные группы к лоткам, где город кормит сам себя, а не в рестораны на туристической улице."
-    },
-    {
-      "languages_code": "ja",
-      "hero_title": "クアラルンプールが実際に食事をする場所",
-      "hero_subtitle": "チームでの食事や取引先訪問が、チームでの食事らしく感じられない体験。観光通りのレストランではなく、その街が地元の人に食事を提供している屋台へ、企業グループをご案内します。"
-    },
-    {
-      "languages_code": "pt",
-      "hero_title": "Onde Kuala Lumpur Realmente Come",
-      "hero_subtitle": "Refeições em equipe e visitas de clientes que não parecem refeições em equipe. Levamos grupos corporativos às barracas onde a cidade se alimenta de verdade, não aos restaurantes da faixa turística."
-    }
-  ]
+  "cta_heading": null,
+  "cta_body": null,
+  "cta_email_label": null,
+  "cta_whatsapp_label": null,
+  "updatedAt": "2026-06-27T07:39:20.688Z",
+  "createdAt": "2026-05-19T09:59:16.316Z",
+  "_status": "draft"
 }

@@ -1,7 +1,7 @@
 {
   "id": 1,
   "seo_title": "Our Track Record | 15 Years of Malaysian Food Tours",
-  "seo_description": "Simply Enak track record and awards, Simply Enak Malaysian food tours.",
+  "seo_description": "Simply Enak track record and awards — Simply Enak Malaysian food tours.",
   "hero_title": "Our Track Record",
   "hero_subtitle": "Numbers that tell the story of what we do and who we serve.",
   "philosophy_quote": "We do not run the biggest food tours in Malaysia. We run the ones people remember.",
@@ -67,144 +67,96 @@
   "case_studies": [],
   "press": [
     {
+      "id": "33e56980-b411-4bd4-ab81-d37267862f3d",
       "outlet": "popular Regards From Far",
       "url": "https://bestregardsfromfar.com/2024/05/30/top-9-essential-malaysian-foods"
     },
     {
+      "id": "76b7991d-be19-4454-9623-2e8950021c08",
       "outlet": "5 Lost Together",
       "url": "https://www.5losttogether.com/taking-a-food-tour-w"
     },
     {
+      "id": "c6a8f876-fd73-47bc-8a8c-6c8fd7f00416",
       "outlet": "Minority Nomad",
       "url": "https://www.minoritynomad.com/blog/kuala-lumpur-food-tour"
     },
     {
+      "id": "6d5d0cf4-2fbb-47ce-b4f4-f35fb9495e3a",
       "outlet": "The Yum List",
       "url": "https://www.theyumlist.net/2012/03/dine-with-local.html"
     },
     {
+      "id": "951f9bf6-7e5c-455d-99b9-6e856756efb0",
       "outlet": "place Eat Drink",
       "url": "https://radiomisfits.com/ded286/"
     },
     {
+      "id": "d1c7ec18-7655-44d8-ab2c-d164d440d2d8",
       "outlet": "The Food Ranger",
       "url": "https://youtu.be/poY8iDlC6Tk"
     },
     {
+      "id": "bea443ef-5ef0-4244-b84b-3da97cb128a1",
       "outlet": "Time Out Penang",
       "url": "https://www.timeout.com/penang/things-to-do/simply-enak"
     },
     {
+      "id": "449b183e-4bf6-41e1-8c93-213df0bc6935",
       "outlet": "Le Guide du Routard",
       "url": "https://www.routard.com/guide/kuala_lumpur/4385/activites_.htm"
     },
     {
+      "id": "7b1eff63-77d5-48b8-92e5-fdfd6484cab3",
       "outlet": "The Edge TV",
       "url": "https://youtu.be/zlqXAnJMREo"
     },
     {
+      "id": "4bba0a68-6ebf-4831-975a-b3bdc639d75e",
       "outlet": "BBC Sport",
       "url": "https://youtu.be/zZbAAn16JWc"
     }
   ],
   "awards": [
     {
+      "id": "3f18cb01-2f90-42c4-bd67-1ba10907dde9",
       "award": "TripAdvisor Travellers Choice",
-      "organization": "TripAdvisor",
-      "year": 2023
+      "year": 2023,
+      "organization": "TripAdvisor"
     },
     {
+      "id": "b0b3fc2d-1248-48f8-ac79-e05f0087efd9",
       "award": "TripAdvisor Certificate of Excellence",
-      "organization": "TripAdvisor",
-      "year": "2013-2017"
+      "year": -4,
+      "organization": "TripAdvisor"
     },
     {
+      "id": "af11940c-8934-4010-99d9-240809d67f45",
       "award": "Featured by National Geographic",
-      "organization": "National Geographic",
-      "year": 2015
+      "year": 2015,
+      "organization": "National Geographic"
     },
     {
+      "id": "1d66617e-7929-4d77-addd-d0e6be3a9110",
       "award": "Recommended by Lonely Planet",
-      "organization": "Lonely Planet",
-      "year": 2012
+      "year": 2012,
+      "organization": "Lonely Planet"
     },
     {
+      "id": "424fffbd-c856-4e5d-89c3-ae2b37af06a7",
       "award": "BBC World Service Feature",
-      "organization": "BBC",
-      "year": 2024
+      "year": 2024,
+      "organization": "BBC"
     },
     {
+      "id": "d5f740ed-4625-4bcf-bb8f-050811609408",
       "award": "Featured by The Food Ranger",
-      "organization": "YouTube (10M+ subscribers)",
-      "year": 2018
+      "year": 2018,
+      "organization": "YouTube (10M+ subscribers)"
     }
   ],
   "how_we_work_eyebrow": "How We Work",
-  "updatedAt": "2026-05-19T09:59:20.980Z",
+  "updatedAt": "2026-06-27T07:39:23.772Z",
   "createdAt": "2026-05-19T09:59:20.980Z",
-  "_status": "published",
-  "translations": [
-    {
-      "languages_code": "en",
-      "hero_title": "Our Track Record",
-      "hero_subtitle": "Numbers that tell the story of what we do and who we serve.",
-      "seo_title": "Our Track Record | 15 Years of Malaysian Food Tours",
-      "seo_description": "Simply Enak track record and awards, Simply Enak Malaysian food tours.",
-      "philosophy_quote": "We do not run the biggest food tours in Malaysia. We run the ones people remember.",
-      "how_we_work_eyebrow": "How We Work",
-      "updatedAt": "2026-05-19T09:59:20.980Z",
-      "createdAt": "2026-05-19T09:59:20.980Z"
-    },
-    {
-      "languages_code": "ms",
-      "hero_title": "Rekod Pencapaian Kami",
-      "hero_subtitle": "Nombor yang menceritakan kisah tentang apa yang kami lakukan dan siapa yang kami layani.",
-      "seo_title": "halaman_rekod | Simply Enak",
-      "seo_description": "Rekod jejak dan anugerah Simply Enak, Lawatan makanan Malaysia Simply Enak.",
-      "philosophy_quote": "Kami tidak mengendalikan lawatan makanan terbesar di Malaysia. Kami mengendalikan yang orang ingat.",
-      "how_we_work_eyebrow": "Bagaimana Kami Bekerja",
-      "updatedAt": "19 Mei 2026, 09:59:20.980 UTC",
-      "createdAt": "2026-05-19T09:59:20.980Z"
-    },
-    {
-      "languages_code": "zh",
-      "hero_title": "我们的业绩",
-      "hero_subtitle": "讲述我们工作与服务对象故事的数字。"
-    },
-    {
-      "languages_code": "de",
-      "hero_title": "Unsere Erfolgsbilanz",
-      "hero_subtitle": "Zahlen, die die Geschichte dessen erzählen, was wir tun und wem wir dienen."
-    },
-    {
-      "languages_code": "es",
-      "hero_title": "Nuestro Historial",
-      "hero_subtitle": "Cifras que cuentan la historia de lo que hacemos y a quiénes servimos."
-    },
-    {
-      "languages_code": "fr",
-      "hero_title": "Notre bilan",
-      "hero_subtitle": "Des chiffres qui racontent l'histoire de ce que nous faisons et de ceux que nous servons."
-    },
-    {
-      "languages_code": "nl",
-      "hero_title": "Onze resultaten",
-      "hero_subtitle": "Cijfers die het verhaal vertellen van wat we doen en wie we bedienen."
-    },
-    {
-      "languages_code": "ru",
-      "hero_title": "Наш послужной список",
-      "hero_subtitle": "Цифры, которые рассказывают историю о том, что мы делаем и кому служим."
-    },
-    {
-      "languages_code": "ja",
-      "hero_title": "私たちの実績",
-      "hero_subtitle": "私たちの活動とサービス対象を物語る数字"
-    },
-    {
-      "languages_code": "pt",
-      "hero_title": "Nosso Histórico",
-      "hero_subtitle": "Números que contam a história do que fazemos e de quem servimos."
-    }
-  ]
+  "_status": "published"
 }
