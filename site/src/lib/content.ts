@@ -972,7 +972,7 @@ async function resolveTestimonials(locale?: string): Promise<any[]> {
   return [];
 }
 
-async function resolveStories(locale?: string): Promise<any[]> {
+export async function resolveStories(locale?: string): Promise<any[]> {
   // For non-EN locales, prefer snapshot translations over Payload's English fallback
   if (locale && locale !== 'en' && snapshotStories.length > 0) {
     const translated = snapshotStories.map(item => applyLocaleTranslations(item, locale));
