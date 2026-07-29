@@ -48,7 +48,6 @@ var REDIRECTS = {
   "/chinese-dumpling-festival": "/stories/chinese-dumpling-festival",
   "/durian-guide-2026": "/stories/durian-guide-2026",
   "/food-safety": "/stories/food-safety",
-  "/food-tours": "/stories/food-tours",
   "/gluten-free-guide-malaysia": "/stories/gluten-free-guide-malaysia",
   "/hidden-gems-in-kuala-lumpur": "/stories/hidden-gems-in-kuala-lumpur",
   "/kuala-lumpur-guide-malaysia": "/stories/kuala-lumpur-guide-malaysia",
