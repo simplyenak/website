@@ -10,80 +10,48 @@ var STATIC_TTL = 2592000; // 30 days in seconds
 var REDIRECTS = {
   // ── Priority 1 — Stories with existing live targets (7,334 imps/mo) ──
   "/stories/eating-durians": "/eating-durians/",
-  "/stories/eating-durians/": "/eating-durians/",
-  "/pt/stories/eating-durians/": "/eating-durians/",
+  "/pt/stories/eating-durians": "/eating-durians/",
   "/do-malaysians-speak-english": "/stories/do-malaysians-speak-english",
-  "/do-malaysians-speak-english/": "/stories/do-malaysians-speak-english",
-  "/ms/stories/chinese-dumpling-festival/": "/stories/chinese-dumpling-festival",
+  "/ms/stories/chinese-dumpling-festival": "/stories/chinese-dumpling-festival",
 
   // ── Priority 3a — Renamed tours (727 imps/mo) ──
   "/tours/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
-  "/tours/flavours-of-malaysia-off-the-beaten-track/": "/tours/flavours-of-malaysia",
   "/tours/eat-drink-georgetown": "/tours/penang-street-food",
-  "/tours/eat-drink-georgetown/": "/tours/penang-street-food",
   "/tours/secrets-of-kl-nightlife-street-art-cocktails": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
-  "/tours/secrets-of-kl-nightlife-street-art-cocktails/": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
   "/tours/melaka-cultural-food-journey": "/tours/locations/food-tours-melaka",
   "/kuala-lumpur-food-tour": "/tours/kuala-lumpur-street-food",
-  "/kuala-lumpur-food-tour/": "/tours/kuala-lumpur-street-food",
   "/vegetarian-food-tours": "/tours/dietary/vegetarian-food-tours",
-  "/vegetarian-food-tours/": "/tours/dietary/vegetarian-food-tours",
 
   // ── Priority 3b — Static/legal (77 imps/mo) ──
   "/terms-conditions": "/terms",
-  "/terms-conditions/": "/terms",
   "/privacy-policy": "/privacy",
-  "/privacy-policy/": "/privacy",
   "/local-farming-partnerships": "/about",
-  "/local-farming-partnerships/": "/about",
   "/street-food-culture": "/stories/must-try-malaysian-street-food",
-  "/street-food-culture/": "/stories/must-try-malaysian-street-food",
   "/why-we-care-about-sustainability": "/about",
-  "/why-we-care-about-sustainability/": "/about",
   "/custom-tours/media": "/tours/tailored-tours",
-  "/custom-tours/media/": "/tours/tailored-tours",
   "/ms/stories/food-safety": "/stories/food-safety",
-  "/ms/stories/food-safety/": "/stories/food-safety",
   "/ms/stories/must-try-malaysian-street-food": "/stories/must-try-malaysian-street-food",
-  "/ms/stories/must-try-malaysian-street-food/": "/stories/must-try-malaysian-street-food",
 
   // ── Legacy redirects (existing) ──
   "/tours/eat-drink-george-town": "/tours/georgetown-night-food-durian",
-  "/tours/eat-drink-george-town/": "/tours/georgetown-night-food-durian",
 
-  // ── Priority — Top-level pages → /stories/ (Google indexed w/o prefix) ──
+  // ── Top-level pages → /stories/ (Google indexed w/o prefix) ──
   "/11-foods-to-try-during-hari-raya": "/stories/11-foods-to-try-during-hari-raya",
-  "/11-foods-to-try-during-hari-raya/": "/stories/11-foods-to-try-during-hari-raya",
   "/chinese-dumpling-festival": "/stories/chinese-dumpling-festival",
-  "/chinese-dumpling-festival/": "/stories/chinese-dumpling-festival",
   "/durian-guide-2026": "/stories/durian-guide-2026",
-  "/durian-guide-2026/": "/stories/durian-guide-2026",
   "/food-safety": "/stories/food-safety",
-  "/food-safety/": "/stories/food-safety",
   "/food-tours": "/stories/food-tours",
-  "/food-tours/": "/stories/food-tours",
   "/gluten-free-guide-malaysia": "/stories/gluten-free-guide-malaysia",
-  "/gluten-free-guide-malaysia/": "/stories/gluten-free-guide-malaysia",
   "/hidden-gems-in-kuala-lumpur": "/stories/hidden-gems-in-kuala-lumpur",
-  "/hidden-gems-in-kuala-lumpur/": "/stories/hidden-gems-in-kuala-lumpur",
   "/kuala-lumpur-guide-malaysia": "/stories/kuala-lumpur-guide-malaysia",
-  "/kuala-lumpur-guide-malaysia/": "/stories/kuala-lumpur-guide-malaysia",
   "/malaysian-herbs-and-spices": "/stories/malaysian-herbs-and-spices",
-  "/malaysian-herbs-and-spices/": "/stories/malaysian-herbs-and-spices",
   "/must-try-malaysian-street-food": "/stories/must-try-malaysian-street-food",
-  "/must-try-malaysian-street-food/": "/stories/must-try-malaysian-street-food",
   "/port-klang-to-kuala-lumpur": "/stories/port-klang-to-kuala-lumpur",
-  "/port-klang-to-kuala-lumpur/": "/stories/port-klang-to-kuala-lumpur",
   "/rendang-daging": "/stories/rendang-daging",
-  "/rendang-daging/": "/stories/rendang-daging",
   "/souvenirs-for-foodies": "/stories/souvenirs-for-foodies",
-  "/souvenirs-for-foodies/": "/stories/souvenirs-for-foodies",
   "/spicy-food": "/stories/spicy-food",
-  "/spicy-food/": "/stories/spicy-food",
   "/traveling-during-fasting-month": "/stories/traveling-during-fasting-month",
-  "/traveling-during-fasting-month/": "/stories/traveling-during-fasting-month",
   "/vegan-guide-penang": "/stories/vegan-guide-penang",
-  "/vegan-guide-penang/": "/stories/vegan-guide-penang",
 
   // ── Canonicalize trailing slash ──
   "/directions": "/directions/",
@@ -99,18 +67,29 @@ addEventListener("fetch", event => {
 async function handleRequest(request) {
   var url = new URL(request.url);
 
+  // ── Static assets — pass through immediately ──
+  if (/\.(jpg|jpeg|png|webp|gif|svg|css|js|ico|woff2|pdf|mp4|webm)$/i.test(url.pathname)) {
+    var originResponse = await fetch(new Request(new URL(url.pathname + url.search, PAGES_ORIGIN).toString(), {
+      method: "GET",
+      headers: request.headers,
+      redirect: "manual"
+    }));
+    return addCaching(originResponse, url.pathname);
+  }
+
   // ── Dynamic redirects (run before static map) ──
 
   // 1. Strip .html extension (legacy Strapi/AstroWind URLs — 313 404s)
   if (url.pathname.endsWith('.html')) {
     var cleaned = url.pathname.slice(0, -5);
-    return Response.redirect('https://simplyenak.com' + cleaned, 301);
+    return Response.redirect('https://simplyenak.com' + cleaned + url.search, 301);
   }
 
   // 2. Static redirects ──
-  var redirectTarget = REDIRECTS[url.pathname];
+  var lookupPath = url.pathname.replace(/\/$/, '') || '/';
+  var redirectTarget = REDIRECTS[lookupPath];
   if (redirectTarget) {
-    return Response.redirect("https://simplyenak.com" + redirectTarget, 301);
+    return Response.redirect("https://simplyenak.com" + redirectTarget + url.search, 301);
   }
 
   // ── Skip non-page requests
@@ -148,14 +127,14 @@ async function handleRequest(request) {
     var localeMatch = url.pathname.match(/^\/([a-z]{2})\/(stories|tours)\//);
     if (localeMatch) {
       var englishPath = '/' + localeMatch[2] + '/' + url.pathname.slice(localeMatch[0].length);
-      return Response.redirect('https://simplyenak.com' + englishPath, 301);
+      return Response.redirect('https://simplyenak.com' + englishPath + url.search, 301);
     }
   }
 
   // 4. ?lang= query string 404s — strip query and redirect to English
   // (90 404s: /must-try-malaysian-street-food/?lang=ms etc.)
   if (response.status === 404 && url.search) {
-    return Response.redirect('https://simplyenak.com' + url.pathname, 301);
+    return Response.redirect('https://simplyenak.com' + url.pathname + url.search, 301);
   }
 
   // Non-HTML responses from this path also get caching
@@ -170,21 +149,14 @@ async function handleRequest(request) {
   // Replace S3 origin URLs with CDN URLs
   // NOTE: This should be moved to a Cloudflare Transform Rule —
   // it's free, faster, and doesn't require a Worker invocation.
-  var didReplace = false;
-  html = html.replace(/https:\/\/se-website-images\.s3\.nl-ams\.scw\.cloud/g, CDN_ROOT);
-  if (html.indexOf(CDN_ROOT) >= 0) didReplace = true;
+  var s3Regex = /https:\/\/se-website-images\.s3\.nl-ams\.scw\.cloud/g;
+  var hasS3Urls = s3Regex.test(html);
 
-  if (!didReplace && html.indexOf("S3_ORIGIN") == -1) {
-    // No changes needed — return with edge caching
-    var noChangeHeaders = new Headers(response.headers);
-    noChangeHeaders.set("cache-control", "public, s-maxage=300, max-age=0, must-revalidate");
-    return new Response(html, {
-      status: response.status,
-      headers: noChangeHeaders
-    });
+  if (hasS3Urls) {
+    html = html.replace(s3Regex, CDN_ROOT);
   }
 
-  // HTML pages: cache for 5 minutes at the edge (for revalidation)
+  // Apply edge caching headers for all HTML responses
   var newHeaders = new Headers(response.headers);
   newHeaders.set("cache-control", "public, s-maxage=300, max-age=0, must-revalidate");
 
