@@ -1,0 +1,499 @@
+{
+  "generated_at": "2026-07-29T00:47:10.228195+00:00",
+  "total_pages": 18,
+  "summary": {
+    "Foundation": 9,
+    "Enrichment": 2,
+    "Authority": 2,
+    "Conversion": 0,
+    "Maintenance": 5
+  },
+  "phases": {
+    "1": {
+      "label": "Position 50+ / Unranked",
+      "action_plan": "Foundation SEO \u2014 Setup for Rankability",
+      "page_count": 9,
+      "urls": [
+        "https://simplyenak.com/custom-tours",
+        "https://simplyenak.com/get-best-food-experience-simply-enak",
+        "https://simplyenak.com/privacy-policy",
+        "https://simplyenak.com/thank-you",
+        "https://simplyenak.com/thank-you-contact",
+        "https://simplyenak.com/thank-you-booking",
+        "https://simplyenak.com/thank-you-booking-kuala-lumpur",
+        "https://simplyenak.com/thank-you-booking-penang",
+        "https://simplyenak.com/thank-you-inquiry"
+      ]
+    },
+    "2": {
+      "label": "Position 20\u201350",
+      "action_plan": "Content Enrichment \u2014 Deepening Relevance",
+      "page_count": 2,
+      "urls": [
+        "https://simplyenak.com/kuala-lumpur-food-tour",
+        "https://simplyenak.com/kuala-lumpur-food-tour"
+      ]
+    },
+    "3": {
+      "label": "Position 10\u201320",
+      "action_plan": "Authority Building \u2014 Climbing the SERP",
+      "page_count": 2,
+      "urls": [
+        "https://simplyenak.com/",
+        "https://simplyenak.com/stories"
+      ]
+    },
+    "4": {
+      "label": "Position 5\u201310",
+      "action_plan": "Conversion Optimization \u2014 Turning Traffic into Bookings",
+      "page_count": 0,
+      "urls": []
+    },
+    "5": {
+      "label": "Position 1\u20135",
+      "action_plan": "Maintenance \u2014 Defending Top Positions",
+      "page_count": 5,
+      "urls": [
+        "https://simplyenak.com/about",
+        "https://simplyenak.com/contact",
+        "https://simplyenak.com/tours",
+        "https://simplyenak.com/directions",
+        "https://simplyenak.com/terms-conditions"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "url": "https://simplyenak.com/",
+      "page_type": "homepage",
+      "subtype": "homepage",
+      "path": "/",
+      "priority": 1.0,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": null,
+      "gsc_position": 14.2,
+      "phase_id": 3,
+      "phase_label": "Authority (Position 10\u201320)",
+      "actions": [
+        "Acquire contextual backlinks from travel bloggers / food sites",
+        "Submit to relevant directories (TripAdvisor, Google Business Profile)",
+        "Share on social media with structured hashtags",
+        "Earn mentions through HARO / guest posting in food-travel niche",
+        "Build links from colony pages \u2192 this commercial page",
+        "Get listed on partner / vendor websites with backlinks",
+        "Encourage Google reviews (review schema already in place)",
+        "Create 'best of' listicles that cite this page",
+        "Participate in relevant subreddits / forums (r/malaysia, r/travel)",
+        "Update content quarterly to maintain topical authority"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/about",
+      "page_type": "supporting",
+      "subtype": "page:about",
+      "path": "/about",
+      "priority": 0.8,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": null,
+      "gsc_position": 2.0,
+      "phase_id": 5,
+      "phase_label": "Maintenance (Position 1\u20135)",
+      "actions": [
+        "Monitor position daily via GSC / rank tracker",
+        "Refresh content quarterly with new information / data",
+        "Watch competitor pages for new content or features",
+        "Respond to new reviews and maintain Google Business Profile",
+        "Continue building new backlinks at sustaining pace",
+        "Monitor and fix any technical SEO regressions",
+        "Update internal links as new content is published",
+        "Track branded vs non-branded traffic split",
+        "Watch for algorithm updates and adjust if needed",
+        "Test new CTA variations to sustain conversion rate"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/contact",
+      "page_type": "supporting",
+      "subtype": "page:contact",
+      "path": "/contact",
+      "priority": 0.8,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": null,
+      "gsc_position": 1.7,
+      "phase_id": 5,
+      "phase_label": "Maintenance (Position 1\u20135)",
+      "actions": [
+        "Monitor position daily via GSC / rank tracker",
+        "Refresh content quarterly with new information / data",
+        "Watch competitor pages for new content or features",
+        "Respond to new reviews and maintain Google Business Profile",
+        "Continue building new backlinks at sustaining pace",
+        "Monitor and fix any technical SEO regressions",
+        "Update internal links as new content is published",
+        "Track branded vs non-branded traffic split",
+        "Watch for algorithm updates and adjust if needed",
+        "Test new CTA variations to sustain conversion rate"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/tours",
+      "page_type": "supporting",
+      "subtype": "page:tours",
+      "path": "/tours",
+      "priority": 0.9,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": null,
+      "gsc_position": 1.3,
+      "phase_id": 5,
+      "phase_label": "Maintenance (Position 1\u20135)",
+      "actions": [
+        "Monitor position daily via GSC / rank tracker",
+        "Refresh content quarterly with new information / data",
+        "Watch competitor pages for new content or features",
+        "Respond to new reviews and maintain Google Business Profile",
+        "Continue building new backlinks at sustaining pace",
+        "Monitor and fix any technical SEO regressions",
+        "Update internal links as new content is published",
+        "Track branded vs non-branded traffic split",
+        "Watch for algorithm updates and adjust if needed",
+        "Test new CTA variations to sustain conversion rate"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/custom-tours",
+      "page_type": "supporting",
+      "subtype": "page:custom-tours",
+      "path": "/custom-tours",
+      "priority": 0.7,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 52,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/stories",
+      "page_type": "supporting",
+      "subtype": "blog-index",
+      "path": "/stories",
+      "priority": 0.7,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": null,
+      "gsc_position": 11,
+      "phase_id": 3,
+      "phase_label": "Authority (Position 10\u201320)",
+      "actions": [
+        "Acquire contextual backlinks from travel bloggers / food sites",
+        "Submit to relevant directories (TripAdvisor, Google Business Profile)",
+        "Share on social media with structured hashtags",
+        "Earn mentions through HARO / guest posting in food-travel niche",
+        "Build links from colony pages \u2192 this commercial page",
+        "Get listed on partner / vendor websites with backlinks",
+        "Encourage Google reviews (review schema already in place)",
+        "Create 'best of' listicles that cite this page",
+        "Participate in relevant subreddits / forums (r/malaysia, r/travel)",
+        "Update content quarterly to maintain topical authority"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/directions",
+      "page_type": "supporting",
+      "subtype": "page:directions",
+      "path": "/directions",
+      "priority": 0.6,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": null,
+      "gsc_position": 4.5,
+      "phase_id": 5,
+      "phase_label": "Maintenance (Position 1\u20135)",
+      "actions": [
+        "Monitor position daily via GSC / rank tracker",
+        "Refresh content quarterly with new information / data",
+        "Watch competitor pages for new content or features",
+        "Respond to new reviews and maintain Google Business Profile",
+        "Continue building new backlinks at sustaining pace",
+        "Monitor and fix any technical SEO regressions",
+        "Update internal links as new content is published",
+        "Track branded vs non-branded traffic split",
+        "Watch for algorithm updates and adjust if needed",
+        "Test new CTA variations to sustain conversion rate"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/kuala-lumpur-food-tour",
+      "page_type": "supporting",
+      "subtype": "other:kuala-lumpur-food-tour",
+      "path": "/kuala-lumpur-food-tour",
+      "priority": 0.9,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 34,
+      "gsc_position": null,
+      "phase_id": 2,
+      "phase_label": "Enrichment (Position 20\u201350)",
+      "actions": [
+        "Expand body content to 1500\u20132500 words targeting secondary keywords",
+        "Add FAQ section with schema markup (target PAA boxes)",
+        "Add related internal links (3\u20135 contextual links to tours/pages)",
+        "Improve readability: shorter paragraphs, bullet points, tables",
+        "Add multimedia: images with alt text, optional video",
+        "Add 'People also ask' targeted subheadings",
+        "Generate backlinks from related blog posts / stories",
+        "Update last-modified date to signal freshness",
+        "Add table of contents for long-form pages",
+        "Include external citations / authoritative sources"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/get-best-food-experience-simply-enak",
+      "page_type": "supporting",
+      "subtype": "other:get-best-food-experience-simply-enak",
+      "path": "/get-best-food-experience-simply-enak",
+      "priority": 0.7,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 52,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/kuala-lumpur-food-tour",
+      "page_type": "supporting",
+      "subtype": "other:kuala-lumpur-food-tour",
+      "path": "/kuala-lumpur-food-tour",
+      "priority": 0.9,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 34,
+      "gsc_position": null,
+      "phase_id": 2,
+      "phase_label": "Enrichment (Position 20\u201350)",
+      "actions": [
+        "Expand body content to 1500\u20132500 words targeting secondary keywords",
+        "Add FAQ section with schema markup (target PAA boxes)",
+        "Add related internal links (3\u20135 contextual links to tours/pages)",
+        "Improve readability: shorter paragraphs, bullet points, tables",
+        "Add multimedia: images with alt text, optional video",
+        "Add 'People also ask' targeted subheadings",
+        "Generate backlinks from related blog posts / stories",
+        "Update last-modified date to signal freshness",
+        "Add table of contents for long-form pages",
+        "Include external citations / authoritative sources"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/privacy-policy",
+      "page_type": "utility",
+      "subtype": "utility:privacy-policy",
+      "path": "/privacy-policy",
+      "priority": 0.4,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 100,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/terms-conditions",
+      "page_type": "utility",
+      "subtype": "utility:terms-conditions",
+      "path": "/terms-conditions",
+      "priority": 0.4,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": null,
+      "gsc_position": 1,
+      "phase_id": 5,
+      "phase_label": "Maintenance (Position 1\u20135)",
+      "actions": [
+        "Monitor position daily via GSC / rank tracker",
+        "Refresh content quarterly with new information / data",
+        "Watch competitor pages for new content or features",
+        "Respond to new reviews and maintain Google Business Profile",
+        "Continue building new backlinks at sustaining pace",
+        "Monitor and fix any technical SEO regressions",
+        "Update internal links as new content is published",
+        "Track branded vs non-branded traffic split",
+        "Watch for algorithm updates and adjust if needed",
+        "Test new CTA variations to sustain conversion rate"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/thank-you",
+      "page_type": "utility",
+      "subtype": "utility:thank-you",
+      "path": "/thank-you",
+      "priority": 0.3,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 100,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/thank-you-contact",
+      "page_type": "utility",
+      "subtype": "utility:thank-you-contact",
+      "path": "/thank-you-contact",
+      "priority": 0.3,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 100,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/thank-you-booking",
+      "page_type": "utility",
+      "subtype": "utility:thank-you-booking",
+      "path": "/thank-you-booking",
+      "priority": 0.3,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 100,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/thank-you-booking-kuala-lumpur",
+      "page_type": "utility",
+      "subtype": "utility:thank-you-booking-kuala-lumpur",
+      "path": "/thank-you-booking-kuala-lumpur",
+      "priority": 0.3,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 100,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/thank-you-booking-penang",
+      "page_type": "utility",
+      "subtype": "utility:thank-you-booking-penang",
+      "path": "/thank-you-booking-penang",
+      "priority": 0.3,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 100,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    },
+    {
+      "url": "https://simplyenak.com/thank-you-inquiry",
+      "page_type": "utility",
+      "subtype": "utility:thank-you-inquiry",
+      "path": "/thank-you-inquiry",
+      "priority": 0.3,
+      "lastmod": "2025-10-03T00:00:00+00:00",
+      "estimated_rank": 100,
+      "gsc_position": null,
+      "phase_id": 1,
+      "phase_label": "Foundation (Position 50+ / Unranked)",
+      "actions": [
+        "Set unique, keyword-rich title tags (<60 chars)",
+        "Write compelling meta descriptions (150\u2013160 chars)",
+        "Add proper heading hierarchy (H1 \u2192 H2 \u2192 H3)",
+        "Ensure page is indexable (no noindex, no canonical issues)",
+        "Add Open Graph and Twitter card meta tags",
+        "Verify Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)",
+        "Add structured data (Product, FAQ, BreadcrumbList, LocalBusiness)",
+        "Submit URL to Google Search Console for indexing",
+        "Ensure mobile-friendly rendering",
+        "Create or update XML sitemap entry"
+      ]
+    }
+  ]
+}
