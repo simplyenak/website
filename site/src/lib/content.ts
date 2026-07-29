@@ -138,6 +138,20 @@ try {
   snapshotStoriesPage = (await import('~/data/content/stories-page.json')).default || {};
 } catch {}
 
+// ── Request-level cache ──────────────────────────────────────────
+// Prevents redundant API calls when the same collection+locale is
+// requested multiple times within a single request lifetime.
+const requestCache = new Map<string, any>();
+
+function cachedFetch<T>(key: string, fetcher: () => Promise<T>): Promise<T> {
+  const cached = requestCache.get(key);
+  if (cached !== undefined) return Promise.resolve(cached as T);
+  return fetcher().then(result => {
+    requestCache.set(key, result);
+    return result;
+  });
+}
+
 // ── Live Payload fetchers (tier 1) ─────────────────────────────────────
 // These return the raw Payload docs. Callers use them as tier 1 fallback.
 
@@ -191,7 +205,8 @@ async function liveTravelTypes(locale?: string) {
 
 async function liveLandingPages(locale?: string): Promise<any[] | null> {
   try {
-    const docs = await fetchCollection('landing_pages', { locale });
+    const cacheKey = `landing_pages:${locale || 'none'}`;
+    const docs = await cachedFetch(cacheKey, () => fetchCollection('landing_pages', { locale }));
     return docs || [];
   } catch {
     return null;
@@ -424,14 +439,28 @@ function mergeTour(payload: any) {
   }
 
   // Resolve foods: Payload takes priority, hardcoded fills gaps
-  const mergedFoods = mapFoodItems(payload).length > 0
-    ? mapFoodItems(payload)
+  const foodItems = mapFoodItems(payload);
+  const mergedFoods = foodItems.length > 0
+    ? foodItems
     : (hardcoded.foods || []);
 
   // Resolve itinerary: Payload takes priority, hardcoded fills gaps
-  const mergedItinerary = mapItinerary(payload).length > 0
-    ? mapItinerary(payload)
+  const itinerary = mapItinerary(payload);
+  const mergedItinerary = itinerary.length > 0
+    ? itinerary
     : (hardcoded.itinerary || []);
+
+  // Resolve highlights: Payload takes priority, hardcoded fills gaps
+  const highlights = unwrapHighlights(payload);
+  const mergedHighlights = highlights.length > 0
+    ? highlights
+    : (hardcoded.highlights || []);
+
+  // Resolve forYou: Payload takes priority, hardcoded fills gaps
+  const forYouItems = buildForYou(payload);
+  const mergedForYou = typeof forYouItems === 'object' && forYouItems.length > 0
+    ? forYouItems
+    : (hardcoded.forYou || []);
 
   return {
     id: payload.id,
@@ -458,10 +487,10 @@ function mergeTour(payload: any) {
     image: payload.heroImage?.url || payload.image || hardcoded.image,
     heroImageAlt: payload.heroImageAlt || '',
     galleryImages: flattenGallery(payload.gallery_images || payload.galleryImages || []) || (hardcoded as any).gallery_images || [],
-    highlights: unwrapHighlights(payload).length > 0 ? unwrapHighlights(payload) : (hardcoded.highlights || []),
+    highlights: mergedHighlights,
     itinerary: mergedItinerary,
     foods: mergedFoods,
-    forYou: typeof buildForYou(payload) === 'object' && buildForYou(payload).length > 0 ? buildForYou(payload) : (hardcoded.forYou || []),
+    forYou: mergedForYou,
     dietaryOptions: (payload.dietaryOptions && payload.dietaryOptions.length > 0) ? unwrap(payload.dietaryOptions, 'slug') : (hardcoded.dietaryOptions || []),
     specialtyExperiences: (payload.specialtyExperiences && payload.specialtyExperiences.length > 0) ? unwrap(payload.specialtyExperiences, 'slug') : (hardcoded.specialtyExperiences || []),
     locations: (payload.locations && payload.locations.length > 0) ? unwrap(payload.locations, 'slug') : (hardcoded.locations || []),
@@ -995,17 +1024,7 @@ async function resolveTravelTypes(locale?: string): Promise<any[]> {
 }
 
 async function resolveLandingPages(locale?: string): Promise<any[]> {
-  // For non-EN locales, prefer snapshot translations over Payload's English fallback
-  if (locale && snapshotLandingPages.length > 0) {
-    const translated = snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
-    // Only use snapshots if we actually have translated content
-    const hasTranslations = translated.some((item, i) => {
-      const ht = item.hero_title;
-      return ht && ht !== (snapshotLandingPages[i] && snapshotLandingPages[i].hero_title);
-    });
-    if (hasTranslations) return translated;
-  }
-  // Tier 1: Live Payload API
+  // Tier 1: Live Payload API (for all locales — consistent with other resolve* functions)
   const live = await liveLandingPages(locale);
   if (live && live.length > 0) return live;
   // Tier 2: JSON snapshots (fallback for all locales)
