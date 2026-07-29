@@ -32,8 +32,16 @@ var REDIRECTS = {
   "/ms/stories/food-safety": "/stories/food-safety",
   "/ms/stories/must-try-malaysian-street-food": "/stories/must-try-malaysian-street-food",
 
-  // ── Legacy redirects (existing) ──
-  "/tours/eat-drink-george-town": "/tours/georgetown-night-food-durian",
+  // ── Redirect story slugs to tours (content lives on tour pages) ──
+  "/stories/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
+  "/stories/eat-drink-georgetown": "/tours/penang-street-food",
+  "/stories/secrets-of-kl-nightlife": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
+  "/stories/melaka-cultural-food-journey": "/stories/food-tours-melaka",
+
+  // ── Food-tours → /tours index ──
+  "/food-tours": "/tours",
+  "/food-tours/": "/tours",
+  "/tours/eat-drink-george-town": "/tours/penang-street-food",
 
   // ── Top-level pages → /stories/ (Google indexed w/o prefix) ──
   "/11-foods-to-try-during-hari-raya": "/stories/11-foods-to-try-during-hari-raya",
@@ -66,8 +74,14 @@ var REDIRECTS = {
   "/eating-durians/tours": "/stories/eating-durians",
   "/food-safety/custom-tours": "/stories/food-safety",
   "/food-safety/tours": "/stories/food-safety",
-  "/food-tours/": "/stories/food-tours",
-  "/food-tours/kuala-lumpur/kuala-lumpur-street-food/": "/stories/food-tours",
+  "/eat-drink-georgetown": "/tours/penang-street-food",
+  "/eat-drink-georgetown/": "/tours/penang-street-food",
+  "/secrets-of-kl-nightlife": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
+  "/secrets-of-kl-nightlife/": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
+  "/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
+  "/flavours-of-malaysia-off-the-beaten-track/": "/tours/flavours-of-malaysia",
+  "/melaka-cultural-food-journey": "/stories/melaka-cultural-food-journey",
+  "/melaka-cultural-food-journey/": "/stories/melaka-cultural-food-journey",
   "/hidden-gems-in-kuala-lumpur/": "/stories/hidden-gems-in-kuala-lumpur",
   "/kuala-lumpur-food-tour/stories": "/stories/kuala-lumpur-food-tour",
   "/malaysian-herbs-and-spices/custom-tours": "/stories/malaysian-herbs-and-spices",
