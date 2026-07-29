@@ -36,9 +36,14 @@ try {
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
-    "image": post.image || "https://cdn.simplyenak.com/simply-enak-og-image.jpg",
+    "image": {
+      "@type": "ImageObject",
+      "url": post.image || "https://cdn.simplyenak.com/simply-enak-og-image.jpg",
+      "caption": post.title
+    },
     "datePublished": post.publishDate,
     "dateModified": post.updateDate || post.publishDate,
+    "wordCount": (post.Content?.length || 0).toString(),
     "author": {
       "@type": "Person",
       "name": authorName,
@@ -120,7 +125,7 @@ try {
         <div class="-mx-4 sm:mx-0 mb-10">
           <img
             src={post.image}
-            alt={post.excerpt || post.title}
+            alt=""
             class="w-full rounded-xl shadow-md"
             loading="eager"
           />
