@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getAllTours, getFAQs, getDietaryOptionList, getTravelTypeList, getImageUrl } from '~/lib/content';
+import { getCanonical } from '~/utils/permalinks';
 import PlayfulGallery from '~/components/widgets/PlayfulGallery.astro';
 import TourContactCTA from '~/components/tours/TourContactCTA.astro';
 import VideoEmbed from '~/components/common/VideoEmbed.astro';
@@ -126,6 +127,7 @@ const travelUrl = (slug: string) => {
 const meta = {
   title: `${tour.name} | ${tour.tagline || 'Guided Food Tour'}`,
   description: tour.shortDesc || tour.tagline || "",
+  canonical: String(getCanonical(`/tours/${tour.slug}`)),
 };
 
 // Build Tour schema (TouristTrip + Product + map signal)
@@ -409,8 +411,8 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
         {foods.length > 0 && (
           <section id="food" class="mb-16 scroll-mt-20">
             <div class="text-center mb-10">
-              <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">What's on the Menu</p>
-              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">Food You'll Taste</h2>
+              <p class="font-bold text-xs uppercase text-accent mb-2 tracking-[0.2em]">{tour.foodSectionLabel || "What's on the Menu"}</p>
+              <h2 class="font-bold font-heading text-default text-2xl md:text-3xl">{tour.foodSectionHeading || "Food You'll Taste"}</h2>
             </div>
             <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
               {foods.map((food: any) => (
@@ -418,7 +420,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                   <div class="flex items-center justify-center rounded-full bg-accent/10 flex-shrink-0 h-12 text-xl w-12">🍽️</div>
                   <div>
                     <h3 class="font-bold font-heading text-default">{food.name}</h3>
-                    <p class="text-sm text-muted mt-0.5">{food.desc || foodDescriptions[food.name] || 'Authentic Malaysian dish'}</p>
+                    <p class="text-sm text-muted mt-0.5">{food.desc || foodDescriptions[food.name] || 'Malaysian dish'}</p>
                   </div>
                 </div>
               ))}
