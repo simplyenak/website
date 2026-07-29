@@ -89,6 +89,27 @@
           "contextual_link_url": "/tours/penang-street-food/"
         }
       ]
+    },
+    {
+      "id": "malaysia-food-tours-colony",
+      "pages": [
+        {
+          "slug": "malaysia-food-tours",
+          "title": "Malaysia Food Tours: What to Expect, What to Eat, and How to Choose",
+          "url": "/stories/malaysia-food-tours/",
+          "target_keyword": "malaysia food tours",
+          "status": "planned",
+          "links_to": null,
+          "linked_from": null,
+          "payload_type": "story",
+          "contextual_link_phrase": "For a deeper dive into multi-day food experiences",
+          "contextual_link_text": "see our tailored multi-day tours",
+          "contextual_link_url": "/tours/private-tours/"
+        }
+      ],
+      "created": "2026-07-29",
+      "last_checked": null,
+      "threshold_met": false
     }
   ]
 }
