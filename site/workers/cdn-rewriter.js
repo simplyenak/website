@@ -136,8 +136,15 @@ async function handleRequest(request) {
   }
 
   // 2. Static redirects ──
-  var lookupPath = url.pathname.replace(/\/$/, '') || '/';
-  var redirectTarget = REDIRECTS[lookupPath];
+  // 2. Strip ?lang=en (English = default locale, duplicate content)
+  // 174 GSC "Alternative page with proper canonical tag" entries
+  if (url.searchParams.get('lang') === 'en') {
+    url.searchParams.delete('lang');
+    return Response.redirect('https://simplyenak.com' + url.pathname + (url.search || ''), 301);
+  }
+
+  // 3. Static redirects ──
+  var redirectTarget = REDIRECTS[url.pathname];
   if (redirectTarget) {
     return Response.redirect("https://simplyenak.com" + redirectTarget + url.search, 301);
   }
