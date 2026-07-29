@@ -65,7 +65,15 @@ addEventListener("fetch", event => {
 async function handleRequest(request) {
   var url = new URL(request.url);
 
-  // ── Static redirects ──
+  // ── Dynamic redirects (run before static map) ──
+
+  // 1. Strip .html extension (legacy Strapi/AstroWind URLs — 313 404s)
+  if (url.pathname.endsWith('.html')) {
+    var cleaned = url.pathname.slice(0, -5);
+    return Response.redirect('https://simplyenak.com' + cleaned, 301);
+  }
+
+  // 2. Static redirects ──
   var redirectTarget = REDIRECTS[url.pathname];
   if (redirectTarget) {
     return Response.redirect("https://simplyenak.com" + redirectTarget, 301);
@@ -98,6 +106,22 @@ async function handleRequest(request) {
   // Pass through redirects — they shouldn't be cached
   if (response.status >= 300 && response.status < 400) {
     return response;
+  }
+
+  // 3. Locale 404 fallback — if locale URL 404s, redirect to English
+  // (152 404s: /ja/stories/X, /nl/tours/Y etc. — content exists in English only)
+  if (response.status === 404) {
+    var localeMatch = url.pathname.match(/^\/([a-z]{2})\/(stories|tours)\//);
+    if (localeMatch) {
+      var englishPath = '/' + localeMatch[2] + '/' + url.pathname.slice(localeMatch[0].length);
+      return Response.redirect('https://simplyenak.com' + englishPath, 301);
+    }
+  }
+
+  // 4. ?lang= query string 404s — strip query and redirect to English
+  // (90 404s: /must-try-malaysian-street-food/?lang=ms etc.)
+  if (response.status === 404 && url.search) {
+    return Response.redirect('https://simplyenak.com' + url.pathname, 301);
   }
 
   // Non-HTML responses from this path also get caching
