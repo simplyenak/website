@@ -28,7 +28,7 @@ from pathlib import Path
 # ──────────────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────────────
-DEFAULT_SITEMAP = "https://simplyenak.com/sitemap-0.xml"
+DEFAULT_SITEMAP = "https://simplyenak.com/sitemap-en.xml"
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = PROJECT_ROOT / ".hermes" / "seo-reports"
 
