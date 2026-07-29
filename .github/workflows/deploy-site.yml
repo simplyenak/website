@@ -24,8 +24,8 @@ on:
   repository_dispatch:
     types: [deploy-staging, deploy-production]
   schedule:
-    # Auto-sync from Payload every 30 minutes — deploys to both staging + production
-    - cron: '*/30 * * * *'
+    # Auto-sync from Payload every 3 hours — deploys to both staging + production
+    - cron: '0 */3 * * *'
 
 concurrency:
   group: deploy-site
