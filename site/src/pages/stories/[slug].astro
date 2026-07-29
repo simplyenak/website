@@ -10,7 +10,12 @@ import type { ImageMetadata } from 'astro';
 import RelatedTours from '~/components/blog/RelatedTours.astro';
 
 export async function getStaticPaths() {
-  const all = (await import('~/data/content/stories.json')).default as any[];
+  // Use resolveStories pipeline so getStaticPaths and getStoryBySlug
+  // share the same data source (Live Payload API -> snapshot fallback).
+  // Otherwise paths generated at build time can 404 at runtime when
+  // live data differs from snapshot (status mismatch, API timeout).
+  const { resolveStories } = await import('~/lib/content');
+  const all = await resolveStories('en');
   return all
     .filter((s: any) => (s.workflowStatus === 'published' || s._status === 'published' || !s._status) && (s.content_markdown || s.content))
     .map((s: any) => ({ params: { slug: s.slug } }));
