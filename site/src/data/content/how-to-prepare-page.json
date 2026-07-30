@@ -8,8 +8,8 @@
   "whatToWear": [
     {
       "id": "w1",
-      "title": "Wear proper shoes",
-      "description": "You will be walking on wet market floors. They get slippery. Closed-toe is safest."
+      "title": "Closed-toe shoes",
+      "description": "Wet floors get slippery. Sandals are asking for trouble."
     },
     {
       "id": "w2",
@@ -19,17 +19,22 @@
     {
       "id": "w3",
       "title": "Light clothes",
-      "description": "Hot and humid all year. Cotton or anything that breathes."
+      "description": "Hot and humid all year. Something breathable."
     },
     {
       "id": "w4",
       "title": "Bring umbrella if rain looks likely",
-      "description": "Afternoon storms are normal between October and March. Umbrella is easier to carry than rain jacket."
+      "description": "Afternoon rain is common October to March. Small umbrella fits in your pocket."
     },
     {
       "id": "w5",
       "title": "Not white",
-      "description": "You will spill food on yourself. Darker colours hide it better."
+      "description": "You will spill food on yourself. Darker colours hide mess."
+    },
+    {
+      "id": "w6",
+      "title": "Sunscreen and hat",
+      "description": "Malaysian sun is brutal. You will be outside for hours."
     }
   ],
   "whatToBring": [
@@ -46,7 +51,7 @@
     {
       "id": "b3",
       "title": "Phone or camera",
-      "description": "Markets are crowded. Keep it close."
+      "description": "Markets are crowded. Don't drop it in curry."
     },
     {
       "id": "b4",
@@ -58,12 +63,12 @@
     {
       "id": "exp1",
       "title": "Small groups",
-      "description": "Join-in tours cap at 7 people. Private tours are just your group."
+      "description": "Join-in tours are 7 people max. Private tours are just your group."
     },
     {
       "id": "exp2",
       "title": "3-4 hours of eating",
-      "description": "6-8 stops. Do not eat breakfast before you come."
+      "description": "6-8 stops. Skip breakfast before you come."
     },
     {
       "id": "exp3",
@@ -78,15 +83,15 @@
     {
       "id": "exp5",
       "title": "Guide orders for you",
-      "description": "No menus. Your guide picks what to order. Just say what you cannot eat."
+      "description": "No menus. Your guide picks favourite dishes. Just say what you cannot eat."
     }
   ],
   "dietary_heading": "Dietary Requirements",
-  "dietary_intro": "Let us know what you can and cannot eat when you book. We sort it out.",
+  "dietary_intro": "Let us know what you can and cannot eat when you book. We accommodate vegetarian, vegan, halal, and more.",
   "dietary_notes": [],
   "directions_cta_text": "Need help finding the meeting point?",
   "directions_cta_button": "View Directions",
-  "updatedAt": "2026-07-30T00:45:57.483Z",
+  "updatedAt": "2026-07-30T01:01:15.247Z",
   "createdAt": "2026-05-19T09:59:18.660Z",
   "_status": "draft"
 }
