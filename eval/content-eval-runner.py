@@ -745,6 +745,207 @@ EMOTION_PATTERNS = [
     r'\b(thing|stuff|moment|memory|story|stories|time|day|night|morning)\b']
 
 
+# ── AI Writing Pattern Detection (from ai-copywriter / Wikipedia Signs of AI Writing) ──
+
+# Pattern #7: Overused AI Vocabulary
+AI_VOCABULARY = [
+    "actually", "additionally", "align with", "crucial", "delve", "emphasizing",
+    "enduring", "enhance", "fostering", "garner", "highlight", "interplay",
+    "intricate", "intricacies", "key", "landscape", "pivotal", "showcase",
+    "tapestry", "testament", "underscore", "valuable", "vibrant"
+]
+
+# Pattern #28: Signposting and Announcements
+SIGNPOSTING_PATTERNS = [
+    r"(?:in this article|in this post|in this guide|in this piece)",
+    r"(?:let's dive into|let's explore|let's take a look at)",
+    r"(?:here's what you need to know|here's why|here's how)",
+    r"(?:i want to share|i'd like to share|let me share)",
+    r"(?:first of all|secondly|thirdly|finally|lastly)",
+]
+
+# Pattern #5: Vague Attributions
+VAGUE_ATTRIBUTION_PATTERNS = [
+    r"(?:industry reports|observers have cited|experts argue|experts believe)",
+    r"(?:some critics argue|several sources|multiple publications)",
+    r"(?:it is widely known|it is often said|many people believe)",
+]
+
+# Pattern #23: Filler Phrases
+FILLER_PHRASES = [
+    r"(?:it's worth noting that|it should be mentioned that|it's important to note that)",
+    r"(?:needless to say|as a matter of fact|as we all know)",
+    r"(?:at the end of the day|when all is said and done)",
+    r"(?:in today's (?:fast-paced|modern|digital) (?:world|landscape|era))",
+]
+
+# Pattern #27: Persuasive Authority Tropes
+PERSUASIVE_AUTHORITY_PATTERNS = [
+    r"(?:the real question is|at its core|in reality|what really matters)",
+    r"(?:fundamentally|the deeper issue|the heart of the matter)",
+    r"(?:the truth of the matter|the fact of the matter is)",
+]
+
+# Pattern #25: Generic Positive Conclusions
+GENERIC_CONCLUSION_PATTERNS = [
+    r"(?:the future looks bright|exciting times lie ahead|major step in the right direction)",
+    r"(?:continues their journey toward|paves the way for|opens new doors)",
+    r"(?:this represents a|marks a significant|signals a new era)",
+]
+
+# Pattern #9: Negative Parallelisms
+NEGATIVE_PARALLELISM_PATTERNS = [
+    r"(?:not only.*but also|not just.*but)",
+    r"(?:it's not just about.*it's)",
+]
+
+# Pattern #8: Copula Avoidance
+COPULA_AVOIDANCE_PATTERNS = [
+    r"\b(?:serves as|stands as|marks|represents)\b",
+    r"\b(?:boasts|features|offers)\b",
+]
+
+# Pattern #10: Rule of Three (forced triads) — count density
+RULE_OF_THREE_RE = r"\b\w+,\s*\w+,\s*and\s*\w+\b"
+
+
+def detect_ai_writing_patterns(text: str) -> dict:
+    """Detect AI writing patterns in text. Returns {pattern_name: count} for triggered patterns.
+
+    Based on ai-copywriter skill (v1.5.1) + blader/humanizer v2.9.1 + Wikipedia Signs of AI writing.
+
+    Returns dict with two categories:
+    - "core": patterns that count toward cluster threshold (3+ = signal)
+    - "contextual": patterns that only amplify existing detections, never trigger alone
+
+    Key principle from ai-copywriter: isolated tells are noise, clusters are signal.
+    Curly quotes alone mean nothing; curly quotes + rule-of-three + "vibrant tapestry" + "Conclusion" = confession.
+    """
+    text_lower = text.lower()
+    core = {}
+    contextual = {}
+
+    # Pattern #7: AI Vocabulary (CORE)
+    ai_vocab_count = sum(1 for w in AI_VOCABULARY if re.search(rf"\b{re.escape(w)}\b", text_lower))
+    if ai_vocab_count > 0:
+        core["ai_vocabulary"] = ai_vocab_count
+
+    # Pattern #28: Signposting (CORE)
+    signposting_count = sum(1 for p in SIGNPOSTING_PATTERNS if re.search(p, text_lower))
+    if signposting_count > 0:
+        core["signposting"] = signposting_count
+
+    # Pattern #5: Vague Attributions (CORE)
+    vague_attr_count = sum(1 for p in VAGUE_ATTRIBUTION_PATTERNS if re.search(p, text_lower))
+    if vague_attr_count > 0:
+        core["vague_attributions"] = vague_attr_count
+
+    # Pattern #23: Filler Phrases (CORE)
+    filler_count = sum(1 for p in FILLER_PHRASES if re.search(p, text_lower))
+    if filler_count > 0:
+        core["filler_phrases"] = filler_count
+
+    # Pattern #27: Persuasive Authority (CORE)
+    persuasive_count = sum(1 for p in PERSUASIVE_AUTHORITY_PATTERNS if re.search(p, text_lower))
+    if persuasive_count > 0:
+        core["persuasive_authority"] = persuasive_count
+
+    # Pattern #25: Generic Conclusions (CORE)
+    conclusion_count = sum(1 for p in GENERIC_CONCLUSION_PATTERNS if re.search(p, text_lower))
+    if conclusion_count > 0:
+        core["generic_conclusions"] = conclusion_count
+
+    # Pattern #9: Negative Parallelisms (CORE)
+    neg_parallel_count = sum(1 for p in NEGATIVE_PARALLELISM_PATTERNS if re.search(p, text_lower))
+    if neg_parallel_count > 0:
+        core["negative_parallelisms"] = neg_parallel_count
+
+    # Pattern #8: Copula Avoidance — only flag the strongest tells (CORE)
+    copula_count = len(re.findall(r"\b(?:serves as|stands as|marks|represents)\b", text_lower))
+    if copula_count > 0:
+        core["copula_avoidance"] = copula_count
+
+    # Pattern #10: Rule of Three (count triads, flag if density is high) (CORE)
+    triad_count = len(re.findall(RULE_OF_THREE_RE, text))
+    word_count = len(text.split())
+    if triad_count >= 3 and (triad_count / word_count * 1000) > 8:  # >8 triads per 1000 words
+        core["rule_of_three_overuse"] = triad_count
+
+    # Pattern #19: Curly Quotes (CONTEXTUAL — never counts toward cluster threshold)
+    curly_quote_count = len(re.findall(r'[""]', text))
+    if curly_quote_count > 0:
+        contextual["curly_quotes"] = curly_quote_count
+
+    return {"core": core, "contextual": contextual}
+
+
+def check_ai_writing_clusters() -> dict:
+    """Check blog posts and stories for clusters of AI writing patterns.
+
+    Based on ai-copywriter skill: isolated tells are noise, clusters (3+ different
+    CORE pattern groups) in one piece is a signal. Contextual patterns (curly quotes)
+    only amplify existing detections — they never trigger a cluster alone.
+
+    Warn-only — doesn't block deploy.
+    """
+    posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
+    stories_data = load_json(CONTENT_DIR / "stories.json")
+
+    issues = []
+
+    # Check blog posts
+    for post in posts:
+        content = post.read_text(encoding="utf-8")
+        parts = content.split("---", 2)
+        if len(parts) < 3:
+            continue
+        body = parts[2].strip()
+        if len(body) < 200:
+            continue
+
+        result = detect_ai_writing_patterns(body)
+        core_count = len(result["core"])
+        if core_count >= 3:
+            issues.append({
+                "file": post.name,
+                "type": "blog_post",
+                "core_pattern_groups": core_count,
+                "contextual_patterns": list(result["contextual"].keys()),
+                "patterns": result["core"],
+                "verdict": "AI writing cluster detected"
+            })
+
+    # Check stories
+    if isinstance(stories_data, list):
+        for story in stories_data:
+            slug = story.get("slug", "?")
+            content_root = story.get("content", {})
+            body_texts = extract_text_from_rich_text(content_root)
+            body_combined = " ".join(body_texts)
+            if len(body_combined) < 200:
+                continue
+
+            result = detect_ai_writing_patterns(body_combined)
+            core_count = len(result["core"])
+            if core_count >= 3:
+                issues.append({
+                    "slug": slug,
+                    "type": "story",
+                    "core_pattern_groups": core_count,
+                    "contextual_patterns": list(result["contextual"].keys()),
+                    "patterns": result["core"],
+                    "verdict": "AI writing cluster detected"
+                })
+
+    if not issues:
+        return pass_result("No AI writing clusters detected (0 posts/stories with 3+ core pattern groups)")
+
+    return warn_result(
+        f"{len(issues)} posts/stories with AI writing clusters (3+ core pattern groups)",
+        issues[:20]
+    )
+
+
 def check_stories_quality() -> dict:
     """Warn-only: check Stories collection for Discover-readiness. Doesn't block deploy.
 
@@ -845,6 +1046,7 @@ CASE_HANDLERS = {
     "stories_quality": check_stories_quality,
     "first_paragraph_rule": check_first_paragraph_rule,
     "attribute_matching": check_attribute_matching,
+    "ai_writing_cluster_detection": check_ai_writing_clusters,
 }
 
 

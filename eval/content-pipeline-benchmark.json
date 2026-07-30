@@ -504,5 +504,30 @@
     ],
     "weight": 0.8,
     "notes": "Caleb: Study the language that ranking pages use and mirror it. Make a list of required attributes for each piece. AI agents read your ENTIRE page and extract the most important parts."
+  },
+  {
+    "case_id": "ai_writing_cluster_detection",
+    "content_type": "all",
+    "scenario": "Blog posts and stories must not show clusters of AI writing patterns",
+    "description": "Detect clusters of AI-generated writing patterns based on ai-copywriter skill (v1.5.1) + blader/humanizer v2.9.1 + Wikipedia Signs of AI Writing guide. Each pattern alone is noise; 3+ different pattern groups in one piece is a signal. Checks: AI vocabulary (#7), signposting (#28), vague attributions (#5), filler phrases (#23), persuasive authority (#27), generic conclusions (#25), negative parallelisms (#9), copula avoidance (#8), rule of three overuse (#10), curly quotes (#19). Warn-only because pattern detection has false-positive risk — human review required before concluding.",
+    "monitored_patterns": [
+      "ai_vocabulary",
+      "signposting",
+      "vague_attributions",
+      "filler_phrases",
+      "persuasive_authority",
+      "generic_conclusions",
+      "negative_parallelisms",
+      "copula_avoidance",
+      "rule_of_three_overuse",
+      "curly_quotes"
+    ],
+    "cluster_threshold": 3,
+    "forbidden_patterns": [
+      "ai_writing_cluster_in_blog_post",
+      "ai_writing_cluster_in_story"
+    ],
+    "weight": 0.6,
+    "notes": "From mikiarlo3/ai-copywriter repo (MIT, 984 stars, updated Jul 2026). Detection only, never auto-rewrite. Warn-only because isolated tells are normal; clusters need human confirmation. Aligns with content-quality skill principle: detect, don't auto-polish."
   }
 ]
