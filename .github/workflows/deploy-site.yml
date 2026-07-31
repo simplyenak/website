@@ -15,17 +15,11 @@ on:
         description: 'Deployment message'
         required: false
         default: 'Deploy site update'
-  push:
-    branches: [main]
-    paths:
-      - 'site/**'
-      - 'eval/**'
-      - '.github/workflows/deploy-site.yml'
   repository_dispatch:
     types: [deploy-staging, deploy-production]
   schedule:
-    # Auto-sync from Payload every 3 hours — deploys to both staging + production
-    - cron: '0 */3 * * *'
+    # Deploy once daily at 09:00 UTC — syncs from Payload, builds, deploys
+    - cron: '0 9 * * *'
 
 concurrency:
   group: deploy-site
