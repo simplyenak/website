@@ -44,21 +44,12 @@ jobs:
           fi
           echo "Worker deployed successfully"
 
-      - name: Get workers.dev subdomain
+      - name: Enable workers.dev subdomain for script
         run: |
           set -e
-          SUB=$(curl -s "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/subdomain" \
-            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-            | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['result']['subdomain'])")
-          echo "Subdomain: $SUB"
-          echo "SUB=$SUB" >> $GITHUB_ENV
-
-      - name: Add workers.dev route
-        run: |
-          set -e
-          curl -s -X POST \
-            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/routes" \
+          RESP=$(curl -s -X PUT \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/scripts/nous-proxy/subdomain" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -H "Content-Type: application/json" \
-            -d "{\"pattern\":\"nous-proxy.${SUB}.workers.dev\",\"script\":\"nous-proxy\"}" \
-            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Route:', 'OK' if d.get('success') else 'WARN: '+str(d.get('errors',[])))"
+            -d "{\"enabled\":true}")
+          echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); print('Subdomain:', 'OK' if d.get('success') else 'WARN: '+str(d.get('errors',[])))"
