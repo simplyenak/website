@@ -1,0 +1,27 @@
+name: Deploy Nous Proxy Worker
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64, netcup]
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Deploy via Cloudflare API
+        run: |
+          set -e
+          cd /home/maarten/website-optimization
+          METADATA='{"body_part":"script","compatibility_date":"2025-01-01"}'
+          curl -s -X PUT \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/scripts/nous-proxy" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -F "metadata=${METADATA};type=application/json" \
+            -F "script=@site/workers/nous-proxy.js;type=application/javascript" \
+            | python3 -c "import sys,json; r=json.load(sys.stdin); print('Worker deploy:', 'OK' if r.get('success') else 'FAILED: '+str(r.get('errors',[])))"
