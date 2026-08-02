@@ -13,35 +13,32 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, netcup]
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Pull latest code
+        run: |
+          set -e
+          cd /home/maarten/website-optimization
+          git fetch origin main
+          git reset --hard origin/main
+          echo "Checked out: $(git log --oneline -1)"
 
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          port: ${{ secrets.SERVER_PORT || '4040' }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            set -e
-            echo "=== Pulling latest code ==="
-            cd /home/maarten/website-optimization
-            git pull origin main
+      - name: Build Docker image
+        run: |
+          set -e
+          cd /home/maarten/website-optimization/revamp/backend
+          docker build -t localhost:5000/simplyenak/website-backend:noloc2 .
 
-            echo "=== Building Docker image ==="
-            cd revamp/backend
-            docker build -t localhost:5000/simplyenak/website-backend:noloc2 .
+      - name: Push to local registry
+        run: docker push localhost:5000/simplyenak/website-backend:noloc2
 
-            echo "=== Pushing to local registry ==="
-            docker push localhost:5000/simplyenak/website-backend:noloc2
+      - name: Update Swarm service
+        run: docker service update --image localhost:5000/simplyenak/website-backend:noloc2 simplyenakbackend_payload
 
-            echo "=== Updating Swarm service ==="
-            docker service update --image localhost:5000/simplyenak/website-backend:noloc2 simplyenakbackend_payload
-
-            echo "=== Done ==="
+      - name: Report
+        run: |
+          echo "=== Deploy complete ==="
+          docker service inspect simplyenakbackend_payload --format "Payload service running: {{.UpdatedAt}}"
