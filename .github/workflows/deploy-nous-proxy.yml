@@ -39,6 +39,26 @@ jobs:
           CODE=$(echo "$RESP" | tail -1 | cut -d: -f2)
           if [ "$CODE" != "200" ]; then
             echo "FAILED with HTTP $CODE"
+            echo "$RESP"
             exit 1
           fi
           echo "Worker deployed successfully"
+
+      - name: Get workers.dev subdomain
+        run: |
+          set -e
+          SUB=$(curl -s "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/subdomain" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['result']['subdomain'])")
+          echo "Subdomain: $SUB"
+          echo "SUB=$SUB" >> $GITHUB_ENV
+
+      - name: Enable workers.dev route
+        run: |
+          set -e
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/domains" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"hostname\":\"nous-proxy.${SUB}.workers.dev\",\"service\":\"nous-proxy\",\"environment\":\"production\"}" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Route:', 'OK' if d.get('success') else 'WARN: '+str(d.get('errors',[])[:2]))" || echo "Route may already exist"
