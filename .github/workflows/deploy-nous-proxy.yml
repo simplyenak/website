@@ -19,9 +19,18 @@ jobs:
           set -e
           cd /home/maarten/website-optimization
           METADATA='{"body_part":"script","compatibility_date":"2025-01-01"}'
-          curl -s -X PUT \
+          echo "Account: ${CF_ACCOUNT_ID}"
+          RESP=$(curl -s -X PUT \
             "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/scripts/nous-proxy" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -F "metadata=${METADATA};type=application/json" \
             -F "script=@site/workers/nous-proxy.js;type=application/javascript" \
-            | python3 -c "import sys,json; r=json.load(sys.stdin); print('Worker deploy:', 'OK' if r.get('success') else 'FAILED: '+str(r.get('errors',[])))"
+            -w "\nHTTP_CODE:%{http_code}")
+          echo "Raw response:"
+          echo "$RESP"
+          CODE=$(echo "$RESP" | tail -1 | cut -d: -f2)
+          if [ "$CODE" != "200" ]; then
+            echo "FAILED with HTTP $CODE"
+            exit 1
+          fi
+          echo "Worker deployed successfully"
