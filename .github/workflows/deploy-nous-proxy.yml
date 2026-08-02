@@ -14,6 +14,14 @@ jobs:
       CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
     steps:
+      - name: Pull latest code
+        run: |
+          set -e
+          cd /home/maarten/website-optimization
+          git fetch origin main
+          git reset --hard origin/main
+          echo "Checked out: $(git log --oneline -1)"
+
       - name: Deploy via Cloudflare API
         run: |
           set -e
