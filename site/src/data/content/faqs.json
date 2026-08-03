@@ -733,7 +733,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T07:32:19.512Z",
     "createdAt": "2026-07-09T10:09:05.525Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーにはお子様も参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 35,
@@ -1378,7 +1388,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T07:32:21.553Z",
     "createdAt": "2026-07-09T10:09:03.888Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーにはお子様も参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 34,
@@ -1865,7 +1885,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T07:32:22.030Z",
     "createdAt": "2026-07-09T10:09:01.938Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーにはお子様も参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 33,
@@ -2446,7 +2476,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T07:32:22.281Z",
     "createdAt": "2026-07-09T08:55:46.173Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーにはお子様も参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 32,
@@ -3398,7 +3438,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T07:32:22.530Z",
     "createdAt": "2026-07-09T08:55:45.569Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーにはお子様も参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 31,
@@ -4385,7 +4435,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T07:32:22.773Z",
     "createdAt": "2026-07-09T08:55:44.864Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーにはお子様も参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 30,
@@ -5110,7 +5170,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T07:32:23.029Z",
     "createdAt": "2026-07-09T08:49:47.776Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーにはお子様も参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 29,
@@ -5159,7 +5229,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T07:32:23.284Z",
     "createdAt": "2026-07-09T05:18:40.961Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "このツアーはベジタリアン向けにもできますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 28,
@@ -5438,7 +5518,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T07:32:25.362Z",
     "createdAt": "2026-06-17T02:59:12.076Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "ja",
+        "question": "お子様もツアーに参加できますか？",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 22,
