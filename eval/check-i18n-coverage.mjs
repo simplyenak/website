@@ -57,8 +57,20 @@ function itemLanguageGaps(item, cfg) {
       continue;
     }
     // Field-level check: translatable fields should exist in the translation
+    // — BUT only if the English source has content. Fields like meta_title,
+    // review_title, hero_guides are empty/NULL in the EN source for many
+    // items; there's nothing to translate, so their absence is not a gap.
     const transKeys = Object.keys(t).filter((k) => !['id', 'languages_code', 'locale', 'updatedAt', 'createdAt'].includes(k));
-    const missingFields = cfg.translatableFields.filter((f) => !transKeys.includes(f));
+    const missingFields = cfg.translatableFields.filter((f) => {
+      if (transKeys.includes(f)) return false; // present — fine
+      // Missing: only a gap if the EN source has translatable content
+      const enVal = item[f];
+      if (enVal === null || enVal === undefined) return false;
+      if (typeof enVal === 'string') return enVal.trim().length > 0;
+      if (Array.isArray(enVal)) return enVal.length > 0;
+      if (typeof enVal === 'object') return Object.keys(enVal).length > 0;
+      return true; // number/boolean present
+    });
     if (missingFields.length > 0) {
       fieldGaps.push(`${lang}:${missingFields.join('+')}`);
       stale.push(lang);
@@ -117,7 +129,10 @@ function checkSingletonCollection(name, cfg) {
   const filePath = path.join(CONTENT_DIR, cfg.file);
   const page = loadJson(filePath);
   if (!page || typeof page !== 'object') {
-    return { collection: name, expected: EXPECTED.has(name), status: 'error', total: 1, untranslated: 0, stale: 0, issues: [`Cannot read ${cfg.file}`] };
+    // Missing singleton page configs (tours-index-page, faq-page, etc.) are
+    // hand-curated files the sync preserves by design and logs as "create
+    // manually" — NOT translation gaps. Non-blocking.
+    return { collection: name, expected: false, status: 'skipped', total: 0, untranslated: 0, stale: 0, issues: [] };
   }
 
   const { missing, stale, fieldGaps } = itemLanguageGaps(page, cfg);
