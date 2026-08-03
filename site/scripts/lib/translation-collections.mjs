@@ -243,7 +243,7 @@ export const COLLECTIONS = {
     file: 'dietary-landing-pages.json',
     type: 'array',
     matchField: 'slug',
-    # NOT localized in Payload (custom translations array) — do NOT push with ?locale
+    // NOT localized in Payload (custom translations array) — do NOT push with ?locale
     localizedInPayload: false,
     translatableFields: [
       'hero_title', 'hero_subtitle', 'hero_description',
@@ -256,7 +256,7 @@ export const COLLECTIONS = {
     file: 'specialty-landing-pages.json',
     type: 'array',
     matchField: 'slug',
-    # NOT localized in Payload (custom translations array) — do NOT push with ?locale
+    // NOT localized in Payload (custom translations array) — do NOT push with ?locale
     localizedInPayload: false,
     translatableFields: [
       'hero_title', 'hero_subtitle', 'hero_description',
@@ -269,7 +269,7 @@ export const COLLECTIONS = {
     file: 'travel-type-landing-pages.json',
     type: 'array',
     matchField: 'slug',
-    # NOT localized in Payload (custom translations array) — do NOT push with ?locale
+    // NOT localized in Payload (custom translations array) — do NOT push with ?locale
     localizedInPayload: false,
     translatableFields: [
       'hero_title', 'hero_subtitle', 'hero_description',
@@ -281,7 +281,7 @@ export const COLLECTIONS = {
     file: 'location-landing-pages.json',
     type: 'array',
     matchField: 'slug',
-    # NOT localized in Payload (custom translations array) — do NOT push with ?locale
+    // NOT localized in Payload (custom translations array) — do NOT push with ?locale
     localizedInPayload: false,
     translatableFields: [
       'hero_title', 'hero_subtitle', 'hero_description',
