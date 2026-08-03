@@ -58,6 +58,17 @@ export const COLLECTIONS = {
     // Only collection with localized:true fields in Payload (4 fields) —
     // native ?locale=de PATCH works and isolates locales correctly.
     localizedInPayload: true,
+    // The JSON item uses camelCase (metaTitle) but translations + renderer
+    // use snake_case (meta_title → metaDescription via snakeToCamel in
+    // content.ts). Map source item field → translation field name.
+    sourceFieldMap: {
+      metaTitle: 'meta_title',
+      metaDescription: 'meta_description',
+      shortDescription: 'short_description',
+      fullDescription: 'full_description',
+      whatsIncluded: 'whats_included',
+      whatsExcluded: 'whats_excluded',
+    },
     translatableFields: [
       'name', 'tagline', 'short_description', 'full_description',
       'whats_included', 'whats_excluded', 'highlights',
