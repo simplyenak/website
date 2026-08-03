@@ -610,10 +610,13 @@ async function translateCollection(name, config) {
 
           // For fields not in the translation entry (e.g. arrayFields stored on the
           // base item of a singleton), fall back to the base item value.
-          // sourceFieldMap: the JSON item may use camelCase (metaTitle) while the
-          // translation field is snake_case (meta_title) — read the mapped source.
+          // sourceFieldMap: the JSON item may use camelCase (metaTitle) OR
+          // snake_case (meta_title) — try both when reading the source.
           const sourceField = (config.sourceFieldMap ? Object.entries(config.sourceFieldMap).find(([, v]) => v === field)?.[0] : null) || field;
-          const enVal = hasContent(enSource[sourceField]) ? enSource[sourceField] : item[sourceField];
+          const enVal = hasContent(enSource[sourceField]) ? enSource[sourceField]
+            : hasContent(enSource[field]) ? enSource[field]
+            : hasContent(item[sourceField]) ? item[sourceField]
+            : item[field];
           if (!hasContent(enVal)) continue;
 
           // Check if target already has content
