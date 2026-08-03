@@ -48,7 +48,12 @@ echo "  Found ${UNTRANSLATED} untranslated + ${STALE} stale items."
 # Translate ONE language per run (the one with the most missing items), so the
 # 4h cron naturally walks all 9 languages over ~36h without hammering the
 # provider. If --lang was passed explicitly, honour it (test/manual mode).
-LANG_ARG=$(echo "$EXTRA_ARGS" | grep -o '\-\-lang [a-z,]*' | head -1 | awk '{print $2}' || true)
+LANG_ARG=""
+for arg in "${EXTRA_ARGS[@]:-}"; do
+  if [ "$LANG_ARG" = "" ] && [ "$arg" = "--lang" ]; then LANG_ARG="PENDING"; fi
+  if [ "$LANG_ARG" = "PENDING" ] && [[ "$arg" =~ ^[a-z,]+$ ]]; then LANG_ARG="$arg"; break; fi
+done
+[ "$LANG_ARG" = "PENDING" ] && LANG_ARG=""
 if [ -z "$LANG_ARG" ]; then
     LANG_ARG=$(echo "$HEALTH" | python3 -c "
 import json, sys
