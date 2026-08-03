@@ -1,7 +1,7 @@
 [
   {
     "id": 36,
-    "question": "Can children join this tour?",
+    "question": "Können Kinder bei dieser Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -572,34 +572,34 @@
       ],
       "whatsIncluded": [
         {
-          "id": "6a4faa369fb587000184c77b",
-          "item": "Local English-speaking guide"
+          "id": "6a7043e72188520001d10ac1",
+          "item": "Englischsprachiger lokaler Guide"
         },
         {
-          "id": "6a4faa369fb587000184c77c",
-          "item": "All food tastings (8-10 dishes)"
+          "id": "6a7043e72188520001d10ac2",
+          "item": "Alle Kostproben (8-10 Gerichte)"
         },
         {
-          "id": "6a4faa369fb587000184c77d",
-          "item": "Traditional market exploration"
+          "id": "6a7043e72188520001d10ac3",
+          "item": "Entdeckungstour über den traditionellen Markt"
         },
         {
-          "id": "6a4faa369fb587000184c77e",
-          "item": "Bottled water"
+          "id": "6a7043e72188520001d10ac4",
+          "item": "Flaschenwasser"
         },
         {
-          "id": "6a4faa369fb587000184c77f",
-          "item": "Small group experience (max 9)"
+          "id": "6a7043e72188520001d10ac5",
+          "item": "Kleine Gruppe (max. 9 Personen)"
         }
       ],
       "whatsExcluded": [
         {
-          "id": "6a4faa369fb587000184c780",
-          "item": "Hotel pickup and drop-off"
+          "id": "6a7043e72188520001d10ac6",
+          "item": "Abholung und Rückbringung zum Hotel"
         },
         {
-          "id": "6a4faa369fb587000184c781",
-          "item": "Personal purchases at the market"
+          "id": "6a7043e72188520001d10ac7",
+          "item": "Eigene Einkäufe auf dem Markt"
         }
       ],
       "highlights": [
@@ -724,40 +724,20 @@
         "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
         "image": null
       },
-      "updatedAt": "2026-07-10T14:47:44.815Z",
+      "updatedAt": "2026-08-03T07:31:51.395Z",
       "createdAt": "2026-05-19T08:33:47.672Z",
       "_status": "published"
     },
     "relatedStory": null,
     "sort_order": null,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-09T10:09:05.525Z",
+    "updatedAt": "2026-08-03T07:32:19.512Z",
     "createdAt": "2026-07-09T10:09:05.525Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 35,
-    "question": "Can children join this tour?",
+    "question": "Können Kinder bei dieser Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -1302,34 +1282,34 @@
       ],
       "whatsIncluded": [
         {
-          "id": "6a4faa3c9fb587000184c789",
-          "item": "Local English-speaking guide"
+          "id": "6a7043e62188520001d10ab3",
+          "item": "Englischsprachiger lokaler Guide"
         },
         {
-          "id": "6a4faa3c9fb587000184c78a",
-          "item": "All food tastings (10-12 dishes)"
+          "id": "6a7043e62188520001d10ab4",
+          "item": "Alle Kostproben (10-12 Gerichte)"
         },
         {
-          "id": "6a4faa3c9fb587000184c78b",
-          "item": "Kopitiam coffee experience"
+          "id": "6a7043e62188520001d10ab5",
+          "item": "Kaffee-Erlebnis im Kopitiam"
         },
         {
-          "id": "6a4faa3c9fb587000184c78c",
-          "item": "Bottled water"
+          "id": "6a7043e62188520001d10ab6",
+          "item": "Flaschenwasser"
         },
         {
-          "id": "6a4faa3c9fb587000184c78d",
-          "item": "Small group experience (max 9)"
+          "id": "6a7043e62188520001d10ab7",
+          "item": "Kleine Gruppe (max. 9 Personen)"
         }
       ],
       "whatsExcluded": [
         {
-          "id": "6a4faa3c9fb587000184c78e",
-          "item": "Hotel pickup and drop-off"
+          "id": "6a7043e62188520001d10ab8",
+          "item": "Abholung und Rückbringung zum Hotel"
         },
         {
-          "id": "6a4faa3c9fb587000184c78f",
-          "item": "Personal purchases"
+          "id": "6a7043e62188520001d10ab9",
+          "item": "Persönliche Einkäufe"
         }
       ],
       "highlights": [
@@ -1377,7 +1357,7 @@
       "galleryImageAlts": [],
       "heroImageAlt": "Freshly wok-fried char kway teow at a Penang hawker stall",
       "featured": false,
-      "showInMenu": null,
+      "showInMenu": false,
       "popular": false,
       "new": false,
       "badgeLabel": null,
@@ -1389,40 +1369,20 @@
         "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
         "image": null
       },
-      "updatedAt": "2026-07-21T12:44:58.118Z",
+      "updatedAt": "2026-08-03T07:31:50.773Z",
       "createdAt": "2026-05-19T08:33:48.876Z",
       "_status": "published"
     },
     "relatedStory": null,
     "sort_order": null,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-09T10:09:03.888Z",
+    "updatedAt": "2026-08-03T07:32:21.553Z",
     "createdAt": "2026-07-09T10:09:03.888Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 34,
-    "question": "Can children join this tour?",
+    "question": "Können Kinder bei dieser Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -1748,34 +1708,34 @@
       ],
       "whatsIncluded": [
         {
-          "id": "6a4faa389fb587000184c782",
-          "item": "Local English-speaking guide"
+          "id": "6a7043e72188520001d10aba",
+          "item": "Lokaler, englischsprachiger Guide"
         },
         {
-          "id": "6a4faa389fb587000184c783",
-          "item": "All food tastings (15-18 dishes)"
+          "id": "6a7043e72188520001d10abb",
+          "item": "Alle Kostproben (15-18 Gerichte)"
         },
         {
-          "id": "6a4faa389fb587000184c784",
-          "item": "Traditional Chinese medicine experience"
+          "id": "6a7043e72188520001d10abc",
+          "item": "Einblick in die traditionelle chinesische Medizin"
         },
         {
-          "id": "6a4faa389fb587000184c785",
-          "item": "Bottled water"
+          "id": "6a7043e72188520001d10abd",
+          "item": "Flaschenwasser"
         },
         {
-          "id": "6a4faa389fb587000184c786",
-          "item": "Small group experience (max 9)"
+          "id": "6a7043e72188520001d10abe",
+          "item": "Kleine Gruppe (max. 9 Personen)"
         }
       ],
       "whatsExcluded": [
         {
-          "id": "6a4faa389fb587000184c787",
-          "item": "Hotel pickup and drop-off"
+          "id": "6a7043e72188520001d10abf",
+          "item": "Abholung und Rückbringung zum Hotel"
         },
         {
-          "id": "6a4faa389fb587000184c788",
-          "item": "Personal purchases"
+          "id": "6a7043e72188520001d10ac0",
+          "item": "Persönliche Einkäufe"
         }
       ],
       "highlights": [
@@ -1896,40 +1856,20 @@
         "description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes.",
         "image": null
       },
-      "updatedAt": "2026-08-03T07:30:34.458Z",
+      "updatedAt": "2026-08-03T07:31:51.087Z",
       "createdAt": "2026-05-19T08:33:48.280Z",
       "_status": "published"
     },
     "relatedStory": null,
     "sort_order": null,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-09T10:09:02.016Z",
+    "updatedAt": "2026-08-03T07:32:22.030Z",
     "createdAt": "2026-07-09T10:09:01.938Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 33,
-    "question": "Can children join this tour?",
+    "question": "Können Kinder bei dieser Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -2400,26 +2340,26 @@
       ],
       "whatsIncluded": [
         {
-          "id": "6a4a04bf3d1a6400013d0527",
-          "item": "15+ vegetarian food tastings across different cultures and cooking styles"
+          "id": "6a7043e52188520001d10aa1",
+          "item": "Über 15 vegetarische Kostproben aus verschiedenen Kulturen und Küchen"
         },
         {
-          "id": "6a4a04bf3d1a6400013d0528",
-          "item": "Local guide who knows the stories behind the food and neighborhoods"
+          "id": "6a7043e52188520001d10aa2",
+          "item": "Ein lokaler Guide, der die Geschichten hinter dem Essen und den Vierteln kennt"
         },
         {
-          "id": "6a4a04bf3d1a6400013d0529",
-          "item": "Flexible for your diet, whether you eat eggs/dairy or are fully vegan"
+          "id": "6a7043e52188520001d10aa3",
+          "item": "Flexibel für deine Ernährung, ob du Eier und Milchprodukte isst oder vegan lebst"
         }
       ],
       "whatsExcluded": [
         {
-          "id": "6a4faac19fb587000184c79f",
-          "item": "Hotel pickup and drop-off"
+          "id": "6a7043e52188520001d10aa4",
+          "item": "Abholung und Rückbringung zum Hotel"
         },
         {
-          "id": "6a4faac19fb587000184c7a0",
-          "item": "Personal purchases"
+          "id": "6a7043e52188520001d10aa5",
+          "item": "Persönliche Einkäufe"
         }
       ],
       "highlights": [
@@ -2497,40 +2437,20 @@
         "description": null,
         "image": null
       },
-      "updatedAt": "2026-07-09T15:02:29.377Z",
+      "updatedAt": "2026-08-03T07:31:49.677Z",
       "createdAt": "2026-07-05T07:15:14.782Z",
       "_status": "published"
     },
     "relatedStory": null,
     "sort_order": null,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-09T09:40:17.762Z",
+    "updatedAt": "2026-08-03T07:32:22.281Z",
     "createdAt": "2026-07-09T08:55:46.173Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 32,
-    "question": "Can children join this tour?",
+    "question": "Können Kinder bei dieser Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -3356,30 +3276,30 @@
       ],
       "whatsIncluded": [
         {
-          "id": "6a4faa3e9fb587000184c790",
-          "item": "Local English-speaking guide"
+          "id": "6a7043e62188520001d10aa6",
+          "item": "Englischsprachiger lokaler Guide"
         },
         {
-          "id": "6a4faa3e9fb587000184c791",
-          "item": "All food tastings"
+          "id": "6a7043e62188520001d10aa7",
+          "item": "Alle Kostproben"
         },
         {
-          "id": "6a4faa3e9fb587000184c792",
-          "item": "Bottled water"
+          "id": "6a7043e62188520001d10aa8",
+          "item": "Flaschenwasser"
         },
         {
-          "id": "6a4faa3e9fb587000184c793",
-          "item": "Small group experience (max 7)"
+          "id": "6a7043e62188520001d10aa9",
+          "item": "Kleine Gruppe (max. 7)"
         }
       ],
       "whatsExcluded": [
         {
-          "id": "6a4faa3e9fb587000184c794",
-          "item": "Hotel pickup and drop-off"
+          "id": "6a7043e62188520001d10aaa",
+          "item": "Abholung und Rückbringung zum Hotel"
         },
         {
-          "id": "6a4faa3e9fb587000184c795",
-          "item": "Personal purchases"
+          "id": "6a7043e62188520001d10aab",
+          "item": "Persönliche Einkäufe"
         }
       ],
       "highlights": [
@@ -3469,40 +3389,20 @@
         "description": null,
         "image": null
       },
-      "updatedAt": "2026-07-21T13:05:09.407Z",
+      "updatedAt": "2026-08-03T07:31:50.034Z",
       "createdAt": "2026-06-28T14:06:11.936Z",
       "_status": "published"
     },
     "relatedStory": null,
     "sort_order": null,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-09T09:40:16.231Z",
+    "updatedAt": "2026-08-03T07:32:22.530Z",
     "createdAt": "2026-07-09T08:55:45.569Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 31,
-    "question": "Can children join this tour?",
+    "question": "Können Kinder bei dieser Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -4257,42 +4157,42 @@
       ],
       "whatsIncluded": [
         {
-          "id": "6a4faa419fb587000184c796",
-          "item": "Local English-speaking guide"
+          "id": "6a7043e72188520001d10ac8",
+          "item": "Englischsprachiger lokaler Guide"
         },
         {
-          "id": "6a4faa419fb587000184c797",
-          "item": "All food tastings"
+          "id": "6a7043e72188520001d10ac9",
+          "item": "Alle Kostproben"
         },
         {
-          "id": "6a4faa419fb587000184c798",
-          "item": "Durian masterclass on Jalan Macalister"
+          "id": "6a7043e72188520001d10aca",
+          "item": "Durian-Meisterkurs auf der Jalan Macalister"
         },
         {
-          "id": "6a4faa419fb587000184c799",
-          "item": "Hidden rooftop access"
+          "id": "6a7043e72188520001d10acb",
+          "item": "Zugang zu verstecktem Dach"
         },
         {
-          "id": "6a4faa419fb587000184c79a",
-          "item": "Bottled water"
+          "id": "6a7043e72188520001d10acc",
+          "item": "Flaschenwasser"
         },
         {
-          "id": "6a4faa419fb587000184c79b",
-          "item": "Small group experience (max 7)"
+          "id": "6a7043e72188520001d10acd",
+          "item": "Kleine Gruppe (max. 7 Personen)"
         }
       ],
       "whatsExcluded": [
         {
-          "id": "6a4faa419fb587000184c79c",
-          "item": "Hotel pickup and drop-off"
+          "id": "6a7043e72188520001d10ace",
+          "item": "Abholung und Rückbringung zum Hotel"
         },
         {
-          "id": "6a4faa419fb587000184c79d",
-          "item": "Alcoholic drinks"
+          "id": "6a7043e72188520001d10acf",
+          "item": "Alkoholische Getränke"
         },
         {
-          "id": "6a4faa419fb587000184c79e",
-          "item": "Personal purchases at durian stalls"
+          "id": "6a7043e72188520001d10ad0",
+          "item": "Eigene Einkäufe bei Durian-Ständen"
         }
       ],
       "highlights": [
@@ -4476,40 +4376,20 @@
           }
         }
       },
-      "updatedAt": "2026-07-09T15:52:15.296Z",
+      "updatedAt": "2026-08-03T07:31:51.738Z",
       "createdAt": "2026-05-19T08:33:46.973Z",
       "_status": "published"
     },
     "relatedStory": null,
     "sort_order": null,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-09T09:40:14.901Z",
+    "updatedAt": "2026-08-03T07:32:22.773Z",
     "createdAt": "2026-07-09T08:55:44.864Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 30,
-    "question": "Can children join this tour?",
+    "question": "Können Kinder bei dieser Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -5075,34 +4955,34 @@
       ],
       "whatsIncluded": [
         {
-          "id": "6a321188055fbe0001981de5",
-          "item": "Expert local guide"
+          "id": "6a7043e62188520001d10aac",
+          "item": "Lokaler Guide mit Expertenwissen"
         },
         {
-          "id": "6a321188055fbe0001981de6",
-          "item": "Small group experience (max 9)"
+          "id": "6a7043e62188520001d10aad",
+          "item": "Kleine Gruppe (max. 9 Personen)"
         },
         {
-          "id": "6a321188055fbe0001981de7",
-          "item": "Hidden speakeasy bar access"
+          "id": "6a7043e62188520001d10aae",
+          "item": "Zugang zu versteckter Bar"
         },
         {
-          "id": "6a321188055fbe0001981de8",
-          "item": "Detailed meeting point instructions"
+          "id": "6a7043e62188520001d10aaf",
+          "item": "Genaue Treffpunkt-Beschreibung"
         }
       ],
       "whatsExcluded": [
         {
-          "id": "6a321188055fbe0001981de9",
-          "item": "Transportation to meeting point"
+          "id": "6a7043e62188520001d10ab0",
+          "item": "Transport zum Treffpunkt"
         },
         {
-          "id": "6a321188055fbe0001981dea",
-          "item": "Additional drinks beyond included cocktail / alcoholic drink"
+          "id": "6a7043e62188520001d10ab1",
+          "item": "Weitere Getränke über das inkludierte Cocktail / alkoholische Getränk hinaus"
         },
         {
-          "id": "6a321188055fbe0001981deb",
-          "item": "Personal purchases"
+          "id": "6a7043e62188520001d10ab2",
+          "item": "Persönliche Einkäufe"
         }
       ],
       "highlights": [
@@ -5221,40 +5101,20 @@
         "description": null,
         "image": null
       },
-      "updatedAt": "2026-07-17T06:42:32.385Z",
+      "updatedAt": "2026-08-03T07:31:50.400Z",
       "createdAt": "2026-05-19T08:33:49.463Z",
       "_status": "published"
     },
     "relatedStory": null,
     "sort_order": null,
     "workflowStatus": "published",
-    "updatedAt": "2026-07-09T09:40:13.425Z",
+    "updatedAt": "2026-08-03T07:32:23.029Z",
     "createdAt": "2026-07-09T08:49:47.776Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 29,
-    "question": "Can this tour be run as a vegetarian option?",
+    "question": "Kann diese Tour auch vegetarisch gemacht werden?",
     "answer": {
       "root": {
         "type": "root",
@@ -5297,33 +5157,13 @@
     "relatedStory": null,
     "sort_order": 0,
     "workflowStatus": "published",
-    "updatedAt": "2026-07-09T09:40:12.045Z",
+    "updatedAt": "2026-08-03T07:32:23.284Z",
     "createdAt": "2026-07-09T05:18:40.961Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Kann diese Tour auch vegetarisch gemacht werden?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Se puede hacer este tour en versión vegetariana?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Ce circuit peut-il être proposé en version végétarienne ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 28,
-    "question": "Vocês podem lidar com restrições alimentares em um passeio privado?",
+    "question": "Könnt ihr bei einer privaten Tour auf Ernährungsbedürfnisse eingehen?",
     "answer": {
       "root": {
         "type": "root",
@@ -5364,28 +5204,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-07-10T03:58:06.936Z",
+    "updatedAt": "2026-08-03T07:32:23.540Z",
     "createdAt": "2026-06-17T02:59:15.298Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Könnt ihr bei einer privaten Tour auf Ernährungsbedürfnisse eingehen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Pueden adaptarse a las restricciones alimentarias en un recorrido privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 27,
-    "question": "Com quanta antecedência devemos reservar um passeio privado?",
+    "question": "Wie weit im Voraus sollten wir eine private Tour buchen?",
     "answer": {
       "root": {
         "type": "root",
@@ -5425,28 +5250,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-07-10T03:58:06.979Z",
+    "updatedAt": "2026-08-03T07:32:24.063Z",
     "createdAt": "2026-06-17T02:59:14.686Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie weit im Voraus sollten wir eine private Tour buchen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Con cuánta anticipación debemos reservar un tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 26,
-    "question": "Podemos mudar o roteiro em um tour privado?",
+    "question": "Können wir die Route bei einer privaten Tour ändern?",
     "answer": {
       "root": {
         "type": "root",
@@ -5486,28 +5296,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-07-10T03:58:07.021Z",
+    "updatedAt": "2026-08-03T07:32:24.329Z",
     "createdAt": "2026-06-17T02:59:14.005Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können wir die Route bei einer privaten Tour ändern?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Podemos cambiar el itinerario en un tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 25,
-    "question": "O que acontece se chover?",
+    "question": "Was passiert, wenn es regnet?",
     "answer": {
       "root": {
         "type": "root",
@@ -5547,28 +5342,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-07-10T03:58:07.087Z",
+    "updatedAt": "2026-08-03T07:32:24.590Z",
     "createdAt": "2026-06-17T02:59:13.354Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was passiert, wenn es regnet?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si llueve?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 24,
-    "question": "Do we get to meet the vendors?",
+    "question": "Treffen wir die Verkäufer?",
     "answer": {
       "root": {
         "type": "root",
@@ -5609,28 +5389,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-27T07:37:02.295Z",
+    "updatedAt": "2026-08-03T07:32:25.133Z",
     "createdAt": "2026-06-17T02:59:12.692Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Treffen wir die Verkäufer?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Conoceremos a los vendedores?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 23,
-    "question": "Can children join the tour?",
+    "question": "Können Kinder bei der Tour mitmachen?",
     "answer": {
       "root": {
         "type": "root",
@@ -5671,33 +5436,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-07-09T10:09:00.715Z",
+    "updatedAt": "2026-08-03T07:32:25.362Z",
     "createdAt": "2026-06-17T02:59:12.076Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei der Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Pueden los niños unirse al tour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à la visite ?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 22,
-    "question": "What if I have a food allergy?",
+    "question": "Was, wenn ich eine Lebensmittelallergie habe?",
     "answer": {
       "root": {
         "type": "root",
@@ -5738,28 +5483,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-27T07:37:04.937Z",
+    "updatedAt": "2026-08-03T07:32:25.623Z",
     "createdAt": "2026-06-17T02:59:11.263Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was, wenn ich eine Lebensmittelallergie habe?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si tengo alergia a algún alimento?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 21,
-    "question": "Is the tour suitable for solo travellers?",
+    "question": "Ist die Tour für Alleinreisende geeignet?",
     "answer": {
       "root": {
         "type": "root",
@@ -5800,28 +5530,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-27T07:37:06.278Z",
+    "updatedAt": "2026-08-03T07:32:25.874Z",
     "createdAt": "2026-06-17T02:59:10.639Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Ist die Tour für Alleinreisende geeignet?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿El tour es adecuado para viajeros solitarios?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 20,
-    "question": "What's included in a private tour?",
+    "question": "Was ist in der privaten Tour enthalten?",
     "answer": {
       "root": {
         "type": "root",
@@ -5863,28 +5578,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "published",
-    "updatedAt": "2026-06-27T07:37:07.582Z",
+    "updatedAt": "2026-08-03T07:32:26.123Z",
     "createdAt": "2026-06-17T02:59:09.921Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was ist in der privaten Tour enthalten?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué incluye el tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 11,
-    "question": "Do you offer private tours?",
+    "question": "Bietet ihr private Touren an?",
     "answer": {
       "root": {
         "type": "root",
@@ -5923,28 +5623,13 @@
     "relatedStory": null,
     "sort_order": 16,
     "workflowStatus": "draft",
-    "updatedAt": "2026-06-27T07:37:09.111Z",
+    "updatedAt": "2026-08-03T07:32:26.362Z",
     "createdAt": "2026-05-19T08:33:38.923Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Bietet ihr private Touren an?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Ofrecen tours privados?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 10,
-    "question": "What's your cancellation policy?",
+    "question": "Wie ist eure Stornierungsregelung?",
     "answer": {
       "root": {
         "type": "root",
@@ -5983,28 +5668,13 @@
     "relatedStory": null,
     "sort_order": 10,
     "workflowStatus": "draft",
-    "updatedAt": "2026-06-27T07:37:10.550Z",
+    "updatedAt": "2026-08-03T07:32:26.614Z",
     "createdAt": "2026-05-19T08:33:38.363Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie ist eure Stornierungsregelung?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Cuál es su política de cancelación?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 9,
-    "question": "Do I need to book in advance?",
+    "question": "Muss ich im Voraus buchen?",
     "answer": {
       "root": {
         "type": "root",
@@ -6043,28 +5713,13 @@
     "relatedStory": null,
     "sort_order": 10,
     "workflowStatus": "draft",
-    "updatedAt": "2026-06-27T07:37:11.975Z",
+    "updatedAt": "2026-08-03T07:32:26.863Z",
     "createdAt": "2026-05-19T08:33:37.797Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Muss ich im Voraus buchen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Tengo que reservar con anticipación?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 8,
-    "question": "How quickly do you respond?",
+    "question": "Wie schnell antwortet ihr?",
     "answer": {
       "root": {
         "type": "root",
@@ -6103,28 +5758,13 @@
     "relatedStory": null,
     "sort_order": 1,
     "workflowStatus": "draft",
-    "updatedAt": "2026-06-27T07:37:13.517Z",
+    "updatedAt": "2026-08-03T07:32:27.759Z",
     "createdAt": "2026-05-19T08:33:37.234Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie schnell antwortet ihr?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Con qué rapidez responden?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 7,
-    "question": "O que acontece se chover?",
+    "question": "Was passiert, wenn es regnet?",
     "answer": {
       "root": {
         "type": "root",
@@ -6163,28 +5803,13 @@
     "relatedStory": null,
     "sort_order": 4,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-10T03:58:07.136Z",
+    "updatedAt": "2026-08-03T07:32:27.978Z",
     "createdAt": "2026-05-19T08:33:36.650Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was passiert, wenn es regnet?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si llueve?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 6,
-    "question": "A comida é picante?",
+    "question": "Ist das Essen scharf?",
     "answer": {
       "root": {
         "type": "root",
@@ -6223,28 +5848,13 @@
     "relatedStory": null,
     "sort_order": 2,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-10T03:58:07.174Z",
+    "updatedAt": "2026-08-03T07:32:28.226Z",
     "createdAt": "2026-05-19T08:33:36.077Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Ist das Essen scharf?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿La comida es picante?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 5,
-    "question": "Posso reservar um tour privado?",
+    "question": "Kann ich eine private Tour buchen?",
     "answer": {
       "root": {
         "type": "root",
@@ -6283,28 +5893,13 @@
     "relatedStory": null,
     "sort_order": 18,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-10T03:58:07.213Z",
+    "updatedAt": "2026-08-03T07:32:28.473Z",
     "createdAt": "2026-05-19T08:33:35.493Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Kann ich eine private Tour buchen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Puedo reservar un tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 4,
-    "question": "Quanta caminhada está envolvida?",
+    "question": "Wie viel laufen ist da dabei?",
     "answer": {
       "root": {
         "type": "root",
@@ -6343,28 +5938,13 @@
     "relatedStory": null,
     "sort_order": 10,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-10T03:58:07.251Z",
+    "updatedAt": "2026-08-03T07:32:28.930Z",
     "createdAt": "2026-05-19T08:33:34.927Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie viel laufen ist da dabei?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Cuánto hay que caminar?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 3,
-    "question": "Que opções alimentares você oferece?",
+    "question": "Welche Ernährungsoptionen bietet ihr an?",
     "answer": {
       "root": {
         "type": "root",
@@ -6403,28 +5983,13 @@
     "relatedStory": null,
     "sort_order": 17,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-10T03:58:07.290Z",
+    "updatedAt": "2026-08-03T07:32:29.174Z",
     "createdAt": "2026-05-19T08:33:34.359Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Welche Ernährungsoptionen bietet ihr an?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué opciones de comida ofrecen?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 2,
-    "question": "Quanto tempo duram os passeios?",
+    "question": "Wie lange dauern die Touren?",
     "answer": {
       "root": {
         "type": "root",
@@ -6463,23 +6028,8 @@
     "relatedStory": null,
     "sort_order": 10,
     "workflowStatus": "draft",
-    "updatedAt": "2026-07-10T03:58:07.329Z",
+    "updatedAt": "2026-08-03T07:32:29.699Z",
     "createdAt": "2026-05-19T08:33:33.788Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie lange dauern die Touren?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Cuánto duran los recorridos?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   }
 ]

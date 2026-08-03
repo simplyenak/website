@@ -880,7 +880,7 @@
         }
       }
     },
-    "updatedAt": "2026-08-03T07:30:07.957Z",
+    "updatedAt": "2026-08-03T07:31:48.872Z",
     "createdAt": "2026-07-09T09:43:48.772Z",
     "_status": "draft",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -1539,26 +1539,26 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a4a04bf3d1a6400013d0527",
-        "item": "15+ vegetarian food tastings across different cultures and cooking styles"
+        "id": "6a7043e52188520001d10aa1",
+        "item": "Über 15 vegetarische Kostproben aus verschiedenen Kulturen und Küchen"
       },
       {
-        "id": "6a4a04bf3d1a6400013d0528",
-        "item": "Local guide who knows the stories behind the food and neighborhoods"
+        "id": "6a7043e52188520001d10aa2",
+        "item": "Ein lokaler Guide, der die Geschichten hinter dem Essen und den Vierteln kennt"
       },
       {
-        "id": "6a4a04bf3d1a6400013d0529",
-        "item": "Flexible for your diet, whether you eat eggs/dairy or are fully vegan"
+        "id": "6a7043e52188520001d10aa3",
+        "item": "Flexibel für deine Ernährung, ob du Eier und Milchprodukte isst oder vegan lebst"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a4faac19fb587000184c79f",
-        "item": "Hotel pickup and drop-off"
+        "id": "6a7043e52188520001d10aa4",
+        "item": "Abholung und Rückbringung zum Hotel"
       },
       {
-        "id": "6a4faac19fb587000184c7a0",
-        "item": "Personal purchases"
+        "id": "6a7043e52188520001d10aa5",
+        "item": "Persönliche Einkäufe"
       }
     ],
     "highlights": [
@@ -1636,7 +1636,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-07-09T15:02:29.377Z",
+    "updatedAt": "2026-08-03T07:31:49.677Z",
     "createdAt": "2026-07-05T07:15:14.782Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -1788,13 +1788,13 @@
       }
     ],
     "whats_included": [
-      "15+ vegetarian food tastings across different cultures and cooking styles",
-      "Local guide who knows the stories behind the food and neighborhoods",
-      "Flexible for your diet, whether you eat eggs/dairy or are fully vegan"
+      "Über 15 vegetarische Kostproben aus verschiedenen Kulturen und Küchen",
+      "Ein lokaler Guide, der die Geschichten hinter dem Essen und den Vierteln kennt",
+      "Flexibel für deine Ernährung, ob du Eier und Milchprodukte isst oder vegan lebst"
     ],
     "whats_excluded": [
-      "Hotel pickup and drop-off",
-      "Personal purchases"
+      "Abholung und Rückbringung zum Hotel",
+      "Persönliche Einkäufe"
     ],
     "cancellation_policy": "Free cancellation up to 96 hours before the tour. Full price charged for cancellations with less than 96 hours notice or no-shows.",
     "tour_frequency": null,
@@ -1897,6 +1897,29 @@
         "whats_excluded": [
           "Prise en charge et retour à l'hôtel",
           "Achats personnels"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ja",
+        "name": "地元の人のようにマレーシアのベジタリアン事情を楽しもう",
+        "tagline": "KLのプライベート・ベジタリアン・フードツアー",
+        "short_description": "仏教寺院の食堂からリトルインディアまで、KLの最高のベジタリアン・スポットを巡るプライベート・フードツアー。インド、中華、仏教の各文化に根付いた15種類以上の試食が楽しめます。動物性食材は一切使われていません。メニュー選びに迷う心配もありません。",
+        "full_description": "マレーシアには素晴らしいベジタリアン料理がたくさんあります。でも、観光客が自分で見つけるのは難しいです。ほとんどのお店はメニューをはっきり示していません。ベジタリアンに見える料理でも、オイスターソースやエビペーストなどの動物性食材が隠れていることがよくあります。このプライベート美食ツアーでは、地元の人々が通う最高のベジタリアンのお店へ直接ご案内します。\n\nこのツアーの特別なところ\nマレーシアの多様な文化には、それぞれ独自のベジタリアン料理のアプローチがあります。自分で植物由来のメニューを探し回る必要はありません。これまで聞いたこともないような料理を味わっていただきます。特定の食べ物が異なるコミュニティにとってなぜ大切なのかを学び、心から満喫していただけます。\n\nあなたの美食アドベンチャー\nLebuh Ampang（昔のリトルインディア）からスタートし、地元で愛される人気メニューをつまみ食いします。続いて仏教寺院の食堂でランチです。ここの料理は心を込めて作られ、本当に穏やかな空間で提供されます。Masjid JamekやOriental Buildingなどのランドマークを通り抜け、Petronas Twin Towersで終了します。",
+        "whats_included": [
+          "様々な文化と調理法を味わえる、15種類以上のベジタリアン料理の試食",
+          "地元の料理や街並みに隠された物語を知り尽くしたガイド",
+          "卵や乳製品を食べる方から完全なヴィーガンまで、食事制限に柔軟に対応"
+        ],
+        "whats_excluded": [
+          "ホテルへの送迎",
+          "個人的なお買い物"
         ],
         "highlights": [
           "[object Object]",
@@ -2696,30 +2719,30 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a4faa3e9fb587000184c790",
-        "item": "Local English-speaking guide"
+        "id": "6a7043e62188520001d10aa6",
+        "item": "Englischsprachiger lokaler Guide"
       },
       {
-        "id": "6a4faa3e9fb587000184c791",
-        "item": "All food tastings"
+        "id": "6a7043e62188520001d10aa7",
+        "item": "Alle Kostproben"
       },
       {
-        "id": "6a4faa3e9fb587000184c792",
-        "item": "Bottled water"
+        "id": "6a7043e62188520001d10aa8",
+        "item": "Flaschenwasser"
       },
       {
-        "id": "6a4faa3e9fb587000184c793",
-        "item": "Small group experience (max 7)"
+        "id": "6a7043e62188520001d10aa9",
+        "item": "Kleine Gruppe (max. 7)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a4faa3e9fb587000184c794",
-        "item": "Hotel pickup and drop-off"
+        "id": "6a7043e62188520001d10aaa",
+        "item": "Abholung und Rückbringung zum Hotel"
       },
       {
-        "id": "6a4faa3e9fb587000184c795",
-        "item": "Personal purchases"
+        "id": "6a7043e62188520001d10aab",
+        "item": "Persönliche Einkäufe"
       }
     ],
     "highlights": [
@@ -2809,7 +2832,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-07-21T13:05:09.407Z",
+    "updatedAt": "2026-08-03T07:31:50.034Z",
     "createdAt": "2026-06-28T14:06:11.936Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -2960,14 +2983,14 @@
       }
     ],
     "whats_included": [
-      "Local English-speaking guide",
-      "All food tastings",
-      "Bottled water",
-      "Small group experience (max 7)"
+      "Englischsprachiger lokaler Guide",
+      "Alle Kostproben",
+      "Flaschenwasser",
+      "Kleine Gruppe (max. 7)"
     ],
     "whats_excluded": [
-      "Hotel pickup and drop-off",
-      "Personal purchases"
+      "Abholung und Rückbringung zum Hotel",
+      "Persönliche Einkäufe"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily except on Mondays",
@@ -3090,6 +3113,31 @@
         "whats_excluded": [
           "Prise en charge et retour à l'hôtel",
           "Achats personnels"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ja",
+        "name": "パドゥの街歩き",
+        "tagline": "チャイナタウンを抜けて：パドゥに息づく歴史",
+        "short_description": "KLの中国系移民の家族たちが築いた、観光客で賑わっていない食文化を求めてパドゥへ向かいましょう。パドゥ刑務所の最後の門を通り過ぎ、三代続く客家のヨン・タウ・フーの屋台を訪ねます。1935年創業のベーカリーでコピティアムのパンを味わい、最後は誰にも教えてこなかったレシピを持つ五代続くデザートハウスで締めくくります。",
+        "full_description": "街を横断して、Puduに向かいましょう。ここはKLの華人移民の家族たちが築き上げた食文化が息づくエリアです。その味は本当に素晴らしくて、観光客向けに手を加えられたりしていません。\n\n1891年から1895年の間にイギリス人によって建てられた、Pudu刑務所の最後に残った門に集合しましょう。かつての中国人墓地の上に建っていますが、ほとんどの観光客はそのまま素通りしてしまいます。ここからPuduの街なかへ歩いていきます。昔ながらの重い機械がオープンな店舗の奥でまだ動いている、古い印刷屋の通りを通り過ぎましょう。これはKLの人々のほとんどが忘れてしまった、生きた歴史の一部です。\n\n最初の立ち寄り先は、86年前に屋台でyong tau fooの販売を始めた、3世代にわたる客家の家族経営のお店です。手作りの魚のすり身を豆腐やゴーヤに詰めたものと、甘い「tim cheong」と乾燥エビをかけたなめらかなchee cheong funを味わいます。続いては、自家製サンバルが効いたスパイシーなCurry Laksa。そのパンチのある味に、心の準備ができる前にやられてしまうでしょう。\n\n1935年創業の伝統的なkopitiamのパン屋では、本当のdabao（テイクアウト）文化を体験します。地元の人々が何世代にもわたってやってきたように、棚から自分でパンやエッグタートを取りましょう。その後は、KLで唯一のこのスタイルのハッカーセンターへ向かいます。ここでは、1960年代からKLの名物となり、今は創業者の孫娘が切り盛りするAh Weng Kohで海南風kopiを味わいます。Auntie Meiが1985年から巻き続けている、カリッと焼いたpopiahをひと口どうぞ。運が良ければ、手作業でyellow wine bunsを包む職人を見られるかもしれません。これは少しずつ姿を消しつつある、広東と客家の伝統技術です。\n\n最後は5世代続くデザートハウスで締めくくります。この家族は、黒ごまペースト、アーモンドペースト、クルミのデザートを、誰にも教えたことのないレシピで作り続けています。ラテアートは忘れてください。ここで見るのはTong Suiアートです。ツアーの終わりには、ほとんどの観光客が決してたどり着けないKLの姿を知って、ここを去ることになるでしょう。",
+        "whats_included": [
+          "日本語ガイドがご案内",
+          "フードテイスティング代",
+          "ミネラルウォーター",
+          "少人数グループ（最大7名）"
+        ],
+        "whats_excluded": [
+          "ホテルへの送迎",
+          "個人的なお買い物"
         ],
         "highlights": [
           "[object Object]",
@@ -3845,34 +3893,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a321188055fbe0001981de5",
-        "item": "Expert local guide"
+        "id": "6a7043e62188520001d10aac",
+        "item": "Lokaler Guide mit Expertenwissen"
       },
       {
-        "id": "6a321188055fbe0001981de6",
-        "item": "Small group experience (max 9)"
+        "id": "6a7043e62188520001d10aad",
+        "item": "Kleine Gruppe (max. 9 Personen)"
       },
       {
-        "id": "6a321188055fbe0001981de7",
-        "item": "Hidden speakeasy bar access"
+        "id": "6a7043e62188520001d10aae",
+        "item": "Zugang zu versteckter Bar"
       },
       {
-        "id": "6a321188055fbe0001981de8",
-        "item": "Detailed meeting point instructions"
+        "id": "6a7043e62188520001d10aaf",
+        "item": "Genaue Treffpunkt-Beschreibung"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a321188055fbe0001981de9",
-        "item": "Transportation to meeting point"
+        "id": "6a7043e62188520001d10ab0",
+        "item": "Transport zum Treffpunkt"
       },
       {
-        "id": "6a321188055fbe0001981dea",
-        "item": "Additional drinks beyond included cocktail / alcoholic drink"
+        "id": "6a7043e62188520001d10ab1",
+        "item": "Weitere Getränke über das inkludierte Cocktail / alkoholische Getränk hinaus"
       },
       {
-        "id": "6a321188055fbe0001981deb",
-        "item": "Personal purchases"
+        "id": "6a7043e62188520001d10ab2",
+        "item": "Persönliche Einkäufe"
       }
     ],
     "highlights": [
@@ -3991,7 +4039,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-07-17T06:42:32.385Z",
+    "updatedAt": "2026-08-03T07:31:50.400Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
@@ -4073,15 +4121,15 @@
       }
     ],
     "whats_included": [
-      "Expert local guide",
-      "Small group experience (max 9)",
-      "Hidden speakeasy bar access",
-      "Detailed meeting point instructions"
+      "Lokaler Guide mit Expertenwissen",
+      "Kleine Gruppe (max. 9 Personen)",
+      "Zugang zu versteckter Bar",
+      "Genaue Treffpunkt-Beschreibung"
     ],
     "whats_excluded": [
-      "Transportation to meeting point",
-      "Additional drinks beyond included cocktail / alcoholic drink",
-      "Personal purchases"
+      "Transport zum Treffpunkt",
+      "Weitere Getränke über das inkludierte Cocktail / alkoholische Getränk hinaus",
+      "Persönliche Einkäufe"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -4202,6 +4250,31 @@
           "Transport jusqu'au point de rendez-vous",
           "Boissons supplémentaires au-delà du cocktail ou verre alcoolisé inclus",
           "Achats personnels"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ja",
+        "name": "KLの秘密 - ナイトライフ、ストリートアート、カクテル！",
+        "tagline": "夜のKLを歩こう",
+        "short_description": "KLの暑さが引くと、隠された扉が開きます。屋上バー、シークレットなバー、そしてChinatownの知られざる物語へ。4時間、ドリンク3杯、夜食1回。",
+        "full_description": "夜のKLは別の顔を見せます。昼間の暑さが和らぎ、ストリートアートが夕日を浴びて輝き、真昼には見えなかったバーへの隠し扉が開きます。\n\n私たちはKLのアートエリアへの玄関口、Pasar Seni駅で待ち合わせです。ここから、夕暮れの光の中で壁画が浮かび上がるChinatownの路地へと進みます。ガイドが一つひとつの作品を手がけたアーティストについて語ります。KLの路地裏を屋外ギャラリーに変えた地元の才能たちです。\n\n最初の立ち寄り先は、東南アジアで一番高いMerdeka 118を見下ろすルーフトップバーです。手作りカクテルと地元の軽食と一緒に夕日を楽しみましょう。\n\n次は、電話ボックスの裏に隠されたスペイクイージーを探し出します。中に入るとそこは、アジアのベストバー50に選ばれたお店です。バーテンダーはヤシ糖、パンダン、ヤングココナッツ、マレーシアの茶を使ってカクテルを作ります。この建物自体にも物語があります。Chinatownのこの一帯はかつて、ブロテルや賭博場が並んでいました。今ではKLで最もクリエイティブなバーへと生まれ変わりました。\n\n移動の途中は、KLの古い中心街の路地を抜けていきます。ガイドがPetaling Streetのギャングの歴史や植民地時代のスキャンダル、そしてKLが採掘キャンプから大都市へと発展した経緯を教えてくれます。\n\n最後は夜食です。何十年も地元の人々に愛され続ける屋台で、煲仔飯やchar kuey teowを味わいます。\n\n午後4時から午後8時まで開催。8名限定。ウェルカムカクテル1杯、スペイクイージーのドリンク2杯、夜食のフルコースが含まれます。",
+        "whats_included": [
+          "地元を知り尽くしたガイド",
+          "少人数制（最大9名）",
+          "知る人ぞ知る隠れバルへご案内",
+          "わかりやすい集合場所のご案内"
+        ],
+        "whats_excluded": [
+          "集合場所までの交通費",
+          "カクテル・アルコール1杯（込み）以外の追加ドリンク代",
+          "個人的なお買い物"
         ],
         "highlights": [
           "[object Object]",
@@ -4720,34 +4793,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a4faa3c9fb587000184c789",
-        "item": "Local English-speaking guide"
+        "id": "6a7043e62188520001d10ab3",
+        "item": "Englischsprachiger lokaler Guide"
       },
       {
-        "id": "6a4faa3c9fb587000184c78a",
-        "item": "All food tastings (10-12 dishes)"
+        "id": "6a7043e62188520001d10ab4",
+        "item": "Alle Kostproben (10-12 Gerichte)"
       },
       {
-        "id": "6a4faa3c9fb587000184c78b",
-        "item": "Kopitiam coffee experience"
+        "id": "6a7043e62188520001d10ab5",
+        "item": "Kaffee-Erlebnis im Kopitiam"
       },
       {
-        "id": "6a4faa3c9fb587000184c78c",
-        "item": "Bottled water"
+        "id": "6a7043e62188520001d10ab6",
+        "item": "Flaschenwasser"
       },
       {
-        "id": "6a4faa3c9fb587000184c78d",
-        "item": "Small group experience (max 9)"
+        "id": "6a7043e62188520001d10ab7",
+        "item": "Kleine Gruppe (max. 9 Personen)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a4faa3c9fb587000184c78e",
-        "item": "Hotel pickup and drop-off"
+        "id": "6a7043e62188520001d10ab8",
+        "item": "Abholung und Rückbringung zum Hotel"
       },
       {
-        "id": "6a4faa3c9fb587000184c78f",
-        "item": "Personal purchases"
+        "id": "6a7043e62188520001d10ab9",
+        "item": "Persönliche Einkäufe"
       }
     ],
     "highlights": [
@@ -4795,7 +4868,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": "Freshly wok-fried char kway teow at a Penang hawker stall",
     "featured": false,
-    "showInMenu": null,
+    "showInMenu": false,
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -4807,7 +4880,7 @@
       "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-07-21T12:44:58.118Z",
+    "updatedAt": "2026-08-03T07:31:50.773Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -4917,15 +4990,15 @@
       }
     ],
     "whats_included": [
-      "Local English-speaking guide",
-      "All food tastings (10-12 dishes)",
-      "Kopitiam coffee experience",
-      "Bottled water",
-      "Small group experience (max 9)"
+      "Englischsprachiger lokaler Guide",
+      "Alle Kostproben (10-12 Gerichte)",
+      "Kaffee-Erlebnis im Kopitiam",
+      "Flaschenwasser",
+      "Kleine Gruppe (max. 9 Personen)"
     ],
     "whats_excluded": [
-      "Hotel pickup and drop-off",
-      "Personal purchases"
+      "Abholung und Rückbringung zum Hotel",
+      "Persönliche Einkäufe"
     ],
     "cancellation_policy": null,
     "tour_frequency": null,
@@ -5038,6 +5111,31 @@
         "whats_excluded": [
           "Prise en charge et retour à l'hôtel",
           "Achats personnels"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ja",
+        "name": "ペナンのストリートフード",
+        "tagline": "ペナン グルメの首都ツアー",
+        "short_description": "ペナンはどうしてマレーシアの「グルメの首都」なのでしょう？ここの独特な料理を生み出した文化の融合を、Enakがご案内します。Chowrasta Marketでは、kopitiamの「Ngor Ka Sai」に挑戦してみましょう。",
+        "full_description": "マレーシアで Penang は食べ物の街として知られています。この島が誇る屋台料理を食べ歩くのが一番の楽しみ方です。Penang の歴史的建造物を通り過ぎながら、この街が開かれた当時にタイムスリップします。\n\nさまざまな料理を味わいながら、Penang の料理を何ヶ月も忘れられない味にしている伝統や文化に触れていきます。Roti Chennai、Penang Laksa、Nasi Lemak といった地元の人気メニューを思い切り楽しむため、朝食は軽めに（あるいは食べずに）来てくださいね。",
+        "whats_included": [
+          "現地の英語ガイド",
+          "食べ歩きすべて込み（10〜12品）",
+          "コピティアムでコーヒーを楽しむ",
+          "ミネラルウォーター",
+          "少人数グループ（最大9名）"
+        ],
+        "whats_excluded": [
+          "ホテルへの送迎",
+          "個人的なお買い物"
         ],
         "highlights": [
           "[object Object]",
@@ -5337,34 +5435,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a4faa389fb587000184c782",
-        "item": "Local English-speaking guide"
+        "id": "6a7043e72188520001d10aba",
+        "item": "Lokaler, englischsprachiger Guide"
       },
       {
-        "id": "6a4faa389fb587000184c783",
-        "item": "All food tastings (15-18 dishes)"
+        "id": "6a7043e72188520001d10abb",
+        "item": "Alle Kostproben (15-18 Gerichte)"
       },
       {
-        "id": "6a4faa389fb587000184c784",
-        "item": "Traditional Chinese medicine experience"
+        "id": "6a7043e72188520001d10abc",
+        "item": "Einblick in die traditionelle chinesische Medizin"
       },
       {
-        "id": "6a4faa389fb587000184c785",
-        "item": "Bottled water"
+        "id": "6a7043e72188520001d10abd",
+        "item": "Flaschenwasser"
       },
       {
-        "id": "6a4faa389fb587000184c786",
-        "item": "Small group experience (max 9)"
+        "id": "6a7043e72188520001d10abe",
+        "item": "Kleine Gruppe (max. 9 Personen)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a4faa389fb587000184c787",
-        "item": "Hotel pickup and drop-off"
+        "id": "6a7043e72188520001d10abf",
+        "item": "Abholung und Rückbringung zum Hotel"
       },
       {
-        "id": "6a4faa389fb587000184c788",
-        "item": "Personal purchases"
+        "id": "6a7043e72188520001d10ac0",
+        "item": "Persönliche Einkäufe"
       }
     ],
     "highlights": [
@@ -5485,7 +5583,7 @@
       "description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes.",
       "image": null
     },
-    "updatedAt": "2026-08-03T07:29:32.808Z",
+    "updatedAt": "2026-08-03T07:31:51.087Z",
     "createdAt": "2026-05-19T08:33:48.280Z",
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -5595,15 +5693,15 @@
       }
     ],
     "whats_included": [
-      "Local English-speaking guide",
-      "All food tastings (15-18 dishes)",
-      "Traditional Chinese medicine experience",
-      "Bottled water",
-      "Small group experience (max 9)"
+      "Lokaler, englischsprachiger Guide",
+      "Alle Kostproben (15-18 Gerichte)",
+      "Einblick in die traditionelle chinesische Medizin",
+      "Flaschenwasser",
+      "Kleine Gruppe (max. 9 Personen)"
     ],
     "whats_excluded": [
-      "Hotel pickup and drop-off",
-      "Personal purchases"
+      "Abholung und Rückbringung zum Hotel",
+      "Persönliche Einkäufe"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -5702,6 +5800,31 @@
         "whats_excluded": [
           "Prise en charge et retour à l'hôtel",
           "Achats personnels"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ja",
+        "name": "クアラルンプールのストリートフード",
+        "tagline": "クアラルンプールのストリートフードの中心地",
+        "short_description": "初めての方向けのクアラルンプールのグルメツアーです。チャイナタウンの路地を歩き、昔ながらの屋台で15〜18品の料理を味わいましょう。ツアー後は、旅行の残り日数でどこで食べるか分かる地図をお渡しします。",
+        "full_description": "KLのグルメの歴史が始まる場所、Petaling Street市場からスタートします。ここはチャイナタウンで一番にぎやかな通りです。ジリジリと音を立てる中華鍋、ぶら下がるローストミート、そして40年間同じ料理を作り続ける屋台が並ぶ屋根付きの路地です。\n\n3時間かけて、5軒の店舗で8品を味わいます。まずは1978年からyong tau fooを作り続ける家族経営の屋台へ。豆腐、ゴーヤ、ナスの詰め物を、あっさりした醤油ベースのスープに入れた麺と一緒に味わいます。ガイドが注文の仕方や、おすすめのチリソースの頼み方を教えます。\n\n次に、何世代にもわたって肉屋、魚屋、漢方薬の売り手が営業を続けるウェットマーケットへ向かいます。干しエビ、八角、そしてマレーシア料理の要である belacan（発酵エビペースト）の独特の香りが漂っています。\n\nそこから少し歩いて、コピティアムに到着します。3代目のトースト職人が炭火でkayaバタートーストを焼き、マレーシアを代表するteh tarik（ミルクティー）を淹れます。\n\nツアーの締めくくりは、活気あふれるハワーセンターです。みんなでchar kway teowとcendolをシェアして味わいます。それぞれの料理がマレーシアの多文化な歴史をどう反映しているか、ガイドが説明します。\n\nツアーを通して、KLで最も歴史あるエリアを歩きます。Petaling Street、Central Marketエリア、そして歴史的な中心部です。少人数制（最大8名）なので、屋台の人と話したり、質問したりできます。",
+        "whats_included": [
+          "現地の英語ガイド",
+          "すべての食べ歩き（15〜18品）",
+          "漢方薬体験",
+          "ミネラルウォーター",
+          "少人数グループ体験（最大9名）"
+        ],
+        "whats_excluded": [
+          "ホテルへの送迎",
+          "個人的なお買い物"
         ],
         "highlights": [
           "[object Object]",
@@ -6246,34 +6369,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a4faa369fb587000184c77b",
-        "item": "Local English-speaking guide"
+        "id": "6a7043e72188520001d10ac1",
+        "item": "Englischsprachiger lokaler Guide"
       },
       {
-        "id": "6a4faa369fb587000184c77c",
-        "item": "All food tastings (8-10 dishes)"
+        "id": "6a7043e72188520001d10ac2",
+        "item": "Alle Kostproben (8-10 Gerichte)"
       },
       {
-        "id": "6a4faa369fb587000184c77d",
-        "item": "Traditional market exploration"
+        "id": "6a7043e72188520001d10ac3",
+        "item": "Entdeckungstour über den traditionellen Markt"
       },
       {
-        "id": "6a4faa369fb587000184c77e",
-        "item": "Bottled water"
+        "id": "6a7043e72188520001d10ac4",
+        "item": "Flaschenwasser"
       },
       {
-        "id": "6a4faa369fb587000184c77f",
-        "item": "Small group experience (max 9)"
+        "id": "6a7043e72188520001d10ac5",
+        "item": "Kleine Gruppe (max. 9 Personen)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a4faa369fb587000184c780",
-        "item": "Hotel pickup and drop-off"
+        "id": "6a7043e72188520001d10ac6",
+        "item": "Abholung und Rückbringung zum Hotel"
       },
       {
-        "id": "6a4faa369fb587000184c781",
-        "item": "Personal purchases at the market"
+        "id": "6a7043e72188520001d10ac7",
+        "item": "Eigene Einkäufe auf dem Markt"
       }
     ],
     "highlights": [
@@ -6398,7 +6521,7 @@
       "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
       "image": null
     },
-    "updatedAt": "2026-07-10T14:47:44.815Z",
+    "updatedAt": "2026-08-03T07:31:51.395Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -6521,15 +6644,15 @@
       }
     ],
     "whats_included": [
-      "Local English-speaking guide",
-      "All food tastings (8-10 dishes)",
-      "Traditional market exploration",
-      "Bottled water",
-      "Small group experience (max 9)"
+      "Englischsprachiger lokaler Guide",
+      "Alle Kostproben (8-10 Gerichte)",
+      "Entdeckungstour über den traditionellen Markt",
+      "Flaschenwasser",
+      "Kleine Gruppe (max. 9 Personen)"
     ],
     "whats_excluded": [
-      "Hotel pickup and drop-off",
-      "Personal purchases at the market"
+      "Abholung und Rückbringung zum Hotel",
+      "Eigene Einkäufe auf dem Markt"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -6649,6 +6772,31 @@
         "whats_excluded": [
           "Prise en charge et retour à l'hôtel",
           "Achats personnels au marché"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ja",
+        "name": "マレーシアの味",
+        "tagline": "市場文化と隠れた味",
+        "short_description": "マレーシアは初めてですか？知っておきたい基本をすべてご紹介します！マレーシア文化を知る最適な入り口です。",
+        "full_description": "これは私たちの最も充実したツアーです。2つの異なるエリアを巡り、マレーシアの食文化を深く掘り下げます。\n\nまずはKLで最も古いウェットマーケット、Chow Kitからスタートします。観光客向けに整えられた屋台ではありません。夜明け前にレストランの店主たちが買い付けに来る卸売市場です。ガイドが魚売り場、スパイスの屋台（バラチャンと乾燥唐辛子を試食）、地元の農家が直接野菜を売るエリアへと案内します。\n\nここでは本来の姿のnasi lemakを味わいます。バナナの葉で包んだココナッツライスにサンバル、揚げアンチョビ、ピーナッツ、ゆで卵、フライドチキンを添えたものです。マレーシアの国民食です。\n\nChow KitからKampung Baruへ歩を進めます。KLの中心地で100年以上にわたり残ってきたマレーのエリアです。木造の家々と通りに面したモスクは、遠くに見える高層ビルとは全く違う世界です。\n\nKampung Baruでは、マレーのおばあちゃんたちが代々受け継いできた料理を味わいます。nasi dagang（魚のカレーと一緒に食べる香り高いご飯）を提供する一軒家や、cendolで有名な路上の屋台に立ち寄ります。ガイドは、Kampung Baruが1900年代にマレーの農業集落となった経緯や、今日まで文化の中心地であり続ける理由を説明します。\n\nこのツアーには6カ所で10種類の試食が含まれます。両エリアが最も活気にあふれる午前中に実施します。",
+        "whats_included": [
+          "現地の英語ガイド",
+          "食べ歩きすべて（8〜10品）",
+          "伝統的な市場を散策",
+          "ミネラルウォーター",
+          "少人数グループ（最大9名）"
+        ],
+        "whats_excluded": [
+          "ホテルへの送迎",
+          "市場での個人的なお買い物"
         ],
         "highlights": [
           "[object Object]",
@@ -7377,42 +7525,42 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a4faa419fb587000184c796",
-        "item": "Local English-speaking guide"
+        "id": "6a7043e72188520001d10ac8",
+        "item": "Englischsprachiger lokaler Guide"
       },
       {
-        "id": "6a4faa419fb587000184c797",
-        "item": "All food tastings"
+        "id": "6a7043e72188520001d10ac9",
+        "item": "Alle Kostproben"
       },
       {
-        "id": "6a4faa419fb587000184c798",
-        "item": "Durian masterclass on Jalan Macalister"
+        "id": "6a7043e72188520001d10aca",
+        "item": "Durian-Meisterkurs auf der Jalan Macalister"
       },
       {
-        "id": "6a4faa419fb587000184c799",
-        "item": "Hidden rooftop access"
+        "id": "6a7043e72188520001d10acb",
+        "item": "Zugang zu verstecktem Dach"
       },
       {
-        "id": "6a4faa419fb587000184c79a",
-        "item": "Bottled water"
+        "id": "6a7043e72188520001d10acc",
+        "item": "Flaschenwasser"
       },
       {
-        "id": "6a4faa419fb587000184c79b",
-        "item": "Small group experience (max 7)"
+        "id": "6a7043e72188520001d10acd",
+        "item": "Kleine Gruppe (max. 7 Personen)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a4faa419fb587000184c79c",
-        "item": "Hotel pickup and drop-off"
+        "id": "6a7043e72188520001d10ace",
+        "item": "Abholung und Rückbringung zum Hotel"
       },
       {
-        "id": "6a4faa419fb587000184c79d",
-        "item": "Alcoholic drinks"
+        "id": "6a7043e72188520001d10acf",
+        "item": "Alkoholische Getränke"
       },
       {
-        "id": "6a4faa419fb587000184c79e",
-        "item": "Personal purchases at durian stalls"
+        "id": "6a7043e72188520001d10ad0",
+        "item": "Eigene Einkäufe bei Durian-Ständen"
       }
     ],
     "highlights": [
@@ -7596,7 +7744,7 @@
         }
       }
     },
-    "updatedAt": "2026-07-09T15:52:15.296Z",
+    "updatedAt": "2026-08-03T07:31:51.738Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -7747,17 +7895,17 @@
       }
     ],
     "whats_included": [
-      "Local English-speaking guide",
-      "All food tastings",
-      "Durian masterclass on Jalan Macalister",
-      "Hidden rooftop access",
-      "Bottled water",
-      "Small group experience (max 7)"
+      "Englischsprachiger lokaler Guide",
+      "Alle Kostproben",
+      "Durian-Meisterkurs auf der Jalan Macalister",
+      "Zugang zu verstecktem Dach",
+      "Flaschenwasser",
+      "Kleine Gruppe (max. 7 Personen)"
     ],
     "whats_excluded": [
-      "Hotel pickup and drop-off",
-      "Alcoholic drinks",
-      "Personal purchases at durian stalls"
+      "Abholung und Rückbringung zum Hotel",
+      "Alkoholische Getränke",
+      "Eigene Einkäufe bei Durian-Ständen"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily except Wednesdays",
@@ -7880,6 +8028,33 @@
           "Prise en charge et retour à l'hôtel",
           "Boissons alcoolisées",
           "Achats personnels aux stands de durian"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ja",
+        "name": "Georgetownの屋台村ベストとドリアン通り",
+        "tagline": "夜のPenangを楽しもう",
+        "short_description": "炭火を使うオープンエアの屋台、隠れた屋上、そしてJalan Macalisterのドリアン通り。夜のGeorgetownは全く違う顔を見せます。",
+        "full_description": "GeorgetownのPresgraveエリアを歩く夜のツアーが、その答えです。\n\n太陽が沈み、炭火が灯る頃、目の前で調理が行われる屋外のホーカーセンターへご案内します。オープンフレームで炒められてエビの出汁が燻製のような濃い色に変わるHokkien Mee、フライパンでカリカリにキャラメリゼされた Fried Carrot Cake、Penang名物のサクサクしたスパイス肉ロールである loh bak、そして勇気があるなら、縁がカリッと中がとろりとしたオイスターオムレツを味わってください。冒険心がある方には、豚血豆腐入りのカレーメッスもおすすめです。滑らかでコクのある深い味わいです。ガイドがここでの暗黙の座り方のルールを教えるので、後日一人で来ても地元の人のように注文できます。\n\n食事の合間には、世界で最も美しいと評される個性的なショップハウスの通りを歩きます。Penang中華商工会議所の初代会頭の名を冠するこの道には、Georgetownの数世紀にわたる歴史がショップハウスの一つひとつに刻まれています。孫文博物館、Masjid Pakistan、Penang州立博物館のヘリテージ回廊を通り過ぎ、1967年に建てられたPenang初のショッピングモールの上にある隠れた屋上へと登ります。ここからは、想像もしていなかったGeorgetownの景色が広がっています。\n\nそしてドリアンの出番です。Penangの19世紀の総督の名を冠するJalan Macalisterには、個人で営業する屋台が1キロ続いています。ここでドリアンの見分け方を伝授します。殻の読み方、匂いによるランクの見極め方、そしてMusang KingとD24の区別の仕方です。運が良ければ、食べている間にMacalister Roadのカトリック教会の鐘の音が鳴り響くでしょう。\n\nお腹いっぱいの満足感、楽しい思い出、そしてまた一人で来て全部を楽しめるだけの知識を持って帰っていただけます。",
+        "whats_included": [
+          "現地の英語ガイド",
+          "フードテイスティング代",
+          "Jalan Macalisterでのドリアン・マスタークラス",
+          "隠れ家屋上へのアクセス",
+          "ミネラルウォーター",
+          "少人数グループ（最大7名）"
+        ],
+        "whats_excluded": [
+          "ホテルへの送迎",
+          "アルコール飲料",
+          "ドリアン屋台での個人的なお買い物"
         ],
         "highlights": [
           "[object Object]",
