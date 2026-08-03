@@ -79,7 +79,7 @@ export const COLLECTIONS = {
   testimonials: {
     file: 'testimonials.json',
     type: 'array',
-    matchField: 'review_title',
+    matchField: 'review_text', // review_title is NULL in Payload — use the actual text
     translatableFields: ['review_title', 'review_text'],
   },
   home_page: {
@@ -114,13 +114,35 @@ export const COLLECTIONS = {
     file: 'about-page.json',
     type: 'singleton',
     translatableFields: [
-      'hero_title', 'hero_subtitle',
-      'founder_story_title', 'founder_story_text',
-      'stats_label', 'timeline_title', 'timeline_subtitle',
-      'philosophy_title', 'philosophy_subtitle',
-      'team_title', 'team_subtitle',
+      'heroEyebrow', 'heroHeading', 'heroDescription',
+      'founderSection', 'stats', 'timelineSection', 'philosophySection',
+      'teamSection', 'testimonial', 'ctaSection',
+      'seo_title', 'seo_description',
     ],
-    htmlFields: ['founder_story_text'],
+    objectArrayFields: {
+      founderSection: { translatableSubFields: ['eyebrow', 'heading', 'text'] },
+      timelineSection: { translatableSubFields: ['title', 'subtitle', 'description'] },
+      philosophySection: { translatableSubFields: ['eyebrow', 'heading', 'description'] },
+      teamSection: { translatableSubFields: ['heading', 'description'] },
+      ctaSection: { translatableSubFields: ['heading', 'description'] },
+    },
+  },
+  contact_page: {
+    file: 'contact-page.json',
+    type: 'singleton',
+    translatableFields: [
+      'hero_title', 'hero_subtitle',
+      'intro_title', 'intro_subtitle',
+      'contact_phone', 'contact_email', 'contact_hours', 'whatsapp_number',
+      'contactMethods', 'planningScenarios', 'ourPromise', 'businessHours',
+      'meta_title', 'meta_description',
+    ],
+    objectArrayFields: {
+      contactMethods: { translatableSubFields: ['heading', 'description', 'subtitle'] },
+      planningScenarios: { translatableSubFields: ['heading', 'description'] },
+      ourPromise: { translatableSubFields: ['title', 'description'] },
+      businessHours: { translatableSubFields: ['title', 'description'] },
+    },
   },
   tours_index_page: {
     file: 'tours-index-page.json',

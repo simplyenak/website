@@ -230,5 +230,25 @@
     }
   },
   "seo_title": "About Us - Malaysian Food Tours Since 2011",
-  "seo_description": "Learn the story behind Simply Enak. Since 2011, we have been sharing Malaysia food heritage through walking food tours in Kuala Lumpur and Penang."
+  "seo_description": "Learn the story behind Simply Enak. Since 2011, we have been sharing Malaysia food heritage through walking food tours in Kuala Lumpur and Penang.",
+  "translations": [
+    {
+      "languages_code": "en"
+    },
+    {
+      "languages_code": "de",
+      "heroEyebrow": "Unsere Geschichte",
+      "heroHeading": "In Malaysia geboren. Mit Street Food aufgewachsen.",
+      "heroDescription": "Was als kleiner Rundgang für Freunde über den Chow Kit Markt begann, ist heute 15 Jahre voller echtem Malaysia. Wir teilen das alles, eine Mahlzeit nach der anderen.",
+      "founderSection": "[object Object]",
+      "stats": "[object Object],[object Object],[object Object],[object Object]",
+      "timelineSection": "[object Object]",
+      "philosophySection": "[object Object]",
+      "teamSection": "[object Object]",
+      "testimonial": "[object Object]",
+      "ctaSection": "[object Object]",
+      "seo_title": "Über uns - Malaysische Food Tours seit 2011",
+      "seo_description": "Lerne die Geschichte hinter Enak kennen. Seit 2011 teilen wir das kulinarische Erbe Malaysias durch geführte Food Touren in Kuala Lumpur und Penang."
+    }
+  ]
 }
