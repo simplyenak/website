@@ -143,8 +143,11 @@ async function main() {
     });
 
     const newBlock = buildBlock(lang, merged);
-    // Replace the block in the file
+    // Replace the block in the file — preserve anything AFTER the block
+    // (the closing `};` and `export type UiKey` lines).
     const langBlock = blocks[lang];
+    const blockEnd = content.indexOf(langBlock) + langBlock.length;
+    const afterBlock = content.slice(blockEnd);
     const updated = content.replace(langBlock, newBlock);
     if (updated === content) { console.log(`    ✗ could not write ${lang} block`); continue; }
     fs.writeFileSync(UI_FILE, updated, 'utf-8');

@@ -1678,3 +1678,7 @@ export const ui = {
     "privacy.title": "Política de Privacidade",
     "terms.title": "Termos e Condições",
   },
+
+};
+
+export type UiKey = keyof typeof ui.en;
