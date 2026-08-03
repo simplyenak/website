@@ -880,7 +880,7 @@
         }
       }
     },
-    "updatedAt": "2026-08-03T09:13:16.859Z",
+    "updatedAt": "2026-08-03T09:30:14.827Z",
     "createdAt": "2026-07-09T09:43:48.772Z",
     "_status": "draft",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -1539,26 +1539,26 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705f9b2188520001d10dac",
-        "item": "Lebih 15 jamuan vegetarian dari pelbagai budaya dan gaya masakan"
+        "id": "6a705fb32188520001d10ecc",
+        "item": "様々な文化と調理法を味わえる、15種類以上のベジタリアン料理の試食"
       },
       {
-        "id": "6a705f9b2188520001d10dad",
-        "item": "Panduan tempatan yang tahu cerita di sebalik makanan dan kawasan sekitar"
+        "id": "6a705fb32188520001d10ecd",
+        "item": "地元の料理や街並みに隠された物語を知り尽くしたガイド"
       },
       {
-        "id": "6a705f9b2188520001d10dae",
-        "item": "Kami sesuaikan dengan diet anda, sama ada anda makan telur dan tenusu atau vegan 100%"
+        "id": "6a705fb32188520001d10ece",
+        "item": "卵や乳製品を食べる方から完全なヴィーガンまで、食事制限に柔軟に対応"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705f9b2188520001d10daf",
-        "item": "Pengambilan dan penghantaran ke hotel"
+        "id": "6a705fb32188520001d10ecf",
+        "item": "ホテルへの送迎"
       },
       {
-        "id": "6a705f9b2188520001d10db0",
-        "item": "Beli-belah peribadi"
+        "id": "6a705fb32188520001d10ed0",
+        "item": "個人的なお買い物"
       }
     ],
     "highlights": [
@@ -1636,7 +1636,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:03.726Z",
+    "updatedAt": "2026-08-03T09:30:27.611Z",
     "createdAt": "2026-07-05T07:15:14.782Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -1788,13 +1788,13 @@
       }
     ],
     "whats_included": [
-      "Lebih 15 jamuan vegetarian dari pelbagai budaya dan gaya masakan",
-      "Panduan tempatan yang tahu cerita di sebalik makanan dan kawasan sekitar",
-      "Kami sesuaikan dengan diet anda, sama ada anda makan telur dan tenusu atau vegan 100%"
+      "様々な文化と調理法を味わえる、15種類以上のベジタリアン料理の試食",
+      "地元の料理や街並みに隠された物語を知り尽くしたガイド",
+      "卵や乳製品を食べる方から完全なヴィーガンまで、食事制限に柔軟に対応"
     ],
     "whats_excluded": [
-      "Pengambilan dan penghantaran ke hotel",
-      "Beli-belah peribadi"
+      "ホテルへの送迎",
+      "個人的なお買い物"
     ],
     "cancellation_policy": "Free cancellation up to 96 hours before the tour. Full price charged for cancellations with less than 96 hours notice or no-shows.",
     "tour_frequency": null,
@@ -1989,6 +1989,29 @@
         "whats_excluded": [
           "送您回酒店",
           "陪您个人购物"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "pt",
+        "name": "Descubra a cena vegetariana da Malásia como um local",
+        "tagline": "Tour vegetariano privado em KL",
+        "short_description": "Tour gastronômico privado pelos melhores pontos vegetarianos de KL, do refeitório de um mosteiro budista à Little India. Mais de 15 degustações das tradições indiana, chinesa e budista. Sem produtos de origem animal escondidos, sem adivinhações.",
+        "full_description": "A Malásia tem uma comida vegetariana incrível, mas encontrá-la como turista é um desafio. A maioria dos restaurantes não marca as opções de forma clara. E muitos pratos que parecem vegetarianos contêm produtos de origem animal escondidos, como molho de ostras ou pasta de camarão. Este tour gastronômico privado leva você direto aos melhores lugares vegetarianos onde os locais comem.\n\nO Que Torna Este Tour Diferente\nAs diversas culturas da Malásia têm cada uma a sua própria abordagem à culinária vegetariana. Em vez de caçar opções à base de plantas por conta própria, você vai provar pratos que nunca ouviu falar. Você vai entender por que certos alimentos são importantes para diferentes comunidades. E vai comer muito bem.\n\nSua Aventura Gastronômica\nComece em Lebuh Ampang (antiga Pequena Índia), onde você vai petiscar os favoritos locais. Depois visite o refeitório de um mosteiro budista para o almoço. A comida aqui é preparada com atenção e servida em um ambiente realmente pacífico. Passe por pontos turísticos como a Mesquita Jamek e o Edifício Oriental, terminando nas Petronas Twin Towers.",
+        "whats_included": [
+          "Mais de 15 pratos vegetarianos de várias culturas e estilos de culinária",
+          "Guias locais que conhecem as histórias por trás da comida e dos bairros",
+          "Adaptamos tudo à sua dieta, seja você ovo-lactovegetariano ou vegano 100%"
+        ],
+        "whats_excluded": [
+          "Recolha e entrega no hotel",
+          "Compras pessoais"
         ],
         "highlights": [
           "[object Object]",
@@ -2788,30 +2811,30 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705f9c2188520001d10db1",
-        "item": "Panduan tempatan yang fasih bahasa Inggeris"
+        "id": "6a705fb42188520001d10ed1",
+        "item": "日本語ガイドがご案内"
       },
       {
-        "id": "6a705f9c2188520001d10db2",
-        "item": "Semua cubaan makanan"
+        "id": "6a705fb42188520001d10ed2",
+        "item": "フードテイスティング代"
       },
       {
-        "id": "6a705f9c2188520001d10db3",
-        "item": "Air botol"
+        "id": "6a705fb42188520001d10ed3",
+        "item": "ミネラルウォーター"
       },
       {
-        "id": "6a705f9c2188520001d10db4",
-        "item": "Kumpulan kecil (maksimum 7 orang)"
+        "id": "6a705fb42188520001d10ed4",
+        "item": "少人数グループ（最大7名）"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705f9c2188520001d10db5",
-        "item": "Pengambilan dan penghantaran balik ke hotel"
+        "id": "6a705fb42188520001d10ed5",
+        "item": "ホテルへの送迎"
       },
       {
-        "id": "6a705f9c2188520001d10db6",
-        "item": "Membeli-belah peribadi"
+        "id": "6a705fb42188520001d10ed6",
+        "item": "個人的なお買い物"
       }
     ],
     "highlights": [
@@ -2901,7 +2924,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:04.624Z",
+    "updatedAt": "2026-08-03T09:30:28.157Z",
     "createdAt": "2026-06-28T14:06:11.936Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -3052,14 +3075,14 @@
       }
     ],
     "whats_included": [
-      "Panduan tempatan yang fasih bahasa Inggeris",
-      "Semua cubaan makanan",
-      "Air botol",
-      "Kumpulan kecil (maksimum 7 orang)"
+      "日本語ガイドがご案内",
+      "フードテイスティング代",
+      "ミネラルウォーター",
+      "少人数グループ（最大7名）"
     ],
     "whats_excluded": [
-      "Pengambilan dan penghantaran balik ke hotel",
-      "Membeli-belah peribadi"
+      "ホテルへの送迎",
+      "個人的なお買い物"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily except on Mondays",
@@ -3282,6 +3305,31 @@
         "whats_excluded": [
           "送回酒店",
           "个人购物"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "pt",
+        "name": "Dentro de Pudu",
+        "tagline": "Além do Chinatown: A Herança Viva de Pudu",
+        "short_description": "Atravesse a cidade até Pudu, onde as famílias de imigrantes chineses de KL criaram uma cultura gastronômica intocada pelo turismo. Passe pelo último portão da Prisão de Pudu, visite a barraca de yong tau foo hakka de três gerações, prove o pão de kopitiam de uma padaria fundada em 1935 e termine em uma casa de sobremesas de quinta geração com uma receita que eles nunca compartilharam.",
+        "full_description": "Vamos atravessar a cidade e ir para Pudu. Este é o bairro onde as famílias de imigrantes chineses de KL criaram uma cultura gastronômica tão boa que ninguém a modificou para os turistas.\nVamos nos encontrar no último portão restante da Prisão de Pudu, construída pelos britânicos entre 1891 e 1895. Fica no topo de um antigo cemitério chinês, mas a maioria dos visitantes passa direto por ele. A partir daqui, vamos caminhar para o próprio Pudu, passando pelas antigas ruas de impressão, onde máquinas pesadas e tradicionais ainda operam atrás de lojas abertas. É uma herança viva que a maior parte de KL já esqueceu.\nNossa primeira parada é um negócio de família Hakka de três gerações que começou a vender yong tau foo de um carrinho de mão há 86 anos. Você vai provar pasta de peixe feita na casa recheada em tofu e melão amargo, servida com um chee cheong fun sedoso regado com \"tim cheong\" doce e camarão seco crocante. Depois vem uma Curry Laksa picante com sambal caseiro que te atinge antes de você estar preparado.\nEm uma padaria tradicional de kopitiam (fundada em 1935), você vai vivenciar a verdadeira cultura dabao (para viagem). Pegue você mesmo seu pão e suas tartinhas de ovo da prateleira, exatamente como os moradores fazem há gerações. Depois, vamos para o único centro de vendedores ambulantes do tipo em KL. Aqui você vai provar kopi de Hainan na Ah Weng Koh (uma instituição de KL desde os anos 1960, hoje administrada pela neta do fundador), morder um popiah com bordas crocantes que a Auntie Mei prepara desde 1985, e se tiver sorte, pode até pegar o mestre fazendo pães de vinho amarelo à mão, uma arte cantonesa e Hakka que está desaparecendo lentamente.\nVamos terminar em uma casa de sobremesas da quinta geração, onde a família faz pasta de gergelim preto, pasta de amêndoa e sobremesas de noz com uma receita que nunca compartilharam. Esqueça a arte do latte. Você vai ver a arte do Tong Sui. Ao final do passeio, você vai embora conhecendo um lado de KL que a maioria dos visitantes nunca encontra.",
+        "whats_included": [
+          "Guia local fluente em inglês",
+          "Todas as degustações",
+          "Água engarrafada",
+          "Grupo pequeno (máximo de 7 pessoas)"
+        ],
+        "whats_excluded": [
+          "Recolha e regresso ao hotel",
+          "Compras pessoais"
         ],
         "highlights": [
           "[object Object]",
@@ -4037,34 +4085,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705f9d2188520001d10db7",
-        "item": "Rakan tempatan yang memahami tempat ini"
+        "id": "6a705fb42188520001d10ed7",
+        "item": "地元を知り尽くしたガイド"
       },
       {
-        "id": "6a705f9d2188520001d10db8",
-        "item": "Kumpulan kecil (maks. 9 orang)"
+        "id": "6a705fb42188520001d10ed8",
+        "item": "少人数制（最大9名）"
       },
       {
-        "id": "6a705f9d2188520001d10db9",
-        "item": "Akses ke bar tersembunyi"
+        "id": "6a705fb42188520001d10ed9",
+        "item": "知る人ぞ知る隠れバルへご案内"
       },
       {
-        "id": "6a705f9d2188520001d10dba",
-        "item": "Panduan jelas ke lokasi pertemuan"
+        "id": "6a705fb42188520001d10eda",
+        "item": "わかりやすい集合場所のご案内"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705f9d2188520001d10dbb",
-        "item": "Pengangkutan ke tempat perjumpaan"
+        "id": "6a705fb42188520001d10edb",
+        "item": "集合場所までの交通費"
       },
       {
-        "id": "6a705f9d2188520001d10dbc",
-        "item": "Minuman tambahan selain koktel atau minuman yang disertakan"
+        "id": "6a705fb42188520001d10edc",
+        "item": "カクテル・アルコール1杯（込み）以外の追加ドリンク代"
       },
       {
-        "id": "6a705f9d2188520001d10dbd",
-        "item": "Membeli-belah peribadi"
+        "id": "6a705fb42188520001d10edd",
+        "item": "個人的なお買い物"
       }
     ],
     "highlights": [
@@ -4183,7 +4231,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:05.244Z",
+    "updatedAt": "2026-08-03T09:30:28.544Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
@@ -4265,15 +4313,15 @@
       }
     ],
     "whats_included": [
-      "Rakan tempatan yang memahami tempat ini",
-      "Kumpulan kecil (maks. 9 orang)",
-      "Akses ke bar tersembunyi",
-      "Panduan jelas ke lokasi pertemuan"
+      "地元を知り尽くしたガイド",
+      "少人数制（最大9名）",
+      "知る人ぞ知る隠れバルへご案内",
+      "わかりやすい集合場所のご案内"
     ],
     "whats_excluded": [
-      "Pengangkutan ke tempat perjumpaan",
-      "Minuman tambahan selain koktel atau minuman yang disertakan",
-      "Membeli-belah peribadi"
+      "集合場所までの交通費",
+      "カクテル・アルコール1杯（込み）以外の追加ドリンク代",
+      "個人的なお買い物"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -4494,6 +4542,31 @@
           "前往集合地点的交通费",
           "额外饮品费（包含1杯鸡尾酒或酒精饮料）",
           "个人购物开销"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "pt",
+        "name": "Segredos de KL - Vida noturna, arte urbana e drinks!",
+        "tagline": "Descubra KL depois de escurecer",
+        "short_description": "Quando o calor de KL passa, portas escondidas se abrem para bares no terraço, speakeasies secretos e histórias não contadas de Chinatown. Quatro horas, três drinks, uma refeição tarde da noite.",
+        "full_description": "KL à noite é outra cidade. O calor do dia passa, a arte urbana pega a última luz, e portas escondidas se abrem para bares que eram invisíveis ao meio-dia.\n\nNos encontramos na estação de MRT Pasar Seni, porta de entrada para o distrito artístico de KL. A partir daqui, caminhamos pelas ruas de trás de Chinatown enquanto os murais de arte urbana aparecem na luz da noite. Seu guia vai contar sobre os artistas por trás de cada obra, talentos locais que transformaram os becos de KL numa galeria ao ar livre.\n\nPrimeira parada: um bar no terraço com vista para Merdeka 118, o prédio mais alto do Sudeste Asiático. Assistimos ao pôr do sol com coquetéis artesanais e aperitivos locais.\n\nA seguir, encontramos um speakeasy escondido atrás do que parece ser uma cabine telefônica. Lá dentro, é um dos 50 Melhores Bares da Ásia. Os bartenders trabalham com açúcar de palma, pandan, coco jovem e chá malaio. O passado do prédido conta sua própria história. Esse trecho de Chinatown já foi cheio de bordéis e covas de jogo, hoje reinventado como alguns dos bares mais criativos de KL.\n\nEntre as paradas, seguimos por rotas de beco pelo centro antigo de KL. Seu guia compartilha a história de gângster de Petaling Street, escândalos coloniais, e como KL passou de acampamento de mineração a metrópole.\n\nTerminamos com uma refeição tarde da noite. Arroz de frango em panela de barro ou char kuey teow de uma barraca que alimenta o bairro há décadas.\n\nAcontece das 16h às 20h. Limitado a 8 pessoas. Inclui um coquetel de boas-vindas, duas bebidas em speakeasies, e uma refeição completa de tarde da noite.",
+        "whats_included": [
+          "Locais que conhecem o lugar como a palma da mão",
+          "Grupos pequenos (máx. 9 pessoas)",
+          "Acesso a bares escondidos",
+          "Indicações claras para o ponto de encontro"
+        ],
+        "whats_excluded": [
+          "Transporte para o ponto de encontro",
+          "Bebidas extras além do coquetel ou bebidas incluídas",
+          "Compras pessoais"
         ],
         "highlights": [
           "[object Object]",
@@ -5012,34 +5085,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705f9d2188520001d10dbe",
-        "item": "Panduan tempatan yang fasih berbahasa Inggeris"
+        "id": "6a705fb52188520001d10ede",
+        "item": "現地の英語ガイド"
       },
       {
-        "id": "6a705f9d2188520001d10dbf",
-        "item": "Semua citarasa (10-12 hidangan)"
+        "id": "6a705fb52188520001d10edf",
+        "item": "食べ歩きすべて込み（10〜12品）"
       },
       {
-        "id": "6a705f9d2188520001d10dc0",
-        "item": "Kopitiam tradisional"
+        "id": "6a705fb52188520001d10ee0",
+        "item": "コピティアムでコーヒーを楽しむ"
       },
       {
-        "id": "6a705f9d2188520001d10dc1",
-        "item": "Air botol"
+        "id": "6a705fb52188520001d10ee1",
+        "item": "ミネラルウォーター"
       },
       {
-        "id": "6a705f9d2188520001d10dc2",
-        "item": "Kumpulan kecil (maksimum 9 orang)"
+        "id": "6a705fb52188520001d10ee2",
+        "item": "少人数グループ（最大9名）"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705f9d2188520001d10dc3",
-        "item": "Pengambilan dan hantar balik ke hotel"
+        "id": "6a705fb52188520001d10ee3",
+        "item": "ホテルへの送迎"
       },
       {
-        "id": "6a705f9d2188520001d10dc4",
-        "item": "Beli-belah peribadi"
+        "id": "6a705fb52188520001d10ee4",
+        "item": "個人的なお買い物"
       }
     ],
     "highlights": [
@@ -5099,7 +5172,7 @@
       "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:05.661Z",
+    "updatedAt": "2026-08-03T09:30:29.120Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -5209,15 +5282,15 @@
       }
     ],
     "whats_included": [
-      "Panduan tempatan yang fasih berbahasa Inggeris",
-      "Semua citarasa (10-12 hidangan)",
-      "Kopitiam tradisional",
-      "Air botol",
-      "Kumpulan kecil (maksimum 9 orang)"
+      "現地の英語ガイド",
+      "食べ歩きすべて込み（10〜12品）",
+      "コピティアムでコーヒーを楽しむ",
+      "ミネラルウォーター",
+      "少人数グループ（最大9名）"
     ],
     "whats_excluded": [
-      "Pengambilan dan hantar balik ke hotel",
-      "Beli-belah peribadi"
+      "ホテルへの送迎",
+      "個人的なお買い物"
     ],
     "cancellation_policy": null,
     "tour_frequency": null,
@@ -5430,6 +5503,31 @@
         "whats_excluded": [
           "送您回酒店",
           "私人购物时光"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "pt",
+        "name": "Comida de Rua de Penang",
+        "tagline": "Tour pela Capital Gastronômica de Penang",
+        "short_description": "O que faz de Penang a \"capital da comida\" da Malásia? A Enak vai te guiar pela fusão cultural que criou pratos que você só encontra aqui. No Chowrasta Market, nós desafiamos você a provar o \"Ngor Ka Sai\" de kopitiam.",
+        "full_description": "Penang é conhecida na Malásia como a capital da comida e qual melhor maneira de descobrir do que provar tudo o que a comida de rua desta ilha tem para oferecer? Ao passarmos pelos monumentos de Penang, voltamos no tempo até quando Penang foi formada como povoamento.\n\nAo provarmos diferentes pratos, entramos em contato com as tradições e a cultura que fazem da comida de Penang o tipo que você vai lembrar meses depois. Tome um café da manhã leve (ou nenhum) para se preparar para todas as favoritas locais como Roti Chennai, Penang Laksa, Nasi Lemak e muito mais.",
+        "whats_included": [
+          "Guia local que fala inglês fluentemente",
+          "Todas as degustações (10-12 pratos)",
+          "Kopitiam tradicional",
+          "Água engarrafada",
+          "Grupo pequeno (máximo de 9 pessoas)"
+        ],
+        "whats_excluded": [
+          "Recolha e entrega no hotel",
+          "Compras pessoais"
         ],
         "highlights": [
           "[object Object]",
@@ -5729,34 +5827,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705f9e2188520001d10dc5",
-        "item": "Guide tempatan yang fasih berbahasa Inggeris"
+        "id": "6a705fb52188520001d10ee5",
+        "item": "現地の英語ガイド"
       },
       {
-        "id": "6a705f9e2188520001d10dc6",
-        "item": "Semua cubaan makanan (15-18 hidangan)"
+        "id": "6a705fb52188520001d10ee6",
+        "item": "すべての食べ歩き（15〜18品）"
       },
       {
-        "id": "6a705f9e2188520001d10dc7",
-        "item": "Bengkel perubatan tradisional Cina"
+        "id": "6a705fb52188520001d10ee7",
+        "item": "漢方薬体験"
       },
       {
-        "id": "6a705f9e2188520001d10dc8",
-        "item": "Air botol"
+        "id": "6a705fb52188520001d10ee8",
+        "item": "ミネラルウォーター"
       },
       {
-        "id": "6a705f9e2188520001d10dc9",
-        "item": "Kumpulan kecil (maksimum 9 orang)"
+        "id": "6a705fb52188520001d10ee9",
+        "item": "少人数グループ体験（最大9名）"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705f9e2188520001d10dca",
-        "item": "Pengambilan dan penghantaran ke hotel"
+        "id": "6a705fb52188520001d10eea",
+        "item": "ホテルへの送迎"
       },
       {
-        "id": "6a705f9e2188520001d10dcb",
-        "item": "Beli-belah peribadi"
+        "id": "6a705fb52188520001d10eeb",
+        "item": "個人的なお買い物"
       }
     ],
     "highlights": [
@@ -5877,7 +5975,7 @@
       "description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes.",
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:06.041Z",
+    "updatedAt": "2026-08-03T09:30:29.745Z",
     "createdAt": "2026-05-19T08:33:48.280Z",
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -5987,15 +6085,15 @@
       }
     ],
     "whats_included": [
-      "Guide tempatan yang fasih berbahasa Inggeris",
-      "Semua cubaan makanan (15-18 hidangan)",
-      "Bengkel perubatan tradisional Cina",
-      "Air botol",
-      "Kumpulan kecil (maksimum 9 orang)"
+      "現地の英語ガイド",
+      "すべての食べ歩き（15〜18品）",
+      "漢方薬体験",
+      "ミネラルウォーター",
+      "少人数グループ体験（最大9名）"
     ],
     "whats_excluded": [
-      "Pengambilan dan penghantaran ke hotel",
-      "Beli-belah peribadi"
+      "ホテルへの送迎",
+      "個人的なお買い物"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -6194,6 +6292,31 @@
         "whats_excluded": [
           "送您回酒店",
           "个人购物时间"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "pt",
+        "name": "Comida de Rua de Kuala Lumpur",
+        "tagline": "O Coração da Comida de Rua de KL",
+        "short_description": "Tour de comida essencial em Kuala Lumpur para quem visita pela primeira vez. Caminhe pelas ruelas de Chinatown, prove de 15 a 18 pratos em barracas tradicionais e saia com um mapa de onde comer pelo resto da sua viagem.",
+        "full_description": "Comece onde a história gastronômica de KL começa: o mercado de Petaling Street. Esta é a rua mais movimentada da Chinatown - uma galeria coberta de woks chiando, carnes assadas penduradas e vendedores que cozinham o mesmo prato há quarenta anos.\n\nDurante três horas, você vai provar oito pratos em cinco paradas. Começamos em uma barraca familiar que faz yong tau foo desde 1978 - tofu recheado, melão amargo e berinjela, servido com macarrão em um caldo leve de soja. Seu guia vai mostrar como pedir e qual molho de pimenta pedir.\n\nEm seguida, atravessamos para a seção de mercado úmido onde açougueiros, peixeiros e vendedores de ervas medicinais trabalham há gerações. Você vai cheirar camarão seco, anis-estrelado e o aroma distinto de belacan (pasta de camarão fermentado) - a base da culinária malaia.\n\nDe lá, é uma curta caminhada até um kopitiam onde um mestre de torradas da terceira geração faz torradas de kaya com manteiga no fogo de carvão e prepara teh tarik - o icônico chá com leite batido da Malásia.\n\nO passeio termina em um movimentado centro de vendedores ambulantes onde dividimos pratos de char kway teow e cendol. Seu guia vai explicar como cada prato reflete a história multicultural da Malásia.\n\nAo longo do passeio, você vai caminhar pelos bairros mais antigos de KL - Petaling Street, a área do Central Market e o centro histórico. Mantemos os grupos pequenos (máximo de 8) para que você possa conversar com os vendedores e fazer perguntas.",
+        "whats_included": [
+          "Guia local que fala inglês fluentemente",
+          "Todas as degustações de comida (15-18 pratos)",
+          "Oficina de medicina tradicional chinesa",
+          "Água engarrafada",
+          "Grupo pequeno (máximo de 9 pessoas)"
+        ],
+        "whats_excluded": [
+          "Recolha e entrega no hotel",
+          "Compras pessoais"
         ],
         "highlights": [
           "[object Object]",
@@ -6738,33 +6861,33 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705bb62188520001d10d9c",
+        "id": "6a705fb62188520001d10eec",
         "item": "現地の英語ガイド"
       },
       {
-        "id": "6a705bb62188520001d10d9d",
+        "id": "6a705fb62188520001d10eed",
         "item": "食べ歩きすべて（8〜10品）"
       },
       {
-        "id": "6a705bb62188520001d10d9e",
+        "id": "6a705fb62188520001d10eee",
         "item": "伝統的な市場を散策"
       },
       {
-        "id": "6a705bb62188520001d10d9f",
+        "id": "6a705fb62188520001d10eef",
         "item": "ミネラルウォーター"
       },
       {
-        "id": "6a705bb62188520001d10da0",
+        "id": "6a705fb62188520001d10ef0",
         "item": "少人数グループ（最大9名）"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705bb62188520001d10da1",
+        "id": "6a705fb62188520001d10ef1",
         "item": "ホテルへの送迎"
       },
       {
-        "id": "6a705bb62188520001d10da2",
+        "id": "6a705fb62188520001d10ef2",
         "item": "市場での個人的なお買い物"
       }
     ],
@@ -6890,7 +7013,7 @@
       "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
       "image": null
     },
-    "updatedAt": "2026-08-03T09:13:26.647Z",
+    "updatedAt": "2026-08-03T09:30:30.604Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -7241,6 +7364,31 @@
         "whats_excluded": [
           "送您回酒店",
           "陪您逛市场买买货"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "pt",
+        "name": "Sabores da Malásia",
+        "tagline": "Cultura de mercado e sabores escondidos",
+        "short_description": "É a sua primeira vez na Malásia? Aqui está tudo o que você precisa saber! Uma introdução perfeita à cultura malaia.",
+        "full_description": "Este é o nosso tour mais completo. Um mergulho profundo na cultura gastronômica da Malásia em dois bairros diferentes.\n\nComeçamos em Chow Kit, o mercado municipal mais antigo de KL. É aqui que a verdadeira comida da cidade acontece. Não as barracas polidas que os turistas costumam ver, mas o mercado atacadista onde os donos de restaurantes fazem compras antes do amanhecer. Seu guia vai levá-lo pela seção de peixes, barracas de especiarias (provando belacan e pimentas secas) e pela área de produtos onde agricultores locais vendem direto para o consumidor.\n\nAqui você vai provar nasi lemak do jeito que deveria ser comido. Arroz com leite de coco embrulhado em folha de bananeira com sambal, anchovas fritas, amendoins, ovo cozido e frango frito. Este é o prato nacional da Malásia.\n\nDe Chow Kit, caminhamos até Kampung Baru. Um reduto malaio que sobrevive no coração de KL por mais de um século. Casas de madeira e mesquitas de rua ficam a mundos de distância dos arranha-céus visíveis ao longe.\n\nEm Kampung Baru, você vai provar pratos que as avós malaias cozinham por gerações. Paramos em uma casa de família que serve nasi dagang (arroz aromático com curry de peixe) e em uma barraca na beira da rua famosa por seu cendol. Seu guia vai explicar como Kampung Baru se tornou um assentamento agrícola malaio nos anos 1900 e por que continua sendo um forte cultural hoje.\n\nEste tour inclui dez degustações em seis paradas. Acontece de manhã, quando os dois bairros estão mais agitados.",
+        "whats_included": [
+          "Guia local falando inglês",
+          "Todas as degustações (8 a 10 pratos)",
+          "Passeio por mercados tradicionais",
+          "Água mineral",
+          "Grupo pequeno (máximo de 9 pessoas)"
+        ],
+        "whats_excluded": [
+          "Transfer de volta para o hotel",
+          "Compras pessoais no mercado"
         ],
         "highlights": [
           "[object Object]",
@@ -7969,41 +8117,41 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705bb72188520001d10da3",
+        "id": "6a705fb72188520001d10ef3",
         "item": "現地の英語ガイド"
       },
       {
-        "id": "6a705bb72188520001d10da4",
+        "id": "6a705fb72188520001d10ef4",
         "item": "フードテイスティング代"
       },
       {
-        "id": "6a705bb72188520001d10da5",
+        "id": "6a705fb72188520001d10ef5",
         "item": "Jalan Macalisterでのドリアン・マスタークラス"
       },
       {
-        "id": "6a705bb72188520001d10da6",
+        "id": "6a705fb72188520001d10ef6",
         "item": "隠れ家屋上へのアクセス"
       },
       {
-        "id": "6a705bb72188520001d10da7",
+        "id": "6a705fb72188520001d10ef7",
         "item": "ミネラルウォーター"
       },
       {
-        "id": "6a705bb72188520001d10da8",
+        "id": "6a705fb72188520001d10ef8",
         "item": "少人数グループ（最大7名）"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705bb72188520001d10da9",
+        "id": "6a705fb72188520001d10ef9",
         "item": "ホテルへの送迎"
       },
       {
-        "id": "6a705bb72188520001d10daa",
+        "id": "6a705fb72188520001d10efa",
         "item": "アルコール飲料"
       },
       {
-        "id": "6a705bb72188520001d10dab",
+        "id": "6a705fb72188520001d10efb",
         "item": "ドリアン屋台での個人的なお買い物"
       }
     ],
@@ -8188,7 +8336,7 @@
         }
       }
     },
-    "updatedAt": "2026-08-03T09:13:27.828Z",
+    "updatedAt": "2026-08-03T09:30:31.455Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -8580,6 +8728,33 @@
           "送回酒店",
           "酒精饮料",
           "在榴莲摊的个人消费"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "pt",
+        "name": "Os melhores vendedores de rua de Georgetown e a faixa do durian",
+        "tagline": "Descubra Penang depois do anoitecer",
+        "short_description": "De barracas de rua ao ar livre com fogo de carvão a um terraço escondido e a faixa de durian da Jalan Macalister, Georgetown à noite é outra cidade.",
+        "full_description": "Esta caminhada noturna pelo bairro de Presgrave em Georgetown é a sua resposta.\n\nQuando o sol cai e as brasas de carvão se acendem, levamos você a um centro de vendedores ambulantes ao ar livre onde a comida é feita bem na sua frente. Veja o Hokkien Mee sendo salteado no fogo aberto até o caldo de camarão ficar defumado e escuro. Prove o bolo de cenoura frito, pegajoso e caramelizado na panela. Morda o loh bak, o famoso rolinho de carne crocante com cinco especiarias de Penang. E, se tiver coragem, a omelete de ostra, crocante nas bordas e cremosa por dentro. Para os aventureiros, há curry mee com tofu de sangue de porco, macio e com um sabor profundo e salgado. O seu guia vai te ensinar as regras não escritas de como conseguir mesa aqui. Assim você pode voltar sozinho e pedir comida como um local.\n\nEntre as comidas, caminhamos por uma rua de lojas ecléticas considerada uma das mais bonitas do mundo. Nomeada em homenagem ao primeiro presidente da Penang Chinese Chamber of Commerce, essa estrada carrega séculos da história de Georgetown em cada loja. Passamos pelo Sun Yat-Sen Museum, pela Masjid Pakistan e pelo corredor histórico do Penang State Museum antes de subir para um terraço escondido no topo do primeiro shopping center de Penang, construído em 1967. Lá de cima, a vista da cidade de Georgetown se estende de um jeito que você não espera.\n\nAí vem o durian. Jalan Macalister, com o nome de um governador de Penang do século 19, é um trecho de um quilômetro de barracas próprias onde vamos te ensinar o dicionário do durian. Como ler a casca, sentir o cheiro para saber a qualidade e distinguir um Musang King de um D24. Se você tiver sorte, a igreja católica da Macalister Road toca os sinos enquanto você come.\n\nVocê vai sair de estômago cheio, com uma boa história e conhecimento suficiente para voltar e fazer tudo de novo por conta própria.",
+        "whats_included": [
+          "Guia local falando inglês",
+          "Degustação de pratos",
+          "Aula sobre durian na Jalan Macalister",
+          "Acesso a um terraço escondido",
+          "Água mineral",
+          "Grupo pequeno (máximo de 7 pessoas)"
+        ],
+        "whats_excluded": [
+          "Transfer para o hotel",
+          "Bebidas alcoólicas",
+          "Compras pessoais na barraca de durian"
         ],
         "highlights": [
           "[object Object]",
