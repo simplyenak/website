@@ -55,6 +55,21 @@ const DRY_RUN = args.includes('--dry-run');
 // a required translatable field). Skips items that already have full coverage
 // for the target lang — prevents wasteful force re-translations.
 const ONLY_MISSING = args.includes('--only-missing');
+// --max-fields N: hard cap on fields translated per run (cost guard). The
+// heal cron sets HEAL_MAX_FIELDS; a runaway loop can't exceed the budget.
+const MAX_FIELDS = (() => {
+  const i = args.indexOf('--max-fields');
+  if (i >= 0 && args[i + 1]) {
+    const n = parseInt(args[i + 1], 10);
+    if (!isNaN(n) && n > 0) return n;
+  }
+  const env = process.env.HEAL_MAX_FIELDS;
+  if (env) {
+    const n = parseInt(env, 10);
+    if (!isNaN(n) && n > 0) return n;
+  }
+  return Infinity;
+})();
 const ONLY_COLLECTION = args.includes('--collection') ? args[args.indexOf('--collection') + 1] : null;
 
 // --lang pt  or  --lang pt,nl  to limit to specific languages
@@ -563,6 +578,12 @@ async function translateCollection(name, config) {
 
   for (const item of items) {
     if (!item.translations || !Array.isArray(item.translations)) continue;
+
+    // COST GUARD: stop the whole run once the field budget is exhausted
+    if (created >= MAX_FIELDS) {
+      console.log(`  ⏹  Field budget reached (${MAX_FIELDS}) — stopping run.`);
+      break;
+    }
 
     const label = item[config.matchField] || item.name || item.title || item.slug || (config.type === 'singleton' ? name : `#${item.id}`);
 

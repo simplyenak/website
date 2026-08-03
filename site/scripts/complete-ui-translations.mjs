@@ -18,6 +18,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'node:child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const UI_FILE = path.resolve(__dirname, '../src/i18n/ui.ts');
@@ -151,8 +152,20 @@ async function main() {
     const updated = content.replace(langBlock, newBlock);
     if (updated === content) { console.log(`    ✗ could not write ${lang} block`); continue; }
     fs.writeFileSync(UI_FILE, updated, 'utf-8');
+
+    // VERIFY: the file must still be syntactically valid TypeScript.
+    // (The 2026-08-03 bug: this script dropped the closing `};` + export type
+    // and the file was committed broken — the build caught it later. Never
+    // claim success without verifying the artifact.)
+    try {
+      execSync(`node --check "${UI_FILE}"`, { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'pipe'] });
+    } catch (e) {
+      console.error(`✗✗ ${lang}: ui.ts is BROKEN after write (${e.message.split('\n')[0]}). ABORTING — file needs manual fix.`);
+      process.exit(1);
+    }
+
     totalFilled += missing.length;
-    console.log(`    ✓ wrote ${missing.length} keys`);
+    console.log(`    ✓ wrote ${missing.length} keys (syntax verified)`);
     // Re-read for next language
     const fresh = fs.readFileSync(UI_FILE, 'utf-8');
     const freshBlocks = parseUiFile(fresh);

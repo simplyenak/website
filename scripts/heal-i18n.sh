@@ -67,6 +67,24 @@ if [ -f site/.env ]; then
 fi
 
 echo ""
+echo "▸ Checking EN contamination (abort if dirty — never translate garbage)..."
+CONTAM_REPORT=$(cd site && node ../eval/check-en-contamination.mjs 2>/dev/null || echo "{}")
+CONTAM=$(echo "$CONTAM_REPORT" | python3 -c "import json,sys; print(json.load(sys.stdin).get('contaminatedCount','?'))" 2>/dev/null || echo "?")
+if [ "$CONTAM" != "0" ]; then
+    echo "❌ $CONTAM EN base fields are contaminated (non-English content)."
+    echo "$CONTAM_REPORT" | python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+for c in d.get('contaminated',[])[:10]:
+    print('  %s/%s.%s [%s]: %s' % (c['collection'],c['id'],c['field'],c['lang'],c['snippet'][:40]))
+" 2>/dev/null
+    echo "Fix the EN base fields in Payload CMS admin FIRST, then re-run heal."
+    echo "Translating contaminated English would propagate the wrong language into all 9 locales."
+    exit 1
+fi
+echo "  ✅ EN base clean."
+
+echo ""
 echo "▸ Checking i18n coverage..."
 HEALTH=$(cd site && node ../eval/check-i18n-coverage.mjs 2>/dev/null || echo "{}")
 PASSED=$(echo "$HEALTH" | python3 -c "import json,sys; d=json.load(sys.stdin); exit(0 if d.get('passed') else 1)" 2>/dev/null && echo "true" || echo "false")
@@ -118,11 +136,25 @@ echo "▸ Translating missing and stale content..."
 TRANSLATE_PROVIDER="${TRANSLATE_PROVIDER:-omniroute}"
 OMNIROUTE_MODEL="${OMNIROUTE_MODEL:-zai/glm-5.2}"
 export TRANSLATE_PROVIDER OMNIROUTE_MODEL
-# One language per run (staggered). All collections, that language.
+# COST GUARD: default to --only-missing so the heal loop fills only real gaps
+# (never re-translates already-complete items — the 2026-08-03 session burned
+# hours of API calls on redundant force re-translations). Pass --force
+# explicitly to override. HEAL_MAX_FIELDS caps the per-run budget (default
+# 2000 fields ≈ one full language pass; raise for bulk backfills).
+HEAL_MAX_FIELDS="${HEAL_MAX_FIELDS:-2000}"
+export HEAL_MAX_FIELDS
 if [ -n "$LANG_ARG" ]; then
-    node site/scripts/translate-content.mjs --lang "$LANG_ARG" "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+    if [[ " ${EXTRA_ARGS[*]} " =~ " --force " ]] || [[ " ${EXTRA_ARGS[*]} " =~ " --only-missing " ]]; then
+        node site/scripts/translate-content.mjs --lang "$LANG_ARG" "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+    else
+        node site/scripts/translate-content.mjs --lang "$LANG_ARG" --only-missing "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+    fi
 else
-    node site/scripts/translate-content.mjs "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+    if [[ " ${EXTRA_ARGS[*]} " =~ " --force " ]] || [[ " ${EXTRA_ARGS[*]} " =~ " --only-missing " ]]; then
+        node site/scripts/translate-content.mjs "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+    else
+        node site/scripts/translate-content.mjs --only-missing "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+    fi
 fi
 echo "  ✅ Translation complete"
 
@@ -162,6 +194,12 @@ else
     REMAINING=$(echo "$FINAL" | python3 -c "import json,sys; print(json.load(sys.stdin).get('totalUntranslated','?'))" 2>/dev/null || echo "?")
     echo "  ⚠  ${REMAINING} items still need translation (may need human review)"
 fi
+
+# ── Full post-operation verification (the 2026-08-03 lesson: verify the
+#    artifacts, not just the script's exit code) ──
+echo ""
+echo "▸ Running full verification gate..."
+bash scripts/verify-i18n.sh --strict || echo "  ⚠  Verification FAILED — inspect above before trusting this state."
 
 echo ""
 echo "  Done."

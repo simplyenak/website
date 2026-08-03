@@ -90,6 +90,27 @@ jobs:
           exit 1
         # Auto-fix violations, then gate. Loop up to 3x until clean.
 
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: EN contamination gate (fail if non-English in EN base fields)
+        run: |
+          REPORT=$(node eval/check-en-contamination.mjs 2>/dev/null || echo "{}")
+          CONTAMINATED=$(echo "$REPORT" | python3 -c "import json,sys; print(json.load(sys.stdin).get('contaminatedCount','?'))" 2>/dev/null || echo "?")
+          echo "EN contamination: $CONTAMINATED"
+          if [ "$CONTAMINATED" != "0" ]; then
+            echo "❌ $CONTAMINATED fields have non-English content in EN base fields."
+            echo "$REPORT" | python3 -c "import json,sys; [print('  %s/%s.%s [%s]: %s' % (c['collection'],c['id'],c['field'],c['lang'],c['snippet'][:40])) for c in json.load(sys.stdin).get('contaminated',[])[:10]]"
+            echo "Fix in Payload CMS admin (EN base fields must be English), then re-sync."
+            exit 1
+          fi
+          echo "✅ EN contamination gate passed."
+
+      - name: Schema conformance check (sync transform inputs vs Payload)
+        run: |
+          cd site && node --env-file=.env ../eval/check-schema-conformance.mjs --fail 2>&1 | tail -10
+
       - name: Push translations to Payload CMS
         working-directory: site
         run: |
@@ -98,10 +119,6 @@ jobs:
           PAYLOAD_URL: https://cms.system.simplyenak.com
           PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
           PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
-
-      - name: Install dependencies
-        working-directory: site
-        run: npm ci
 
       - name: Build site
         working-directory: site

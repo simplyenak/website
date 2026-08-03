@@ -3,16 +3,19 @@
  * check-en-contamination.mjs
  *
  * Guardrail: flags items whose EN base fields contain NON-ENGLISH text
- * (e.g. the 2026-08-03 discovery: 10 FAQ questions had Portuguese entered
- * as the English base in Payload admin). Such items render foreign text on
- * the EN site and mislead the translation pipeline.
+ * (e.g. Portuguese/Chinese/German/Spanish entered as the English base in
+ * Payload admin — observed 2026-08-03: 225+ contaminated fields).
  *
- * Heuristic: for each item's translatable base fields, detect the language
- * via simple marker heuristics (accented chars common to pt/fr/es, CJK,
- * Cyrillic). Portuguese markers: ç, ã, õ, "Você", "pode", "quanto", etc.
+ * Detection strategy: targeted language markers for the languages observed
+ * in this codebase (pt, es, de, fr, zh, ja, ru, ms) + script detection for
+ * CJK/Cyrillic. Tuned to avoid false positives on proper-noun-heavy tourism
+ * text (franc was tested and misdetected "Penang Street Food" etc.).
  *
- * Output: JSON { clean: bool, contaminated: [{collection, id, field, snippet}] }
- * Exit 0 always (informational).
+ * Conservative thresholds: accents/scripts on short text, word markers with
+ * boundaries, min length 12 chars.
+ *
+ * Output: JSON { clean, contaminatedCount, contaminated: [...] }
+ * Exit code 1 if contaminated (for CI gating), 0 otherwise.
  *
  * Usage: node eval/check-en-contamination.mjs
  */
@@ -26,29 +29,80 @@ const CONTENT_DIR = path.resolve(ROOT, 'site/src/data/content');
 const registryPath = path.resolve(ROOT, 'site/scripts/lib/translation-collections.mjs');
 const { COLLECTIONS } = await import(registryPath);
 
-// Strong non-English markers (Portuguese was the observed contaminant)
-const PT_MARKERS = ['ç', 'ã', 'õ', /você/i, /pode/i, /quanto/i, /passeio/i, /comida/i, /reservar/i, /restrições/i, /acontece/i, /caminhada/i];
-// German markers — German has FEW accented chars so the accent heuristic
-// misses it (observed: 17 story metas were German without accents).
-// Word-boundary anchored to avoid false positives ("ein" in "being" etc.)
-const DE_MARKERS = [/\bder\b/i, /\bdie\b/i, /\bdas\b/i, /\bund\b/i, /\bfür\b/i, /\bvon\b/i, /\bmit\b/i, /\bauf\b/i, /\bnicht\b/i, /\bein\b|\beine\b/i, /\bmalaysisch/i, /\bessen\b/i, /\bküche\b/i, /\bstädte\b/i, /\bstrasse\b/i, /\blebensmittel\b/i, /\bkultur\b/i, /\bführer\b/i, /\bführung\b/i];
-const NON_EN_RE = /[áàâäéèêëíìîïóòôöúùûüçñãõ]/;
+// ── Language markers (word-boundary anchored to avoid false positives) ──────
+// Portuguese (the most common contaminant observed)
+const PT = [
+  /\bvocê\b/i, /\bpode\b/i, /\bquanto\b/i, /\bpasseio\b/i, /\bcomida\b/i,
+  /\breservar\b/i, /\brestrições\b/i, /\bacontece\b/i, /\bcaminhada\b/i,
+  /\bescolha\b/i, /\bexcursões?\b/i, /\bmalásia\b/i, /\bguia\b/i, /\bpara\b/i,
+];
+// Spanish
+const ES = [
+  /\busted\b/i, /\bpuede\b/i, /\bpueden\b/i, /\bcuánto\b/i, /\bguía\b/i,
+  /\bcomida\b/i, /\bexcursiones?\b/i, /\bmalasia\b/i, /\breservar\b/i,
+  /\bqué\b/i, /\bpara\b/i, /\bchefs\b/i, /\bmapa\b/i, /\bmundial\b/i,
+];
+// German (no accents — missed by accent heuristics)
+const DE = [
+  /\bder\b/i, /\bdie\b/i, /\bdas\b/i, /\bund\b/i, /\bfür\b/i, /\bvon\b/i,
+  /\bmit\b/i, /\bauf\b/i, /\bnicht\b/i, /\bein\b|\beine\b/i, /\bmalaysisch/i,
+  /\bessen\b/i, /\bküche\b/i, /\bstädte\b/i, /\bstrasse\b/i, /\blebensmittel\b/i,
+  /\bkultur\b/i, /\bführer\b/i, /\bführung\b/i, /\bwas\b/i, /\bwo\b/i, /\bist\b/i,
+];
+// French
+const FR = [
+  /\ble\b/i, /\bla\b/i, /\bles\b/i, /\bdes\b/i, /\bavec\b/i, /\bpour\b/i,
+  /\bmalaisie\b/i, /\bcuisine\b/i, /\bvotre\b/i, /\bnos\b/i, /\bnous\b/i,
+];
+// Malay (Bahasa Malaysia)
+const MS = [
+  /\bpusingan\b/i, /\bmakanan\b/i, /\bkami\b/i, /\btentang\b/i, /\blawatan\b/i,
+  /\bhubungi\b/i, /\bperjalanan\b/i, /\bcerita\b/i, /\blokasi\b/i, /\bpilih\b/i,
+];
+
+const ACCENTS_PT_ES_FR = /[çãõáàâéèêíìîóòôúùûüñ]/;
+const CJK = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]/;
+const CYRILLIC = /[\u0400-\u04ff]/;
 
 function looksNonEnglish(text) {
-  if (typeof text !== 'string' || !text.trim()) return null;
-  // CJK / Cyrillic are obviously non-EN
-  if (/[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]/.test(text)) return 'cjk';
-  if (/[\u0400-\u04ff]/.test(text)) return 'cyrillic';
-  // Accent density: 2+ accented chars in short text strongly suggests pt/fr/es
-  const accents = (text.match(NON_EN_RE) || []).length;
-  if (accents >= 2) return 'accented';
-  // Portuguese-specific words
-  for (const m of PT_MARKERS) {
-    if (m instanceof RegExp ? m.test(text) : text.includes(m)) return 'pt-word';
-  }
-  // German markers (works on non-accented text)
-  const deHits = DE_MARKERS.filter((m) => m.test(text)).length;
-  if (deHits >= 2) return 'german';
+  if (typeof text !== 'string') return null;
+  const t = text.trim();
+  if (t.length < 12) return null; // too short to judge
+
+  // Script detection — unambiguous
+  if (CJK.test(t)) return 'cjk';
+  if (CYRILLIC.test(t)) return 'cyrillic';
+
+  // Portuguese (the most common contaminant — its markers are distinctive)
+  let hits = PT.filter((m) => m.test(t)).length;
+  if (hits >= 2) return 'pt';
+  // Single very distinctive pt word also counts
+  if (/\bvocê\b|\bexcursões?\b|\brestrições\b|\bmalásia\b/i.test(t)) return 'pt';
+
+  // Spanish
+  hits = ES.filter((m) => m.test(t)).length;
+  if (hits >= 3) return 'es';
+  if (/\busted\b|\bexcursiones?\b|\bmalasia\b|\bcuánto\b/i.test(t)) return 'es';
+
+  // German
+  hits = DE.filter((m) => m.test(t)).length;
+  if (hits >= 4) return 'de';
+  if (/\bmalaysisch\b|\bküche\b|\bführung\b|\bführer\b/i.test(t)) return 'de';
+
+  // French
+  hits = FR.filter((m) => m.test(t)).length;
+  if (hits >= 4) return 'fr';
+  if (/\bmalaisie\b/i.test(t)) return 'fr';
+
+  // Malay
+  hits = MS.filter((m) => m.test(t)).length;
+  if (hits >= 3) return 'ms';
+  if (/\bpusingan\b|\blawatan\b/i.test(t)) return 'ms';
+
+  // Accent density (fallback for pt/es/fr not caught above)
+  const accents = (t.match(ACCENTS_PT_ES_FR) || []).length;
+  if (accents >= 4) return 'accented';
+
   return null;
 }
 
@@ -83,8 +137,10 @@ for (const [name, cfg] of Object.entries(COLLECTIONS)) {
   }
 }
 
-process.stdout.write(JSON.stringify({
+const output = {
   clean: contaminated.length === 0,
   contaminatedCount: contaminated.length,
   contaminated,
-}, null, 2));
+};
+process.stdout.write(JSON.stringify(output, null, 2));
+process.exit(contaminated.length > 0 ? 1 : 0);
