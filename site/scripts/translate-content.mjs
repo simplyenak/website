@@ -463,7 +463,18 @@ async function translateCollection(name, config) {
   }
 
   const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  const items = config.type === 'array' ? data : [data];
+  let items = config.type === 'array' ? data : [data];
+
+  // Skip draft items — they're dev copies (e.g. "georgetown-night-food-durian
+  // - Copy" with _status: draft) never rendered on the site. Translating them
+  // wastes provider calls and pollutes the translations array.
+  if (Array.isArray(items) && items.length > 0 && 'id' in items[0]) {
+    const before = items.length;
+    items = items.filter((i) => i._status !== 'draft');
+    if (items.length < before) {
+      console.log(`  ⏭️  Skipped ${before - items.length} draft item(s) — not rendered on site`);
+    }
+  }
 
   if (!items.length || !items[0]) {
     console.log('  ⚠  Empty file — skipping');

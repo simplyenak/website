@@ -69,10 +69,14 @@ function itemLanguageGaps(item, cfg) {
 
 function checkArrayCollection(name, cfg) {
   const filePath = path.join(CONTENT_DIR, cfg.file);
-  const items = loadJson(filePath);
-  if (!items || !Array.isArray(items)) {
+  const allItems = loadJson(filePath);
+  if (!allItems || !Array.isArray(allItems)) {
     return { collection: name, expected: EXPECTED.has(name), status: 'error', total: 0, untranslated: 0, stale: 0, issues: [`Cannot read ${cfg.file}`] };
   }
+
+  // Skip draft items — dev copies (e.g. "georgetown-night-food-durian - Copy")
+  // never rendered on the site; translate-content.mjs skips them too.
+  const items = allItems.filter((i) => i._status !== 'draft');
 
   const total = items.length;
   const untranslatedByLang = Object.fromEntries(EXPECTED_LANGS.map((l) => [l, 0]));
