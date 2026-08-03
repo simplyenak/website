@@ -85,6 +85,25 @@ else
 fi
 echo "  ✅ Translation complete"
 
+# ── CRITICAL: secure translations to origin BEFORE anything else ────────────
+# The Payload Auto-Sync cron (every 60m) runs `git checkout origin/main --
+# src/data/content/`, which reverts any uncommitted translation writes.
+# Commit + push IMMEDIATELY so origin has them and the next auto-sync pulls
+# them back instead of clobbering. (This race ate the first German pass.)
+if [ "$SKIP_GIT" != "true" ]; then
+    echo ""
+    echo "▸ Securing translations to origin (before auto-sync can revert)..."
+    git add site/src/data/content/
+    if ! git diff --cached --quiet; then
+        git commit -m "auto: i18n translations ($(date '+%Y-%m-%d'))" 2>&1 | tail -1
+        git pull --rebase origin main 2>&1 | tail -1 || echo "  (rebase skipped)"
+        git push origin main 2>&1 | tail -1
+        echo "  ✅ Secured to origin — deploy triggered via push hook"
+    else
+        echo "  Nothing new to commit."
+    fi
+fi
+
 echo ""
 echo "▸ Pushing translations to Payload..."
 node site/scripts/push-translations-payload.mjs 2>&1 | tail -10
@@ -99,16 +118,6 @@ if [ "$FINAL_PASSED" = "true" ]; then
 else
     REMAINING=$(echo "$FINAL" | python3 -c "import json,sys; print(json.load(sys.stdin).get('totalUntranslated','?'))" 2>/dev/null || echo "?")
     echo "  ⚠  ${REMAINING} items still need translation (may need human review)"
-fi
-
-if [ "$SKIP_GIT" != "true" ]; then
-    echo ""
-    echo "▸ Committing and pushing to GitHub..."
-    git add site/src/data/content/
-    git commit -m "auto: i18n translations (self-healing)" 2>/dev/null || echo "  Nothing new to commit"
-    git pull --rebase origin main 2>&1 | tail -2 || echo "  (rebase skipped — will push anyway)"
-    git push origin main 2>&1 | tail -3
-    echo "  ✅ Pushed — deploy triggered via push hook"
 fi
 
 echo ""
