@@ -32,9 +32,12 @@ export const GET: APIRoute = () => {
 
   const toursBlock = tours
     .map((t) => {
-      const dietary = parseField(t.dietary_options).length > 0
-        ? ` (Dietary: ${parseField(t.dietary_options).join(", ")})` : "";
-      return `- [${t.name}](https://simplyenak.com/tours/${t.slug}/): ${t.short_description || t.tagline || ""} — ${t.duration}, ${t.currency ?? "MYR"} ${t.price}/person${dietary}`;
+      const dietary = parseField(t.dietary_options)
+        .map((d: any) => (typeof d === "string" ? d : d?.name ?? ""))
+        .filter(Boolean)
+        .join(", ");
+      const dietarySuffix = dietary ? ` (Dietary: ${dietary})` : "";
+      return `- [${t.name}](https://simplyenak.com/tours/${t.slug}/): ${t.short_description || t.tagline || ""} — ${t.duration}, ${t.currency ?? "MYR"} ${t.price}/person${dietarySuffix}`;
     })
     .join("\n");
 
@@ -43,9 +46,13 @@ export const GET: APIRoute = () => {
     .map((s) => `- [${s.title}](https://simplyenak.com/stories/${s.slug}/): ${s.excerpt || ""}`)
     .join("\n");
 
-  const faqBlock = faqs
+  // Dedup: Payload has per-tour FAQ variants of the same question (e.g. 7x
+  // "Can children join this tour?"). llms.txt should list unique questions.
+  const faqBlock = [...new Set(
+    faqs.map((f) => f.question).filter(Boolean)
+  )]
     .slice(0, 10)
-    .map((f) => `- ${f.question}`)
+    .map((q) => `- ${q}`)
     .join("\n");
 
   const body = `# Simply Enak

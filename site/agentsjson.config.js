@@ -11,9 +11,12 @@ export default {
       'Malaysian food tours in Kuala Lumpur, Penang, and Ipoh, led by locals since 2011. Small groups (max 9), heritage vendors, no tourist restaurants.',
   },
 
-  // Static page index — mirrors the tours and key pages agents should know
-  // about. Keep in sync with src/data/content/tours.json (tour pages) and the
-  // site navigation (key pages).
+  // Static page index — CURATED subset, not exhaustive (llms.txt spec:
+  // ~10-20 high-value links, not the full sitemap). The site has 7 published
+  // tours + ~59 colony/landing pages (dietary, locations, segments); listing
+  // all of them would bloat llms.txt. When new TOURS are published in Payload,
+  // add them here (they won't auto-appear). Colony pages are intentionally
+  // excluded — they exist for search-landing, not for agents.
   content: {
     driver: {
       type: 'static',
@@ -21,6 +24,8 @@ export default {
         { title: 'Home', url: 'https://simplyenak.com/', description: 'Malaysian food tours in KL and Penang' },
         { title: 'All Tours', url: 'https://simplyenak.com/tours/', description: 'Browse all food tours' },
         { title: 'Private Tours', url: 'https://simplyenak.com/tours/private-tours/', description: 'Custom private food tours' },
+        { title: 'Tailored Experiences', url: 'https://simplyenak.com/tours/tailored-tours/', description: 'Tailored and bespoke tour design' },
+        { title: 'Corporate Groups', url: 'https://simplyenak.com/tours/corporate-groups/', description: 'Corporate and group food experiences' },
         { title: 'Kuala Lumpur Street Food', url: 'https://simplyenak.com/tours/kuala-lumpur-street-food/', description: 'The essential KL food tour, 3.5h, MYR 285' },
         { title: 'Flavours of Malaysia', url: 'https://simplyenak.com/tours/flavours-of-malaysia/', description: 'Intro to Malaysian culture through food, 4h, MYR 289' },
         { title: 'Secrets of KL', url: 'https://simplyenak.com/tours/secrets-of-kl-nightlife-street-art-and-cocktails/', description: 'Evening tour: nightlife, street art, cocktails, 4h, MYR 359' },
