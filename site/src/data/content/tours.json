@@ -880,7 +880,7 @@
         }
       }
     },
-    "updatedAt": "2026-08-03T09:30:14.827Z",
+    "updatedAt": "2026-08-03T09:49:24.456Z",
     "createdAt": "2026-07-09T09:43:48.772Z",
     "_status": "draft",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -1539,26 +1539,26 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705fb32188520001d10ecc",
-        "item": "様々な文化と調理法を味わえる、15種類以上のベジタリアン料理の試食"
+        "id": "6a7064342188520001d111cc",
+        "item": "Mais de 15 pratos vegetarianos de várias culturas e estilos de culinária"
       },
       {
-        "id": "6a705fb32188520001d10ecd",
-        "item": "地元の料理や街並みに隠された物語を知り尽くしたガイド"
+        "id": "6a7064342188520001d111cd",
+        "item": "Guias locais que conhecem as histórias por trás da comida e dos bairros"
       },
       {
-        "id": "6a705fb32188520001d10ece",
-        "item": "卵や乳製品を食べる方から完全なヴィーガンまで、食事制限に柔軟に対応"
+        "id": "6a7064342188520001d111ce",
+        "item": "Adaptamos tudo à sua dieta, seja você ovo-lactovegetariano ou vegano 100%"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705fb32188520001d10ecf",
-        "item": "ホテルへの送迎"
+        "id": "6a7064342188520001d111cf",
+        "item": "Recolha e entrega no hotel"
       },
       {
-        "id": "6a705fb32188520001d10ed0",
-        "item": "個人的なお買い物"
+        "id": "6a7064342188520001d111d0",
+        "item": "Compras pessoais"
       }
     ],
     "highlights": [
@@ -1636,7 +1636,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:27.611Z",
+    "updatedAt": "2026-08-03T09:49:40.491Z",
     "createdAt": "2026-07-05T07:15:14.782Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -1788,13 +1788,13 @@
       }
     ],
     "whats_included": [
-      "様々な文化と調理法を味わえる、15種類以上のベジタリアン料理の試食",
-      "地元の料理や街並みに隠された物語を知り尽くしたガイド",
-      "卵や乳製品を食べる方から完全なヴィーガンまで、食事制限に柔軟に対応"
+      "Mais de 15 pratos vegetarianos de várias culturas e estilos de culinária",
+      "Guias locais que conhecem as histórias por trás da comida e dos bairros",
+      "Adaptamos tudo à sua dieta, seja você ovo-lactovegetariano ou vegano 100%"
     ],
     "whats_excluded": [
-      "ホテルへの送迎",
-      "個人的なお買い物"
+      "Recolha e entrega no hotel",
+      "Compras pessoais"
     ],
     "cancellation_policy": "Free cancellation up to 96 hours before the tour. Full price charged for cancellations with less than 96 hours notice or no-shows.",
     "tour_frequency": null,
@@ -2012,6 +2012,29 @@
         "whats_excluded": [
           "Recolha e entrega no hotel",
           "Compras pessoais"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ru",
+        "name": "Ориентируйтесь в малайзийской вегетарианской сцене как местный",
+        "tagline": "Частный вегетарианский фуд-тур в KL",
+        "short_description": "Частный фуд-тур по лучшим вегетарианским местам KL, от столовой буддийского монастыря до Маленькой Индии. Более 15 дегустаций индийской, китайской и буддийской кухонь. Никаких скрытых продуктов животного происхождения, никаких догадок.",
+        "full_description": "В Малайзии потрясающая вегетарианская еда, но туристам ее найти сложно. В большинстве заведений опции не отмечены четко. Многие блюда выглядят вегетарианскими, но содержат скрытые продукты животного происхождения вроде устричного соуса или креветочной пасты. Эта индивидуальная гастрономическая экскурсия приведет вас прямо в лучшие вегетарианские места, где едят местные.\n\nЧем эта экскурсия отличается\nУ разных культур Малайзии свой подход к вегетарианской готовке. Вам не придется искать растительные блюда самостоятельно. Вы попробуете кушанья, о которых даже не слышали, узнаете, почему определенная еда так важна для разных общин, и вкусно поедите.\n\nВаше гастрономическое приключение\nНачните в Lebuh Ampang (старая Маленькая Индия), где вы перекусите местными хитами. Затем загляните в столовую буддийского монастыря на обед. Еду здесь готовят осознанно и подают в по-настоящему спокойной обстановке. Вы пройдете мимо таких достопримечательностей, как Masjid Jamek и Oriental Building, а закончите у башен-близнецов Petronas.",
+        "whats_included": [
+          "Дегустация более 15 вегетарианских блюд, где сочетаются разные культуры и кулинарные традиции.",
+          "Гид, который знает всё о местной еде и скрытых историях на улицах города.",
+          "Гибко подстраиваемся под любые пищевые ограничения. От тех, кто ест яйца и молочные продукты, до строгих веганов."
+        ],
+        "whats_excluded": [
+          "Трансфер обратно в отель",
+          "Личные покупки"
         ],
         "highlights": [
           "[object Object]",
@@ -2811,30 +2834,30 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705fb42188520001d10ed1",
-        "item": "日本語ガイドがご案内"
+        "id": "6a7064342188520001d111d1",
+        "item": "Guia local fluente em inglês"
       },
       {
-        "id": "6a705fb42188520001d10ed2",
-        "item": "フードテイスティング代"
+        "id": "6a7064342188520001d111d2",
+        "item": "Todas as degustações"
       },
       {
-        "id": "6a705fb42188520001d10ed3",
-        "item": "ミネラルウォーター"
+        "id": "6a7064342188520001d111d3",
+        "item": "Água engarrafada"
       },
       {
-        "id": "6a705fb42188520001d10ed4",
-        "item": "少人数グループ（最大7名）"
+        "id": "6a7064342188520001d111d4",
+        "item": "Grupo pequeno (máximo de 7 pessoas)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705fb42188520001d10ed5",
-        "item": "ホテルへの送迎"
+        "id": "6a7064342188520001d111d5",
+        "item": "Recolha e regresso ao hotel"
       },
       {
-        "id": "6a705fb42188520001d10ed6",
-        "item": "個人的なお買い物"
+        "id": "6a7064342188520001d111d6",
+        "item": "Compras pessoais"
       }
     ],
     "highlights": [
@@ -2924,7 +2947,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:28.157Z",
+    "updatedAt": "2026-08-03T09:49:40.837Z",
     "createdAt": "2026-06-28T14:06:11.936Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -3075,14 +3098,14 @@
       }
     ],
     "whats_included": [
-      "日本語ガイドがご案内",
-      "フードテイスティング代",
-      "ミネラルウォーター",
-      "少人数グループ（最大7名）"
+      "Guia local fluente em inglês",
+      "Todas as degustações",
+      "Água engarrafada",
+      "Grupo pequeno (máximo de 7 pessoas)"
     ],
     "whats_excluded": [
-      "ホテルへの送迎",
-      "個人的なお買い物"
+      "Recolha e regresso ao hotel",
+      "Compras pessoais"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily except on Mondays",
@@ -3330,6 +3353,31 @@
         "whats_excluded": [
           "Recolha e regresso ao hotel",
           "Compras pessoais"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ru",
+        "name": "Внутри Pudu",
+        "tagline": "Дольше Chinatown: Живое наследие Pudu",
+        "short_description": "Пересеките город до Pudu. Здесь семьи китайских иммигрантов создали гастрономическую культуру, которую не коснулся туризм. Пройдите мимо последних ворот тюрьмы Pudu. Загляните в лавку hakka yong tau foo, которую держат уже три поколения. Попробуйте хлеб из пекарни kopitiam, открытой в 1935 году. А в конце зайдите в дом десертов пятого поколения. Их рецепт они никогда никому не раскрывали.",
+        "full_description": "Давайте пересечем город и отправимся в Pudu. Это район, где китайские семьи иммигрантов создали настолько хорошую культуру еды, что ее совершенно не меняли ради туристов.\n\nВстретимся у последних сохранившихся ворот тюрьмы Pudu. Ее построили британцы с 1891 по 1895 год. Тюрьма стоит на бывшем китайском кладбище. Но большинство посетителей проходят мимо, ничего не замечая. Отсюда мы пойдем в сам Pudu. Пройдем мимо старых улиц типографий, где за открытыми витринами до сих пор работают тяжелые станки из прошлого. Это часть живого наследия, которое большая часть KL уже забыла.\n\nНаша первая остановка — семейный бизнес хакка в третьем поколении. Они начали продавать yong tau foo с тележки 86 лет назад. Вы попробуете домашнюю рыбную пасту, которой фаршируют тофу и горькую дыню. Подадут с нежным chee cheong fun, политым сладким «tim cheong» и хрустящими сушеными креветками. Затем настанет черед огненной Curry Laksa с домашним самбалом. Ее острота настигнет вас раньше, чем вы будете готовы.\n\nВ традиционной пекарне kopitiam (открыта в 1935 году) вы узнаете настоящую культуру dabao (еды навынос). Сами снимите с полок хлеб и яичные тарталетки. Так местные делают уже много поколений. Потом мы отправимся в единственный в своем роде хавкер-центр KL. Там вы попробуете хайнаньский kopi в Ah Weng Koh (культовом месте KL с 1960-х, которым теперь управляет внучка основателя). Вы откусите хрустящую popiah, которую Aunty Mei заворачивает с 1985 года. А если повезет, вы увидите, как мастер вручную лепит булочки с желтым вином. Это кантонско-хаккайское мастерство, которое медленно исчезает.\n\nМы закончим в десертном доме пятого поколения. Семья готовит десерты из черного кунжута, миндаля и грецких орехов по рецепту, который никогда никому не раскрывала. Забудьте про латте-арт. Вы увидите искусство Tong Sui. К концу тура вы уйдете, зная тот KL, который большинство гостей так и не находит.",
+        "whats_included": [
+          "Сопровождение русскоязычным гидом",
+          "Дегустация блюд",
+          "Минеральная вода",
+          "Небольшая группа (максимум 7 человек)"
+        ],
+        "whats_excluded": [
+          "Трансфер обратно в отель",
+          "Личные покупки"
         ],
         "highlights": [
           "[object Object]",
@@ -4085,34 +4133,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705fb42188520001d10ed7",
-        "item": "地元を知り尽くしたガイド"
+        "id": "6a7064352188520001d111d7",
+        "item": "Locais que conhecem o lugar como a palma da mão"
       },
       {
-        "id": "6a705fb42188520001d10ed8",
-        "item": "少人数制（最大9名）"
+        "id": "6a7064352188520001d111d8",
+        "item": "Grupos pequenos (máx. 9 pessoas)"
       },
       {
-        "id": "6a705fb42188520001d10ed9",
-        "item": "知る人ぞ知る隠れバルへご案内"
+        "id": "6a7064352188520001d111d9",
+        "item": "Acesso a bares escondidos"
       },
       {
-        "id": "6a705fb42188520001d10eda",
-        "item": "わかりやすい集合場所のご案内"
+        "id": "6a7064352188520001d111da",
+        "item": "Indicações claras para o ponto de encontro"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705fb42188520001d10edb",
-        "item": "集合場所までの交通費"
+        "id": "6a7064352188520001d111db",
+        "item": "Transporte para o ponto de encontro"
       },
       {
-        "id": "6a705fb42188520001d10edc",
-        "item": "カクテル・アルコール1杯（込み）以外の追加ドリンク代"
+        "id": "6a7064352188520001d111dc",
+        "item": "Bebidas extras além do coquetel ou bebidas incluídas"
       },
       {
-        "id": "6a705fb42188520001d10edd",
-        "item": "個人的なお買い物"
+        "id": "6a7064352188520001d111dd",
+        "item": "Compras pessoais"
       }
     ],
     "highlights": [
@@ -4231,7 +4279,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:28.544Z",
+    "updatedAt": "2026-08-03T09:49:41.615Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
@@ -4313,15 +4361,15 @@
       }
     ],
     "whats_included": [
-      "地元を知り尽くしたガイド",
-      "少人数制（最大9名）",
-      "知る人ぞ知る隠れバルへご案内",
-      "わかりやすい集合場所のご案内"
+      "Locais que conhecem o lugar como a palma da mão",
+      "Grupos pequenos (máx. 9 pessoas)",
+      "Acesso a bares escondidos",
+      "Indicações claras para o ponto de encontro"
     ],
     "whats_excluded": [
-      "集合場所までの交通費",
-      "カクテル・アルコール1杯（込み）以外の追加ドリンク代",
-      "個人的なお買い物"
+      "Transporte para o ponto de encontro",
+      "Bebidas extras além do coquetel ou bebidas incluídas",
+      "Compras pessoais"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -4567,6 +4615,31 @@
           "Transporte para o ponto de encontro",
           "Bebidas extras além do coquetel ou bebidas incluídas",
           "Compras pessoais"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ru",
+        "name": "Секреты KL: ночная жизнь, стрит-арт и коктейли!",
+        "tagline": "Откройте KL после заката",
+        "short_description": "Когда жара в KL спадает, открываются скрытые двери на крыши баров, в секретные спикизи и к нерассказанным историям Chinatown. Четыре часа, три напитка и один поздний ужин.",
+        "full_description": "KL после захода солнца — совсем другой город. Дневная жара спадает, уличное искусство ловит последние лучи света, а скрытые двери открываются в бары, которые в полдень были просто невидимы.\n\nМы встречаемся на станции Pasar Seni MRT, у входа в арт-квартал KL. Отсюда мы идем по переулкам Чайнатауна, где в свете вечера оживают уличные муралы. Ваш гид расскажет о художниках, стоящих за каждой работой. Это местные таланты, которые превратили переулки KL в галерею под открытым небом.\n\nПервая остановка: бар на крыше с видом на Merdeka 118, самое высокое здание Юго-Восточной Азии. Мы смотрим на закат с авторскими коктейлями и местными закусками.\n\nДальше мы находим спикизи, скрытый за тем, что похоже на телефонную будку. Внутри — один из 50 лучших баров Азии. Бармены работают с пальмовым сахаром, панданом, молодой кокосом и малайзийским чаем. Прошлое здания рассказывает свою историю. Эта часть Чайнатауна когда-то была полна борделей и подпольных казино. Теперь здесь находятся самые креативные бары KL.\n\nМежду остановками мы идем по переулкам через старый центр KL. Ваш гид расскажет о криминальной истории Petaling Street, колониальных скандалах и о том, как KL превратился из шахтерского лагеря в мегаполис.\n\nМы заканчиваем поздним ужином. Рис с курицей в глиняном горшочке или char kuey teow из ларька, который кормит этот район уже десятилетиями.\n\nЭкскурсия проходит с 16:00 до 20:00. Группа до 8 человек. В стоимость входит один приветственный коктейль, два напитка в спикизи и полноценный поздний ужин.",
+        "whats_included": [
+          "Гиды, которые знают эти места как свои пять пальцев",
+          "Небольшие группы (максимум 9 человек)",
+          "Сводим вас в секретные бары, известные только своим",
+          "Легко найти место встречи"
+        ],
+        "whats_excluded": [
+          "Транспорт до места встречи",
+          "Дополнительные напитки (кроме одного включенного коктейля или алкоголя)",
+          "Личные покупки"
         ],
         "highlights": [
           "[object Object]",
@@ -5085,34 +5158,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705fb52188520001d10ede",
-        "item": "現地の英語ガイド"
+        "id": "6a7064352188520001d111de",
+        "item": "Guia local que fala inglês fluentemente"
       },
       {
-        "id": "6a705fb52188520001d10edf",
-        "item": "食べ歩きすべて込み（10〜12品）"
+        "id": "6a7064352188520001d111df",
+        "item": "Todas as degustações (10-12 pratos)"
       },
       {
-        "id": "6a705fb52188520001d10ee0",
-        "item": "コピティアムでコーヒーを楽しむ"
+        "id": "6a7064352188520001d111e0",
+        "item": "Kopitiam tradicional"
       },
       {
-        "id": "6a705fb52188520001d10ee1",
-        "item": "ミネラルウォーター"
+        "id": "6a7064352188520001d111e1",
+        "item": "Água engarrafada"
       },
       {
-        "id": "6a705fb52188520001d10ee2",
-        "item": "少人数グループ（最大9名）"
+        "id": "6a7064352188520001d111e2",
+        "item": "Grupo pequeno (máximo de 9 pessoas)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705fb52188520001d10ee3",
-        "item": "ホテルへの送迎"
+        "id": "6a7064352188520001d111e3",
+        "item": "Recolha e entrega no hotel"
       },
       {
-        "id": "6a705fb52188520001d10ee4",
-        "item": "個人的なお買い物"
+        "id": "6a7064352188520001d111e4",
+        "item": "Compras pessoais"
       }
     ],
     "highlights": [
@@ -5172,7 +5245,7 @@
       "description": "Taste your way through Penang legendary street food scene on a guided walking tour of George Town hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:29.120Z",
+    "updatedAt": "2026-08-03T09:49:41.967Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -5282,15 +5355,15 @@
       }
     ],
     "whats_included": [
-      "現地の英語ガイド",
-      "食べ歩きすべて込み（10〜12品）",
-      "コピティアムでコーヒーを楽しむ",
-      "ミネラルウォーター",
-      "少人数グループ（最大9名）"
+      "Guia local que fala inglês fluentemente",
+      "Todas as degustações (10-12 pratos)",
+      "Kopitiam tradicional",
+      "Água engarrafada",
+      "Grupo pequeno (máximo de 9 pessoas)"
     ],
     "whats_excluded": [
-      "ホテルへの送迎",
-      "個人的なお買い物"
+      "Recolha e entrega no hotel",
+      "Compras pessoais"
     ],
     "cancellation_policy": null,
     "tour_frequency": null,
@@ -5528,6 +5601,31 @@
         "whats_excluded": [
           "Recolha e entrega no hotel",
           "Compras pessoais"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ru",
+        "name": "Уличная еда в Penang",
+        "tagline": "Тур по гастрономической столице Penang",
+        "short_description": "Почему Penang называют «продовольственной столицей» Малайзии? Enak проведет вас через смешение культур, благодаря которому появились блюда, которые вы встретите только здесь. На рынке Chowrasta мы бросим вам вызов попробовать «Ngor Ka Sai» из копитиама.",
+        "full_description": "Пенанг считается кулинарной столицей Малайзии. И что может быть лучше, чем попробовать всю уличную еду на этом острове? Прогуливаясь мимо памятников Пенанга, мы перенесемся во времена, когда он только появился как поселение.\n\nПробуя разные блюда, мы прикоснемся к традициям и культуре. Именно они делают местную еду такой, что вы будете вспоминать ее месяцами. Позавтракайте легко или вообще откажитесь от завтрака. Это нужно, чтобы подготовиться к местным любимцам вроде Roti Chennai, Penang Laksa, Nasi Lemak и многому другому.",
+        "whats_included": [
+          "Англоязычный местный гид",
+          "Все дегустации включены (10–12 блюд)",
+          "Кофе в традиционном копитиаме",
+          "Питьевая вода",
+          "Небольшая группа (до 9 человек)"
+        ],
+        "whats_excluded": [
+          "Трансфер обратно в отель",
+          "Личные покупки"
         ],
         "highlights": [
           "[object Object]",
@@ -5827,34 +5925,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705fb52188520001d10ee5",
-        "item": "現地の英語ガイド"
+        "id": "6a7064362188520001d111e5",
+        "item": "Guia local que fala inglês fluentemente"
       },
       {
-        "id": "6a705fb52188520001d10ee6",
-        "item": "すべての食べ歩き（15〜18品）"
+        "id": "6a7064362188520001d111e6",
+        "item": "Todas as degustações de comida (15-18 pratos)"
       },
       {
-        "id": "6a705fb52188520001d10ee7",
-        "item": "漢方薬体験"
+        "id": "6a7064362188520001d111e7",
+        "item": "Oficina de medicina tradicional chinesa"
       },
       {
-        "id": "6a705fb52188520001d10ee8",
-        "item": "ミネラルウォーター"
+        "id": "6a7064362188520001d111e8",
+        "item": "Água engarrafada"
       },
       {
-        "id": "6a705fb52188520001d10ee9",
-        "item": "少人数グループ体験（最大9名）"
+        "id": "6a7064362188520001d111e9",
+        "item": "Grupo pequeno (máximo de 9 pessoas)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705fb52188520001d10eea",
-        "item": "ホテルへの送迎"
+        "id": "6a7064362188520001d111ea",
+        "item": "Recolha e entrega no hotel"
       },
       {
-        "id": "6a705fb52188520001d10eeb",
-        "item": "個人的なお買い物"
+        "id": "6a7064362188520001d111eb",
+        "item": "Compras pessoais"
       }
     ],
     "highlights": [
@@ -5975,7 +6073,7 @@
       "description": "Discover KL hidden street food gems with a local guide. Visit heritage hawkers and taste authentic Malaysian dishes.",
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:29.745Z",
+    "updatedAt": "2026-08-03T09:49:42.522Z",
     "createdAt": "2026-05-19T08:33:48.280Z",
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -6085,15 +6183,15 @@
       }
     ],
     "whats_included": [
-      "現地の英語ガイド",
-      "すべての食べ歩き（15〜18品）",
-      "漢方薬体験",
-      "ミネラルウォーター",
-      "少人数グループ体験（最大9名）"
+      "Guia local que fala inglês fluentemente",
+      "Todas as degustações de comida (15-18 pratos)",
+      "Oficina de medicina tradicional chinesa",
+      "Água engarrafada",
+      "Grupo pequeno (máximo de 9 pessoas)"
     ],
     "whats_excluded": [
-      "ホテルへの送迎",
-      "個人的なお買い物"
+      "Recolha e entrega no hotel",
+      "Compras pessoais"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -6317,6 +6415,31 @@
         "whats_excluded": [
           "Recolha e entrega no hotel",
           "Compras pessoais"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ru",
+        "name": "Уличная еда в KL",
+        "tagline": "Сердце уличной еды в KL",
+        "short_description": "Идеальный гастрономический тур по KL для тех, кто приехал впервые. Прогуляйтесь по переулкам Чайнатауна, попробуйте 15-18 блюд в исторических лавках и уходите с картой, где вкусно поесть до конца вашей поездки.",
+        "full_description": "Начните там, где берет начало кулинарная история KL: рынок Petaling Street. Это самая оживленная улица Чайнатауна. Крытый переулок с шипящими воками, висящим жареным мясом и торговцами, которые готовят одно и то же блюдо уже сорок лет.\n\nЗа три часа вы попробуете восемь блюд на пяти точках. Мы начинаем у семейного стенда, где с 1978 года готовят yong tau foo. Это фаршированный тофу, горькая дыня и баклажаны, которые подают с лапшой в легком соевом бульоне. Ваш гид покажет, как сделать заказ и какой соус чили попросить.\n\nЗатем мы заходим в секцию влажного рынка. Здесь мясники, рыбники и продавцы лекарственных трав работают уже несколько поколений. Вы почувствуете запах сушеных креветок, бадьяна и особый аромат белакана (ферментированной креветочной пасты). Это основа малайзийской кухни.\n\nОттуда мы совершим короткую прогулку до копитиама. Там мастер тостов в третьем поколении готовит тосты с маслом и джемом кая на углях и делает teh tarik. Это культовый малайзийский чай с взбитым молоком.\n\nТур заканчивается в шумном центре уличной еды, где мы делимся тарелками char kway teow и cendol. Ваш гид расскажет, как каждое блюдо отражает многокультурную историю Малайзии.\n\nНа протяжении всего тура вы будете гулять по самым старым районам KL. Это Petaling Street, территория Central Market и исторический центр. Мы держим группы маленькими (максимум 8 человек), чтобы вы могли пообщаться с продавцами и задать вопросы.",
+        "whats_included": [
+          "Англоязычный местный гид",
+          "Все дегустации (15–18 блюд)",
+          "Знакомство с традиционной китайской медициной",
+          "Минеральная вода",
+          "Камерная группа (максимум 9 человек)"
+        ],
+        "whats_excluded": [
+          "Трансфер обратно в отель",
+          "Личные покупки"
         ],
         "highlights": [
           "[object Object]",
@@ -6861,34 +6984,34 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705fb62188520001d10eec",
-        "item": "現地の英語ガイド"
+        "id": "6a7064372188520001d111ec",
+        "item": "Guia local falando inglês"
       },
       {
-        "id": "6a705fb62188520001d10eed",
-        "item": "食べ歩きすべて（8〜10品）"
+        "id": "6a7064372188520001d111ed",
+        "item": "Todas as degustações (8 a 10 pratos)"
       },
       {
-        "id": "6a705fb62188520001d10eee",
-        "item": "伝統的な市場を散策"
+        "id": "6a7064372188520001d111ee",
+        "item": "Passeio por mercados tradicionais"
       },
       {
-        "id": "6a705fb62188520001d10eef",
-        "item": "ミネラルウォーター"
+        "id": "6a7064372188520001d111ef",
+        "item": "Água mineral"
       },
       {
-        "id": "6a705fb62188520001d10ef0",
-        "item": "少人数グループ（最大9名）"
+        "id": "6a7064372188520001d111f0",
+        "item": "Grupo pequeno (máximo de 9 pessoas)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705fb62188520001d10ef1",
-        "item": "ホテルへの送迎"
+        "id": "6a7064372188520001d111f1",
+        "item": "Transfer de volta para o hotel"
       },
       {
-        "id": "6a705fb62188520001d10ef2",
-        "item": "市場での個人的なお買い物"
+        "id": "6a7064372188520001d111f2",
+        "item": "Compras pessoais no mercado"
       }
     ],
     "highlights": [
@@ -7013,7 +7136,7 @@
       "description": "Experience Malaysia multicultural food heritage on a full-day tour from Malay to Chinese to Indian cuisine.",
       "image": null
     },
-    "updatedAt": "2026-08-03T09:30:30.604Z",
+    "updatedAt": "2026-08-03T09:49:43.118Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -7136,15 +7259,15 @@
       }
     ],
     "whats_included": [
-      "現地の英語ガイド",
-      "食べ歩きすべて（8〜10品）",
-      "伝統的な市場を散策",
-      "ミネラルウォーター",
-      "少人数グループ（最大9名）"
+      "Guia local falando inglês",
+      "Todas as degustações (8 a 10 pratos)",
+      "Passeio por mercados tradicionais",
+      "Água mineral",
+      "Grupo pequeno (máximo de 9 pessoas)"
     ],
     "whats_excluded": [
-      "ホテルへの送迎",
-      "市場での個人的なお買い物"
+      "Transfer de volta para o hotel",
+      "Compras pessoais no mercado"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily",
@@ -7389,6 +7512,31 @@
         "whats_excluded": [
           "Transfer de volta para o hotel",
           "Compras pessoais no mercado"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ru",
+        "name": "Вкусы Malaysia",
+        "tagline": "Рыночная культура и скрытые вкусы",
+        "short_description": "Впервые в Malaysia? Здесь есть всё, что вам нужно знать! Идеальное знакомство с малайзийской культурой.",
+        "full_description": "Это наш самый подробный тур. Глубокое погружение в малайзийскую культуру еды в двух разных районах.\n\nМы начинаем в Chow Kit, самом старом влажном рынке KL. Здесь зарождается настоящая городская еда. Не прилизанные лавки для туристов, а оптовый рынок, где владельцы ресторанов закупаются до рассвета. Ваш гид проведет вас через рыбный отдел, ряды специй (с дегустацией белакана и сушеного чили) и отдел фермерских продуктов, где местные производители продают свой урожай напрямую.\n\nЗдесь вы попробуете nasi lemak так, как его и задумывали. Кокосовый рис в банановом листе с самбалом, жареными анчоусами, арахисом, яйцом вкрутую и жареной курицей. Это национальное блюдо Малайзии.\n\nИз Chow Kit мы идем пешком в Kampung Baru. Это малайский анклав, который сохраняется в самом сердце KL уже более века. Деревянные дома и уличные мечети здесь совсем не похожи на небоскребы, виднеющиеся вдалеке.\n\nВ Kampung Baru вы попробуете блюда, которые малайские бабушки готовят уже много поколений. Мы остановимся у семейного дома, где подают nasi dagang (ароматный рис с рыбным карри), и у придорожной лавки, славящейся своим cendol. Ваш гид расскажет, как Kampung Baru стал малайским сельскохозяйственным поселением в 1900-х годах и почему сегодня он остается оплотом местной культуры.\n\nЭтот тур включает десять дегустаций на шести остановках. Он проходит утром, когда жизнь в обоих районах бьет ключом.",
+        "whats_included": [
+          "Местный англоязычный гид",
+          "Все дегустации во время прогулки (8–10 блюд)",
+          "Прогулка по традиционным рынкам",
+          "Бутылочная вода",
+          "Небольшая группа (до 9 человек)"
+        ],
+        "whats_excluded": [
+          "Трансфер обратно в отель",
+          "Личные покупки на рынке"
         ],
         "highlights": [
           "[object Object]",
@@ -8117,42 +8265,42 @@
     ],
     "whatsIncluded": [
       {
-        "id": "6a705fb72188520001d10ef3",
-        "item": "現地の英語ガイド"
+        "id": "6a7064372188520001d111f3",
+        "item": "Guia local falando inglês"
       },
       {
-        "id": "6a705fb72188520001d10ef4",
-        "item": "フードテイスティング代"
+        "id": "6a7064372188520001d111f4",
+        "item": "Degustação de pratos"
       },
       {
-        "id": "6a705fb72188520001d10ef5",
-        "item": "Jalan Macalisterでのドリアン・マスタークラス"
+        "id": "6a7064372188520001d111f5",
+        "item": "Aula sobre durian na Jalan Macalister"
       },
       {
-        "id": "6a705fb72188520001d10ef6",
-        "item": "隠れ家屋上へのアクセス"
+        "id": "6a7064372188520001d111f6",
+        "item": "Acesso a um terraço escondido"
       },
       {
-        "id": "6a705fb72188520001d10ef7",
-        "item": "ミネラルウォーター"
+        "id": "6a7064372188520001d111f7",
+        "item": "Água mineral"
       },
       {
-        "id": "6a705fb72188520001d10ef8",
-        "item": "少人数グループ（最大7名）"
+        "id": "6a7064372188520001d111f8",
+        "item": "Grupo pequeno (máximo de 7 pessoas)"
       }
     ],
     "whatsExcluded": [
       {
-        "id": "6a705fb72188520001d10ef9",
-        "item": "ホテルへの送迎"
+        "id": "6a7064372188520001d111f9",
+        "item": "Transfer para o hotel"
       },
       {
-        "id": "6a705fb72188520001d10efa",
-        "item": "アルコール飲料"
+        "id": "6a7064372188520001d111fa",
+        "item": "Bebidas alcoólicas"
       },
       {
-        "id": "6a705fb72188520001d10efb",
-        "item": "ドリアン屋台での個人的なお買い物"
+        "id": "6a7064372188520001d111fb",
+        "item": "Compras pessoais na barraca de durian"
       }
     ],
     "highlights": [
@@ -8336,7 +8484,7 @@
         }
       }
     },
-    "updatedAt": "2026-08-03T09:30:31.455Z",
+    "updatedAt": "2026-08-03T09:49:43.893Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -8487,17 +8635,17 @@
       }
     ],
     "whats_included": [
-      "現地の英語ガイド",
-      "フードテイスティング代",
-      "Jalan Macalisterでのドリアン・マスタークラス",
-      "隠れ家屋上へのアクセス",
-      "ミネラルウォーター",
-      "少人数グループ（最大7名）"
+      "Guia local falando inglês",
+      "Degustação de pratos",
+      "Aula sobre durian na Jalan Macalister",
+      "Acesso a um terraço escondido",
+      "Água mineral",
+      "Grupo pequeno (máximo de 7 pessoas)"
     ],
     "whats_excluded": [
-      "ホテルへの送迎",
-      "アルコール飲料",
-      "ドリアン屋台での個人的なお買い物"
+      "Transfer para o hotel",
+      "Bebidas alcoólicas",
+      "Compras pessoais na barraca de durian"
     ],
     "cancellation_policy": "Free cancellation up to 24 hours before the tour. Full price charged for cancellations with less than 24 hours notice or no-shows.",
     "tour_frequency": "Daily except Wednesdays",
@@ -8755,6 +8903,33 @@
           "Transfer para o hotel",
           "Bebidas alcoólicas",
           "Compras pessoais na barraca de durian"
+        ],
+        "highlights": [
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]",
+          "[object Object]"
+        ]
+      },
+      {
+        "languages_code": "ru",
+        "name": "Лучшие хоккеры Georgetown и Дуриановая улица",
+        "tagline": "Откройте для себя Penang после наступления темноты",
+        "short_description": "От уличных хоккеров с огнем на углях до скрытых крыш и дуриановой улицы на Jalan Macalister. Georgetown после заката совершенно другой город.",
+        "full_description": "Эта вечерняя прогулка по району Presgrave в Georgetown — то, что вам нужно.\n\nКогда солнце садывается и загораются угли, мы отведем вас на открытый хаукер-центр, где еда готовится прямо на ваших глазах. Смотрите, как жарят Hokkien Mee на открытом огне, пока креветочный бульон не станет темным и копченым. Попробуйте жареный морковный кекс, липкий и карамелизированный со сковороды. Откусите loh bak, знаменитый хрустящий пряный мясной рулет Penang. А если осмелитесь, то и омлет с устрицами, хрустящий по краям и нежный внутри. Для самых смелых есть curry mee с тофу со свиной кровью, нежный и невероятно насыщенный. Гид расскажет вам негласные правила рассадки, чтобы вы могли вернуться сами и заказывать еду как завсегдатай.\n\nМежду остановками для еды мы пройдем по улице с разнообразными домами-лавками, которая входит в число самых красивых в мире. Улица названа в честь первого президента китайской торговой палаты Penang и хранит в каждом доме века истории Georgetown. Мы пройдем мимо музея Sun Yat-Sen, мечети Masjid Pakistan и исторического коридора музея штата Penang, прежде чем подняться на скрытую крышу над первым торговым центром Penang, построенным в 1967 году. Отсюда открывается неожиданно красивый вид на небоскребы Georgetown.\n\nЗатем приходит время дуриана. Jalan Macalister, названная в честь губернатора Penang 19 века, это километр палаток, где мы научим вас словарю дуриана. Вы узнаете, как читать его скорлупу, определять сорт по запаху и отличать Musang King от D24. Если повезет, во время еды вы услышите звон колоколов католической церкви на Macalister Road.\n\nВы уйдете с полным желудком, классной историей и достаточными знаниями, чтобы вернуться и повторить всё это самостоятельно.",
+        "whats_included": [
+          "Местный гид, говорящий по-английски",
+          "Дегустация еды",
+          "Мастер-класс по дуриану на Jalan Macalister",
+          "Доступ на секретную крышу",
+          "Минеральная вода",
+          "Небольшая группа (до 7 человек)"
+        ],
+        "whats_excluded": [
+          "Трансфер обратно в отель",
+          "Алкогольные напитки",
+          "Личные покупки на фруктовом рынке с дурианом"
         ],
         "highlights": [
           "[object Object]",
