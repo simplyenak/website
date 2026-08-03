@@ -44,9 +44,45 @@ UNTRANSLATED=$(echo "$HEALTH" | python3 -c "import json,sys; print(json.load(sys
 STALE=$(echo "$HEALTH" | python3 -c "import json,sys; print(json.load(sys.stdin).get('totalStale','?'))" 2>/dev/null || echo "?")
 echo "  Found ${UNTRANSLATED} untranslated + ${STALE} stale items."
 
+# ── Staggered rollout ───────────────────────────────────────────────────────
+# Translate ONE language per run (the one with the most missing items), so the
+# 4h cron naturally walks all 9 languages over ~36h without hammering the
+# provider. If --lang was passed explicitly, honour it (test/manual mode).
+LANG_ARG=$(echo "$EXTRA_ARGS" | grep -o '\-\-lang [a-z,]*' | head -1 | awk '{print $2}' || true)
+if [ -z "$LANG_ARG" ]; then
+    LANG_ARG=$(echo "$HEALTH" | python3 -c "
+import json, sys
+try:
+    d = json.load(sys.stdin)
+    by = d.get('untranslatedByLang', {})
+    if not by:
+        sys.exit(0)
+    # Pick the language with the most untranslated pairs (stable order)
+    worst = max(sorted(by.keys()), key=lambda l: by.get(l, 0))
+    if by.get(worst, 0) > 0:
+        print(worst)
+except Exception:
+    pass
+" 2>/dev/null || true)
+    if [ -n "$LANG_ARG" ]; then
+        echo "  Stagger: translating language '$LANG_ARG' this run (worst gap)."
+    fi
+fi
+
 echo ""
 echo "▸ Translating missing and stale content..."
-TRANSLATE_PROVIDER="${TRANSLATE_PROVIDER:-gemini}" node site/scripts/translate-content.mjs --smart "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+# Provider default: omniroute (gateway) with GLM-5.2 — validated for translation
+# quality (2026-08-03). Alternatives: agnes (apihub.agnes-ai.com, direct),
+# gemini (needs valid key). Set TRANSLATE_PROVIDER to switch.
+TRANSLATE_PROVIDER="${TRANSLATE_PROVIDER:-omniroute}"
+OMNIROUTE_MODEL="${OMNIROUTE_MODEL:-zai/glm-5.2}"
+export TRANSLATE_PROVIDER OMNIROUTE_MODEL
+# One language per run (staggered). All collections, that language.
+if [ -n "$LANG_ARG" ]; then
+    node site/scripts/translate-content.mjs --lang "$LANG_ARG" "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+else
+    node site/scripts/translate-content.mjs "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+fi
 echo "  ✅ Translation complete"
 
 echo ""
