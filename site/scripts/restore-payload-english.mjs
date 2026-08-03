@@ -36,6 +36,34 @@ const COLLECTIONS = {
   faqs: { file: 'faqs.json', slug: 'faqs', idField: 'id', englishFields: ['question', 'answer'] },
   stories: { file: 'stories.json', slug: 'stories', idField: 'id', englishFields: ['title', 'excerpt'] },
   testimonials: { file: 'testimonials.json', slug: 'testimonials', idField: 'id', englishFields: ['review_title', 'review_text'] },
+  // Landing pages use the custom translations array (NOT native localization);
+  // locale pushes corrupted their shared English fields.
+  landing_pages: {
+    file: 'location-landing-pages.json',
+    slug: 'landing_pages',
+    idField: 'id',
+    englishFields: ['title', 'hero_title', 'hero_subtitle', 'hero_description', 'intro_heading', 'meta_title', 'meta_description'],
+  },
+  // dietary/specialty/travel-type landing pages — same custom-array pattern.
+  // Restore from git too (EN_SOURCE_DIR must contain all landing JSONs).
+  landing_pages_dietary: {
+    file: 'dietary-landing-pages.json',
+    slug: 'landing_pages',
+    idField: 'id',
+    englishFields: ['title', 'hero_title', 'hero_subtitle', 'hero_description', 'intro_heading', 'dietary_name', 'meta_title', 'meta_description'],
+  },
+  landing_pages_specialty: {
+    file: 'specialty-landing-pages.json',
+    slug: 'landing_pages',
+    idField: 'id',
+    englishFields: ['title', 'hero_title', 'hero_subtitle', 'hero_description', 'intro_heading', 'specialty_name', 'meta_title', 'meta_description'],
+  },
+  landing_pages_travel_type: {
+    file: 'travel-type-landing-pages.json',
+    slug: 'landing_pages',
+    idField: 'id',
+    englishFields: ['title', 'hero_title', 'hero_subtitle', 'hero_description', 'intro_heading', 'meta_title', 'meta_description'],
+  },
 };
 
 // English source override: the auto-sync pulled the corrupted German back
