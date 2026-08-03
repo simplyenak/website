@@ -4,23 +4,23 @@ export const headerData = {
   links: [
     {
       text: 'Services',
-      href: '#services',
+      href: '/dmc-services',
     },
     {
       text: 'Destinations',
       href: '#destinations',
     },
     {
-      text: 'Partner With Us',
-      href: '#partner',
+      text: 'For Agents',
+      href: '/for-agents',
+    },
+    {
+      text: 'Resources',
+      href: '/fam-trip-resources',
     },
     {
       text: 'About',
       href: '#about',
-    },
-    {
-      text: 'Trade Kit',
-      href: '#trade-kit',
     },
   ],
   actions: [{ text: 'Contact', href: '#contact' }],
