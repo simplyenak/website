@@ -26,7 +26,7 @@ function extractText(content: any): string {
 export const GET: APIRoute = () => {
   const tours = (toursData as any[]).filter((t) => t._status === "published");
   const stories = (storiesData as any[]).filter(
-    (s) => s._status === "published" && (s._contentText?.trim().length ?? 0) > 500
+    (s) => s._status === "published" && (s.content_markdown?.trim().length ?? 0) > 500
   );
   const faqs = (faqsData as any[]).filter((f) => f._status === "published");
 
