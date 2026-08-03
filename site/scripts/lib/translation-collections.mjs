@@ -55,6 +55,9 @@ export const COLLECTIONS = {
     file: 'tours.json',
     type: 'array',
     matchField: 'slug',
+    // Only collection with localized:true fields in Payload (4 fields) —
+    // native ?locale=de PATCH works and isolates locales correctly.
+    localizedInPayload: true,
     translatableFields: [
       'name', 'tagline', 'short_description', 'full_description',
       'whats_included', 'whats_excluded', 'highlights',
@@ -80,6 +83,9 @@ export const COLLECTIONS = {
     file: 'stories.json',
     type: 'array',
     matchField: 'slug',
+    // NOT localized in Payload (no localized:true fields) — do NOT push
+    // with ?locale, it corrupts the shared English field.
+    localizedInPayload: false,
     translatableFields: ['title', 'excerpt', 'content', 'meta_title', 'meta_description'],
     htmlFields: ['content'],
   },
@@ -87,6 +93,9 @@ export const COLLECTIONS = {
     file: 'faqs.json',
     type: 'array',
     matchField: 'question',
+    // NOT localized in Payload (no localized:true fields) — do NOT push
+    // with ?locale, it corrupts the shared English field.
+    localizedInPayload: false,
     translatableFields: ['question', 'answer'],
     htmlFields: ['answer'],
   },
@@ -94,6 +103,9 @@ export const COLLECTIONS = {
     file: 'testimonials.json',
     type: 'array',
     matchField: 'review_text', // review_title is NULL in Payload — use the actual text
+    // NOT localized in Payload (no localized:true fields) — do NOT push
+    // with ?locale, it corrupts the shared English field.
+    localizedInPayload: false,
     translatableFields: ['review_title', 'review_text'],
   },
   home_page: {

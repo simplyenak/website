@@ -129,6 +129,16 @@ async function pushCollection(name, cfg, locale) {
     return;
   }
 
+  // Only collections with localized:true fields in Payload can accept
+  // ?locale=de PATCHes. For non-localized collections, writing with ?locale
+  // OVERWRITES the shared English field (Payload bug/behavior confirmed
+  // 2026-08-03: faqs/stories/testimonials en got corrupted). Their
+  // translations live in the git JSON + custom translations array instead.
+  if (cfg.localizedInPayload === false) {
+    console.log(`  ⏭️  ${name}: not localized in Payload — translations stay in git JSON (skipping Payload push)`);
+    return;
+  }
+
   const filePath = path.join(CONTENT_DIR, cfg.file);
   if (!fs.existsSync(filePath)) {
     console.log(`  ⚠  ${cfg.file} not found — skipping`);
