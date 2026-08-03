@@ -28,6 +28,11 @@ const __dirname = path.dirname(__filename);
 
 const PAYLOAD_URL = process.env.PAYLOAD_URL || 'https://cms.system.simplyenak.com';
 const PAYLOAD_TOKEN = process.env.PAYLOAD_TOKEN || '';
+// Admin API key (from a user with create/update access on the target
+// collections) — the read-only PAYLOAD_TOKEN cannot write. Set
+// PAYLOAD_ADMIN_API_KEY to a user's API key (Users collection has
+// useAPIKey enabled). Auth header: "users API-Key <key>".
+const PAYLOAD_ADMIN_API_KEY = process.env.PAYLOAD_ADMIN_API_KEY || '';
 const PAYLOAD_EMAIL = process.env.PAYLOAD_EMAIL || '';
 const PAYLOAD_PASSWORD = process.env.PAYLOAD_PASSWORD || '';
 const CONTENT_DIR = path.resolve(__dirname, '../src/data/content');
@@ -41,7 +46,7 @@ const { COLLECTIONS, ALL_LANGS } = await import('./lib/translation-collections.m
 // Language filter: --lang ms,zh  or --lang all  (default: all)
 const LANG_ARG = process.argv.find(a => a.startsWith('--lang='));
 const TARGET_LANGS = LANG_ARG ? LANG_ARG.split('=')[1].split(',').map(l => l.trim()).filter(l => ALL_LANGS.includes(l)) : ALL_LANGS;
-let authToken = PAYLOAD_TOKEN;
+let authToken = ''; // set by authenticate() — prefer admin key, then login, then read-only token
 
 // Stats
 let updated = 0;
@@ -77,9 +82,15 @@ function loadJson(filePath) {
 }
 
 async function authenticate() {
+  // Prefer the admin API key (can write). Falls back to login, then read-only token.
   if (authToken) return;
+  if (PAYLOAD_ADMIN_API_KEY) {
+    authToken = `users API-Key ${PAYLOAD_ADMIN_API_KEY}`;
+    return;
+  }
   if (!PAYLOAD_EMAIL || !PAYLOAD_PASSWORD) {
-    throw new Error('Need PAYLOAD_TOKEN or PAYLOAD_EMAIL+PAYLOAD_PASSWORD');
+    authToken = `users API-Key ${PAYLOAD_TOKEN}`;
+    return;
   }
   const res = await fetch(`${PAYLOAD_URL}/api/users/login`, {
     method: 'POST',
@@ -89,8 +100,8 @@ async function authenticate() {
   });
   if (!res.ok) throw new Error(`Login failed: HTTP ${res.status}`);
   const data = await res.json();
-  authToken = data.token;
-  if (!authToken) throw new Error('Login returned no token');
+  authToken = `JWT ${data.token}`;
+  if (!data.token) throw new Error('Login returned no token');
 }
 
 async function patchItem(collectionSlug, itemId, body, locale) {
@@ -99,7 +110,7 @@ async function patchItem(collectionSlug, itemId, body, locale) {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `users API-Key ${authToken}`,
+      Authorization: authToken, // "users API-Key <key>" or "JWT <token>"
     },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(30000),
@@ -168,18 +179,44 @@ async function pushCollection(name, cfg, locale) {
     let hasContent = false;
     const ignoreKeys = new Set(['id', 'languages_code', 'locale', 'updatedAt', 'createdAt']);
     const htmlFields = new Set(cfg.htmlFields || []);
+    // Map local (snake_case) field names → Payload (camelCase) field names
+    const fieldMap = cfg.payloadFieldMap || {};
+
+    // Checkbox fields Payload validates on locale PATCH — must be sent
+    // explicitly or the update fails ("can only be equal to true or false").
+    // Pull the current value from the item (default false).
+    const checkboxFields = cfg.checkboxFields || [];
+    for (const cb of checkboxFields) {
+      body[cb] = item[cb] === true || item[cb] === 'true';
+    }
 
     for (const field of cfg.translatableFields) {
+      const payloadField = fieldMap[field] || field;
       if (htmlFields.has(field)) {
         // Include original English value for required rich text fields to satisfy validation
         const origVal = item[field] || (enTrans || {})[field];
         if (origVal !== undefined && origVal !== null) {
-          body[field] = origVal;
+          body[payloadField] = origVal;
         }
         continue;
       }
-      if (targetTrans[field] !== undefined && targetTrans[field] !== null) {
-        body[field] = targetTrans[field];
+      const targetVal = targetTrans[field];
+      if (targetVal !== undefined && targetVal !== null) {
+        // Skip corrupted values: arrays/strings containing "[object Object]"
+        // (translator stringified nested objects it can't handle). Pushing
+        // them breaks Payload's structured-field validation (HTTP 500).
+        const serialized = typeof targetVal === 'string' ? targetVal : JSON.stringify(targetVal);
+        if (serialized && serialized.includes('[object Object]')) {
+          console.log(`    ⏭️  ${label}: skipping corrupted field ${field}`);
+          continue;
+        }
+        // Wrap plain string arrays into Payload object-array shape
+        // ({item: ...}) for fields like whatsIncluded/whatsExcluded.
+        if ((cfg.arrayObjectFields || []).includes(field) && Array.isArray(targetVal)) {
+          body[payloadField] = targetVal.map((s) => (typeof s === 'string' ? { item: s } : s));
+        } else {
+          body[payloadField] = targetVal;
+        }
         hasContent = true;
       }
     }

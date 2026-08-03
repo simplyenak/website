@@ -61,6 +61,20 @@ export const COLLECTIONS = {
       'meta_title', 'meta_description',
     ],
     arrayFields: ['whats_included', 'whats_excluded', 'highlights'],
+    // Payload field names for the push script (camelCase in Payload) +
+    // checkbox fields validated on locale PATCH (must be sent explicitly).
+    payloadFieldMap: {
+      short_description: 'shortDescription',
+      full_description: 'fullDescription',
+      whats_included: 'whatsIncluded',
+      whats_excluded: 'whatsExcluded',
+      meta_title: 'metaTitle',
+      meta_description: 'metaDescription',
+    },
+    // Fields stored as plain string arrays locally but as object arrays
+    // ({item: ...}) in Payload — push script wraps each string.
+    arrayObjectFields: ['whats_included', 'whats_excluded'],
+    checkboxFields: ['showInMenu', 'popular'],
   },
   stories: {
     file: 'stories.json',
@@ -115,16 +129,15 @@ export const COLLECTIONS = {
     type: 'singleton',
     translatableFields: [
       'heroEyebrow', 'heroHeading', 'heroDescription',
-      'founderSection', 'stats', 'timelineSection', 'philosophySection',
-      'teamSection', 'testimonial', 'ctaSection',
       'seo_title', 'seo_description',
     ],
+    // NOTE: founderSection/timelineSection/philosophySection/teamSection/
+    // testimonial/ctaSection are DICT fields — the objectArrayFields handler
+    // only processes real arrays, and the scalar path stringifies dicts as
+    // "[object Object]" (corrupts them). They stay English until a proper
+    // dict-translation path exists.
     objectArrayFields: {
-      founderSection: { translatableSubFields: ['eyebrow', 'heading', 'text'] },
-      timelineSection: { translatableSubFields: ['title', 'subtitle', 'description'] },
-      philosophySection: { translatableSubFields: ['eyebrow', 'heading', 'description'] },
-      teamSection: { translatableSubFields: ['heading', 'description'] },
-      ctaSection: { translatableSubFields: ['heading', 'description'] },
+      stats: { translatableSubFields: ['label'] },
     },
   },
   contact_page: {
@@ -134,15 +147,10 @@ export const COLLECTIONS = {
       'hero_title', 'hero_subtitle',
       'intro_title', 'intro_subtitle',
       'contact_phone', 'contact_email', 'contact_hours', 'whatsapp_number',
-      'contactMethods', 'planningScenarios', 'ourPromise', 'businessHours',
       'meta_title', 'meta_description',
     ],
-    objectArrayFields: {
-      contactMethods: { translatableSubFields: ['heading', 'description', 'subtitle'] },
-      planningScenarios: { translatableSubFields: ['heading', 'description'] },
-      ourPromise: { translatableSubFields: ['title', 'description'] },
-      businessHours: { translatableSubFields: ['title', 'description'] },
-    },
+    // NOTE: contactMethods/planningScenarios/ourPromise/businessHours are DICT
+    // fields — excluded (see about_page note about dict corruption).
   },
   tours_index_page: {
     file: 'tours-index-page.json',
