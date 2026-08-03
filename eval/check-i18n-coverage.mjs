@@ -74,9 +74,12 @@ function checkArrayCollection(name, cfg) {
     return { collection: name, expected: EXPECTED.has(name), status: 'error', total: 0, untranslated: 0, stale: 0, issues: [`Cannot read ${cfg.file}`] };
   }
 
-  // Skip draft items — dev copies (e.g. "georgetown-night-food-durian - Copy")
-  // never rendered on the site; translate-content.mjs skips them too.
-  const items = allItems.filter((i) => i._status !== 'draft');
+  // Skip draft items ONLY for tours (dev copies like "georgetown-night-food-
+  // durian - Copy" never rendered). FAQs in Payload are marked draft but ARE
+  // live (FAQ page renders all regardless of _status) — don't skip them.
+  const items = name === 'tours'
+    ? allItems.filter((i) => i._status !== 'draft')
+    : allItems;
 
   const total = items.length;
   const untranslatedByLang = Object.fromEntries(EXPECTED_LANGS.map((l) => [l, 0]));

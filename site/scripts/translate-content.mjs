@@ -465,10 +465,13 @@ async function translateCollection(name, config) {
   const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
   let items = config.type === 'array' ? data : [data];
 
-  // Skip draft items — they're dev copies (e.g. "georgetown-night-food-durian
-  // - Copy" with _status: draft) never rendered on the site. Translating them
+  // Skip draft items — dev copies (e.g. "georgetown-night-food-durian - Copy"
+  // with _status: draft) never rendered on the site. Translating them
   // wastes provider calls and pollutes the translations array.
-  if (Array.isArray(items) && items.length > 0 && 'id' in items[0]) {
+  // SCOPE: only collections where drafts are truly dev copies (tours).
+  // FAQs in Payload are marked draft but ARE live (the FAQ page renders all
+  // regardless of _status) — never skip them.
+  if (config.file === 'tours.json' && Array.isArray(items) && items.length > 0 && 'id' in items[0]) {
     const before = items.length;
     items = items.filter((i) => i._status !== 'draft');
     if (items.length < before) {
