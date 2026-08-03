@@ -760,7 +760,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan deze tour?",
+        "question": "Mogen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -770,7 +770,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Могут ли дети пойти с нами на этот тур?",
+        "question": "Могут ли дети пойти на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -1450,22 +1450,22 @@
       },
       {
         "languages_code": "ms",
-        "question": "Boleh kanak-kanak sertai lawatan ini?",
+        "question": "Boleh tak kanak-kanak ikut lawatan ini?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan deze tour?",
+        "question": "Mogen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "zh",
-        "question": "小朋友可以参加这个美食游吗？",
+        "question": "小朋友可以参加这个行程吗？",
         "answer": "[object Object]"
       },
       {
         "languages_code": "ru",
-        "question": "Могут ли дети пойти с нами на этот тур?",
+        "question": "Можно ли брать с собой детей на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -1992,7 +1992,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan deze tour?",
+        "question": "Mogen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -2002,7 +2002,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Могут ли дети пойти с нами на этот тур?",
+        "question": "Могут ли дети пойти на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -2623,7 +2623,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan deze tour?",
+        "question": "Mogen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -2633,7 +2633,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Могут ли дети пойти с нами на этот тур?",
+        "question": "Можно ли взять с собой детей на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -3625,7 +3625,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan deze tour?",
+        "question": "Mogen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -3635,7 +3635,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Могут ли дети пойти с нами на этот тур?",
+        "question": "Можно ли взять с собой детей?",
         "answer": "[object Object]"
       },
       {
@@ -4662,7 +4662,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan deze tour?",
+        "question": "Mogen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -4672,7 +4672,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Могут ли дети пойти с нами на этот тур?",
+        "question": "Можно ли взять с собой детей?",
         "answer": "[object Object]"
       },
       {
@@ -5437,7 +5437,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan deze tour?",
+        "question": "Mogen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -5447,7 +5447,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Могут ли дети пойти с нами на этот тур?",
+        "question": "Можно ли брать с собой детей на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -5516,7 +5516,7 @@
       },
       {
         "languages_code": "de",
-        "question": "Kann diese Tour auch vegetarisch gemacht werden?",
+        "question": "Können wir diese Tour vegetarisch machen?",
         "answer": "[object Object]"
       },
       {
@@ -5526,12 +5526,12 @@
       },
       {
         "languages_code": "fr",
-        "question": "Ce circuit peut-il être proposé en version végétarienne ?",
+        "question": "Ce circuit peut-il être proposé en option végétarienne ?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "ms",
-        "question": "Boleh tak tour ini dijadikan pilihan vegetarian?",
+        "question": "Boleh tak tour ni dibuat dalam pilihan vegetarian?",
         "answer": "[object Object]"
       },
       {
@@ -5546,12 +5546,12 @@
       },
       {
         "languages_code": "ru",
-        "question": "Можно ли заказать вегетарианский вариант этого тура?",
+        "question": "Можно ли пройти этот тур в вегетарианском варианте?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "pt",
-        "question": "Esta tour pode ter opção vegetariana?",
+        "question": "Podemos fazer este tour em versão vegetariana?",
         "answer": "[object Object]"
       },
       {
@@ -5563,7 +5563,7 @@
   },
   {
     "id": 28,
-    "question": "Vocês podem lidar com restrições alimentares em um passeio privado?",
+    "question": "Can you handle dietary restrictions on a private tour?",
     "answer": {
       "root": {
         "type": "root",
@@ -5625,7 +5625,7 @@
   },
   {
     "id": 27,
-    "question": "Com quanta antecedência devemos reservar um passeio privado?",
+    "question": "How far in advance should we book a private tour?",
     "answer": {
       "root": {
         "type": "root",
@@ -5686,7 +5686,7 @@
   },
   {
     "id": 26,
-    "question": "Podemos mudar o roteiro em um tour privado?",
+    "question": "Can we change the itinerary on a private tour?",
     "answer": {
       "root": {
         "type": "root",
@@ -5747,7 +5747,7 @@
   },
   {
     "id": 25,
-    "question": "O que acontece se chover?",
+    "question": "What happens if it rains?",
     "answer": {
       "root": {
         "type": "root",
@@ -5802,6 +5802,41 @@
       {
         "languages_code": "es",
         "question": "¿Qué pasa si llueve?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "ms",
+        "question": "Apa berlaku jika hujan?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "zh",
+        "question": "下雨了怎么办？",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "fr",
+        "question": "Que se passe-t-il s'il pleut ?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "nl",
+        "question": "Wat gebeurt er als het regent?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "ru",
+        "question": "Что будет, если пойдет дождь?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "ja",
+        "question": "雨が降ったらどうなりますか？",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "pt",
+        "question": "O que acontece se chover?",
         "answer": "[object Object]"
       }
     ]
@@ -5940,12 +5975,12 @@
       },
       {
         "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan de tour?",
+        "question": "Mogen kinderen meedoen aan de tour?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "zh",
-        "question": "小朋友可以参加 tour 吗？",
+        "question": "小朋友可以参加吗？",
         "answer": "[object Object]"
       },
       {
@@ -6394,7 +6429,7 @@
   },
   {
     "id": 7,
-    "question": "O que acontece se chover?",
+    "question": "What happens if it rains?",
     "answer": {
       "root": {
         "type": "root",
@@ -6454,7 +6489,7 @@
   },
   {
     "id": 6,
-    "question": "A comida é picante?",
+    "question": "Is the food spicy?",
     "answer": {
       "root": {
         "type": "root",
@@ -6514,7 +6549,7 @@
   },
   {
     "id": 5,
-    "question": "Posso reservar um tour privado?",
+    "question": "Can I book a private tour?",
     "answer": {
       "root": {
         "type": "root",
@@ -6574,7 +6609,7 @@
   },
   {
     "id": 4,
-    "question": "Quanta caminhada está envolvida?",
+    "question": "How much walking is involved?",
     "answer": {
       "root": {
         "type": "root",
@@ -6634,7 +6669,7 @@
   },
   {
     "id": 3,
-    "question": "Que opções alimentares você oferece?",
+    "question": "What dietary options do you offer?",
     "answer": {
       "root": {
         "type": "root",
@@ -6694,7 +6729,7 @@
   },
   {
     "id": 2,
-    "question": "Quanto tempo duram os passeios?",
+    "question": "How long do the tours last?",
     "answer": {
       "root": {
         "type": "root",
