@@ -580,6 +580,12 @@ function transformTour(tour) {
           caption: gi.caption || '',
         })).filter((gi) => gi.src)
       : (tour.gallery_images || []),
+
+    // ── Meta fields ──
+    // Tours uses Payload's native `meta` object ({title, description}).
+    // Fall back to flat fields for backward compat.
+    meta_title: (tour.meta && tour.meta.title) || tour.meta_title || tour.metaTitle || '',
+    meta_description: (tour.meta && tour.meta.description) || tour.meta_description || tour.metaDescription || '',
   }
 }
 

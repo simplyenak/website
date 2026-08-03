@@ -28,6 +28,10 @@ const { COLLECTIONS } = await import(registryPath);
 
 // Strong non-English markers (Portuguese was the observed contaminant)
 const PT_MARKERS = ['ç', 'ã', 'õ', /você/i, /pode/i, /quanto/i, /passeio/i, /comida/i, /reservar/i, /restrições/i, /acontece/i, /caminhada/i];
+// German markers — German has FEW accented chars so the accent heuristic
+// misses it (observed: 17 story metas were German without accents).
+// Word-boundary anchored to avoid false positives ("ein" in "being" etc.)
+const DE_MARKERS = [/\bder\b/i, /\bdie\b/i, /\bdas\b/i, /\bund\b/i, /\bfür\b/i, /\bvon\b/i, /\bmit\b/i, /\bauf\b/i, /\bnicht\b/i, /\bein\b|\beine\b/i, /\bmalaysisch/i, /\bessen\b/i, /\bküche\b/i, /\bstädte\b/i, /\bstrasse\b/i, /\blebensmittel\b/i, /\bkultur\b/i, /\bführer\b/i, /\bführung\b/i];
 const NON_EN_RE = /[áàâäéèêëíìîïóòôöúùûüçñãõ]/;
 
 function looksNonEnglish(text) {
@@ -42,6 +46,9 @@ function looksNonEnglish(text) {
   for (const m of PT_MARKERS) {
     if (m instanceof RegExp ? m.test(text) : text.includes(m)) return 'pt-word';
   }
+  // German markers (works on non-accented text)
+  const deHits = DE_MARKERS.filter((m) => m.test(text)).length;
+  if (deHits >= 2) return 'german';
   return null;
 }
 
