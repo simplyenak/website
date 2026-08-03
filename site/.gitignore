@@ -25,3 +25,4 @@ pnpm-lock.yaml
 # Payload sync backups
 src/data/content/.sync-backup/
 public/okf/
+.translate-backup
