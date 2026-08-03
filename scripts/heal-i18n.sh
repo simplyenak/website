@@ -106,8 +106,11 @@ fi
 
 echo ""
 echo "▸ Pushing translations to Payload..."
-node site/scripts/push-translations-payload.mjs 2>&1 | tail -10
-echo "  ✅ Push complete"
+# The static PAYLOAD_TOKEN is read-only (403 on writes); translations are
+# persisted via the git commit above, so a failing push is non-fatal. Cap the
+# attempt so 800+ per-item 403s don't burn minutes every tick.
+timeout 120 node site/scripts/push-translations-payload.mjs 2>&1 | tail -5
+echo "  ✅ Push attempt complete (403s expected with read-only token — git commit is the durability layer)"
 
 echo ""
 echo "▸ Verifying..."
