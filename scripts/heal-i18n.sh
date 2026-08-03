@@ -5,23 +5,38 @@
 #   1. Check i18n health — skip if nothing to do
 #   2. Translate missing/stale content across all collections
 #   3. Push translations to Payload via REST API
-#   4. Commit and push to GitHub → triggers redeploy
+#   4. Commit and push to GitHub → triggers redeploy (deploy-site.yml push trigger)
 #
-# Env: PAYLOAD_URL, PAYLOAD_TOKEN, OMNIROUTE_API_KEY (or GEMINI_API_KEY)
+# Env: PAYLOAD_URL, PAYLOAD_TOKEN, GEMINI_API_KEY (or OMNIROUTE_API_KEY)
 # Set TRANSLATE_PROVIDER=omniroute to use Omniroute (default: gemini)
+#
+# Robustness notes:
+#   - Loads site/.env explicitly (cron shells don't inherit it)
+#   - git pull --rebase before push (auto-sync may have committed meanwhile)
+#   - SKIP_GIT=true for CI/dry runs; --collection/--lang passthrough for testing
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SKIP_GIT="${SKIP_GIT:-false}"
+# Optional passthrough: heal-i18n.sh --collection tours --lang ms
+EXTRA_ARGS=("$@")
+
+# Load site/.env so this works from a bare cron shell (no inherited env)
+if [ -f site/.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    source site/.env
+    set +a
+fi
 
 echo ""
 echo "▸ Checking i18n coverage..."
-HEALTH=$(node eval/check-i18n-coverage.mjs 2>/dev/null)
+HEALTH=$(cd site && node ../eval/check-i18n-coverage.mjs 2>/dev/null || echo "{}")
 PASSED=$(echo "$HEALTH" | python3 -c "import json,sys; d=json.load(sys.stdin); exit(0 if d.get('passed') else 1)" 2>/dev/null && echo "true" || echo "false")
 
 if [ "$PASSED" = "true" ]; then
-    echo "  ✅ All MS translations current — nothing to heal."
+    echo "  ✅ Translations current — nothing to heal."
     exit 0
 fi
 
@@ -31,20 +46,20 @@ echo "  Found ${UNTRANSLATED} untranslated + ${STALE} stale items."
 
 echo ""
 echo "▸ Translating missing and stale content..."
-TRANSLATE_PROVIDER="${TRANSLATE_PROVIDER:-omniroute}" node scripts/translate-content.mjs --smart 2>&1 | tail -10
+TRANSLATE_PROVIDER="${TRANSLATE_PROVIDER:-gemini}" node site/scripts/translate-content.mjs --smart "${EXTRA_ARGS[@]}" 2>&1 | tail -10
 echo "  ✅ Translation complete"
 
 echo ""
-echo "▸ Pushing MS translations to Payload..."
-node scripts/push-translations-payload.mjs 2>&1 | tail -10
+echo "▸ Pushing translations to Payload..."
+node site/scripts/push-translations-payload.mjs 2>&1 | tail -10
 echo "  ✅ Push complete"
 
 echo ""
 echo "▸ Verifying..."
-FINAL=$(node eval/check-i18n-coverage.mjs 2>/dev/null)
+FINAL=$(cd site && node ../eval/check-i18n-coverage.mjs 2>/dev/null || echo "{}")
 FINAL_PASSED=$(echo "$FINAL" | python3 -c "import json,sys; d=json.load(sys.stdin); exit(0 if d.get('passed') else 1)" 2>/dev/null && echo "true" || echo "false")
 if [ "$FINAL_PASSED" = "true" ]; then
-    echo "  ✅ All MS translations now current!"
+    echo "  ✅ All translations now current!"
 else
     REMAINING=$(echo "$FINAL" | python3 -c "import json,sys; print(json.load(sys.stdin).get('totalUntranslated','?'))" 2>/dev/null || echo "?")
     echo "  ⚠  ${REMAINING} items still need translation (may need human review)"
@@ -55,8 +70,9 @@ if [ "$SKIP_GIT" != "true" ]; then
     echo "▸ Committing and pushing to GitHub..."
     git add site/src/data/content/
     git commit -m "auto: i18n translations (self-healing)" 2>/dev/null || echo "  Nothing new to commit"
+    git pull --rebase origin main 2>&1 | tail -2 || echo "  (rebase skipped — will push anyway)"
     git push origin main 2>&1 | tail -3
-    echo "  ✅ Pushed — redeploy triggered"
+    echo "  ✅ Pushed — deploy triggered via push hook"
 fi
 
 echo ""

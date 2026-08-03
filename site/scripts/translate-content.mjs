@@ -470,11 +470,22 @@ async function translateCollection(name, config) {
     return { created: 0, skipped: 0, errors: 0 };
   }
 
-  // Check if items have translations
-  const itemsWithTranslations = items.filter(item => item.translations && Array.isArray(item.translations));
+  // Check if items have translations. If none exist, bootstrap: create the
+  // translations array with an `en` entry (base item IS the English content),
+  // so the translator can start from zero instead of skipping forever.
+  let itemsWithTranslations = items.filter(item => item.translations && Array.isArray(item.translations));
   if (!itemsWithTranslations.length) {
-    console.log('  ⚠  No translations found — skipping');
-    return { created: 0, skipped: 0, errors: 0 };
+    if (DRY_RUN) {
+      console.log(`  ⚠  No translations found — would bootstrap (${items.length} items)`);
+      return { created: 0, skipped: 0, errors: 0 };
+    }
+    console.log(`  ➕ Bootstrapping translations arrays (${items.length} items)`);
+    for (const item of items) {
+      if (!item.translations) {
+        item.translations = [{ languages_code: 'en' }];
+      }
+    }
+    itemsWithTranslations = items;
   }
 
   console.log(`  ${items.length} item(s) × ${TARGET_LANGS.length} languages`);
@@ -489,21 +500,22 @@ async function translateCollection(name, config) {
 
     const label = item[config.matchField] || item.name || item.title || item.slug || (config.type === 'singleton' ? name : `#${item.id}`);
 
-    // Find English source translation.
-    // For singletons, the base item IS the English content — fall back to it
-    // when no explicit 'en' translation entry exists.
+    // Find English source translation. The base item holds the English field
+    // values (translations store only localized overrides), so fall back to it
+    // whenever the 'en' entry is missing or empty.
     const enTrans = item.translations.find(t => t.languages_code === 'en');
-    const enSource = enTrans ?? (config.type === 'singleton' ? item : null);
+    const enSource = enTrans ?? item;
     if (!enSource && !hasObjectArrayFields) continue;
 
     for (const lang of TARGET_LANGS) {
       const langLabel = `${lang} (${LANG_NAMES[lang]})`;
 
-      // Find target language translation
-      const targetTrans = item.translations.find(t => t.languages_code === lang);
+      // Find target language translation — create it if missing (bootstrap)
+      let targetTrans = item.translations.find(t => t.languages_code === lang);
       if (!targetTrans) {
-        skipped++;
-        continue;
+        targetTrans = { languages_code: lang };
+        item.translations.push(targetTrans);
+        created++;
       }
 
       // ── Translatable scalar / array fields ──────────────────────────────────

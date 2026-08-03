@@ -1,15 +1,18 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { useTranslations } from '~/i18n/utils';
 import { getFAQsByPage } from '~/lib/content';
 
-const lang = 'nl';
-const t = useTranslations(lang);
-const faqs = await getFAQsByPage('faq', lang);
+import { useTranslations } from '~/i18n/utils';
 
+const lang = 'nl';
+
+const faqs = await getFAQsByPage('faq', 'nl');
+
+
+const t = useTranslations(lang);
 const metadata = {
-  title: 'Soalan Lazim Mengenai Pusingan Makanan Malaysia',
-  description: 'Segala yang perlu anda tahu tentang pusingan makanan Simply Enak di Kuala Lumpur dan Pulau Pinang. Keperluan diet, saiz kumpulan, harga, dasar pembatalan, dan banyak lagi.',
+  title: 'Frequently Asked Questions About Malaysian Food Tours',
+  description: "Everything you need to know about Simply Enak's food tours in Kuala Lumpur and Penang. Dietary requirements, group sizes, pricing, cancellation policy, and more.",
 };
 
 // Build FAQPage structured data
@@ -25,7 +28,6 @@ const faqSchema = {
     },
   })),
 };
-export const prerender = true;
 ---
 ---
 
@@ -39,12 +41,12 @@ export const prerender = true;
       <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-accent/90 text-sm md:text-base uppercase tracking-[0.2em] font-bold mb-4">{t('faq.pageTitle')}</p>
+      <p class="text-accent/90 text-sm md:text-base uppercase tracking-[0.2em] font-bold mb-4">FAQ</p>
       <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight" style="font-size: clamp(1.5rem, 5vw, 3.25rem);">
-        <span class="block text-white mb-2">Soalan <span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">Lazim</span></span>
+        <span class="block text-white mb-2">Frequently <span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">Asked Questions</span></span>
       </h1>
       <p class="text-xl text-white/80 max-w-2xl mx-auto">
-        {t('faq.pageDesc')}
+        Everything you need to know before experiencing Malaysia's best food tours.
       </p>
     </div>
   </section>
@@ -53,9 +55,9 @@ export const prerender = true;
   <nav class="bg-page border-b border-gray-100 dark:border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <div class="flex items-center gap-1.5 text-xs text-muted">
-        <a href="/nl/" class="hover:text-primary transition-colors">{t('nav.home')}</a>
+        <a href="/nl/" class="hover:text-primary transition-colors">Home</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        <span class="text-default font-semibold">{t('faq.pageTitle')}</span>
+        <span class="text-default font-semibold">FAQ</span>
       </div>
     </div>
   </nav>
@@ -98,14 +100,14 @@ export const prerender = true;
   <!-- Still have questions CTA -->
   <section class="py-16 bg-white text-center">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl font-bold font-heading text-default mb-4">Masih Ada Soalan?</h2>
-      <p class="text-muted text-lg mb-8">Kami sedia membantu. Hubungi kami bila-bila masa.</p>
+      <h2 class="text-3xl font-bold font-heading text-default mb-4">Still Have Questions?</h2>
+      <p class="text-muted text-lg mb-8">We're here to help. Reach out anytime.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="/nl/contact" class="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-3.5 rounded hover:bg-[#a02830] transition-all shadow-md">
-          {t('nav.contact')}
+          Contact Us
         </a>
         <a href="https://wa.me/60172878929" target="_blank" class="inline-flex items-center gap-2 border-2 border-primary text-primary font-bold px-8 py-3.5 rounded hover:bg-primary hover:text-white transition-all">
-          WhatsApp Kami
+          WhatsApp Us
         </a>
       </div>
     </div>

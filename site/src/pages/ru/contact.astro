@@ -1,17 +1,17 @@
 ---
-export const prerender = true;
 import Layout from '~/layouts/PageLayout.astro';
+import { useTranslations } from '~/i18n/utils';
 import { Icon } from 'astro-icon/components';
 import { getContactPage } from '~/lib/content';
-import { useTranslations } from '~/i18n/utils';
 
 const lang = 'ru';
 const t = useTranslations(lang);
-const cp = await getContactPage(lang);
+
+const cp = await getContactPage('ru');
 
 const metadata = {
-  title: `${t('contact.pageTitle')} ${t('contact.pageTitleSuffix')}`,
-  description: t('contact.pageDesc'),
+  title: 'Contact Us  -  Book a Food Tour in KL or Penang',
+  description: "Get in touch with Simply Enak. Whether you're booking a tour or just curious. We read every message and reply within 3 hours.",
 };
 ---
 
@@ -23,12 +23,12 @@ const metadata = {
       <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/85 to-[#1a1a1a]"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-accent text-sm md:text-base uppercase tracking-[0.2em] font-bold mb-4">{cp.hero?.eyebrow ?? cp.hero_title ?? t('contact.heroEyebrow')}</p>
+      <p class="text-accent text-sm md:text-base uppercase tracking-[0.2em] font-bold mb-4">{cp.hero?.eyebrow ?? cp.hero_title ?? "Get In Touch"}</p>
       <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight" style="font-size: clamp(1.5rem, 5vw, 3.25rem);">
-        <span class="block text-white mb-2">{cp.hero?.heading ?? cp.hero_subtitle ?? t('contact.heroHeading')}<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">{t('contact.heroHeadingHighlight')}</span></span>
+        <span class="block text-white mb-2">{cp.hero?.heading ?? cp.hero_subtitle ?? "Tell Us What You're "}<span class="inline-block bg-accent text-black px-4 py-1.5 rounded-sm shadow-xl font-black" style="transform: rotate(-0.7deg); font-size: clamp(1.3rem, 4.5vw, 3rem);">Looking For</span></span>
       </h1>
       <p class="text-xl text-white/80 max-w-2xl mx-auto">
-        {cp.hero?.description ?? cp.intro_subtitle ?? t('contact.heroDescription')}
+        {cp.hero?.description ?? cp.intro_subtitle ?? "Whether you're booking a tour or just curious  -  we read every message and reply within 3 hours."}
       </p>
     </div>
   </section>
@@ -37,9 +37,9 @@ const metadata = {
   <nav class="bg-page border-b border-gray-100 dark:border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <div class="flex items-center gap-1.5 text-xs text-muted">
-        <a href="/" class="hover:text-primary transition-colors">{t('nav.home')}</a>
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        <span class="text-default font-semibold">{t('nav.contact')}</span>
+        <a href="/ru/" class="hover:text-primary transition-colors">Home</a>
+        <Icon name="tabler:chevron-right" class="w-3 h-3 text-muted" />
+        <span class="text-default font-semibold">Contact</span>
       </div>
     </div>
   </nav>
@@ -48,15 +48,15 @@ const metadata = {
   <section class="py-16 md:py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.contactMethods?.heading ?? "Bagaimana Kami Boleh Membantu?"}</h2>
-        <p class="text-muted">{cp.contactMethods?.description ?? "Pilih cara paling mudah untuk menghubungi kami. Kami membaca setiap mesej."}</p>
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.contactMethods?.heading ?? "How Can We Help?"}</h2>
+        <p class="text-muted">{cp.contactMethods?.description ?? "Choose the easiest way to reach us. We read every message."}</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {(cp.contactMethods?.items ?? [
-          { type: 'whatsapp', title: 'Berbual dengan Kami', subtitle: 'Respons terpantas', detail: '+60 17-287 8929', cta: { text: t('contact.openWhatsApp'), url: 'https://wa.me/60172878929' } },
-          { type: 'email', title: 'E-mel Kami', subtitle: 'Untuk rancangan terperinci', detail: 'booking@simplyenak.com', cta: { text: t('contact.copyEmail') } },
-          { type: 'phone', title: 'Hubungi Kami', subtitle: 'Untuk pertanyaan segera', detail: '+60 17-287 8929', cta: { text: t('contact.callNow'), url: 'tel:+60172878929' } },
+          { type: 'whatsapp', title: 'Chat with Us', subtitle: 'Fastest response', detail: '+60 17-287 8929', cta: { text: 'Open WhatsApp', url: 'https://wa.me/60172878929' } },
+          { type: 'email', title: 'Email Us', subtitle: 'For detailed plans', detail: 'booking@simplyenak.com', cta: { text: 'Copy Email' } },
+          { type: 'phone', title: 'Call Us', subtitle: 'For urgent queries', detail: '+60 17-287 8929', cta: { text: 'Call Now', url: 'tel:+601****8929' } },
         ]).map((method: any, i: number) => {
           const accentColors = ['bg-accent', 'bg-primary', 'bg-secondary'];
           const bgTints = ['bg-amber-50/50', 'bg-primary/5', 'bg-secondary/5'];
@@ -117,28 +117,28 @@ const metadata = {
   <section class="py-16 md:py-20 bg-primary/5 dark:bg-primary/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.planningScenarios?.heading ?? "Walau Apa Tahap Anda Sekarang"}</h2>
-        <p class="text-muted">{cp.planningScenarios?.description ?? "Kami telah membantu tetamu dari \"sekadar melihat\" hingga \"kami mendarat esok.\""}</p>
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.planningScenarios?.heading ?? "Whatever Stage You're At"}</h2>
+        <p class="text-muted">{cp.planningScenarios?.description ?? "We've helped guests from \"just browsing\" to \"we land tomorrow.\""}</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {(cp.planningScenarios?.items ?? [
-          { title: 'Sekadar Melihat', description: 'Belum pasti? Tiada tekanan. Tanya kami apa-apa tentang pusingan, makanan, atau kawasan kami.' },
-          { title: 'Merancang Perjalanan', description: 'Beritahu kami tarikh dan saiz kumpulan anda. Kami akan mengesyorkan pusingan yang sesuai untuk anda.' },
-          { title: 'Mendarat Esok', description: 'Menit terakhir? Kami sering mempunyai tempat kosong. WhatsApp kami untuk respons terpantas.' },
-          { title: 'Acara Kumpulan', description: 'Persidangan sedang berakhir? Kami akan bawa kumpulan anda ke suatu tempat yang tidak dapat dilupakan untuk malam itu. KL dan Pulau Pinang.' },
+          { title: 'Just Browsing', description: 'Not sure yet? No pressure. Ask us anything about our tours, food, or neighbourhoods.' },
+          { title: 'Planning a Trip', description: "Tell us your dates and group size. We'll recommend the right tour for you." },
+          { title: 'Landing Tomorrow', description: 'Last-minute? We often have spots available. WhatsApp us for the fastest response.' },
+          { title: 'Team Event', description: "Conference wrapping up? We'll take your team somewhere memorable for the evening, with time to actually talk. KL and Penang." },
         ]).map((scenario: any) => (
           <div class="text-center p-6 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c] group hover:shadow-md transition-shadow">
             <div class="w-12 h-12 mx-auto mb-4 bg-primary/5 dark:bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/10 dark:group-hover:bg-primary/20 transition-colors">
-              {scenario.title === 'Sekadar Melihat' && (
+              {scenario.title === 'Just Browsing' && (
                 <Icon name="tabler:search" class="w-6 h-6 text-primary" />
               )}
-              {scenario.title === 'Merancang Perjalanan' && (
+              {scenario.title === 'Planning a Trip' && (
                 <Icon name="tabler:calendar-check" class="w-6 h-6 text-primary" />
               )}
-              {scenario.title === 'Mendarat Esok' && (
+              {scenario.title === 'Landing Tomorrow' && (
                 <Icon name="tabler:clock" class="w-6 h-6 text-primary" />
               )}
-              {scenario.title === 'Acara Kumpulan' && (
+              {scenario.title === 'Team Event' && (
                 <Icon name="tabler:users" class="w-6 h-6 text-primary" />
               )}
             </div>
@@ -156,52 +156,52 @@ const metadata = {
       <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
         <!-- Our Promise -->
         <div>
-          <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.ourPromise?.title ?? "Janji Kami"}</h2>
-          <p class="text-muted text-lg mb-8">{cp.ourPromise?.description ?? "Apabila anda menghubungi Simply Enak, anda bercakap dengan orang sebenar yang benar-benar menjalankan pusingan."}</p>
+          <h2 class="text-3xl font-bold font-heading text-default mb-4">{cp.ourPromise?.title ?? "Our Promise"}</h2>
+          <p class="text-muted text-lg mb-8">{cp.ourPromise?.description ?? "When you reach out to Simply Enak, you're talking to real people who actually run the tours."}</p>
           <ul class="space-y-4">
             {(cp.ourPromise?.highlights ?? [
-              "Kami membalas dalam masa 3 jam (selalunya lebih cepat di WhatsApp)",
-              "Tiada respons automatik. Orang sebenar membaca setiap mesej",
-              "Kami tidak akan memaksa anda menempah sesuatu yang tidak sesuai untuk anda",
-              "Jika kami tidak sesuai, kami akan beritahu anda dengan jujur",
+              "We reply within 3 hours (often faster on WhatsApp)",
+              "No automated responses. A real person reads every message",
+              "We'll never push you to book something that isn't right for you",
+              "If we're not the right fit, we'll tell you honestly",
             ]).map((h: string) => (
               <li class="flex items-start gap-3">
-<Icon name="tabler:check" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <Icon name="tabler:check" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                 <span class="text-default">{h}</span>
               </li>
             ))}
           </ul>
 
           <div class="mt-10 p-6 rounded-lg bg-primary/5 dark:bg-primary/10 border border-primary/10">
-            <h3 class="font-bold font-heading text-default mb-2">Waktu Operasi</h3>
-            <p class="text-default">{cp.businessHours?.text ?? "Isn – Ahad: 9:00 – 20:00"}</p>
-            <p class="text-sm text-muted mt-1">{cp.businessHours?.timezone ?? "Waktu Malaysia (GMT+8)"}</p>
+            <h3 class="font-bold font-heading text-default mb-2">Business Hours</h3>
+            <p class="text-default">{cp.businessHours?.text ?? "Mon – Sun: 9:00 – 20:00"}</p>
+            <p class="text-sm text-muted mt-1">{cp.businessHours?.timezone ?? "Malaysia Time (GMT+8)"}</p>
           </div>
         </div>
 
         <!-- Contact Form -->
         <div>
-          <h2 class="text-3xl font-bold font-heading text-default mb-8">{t('contact.sendMessage')}</h2>
+          <h2 class="text-3xl font-bold font-heading text-default mb-8">Send Us a Message</h2>
           <form id="contact-form" class="space-y-5">
             <!-- Name + Email -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="cf-name" class="block text-sm font-medium text-default mb-1">{t('contact.fullName')} <span class="text-primary">*</span></label>
+                <label for="cf-name" class="block text-sm font-medium text-default mb-1">Full Name <span class="text-primary">*</span></label>
                 <input id="cf-name" type="text" name="fullName" required maxlength="255" autocomplete="name"
                   class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-                  placeholder="cth. Sarah Chen" />
+                  placeholder="e.g. Sarah Chen" />
               </div>
               <div>
-                <label for="cf-email" class="block text-sm font-medium text-default mb-1">{t('contact.email')} <span class="text-primary">*</span></label>
+                <label for="cf-email" class="block text-sm font-medium text-default mb-1">Email <span class="text-primary">*</span></label>
                 <input id="cf-email" type="email" name="email" required maxlength="255" autocomplete="email"
                   class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-                  placeholder="anda@contoh.com" />
+                  placeholder="you@example.com" />
               </div>
             </div>
 
             <!-- Phone -->
             <div>
-              <label for="cf-phone" class="block text-sm font-medium text-default mb-1">{t('contact.phoneWhatsApp')} <span class="text-muted font-normal">{t('common.optional')}</span></label>
+              <label for="cf-phone" class="block text-sm font-medium text-default mb-1">Phone / WhatsApp <span class="text-muted font-normal">(optional)</span></label>
               <input id="cf-phone" type="tel" name="phoneNumber" maxlength="30" autocomplete="tel"
                 class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
                 placeholder="+60 17-287 8929" />
@@ -210,46 +210,46 @@ const metadata = {
             <!-- Company + Country -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="cf-company" class="block text-sm font-medium text-default mb-1">{t('contact.company')} <span class="text-muted font-normal">{t('common.optional')}</span></label>
+                <label for="cf-company" class="block text-sm font-medium text-default mb-1">Company <span class="text-muted font-normal">(optional)</span></label>
                 <input id="cf-company" type="text" name="company" maxlength="255" autocomplete="organization"
                   class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-                  placeholder="Nama syarikat anda" />
+                  placeholder="Your company name" />
               </div>
               <div>
-                <label for="cf-country" class="block text-sm font-medium text-default mb-1">{t('contact.country')}</label>
+                <label for="cf-country" class="block text-sm font-medium text-default mb-1">Country</label>
                 <input id="cf-country" type="text" name="country" maxlength="100" autocomplete="country-name"
                   class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-                  placeholder="cth. Australia" />
+                  placeholder="e.g. Australia" />
               </div>
             </div>
 
             <!-- Inquiry Type -->
             <div>
-              <label for="cf-inquiry" class="block text-sm font-medium text-default mb-1">Apa yang kami boleh bantu? <span class="text-primary">*</span></label>
+              <label for="cf-inquiry" class="block text-sm font-medium text-default mb-1">What can we help you with? <span class="text-primary">*</span></label>
               <select id="cf-inquiry" name="inquiryType" required
                 class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors cursor-pointer">
-                <option value="">{t('common.selectOption')}…</option>
-                <option value="Public Tour">Sertai Pusingan Awam</option>
-                <option value="Private Tour">Pusingan Persendirian / Berkumpulan</option>
-                <option value="Food Experience">Pengalaman Makanan Tersuai</option>
-                <option value="Corporate Event">Acara Kumpulan</option>
-                <option value="Partnership">Pertanyaan Perkongsian</option>
-                <option value="Media">Pertanyaan Media</option>
-                <option value="General">Soalan Umum</option>
+                <option value="">Select an option…</option>
+                <option value="Public Tour">Join a Public Tour</option>
+                <option value="Private Tour">Private / Group Tour</option>
+                <option value="Food Experience">Custom Food Experience</option>
+                <option value="Corporate Event">Team Event</option>
+                <option value="Partnership">Partnership Inquiry</option>
+                <option value="Media">Media Inquiry</option>
+                <option value="General">General Question</option>
               </select>
             </div>
 
             <!-- Message -->
             <div>
-              <label for="cf-message" class="block text-sm font-medium text-default mb-1">{t('contact.yourMessage')} <span class="text-primary">*</span></label>
+              <label for="cf-message" class="block text-sm font-medium text-default mb-1">Your Message <span class="text-primary">*</span></label>
               <textarea id="cf-message" name="message" rows="5" required maxlength="5000"
                 class="w-full px-4 py-3 rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-y"
-                placeholder="Beritahu kami tentang kumpulan anda, tarikh pilihan, keperluan diet, atau apa-apa lagi yang anda ingin tahu..."></textarea>
+                placeholder="Tell us about your group, preferred dates, dietary needs, or anything else you'd like to know…"></textarea>
             </div>
 
             <!-- Honeypot -->
             <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;visibility:hidden;" aria-hidden="true">
-              <label for="honeypot_website">{t('contact.leaveBlank')}</label>
+              <label for="honeypot_website">Leave this blank</label>
               <input type="text" id="honeypot_website" name="honeypot_website" tabindex="-1" autocomplete="off" />
             </div>
 
@@ -258,15 +258,15 @@ const metadata = {
 
             <button type="submit" id="cf-submit"
               class="w-full py-4 bg-primary text-white font-bold rounded hover:bg-secondary transition-colors cursor-pointer flex items-center justify-center gap-2">
-              {t('contact.send')}
+              Send Message
             </button>
 
             <!-- Submit feedback -->
             <div id="cf-feedback" class="hidden p-4 rounded-lg font-medium text-center"></div>
 
             <p class="text-xs text-muted text-center">
-              {t('contact.privacyNotice')}
-              <a href="/ru/privacy" class="underline hover:text-primary transition-colors">{t('footer.privacy')}</a>.
+              Your details are used only to respond to your enquiry and stored for up to 3 years.
+              <a href="/ru/privacy" class="underline hover:text-primary transition-colors">Privacy Policy</a>.
             </p>
           </form>
         </div>
@@ -278,20 +278,20 @@ const metadata = {
   <section class="py-16 md:py-20 bg-gray-50 dark:bg-[#151313]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold font-heading text-default mb-4">Soalan Lazim</h2>
+        <h2 class="text-3xl font-bold font-heading text-default mb-4">Common Questions</h2>
       </div>
       <div class="max-w-3xl mx-auto space-y-4">
         {(cp.faqs ?? [
-          { question: 'Berapa cepat anda membalas?', answer: 'Kami membalas dalam masa 3 jam semasa waktu operasi (9 pagi–8 malam waktu Malaysia). Di WhatsApp, biasanya dalam beberapa minit.' },
-          { question: 'Adakah saya perlu menempah lebih awal?', answer: 'Kami mengesyorkan menempah sekurang-kurangnya 24 jam lebih awal supaya kami boleh mengesahkan ketersediaan dengan vendor kami. Untuk permintaan saat akhir, WhatsApp adalah pilihan terbaik.' },
-          { question: 'Bolehkah anda mengakomodasi keperluan diet?', answer: 'Semestinya. Vegetarian, halal, bebas gluten, alergi. Beritahu kami semasa menempah dan kami akan pastikan setiap perhentian sesuai untuk anda.' },
-          { question: 'Apakah dasar pembatalan anda?', answer: 'Pembatalan percuma sehingga 24 jam sebelum pusingan anda. Selepas itu, kami menawarkan bayaran balik penuh atau penjadualan semula jika kami dapat mengisi tempat anda.' },
-          { question: 'Adakah anda menawarkan pusingan persendirian?', answer: 'Ya! Pusingan persendirian tersedia untuk pasangan, keluarga, dan kumpulan. Gunakan borang di atas atau WhatsApp kami untuk merancang pengalaman tersuai.' },
+          { question: 'How quickly do you respond?', answer: "We reply within 3 hours during business hours (9am–8pm Malaysia time). On WhatsApp, it's usually within minutes." },
+          { question: 'Do I need to book in advance?', answer: 'We recommend booking at least 24 hours ahead so we can confirm availability with our vendors. For last-minute requests, WhatsApp is your best bet.' },
+          { question: 'Can you accommodate dietary requirements?', answer: "Absolutely. Vegetarian, halal, gluten-free, allergies. Just let us know when you book and we'll make sure every stop works for you." },
+          { question: "What's your cancellation policy?", answer: 'Free cancellation up to 24 hours before your tour. After that, we offer a full refund or rebooking if we can fill your spot.' },
+          { question: 'Do you offer private tours?', answer: 'Yes! Private tours are available for couples, families, and groups. Use the form above or WhatsApp us to plan a custom experience.' },
         ]).map((faq: any) => (
           <details class="group bg-white dark:bg-[#1e1c1c] rounded-lg shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
             <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-default hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
               <span>{faq.question}</span>
-<Icon name="tabler:chevron-down" class="w-5 h-5 text-muted transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
+              <Icon name="tabler:chevron-down" class="w-5 h-5 text-muted transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
             </summary>
             <div class="px-6 pb-6">
               <p class="text-muted leading-relaxed">{faq.answer}</p>
@@ -305,17 +305,17 @@ const metadata = {
   <!-- Bottom CTA -->
   <section class="bg-[#1a1a1a] py-14">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl font-bold font-heading text-white mb-4">{cp.ctaSection?.heading ?? t('contact.ctaHeading')}</h2>
-      <p class="text-white/80 mb-8">{cp.ctaSection?.description ?? t('contact.ctaDesc')}</p>
+      <h2 class="text-3xl font-bold font-heading text-white mb-4">{cp.ctaSection?.heading ?? "Prefer to Chat?"}</h2>
+      <p class="text-white/80 mb-8">{cp.ctaSection?.description ?? "We typically respond within minutes on WhatsApp."}</p>
       <a href={cp.ctaSection?.ctaUrl ?? "https://wa.me/60172878929"} target="_blank" class="inline-flex items-center gap-2 bg-accent text-black font-bold px-8 py-3.5 rounded hover:bg-[#e8922e] transition-all shadow-md">
-        {cp.ctaSection?.ctaText ?? t('contact.chatOnWhatsApp')}
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        {cp.ctaSection?.ctaText ?? "Chat on WhatsApp Now"}
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
       </a>
     </div>
   </section>
 </Layout>
 
-<script is:inline>
+<script>
   // Copy email
   const copyBtn = document.getElementById('copy-email-btn');
   const copyText = document.getElementById('copy-email-text');
@@ -324,8 +324,8 @@ const metadata = {
     copyBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(email);
-        copyText.textContent = 'Disalin!';
-        setTimeout(() => { copyText.textContent = 'Salin E-mel'; }, 2000);
+        copyText.textContent = 'Copied!';
+        setTimeout(() => { copyText.textContent = 'Copy Email'; }, 2000);
       } catch {
         window.location.href = 'mailto:' + email;
       }
@@ -333,7 +333,7 @@ const metadata = {
   }
 
   // Form submission
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById('contact-form') as HTMLFormElement;
   const submitBtn = document.getElementById('cf-submit');
   const feedback = document.getElementById('cf-feedback');
 
@@ -342,7 +342,7 @@ const metadata = {
       e.preventDefault();
 
       // Honeypot check
-      const honeypot = form.querySelector('#honeypot_website')?.value;
+      const honeypot = (form.querySelector('#honeypot_website') as HTMLInputElement)?.value;
       if (honeypot) return;
 
       const formData = new FormData(form);
@@ -350,7 +350,7 @@ const metadata = {
       payload.submittedAt = new Date().toISOString();
       payload.source = window.location.href;
 
-      submitBtn.textContent = 'Menghantar...';
+      submitBtn.textContent = 'Sending…';
       submitBtn.setAttribute('disabled', 'true');
       feedback.classList.add('hidden');
 
@@ -361,17 +361,17 @@ const metadata = {
           body: JSON.stringify(payload),
         });
 
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-        feedback.textContent = 'Mesej dihantar! Kami akan membalas dalam masa 3 jam. Periksa peti masuk anda (dan folder spam).';
+        feedback.textContent = '✓ Message sent! We\'ll reply within 3 hours. Check your inbox (and spam folder).';
         feedback.className = 'p-4 rounded-lg font-medium text-center bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800';
         form.reset();
-        if (window.trackContactForm) window.trackContactForm();
+        if ((window as any).trackContactForm) (window as any).trackContactForm();
       } catch {
-        feedback.textContent = 'Ada masalah. Sila e-mel booking@simplyenak.com atau WhatsApp +60 17-287 8929.';
+        feedback.textContent = 'Something went wrong. Please email booking@simplyenak.com or WhatsApp +60 17-287 8929.';
         feedback.className = 'p-4 rounded-lg font-medium text-center bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800';
       } finally {
-        submitBtn.textContent = 'Hantar Mesej';
+        submitBtn.textContent = 'Send Message';
         submitBtn.removeAttribute('disabled');
         feedback.classList.remove('hidden');
       }

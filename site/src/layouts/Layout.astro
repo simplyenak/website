@@ -57,9 +57,21 @@ for (const [, prefix] of Object.entries(HREFLANG_PREFIXES)) {
 }
 cleanPath = cleanPath.replace(/\/$/, '') || '/';
 
+// EN-only routes: pages that exist ONLY in English (no locale versions).
+// hreflang must not point at 404s — skip non-EN locales for these.
+const EN_ONLY_PREFIXES = [
+  '/testimonials',
+  '/blog',
+  '/tours/packages',
+  '/tours/private-tours/private-food-tour',
+  '/tours/why-simply-enak',
+];
+const isEnOnly = EN_ONLY_PREFIXES.some((p) => cleanPath.startsWith(p));
+
 // Generate hreflang URLs for all languages
 const hreflangUrls: Array<{ lang: string; url: string }> = [];
 for (const [lang, prefix] of Object.entries(HREFLANG_PREFIXES)) {
+  if (isEnOnly && lang !== 'en') continue; // no locale version exists — don't emit
   hreflangUrls.push({
     lang,
     url: `${SITE}${prefix}${cleanPath === '/' ? '' : cleanPath}`,

@@ -17,8 +17,12 @@ on:
         default: 'Deploy site update'
   repository_dispatch:
     types: [deploy-staging, deploy-production]
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
   schedule:
-    # Deploy once daily at 09:00 UTC — syncs from Payload, builds, deploys
+    # Daily 09:00 UTC safety net — syncs from Payload, builds, deploys
     - cron: '0 9 * * *'
 
 concurrency:

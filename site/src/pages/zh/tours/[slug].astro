@@ -10,15 +10,16 @@ import reviews from '~/data/content/reviews.json';
 import stories from '~/data/content/stories.json';
 
 export async function getStaticPaths() {
-  const tours = await getAllTours();
+  const tours = await getAllTours('zh');
   const paths = tours.map((tour: any) => ({ params: { slug: tour.slug }, props: { tour } }));
   return paths;
 }
 
 const { tour } = Astro.props;
-const allTours = await getAllTours();
-const t = useTranslations('zh');
-const faqs = await getFAQs();
+const allTours = await getAllTours('zh');
+const lang = 'zh';
+const t = useTranslations(lang);
+const faqs = await getFAQs('zh');
 const dietaryOptions = await getDietaryOptionList();
 const travelTypes = await getTravelTypeList();
 

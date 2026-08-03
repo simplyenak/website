@@ -2,13 +2,17 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getAllTours } from '~/lib/content';
+import { useTranslations } from '~/i18n/utils';
+
+const lang = 'nl';
+const t = useTranslations(lang);
 
 let pageData: any = {};
 try {
   pageData = (await import('~/data/content/private-tours-page.json')).default;
 } catch {}
 
-const allTours = await getAllTours();
+const allTours = await getAllTours('nl');
 
 const whyPrivate = pageData.why_private || [];
 const audiences = pageData.audiences || [];
