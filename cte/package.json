@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npm run generate:herald && astro build",
-    "generate:herald": "npx herald emit --agents --security --headers --platform cloudflare",
+    "build": "npm run generate:herald && astro build && node scripts/mirror-sitemap.mjs",
+    "generate:herald": "npx herald emit --agents --security --llms --headers --platform cloudflare",
     "preview": "astro preview",
     "astro": "astro",
     "check": "npm run check:astro && npm run check:eslint && npm run check:prettier",

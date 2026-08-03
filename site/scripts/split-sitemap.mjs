@@ -160,6 +160,13 @@ function main() {
   fs.writeFileSync(indexPath, indexOutput, 'utf-8');
   console.log(`[split-sitemap] Rewritten sitemap-index.xml with ${detectedLocales.length} locale entries`);
 
+  // ── 4b. Mirror to sitemap.xml ──────────────────────────────
+  // HERALD's agent-readiness checker (and some AI crawlers) probe the
+  // conventional /sitemap.xml path. Write the same sitemapindex there.
+  const plainPath = path.resolve('dist/sitemap.xml');
+  fs.writeFileSync(plainPath, indexOutput, 'utf-8');
+  console.log(`[split-sitemap] Mirrored sitemap.xml (sitemapindex, ${detectedLocales.length} locale entries)`);
+
   // ── 5. Cleanup: remove the original monolithic file ───────
   try {
     fs.unlinkSync(srcPath);

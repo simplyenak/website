@@ -1,2 +1,44 @@
 User-agent: *
 Disallow:
+
+# ── AI crawlers (explicitly allow for AI search visibility) ──
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: DeepSeekBot
+Allow: /
+
+User-agent: QwenBot
+Allow: /
+
+# Allow AI crawlers to discover our AI-optimized content
+Llms-txt: https://culinarytravelexperts.com/llms.txt
+
+Sitemap: https://culinarytravelexperts.com/sitemap-index.xml
