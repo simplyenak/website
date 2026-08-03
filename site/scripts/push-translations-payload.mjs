@@ -129,7 +129,7 @@ async function pushCollection(name, cfg, locale) {
     return;
   }
 
-  // ONLY collections explicitly marked `localizedInPayload: true` (native
+  // Only collections explicitly marked `localizedInPayload: true` (native
   // localized:true fields in Payload) can accept ?locale=de PATCHes. For
   // everything else, writing with ?locale OVERWRITES the shared English field
   // (Payload behavior confirmed 2026-08-03: faqs/stories/testimonials/
@@ -262,6 +262,46 @@ async function pushCollection(name, cfg, locale) {
   skipped += skippedCount;
 }
 
+// ─── Schema verification (schema-first discipline) ──────────────────────────
+// Before pushing, verify the localizedInPayload flags against the actual
+// Payload collection source. A collection flagged true but with no
+// localized:true fields would corrupt English on push (confirmed 2026-08-03).
+// Run check-localized-collections.sh and warn on any mismatch.
+const { execSync } = await import('node:child_process');
+
+function verifyLocalizedFlags() {
+  try {
+    const out = execSync('bash scripts/check-localized-collections.sh ../revamp/backend/src/collections', {
+      encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 15000,
+    }).trim();
+    // Map filename → count (case-insensitive, strip .ts)
+    const schema = {};
+    for (const line of out.split('\n')) {
+      const [fname, count] = line.trim().split(/\s+/);
+      if (fname && count !== undefined) schema[fname.toLowerCase().replace(/\.ts$/, '')] = parseInt(count, 10);
+    }
+    for (const [name, cfg] of Object.entries(COLLECTIONS)) {
+      // Find the matching schema entry (Tours→tours, FAQs→faqs, AboutPage→about_page)
+      const slug = cfg.file.replace(/\.json$/, '').replace(/-/g, '');
+      let schemaCount = 0;
+      for (const [fname, cnt] of Object.entries(schema)) {
+        if (fname.replace(/_/g, '') === slug || fname === slug.replace(/_/g, '')) {
+          schemaCount = cnt;
+          break;
+        }
+      }
+      if (cfg.localizedInPayload === true && schemaCount === 0) {
+        console.warn(`  ⚠️  WARNING: ${name} flagged localizedInPayload but schema shows 0 localized fields — push would corrupt English! Verify before continuing.`);
+      }
+      if (cfg.localizedInPayload !== true && schemaCount > 0) {
+        console.log(`  ℹ️  ${name}: schema has ${schemaCount} localized fields but not flagged — safe default keeps it in git JSON.`);
+      }
+    }
+  } catch (e) {
+    console.log('  (schema check skipped — collections dir not found locally)');
+  }
+}
+
 // ─── Main ────────────────────────────────────────────────────
 
 console.log(`\nPushing translations to Payload: ${DRY_RUN ? 'DRY RUN' : 'LIVE'}\n  Languages: ${TARGET_LANGS.join(', ')}\n`);
@@ -272,6 +312,9 @@ try {
   console.error(`Auth failed: ${err.message}`);
   process.exit(1);
 }
+
+// Schema-first: verify localizedInPayload flags against the collection source
+verifyLocalizedFlags();
 
 for (const locale of TARGET_LANGS) {
   console.log(`\n── Locale: ${locale} ──\n`);

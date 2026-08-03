@@ -20,13 +20,36 @@ cd "$(dirname "$0")/.."
 
 # Lock file — tells auto-sync.sh to skip its sync step while the heal cycle
 # runs (prevents mid-run reverts of freshly translated collections).
+# Robustness: the file stores the PID of the heal process. auto-sync skips
+# only if that PID is still alive; stale locks (dead PID, or older than 3h
+# from a SIGKILL that skipped the EXIT trap) are removed automatically.
 LOCK_FILE=".i18n-heal.lock"
+LOCK_STALE_AGE=10800 # 3 hours — a heal cycle takes ~20-60 min max
+
+lock_is_stale() {
+  # No PID recorded → stale (created by an old version or a crashed run)
+  [ ! -s "$LOCK_FILE" ] && return 0
+  local pid
+  pid=$(cat "$LOCK_FILE" 2>/dev/null || echo "")
+  # PID not a number, or process not running → stale
+  [[ ! "$pid" =~ ^[0-9]+$ ]] && return 0
+  if ! kill -0 "$pid" 2>/dev/null; then
+    return 0
+  fi
+  return 1
+}
+
 acquire_lock() {
   if [ -f "$LOCK_FILE" ]; then
-    echo "⏭️  Another heal cycle is running (.i18n-heal.lock exists) — exiting."
-    exit 0
+    if lock_is_stale; then
+      echo "  ⚠  Stale .i18n-heal.lock removed (dead PID or crashed run)."
+      rm -f "$LOCK_FILE"
+    else
+      echo "⏭️  Another heal cycle is running (.i18n-heal.lock exists, PID $(cat "$LOCK_FILE")) — exiting."
+      exit 0
+    fi
   fi
-  touch "$LOCK_FILE"
+  echo $$ > "$LOCK_FILE"
   trap 'rm -f "$LOCK_FILE"' EXIT
 }
 acquire_lock

@@ -12,6 +12,8 @@
  *   Default  — skip translations that already exist
  *   --smart  — re-translate if the source item is newer (timestamp check)
  *   --force  — re-translate everything unconditionally
+ *   --only-missing — translate ONLY items lacking the target language or
+ *                    required fields; skips complete items (cheap repair)
  *
  * Usage:
  *   GEMINI_API_KEY=your-key node scripts/translate-content.mjs
@@ -20,6 +22,7 @@
  *   node scripts/translate-content.mjs --lang pt
  *   node scripts/translate-content.mjs --lang pt,nl
  *   node scripts/translate-content.mjs --force --lang pt
+ *   node scripts/translate-content.mjs --only-missing --lang ja
  *   node scripts/translate-content.mjs --dry-run
  *
  * Environment:
@@ -48,6 +51,10 @@ const args = process.argv.slice(2);
 const FORCE = args.includes('--force');
 const SMART = args.includes('--smart');
 const DRY_RUN = args.includes('--dry-run');
+// --only-missing: translate ONLY items lacking the target language (or lacking
+// a required translatable field). Skips items that already have full coverage
+// for the target lang — prevents wasteful force re-translations.
+const ONLY_MISSING = args.includes('--only-missing');
 const ONLY_COLLECTION = args.includes('--collection') ? args[args.indexOf('--collection') + 1] : null;
 
 // --lang pt  or  --lang pt,nl  to limit to specific languages
@@ -572,9 +579,25 @@ async function translateCollection(name, config) {
       // Find target language translation — create it if missing (bootstrap)
       let targetTrans = item.translations.find(t => t.languages_code === lang);
       if (!targetTrans) {
-        targetTrans = { languages_code: lang };
-        item.translations.push(targetTrans);
-        created++;
+        // --only-missing: no target entry = genuinely missing → create
+        if (ONLY_MISSING) {
+          targetTrans = { languages_code: lang };
+          item.translations.push(targetTrans);
+        } else {
+          targetTrans = { languages_code: lang };
+          item.translations.push(targetTrans);
+          created++;
+        }
+      } else if (ONLY_MISSING) {
+        // Target exists — check if it has all the content this item needs.
+        // If yes, skip (nothing missing). If fields are missing, we translate
+        // only those via the normal path below.
+        const required = translatableFields.filter(f => hasContent(enSource?.[f] ?? item[f]));
+        const hasAll = required.every(f => hasContent(targetTrans[f]));
+        if (hasAll) {
+          skipped++;
+          continue;
+        }
       }
 
       // ── Translatable scalar / array fields ──────────────────────────────────
@@ -669,7 +692,9 @@ async function translateCollection(name, config) {
         const sourceDict = item[field];
         if (!sourceDict || typeof sourceDict !== 'object' || Array.isArray(sourceDict)) continue;
 
-        if (hasContent(targetTrans[field]) && !FORCE) {
+        if (hasContent(targetTrans[field]) && (ONLY_MISSING || !FORCE)) {
+          // --only-missing: already translated → skip (nothing missing)
+          // non-force: already translated → skip
           skipped++;
           continue;
         }

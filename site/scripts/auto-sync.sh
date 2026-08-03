@@ -26,10 +26,19 @@ else
 fi
 
 # 2. Run sync — but skip if heal-i18n is mid-run (its translations would be
-#    reverted). The heal script holds .i18n-heal.lock for its whole cycle.
-if [ -f .i18n-heal.lock ]; then
-    echo "⏭️  heal-i18n in progress — skipping this auto-sync tick (retry next hour)"
+#    reverted). The heal script writes its PID to .i18n-heal.lock; skip only
+#    if that PID is alive. Stale locks (dead PID from a SIGKILL'd heal) are
+#    removed so auto-sync never stalls silently.
+LOCK_FILE=".i18n-heal.lock"
+if [ -f "$LOCK_FILE" ]; then
+  LOCK_PID=$(cat "$LOCK_FILE" 2>/dev/null || echo "")
+  if [[ "$LOCK_PID" =~ ^[0-9]+$ ]] && kill -0 "$LOCK_PID" 2>/dev/null; then
+    echo "⏭️  heal-i18n in progress (PID $LOCK_PID) — skipping this auto-sync tick (retry next hour)"
     exit 0
+  else
+    echo "⚠  Removing stale .i18n-heal.lock (PID $LOCK_PID not running)."
+    rm -f "$LOCK_FILE"
+  fi
 fi
 echo "--- Syncing from Payload CMS ---"
 npm run sync 2>&1
