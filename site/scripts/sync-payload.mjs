@@ -418,15 +418,17 @@ function writeJSON(filename, data, options = {}) {
             }
           }
         }
-        // Match testimonials by review_title
+        // Match testimonials by id (review_title is NULL in Payload for all
+        // testimonials — keying on it matched nothing and every sync dropped
+        // the translations)
         if (filename === 'testimonials.json') {
-          const byTitle = Object.fromEntries(
-            existing.filter(e => e.review_title).map(e => [e.review_title.trim().toLowerCase(), e.translations])
+          const byId = Object.fromEntries(
+            existing.filter(e => e.id !== undefined && e.id !== null).map(e => [String(e.id), e.translations])
           )
           for (const item of incoming) {
-            if (!item.translations && item.review_title) {
-              const key = item.review_title.trim().toLowerCase()
-              if (byTitle[key]) item.translations = byTitle[key]
+            if (!item.translations && item.id !== undefined && item.id !== null) {
+              const key = String(item.id)
+              if (byId[key]) item.translations = byId[key]
             }
           }
         }
@@ -439,7 +441,7 @@ function writeJSON(filename, data, options = {}) {
           'tours.json': 'slug',
           'stories.json': 'slug',
           'faqs.json': 'question',
-          'testimonials.json': 'review_title',
+          'testimonials.json': 'id', // review_title is NULL in Payload — id is stable
         }
         const matchField = MATCH_FIELDS[filename]
         if (matchField) {
