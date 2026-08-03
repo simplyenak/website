@@ -81,12 +81,12 @@ jobs:
             ROUTES=$(curl -s "https://api.cloudflare.com/client/v4/zones/${ZONE}/workers/routes" \
               -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}")
             echo "Existing routes: $(echo "$ROUTES" | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('result',[])))" 2>/dev/null || echo 0)"
-            # Create route: nous.system.simplyenak.com -> nous-proxy
+            # Create route: nous.simplyenak.com -> nous-proxy
             RESP=$(curl -s -X POST \
               "https://api.cloudflare.com/client/v4/zones/${ZONE}/workers/routes" \
               -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
               -H "Content-Type: application/json" \
-              -d '{"pattern":"nous.system.simplyenak.com/*","script":"nous-proxy"}')
+              -d '{"pattern":"nous.simplyenak.com/*","script":"nous-proxy"}')
             echo "Route bind: $(echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); print('OK' if d.get('success') else 'FAIL: '+str(d.get('errors',[])))")"
           else
             echo "No zone found for simplyenak.com — workers.dev binding is the only option"
@@ -95,6 +95,6 @@ jobs:
       - name: Verify custom-domain route
         run: |
           set -e
-          CODE=$(curl -s -o /tmp/nous-route.json -w "%{http_code}" --max-time 20 "https://nous.system.simplyenak.com/__health" || echo "000")
-          echo "nous.system.simplyenak.com/__health -> HTTP ${CODE}"
+          CODE=$(curl -s -o /tmp/nous-route.json -w "%{http_code}" --max-time 20 "https://nous.simplyenak.com/__health" || echo "000")
+          echo "nous.simplyenak.com/__health -> HTTP ${CODE}"
           cat /tmp/nous-route.json 2>/dev/null || true
