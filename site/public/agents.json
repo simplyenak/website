@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
+  "version": "1.0",
+  "standard": "https://agents-txt.com",
+  "site": {
+    "name": "Simply Enak",
+    "url": "https://simplyenak.com",
+    "description": "Malaysian food tours in Kuala Lumpur, Penang, and Ipoh, led by locals since 2011. Small groups (max 9), heritage vendors, no tourist restaurants."
+  },
+  "skills": [
+    {
+      "url": "https://simplyenak.com/okf/index.md"
+    }
+  ]
+}

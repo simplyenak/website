@@ -8,7 +8,8 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "prebuild": "node scripts/sync-payload.mjs && python3 scripts/generate-okf-bundle.py && python3 scripts/fix-story-yaml.py || true",
+    "prebuild": "node scripts/sync-payload.mjs && python3 scripts/generate-okf-bundle.py && python3 scripts/fix-story-yaml.py && npm run generate:herald || true",
+    "generate:herald": "npx herald emit --agents --security --headers --platform cloudflare",
     "generate:okf": "python3 scripts/generate-okf-bundle.py",
     "build:okf": "python3 scripts/generate-okf-bundle.py",
     "dev": "astro dev",
@@ -75,7 +76,8 @@
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.60.0"
+    "typescript-eslint": "^8.60.0",
+    "@agentstxtdev/herald": "^0.2.8"
   },
   "overrides": {
     "yaml": ">=2.8.3",
