@@ -13,12 +13,24 @@ addEventListener("fetch", (event) => {
 async function handleRequest(request) {
   const url = new URL(request.url);
 
+  // Debug logging: capture incoming request details (temporary)
+  const debugInfo = {
+    ua: request.headers.get("user-agent") || "(none)",
+    accept: request.headers.get("accept") || "(none)",
+    auth: (request.headers.get("authorization") || "").slice(0, 12) + "...",
+    method: request.method,
+    path: url.pathname,
+  };
+
   // Health check
   if (url.pathname === "/__health") {
     return new Response(JSON.stringify({ status: "ok", upstream: UPSTREAM }), {
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  // Log to console (visible in wrangler tail / CF dashboard)
+  console.log("NOUS-PROXY-REQ: " + JSON.stringify(debugInfo));
 
   // Build upstream URL
   const upstream = new URL(url.pathname + url.search, UPSTREAM);
