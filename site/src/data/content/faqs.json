@@ -775,7 +775,7 @@
       },
       {
         "languages_code": "pt",
-        "question": "As crianças podem participar neste tour?",
+        "question": "As crianças podem participar deste tour?",
         "answer": "[object Object]"
       },
       {
@@ -1455,7 +1455,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Mogen kinderen mee op deze tour?",
+        "question": "Kunnen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -1465,7 +1465,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Можно ли брать с собой детей на этот тур?",
+        "question": "Могут ли дети пойти с нами на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -2002,7 +2002,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Можно ли брать с собой детей на этот тур?",
+        "question": "Можно ли взять с собой детей на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -3630,7 +3630,7 @@
       },
       {
         "languages_code": "zh",
-        "question": "小朋友可以参加这个美食游吗？",
+        "question": "小朋友可以参加这个行程吗？",
         "answer": "[object Object]"
       },
       {
@@ -4662,7 +4662,7 @@
       },
       {
         "languages_code": "nl",
-        "question": "Mogen kinderen mee op deze tour?",
+        "question": "Kunnen kinderen mee op deze tour?",
         "answer": "[object Object]"
       },
       {
@@ -4672,7 +4672,7 @@
       },
       {
         "languages_code": "ru",
-        "question": "Можно ли брать с собой детей на этот тур?",
+        "question": "Могут ли дети пойти на этот тур?",
         "answer": "[object Object]"
       },
       {
@@ -5516,22 +5516,22 @@
       },
       {
         "languages_code": "de",
-        "question": "Können wir diese Tour vegetarisch machen?",
+        "question": "Kann diese Tour auch vegetarisch gemacht werden?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "es",
-        "question": "¿Se puede hacer este tour en versión vegetariana?",
+        "question": "¿Se puede hacer este tour en opción vegetariana?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "fr",
-        "question": "Ce circuit peut-il être proposé en option végétarienne ?",
+        "question": "Ce circuit peut-il se faire en version végétarienne ?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "ms",
-        "question": "Boleh tak tour ni dibuat dalam pilihan vegetarian?",
+        "question": "Boleh tak tour ini disediakan dalam pilihan vegetarian?",
         "answer": "[object Object]"
       },
       {
@@ -5541,7 +5541,7 @@
       },
       {
         "languages_code": "zh",
-        "question": "这条路线可以安排素食选项吗？",
+        "question": "这趟美食游可以安排素食选项吗？",
         "answer": "[object Object]"
       },
       {
@@ -5803,6 +5803,41 @@
         "languages_code": "es",
         "question": "¿Qué pasa si llueve?",
         "answer": "[object Object]"
+      },
+      {
+        "languages_code": "ms",
+        "question": "Apa berlaku jika hujan?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "zh",
+        "question": "下雨了怎么办？",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "fr",
+        "question": "Que se passe-t-il s'il pleut ?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "nl",
+        "question": "Wat gebeurt er als het regent?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "ru",
+        "question": "Что будет, если пойдет дождь?",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "ja",
+        "question": "雨が降ったらどうなりますか？",
+        "answer": "[object Object]"
+      },
+      {
+        "languages_code": "pt",
+        "question": "O que acontece se chover?",
+        "answer": "[object Object]"
       }
     ]
   },
@@ -5925,7 +5960,7 @@
       },
       {
         "languages_code": "es",
-        "question": "¿Pueden los niños unirse al tour?",
+        "question": "¿Los niños pueden unirse al tour?",
         "answer": "[object Object]"
       },
       {
@@ -5940,12 +5975,12 @@
       },
       {
         "languages_code": "nl",
-        "question": "Mogen kinderen meedoen aan de tour?",
+        "question": "Kunnen kinderen meedoen aan de tour?",
         "answer": "[object Object]"
       },
       {
         "languages_code": "zh",
-        "question": "小朋友可以参加吗？",
+        "question": "小朋友可以参加 tour 吗？",
         "answer": "[object Object]"
       },
       {
