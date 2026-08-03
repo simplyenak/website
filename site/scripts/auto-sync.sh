@@ -25,7 +25,12 @@ else
     echo "(content dir has local changes — skipping origin checkout to preserve them)"
 fi
 
-# 2. Run sync
+# 2. Run sync — but skip if heal-i18n is mid-run (its translations would be
+#    reverted). The heal script holds .i18n-heal.lock for its whole cycle.
+if [ -f .i18n-heal.lock ]; then
+    echo "⏭️  heal-i18n in progress — skipping this auto-sync tick (retry next hour)"
+    exit 0
+fi
 echo "--- Syncing from Payload CMS ---"
 npm run sync 2>&1
 

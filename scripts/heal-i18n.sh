@@ -18,6 +18,19 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+# Lock file — tells auto-sync.sh to skip its sync step while the heal cycle
+# runs (prevents mid-run reverts of freshly translated collections).
+LOCK_FILE=".i18n-heal.lock"
+acquire_lock() {
+  if [ -f "$LOCK_FILE" ]; then
+    echo "⏭️  Another heal cycle is running (.i18n-heal.lock exists) — exiting."
+    exit 0
+  fi
+  touch "$LOCK_FILE"
+  trap 'rm -f "$LOCK_FILE"' EXIT
+}
+acquire_lock
+
 SKIP_GIT="${SKIP_GIT:-false}"
 # Optional passthrough: heal-i18n.sh --collection tours --lang ms
 EXTRA_ARGS=("$@")
