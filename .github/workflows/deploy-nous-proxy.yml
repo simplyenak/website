@@ -53,3 +53,17 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"enabled\":true}")
           echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); print('Subdomain:', 'OK' if d.get('success') else 'WARN: '+str(d.get('errors',[])))"
+
+      - name: Verify worker is reachable
+        run: |
+          set -e
+          # Fetch the account's workers.dev subdomain (not secret — it's in the CF dashboard)
+          SUB=$(curl -s "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/subdomain" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" | \
+            python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('result',{}).get('subdomain',''))")
+          echo "Account workers.dev subdomain: ${SUB}"
+          URL="https://nous-proxy.${SUB}.workers.dev/__health"
+          echo "Health URL: ${URL}"
+          CODE=$(curl -s -o /tmp/nous-health.json -w "%{http_code}" --max-time 20 "${URL}" || echo "000")
+          echo "Health check HTTP: ${CODE}"
+          cat /tmp/nous-health.json 2>/dev/null || true
