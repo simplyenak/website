@@ -430,6 +430,50 @@ async function translateObjectArray(sourceArray, subFields, targetLang) {
   return result;
 }
 
+// Translate a single nested object (dict) by translating specified sub-fields.
+// Non-translatable sub-fields (e.g. icons, images) are preserved unchanged.
+// Dict fields (founderSection, philosophySection, ctaSection...) were
+// previously stringified as "[object Object]" by the scalar path — this
+// handles them properly. Nested arrays-of-objects (paragraphs) are handled
+// by translateObjectArray recursively.
+async function translateObjectDict(sourceObj, subFields, targetLang) {
+  const newObj = { ...sourceObj };
+  // Sub-fields may be strings, arrays of strings, or arrays of objects
+  const stringFields = subFields.filter((f) => typeof sourceObj[f] === 'string' && hasContent(sourceObj[f]));
+  if (stringFields.length > 0) {
+    const sourceValues = {};
+    for (const f of stringFields) sourceValues[f] = sourceObj[f];
+    const translated = await translateFields(stringFields, sourceValues, {}, targetLang);
+    for (const [f, v] of Object.entries(translated)) newObj[f] = v;
+  }
+  // Array-of-objects sub-fields (e.g. founderSection.paragraphs)
+  for (const f of subFields) {
+    const v = sourceObj[f];
+    if (Array.isArray(v) && v.length > 0 && typeof v[0] === 'object') {
+      // Try to translate string items inside
+      const isStrings = v.every((x) => typeof x === 'string');
+      if (isStrings) {
+        newObj[f] = await translateStringArray(v, targetLang);
+      } else {
+        // Array of objects — translate any top-level string values
+        const newArr = [];
+        for (const item of v) {
+          if (typeof item === 'object' && item !== null) {
+            const translatedItem = await translateObjectDict(item, Object.keys(item).filter((k) => typeof item[k] === 'string' && hasContent(item[k])), targetLang);
+            newArr.push(translatedItem);
+          } else {
+            newArr.push(item);
+          }
+        }
+        newObj[f] = newArr;
+      }
+    } else if (Array.isArray(v) && v.length > 0 && typeof v[0] === 'string') {
+      newObj[f] = await translateStringArray(v, targetLang);
+    }
+  }
+  return newObj;
+}
+
 // ─── Main translation logic ──────────────────────────────────────────────────
 
 let backupDone = false;
@@ -507,6 +551,7 @@ async function translateCollection(name, config) {
   let created = 0, skipped = 0, errors = 0;
   const translatableFields = config.translatableFields || [];
   const objectArrayFields = config.objectArrayFields || {};
+  const objectDictFields = config.objectDictFields || {};
   const hasObjectArrayFields = Object.keys(objectArrayFields).length > 0;
 
   for (const item of items) {
@@ -609,6 +654,36 @@ async function translateCollection(name, config) {
         try {
           if (!backupDone) ensureBackup();
           const translated = await translateObjectArray(sourceArray, fieldConfig.translatableSubFields, lang);
+          targetTrans[field] = translated;
+          console.log('✓');
+          created++;
+        } catch (err) {
+          console.log(`ERROR: ${err.message}`);
+          errors++;
+        }
+      }
+
+      // ── Object-dict fields (single nested objects, e.g. about/contact
+      //    sections) ── translate sub-fields properly instead of stringifying.
+      for (const [field, fieldConfig] of Object.entries(objectDictFields || {})) {
+        const sourceDict = item[field];
+        if (!sourceDict || typeof sourceDict !== 'object' || Array.isArray(sourceDict)) continue;
+
+        if (hasContent(targetTrans[field]) && !FORCE) {
+          skipped++;
+          continue;
+        }
+
+        if (DRY_RUN) {
+          console.log(`  [DRY RUN] "${label}" → ${langLabel}: objectDict ${field} (${fieldConfig.translatableSubFields.join(', ')})`);
+          skipped++;
+          continue;
+        }
+
+        process.stdout.write(`  "${label}" → ${langLabel}: objectDict ${field}... `);
+        try {
+          if (!backupDone) ensureBackup();
+          const translated = await translateObjectDict(sourceDict, fieldConfig.translatableSubFields, lang);
           targetTrans[field] = translated;
           console.log('✓');
           created++;

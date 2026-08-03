@@ -143,11 +143,15 @@ export const COLLECTIONS = {
       'heroEyebrow', 'heroHeading', 'heroDescription',
       'seo_title', 'seo_description',
     ],
-    // NOTE: founderSection/timelineSection/philosophySection/teamSection/
-    // testimonial/ctaSection are DICT fields — the objectArrayFields handler
-    // only processes real arrays, and the scalar path stringifies dicts as
-    // "[object Object]" (corrupts them). They stay English until a proper
-    // dict-translation path exists.
+    // Dict sections (single nested objects) — translated via objectDictFields
+    // (proper sub-field translation, not stringification).
+    objectDictFields: {
+      founderSection: { translatableSubFields: ['eyebrow', 'heading', 'paragraphs', 'text'] },
+      timelineSection: { translatableSubFields: ['title', 'subtitle', 'description'] },
+      philosophySection: { translatableSubFields: ['eyebrow', 'heading', 'description'] },
+      teamSection: { translatableSubFields: ['heading', 'description'] },
+      ctaSection: { translatableSubFields: ['heading', 'description'] },
+    },
     objectArrayFields: {
       stats: { translatableSubFields: ['label'] },
     },
@@ -161,8 +165,12 @@ export const COLLECTIONS = {
       'contact_phone', 'contact_email', 'contact_hours', 'whatsapp_number',
       'meta_title', 'meta_description',
     ],
-    // NOTE: contactMethods/planningScenarios/ourPromise/businessHours are DICT
-    // fields — excluded (see about_page note about dict corruption).
+    objectDictFields: {
+      contactMethods: { translatableSubFields: ['heading', 'description', 'subtitle'] },
+      planningScenarios: { translatableSubFields: ['heading', 'description'] },
+      ourPromise: { translatableSubFields: ['title', 'description'] },
+      businessHours: { translatableSubFields: ['title', 'description'] },
+    },
   },
   tours_index_page: {
     file: 'tours-index-page.json',
