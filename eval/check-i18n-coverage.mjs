@@ -3,12 +3,15 @@
  * check-i18n-coverage.mjs
  *
  * Scans all content JSON files against the translation collection registry
- * and reports missing/stale translations.
+ * and reports missing/stale translations per language.
+ *
+ * EN is the ONLY source of truth. All 9 non-EN locales (ms, zh, de, es, fr,
+ * nl, ru, ja, pt) are symmetric translation targets — no language is special.
  *
  * Output: JSON with summary + per-collection results.
  * Exit 0 always (informational — doesn't block builds).
  *
- * Usage:  node eval/check-i18n-coverage.mjs
+ * Usage:  node eval/check-i18n-coverage.mjs [--json]
  */
 
 import fs from 'fs';
@@ -22,15 +25,12 @@ const CONTENT_DIR = path.resolve(ROOT, 'site/src/data/content');
 const registryPath = path.resolve(ROOT, 'site/scripts/lib/translation-collections.mjs');
 const { COLLECTIONS, ALL_LANGS } = await import(registryPath);
 
-const MANDATORY_LANG = 'ms';
+// All 9 non-EN languages are expected targets — symmetric, none special.
+const EXPECTED_LANGS = ALL_LANGS.filter((l) => l !== 'en');
 
-// Collections where MS translation is genuinely expected
-const EXPECT_MS = new Set([
-  'tours', 'stories', 'faqs',
-  'landing_pages_dietary', 'landing_pages_specialty',
-  'landing_pages_travel_type', 'landing_pages_location',
-  'home_page', 'about_page',
-]);
+// Collections where translations are genuinely expected (all of them — every
+// collection with translatable fields should eventually carry all languages).
+const EXPECTED = new Set(Object.keys(COLLECTIONS));
 
 function loadJson(filePath) {
   try {
@@ -40,52 +40,68 @@ function loadJson(filePath) {
   }
 }
 
+/**
+ * For one item, return which of the 9 expected languages are missing.
+ * Returns: { missingLangs: string[], staleCount: number, fieldGaps: string[] }
+ */
+function itemLanguageGaps(item, cfg) {
+  const translations = Array.isArray(item.translations) ? item.translations : [];
+  const missing = [];
+  const stale = [];
+  const fieldGaps = [];
+
+  for (const lang of EXPECTED_LANGS) {
+    const t = translations.find((x) => (x.languages_code || x.locale) === lang);
+    if (!t) {
+      missing.push(lang);
+      continue;
+    }
+    // Field-level check: translatable fields should exist in the translation
+    const transKeys = Object.keys(t).filter((k) => !['id', 'languages_code', 'locale', 'updatedAt', 'createdAt'].includes(k));
+    const missingFields = cfg.translatableFields.filter((f) => !transKeys.includes(f));
+    if (missingFields.length > 0) {
+      fieldGaps.push(`${lang}:${missingFields.join('+')}`);
+      stale.push(lang);
+    }
+  }
+  return { missing, stale: stale.length, fieldGaps };
+}
+
 function checkArrayCollection(name, cfg) {
   const filePath = path.join(CONTENT_DIR, cfg.file);
   const items = loadJson(filePath);
   if (!items || !Array.isArray(items)) {
-    return { collection: name, expected: EXPECT_MS.has(name), status: 'error', total: 0, untranslated: 0, stale: 0, issues: [`Cannot read ${cfg.file}`] };
+    return { collection: name, expected: EXPECTED.has(name), status: 'error', total: 0, untranslated: 0, stale: 0, issues: [`Cannot read ${cfg.file}`] };
   }
 
   const total = items.length;
-  const untranslated = [];
-  const stale = [];
+  const untranslatedByLang = Object.fromEntries(EXPECTED_LANGS.map((l) => [l, 0]));
+  let staleCount = 0;
+  const issues = [];
 
   for (const item of items) {
-    const match = item[cfg.matchField] || item.slug || item.id || '?';
-    const translations = item.translations;
-
-    if (translations && Array.isArray(translations) && translations.length > 0) {
-      const msTrans = translations.find(t => (t.languages_code || t.locale) === MANDATORY_LANG);
-      if (!msTrans) {
-        untranslated.push(match);
-      } else if (EXPECT_MS.has(name)) {
-        // Staleness check: English updatedAt more than 1h after translation
-        const sourceUpdated = item.updatedAt ? new Date(item.updatedAt).getTime() : 0;
-        const transUpdated = msTrans.updatedAt ? new Date(msTrans.updatedAt).getTime() : 0;
-        if (sourceUpdated > 0 && transUpdated > 0 && sourceUpdated > transUpdated + 3600000) {
-          const transKeys = Object.keys(msTrans).filter(k => !['id', 'languages_code', 'locale', 'updatedAt', 'createdAt'].includes(k));
-          const missingFields = cfg.translatableFields.filter(f => !transKeys.includes(f));
-          if (missingFields.length > 0) {
-            stale.push({ slug: match, missingFields });
-          }
-        }
-      }
-    } else if (EXPECT_MS.has(name)) {
-      untranslated.push(match);
+    const { missing, stale, fieldGaps } = itemLanguageGaps(item, cfg);
+    for (const l of missing) untranslatedByLang[l]++;
+    staleCount += stale;
+    if (fieldGaps.length > 0 && issues.length < 5) {
+      issues.push(`${item.slug || item.question || item.id}: incomplete fields (${fieldGaps.join(', ')})`);
     }
   }
 
-  const issues = [];
-  if (untranslated.length > 0) issues.push(`${untranslated.length}/${total} lack MS translation`);
-  if (stale.length > 0) issues.push(`${stale.length} have potentially stale MS translations`);
+  const untranslatedTotal = Object.values(untranslatedByLang).reduce((a, b) => a + b, 0);
+  if (untranslatedTotal > 0) {
+    const perLang = EXPECTED_LANGS.map((l) => `${l}:${untranslatedByLang[l]}/${total}`).join(', ');
+    issues.unshift(`${untranslatedTotal} item-language pairs untranslated (${perLang})`);
+  }
+  if (staleCount > 0) issues.push(`${staleCount} stale field translations`);
 
   return {
     collection: name,
-    expected: EXPECT_MS.has(name),
+    expected: EXPECTED.has(name),
     total,
-    untranslated: untranslated.length,
-    stale: stale.length,
+    untranslated: untranslatedTotal,
+    untranslatedByLang,
+    stale: staleCount,
     issues,
   };
 }
@@ -94,35 +110,23 @@ function checkSingletonCollection(name, cfg) {
   const filePath = path.join(CONTENT_DIR, cfg.file);
   const page = loadJson(filePath);
   if (!page || typeof page !== 'object') {
-    return { collection: name, expected: EXPECT_MS.has(name), status: 'error', total: 1, untranslated: 0, stale: 0, issues: [`Cannot read ${cfg.file}`] };
+    return { collection: name, expected: EXPECTED.has(name), status: 'error', total: 1, untranslated: 0, stale: 0, issues: [`Cannot read ${cfg.file}`] };
   }
 
-  const translations = page.translations;
-  let untranslated = 0;
-  let stale = 0;
+  const { missing, stale, fieldGaps } = itemLanguageGaps(page, cfg);
   const issues = [];
+  if (missing.length > 0) issues.push(`missing: ${missing.join(', ')}`);
+  if (fieldGaps.length > 0) issues.push(`incomplete fields: ${fieldGaps.join(', ')}`);
 
-  if (EXPECT_MS.has(name)) {
-    if (!translations || !Array.isArray(translations)) {
-      untranslated = 1;
-      issues.push('No translations at all');
-    } else {
-      const msTrans = translations.find(t => (t.languages_code || t.locale) === MANDATORY_LANG);
-      if (!msTrans) {
-        untranslated = 1;
-        issues.push('Lacks MS translation');
-      } else {
-        const transKeys = Object.keys(msTrans);
-        const missingFields = cfg.translatableFields.filter(f => !transKeys.includes(f));
-        if (missingFields.length > 0) {
-          stale = missingFields.length;
-          issues.push(`MS translation missing ${missingFields.length} fields`);
-        }
-      }
-    }
-  }
-
-  return { collection: name, expected: EXPECT_MS.has(name), total: 1, untranslated, stale, issues };
+  return {
+    collection: name,
+    expected: EXPECTED.has(name),
+    total: 1,
+    untranslated: missing.length,
+    untranslatedByLang: Object.fromEntries(EXPECTED_LANGS.map((l) => [l, missing.includes(l) ? 1 : 0])),
+    stale,
+    issues,
+  };
 }
 
 // ─── Main ────────────────────────────────────────────────────
@@ -135,26 +139,33 @@ for (const [name, cfg] of Object.entries(COLLECTIONS)) {
   results.push(r);
 }
 
-const totalExpected = results.filter(r => r.expected).length;
+const totalExpected = results.filter((r) => r.expected).length;
 const totalUntranslated = results.reduce((s, r) => s + r.untranslated, 0);
 const totalStale = results.reduce((s, r) => s + r.stale, 0);
 
-// Pass = no issues in expected collections
-const expectedWithIssues = results.filter(r => r.expected && r.issues.length > 0).length;
+// Per-language totals across all collections
+const perLangTotals = Object.fromEntries(EXPECTED_LANGS.map((l) => [
+  l,
+  results.reduce((s, r) => s + (r.untranslatedByLang?.[l] || 0), 0),
+]));
+
+const expectedWithIssues = results.filter((r) => r.expected && r.issues.length > 0).length;
 const passed = expectedWithIssues === 0;
 
-// Collect all issues across expected collections
 const allIssues = results
-  .filter(r => r.expected && r.issues.length > 0)
-  .flatMap(r => r.issues.map(i => `[${r.collection}] ${i}`));
+  .filter((r) => r.expected && r.issues.length > 0)
+  .flatMap((r) => r.issues.map((i) => `[${r.collection}] ${i}`));
 
-process.stdout.write(JSON.stringify({
+const output = {
   passed,
   collectionsChecked: results.length,
   expectedCollections: totalExpected,
   expectedWithIssues,
   totalUntranslated,
   totalStale,
-  issues: allIssues,
+  untranslatedByLang: perLangTotals,
+  issues: allIssues.slice(0, 40),
   collections: results,
-}, null, 2));
+};
+
+process.stdout.write(JSON.stringify(output, null, 2));
