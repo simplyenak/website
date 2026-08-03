@@ -61,6 +61,7 @@ async function handleRequest(request) {
     respHeaders.set("Access-Control-Allow-Origin", "*");
     respHeaders.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     respHeaders.set("Access-Control-Allow-Headers", "Authorization, Content-Type");
+    respHeaders.set("x-nous-proxy", "v1");
 
     return new Response(response.body, {
       status: response.status,
