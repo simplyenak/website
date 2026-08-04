@@ -74,6 +74,8 @@ users
 media
 dietary_options
 food_items
+cte_posts
+cte_pages
 '
 
 echo ""

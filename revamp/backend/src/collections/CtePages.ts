@@ -6,6 +6,7 @@ export const CtePages: CollectionConfig = {
     useAsTitle: 'title',
     group: 'CTE',
     description: '📄 CTE static pages',
+    defaultColumns: ['title', 'workflowStatus', 'updatedAt'],
   },
   access: {
     read: () => true,
@@ -23,13 +24,52 @@ export const CtePages: CollectionConfig = {
       unique: true,
     },
     {
-      name: 'content',
-      type: 'richText',
+      name: 'content_markdown',
+      type: 'textarea',
+      admin: {
+        description: 'Page body in Markdown — rendered by the CTE site',
+      },
     },
     {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',
+      admin: {
+        description: 'Main page image — upload or select from media library',
+        position: 'sidebar',
+      },
+    },
+    // SEO — standalone fields (frontend reads cte-pages.json meta_title/meta_description)
+    {
+      name: 'meta_title',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO title (< 60 chars). Falls back to title if empty.',
+      },
+    },
+    {
+      name: 'meta_description',
+      type: 'textarea',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO meta description (140-160 chars). Falls back to excerpt if empty.',
+      },
+    },
+    {
+      name: 'workflowStatus',
+      type: 'select',
+      options: [
+        { label: 'Draft', value: 'draft' },
+        { label: 'In Review', value: 'in_review' },
+        { label: 'Approved', value: 'approved' },
+        { label: 'Published', value: 'published' },
+      ],
+      defaultValue: 'draft',
+      admin: {
+        description: 'Workflow approval status',
+        position: 'sidebar',
+      },
     },
   ],
 }

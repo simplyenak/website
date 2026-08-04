@@ -200,20 +200,11 @@ export default buildConfig({
             return `https://cdn.simplyenak.com/payload-media/${filename}`
           },
         },
-        cte_posts: {
-          prefix: 'cte-media',
-          disablePayloadAccessControl: false,
-          generateFileURL: ({ filename }: { filename: string }) => {
-            return `https://cdn.culinarytravelexperts.com/cte-media/${filename}`
-          },
-        },
-        cte_pages: {
-          prefix: 'cte-media',
-          disablePayloadAccessControl: false,
-          generateFileURL: ({ filename }: { filename: string }) => {
-            return `https://cdn.culinarytravelexperts.com/cte-media/${filename}`
-          },
-        },
+        // NOTE: cte_posts / cte_pages are NOT upload collections — their
+        // featuredImage upload field stores files via the media collection
+        // (payload-media prefix → cdn.simplyenak.com). Registering them here
+        // previously made Payload generate upload-style columns (prefix, url,
+        // filename, …) that don't exist in the DB → API 500s.
       },
       bucket: process.env.S3_BUCKET || '',
       config: {
@@ -228,7 +219,11 @@ export default buildConfig({
     }),
     // SEO Plugin
     seoPlugin({
-      collections: ['tours', 'stories', 'pages', 'cte_posts', 'cte_pages'],
+      // NOTE: cte_posts / cte_pages intentionally NOT included — seoPlugin
+      // adds LOCALIZED meta fields, which requires a <collection>_locales
+      // table that push:true never creates for them. They define their own
+      // flat meta_title / meta_description fields instead.
+      collections: ['tours', 'stories', 'pages'],
       uploadsCollection: 'media',
     }),
     // Nested Docs Plugin

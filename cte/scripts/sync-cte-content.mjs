@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 /**
  * CTE Content Sync Script
- * Syncs CTE blog posts from Payload CMS to local JSON files
+ * Syncs CTE blog posts + pages from Payload CMS to local JSON files.
+ *
+ * Usage:
+ *   PAYLOAD_URL=... PAYLOAD_TOKEN=... node scripts/sync-cte-content.mjs
+ *
+ * Output: src/data/content/cte-posts.json, src/data/content/cte-pages.json
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
@@ -11,10 +16,11 @@ const PAYLOAD_URL = process.env.PAYLOAD_URL || 'https://cms.system.simplyenak.co
 const PAYLOAD_TOKEN = process.env.PAYLOAD_TOKEN || '';
 
 async function fetchFromPayload(endpoint, token) {
-  const url = `${PAYLOAD_URL}/api/${endpoint}?limit=100&depth=0`;
+  // depth=1 resolves featuredImage + author relationships to objects (with url/name)
+  const url = `${PAYLOAD_URL}/api/${endpoint}?limit=100&depth=1&sort=-publishedDate`;
   const headers = {
     'Content-Type': 'application/json',
-    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+    ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
   };
 
   const response = await fetch(url, { headers });
@@ -25,15 +31,26 @@ async function fetchFromPayload(endpoint, token) {
   return data.docs || [];
 }
 
+function imageUrl(image) {
+  if (!image) return null;
+  if (typeof image === 'object') return image.url || image.filename || null;
+  return image; // already a URL string
+}
+
+function authorName(author) {
+  if (!author) return 'CTE Team';
+  if (typeof author === 'object') return author.fullName || author.name || 'CTE Team';
+  return author;
+}
+
 async function syncCtePosts() {
   console.log('Syncing CTE posts from Payload...');
 
   try {
-    const posts = await fetchFromPayload('cte-posts', PAYLOAD_TOKEN);
+    const posts = await fetchFromPayload('cte_posts', PAYLOAD_TOKEN);
     console.log(`Found ${posts.length} posts`);
 
-    // Convert to simpler format for static rendering
-    const syncedPosts = posts.map(doc => ({
+    const syncedPosts = posts.map((doc) => ({
       id: doc.id,
       title: doc.title,
       slug: doc.slug,
@@ -41,23 +58,17 @@ async function syncCtePosts() {
       content_markdown: doc.content_markdown || '',
       publishedDate: doc.publishedDate || doc.createdAt,
       meta_title: doc.meta_title || doc.title,
-      meta_description: doc.meta_description || doc.excerpt,
-      featuredImage: doc.featuredImage ?
-        (typeof doc.featuredImage === 'object' ? doc.featuredImage.url : doc.featuredImage) :
-        null,
-      author: doc.author ?
-        (typeof doc.author === 'object' ? doc.author.name : doc.author) :
-        'CTE Team',
+      meta_description: doc.meta_description || doc.excerpt || '',
+      featuredImage: imageUrl(doc.featuredImage),
+      author: authorName(doc.author),
       workflowStatus: doc.workflowStatus,
-      _status: doc._status,
       createdAt: doc.createdAt,
-      updatedAt: doc.updatedAt
+      updatedAt: doc.updatedAt,
     }));
 
-    // Sort by date
+    // Sort by date (newest first)
     syncedPosts.sort((a, b) => new Date(b.publishedDate) - new Date(a.publishedDate));
 
-    // Write to content file
     const contentDir = join(process.cwd(), 'src', 'data', 'content');
     if (!existsSync(contentDir)) {
       mkdirSync(contentDir, { recursive: true });
@@ -78,27 +89,22 @@ async function syncCtePages() {
   console.log('Syncing CTE pages from Payload...');
 
   try {
-    const pages = await fetchFromPayload('cte-pages', PAYLOAD_TOKEN);
+    const pages = await fetchFromPayload('cte_pages', PAYLOAD_TOKEN);
     console.log(`Found ${pages.length} pages`);
 
-    // Convert to simpler format for static rendering
-    const syncedPages = pages.map(doc => ({
+    const syncedPages = pages.map((doc) => ({
       id: doc.id,
       title: doc.title,
       slug: doc.slug,
       content_markdown: doc.content_markdown || '',
       meta_title: doc.meta_title || doc.title,
       meta_description: doc.meta_description || '',
-      featuredImage: doc.featuredImage ?
-        (typeof doc.featuredImage === 'object' ? doc.featuredImage.url : doc.featuredImage) :
-        null,
+      featuredImage: imageUrl(doc.featuredImage),
       workflowStatus: doc.workflowStatus,
-      _status: doc._status,
       createdAt: doc.createdAt,
-      updatedAt: doc.updatedAt
+      updatedAt: doc.updatedAt,
     }));
 
-    // Write to content file
     const contentDir = join(process.cwd(), 'src', 'data', 'content');
     if (!existsSync(contentDir)) {
       mkdirSync(contentDir, { recursive: true });
@@ -125,7 +131,7 @@ async function main() {
   console.log('\nSync complete!');
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Sync failed:', err);
   process.exit(1);
 });

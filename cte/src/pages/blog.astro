@@ -1,6 +1,10 @@
 ---
-// Hardcoded blog posts for static build
-const posts = [
+// Blog listing — posts come from Payload CMS via sync-cte-content.mjs
+// (src/data/content/cte-posts.json). Hardcoded posts below are the fallback
+// until content is synced.
+import ctePosts from '../data/content/cte-posts.json';
+
+const FALLBACK_POSTS = [
   {
     title: 'Would You Sell Disappointment?',
     slug: 'would-you-sell-disappointment',
@@ -20,6 +24,8 @@ const posts = [
     excerpt: 'Common objections: "Will they like the food?" "Is it safe?" "Is it too spicy?" Here is how to position the experience, manage expectations, and convert hesitant clients.',
   },
 ];
+
+const posts = ctePosts.length > 0 ? ctePosts : FALLBACK_POSTS;
 ---
 
 <html lang="en">
