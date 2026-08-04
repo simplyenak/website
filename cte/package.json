@@ -12,6 +12,8 @@
     "start": "astro dev",
     "build": "npm run generate:herald && astro build && node scripts/mirror-sitemap.mjs",
     "generate:herald": "npx herald emit --agents --security --llms --headers --platform cloudflare",
+    "sync": "node scripts/sync-cte-content.mjs",
+    "sync:auto": "bash scripts/auto-sync-cte.sh",
     "preview": "astro preview",
     "astro": "astro",
     "check": "npm run check:astro && npm run check:eslint && npm run check:prettier",
