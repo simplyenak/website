@@ -41,4 +41,7 @@ Allow: /
 # Allow AI crawlers to discover our AI-optimized content
 Llms-txt: https://culinarytravelexperts.com/llms.txt
 
+# IndexNow key for faster indexing
+IndexNowKey: https://culinarytravelexperts.com/indexnow-key.txt
+
 Sitemap: https://culinarytravelexperts.com/sitemap-index.xml

@@ -13,6 +13,16 @@ addEventListener("fetch", event => {
 async function handleRequest(request) {
   var url = new URL(request.url);
 
+  // ── IndexNow key — pass through immediately ──
+  if (url.pathname === '/indexnow-key.txt') {
+    var keyResponse = await fetch(new Request(new URL(url.pathname, PAGES_ORIGIN).toString(), {
+      method: "GET",
+      headers: request.headers,
+      redirect: "manual"
+    }));
+    return keyResponse;
+  }
+
   // ── Static assets — pass through immediately ──
   if (/\.(jpg|jpeg|png|webp|gif|svg|css|js|ico|woff2|pdf|mp4|webm)$/i.test(url.pathname)) {
     var originResponse = await fetch(new Request(new URL(url.pathname + url.search, PAGES_ORIGIN).toString(), {

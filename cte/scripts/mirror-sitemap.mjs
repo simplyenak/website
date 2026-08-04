@@ -4,6 +4,8 @@
  *
  * Post-build step: copy dist/sitemap-index.xml → dist/sitemap.xml so the
  * conventional /sitemap.xml path serves a valid <sitemapindex> root.
+ * Also copy IndexNow key if present.
+ *
  * Agent-readiness checkers (HERALD) and some AI crawlers probe /sitemap.xml
  * specifically; without this the path fell through to the soft-404 HTML page.
  *
@@ -14,7 +16,10 @@ import path from 'node:path';
 
 const SRC = path.resolve('dist/sitemap-index.xml');
 const DST = path.resolve('dist/sitemap.xml');
+const KEY_SRC = path.resolve('public/indexnow-key.txt');
+const KEY_DST = path.resolve('dist/indexnow-key.txt');
 
+// Mirror sitemap
 if (!fs.existsSync(SRC)) {
   console.warn('[mirror-sitemap] dist/sitemap-index.xml not found — skipping');
   process.exit(0);
@@ -28,3 +33,11 @@ if (!/^<\?xml/.test(content)) {
 
 fs.writeFileSync(DST, content, 'utf-8');
 console.log('[mirror-sitemap] Mirrored sitemap-index.xml → sitemap.xml');
+
+// Copy IndexNow key if present
+if (fs.existsSync(KEY_SRC)) {
+  fs.copyFileSync(KEY_SRC, KEY_DST);
+  console.log('[mirror-sitemap] Copied indexnow-key.txt to dist/');
+} else {
+  console.warn('[mirror-sitemap] public/indexnow-key.txt not found — skipping');
+}
