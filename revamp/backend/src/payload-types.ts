@@ -97,8 +97,14 @@ export interface Config {
     corporate_groups_page: CorporateGroupsPage;
     track_record_page: TrackRecordPage;
     private_tours_page: PrivateToursPage;
+    tailored_tours_page: TailoredToursPage;
+    tours_page: ToursPage;
+    stories_page: StoriesPage;
     directions_page: DirectionsPage;
     tour_quiz: TourQuiz;
+    content_briefs: ContentBrief;
+    cte_posts: CtePost;
+    cte_pages: CtePage;
     exports: Export;
     imports: Import;
     'payload-kv': PayloadKv;
@@ -139,8 +145,14 @@ export interface Config {
     corporate_groups_page: CorporateGroupsPageSelect<false> | CorporateGroupsPageSelect<true>;
     track_record_page: TrackRecordPageSelect<false> | TrackRecordPageSelect<true>;
     private_tours_page: PrivateToursPageSelect<false> | PrivateToursPageSelect<true>;
+    tailored_tours_page: TailoredToursPageSelect<false> | TailoredToursPageSelect<true>;
+    tours_page: ToursPageSelect<false> | ToursPageSelect<true>;
+    stories_page: StoriesPageSelect<false> | StoriesPageSelect<true>;
     directions_page: DirectionsPageSelect<false> | DirectionsPageSelect<true>;
     tour_quiz: TourQuizSelect<false> | TourQuizSelect<true>;
+    content_briefs: ContentBriefsSelect<false> | ContentBriefsSelect<true>;
+    cte_posts: CtePostsSelect<false> | CtePostsSelect<true>;
+    cte_pages: CtePagesSelect<false> | CtePagesSelect<true>;
     exports: ExportsSelect<false> | ExportsSelect<true>;
     imports: ImportsSelect<false> | ImportsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -217,6 +229,9 @@ export interface User {
   department?: string | null;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -243,17 +258,61 @@ export interface User {
 export interface Media {
   id: number;
   /**
-   * Alt text for accessibility
+   * Alt text for accessibility (SEO + ADA). Auto-filled from filename if left empty.
    */
   alt?: string | null;
   /**
-   * Optional caption
+   * Optional caption — include photo credit here if needed.
    */
   caption?: string | null;
   /**
-   * Where is this image used? (e.g., tours, stories, etc.)
+   * Short label shown on the polaroid card (e.g., "Morning market"). Keep it brief — space is tight.
+   */
+  polaroidLabel?: string | null;
+  /**
+   * Photographer name for attribution.
+   */
+  credit?: string | null;
+  /**
+   * Which Simply Enak location does this image belong to? (e.g. Kuala Lumpur, Penang)
+   */
+  location_ref?: (number | null) | Location;
+  /**
+   * Neighbourhoods shown in this image (e.g. Chinatown, Kampung Baru)
+   */
+  neighbourhood_ref?: (number | Neighborhood)[] | null;
+  /**
+   * Dishes / food items shown in this image
+   */
+  food_ref?: (number | FoodItem)[] | null;
+  /**
+   * Dietary options relevant to this image (Vegan, Halal, etc.)
+   */
+  dietary_ref?: (number | DietaryOption)[] | null;
+  /**
+   * Travel types this image represents (Couples, Solo, Family, Foodie)
+   */
+  travel_type_ref?: (number | TravelType)[] | null;
+  /**
+   * Specialty experiences shown (Heritage, Street Food, Night Tour, Market)
+   */
+  specialty_ref?: (number | SpecialtyExperience)[] | null;
+  /**
+   * Vendors / hawkers shown in this image
+   */
+  vendor_ref?: (number | Vendor)[] | null;
+  /**
+   * Where is this image used? (e.g., tours, stories, hero, gallery)
    */
   usage?: string | null;
+  /**
+   * Free-form tags for filtering (photos, ambience, crowd, etc.)
+   */
+  tags?: string[] | null;
+  /**
+   * Enter new filename (e.g., "clean-name.jpg") then Save. The file on S3 will be renamed, including all image sizes.
+   */
+  renameTo?: string | null;
   prefix?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -292,6 +351,101 @@ export interface Media {
       filename?: string | null;
     };
   };
+}
+/**
+ * 📍 Location references (Kuala Lumpur, Penang, Ipoh)
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  name: string;
+  /**
+   * Auto-generated from name
+   */
+  slug: string;
+  /**
+   * Emoji or icon name
+   */
+  icon?: string | null;
+  /**
+   * UI color hex code
+   */
+  color?: string | null;
+  description?: string | null;
+  /**
+   * Card background image for the tours listing page
+   */
+  image?: (number | null) | Media;
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * 🏘️ Neighborhoods and districts featured on tours
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighborhoods".
+ */
+export interface Neighborhood {
+  id: number;
+  /**
+   * Neighborhood name (e.g., "Bukit Bintang")
+   */
+  name: string;
+  /**
+   * URL-friendly identifier
+   */
+  slug: string;
+  /**
+   * Short description of the neighborhood
+   */
+  description?: string | null;
+  /**
+   * Longer description for detail pages
+   */
+  fullDescription?: string | null;
+  /**
+   * Neighborhood hero image
+   */
+  image?: (number | null) | Media;
+  /**
+   * Which city this neighborhood belongs to
+   */
+  location?: ('kuala-lumpur' | 'penang' | 'ipoh') | null;
+  /**
+   * Key highlights or tags
+   */
+  highlights?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Famous dishes from this area
+   */
+  foodSpecialties?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Tours that visit this neighborhood
+   */
+  relatedTours?: (number | Tour)[] | null;
+  /**
+   * Draft = hidden, Published = visible
+   */
+  status?: ('draft' | 'published') | null;
+  meta_title?: string | null;
+  meta_description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * 🚌 Tour offerings and packages
@@ -360,33 +514,11 @@ export interface Tour {
   /**
    * Select travel types this tour suits (Couples, Solo, Family, Foodie)
    */
-  travelTypes?:
-    | (
-        | {
-            relationTo: 'landing_pages';
-            value: number | LandingPage;
-          }
-        | {
-            relationTo: 'travel_types';
-            value: number | TravelType;
-          }
-      )[]
-    | null;
+  travelTypes?: (number | TravelType)[] | null;
   /**
    * Select specialty experiences (Heritage, Street Food, Night Tour, Market)
    */
-  specialtyExperiences?:
-    | (
-        | {
-            relationTo: 'landing_pages';
-            value: number | LandingPage;
-          }
-        | {
-            relationTo: 'specialty_experiences';
-            value: number | SpecialtyExperience;
-          }
-      )[]
-    | null;
+  specialtyExperiences?: (number | SpecialtyExperience)[] | null;
   /**
    * Select food and drink items featured on this tour
    */
@@ -443,6 +575,10 @@ export interface Tour {
    * TicketingHub widget ID for the booking iframe (e.g., "kl-street-food"). When set, the tour shows the booking UI instead of the guide page.
    */
   ticketingHubId?: string | null;
+  /**
+   * How this tour can be booked. "Both" shows join-in as primary with private-as-option.
+   */
+  tourType?: ('join-in' | 'private' | 'both') | null;
   /**
    * Master toggle: true = full booking page with availability check, reviews, itinerary. false = SEO guide page.
    */
@@ -574,6 +710,10 @@ export interface Tour {
    */
   featured?: boolean | null;
   /**
+   * Show in the header navigation dropdown menu
+   */
+  showInMenu?: boolean | null;
+  /**
    * Mark as popular/bestseller
    */
   popular?: boolean | null;
@@ -638,6 +778,10 @@ export interface DietaryOption {
    */
   description?: string | null;
   /**
+   * Card background image for the tours listing page
+   */
+  image?: (number | null) | Media;
+  /**
    * Draft = hidden, Published = available for selection
    */
   status?: ('draft' | 'published') | null;
@@ -651,93 +795,6 @@ export interface DietaryOption {
   publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * 🗺️ Unified landing pages (dietary, specialty, travel type, location)
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "landing_pages".
- */
-export interface LandingPage {
-  id: number;
-  /**
-   * Display title (e.g., "Vegetarian Food Tours", "Penang Food Scene")
-   */
-  title: string;
-  /**
-   * URL-friendly slug (e.g., "vegetarian", "penang")
-   */
-  slug: string;
-  /**
-   * What kind of landing page is this?
-   */
-  type: 'dietary' | 'specialty' | 'travel_type' | 'location';
-  status?: ('draft' | 'published') | null;
-  /**
-   * Hero section title
-   */
-  hero_title?: string | null;
-  /**
-   * Hero subtitle / eyebrow
-   */
-  hero_subtitle?: string | null;
-  /**
-   * Hero paragraph
-   */
-  hero_description?: string | null;
-  /**
-   * Hero image — select from media library
-   */
-  hero_image?: (number | null) | Media;
-  /**
-   * SEO meta title
-   */
-  meta_title?: string | null;
-  /**
-   * SEO meta description
-   */
-  meta_description?: string | null;
-  /**
-   * 📝 Page content — formatted with ## headings and paragraphs. This is the main body text.
-   */
-  content?: string | null;
-  /**
-   * 🖼️ Images for this page — uploaded images generate WebP with responsive sizes and appear in structured data. Add alt text for SEO.
-   */
-  images?:
-    | {
-        /**
-         * Upload image — will be optimized to WebP with responsive sizes
-         */
-        image: number | Media;
-        /**
-         * Alt text (required for SEO & accessibility — describe what the image shows)
-         */
-        alt: string;
-        /**
-         * Optional caption displayed below the image
-         */
-        caption?: string | null;
-        /**
-         * Where to place this image on the page
-         */
-        position?: ('inline' | 'hero') | null;
-        id?: string | null;
-      }[]
-    | null;
-  published_at?: string | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * 🧳 Traveler type references (Couples, Solo, Family, Foodie)
@@ -761,6 +818,10 @@ export interface TravelType {
    */
   color?: string | null;
   description?: string | null;
+  /**
+   * Card background image for the tours listing page
+   */
+  image?: (number | null) | Media;
   status?: ('draft' | 'published') | null;
   updatedAt: string;
   createdAt: string;
@@ -788,6 +849,10 @@ export interface SpecialtyExperience {
    */
   color?: string | null;
   description?: string | null;
+  /**
+   * Card background image for the tours listing page
+   */
+  image?: (number | null) | Media;
   status?: ('draft' | 'published') | null;
   updatedAt: string;
   createdAt: string;
@@ -843,11 +908,25 @@ export interface FoodItem {
     | 'soup'
     | 'noodles'
     | 'rice'
-    | 'grilled';
+    | 'grilled'
+    | 'herb'
+    | 'ingredient'
+    | 'sweetener'
+    | 'seafood';
   /**
    * Cultural origin of the dish
    */
-  origin: 'malay' | 'chinese' | 'indian' | 'peranakan' | 'thai' | 'indonesian' | 'fusion' | 'international';
+  origin:
+    | 'malay'
+    | 'chinese'
+    | 'indian'
+    | 'peranakan'
+    | 'thai'
+    | 'indonesian'
+    | 'fusion'
+    | 'international'
+    | 'southeast_asian'
+    | 'universal';
   /**
    * Specific region (e.g., "Penang", "Kelantan", "Hainan")
    */
@@ -968,6 +1047,254 @@ export interface FoodItem {
   scheduledPublish?: string | null;
   /**
    * When this dish was published
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * 🏪 Food vendors, stalls, hawkers, and restaurants
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vendors".
+ */
+export interface Vendor {
+  id: number;
+  /**
+   * Vendor/stall/restaurant name
+   */
+  name: string;
+  /**
+   * URL-friendly identifier
+   */
+  slug: string;
+  /**
+   * Type of vendor establishment
+   */
+  type:
+    | 'street_stall'
+    | 'hawker_stall'
+    | 'food_court'
+    | 'kopitiam'
+    | 'restaurant'
+    | 'pasar_malam'
+    | 'pasar_pagi'
+    | 'home_kitchen'
+    | 'food_truck'
+    | 'heritage_shop';
+  /**
+   * Brief description of this vendor
+   */
+  description: string;
+  /**
+   * History, heritage, family story behind this vendor
+   */
+  history?: string | null;
+  /**
+   * Year started (e.g., 1965)
+   */
+  yearEstablished?: number | null;
+  /**
+   * Which generation runs it now (e.g., "2nd generation", "3rd generation")
+   */
+  generation?: string | null;
+  /**
+   * Current owner/chef name
+   */
+  ownerName?: string | null;
+  /**
+   * Signature food and drink items this vendor is known for
+   */
+  specialtyDishes?: (number | FoodItem)[] | null;
+  /**
+   * Primary cuisine type
+   */
+  cuisineType: 'malay' | 'chinese' | 'indian' | 'peranakan' | 'thai' | 'indonesian' | 'western' | 'fusion' | 'mixed';
+  location: {
+    /**
+     * Street address
+     */
+    address?: string | null;
+    city: string;
+    state:
+      | 'kl'
+      | 'penang'
+      | 'selangor'
+      | 'melaka'
+      | 'johor'
+      | 'perak'
+      | 'kelantan'
+      | 'terengganu'
+      | 'kedah'
+      | 'pahang'
+      | 'ns'
+      | 'perlis'
+      | 'sabah'
+      | 'sarawak';
+    postcode?: string | null;
+    country?: string | null;
+    /**
+     * For map display
+     */
+    latitude?: number | null;
+    /**
+     * For map display
+     */
+    longitude?: number | null;
+    /**
+     * Nearby landmark for directions (e.g., "opposite Maybank", "next to Chowrasta Market")
+     */
+    landmark?: string | null;
+  };
+  /**
+   * Operating hours by day
+   */
+  operatingHours?:
+    | {
+        day: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'holiday';
+        /**
+         * Opening time (e.g., "7:00 AM", "18:00")
+         */
+        openTime?: string | null;
+        /**
+         * Closing time
+         */
+        closeTime?: string | null;
+        /**
+         * Closed this day
+         */
+        isClosed?: boolean | null;
+        /**
+         * Special notes (e.g., "Lunch only", "Morning shift only")
+         */
+        notes?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Regular closed days
+   */
+  closedOn?:
+    | {
+        day: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'holiday';
+        id?: string | null;
+      }[]
+    | null;
+  contact?: {
+    /**
+     * Phone number
+     */
+    phone?: string | null;
+    /**
+     * WhatsApp number
+     */
+    whatsapp?: string | null;
+    /**
+     * Email address
+     */
+    email?: string | null;
+    /**
+     * Website URL
+     */
+    website?: string | null;
+    /**
+     * Facebook page URL
+     */
+    facebook?: string | null;
+    /**
+     * Instagram handle or URL
+     */
+    instagram?: string | null;
+  };
+  /**
+   * Price range
+   */
+  priceRange?: ('budget' | 'moderate' | 'upscale' | 'fine_dining') | null;
+  /**
+   * Accepted payment methods
+   */
+  paymentMethods?:
+    | {
+        method: 'cash' | 'credit_card' | 'debit_card' | 'tng' | 'grabpay' | 'boost' | 'qr_pay' | 'online_banking';
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Available facilities
+   */
+  facilities?:
+    | {
+        facility:
+          | 'aircon'
+          | 'wifi'
+          | 'parking'
+          | 'wheelchair'
+          | 'halal_cert'
+          | 'prayer_room'
+          | 'outdoor'
+          | 'takeaway'
+          | 'delivery'
+          | 'reservations'
+          | 'family';
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Dietary accommodations available
+   */
+  dietaryOptions?: (number | DietaryOption)[] | null;
+  images?: {
+    /**
+     * Main photo of vendor/stall
+     */
+    main?: (number | null) | Media;
+    /**
+     * Additional photos
+     */
+    gallery?:
+      | {
+          image: number | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Full story, anecdotes, interesting facts about this vendor
+   */
+  story?: string | null;
+  /**
+   * Awards, recognitions, media features
+   */
+  awards?:
+    | {
+        award: string;
+        year?: number | null;
+        organization?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * TV shows, newspapers, magazines, blogs that featured this vendor
+   */
+  mediaFeatures?: string | null;
+  /**
+   * Tips for visitors (e.g., "Arrive early", "Cash only", "Best to try X dish")
+   */
+  tips?: string | null;
+  /**
+   * Current operational status
+   */
+  status?: ('draft' | 'published' | 'closed') | null;
+  /**
+   * Mark as featured/heritage vendor
+   */
+  featured?: boolean | null;
+  /**
+   * Auto-publish at this date/time
+   */
+  scheduledPublish?: string | null;
+  /**
+   * When this vendor was published
    */
   publishedAt?: string | null;
   updatedAt: string;
@@ -1317,6 +1644,140 @@ export interface TourMaster {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * 🗺️ Dedicated landing pages — hero + intro + auto-linked tours. Long-form guides live in Stories.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing_pages".
+ */
+export interface LandingPage {
+  id: number;
+  /**
+   * Display title (e.g., "Vegetarian Food Tours", "Penang Food Scene")
+   */
+  title: string;
+  /**
+   * URL-friendly slug (e.g., "vegetarian", "penang")
+   */
+  slug: string;
+  /**
+   * What kind of landing page is this?
+   */
+  type: 'dietary' | 'specialty' | 'travel_type' | 'location';
+  status?: ('draft' | 'published') | null;
+  /**
+   * Hero section title
+   */
+  hero_title?: string | null;
+  /**
+   * Hero subtitle / eyebrow
+   */
+  hero_subtitle?: string | null;
+  /**
+   * Hero paragraph
+   */
+  hero_description?: string | null;
+  /**
+   * Hero image — select from media library
+   */
+  hero_image?: (number | null) | Media;
+  /**
+   * 📝 Short intro paragraph (2-3 sentences). Long-form guides live in Stories.
+   */
+  content?: string | null;
+  /**
+   * Heading for the intro section (e.g., "Why vegetarian food in KL?")
+   */
+  intro_heading?: string | null;
+  /**
+   * Primary CTA button text (e.g., "Browse vegetarian tours")
+   */
+  cta_text?: string | null;
+  /**
+   * Primary CTA link (e.g., "#tours" or "/contact")
+   */
+  cta_href?: string | null;
+  /**
+   * Link to the full guide on Stories (e.g., "Read our complete vegetarian guide →")
+   */
+  guide_link_text?: string | null;
+  /**
+   * Story slug for the full guide (e.g., "vegetarian-guide-kuala-lumpur")
+   */
+  guide_slug?: string | null;
+  /**
+   * 🖼️ Images for this page — uploaded images generate WebP with responsive sizes and appear in structured data. Add alt text for SEO.
+   */
+  images?:
+    | {
+        /**
+         * Upload image — will be optimized to WebP with responsive sizes
+         */
+        image: number | Media;
+        /**
+         * Alt text (required for SEO & accessibility — describe what the image shows)
+         */
+        alt: string;
+        /**
+         * Optional caption displayed below the image
+         */
+        caption?: string | null;
+        /**
+         * Where to place this image on the page
+         */
+        position?: ('inline' | 'hero') | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * SEO title (< 60 chars). Falls back to segment cache if empty.
+   */
+  meta_title?: string | null;
+  /**
+   * SEO meta description (140-160 chars). Falls back to segment cache if empty.
+   */
+  meta_description?: string | null;
+  /**
+   * 🌐 Per-locale translations. Base fields are default locale (en); translations rows hold other languages. Sync pulls these into the site JSON.
+   */
+  translations?:
+    | {
+        /**
+         * Language code for this translation row
+         */
+        languages_code: 'en' | 'ms' | 'zh' | 'de' | 'es' | 'fr' | 'nl' | 'ru' | 'ja' | 'pt';
+        hero_title?: string | null;
+        hero_subtitle?: string | null;
+        hero_description?: string | null;
+        meta_title?: string | null;
+        meta_description?: string | null;
+        dietary_name?: string | null;
+        specialty_name?: string | null;
+        travel_type_name?: string | null;
+        icon?: string | null;
+        color?: string | null;
+        challenges_heading?: string | null;
+        options_heading?: string | null;
+        options_content?: string | null;
+        tips_heading?: string | null;
+        tips_content?: string | null;
+        intro_heading?: string | null;
+        intro_content?: string | null;
+        features_heading?: string | null;
+        safe_dishes_heading?: string | null;
+        avoid_dishes_heading?: string | null;
+        why_perfect_heading?: string | null;
+        why_perfect_content?: string | null;
+        expect_heading?: string | null;
+        expect_content?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  published_at?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * 📰 Blog posts and articles
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1332,6 +1793,10 @@ export interface Story {
    * URL-friendly identifier
    */
   slug: string;
+  /**
+   * Tag this story with specialty experiences (e.g. First Time Visitors, Street Food)
+   */
+  specialtyExperiences?: (number | SpecialtyExperience)[] | null;
   /**
    * Author of this story
    */
@@ -1359,6 +1824,10 @@ export interface Story {
     [k: string]: unknown;
   };
   /**
+   * Markdown version of content — used for static site rendering. If empty, site falls back to richText conversion.
+   */
+  content_markdown?: string | null;
+  /**
    * Publication date
    */
   publishedDate?: string | null;
@@ -1366,6 +1835,14 @@ export interface Story {
    * Main story image — upload or select from media library
    */
   featuredImage?: (number | null) | Media;
+  /**
+   * SEO title (< 60 chars). Falls back to story title if empty.
+   */
+  meta_title?: string | null;
+  /**
+   * SEO meta description (140-160 chars). Falls back to excerpt if empty.
+   */
+  meta_description?: string | null;
   /**
    * Draft = hidden, Published = visible
    */
@@ -1570,255 +2047,6 @@ export interface MediaCoverage {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * 🏪 Food vendors, stalls, hawkers, and restaurants
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "vendors".
- */
-export interface Vendor {
-  id: number;
-  /**
-   * Vendor/stall/restaurant name
-   */
-  name: string;
-  /**
-   * URL-friendly identifier
-   */
-  slug: string;
-  /**
-   * Type of vendor establishment
-   */
-  type:
-    | 'street_stall'
-    | 'hawker_stall'
-    | 'food_court'
-    | 'kopitiam'
-    | 'restaurant'
-    | 'pasar_malam'
-    | 'pasar_pagi'
-    | 'home_kitchen'
-    | 'food_truck'
-    | 'heritage_shop';
-  /**
-   * Brief description of this vendor
-   */
-  description: string;
-  /**
-   * History, heritage, family story behind this vendor
-   */
-  history?: string | null;
-  /**
-   * Year started (e.g., 1965)
-   */
-  yearEstablished?: number | null;
-  /**
-   * Which generation runs it now (e.g., "2nd generation", "3rd generation")
-   */
-  generation?: string | null;
-  /**
-   * Current owner/chef name
-   */
-  ownerName?: string | null;
-  /**
-   * Signature food and drink items this vendor is known for
-   */
-  specialtyDishes?: (number | FoodItem)[] | null;
-  /**
-   * Primary cuisine type
-   */
-  cuisineType: 'malay' | 'chinese' | 'indian' | 'peranakan' | 'thai' | 'indonesian' | 'western' | 'fusion' | 'mixed';
-  location: {
-    /**
-     * Street address
-     */
-    address?: string | null;
-    city: string;
-    state:
-      | 'kl'
-      | 'penang'
-      | 'selangor'
-      | 'melaka'
-      | 'johor'
-      | 'perak'
-      | 'kelantan'
-      | 'terengganu'
-      | 'kedah'
-      | 'pahang'
-      | 'ns'
-      | 'perlis'
-      | 'sabah'
-      | 'sarawak';
-    postcode?: string | null;
-    country?: string | null;
-    /**
-     * For map display
-     */
-    latitude?: number | null;
-    /**
-     * For map display
-     */
-    longitude?: number | null;
-    /**
-     * Nearby landmark for directions (e.g., "opposite Maybank", "next to Chowrasta Market")
-     */
-    landmark?: string | null;
-  };
-  /**
-   * Operating hours by day
-   */
-  operatingHours?:
-    | {
-        day: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'holiday';
-        /**
-         * Opening time (e.g., "7:00 AM", "18:00")
-         */
-        openTime?: string | null;
-        /**
-         * Closing time
-         */
-        closeTime?: string | null;
-        /**
-         * Closed this day
-         */
-        isClosed?: boolean | null;
-        /**
-         * Special notes (e.g., "Lunch only", "Morning shift only")
-         */
-        notes?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Regular closed days
-   */
-  closedOn?:
-    | {
-        day: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'holiday';
-        id?: string | null;
-      }[]
-    | null;
-  contact?: {
-    /**
-     * Phone number
-     */
-    phone?: string | null;
-    /**
-     * WhatsApp number
-     */
-    whatsapp?: string | null;
-    /**
-     * Email address
-     */
-    email?: string | null;
-    /**
-     * Website URL
-     */
-    website?: string | null;
-    /**
-     * Facebook page URL
-     */
-    facebook?: string | null;
-    /**
-     * Instagram handle or URL
-     */
-    instagram?: string | null;
-  };
-  /**
-   * Price range
-   */
-  priceRange?: ('budget' | 'moderate' | 'upscale' | 'fine_dining') | null;
-  /**
-   * Accepted payment methods
-   */
-  paymentMethods?:
-    | {
-        method: 'cash' | 'credit_card' | 'debit_card' | 'tng' | 'grabpay' | 'boost' | 'qr_pay' | 'online_banking';
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Available facilities
-   */
-  facilities?:
-    | {
-        facility:
-          | 'aircon'
-          | 'wifi'
-          | 'parking'
-          | 'wheelchair'
-          | 'halal_cert'
-          | 'prayer_room'
-          | 'outdoor'
-          | 'takeaway'
-          | 'delivery'
-          | 'reservations'
-          | 'family';
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Dietary accommodations available
-   */
-  dietaryOptions?: (number | DietaryOption)[] | null;
-  images?: {
-    /**
-     * Main photo of vendor/stall
-     */
-    main?: (number | null) | Media;
-    /**
-     * Additional photos
-     */
-    gallery?:
-      | {
-          image: number | Media;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  /**
-   * Full story, anecdotes, interesting facts about this vendor
-   */
-  story?: string | null;
-  /**
-   * Awards, recognitions, media features
-   */
-  awards?:
-    | {
-        award: string;
-        year?: number | null;
-        organization?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * TV shows, newspapers, magazines, blogs that featured this vendor
-   */
-  mediaFeatures?: string | null;
-  /**
-   * Tips for visitors (e.g., "Arrive early", "Cash only", "Best to try X dish")
-   */
-  tips?: string | null;
-  /**
-   * Current operational status
-   */
-  status?: ('draft' | 'published' | 'closed') | null;
-  /**
-   * Mark as featured/heritage vendor
-   */
-  featured?: boolean | null;
-  /**
-   * Auto-publish at this date/time
-   */
-  scheduledPublish?: string | null;
-  /**
-   * When this vendor was published
-   */
-  publishedAt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
  * 📄 Generic content pages — neighborhood guides, segment pages, city overviews
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1893,14 +2121,6 @@ export interface Page {
    */
   max_participants?: number | null;
   /**
-   * SEO meta title (defaults to page title)
-   */
-  meta_title?: string | null;
-  /**
-   * SEO meta description
-   */
-  meta_description?: string | null;
-  /**
    * Sort order (lower = first)
    */
   order?: number | null;
@@ -1939,6 +2159,12 @@ export interface AboutPage {
       }[]
     | null;
   /**
+   * Hero background image — select from media library
+   */
+  hero_image?: (number | null) | Media;
+  hero_eyebrow?: string | null;
+  hero_description?: string | null;
+  /**
    * Founder story with title and rich text content
    */
   founderStorySection?:
@@ -1950,6 +2176,13 @@ export interface AboutPage {
         blockType: 'founderStoryBlock';
       }[]
     | null;
+  founder_eyebrow?: string | null;
+  founder_heading?: string | null;
+  founder_paragraphs?: string | null;
+  /**
+   * Founder photo — select from media library
+   */
+  founder_image?: (number | null) | Media;
   /**
    * Key statistics about Simply Enak
    */
@@ -1991,8 +2224,11 @@ export interface AboutPage {
         blockType: 'timelineBlock';
       }[]
     | null;
+  timeline_eyebrow?: string | null;
+  timeline_heading?: string | null;
+  timeline_description?: string | null;
   /**
-   * Company philosophy/mission — core values with titles and icons
+   * Company philosophy/mission
    */
   philosophySection?:
     | {
@@ -2012,6 +2248,12 @@ export interface AboutPage {
         blockType: 'philosophyBlock';
       }[]
     | null;
+  philosophy_eyebrow?: string | null;
+  philosophy_heading?: string | null;
+  /**
+   * JSON string of philosophy items (legacy fallback)
+   */
+  philosophy_items?: string | null;
   /**
    * Team members
    */
@@ -2035,6 +2277,22 @@ export interface AboutPage {
         blockType: 'teamBlock';
       }[]
     | null;
+  team_eyebrow?: string | null;
+  team_heading?: string | null;
+  team_description?: string | null;
+  /**
+   * JSON string of team members (legacy fallback)
+   */
+  team_members?: string | null;
+  testimonial_text?: string | null;
+  testimonial_name?: string | null;
+  testimonial_location?: string | null;
+  cta_heading?: string | null;
+  cta_description?: string | null;
+  cta_primary_text?: string | null;
+  cta_primary_url?: string | null;
+  cta_secondary_text?: string | null;
+  cta_secondary_url?: string | null;
   parent?: (number | null) | AboutPage;
   breadcrumbs?:
     | {
@@ -2420,130 +2678,19 @@ export interface HomePage {
       }[]
     | null;
   /**
-   * Array of FAQ items for home page
+   * FAQ items for the home page (question + answer pairs)
    */
   faqs?:
     | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  /**
-   * "Why Choose Us" section with 6 reason cards
-   */
-  whyUsSection?:
-    | {
-        eyebrow?: string | null;
-        title?: string | null;
-        subtitle?: string | null;
         /**
-         * Reason cards (icon, stat badge, heading, body)
+         * The question
          */
-        reasons?:
-          | {
-              /**
-               * Select an icon — frontend maps this to SVG
-               */
-              iconName?: ('heritage' | 'group' | 'trust' | 'story' | 'chat' | 'custom' | 'award' | 'heart') | null;
-              /**
-               * e.g., "Since 2011", "Max 8"
-               */
-              stat?: string | null;
-              heading: string;
-              body: string;
-              id?: string | null;
-            }[]
-          | null;
+        question: string;
+        /**
+         * The answer
+         */
+        answer: string;
         id?: string | null;
-        blockName?: string | null;
-        blockType: 'whyUsBlock';
-      }[]
-    | null;
-  /**
-   * Booking guarantees + private tour callout
-   */
-  bookingGuaranteesSection?:
-    | {
-        eyebrow?: string | null;
-        title?: string | null;
-        subtitle?: string | null;
-        /**
-         * Booking guarantee items
-         */
-        guarantees?:
-          | {
-              /**
-               * Icon for this guarantee
-               */
-              iconName?: ('check' | 'calendar' | 'users' | 'message' | 'lock') | null;
-              heading: string;
-              body: string;
-              id?: string | null;
-            }[]
-          | null;
-        /**
-         * Private tours CTA box
-         */
-        privateTourCallout?: {
-          title?: string | null;
-          body?: string | null;
-          ctaLabel?: string | null;
-          ctaUrl?: string | null;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'guaranteesBlock';
-      }[]
-    | null;
-  /**
-   * Platform badges (TripAdvisor, Google) + guest stats
-   */
-  testimonialPlatformBadges?:
-    | {
-        /**
-         * Review platform badges
-         */
-        platforms?:
-          | {
-              platform: 'tripadvisor' | 'google' | 'trustpilot' | 'facebook';
-              /**
-               * e.g., "4.9"
-               */
-              rating?: string | null;
-              /**
-               * e.g., "520+"
-               */
-              reviewCount?: string | null;
-              /**
-               * Link to reviews
-               */
-              url?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        /**
-         * Overall guest statistics
-         */
-        guestStats?: {
-          /**
-           * e.g., "5,000+"
-           */
-          totalGuests?: string | null;
-          /**
-           * e.g., "2011"
-           */
-          sinceYear?: string | null;
-          /**
-           * e.g., "guests served"
-           */
-          label?: string | null;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'socialProofBadgesBlock';
       }[]
     | null;
   meta_title?: string | null;
@@ -2637,97 +2784,6 @@ export interface Menu {
   itemCount?: number | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * 📍 Location references (Kuala Lumpur, Penang, Ipoh)
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "locations".
- */
-export interface Location {
-  id: number;
-  name: string;
-  /**
-   * Auto-generated from name
-   */
-  slug: string;
-  /**
-   * Emoji or icon name
-   */
-  icon?: string | null;
-  /**
-   * UI color hex code
-   */
-  color?: string | null;
-  description?: string | null;
-  status?: ('draft' | 'published') | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * 🏘️ Neighborhoods and districts featured on tours
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "neighborhoods".
- */
-export interface Neighborhood {
-  id: number;
-  /**
-   * Neighborhood name (e.g., "Bukit Bintang")
-   */
-  name: string;
-  /**
-   * URL-friendly identifier
-   */
-  slug: string;
-  /**
-   * Short description of the neighborhood
-   */
-  description?: string | null;
-  /**
-   * Longer description for detail pages
-   */
-  fullDescription?: string | null;
-  /**
-   * Neighborhood hero image
-   */
-  image?: (number | null) | Media;
-  /**
-   * Which city this neighborhood belongs to
-   */
-  location?: ('kuala-lumpur' | 'penang' | 'ipoh') | null;
-  /**
-   * Key highlights or tags
-   */
-  highlights?:
-    | {
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Famous dishes from this area
-   */
-  foodSpecialties?:
-    | {
-        name: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Tours that visit this neighborhood
-   */
-  relatedTours?: (number | Tour)[] | null;
-  /**
-   * Draft = hidden, Published = visible
-   */
-  status?: ('draft' | 'published') | null;
-  meta_title?: string | null;
-  meta_description?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * Global site settings — pricing, contact, social, navigation
@@ -3266,7 +3322,7 @@ export interface HowItWorksPage {
   /**
    * Section title for tour steps
    */
-  steps_title?: string | null;
+  steps_heading?: string | null;
   /**
    * Step-by-step tour process
    */
@@ -3317,7 +3373,6 @@ export interface HowItWorksPage {
   seo_description?: string | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * 🎒 How to Prepare page content
@@ -3698,6 +3753,423 @@ export interface PrivateToursPage {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * 🎯 Tailored Experience page content — for the /tours/tailored-tours/ page
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tailored_tours_page".
+ */
+export interface TailoredToursPage {
+  id: number;
+  seo_title: string;
+  seo_description: string;
+  hero_title: string;
+  /**
+   * Word(s) to highlight in the hero title
+   */
+  hero_highlight?: string | null;
+  hero_subtitle?: string | null;
+  hero_cta_primary_text?: string | null;
+  /**
+   * e.g. #process
+   */
+  hero_cta_primary_href?: string | null;
+  hero_cta_secondary_text?: string | null;
+  hero_cta_secondary_href?: string | null;
+  what_title?: string | null;
+  what_subtitle?: string | null;
+  /**
+   * 3 cards explaining what makes tailored different (icon + title + detail)
+   */
+  what_cards?:
+    | {
+        /**
+         * Emoji icon
+         */
+        icon?: string | null;
+        title: string;
+        detail?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  difference_heading?: string | null;
+  /**
+   * Comparison rows: private tour vs tailored experience
+   */
+  difference_rows?:
+    | {
+        /**
+         * Feature name
+         */
+        feature: string;
+        /**
+         * What private tours offer
+         */
+        private_tour?: string | null;
+        /**
+         * What tailored adds
+         */
+        tailored?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  process_eyebrow?: string | null;
+  process_heading?: string | null;
+  /**
+   * How the tailored experience works (number + title + description)
+   */
+  process_steps?:
+    | {
+        number?: number | null;
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  use_cases_heading?: string | null;
+  /**
+   * Who books tailored experiences (icon + label + detail)
+   */
+  use_cases?:
+    | {
+        /**
+         * Emoji icon
+         */
+        icon?: string | null;
+        label: string;
+        detail?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  examples_heading?: string | null;
+  examples_subtext?: string | null;
+  /**
+   * Real examples of tailored routes we have built
+   */
+  examples?:
+    | {
+        title: string;
+        description?: string | null;
+        /**
+         * e.g. "6 hours"
+         */
+        duration?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  pricing_heading?: string | null;
+  pricing_body?: string | null;
+  pricing_cta_whatsapp?: string | null;
+  /**
+   * URL-encoded WhatsApp message
+   */
+  pricing_cta_whatsapp_message?: string | null;
+  /**
+   * Secondary CTA button label
+   */
+  pricing_cta_message?: string | null;
+  faq_eyebrow?: string | null;
+  faq_heading?: string | null;
+  /**
+   * Tailored experience FAQs
+   */
+  faqs?:
+    | {
+        /**
+         * Question text
+         */
+        name: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Callout linking to private tours
+   */
+  private_callout?: string | null;
+  private_cta_text?: string | null;
+  /**
+   * e.g. /tours/private-tours/
+   */
+  private_cta_href?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * 🏝️ Tours listing page — every section, image, and text is managed here
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tours_page".
+ */
+export interface ToursPage {
+  id: number;
+  seo_title: string;
+  seo_description: string;
+  /**
+   * Hero background image — upload or select from media library
+   */
+  hero_image?: (number | null) | Media;
+  /**
+   * Main heading (supports HTML like <br/>)
+   */
+  hero_title: string;
+  /**
+   * Word/phrase inside <span class="text-accent"> in title
+   */
+  hero_highlight?: string | null;
+  hero_cta_primary_text?: string | null;
+  hero_cta_primary_href?: string | null;
+  hero_cta_secondary_text?: string | null;
+  hero_cta_secondary_href?: string | null;
+  /**
+   * e.g. "YOUR CHOICE"
+   */
+  three_ways_eyebrow?: string | null;
+  three_ways_heading?: string | null;
+  three_ways_section_description?: string | null;
+  /**
+   * 3 cards — Private Tour, Tailored Experience, Join a Small Group
+   */
+  three_ways?:
+    | {
+        title: string;
+        description?: string | null;
+        features?:
+          | {
+              feature: string;
+              id?: string | null;
+            }[]
+          | null;
+        cta_text?: string | null;
+        cta_href?: string | null;
+        /**
+         * Highlight this card as "POPULAR"
+         */
+        is_popular?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. "THE ORIGINALS"
+   */
+  signature_eyebrow?: string | null;
+  signature_heading?: string | null;
+  signature_description?: string | null;
+  /**
+   * e.g. "BY DESTINATION"
+   */
+  city_eyebrow?: string | null;
+  city_heading?: string | null;
+  city_description?: string | null;
+  /**
+   * Tour destination cards shown in the grid
+   */
+  cities?:
+    | {
+        name: string;
+        description?: string | null;
+        /**
+         * City hero image
+         */
+        image?: (number | null) | Media;
+        /**
+         * Link to city tours page, e.g. /tours/locations/food-tours-kuala-lumpur
+         */
+        href?: string | null;
+        /**
+         * e.g. "3 tours →", "Coming soon →"
+         */
+        tour_count_label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. "DIETARY PREFERENCES"
+   */
+  dietary_eyebrow?: string | null;
+  dietary_heading?: string | null;
+  dietary_description?: string | null;
+  /**
+   * Image used across all dietary cards
+   */
+  dietary_image?: (number | null) | Media;
+  /**
+   * e.g. "EXPERIENCE TYPE"
+   */
+  experience_eyebrow?: string | null;
+  experience_heading?: string | null;
+  experience_description?: string | null;
+  /**
+   * Experience type cards (Street Food, Market, Heritage, Night Tour)
+   */
+  experiences?:
+    | {
+        name: string;
+        /**
+         * Card background image
+         */
+        image?: (number | null) | Media;
+        /**
+         * Slug of the specialty experience (e.g. street-food, market-tour, heritage, night-tour). Used to filter tours.
+         */
+        specialty_slug?: string | null;
+        /**
+         * Landing page link, e.g. /tours/specialty/street-food-tours-kuala-lumpur
+         */
+        href?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. "TRAVEL STYLE"
+   */
+  travel_with_eyebrow?: string | null;
+  travel_with_heading?: string | null;
+  travel_with_description?: string | null;
+  /**
+   * Travel style cards (Family, Couples, Foodie)
+   */
+  travel_with_options?:
+    | {
+        name: string;
+        /**
+         * Emoji icon, e.g. 👨‍👩‍👧‍👦
+         */
+        icon?: string | null;
+        /**
+         * Card background image
+         */
+        image?: (number | null) | Media;
+        /**
+         * Slug of the travel type (e.g. family, couples, foodie). Used to filter tours.
+         */
+        travel_type_slug?: string | null;
+        /**
+         * Segment page link, e.g. /tours/segments/food-tours-for-families-kuala-lumpur
+         */
+        href?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. "FOR GROUPS"
+   */
+  groups_eyebrow?: string | null;
+  groups_heading?: string | null;
+  groups_section_description?: string | null;
+  /**
+   * Group & event cards
+   */
+  groups?:
+    | {
+        title: string;
+        description?: string | null;
+        /**
+         * Card background image
+         */
+        image?: (number | null) | Media;
+        href?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. "FULLY CUSTOM"
+   */
+  tailor_eyebrow?: string | null;
+  tailor_heading?: string | null;
+  tailor_description?: string | null;
+  /**
+   * Image for the tailor section
+   */
+  tailor_image?: (number | null) | Media;
+  /**
+   * Bullet list of benefits (any duration, combine cities, WhatsApp planning)
+   */
+  tailor_features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  tailor_cta_text?: string | null;
+  tailor_cta_href?: string | null;
+  /**
+   * e.g. "Find Your Perfect Tour"
+   */
+  find_tour_heading?: string | null;
+  /**
+   * e.g. "Browse all our tour categories"
+   */
+  find_tour_description?: string | null;
+  not_sure_heading?: string | null;
+  not_sure_description?: string | null;
+  not_sure_cta_text?: string | null;
+  not_sure_cta_href?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * 📖 Stories listing page — hero, section headings, newsletter CTA
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stories_page".
+ */
+export interface StoriesPage {
+  id: number;
+  seo_title: string;
+  seo_description: string;
+  /**
+   * Hero background image — upload or select from media library
+   */
+  hero_image?: (number | null) | Media;
+  hero_title: string;
+  hero_description?: string | null;
+  /**
+   * e.g. "Stories behind the dishes"
+   */
+  food_culture_eyebrow?: string | null;
+  food_culture_heading?: string | null;
+  /**
+   * e.g. "Plan like a local"
+   */
+  travel_tips_eyebrow?: string | null;
+  travel_tips_heading?: string | null;
+  /**
+   * e.g. "The people behind the food"
+   */
+  vendor_stories_eyebrow?: string | null;
+  vendor_stories_heading?: string | null;
+  /**
+   * Message shown when no vendor stories exist yet
+   */
+  vendor_stories_empty_message?: string | null;
+  /**
+   * CTA button label
+   */
+  vendor_stories_empty_cta?: string | null;
+  vendor_stories_empty_cta_href?: string | null;
+  /**
+   * e.g. "Hungry for More?"
+   */
+  newsletter_eyebrow?: string | null;
+  newsletter_heading?: string | null;
+  newsletter_description?: string | null;
+  /**
+   * Input placeholder text
+   */
+  newsletter_placeholder?: string | null;
+  newsletter_button_text?: string | null;
+  /**
+   * Message when no stories exist at all
+   */
+  empty_message?: string | null;
+  empty_cta_text?: string | null;
+  empty_cta_href?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * 📍 Meeting Points & Directions page content
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3829,6 +4301,168 @@ export interface TourQuiz {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * 📋 Question-driven content planning for landing pages and guides. Drag by changing status.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "content_briefs".
+ */
+export interface ContentBrief {
+  id: number;
+  /**
+   * e.g. "Halal Food Tours in KL" or "Vegetarian Guide — Penang"
+   */
+  title: string;
+  /**
+   * Auto-generated URL-friendly ID
+   */
+  slug: string;
+  /**
+   * Which segment category does this brief serve?
+   */
+  segmentType: 'dietary' | 'specialty' | 'location' | 'travel_type';
+  /**
+   * 📍 Kanban column. Change to move items through the pipeline.
+   */
+  status?:
+    | ('needs-questions' | 'questions-asked' | 'answers-received' | 'writing' | 'ready-to-publish' | 'published')
+    | null;
+  /**
+   * Comma-separated landing page slugs this brief feeds (e.g. "halal-food-tours-kuala-lumpur, halal-food-tours")
+   */
+  landingPageSlugs?: string | null;
+  /**
+   * Landing pages this brief will generate content for
+   */
+  relatedLandingPages?: (number | LandingPage)[] | null;
+  /**
+   * Slug of the guide story to create/update (e.g. "halal-guide-kuala-lumpur"). Leave blank if brief only feeds landing pages.
+   */
+  guideSlug?: string | null;
+  /**
+   * Link to the guide story once created
+   */
+  guideLink?: (number | null) | Story;
+  /**
+   * 📋 Questions to gather unique content. Answer each, then I will write.
+   */
+  questions?:
+    | {
+        /**
+         * The question — what we need to know
+         */
+        question: string;
+        /**
+         * Your answer. Be as specific as possible — names, dishes, locations, stories.
+         */
+        answer?: string | null;
+        /**
+         * Quality gate — I will update this after reviewing your answer.
+         */
+        quality?: ('unanswered' | 'good' | 'needs-more' | 'insufficient') | null;
+        /**
+         * If quality is "needs-more" or "insufficient", the follow-up question goes here.
+         */
+        followUp?: string | null;
+        /**
+         * Where will this answer be used?
+         */
+        intendedFor?: ('both' | 'landing_page' | 'guide') | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes about this brief (e.g. what content is currently missing, which tours to highlight)
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * 📝 CTE blog posts and articles
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cte_posts".
+ */
+export interface CtePost {
+  id: number;
+  /**
+   * Blog post title
+   */
+  title: string;
+  /**
+   * URL-friendly identifier (e.g. how-to-sell-malaysian-food-tours)
+   */
+  slug: string;
+  /**
+   * Short summary for listing pages (2-3 sentences)
+   */
+  excerpt?: string | null;
+  /**
+   * Full article body in Markdown — rendered by the CTE site
+   */
+  content_markdown?: string | null;
+  /**
+   * Main article image — upload or select from media library
+   */
+  featuredImage?: (number | null) | Media;
+  /**
+   * Publication date
+   */
+  publishedDate?: string | null;
+  /**
+   * SEO title (< 60 chars). Falls back to title if empty.
+   */
+  meta_title?: string | null;
+  /**
+   * SEO meta description (140-160 chars). Falls back to excerpt if empty.
+   */
+  meta_description?: string | null;
+  /**
+   * Workflow approval status
+   */
+  workflowStatus?: ('draft' | 'in_review' | 'approved' | 'published') | null;
+  /**
+   * Author of this post
+   */
+  author?: (number | null) | User;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * 📄 CTE static pages
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cte_pages".
+ */
+export interface CtePage {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * Page body in Markdown — rendered by the CTE site
+   */
+  content_markdown?: string | null;
+  /**
+   * Main page image — upload or select from media library
+   */
+  featuredImage?: (number | null) | Media;
+  /**
+   * SEO title (< 60 chars). Falls back to title if empty.
+   */
+  meta_title?: string | null;
+  /**
+   * SEO meta description (140-160 chars). Falls back to excerpt if empty.
+   */
+  meta_description?: string | null;
+  /**
+   * Workflow approval status
+   */
+  workflowStatus?: ('draft' | 'in_review' | 'approved' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -4142,12 +4776,36 @@ export interface PayloadLockedDocument {
         value: number | PrivateToursPage;
       } | null)
     | ({
+        relationTo: 'tailored_tours_page';
+        value: number | TailoredToursPage;
+      } | null)
+    | ({
+        relationTo: 'tours_page';
+        value: number | ToursPage;
+      } | null)
+    | ({
+        relationTo: 'stories_page';
+        value: number | StoriesPage;
+      } | null)
+    | ({
         relationTo: 'directions_page';
         value: number | DirectionsPage;
       } | null)
     | ({
         relationTo: 'tour_quiz';
         value: number | TourQuiz;
+      } | null)
+    | ({
+        relationTo: 'content_briefs';
+        value: number | ContentBrief;
+      } | null)
+    | ({
+        relationTo: 'cte_posts';
+        value: number | CtePost;
+      } | null)
+    | ({
+        relationTo: 'cte_pages';
+        value: number | CtePage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -4201,6 +4859,9 @@ export interface UsersSelect<T extends boolean = true> {
   department?: T;
   updatedAt?: T;
   createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
   email?: T;
   resetPasswordToken?: T;
   resetPasswordExpiration?: T;
@@ -4223,7 +4884,18 @@ export interface UsersSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  polaroidLabel?: T;
+  credit?: T;
+  location_ref?: T;
+  neighbourhood_ref?: T;
+  food_ref?: T;
+  dietary_ref?: T;
+  travel_type_ref?: T;
+  specialty_ref?: T;
+  vendor_ref?: T;
   usage?: T;
+  tags?: T;
+  renameTo?: T;
   prefix?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -4321,6 +4993,7 @@ export interface ToursSelect<T extends boolean = true> {
         id?: T;
       };
   ticketingHubId?: T;
+  tourType?: T;
   isBookable?: T;
   bookingUrl?: T;
   instantConfirmation?: T;
@@ -4385,6 +5058,7 @@ export interface ToursSelect<T extends boolean = true> {
       };
   heroImageAlt?: T;
   featured?: T;
+  showInMenu?: T;
   popular?: T;
   new?: T;
   badgeLabel?: T;
@@ -4552,11 +5226,15 @@ export interface TourMastersSelect<T extends boolean = true> {
 export interface StoriesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  specialtyExperiences?: T;
   author?: T;
   excerpt?: T;
   content?: T;
+  content_markdown?: T;
   publishedDate?: T;
   featuredImage?: T;
+  meta_title?: T;
+  meta_description?: T;
   status?: T;
   workflowStatus?: T;
   scheduledPublish?: T;
@@ -4645,12 +5323,12 @@ export interface DietaryOptionsSelect<T extends boolean = true> {
   icon?: T;
   color?: T;
   description?: T;
+  image?: T;
   status?: T;
   scheduledPublish?: T;
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
-  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -4708,7 +5386,6 @@ export interface FoodItemsSelect<T extends boolean = true> {
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
-  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -4820,9 +5497,12 @@ export interface LandingPagesSelect<T extends boolean = true> {
   hero_subtitle?: T;
   hero_description?: T;
   hero_image?: T;
-  meta_title?: T;
-  meta_description?: T;
   content?: T;
+  intro_heading?: T;
+  cta_text?: T;
+  cta_href?: T;
+  guide_link_text?: T;
+  guide_slug?: T;
   images?:
     | T
     | {
@@ -4832,14 +5512,39 @@ export interface LandingPagesSelect<T extends boolean = true> {
         position?: T;
         id?: T;
       };
-  published_at?: T;
-  meta?:
+  meta_title?: T;
+  meta_description?: T;
+  translations?:
     | T
     | {
-        title?: T;
-        description?: T;
-        image?: T;
+        languages_code?: T;
+        hero_title?: T;
+        hero_subtitle?: T;
+        hero_description?: T;
+        meta_title?: T;
+        meta_description?: T;
+        dietary_name?: T;
+        specialty_name?: T;
+        travel_type_name?: T;
+        icon?: T;
+        color?: T;
+        challenges_heading?: T;
+        options_heading?: T;
+        options_content?: T;
+        tips_heading?: T;
+        tips_content?: T;
+        intro_heading?: T;
+        intro_content?: T;
+        features_heading?: T;
+        safe_dishes_heading?: T;
+        avoid_dishes_heading?: T;
+        why_perfect_heading?: T;
+        why_perfect_content?: T;
+        expect_heading?: T;
+        expect_content?: T;
+        id?: T;
       };
+  published_at?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -4870,8 +5575,6 @@ export interface PagesSelect<T extends boolean = true> {
   price?: T;
   duration?: T;
   max_participants?: T;
-  meta_title?: T;
-  meta_description?: T;
   order?: T;
   meta?:
     | T
@@ -4903,6 +5606,9 @@ export interface AboutPageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  hero_image?: T;
+  hero_eyebrow?: T;
+  hero_description?: T;
   founderStorySection?:
     | T
     | {
@@ -4915,6 +5621,10 @@ export interface AboutPageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  founder_eyebrow?: T;
+  founder_heading?: T;
+  founder_paragraphs?: T;
+  founder_image?: T;
   statsSection?:
     | T
     | {
@@ -4950,6 +5660,9 @@ export interface AboutPageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  timeline_eyebrow?: T;
+  timeline_heading?: T;
+  timeline_description?: T;
   philosophySection?:
     | T
     | {
@@ -4968,6 +5681,9 @@ export interface AboutPageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  philosophy_eyebrow?: T;
+  philosophy_heading?: T;
+  philosophy_items?: T;
   teamSection?:
     | T
     | {
@@ -4988,6 +5704,19 @@ export interface AboutPageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  team_eyebrow?: T;
+  team_heading?: T;
+  team_description?: T;
+  team_members?: T;
+  testimonial_text?: T;
+  testimonial_name?: T;
+  testimonial_location?: T;
+  cta_heading?: T;
+  cta_description?: T;
+  cta_primary_text?: T;
+  cta_primary_url?: T;
+  cta_secondary_text?: T;
+  cta_secondary_url?: T;
   parent?: T;
   breadcrumbs?:
     | T
@@ -5243,83 +5972,12 @@ export interface HomePageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  faqs?: T;
-  whyUsSection?:
+  faqs?:
     | T
     | {
-        whyUsBlock?:
-          | T
-          | {
-              eyebrow?: T;
-              title?: T;
-              subtitle?: T;
-              reasons?:
-                | T
-                | {
-                    iconName?: T;
-                    stat?: T;
-                    heading?: T;
-                    body?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  bookingGuaranteesSection?:
-    | T
-    | {
-        guaranteesBlock?:
-          | T
-          | {
-              eyebrow?: T;
-              title?: T;
-              subtitle?: T;
-              guarantees?:
-                | T
-                | {
-                    iconName?: T;
-                    heading?: T;
-                    body?: T;
-                    id?: T;
-                  };
-              privateTourCallout?:
-                | T
-                | {
-                    title?: T;
-                    body?: T;
-                    ctaLabel?: T;
-                    ctaUrl?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  testimonialPlatformBadges?:
-    | T
-    | {
-        socialProofBadgesBlock?:
-          | T
-          | {
-              platforms?:
-                | T
-                | {
-                    platform?: T;
-                    rating?: T;
-                    reviewCount?: T;
-                    url?: T;
-                    id?: T;
-                  };
-              guestStats?:
-                | T
-                | {
-                    totalGuests?: T;
-                    sinceYear?: T;
-                    label?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
+        question?: T;
+        answer?: T;
+        id?: T;
       };
   meta_title?: T;
   meta_description?: T;
@@ -5372,6 +6030,7 @@ export interface TravelTypesSelect<T extends boolean = true> {
   icon?: T;
   color?: T;
   description?: T;
+  image?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -5387,6 +6046,7 @@ export interface SpecialtyExperiencesSelect<T extends boolean = true> {
   icon?: T;
   color?: T;
   description?: T;
+  image?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -5402,6 +6062,7 @@ export interface LocationsSelect<T extends boolean = true> {
   icon?: T;
   color?: T;
   description?: T;
+  image?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -5617,7 +6278,7 @@ export interface ComparisonPageSelect<T extends boolean = true> {
 export interface HowItWorksPageSelect<T extends boolean = true> {
   hero_title?: T;
   hero_subtitle?: T;
-  steps_title?: T;
+  steps_heading?: T;
   steps?:
     | T
     | {
@@ -5646,7 +6307,6 @@ export interface HowItWorksPageSelect<T extends boolean = true> {
   seo_description?: T;
   updatedAt?: T;
   createdAt?: T;
-  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -5888,6 +6548,231 @@ export interface PrivateToursPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tailored_tours_page_select".
+ */
+export interface TailoredToursPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
+  hero_title?: T;
+  hero_highlight?: T;
+  hero_subtitle?: T;
+  hero_cta_primary_text?: T;
+  hero_cta_primary_href?: T;
+  hero_cta_secondary_text?: T;
+  hero_cta_secondary_href?: T;
+  what_title?: T;
+  what_subtitle?: T;
+  what_cards?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        detail?: T;
+        id?: T;
+      };
+  difference_heading?: T;
+  difference_rows?:
+    | T
+    | {
+        feature?: T;
+        private_tour?: T;
+        tailored?: T;
+        id?: T;
+      };
+  process_eyebrow?: T;
+  process_heading?: T;
+  process_steps?:
+    | T
+    | {
+        number?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  use_cases_heading?: T;
+  use_cases?:
+    | T
+    | {
+        icon?: T;
+        label?: T;
+        detail?: T;
+        id?: T;
+      };
+  examples_heading?: T;
+  examples_subtext?: T;
+  examples?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        duration?: T;
+        id?: T;
+      };
+  pricing_heading?: T;
+  pricing_body?: T;
+  pricing_cta_whatsapp?: T;
+  pricing_cta_whatsapp_message?: T;
+  pricing_cta_message?: T;
+  faq_eyebrow?: T;
+  faq_heading?: T;
+  faqs?:
+    | T
+    | {
+        name?: T;
+        answer?: T;
+        id?: T;
+      };
+  private_callout?: T;
+  private_cta_text?: T;
+  private_cta_href?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tours_page_select".
+ */
+export interface ToursPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
+  hero_image?: T;
+  hero_title?: T;
+  hero_highlight?: T;
+  hero_cta_primary_text?: T;
+  hero_cta_primary_href?: T;
+  hero_cta_secondary_text?: T;
+  hero_cta_secondary_href?: T;
+  three_ways_eyebrow?: T;
+  three_ways_heading?: T;
+  three_ways_section_description?: T;
+  three_ways?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        features?:
+          | T
+          | {
+              feature?: T;
+              id?: T;
+            };
+        cta_text?: T;
+        cta_href?: T;
+        is_popular?: T;
+        id?: T;
+      };
+  signature_eyebrow?: T;
+  signature_heading?: T;
+  signature_description?: T;
+  city_eyebrow?: T;
+  city_heading?: T;
+  city_description?: T;
+  cities?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        image?: T;
+        href?: T;
+        tour_count_label?: T;
+        id?: T;
+      };
+  dietary_eyebrow?: T;
+  dietary_heading?: T;
+  dietary_description?: T;
+  dietary_image?: T;
+  experience_eyebrow?: T;
+  experience_heading?: T;
+  experience_description?: T;
+  experiences?:
+    | T
+    | {
+        name?: T;
+        image?: T;
+        specialty_slug?: T;
+        href?: T;
+        id?: T;
+      };
+  travel_with_eyebrow?: T;
+  travel_with_heading?: T;
+  travel_with_description?: T;
+  travel_with_options?:
+    | T
+    | {
+        name?: T;
+        icon?: T;
+        image?: T;
+        travel_type_slug?: T;
+        href?: T;
+        id?: T;
+      };
+  groups_eyebrow?: T;
+  groups_heading?: T;
+  groups_section_description?: T;
+  groups?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        href?: T;
+        id?: T;
+      };
+  tailor_eyebrow?: T;
+  tailor_heading?: T;
+  tailor_description?: T;
+  tailor_image?: T;
+  tailor_features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  tailor_cta_text?: T;
+  tailor_cta_href?: T;
+  find_tour_heading?: T;
+  find_tour_description?: T;
+  not_sure_heading?: T;
+  not_sure_description?: T;
+  not_sure_cta_text?: T;
+  not_sure_cta_href?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stories_page_select".
+ */
+export interface StoriesPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
+  hero_image?: T;
+  hero_title?: T;
+  hero_description?: T;
+  food_culture_eyebrow?: T;
+  food_culture_heading?: T;
+  travel_tips_eyebrow?: T;
+  travel_tips_heading?: T;
+  vendor_stories_eyebrow?: T;
+  vendor_stories_heading?: T;
+  vendor_stories_empty_message?: T;
+  vendor_stories_empty_cta?: T;
+  vendor_stories_empty_cta_href?: T;
+  newsletter_eyebrow?: T;
+  newsletter_heading?: T;
+  newsletter_description?: T;
+  newsletter_placeholder?: T;
+  newsletter_button_text?: T;
+  empty_message?: T;
+  empty_cta_text?: T;
+  empty_cta_href?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "directions_page_select".
  */
 export interface DirectionsPageSelect<T extends boolean = true> {
@@ -5975,6 +6860,67 @@ export interface TourQuizSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "content_briefs_select".
+ */
+export interface ContentBriefsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  segmentType?: T;
+  status?: T;
+  landingPageSlugs?: T;
+  relatedLandingPages?: T;
+  guideSlug?: T;
+  guideLink?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        quality?: T;
+        followUp?: T;
+        intendedFor?: T;
+        id?: T;
+      };
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cte_posts_select".
+ */
+export interface CtePostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  content_markdown?: T;
+  featuredImage?: T;
+  publishedDate?: T;
+  meta_title?: T;
+  meta_description?: T;
+  workflowStatus?: T;
+  author?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cte_pages_select".
+ */
+export interface CtePagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  content_markdown?: T;
+  featuredImage?: T;
+  meta_title?: T;
+  meta_description?: T;
+  workflowStatus?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -6156,8 +7102,14 @@ export interface TaskCreateCollectionExport {
       | 'corporate_groups_page'
       | 'track_record_page'
       | 'private_tours_page'
+      | 'tailored_tours_page'
+      | 'tours_page'
+      | 'stories_page'
       | 'directions_page'
       | 'tour_quiz'
+      | 'content_briefs'
+      | 'cte_posts'
+      | 'cte_pages'
       | 'exports'
       | 'imports';
     drafts?: ('yes' | 'no') | null;

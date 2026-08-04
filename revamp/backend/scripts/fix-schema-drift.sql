@@ -273,8 +273,21 @@ CREATE TABLE IF NOT EXISTS _stories_v_rels (
 -- Schema must match src/collections/CtePosts.ts / CtePages.ts:
 --   - single upload/relationship fields become direct <field>_id columns
 --   - no versions => no _status column
---   - workflow_status stored as VARCHAR (Payload select values)
+--   - workflow_status is a proper Postgres ENUM (draft/in_review/approved/published)
 -- ============================================================
+
+-- workflow_status as proper Postgres ENUMs (matches what Payload generates for
+-- select fields). Created BEFORE the tables reference them; existing VARCHAR
+-- columns are migrated with the USING cast so idempotent re-runs are safe.
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'enum_cte_posts_workflow_status') THEN
+    CREATE TYPE enum_cte_posts_workflow_status AS ENUM ('draft', 'in_review', 'approved', 'published');
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'enum_cte_pages_workflow_status') THEN
+    CREATE TYPE enum_cte_pages_workflow_status AS ENUM ('draft', 'in_review', 'approved', 'published');
+  END IF;
+END $$;
 
 CREATE SEQUENCE IF NOT EXISTS cte_posts_id_seq START WITH 1;
 
@@ -288,7 +301,7 @@ CREATE TABLE IF NOT EXISTS cte_posts (
     published_date timestamp with time zone,
     meta_title text,
     meta_description text,
-    workflow_status character varying DEFAULT 'draft',
+    workflow_status enum_cte_posts_workflow_status DEFAULT 'draft',
     author_id integer,
     updated_at timestamp with time zone DEFAULT now(),
     created_at timestamp with time zone DEFAULT now(),
@@ -307,13 +320,25 @@ CREATE TABLE IF NOT EXISTS cte_pages (
     featured_image_id integer,
     meta_title text,
     meta_description text,
-    workflow_status character varying DEFAULT 'draft',
+    workflow_status enum_cte_pages_workflow_status DEFAULT 'draft',
     updated_at timestamp with time zone DEFAULT now(),
     created_at timestamp with time zone DEFAULT now(),
     PRIMARY KEY (id)
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS cte_pages_slug_idx ON cte_pages (slug);
+
+-- Migrate pre-existing VARCHAR columns to the enum types (no-op on fresh DBs).
+-- The existing DEFAULT must be dropped first — Postgres can't auto-cast a
+-- varchar default during a column type change.
+ALTER TABLE cte_posts ALTER COLUMN workflow_status DROP DEFAULT;
+ALTER TABLE cte_posts ALTER COLUMN workflow_status TYPE enum_cte_posts_workflow_status
+  USING workflow_status::enum_cte_posts_workflow_status;
+ALTER TABLE cte_posts ALTER COLUMN workflow_status SET DEFAULT 'draft';
+ALTER TABLE cte_pages ALTER COLUMN workflow_status DROP DEFAULT;
+ALTER TABLE cte_pages ALTER COLUMN workflow_status TYPE enum_cte_pages_workflow_status
+  USING workflow_status::enum_cte_pages_workflow_status;
+ALTER TABLE cte_pages ALTER COLUMN workflow_status SET DEFAULT 'draft';
 
 DO $$ BEGIN
   RAISE NOTICE 'Schema drift fix complete.';
