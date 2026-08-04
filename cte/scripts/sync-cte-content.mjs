@@ -17,7 +17,9 @@ const PAYLOAD_TOKEN = process.env.PAYLOAD_TOKEN || '';
 
 async function fetchFromPayload(endpoint, token) {
   // depth=1 resolves featuredImage + author relationships to objects (with url/name)
-  const url = `${PAYLOAD_URL}/api/${endpoint}?limit=100&depth=1&sort=-publishedDate`;
+  // Only workflowStatus=published content is synced — drafts/in-review/approved
+  // stay in the CMS until an editor publishes them.
+  const url = `${PAYLOAD_URL}/api/${endpoint}?limit=100&depth=1&sort=-publishedDate&where[workflowStatus][equals]=published`;
   const headers = {
     'Content-Type': 'application/json',
     ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
