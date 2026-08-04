@@ -267,6 +267,54 @@ CREATE TABLE IF NOT EXISTS _stories_v_rels (
     specialty_experiences_id INTEGER
 );
 
+-- ============================================================
+-- CTE collections (cte_posts / cte_pages)
+-- Payload push:true does NOT create these tables on this deployment.
+-- Schema must match src/collections/CtePosts.ts / CtePages.ts:
+--   - single upload/relationship fields become direct <field>_id columns
+--   - no versions => no _status column
+--   - workflow_status stored as VARCHAR (Payload select values)
+-- ============================================================
+
+CREATE SEQUENCE IF NOT EXISTS cte_posts_id_seq START WITH 1;
+
+CREATE TABLE IF NOT EXISTS cte_posts (
+    id integer NOT NULL DEFAULT nextval('cte_posts_id_seq'::regclass),
+    title text,
+    slug character varying,
+    excerpt text,
+    content_markdown text,
+    featured_image_id integer,
+    published_date timestamp with time zone,
+    meta_title text,
+    meta_description text,
+    workflow_status character varying DEFAULT 'draft',
+    author_id integer,
+    updated_at timestamp with time zone DEFAULT now(),
+    created_at timestamp with time zone DEFAULT now(),
+    PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS cte_posts_slug_idx ON cte_posts (slug);
+
+CREATE SEQUENCE IF NOT EXISTS cte_pages_id_seq START WITH 1;
+
+CREATE TABLE IF NOT EXISTS cte_pages (
+    id integer NOT NULL DEFAULT nextval('cte_pages_id_seq'::regclass),
+    title text,
+    slug character varying,
+    content_markdown text,
+    featured_image_id integer,
+    meta_title text,
+    meta_description text,
+    workflow_status character varying DEFAULT 'draft',
+    updated_at timestamp with time zone DEFAULT now(),
+    created_at timestamp with time zone DEFAULT now(),
+    PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS cte_pages_slug_idx ON cte_pages (slug);
+
 DO $$ BEGIN
   RAISE NOTICE 'Schema drift fix complete.';
 END $$;
