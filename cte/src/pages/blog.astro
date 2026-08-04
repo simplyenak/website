@@ -1,96 +1,71 @@
 ---
-title: 'Blog | Culinary Travel Experts'
-description: 'Insights for travel agents on Malaysian food culture, destination knowledge, and selling culinary experiences.'
----
+import { getCollection } from 'astro:content';
+import type { APIRoute } from 'astro';
+import CteBlogList from '~/components/blog/CteBlogList.astro';
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Culinary Travel Experts Blog",
-  "url": "https://culinarytravelexperts.com/blog",
-  "description": "Insights for travel agents on Malaysian food culture and selling culinary experiences.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Culinary Travel Experts",
-    "url": "https://culinarytravelexperts.com"
+// Fetch posts from Payload CMS
+async function fetchCtePosts() {
+  try {
+    const response = await fetch(
+      `https://cms.system.simplyenak.com/api/cte-posts?limit=100&depth=0`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.PAYLOAD_TOKEN || ''}`
+        }
+      }
+    );
+
+    if (!response.ok) {
+      console.error('Failed to fetch CTE posts:', response.status);
+      return [];
+    }
+
+    const data = await response.json();
+    return (data.docs || []).filter(doc => doc._status === 'published' && doc.workflowStatus === 'published');
+  } catch (error) {
+    console.error('Error fetching CTE posts:', error);
+    return [];
   }
 }
-</script>
 
-<section class="py-20">
-  <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-4xl font-bold mb-6">Agent Insights</h1>
-    <p class="text-xl text-muted mb-8">
-      Destination knowledge, cultural context, and tips for selling Malaysian food experiences. Written by operators who've been doing this for 14 years.
-    </p>
+export const prerender = false;
 
-    <div class="prose prose-lg max-w-none mb-12">
-      <p>
-        This isn't generic travel advice. These are insights from people who run food tours in Malaysia every day, work with the same vendors for over a decade, and understand what agents need to know before selling these experiences.
-      </p>
-    </div>
+let posts = [];
+if (import.meta.env.SSR) {
+  posts = await fetchCtePosts();
+}
+---
 
-    <div class="grid gap-6">
-      <div class="bg-card p-6 rounded-lg">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="font-bold text-lg">Would You Sell Disappointment?</h3>
-          <span class="text-sm text-muted">August 2026</span>
+<html lang="en">
+  <head>
+    <title>Blog | Culinary Travel Experts</title>
+    <meta name="description" content="Insights for travel agents on Malaysian food culture, destination knowledge, and selling culinary experiences." />
+    <link rel="canonical" href="https://culinarytravelexperts.com/blog" />
+  </head>
+  <body>
+    <main>
+      <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+          <h1 class="text-4xl font-bold mb-6">Agent Insights</h1>
+          <p class="text-xl text-muted mb-8">
+            Destination knowledge, cultural context, and tips for selling Malaysian food experiences. Written by operators who've been doing this for 14 years.
+          </p>
+
+          <div class="prose prose-lg max-w-none mb-12">
+            <p>
+              This isn't generic travel advice. These are insights from people who run food tours in Malaysia every day, work with the same vendors for over a decade, and understand what agents need to know before selling these experiences.
+            </p>
+          </div>
+
+          <CteBlogList posts={posts} />
+
+          <div class="mt-12 text-center">
+            <p class="text-muted mb-4">More insights coming soon. Subscribe to our agent newsletter for updates.</p>
+            <a href="/contact" class="btn-primary">Join Our Agent Network</a>
+          </div>
         </div>
-        <p class="text-muted mb-3">
-          A guest wanted fireflies, blue tears, and a vegan dinner, all in one evening. The eco-boat company uses diesel. The fireflies are often underwhelming. The vegan option conflicts with local food culture. How do you sell experiences that might not deliver?
-        </p>
-        <a href="/blog/would-you-sell-disappointment" class="text-accent hover:underline">Read article →</a>
-      </div>
-
-      <div class="bg-card p-6 rounded-lg">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="font-bold text-lg">Greenwashing in Malaysian Tourism</h3>
-          <span class="text-sm text-muted">July 2026</span>
-        </div>
-        <p class="text-muted mb-3">
-          Companies advertise "whispering boats" and eco-friendly experiences while running diesel engines. It's usually ignorance, not malice. But agents need to know how to spot genuine sustainability versus marketing spin.
-        </p>
-        <a href="/blog/greenwashing-malaysian-tourism" class="text-accent hover:underline">Read article →</a>
-      </div>
-
-      <div class="bg-card p-6 rounded-lg">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="font-bold text-lg">How to Sell Malaysian Food Tours to Skeptical Clients</h3>
-          <span class="text-sm text-muted">July 2026</span>
-        </div>
-        <p class="text-muted mb-3">
-          Common objections: "Will they like the food?" "Is it safe?" "Is it too spicy?" Here's how to position the experience, manage expectations, and convert hesitant clients.
-        </p>
-        <a href="/blog/how-to-sell-malaysian-food-tours" class="text-accent hover:underline">Read article →</a>
-      </div>
-
-      <div class="bg-card p-6 rounded-lg">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="font-bold text-lg">Durian Season: What Agents Need to Know</h3>
-          <span class="text-sm text-muted">June 2026</span>
-        </div>
-        <p class="text-muted mb-3">
-          When it happens, how to manage expectations, and what to tell hesitant clients. Plus: which tours to offer and how to position durian experiences.
-        </p>
-        <a href="/blog/durian-season-guide" class="text-accent hover:underline">Read article →</a>
-      </div>
-
-      <div class="bg-card p-6 rounded-lg">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="font-bold text-lg">Halal, Vegetarian, Vegan: Handling Dietary Requirements</h3>
-          <span class="text-sm text-muted">June 2026</span>
-        </div>
-        <p class="text-muted mb-3">
-          What agents need to know about Malaysian food culture and dietary restrictions. How to communicate with guests and what we handle for you.
-        </p>
-        <a href="/blog/dietary-requirements-guide" class="text-accent hover:underline">Read article →</a>
-      </div>
-    </div>
-
-    <div class="mt-12 text-center">
-      <p class="text-muted mb-4">More insights coming soon. Subscribe to our agent newsletter for updates.</p>
-      <a href="#contact" class="btn-primary">Join Our Agent Network</a>
-    </div>
-  </div>
-</section>
+      </section>
+    </main>
+  </body>
+</html>

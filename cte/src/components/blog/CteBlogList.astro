@@ -1,0 +1,28 @@
+---
+interface Props {
+  posts: any[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="grid gap-6">
+  {posts.length > 0 ? (
+    posts.map(post => (
+      <div class="bg-card p-6 rounded-lg">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="font-bold text-lg">{post.title}</h3>
+          <span class="text-sm text-muted">{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+        </div>
+        {post.excerpt && (
+          <p class="text-muted mb-3">{post.excerpt}</p>
+        )}
+        <a href={`/blog/${post.slug}`} class="text-accent hover:underline">Read article →</a>
+      </div>
+    ))
+  ) : (
+    <div class="text-center py-12 text-muted">
+      <p>No articles published yet. Check back soon.</p>
+    </div>
+  )}
+</div>
