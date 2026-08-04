@@ -1,40 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
-import type { APIRoute } from 'astro';
-import CteBlogList from '~/components/blog/CteBlogList.astro';
-
-// Fetch posts from Payload CMS
-async function fetchCtePosts() {
-  try {
-    const response = await fetch(
-      `https://cms.system.simplyenak.com/api/cte-posts?limit=100&depth=0`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.PAYLOAD_TOKEN || ''}`
-        }
-      }
-    );
-
-    if (!response.ok) {
-      console.error('Failed to fetch CTE posts:', response.status);
-      return [];
-    }
-
-    const data = await response.json();
-    return (data.docs || []).filter(doc => doc._status === 'published' && doc.workflowStatus === 'published');
-  } catch (error) {
-    console.error('Error fetching CTE posts:', error);
-    return [];
-  }
-}
-
-export const prerender = false;
-
-let posts = [];
-if (import.meta.env.SSR) {
-  posts = await fetchCtePosts();
-}
+// Hardcoded blog posts for static build
+const posts = [
+  {
+    title: 'Would You Sell Disappointment?',
+    slug: 'would-you-sell-disappointment',
+    publishedDate: '2026-08-01',
+    excerpt: 'A guest wanted fireflies, blue tears, and a vegan dinner. The eco-boat uses diesel. The fireflies are often underwhelming. The vegan option conflicts with local food. Should we sell experiences that might not deliver?',
+  },
+  {
+    title: 'Greenwashing in Malaysian Tourism',
+    slug: 'greenwashing-malaysian-tourism',
+    publishedDate: '2026-07-28',
+    excerpt: 'Companies advertise "whispering boats" and eco-friendly experiences while running diesel engines. It\'s usually ignorance, not malice. But agents need to know how to spot genuine sustainability versus marketing spin.',
+  },
+  {
+    title: 'How to Sell Malaysian Food Tours to Skeptical Clients',
+    slug: 'how-to-sell-malaysian-food-tours',
+    publishedDate: '2026-07-25',
+    excerpt: 'Common objections: "Will they like the food?" "Is it safe?" "Is it too spicy?" Here is how to position the experience, manage expectations, and convert hesitant clients.',
+  },
+];
 ---
 
 <html lang="en">
@@ -58,7 +43,18 @@ if (import.meta.env.SSR) {
             </p>
           </div>
 
-          <CteBlogList posts={posts} />
+          <div class="grid gap-6">
+            {posts.map(post => (
+              <div class="bg-card p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-bold text-lg">{post.title}</h3>
+                  <span class="text-sm text-muted">{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+                </div>
+                <p class="text-muted mb-3">{post.excerpt}</p>
+                <a href={`/blog/${post.slug}`} class="text-accent hover:underline">Read article →</a>
+              </div>
+            ))}
+          </div>
 
           <div class="mt-12 text-center">
             <p class="text-muted mb-4">More insights coming soon. Subscribe to our agent newsletter for updates.</p>
