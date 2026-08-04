@@ -48,6 +48,8 @@ import { ToursPage } from './collections/ToursPage'
 import { StoriesPage } from './collections/StoriesPage'
 import { Pages } from './collections/Pages'
 import { ContentBriefs } from './collections/ContentBriefs'
+import { CtePosts } from './collections/CtePosts'
+import { CtePages } from './collections/CtePages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -126,6 +128,9 @@ export default buildConfig({
     TourQuiz,
     // Content Pipeline
     ContentBriefs,
+    // CTE Collections
+    CtePosts,
+    CtePages,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -178,6 +183,8 @@ export default buildConfig({
         { slug: 'track_record_page' },
         { slug: 'private_tours_page' },
         { slug: 'directions_page' },
+        { slug: 'cte_posts' },
+        { slug: 'cte_pages' },
       ],
       defaultVersionStatus: 'published',
       importLimit: 0, // unlimited
@@ -191,6 +198,20 @@ export default buildConfig({
           disablePayloadAccessControl: false,
           generateFileURL: ({ filename }) => {
             return `https://cdn.simplyenak.com/payload-media/${filename}`
+          },
+        },
+        cte_posts: {
+          prefix: 'cte-media',
+          disablePayloadAccessControl: false,
+          generateFileURL: ({ filename }: { filename: string }) => {
+            return `https://cdn.culinarytravelexperts.com/cte-media/${filename}`
+          },
+        },
+        cte_pages: {
+          prefix: 'cte-media',
+          disablePayloadAccessControl: false,
+          generateFileURL: ({ filename }: { filename: string }) => {
+            return `https://cdn.culinarytravelexperts.com/cte-media/${filename}`
           },
         },
       },
@@ -207,7 +228,7 @@ export default buildConfig({
     }),
     // SEO Plugin
     seoPlugin({
-      collections: ['tours', 'stories', 'pages'],
+      collections: ['tours', 'stories', 'pages', 'cte_posts', 'cte_pages'],
       uploadsCollection: 'media',
     }),
     // Nested Docs Plugin
