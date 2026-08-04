@@ -10,7 +10,13 @@
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+// Resolve the content dir relative to THIS script, so the sync works from any
+// cwd (npm run sync, cron wrappers that cd to the repo root, manual runs).
+const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
+const CONTENT_DIR = join(SCRIPT_DIR, '..', 'src', 'data', 'content');
 
 const PAYLOAD_URL = process.env.PAYLOAD_URL || 'https://cms.system.simplyenak.com';
 const PAYLOAD_TOKEN = process.env.PAYLOAD_TOKEN || '';
@@ -71,12 +77,11 @@ async function syncCtePosts() {
     // Sort by date (newest first)
     syncedPosts.sort((a, b) => new Date(b.publishedDate) - new Date(a.publishedDate));
 
-    const contentDir = join(process.cwd(), 'src', 'data', 'content');
-    if (!existsSync(contentDir)) {
-      mkdirSync(contentDir, { recursive: true });
+    // Write to content file (script-relative — safe from any cwd)
+    const outputPath = join(CONTENT_DIR, 'cte-posts.json');
+    if (!existsSync(CONTENT_DIR)) {
+      mkdirSync(CONTENT_DIR, { recursive: true });
     }
-
-    const outputPath = join(contentDir, 'cte-posts.json');
     writeFileSync(outputPath, JSON.stringify(syncedPosts, null, 2));
 
     console.log(`Synced ${syncedPosts.length} posts to ${outputPath}`);
@@ -107,12 +112,11 @@ async function syncCtePages() {
       updatedAt: doc.updatedAt,
     }));
 
-    const contentDir = join(process.cwd(), 'src', 'data', 'content');
-    if (!existsSync(contentDir)) {
-      mkdirSync(contentDir, { recursive: true });
+    // Write to content file (script-relative — safe from any cwd)
+    const outputPath = join(CONTENT_DIR, 'cte-pages.json');
+    if (!existsSync(CONTENT_DIR)) {
+      mkdirSync(CONTENT_DIR, { recursive: true });
     }
-
-    const outputPath = join(contentDir, 'cte-pages.json');
     writeFileSync(outputPath, JSON.stringify(syncedPages, null, 2));
 
     console.log(`Synced ${syncedPages.length} pages to ${outputPath}`);

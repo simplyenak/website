@@ -15,6 +15,11 @@ async function createAdminUser() {
   const payload = await getPayload({ config })
   
   // Check if users already exist
+  if (!process.env.ADMIN_PASSWORD) {
+    console.error('❌ ADMIN_PASSWORD env var required — refusing to create a user with a known default password')
+    process.exit(1)
+  }
+
   const existing = await payload.find({ collection: 'users', limit: 1 })
   if (existing.docs.length > 0) {
     console.log(`✅ User already exists: ${existing.docs[0].email}`)
@@ -27,7 +32,7 @@ async function createAdminUser() {
     collection: 'users',
     data: {
       email: 'admin@simplyenak.com',
-      password: 'admin123',
+      password: process.env.ADMIN_PASSWORD || '',
       role: 'admin',
       fullName: 'Admin User',
     },

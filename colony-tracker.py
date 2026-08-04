@@ -30,7 +30,7 @@ POST_DIR = REPO_ROOT / "site" / "src" / "data" / "post"
 # Payload API config
 PAYLOAD_URL = os.environ.get("PAYLOAD_URL", "https://cms.system.simplyenak.com")
 PAYLOAD_EMAIL = os.environ.get("PAYLOAD_EMAIL", "admin@simplyenak.com")
-PAYLOAD_PASSWORD = os.environ.get("PAYLOAD_PASSWORD", "admin123")
+PAYLOAD_PASSWORD = os.environ.get("PAYLOAD_PASSWORD", "")
 
 DEFAULT = {
     "threshold": {"max_position": 10, "min_impressions_weekly": 100, "min_clicks_weekly": 1, "sustain_weeks": 2},

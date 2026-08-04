@@ -1,5 +1,17 @@
 # Simply Enak — Project Context
 
+## 🔐 Credential Policy (MANDATORY — user mandate 2026-08-05)
+
+**NEVER hardcode passwords, API keys, tokens, or secrets in scripts, configs, or code.**
+
+- Credentials live in exactly two places:
+  1. **PyRunner secret store** (pyrunner.system.simplyenak.com) — for PyRunner-hosted webhook scripts
+  2. **`site/.env`** (gitignored, local only) — for scripts that run on this machine
+- Scripts MUST read credentials from env vars (`os.environ.get(...)` / `process.env...`) with an EMPTY default — never a real value. An empty default fails loudly instead of silently using a stale known password.
+- Use `import payload_env` (scripts/payload_env.py) to load `site/.env` into the environment for Python scripts that log into Payload.
+- Never commit `.env` files; never echo credentials in script output.
+- If a credential must be rotated: rotate it in the CMS/app first, update `site/.env` (and PyRunner secrets), then verify old fails / new works. Check for hardcoded copies: `grep -rn "<old-value>" --include="*.py" --include="*.js" --include="*.mjs" --include="*.sh" --include="*.ts" .`
+
 ## Stack
 - **Frontend**: Astro 6 + TailwindCSS 4, deployed to Cloudflare Pages
 - **CMS**: Payload CMS 3 (PostgreSQL), at cms.system.simplyenak.com

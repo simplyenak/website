@@ -16,7 +16,7 @@ import urllib.error
 
 PAYLOAD_URL = os.environ.get("PAYLOAD_URL", "https://cms.system.simplyenak.com")
 PAYLOAD_EMAIL = os.environ.get("PAYLOAD_EMAIL", "admin@simplyenak.com")
-PAYLOAD_PASSWORD = os.environ.get("PAYLOAD_PASSWORD", "admin123")
+PAYLOAD_PASSWORD = os.environ.get("PAYLOAD_PASSWORD", "")
 
 SLUG = "do-malaysians-speak-english"
 # New title in promise+suspense format – keeps the query but creates curiosity gap

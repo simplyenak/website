@@ -90,5 +90,6 @@ scripts/*.sh
 !scripts/striking-to-colony.py
 !scripts/fix-pt-meta.py
 !scripts/fix-meta-title-dms.py
+!scripts/payload_env.py
 scripts/*.md
 scripts/seo-automation/

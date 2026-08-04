@@ -328,6 +328,13 @@ CREATE TABLE IF NOT EXISTS cte_pages (
 
 CREATE UNIQUE INDEX IF NOT EXISTS cte_pages_slug_idx ON cte_pages (slug);
 
+-- payload_locked_documents_rels: add CTE columns (Payload's document-locking
+-- join table gets one column per collection; push:true never added these when
+-- cte_posts/cte_pages were introduced — missing them 500s forgot-password and
+-- the admin edit view)
+ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS cte_posts_id INTEGER;
+ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS cte_pages_id INTEGER;
+
 -- Migrate pre-existing VARCHAR columns to the enum types (no-op on fresh DBs).
 -- The existing DEFAULT must be dropped first — Postgres can't auto-cast a
 -- varchar default during a column type change.
