@@ -17,16 +17,26 @@
   - workflowStatus
 
 ### 2. S3 Storage Configuration
-- CTE media uploaded to same S3 bucket (`se-website-images`)
-- Prefix: `cte-media/` (different from `payload-media/`)
-- CDN URLs generated: `https://cdn.culinarytravelexperts.com/cte-media/{filename}`
-- Same Scaleway S3 backend as simplyenak.com
+- CTE media uploaded via the shared `media` collection (same S3 bucket `se-website-images`)
+- Prefix: `payload-media/` → CDN: `https://cdn.simplyenak.com/payload-media/{filename}`
+- **Note:** the `featuredImage` field on cte_posts/cte_pages stores files through the
+  `media` collection. A per-collection `cte-media` prefix is NOT possible for upload
+  *fields* — s3Storage plugin collection entries only apply to upload collections.
+  (Registering cte_posts/cte_pages in s3Storage/ seoPlugin configs broke the API:
+  it generated upload-style columns + a `cte_posts_locales` join table that never
+  existed. Both were removed — see payload.config.ts notes.)
 
 ### 3. CTE Site Updates
-- **Blog listing** (`src/pages/blog.astro`): Now fetches from Payload API
-- **Blog post page** (`src/pages/blog/[...slug].astro`): Dynamic content from Payload
-- **Fallback content**: Static markdown files preserved as fallback
-- **Sync script** (`scripts/sync-cte-content.mjs`): Pulls content for static builds
+- **Blog listing** (`src/pages/blog.astro`): Lists posts from `src/data/content/cte-posts.json`
+  (synced from Payload via `scripts/sync-cte-content.mjs`), with hardcoded fallback
+- **Blog post page** (`src/pages/blog/[...slug].astro`): Renders Payload posts from the
+  same JSON (markdown body via `marked`); static `.astro` pages shadow the 3 original slugs
+- **Static pages** (`src/pages/blog/{slug}.astro`): Full articles for the original 3 posts;
+  new posts render via the dynamic route
+- **Sync script** (`scripts/sync-cte-content.mjs`): Fetches `/api/cte_posts` + `/api/cte_pages`
+  (underscore slugs — hyphenated 404s) with `depth=1`, writes `src/data/content/*.json`
+- **Auto-sync**: Hermes cron `04319b101ded` runs `cte/scripts/auto-sync-cte.sh` every 60m —
+  syncs, commits `cte/src/data/content/`, pushes → `deploy-cte.yml` deploys
 
 ### 4. Cloudflare Worker
 - **File**: `cte/workers/cdn-rewriter.js`
