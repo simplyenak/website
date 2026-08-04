@@ -29,14 +29,15 @@
 ### 3. CTE Site Updates
 - **Blog listing** (`src/pages/blog.astro`): Lists posts from `src/data/content/cte-posts.json`
   (synced from Payload via `scripts/sync-cte-content.mjs`), with hardcoded fallback
-- **Blog post page** (`src/pages/blog/[...slug].astro`): Renders Payload posts from the
-  same JSON (markdown body via `marked`); static `.astro` pages shadow the 3 original slugs
-- **Static pages** (`src/pages/blog/{slug}.astro`): Full articles for the original 3 posts;
-  new posts render via the dynamic route
+- **Blog post page** (`src/pages/blog/[...slug].astro`): Single source of truth — ALL posts
+  render from Payload markdown via `marked`. The 3 original static `.astro` pages were
+  deleted after their full article bodies were ported into Payload (2026-08-05)
 - **Sync script** (`scripts/sync-cte-content.mjs`): Fetches `/api/cte_posts` + `/api/cte_pages`
-  (underscore slugs — hyphenated 404s) with `depth=1`, writes `src/data/content/*.json`
-- **Auto-sync**: Hermes cron `04319b101ded` runs `cte/scripts/auto-sync-cte.sh` every 60m —
-  syncs, commits `cte/src/data/content/`, pushes → `deploy-cte.yml` deploys
+  (underscore slugs — hyphenated 404s) with `depth=1`, only `workflowStatus=published`
+  (drafts/in-review never go live), writes `src/data/content/*.json`
+- **Auto-sync**: Hermes cron `04319b101ded` runs `cte/scripts/auto-sync-cte.sh` every 6h —
+  syncs, commits `cte/src/data/content/`, pushes, then verifies the deploy-cte.yml run
+  (exits non-zero if the deploy failed)
 
 ### 4. Cloudflare Worker
 - **File**: `cte/workers/cdn-rewriter.js`
