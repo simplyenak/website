@@ -91,5 +91,6 @@ scripts/*.sh
 !scripts/fix-pt-meta.py
 !scripts/fix-meta-title-dms.py
 !scripts/payload_env.py
+!scripts/credential-scan.py
 scripts/*.md
 scripts/seo-automation/
