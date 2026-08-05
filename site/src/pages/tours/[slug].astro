@@ -224,6 +224,34 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
 <Layout metadata={meta}>
   <!-- TouristTrip + Product Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(tourSchema)} />
+  <!-- FAQPage Schema for Google rich results -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.filter((f: any) => {
+      const vis = f.page_visibility || [];
+      const tourSlugMap: Record<string, string> = {
+        'kuala-lumpur-street-food': 'kl-street-food',
+        'secrets-of-kl-nightlife-street-art-and-cocktails': 'secrets-of-kl-nightlife',
+      };
+      const pageKey = tourSlugMap[tour.slug] || tour.slug;
+      const relatedTourSlug = f.relatedTour
+        ? (typeof f.relatedTour === 'object'
+            ? f.relatedTour.slug
+            : typeof f.relatedTour === 'number'
+              ? allTours.find((t: any) => t.id === f.relatedTour)?.slug || null
+              : null)
+        : null;
+      return vis.length === 0 || vis.includes('all') || vis.includes('tour-detail') || vis.includes(pageKey) || (relatedTourSlug && relatedTourSlug === tour.slug);
+    }).slice(0, 10).map((faq: any) => ({
+      '@type': 'Question',
+      name: faq.question || faq.q || '',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: (faq.answer || faq.a || '')
+      }
+    }))
+  })} />
   <!-- Breadcrumb + Section Nav -->
   <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
