@@ -36,7 +36,7 @@ jobs:
         run: docker push localhost:5000/simplyenak/website-backend:noloc2
 
       - name: Build migration runner image
-        run: cd revamp/backend && docker build --target deps -t payload-migrate:latest .
+        run: cd /home/maarten/website-optimization/revamp/backend && docker build --target deps -t payload-migrate:latest .
 
       - name: Apply database migrations
         # Runs `payload migrate` against the prod DB BEFORE the service update.
@@ -44,7 +44,7 @@ jobs:
         # and resolves the postgres service name. Fails the deploy if migrations error.
         run: |
           set -e
-          cd revamp/backend
+          cd /home/maarten/website-optimization/revamp/backend
           PAYLOAD_CID=$(docker ps --filter name=simplyenakbackend_payload --format '{{.ID}}' | head -1)
           DBURL=$(docker exec "$PAYLOAD_CID" printenv DATABASE_URL)
           SECRET=$(docker exec "$PAYLOAD_CID" printenv PAYLOAD_SECRET)
