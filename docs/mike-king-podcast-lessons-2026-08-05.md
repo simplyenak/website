@@ -61,7 +61,7 @@ ChatGPT does not just use Bing: it uses Google, Exa, SerpAPI, and more, and you 
 
 **What this means for us:**
 - [MONTH] Stop thinking "Google strategy vs Bing strategy vs AI strategy". One strategy: comprehensive content, distributed across platforms, consistent entity. Our multi-search-engine reporting (GSC + Bing) already moves this way; extend the mental model to AI platforms.
-- [WEEK] **Add llms.txt to both sites.** Claude/Brave uses it heavily. A simple markdown file at the root (`/llms.txt`) listing our key pages with one-line descriptions: tours, stories, locations, booking. Lighthouse's agentic review checks for it too. This is a 20-minute win on both simplyenak.com and culinarytravelexperts.com.
+- [DONE — verified 2026-08-05] **Add llms.txt to both sites.** Claude/Brave uses it heavily. Already live: simplyenak.com/llms.txt (7.9KB, tours + prices + dietary info) and culinarytravelexperts.com/llms.txt (498B). agents.txt + agents.json also live (agent-discovery-layer work). Maintenance item: keep llms.txt in sync when tours/prices change.
 
 ### 3.2 Query fanouts are the new keyword
 AI systems break a prompt into a series of sub-queries (the fanout), pull documents for each, compare passages side by side, and feed the winners to the language model. There is an agentic pipeline with a "critic" at each stage: which queries to run, which documents to fetch, which passages to keep. You have no visibility into those judgments.
@@ -117,6 +117,13 @@ AI platforms drive traffic that is a rounding error for most sites, but it conve
    - Our site is static Astro on Cloudflare Pages, so HTML is cacheable. Ensure the Worker sets cacheable headers on HTML (e.g. `s-maxage`) or uses the Cache API for HTML responses, so edge timeouts disappear. The Worker already short-circuits static assets; extend the same thinking to HTML.
    - Verify no uncached dynamic path (Payload live lookups at request time) creates slow responses for bots. The `?lang=` and locale variants must also be cached or fast.
 4. Re-check after deploy: 499 count should drop to ~0 and TTFB should be well under 1s (target: sub-500ms from edge).
+
+**Verification results (2026-08-05):**
+- Historical 499 counts are NOT retrievable with current API tokens: zone-level HTTP analytics nodes are absent from the READONLY token's GraphQL schema, the classic Zone Analytics API requires user-owned credentials (we have account-owned tokens), Logpull is 403 (not enabled), and the MANAGE token is denied on account-level `httpRequests1dGroups`.
+- The Worker (deployed, byte-identical to repo) already sets `cache-control: public, s-maxage=300, max-age=0, must-revalidate` on all HTML for requests with `Accept: text/html`. BUT Cloudflare does NOT actually serve these from edge cache: no `cf-cache-status` header on repeat requests. The s-maxage is aspirational — every HTML request still goes Worker → Pages origin.
+- Measured TTFB (KUL/SIN edge, 2026-08-05): homepage 0.23-1.09s, /tours/ 0.13-0.62s, /stories/eating-durians/ 0.32-1.43s, /ms/ 0.18-0.97s (one transient >3s timeout), /zh/ 0.45-4.28s (one transient 4.3s). Cold origin responses are slow and variable — exactly the failure mode that produces 499s.
+- **Real fix still to do**: make HTML actually edge-cached. Two options: (a) Cache API in the Worker — `caches.default.put()` with a 60-300s TTL keyed by URL (respecting ?lang / locale variants), or (b) a Cloudflare Cache Rule for `simplyenak.com/*` HTML with 5-minute TTL. Option (a) keeps everything in the Worker (single source of truth).
+- Lesson learned while testing: plain `curl` sends `Accept: */*`, which hits the Worker's non-HTML fast path (line 157) — always test with `-H "Accept: text/html"` to simulate real bots.
 
 This is the closest thing to a guaranteed win in the whole episode. It's also a differentiator: most local competitors don't know 499s exist.
 
@@ -246,8 +253,8 @@ Niche blogs will replace mid-tier publishers: the big media ad model is broken (
 ## Action plan (prioritized)
 
 ### This week [WEEK]
-1. 499/TTFB audit on simplyenak.com: Cloudflare analytics for 499s, curl TTFB on key pages, fix edge caching of HTML, verify. (Part 4)
-2. Add `llms.txt` to simplyenak.com and culinarytravelexperts.com. (Part 3.1)
+1. 499/TTFB hardening on simplyenak.com: audit done 2026-08-05 (see Part 4 verification). REMAINING: make HTML actually edge-cached via Worker Cache API or Cloudflare Cache Rule, then re-verify TTFB < 500ms and 499-free. (Part 4)
+2. ~~Add `llms.txt`~~ DONE — verified live on both domains 2026-08-05. (Part 3.1)
 3. Common Crawl presence check for both domains; note the gap vs competitors. (Part 5)
 4. Mentions audit: search "Simply Enak" across the web; list inconsistent/incorrect mentions; fix what we control. (Part 2.1)
 
