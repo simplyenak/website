@@ -57,7 +57,7 @@ jobs:
             --env PAYLOAD_SECRET="$SECRET" \
             --env PATH=/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
             payload-migrate:latest \
-            sh -c "ln -sfn /app/node_modules /mnt/src/node_modules && payload migrate && node scripts/schema-gate.mjs" >/dev/null
+            sh -c "ln -sfn /app/node_modules /mnt/src/node_modules && payload migrate && cp /mnt/src/scripts/schema-gate.mjs /app/schema-gate.mjs && MIGRATIONS_DIR=/mnt/src/migrations node /app/schema-gate.mjs" >/dev/null
           for i in $(seq 1 60); do
             STATE=$(docker service ps payload-migrate-run --format '{{.CurrentState}}' | head -1)
             echo "$STATE" | grep -qE "Complete|Failed|Rejected" && break

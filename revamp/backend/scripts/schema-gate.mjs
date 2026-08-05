@@ -17,7 +17,9 @@ import { fileURLToPath } from 'url';
 import pg from 'pg';
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
-const MIGRATIONS_DIR = join(SCRIPT_DIR, '..', 'migrations');
+// Override when the script is copied elsewhere (e.g. run from /app in the
+// deploy container while the migrations live in the bind-mounted checkout).
+const MIGRATIONS_DIR = process.env.MIGRATIONS_DIR || join(SCRIPT_DIR, '..', 'migrations');
 
 async function main() {
   // 1. Collect expected tables from the migration index + files
@@ -26,7 +28,8 @@ async function main() {
   const expected = new Set(['payload_migrations']);
   for (const file of migrationFiles) {
     const src = readFileSync(join(MIGRATIONS_DIR, `${file}.ts`), 'utf8');
-    for (const m of src.matchAll(/CREATE TABLE\s+"public"\."([^"]+)"/g)) {
+    // Generated SQL uses both `CREATE TABLE "name"` and `CREATE TABLE "public"."name"`
+    for (const m of src.matchAll(/CREATE TABLE\s+"(?:public"\.")?([^"]+)"/g)) {
       expected.add(m[1]);
     }
   }
