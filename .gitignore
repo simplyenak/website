@@ -94,3 +94,4 @@ scripts/*.sh
 !scripts/credential-scan.py
 scripts/*.md
 scripts/seo-automation/
+scripts/known-secrets.txt

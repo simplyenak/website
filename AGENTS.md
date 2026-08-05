@@ -11,6 +11,7 @@
 - Use `import payload_env` (scripts/payload_env.py) to load `site/.env` into the environment for Python scripts that log into Payload.
 - Never commit `.env` files; never echo credentials in script output.
 - If a credential must be rotated: rotate it in the CMS/app first, update `site/.env` (and PyRunner secrets), then verify old fails / new works. Check for hardcoded copies: `grep -rn "<old-value>" --include="*.py" --include="*.js" --include="*.mjs" --include="*.sh" --include="*.ts" .`
+- **After every rotation, append the OLD value to `scripts/known-secrets.txt`** (gitignored) — the CI credential scan flags any tracked code containing it.
 
 ## Stack
 - **Frontend**: Astro 6 + TailwindCSS 4, deployed to Cloudflare Pages

@@ -16,6 +16,8 @@ Usage: python3 scripts/credential-scan.py
 Exit 0 = clean, exit 1 = violations found.
 """
 
+import os
+import re
 import subprocess
 import sys
 
@@ -31,12 +33,30 @@ EXCLUDES = (
     ":!*.svg",
     # The scanner itself contains the literal patterns it searches for
     ":!scripts/credential-scan.py",
+    ":!scripts/known-secrets.txt",
 )
+
+# Known leaked/rotated credential VALUES. The static list covers the historical
+# leak; scripts/known-secrets.txt (gitignored) is appended by the rotation
+# procedure (AGENTS.md) so every rotated-away password is flagged immediately.
+KNOWN_SECRETS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "known-secrets.txt")
+
+def load_known_secrets() -> list:
+    vals = ["admin123"]
+    if os.path.exists(KNOWN_SECRETS_FILE):
+        with open(KNOWN_SECRETS_FILE) as f:
+            for line in f:
+                v = line.strip()
+                if v and not v.startswith("#"):
+                    vals.append(v)
+    return vals
+
+KNOWN_SECRETS = load_known_secrets()
 
 CHECKS = [
     (
-        "Known leaked values (admin123 etc.)",
-        r"admin123",
+        "Known leaked values",
+        r"(" + "|".join(re.escape(v) for v in KNOWN_SECRETS) + r")",
         ("*.py", "*.js", "*.mjs", "*.ts", "*.sh", "*.yml", "*.yaml", "*.json"),
     ),
     (
