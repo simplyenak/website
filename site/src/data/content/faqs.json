@@ -733,57 +733,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:41.137Z",
     "createdAt": "2026-07-09T10:09:05.525Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei dieser Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse a este recorrido?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à cette visite ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Boleh kanak-kanak sertai lawatan ini?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Mogen kinderen mee op deze tour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "小朋友可以参加这个美食游吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Можно ли взять с собой детей?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "As crianças podem participar deste tour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "お子様もツアーに参加できますか？",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 29,
@@ -832,57 +782,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:44.388Z",
     "createdAt": "2026-07-09T05:18:40.961Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Kann diese Tour in einer vegetarischen Variante gebucht werden?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Se puede hacer este tour en opción vegetariana?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Ce circuit peut-il être proposé en option végétarienne ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Boleh tak tour ini dijalankan dengan pilihan vegetarian?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Kan deze tour ook vegetarisch?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "这条路线可以安排素食选项吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Можно ли пройти этот тур в вегетарианском варианте?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Podemos fazer este tour em versão vegetariana?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "このツアーはベジタリアン向けにできますか？",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 28,
@@ -929,57 +829,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:27.848Z",
     "createdAt": "2026-06-17T02:59:15.298Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können wir bei einer privaten Tour auf Ernährungsbedürfnisse Rücksicht nehmen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Pueden adaptar la comida a dietas especiales en un tour privado?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Boleh tak you uruskan hal pemakanan untuk private tour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "私人游能照顾您的饮食禁忌吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Vous avez des restrictions alimentaires ? On peut s'en occuper lors de votre visite privée.",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Kunnen jullie met dieetwensen rekening houden bij een privétour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Сможете ли вы учесть особенности питания на частном туре?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーで食事制限には対応できますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Conseguimos lidar com restrições alimentares no passeio privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 27,
@@ -1025,57 +875,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:27.600Z",
     "createdAt": "2026-06-17T02:59:14.686Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie weit im Voraus sollten wir eine private Tour buchen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Con cuánta anticipación debemos reservar un tour privado?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Berapa awal lagi kita perlu tempah lawatan peribadi?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "私人游览应该提前多久预订？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "À l'avance, combien faut-il réserver pour une visite privée ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Hoe ver vooraf moeten we een privétour boeken?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "На сколько заранее нужно бронировать частный тур?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーはどれくらい前に予約したらいいですか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Com quanta antecedência devemos reservar o tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 26,
@@ -1121,57 +921,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:27.073Z",
     "createdAt": "2026-06-17T02:59:14.005Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können wir die Route bei einer privaten Tour ändern?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Podemos cambiar el itinerario en un tour privado?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Boleh tak kita tukar itinerary untuk lawatan persendirian?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "私人游可以更改行程吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Peut-on modifier l'itinéraire lors d'une visite privée ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Kunnen we het programma van een privétour aanpassen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Можно ли изменить маршрут на частном туре?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーでスケジュールを変更することはできますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Podemos mudar o roteiro em um tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 25,
@@ -1217,57 +967,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:26.834Z",
     "createdAt": "2026-06-17T02:59:13.354Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was passiert, wenn es regnet?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si llueve?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apa berlaku kalau hujan?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "下雨了怎么办？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Que se passe-t-il s'il pleut ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat gebeurt er als het regent?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что будет, если пойдет дождь?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "雨が降ったらどうなりますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O que acontece se chover?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 24,
@@ -1314,57 +1014,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:45.891Z",
     "createdAt": "2026-06-17T02:59:12.692Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Treffen wir die Verkäufer?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Conoceremos a los vendedores?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Boleh tak kami berjumpa dengan peniaga?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "我们能见到摊主吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Est-ce qu'on rencontre les vendeurs ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Ontmoeten we de verkopers?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Мы познакомимся с продавцами?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "屋台の人たちと直接お話しできますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Vamos conhecer os vendedores?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 23,
@@ -1411,57 +1061,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:46.362Z",
     "createdAt": "2026-06-17T02:59:12.076Z",
-    "_status": "published",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Können Kinder bei der Tour mitmachen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Los niños pueden unirse al tour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Les enfants peuvent-ils participer à la visite ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Boleh kanak-kanak sertai lawatan?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Kunnen kinderen meedoen aan de tour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "小朋友可以参加吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Можно ли брать детей на тур?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "As crianças podem participar do tour?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "お子様もツアーに参加できますか？",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "published"
   },
   {
     "id": 22,
@@ -1508,57 +1108,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:46.601Z",
     "createdAt": "2026-06-17T02:59:11.263Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was, wenn ich eine Lebensmittelallergie habe?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si tengo alergia a algún alimento?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Bagaimana kalau saya ada alahan makanan?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "如果我有食物过敏怎么办？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Et si je suis allergique à certains aliments ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat als ik een voedselallergie heb?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что если у меня аллергия на еду?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "食物アレルギーがある場合はどうすればいいですか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "E se eu tiver alergia a algum alimento?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 21,
@@ -1605,57 +1155,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:46.847Z",
     "createdAt": "2026-06-17T02:59:10.639Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Ist die Tour für Alleinreisende geeignet?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿El tour es adecuado para viajeros solitarios?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Lawatan ini sesuai untuk pelancong solo?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "单人游客适合参加这个行程吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Cette visite convient-elle aux voyageurs solo ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Is de tour geschikt voor solo-reizigers?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Подойдет ли тур для одиночных путешественников?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "一人での参加でも大丈夫ですか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O passeio é bom para quem viaja sozinho?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 20,
@@ -1703,57 +1203,7 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:47.072Z",
     "createdAt": "2026-06-17T02:59:09.921Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was ist in der privaten Tour enthalten?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué incluye el tour privado?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apa termasuk dalam lawatan peribadi?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "私人游包含什么？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Qu'est-ce qui est inclus dans la visite privée ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat is inbegrepen bij een privérondleiding?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что входит в индивидуальный тур?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーの内容は？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O que está incluído no tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 11,
@@ -1798,57 +1248,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:47.324Z",
     "createdAt": "2026-05-19T08:33:38.923Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Bietet ihr private Touren an?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Ofrecen tours privados?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Adakah anda menawarkan lawatan persendirian?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "你们提供私人导览吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Proposez-vous des visites privées ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Bieden jullie privétours aan?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Вы проводите частные туры?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーはありますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Vocês oferecem tours privados?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 10,
@@ -1893,57 +1293,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:47.555Z",
     "createdAt": "2026-05-19T08:33:38.363Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie ist eure Stornierungsbedingung?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Cuál es su política de cancelación?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apa polisi pembatalan anda?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "你们的取消政策是什么？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Quelle est votre politique d'annulation ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat is jullie annuleringsbeleid?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Как у вас с отменой брони?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "キャンセルポリシーはどうなっていますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Qual é a política de cancelamento de vocês?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 9,
@@ -1988,57 +1338,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:47.815Z",
     "createdAt": "2026-05-19T08:33:37.797Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Muss ich im Voraus buchen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Tengo que reservar con anticipación?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Perlu ke saya tempah lebih awal?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "我需要提前预订吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Dois-je réserver à l'avance ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Moet ik vooraf reserveren?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Нужно ли бронировать заранее?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "事前に予約したほうがいい？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Preciso reservar com antecedência?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 8,
@@ -2083,57 +1383,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:48.048Z",
     "createdAt": "2026-05-19T08:33:37.234Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie schnell antwortet ihr?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué tan rápido responden?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Berapa cepat anda respon?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "你们回复快吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Dans quels délais répondez-vous ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Hoe snel reageren jullie?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Как быстро вы отвечаете?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "返信はどれくらいで届きますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Quão rápido vocês respondem?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 7,
@@ -2178,57 +1428,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:26.578Z",
     "createdAt": "2026-05-19T08:33:36.650Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Was passiert, wenn es regnet?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué pasa si llueve?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Apa berlaku kalau hujan?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "下雨了怎么办？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Que se passe-t-il s'il pleut ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Wat gebeurt er als het regent?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Что будет, если пойдет дождь?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "雨が降ったらどうなりますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "O que acontece se chover?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 6,
@@ -2273,57 +1473,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:26.326Z",
     "createdAt": "2026-05-19T08:33:36.077Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Ist das Essen scharf?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿La comida es picante?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Makanan pedas ke?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "食物辣吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "La nourriture est-elle épicée ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Is het eten pittig?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Еда острая?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "料理は辛いですか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "A comida é picante?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 5,
@@ -2368,57 +1518,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:26.078Z",
     "createdAt": "2026-05-19T08:33:35.493Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Kann ich eine private Tour buchen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Puedo reservar un tour privado?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Boleh saya tempah lawatan peribadi?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "我能预订私人导览吗？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Puis-je réserver une visite privée ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Kan ik een privétour boeken?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Могу ли я забронировать частный тур?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "プライベートツアーは予約できますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Posso reservar um tour privado?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 4,
@@ -2463,57 +1563,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:25.834Z",
     "createdAt": "2026-05-19T08:33:34.927Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie viel laufen wir?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Cuánto vamos a caminar?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Berapa banyak berjalan kaki yang terlibat?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "需要走多少路？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Combien allons-nous marcher ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Hoeveel wordt er gelopen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Сколько придется ходить?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "どのくらい歩きますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Quanto vamos caminhar?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 3,
@@ -2558,57 +1608,7 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:25.561Z",
     "createdAt": "2026-05-19T08:33:34.359Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Welche Ernährungsoptionen bietet ihr an?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Qué opciones dietéticas ofrecen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Pilihan diet apa yang anda tawarkan?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "你们提供哪些饮食选择？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Quelles options alimentaires proposez-vous ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Welke dieetwensen kunnen jullie accommoderen?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Какие варианты питания вы предлагаете?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "食事のアレンジにはどんなものがありますか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Quais opções alimentares vocês oferecem?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   },
   {
     "id": 2,
@@ -2653,56 +1653,6 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:24.802Z",
     "createdAt": "2026-05-19T08:33:33.788Z",
-    "_status": "draft",
-    "translations": [
-      {
-        "languages_code": "en"
-      },
-      {
-        "languages_code": "de",
-        "question": "Wie lange dauern die Touren?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "es",
-        "question": "¿Cuánto duran los tours?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ms",
-        "question": "Berapa lama lawatan ini dijalankan?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "zh",
-        "question": "游览多长时间？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "fr",
-        "question": "Combien de temps durent les visites ?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "nl",
-        "question": "Hoe lang duren de tours?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ru",
-        "question": "Сколько длятся туры?",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "ja",
-        "question": "ツアーの所要時間はどれくらいですか？",
-        "answer": "[object Object]"
-      },
-      {
-        "languages_code": "pt",
-        "question": "Quanto tempo duram os tours?",
-        "answer": "[object Object]"
-      }
-    ]
+    "_status": "draft"
   }
 ]

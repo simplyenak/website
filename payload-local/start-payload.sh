@@ -16,7 +16,7 @@ pm2 start "npx next dev --webpack" \
 
 echo ""
 echo "✅ Payload CMS starting at http://localhost:3000/admin"
-echo "   Admin: admin@simplyenak.com / admin123"
+echo "   Admin: admin@simplyenak.com (password via ADMIN_PASSWORD env)"
 echo ""
 echo "Monitor: pm2 logs payload-dev"
 echo "Stop:    pm2 stop payload-dev"
