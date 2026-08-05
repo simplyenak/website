@@ -29,6 +29,8 @@ EXCLUDES = (
     ":!site/.env",
     ":!**/.env",
     ":!*.svg",
+    # The scanner itself contains the literal patterns it searches for
+    ":!scripts/credential-scan.py",
 )
 
 CHECKS = [
