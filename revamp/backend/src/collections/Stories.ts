@@ -164,15 +164,5 @@ export const Stories: CollectionConfig = {
         },
       },
     },
-    {
-      name: 'locationsRef',
-      type: 'relationship',
-      relationTo: 'locations',
-      hasMany: true,
-      admin: {
-        description: 'Locations covered in this story (KL, Penang, Ipoh, etc.)',
-        position: 'sidebar',
-      },
-    },
   ],
 }
