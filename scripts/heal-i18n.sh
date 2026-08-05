@@ -186,7 +186,11 @@ echo "  ✅ Translation pass complete"
 if [ "$SKIP_GIT" != "true" ]; then
     echo ""
     echo "▸ Securing translations to origin (before auto-sync can revert)..."
-    git add site/src/data/content/
+    # Commit both the content snapshots (source of truth for the site build)
+    # and the derived i18n/translations monitoring exports that
+    # translate-content.mjs regenerates — leaving the latter dirty would let
+    # the next auto-sync revert them and clutter every status.
+    git add site/src/data/content/ site/src/i18n/translations/
     if ! git diff --cached --quiet; then
         git commit -m "auto: i18n translations ($(date '+%Y-%m-%d'))" 2>&1 | tail -1
         git pull --rebase origin main 2>&1 | tail -1 || echo "  (rebase skipped)"
