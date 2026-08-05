@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Crawl Depth Analysis - Simply Enak SEO</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+        h1 { color: #333; }
+        h2 { color: #555; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        .summary { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .metric { display: inline-block; margin-right: 30px; }
+        .metric-value { font-size: 32px; font-weight: bold; color: #2563eb; }
+        .metric-label { color: #666; font-size: 14px; }
+        table { width: 100%; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        th { background: #2563eb; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9fafb; }
+        .money { background: #fef3c7; }
+        .deep { background: #fee2e2; }
+        .good { background: #d1fae5; }
+        .authority { font-weight: bold; }
+        .warning { color: #dc2626; }
+        .success { color: #16a34a; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Crawl Depth Analysis</h1>
+    <p>Analyzed 180 URLs for SEO backlink authority flow</p>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="metric">
+            <div class="metric-value">57</div>
+            <div class="metric-label">Money Pages</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">57</div>
+            <div class="metric-label">Deep Money Pages (≥3 clicks)</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">61.4%</div>
+            <div class="metric-label">Avg Authority (from homepage)</div>
+        </div>
+    </div>
+
+    <h2>🏛️ Hub Page Recommendations</h2>
+    <div class="summary">
+        <p><strong>Problem:</strong> All money pages are at depth 3, receiving only 61.4% authority from backlinks.</p>
+        <p><strong>Solution:</strong> Create hub pages at depth 2 to concentrate authority in each subfolder cluster.</p>
+    </div>
+    <table>
+        <tr>
+            <th>Hub URL</th>
+            <th>Label</th>
+            <th>Members</th>
+            <th>Current Depth</th>
+            <th>Recommended Depth</th>
+            <th>Authority Gain</th>
+            <th>Priority</th>
+        </tr>
+
+        <tr>
+            <td><code>/tours/locations</code></td>
+            <td>Location tours</td>
+            <td>18</td>
+            <td>3</td>
+            <td>2</td>
+            <td class="authority">72.2% → 61.4%</td>
+            <td class="warning">High</td>
+        </tr>
+
+        <tr>
+            <td><code>/tours/dietary</code></td>
+            <td>Dietary tours</td>
+            <td>15</td>
+            <td>3</td>
+            <td>2</td>
+            <td class="authority">72.2% → 61.4%</td>
+            <td class="warning">High</td>
+        </tr>
+
+        <tr>
+            <td><code>/tours/specialty</code></td>
+            <td>Specialty tours</td>
+            <td>13</td>
+            <td>3</td>
+            <td>2</td>
+            <td class="authority">72.2% → 61.4%</td>
+            <td class="warning">High</td>
+        </tr>
+
+        <tr>
+            <td><code>/tours/segments</code></td>
+            <td>Segment tours</td>
+            <td>8</td>
+            <td>3</td>
+            <td>2</td>
+            <td class="authority">72.2% → 61.4%</td>
+            <td class="warning">High</td>
+        </tr>
+
+    </table>
+
+    <h2>📊 Money Pages by Depth</h2>
+    <table>
+        <tr>
+            <th>Page</th>
+            <th>Depth</th>
+            <th>Authority %</th>
+            <th>Status</th>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/gluten-free-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/gluten-free-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/gluten-free-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/halal-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/halal-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/halal-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/jain-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/jain-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/jain-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/vegan-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/vegan-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/vegan-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/vegetarian-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/vegetarian-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/dietary/vegetarian-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/batu-ferringhi-food-tour-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/chinatown-food-tour-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/chow-kit-market-food-tour</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/chowrasta-market-food-tour</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/food-tours-ipoh</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/food-tours-klang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/food-tours-melaka</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/georgetown-heritage-food-tour</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/gurney-drive-food-tour</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/kampung-baru-food-tour</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/little-india-food-tour-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/little-india-food-tour-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/malaysia-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/pudu-food-tour-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/queensbay-food-tour-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/locations/tanjung-bungah-food-tour-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/packages/kuala-lumpur-food-experience</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/packages/penang-food-experience</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/packages/ultimate-malaysia-food-experience</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-chefs</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-couples-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-couples-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-families-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-families-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-foodies-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-foodies-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/segments/food-tours-for-wedding-groups</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/durian-season-malaysia</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/heritage-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/heritage-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/heritage-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/market-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/market-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/market-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/night-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/night-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/night-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/street-food-tours</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/street-food-tours-kuala-lumpur</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+        <tr class="deep">
+            <td>/tours/specialty/street-food-tours-penang</td>
+            <td>3</td>
+            <td class="authority">61.4%</td>
+            <td>⚠ Deep</td>
+        </tr>
+
+    </table>
+
+    <footer style="margin-top: 40px; color: #666; font-size: 14px;">
+        Generated by Crawl Depth Analyzer | Based on 85% authority decay per hop
+    </footer>
+</body>
+</html>
