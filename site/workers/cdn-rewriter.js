@@ -175,11 +175,18 @@ async function handleRequest(request) {
     redirect: "manual"
   });
   var response = await fetch(originRequest, {
-    // Edge-cache the origin subrequest (5 min). AI systems fetch pages in real time;
-    // a slow origin = 499 timeouts. Works on the free plan (unlike the Cache API).
-    // The Worker still runs per request, so redirects and the S3→CDN rewrite stay intact.
+    // Best-effort edge caching of the origin subrequest (5 min).
+    // NOTE: verified 2026-08-05 via diagnostic worker — cf.cacheTtl/cacheEverything
+    // are a NO-OP on this free zone (subrequest cf-cache-status stays "none").
+    // Harmless to keep: engages automatically if the zone ever gets a Cache Rule
+    // (dashboard, Caching → Cache Rules) or a plan upgrade. Real HTML edge
+    // caching on free requires a dashboard Cache Rule — no API token has
+    // Zone Settings Edit permission.
     cf: { cacheEverything: true, cacheTtl: HTML_CACHE_TTL }
   });
+
+  // TEMP-DIAGNOSTIC: expose subrequest cache status (remove after verification)
+  response.headers.set("x-origin-cf-cache", response.headers.get("cf-cache-status") || "none");
 
   // Pass through redirects — they shouldn't be cached
   if (response.status >= 300 && response.status < 400) {
