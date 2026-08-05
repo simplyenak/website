@@ -9,7 +9,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -285,7 +285,20 @@
     },
     "updatedAt": "2026-08-05T00:39:19.468Z",
     "createdAt": "2026-08-05T00:39:07.792Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Temporada de durian en Malasia: cuándo visitar para la mejor fruta (Guía 2026)",
+        "excerpt": "Planifica tu viaje de durian a Malasia. La temporada alta es de junio a agosto. Aprende cuándo visitar, dónde encontrar la mejor fruta y qué variedades hay por mes.",
+        "content": "[object Object]",
+        "meta_title": "Temporada de durian en Malasia: cuándo visitar para la mejor fruta (Guía 2026)",
+        "meta_description": "Planifica tu viaje de durian a Malasia. La temporada alta es de junio a agosto. Aprende cuándo visitar, dónde encontrar la mejor fruta y qué variedades hay por mes."
+      }
+    ]
   },
   {
     "id": 267,
@@ -297,7 +310,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -343,7 +356,18 @@
     },
     "updatedAt": "2026-08-04T23:35:13.028Z",
     "createdAt": "2026-08-04T23:35:13.028Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Por qué Malasia es el gran destino de Asia: 21,1 millones de visitantes en 2026",
+        "excerpt": "Viajes y turismo — VIAJES,GENTE",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 266,
@@ -355,7 +379,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -401,7 +425,18 @@
     },
     "updatedAt": "2026-08-04T23:35:12.966Z",
     "createdAt": "2026-08-04T23:35:12.965Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía Michelin KL & Penang 2026: Comer con estrella sin gastar una fortuna",
+        "excerpt": "Comida — COMIDA,VIAJES",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 265,
@@ -413,7 +448,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -459,7 +494,18 @@
     },
     "updatedAt": "2026-08-04T23:16:54.996Z",
     "createdAt": "2026-08-04T23:16:54.996Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Malasia para visitantes de Medio Oriente por primera vez: Comida, cultura y una ruta de 7 días",
+        "excerpt": "Viajes — EXPERIENCIAS CULTURALES DE VIAJE",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 264,
@@ -471,7 +517,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -517,7 +563,18 @@
     },
     "updatedAt": "2026-08-04T23:16:54.701Z",
     "createdAt": "2026-08-04T23:16:54.700Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Excursiones de un día a los huertos de durian en KL: Musang King directo del árbol",
+        "excerpt": "Comida — EXPERIENCIAS DE TURISMO GASTRONÓMICO",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 257,
@@ -529,7 +586,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -573,7 +630,18 @@
     },
     "updatedAt": "2026-08-03T13:57:35.601Z",
     "createdAt": "2026-08-03T03:00:27.913Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Se habla inglés en Malasia?",
+        "excerpt": "Preguntas frecuentes: ¿se habla inglés en Malasia?",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 245,
@@ -585,7 +653,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -629,7 +697,18 @@
     },
     "updatedAt": "2026-08-03T13:57:37.185Z",
     "createdAt": "2026-07-29T03:00:56.404Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Los malasios hablan inglés?",
+        "excerpt": "Preguntas frecuentes: ¿los malasios hablan inglés?",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 241,
@@ -641,7 +720,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -685,7 +764,18 @@
     },
     "updatedAt": "2026-08-03T13:57:37.450Z",
     "createdAt": "2026-07-29T03:00:53.121Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Dónde puedo comer durian en Kuala Lumpur?",
+        "excerpt": "Preguntas frecuentes: ¿Dónde puedo comer durian en Kuala Lumpur?",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 238,
@@ -697,7 +787,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -741,7 +831,20 @@
     },
     "updatedAt": "2026-08-03T15:06:36.461Z",
     "createdAt": "2026-07-29T01:09:05.310Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Recorridos gastronómicos por Malasia: Qué esperar, qué comer y cómo elegir",
+        "excerpt": "¿Te preguntas cómo son los recorridos gastronómicos por Malasia? Esta guía cubre qué vas a comer, cómo funcionan los recorridos y cómo elegir el indicado para tu viaje.",
+        "content": "[object Object]",
+        "meta_title": "Recorridos gastronómicos por Malasia: Qué esperar, qué comer y cómo",
+        "meta_description": "¿Te preguntas cómo son los recorridos gastronómicos por Malasia? Esta guía cubre qué vas a comer, cómo funcionan los recorridos y cómo elegir el indicado para tu viaje."
+      }
+    ]
   },
   {
     "id": 237,
@@ -753,7 +856,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -797,7 +900,18 @@
     },
     "updatedAt": "2026-08-03T13:57:38.438Z",
     "createdAt": "2026-07-23T08:43:13.157Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Qué noches hay mercados nocturnos en KL (Kuala Lumpur)",
+        "excerpt": "Preguntas frecuentes: Qué noches hay mercados nocturnos en KL (Kuala Lumpur)",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 233,
@@ -809,7 +923,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -853,7 +967,18 @@
     },
     "updatedAt": "2026-08-03T13:57:38.703Z",
     "createdAt": "2026-07-23T08:41:28.051Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Qué incluye un tour de comida malaya",
+        "excerpt": "Preguntas frecuentes: Qué incluye un tour de comida malaya",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 232,
@@ -865,7 +990,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -909,7 +1034,18 @@
     },
     "updatedAt": "2026-08-03T13:57:38.959Z",
     "createdAt": "2026-07-23T08:41:27.328Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Cuánto cuesta un tour gastronómico en Malasia?",
+        "excerpt": "Preguntas frecuentes: ¿Cuánto cuesta un tour gastronómico en Malasia?",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 231,
@@ -921,7 +1057,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -965,7 +1101,18 @@
     },
     "updatedAt": "2026-08-03T13:57:39.212Z",
     "createdAt": "2026-07-23T08:40:57.059Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Cuándo es la temporada de durian en Malasia?",
+        "excerpt": "Preguntas frecuentes: ¿Cuándo es la temporada de durian en Malasia?",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 230,
@@ -977,7 +1124,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -1021,7 +1168,18 @@
     },
     "updatedAt": "2026-08-03T13:57:39.469Z",
     "createdAt": "2026-07-20T02:21:48.999Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Durian malayo: lo que todos los visitantes se equivocan",
+        "excerpt": "Tu guía para el durian en Malaysia.",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 229,
@@ -1033,7 +1191,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -1418,7 +1576,19 @@
     },
     "updatedAt": "2026-08-03T15:06:37.162Z",
     "createdAt": "2026-07-11T14:49:06.525Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Qué comer en KL por primera vez",
+        "content": "[object Object]",
+        "meta_title": "Qué comer en KL por primera vez. Guía de Enak",
+        "meta_description": "Qué comer en KL por primera vez. Guía de Enak"
+      }
+    ]
   },
   {
     "id": 227,
@@ -1430,7 +1600,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -2014,7 +2184,20 @@
     },
     "updatedAt": "2026-08-03T15:06:37.459Z",
     "createdAt": "2026-07-05T03:38:59.813Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Qué son los kueh malayos y cuáles deberías probar?",
+        "excerpt": "Los kueh malayos son dulces al vapor y horneados hechos con harina de arroz, coco y pandan. Esta guía cubre 12 tipos, desde el kueh lapis hasta el ondeh-ondeh.",
+        "content": "[object Object]",
+        "meta_title": "¿Qué son los kueh malayos y cuáles deberías probar? — Sim",
+        "meta_description": "Los kueh malayos son dulces al vapor y horneados hechos con harina de arroz, coco y pandan. Esta guía cubre 12 tipos, desde el kueh lapis hasta el ondeh-ondeh."
+      }
+    ]
   },
   {
     "id": 226,
@@ -2026,7 +2209,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -2566,7 +2749,20 @@
     },
     "updatedAt": "2026-08-03T15:06:38.156Z",
     "createdAt": "2026-07-05T03:38:59.760Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Cómo cocinamos los huevos en Malasia? 10 formas que debes conocer",
+        "excerpt": "Los platos de huevo malayos van mucho más allá del frito. Aprende 10 formas de prepararlos. Desde huevos medio cocidos con kaya hasta telur dadar y salsa de yema de huevo salado.",
+        "content": "[object Object]",
+        "meta_title": "¿Cómo cocinamos los huevos en Malasia? 10 formas que debes conocer — Simpl",
+        "meta_description": "Los platos de huevo malayos van mucho más allá del frito. Aprende 10 formas de prepararlos. Desde huevos medio cocidos con kaya hasta telur dadar y salsa de yema de huevo salado."
+      }
+    ]
   },
   {
     "id": 225,
@@ -2578,7 +2774,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -3118,7 +3314,20 @@
     },
     "updatedAt": "2026-08-03T15:06:38.425Z",
     "createdAt": "2026-07-05T03:38:59.720Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Quiénes son los chefs malasios que ponen la comida local en el mapa mundial?",
+        "excerpt": "Cómo los chefs malasios están dando forma a la cocina local a nivel global: desde la carrera televisiva de Chef Wan hasta la alta cocina en Kuala Lumpur que usa ingredientes autóctonos.",
+        "content": "[object Object]",
+        "meta_title": "¿Quiénes son los chefs malasios que ponen la comida local en el mundo",
+        "meta_description": "Cómo los chefs malasios están dando forma a la cocina local a nivel global: desde la carrera televisiva de Chef Wan hasta la alta cocina en Kuala Lumpur que usa ingredientes autóctonos."
+      }
+    ]
   },
   {
     "id": 224,
@@ -3130,7 +3339,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -3648,7 +3857,20 @@
     },
     "updatedAt": "2026-08-03T15:06:39.106Z",
     "createdAt": "2026-07-05T03:38:59.673Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Qué deben comer en Malaysia los que visitan por primera vez?",
+        "excerpt": "Guía de comida de Malaysia para principiantes: qué comer, dónde y cómo pedir. Cubre nasi lemak, roti canai, banana leaf rice y más por todo Malaysia.",
+        "content": "[object Object]",
+        "meta_title": "¿Qué deben comer en Malaysia los que visitan por primera vez? — En",
+        "meta_description": "Guía de comida de Malaysia para principiantes: qué comer, dónde y cómo pedir. Cubre nasi lemak, roti canai, banana leaf rice y más por todo Malays"
+      }
+    ]
   },
   {
     "id": 223,
@@ -3660,7 +3882,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -4101,7 +4323,15 @@
     },
     "updatedAt": "2026-08-03T15:06:39.360Z",
     "createdAt": "2026-07-05T03:38:59.597Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es"
+      }
+    ]
   },
   {
     "id": 222,
@@ -4113,7 +4343,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -4521,7 +4751,20 @@
     },
     "updatedAt": "2026-08-03T15:06:39.625Z",
     "createdAt": "2026-07-05T03:38:59.538Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Cuáles son las comidas tradicionales de Pahang que debes conocer?",
+        "excerpt": "Resumen: La cultura gastronómica de Pahang se basa en ingredientes silvestres de la selva, bagres de río, tempoyak de durian fermentado, pescado ahumado y salsas con leche de coco. Signature",
+        "content": "[object Object]",
+        "meta_title": "¿Cuáles son las comidas tradicionales de Pahang que debes conocer? — Simpl",
+        "meta_description": "Resumen: La cultura gastronómica de Pahang se basa en ingredientes silvestres de la selva, bagres de río, tempoyak de durian fermentado, pescado ahumado y salsas con leche de coco. Signature"
+      }
+    ]
   },
   {
     "id": 221,
@@ -4533,7 +4776,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -4941,7 +5184,20 @@
     },
     "updatedAt": "2026-08-03T15:06:39.889Z",
     "createdAt": "2026-07-05T03:38:59.495Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Qué simboliza la cocina nyonya en la cultura malaya?",
+        "excerpt": "Resumen: La cocina nyonya simboliza la fusión cultural de las comunidades china y malaya en Malasia. Surgió de los matrimonios mixtos después de que los comerciantes chinos se establecieran",
+        "content": "[object Object]",
+        "meta_title": "¿Qué simboliza la cocina nyonya en la cultura malaya? — S",
+        "meta_description": "Resumen: La cocina nyonya simboliza la fusión cultural de las comunidades china y malaya en Malasia. Surgió de los matrimonios mixtos después de que los comerciantes chinos se establecieran"
+      }
+    ]
   },
   {
     "id": 220,
@@ -4953,7 +5209,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -5339,7 +5595,20 @@
     },
     "updatedAt": "2026-08-03T15:06:40.421Z",
     "createdAt": "2026-07-05T03:38:59.381Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Qué es la cultura alimentaria indígena de Borneo y por qué importa?",
+        "excerpt": "En resumen: la cultura alimentaria indígena de Borneo se basa en ingredientes de la selva tropical como el arroz Bario, los helechos midin, el terung Dayak y el pegaga, cultivados y recolectados por c",
+        "content": "[object Object]",
+        "meta_title": "¿Qué es la cultura alimentaria indígena de Borneo y por qué import",
+        "meta_description": "En resumen: la cultura alimentaria indígena de Borneo se basa en ingredientes de la selva tropical como el arroz Bario, los helechos midin, el terung Dayak y el pegaga, cultivados y recolectados por c"
+      }
+    ]
   },
   {
     "id": 164,
@@ -5351,7 +5620,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -5400,7 +5669,18 @@
     },
     "updatedAt": "2026-08-03T13:57:39.733Z",
     "createdAt": "2026-06-24T06:22:41.537Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Durian en Malasia: lo que los principiantes deben saber",
+        "excerpt": "Camina por cualquier mercado malasio en julio y lo olerás antes de verlo. Una nube dulce y penetrante que atraviesa el ruido de la multitud matutina. Es la temporada del durian, y el país se ha detenido para comer.",
+        "content": "[object Object]"
+      }
+    ]
   },
   {
     "id": 162,
@@ -5412,7 +5692,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -5753,7 +6033,20 @@
     },
     "updatedAt": "2026-08-03T15:06:40.669Z",
     "createdAt": "2026-06-19T09:50:14.281Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Food Tours en KL para grupos de boda y celebraciones",
+        "excerpt": "KL para grupos de boda y celebraciones Organizar una comida grupal en KL para una boda tiene sus retos.",
+        "content": "[object Object]",
+        "meta_title": "Food Tours en KL para grupos de boda y celebraciones — E",
+        "meta_description": "KL para grupos de boda y celebraciones Organizar una comida grupal en KL para una boda tiene sus retos."
+      }
+    ]
   },
   {
     "id": 161,
@@ -5765,7 +6058,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -6167,7 +6460,20 @@
     },
     "updatedAt": "2026-08-03T15:06:40.890Z",
     "createdAt": "2026-06-19T09:50:14.031Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Dónde comer comida vegetariana en Penang (sin equivocarte)",
+        "excerpt": "La guía vegetariana de Penang Estás parado frente a un puesto de comida en George Town.",
+        "content": "[object Object]",
+        "meta_title": "Dónde comer comida vegetariana en Penang (sin equivocart",
+        "meta_description": "La guía vegetariana de Penang Estás parado frente a un puesto de comida en George Town."
+      }
+    ]
   },
   {
     "id": 160,
@@ -6179,7 +6485,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -6714,7 +7020,20 @@
     },
     "updatedAt": "2026-08-03T15:06:41.150Z",
     "createdAt": "2026-06-19T09:50:13.765Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Es la comida de Malasia apta para vegetarianos? Aquí está la verdad",
+        "excerpt": "Guía de comida vegetariana en Malasia (2026) Malasia es uno de los mejores países del Sudeste Asiático para comer vegetariano.",
+        "content": "[object Object]",
+        "meta_title": "¿Es la comida de Malasia apta para vegetarianos? Aquí está la v",
+        "meta_description": "Guía de comida vegetariana en Malasia (2026) Malasia es uno de los mejores países del Sudeste Asiático para comer vegetariano."
+      }
+    ]
   },
   {
     "id": 159,
@@ -6726,7 +7045,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -6922,7 +7241,20 @@
     },
     "updatedAt": "2026-08-03T15:06:41.403Z",
     "createdAt": "2026-06-19T09:50:13.495Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Dónde comer comida vegetariana en KL (sin equivocarte)",
+        "excerpt": "Ser vegetariano en Kuala Lumpur es una historia de dos ciudades. Algunos platos son vegetarianos por naturaleza. Otros esconden pasta de camarón, manteca de cerdo o caldo de anchoa donde menos te lo esperas.",
+        "content": "[object Object]",
+        "meta_title": "Dónde comer comida vegetariana en KL (sin equivocarte",
+        "meta_description": "Ser vegetariano en Kuala Lumpur es una historia de dos ciudades. Algunos platos son vegetarianos por naturaleza. Otros esconden pasta de camarón, manteca de cerdo o caldo de anchoa donde menos te lo esper"
+      }
+    ]
   },
   {
     "id": 158,
@@ -6934,7 +7266,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -7336,7 +7668,20 @@
     },
     "updatedAt": "2026-08-03T15:06:41.645Z",
     "createdAt": "2026-06-19T09:50:13.255Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Penang vegano: Donde comen los locales",
+        "excerpt": "La guía vegana de Penang Penang es famosa por su comida callejera. Pero cuando eres vegano, los platos famosos están casi todos prohibidos.",
+        "content": "[object Object]",
+        "meta_title": "Penang vegano: Donde comen los locales — Enak",
+        "meta_description": "La guía vegana de Penang Penang es famosa por su comida callejera. Pero cuando eres vegano, los platos famosos están casi todos prohibidos."
+      }
+    ]
   },
   {
     "id": 157,
@@ -7348,7 +7693,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -7848,7 +8193,20 @@
     },
     "updatedAt": "2026-08-03T15:06:41.907Z",
     "createdAt": "2026-06-19T09:50:13.012Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Vegano en Kuala Lumpur: Donde comen los locales",
+        "excerpt": "Comer vegano en Kuala Lumpur es más fácil de lo que muchos visitantes esperan. Entre los restaurantes vegetarianos indios, los comedores budistas chinos y una escena vegana en crecimiento, KL tiene opciones.",
+        "content": "[object Object]",
+        "meta_title": "Vegano en Kuala Lumpur: Donde comen los locales — Enak",
+        "meta_description": "Comer vegano en Kuala Lumpur es más fácil de lo que muchos visitantes esperan. Entre los restaurantes vegetarianos indios, los comedores budistas chinos y una escena vegana en crecimient"
+      }
+    ]
   },
   {
     "id": 156,
@@ -7860,7 +8218,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -8261,7 +8619,15 @@
     },
     "updatedAt": "2026-08-03T15:06:42.166Z",
     "createdAt": "2026-06-19T09:50:12.769Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es"
+      }
+    ]
   },
   {
     "id": 155,
@@ -8273,7 +8639,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -8688,7 +9054,15 @@
     },
     "updatedAt": "2026-08-03T15:06:42.422Z",
     "createdAt": "2026-06-19T09:50:12.535Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es"
+      }
+    ]
   },
   {
     "id": 154,
@@ -8700,7 +9074,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -9125,7 +9499,20 @@
     },
     "updatedAt": "2026-08-03T15:06:42.684Z",
     "createdAt": "2026-06-19T09:50:12.293Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Comida callejera en KL: qué pedir y qué evitar",
+        "excerpt": "Sales de tu hotel en Kuala Lumpur y el olor a humo de carbón te golpea antes de caminar diez metros. Esta es la comida callejera de KL. Y aquí te decimos exactamente dónde encontrarla.",
+        "content": "[object Object]",
+        "meta_title": "Comida callejera en KL: qué pedir y qué evitar. Enak",
+        "meta_description": "Sales de tu hotel en Kuala Lumpur y el olor a humo de carbón te golpea antes de caminar diez metros. Esta es la comida callejera de KL. Y aquí te"
+      }
+    ]
   },
   {
     "id": 153,
@@ -9137,7 +9524,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -9597,7 +9984,20 @@
     },
     "updatedAt": "2026-08-03T15:06:42.944Z",
     "createdAt": "2026-06-19T09:50:12.029Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Qué pasa en Penang cuando se pone el sol",
+        "excerpt": "Penang de noche: guía de comida nocturna La fama culinaria de Penang se basa en sus vendedores diurnos, pero la isla muestra su verdadero carácter al caer la noche.",
+        "content": "[object Object]",
+        "meta_title": "Qué pasa en Penang cuando se pone el sol — Enak",
+        "meta_description": "Penang de noche: guía de comida nocturna La fama culinaria de Penang se basa en sus vendedores diurnos, pero la isla muestra su verdadero carácter al caer la noche."
+      }
+    ]
   },
   {
     "id": 152,
@@ -9609,7 +10009,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -10106,7 +10506,15 @@
     },
     "updatedAt": "2026-08-03T15:06:43.193Z",
     "createdAt": "2026-06-19T09:50:11.778Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es"
+      }
+    ]
   },
   {
     "id": 151,
@@ -10118,7 +10526,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -10566,7 +10974,20 @@
     },
     "updatedAt": "2026-08-03T15:06:43.447Z",
     "createdAt": "2026-06-19T09:50:11.534Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Qué pasa en KL cuando se pone el sol",
+        "excerpt": "KL de noche: Guía de comida nocturna Cuando se pone el sol en Kuala Lumpur, las calles cambian.",
+        "content": "[object Object]",
+        "meta_title": "Qué pasa en KL cuando se pone el sol. Enak",
+        "meta_description": "KL de noche: Guía de comida nocturna Cuando se pone el sol en Kuala Lumpur, las calles cambian."
+      }
+    ]
   },
   {
     "id": 150,
@@ -10578,7 +10999,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -11039,7 +11460,20 @@
     },
     "updatedAt": "2026-08-03T15:06:43.708Z",
     "createdAt": "2026-06-19T09:50:11.288Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Mercados en Penang por los que vale la pena madrugar",
+        "excerpt": "Guía local de los mercados de Penang Los mercados de Penang son más antiguos que el propio estado en algunos casos.",
+        "content": "[object Object]",
+        "meta_title": "Mercados en Penang por los que vale la pena madrugar — Enak",
+        "meta_description": "Guía local de los mercados de Penang Los mercados de Penang son más antiguos que el propio estado en algunos casos."
+      }
+    ]
   },
   {
     "id": 149,
@@ -11051,7 +11485,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -11536,7 +11970,20 @@
     },
     "updatedAt": "2026-08-03T15:06:43.967Z",
     "createdAt": "2026-06-19T09:50:11.038Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Los mejores mercados húmedos de Malasia (qué comprar y qué comer)",
+        "excerpt": "Los mercados de Malasia: una guía para los amantes de la comida Los mercados de Malasia no son solo lugares para ir de compras. Son donde la cultura gastronómica del país está más viva.",
+        "content": "[object Object]",
+        "meta_title": "Los mejores mercados húmedos de Malasia (qué comprar y qué comer) —",
+        "meta_description": "Los mercados de Malasia: una guía para los amantes de la comida Los mercados de Malasia no son solo lugares para ir de compras. Son donde la cultura gastronómica del país está más viva."
+      }
+    ]
   },
   {
     "id": 148,
@@ -11548,7 +11995,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -12033,7 +12480,20 @@
     },
     "updatedAt": "2026-08-03T15:06:44.227Z",
     "createdAt": "2026-06-19T09:50:10.750Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Mercados de KL por los que vale la pena madrugar",
+        "excerpt": "Guía local de los mercados de KL Los mercados de Kuala Lumpur son donde late la cultura culinaria de la ciudad. No en los restaurantes. No en los centros de comida.",
+        "content": "[object Object]",
+        "meta_title": "Mercados de KL por los que vale la pena madrugar — Enak",
+        "meta_description": "Guía local de los mercados de KL Los mercados de Kuala Lumpur son donde late la cultura culinaria de la ciudad. No en los restaurantes. No en los centros de comida."
+      }
+    ]
   },
   {
     "id": 147,
@@ -12045,7 +12505,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -12495,7 +12955,20 @@
     },
     "updatedAt": "2026-08-03T15:06:44.497Z",
     "createdAt": "2026-06-19T09:50:10.499Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Comida jain en Penang: Cómo comer sin vegetales de raíz",
+        "excerpt": "La guía de comida jain para Penang Acabas de llegar a George Town. Los olores de los puestos callejeros te golpean en cada esquina.",
+        "content": "[object Object]",
+        "meta_title": "Comida jain en Penang: Cómo comer sin vegetales de raíz",
+        "meta_description": "La guía de comida jain para Penang Acabas de llegar a George Town. Los olores de los puestos callejeros te golpean en cada esquina."
+      }
+    ]
   },
   {
     "id": 146,
@@ -12507,7 +12980,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -12970,7 +13443,20 @@
     },
     "updatedAt": "2026-08-03T15:06:44.753Z",
     "createdAt": "2026-06-19T09:50:10.225Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Comida jain en KL: cómo comer sin vegetales de raíz",
+        "excerpt": "Guía de comida jain en KL (2026) Llegas a KL y lo primero que necesitas resolver es qué puedes comer.",
+        "content": "[object Object]",
+        "meta_title": "Comida jain en KL: cómo comer sin vegetales de raíc",
+        "meta_description": "Guía de comida jain en KL (2026) Llegas a KL y lo primero que necesitas resolver es qué puedes comer."
+      }
+    ]
   },
   {
     "id": 145,
@@ -12982,7 +13468,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -13347,7 +13833,20 @@
     },
     "updatedAt": "2026-08-03T15:06:45.031Z",
     "createdAt": "2026-06-19T09:50:09.980Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida tradicional de Penang: Comiendo por Georgetown",
+        "excerpt": "La ruta de comida tradicional de Penang en Georgetown es Patrimonio de la Humanidad por la UNESCO no solo por sus edificios.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida tradicional de Penang: Comiendo por Georgetown - Sim",
+        "meta_description": "La ruta de comida tradicional de Penang en Georgetown es Patrimonio de la Humanidad por la UNESCO no solo por sus edificios."
+      }
+    ]
   },
   {
     "id": 144,
@@ -13359,7 +13858,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -13894,7 +14393,20 @@
     },
     "updatedAt": "2026-08-03T15:06:45.287Z",
     "createdAt": "2026-06-19T09:50:09.704Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Por qué la comida tradicional de Malasia cuenta la historia de tres culturas",
+        "excerpt": "La comida tradicional de Malasia: Una guía cultural El patrimonio culinario de Malasia es más antiguo que el propio país.",
+        "content": "[object Object]",
+        "meta_title": "Por qué la comida tradicional de Malasia cuenta la historia de tres cultura",
+        "meta_description": "La comida tradicional de Malasia: Una guía cultural El patrimonio culinario de Malasia es más antiguo que el propio país."
+      }
+    ]
   },
   {
     "id": 143,
@@ -13906,7 +14418,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -14222,7 +14734,20 @@
     },
     "updatedAt": "2026-08-03T15:06:45.537Z",
     "createdAt": "2026-06-19T09:50:09.481Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida tradicional de KL: Historia en un plato",
+        "excerpt": "Ruta de comida tradicional de KL La historia gastronómica de KL está escrita en los edificios donde la gente sigue comiendo.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida tradicional de KL: Historia en un plato — Simpl",
+        "meta_description": "Ruta de comida tradicional de KL La historia gastronómica de KL está escrita en los edificios donde la gente sigue comiendo."
+      }
+    ]
   },
   {
     "id": 142,
@@ -14234,7 +14759,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -14660,7 +15185,20 @@
     },
     "updatedAt": "2026-08-03T15:06:45.796Z",
     "createdAt": "2026-06-19T09:50:09.208Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida halal de Penang",
+        "excerpt": "La guía de comida halal de Penang Estás parado en Chulia Street en George Town.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida halal de Penang — Enak",
+        "meta_description": "La guía de comida halal de Penang Estás parado en Chulia Street en George Town."
+      }
+    ]
   },
   {
     "id": 141,
@@ -14672,7 +15210,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -15086,7 +15624,20 @@
     },
     "updatedAt": "2026-08-03T15:06:46.074Z",
     "createdAt": "2026-06-19T09:50:08.957Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida halal de Kuala Lumpur",
+        "excerpt": "Guía de comida halal de Kuala Lumpur (2026) Estás frente a un puesto callejero en Chinatown. El vapor que sube del wok huele increíble.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida halal de Kuala Lumpur — Enak",
+        "meta_description": "Guía de comida halal de Kuala Lumpur (2026) Estás frente a un puesto callejero en Chinatown. El vapor que sube del wok huele increíble."
+      }
+    ]
   },
   {
     "id": 140,
@@ -15098,7 +15649,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -15512,7 +16063,20 @@
     },
     "updatedAt": "2026-08-03T15:06:46.313Z",
     "createdAt": "2026-06-19T09:50:08.694Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida sin gluten para Penang",
+        "excerpt": "Guía sin gluten para Penang La fama gastronómica de Penang se basa en los fideos. Char kway teow, Hokkien mee, wan tan mee, laksa.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida sin gluten para Penang — Enak",
+        "meta_description": "Guía sin gluten para Penang La fama gastronómica de Penang se basa en los fideos. Char kway teow, Hokkien mee, wan tan mee, laksa."
+      }
+    ]
   },
   {
     "id": 139,
@@ -15524,7 +16088,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -16011,7 +16575,20 @@
     },
     "updatedAt": "2026-08-03T15:06:46.570Z",
     "createdAt": "2026-06-19T09:50:08.428Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida sin gluten para KL (Kuala Lumpur)",
+        "excerpt": "Guía sin gluten para KL (Kuala Lumpur) Pasas junto a un puesto de nasi lemak.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida sin gluten para KL (Kuala Lumpur) — Enak",
+        "meta_description": "Guía sin gluten para KL (Kuala Lumpur) Pasas junto a un puesto de nasi lemak."
+      }
+    ]
   },
   {
     "id": 138,
@@ -16023,7 +16600,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -16340,7 +16917,20 @@
     },
     "updatedAt": "2026-08-03T15:06:46.833Z",
     "createdAt": "2026-06-19T09:50:08.171Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Penang para foodies: Más allá de lo típico",
+        "excerpt": "Penang para foodies: Más allá de lo típico Los puestos famosos de Penang son famosos por una razón. El cendol en Armenian Street es excelente.",
+        "content": "[object Object]",
+        "meta_title": "Penang para foodies: Más allá de lo típico — Enak",
+        "meta_description": "Penang para foodies: Más allá de lo típico Los puestos famosos de Penang son famosos por una razón. El cendol en Armenian Street es excelente."
+      }
+    ]
   },
   {
     "id": 137,
@@ -16352,7 +16942,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -16669,7 +17259,20 @@
     },
     "updatedAt": "2026-08-03T15:06:47.098Z",
     "createdAt": "2026-06-19T09:50:07.925Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "KL para foodies: Más allá de lo típico",
+        "excerpt": "KL para foodies: Más allá de lo típico la comida que la mayoría de los turistas come en KL está bien. El char kway teow en Jalan Alor es decente.",
+        "content": "[object Object]",
+        "meta_title": "KL para foodies: Más allá de lo típico — Enak",
+        "meta_description": "KL para foodies: Más allá de lo típico la comida que la mayoría de los turistas come en KL está bien. El char kway teow en Jalan Alor es decente."
+      }
+    ]
   },
   {
     "id": 136,
@@ -16681,7 +17284,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -17009,7 +17612,20 @@
     },
     "updatedAt": "2026-08-03T15:06:47.354Z",
     "createdAt": "2026-06-19T09:50:07.676Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Dónde comer en Penang: Guía para principiantes",
+        "excerpt": "Dónde comer en Penang: Guía para principiantes La fama gastronómica de Penang la precede.",
+        "content": "[object Object]",
+        "meta_title": "Dónde comer en Penang: Guía para principiantes — Enak",
+        "meta_description": "Dónde comer en Penang: Guía para principiantes La fama gastronómica de Penang la precede."
+      }
+    ]
   },
   {
     "id": 135,
@@ -17021,7 +17637,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -17349,7 +17965,20 @@
     },
     "updatedAt": "2026-08-03T15:06:47.612Z",
     "createdAt": "2026-06-19T09:50:07.431Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Dónde comer en Melaka",
+        "excerpt": "Dónde comer en Melaka Melaka es más pequeña que KL y más tranquila que Penang. Pero su escena gastronómica lleva el peso de la historia. Ni KL ni Penang pueden igualar eso.",
+        "content": "[object Object]",
+        "meta_title": "Dónde comer en Melaka — Enak",
+        "meta_description": "Dónde comer en Melaka Melaka es más pequeña que KL y más tranquila que Penang. Pero su escena gastronómica lleva el peso de la historia. Ni KL ni Penang pueden igualar eso."
+      }
+    ]
   },
   {
     "id": 134,
@@ -17361,7 +17990,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -17726,7 +18355,20 @@
     },
     "updatedAt": "2026-08-03T15:06:47.856Z",
     "createdAt": "2026-06-19T09:50:07.171Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida de Little India Penang",
+        "excerpt": "Guía de comida de Little India Penang Little India en Penang es un grupo de calles en el centro de George Town. Se centra en Lebuh Pasar (Market Street) y.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida de Little India Penang — Enak",
+        "meta_description": "Guía de comida de Little India Penang Little India en Penang es un grupo de calles en el centro de George Town. Se centra en Lebuh Pasar (Market Street) y."
+      }
+    ]
   },
   {
     "id": 133,
@@ -17738,7 +18380,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -18042,7 +18684,20 @@
     },
     "updatedAt": "2026-08-03T15:06:48.095Z",
     "createdAt": "2026-06-19T09:50:06.921Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Little India KL: Guía gastronómica de Brickfields",
+        "excerpt": "Little India KL: Guía gastronómica de Brickfields Brickfields es el barrio alrededor de la estación KL Sentral, la principal terminal de transporte de la ciudad.",
+        "content": "[object Object]",
+        "meta_title": "Little India KL: Guía gastronómica de Brickfields — Enak",
+        "meta_description": "Little India KL: Guía gastronómica de Brickfields Brickfields es el barrio alrededor de la estación KL Sentral, la principal terminal de transporte de la ciudad."
+      }
+    ]
   },
   {
     "id": 132,
@@ -18054,7 +18709,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -18480,7 +19135,20 @@
     },
     "updatedAt": "2026-08-03T15:06:48.349Z",
     "createdAt": "2026-06-19T09:50:06.666Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Dónde comer en Kuala Lumpur: Una guía para principiantes",
+        "excerpt": "Dónde comer en Kuala Lumpur: Una guía para principiantes Sales del tren en una estación de KL y lo primero que te golpea es el olor.",
+        "content": "[object Object]",
+        "meta_title": "Dónde comer en Kuala Lumpur: Una guía para principiantes — En",
+        "meta_description": "Dónde comer en Kuala Lumpur: Una guía para principiantes Sales del tren en una estación de KL y lo primero que te golpea es el olor."
+      }
+    ]
   },
   {
     "id": 131,
@@ -18492,7 +19160,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -18808,7 +19476,20 @@
     },
     "updatedAt": "2026-08-03T15:06:48.607Z",
     "createdAt": "2026-06-19T09:50:06.420Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Dónde comer en Klang",
+        "excerpt": "Dónde comer en Klang Klang es una ciudad que la mayoría de los visitantes ve desde la ventana del tren de cercanías.",
+        "content": "[object Object]",
+        "meta_title": "Dónde comer en Klang — Enak",
+        "meta_description": "Dónde comer en Klang Klang es una ciudad que la mayoría de los visitantes ve desde la ventana del tren de cercanías."
+      }
+    ]
   },
   {
     "id": 130,
@@ -18820,7 +19501,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -19209,7 +19890,20 @@
     },
     "updatedAt": "2026-08-03T15:06:48.867Z",
     "createdAt": "2026-06-19T09:50:06.176Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía gastronómica de Kampung Baru",
+        "excerpt": "Guía gastronómica de Kampung Baru Kampung Baru es un pueblo tradicional malayo en el centro de Kuala Lumpur.",
+        "content": "[object Object]",
+        "meta_title": "Guía gastronómica de Kampung Baru — Enak",
+        "meta_description": "Guía gastronómica de Kampung Baru Kampung Baru es un pueblo tradicional malayo en el centro de Kuala Lumpur."
+      }
+    ]
   },
   {
     "id": 129,
@@ -19221,7 +19915,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -19562,7 +20256,20 @@
     },
     "updatedAt": "2026-08-03T15:06:49.110Z",
     "createdAt": "2026-06-19T09:50:05.904Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Dónde comer en Ipoh",
+        "excerpt": "Dónde comer en Ipoh Ipoh es una ciudad por la que los viajeros gastronómicos pasan de camino a Penang o a las Cameron Highlands. Eso es un error.",
+        "content": "[object Object]",
+        "meta_title": "Dónde comer en Ipoh — Enak",
+        "meta_description": "Dónde comer en Ipoh Ipoh es una ciudad por la que los viajeros gastronómicos pasan de camino a Penang o a las Cameron Highlands. Eso es un error."
+      }
+    ]
   },
   {
     "id": 128,
@@ -19574,7 +20281,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -19940,7 +20647,20 @@
     },
     "updatedAt": "2026-08-03T15:06:49.365Z",
     "createdAt": "2026-06-19T09:50:05.636Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía gastronómica de Gurney Drive",
+        "excerpt": "Guía gastronómica de Gurney Drive Gurney Drive es el centro de comida callejera más famoso de Penang.",
+        "content": "[object Object]",
+        "meta_title": "Guía gastronómica de Gurney Drive — Enak",
+        "meta_description": "Guía gastronómica de Gurney Drive Gurney Drive es el centro de comida callejera más famoso de Penang."
+      }
+    ]
   },
   {
     "id": 127,
@@ -19952,7 +20672,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -20304,7 +21024,20 @@
     },
     "updatedAt": "2026-08-03T15:06:49.617Z",
     "createdAt": "2026-06-19T09:50:05.391Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía gastronómica del patrimonio de George Town",
+        "excerpt": "Guía gastronómica del patrimonio de George Town La UNESCO otorgó el reconocimiento de Patrimonio Mundial a George Town por su arquitectura. Pero su cultura gastronómica es igual de importante.",
+        "content": "[object Object]",
+        "meta_title": "Guía gastronómica del patrimonio de George Town — Enak",
+        "meta_description": "Guía gastronómica del patrimonio de George Town La UNESCO otorgó el reconocimiento de Patrimonio Mundial a George Town por su arquitectura. Pero su cultura gastronómica es igual de importante."
+      }
+    ]
   },
   {
     "id": 126,
@@ -20316,7 +21049,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -20681,7 +21414,20 @@
     },
     "updatedAt": "2026-08-03T15:06:49.873Z",
     "createdAt": "2026-06-19T09:50:05.136Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de comida de Chowrasta Market en Penang",
+        "excerpt": "Guía de comida de Chowrasta Market Chowrasta Market es el mercado más antiguo y famoso de Penang.",
+        "content": "[object Object]",
+        "meta_title": "Guía de comida de Chowrasta Market en Penang — Enak",
+        "meta_description": "Guía de comida de Chowrasta Market Chowrasta Market es el mercado más antiguo y famoso de Penang."
+      }
+    ]
   },
   {
     "id": 125,
@@ -20693,7 +21439,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -21046,7 +21792,20 @@
     },
     "updatedAt": "2026-08-03T15:06:50.135Z",
     "createdAt": "2026-06-19T09:50:04.862Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía gastronómica del mercado Chow Kit",
+        "excerpt": "Guía gastronómica del mercado Chow Kit Chow Kit es lo opuesto a un mercado para turistas. No hay tiendas de recuerdos. No hay aire acondicionado. No hay carteles en inglés.",
+        "content": "[object Object]",
+        "meta_title": "Guía gastronómica del mercado Chow Kit — Enak",
+        "meta_description": "Guía gastronómica del mercado Chow Kit Chow Kit es lo opuesto a un mercado para turistas. No hay tiendas de recuerdos. No hay aire acondicionado. No hay carteles en inglés."
+      }
+    ]
   },
   {
     "id": 124,
@@ -21058,7 +21817,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -21362,7 +22121,20 @@
     },
     "updatedAt": "2026-08-03T15:06:50.389Z",
     "createdAt": "2026-06-19T09:50:04.600Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía gastronómica del barrio chino de KL",
+        "excerpt": "Guía gastronómica del barrio chino de KL El barrio chino de KL se centra en Petaling Street. Es un mercado cubierto que atrae multitudes por sus productos falsificados y falsificaciones.",
+        "content": "[object Object]",
+        "meta_title": "Guía gastronómica del barrio chino de KL — Enak",
+        "meta_description": "Guía gastronómica del barrio chino de KL El barrio chino de KL se centra en Petaling Street. Es un mercado cubierto que atrae multitudes por sus productos falsificados y falsificaciones."
+      }
+    ]
   },
   {
     "id": 123,
@@ -21374,7 +22146,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -21715,7 +22487,20 @@
     },
     "updatedAt": "2026-08-03T15:06:50.628Z",
     "createdAt": "2026-06-19T09:50:04.353Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Penang con niños: Una guía gastronómica para familias",
+        "excerpt": "Penang con niños: Una guía gastronómica para familias La escena gastronómica de Penang es famosa por ser intensa.",
+        "content": "[object Object]",
+        "meta_title": "Penang con niños: Una guía gastronómica para familias — Enak",
+        "meta_description": "Penang con niños: Una guía gastronómica para familias La escena gastronómica de Penang es famosa por ser intensa."
+      }
+    ]
   },
   {
     "id": 122,
@@ -21727,7 +22512,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -22068,7 +22853,20 @@
     },
     "updatedAt": "2026-08-03T15:06:50.848Z",
     "createdAt": "2026-06-19T09:50:04.071Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "KL con niños: Una guía gastronómica para familias",
+        "excerpt": "KL con niños: Una guía gastronómica para familias Estás en la entrada de un centro de comida de KL con un niño cansado en un brazo y el cochecito en la.",
+        "content": "[object Object]",
+        "meta_title": "KL con niños: Una guía gastronómica para familias — Enak",
+        "meta_description": "KL con niños: Una guía gastronómica para familias Estás en la entrada de un centro de comida de KL con un niño cansado en un brazo y el cochecito en la."
+      }
+    ]
   },
   {
     "id": 121,
@@ -22080,7 +22878,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -22397,7 +23195,20 @@
     },
     "updatedAt": "2026-08-03T15:06:51.100Z",
     "createdAt": "2026-06-19T09:50:03.834Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Penang para parejas: una guía romántica de comida",
+        "excerpt": "Penang para parejas: una guía romántica de comida George Town al atardecer tiene una calidad de luz especial. Los edificios coloniales blancos se vuelven de un naranja cálido.",
+        "content": "[object Object]",
+        "meta_title": "Penang para parejas: una guía romántica de comida — Enak",
+        "meta_description": "Penang para parejas: una guía romántica de comida George Town al atardecer tiene una calidad de luz especial. Los edificios coloniales blancos se vuelven de un naranja cálido."
+      }
+    ]
   },
   {
     "id": 120,
@@ -22409,7 +23220,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -22738,7 +23549,20 @@
     },
     "updatedAt": "2026-08-03T15:06:51.350Z",
     "createdAt": "2026-06-19T09:50:03.564Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "KL para parejas: Una guía romántica de comida",
+        "excerpt": "KL para parejas: Una guía romántica de comida El consejo habitual para parejas que visitan KL es reservar mesa en un restaurante de hotel con vista a las Petronas.",
+        "content": "[object Object]",
+        "meta_title": "KL para parejas: Una guía romántica de comida — Enak",
+        "meta_description": "KL para parejas: Una guía romántica de comida El consejo habitual para parejas que visitan KL es reservar mesa en un restaurante de hotel con vista a las Petronas."
+      }
+    ]
   },
   {
     "id": 119,
@@ -22750,7 +23574,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23079,7 +23903,20 @@
     },
     "updatedAt": "2026-08-03T15:06:51.602Z",
     "createdAt": "2026-06-19T09:50:03.237Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "KL para chefs y profesionales culinarios",
+        "excerpt": "KL cocina por instinto, no por libro de texto. Los platos que importan aquí vienen de gente que aprendió observando, ajustando, probando. Guía para chefs que piensan en sabor.",
+        "content": "[object Object]",
+        "meta_title": "KL para chefs y profesionales culinarios — E",
+        "meta_description": "KL cocina por instinto, no por libro de texto. Los platos que importan aquí vienen de gente que aprendió observando, ajustando, probando. Guía para chef"
+      }
+    ]
   },
   {
     "id": 118,
@@ -23091,7 +23928,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23138,7 +23975,20 @@
     },
     "updatedAt": "2026-08-03T15:06:51.856Z",
     "createdAt": "2026-06-12T15:55:40.608Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Los mercados de comida de Malasia: de Chow Kit a Batu Ferringhi",
+        "excerpt": "Guías locales te explican los mercados de comida de Malasia. Desde los mercados húmedos de la mañana en Chow Kit hasta los puestos nocturnos de Batu Ferringhi. Qué comprar, qué comer, cuándo ir.",
+        "content": "[object Object]",
+        "meta_title": "Los mercados de comida de Malasia: de Chow Kit a Batu Ferringhi — S",
+        "meta_description": "Guías locales te explican los mercados de comida de Malasia. Desde los mercados húmedos de la mañana en Chow Kit hasta los puestos nocturnos de Batu Ferringhi. Qué comprar, qué comer,"
+      }
+    ]
   },
   {
     "id": 117,
@@ -23150,7 +24000,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23197,7 +24047,20 @@
     },
     "updatedAt": "2026-08-03T15:06:52.108Z",
     "createdAt": "2026-06-12T15:55:40.566Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía de supervivencia para la temporada de durian: cuándo, dónde y cómo comer el rey de las frutas",
+        "excerpt": "Evento: 2026 09 22 Guía de supervivencia para la temporada de durian Cuándo Dónd",
+        "content": "[object Object]",
+        "meta_title": "Guía de supervivencia para la temporada de durian: cuándo, dónde y cómo comer e",
+        "meta_description": "Evento: 2026 09 22 Guía de supervivencia para la temporada de durian Cuándo Dónd"
+      }
+    ]
   },
   {
     "id": 116,
@@ -23209,7 +24072,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23256,7 +24119,20 @@
     },
     "updatedAt": "2026-08-03T15:06:52.360Z",
     "createdAt": "2026-06-12T15:55:40.522Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Melaka Food Heritage Walk A Morning In",
+        "excerpt": "Event: 2026 09 15 Melaka Food Heritage Walk A Morning In",
+        "content": "[object Object]",
+        "meta_title": "Melaka Food Heritage Walk A Morning In — Enak",
+        "meta_description": "Event: 2026 09 15 Melaka Food Heritage Walk A Morning In"
+      }
+    ]
   },
   {
     "id": 115,
@@ -23268,7 +24144,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23315,7 +24191,20 @@
     },
     "updatedAt": "2026-08-03T15:06:52.707Z",
     "createdAt": "2026-06-12T15:55:40.476Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "El vendedor de satay: la historia de un vendedor de K",
+        "excerpt": "El vendedor de satay: la historia de un vendedor de Kajang — comida, gente y cultura",
+        "content": "[object Object]",
+        "meta_title": "El vendedor de satay: la historia de un vendedor de K — Enak",
+        "meta_description": "El vendedor de satay: la historia de un vendedor de Kajang — comida, gente y cultura"
+      }
+    ]
   },
   {
     "id": 114,
@@ -23327,7 +24216,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23374,7 +24263,20 @@
     },
     "updatedAt": "2026-08-03T15:06:52.969Z",
     "createdAt": "2026-06-12T15:55:40.433Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Cultura del Té de Malasia Teh Tarik Y Be",
+        "excerpt": "Evento: 2026 09 01 Cultura del Té de Malasia Teh Tarik Y Be",
+        "content": "[object Object]",
+        "meta_title": "Cultura del Té de Malasia Teh Tarik Y Be — Enak",
+        "meta_description": "Evento: 2026 09 01 Cultura del Té de Malasia Teh Tarik Y Be"
+      }
+    ]
   },
   {
     "id": 113,
@@ -23386,7 +24288,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23433,7 +24335,20 @@
     },
     "updatedAt": "2026-08-03T15:06:53.224Z",
     "createdAt": "2026-06-12T15:55:40.389Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Cómo pedir en un Hawker Centre (sin parecer perdido)",
+        "excerpt": "Event: 2026 08 25 Cómo pedir en un Hawker Centre sin",
+        "content": "[object Object]",
+        "meta_title": "Cómo pedir en un Hawker Centre (sin parecer perdido)",
+        "meta_description": "Event: 2026 08 25 Cómo pedir en un Hawker Centre sin"
+      }
+    ]
   },
   {
     "id": 112,
@@ -23445,7 +24360,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23492,7 +24407,20 @@
     },
     "updatedAt": "2026-08-03T15:06:53.480Z",
     "createdAt": "2026-06-12T15:55:40.346Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Laksa por toda Malasia: Variantes Regionales",
+        "excerpt": "Evento: 2026 08 18 Laksa por toda Malasia: Variantes Regionales",
+        "content": "[object Object]",
+        "meta_title": "Laksa por toda Malasia: Variantes Regionales",
+        "meta_description": "Evento: 2026 08 18 Laksa por toda Malasia: Variantes Regionales"
+      }
+    ]
   },
   {
     "id": 111,
@@ -23504,7 +24432,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23551,7 +24479,20 @@
     },
     "updatedAt": "2026-08-03T15:06:53.835Z",
     "createdAt": "2026-06-12T15:55:40.305Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Kuala Lumpur vegetariana: Una guía gastronómica a base de plantas",
+        "excerpt": "Evento: 2026 08 11 Kuala Lumpur vegetariana A base de plantas",
+        "content": "[object Object]",
+        "meta_title": "KL vegetariano - Una guía gastronómica a base de plantas",
+        "meta_description": "Evento: 2026 08 11 KL vegetariano A base de plantas"
+      }
+    ]
   },
   {
     "id": 110,
@@ -23563,7 +24504,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23610,7 +24551,20 @@
     },
     "updatedAt": "2026-08-03T15:06:54.092Z",
     "createdAt": "2026-06-12T15:55:40.263Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Cultura de los Kopitiam de Malasia: Coffee Kay",
+        "excerpt": "Evento: 2026 08 04 Cultura de los Kopitiam de Malasia: Coffee Kay",
+        "content": "[object Object]",
+        "meta_title": "Cultura de los Kopitiam de Malasia: Coffee Kay — Enak",
+        "meta_description": "Evento: 2026 08 04 Cultura de los Kopitiam de Malasia: Coffee Kay"
+      }
+    ]
   },
   {
     "id": 109,
@@ -23622,7 +24576,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23669,7 +24623,20 @@
     },
     "updatedAt": "2026-08-03T15:06:54.343Z",
     "createdAt": "2026-06-12T15:55:40.219Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Comida callejera de Penang: Una guía para caminar por Georgetown",
+        "excerpt": "Evento: 2026 07 28 Comida Callejera de Penang Caminando por Georgetown",
+        "content": "[object Object]",
+        "meta_title": "Comida callejera de Penang: Una guía para caminar por Georgetown — Ena",
+        "meta_description": "Evento: 2026 07 28 Comida Callejera de Penang Caminando por Georgetown"
+      }
+    ]
   },
   {
     "id": 108,
@@ -23681,7 +24648,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -23728,7 +24695,20 @@
     },
     "updatedAt": "2026-08-03T15:06:54.597Z",
     "createdAt": "2026-06-12T15:55:40.175Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Nasi Lemak: De comida de granja a ícono nacional",
+        "excerpt": "Cómo un simple plato de arroz con coco se convirtió en el plato nacional de Malasia. Historia, ingredientes y dónde comer uno que te cambia la idea sobre el arroz.",
+        "content": "[object Object]",
+        "meta_title": "Nasi Lemak: De comida de granja a ícono nacional — Enak",
+        "meta_description": "Cómo un simple plato de arroz con coco se convirtió en el plato nacional de Malasia. Historia, ingredientes y dónde comer uno que te cambia la idea sobre el arroz."
+      }
+    ]
   },
   {
     "id": 18,
@@ -23740,7 +24720,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -24514,7 +25494,20 @@
     },
     "updatedAt": "2026-08-03T15:00:20.925Z",
     "createdAt": "2026-06-11T09:17:47.834Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Lo que 'vegetariano' realmente significa en KL (Kuala Lumpur)",
+        "excerpt": "Actualizado en junio de 2026: Esta guía tiene la información más reciente de nuestros guías. Ellos llevan a nuestros visitantes por los lugares de comida vegetariana en KL todos los días.",
+        "content": "[object Object]",
+        "meta_title": "Lo que 'vegetariano' realmente significa en KL (Kuala Lumpur)",
+        "meta_description": "Actualizado en junio de 2026: Actualizamos esta guía con los consejos más recientes de nuestros guías. Ellos llevan a nuestros visitantes por los lugares de comida vegetariana en KL muy a menudo."
+      }
+    ]
   },
   {
     "id": 17,
@@ -24526,7 +25519,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -25132,7 +26125,20 @@
     },
     "updatedAt": "2026-08-03T15:06:54.848Z",
     "createdAt": "2026-06-11T09:17:47.828Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Viajar durante el mes de ayuno en Malasia: qué esperar",
+        "excerpt": "Actualizado en mayo de 2026: las fechas del Ramadán cambian cada año. Esto es lo que los viajeros deben saber para el próximo mes de ayuno.",
+        "content": "[object Object]",
+        "meta_title": "Viajar durante el mes de ayuno en Malasia: qué esperar —",
+        "meta_description": "Actualizado en mayo de 2026: las fechas del Ramadán cambian cada año. Esto es lo que los viajeros deben saber para el próximo mes de ayuno."
+      }
+    ]
   },
   {
     "id": 16,
@@ -25144,7 +26150,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -25864,7 +26870,20 @@
     },
     "updatedAt": "2026-08-03T15:06:55.108Z",
     "createdAt": "2026-06-11T09:17:47.826Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "10 souvenirs comestibles y regalos gastronómicos para llevar a casa desde Malasia",
+        "excerpt": "Souvenirs comestibles y regalos gastronómicos de Malasia que viajan bien. Nuestros guías locales te los recomiendan. Ellos saben qué sobrevive al vuelo a casa.",
+        "content": "[object Object]",
+        "meta_title": "10 souvenirs comestibles y regalos gastronómicos para llevar a casa desde Malasia",
+        "meta_description": "Souvenirs comestibles y regalos gastronómicos de Malasia que viajan bien. Nuestros guías locales te los recomiendan. Ellos saben qué sobrevive al vuelo a casa."
+      }
+    ]
   },
   {
     "id": 15,
@@ -25876,7 +26895,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -26242,7 +27261,20 @@
     },
     "updatedAt": "2026-08-03T15:06:55.366Z",
     "createdAt": "2026-06-11T09:17:47.633Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Cómo ir de Port Klang a KL (Sin caer en trampas para turistas)",
+        "excerpt": "Actualizado en mayo de 2026: Las opciones de transporte entre Port Klang y KL han mejorado. Aquí tienes lo último sobre cómo hacer el viaje.",
+        "content": "[object Object]",
+        "meta_title": "Cómo ir de Port Klang a KL (Sin caer en trampas para turistas)",
+        "meta_description": "Actualizado en mayo de 2026: Las opciones de transporte entre Port Klang y KL han mejorado. Aquí tienes lo último sobre cómo hacer el viaje."
+      }
+    ]
   },
   {
     "id": 14,
@@ -26254,7 +27286,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -27013,7 +28045,20 @@
     },
     "updatedAt": "2026-08-03T15:06:55.612Z",
     "createdAt": "2026-06-11T09:17:47.631Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Lista de comida callejera malasia: qué comer en KL y Penang",
+        "excerpt": "Platos que no puedes saltarte en un viaje gastronómico a Malasia, del nasi lemak al char kuey teow, explicados por guías locales que los comen a diario.",
+        "content": "[object Object]",
+        "meta_title": "Lista de comida callejera malasia: qué comer en KL y Penan",
+        "meta_description": "Platos que no puedes saltarte en un viaje gastronómico a Malasia, del nasi lemak al char kuey teow, explicados por guías locales que los comen a diario."
+      }
+    ]
   },
   {
     "id": 13,
@@ -27025,7 +28070,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -27251,7 +28296,20 @@
     },
     "updatedAt": "2026-08-03T15:06:55.856Z",
     "createdAt": "2026-06-11T09:17:47.506Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Lo que la mayoría entiende mal sobre las especias malayas",
+        "excerpt": "Las hierbas y especias que definen la cocina malaya: qué son, a qué saben y de dónde vienen en el mercado.",
+        "content": "[object Object]",
+        "meta_title": "Lo que la mayoría entiende mal sobre las especias malayas. E",
+        "meta_description": "Las hierbas y especias que definen la cocina malaya: qué son, a qué saben y de dónde vienen en el mercado."
+      }
+    ]
   },
   {
     "id": 12,
@@ -27263,7 +28321,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -28019,7 +29077,20 @@
     },
     "updatedAt": "2026-08-03T15:06:56.112Z",
     "createdAt": "2026-06-11T09:17:47.504Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Fiestas malasias: Cómo planear tu viaje según las celebraciones",
+        "excerpt": "Actualizado en junio de 2026: Las fechas de los festivales cambian cada año según los calendarios lunar e islámico. Aquí tienes las fechas confirmadas para el próximo año.",
+        "content": "[object Object]",
+        "meta_title": "Fiestas malasias: Cómo planear tu viaje según la celebración",
+        "meta_description": "Actualizado en junio de 2026: Las fechas de los festivales cambian cada año según los calendarios lunar e islámico. Aquí tienes las fechas confirmadas para el próximo año."
+      }
+    ]
   },
   {
     "id": 11,
@@ -28031,7 +29102,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -28846,7 +29917,20 @@
     },
     "updatedAt": "2026-08-03T15:06:56.368Z",
     "createdAt": "2026-06-11T09:17:47.398Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Cómo encontrar restaurantes vegetarianos en KL, Penang e Ipoh",
+        "excerpt": "Actualizado en junio de 2026: la escena vegetariana de Malasia sigue creciendo. Nuestros guías han actualizado esto con los lugares más recientes.",
+        "content": "[object Object]",
+        "meta_title": "Cómo encontrar restaurantes vegetarianos en KL, Penang e Ipoh —",
+        "meta_description": "Actualizado en junio de 2026: la escena vegetariana de Malasia sigue creciendo. Nuestros guías han actualizado esto con los lugares más recientes."
+      }
+    ]
   },
   {
     "id": 10,
@@ -28858,7 +29942,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -29550,7 +30634,20 @@
     },
     "updatedAt": "2026-08-03T15:06:56.628Z",
     "createdAt": "2026-06-11T09:17:47.396Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "El problema oculto de la carne: Por qué los vegetarianos deben tener cuidado en KL",
+        "excerpt": "Actualizado en junio de 2026: Nuestros guías aún escuchan esta pregunta cada semana. Aquí están los últimos consejos para los visitantes vegetarianos.",
+        "content": "[object Object]",
+        "meta_title": "El problema oculto de la carne: Por qué los vegetarianos deben tener cuidado",
+        "meta_description": "Actualizado en junio de 2026: Nuestros guías aún escuchan esta pregunta cada semana. Aquí están los últimos consejos para los visitantes vegetarianos."
+      }
+    ]
   },
   {
     "id": 9,
@@ -29562,7 +30659,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -29978,7 +31075,20 @@
     },
     "updatedAt": "2026-08-03T15:06:57.218Z",
     "createdAt": "2026-06-11T09:17:47.202Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "9 lugares especiales para visitar en Kuala Lumpur",
+        "excerpt": "Actualizado en mayo de 2026: La escena gastronómica y cultural de KL sigue evolucionando.",
+        "content": "[object Object]",
+        "meta_title": "9 lugares especiales para visitar en Kuala Lumpur — Enak",
+        "meta_description": "Actualizado en mayo de 2026: La escena gastronómica y cultural de KL sigue evolucionando."
+      }
+    ]
   },
   {
     "id": 8,
@@ -29990,7 +31100,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -30567,7 +31677,20 @@
     },
     "updatedAt": "2026-08-03T15:06:57.483Z",
     "createdAt": "2026-06-11T09:17:47.201Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Es seguro comer comida callejera en Malasia?",
+        "excerpt": "Guía práctica y honesta sobre seguridad alimentaria en la calle en Malasia. Qué buscar, qué evitar y cómo comer con confianza en los puestos callejeros.",
+        "content": "[object Object]",
+        "meta_title": "¿Es seguro comer comida callejera en Malasia? — Enak",
+        "meta_description": "Guía práctica y honesta sobre seguridad alimentaria en la calle en Malasia. Qué buscar, qué evitar y cómo comer con confianza en los puestos callejeros."
+      }
+    ]
   },
   {
     "id": 7,
@@ -30579,7 +31702,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -31296,7 +32419,20 @@
     },
     "updatedAt": "2026-08-05T00:37:14.997Z",
     "createdAt": "2026-06-11T09:17:47.198Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Durian en Malasia: Tipos, temporada y dónde comerlo",
+        "excerpt": "Descubre el rey de las frutas. Nuestra guía cubre dónde probar el durian en KL y Penang, cómo elegir las mejores variedades y qué comen los locales.",
+        "content": "[object Object]",
+        "meta_title": "Durian en Malasia: Lo que todo visitante debe saber | Enak",
+        "meta_description": "Descubre el rey de las frutas. Nuestra guía cubre dónde probar el durian en KL y Penang, cómo elegir las mejores variedades y qué comen los locales."
+      }
+    ]
   },
   {
     "id": 6,
@@ -31308,7 +32444,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -31894,7 +33030,20 @@
     },
     "updatedAt": "2026-08-03T15:06:57.988Z",
     "createdAt": "2026-06-11T09:17:46.973Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Los malayos comen carne de perro? Y otras preguntas sobre la comida de Malasia",
+        "excerpt": "Respondemos con honestidad una pregunta común de los visitantes. También echamos un vistazo a algunos de los platos más inusuales que podrías encontrar en un tour gastronómico por Malasia.",
+        "content": "[object Object]",
+        "meta_title": "¿Los malayos comen carne de perro? Y otras preguntas sobre los malayos",
+        "meta_description": "Respondemos con honestidad una pregunta común de los visitantes. También echamos un vistazo a algunos de los platos más inusuales que podrías encontrar en un tour gastronómico por Malasia."
+      }
+    ]
   },
   {
     "id": 5,
@@ -31906,7 +33055,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -32673,7 +33822,20 @@
     },
     "updatedAt": "2026-08-03T15:06:58.253Z",
     "createdAt": "2026-06-11T09:17:46.971Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "¿Los malayos hablan inglés? Una guía para visitantes",
+        "excerpt": "Actualizado en junio de 2026: Malaysia sigue siendo uno de los países más amigables con el inglés en el sudeste asiático para los viajeros.",
+        "content": "[object Object]",
+        "meta_title": "¿Los malayos hablan inglés? Una guía para visitantes — Enak",
+        "meta_description": "Actualizado en junio de 2026: Malaysia sigue siendo uno de los países más amigables con el inglés en el sudeste asiático para los viajeros."
+      }
+    ]
   },
   {
     "id": 4,
@@ -32685,7 +33847,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -33231,7 +34393,15 @@
     },
     "updatedAt": "2026-08-03T15:06:58.514Z",
     "createdAt": "2026-06-11T09:17:46.742Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es"
+      }
+    ]
   },
   {
     "id": 3,
@@ -33243,7 +34413,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -33409,7 +34579,20 @@
     },
     "updatedAt": "2026-08-03T15:06:58.745Z",
     "createdAt": "2026-06-11T09:17:46.721Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Lo que pasa en una mesa de Hari Raya (y que te va a sorprender)",
+        "excerpt": "Actualizado en junio de 2026: Las celebraciones de Hari Raya vuelven a estar en pleno apogeo por toda Malasia.",
+        "content": "[object Object]",
+        "meta_title": "Lo que pasa en una mesa de Hari Raya (y que te va a sorprender) —",
+        "meta_description": "Actualizado en junio de 2026: Las celebraciones de Hari Raya vuelven a estar en pleno apogeo por toda Malasia."
+      }
+    ]
   },
   {
     "id": 2,
@@ -33421,7 +34604,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -33884,7 +35067,20 @@
     },
     "updatedAt": "2026-08-03T15:06:59.013Z",
     "createdAt": "2026-06-11T04:36:40.705Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Guía del durian malasio: Cómo comer el rey de las frutas",
+        "excerpt": "Guía del durian malasio: Cómo comer el rey de las frutas sin que tu hotel te eche 2.103 personas buscan \"durian\" cada mes.",
+        "content": "[object Object]",
+        "meta_title": "Guía del durian malasio: Cómo comer el rey de las frutas — Simp",
+        "meta_description": "Guía del durian malasio: Cómo comer el rey de las frutas sin que tu hotel te eche 2.103 personas buscan \"durian\" cada mes."
+      }
+    ]
   },
   {
     "id": 1,
@@ -33896,7 +35092,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-05T11:26:38.889Z",
+      "updatedAt": "2026-08-05T11:51:56.349Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "apiKey": "892eb3a4-2a8e-400c-8244-7c0f7156e29f",
@@ -34579,6 +35775,19 @@
     },
     "updatedAt": "2026-08-03T15:06:59.233Z",
     "createdAt": "2026-06-11T03:50:53.939Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "es",
+        "title": "Cómo comer comida callejera malaya como si te hubieras criado aquí (2026)",
+        "excerpt": "No solo qué comer, sino cómo. Las reglas no escritas de los centros de vendedores ambulantes de Malasia. Desde pedir con señas hasta encontrar el puesto por el que vale la pena hacer cola.",
+        "content": "[object Object]",
+        "meta_title": "Cómo comer comida callejera malaya como si te hubieras criado aquí (2026",
+        "meta_description": "No solo qué comer, sino cómo. Las reglas no escritas de los centros de vendedores ambulantes de Malasia. Desde pedir con señas hasta encontrar el puesto por el que vale la pena hacer cola."
+      }
+    ]
   }
 ]
