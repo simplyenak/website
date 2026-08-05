@@ -35,6 +35,39 @@ jobs:
       - name: Push to local registry
         run: docker push localhost:5000/simplyenak/website-backend:noloc2
 
+      - name: Build migration runner image
+        run: cd revamp/backend && docker build --target deps -t payload-migrate:latest .
+
+      - name: Apply database migrations
+        # Runs `payload migrate` against the prod DB BEFORE the service update.
+        # Runs as a one-off swarm service so it joins the payload overlay network
+        # and resolves the postgres service name. Fails the deploy if migrations error.
+        run: |
+          set -e
+          cd revamp/backend
+          PAYLOAD_CID=$(docker ps --filter name=simplyenakbackend_payload --format '{{.ID}}' | head -1)
+          DBURL=$(docker exec "$PAYLOAD_CID" printenv DATABASE_URL)
+          SECRET=$(docker exec "$PAYLOAD_CID" printenv PAYLOAD_SECRET)
+          docker service create --name payload-migrate-run --detach --quiet \
+            --network simplyenakbackend_payload-net \
+            --restart-condition none \
+            --mount type=bind,source="$PWD",target=/mnt/src \
+            --workdir /mnt/src \
+            --env DATABASE_URL="$DBURL" \
+            --env PAYLOAD_SECRET="$SECRET" \
+            --env PATH=/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+            payload-migrate:latest \
+            sh -c "ln -sfn /app/node_modules /mnt/src/node_modules && payload migrate" >/dev/null
+          for i in $(seq 1 60); do
+            STATE=$(docker service ps payload-migrate-run --format '{{.CurrentState}}' | head -1)
+            echo "$STATE" | grep -qE "Complete|Failed|Rejected" && break
+            sleep 5
+          done
+          docker service logs payload-migrate-run 2>&1 | tail -5
+          docker service rm payload-migrate-run >/dev/null 2>&1 || true
+          echo "migrate task state: $STATE"
+          echo "$STATE" | grep -q "Complete" || { echo "❌ Migration failed — aborting deploy"; exit 1; }
+
       - name: Update Swarm service
         run: docker service update --image localhost:5000/simplyenak/website-backend:noloc2 simplyenakbackend_payload
 
