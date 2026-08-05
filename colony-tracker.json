@@ -110,6 +110,37 @@
       "created": "2026-07-29",
       "last_checked": null,
       "threshold_met": false
+    },
+    {
+      "id": "general",
+      "pages": [
+        {
+          "slug": "durian",
+          "title": "Durian",
+          "url": "/stories/durian/",
+          "target_keyword": "durian",
+          "status": "planned",
+          "links_to": "simply-enak-kangar-jaya",
+          "linked_from": null,
+          "payload_type": "story",
+          "contextual_link_phrase": "For more on this, continue reading our",
+          "contextual_link_text": "Simply Enak Kangar Jaya",
+          "contextual_link_url": "/stories/simply-enak-kangar-jaya/"
+        },
+        {
+          "slug": "simply-enak-kangar-jaya",
+          "title": "Simply Enak Kangar Jaya",
+          "url": "/stories/simply-enak-kangar-jaya/",
+          "target_keyword": "simply enak kangar jaya",
+          "status": "planned",
+          "links_to": null,
+          "linked_from": "durian",
+          "payload_type": "story",
+          "contextual_link_phrase": "Ready to experience this firsthand? Book a",
+          "contextual_link_text": "3-day KL and Penang food tour package",
+          "contextual_link_url": "/tours/packages/ultimate-malaysia-food-experience/"
+        }
+      ]
     }
   ]
 }
