@@ -11,9 +11,62 @@ const metadata = {
   description: "Connecting travel professionals with Malaysia's culinary traditions and cultural heritage. Fourth-generation producers, family recipes, heritage knowledge. Licensed by MOTAC.",
   image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
 };
+
+// B2B Schema for CTE
+const b2bSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Culinary Travel Experts',
+  description: "Malaysia's B2B food experience partner for travel professionals. Licensed by MOTAC. Part of Simply Enak.",
+  url: 'https://culinarytravelexperts.com',
+  image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
+  telephone: '+60 17-287 8929',
+  email: 'hello@culinarytravelexperts.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kuala Lumpur',
+    addressCountry: 'MY',
+  },
+  areaServed: ['Kuala Lumpur', 'Penang', 'Ipoh', 'Melaka', 'Cameron Highlands', 'Johor Bahru'],
+  serviceType: ['Tour Operator', 'Destination Management Company', 'Food Tour Provider'],
+  priceRange: '$$$',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: '76',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  offers: {
+    '@type': 'Offer',
+    name: 'B2B Partnership',
+    description: 'Trade partnerships for travel agents, DMCs, hotels, and event planners',
+    availability: 'https://schema.org/InStock',
+  },
+  brand: {
+    '@type': 'Organization',
+    name: 'Simply Enak',
+    url: 'https://simplyenak.com',
+  },
+  sameAs: [
+    'https://www.facebook.com/SimplyEnak',
+    'https://www.instagram.com/simply.enak/',
+    'https://www.tripadvisor.com/Attraction_Review-g298570-d2414763-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html',
+  ],
+};
 ---
 
 <Layout metadata={metadata}>
+  <!-- B2B Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(b2bSchema)} />
   <Hero
     tagline="Your clients. Our Malaysia. Experiences that stay with them."
     actions={[
