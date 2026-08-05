@@ -1,0 +1,42 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { locationSegments } from '~/data/segments';
+import { getImageUrl } from '~/lib/content';
+
+const metadata = {
+  title: 'Food Tours by Location in Malaysia',
+  description: 'Browse our food tours by location: Kuala Lumpur, Penang, Melaka, Ipoh, and more. Small-group walking tours through the best neighbourhoods.',
+  canonical: 'https://simplyenak.com/tours/locations',
+};
+
+// Sort by name for consistent ordering
+const sorted = [...locationSegments].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout metadata={metadata}>
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-6">Food Tours by Location</h1>
+    <p class="text-xl text-gray-600 mb-12">Choose a city or neighbourhood to explore our guided food tours.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map((segment) => (
+        <a href={`/tours/locations/${segment.slug}`} class="group block p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <h2 class="text-xl font-semibold mb-2 group-hover:text-accent">{segment.nameFull || segment.name}</h2>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">{segment.description}</p>
+          <span class="text-accent font-medium text-sm">View tours →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-gray-50 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">Popular Tours</h2>
+      <ul class="space-y-2">
+        <li><a href="/tours/locations/food-tours-kuala-lumpur" class="text-accent hover:underline">Kuala Lumpur Food Tours</a></li>
+        <li><a href="/tours/locations/food-tours-penang" class="text-accent hover:underline">Penang Food Tours</a></li>
+        <li><a href="/tours/locations/malaysia-food-tours" class="text-accent hover:underline">Malaysia Food Tours</a></li>
+        <li><a href="/tours/locations/food-tours-melaka" class="text-accent hover:underline">Melaka Food Tours</a></li>
+        <li><a href="/tours/locations/food-tours-ipoh" class="text-accent hover:underline">Ipoh Food Tours</a></li>
+      </ul>
+    </div>
+  </div>
+</Layout>

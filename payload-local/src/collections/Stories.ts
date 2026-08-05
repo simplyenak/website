@@ -149,5 +149,15 @@ export const Stories: CollectionConfig = {
         description: 'Select specialty experiences (Heritage, Street Food, Night Tour, Market)',
       },
     },
+    {
+      name: 'locationsRef',
+      type: 'relationship',
+      relationTo: 'locations',
+      hasMany: true,
+      admin: {
+        description: 'Locations covered in this story (KL, Penang, Ipoh, etc.)',
+        position: 'sidebar',
+      },
+    },
   ],
 }

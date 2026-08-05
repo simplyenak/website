@@ -1,0 +1,41 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { travelTypeSegments } from '~/data/segments';
+
+const metadata = {
+  title: 'Food Tours by Group Type in Malaysia',
+  description: 'Browse our food tours by group type: families, couples, foodies, chefs, and wedding groups. Tours designed for every occasion.',
+  canonical: 'https://simplyenak.com/tours/segments',
+};
+
+// Sort by name for consistent ordering
+const sorted = [...travelTypeSegments].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout metadata={metadata}>
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-6">Food Tours by Group Type</h1>
+    <p class="text-xl text-gray-600 mb-12">Choose a group type to find tours perfect for your occasion.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map((segment) => (
+        <a href={`/tours/segments/${segment.slug}`} class="group block p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <h2 class="text-xl font-semibold mb-2 group-hover:text-accent">{segment.nameFull || segment.name}</h2>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">{segment.description}</p>
+          <span class="text-accent font-medium text-sm">View tours →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-gray-50 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">Popular Tours</h2>
+      <ul class="space-y-2">
+        <li><a href="/tours/segments/food-tours-for-families" class="text-accent hover:underline">Family Food Tours</a></li>
+        <li><a href="/tours/segments/food-tours-for-couples" class="text-accent hover:underline">Couple Food Tours</a></li>
+        <li><a href="/tours/segments/food-tours-for-foodies" class="text-accent hover:underline">Foodie Tours</a></li>
+        <li><a href="/tours/segments/food-tours-for-chefs" class="text-accent hover:underline">Chef Tours</a></li>
+        <li><a href="/tours/segments/food-tours-for-wedding-groups" class="text-accent hover:underline">Wedding Group Tours</a></li>
+      </ul>
+    </div>
+  </div>
+</Layout>

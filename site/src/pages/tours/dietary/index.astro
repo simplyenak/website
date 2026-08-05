@@ -1,0 +1,41 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { dietarySegments } from '~/data/segments';
+
+const metadata = {
+  title: 'Food Tours by Dietary Preference in Malaysia',
+  description: 'Browse our food tours by dietary preference: vegetarian, vegan, halal, gluten-free, and Jain. All tours verified for your dietary needs.',
+  canonical: 'https://simplyenak.com/tours/dietary',
+};
+
+// Sort by name for consistent ordering
+const sorted = [...dietarySegments].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout metadata={metadata}>
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-6">Food Tours by Dietary Preference</h1>
+    <p class="text-xl text-gray-600 mb-12">Choose a dietary preference to find tours that match your needs.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map((segment) => (
+        <a href={`/tours/dietary/${segment.slug}`} class="group block p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <h2 class="text-xl font-semibold mb-2 group-hover:text-accent">{segment.nameFull || segment.name}</h2>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">{segment.description}</p>
+          <span class="text-accent font-medium text-sm">View tours →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-gray-50 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">Popular Tours</h2>
+      <ul class="space-y-2">
+        <li><a href="/tours/dietary/vegetarian-food-tours" class="text-accent hover:underline">Vegetarian Food Tours</a></li>
+        <li><a href="/tours/dietary/halal-food-tours" class="text-accent hover:underline">Halal Food Tours</a></li>
+        <li><a href="/tours/dietary/vegan-food-tours" class="text-accent hover:underline">Vegan Food Tours</a></li>
+        <li><a href="/tours/dietary/gluten-free-food-tours" class="text-accent hover:underline">Gluten-Free Food Tours</a></li>
+        <li><a href="/tours/dietary/jain-food-tours" class="text-accent hover:underline">Jain Food Tours</a></li>
+      </ul>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,30 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { locationSegments } from '~/data/segments';
+
+const metadata = {
+  title: 'マレーシアの地域別フードツアー',
+  description: 'クアラルンプール、ペンang、マラッカ、イポなど、地域別のフードツアーを閲覧。',
+  canonical: 'https://simplyenak.com/ja/locations',
+};
+
+// Sort by name for consistent ordering
+const sorted = [...locationSegments].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout metadata={metadata}>
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-6">マレーシアの地域別フードツアー</h1>
+    <p class="text-xl text-gray-600 mb-12">クアラルンプール、ペンang、マラッカ、イポなど、地域別のフードツアーを閲覧。</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map((segment) => (
+        <a href=`/locations/${segment.slug}` class="group block p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <h2 class="text-xl font-semibold mb-2 group-hover:text-accent">{segment.nameFull || segment.name}</h2>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">{segment.description}</p>
+          <span class="text-accent font-medium text-sm">View tours →</span>
+        </a>
+      ))}}
+    </div>
+  </div>
+</Layout>

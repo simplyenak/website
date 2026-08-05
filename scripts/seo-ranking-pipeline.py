@@ -164,6 +164,233 @@ RANK_SIGNAL_KEYWORDS = {
 
 
 # ──────────────────────────────────────────────────────────────────────
+# Crawl Depth & Authority Flow Analysis
+# ──────────────────────────────────────────────────────────────────────
+
+def analyze_crawl_depth(urls: list[dict]) -> dict:
+    """Analyze crawl depth and backlink authority flow for money pages."""
+    from urllib.parse import urlparse
+
+    # Parse URLs
+    parsed = []
+    for entry in urls:
+        url = entry["loc"] if isinstance(entry, dict) else entry
+        path = urlparse(url).path.rstrip("/")
+        depth = len([p for p in path.split("/") if p])
+        parsed.append({"url": url, "path": path, "depth": depth})
+
+    # Define money page patterns
+    money_patterns = [
+        r"^/tours/\w+/",
+        r"^/tours/locations/.*-tour",
+        r"^/tours/dietary/",
+        r"^/tours/specialty/",
+        r"^/tours/segments/",
+    ]
+
+    # Calculate authority decay (15% per hop)
+    DECAY_RATE = 0.85
+
+    results = {
+        "total_pages": len(parsed),
+        "money_pages": [],
+        "deep_money_pages": [],
+        "hub_recommendations": [],
+        "avg_authority": 0,
+    }
+
+    for p in parsed:
+        is_money = any(re.match(pat, p["path"]) for pat in money_patterns)
+        authority = (DECAY_RATE ** p["depth"]) * 100
+        p["is_money"] = is_money
+        p["authority"] = round(authority, 1)
+
+        if is_money:
+            results["money_pages"].append(p)
+            if p["depth"] >= 3:
+                results["deep_money_pages"].append(p)
+
+    # Calculate average authority for money pages
+    if results["money_pages"]:
+        results["avg_authority"] = round(
+            sum(p["authority"] for p in results["money_pages"]) / len(results["money_pages"]),
+            1
+        )
+
+    # Generate hub recommendations
+    hub_prefixes = [
+        ("/tours/locations/", "Location tours"),
+        ("/tours/dietary/", "Dietary tours"),
+        ("/tours/specialty/", "Specialty tours"),
+        ("/tours/segments/", "Segment tours"),
+    ]
+
+    for prefix, label in hub_prefixes:
+        members = [p for p in results["money_pages"] if p["path"].startswith(prefix)]
+        if members:
+            results["hub_recommendations"].append({
+                "hub_url": prefix.rstrip("/"),
+                "label": label,
+                "member_count": len(members),
+                "current_depth": 3,
+                "recommended_depth": 2,
+                "authority_improvement": f"{(DECAY_RATE ** 2 * 100):.1f}% → {(DECAY_RATE ** 3 * 100):.1f}%",
+                "priority": "high" if len(members) > 5 else "medium",
+            })
+
+    return results
+
+
+def generate_crawl_depth_report(crawl_data: dict, output_dir: Path, timestamp: str) -> Path:
+    """Generate HTML and CSV report for crawl depth analysis."""
+    csv_path = output_dir / f"crawl-depth-report_{timestamp}.csv"
+    html_path = output_dir / f"crawl-depth-report_{timestamp}.html"
+
+    # CSV
+    with open(csv_path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["url", "path", "depth", "is_money", "authority"])
+        writer.writeheader()
+        for p in crawl_data["money_pages"]:
+            writer.writerow(p)
+
+    # HTML
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Crawl Depth Analysis - Simply Enak SEO</title>
+    <style>
+        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }}
+        h1 {{ color: #333; }}
+        h2 {{ color: #555; border-bottom: 2px solid #ddd; padding-bottom: 10px; }}
+        .summary {{ background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
+        .metric {{ display: inline-block; margin-right: 30px; }}
+        .metric-value {{ font-size: 32px; font-weight: bold; color: #2563eb; }}
+        .metric-label {{ color: #666; font-size: 14px; }}
+        table {{ width: 100%; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
+        th {{ background: #2563eb; color: white; padding: 12px; text-align: left; }}
+        td {{ padding: 10px 12px; border-bottom: 1px solid #eee; }}
+        tr:hover {{ background: #f9fafb; }}
+        .money {{ background: #fef3c7; }}
+        .deep {{ background: #fee2e2; }}
+        .good {{ background: #d1fae5; }}
+        .authority {{ font-weight: bold; }}
+        .warning {{ color: #dc2626; }}
+        .success {{ color: #16a34a; }}
+    </style>
+</head>
+<body>
+    <h1>🔍 Crawl Depth Analysis</h1>
+    <p>Analyzed {crawl_data['total_pages']} URLs for SEO backlink authority flow</p>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="metric">
+            <div class="metric-value">{len(crawl_data['money_pages'])}</div>
+            <div class="metric-label">Money Pages</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">{len(crawl_data['deep_money_pages'])}</div>
+            <div class="metric-label">Deep Money Pages (≥3 clicks)</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">{crawl_data['avg_authority']}%</div>
+            <div class="metric-label">Avg Authority (from homepage)</div>
+        </div>
+    </div>
+
+    <h2>🏛️ Hub Page Recommendations</h2>
+    <div class="summary">
+        <p><strong>Problem:</strong> All money pages are at depth 3, receiving only 61.4% authority from backlinks.</p>
+        <p><strong>Solution:</strong> Create hub pages at depth 2 to concentrate authority in each subfolder cluster.</p>
+    </div>
+    <table>
+        <tr>
+            <th>Hub URL</th>
+            <th>Label</th>
+            <th>Members</th>
+            <th>Current Depth</th>
+            <th>Recommended Depth</th>
+            <th>Authority Gain</th>
+            <th>Priority</th>
+        </tr>
+"""
+    for rec in crawl_data["hub_recommendations"]:
+        html += f"""
+        <tr>
+            <td><code>{rec['hub_url']}</code></td>
+            <td>{rec['label']}</td>
+            <td>{rec['member_count']}</td>
+            <td>{rec['current_depth']}</td>
+            <td>{rec['recommended_depth']}</td>
+            <td class="authority">{rec['authority_improvement']}</td>
+            <td class="{'warning' if rec['priority'] == 'high' else 'success'}">{rec['priority'].title()}</td>
+        </tr>
+"""
+    html += """
+    </table>
+
+    <h2>📊 Money Pages by Depth</h2>
+    <table>
+        <tr>
+            <th>Page</th>
+            <th>Depth</th>
+            <th>Authority %</th>
+            <th>Status</th>
+        </tr>
+"""
+    for p in sorted(crawl_data["money_pages"], key=lambda x: x["depth"]):
+        status = "✓ Good" if p["depth"] <= 2 else "⚠ Deep"
+        cls = "good" if p["depth"] <= 2 else "deep"
+        html += f"""
+        <tr class="{cls}">
+            <td>{p['path']}</td>
+            <td>{p['depth']}</td>
+            <td class="authority">{p['authority']}%</td>
+            <td>{status}</td>
+        </tr>
+"""
+    html += """
+    </table>
+
+    <footer style="margin-top: 40px; color: #666; font-size: 14px;">
+        Generated by Crawl Depth Analyzer | Based on 85% authority decay per hop
+    </footer>
+</body>
+</html>
+"""
+    html_path.write_text(html, encoding="utf-8")
+
+    return csv_path
+
+
+def render_link_map_report(link_map: dict, output_path: Path):
+    """Write the colony→tour link map to a markdown file."""
+    lines = []
+    lines.append("# Colony Page → Tour Linking Map\n")
+    lines.append("Recommended internal links from colony (hub) pages to commercial tour pages.\n")
+    lines.append("| Colony Page | → | Tour Page | Score |")
+    lines.append("|-------------|---|-----------|-------|")
+
+    for colony_url, targets in sorted(link_map.items()):
+        for i, t in enumerate(targets):
+            if i == 0:
+                lines.append(f"| `{colony_url}` | → | `{t['url']}` | {t['score']} |")
+            else:
+                lines.append(f"| | → | `{t['url']}` | {t['score']} |")
+
+    lines.append("\n### Implementation Notes")
+    lines.append("- Add contextual links in body text (not just sidebar/footer)")
+    lines.append("- Use descriptive anchor text matching the tour name")
+    lines.append("- Aim for 3–5 outbound links per colony page")
+    lines.append("- Link from colony hero section and at least one content section")
+
+    with open(output_path, "w") as f:
+        f.write("\n".join(lines))
+    print(f"  ✓ Link map: {output_path}")
+
+
+# ──────────────────────────────────────────────────────────────────────
 # Pipeline Logic
 # ──────────────────────────────────────────────────────────────────────
 
@@ -718,6 +945,18 @@ def run_pipeline(sitemap_url: str | None = None, output_dir: str | None = None,
     link_path = Path(output_dir) / f"colony-link-map_{timestamp}.md"
     render_link_map_report(link_map, link_path)
 
+    # Step 6: Crawl depth & authority flow analysis
+    print(f"\n[Step 6] Analyzing crawl depth and authority flow...")
+    crawl_data = analyze_crawl_depth(urls)
+    crawl_csv_path = generate_crawl_depth_report(crawl_data, Path(output_dir), timestamp)
+
+    # Print crawl depth summary
+    print(f"\n  Crawl Depth Analysis:")
+    print(f"    Money pages: {len(crawl_data['money_pages'])}")
+    print(f"    Deep money pages (≥3 clicks): {len(crawl_data['deep_money_pages'])}")
+    print(f"    Avg authority: {crawl_data['avg_authority']}%")
+    print(f"    Reports: {crawl_csv_path}")
+
     # Summary
     print("\n" + "=" * 60)
     print("  Pipeline Complete — Summary")
@@ -734,11 +973,17 @@ def run_pipeline(sitemap_url: str | None = None, output_dir: str | None = None,
     return {
         "total_pages": len(enriched),
         "phase_counts": dict(phase_counts),
+        "crawl_depth": {
+            "money_pages": len(crawl_data["money_pages"]),
+            "deep_money_pages": len(crawl_data["deep_money_pages"]),
+            "avg_authority": crawl_data["avg_authority"],
+        },
         "reports": {
             "csv": str(csv_path),
             "markdown": str(md_path),
             "json": str(json_path),
             "link_map": str(link_path),
+            "crawl_depth_csv": str(crawl_csv_path),
         },
     }
 
