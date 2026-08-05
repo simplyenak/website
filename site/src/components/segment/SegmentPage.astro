@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getToursByTag, getLandingPageBySlug, cleanPageTitle } from '~/lib/content';
+import { getToursByTag, getLandingPageBySlug, cleanPageTitle, getStoriesByLocation } from '~/lib/content';
 import { dietarySegments, locationSegments, specialtySegments, travelTypeSegments } from '~/data/segments';
 import reviews from '~/data/content/reviews.json';
 import LandingPageSections from '~/components/LandingPageSections.astro';
@@ -26,6 +26,12 @@ const segConfig = SEGMENT_MAP[segmentType];
 const matchingTours = await getToursByTag(segment.slug);
 const landingPage = await getLandingPageBySlug(segment.slug, locale);
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
+
+// Location pages surface stories linked to that location (via locationsRef)
+const relatedStories =
+  segmentType === 'location'
+    ? await getStoriesByLocation(segment.slug, locale === 'en' ? undefined : locale)
+    : [];
 
 // Dietary pages filter reviews by keyword; others use location-based
 const dietaryKeywords: Record<string, string> = {
@@ -82,6 +88,7 @@ const meta = {
     featuredReviews={featuredReviews}
     segmentType={segConfig.type}
     allSegments={segConfig.data}
+    relatedStories={relatedStories}
   />
 </Layout>
 

@@ -1205,6 +1205,28 @@ export async function getStoryBySlug(slug: string, locale?: string) {
   return all.find((s: any) => s.slug === slug && (s.workflowStatus === 'published' || s._status === 'published' || !s._status)) || null;
 }
 
+/**
+ * Stories linked to a location via the `locationsRef` relationship.
+ * Matches by location slug (e.g. 'kuala-lumpur', 'penang') or name.
+ */
+export async function getStoriesByLocation(locationSlug: string, locale?: string, limit = 4): Promise<any[]> {
+  const all = await resolveStories(locale);
+  const raw = (locationSlug || '').toLowerCase();
+  // Known location slugs referenced by stories
+  const knownLocations = ['kuala-lumpur', 'penang', 'ipoh', 'melaka', 'klang'];
+  const slug = knownLocations.find((l) => raw.includes(l)) || raw;
+  const published = all.filter((s: any) => s.workflowStatus === 'published' || s._status === 'published' || !s._status);
+  return published
+    .filter((s: any) => {
+      const refs = s.locationsRef || [];
+      return refs.some((r: any) => {
+        const refSlug = (typeof r === 'object' ? r?.slug : String(r)) || '';
+        return refSlug === slug;
+      });
+    })
+    .slice(0, limit);
+}
+
 // -- Pages (home, about, contact) --
 
 export async function getHomePage(locale?: string) {
