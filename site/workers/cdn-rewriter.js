@@ -2,6 +2,7 @@ var CDN_ORIGIN = "https://cdn.simplyenak.com";
 var PAGES_ORIGIN = "https://website-40z.pages.dev";
 var CDN_ROOT = "https://cdn.simplyenak.com";
 var STATIC_TTL = 2592000; // 30 days in seconds
+var HTML_CACHE_TTL = 300; // seconds — AI systems fetch pages in real time; short edge TTL keeps HTML fast without staleness
 
 // ── Static redirect map ──────────────────────────────────────────────
 // This is the single source of truth for 301s on simplyenak.com.
@@ -164,6 +165,8 @@ async function handleRequest(request) {
   }
 
   // ── Fetch from Pages origin ──
+  // NOTE: the origin subrequest is edge-cached via cf.cacheTtl below (free-plan safe;
+  // the Workers Cache API is paid-plan only and throws 1101 on free zones).
   var originUrl = new URL(url.pathname + url.search, PAGES_ORIGIN);
   var originRequest = new Request(originUrl.toString(), {
     method: request.method,
@@ -171,7 +174,12 @@ async function handleRequest(request) {
     body: ["GET", "HEAD"].includes(request.method) ? null : request.body,
     redirect: "manual"
   });
-  var response = await fetch(originRequest);
+  var response = await fetch(originRequest, {
+    // Edge-cache the origin subrequest (5 min). AI systems fetch pages in real time;
+    // a slow origin = 499 timeouts. Works on the free plan (unlike the Cache API).
+    // The Worker still runs per request, so redirects and the S3→CDN rewrite stay intact.
+    cf: { cacheEverything: true, cacheTtl: HTML_CACHE_TTL }
+  });
 
   // Pass through redirects — they shouldn't be cached
   if (response.status >= 300 && response.status < 400) {
@@ -215,7 +223,7 @@ async function handleRequest(request) {
 
   // Apply edge caching headers for all HTML responses
   var newHeaders = new Headers(response.headers);
-  newHeaders.set("cache-control", "public, s-maxage=300, max-age=0, must-revalidate");
+  newHeaders.set("cache-control", "public, s-maxage=" + HTML_CACHE_TTL + ", max-age=0, must-revalidate");
 
   return new Response(html, {
     status: response.status,
