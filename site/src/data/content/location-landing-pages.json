@@ -895,7 +895,7 @@
     "meta_description": "Explore Klang's diverse food scene on a guided tour. Taste authentic bak kut teh, traditional biscuits, and local coffee with Enak.",
     "hero_title": "Discover Klang's rich food heritage with us.",
     "hero_subtitle": "Taste authentic, generations-old recipes in Malaysia's royal town.",
-    "hero_description": "Your guide will lead you through bustling coffee shops to sample hearty Hakka dishes and freshly baked pastries. You will meet the families behind the stalls and learn the history shaping this diverse culinary landscape.",
+    "hero_description": "Your guide will lead you from the old Klang KTM station into the streets of Little India Klang and Teluk Pulai, where bustling kopitiams serve hearty Hakka dishes and freshly baked pastries. You will meet the families behind the stalls near Jalan Besar and the Sultan Abdul Aziz Royal Gallery, and learn the history shaping this diverse culinary landscape.",
     "translations": [
       {
         "languages_code": "en",
@@ -994,9 +994,13 @@
     "hero_image_height": null,
     "location_name": "Food Tours in Klang",
     "intro_heading": "Food Tours in Klang",
-    "intro_content": "",
-    "travel_tips_heading": "",
-    "travel_tips": []
+    "intro_content": "Klang's food story starts at the Klang KTM station, the gateway to Malaysia's royal town. Our tours walk the lanes of Little India Klang and the old shophouse blocks of Jalan Besar, past landmarks like the Sultan Abdul Aziz Royal Gallery and the Masjid Jamek Sultan Abdul Aziz. We stop at kopitiams in Teluk Pulai and Pandamaran where bak kut teh has been simmered since the 1940s. Every meeting point is easy to find on Google Maps.",
+    "travel_tips_heading": "Getting to Klang",
+    "travel_tips": [
+      "Take the KTM Komuter to Klang station — our meeting point is a 5-minute walk from the platform.",
+      "The Sultan Abdul Aziz Royal Gallery on Jalan Istana is a good landmark for taxi and Grab drivers.",
+      "Little India Klang and Jalan Besar are pedestrian-friendly; wear comfortable shoes for the street walk."
+    ]
   },
   {
     "id": 323,

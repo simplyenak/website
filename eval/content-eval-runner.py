@@ -119,6 +119,78 @@ def check_lp_payload_pipeline(data: list[dict], filename: str) -> dict:
     return pass_result(f"{filename} OK", data) if not issues else fail_result(f"{len(issues)} pipeline issues", issues)
 
 
+# Google-Maps-findable place signals: neighborhoods, streets, markets, stations,
+# landmarks, hotels, airports. A location page without any of these reads as
+# generic SEO filler — it can't be found on a map and AI agents can't anchor it.
+MAP_PLACE_SIGNALS = [
+    # generic street/place markers
+    "jalan", "street", "road", "square", "market", "station", "sentral",
+    "airport", "beach", "jetty", "temple", "mosque", "church", "tower",
+    "bridge", "museum", "hotel", "park", "hill", "garden", "bazaar",
+    "mall", "centre", "center", "island", "river", "harbour", "harbor",
+    # KL-area specifics
+    "petaling street", "jalan alor", "brickfields", "bangsar", "klcc",
+    "bukit bintang", "mont kiara", "chow kit", "kampung baru", "pudu",
+    "mid valley", "damansara", "kl sentral", "masjid jamek", "menara",
+    "merdeka square", "dataran merdeka", "central market", "medan pasar",
+    "jalan petaling", "ss2", "subang", "shah alam", "petaling jaya",
+    # Penang-area specifics
+    "george town", "georgetown", "gurney", "chowrasta", "lebuh",
+    "batu ferringhi", "tanjung bungah", "bayan lepas", "queensbay",
+    "penang hill", "clan jetty", "chew jetty", "armenian street",
+    "little india", "komtar", "esplanade", "fort cornwallis",
+    # Ipoh / Melaka / Klang specifics
+    "old town", "concubine lane", "jonker", "st. paul", "stadthuys",
+    "ayerkroh", "bercham", "kinta", "teluk intan", "pulau pangkor",
+    "bukit mertajam", "kota lama", "heeren street", "harmony street",
+]
+
+def check_lp_google_maps_places(data: list[dict]) -> dict:
+    """Every location landing page must mention at least one place findable
+    on Google Maps (street, neighbourhood, market, station, landmark, hotel,
+    airport...). Pure-hero pages that name no real place are untrustworthy
+    for both users and AI agents. Warn-only initially — flags pages so the
+    content team can anchor them, does not block deploy."""
+    issues = []
+    for item in data:
+        slug = item.get("slug", "?")
+        status = item.get("status", item.get("_status", "published"))
+        if status == "draft":
+            continue
+        # Collect all text fields (hero, intro, travel tips, translations)
+        text_parts = []
+        for field in ["hero_title", "hero_subtitle", "hero_description",
+                      "intro_heading", "intro_content", "location_name",
+                      "travel_tips_heading", "meta_description"]:
+            v = item.get(field)
+            if isinstance(v, str) and v.strip():
+                text_parts.append(v)
+        for tip in item.get("travel_tips") or []:
+            if isinstance(tip, str):
+                text_parts.append(tip)
+            elif isinstance(tip, dict):
+                for v in tip.values():
+                    if isinstance(v, str):
+                        text_parts.append(v)
+        for trans in item.get("translations") or []:
+            for field in ["hero_title", "hero_subtitle", "hero_description",
+                          "intro_heading", "intro_content"]:
+                v = trans.get(field)
+                if isinstance(v, str) and v.strip():
+                    text_parts.append(v)
+        text = " ".join(text_parts).lower()
+        found = [sig for sig in MAP_PLACE_SIGNALS if sig in text]
+        if not found:
+            issues.append({"slug": slug, "status": status,
+                           "hint": "no Google-Maps-findable place mentioned (street/neighbourhood/market/station/landmark)"})
+    if not issues:
+        return pass_result(f"All {len(data)} location pages mention map-findable places")
+    return warn_result(
+        f"{len(issues)}/{len(data)} location pages mention no map-findable place",
+        issues
+    )
+
+
 def check_lp_field_collisions() -> dict:
     risk = []
     COLLECTION_MAP = {
@@ -1022,6 +1094,7 @@ CASE_HANDLERS = {
     "lp_hero_fields_populated": lambda: check_lp_hero_fields(load_json(CONTENT_DIR / "location-landing-pages.json")),
     "lp_eight_section_arc": lambda: check_lp_eight_section_arc(load_json(CONTENT_DIR / "location-landing-pages.json")),
     "lp_payload_deploy_pipeline": lambda: check_lp_payload_pipeline(load_json(CONTENT_DIR / "location-landing-pages.json"), "location-landing-pages.json"),
+    "lp_google_maps_places": lambda: check_lp_google_maps_places(load_json(CONTENT_DIR / "location-landing-pages.json")),
     "lp_field_collisions": check_lp_field_collisions,
     "lp_image_optimization": check_image_optimization,
     "blog_seo_basics": check_blog_seo_basics,

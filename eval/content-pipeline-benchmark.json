@@ -3,11 +3,27 @@
     "case_id": "lp_eight_section_arc",
     "content_type": "landing_page",
     "scenario": "Landing page must follow the 8-section story arc",
-    "description": "Every Simply Enak landing page should follow: Hero → Problem → Tours → HowItWorks → Testimonials/Social Proof → FAQ → Final CTA. Tours must appear early, not buried after generic sections.",
-    "expected_sections": ["hero", "problem_or_hook", "tours", "how_it_works", "social_proof", "faq", "final_cta"],
+    "description": "Every Simply Enak landing page should follow: Hero \u2192 Problem \u2192 Tours \u2192 HowItWorks \u2192 Testimonials/Social Proof \u2192 FAQ \u2192 Final CTA. Tours must appear early, not buried after generic sections.",
+    "expected_sections": [
+      "hero",
+      "problem_or_hook",
+      "tours",
+      "how_it_works",
+      "social_proof",
+      "faq",
+      "final_cta"
+    ],
     "min_sections_present": 6,
-    "hard_requirements": ["tours_section_must_appear_before_position_4", "hero_must_have_title_and_description", "cta_must_be_present"],
-    "forbidden_patterns": ["generic_template_blocks_without_tours", "tours_buried_after_faq", "missing_cta"],
+    "hard_requirements": [
+      "tours_section_must_appear_before_position_4",
+      "hero_must_have_title_and_description",
+      "cta_must_be_present"
+    ],
+    "forbidden_patterns": [
+      "generic_template_blocks_without_tours",
+      "tours_buried_after_faq",
+      "missing_cta"
+    ],
     "weight": 1.0,
     "notes": "Maarten: 'I don't really see a story arch or even a visual arch. I don't feel it's helping me buy a tour.' Tours shown FIRST, not buried."
   },
@@ -15,10 +31,21 @@
     "case_id": "lp_hero_fields_populated",
     "content_type": "landing_page",
     "scenario": "Hero fields must not be null in Payload",
-    "description": "Common bug: hero_title and hero_description are null in Payload DB even when content appears populated. Check all 3 tiers: live API → JSON snapshots → hardcoded data.",
-    "required_fields": ["hero_title", "hero_description"],
-    "check_tiers": ["live_payload_api", "json_snapshots", "hardcoded_segments"],
-    "forbidden_patterns": ["hero_title_null", "hero_description_null", "_status_filter_rejecting_draft_entries"],
+    "description": "Common bug: hero_title and hero_description are null in Payload DB even when content appears populated. Check all 3 tiers: live API \u2192 JSON snapshots \u2192 hardcoded data.",
+    "required_fields": [
+      "hero_title",
+      "hero_description"
+    ],
+    "check_tiers": [
+      "live_payload_api",
+      "json_snapshots",
+      "hardcoded_segments"
+    ],
+    "forbidden_patterns": [
+      "hero_title_null",
+      "hero_description_null",
+      "_status_filter_rejecting_draft_entries"
+    ],
     "weight": 0.9,
     "notes": "Root cause: _status filter in getLandingPages() rejects draft entries."
   },
@@ -27,17 +54,50 @@
     "content_type": "all",
     "scenario": "All content must have complete MS locale coverage",
     "description": "Every route, tour, landing page, blog post, story must have a complete MS counterpart. No EN-only pages. Meta titles and descriptions also translated. BM pages must mirror EN structure section-for-section.",
-    "required_locales": ["en", "ms"],
-    "check_scope": ["routes", "tours", "landing_pages", "blog_posts", "stories", "meta_data"],
+    "required_locales": [
+      "en",
+      "ms"
+    ],
+    "check_scope": [
+      "routes",
+      "tours",
+      "landing_pages",
+      "blog_posts",
+      "stories",
+      "meta_data"
+    ],
     "check_content_types": {
-      "landing_page": {"section_count_en_equals_ms": true, "same_cta_structure": true, "same_tours_listed": true},
-      "tour": {"all_fields_translated": true, "check_fields": ["title", "description", "itinerary", "included", "excluded", "meta_title", "meta_description"]},
-      "blog_post": {"title_and_body_translated": true}
+      "landing_page": {
+        "section_count_en_equals_ms": true,
+        "same_cta_structure": true,
+        "same_tours_listed": true
+      },
+      "tour": {
+        "all_fields_translated": true,
+        "check_fields": [
+          "title",
+          "description",
+          "itinerary",
+          "included",
+          "excluded",
+          "meta_title",
+          "meta_description"
+        ]
+      },
+      "blog_post": {
+        "title_and_body_translated": true
+      }
     },
     "forbidden_patterns": [
-      "en_only_page_without_ms", "ms_page_returns_404", "ms_page_with_en_meta",
-      "translation_missing_in_template", "en_text_in_ms_field", "ms_field_null",
-      "bm_page_missing_sections_present_in_en", "en_only_content", "translation_gaps"
+      "en_only_page_without_ms",
+      "ms_page_returns_404",
+      "ms_page_with_en_meta",
+      "translation_missing_in_template",
+      "en_text_in_ms_field",
+      "ms_field_null",
+      "bm_page_missing_sections_present_in_en",
+      "en_only_content",
+      "translation_gaps"
     ],
     "hard_requirements": [
       "all_landing_pages_have_ms_routes",
@@ -54,17 +114,37 @@
     "scenario": "Every tour must have all required fields populated in Payload",
     "description": "Check all bookable tours for complete data: description, itinerary, included/excluded, dietary options, images, pricing tiers, meeting point, max pax, what-to-bring, cancellation policy, languages, accessibility info.",
     "required_fields": [
-      "title", "description", "itinerary", "included", "excluded",
-      "dietary_options", "hero_image", "gallery_images",
-      "pricing_tiers", "meeting_point", "max_pax", "duration",
-      "what_to_bring", "cancellation_policy", "languages",
-      "accessibility", "age_requirement", "alcohol_policy"
+      "title",
+      "description",
+      "itinerary",
+      "included",
+      "excluded",
+      "dietary_options",
+      "hero_image",
+      "gallery_images",
+      "pricing_tiers",
+      "meeting_point",
+      "max_pax",
+      "duration",
+      "what_to_bring",
+      "cancellation_policy",
+      "languages",
+      "accessibility",
+      "age_requirement",
+      "alcohol_policy"
     ],
     "min_fields_populated": 16,
-    "check_tiers": ["live_payload_api", "json_snapshots"],
+    "check_tiers": [
+      "live_payload_api",
+      "json_snapshots"
+    ],
     "forbidden_patterns": [
-      "hero_image_null", "itinerary_empty", "pricing_missing",
-      "meeting_point_null", "description_null", "included_excluded_null"
+      "hero_image_null",
+      "itinerary_empty",
+      "pricing_missing",
+      "meeting_point_null",
+      "description_null",
+      "included_excluded_null"
     ],
     "hard_requirements": [
       "all_4_core_tours_have_hero_images",
@@ -80,11 +160,31 @@
     "scenario": "Known tour bugs must not regress",
     "description": "Regression tests for bugs found and fixed in prior sessions. Each test targets a specific root cause that has caused issues before.",
     "regression_tests": [
-      {"id": "walking_label_moderate", "description": "Walking label must be 'Moderate Walking' not bare 'Moderate'", "forbidden": "bare_moderate_label"},
-      {"id": "wheelchair_field_exists", "description": "wheelchair accessibility field must exist and not be null", "forbidden": "wheelchair_field_null"},
-      {"id": "alcohol_policy_set", "description": "Bring Your Own vs Provided vs Not Allowed must be stated", "forbidden": "alcohol_policy_missing"},
-      {"id": "age_requirement_stated", "description": "Age requirement (All Ages / Adults 21+ / etc) must be present", "forbidden": "age_requirement_null"},
-      {"id": "itinerary_json_valid", "description": "Itinerary must be valid JSON array, not plain text", "forbidden": "itinerary_not_json"}
+      {
+        "id": "walking_label_moderate",
+        "description": "Walking label must be 'Moderate Walking' not bare 'Moderate'",
+        "forbidden": "bare_moderate_label"
+      },
+      {
+        "id": "wheelchair_field_exists",
+        "description": "wheelchair accessibility field must exist and not be null",
+        "forbidden": "wheelchair_field_null"
+      },
+      {
+        "id": "alcohol_policy_set",
+        "description": "Bring Your Own vs Provided vs Not Allowed must be stated",
+        "forbidden": "alcohol_policy_missing"
+      },
+      {
+        "id": "age_requirement_stated",
+        "description": "Age requirement (All Ages / Adults 21+ / etc) must be present",
+        "forbidden": "age_requirement_null"
+      },
+      {
+        "id": "itinerary_json_valid",
+        "description": "Itinerary must be valid JSON array, not plain text",
+        "forbidden": "itinerary_not_json"
+      }
     ],
     "min_passed": 4,
     "weight": 0.8,
@@ -132,15 +232,33 @@
     "scenario": "Pages must have complete structured data markup",
     "description": "JSON-LD schema must be present and valid per content type: BlogPosting/BreadcrumbList for blogs, Product for tours, FAQPage for FAQ sections, LocalBusiness for homepage. Schema must validate against Google structured data rules.",
     "required_schemas_by_type": {
-      "blog_post": ["BlogPosting", "Person", "BreadcrumbList"],
-      "tour": ["Product", "BreadcrumbList"],
-      "landing_page": ["BreadcrumbList"],
-      "homepage": ["LocalBusiness", "BreadcrumbList"]
+      "blog_post": [
+        "BlogPosting",
+        "Person",
+        "BreadcrumbList"
+      ],
+      "tour": [
+        "Product",
+        "BreadcrumbList"
+      ],
+      "landing_page": [
+        "BreadcrumbList"
+      ],
+      "homepage": [
+        "LocalBusiness",
+        "BreadcrumbList"
+      ]
     },
-    "conditional_schemas": {"has_faq_section": "FAQPage"},
+    "conditional_schemas": {
+      "has_faq_section": "FAQPage"
+    },
     "forbidden_patterns": [
-      "missing_blogposting_schema", "invalid_date_format", "missing_author",
-      "wrong_publisher_name", "missing_product_schema_on_tour", "invalid_price_specification"
+      "missing_blogposting_schema",
+      "invalid_date_format",
+      "missing_author",
+      "wrong_publisher_name",
+      "missing_product_schema_on_tour",
+      "invalid_price_specification"
     ],
     "hard_requirements": [
       "schema_validates_no_errors",
@@ -165,14 +283,28 @@
       "sensory_food_descriptions"
     ],
     "content_type_checks": {
-      "tour": ["dish_names_with_sensory_details", "cultural_context_between_stops", "insider_knowledge_taught"],
-      "blog_post": ["personal_anecdote", "connects_to_malaysian_culture"],
-      "email": ["warm_greeting", "specific_offer_or_question"]
+      "tour": [
+        "dish_names_with_sensory_details",
+        "cultural_context_between_stops",
+        "insider_knowledge_taught"
+      ],
+      "blog_post": [
+        "personal_anecdote",
+        "connects_to_malaysian_culture"
+      ],
+      "email": [
+        "warm_greeting",
+        "specific_offer_or_question"
+      ]
     },
     "min_checks_passed": 5,
     "forbidden_patterns": [
-      "generic_travel_content", "cold_corporate_tone", "no_malaysian_specifics",
-      "telling_not_showing", "ai_sounding_patterns", "banned_words",
+      "generic_travel_content",
+      "cold_corporate_tone",
+      "no_malaysian_specifics",
+      "telling_not_showing",
+      "ai_sounding_patterns",
+      "banned_words",
       "generic_delicious_description"
     ],
     "hard_requirements": [
@@ -187,7 +319,12 @@
     "content_type": "media",
     "scenario": "Image pipeline must produce optimized, accessible images",
     "description": "Every image needs: WebP format (or responsive), srcset for responsive loading, lazy loading below the fold, alt text, unique filenames, reasonable file size. Sharp WebP generation must work for all uploads.",
-    "required_attributes": ["webp_or_responsive", "srcset", "alt_text", "lazy_loading_below_fold"],
+    "required_attributes": [
+      "webp_or_responsive",
+      "srcset",
+      "alt_text",
+      "lazy_loading_below_fold"
+    ],
     "forbidden_patterns": [
       "missing_srcset_on_hero_images",
       "lazy_missing_on_below_fold",
@@ -210,8 +347,19 @@
     "content_type": "all",
     "scenario": "Every page must have correct Open Graph and Twitter Card tags",
     "description": "OG tags enable rich link previews on social media and messaging apps. Required: og:title, og:description, og:image, og:url, og:type. Twitter Card: summary_large_image.",
-    "required_og_tags": ["og:title", "og:description", "og:image", "og:url", "og:type"],
-    "required_twitter_tags": ["twitter:card", "twitter:title", "twitter:description", "twitter:image"],
+    "required_og_tags": [
+      "og:title",
+      "og:description",
+      "og:image",
+      "og:url",
+      "og:type"
+    ],
+    "required_twitter_tags": [
+      "twitter:card",
+      "twitter:title",
+      "twitter:description",
+      "twitter:image"
+    ],
     "forbidden_patterns": [
       "missing_og_title",
       "missing_og_image",
@@ -282,12 +430,36 @@
     "scenario": "Known infrastructure bugs must not regress",
     "description": "Regression tests for infrastructure bugs fixed in prior sessions. Each test targets a specific root cause.",
     "regression_tests": [
-      {"id": "draft_status_filter", "description": "Landing page query must not reject draft entries", "forbidden": "_status_filter_rejecting_draft_entries"},
-      {"id": "payload_locked_documents_rels", "description": "New Payload collections must add payload_locked_documents_rels", "forbidden": "missing_payload_locked_documents_rels"},
-      {"id": "field_collisions", "description": "No GraphQL type collisions across content types", "forbidden": "duplicate_field_names_across_types"},
-      {"id": "watchtower_deploy", "description": "Watchtower is monitor-only — deploys go through GH Actions", "forbidden": "relying_on_watchtower"},
-      {"id": "versions_drafts_collisions", "description": "Versions/drafts disabled on pages with known field collisions", "forbidden": "versions_drafts_enabled_on_pages_with_collisions"},
-      {"id": "hero_field_draft", "description": "Hero fields must not be null even when content is draft status", "forbidden": "payload_doc_with_null_treated_as_absent"}
+      {
+        "id": "draft_status_filter",
+        "description": "Landing page query must not reject draft entries",
+        "forbidden": "_status_filter_rejecting_draft_entries"
+      },
+      {
+        "id": "payload_locked_documents_rels",
+        "description": "New Payload collections must add payload_locked_documents_rels",
+        "forbidden": "missing_payload_locked_documents_rels"
+      },
+      {
+        "id": "field_collisions",
+        "description": "No GraphQL type collisions across content types",
+        "forbidden": "duplicate_field_names_across_types"
+      },
+      {
+        "id": "watchtower_deploy",
+        "description": "Watchtower is monitor-only \u2014 deploys go through GH Actions",
+        "forbidden": "relying_on_watchtower"
+      },
+      {
+        "id": "versions_drafts_collisions",
+        "description": "Versions/drafts disabled on pages with known field collisions",
+        "forbidden": "versions_drafts_enabled_on_pages_with_collisions"
+      },
+      {
+        "id": "hero_field_draft",
+        "description": "Hero fields must not be null even when content is draft status",
+        "forbidden": "payload_doc_with_null_treated_as_absent"
+      }
     ],
     "min_passed": 5,
     "weight": 0.9,
@@ -297,7 +469,7 @@
     "case_id": "a11y_basics",
     "content_type": "all",
     "scenario": "Accessibility fundamentals must be met",
-    "description": "All images must have alt text. Heading hierarchy must be sequential (H1→H2→H3, no skips). Form inputs must have associated labels. Focus order must match visual order. No empty links or buttons.",
+    "description": "All images must have alt text. Heading hierarchy must be sequential (H1\u2192H2\u2192H3, no skips). Form inputs must have associated labels. Focus order must match visual order. No empty links or buttons.",
     "required_checks": [
       "all_images_have_alt_text",
       "no_heading_level_skips",
@@ -324,7 +496,7 @@
     "case_id": "booking_flow_integration",
     "content_type": "infrastructure",
     "scenario": "Booking and contact flows must work end-to-end",
-    "description": "HTTP integration test: tour page → CTA → enquiry form → submission → confirmation. Contact form must submit without 500 error. Email notifications trigger. Requires live server — not static file check.",
+    "description": "HTTP integration test: tour page \u2192 CTA \u2192 enquiry form \u2192 submission \u2192 confirmation. Contact form must submit without 500 error. Email notifications trigger. Requires live server \u2014 not static file check.",
     "test_flows": [
       "tour_page_cta_clickable",
       "enquiry_form_submits_without_error",
@@ -343,24 +515,42 @@
     ],
     "requires_integration": true,
     "integration_type": "http_form_submit",
-    "notes": "Critical path: tour page → enquiry → booking. Requires HTTP test harness — runner skips this case in static mode and reports 'needs integration test run'.",
+    "notes": "Critical path: tour page \u2192 enquiry \u2192 booking. Requires HTTP test harness \u2014 runner skips this case in static mode and reports 'needs integration test run'.",
     "weight": 0.9
   },
   {
     "case_id": "core_web_vitals_budget",
     "content_type": "infrastructure",
     "scenario": "Pages must meet performance budgets",
-    "description": "Astro builds must complete under 5 min. FCP < 2.5s. LCP < 4s. Page weight < 1.5MB. CLS < 0.1. These metrics require PageSpeed Insights API or Lighthouse CI — cannot be determined from static file checks alone.",
+    "description": "Astro builds must complete under 5 min. FCP < 2.5s. LCP < 4s. Page weight < 1.5MB. CLS < 0.1. These metrics require PageSpeed Insights API or Lighthouse CI \u2014 cannot be determined from static file checks alone.",
     "budgets": {
-      "astro_build_time_seconds": {"max": 300},
-      "first_contentful_paint_seconds": {"max": 2.5},
-      "largest_contentful_paint_seconds": {"max": 4.0},
-      "total_page_weight_mb": {"max": 1.5},
-      "cumulative_layout_shift": {"max": 0.1},
-      "images_per_page": {"max": 20}
+      "astro_build_time_seconds": {
+        "max": 300
+      },
+      "first_contentful_paint_seconds": {
+        "max": 2.5
+      },
+      "largest_contentful_paint_seconds": {
+        "max": 4.0
+      },
+      "total_page_weight_mb": {
+        "max": 1.5
+      },
+      "cumulative_layout_shift": {
+        "max": 0.1
+      },
+      "images_per_page": {
+        "max": 20
+      }
     },
-    "forbidden_patterns": ["build_exceeds_5min", "page_over_2mb"],
-    "hard_requirements": ["astro_build_completes", "no_javascript_errors"],
+    "forbidden_patterns": [
+      "build_exceeds_5min",
+      "page_over_2mb"
+    ],
+    "hard_requirements": [
+      "astro_build_completes",
+      "no_javascript_errors"
+    ],
     "requires_external": true,
     "external_source": "pagespeed_insights_api_or_lighthouse_ci",
     "notes": "Requires PageSpeed Insights API key + CI integration. Runner skips in static mode. Build-time checks (duration, JS errors) can run locally.",
@@ -371,10 +561,23 @@
     "content_type": "landing_page",
     "scenario": "All expected landing pages must exist and build",
     "description": "32 LP segments across EN+MS = 64 pages. Plus segment landing pages. Every route from the LP plan must produce a static page at build time.",
-    "expected_count": {"en": 32, "ms": 32},
-    "check_content_types": ["landing_pages", "routes"],
-    "forbidden_patterns": ["missing_ms_locale_variants", "pages_404", "fewer_pages_than_expected"],
-    "hard_requirements": ["64_landing_pages_total", "no_pages_404_in_build"],
+    "expected_count": {
+      "en": 32,
+      "ms": 32
+    },
+    "check_content_types": [
+      "landing_pages",
+      "routes"
+    ],
+    "forbidden_patterns": [
+      "missing_ms_locale_variants",
+      "pages_404",
+      "fewer_pages_than_expected"
+    ],
+    "hard_requirements": [
+      "64_landing_pages_total",
+      "no_pages_404_in_build"
+    ],
     "min_count": 48,
     "weight": 0.7,
     "notes": "MS locale routes for all 32 segment landing pages added recently."
@@ -384,20 +587,39 @@
     "content_type": "infrastructure",
     "scenario": "Staging and production content must be in sync",
     "description": "Staging should reflect production content. Checks tour count, page count, media files across both environments. Requires access to both CF Pages deployments.",
-    "check_items": ["tour_count_equal", "landing_page_count_equal", "blog_post_count_equal", "media_files_synced"],
-    "forbidden_patterns": ["content_in_prod_not_in_staging", "staging_missing_media", "staging_build_differs_from_prod"],
-    "hard_requirements": ["same_number_of_tours", "all_core_pages_exist_in_both"],
+    "check_items": [
+      "tour_count_equal",
+      "landing_page_count_equal",
+      "blog_post_count_equal",
+      "media_files_synced"
+    ],
+    "forbidden_patterns": [
+      "content_in_prod_not_in_staging",
+      "staging_missing_media",
+      "staging_build_differs_from_prod"
+    ],
+    "hard_requirements": [
+      "same_number_of_tours",
+      "all_core_pages_exist_in_both"
+    ],
     "requires_cross_env": true,
-    "environments": ["staging", "production"],
+    "environments": [
+      "staging",
+      "production"
+    ],
     "notes": "CF Pages staging at separate URL. Runner skips if only one environment accessible.",
     "weight": 0.5
   },
   {
     "case_id": "stories_quality",
     "content_type": "stories",
-    "scenario": "Stories collection must be Discover-ready — scroll-stopping titles, featured images, no banned words, unique angle",
-    "description": "Google Discover traffic requires different optimization than SEO: emotion-driven titles (70-95 chars), human-face/scroll-stopping images, no AI-sounding banned words, and information gain (unique first-person angle, not generic listicle). This check is warn-only — reports gaps but never blocks deploy.",
-    "expected_title_length": {"min": 70, "max": 95, "note": "Discover sweet spot per publisher research"},
+    "scenario": "Stories collection must be Discover-ready \u2014 scroll-stopping titles, featured images, no banned words, unique angle",
+    "description": "Google Discover traffic requires different optimization than SEO: emotion-driven titles (70-95 chars), human-face/scroll-stopping images, no AI-sounding banned words, and information gain (unique first-person angle, not generic listicle). This check is warn-only \u2014 reports gaps but never blocks deploy.",
+    "expected_title_length": {
+      "min": 70,
+      "max": 95,
+      "note": "Discover sweet spot per publisher research"
+    },
     "forbidden_patterns": [
       "keyword-stock_title_no_emotion",
       "missing_featured_image",
@@ -417,7 +639,11 @@
     "content_type": "blog_post",
     "scenario": "Every blog post must have an AI-optimized 2-3 sentence summary at the top",
     "description": "A concise answer-summary in the first visible paragraph improves AI overview extraction (Google SGE, ChatGPT citations). The summary should answer the core question in 2-4 sentences before any introductory prose. Pattern: bold 'TL;DR' lead-in, blockquote, or a question-answering first paragraph.",
-    "check_fields": ["has_summary_marker", "first_para_answers_question", "first_para_2_4_sentences"],
+    "check_fields": [
+      "has_summary_marker",
+      "first_para_answers_question",
+      "first_para_2_4_sentences"
+    ],
     "weight": 0.7,
     "notes": "From SEO video research, Jul 2026: 2-sentence summary at top led to #1 ranking + ChatGPT citation in <8 hours."
   },
@@ -484,7 +710,7 @@
     "case_id": "attribute_matching",
     "content_type": "blog_post",
     "scenario": "Blog posts must include specific attributes for AI agent recommendations (Caleb Ulku, Jul 2026)",
-    "description": "From Caleb Ulku SEO podcast (Jul 2026): AI agents use attribute matching to recommend businesses. 'Halal food tour' — if you don't say 'halal-certified', you might not get recommended. Each post should include: specific dish names, location details, sensory descriptors, and dietary specificity. Google mass-deindexed AI slop that lacked real attributes.",
+    "description": "From Caleb Ulku SEO podcast (Jul 2026): AI agents use attribute matching to recommend businesses. 'Halal food tour' \u2014 if you don't say 'halal-certified', you might not get recommended. Each post should include: specific dish names, location details, sensory descriptors, and dietary specificity. Google mass-deindexed AI slop that lacked real attributes.",
     "required_attributes": [
       "specific_dish_names",
       "location_details",
@@ -509,7 +735,7 @@
     "case_id": "ai_writing_cluster_detection",
     "content_type": "all",
     "scenario": "Blog posts and stories must not show clusters of AI writing patterns",
-    "description": "Detect clusters of AI-generated writing patterns based on ai-copywriter skill (v1.5.1) + blader/humanizer v2.9.1 + Wikipedia Signs of AI Writing guide. Each pattern alone is noise; 3+ different pattern groups in one piece is a signal. Checks: AI vocabulary (#7), signposting (#28), vague attributions (#5), filler phrases (#23), persuasive authority (#27), generic conclusions (#25), negative parallelisms (#9), copula avoidance (#8), rule of three overuse (#10), curly quotes (#19). Warn-only because pattern detection has false-positive risk — human review required before concluding.",
+    "description": "Detect clusters of AI-generated writing patterns based on ai-copywriter skill (v1.5.1) + blader/humanizer v2.9.1 + Wikipedia Signs of AI Writing guide. Each pattern alone is noise; 3+ different pattern groups in one piece is a signal. Checks: AI vocabulary (#7), signposting (#28), vague attributions (#5), filler phrases (#23), persuasive authority (#27), generic conclusions (#25), negative parallelisms (#9), copula avoidance (#8), rule of three overuse (#10), curly quotes (#19). Warn-only because pattern detection has false-positive risk \u2014 human review required before concluding.",
     "monitored_patterns": [
       "ai_vocabulary",
       "signposting",
@@ -529,5 +755,34 @@
     ],
     "weight": 0.6,
     "notes": "From mikiarlo3/ai-copywriter repo (MIT, 984 stars, updated Jul 2026). Detection only, never auto-rewrite. Warn-only because isolated tells are normal; clusters need human confirmation. Aligns with content-quality skill principle: detect, don't auto-polish."
+  },
+  {
+    "case_id": "lp_google_maps_places",
+    "content_type": "landing_page",
+    "scenario": "Every location page must mention places findable on Google Maps",
+    "description": "A location landing page that names no real place (street, neighbourhood, market, station, landmark, hotel, airport) is generic SEO filler. Users cannot orient themselves and AI agents cannot anchor the page to a real location. Every location page should reference at least one place a visitor could find on Google Maps.",
+    "required_signals": [
+      "street_or_jalan",
+      "neighbourhood",
+      "market",
+      "station_or_sentral",
+      "landmark",
+      "hotel_or_airport"
+    ],
+    "min_places_mentioned": 1,
+    "check_tiers": [
+      "json_snapshots",
+      "live_payload_api"
+    ],
+    "forbidden_patterns": [
+      "no_real_place_mentioned",
+      "generic_hero_only",
+      "no_map_anchor"
+    ],
+    "hard_requirements": [
+      "every_location_page_names_at_least_one_maps_findable_place"
+    ],
+    "weight": 0.6,
+    "notes": "Maarten rule 2026-08-05: every location page should mention some places/locations that can be found on Google Maps."
   }
 ]
