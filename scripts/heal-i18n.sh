@@ -143,20 +143,40 @@ export TRANSLATE_PROVIDER OMNIROUTE_MODEL
 # 2000 fields ≈ one full language pass; raise for bulk backfills).
 HEAL_MAX_FIELDS="${HEAL_MAX_FIELDS:-2000}"
 export HEAL_MAX_FIELDS
+# Partial-failure handling: translate-content.mjs exits 1 when ANY field errors
+# (e.g. a collection that 500s on PATCH). Under set -e that would abort BEFORE
+# the git commit/push below, losing the successful translations to the next
+# auto-sync revert. Capture the exit code and keep going — commit what worked.
+TRANSLATE_STATUS=0
 if [ -n "$LANG_ARG" ]; then
     if [[ " ${EXTRA_ARGS[*]} " =~ " --force " ]] || [[ " ${EXTRA_ARGS[*]} " =~ " --only-missing " ]]; then
+        set +e
         node site/scripts/translate-content.mjs --lang "$LANG_ARG" "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+        TRANSLATE_STATUS=${PIPESTATUS[0]}
+        set -e
     else
+        set +e
         node site/scripts/translate-content.mjs --lang "$LANG_ARG" --only-missing "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+        TRANSLATE_STATUS=${PIPESTATUS[0]}
+        set -e
     fi
 else
     if [[ " ${EXTRA_ARGS[*]} " =~ " --force " ]] || [[ " ${EXTRA_ARGS[*]} " =~ " --only-missing " ]]; then
+        set +e
         node site/scripts/translate-content.mjs "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+        TRANSLATE_STATUS=${PIPESTATUS[0]}
+        set -e
     else
+        set +e
         node site/scripts/translate-content.mjs --only-missing "${EXTRA_ARGS[@]}" 2>&1 | tail -10
+        TRANSLATE_STATUS=${PIPESTATUS[0]}
+        set -e
     fi
 fi
-echo "  ✅ Translation complete"
+if [ "$TRANSLATE_STATUS" -ne 0 ]; then
+    echo "  ⚠  translate-content.mjs exited $TRANSLATE_STATUS (some fields failed) — continuing to secure what succeeded."
+fi
+echo "  ✅ Translation pass complete"
 
 # ── CRITICAL: secure translations to origin BEFORE anything else ────────────
 # The Payload Auto-Sync cron (every 60m) runs `git checkout origin/main --

@@ -31,15 +31,17 @@ A zone-level Worker (`simplyenak-cdn-rewriter`) runs on `simplyenak.com/*` and c
 **This means:**
 - `_redirects` file and Pages Functions do NOT work on the custom domain (Worker catches first)
 - ALL redirects must go in the Worker's `REDIRECTS` map — source at `site/workers/cdn-rewriter.js`
-- Updates are deployed via Cloudflare API, NOT through GitHub Actions
+- **The Worker IS deployed by CI**: `deploy-site.yml` uploads `site/workers/cdn-rewriter.js` to Cloudflare on every push to main. Manual API uploads work but get CLOBBERED by the next CI run — commit + push is the only permanent deploy path. Verify AFTER ~2 min propagation.
 
-## Worker deployment
+## Worker deployment (emergency/manual)
 ```bash
-# Upload via API (token needs Workers Scripts > Edit)
+# Only for urgent hotfixes — will be overwritten by the next CI push.
+# Normal path: commit site/workers/cdn-rewriter.js and push to main.
 PUT /accounts/{account_id}/workers/scripts/simplyenak-cdn-rewriter
 Content-Type: multipart/form-data
 Parts: worker.js + metadata
 ```
+Credential note: only the WORKERS token (`~/.cloudflare/tokens.env`, `CLOUDFLARE_API_TOKEN_WORKERS`) is valid — READONLY/MANAGE tokens are invalid. No token has Zone Settings Edit, so Cache Rules are dashboard-only.
 
 ## Key environment
 - Site repo: `simplyenak/website`, main branch

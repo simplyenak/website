@@ -185,9 +185,6 @@ async function handleRequest(request) {
     cf: { cacheEverything: true, cacheTtl: HTML_CACHE_TTL }
   });
 
-  // TEMP-DIAGNOSTIC: expose subrequest cache status (remove after verification)
-  response.headers.set("x-origin-cf-cache", response.headers.get("cf-cache-status") || "none");
-
   // Pass through redirects — they shouldn't be cached
   if (response.status >= 300 && response.status < 400) {
     return response;
