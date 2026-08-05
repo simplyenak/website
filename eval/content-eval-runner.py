@@ -149,8 +149,7 @@ def check_lp_google_maps_places(data: list[dict]) -> dict:
     """Every location landing page must mention at least one place findable
     on Google Maps (street, neighbourhood, market, station, landmark, hotel,
     airport...). Pure-hero pages that name no real place are untrustworthy
-    for both users and AI agents. Warn-only initially — flags pages so the
-    content team can anchor them, does not block deploy."""
+    for both users and AI agents. BLOCKS DEPLOY — Maarten mandate 2026-08-05."""
     issues = []
     for item in data:
         slug = item.get("slug", "?")
@@ -185,7 +184,7 @@ def check_lp_google_maps_places(data: list[dict]) -> dict:
                            "hint": "no Google-Maps-findable place mentioned (street/neighbourhood/market/station/landmark)"})
     if not issues:
         return pass_result(f"All {len(data)} location pages mention map-findable places")
-    return warn_result(
+    return fail_result(
         f"{len(issues)}/{len(data)} location pages mention no map-findable place",
         issues
     )

@@ -782,7 +782,7 @@
     "hard_requirements": [
       "every_location_page_names_at_least_one_maps_findable_place"
     ],
-    "weight": 0.6,
-    "notes": "Maarten rule 2026-08-05: every location page should mention some places/locations that can be found on Google Maps."
+    "weight": 1.0,
+    "notes": "Maarten rule 2026-08-05: every location page should mention some places/locations that can be found on Google Maps. BLOCKS DEPLOY (fail_result)."
   }
 ]

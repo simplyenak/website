@@ -22,9 +22,11 @@ interface Props {
   segmentType: 'dietary' | 'specialty' | 'location' | 'travel_type';
   allSegments: any[];
   relatedStories?: any[];
+  locale?: string;
 }
 
-const { segment, landingPage, matchingTours, featuredReviews, segmentType, allSegments, relatedStories = [] } = Astro.props;
+const { segment, landingPage, matchingTours, featuredReviews, segmentType, allSegments, relatedStories = [], locale = 'en' } = Astro.props;
+const localePrefix = locale === 'en' ? '' : `/${locale}`;
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 const tourCount = matchingTours.length;
 
@@ -528,14 +530,14 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
           <h2 class="text-2xl md:text-3xl font-bold font-heading mb-2">Guides for {segment.name}</h2>
           <p class="text-muted text-sm">Local food guides, market walks, and eating tips written by people who grew up here</p>
         </div>
-        <a href="/stories" class="hidden sm:inline-flex items-center gap-1 text-accent text-sm font-semibold hover:gap-2 transition-all">
+        <a href={`${localePrefix}/stories`} class="hidden sm:inline-flex items-center gap-1 text-accent text-sm font-semibold hover:gap-2 transition-all">
           All stories
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="grid gap-5 md:grid-cols-2">
         {relatedStories.slice(0, 4).map((s: any) => (
-          <a href={`/stories/${s.slug}`} class="group flex gap-4 bg-card border border-gray-100 dark:border-white/10 rounded-xl p-4 hover:shadow-md transition-shadow">
+          <a href={`${localePrefix}/stories/${s.slug}`} class="group flex gap-4 bg-card border border-gray-100 dark:border-white/10 rounded-xl p-4 hover:shadow-md transition-shadow">
             <div class="flex-1 min-w-0">
               <h3 class="font-semibold leading-snug group-hover:text-primary transition-colors line-clamp-2">{s.title}</h3>
               {s.excerpt && (

@@ -256,7 +256,7 @@ export const locationSegments = [
  {
     slug: 'food-tours-klang',
     name: 'Klang',
-    description: 'Klang is the birthplace of bak kut teh — explore the original pork bone tea and Hokkien heritage around the Klang KTM station, Jalan Besar, and Little India Klang.',
+    description: 'Klang is the birthplace of bak kut teh. Explore the original pork bone tea and Hokkien heritage around the Klang KTM station, Jalan Besar, and Little India Klang.',
     metaTitle: 'Food Tours in Klang',
     tours: ['flavours-of-malaysia'],
  },
@@ -272,7 +272,7 @@ export const locationSegments = [
  {
     slug: 'chinatown-food-tour-kuala-lumpur',
     name: 'Chinatown Petaling Street',
-    description: 'Discover the flavours of KL\'s historic Chinatown on Petaling Street — from Hokkien noodles to dim sum joints, steps from Central Market and the Sri Mahamariamman Temple.',
+    description: 'Discover the flavours of KL\'s historic Chinatown on Petaling Street, from Hokkien noodles to dim sum joints, steps from Central Market and the Sri Mahamariamman Temple.',
     heroSubtitle: 'The Best Chinatown KL Experience',
     metaTitle: 'Chinatown Food Tour Kuala Lumpur',
     tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food'],
@@ -288,7 +288,7 @@ export const locationSegments = [
  {
     slug: 'kampung-baru-food-tour',
     name: 'Kampung Baru',
-    description: 'Visit KL\'s last surviving Malay village around Jalan Raja Muda Abdul Aziz — taste traditional kampung recipes passed down through generations near Masjid Jamek Kampung Baru.',
+    description: 'Visit KL\'s last surviving Malay village around Jalan Raja Muda Abdul Aziz, tasting traditional kampung recipes passed down through generations near Masjid Jamek Kampung Baru.',
     heroSubtitle: 'The Best Malay Village Experience KL',
     metaTitle: 'Kampung Baru Food Tour Kuala Lumpur',
     tours: ['flavours-of-malaysia'],
@@ -408,7 +408,7 @@ export const specialtySegments = [
     slug: 'heritage-food-tours-kuala-lumpur',
     name: 'Heritage',
     nameFull: 'Heritage Food Tours in Kuala Lumpur',
-    description: 'Taste KL\'s 150-year food heritage around Merdeka Square, Masjid Jamek, and Central Market — from colonial-era kopitiams to family recipes.',
+    description: 'Taste KL\'s 150-year food heritage around Merdeka Square, Masjid Jamek, and Central Market, from colonial-era kopitiams to family recipes.',
     metaTitle: 'Heritage Food Tours in Kuala Lumpur',
     tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food'],
  },
