@@ -257,8 +257,13 @@ Niche blogs will replace mid-tier publishers: the big media ad model is broken (
 ### This week [WEEK]
 1. 499/TTFB hardening on simplyenak.com: audit done 2026-08-05 (see Part 4 verification). REMAINING: make HTML actually edge-cached via Worker Cache API or Cloudflare Cache Rule, then re-verify TTFB < 500ms and 499-free. (Part 4)
 2. ~~Add `llms.txt`~~ DONE — verified live on both domains 2026-08-05. (Part 3.1)
-3. Common Crawl presence check for both domains; note the gap vs competitors. (Part 5)
-4. Mentions audit: search "Simply Enak" across the web; list inconsistent/incorrect mentions; fix what we control. (Part 2.1)
+3. Common Crawl presence check for both domains; note the gap vs competitors. (Part 5) — **attempted 2026-08-05, index API down (504 on all shards); retry when index.commoncrawl.org recovers. Command in Part 5.**
+4. Mentions audit — **FIRST PASS DONE 2026-08-05** (DuckDuckGo exact-phrase search, 10 results):
+   - **ENTITY COLLISION (action)**: unrelated "Simply Enak" businesses exist — a restaurant at Kangar Jaya, Perlis (Malaysia, facebook.com/profile.php?id=61590478362553, "Indo-Asian dining") and an Indonesian site (simplyenakindo.com). Real entity-fragmentation risk for Google/AI. Mitigation: always pair "Simply Enak" with "Food Tours/Experiences" + "KL & Penang" in our own listings; monitor Knowledge Panel.
+   - **STALE CITATIONS (action)**: wonderfulmalaysia.com still references the renamed "off the beaten track" tour and has a typo ("aweseom"); goKL.my uses off-brand copy with "authentic" (banned word). Request updates via their webforms.
+   - **TripAdvisor**: snippet shows "We're not..." phrasing — check against brand voice ("sell presence, never absence"); update if needed.
+   - **Consistent**: FB tagline "The Truly Malaysian Food Experience" (minor drift from current positioning), Instagram, CTE about page ("15+ years"), TripAdvisor "Since 2011".
+   - Follow-up: full pass on Bing + Google News + blogs (this was DuckDuckGo only).
 
 ### This month [MONTH]
 5. Query-fanout research for the 5 strategic queries; check our coverage of each sub-query; produce content briefs for gaps. (Part 3.2)
