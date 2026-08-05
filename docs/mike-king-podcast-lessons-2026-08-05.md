@@ -264,6 +264,7 @@ Niche blogs will replace mid-tier publishers: the big media ad model is broken (
    - **TripAdvisor**: snippet shows "We're not..." phrasing — check against brand voice ("sell presence, never absence"); update if needed.
    - **Consistent**: FB tagline "The Truly Malaysian Food Experience" (minor drift from current positioning), Instagram, CTE about page ("15+ years"), TripAdvisor "Since 2011".
    - Follow-up: full pass on Bing + Google News + blogs (this was DuckDuckGo only).
+   - **All audit follow-ups tracked as an actionable backlog: `.hermes/plans/mentions-audit-followups.md`** (checkbox items with URLs, priorities 1-4).
 
 ### This month [MONTH]
 5. Query-fanout research for the 5 strategic queries; check our coverage of each sub-query; produce content briefs for gaps. (Part 3.2)
