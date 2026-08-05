@@ -733,7 +733,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:41.137Z",
     "createdAt": "2026-07-09T10:09:05.525Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Dürfen Kinder bei dieser Tour mitmachen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 29,
@@ -782,7 +792,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:44.388Z",
     "createdAt": "2026-07-09T05:18:40.961Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Kann diese Tour auch vegetarisch gemacht werden?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 28,
@@ -829,7 +849,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:27.848Z",
     "createdAt": "2026-06-17T02:59:15.298Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Können wir bei einer privaten Tour auf Ernährungsbedürfnisse eingehen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 27,
@@ -875,7 +905,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:27.600Z",
     "createdAt": "2026-06-17T02:59:14.686Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Wie weit im Voraus sollten wir eine private Tour buchen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 26,
@@ -921,7 +961,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:27.073Z",
     "createdAt": "2026-06-17T02:59:14.005Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Können wir die Route bei einer privaten Tour ändern?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 25,
@@ -967,7 +1017,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T10:17:26.834Z",
     "createdAt": "2026-06-17T02:59:13.354Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Was passiert, wenn es regnet?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 24,
@@ -1014,7 +1074,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:45.891Z",
     "createdAt": "2026-06-17T02:59:12.692Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Treffen wir die Verkäufer?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 23,
@@ -1061,7 +1131,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:46.362Z",
     "createdAt": "2026-06-17T02:59:12.076Z",
-    "_status": "published"
+    "_status": "published",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Können Kinder bei der Tour mitmachen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 22,
@@ -1108,7 +1188,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:46.601Z",
     "createdAt": "2026-06-17T02:59:11.263Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Was, wenn ich eine Lebensmittelallergie habe?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 21,
@@ -1155,7 +1245,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:46.847Z",
     "createdAt": "2026-06-17T02:59:10.639Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Ist die Tour für Alleinreisende geeignet?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 20,
@@ -1203,7 +1303,17 @@
     "workflowStatus": "published",
     "updatedAt": "2026-08-03T08:43:47.072Z",
     "createdAt": "2026-06-17T02:59:09.921Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Was ist in einer privaten Tour inbegriffen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 11,
@@ -1248,7 +1358,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:47.324Z",
     "createdAt": "2026-05-19T08:33:38.923Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Bietet ihr private Touren an?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 10,
@@ -1293,7 +1413,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:47.555Z",
     "createdAt": "2026-05-19T08:33:38.363Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Wie sieht eure Stornierungsregel aus?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 9,
@@ -1338,7 +1468,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:47.815Z",
     "createdAt": "2026-05-19T08:33:37.797Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Muss ich im Voraus buchen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 8,
@@ -1383,7 +1523,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T08:43:48.048Z",
     "createdAt": "2026-05-19T08:33:37.234Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Wie schnell antwortet ihr?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 7,
@@ -1428,7 +1578,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:26.578Z",
     "createdAt": "2026-05-19T08:33:36.650Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Was passiert, wenn es regnet?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 6,
@@ -1473,7 +1633,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:26.326Z",
     "createdAt": "2026-05-19T08:33:36.077Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Ist das Essen scharf?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 5,
@@ -1518,7 +1688,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:26.078Z",
     "createdAt": "2026-05-19T08:33:35.493Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Kann ich eine private Tour buchen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 4,
@@ -1563,7 +1743,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:25.834Z",
     "createdAt": "2026-05-19T08:33:34.927Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Wie viel werden wir laufen?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 3,
@@ -1608,7 +1798,17 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:25.561Z",
     "createdAt": "2026-05-19T08:33:34.359Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Welche Ernährungsoptionen bietet ihr an?",
+        "answer": "[object Object]"
+      }
+    ]
   },
   {
     "id": 2,
@@ -1653,6 +1853,16 @@
     "workflowStatus": "draft",
     "updatedAt": "2026-08-03T10:17:24.802Z",
     "createdAt": "2026-05-19T08:33:33.788Z",
-    "_status": "draft"
+    "_status": "draft",
+    "translations": [
+      {
+        "languages_code": "en"
+      },
+      {
+        "languages_code": "de",
+        "question": "Wie lange dauern die Touren?",
+        "answer": "[object Object]"
+      }
+    ]
   }
 ]
