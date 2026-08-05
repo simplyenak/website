@@ -146,7 +146,12 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    push: true,
+    // Schema is managed by real migrations (./migrations), applied via
+    // `payload migrate` in deploy-payload.yml BEFORE the service update.
+    // push:true was unreliable on this deployment (silently missing new
+    // tables/columns for new collections) — see payload-schema-drift skill.
+    push: false,
+    migrationDir: './migrations',
   }),
   sharp,
   plugins: [
