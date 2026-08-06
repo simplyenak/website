@@ -50,6 +50,7 @@ import { Pages } from './collections/Pages'
 import { ContentBriefs } from './collections/ContentBriefs'
 import { CtePosts } from './collections/CtePosts'
 import { CtePages } from './collections/CtePages'
+import { ExperienceNotes } from './collections/ExperienceNotes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -131,6 +132,8 @@ export default buildConfig({
     // CTE Collections
     CtePosts,
     CtePages,
+    // Experience Collection
+    ExperienceNotes,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

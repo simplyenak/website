@@ -898,5 +898,13 @@
       "near_duplicate_pair"
     ],
     "notes": "Anti-slop Layer 1: near-duplicate content."
+  },
+  {
+    "case_id": "eeat_experience_signals",
+    "content_type": "all",
+    "scenario": "Content must demonstrate first-hand Experience (E-E-A-T)",
+    "description": "Google's December 2025 update made Experience a key ranking factor. Content needs: personal anecdotes, specific verifiable details (prices, locations, names), sensory observations. AI can't fabricate genuine experience — it must come from human insight.",
+    "weight": 0.7,
+    "notes": "Warn-only. Suggests improvements but doesn't block deploy. Checks blog posts and stories for experience markers."
   }
 ]

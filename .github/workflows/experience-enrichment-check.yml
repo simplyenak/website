@@ -1,0 +1,40 @@
+name: Experience Content Enrichment
+on:
+  schedule:
+    # Run every Monday at 9am
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Run experience check
+        run: |
+          python3 scripts/weekly-experience-check.py --json > /tmp/experience-report.json
+          cat /tmp/experience-report.json
+        env:
+          PAYLOAD_URL: ${{ secrets.PAYLOAD_URL }}
+          PAYLOAD_TOKEN: ${{ secrets.PAYLOAD_TOKEN }}
+      
+      - name: Check for gaps
+        id: check
+        run: |
+          GAPS=$(python3 -c "import json; d=json.load(open('/tmp/experience-report.json')); print(d.get('posts_with_gaps', 0))")
+          echo "gaps=$GAPS" >> $GITHUB_OUTPUT
+      
+      - name: Notify on gaps
+        if: steps.check.outputs.gaps > 0
+        run: |
+          echo "⚠️ Experience enrichment needed: ${{ steps.check.outputs.gaps }} posts have gaps"
+          # TODO: Add Discord/Slack notification
+          # curl -X POST -H 'Content-type: application/json' \
+          #   --data '{"text":"⚠️ Experience enrichment needed: ${{ steps.check.outputs.gaps }} posts have gaps"}' \
+          #   ${{ secrets.DISCORD_WEBHOOK }}

@@ -1130,6 +1130,145 @@ def detect_ai_writing_patterns(text: str) -> dict:
     return {"core": core, "contextual": contextual}
 
 
+# ── E-E-A-T Experience Signals (Google Quality Rater Guidelines) ──
+
+# First-hand experience markers that demonstrate genuine human insight
+EXPERIENCE_MARKERS = [
+    # First-person narrative (direct experience)
+    r"\b(i learned|i noticed|i found|i tried|i recommend|my favourite|my go-to)\b",
+    r"\b(we tested|our testing|we found|in our experience|hands[- ]on)\b",
+    r"\b(first[- ]hand|original research|case study|before/after)\b",
+    r"\b(i recommend|i suggest|i found that|i discovered|i was surprised)\b",
+    # Direct observations (sensory, specific)
+    r"\brm\s+\d+(?:\.\d+)?\b",  # Malaysian Ringgit prices (verifiable)
+    r"\b(?:crispy|charcoal|smoky|fragrant|tangy|umami|silky|custardy|velvety)\b",
+    r"\b(?:street|jalan|lebuhraya|avenue|road)\s+[a-z][a-z\s]+",  # Street names
+    # Process documentation
+    r"\b(?:watch|observe|taste|try|order|visit|ask|go|walk|stand)\s+to\b",
+    r"\b(?:the cook|the vendor|the stall|the chef|the owner)\s+\w+\b",
+]
+
+VERIFICATION_SIGNALS = [
+    # Named entities that could be verified
+    r"\b[a-z][a-z\s]+(?:restaurant|stall|shop|market|cafe|hotel|vendor)\b",
+    r"\b(?:lot\s+\d+|block\s+\d+|unit\s+\d+)\b",  # Unit/stall numbers
+    r"\b(?:opened|founded|established|been\s+(?:working|operating|running))\s+\d+\s*(?:years?|hours?)\b",
+    r"\b(?:the\s+\w+\s+\w+)\s+(?:has|is|serves|known)\b",  # Named entities + verbs
+]
+
+
+def check_eeat_experience() -> dict:
+    """Score content on first-hand Experience dimension (E-E-A-T).
+
+    Google's December 2025 update made Experience a key ranking factor.
+    Content needs: personal anecdotes, specific verifiable details (prices,
+    locations, names), sensory observations. AI can't fabricate genuine
+    experience — it must come from human insight.
+
+    Returns warn-only — flags gaps but doesn't block deploy.
+    Provides actionable suggestions for improving human insight signals.
+    """
+    results = []
+
+    # Check blog posts
+    posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
+    for post in posts:
+        content = post.read_text(encoding="utf-8")
+        parts = content.split("---", 2)
+        if len(parts) < 3:
+            continue
+        body = parts[2].strip()
+
+        marker_hits = [m for m in EXPERIENCE_MARKERS if re.search(m, body, re.I)]
+        verification_hits = [v for v in VERIFICATION_SIGNALS if re.search(v, body, re.I)]
+
+        word_count = len(body.split())
+        if word_count < 500:
+            experience_score = 0
+        else:
+            base_score = min(50, len(marker_hits) * 10)
+            verification_bonus = min(30, len(verification_hits) * 5)
+            length_bonus = min(20, word_count // 500)
+            experience_score = base_score + verification_bonus + length_bonus
+
+        issues = []
+        suggestions = []
+
+        if len(marker_hits) < 2:
+            issues.append("low_experience_signals")
+            suggestions.append("Add first-person observations: 'I noticed...', 'We found...', 'Try the...'")
+
+        if not any("rm " in str(m).lower() or "myr" in str(m).lower() for m in marker_hits):
+            issues.append("no_malaysian_pricing")
+            suggestions.append("Include specific prices (RM X) to anchor content in real experience")
+
+        if not any("jalan" in str(m).lower() or "street" in str(m).lower() for m in marker_hits):
+            issues.append("no_location_specifics")
+            suggestions.append("Name specific streets, markets, or neighbourhoods")
+
+        if not any(s in str(marker_hits).lower() for s in ["crispy", "smoky", "fragrant", "tangy", "umami"]):
+            issues.append("no_sensory_details")
+            suggestions.append("Add sensory descriptors: texture, taste, smell, sound")
+
+        results.append({
+            "file": post.name,
+            "type": "blog_post",
+            "score": experience_score,
+            "markers_found": len(marker_hits),
+            "verification_signals": len(verification_hits),
+            "word_count": word_count,
+            "issues": issues,
+            "suggestions": suggestions
+        })
+
+    # Check stories (JSON format from Payload)
+    stories_data = load_json(CONTENT_DIR / "stories.json")
+    if isinstance(stories_data, list):
+        for story in stories_data:
+            slug = story.get("slug", "?")
+            content_root = story.get("content", {})
+            body_texts = extract_text_from_rich_text(content_root)
+            body_combined = " ".join(body_texts)
+
+            if len(body_combined) < 200:
+                continue
+
+            marker_hits = [m for m in EXPERIENCE_MARKERS if re.search(m, body_combined, re.I)]
+            verification_hits = [v for v in VERIFICATION_SIGNALS if re.search(v, body_combined, re.I)]
+
+            word_count = len(body_combined.split())
+            base_score = min(50, len(marker_hits) * 10)
+            verification_bonus = min(30, len(verification_hits) * 5)
+            length_bonus = min(20, word_count // 500)
+            experience_score = base_score + verification_bonus + length_bonus
+
+            issues = []
+            suggestions = []
+
+            if len(marker_hits) < 2:
+                issues.append("low_experience_signals")
+                suggestions.append("Add personal anecdotes: 'I learned...', 'We discovered...'")
+
+            results.append({
+                "file": f"stories/{slug}.md",
+                "type": "story",
+                "score": experience_score,
+                "markers_found": len(marker_hits),
+                "verification_signals": len(verification_hits),
+                "word_count": word_count,
+                "issues": issues,
+                "suggestions": suggestions
+            })
+
+    low_score = [r for r in results if r["score"] < 40]
+    if low_score:
+        return warn_result(
+            f"{len(low_score)}/{len(results)} posts lack strong experience signals",
+            low_score[:10]
+        )
+    return pass_result(f"All {len(results)} posts have experience signals", results)
+
+
 def check_ai_writing_clusters() -> dict:
     """Check blog posts and stories for clusters of AI writing patterns.
 
@@ -1306,6 +1445,7 @@ CASE_HANDLERS = {
     "stories_quality": check_stories_quality,
     "first_paragraph_rule": check_first_paragraph_rule,
     "attribute_matching": check_attribute_matching,
+    "eeat_experience_signals": check_eeat_experience,
     "ai_writing_cluster_detection": check_ai_writing_clusters,
 }
 
