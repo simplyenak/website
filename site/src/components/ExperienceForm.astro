@@ -1,0 +1,215 @@
+/**
+ * Experience Note Submission Form
+ * 
+ * A simple form for guides to submit first-hand insights after tours.
+ * Submitted notes go directly to Payload CMS.
+ * 
+ * Usage: Add this component to your site or deploy as a standalone page.
+ */
+
+import { Icon } from 'astro-icon/components';
+
+interface FormData {
+  title: string;
+  location: string;
+  noteType: string;
+  dishes: Array<{ name: string; price: string; vendor: string; notes: string }>;
+  vendors: Array<{ name: string; type: string; address: string; ownerName: string; yearsRunning: string; signatureDish: string; story: string; tips: string }>;
+  sensoryDetails: Array<{ detail: string; category: string }>;
+  surprises: string;
+  recommendations: Array<{ tip: string; priority: string }>;
+  bestTime: string;
+  priceRange: string;
+  rawNote: string;
+  email: string;
+  guideName: string;
+}
+
+const NOTE_TYPES = [
+  { value: 'tour_debrief', label: 'Tour Debrief', desc: 'Insights from a guided tour' },
+  { value: 'vendor_discovery', label: 'Vendor Discovery', desc: 'New vendor or stall found' },
+  { value: 'location_scout', label: 'Location Scout', desc: 'Researching a new area' },
+  { value: 'seasonal_update', label: 'Seasonal Update', desc: 'Changes to vendors, hours, prices' },
+  { value: 'customer_story', label: 'Customer Story', desc: 'Notable guest reaction or question' },
+];
+
+export default function ExperienceForm() {
+  return (
+    <div class="max-w-4xl mx-auto p-6 space-y-8">
+      <div class="text-center space-y-2">
+        <h1 class="text-3xl font-bold">Share Your Experience</h1>
+        <p class="text-muted">Help us create more authentic content by sharing what you discover on tours</p>
+      </div>
+
+      <form id="experience-form" class="space-y-6">
+        {/* Guide Info */}
+        <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+          <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Icon name="tabler:user" class="w-5 h-5 text-primary" />
+            Your Info
+          </h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Your Name *</label>
+              <input name="guideName" required class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Ahmad" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Email (for follow-up)</label>
+              <input name="email" type="email" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="ahmad@simplyenak.com" />
+            </div>
+          </div>
+        </section>
+
+        {/* Basic Info */}
+        <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+          <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Icon name="tabler:map-pin" class="w-5 h-5 text-primary" />
+            Experience Details
+          </h2>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Title *</label>
+              <input name="title" required class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Morning at Pudu Market" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Location *</label>
+              <input name="location" required class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Pudu Market, Jalan Tuanku Abdul Rahman, KL" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Type *</label>
+              <select name="noteType" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
+                {NOTE_TYPES.map(t => (
+                  <option value={t.value}>{t.label}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Best Time to Visit</label>
+              <input name="bestTime" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Before 8 AM for fresh seafood" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Price Range</label>
+              <input name="priceRange" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., RM 5-15 per dish" />
+            </div>
+          </div>
+        </section>
+
+        {/* Dishes */}
+        <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+          <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Icon name="tabler:food" class="w-5 h-5 text-primary" />
+            Dishes & Prices
+          </h2>
+          <div id="dishes-container" class="space-y-4">
+            <div class="dish-entry grid md:grid-cols-4 gap-3">
+              <input name="dishes[0].name" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Dish name" />
+              <input name="dishes[0].price" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Price (e.g., RM 8)" />
+              <input name="dishes[0].vendor" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Where to get it" />
+              <button type="button" class="remove-dish text-red-500 hover:text-red-700" disabled>Remove</button>
+            </div>
+          </div>
+          <button type="button" id="add-dish" class="mt-4 text-sm text-primary hover:underline">+ Add another dish</button>
+        </section>
+
+        {/* Vendors */}
+        <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+          <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Icon name="tabler:store" class="w-5 h-5 text-primary" />
+            Vendors & Stories
+          </h2>
+          <p class="text-sm text-muted mb-4">Who runs these places? What's their story?</p>
+          <div id="vendors-container" class="space-y-4">
+            <div class="vendor-entry space-y-3 p-4 bg-gray-50 dark:bg-[#2a2828] rounded">
+              <div class="grid md:grid-cols-2 gap-3">
+                <input name="vendors[0].name" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Vendor/stall name" />
+                <select name="vendors[0].type" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
+                  <option value="street_stall">Street Stall</option>
+                  <option value="hawker_stall">Hawker Stall</option>
+                  <option value="restaurant">Restaurant</option>
+                  <option value="kopitiam">Kopitiam</option>
+                  <option value="market_stall">Market Stall</option>
+                </select>
+              </div>
+              <input name="vendors[0].address" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Address or landmark" />
+              <div class="grid md:grid-cols-2 gap-3">
+                <input name="vendors[0].ownerName" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Owner/chef name" />
+                <input name="vendors[0].yearsRunning" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Years running (e.g., 30)" />
+              </div>
+              <input name="vendors[0].signatureDish" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Signature dish" />
+              <textarea name="vendors[0].story" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="2" placeholder="Family story, background, interesting facts"></textarea>
+              <textarea name="vendors[0].tips" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="2" placeholder="Tips for visitors (best time, what to order, payment)"></textarea>
+            </div>
+          </div>
+          <button type="button" id="add-vendor" class="mt-4 text-sm text-primary hover:underline">+ Add another vendor</button>
+        </section>
+
+        {/* Sensory Details */}
+        <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+          <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Icon name="tabler:sensors" class="w-5 h-5 text-primary" />
+            Sensory Details
+          </h2>
+          <p class="text-sm text-muted mb-4">What did you notice? (texture, taste, smell, sound)</p>
+          <div id="sensory-container" class="space-y-3">
+            <div class="sensory-entry flex gap-3">
+              <input name="sensoryDetails[0].detail" class="flex-1 px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., crispy outside, smoky from charcoal" />
+              <select name="sensoryDetails[0].category" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
+                <option value="texture">Texture</option>
+                <option value="taste">Taste</option>
+                <option value="smell">Smell</option>
+                <option value="sound">Sound</option>
+                <option value="visual">Visual</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" id="add-sensory" class="mt-4 text-sm text-primary hover:underline">+ Add another observation</button>
+        </section>
+
+        {/* Surprises & Recommendations */}
+        <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+          <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Icon name="tabler:lightbulb" class="w-5 h-5 text-primary" />
+            Surprises & Tips
+          </h2>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Surprises</label>
+              <textarea name="surprises" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="3" placeholder="Anything unexpected you learned?"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Recommendations</label>
+              <div id="recommendations-container" class="space-y-2">
+                <div class="recommendation-entry flex gap-3">
+                  <input name="recommendations[0].tip" class="flex-1 px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Go before 8 AM" />
+                  <select name="recommendations[0].priority" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
+                    <option value="must">Must-do</option>
+                    <option value="high">Highly recommended</option>
+                    <option value="nice">Nice to know</option>
+                  </select>
+                </div>
+              </div>
+              <button type="button" id="add-recommendation" class="mt-2 text-sm text-primary hover:underline">+ Add tip</button>
+            </div>
+          </div>
+        </section>
+
+        {/* Raw Notes */}
+        <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+          <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Icon name="tabler:note" class="w-5 h-5 text-primary" />
+            Quick Notes
+          </h2>
+          <p class="text-sm text-muted mb-4">Paste your voice transcript or quick notes here (we'll organize them)</p>
+          <textarea name="rawNote" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="4" placeholder="e.g., Voice transcript from after the tour..."></textarea>
+        </section>
+
+        <button type="submit" id="submit-btn" class="w-full py-4 bg-primary text-white font-bold rounded hover:bg-secondary transition-colors flex items-center justify-center gap-2">
+          <Icon name="tabler:send" class="w-5 h-5" />
+          Submit Experience Note
+        </button>
+      </form>
+
+      <div id="form-feedback" class="hidden p-4 rounded-lg text-center"></div>
+    </div>
+  );
+}
