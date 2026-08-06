@@ -347,6 +347,13 @@ ALTER TABLE cte_pages ALTER COLUMN workflow_status TYPE enum_cte_pages_workflow_
   USING workflow_status::enum_cte_pages_workflow_status;
 ALTER TABLE cte_pages ALTER COLUMN workflow_status SET DEFAULT 'draft';
 
+-- landing_pages.travel_tips array sub-tables: _locale NOT NULL bug (Payload
+-- creates array sub-tables with NOT NULL _locale even for non-localized
+-- collections — PATCH on the parent 500s). Added with the travel_tips field
+-- (2026-08-06); keep both main and version sub-tables aligned.
+ALTER TABLE landing_pages_travel_tips ALTER COLUMN _locale DROP NOT NULL;
+ALTER TABLE _landing_pages_v_version_travel_tips ALTER COLUMN _locale DROP NOT NULL;
+
 DO $$ BEGIN
   RAISE NOTICE 'Schema drift fix complete.';
 END $$;
