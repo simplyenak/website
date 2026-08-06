@@ -20,10 +20,14 @@ BANNED = [
     "famous", "renowned", "acclaimed", "award-winning",
     "gourmet", "artisanal", "bespoke", "tailored", "unique",
     "one-of-a-kind", "superlative",
-    # Filler words (skill: Filler category — remove)
-    "truly", "very", "really", "quite", "literally",
-    # Corporate tells (skill: "Never use proper/safest/recommended/appreciated")
-    "proper", "safest", "recommended", "appreciated",
+    # Filler words (skill: Filler category — remove). 'very'/'really' excluded:
+    # they occur naturally in conversational copy ("Very much so") and the
+    # fixer can't rewrite them without mangling meaning.
+    "truly", "quite", "literally",
+    # Corporate tells (skill: "Never use proper/safest/recommended/appreciated").
+    # 'recommended' EXCLUDED — "Recommended by Lonely Planet" is a real press
+    # mention on about/track-record pages, not AI-speak.
+    "proper", "safest", "appreciated",
     # Absence framing (skill: sell presence, never absence)
     "hidden from tourists", "not overrun", "never see", "not in guidebooks",
     "won't find in guidebooks", "off the tourist trail",
