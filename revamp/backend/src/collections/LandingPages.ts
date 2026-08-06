@@ -119,6 +119,38 @@ export const LandingPages: CollectionConfig = {
         { name: 'content', type: 'textarea' },
       ],
     },
+    // === Segment copy — hero hook, problem, main body ===
+    // Per-page marketing copy that used to be hardcoded in
+    // LandingPageSections.astro. Payload is the source of truth; the
+    // component falls back to hardcoded strings only when a page has no
+    // record yet (e.g. segments without a landing page).
+    //
+    // Design (Maarten, 2026-08-06): ONE markdown field for the page body
+    // so copy can be edited per page in a single textarea. The component
+    // renders it as prose; optional "## People / ## Places / ## Stories"
+    // headings render as the three-card layout.
+    {
+      name: 'hero_hook',
+      type: 'textarea',
+          admin: { description: 'Hero hook line under the page title (replaces hardcoded getHook())' },
+    },
+    {
+      name: 'problem_heading',
+      type: 'text',
+          admin: { description: 'Problem/agitate section title (replaces hardcoded getProblem())' },
+    },
+    {
+      name: 'problem_content',
+      type: 'textarea',
+          admin: { description: 'Problem/agitate section body (replaces hardcoded getProblem())' },
+    },
+    {
+      name: 'body_markdown',
+      type: 'textarea',
+          admin: {
+        description: 'Main page copy in Markdown. Optional "## People", "## Places", "## Stories" headings render as the three-card layout; everything else renders as prose paragraphs.',
+      },
+    },
     {
       name: 'cta_text',
       type: 'text',
@@ -236,6 +268,10 @@ export const LandingPages: CollectionConfig = {
         { name: 'tips_content', type: 'textarea' },
         { name: 'intro_heading', type: 'text' },
         { name: 'intro_content', type: 'textarea' },
+        { name: 'hero_hook', type: 'textarea' },
+        { name: 'problem_heading', type: 'text' },
+        { name: 'problem_content', type: 'textarea' },
+        { name: 'body_markdown', type: 'textarea' },
         { name: 'features_heading', type: 'text' },
         { name: 'safe_dishes_heading', type: 'text' },
         { name: 'avoid_dishes_heading', type: 'text' },
