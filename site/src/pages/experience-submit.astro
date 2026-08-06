@@ -8,50 +8,44 @@ const metadata = {
 };
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{metadata.title}</title>
-    <link rel="stylesheet" href="/assets/experience-form.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <a href="/" class="logo">Simply Enak</a>
-        <h1>Share Your Experience</h1>
-        <p>Help us create more authentic content by sharing what you discover on tours</p>
-      </header>
+<Layout metadata={metadata}>
+  <div class="max-w-4xl mx-auto p-6 space-y-8">
+    <div class="text-center space-y-2">
+      <h1 class="text-3xl font-bold">Share Your Experience</h1>
+      <p class="text-muted">Help us create more authentic content by sharing what you discover on tours</p>
+    </div>
 
-      <form id="experience-form" class="form">
-        <section class="form-section">
-          <h2>Your Info</h2>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="guideName">Your Name *</label>
-              <input type="text" id="guideName" name="guideName" required placeholder="e.g., Ahmad" />
-            </div>
-            <div class="form-group">
-              <label for="email">Email (for follow-up)</label>
-              <input type="email" id="email" name="email" placeholder="ahmad@simplyenak.com" />
-            </div>
+    <form id="experience-form" class="space-y-6">
+      {/* Guide Info */}
+      <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+        <h2 class="text-lg font-semibold mb-4">Your Info</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Your Name *</label>
+            <input name="guideName" required class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Ahmad" />
           </div>
-        </section>
+          <div>
+            <label class="block text-sm font-medium mb-1">Email (for follow-up)</label>
+            <input name="email" type="email" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="ahmad@simplyenak.com" />
+          </div>
+        </div>
+      </section>
 
-        <section class="form-section">
-          <h2>Experience Details</h2>
-          <div class="form-group">
-            <label for="title">Title *</label>
-            <input type="text" id="title" name="title" required placeholder="e.g., Morning at Pudu Market" />
+      {/* Basic Info */}
+      <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+        <h2 class="text-lg font-semibold mb-4">Experience Details</h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Title *</label>
+            <input name="title" required class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Morning at Pudu Market" />
           </div>
-          <div class="form-group">
-            <label for="location">Location *</label>
-            <input type="text" id="location" name="location" required placeholder="e.g., Pudu Market, KL" />
+          <div>
+            <label class="block text-sm font-medium mb-1">Location *</label>
+            <input name="location" required class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Pudu Market, Jalan Tuanku Abdul Rahman, KL" />
           </div>
-          <div class="form-group">
-            <label for="noteType">Type</label>
-            <select id="noteType" name="noteType">
+          <div>
+            <label class="block text-sm font-medium mb-1">Type *</label>
+            <select name="noteType" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
               <option value="tour_debrief">Tour Debrief</option>
               <option value="vendor_discovery">Vendor Discovery</option>
               <option value="location_scout">Location Scout</option>
@@ -59,230 +53,235 @@ const metadata = {
               <option value="customer_story">Customer Story</option>
             </select>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="bestTime">Best Time to Visit</label>
-              <input type="text" id="bestTime" name="bestTime" placeholder="e.g., Before 8 AM" />
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Best Time to Visit</label>
+              <input name="bestTime" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Before 8 AM" />
             </div>
-            <div class="form-group">
-              <label for="priceRange">Price Range</label>
-              <input type="text" id="priceRange" name="priceRange" placeholder="e.g., RM 5-15" />
-            </div>
-          </div>
-        </section>
-
-        <section class="form-section">
-          <h2>Dishes &amp; Prices</h2>
-          <div id="dishes-container">
-            <div class="dish-entry">
-              <input type="text" name="dishes[0].name" placeholder="Dish name (e.g., char kway teow)" />
-              <input type="text" name="dishes[0].price" placeholder="Price (e.g., RM 8)" />
-              <input type="text" name="dishes[0].vendor" placeholder="Where to get it" />
-              <button type="button" class="remove-entry" disabled>×</button>
+            <div>
+              <label class="block text-sm font-medium mb-1">Price Range</label>
+              <input name="priceRange" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., RM 5-15 per dish" />
             </div>
           </div>
-          <button type="button" id="add-dish" class="add-btn">+ Add another dish</button>
-        </section>
+        </div>
+      </section>
 
-        <section class="form-section">
-          <h2>Vendors &amp; Stories</h2>
-          <p class="hint">Who runs these places? What's their story?</p>
-          <div id="vendors-container">
-            <div class="vendor-entry">
-              <input type="text" name="vendors[0].name" placeholder="Vendor/stall name" />
-              <select name="vendors[0].type">
+      {/* Dishes */}
+      <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+        <h2 class="text-lg font-semibold mb-4">Dishes & Prices</h2>
+        <div id="dishes-container" class="space-y-4">
+          <div class="dish-entry grid md:grid-cols-4 gap-3">
+            <input name="dishes[0].name" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Dish name" />
+            <input name="dishes[0].price" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Price (e.g., RM 8)" />
+            <input name="dishes[0].vendor" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Where to get it" />
+          </div>
+        </div>
+        <button type="button" id="add-dish" class="mt-4 text-sm text-primary hover:underline">+ Add another dish</button>
+      </section>
+
+      {/* Vendors */}
+      <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+        <h2 class="text-lg font-semibold mb-4">Vendors & Stories</h2>
+        <p class="text-sm text-muted mb-4">Who runs these places? What's their story?</p>
+        <div id="vendors-container" class="space-y-4">
+          <div class="vendor-entry space-y-3 p-4 bg-gray-50 dark:bg-[#2a2828] rounded">
+            <div class="grid md:grid-cols-2 gap-3">
+              <input name="vendors[0].name" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Vendor/stall name" />
+              <select name="vendors[0].type" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
                 <option value="street_stall">Street Stall</option>
                 <option value="hawker_stall">Hawker Stall</option>
                 <option value="restaurant">Restaurant</option>
                 <option value="kopitiam">Kopitiam</option>
-                <option value="market_stall">Market Stall</option>
               </select>
-              <input type="text" name="vendors[0].address" placeholder="Address or landmark" />
-              <input type="text" name="vendors[0].ownerName" placeholder="Owner/chef name" />
-              <input type="text" name="vendors[0].yearsRunning" placeholder="Years running (e.g., 30)" />
-              <input type="text" name="vendors[0].signatureDish" placeholder="Signature dish" />
-              <textarea name="vendors[0].story" placeholder="Family story, background, interesting facts" rows="2"></textarea>
-              <textarea name="vendors[0].tips" placeholder="Tips for visitors (best time, what to order)" rows="2"></textarea>
-              <button type="button" class="remove-entry">×</button>
             </div>
-          </div>
-          <button type="button" id="add-vendor" class="add-btn">+ Add another vendor</button>
-        </section>
-
-        <section class="form-section">
-          <h2>Sensory Details</h2>
-          <p class="hint">What did you notice? (texture, taste, smell, sound)</p>
-          <div id="sensory-container">
-            <div class="sensory-entry">
-              <input type="text" name="sensoryDetails[0].detail" placeholder="e.g., crispy outside, smoky from charcoal" />
-              <select name="sensoryDetails[0].category">
-                <option value="texture">Texture</option>
-                <option value="taste">Taste</option>
-                <option value="smell">Smell</option>
-                <option value="sound">Sound</option>
-                <option value="visual">Visual</option>
-              </select>
-              <button type="button" class="remove-entry">×</button>
+            <input name="vendors[0].address" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Address or landmark" />
+            <div class="grid md:grid-cols-2 gap-3">
+              <input name="vendors[0].ownerName" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Owner/chef name" />
+              <input name="vendors[0].yearsRunning" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Years running (e.g., 30)" />
             </div>
+            <input name="vendors[0].signatureDish" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="Signature dish" />
+            <textarea name="vendors[0].story" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="2" placeholder="Family story, background, interesting facts"></textarea>
+            <textarea name="vendors[0].tips" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="2" placeholder="Tips for visitors"></textarea>
           </div>
-          <button type="button" id="add-sensory" class="add-btn">+ Add another observation</button>
-        </section>
+        </div>
+        <button type="button" id="add-vendor" class="mt-4 text-sm text-primary hover:underline">+ Add another vendor</button>
+      </section>
 
-        <section class="form-section">
-          <h2>Surprises &amp; Tips</h2>
-          <div class="form-group">
-            <label for="surprises">Surprises</label>
-            <textarea id="surprises" name="surprises" rows="3" placeholder="Anything unexpected you learned?"></textarea>
-          </div>
-          <div id="recommendations-container">
-            <div class="rec-entry">
-              <input type="text" name="recommendations[0].tip" placeholder="e.g., Go before 8 AM" />
-              <select name="recommendations[0].priority">
-                <option value="must">Must-do</option>
-                <option value="high">Highly recommended</option>
-                <option value="nice">Nice to know</option>
-              </select>
-              <button type="button" class="remove-entry">×</button>
-            </div>
-          </div>
-          <button type="button" id="add-rec" class="add-btn">+ Add tip</button>
-        </section>
-
-        <section class="form-section">
-          <h2>Quick Notes</h2>
-          <p class="hint">Paste your voice transcript or quick notes here</p>
-          <textarea id="rawNote" name="rawNote" rows="4" placeholder="Voice transcript, quick thoughts, anything helpful..."></textarea>
-        </section>
-
-        <button type="submit" id="submit-btn" class="submit-btn">Submit Experience Note</button>
-      </form>
-
-      <div id="form-feedback" class="feedback hidden"></div>
-    </div>
-
-    <script>
-      // Form handling
-      const form = document.getElementById('experience-form');
-      const feedback = document.getElementById('form-feedback');
-      const submitBtn = document.getElementById('submit-btn');
-      
-      // Dynamic field handlers
-      document.getElementById('add-dish').addEventListener('click', () => addEntry('dishes'));
-      document.getElementById('add-vendor').addEventListener('click', () => addEntry('vendors'));
-      document.getElementById('add-sensory').addEventListener('click', () => addEntry('sensory'));
-      document.getElementById('add-rec').addEventListener('click', () => addEntry('recommendations'));
-      
-      function addEntry(type) {
-        const container = document.getElementById(`${type}-container`);
-        const count = container.children.length;
-        const entry = document.createElement('div');
-        entry.className = `${type}-entry`;
-        
-        if (type === 'dishes') {
-          entry.innerHTML = `
-            <input type="text" name="dishes[${count}].name" placeholder="Dish name" />
-            <input type="text" name="dishes[${count}].price" placeholder="Price (e.g., RM 8)" />
-            <input type="text" name="dishes[${count}].vendor" placeholder="Where to get it" />
-            <button type="button" class="remove-entry">×</button>
-          `;
-        } else if (type === 'vendors') {
-          entry.innerHTML = `
-            <input type="text" name="vendors[${count}].name" placeholder="Vendor name" />
-            <select name="vendors[${count}].type">
-              <option value="street_stall">Street Stall</option>
-              <option value="hawker_stall">Hawker Stall</option>
-              <option value="restaurant">Restaurant</option>
-              <option value="kopitiam">Kopitiam</option>
-            </select>
-            <input type="text" name="vendors[${count}].address" placeholder="Address" />
-            <input type="text" name="vendors[${count}].ownerName" placeholder="Owner name" />
-            <input type="text" name="vendors[${count}].yearsRunning" placeholder="Years running" />
-            <button type="button" class="remove-entry">×</button>
-          `;
-        } else if (type === 'sensory') {
-          entry.innerHTML = `
-            <input type="text" name="sensoryDetails[${count}].detail" placeholder="Observation" />
-            <select name="sensoryDetails[${count}].category">
+      {/* Sensory Details */}
+      <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+        <h2 class="text-lg font-semibold mb-4">Sensory Details</h2>
+        <p class="text-sm text-muted mb-4">What did you notice? (texture, taste, smell, sound)</p>
+        <div id="sensory-container" class="space-y-3">
+          <div class="sensory-entry flex gap-3">
+            <input name="sensoryDetails[0].detail" class="flex-1 px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., crispy outside, smoky from charcoal" />
+            <select name="sensoryDetails[0].category" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
               <option value="texture">Texture</option>
               <option value="taste">Taste</option>
               <option value="smell">Smell</option>
               <option value="sound">Sound</option>
             </select>
-            <button type="button" class="remove-entry">×</button>
-          `;
-        } else if (type === 'recommendations') {
-          entry.innerHTML = `
-            <input type="text" name="recommendations[${count}].tip" placeholder="Tip" />
-            <select name="recommendations[${count}].priority">
-              <option value="must">Must-do</option>
-              <option value="high">Recommended</option>
-              <option value="nice">Nice to know</option>
-            </select>
-            <button type="button" class="remove-entry">×</button>
-          `;
-        }
-        
-        container.appendChild(entry);
-        entry.querySelector('.remove-entry').addEventListener('click', () => entry.remove());
+          </div>
+        </div>
+        <button type="button" id="add-sensory" class="mt-4 text-sm text-primary hover:underline">+ Add another observation</button>
+      </section>
+
+      {/* Surprises & Recommendations */}
+      <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+        <h2 class="text-lg font-semibold mb-4">Surprises & Tips</h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Surprises</label>
+            <textarea name="surprises" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="3" placeholder="Anything unexpected you learned?"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Recommendations</label>
+            <div id="recommendations-container" class="space-y-2">
+              <div class="recommendation-entry flex gap-3">
+                <input name="recommendations[0].tip" class="flex-1 px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" placeholder="e.g., Go before 8 AM" />
+                <select name="recommendations[0].priority" class="px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]">
+                  <option value="must">Must-do</option>
+                  <option value="high">Highly recommended</option>
+                  <option value="nice">Nice to know</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" id="add-recommendation" class="mt-2 text-sm text-primary hover:underline">+ Add tip</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Raw Notes */}
+      <section class="bg-white dark:bg-[#1e1c1c] rounded-lg p-6 border border-gray-100 dark:border-white/10">
+        <h2 class="text-lg font-semibold mb-4">Quick Notes</h2>
+        <p class="text-sm text-muted mb-4">Paste your voice transcript or quick notes here</p>
+        <textarea name="rawNote" class="w-full px-4 py-2 rounded border dark:border-white/15 dark:bg-[#1e1c1c]" rows="4" placeholder="Voice transcript or quick thoughts..."></textarea>
+      </section>
+
+      <button type="submit" id="submit-btn" class="w-full py-4 bg-primary text-white font-bold rounded hover:bg-secondary transition-colors">
+        Submit Experience Note
+      </button>
+    </form>
+
+    <div id="form-feedback" class="hidden p-4 rounded-lg text-center"></div>
+  </div>
+
+  <script>
+    // Dynamic field handlers
+    document.getElementById('add-dish').addEventListener('click', () => addEntry('dishes'));
+    document.getElementById('add-vendor').addEventListener('click', () => addEntry('vendors'));
+    document.getElementById('add-sensory').addEventListener('click', () => addEntry('sensory'));
+    document.getElementById('add-recommendation').addEventListener('click', () => addEntry('recommendations'));
+
+    function addEntry(type) {
+      const container = document.getElementById(`${type}-container`);
+      const count = container.children.length;
+      const entry = document.createElement('div');
+      entry.className = `${type}-entry`;
+
+      if (type === 'dishes') {
+        entry.innerHTML = \`
+          <input type="text" name="dishes[\${count}].name" placeholder="Dish name" />
+          <input type="text" name="dishes[\${count}].price" placeholder="Price (e.g., RM 8)" />
+          <input type="text" name="dishes[\${count}].vendor" placeholder="Where to get it" />
+        \`;
+      } else if (type === 'vendors') {
+        entry.innerHTML = \`
+          <input type="text" name="vendors[\${count}].name" placeholder="Vendor name" />
+          <select name="vendors[\${count}].type">
+            <option value="street_stall">Street Stall</option>
+            <option value="hawker_stall">Hawker Stall</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="kopitiam">Kopitiam</option>
+          </select>
+          <input type="text" name="vendors[\${count}].address" placeholder="Address" />
+          <button type="button" class="remove-entry">×</button>
+        \`;
+      } else if (type === 'sensory') {
+        entry.innerHTML = \`
+          <input type="text" name="sensoryDetails[\${count}].detail" placeholder="Observation" />
+          <select name="sensoryDetails[\${count}].category">
+            <option value="texture">Texture</option>
+            <option value="taste">Taste</option>
+            <option value="smell">Smell</option>
+            <option value="sound">Sound</option>
+          </select>
+          <button type="button" class="remove-entry">×</button>
+        \`;
+      } else if (type === 'recommendations') {
+        entry.innerHTML = \`
+          <input type="text" name="recommendations[\${count}].tip" placeholder="Tip" />
+          <select name="recommendations[\${count}].priority">
+            <option value="must">Must-do</option>
+            <option value="high">Recommended</option>
+            <option value="nice">Nice to know</option>
+          </select>
+          <button type="button" class="remove-entry">×</button>
+        \`;
       }
-      
-      // Remove buttons
-      document.querySelectorAll('.remove-entry').forEach(btn => {
-        btn.addEventListener('click', (e) => e.target.closest('div').remove());
-      });
-      
-      // Form submission
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-        feedback.classList.add('hidden');
-        
-        // Serialize form data
-        const formData = new FormData(form);
-        const data = {};
-        
-        // Handle arrays properly
-        const arrayFields = ['dishes', 'vendors', 'sensoryDetails', 'recommendations'];
-        
-        for (const [key, value] of formData.entries()) {
-          if (key.includes('[')) {
-            const [base, index] = key.split('[');
-            const field = index.replace(']', '');
-            if (!data[base]) data[base] = [];
-            if (!data[base][index]) data[base][index] = {};
-            data[base][index][field] = value;
-          } else {
-            data[key] = value;
-          }
+
+      container.appendChild(entry);
+      entry.querySelector('.remove-entry')?.addEventListener('click', () => entry.remove());
+    }
+
+    // Remove buttons
+    document.querySelectorAll('.remove-entry').forEach(btn => {
+      btn.addEventListener('click', (e) => e.target.closest('div')?.remove());
+    });
+
+    // Form submission
+    const form = document.getElementById('experience-form');
+    const feedback = document.getElementById('form-feedback');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      feedback.classList.add('hidden');
+
+      // Serialize form data
+      const formData = new FormData(form);
+      const data = {};
+
+      const arrayFields = ['dishes', 'vendors', 'sensoryDetails', 'recommendations'];
+
+      for (const [key, value] of formData.entries()) {
+        if (key.includes('[')) {
+          const [base, index] = key.split('[');
+          const field = index.replace(']', '');
+          if (!data[base]) data[base] = [];
+          if (!data[base][index]) data[base][index] = {};
+          data[base][index][field] = value;
+        } else {
+          data[key] = value;
         }
-        
-        try {
-          const res = await fetch('/api/experience-note', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-          
-          const result = await res.json();
-          
-          if (res.ok) {
-            feedback.textContent = '✓ Thank you! Your experience note has been saved. We\\'ll use it to create more authentic content.';
-            feedback.className = 'feedback success';
-            form.reset();
-          } else {
-            throw new Error(result.message || 'Submission failed');
-          }
-        } catch (err) {
-          feedback.textContent = 'Something went wrong. Please try again or contact us directly.';
-          feedback.className = 'feedback error';
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Submit Experience Note';
-          feedback.classList.remove('hidden');
+      }
+
+      try {
+        const res = await fetch('/api/experience-note', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          feedback.textContent = '✓ Thank you! Your experience note has been saved.';
+          feedback.className = 'p-4 rounded-lg bg-green-50 text-green-800';
+          form.reset();
+        } else {
+          throw new Error(result.message || 'Submission failed');
         }
-      });
-    </script>
-  </body>
-</html>
+      } catch (err) {
+        feedback.textContent = 'Something went wrong. Please try again or contact us directly.';
+        feedback.className = 'p-4 rounded-lg bg-red-50 text-red-800';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Experience Note';
+        feedback.classList.remove('hidden');
+      }
+    });
+  </script>
+</Layout>
