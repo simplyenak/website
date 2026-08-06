@@ -101,6 +101,25 @@ export const LandingPages: CollectionConfig = {
           admin: { description: 'Heading for the intro section (e.g., "Why vegetarian food in KL?")' },
     },
     {
+      name: 'intro_content',
+      type: 'textarea',
+          admin: { description: 'Intro paragraph body for location pages (maps to location-landing-pages.json intro_content)' },
+    },
+    {
+      name: 'tips_heading',
+      type: 'text',
+          admin: { description: 'Heading for travel tips section on location pages (maps to travel_tips_heading)' },
+    },
+    {
+      name: 'travel_tips',
+      type: 'array',
+      admin: { description: 'Travel tips for location pages (maps to location-landing-pages.json travel_tips)' },
+      fields: [
+        { name: 'title', type: 'text' },
+        { name: 'content', type: 'textarea' },
+      ],
+    },
+    {
       name: 'cta_text',
       type: 'text',
           admin: { description: 'Primary CTA button text (e.g., "Browse vegetarian tours")' },
