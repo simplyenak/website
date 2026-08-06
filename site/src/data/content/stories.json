@@ -6035,94 +6035,13 @@
     "status": "draft",
     "workflowStatus": "published",
     "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
+    "locationsRef": [],
     "meta": {
       "title": "Where Are the Best Local Food Spots in Johor Bahru?",
       "description": "A Johor Bahru local food guide covering heritage stalls for asam pedas, roti canai, mee rebus, ikan bakar, and pisang goreng across the city.",
       "image": null
     },
-    "updatedAt": "2026-08-05T14:47:35.169Z",
+    "updatedAt": "2026-08-06T01:28:45.889Z",
     "createdAt": "2026-07-05T03:38:59.597Z",
     "_status": "published",
     "translations": [
@@ -7462,81 +7381,13 @@
     "status": "draft",
     "workflowStatus": "draft",
     "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      }
-    ],
+    "locationsRef": [],
     "meta": {
       "title": "Borneo's Indigenous Food: Healing Power of the Rainforest",
       "description": "Discover the indigenous food knowledge of Borneo's rainforest communities at Mulu's Ayus Wellness centre.",
       "image": null
     },
-    "updatedAt": "2026-08-05T14:47:39.634Z",
+    "updatedAt": "2026-08-06T01:28:48.947Z",
     "createdAt": "2026-07-05T03:38:59.381Z",
     "_status": "published",
     "translations": [
@@ -21559,84 +21410,17 @@
     "scheduledPublish": null,
     "locationsRef": [
       {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
+        "id": 17,
+        "name": "Melaka",
+        "slug": "melaka",
+        "icon": "🏛️",
+        "color": "#f59e0b",
+        "description": "Melaka's 600-year Peranakan food heritage around Jonker Street and Harmony Street - a unique blend of Malay, Chinese, and Portuguese influences.",
         "image": null,
         "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
+        "updatedAt": "2026-08-06T01:28:17.656Z",
+        "createdAt": "2026-08-06T01:28:17.656Z",
+        "_status": "draft"
       }
     ],
     "meta": {
@@ -21644,7 +21428,7 @@
       "description": "Where to Eat in Melaka Melaka is smaller than KL and quieter than Penang, but its food scene carries a weight of history that neither can match.",
       "image": null
     },
-    "updatedAt": "2026-08-05T14:48:54.359Z",
+    "updatedAt": "2026-08-06T01:28:36.687Z",
     "createdAt": "2026-06-19T09:50:07.431Z",
     "_status": "published",
     "translations": [
@@ -23468,71 +23252,17 @@
     "scheduledPublish": null,
     "locationsRef": [
       {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
+        "id": 18,
+        "name": "Klang",
+        "slug": "klang",
+        "icon": "🍲",
+        "color": "#ef4444",
+        "description": "Klang is the birthplace of bak kut teh. Explore the original pork bone tea and Hokkien heritage around the Klang KTM station, Jalan Besar, and Little India Klang.",
+        "image": null,
         "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
+        "updatedAt": "2026-08-06T01:28:19.398Z",
+        "createdAt": "2026-08-06T01:28:19.398Z",
+        "_status": "draft"
       }
     ],
     "meta": {
@@ -23540,7 +23270,7 @@
       "description": "Where to Eat in Klang Klang is a city that most visitors see from the window of a commuter train.",
       "image": null
     },
-    "updatedAt": "2026-08-05T14:49:05.029Z",
+    "updatedAt": "2026-08-06T01:28:39.570Z",
     "createdAt": "2026-06-19T09:50:06.420Z",
     "_status": "published",
     "translations": [
@@ -24434,19 +24164,6 @@
     "scheduledPublish": null,
     "locationsRef": [
       {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      },
-      {
         "id": 16,
         "name": "Ipoh",
         "slug": "ipoh",
@@ -24465,7 +24182,7 @@
       "description": "Where to Eat in Ipoh Ipoh is a city that food travellers pass through on their way to Penang or the Cameron Highlands. That is a mistake.",
       "image": null
     },
-    "updatedAt": "2026-08-05T14:49:09.331Z",
+    "updatedAt": "2026-08-06T01:28:42.550Z",
     "createdAt": "2026-06-19T09:50:05.904Z",
     "_status": "published",
     "translations": [
@@ -29138,13 +28855,27 @@
     "status": "draft",
     "workflowStatus": "published",
     "scheduledPublish": "2026-09-15T00:00:00.000Z",
-    "locationsRef": [],
+    "locationsRef": [
+      {
+        "id": 17,
+        "name": "Melaka",
+        "slug": "melaka",
+        "icon": "🏛️",
+        "color": "#f59e0b",
+        "description": "Melaka's 600-year Peranakan food heritage around Jonker Street and Harmony Street - a unique blend of Malay, Chinese, and Portuguese influences.",
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-08-06T01:28:17.656Z",
+        "createdAt": "2026-08-06T01:28:17.656Z",
+        "_status": "draft"
+      }
+    ],
     "meta": {
       "title": "Melaka Food Heritage Walk - uma manhã na cidade mais antiga da Malásia",
       "description": "Guias locais - COMIDA × HISTÓRIA × VIAGEM",
       "image": null
     },
-    "updatedAt": "2026-08-03T15:06:52.360Z",
+    "updatedAt": "2026-08-06T01:28:51.721Z",
     "createdAt": "2026-06-12T15:55:40.522Z",
     "_status": "published",
     "translations": [
@@ -32797,6 +32528,19 @@
         "updatedAt": "2026-07-11T14:24:38.554Z",
         "createdAt": "2026-05-19T08:33:20.569Z",
         "_status": "published"
+      },
+      {
+        "id": 18,
+        "name": "Klang",
+        "slug": "klang",
+        "icon": "🍲",
+        "color": "#ef4444",
+        "description": "Klang is the birthplace of bak kut teh. Explore the original pork bone tea and Hokkien heritage around the Klang KTM station, Jalan Besar, and Little India Klang.",
+        "image": null,
+        "status": "published",
+        "updatedAt": "2026-08-06T01:28:19.398Z",
+        "createdAt": "2026-08-06T01:28:19.398Z",
+        "_status": "draft"
       }
     ],
     "meta": {
@@ -32804,7 +32548,7 @@
       "description": "Updated May 2026: Transport options between Port Klang and KL have improved. Here is the latest on how to make the trip.",
       "image": null
     },
-    "updatedAt": "2026-08-05T14:49:52.421Z",
+    "updatedAt": "2026-08-06T01:28:54.028Z",
     "createdAt": "2026-06-11T09:17:47.633Z",
     "_status": "published",
     "translations": [

@@ -1,5 +1,31 @@
 [
   {
+    "id": 18,
+    "name": "Klang",
+    "slug": "klang",
+    "icon": "🍲",
+    "color": "#ef4444",
+    "description": "Klang is the birthplace of bak kut teh. Explore the original pork bone tea and Hokkien heritage around the Klang KTM station, Jalan Besar, and Little India Klang.",
+    "image": null,
+    "status": "published",
+    "updatedAt": "2026-08-06T01:28:19.398Z",
+    "createdAt": "2026-08-06T01:28:19.398Z",
+    "_status": "draft"
+  },
+  {
+    "id": 17,
+    "name": "Melaka",
+    "slug": "melaka",
+    "icon": "🏛️",
+    "color": "#f59e0b",
+    "description": "Melaka's 600-year Peranakan food heritage around Jonker Street and Harmony Street - a unique blend of Malay, Chinese, and Portuguese influences.",
+    "image": null,
+    "status": "published",
+    "updatedAt": "2026-08-06T01:28:17.656Z",
+    "createdAt": "2026-08-06T01:28:17.656Z",
+    "_status": "draft"
+  },
+  {
     "id": 16,
     "name": "Ipoh",
     "slug": "ipoh",
