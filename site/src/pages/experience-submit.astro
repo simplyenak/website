@@ -173,59 +173,34 @@ const metadata = {
     document.getElementById('add-recommendation').addEventListener('click', () => addEntry('recommendations'));
 
     function addEntry(type) {
-      const container = document.getElementById(`${type}-container`);
+      const container = document.getElementById(type + '-container');
       const count = container.children.length;
       const entry = document.createElement('div');
-      entry.className = `${type}-entry`;
+      entry.className = type + '-entry';
 
       if (type === 'dishes') {
-        entry.innerHTML = \`
-          <input type="text" name="dishes[\${count}].name" placeholder="Dish name" />
-          <input type="text" name="dishes[\${count}].price" placeholder="Price (e.g., RM 8)" />
-          <input type="text" name="dishes[\${count}].vendor" placeholder="Where to get it" />
-        \`;
+        entry.innerHTML = '<input type="text" name="dishes[' + count + '].name" placeholder="Dish name" /><input type="text" name="dishes[' + count + '].price" placeholder="Price (e.g., RM 8)" /><input type="text" name="dishes[' + count + '].vendor" placeholder="Where to get it" />';
       } else if (type === 'vendors') {
-        entry.innerHTML = \`
-          <input type="text" name="vendors[\${count}].name" placeholder="Vendor name" />
-          <select name="vendors[\${count}].type">
-            <option value="street_stall">Street Stall</option>
-            <option value="hawker_stall">Hawker Stall</option>
-            <option value="restaurant">Restaurant</option>
-            <option value="kopitiam">Kopitiam</option>
-          </select>
-          <input type="text" name="vendors[\${count}].address" placeholder="Address" />
-          <button type="button" class="remove-entry">×</button>
-        \`;
+        entry.innerHTML = '<input type="text" name="vendors[' + count + '].name" placeholder="Vendor name" /><select name="vendors[' + count + '].type"><option value="street_stall">Street Stall</option><option value="hawker_stall">Hawker Stall</option><option value="restaurant">Restaurant</option><option value="kopitiam">Kopitiam</option></select><input type="text" name="vendors[' + count + '].address" placeholder="Address" /><button type="button" class="remove-entry">×</button>';
       } else if (type === 'sensory') {
-        entry.innerHTML = \`
-          <input type="text" name="sensoryDetails[\${count}].detail" placeholder="Observation" />
-          <select name="sensoryDetails[\${count}].category">
-            <option value="texture">Texture</option>
-            <option value="taste">Taste</option>
-            <option value="smell">Smell</option>
-            <option value="sound">Sound</option>
-          </select>
-          <button type="button" class="remove-entry">×</button>
-        \`;
+        entry.innerHTML = '<input type="text" name="sensoryDetails[' + count + '].detail" placeholder="Observation" /><select name="sensoryDetails[' + count + '].category"><option value="texture">Texture</option><option value="taste">Taste</option><option value="smell">Smell</option><option value="sound">Sound</option></select><button type="button" class="remove-entry">×</button>';
       } else if (type === 'recommendations') {
-        entry.innerHTML = \`
-          <input type="text" name="recommendations[\${count}].tip" placeholder="Tip" />
-          <select name="recommendations[\${count}].priority">
-            <option value="must">Must-do</option>
-            <option value="high">Recommended</option>
-            <option value="nice">Nice to know</option>
-          </select>
-          <button type="button" class="remove-entry">×</button>
-        \`;
+        entry.innerHTML = '<input type="text" name="recommendations[' + count + '].tip" placeholder="Tip" /><select name="recommendations[' + count + '].priority"><option value="must">Must-do</option><option value="high">Recommended</option><option value="nice">Nice to know</option></select><button type="button" class="remove-entry">×</button>';
       }
 
       container.appendChild(entry);
-      entry.querySelector('.remove-entry')?.addEventListener('click', () => entry.remove());
+      const removeBtn = entry.querySelector('.remove-entry');
+      if (removeBtn) {
+        removeBtn.addEventListener('click', () => entry.remove());
+      }
     }
 
     // Remove buttons
     document.querySelectorAll('.remove-entry').forEach(btn => {
-      btn.addEventListener('click', (e) => e.target.closest('div')?.remove());
+      btn.addEventListener('click', (e) => {
+        const div = e.target.closest('div');
+        if (div) div.remove();
+      });
     });
 
     // Form submission
@@ -233,55 +208,55 @@ const metadata = {
     const feedback = document.getElementById('form-feedback');
     const submitBtn = document.getElementById('submit-btn');
 
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    if (form && submitBtn && feedback) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-      feedback.classList.add('hidden');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        feedback.classList.add('hidden');
 
-      // Serialize form data
-      const formData = new FormData(form);
-      const data = {};
+        // Serialize form data
+        const formData = new FormData(form);
+        const data = {};
 
-      const arrayFields = ['dishes', 'vendors', 'sensoryDetails', 'recommendations'];
-
-      for (const [key, value] of formData.entries()) {
-        if (key.includes('[')) {
-          const [base, index] = key.split('[');
-          const field = index.replace(']', '');
-          if (!data[base]) data[base] = [];
-          if (!data[base][index]) data[base][index] = {};
-          data[base][index][field] = value;
-        } else {
-          data[key] = value;
+        for (const [key, value] of formData.entries()) {
+          if (key.includes('[')) {
+            const [base, index] = key.split('[');
+            const field = index.replace(']', '');
+            if (!data[base]) data[base] = [];
+            if (!data[base][index]) data[base][index] = {};
+            data[base][index][field] = value;
+          } else {
+            data[key] = value;
+          }
         }
-      }
 
-      try {
-        const res = await fetch('/api/experience-note', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
+        try {
+          const res = await fetch('/api/experience-note', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
 
-        const result = await res.json();
+          const result = await res.json();
 
-        if (res.ok) {
-          feedback.textContent = '✓ Thank you! Your experience note has been saved.';
-          feedback.className = 'p-4 rounded-lg bg-green-50 text-green-800';
-          form.reset();
-        } else {
-          throw new Error(result.message || 'Submission failed');
+          if (res.ok) {
+            feedback.textContent = '✓ Thank you! Your experience note has been saved.';
+            feedback.className = 'p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300';
+            form.reset();
+          } else {
+            throw new Error(result.message || 'Submission failed');
+          }
+        } catch (err) {
+          feedback.textContent = 'Something went wrong. Please try again or contact us directly.';
+          feedback.className = 'p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Experience Note';
+          feedback.classList.remove('hidden');
         }
-      } catch (err) {
-        feedback.textContent = 'Something went wrong. Please try again or contact us directly.';
-        feedback.className = 'p-4 rounded-lg bg-red-50 text-red-800';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Experience Note';
-        feedback.classList.remove('hidden');
-      }
-    });
+      });
+    }
   </script>
 </Layout>
