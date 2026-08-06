@@ -57,8 +57,10 @@ const bgImages = [
 const heroBg = landingPage?.heroImage || landingPage?.hero_image || bgImages[Math.floor(Math.random() * bgImages.length)];
 const heroBgAlt = landingPage?.heroImageAlt || landingPage?.hero_image_alt || '';
 
-// Story hooks — PAS problem + bold hook, per segment type
+// Story hooks — PAS problem + bold hook, per segment type.
+// Payload-first: hero_hook from the CMS overrides the hardcoded fallback.
 const getHook = () => {
+  if (landingPage?.hero_hook) return landingPage.hero_hook;
   const name = segment.name || 'this';
   const first = (segment.slug || '').split('-')[0];
   const hooks: Record<string, string> = {
@@ -79,8 +81,11 @@ const getHook = () => {
   return hooks[segmentType] || `This is what ${name} looks like with a local who knows where to go.`;
 };
 
-// Problem/Agitate — segment-specific pain point
+// Problem/Agitate — Payload-first, hardcoded fallback.
 const getProblem = () => {
+  if (landingPage?.problem_heading && landingPage?.problem_content) {
+    return { title: landingPage.problem_heading, desc: landingPage.problem_content };
+  }
   const first = (segment.slug || '').split('-')[0];
   const probs: Record<string, { title: string; desc: string }> = {
     halal: { title: "The 'Is this halal?' problem", desc: "You spend half your meal asking questions instead of enjoying the food. One stall says yes, another says mostly. You end up at a chain restaurant because at least that's safe. You didn't travel across the world to eat at a chain." },
@@ -101,11 +106,51 @@ const introHeading = landingPage?.intro_heading || '';
 const guideLinkText = landingPage?.guide_link_text || 'Read the full guide';
 const ctaText = landingPage?.cta_text || 'Browse tours';
 
-// People, Places, Stories — segment-specific sales pitch
+// People, Places, Stories — Payload-first from body_markdown.
+// The CMS body_markdown field may contain "## People / ## Places / ## Stories"
+// sections; parse them into the three-card layout. Falls back to the
+// hardcoded pitches when the field is empty.
+const parseBodyMarkdown = (md: string): { people?: string; places?: string; stories?: string; prose: string[] } => {
+  if (!md) return { prose: [] };
+  const sections: { people?: string; places?: string; stories?: string } = {};
+  const prose: string[] = [];
+  // Split on ## headings
+  const parts = md.split(/\n?^##\s+/m);
+  parts.forEach((part, i) => {
+    const trimmed = part.trim();
+    if (!trimmed) return;
+    if (i === 0) {
+      // Leading prose before any heading
+      if (trimmed) prose.push(trimmed);
+      return;
+    }
+    const nl = trimmed.indexOf('\n');
+    const heading = (nl === -1 ? trimmed : trimmed.slice(0, nl)).trim().toLowerCase();
+    const body = (nl === -1 ? '' : trimmed.slice(nl + 1)).trim();
+    if (heading === 'people') sections.people = body;
+    else if (heading === 'places') sections.places = body;
+    else if (heading === 'stories') sections.stories = body;
+    else if (body) prose.push(`${heading}\n${body}`);
+  });
+  return { ...sections, prose };
+};
+
 const getPeoplePlacesStories = () => {
   const name = segment.name || 'this experience';
   const first = (segment.slug || '').split('-')[0]; // e.g. 'halal', 'vegetarian', 'kuala'
 
+  // Payload-first: parse body_markdown
+  const md = parseBodyMarkdown(landingPage?.body_markdown || '');
+  if (md.people || md.places || md.stories) {
+    return {
+      people: { title: 'The People', desc: md.people || '' },
+      places: { title: 'The Places', desc: md.places || '' },
+      stories: { title: 'The Stories', desc: md.stories || '' },
+      prose: md.prose,
+    };
+  }
+
+  // Hardcoded fallback (same as before)
   // Specific pitches keyed by the segment's first slug word
   const specific: Record<string, { people: string; places: string; stories: string }> = {
     halal: {
@@ -181,6 +226,7 @@ const getPeoplePlacesStories = () => {
     people: { title: 'The People', desc: s?.people || f.people },
     places: { title: 'The Places', desc: s?.places || f.places },
     stories: { title: 'The Stories', desc: s?.stories || f.stories },
+    prose: [],
   };
 };
 
@@ -432,6 +478,14 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
       </div>
     )}
 
+    {pitch.prose.length > 0 && (
+      <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mt-10 max-w-3xl mx-auto">
+        {pitch.prose.map((para: string) => (
+          <p>{para}</p>
+        ))}
+      </div>
+    )}
+
     {pageContent && (
       <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mt-10 max-w-3xl mx-auto">
         {pageContent.split('\n').filter((line: string) => line.trim()).map((line: string) => (
@@ -441,6 +495,23 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
     )}
   </div>
 </section>
+
+<!-- 5a. TRAVEL TIPS — from Payload (location pages) -->
+{(landingPage?.travel_tips?.length > 0 || landingPage?.tips_heading) && (
+  <section class="py-14 bg-muted/20 border-y border-gray-100 dark:border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading mb-8 text-center">{landingPage?.tips_heading || 'Travel Tips'}</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {(landingPage?.travel_tips || []).map((tip: any) => (
+          <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl p-5">
+            {tip.title && <h3 class="font-bold font-heading mb-2 text-sm">{tip.title}</h3>}
+            <p class="text-sm text-muted leading-relaxed">{tip.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 
 <!-- 5b. TRUST CONTENT — honest details for AI agents (Caleb Ulku strategy) -->
 <section class="py-14 bg-muted/20 border-y border-gray-100 dark:border-white/5">

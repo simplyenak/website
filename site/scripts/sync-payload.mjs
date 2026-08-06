@@ -955,6 +955,10 @@ function transformLandingPages(docs) {
         tips_content: t.tips_content || '',
         intro_heading: t.intro_heading || '',
         intro_content: t.intro_content || '',
+        hero_hook: t.hero_hook || '',
+        problem_heading: t.problem_heading || '',
+        problem_content: t.problem_content || '',
+        body_markdown: t.body_markdown || '',
         features_heading: t.features_heading || '',
         safe_dishes_heading: t.safe_dishes_heading || '',
         avoid_dishes_heading: t.avoid_dishes_heading || '',
@@ -981,6 +985,10 @@ function transformLandingPages(docs) {
       flat.safe_dishes = (doc.safe_dishes || []).map(d => ({ name: d.name || '', description: d.description || '' }))
       flat.avoid_dishes_heading = doc.avoid_dishes_heading || ''
       flat.avoid_dishes = (doc.avoid_dishes || []).map(d => ({ name: d.name || '', description: d.description || '' }))
+      flat.hero_hook = doc.hero_hook || ''
+      flat.problem_heading = doc.problem_heading || ''
+      flat.problem_content = doc.problem_content || ''
+      flat.body_markdown = doc.body_markdown || ''
       result.dietary.push(flat)
     } else if (type === 'specialty') {
       flat.specialty_name = doc.title
@@ -990,6 +998,10 @@ function transformLandingPages(docs) {
       flat.intro_content = doc.intro_content || ''
       flat.features_heading = doc.features_heading || ''
       flat.highlights = (doc.highlights || []).map(h => ({ title: h.title || '', description: h.description || '' }))
+      flat.hero_hook = doc.hero_hook || ''
+      flat.problem_heading = doc.problem_heading || ''
+      flat.problem_content = doc.problem_content || ''
+      flat.body_markdown = doc.body_markdown || ''
       result.specialty.push(flat)
     } else if (type === 'travel_type') {
       flat.travel_type_name = doc.title
@@ -1004,6 +1016,10 @@ function transformLandingPages(docs) {
       flat.tips = (doc.tips || []).map(t => ({ title: t.title || '', content: t.content || '' }))
       flat.suitable_tours = (doc.suitable_tours || []).map(t => ({ tour_slug: t.tour_slug || '' }))
       flat.key_features = (doc.highlights || []).map(h => ({ title: h.title || '', description: h.description || '' }))
+      flat.hero_hook = doc.hero_hook || ''
+      flat.problem_heading = doc.problem_heading || ''
+      flat.problem_content = doc.problem_content || ''
+      flat.body_markdown = doc.body_markdown || ''
       result.travelType.push(flat)
     } else if (type === 'location') {
       flat.location_name = doc.title
@@ -1011,6 +1027,10 @@ function transformLandingPages(docs) {
       flat.intro_content = doc.intro_content || ''
       flat.travel_tips_heading = doc.tips_heading || ''
       flat.travel_tips = (doc.travel_tips || []).map(t => ({ title: t.title || '', content: t.content || '' }))
+      flat.hero_hook = doc.hero_hook || ''
+      flat.problem_heading = doc.problem_heading || ''
+      flat.problem_content = doc.problem_content || ''
+      flat.body_markdown = doc.body_markdown || ''
       result.location.push(flat)
     }
   }

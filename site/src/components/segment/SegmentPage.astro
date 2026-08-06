@@ -27,6 +27,30 @@ const matchingTours = await getToursByTag(segment.slug);
 const landingPage = await getLandingPageBySlug(segment.slug, locale);
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 
+// EN pages pass a FILTERED landing page: content fields only (hero, intro,
+// travel tips). The full object is passed for other locales. This preserves
+// the PT-leak fix (meta_title/meta_description must stay out of EN) while
+// letting durable Payload content (intro_content, travel_tips) render.
+const enLandingPage = landingPage
+  ? {
+      hero_title: landingPage.hero_title,
+      hero_subtitle: landingPage.hero_subtitle,
+      hero_description: landingPage.hero_description,
+      hero_image: landingPage.hero_image,
+      content: landingPage.content,
+      intro_heading: landingPage.intro_heading,
+      intro_content: landingPage.intro_content,
+      tips_heading: landingPage.tips_heading,
+      travel_tips: landingPage.travel_tips,
+      guide_link_text: landingPage.guide_link_text,
+      guide_slug: landingPage.guide_slug,
+      hero_hook: landingPage.hero_hook,
+      problem_heading: landingPage.problem_heading,
+      problem_content: landingPage.problem_content,
+      body_markdown: landingPage.body_markdown,
+    }
+  : undefined;
+
 // Location pages surface stories linked to that location (via locationsRef)
 const relatedStories =
   segmentType === 'location'
@@ -83,7 +107,7 @@ const meta = {
 
   <LandingPageSections
     {segment}
-    landingPage={locale === 'en' ? undefined : landingPage}
+    landingPage={locale === 'en' ? enLandingPage : landingPage}
     matchingTours={matchingTours}
     featuredReviews={featuredReviews}
     segmentType={segConfig.type}
