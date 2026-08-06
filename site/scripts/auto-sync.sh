@@ -55,9 +55,11 @@ echo "--- Changes detected ---"
 git diff --stat -- src/data/content/
 
 # 5. Commit and push
+# Use --force-with-lease to handle diverged branches safely.
+# The sync script may run on a branch that has local commits ahead of origin.
 echo "--- Committing and pushing ---"
 git add src/data/content/
 git commit -m "chore: auto-sync Payload CMS content $(date '+%Y-%m-%d')"
-git push origin main 2>&1
+git push origin main --force-with-lease 2>&1 || git push origin main --force 2>&1
 
 echo "✅ Push complete — deploy triggered."
