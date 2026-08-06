@@ -20,6 +20,13 @@ BANNED = [
     "famous", "renowned", "acclaimed", "award-winning",
     "gourmet", "artisanal", "bespoke", "tailored", "unique",
     "one-of-a-kind", "superlative",
+    # Filler words (skill: Filler category — remove)
+    "truly", "very", "really", "quite", "literally",
+    # Corporate tells (skill: "Never use proper/safest/recommended/appreciated")
+    "proper", "safest", "recommended", "appreciated",
+    # Absence framing (skill: sell presence, never absence)
+    "hidden from tourists", "not overrun", "never see", "not in guidebooks",
+    "won't find in guidebooks", "off the tourist trail",
 ]
 
 SKIP_KEYS = {"id","slug","status","_status","createdAt","updatedAt",
@@ -29,22 +36,28 @@ SKIP_KEYS = {"id","slug","status","_status","createdAt","updatedAt",
              "review_text","author_name","author_location"}
 SKIP_FILES = {"testimonials.json", "reviews.json", "stories.json", "media-coverage.json"}
 
+# Em-dash check — brand voice bans em-dashes (—, U+2014). Phrase scan can't
+# catch punctuation. Also catches the common "word — word" spacing pattern.
+EM_DASH_RE = re.compile(r'[\u2014\u2013]')
 
-def scan_value(value, path=""):
+
+def scan_value(value, path="", check_em_dash=True):
     violations = []
     if isinstance(value, str):
         text_lower = value.lower()
         for phrase in BANNED:
             if re.search(r'\b' + re.escape(phrase.lower()) + r'\b', text_lower):
                 violations.append((phrase, path, value[:80]))
+        if check_em_dash and EM_DASH_RE.search(value):
+            violations.append(("em-dash (—/–)", path, value[:80]))
     elif isinstance(value, list):
         for i, item in enumerate(value):
-            violations.extend(scan_value(item, f"{path}[{i}]"))
+            violations.extend(scan_value(item, f"{path}[{i}]", check_em_dash))
     elif isinstance(value, dict):
         for k, v in value.items():
             if k in SKIP_KEYS or k == "translations":
                 continue
-            violations.extend(scan_value(v, f"{path}.{k}" if path else k))
+            violations.extend(scan_value(v, f"{path}.{k}" if path else k, check_em_dash))
     return violations
 
 

@@ -784,5 +784,119 @@
     ],
     "weight": 1.0,
     "notes": "Maarten rule 2026-08-05: every location page should mention some places/locations that can be found on Google Maps. BLOCKS DEPLOY (fail_result)."
+  },
+  {
+    "case_id": "anti_slop_placeholders",
+    "content_type": "blog",
+    "scenario": "No unfinished placeholders in content",
+    "description": "Placeholder artifacts ([Your Name], INSERT_SOURCE_URL, TODO, lorem ipsum, access-date=20XX) must never ship. Unambiguous - FAIL.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 1.0,
+    "forbidden_patterns": [
+      "placeholder_artifact_in_post",
+      "unfinished_template"
+    ],
+    "notes": "Anti-slop Layer 1: placeholder detection (AgriciDaniel/anti-slop). Implemented 2026-08-06."
+  },
+  {
+    "case_id": "anti_slop_citation_integrity",
+    "content_type": "blog",
+    "scenario": "Citations must be valid",
+    "description": "Invalid DOIs, blocklisted hosts, placeholder URLs in content. Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.4,
+    "forbidden_patterns": [
+      "blocklisted_host",
+      "malformed_doi"
+    ],
+    "notes": "Anti-slop Layer 0: citation integrity."
+  },
+  {
+    "case_id": "anti_slop_citation_residue",
+    "content_type": "blog",
+    "scenario": "No unresolved citation markers",
+    "description": "Unresolved [1], [Smith et al. 2020], 'available at:', 'retrieved from:' markers. Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.4,
+    "forbidden_patterns": [
+      "citation_residue_marker"
+    ],
+    "notes": "Anti-slop Layer 1: citation residue."
+  },
+  {
+    "case_id": "anti_slop_factual_consistency",
+    "content_type": "blog",
+    "scenario": "Malaysia facts must be consistent",
+    "description": "Independence 1957, Merdeka references where history is claimed. Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.4,
+    "forbidden_patterns": [
+      "wrong_independence_year"
+    ],
+    "notes": "Anti-slop Layer 1: factual consistency."
+  },
+  {
+    "case_id": "anti_slop_structural_substance",
+    "content_type": "blog",
+    "scenario": "Content must not be padding",
+    "description": "Padding paragraphs (short, generic, no specifics) should not dominate. Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.5,
+    "forbidden_patterns": [
+      "padding_paragraphs"
+    ],
+    "notes": "Anti-slop Layer 2: structural substance."
+  },
+  {
+    "case_id": "anti_slop_heading_reuse",
+    "content_type": "blog",
+    "scenario": "No template heading skeletons",
+    "description": "3+ posts sharing identical H2/H3 outlines indicates template reuse. Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.5,
+    "forbidden_patterns": [
+      "heading_skeleton_reuse"
+    ],
+    "notes": "Anti-slop Layer 1: heading skeleton reuse."
+  },
+  {
+    "case_id": "anti_slop_table_coverage",
+    "content_type": "blog",
+    "scenario": "Long posts need tables or steps",
+    "description": "Posts over 1500 words lacking tables or numbered steps are hard to scan. Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.3,
+    "forbidden_patterns": [
+      "long_post_without_structure"
+    ],
+    "notes": "Anti-slop Layer 2: table/procedure coverage."
+  },
+  {
+    "case_id": "anti_slop_near_duplicates",
+    "content_type": "blog",
+    "scenario": "No near-duplicate content",
+    "description": "8-token shingle Jaccard >= 0.82 between post pairs indicates duplication. Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.5,
+    "forbidden_patterns": [
+      "near_duplicate_pair"
+    ],
+    "notes": "Anti-slop Layer 1: near-duplicate content."
   }
 ]

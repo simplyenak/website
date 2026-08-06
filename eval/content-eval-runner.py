@@ -359,6 +359,186 @@ def check_blog_content_depth() -> dict:
     return pass_result(f"All {total} posts above {MIN_WORDS}-word minimum (avg {sum(len(p.read_text(encoding='utf-8').split('---',2)[2].split()) if len(p.read_text(encoding='utf-8').split('---',2)) >= 3 else 0 for p in posts)//max(total,1)} words)")
 
 
+# ── Anti-Slop Checks (content-quality skill Layer 0/1/2) ──
+# Implemented 2026-08-06 from the AgriciDaniel/anti-slop research the skill
+# documents. Each check is warn-only by default (heuristics, needs human eye),
+# except placeholder artifacts which are unambiguous.
+
+PLACEHOLDER_PATTERNS = [
+    r"\[your\s+name\]", r"\[insert[^\]]*\]", r"insert\s+source\s+url", r"\[todo[^\]]*\]",
+    r"todo:\s*", r"access-date=\d{4}", r"lorem\s+ipsum", r"xxx",
+    r"placeholder", r"\[link\]", r"\[image\]", r"\[photo\]", r"your\s+business\s+name",
+    r"\[company[^\]]*\]", r"\[website[^\]]*\]",
+]
+CITATION_RESIDUE_PATTERNS = [
+    r"\[\d+\]", r"\[\w+\s+et\s+al\.\s*\d{4}\]", r"available\s+at:", r"retrieved\s+from:",
+    r"\[citation\s+needed\]", r"\[sources?\s+needed\]",
+]
+BLOCKLISTED_HOSTS = ["example.com", "example.org", "placeholder.com", "yourdomain.com", "yoursite.com", "wikipedia.org/wiki/special:random"]
+DOI_RE = re.compile(r"10\.\d{4,9}/[-._;()/:a-zA-Z0-9]+")
+ISBN_RE = re.compile(r"(?:ISBN[- ]*)?(97[89][- ]?)?\d{1,5}[- ]?\d+[- ]?\d+[- ]?[\dX]")
+FACT_CHECKS = [
+    ("1957", "Malaysia independence year"),
+    ("merdeka", "Merdeka reference"),
+]
+
+
+def _all_post_bodies() -> list[tuple[str, str]]:
+    """Return [(filename, body_text)] for all blog posts and story markdown."""
+    items = []
+    for p in list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx")):
+        try:
+            content = p.read_text(encoding="utf-8")
+            parts = content.split("---", 2)
+            if len(parts) >= 3:
+                items.append((p.name, parts[2]))
+            else:
+                items.append((p.name, content))
+        except Exception:
+            pass
+    for p in sorted((CONTENT_DIR / "stories").glob("*.md")):
+        try:
+            items.append((f"stories/{p.name}", p.read_text(encoding="utf-8")))
+        except Exception:
+            pass
+    return items
+
+
+def check_placeholder_artifacts() -> dict:
+    """Unfinished placeholders ([Your Name], INSERT_SOURCE_URL, TODO, lorem ipsum).
+    Unambiguous — these should never ship. FAIL."""
+    issues = []
+    for fname, body in _all_post_bodies():
+        for pat in PLACEHOLDER_PATTERNS:
+            m = re.search(pat, body, re.IGNORECASE)
+            if m:
+                issues.append({"file": fname, "match": m.group(0)[:40], "pattern": pat})
+                break
+    if issues:
+        return fail_result(f"{len(issues)} files contain placeholder artifacts", issues)
+    return pass_result("No placeholder artifacts found")
+
+
+def check_citation_integrity() -> dict:
+    """Bad DOIs, placeholder URLs, blocklisted hosts in links. Warn-only."""
+    issues = []
+    for fname, body in _all_post_bodies():
+        urls = re.findall(r"https?://[^\s)\"'<>]+", body)
+        for u in urls:
+            for host in BLOCKLISTED_HOSTS:
+                if host in u:
+                    issues.append({"file": fname, "issue": f"blocklisted host: {u[:60]}"})
+        # DOIs that appear malformed (bare 'doi:' with no 10.x)
+        for m in re.finditer(r"\bdoi:\s*([^\s,;]+)", body, re.IGNORECASE):
+            if not DOI_RE.match(m.group(1)):
+                issues.append({"file": fname, "issue": f"malformed DOI: {m.group(1)[:40]}"})
+    if issues:
+        return warn_result(f"{len(issues)} citation integrity issues", issues[:20])
+    return pass_result("No citation integrity issues")
+
+
+def check_citation_residue() -> dict:
+    """Unresolved citation markers ([1], [Smith et al. 2020], 'available at:'). Warn-only."""
+    issues = []
+    for fname, body in _all_post_bodies():
+        for pat in CITATION_RESIDUE_PATTERNS:
+            m = re.search(pat, body)
+            if m:
+                issues.append({"file": fname, "match": m.group(0)[:40], "pattern": pat})
+                break
+    if issues:
+        return warn_result(f"{len(issues)} files have citation residue", issues[:20])
+    return pass_result("No citation residue found")
+
+
+def check_factual_consistency() -> dict:
+    """Malaysia-specific facts: independence 1957, Merdeka present in history claims. Warn-only."""
+    issues = []
+    for fname, body in _all_post_bodies():
+        low = body.lower()
+        # If a post mentions independence/history years, it should have 1957 nearby
+        if re.search(r"\bindependen", low) or re.search(r"\bmerdeka\b", low):
+            if "1957" not in body and "merdeka" not in low:
+                issues.append({"file": fname, "issue": "mentions independence/Merdeka but no 1957 or Merdeka reference"})
+    if issues:
+        return warn_result(f"{len(issues)} files with factual consistency concerns", issues[:20])
+    return pass_result("Factual consistency OK")
+
+
+def check_structural_substance() -> dict:
+    """Padding paragraphs: short generic paragraphs with no specifics. Warn-only.
+
+    Heuristic: paragraphs under 25 words that contain no digits, no proper-noun
+    capitalization beyond sentence start, and no quoted stall names."""
+    issues = []
+    for fname, body in _all_post_bodies():
+        paras = [p.strip() for p in re.split(r"\n\s*\n", body) if p.strip()]
+        thin = 0
+        for p in paras:
+            words = p.split()
+            if len(words) < 25 and not re.search(r"\d", p):
+                if not re.search(r'"[^"]+"', p):  # no quoted specifics
+                    thin += 1
+        if thin >= 3 and thin / max(len(paras), 1) > 0.4:
+            issues.append({"file": fname, "thin_paragraphs": thin, "total": len(paras)})
+    if issues:
+        return warn_result(f"{len(issues)} files look structurally thin", issues[:20])
+    return pass_result("Structural substance OK")
+
+
+def check_heading_skeleton_reuse() -> dict:
+    """3+ posts sharing the same H2/H3 outline = template reuse. Warn-only."""
+    from collections import Counter
+    skeletons = Counter()
+    for fname, body in _all_post_bodies():
+        heads = tuple(re.findall(r"^#{2,3}\s+.*$", body, re.MULTILINE))
+        if len(heads) >= 3:
+            skeletons[heads] += 1
+    reused = {k: v for k, v in skeletons.items() if v >= 3}
+    if reused:
+        issues = [{"outline": list(k)[:5], "posts_using": v} for k, v in list(reused.items())[:5]]
+        return warn_result(f"{len(reused)} heading skeletons reused by 3+ posts", issues)
+    return pass_result("No heading skeleton reuse")
+
+
+def check_table_procedure_coverage() -> dict:
+    """Long posts (>1500 words) lacking tables or numbered steps. Warn-only."""
+    issues = []
+    for fname, body in _all_post_bodies():
+        word_count = len(body.split())
+        if word_count > 1500:
+            has_table = "|" in body and "---" in body
+            has_steps = bool(re.search(r"(?m)^\s*\d+[.)]\s", body)) or "step 1" in body.lower()
+            if not has_table and not has_steps:
+                issues.append({"file": fname, "words": word_count, "issue": "1500+ words without table or numbered steps"})
+    if issues:
+        return warn_result(f"{len(issues)} long posts lack tables/steps", issues)
+    return pass_result("Long posts have table/steps coverage")
+
+
+def check_near_duplicate_content() -> dict:
+    """8-token shingle Jaccard >= 0.82 between post pairs. Warn-only."""
+    bodies = {}
+    for fname, body in _all_post_bodies():
+        toks = re.findall(r"\w+", body.lower())
+        if len(toks) >= 40:
+            bodies[fname] = toks
+    names = list(bodies.keys())
+    issues = []
+    for i in range(len(names)):
+        for j in range(i + 1, len(names)):
+            a, b = set(bodies[names[i]]), set(bodies[names[j]])
+            inter = len(a & b)
+            if inter == 0:
+                continue
+            jac = inter / len(a | b)
+            if jac >= 0.82:
+                issues.append({"pair": [names[i], names[j]], "jaccard": round(jac, 2)})
+    if issues:
+        return warn_result(f"{len(issues)} near-duplicate pairs (Jaccard >= 0.82)", issues[:10])
+    return pass_result("No near-duplicate content")
+
+
 def check_brand_voice() -> dict:
     posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
     banned = ["authentic", "premium", "luxury", "discover", "explore", "immerse", "customer", "delicious", "unique", "best", "amazing", "adventure", "journey", "award-winning", "world-class", "unforgettable", "breathtaking"]
@@ -1100,6 +1280,14 @@ CASE_HANDLERS = {
     "blog_brand_voice": check_brand_voice,
     "blog_ai_summary": check_blog_ai_summary,
     "blog_content_depth": check_blog_content_depth,
+    "anti_slop_placeholders": check_placeholder_artifacts,
+    "anti_slop_citation_integrity": check_citation_integrity,
+    "anti_slop_citation_residue": check_citation_residue,
+    "anti_slop_factual_consistency": check_factual_consistency,
+    "anti_slop_structural_substance": check_structural_substance,
+    "anti_slop_heading_reuse": check_heading_skeleton_reuse,
+    "anti_slop_table_coverage": check_table_procedure_coverage,
+    "anti_slop_near_duplicates": check_near_duplicate_content,
     "media_upload_quality": check_media_quality,
     "deploy_workflow": check_deploy_workflow,
     "tour_data_completeness": check_tour_data,
