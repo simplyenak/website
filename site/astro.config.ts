@@ -14,6 +14,7 @@ import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
+import api from './src/integrations/api';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
 
@@ -96,6 +97,7 @@ export default defineConfig({
     astrowind({
       config: './src/config.yaml',
     }),
+    api,
   ],
 
   image: {
