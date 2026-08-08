@@ -23,6 +23,18 @@ var REDIRECTS = {
   "/kuala-lumpur-food-tour": "/tours/kuala-lumpur-street-food",
   "/vegetarian-food-tours": "/tours/dietary/vegetarian-food-tours",
 
+  // ── Depth restructure: dietary/food → dietary/food-tours ──
+  "/tours/dietary/vegetarian-food": "/tours/dietary/vegetarian-food-tours",
+  "/tours/dietary/vegetarian-food/": "/tours/dietary/vegetarian-food-tours",
+  "/tours/dietary/halal-food": "/tours/dietary/halal-food-tours",
+  "/tours/dietary/halal-food/": "/tours/dietary/halal-food-tours",
+  "/tours/dietary/vegan-food": "/tours/dietary/vegan-food-tours",
+  "/tours/dietary/vegan-food/": "/tours/dietary/vegan-food-tours",
+  "/tours/dietary/gluten-free-food": "/tours/dietary/gluten-free-food-tours",
+  "/tours/dietary/gluten-free-food/": "/tours/dietary/gluten-free-food-tours",
+  "/tours/dietary/jain-food": "/tours/dietary/jain-food-tours",
+  "/tours/dietary/jain-food/": "/tours/dietary/jain-food-tours",
+
   // ── Priority 3b — Static/legal (77 imps/mo) ──
   "/terms-conditions": "/terms",
   "/privacy-policy": "/privacy",
