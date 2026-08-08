@@ -10,8 +10,8 @@ var HTML_CACHE_TTL = 300; // seconds — AI systems fetch pages in real time; sh
 // this Worker catches requests first — put all redirects here.
 var REDIRECTS = {
   // ── Priority 1 — Stories with existing live targets (7,334 imps/mo) ──
-  "/stories/eating-durians": "/eating-durians/",
-  "/pt/stories/eating-durians": "/eating-durians/",
+  "/stories/eating-durians": "/stories/eating-durians/",
+  "/pt/stories/eating-durians": "/stories/eating-durians/",
   "/do-malaysians-speak-english": "/stories/do-malaysians-speak-english",
   "/ms/stories/chinese-dumpling-festival": "/stories/chinese-dumpling-festival",
 
