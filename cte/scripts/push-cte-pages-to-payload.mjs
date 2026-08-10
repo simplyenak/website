@@ -1,30 +1,35 @@
 #!/usr/bin/env node
 /**
- * Push CTE pages to Payload CMS using admin API key
+ * Push CTE pages to Payload CMS using user login
  * Usage: node scripts/push-cte-pages-to-payload.mjs [--push]
  */
 
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync } from 'fs';
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
-const CONTENT_DIR = join(SCRIPT_DIR, '..', 'src', 'data', 'content');
 const PAYLOAD_URL = 'https://cms.system.simplyenak.com';
 
-// Load admin API key from site/.env
+// Load credentials from site/.env
 const siteEnvPath = join(SCRIPT_DIR, '..', '..', 'site', '.env');
-let API_KEY = '';
+const credentials = {};
 try {
   const envContent = readFileSync(siteEnvPath, 'utf8');
-  const match = envContent.match(/^PAYLOAD_ADMIN_API_KEY=(.+)$/m);
-  if (match) {
-    API_KEY = match[1].trim();
+  for (const line of envContent.split('\n')) {
+    const [key, ...valueParts] = line.split('=');
+    if (key && valueParts.length) {
+      credentials[key.trim()] = valueParts.join('=').trim();
+    }
   }
 } catch (e) {
-  // Use env var if available
-  API_KEY = process.env.PAYLOAD_ADMIN_API_KEY || '';
+  // Use env vars if file not found
+  credentials.PAYLOAD_EMAIL = process.env.PAYLOAD_EMAIL;
+  credentials.PAYLOAD_PASSWORD = process.env.PAYLOAD_PASSWORD;
 }
+
+const PAYLOAD_EMAIL = credentials.PAYLOAD_EMAIL || 'admin@simplyenak.com';
+const PAYLOAD_PASSWORD = credentials.PAYLOAD_PASSWORD || '';
 
 const PAGES = [
   {
@@ -137,12 +142,43 @@ Register as a partner and we will send you the complete trade kit, all guides, i
 
 const DO_PUSH = process.argv.includes('--push');
 
+async function login() {
+  if (!PAYLOAD_PASSWORD) {
+    throw new Error('PAYLOAD_PASSWORD not found in site/.env');
+  }
+  
+  const res = await fetch(`${PAYLOAD_URL}/api/users/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: PAYLOAD_EMAIL, password: PAYLOAD_PASSWORD })
+  });
+  
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Login failed: ${res.status} - ${err}`);
+  }
+  
+  const data = await res.json();
+  return data.token;
+}
+
 async function pushToPayload() {
-  if (!API_KEY) {
-    console.error('ERROR: PAYLOAD_ADMIN_API_KEY not found in site/.env');
+  if (!PAYLOAD_PASSWORD) {
+    console.error('ERROR: PAYLOAD_PASSWORD not found in site/.env');
     process.exit(1);
   }
 
+  console.log('Logging in...');
+  let token;
+  try {
+    token = await login();
+    console.log('✓ Logged in successfully');
+  } catch (error) {
+    console.error(`✗ Login failed: ${error.message}`);
+    process.exit(1);
+  }
+
+  console.log('');
   console.log(`Pushing ${PAGES.length} pages to Payload...`);
   console.log(`Mode: ${DO_PUSH ? 'LIVE (creating/updating)' : 'DRY RUN (no changes)'}`);
   console.log('');
@@ -152,7 +188,7 @@ async function pushToPayload() {
       // Check if page exists
       const checkUrl = `${PAYLOAD_URL}/api/cte_pages?slug[equals]=${page.slug}&limit=1`;
       const checkRes = await fetch(checkUrl, {
-        headers: { 'Authorization': `Key ${API_KEY}`, 'Content-Type': 'application/json' }
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
       
       if (!checkRes.ok) {
@@ -169,7 +205,7 @@ async function pushToPayload() {
           const updateUrl = `${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`;
           const updateRes = await fetch(updateUrl, {
             method: 'PUT',
-            headers: { 'Authorization': `Key ${API_KEY}`, 'Content-Type': 'application/json' },
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(page)
           });
           
@@ -184,7 +220,7 @@ async function pushToPayload() {
           const createUrl = `${PAYLOAD_URL}/api/cte_pages`;
           const createRes = await fetch(createUrl, {
             method: 'POST',
-            headers: { 'Authorization': `Key ${API_KEY}`, 'Content-Type': 'application/json' },
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(page)
           });
           
