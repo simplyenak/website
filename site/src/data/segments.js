@@ -214,8 +214,8 @@ export const locationSegments = [
  nameFull: 'Food Tours in Kuala Lumpur',
  description: "Small-group walking tours through KL's most flavourful neighbourhoods. Chinatown hawkers, Indian curry houses, Malay street stalls — with local guides who know the vendors by name.",
  heroSubtitle: "Eat your way through Malaysia's capital",
- metaTitle: 'Food Tours in Kuala Lumpur | Small-Group Walking Tours',
- metaDescription: 'Join Simply Enak for small-group food tours in Kuala Lumpur. Explore Chinatown, Little India, and hidden local stalls with expert local guides. Book online.',
+ metaTitle: 'Food Tours in Kuala Lumpur | Small-Group KL Street Food Walks',
+ metaDescription: 'Book small-group food tours in Kuala Lumpur with Simply Enak. Walk through Chow Kit, Chinatown & Pudu with local guides. Taste nasi lemak, char kway teow at family-run stalls from RM 285. 5,000+ guests since 2011.',
  tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife'],
  },
  {
