@@ -1,109 +1,128 @@
 ---
-title: 'For Travel Agents | Partner With Simply Enak'
-description: 'Deliver exceptional Malaysian food experiences to your clients through Culinary Travel Experts. Curated relationships, authentic access, dedicated support.'
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'For Travel Agents | Malaysian Food Tours B2B Partner',
+  description: 'Book authentic Malaysian food experiences for your clients. Culinary Travel Experts offers curated food tours, heritage walks, and cultural experiences across Malaysia. Licensed DMC with 14 years of relationships.',
+  image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
+  canonical: 'https://culinarytravelexperts.com/for-agents',
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What types of food experiences do you offer for travel agents?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We offer multi-day itineraries, day experiences, custom trips, corporate events, and itinerary planning services across Kuala Lumpur, Penang, Ipoh, Melaka, Cameron Highlands, and Johor Bahru.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I book food tours for my clients?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sign our supplier agreement, receive our trade kit with destination guides and pricing, then book experiences for your clients. We handle all logistics and guest communication.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes your food tours different from TripAdvisor or GetYourGuide?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We build experiences around relationships, not routes. Your clients meet the families we have worked with for years — not standardized tours from the same meeting points.',
+      },
+    },
+  ],
+};
 ---
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "For Travel Agents",
-  "description": "Partner with Culinary Travel Experts to deliver authentic Malaysian food experiences to your clients.",
-  "url": "https://culinarytravelexperts.com/for-agents",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Culinary Travel Experts",
-    "url": "https://culinarytravelexperts.com",
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "Simply Enak"
-    }
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://culinarytravelexperts.com" },
-      { "@type": "ListItem", "position": 2, "name": "For Agents", "item": "https://culinarytravelexperts.com/for-agents" }
-    ]
-  }
-}
-</script>
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-<section class="py-20">
-  <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-4xl font-bold mb-6">For Travel Agents</h1>
-    <p class="text-xl text-muted mb-8">
-      Your clients want something real. We've spent 14 years building the relationships that make that possible.
-    </p>
-
-    <div class="prose prose-lg max-w-none mb-12">
-      <p>
-        Most food tours show visitors a curated version of street food. Ours show them the stalls where the Chen family has been making char siew bao since 1985, where Pak Hassan still pounds his sambal by hand every morning, where the auntie at the back of Lorong Selamat makes her roti canai the way her mother taught her.
+<Layout metadata={metadata}>
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-6">For Travel Agents</h1>
+      <p class="text-xl text-muted mb-8">
+        Your clients want something real. We have spent 14 years building the relationships that make that possible.
       </p>
-      <p>
-        These aren't vendor arrangements. They're relationships. Some go back to when we started in 2011. Your clients don't just taste the food, they meet the people who make it.
-      </p>
-    </div>
 
-    <div class="grid md:grid-cols-2 gap-8 mb-12">
-      <div class="bg-card p-6 rounded-lg">
-        <h3 class="font-bold text-lg mb-3">What Your Clients Experience</h3>
-        <ul class="space-y-2 text-muted">
-          <li>Breakfast at a 40-year-old kopi tiam with the owner</li>
-          <li>Watch Pak Hassan prepare his sambal before the market opens</li>
-          <li>Eat char kway teow at a stall where the wok hei is so good locals line up at 6am</li>
-          <li>Try cendol made with palm sugar from a farm two hours north of Penang</li>
-          <li>Leave with the contact of a family that will welcome them back</li>
-        </ul>
+      <div class="prose prose-lg max-w-none mb-12">
+        <p>
+          Most food tours show visitors a curated version of street food. Ours show them the stalls where the Chen family has been making char siew bao since 1985, where Pak Hassan still pounds his sambal by hand every morning, where the auntie at the back of Lorong Selamat makes her roti canai the way her mother taught her.
+        </p>
+        <p>
+          These are not vendor arrangements. They are relationships. Some go back to when we started in 2011. Your clients do not just taste the food, they meet the people who make it.
+        </p>
       </div>
-      <div class="bg-card p-6 rounded-lg">
-        <h3 class="font-bold text-lg mb-3">What We Handle</h3>
-        <ul class="space-y-2 text-muted">
-          <li><strong>Guest communication:</strong> Pre-tour instructions, meeting point details</li>
-          <li><strong>Dietary needs:</strong> Halal, vegetarian, vegan, allergies — coordinated with vendors</li>
-          <li><strong>Day-of support:</strong> English, Malay, Mandarin, Cantonese-speaking guides</li>
-          <li><strong>Problem-solving:</strong> If something goes wrong, we fix it</li>
-          <li><strong>Post-tour:</strong> Follow-up messages, feedback collection</li>
-        </ul>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-card p-6 rounded-lg">
+          <h2 class="font-bold text-lg mb-3">What Your Clients Experience</h2>
+          <ul class="space-y-2 text-muted">
+            <li>Breakfast at a 40-year-old kopi tiam with the owner</li>
+            <li>Watch Pak Hassan prepare his sambal before the market opens</li>
+            <li>Eat char kway teow at a stall where the wok hei is so good locals line up at 6am</li>
+            <li>Try cendol made with palm sugar from a farm two hours north of Penang</li>
+            <li>Leave with the contact of a family that will welcome them back</li>
+          </ul>
+        </div>
+        <div class="bg-card p-6 rounded-lg">
+          <h2 class="font-bold text-lg mb-3">What We Handle</h2>
+          <ul class="space-y-2 text-muted">
+            <li><strong>Guest communication:</strong> Pre-tour instructions, meeting point details</li>
+            <li><strong>Dietary needs:</strong> Halal, vegetarian, vegan, allergies — coordinated with vendors</li>
+            <li><strong>Day-of support:</strong> English, Malay, Mandarin, Cantonese-speaking guides</li>
+            <li><strong>Problem-solving:</strong> If something goes wrong, we fix it</li>
+            <li><strong>Post-tour:</strong> Follow-up messages, feedback collection</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>Why This Is Different</h2>
+        <p>
+          TripAdvisor and GetYourGuide sell standardized tours. Many run from the same meeting point in Chinatown, visit the same 10 stalls, serve the same 15 dishes. Your clients get the experience that every other tourist gets.
+        </p>
+        <p>
+          We operate differently. Every tour is built around relationships, not routes. Your clients eat where we eat. They meet the families we have worked with for years. They experience the food culture the way locals do, not the way guidebooks describe it.
+        </p>
+        <p>
+          This matters because your clients will remember this. They will tell their friends. They will come back.
+        </p>
+      </div>
+
+      <div class="bg-primary/10 p-6 rounded-lg mb-12">
+        <h2 class="font-bold text-lg mb-3">For High-Volume Partners</h2>
+        <p class="text-muted mb-4">
+          Agencies that regularly book with us receive priority access to our most sought-after experiences, co-branded marketing materials, and a dedicated account manager.
+        </p>
+        <p class="text-sm text-muted">
+          We invest in partners who invest in delivering exceptional experiences to their clients.
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>How to Partner With Us</h2>
+        <ol class="space-y-3">
+          <li><strong>Sign our supplier agreement</strong> — Standard terms that protect both parties and ensure we maintain our quality standards</li>
+          <li><strong>Receive our trade kit</strong> — Destination guides, photos, marketing copy you can use</li>
+          <li><strong>Book experiences for your clients</strong> — We handle all logistics and guest communication</li>
+          <li><strong>Build a long-term partnership</strong> — Priority access and dedicated support for high-volume partners</li>
+        </ol>
+      </div>
+
+      <div class="mt-12">
+        <a href="#contact" class="btn-primary">Request Trade Kit</a>
+        <p class="text-muted mt-4 text-sm">We respond within 24 hours. No obligation to join.</p>
       </div>
     </div>
-
-    <div class="prose prose-lg max-w-none mb-12">
-      <h2>Why This Is Different</h2>
-      <p>
-        TripAdvisor and GetYourGuide sell standardized tours. Many run from the same meeting point in Chinatown, visit the same 10 stalls, serve the same 15 dishes. Your clients get the experience that every other tourist gets.
-      </p>
-      <p>
-        We operate differently. Every tour is built around relationships, not routes. Your clients eat where we eat. They meet the families we've worked with for years. They experience the food culture the way locals do, not the way guidebooks describe it.
-      </p>
-      <p>
-        This matters because your clients will remember this. They'll tell their friends. They'll come back.
-      </p>
-    </div>
-
-    <div class="bg-primary/10 p-6 rounded-lg mb-12">
-      <h3 class="font-bold text-lg mb-3">For High-Volume Partners</h3>
-      <p class="text-muted mb-4">
-        Agencies that regularly book with us receive priority access to our most sought-after experiences, co-branded marketing materials, and a dedicated account manager.
-      </p>
-      <p class="text-sm text-muted">
-        We invest in partners who invest in delivering exceptional experiences to their clients.
-      </p>
-    </div>
-
-    <div class="prose prose-lg max-w-none mb-12">
-      <h2>How to Partner With Us</h2>
-      <ol class="space-y-3">
-        <li><strong>Sign our supplier agreement</strong> — Standard terms that protect both parties and ensure we maintain our quality standards</li>
-        <li><strong>Receive our trade kit</strong> — Destination guides, photos, marketing copy you can use</li>
-        <li><strong>Book experiences for your clients</strong> — We handle all logistics and guest communication</li>
-        <li><strong>Build a long-term partnership</strong> — Priority access and dedicated support for high-volume partners</li>
-      </ol>
-    </div>
-
-    <div class="mt-12">
-      <a href="#contact" class="btn-primary">Request Trade Kit</a>
-      <p class="text-muted mt-4 text-sm">We respond within 24 hours. No obligation to join.</p>
-    </div>
-  </div>
-</section>
+  </section>
+</Layout>
