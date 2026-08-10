@@ -268,6 +268,45 @@ CREATE TABLE IF NOT EXISTS _stories_v_rels (
 );
 
 -- ============================================================
+-- experience_notes collection
+-- Payload push:true does NOT create this table on this deployment.
+-- Schema must match src/collections/ExperienceNotes.ts
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS experience_notes (
+    id varchar(255) PRIMARY KEY NOT NULL,
+    title text,
+    slug text,
+    location text,
+    note_type text,
+    dishes jsonb,
+    vendors jsonb,
+    sensory_details jsonb,
+    surprises text,
+    recommendations jsonb,
+    best_time text,
+    price_range text,
+    raw_note text,
+    submitted_by text,
+    submitted_email text,
+    status text DEFAULT 'draft',
+    created_at timestamptz NOT NULL DEFAULT now(),
+    updated_at timestamptz NOT NULL DEFAULT now(),
+    draft_auth_token varchar(255),
+    published_at timestamptz,
+    updated_by varchar(255),
+    created_by varchar(255),
+    UNIQUE (slug)
+);
+
+COMMENT ON TABLE experience_notes IS 'First-hand experience notes from guides — prices, vendors, sensory details, surprises';
+
+CREATE INDEX IF NOT EXISTS experience_notes_location_idx ON experience_notes(location);
+CREATE INDEX IF NOT EXISTS experience_notes_status_idx ON experience_notes(status);
+CREATE INDEX IF NOT EXISTS experience_notes_created_at_idx ON experience_notes(created_at DESC);
+CREATE INDEX IF NOT EXISTS experience_notes_slug_idx ON experience_notes(slug);
+
+-- ============================================================
 -- CTE collections (cte_posts / cte_pages)
 -- Payload push:true does NOT create these tables on this deployment.
 -- Schema must match src/collections/CtePosts.ts / CtePages.ts:
