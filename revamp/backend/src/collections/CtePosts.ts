@@ -10,6 +10,9 @@ export const CtePosts: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: ({ req: { user } }) => ['admin', 'editor'].includes((user as any)?.role),
+    update: ({ req: { user } }) => ['admin', 'editor', 'reviewer'].includes((user as any)?.role),
+    delete: ({ req: { user } }) => (user as any)?.role === 'admin',
   },
   fields: [
     {
