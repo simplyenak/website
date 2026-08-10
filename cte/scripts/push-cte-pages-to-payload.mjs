@@ -1,17 +1,30 @@
 #!/usr/bin/env node
 /**
- * Push CTE pages to Payload CMS
- * Usage: PAYLOAD_TOKEN=... node scripts/push-cte-pages-to-payload.mjs [--push]
+ * Push CTE pages to Payload CMS using admin API key
+ * Usage: node scripts/push-cte-pages-to-payload.mjs [--push]
  */
 
-import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { readFileSync, writeFileSync } from 'fs';
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const CONTENT_DIR = join(SCRIPT_DIR, '..', 'src', 'data', 'content');
-const PAYLOAD_URL = process.env.PAYLOAD_URL || 'https://cms.system.simplyenak.com';
-const PAYLOAD_TOKEN = process.env.PAYLOAD_TOKEN || '';
+const PAYLOAD_URL = 'https://cms.system.simplyenak.com';
+
+// Load admin API key from site/.env
+const siteEnvPath = join(SCRIPT_DIR, '..', '..', 'site', '.env');
+let API_KEY = '';
+try {
+  const envContent = readFileSync(siteEnvPath, 'utf8');
+  const match = envContent.match(/^PAYLOAD_ADMIN_API_KEY=(.+)$/m);
+  if (match) {
+    API_KEY = match[1].trim();
+  }
+} catch (e) {
+  // Use env var if available
+  API_KEY = process.env.PAYLOAD_ADMIN_API_KEY || '';
+}
 
 const PAGES = [
   {
@@ -125,9 +138,8 @@ Register as a partner and we will send you the complete trade kit, all guides, i
 const DO_PUSH = process.argv.includes('--push');
 
 async function pushToPayload() {
-  const token = PAYLOAD_TOKEN;
-  if (!token) {
-    console.error('ERROR: PAYLOAD_TOKEN not set');
+  if (!API_KEY) {
+    console.error('ERROR: PAYLOAD_ADMIN_API_KEY not found in site/.env');
     process.exit(1);
   }
 
@@ -140,7 +152,7 @@ async function pushToPayload() {
       // Check if page exists
       const checkUrl = `${PAYLOAD_URL}/api/cte_pages?slug[equals]=${page.slug}&limit=1`;
       const checkRes = await fetch(checkUrl, {
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+        headers: { 'Authorization': `Key ${API_KEY}`, 'Content-Type': 'application/json' }
       });
       
       if (!checkRes.ok) {
@@ -157,21 +169,22 @@ async function pushToPayload() {
           const updateUrl = `${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`;
           const updateRes = await fetch(updateUrl, {
             method: 'PUT',
-            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            headers: { 'Authorization': `Key ${API_KEY}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(page)
           });
           
           if (updateRes.ok) {
             console.log(`  ✓ ${page.slug}: updated`);
           } else {
-            console.error(`  ✗ ${page.slug}: update failed (${updateRes.status})`);
+            const err = await updateRes.text();
+            console.error(`  ✗ ${page.slug}: update failed (${updateRes.status}): ${err.slice(0, 100)}`);
           }
         } else {
           // Create new
           const createUrl = `${PAYLOAD_URL}/api/cte_pages`;
           const createRes = await fetch(createUrl, {
             method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            headers: { 'Authorization': `Key ${API_KEY}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(page)
           });
           
@@ -193,7 +206,7 @@ async function pushToPayload() {
   if (!DO_PUSH) {
     console.log('');
     console.log('To push these pages, run:');
-    console.log(`  PAYLOAD_TOKEN=${token.slice(0, 20)}... node scripts/push-cte-pages-to-payload.mjs --push`);
+    console.log('  node scripts/push-cte-pages-to-payload.mjs --push');
   }
 }
 
