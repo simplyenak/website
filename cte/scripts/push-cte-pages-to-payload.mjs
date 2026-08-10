@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Push CTE pages to Payload CMS using user login
- * Usage: node scripts/push-cte-pages-to-payload.mjs [--push]
+ * Uses query-by-slug instead of ID for updates
  */
 
 import { join, dirname } from 'path';
@@ -184,7 +184,7 @@ async function pushToPayload() {
 
   for (const page of PAGES) {
     try {
-      // Get all pages to find by slug
+      // Get ALL pages (not just published)
       const checkRes = await fetch(`${PAYLOAD_URL}/api/cte_pages?limit=100`, {
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
@@ -208,9 +208,12 @@ async function pushToPayload() {
         };
         
         if (existingPage) {
-          // Update existing - try both ID formats
-          const updateRes = await fetch(`${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`, {
-            method: 'PUT',
+          // Update existing - use the ID from the existing page
+          const updateUrl = `${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`;
+          
+          // Try PATCH instead of PUT
+          const updateRes = await fetch(updateUrl, {
+            method: 'PATCH',
             headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(payloadData)
           });
@@ -219,11 +222,12 @@ async function pushToPayload() {
             console.log(`  ✓ ${page.slug}: updated`);
           } else {
             const err = await updateRes.text();
-            console.error(`  ✗ ${page.slug}: update failed (${updateRes.status}): ${err.slice(0, 150)}`);
+            console.error(`  ✗ ${page.slug}: update failed (${updateRes.status}): ${err.slice(0, 200)}`);
           }
         } else {
           // Create new
-          const createRes = await fetch(`${PAYLOAD_URL}/api/cte_pages`, {
+          const createUrl = `${PAYLOAD_URL}/api/cte_pages`;
+          const createRes = await fetch(createUrl, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(payloadData)
@@ -233,7 +237,7 @@ async function pushToPayload() {
             console.log(`  ✓ ${page.slug}: created`);
           } else {
             const err = await createRes.text();
-            console.error(`  ✗ ${page.slug}: create failed (${createRes.status}): ${err.slice(0, 150)}`);
+            console.error(`  ✗ ${page.slug}: create failed (${createRes.status}): ${err.slice(0, 200)}`);
           }
         }
       } else {
