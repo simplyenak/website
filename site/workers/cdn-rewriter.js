@@ -269,6 +269,69 @@ async function handleRequest(request) {
     return Response.redirect("https://simplyenak.com" + redirectTarget + url.search, 301);
   }
 
+  // 4. Dynamic redirects — pattern-based fixes for remaining 404s ──
+
+  // 4a. Remove duplicate path segments: /tours/tours/... → /tours/...
+  if (url.pathname.indexOf('/tours/tours/') === 0 || url.pathname === '/tours/tours') {
+    var newPath = url.pathname.replace('/tours/tours', '/tours');
+    return Response.redirect("https://simplyenak.com" + newPath + url.search, 301);
+  }
+  // 4b. Remove duplicate path segments: /stories/stories/... → /stories/...
+  if (url.pathname.indexOf('/stories/stories/') === 0 || url.pathname === '/stories/stories') {
+    var newPath2 = url.pathname.replace('/stories/stories', '/stories');
+    return Response.redirect("https://simplyenak.com" + newPath2 + url.search, 301);
+  }
+  // 4c. Locale prefix without /stories/ or /tours/ → add /stories/
+  // e.g., /de/vegetarian-guide-kuala-lumpur → /de/stories/vegetarian-guide-kuala-lumpur
+  var localePrefixMatch = url.pathname.match(/^\/([a-z]{2})\/([^\/]+)$/);
+  if (localePrefixMatch) {
+    var localeCode = localePrefixMatch[1];
+    var slug = localePrefixMatch[2];
+    // Skip known non-story paths
+    if (localeCode !== 'en' && slug !== 'tours' && slug !== 'stories' && slug !== 'contact' &&
+        slug !== 'about' && slug !== 'privacy' && slug !== 'terms' && slug !== 'faq' &&
+        slug !== 'directions' && slug !== 'how-it-works' && slug !== 'how-to-prepare') {
+      return Response.redirect("https://simplyenak.com" + url.pathname.replace('/' + localeCode + '/', '/' + localeCode + '/stories/') + url.search, 301);
+    }
+  }
+  // 4d. /tours/dietary/XXX/ (trailing slash) → /tours/dietary/XXX (no slash)
+  var dietaryMatch = url.pathname.match(/^\/tours\/dietary\/([^\/]+)\/$/);
+  if (dietaryMatch) {
+    return Response.redirect("https://simplyenak.com" + url.pathname.slice(0, -1) + url.search, 301);
+  }
+  // 4e. /tours/locations/ (trailing slash) → /tours/locations (no slash)
+  if (url.pathname === '/tours/locations/') {
+    return Response.redirect("https://simplyenak.com/tours/locations" + url.search, 301);
+  }
+  // 4f. Remove known suffixes: /custom-tours, /stories, /tours from story/tour paths
+  var suffixPatterns = [
+    ['/custom-tours', ''],
+    ['/stories', ''],
+    ['/tours', ''],
+    ['/facebook', ''],
+    ['/instagram', ''],
+    ['/contact', ''],
+    ['/privacy-policy', '/privacy'],
+    ['/terms-conditions', '/terms'],
+    ['/about', ''],
+    ['/media', ''],
+    ['/index.html', '']
+  ];
+  for (var i = 0; i < suffixPatterns.length; i++) {
+    var suffix = suffixPatterns[i][0];
+    var replacement = suffixPatterns[i][1];
+    if (url.pathname.endsWith(suffix) && url.pathname !== suffix) {
+      var base = url.pathname.slice(0, -suffix.length);
+      if (base.length > 0) {
+        return Response.redirect("https://simplyenak.com" + base + replacement + url.search, 301);
+      }
+    }
+  }
+  // 4g. /blog/ prefix → /stories/ prefix
+  if (url.pathname.indexOf('/blog/') === 0) {
+    return Response.redirect("https://simplyenak.com" + url.pathname.replace('/blog/', '/stories/'), 301);
+  }
+
   // ── Skip non-page requests
   // Only HTML pages need rewriting. Static assets, images, JSON, API
   // calls — pass straight through without the Worker overhead.
