@@ -1,18 +1,13 @@
 #!/usr/bin/env node
 /**
- * Push CTE pages to Payload CMS using user login
- * Uses query-by-slug instead of ID for updates
+ * Delete existing pages and recreate them
  */
 
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'fs';
 
-const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
-const PAYLOAD_URL = 'https://cms.system.simplyenak.com';
-
-// Load credentials from site/.env
-const siteEnvPath = join(SCRIPT_DIR, '..', '..', 'site', '.env');
+const siteEnvPath = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'site', '.env');
 const credentials = {};
 try {
   const envContent = readFileSync(siteEnvPath, 'utf8');
@@ -22,11 +17,9 @@ try {
       credentials[key.trim()] = valueParts.join('=').trim();
     }
   }
-} catch (e) {
-  credentials.PAYLOAD_EMAIL = process.env.PAYLOAD_EMAIL;
-  credentials.PAYLOAD_PASSWORD = process.env.PAYLOAD_PASSWORD;
-}
+} catch (e) {}
 
+const PAYLOAD_URL = 'https://cms.system.simplyenak.com';
 const PAYLOAD_EMAIL = credentials.PAYLOAD_EMAIL || 'admin@simplyenak.com';
 const PAYLOAD_PASSWORD = credentials.PAYLOAD_PASSWORD || '';
 
@@ -179,12 +172,12 @@ async function pushToPayload() {
 
   console.log('');
   console.log(`Pushing ${PAGES.length} pages to Payload...`);
-  console.log(`Mode: ${DO_PUSH ? 'LIVE (creating/updating)' : 'DRY RUN (no changes)'}`);
+  console.log(`Mode: ${DO_PUSH ? 'LIVE (creating)' : 'DRY RUN (no changes)'}`);
   console.log('');
 
   for (const page of PAGES) {
     try {
-      // Get ALL pages (not just published)
+      // Get ALL pages
       const checkRes = await fetch(`${PAYLOAD_URL}/api/cte_pages?limit=100`, {
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
@@ -198,6 +191,21 @@ async function pushToPayload() {
       const existingPage = checkData.docs?.find(d => d.slug === page.slug);
       
       if (DO_PUSH) {
+        // Delete existing if found
+        if (existingPage) {
+          const deleteRes = await fetch(`${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+          });
+          
+          if (deleteRes.ok) {
+            console.log(`  ✓ ${page.slug}: deleted existing`);
+          } else {
+            console.error(`  ✗ ${page.slug}: delete failed (${deleteRes.status})`);
+          }
+        }
+        
+        // Create new
         const payloadData = {
           title: page.title,
           slug: page.slug,
@@ -207,41 +215,20 @@ async function pushToPayload() {
           workflowStatus: 'published'
         };
         
-        if (existingPage) {
-          // Update existing - use the ID from the existing page
-          const updateUrl = `${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`;
-          
-          // Try PATCH instead of PUT
-          const updateRes = await fetch(updateUrl, {
-            method: 'PATCH',
-            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify(payloadData)
-          });
-          
-          if (updateRes.ok) {
-            console.log(`  ✓ ${page.slug}: updated`);
-          } else {
-            const err = await updateRes.text();
-            console.error(`  ✗ ${page.slug}: update failed (${updateRes.status}): ${err.slice(0, 200)}`);
-          }
+        const createRes = await fetch(`${PAYLOAD_URL}/api/cte_pages`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(payloadData)
+        });
+        
+        if (createRes.ok) {
+          console.log(`  ✓ ${page.slug}: created`);
         } else {
-          // Create new
-          const createUrl = `${PAYLOAD_URL}/api/cte_pages`;
-          const createRes = await fetch(createUrl, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify(payloadData)
-          });
-          
-          if (createRes.ok) {
-            console.log(`  ✓ ${page.slug}: created`);
-          } else {
-            const err = await createRes.text();
-            console.error(`  ✗ ${page.slug}: create failed (${createRes.status}): ${err.slice(0, 200)}`);
-          }
+          const err = await createRes.text();
+          console.error(`  ✗ ${page.slug}: create failed (${createRes.status}): ${err.slice(0, 200)}`);
         }
       } else {
-        console.log(`  ~ ${page.slug}: ${existingPage ? 'found (would update)' : 'not found (would create)'}`);
+        console.log(`  ~ ${page.slug}: ${existingPage ? 'found (would delete and recreate)' : 'not found (would create)'}`);
       }
     } catch (error) {
       console.error(`  ✗ ${page.slug}: ${error.message}`);

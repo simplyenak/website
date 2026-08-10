@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Debug: Check Payload API routes and try different update approaches
+ * Debug: Test GraphQL update for Payload
  */
 
 import { join, dirname } from 'path';
@@ -36,67 +36,49 @@ async function login() {
 async function main() {
   const token = await login();
   
-  // Get all pages
+  // First, get the for-agents page ID
   const res = await fetch(`${PAYLOAD_URL}/api/cte_pages?limit=100`, {
     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
   });
   const data = await res.json();
-  
-  console.log('Pages found:', data.docs?.length);
-  for (const page of data.docs || []) {
-    console.log(`  - id: ${page.id}, slug: ${page.slug}, status: ${page.workflowStatus}`);
-  }
-  
-  // Try updating with full document body
   const forAgents = data.docs?.find(d => d.slug === 'for-agents');
-  if (forAgents) {
-    console.log('\n--- Updating for-agents (id:', forAgents.id, ') ---');
-    
-    // Method 1: PUT with full doc
-    const update1 = await fetch(`${PAYLOAD_URL}/api/cte_pages/${forAgents.id}`, {
-      method: 'PUT',
-      headers: { 
-        'Authorization': `Bearer ${token}`, 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({
-        ...forAgents,
-        workflowStatus: 'published',
-        title: 'For Travel Agents'
-      })
-    });
-    console.log('PUT response:', update1.status, await update1.text().then(t => t.slice(0, 200)));
-    
-    // Method 2: PATCH
-    const update2 = await fetch(`${PAYLOAD_URL}/api/cte_pages/${forAgents.id}`, {
-      method: 'PATCH',
-      headers: { 
-        'Authorization': `Bearer ${token}`, 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({
-        workflowStatus: 'published'
-      })
-    });
-    console.log('PATCH response:', update2.status, await update2.text().then(t => t.slice(0, 200)));
-    
-    // Method 3: POST with _status
-    const update3 = await fetch(`${PAYLOAD_URL}/api/cte_pages`, {
-      method: 'POST',
-      headers: { 
-        'Authorization': `Bearer ${token}`, 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({
-        id: forAgents.id,
-        title: 'For Travel Agents',
-        slug: 'for-agents',
-        content_markdown: forAgents.content_markdown,
-        workflowStatus: 'published'
-      })
-    });
-    console.log('POST response:', update3.status, await update3.text().then(t => t.slice(0, 200)));
+  
+  console.log('for-agents page:', JSON.stringify({ id: forAgents?.id, slug: forAgents?.slug, status: forAgents?.workflowStatus }, null, 2));
+  
+  if (!forAgents) {
+    console.log('Page not found');
+    return;
   }
+  
+  // Try GraphQL update
+  console.log('\n--- GraphQL update ---');
+  const graphqlRes = await fetch(`${PAYLOAD_URL}/api/graphql`, {
+    method: 'POST',
+    headers: { 
+      'Authorization': `Bearer ${token}`, 
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify({
+      query: `
+        mutation UpdateCtePage($id: JSON!, $workflowStatus: String!) {
+          updateCtePages(id: $id, data: { workflowStatus: $workflowStatus }) {
+            id
+            slug
+            workflowStatus
+            title
+          }
+        }
+      `,
+      variables: {
+        id: forAgents.id,
+        workflowStatus: 'published'
+      }
+    })
+  });
+  
+  console.log('GraphQL Status:', graphqlRes.status);
+  const graphqlData = await graphqlRes.json();
+  console.log('GraphQL Response:', JSON.stringify(graphqlData, null, 2));
 }
 
 main().catch(console.error);
