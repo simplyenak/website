@@ -23,7 +23,6 @@ try {
     }
   }
 } catch (e) {
-  // Use env vars if file not found
   credentials.PAYLOAD_EMAIL = process.env.PAYLOAD_EMAIL;
   credentials.PAYLOAD_PASSWORD = process.env.PAYLOAD_PASSWORD;
 }
@@ -185,50 +184,56 @@ async function pushToPayload() {
 
   for (const page of PAGES) {
     try {
-      // Check if page exists
-      const checkUrl = `${PAYLOAD_URL}/api/cte_pages?slug[equals]=${page.slug}&limit=1`;
-      const checkRes = await fetch(checkUrl, {
+      // Get all pages to find by slug
+      const checkRes = await fetch(`${PAYLOAD_URL}/api/cte_pages?limit=100`, {
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
       
       if (!checkRes.ok) {
-        console.error(`  ✗ ${page.slug}: check failed (${checkRes.status})`);
+        console.error(`  ✗ ${page.slug}: failed to fetch pages (${checkRes.status})`);
         continue;
       }
       
       const checkData = await checkRes.json();
-      const existingPage = checkData.docs?.[0];
+      const existingPage = checkData.docs?.find(d => d.slug === page.slug);
       
       if (DO_PUSH) {
+        const payloadData = {
+          title: page.title,
+          slug: page.slug,
+          content_markdown: page.content_markdown,
+          meta_title: page.meta_title,
+          meta_description: page.meta_description,
+          workflowStatus: 'published'
+        };
+        
         if (existingPage) {
-          // Update existing
-          const updateUrl = `${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`;
-          const updateRes = await fetch(updateUrl, {
+          // Update existing - try both ID formats
+          const updateRes = await fetch(`${PAYLOAD_URL}/api/cte_pages/${existingPage.id}`, {
             method: 'PUT',
             headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify(page)
+            body: JSON.stringify(payloadData)
           });
           
           if (updateRes.ok) {
             console.log(`  ✓ ${page.slug}: updated`);
           } else {
             const err = await updateRes.text();
-            console.error(`  ✗ ${page.slug}: update failed (${updateRes.status}): ${err.slice(0, 100)}`);
+            console.error(`  ✗ ${page.slug}: update failed (${updateRes.status}): ${err.slice(0, 150)}`);
           }
         } else {
           // Create new
-          const createUrl = `${PAYLOAD_URL}/api/cte_pages`;
-          const createRes = await fetch(createUrl, {
+          const createRes = await fetch(`${PAYLOAD_URL}/api/cte_pages`, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify(page)
+            body: JSON.stringify(payloadData)
           });
           
           if (createRes.ok) {
             console.log(`  ✓ ${page.slug}: created`);
           } else {
             const err = await createRes.text();
-            console.error(`  ✗ ${page.slug}: create failed (${createRes.status}): ${err.slice(0, 100)}`);
+            console.error(`  ✗ ${page.slug}: create failed (${createRes.status}): ${err.slice(0, 150)}`);
           }
         }
       } else {
