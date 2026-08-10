@@ -1,15 +1,44 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { pages } from '~/data/content/cte-pages.json';
-import MarkdownContent from '~/components/MarkdownContent.astro';
+import ctePages from '~/data/content/cte-pages.json';
 
+const pages = ctePages;
 const page = pages.find(p => p.slug === 'dmc-services');
 if (!page) throw new Error('Page not found: dmc-services');
+
+function renderMarkdown(markdown) {
+  if (!markdown) return '';
+  
+  let html = markdown
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  
+  html = html.replace(/^### (.*$)/gm, '<h3 class="text-2xl font-bold mt-8 mb-4">$1</h3>');
+  html = html.replace(/^## (.*$)/gm, '<h2 class="text-3xl font-bold mt-10 mb-6">$1</h2>');
+  html = html.replace(/^# (.*$)/gm, '<h1 class="text-4xl font-bold mt-12 mb-8">$1</h1>');
+  
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  
+  html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-accent hover:underline">$1</a>');
+  
+  html = html.replace(/\n/g, '<br />');
+  
+  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul class="list-disc pl-6 space-y-2">$&</ul>');
+  
+  html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ol class="list-decimal pl-6 space-y-2">$&</ol>');
+  
+  return html;
+}
+
+const html = renderMarkdown(page.content_markdown);
 
 const metadata = {
   title: page.meta_title || page.title,
   description: page.meta_description || '',
-  image: page.featuredImage ? `https://cdn.simplyenak.com${page.featuredImage.url}` : 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
   canonical: `https://culinarytravelexperts.com/${page.slug}`,
   robots: {
     index: true,
@@ -26,41 +55,17 @@ const metadata = {
   url: `https://culinarytravelexperts.com/${page.slug}`,
   telephone: '+60 17-287 8929',
   email: 'hello@culinarytravelexperts.com',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Kuala Lumpur',
-    addressCountry: 'MY'
-  },
-  areaServed: [
-    { '@type': 'City', 'name': 'Kuala Lumpur' },
-    { '@type': 'City', 'name': 'Penang' },
-    { '@type': 'City', 'name': 'Ipoh' },
-    { '@type': 'City', 'name': 'Melaka' },
-    { '@type': 'Place', 'name': 'Cameron Highlands' },
-    { '@type': 'City', 'name': 'Johor Bahru' }
-  ],
-  serviceType: ['Tour Operator', 'Destination Management Company', 'Food Tour Provider'],
-  provider: {
-    '@type': 'Organization',
-    name: 'Culinary Travel Experts',
-    parentOrganization: {
-      '@type': 'Organization',
-      name: 'Simply Enak'
-    }
-  },
-  agentRange: '2-200 travelers',
-  pricing: {
-    '@type': 'PriceSpecification',
-    priceCurrency: 'MYR',
-    minPrice: 285,
-    maxPrice: 359
-  }
+  agentRange: '2-200 travelers'
 })} />
 
-/Layout metadata={metadata}>
-  <MarkdownContent content={page.content_markdown} />
-  <div class="mt-12">
-    <a href="#contact" class="btn-primary">Get a Quote</a>
-    <p class="text-muted mt-4 text-sm">We respond within 24 hours. Custom proposals available.</p>
-  </div>
+<Layout metadata={metadata}>
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="prose prose-lg max-w-none" set:html={html} />
+      <div class="mt-12">
+        <a href="#contact" class="btn-primary">Get a Quote</a>
+        <p class="text-muted mt-4 text-sm">We respond within 24 hours. Custom proposals available.</p>
+      </div>
+    </div>
+  </section>
 </Layout>
