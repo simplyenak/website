@@ -373,6 +373,7 @@ CREATE UNIQUE INDEX IF NOT EXISTS cte_pages_slug_idx ON cte_pages (slug);
 -- the admin edit view)
 ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS cte_posts_id INTEGER;
 ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS cte_pages_id INTEGER;
+ALTER TABLE payload_locked_documents_rels ADD COLUMN IF NOT EXISTS experience_notes_id INTEGER;
 
 -- Migrate pre-existing VARCHAR columns to the enum types (no-op on fresh DBs).
 -- The existing DEFAULT must be dropped first — Postgres can't auto-cast a
