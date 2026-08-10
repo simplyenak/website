@@ -88,7 +88,6 @@ const b2bSchema = {
   <!-- Services -->
   <Features
     id="services"
-    tagline="What We Handle"
     title="Culinary and heritage experiences, built around community and tradition"
     columns="3"
     items={[
@@ -122,7 +121,7 @@ const b2bSchema = {
 
   <!-- What makes an experience memorable -->
   <Content
-    tagline="What makes an experience stay with you"
+    id="memory"
     title="Meaningful experiences do not come from a checklist"
     items={[
       {
@@ -155,16 +154,15 @@ const b2bSchema = {
   <!-- Destinations -->
   <section id="destinations" class="py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <p class="text-accent font-semibold tracking-wide uppercase text-sm text-center">Places</p>
-      <h2 class="mt-2 text-3xl md:text-4xl font-bold font-heading text-center">Destinations We Operate In</h2>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-center">Destinations We Operate In</h2>
       <p class="mt-4 text-lg text-muted max-w-3xl mx-auto text-center">Each destination has its own food culture, shaped by history, community, and tradition.</p>
       <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Kuala Lumpur</h3><p class="mt-2 text-muted">Street food from three cultures, wet markets that have operated for generations, family-run hawker stalls in the communities that keep traditional food alive.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Penang</h3><p class="mt-2 text-muted">George Town heritage food, Nyonya home cooking passed down through families, fishing villages using traditional methods, family-owned durian orchards.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Ipoh</h3><p class="mt-2 text-muted">White coffee from original Hainanese coffee shops, bean sprout chicken from farms using traditional methods, Hakka cuisine preserved by the community for over a century.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Cameron Highlands</h3><p class="mt-2 text-muted">Family-run tea plantations, small-scale strawberry farms, steamboat dinners using locally grown vegetables, highland food traditions.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Melaka</h3><p class="mt-2 text-muted">Baba Nyonya heritage cuisine, Portuguese Eurasian dishes preserved for 500 years, Jonker Street's traditional food vendors.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Johor Bahru</h3><p class="mt-2 text-muted">Laksa Johor made with traditional spice pastes, murtabak from families who have been making them for generations, the food culture of Malaysia's southern gateway.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"><h3 class="text-xl font-bold font-heading">Kuala Lumpur</h3><p class="mt-2 text-muted">Street food from three cultures, wet markets that have operated for generations, family-run hawker stalls in the communities that keep traditional food alive.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">Penang</h3><p class="mt-2 text-muted">George Town heritage food, Nyonya home cooking passed down through families, fishing villages using traditional methods, family-owned durian orchards.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-half"><h3 class="text-xl font-bold font-heading">Ipoh</h3><p class="mt-2 text-muted">White coffee from original Hainanese coffee shops, bean sprout chicken from farms using traditional methods, Hakka cuisine preserved by the community for over a century.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">Cameron Highlands</h3><p class="mt-2 text-muted">Family-run tea plantations, small-scale strawberry farms, steamboat dinners using locally grown vegetables, highland food traditions.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-half"><h3 class="text-xl font-bold font-heading">Melaka</h3><p class="mt-2 text-muted">Baba Nyonya heritage cuisine, Portuguese Eurasian dishes preserved for 500 years, Jonker Street's traditional food vendors.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">Johor Bahru</h3><p class="mt-2 text-muted">Laksa Johor made with traditional spice pastes, murtabak from families who have been making them for generations, the food culture of Malaysia's southern gateway.</p></div>
       </div>
     </div>
   </section>
@@ -173,7 +171,6 @@ const b2bSchema = {
   <Content
     id="itineraries"
     isReversed
-    tagline="Sample Itinerary"
     title="3 Days in Penang"
     items={[
       {
@@ -202,14 +199,13 @@ const b2bSchema = {
   <!-- Partner With Us -->
   <section id="partner" class="py-16 md:py-24 bg-brand-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <p class="text-accent font-semibold tracking-wide uppercase text-sm text-center">Partnerships</p>
-      <h2 class="mt-2 text-3xl md:text-4xl font-bold font-heading text-center">Partner With Us</h2>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-center">Partner With Us</h2>
       <p class="mt-4 text-lg text-muted max-w-3xl mx-auto text-center">We are Malaysia's B2B food experience partner, structured for trade. Licensed by MOTAC. Part of Simply Enak.</p>
       <div class="mt-10 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Travel Agents</h3><p class="mt-2 text-muted">Sell our itineraries to your clients. Commission structure, marketing materials, and a dedicated account manager.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">DMCs and Tour Operators</h3><p class="mt-2 text-muted">Your Malaysia ground partner for food experiences. FIT and group capabilities, licensed and insured.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Hotels and Resorts</h3><p class="mt-2 text-muted">Offer guests curated food experiences without building your own program. We handle booking and logistics.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl"><h3 class="text-xl font-bold font-heading">Event and Incentive Planners</h3><p class="mt-2 text-muted">Corporate dinners, team building, incentive groups. We design food-focused experiences.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"><h3 class="text-xl font-bold font-heading">Travel Agents</h3><p class="mt-2 text-muted">Sell our itineraries to your clients. Commission structure, marketing materials, and a dedicated account manager.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">DMCs and Tour Operators</h3><p class="mt-2 text-muted">Your Malaysia ground partner for food experiences. FIT and group capabilities, licensed and insured.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-half"><h3 class="text-xl font-bold font-heading">Hotels and Resorts</h3><p class="mt-2 text-muted">Offer guests curated food experiences without building your own program. We handle booking and logistics.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">Event and Incentive Planners</h3><p class="mt-2 text-muted">Corporate dinners, team building, incentive groups. We design food-focused experiences.</p></div>
       </div>
     </div>
   </section>
@@ -217,7 +213,6 @@ const b2bSchema = {
   <!-- About -->
   <Content
     id="about"
-    tagline="Company"
     title="About Culinary Travel Experts"
     items={[
       {
@@ -256,8 +251,7 @@ const b2bSchema = {
   <!-- Contact -->
   <section id="contact" class="py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <p class="text-accent font-semibold tracking-wide uppercase text-sm text-center">Get in Touch</p>
-      <h2 class="mt-2 text-3xl md:text-4xl font-bold font-heading text-center">Contact Us</h2>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-center">Contact Us</h2>
       <div class="mt-10 grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
         <form>
           <div class="space-y-4">
