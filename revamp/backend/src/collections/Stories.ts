@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { triggerStagingDeploy } from '../hooks/deployTrigger'
+import { preventEmptyPublish } from '../hooks/preventEmptyPublish'
 
 export const Stories: CollectionConfig = {
   slug: 'stories',
@@ -24,6 +25,7 @@ export const Stories: CollectionConfig = {
     delete: ({ req: { user } }) => (user as any)?.role === 'admin',
   },
   hooks: {
+    beforeChange: [preventEmptyPublish],
     afterChange: [triggerStagingDeploy],
   },
   versions: {
