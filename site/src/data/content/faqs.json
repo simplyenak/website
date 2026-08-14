@@ -1,5 +1,533 @@
 [
   {
+    "id": 47,
+    "question": "What is the best way to experience Malaysian food?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "The best way to experience Malaysian food is to eat where locals eat: hawker centres, wet markets, and family-run kopitiams, not just the well-known tourist streets. Order small portions of several dishes and share, the way Malaysians do. Be adventurous with sambal, but ask about spice level first. And let a local guide show you around once or twice: they know which stall does the best char kway teow, when the market is liveliest, and what to order at each stop. That is exactly what a Simply Enak tour does, covering the neighbourhoods and stalls our guides eat at themselves.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "food culture",
+      "tours"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:53.111Z",
+    "createdAt": "2026-08-14T04:22:53.111Z",
+    "_status": "published"
+  },
+  {
+    "id": 46,
+    "question": "What nights are night markets in Kuala Lumpur?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Kuala Lumpur's pasar malam (night market) runs on a weekly rotation, one per neighbourhood per night. Taman Connaught on Wednesday is the longest in Malaysia, with food stalls, clothes, and household goods stretching over a kilometre. Other reliable ones: SS2 on Monday, Sri Petaling on Tuesday, Setia Alam on Saturday, and the Bangsar night market on Wednesday (focused on food). Markets typically run from about 5 pm to midnight. Go early for the best selection and less crowd. Ask your Simply Enak guide which market matches your hotel area and the night you are free.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "night market",
+      "kuala lumpur"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:52.407Z",
+    "createdAt": "2026-08-14T04:22:52.407Z",
+    "_status": "published"
+  },
+  {
+    "id": 45,
+    "question": "What is included in a Malaysian food tour?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "A Simply Enak food tour includes a local guide, all tastings (10-18 dishes depending on the tour), bottled water, and small group sizes so you can talk to vendors. You will visit family-run stalls and hawker centres that locals actually eat at, and your guide explains the story behind each dish and how to order it. Not included: hotel pickup and drop-off, personal shopping, and drinks beyond what is served. Tours run rain or shine, and dietary requirements like vegetarian, halal, or gluten-free can be accommodated when you tell us at booking.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "booking",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "included",
+      "booking"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:51.575Z",
+    "createdAt": "2026-08-14T04:22:51.575Z",
+    "_status": "published"
+  },
+  {
+    "id": 44,
+    "question": "How much does a food tour cost in Malaysia?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Street food itself is cheap: most dishes cost between RM 5 and RM 15, so a full tasting meal rarely exceeds RM 40-50 per person if you order like a local. A guided food tour costs more because it includes a local guide, a planned route, and 10-18 tastings. Simply Enak's join-in tours start around RM 285 per person (about USD 65), and private tours are priced by group size. Everything you taste on the tour is included, so you never pay per dish or carry ringgit at each stall. Check the tour page for the exact price and what is covered.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "booking",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "price",
+      "booking"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:50.764Z",
+    "createdAt": "2026-08-14T04:22:50.764Z",
+    "_status": "published"
+  },
+  {
+    "id": 43,
+    "question": "Where can I find the best street food in Kuala Lumpur?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Jalan Alor is KL's most well-known street food street, packed with outdoor stalls and busy until midnight. But locals often eat at hawker centres and food courts: SS2 in Petaling Jaya, the Lot 10 food court on Bukit Bintang, and the Bangsar night market on Wednesdays. Chinatown's Petaling Street is also strong for Chinese-style hawker food. The rule locals follow: go where the queues are. A long line at a stall means the food is fresh and the recipe is trusted. On Simply Enak's KL Street Food tour, we take you to the stalls our guides eat at themselves, covering Chinatown back lanes and heritage hawker centres.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "street food",
+      "kuala lumpur"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:49.734Z",
+    "createdAt": "2026-08-14T04:22:49.734Z",
+    "_status": "published"
+  },
+  {
+    "id": 42,
+    "question": "What is the most popular street food in Malaysia?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Nasi lemak is Malaysia's national dish and the most popular street food. Fragrant coconut rice is wrapped in banana leaf with sambal, fried anchovies, peanuts, and a hard-boiled egg. You can find it from early morning stalls to late-night roadside carts, and every stall puts its own spin on the sambal and the accompaniments. Beyond nasi lemak, the classics are satay, char kway teow, roti canai, laksa, and Hokkien mee. On a Simply Enak tour you will taste several of these at stalls that have been perfecting them for decades, and your guide will show you how locals order.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "street food",
+      "nasi lemak"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:47.342Z",
+    "createdAt": "2026-08-14T04:22:47.342Z",
+    "_status": "published"
+  },
+  {
+    "id": 41,
+    "question": "Where can I eat durian in Kuala Lumpur?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "The SS2 area in Petaling Jaya is the best-known durian spot in greater KL. Vendors line the main road during season, and you can pick your fruit and have it opened right in front of you. For a sit-down experience, Durian Man in Cheras and Jin Xian Hong in Pudu are reliable choices with tables and staff who guide first-timers through the varieties. Expect to pay roughly RM 30-50 per Musang King fruit and RM 10-20 for kampung durian. Durian is banned in most hotels and on public transport, so eat it at the stall or a nearby park. On Simply Enak's KL tours, ask your guide for the best stall of the day.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "durian",
+      "kuala lumpur"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:46.686Z",
+    "createdAt": "2026-08-14T04:22:46.686Z",
+    "_status": "published"
+  },
+  {
+    "id": 40,
+    "question": "When is durian season in Malaysia?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "The main durian season runs from June to August, peaking in July. That is when the widest variety and the lowest prices hit the markets: Musang King, D24, and Black Thorn are all in season. There is a smaller secondary season from December to January with fewer varieties and higher prices. During peak season you will see durian stalls appear across Kuala Lumpur, Penang, and Johor, often run by farmers selling straight from the truck. Simply Enak's Penang tour includes a durian tasting stop at a trusted George Town vendor during season, where your guide shows you how to read the shell, smell for ripeness, and pick a good fruit.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "durian",
+      "season"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:46.114Z",
+    "createdAt": "2026-08-14T04:22:46.113Z",
+    "_status": "published"
+  },
+  {
+    "id": 39,
+    "question": "How do I know if a restaurant is halal in Malaysia?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "The clearest sign is the green JAKIM halal logo on the signage or near the entrance. You will also see 'Makanan Halal' or simply 'Halal' written on menus. Malay restaurants are almost always halal, and so are Indian Muslim (Mamak) stalls. Chinese restaurants that serve halal food advertise it prominently because it is the exception rather than the rule. At hawker centres, look for the halal certificate displayed at the stall, or just ask the vendor. On our Simply Enak food tours, every stop is halal-friendly, so there is never any guesswork. We also cater to vegetarian, vegan, and gluten-free diets when you let us know in advance.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "dietary",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "halal",
+      "dietary"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:45.464Z",
+    "createdAt": "2026-08-14T04:22:45.464Z",
+    "_status": "published"
+  },
+  {
+    "id": 38,
+    "question": "Is all food in Malaysia halal?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "No, not all food in Malaysia is halal, but the majority is. Malaysia runs a strict halal certification system through JAKIM, and most Malay and Indian Muslim restaurants and stalls are halal by default. Chinese restaurants and stalls are generally not halal-certified: they may use pork, lard, or cook in shared woks. Look for the green JAKIM halal logo on signage, or the words 'Makanan Halal'. When in doubt, ask the vendor directly. On Simply Enak tours, every stop is halal-friendly, so you never have to guess. If you have specific requirements, tell us when booking and we will plan around them.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "dietary",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "halal",
+      "dietary"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:44.894Z",
+    "createdAt": "2026-08-14T04:22:44.894Z",
+    "_status": "published"
+  },
+  {
+    "id": 37,
+    "question": "Do Malaysians speak English?",
+    "answer": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Yes. English is widely spoken in Malaysia, especially in Kuala Lumpur, Penang, and other tourist areas. It is taught in schools and used in business, so you will have no trouble ordering food, asking for directions, or chatting with hawkers. Menus are often bilingual. That said, hawker stall holders in older markets sometimes speak limited English. Pointing at what looks good, learning a few Malay words like 'sedap' (delicious), and smiling goes a long way. On Simply Enak tours, your guide translates everything, explains what you are eating, and handles the ordering, so you can focus on tasting rather than communicating.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr"
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "category": "general",
+    "page_visibility": [
+      "faq"
+    ],
+    "tags": [
+      "language",
+      "travelling"
+    ],
+    "relatedTour": null,
+    "relatedStory": null,
+    "sort_order": null,
+    "workflowStatus": "published",
+    "updatedAt": "2026-08-14T04:22:44.220Z",
+    "createdAt": "2026-08-14T04:22:44.219Z",
+    "_status": "published"
+  },
+  {
     "id": 36,
     "question": "Can children join this tour?",
     "answer": {
