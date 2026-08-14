@@ -2,11 +2,11 @@
 
 You step out of your hotel in Kuala Lumpur and the smell of charcoal smoke hits you before you have walked ten metres. A wok is clanging somewhere in the distance. Someone is frying noodles over a flame that licks up the side of the pan. This is the city you came for. The question is not whether you will find good street food. The question is where to start.
 
-KL has hundreds of street food stalls. Some are excellent. Some are average. A few are famous enough to have their own Wikipedia pages but serve food that has declined as their tourist numbers grew. This guide cuts through that. It tells you which streets to walk, which stalls to sit at, and exactly what to order when you get there.
+KL has hundreds of street food stalls. Some are excellent. Some are average. A few are well known enough to have their own Wikipedia pages but serve food that has declined as their tourist numbers grew. This guide cuts through that. It tells you which streets to walk, which stalls to sit at, and exactly what to order when you get there.
 
 ## Jalan Alor: The Tourist Strip That Still Works
 
-Jalan Alor is the most famous street food lane in Kuala Lumpur. Every guidebook sends you here, every hotel concierge recommends it, and every travel blog has a photo of its red lanterns stretching down the street. The common complaint is that it has become too touristy. That is true. But the food is still good if you know how to order.
+Jalan Alor is the best-known street food lane in Kuala Lumpur. Every guidebook sends you here, every hotel concierge recommends it, and every travel blog has a photo of its red lanterns stretching down the street. The common complaint is that it has become too touristy. That is true. But the food is still good if you know how to order.
 
 The street runs one block parallel to Changkat Bukit Bintang, the main nightlife strip. It is closed to traffic in the evening. Hawker stalls line both sides, each with plastic tables and chairs spilling onto the road. The vendors call out to you as you walk past. Do not let this put you off. The competition here is fierce, and the stalls that survive are the ones locals still eat at.
 
@@ -30,7 +30,7 @@ The main drag is Jalan Pudu, but the best eating is on the side streets. **Jalan
 
 ## Petaling Street: Chinatown Done Right
 
-Chinatown's Petaling Street is a covered market during the day and a street food destination in the evening. The main market is full of counterfeit handbags and phone cases, but the food stalls tucked into the surrounding streets are the reason to come.
+Chinatown's Petaling Street is a covered market during the day and a street food area in the evening. The main market is full of counterfeit handbags and phone cases, but the food stalls tucked into the surrounding streets are the reason to come.
 
 **Wan tan mee** is the dish to order here. Thin egg noodles tossed in soy sauce with a dark, savoury dressing, served with barbecued pork char siew and wantan dumplings in broth. The wantan mee at Restoran Soo Kee on Jalan Hang Lekir has been drawing queues since the 1970s. The char siew is caramelised on the outside and soft inside. A bowl costs RM 7.
 

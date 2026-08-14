@@ -1,6 +1,6 @@
 # Penang for Foodies: Beyond the Tourist Trail
 
-Penang's famous stalls are famous for a reason. The cendol on Armenian Street is excellent. The char kway teow at Gurney Drive is solid. But the serious food in Penang happens in places that do not register on the tourist radar. Stalls with no sign and no menu. Markets where the ingredients are still alive. Neighbourhoods where the version of a dish you know from the guidebook gets turned on its head. This guide is for the eater who wants to taste Penang the way locals who cook for a living taste it.
+Penang's well-known stalls are known for a reason. The cendol on Armenian Street is excellent. The char kway teow at Gurney Drive is solid. But the serious food in Penang happens in places that do not register on the tourist radar. Stalls with no sign and no menu. Markets where the ingredients are still alive. Neighbourhoods where the version of a dish you know from the guidebook gets turned on its head. This guide is for the eater who wants to taste Penang the way locals who cook for a living taste it.
 
 ## The Stalls with No Names
 

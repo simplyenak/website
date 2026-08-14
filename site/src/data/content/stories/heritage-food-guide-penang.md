@@ -6,7 +6,7 @@ Penang's food heritage is older than Malaysia itself. It predates the colonial e
 
 ## Armenian Street: The Nyonya Kitchen
 
-Armenian Street (Lebuh Armenian) is one of the most photographed streets in George Town, famous for its mural art and heritage shophouses. But the food on this street and its surrounding lanes tells the story of Penang's Peranakan (Nyonya) culture.
+Armenian Street (Lebuh Armenian) is one of the most photographed streets in George Town, known for its mural art and heritage shophouses. But the food on this street and its surrounding lanes tells the story of Penang's Peranakan (Nyonya) culture.
 
 The Peranakan Chinese are descendants of Chinese immigrants who married Malay locals between the 15th and 17th centuries. They developed a distinct cuisine that uses Chinese techniques with Malay ingredients. The result is food that is more fragrant, more sour, and more spice-forward than standard Chinese cooking.
 
@@ -14,7 +14,7 @@ The Peranakan Chinese are descendants of Chinese immigrants who married Malay lo
 
 **Otak-otak** is a Nyonya fish cake made from mackerel, coconut milk, eggs, and spices, steamed in a banana leaf parcel. The texture is soft and mousse-like, not firm like a fish cake. The stall at the junction of Armenian Street and Lebuh Pantai has been making otak-otak since the 1960s. The fish is ground by hand using a stone mortar. The spice paste includes turmeric, lemongrass, galangal, chilli, and candlenuts. Each parcel is folded in a banana leaf and grilled briefly before serving.
 
-**Kuih** (Nyonya desserts) are sold at several shops on Armenian Street. The most famous is the kuih stall that sets up at the entrance to the Hock Teik Cheng Sin temple. The kuih lapis (layered cake) has 12 distinct layers, each steamed separately. The kuih dadar is a pandan crepe rolled around a sweet coconut filling. The kuih seri muka is a two-layer cake with a pandan custard top and glutinous rice base. RM 1.50 per piece.
+**Kuih** (Nyonya desserts) are sold at several shops on Armenian Street. The best-known is the kuih stall that sets up at the entrance to the Hock Teik Cheng Sin temple. The kuih lapis (layered cake) has 12 distinct layers, each steamed separately. The kuih dadar is a pandan crepe rolled around a sweet coconut filling. The kuih seri muka is a two-layer cake with a pandan custard top and glutinous rice base. RM 1.50 per piece.
 
 ## Kapitan Keling Area: Indian-Muslim Heritage
 
@@ -30,7 +30,7 @@ The area around Kapitan Keling Mosque (Masjid Kapitan Keling) is the Muslim hear
 
 The clan jetties (pengkalan) on the Weld Quay waterfront are wooden villages built on stilts over the sea. Each jetty was settled by a different Chinese clan :  the Ong jetty, the Lim jetty, the Tan jetty, the Yeoh jetty :  whose members worked as fisherfolk and traders. The food at the jetties reflects that fishing heritage.
 
-**Koay Teow Th'ng** (also spelled kway teow th'ng) is a clear noodle soup that originated with the Chinese fishing community. Flat rice noodles in a light, savoury broth made from pork bones and dried anchovies, topped with fish balls, sliced fish cake, and minced pork. The broth is clear, clean, and restorative :  the opposite of the heavy spice bombs that Penang is more famous for. The stall at the entrance to Chew Jetty has been serving Koay Teow Th'ng since the jetty was built in the late 19th century. The fish balls are made from Spanish mackerel that the family catches themselves.
+**Koay Teow Th'ng** (also spelled kway teow th'ng) is a clear noodle soup that originated with the Chinese fishing community. Flat rice noodles in a light, savoury broth made from pork bones and dried anchovies, topped with fish balls, sliced fish cake, and minced pork. The broth is clear, clean, and restorative :  the opposite of the heavy spice bombs that Penang is better known for. The stall at the entrance to Chew Jetty has been serving Koay Teow Th'ng since the jetty was built in the late 19th century. The fish balls are made from Spanish mackerel that the family catches themselves.
 
 **Char kway teow at the jetties** is different from the George Town version. The noodles are fatter. The soy sauce is lighter. The cockles are larger and served raw on top, a tradition from the days when fisherfolk ate what they caught. The stall at the end of Tan Jetty opens at 11 AM and closes when the noodles run out, usually by 2 PM.
 

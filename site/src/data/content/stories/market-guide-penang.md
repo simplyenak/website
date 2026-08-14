@@ -38,7 +38,7 @@ Air Itam Market sits at the foot of the hill leading up to Kek Lok Si temple. It
 
 **Penang laksa** at the Air Itam market is the version that locals argue about. The broth uses more tamarind and less sugar than the George Town versions. The mackerel is shredded by hand, not blended. The noodles are cut wider. The herbs :  mint, torch ginger, daun kesum (Vietnamese mint) :  are piled on generously. The laksa stall at the back of the market has a handwritten sign and a queue that moves fast. RM 5.
 
-**Hokkien char** is a Penang stir-fried noodle dish that is less famous than Hokkien mee but equally good. Thick yellow noodles are fried with dark soy sauce, pork belly, squid, and cabbage. The Penang version uses more pork lard than the KL version, giving the noodles a glossy sheen and a savoury depth. The Hokkien char stall at Air Itam market opens at 11 AM and closes when the pork belly runs out.
+**Hokkien char** is a Penang stir-fried noodle dish that is less well known than Hokkien mee but equally good. Thick yellow noodles are fried with dark soy sauce, pork belly, squid, and cabbage. The Penang version uses more pork lard than the KL version, giving the noodles a glossy sheen and a savoury depth. The Hokkien char stall at Air Itam market opens at 11 AM and closes when the pork belly runs out.
 
 **Cincau** is grass jelly drink. The Air Itam version is made from scratch using the leaves of the mesona plant, not from powder. The jelly is darker, firmer, and has a herbal bitterness that the powdered version lacks. Served with shaved ice and evaporated milk. RM 2.
 

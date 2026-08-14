@@ -1,6 +1,6 @@
 # Penang With Kids: A Food Guide for Families
 
-Penang's food scene is famously intense. Loud flavours, heavy chilli, and queues that test adult patience. But the island is also home to some of Malaysia's most child-friendly eating experiences. Hawker centres with open space where kids can move around. Stalls that serve food with minimal spice. Desserts that look like works of art. The key is knowing which parts of George Town to target and when to visit them.
+Penang's food scene is intense. Loud flavours, heavy chilli, and queues that test adult patience. But the island is also home to some of Malaysia's most child-friendly eating experiences. Hawker centres with open space where kids can move around. Stalls that serve food with minimal spice. Desserts that look like works of art. The key is knowing which parts of George Town to target and when to visit them.
 
 ## Gurney Drive Hawker Centre: The Family Basecamp
 
@@ -18,7 +18,7 @@ The ice kacang stall is where you earn your parenting points. Shaved ice piled h
 
 Armenian Street runs through the UNESCO heritage zone. The street itself is pedestrian-friendly in the morning, and the food stalls here serve snacks rather than full meals, which suits children who eat in short bursts.
 
-The famous cendol stall at the corner of Armenian Street and Lebuh Keng Kwee is a mandatory stop. Shaved ice with green rice flour jelly, coconut milk, and gula melaka syrup. The portion is small enough that it works as a shared snack for two children. RM 3 per bowl.
+The well-known cendol stall at the corner of Armenian Street and Lebuh Keng Kwee is a mandatory stop. Shaved ice with green rice flour jelly, coconut milk, and gula melaka syrup. The portion is small enough that it works as a shared snack for two children. RM 3 per bowl.
 
 The Hokkien prawn mee stall a few doors down serves noodles in a prawn broth that is not as spicy as other Penang soups. The broth is deep orange from prawn heads and carries a natural sweetness that appeals to children. Order it with extra noodles and less chilli. RM 6.
 

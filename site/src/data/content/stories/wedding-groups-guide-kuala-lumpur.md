@@ -8,7 +8,7 @@ KL's Chinese restaurants are built for group dining. The format uses large round
 
 Master Lo on Jalan Kamunting in Chow Kit is a strong option for wedding groups. The restaurant specialises in roast meats and the menu is designed for sharing at tables of ten. The roast pork has glassy crackling. The char siu is caramelised and not too sweet. The steamed fish comes whole and is deboned at the table. Order family style: one roast meat platter, one vegetable, one tofu dish, one steamed fish, one soup, and rice. RM 25 to RM 35 per person.
 
-Restoran Soo Kee in Chinatown has been open since the 1970s. The wantan mee is famous, but the full menu includes braised dishes that work for groups. The pork rib soup, the braised duck, and the stir-fried kailan with oyster sauce. The restaurant has a function room upstairs that seats twenty. Call ahead to reserve it. RM 15 to RM 25 per person.
+Restoran Soo Kee in Chinatown has been open since the 1970s. The wantan mee is well known, but the full menu includes braised dishes that work for groups. The pork rib soup, the braised duck, and the stir-fried kailan with oyster sauce. The restaurant has a function room upstairs that seats twenty. Call ahead to reserve it. RM 15 to RM 25 per person.
 
 For a more upscale option, Lai Po Heen at the Mandarin Oriental serves Cantonese cuisine in a dining room with private rooms that seat up to thirty. The dim sum brunch is the best choice for a wedding group that wants to eat over a long afternoon rather than a structured dinner. RM 80 to RM 120 per person.
 
@@ -22,7 +22,7 @@ Restoran Nagasari Cendol, also in Brickfields, serves banana leaf rice and adds 
 
 ## The Jalan Alor Hawker Dinner for Bachelor and Bachelorette Groups
 
-Jalan Alor is KL's most famous hawker street and turns into a party after 9 PM. The street is lined with stalls selling grilled seafood, satay, and noodles. The seating is outdoors, the beer is cold, and the energy is high. This is the best option in KL for a bachelor or bachelorette group that wants a casual, loud celebration.
+Jalan Alor is KL's best-known hawker street and turns into a party after 9 PM. The street is lined with stalls selling grilled seafood, satay, and noodles. The seating is outdoors, the beer is cold, and the energy is high. This is the best option in KL for a bachelor or bachelorette group that wants a casual, loud celebration.
 
 The strategy for a large group on Jalan Alor is to pick a single stall that has enough seating and order from multiple stalls. Wong Ah Wah has been the anchor restaurant on Jalan Alor for decades and has seating for large groups across multiple shop lots. The grilled chicken wings are the signature dish. Order them in multiples of ten. The satay, the char kway teow, and the grilled fish can all be ordered from the stalls next door and delivered to your table. The restaurant charges a small corkage fee for outside food, but it is standard practice. RM 20 to RM 30 per person including drinks.
 

@@ -10,7 +10,7 @@ Jonker Walk is Melaka's main tourist street, a pedestrian lane lined with pre-wa
 
 Chicken rice balls are the dish most visitors come to Melaka for. Steamed rice is shaped into tight balls the size of golf balls and served with poached or roasted chicken. The rice is cooked in chicken stock and pandan, giving it a savoury fragrance. The balls are denser than loose rice and hold together when you pick them up with chopsticks.
 
-The most famous chicken rice ball restaurant is Chung Wah on Jalan Hang Jebat. Expect a queue at lunch. The chicken is poached to order and served at room temperature with a ginger and chilli dip. The rice balls are served in a small basket. Order one ball per person and supplement with a plate of roasted pork if available.
+The best-known chicken rice ball restaurant is Chung Wah on Jalan Hang Jebat. Expect a queue at lunch. The chicken is poached to order and served at room temperature with a ginger and chilli dip. The rice balls are served in a small basket. Order one ball per person and supplement with a plate of roasted pork if available.
 
 For a lighter option, the popiah stall further down Jonker Walk rolls fresh spring rolls to order. A thin crepe is filled with julienned turnip, bean sprouts, egg, chilli sauce, and a sprinkling of fried shallots. The skin is translucent. You can see the filling inside.
 
@@ -24,13 +24,13 @@ Restoran Nyonya Makko on Jalan Tun Tan Cheng Lock is a reliable introduction. Th
 
 The dish to order at Makko is the nyonya laksa. Unlike the Penang version, which uses a tamarind-based broth, nyonya laksa uses coconut milk as its base. The broth is rich, creamy, and stained orange from chillies and turmeric. It is served with rice noodles, bean sprouts, tofu puffs, and a dollop of sambal on top.
 
-For a deeper dive into Nyonya cooking, Amy Heritage Kitchen on Jalan Kota Laksamana serves home-style dishes that change daily. This is not a restaurant for tourists. It is a small operation run by a Nyonya family who cook what is fresh at the market that morning. The otak-otak (spiced fish paste steamed in banana leaf) is among the best in Melaka. The fish is ground fine, mixed with coconut milk, chillies, and herbs, wrapped in banana leaf, and grilled over charcoal.
+For a closer look at Nyonya cooking, Amy Heritage Kitchen on Jalan Kota Laksamana serves home-style dishes that change daily. This is not a restaurant for tourists. It is a small operation run by a Nyonya family who cook what is fresh at the market that morning. The otak-otak (spiced fish paste steamed in banana leaf) is among the best in Melaka. The fish is ground fine, mixed with coconut milk, chillies, and herbs, wrapped in banana leaf, and grilled over charcoal.
 
 ## Portuguese Settlement: A Completely Different Cuisine
 
 The Portuguese Settlement in Melaka is a village at the edge of the coastal highway, home to the Kristang community: descendants of Portuguese colonisers who married local women. Their food is unlike anything else in Malaysia.
 
-The settlement is a cluster of houses with a handful of restaurants facing the sea. The menu is dominated by grilled seafood and Eurasian dishes. The most famous is the grilled stingray, slathered in a thick sambal paste made with belacan, dried chillies, and tamarind. It is wrapped in banana leaf and grilled until the flesh flakes. RM 15 to RM 20 depending on size.
+The settlement is a cluster of houses with a handful of restaurants facing the sea. The menu is dominated by grilled seafood and Eurasian dishes. The best-known is the grilled stingray, slathered in a thick sambal paste made with belacan, dried chillies, and tamarind. It is wrapped in banana leaf and grilled until the flesh flakes. RM 15 to RM 20 depending on size.
 
 The other Settlement specialty is curry debal. The name means devil curry, and the heat is substantial. Chicken is slow-cooked with vinegar, candlenuts, galangal, lemongrass, and a generous amount of bird's eye chilli. It is a Portuguese-Eurasian dish adapted to local tastes. The sourness from the vinegar cuts through the richness of the coconut milk. It is served with rice or crusty bread.
 
@@ -40,7 +40,7 @@ Restoran De Lisbon and Restoran San Pedro are the two most established restauran
 
 Satay celup is Melaka's version of steamboat or hotpot. Skewers of meat, seafood, and vegetables are cooked in a bubbling pot of satay sauce. The sauce is a peanut-based broth that becomes richer and spicier as more skewers are cooked in it.
 
-The most famous satay celup restaurant is Capitol Satay at the end of Jonker Walk. The setup is simple: you pick raw skewers from a fridge, dip them into the boiling satay sauce at your table, and eat as they cook. The sauce is the key. It should be thick enough to coat the skewers but thin enough to drip. Capitol's sauce has been refined over decades.
+The best-known satay celup restaurant is Capitol Satay at the end of Jonker Walk. The setup is simple: you pick raw skewers from a fridge, dip them into the boiling satay sauce at your table, and eat as they cook. The sauce is the key. It should be thick enough to coat the skewers but thin enough to drip. Capitol's sauce has been refined over decades.
 
 Melaka's food scene is compact enough to cover in a full day. Start at Jonker Walk for breakfast cendol and chicken rice balls, work through Nyonya lunch in the residential streets, and finish with grilled seafood at the Portuguese Settlement as the sun sets over the strait.
 

@@ -26,7 +26,7 @@ KL has the widest variety of vegetarian food in Malaysia. You could eat at a dif
 
 ## Penang: The Northern Capital of Vegetarian Food
 
-Penang is famous for its street food, and much of it is vegetarian-friendly if you know where to go. The island has a large Chinese Buddhist community, and the 素食 scene in George Town is one of the most developed in the country.
+Penang is known for its street food, and much of it is vegetarian-friendly if you know where to go. The island has a large Chinese Buddhist community, and the 素食 scene in George Town is one of the most developed in the country.
 
 **Little India in George Town** has South Indian vegetarian restaurants that have been operating for decades. The banana leaf rice here is excellent. The thosai is made fresh and served with coconut chutney and sambar.
 

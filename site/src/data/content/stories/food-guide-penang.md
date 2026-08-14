@@ -8,7 +8,7 @@ For a first-time visitor, the sheer volume of options in George Town alone can b
 
 Armenian Street runs through the heart of George Town's UNESCO heritage zone. The street itself is tourist-friendly, but the food here is not watered down. You are surrounded by pre-war shophouses, Chinese clan houses, and the occasional mural that has become a photo stop.
 
-The star of Armenian Street is the cendol. The most famous stall is at the corner of Armenian Street and Lebuh Keng Kwee, operated by a family that has been making it for generations. Shaved ice, green rice flour jelly, coconut milk, and gula melaka syrup. The ice is shaved to order and pressed into a compact mound. The gula melaka is poured over the top in a dark ribbon. RM 3.
+The star of Armenian Street is the cendol. The best-known stall is at the corner of Armenian Street and Lebuh Keng Kwee, operated by a family that has been making it for generations. Shaved ice, green rice flour jelly, coconut milk, and gula melaka syrup. The ice is shaved to order and pressed into a compact mound. The gula melaka is poured over the top in a dark ribbon. RM 3.
 
 A few doors down, the Hokkien prawn mee stall serves a broth that has been simmering prawn heads and shells for hours. The result is a deep orange-red soup poured over yellow noodles and rice vermicelli, topped with prawns, sliced pork, and a hard-boiled egg. Add a spoonful of sambal and a squeeze of calamansi.
 
@@ -20,11 +20,11 @@ Chulia Street is George Town's main drag for evening eating. The street comes al
 
 The Hameed Pata Mee Sotong stall on Lebuh Chulia is a local institution. Mee sotong is yellow noodles stir-fried with squid in a thick, spicy gravy. The gravy is what separates good versions from great ones. It should be dark, rich, and cling to the noodles without being gluey. The stall adds a squeeze of lime before serving.
 
-For nasi kandar, the Line Clear Restaurant at the corner of Lebuh Chulia and Lebuh Penang is the most famous name in Penang. It operates 24 hours a day. Rice is served with your choice of curries and fried sides. The fish curry is the standout: tangy with tamarind, hot from dried chillies, and thin enough to soak into the rice. Point at what you want. The staff builds your plate quickly. RM 6 to RM 10.
+For nasi kandar, the Line Clear Restaurant at the corner of Lebuh Chulia and Lebuh Penang is the best-known name in Penang. It operates 24 hours a day. Rice is served with your choice of curries and fried sides. The fish curry is the standout: tangy with tamarind, hot from dried chillies, and thin enough to soak into the rice. Point at what you want. The staff builds your plate quickly. RM 6 to RM 10.
 
 Char kway teow on Chulia Street is cooked over charcoal at several stalls. The best is at the stall near the junction with Love Lane. The cook uses duck eggs, which give the noodles a richer colour and a creamier texture. The cockles are plump. The bean sprouts are barely cooked, still retaining their crunch.
 
-## Gurney Drive: The Famous Hawker Centre
+## Gurney Drive: The Well-Known Hawker Centre
 
 Gurney Drive is a coastal road with a large hawker centre that has been a Penang institution for decades. The hawker centre is a covered complex with dozens of stalls arranged in rows. It is busy, noisy, and hot. It is also where you can eat most of Penang's signature dishes in one sitting.
 

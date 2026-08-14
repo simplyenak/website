@@ -1,6 +1,6 @@
 # Halal Food Guide to Kuala Lumpur (2026)
 
-You are standing in front of a hawker stall in Chinatown. The steam rising from the wok smells incredible. The cook motions for you to come closer. But you hesitate. Is the food halal? You can't tell from looking.
+You are standing in front of a hawker stall in Chinatown. The steam rising from the wok smells of smoke and spice. The cook motions for you to come closer. But you hesitate. Is the food halal? You can't tell from looking.
 
 This guide solves that problem. Kuala Lumpur is a Muslim-majority city where halal food is the norm for most of the population, but not every stall you see follows halal standards. The difference between what looks halal and what is halal comes down to knowing which neighbourhoods, which cuisines, and which certification marks to trust. Here is exactly how to navigate it.
 

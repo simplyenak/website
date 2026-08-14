@@ -2,7 +2,7 @@
 
 Klang is a city that most visitors see from the window of a commuter train. It sits on the western edge of greater Kuala Lumpur, a former royal capital that has been absorbed into the sprawl of the Klang Valley. The reason to get off the train is bak kut teh, the pork rib soup that Klang claims as its own.
 
-Bak kut teh translates literally as meat bone tea. The name survives from the early Chinese labourers who drank tea with their pork broth to cut the richness. The dish is a herbal soup made with pork ribs simmered for hours in a broth of star anise, cinnamon, cloves, garlic, and dark soy. It is served with a pot of Chinese tea, a bowl of rice, and a saucer of chopped chilli in dark soy.
+Bak kut teh translates directly as meat bone tea. The name survives from the early Chinese labourers who drank tea with their pork broth to cut the richness. The dish is a herbal soup made with pork ribs simmered for hours in a broth of star anise, cinnamon, cloves, garlic, and dark soy. It is served with a pot of Chinese tea, a bowl of rice, and a saucer of chopped chilli in dark soy.
 
 Klang has more bak kut teh restaurants per square kilometre than anywhere in Malaysia. This guide covers the best of them, plus the other dishes that make Klang worth a dedicated food trip.
 
@@ -12,7 +12,7 @@ The origin story of bak kut teh is contested. Klang claims it was invented here 
 
 The first decision is dry or soup. Soup bak kut teh is the original: a dark, herbal broth with pork ribs, offal, and enoki mushrooms. Dry bak kut teh is a later innovation where the broth is reduced with dried chilli and garlic until it becomes a thick, sticky coating on the meat. Order soup on a cool day. Order dry when you want something punchier.
 
-Restoran Bah Kut Teh Teh on Jalan Stesen is the most famous name in Klang bak kut teh. The queue starts early. The broth is deeply herbal with a prominent star anise note. The meat is fall-off-the-bone tender. The offal options are extensive: pork intestines, stomach, tongue, and liver. For first-timers, stick to the ribs and add a portion of tau kee (fried bean curd skin).
+Restoran Bah Kut Teh Teh on Jalan Stesen is the best-known name in Klang bak kut teh. The queue starts early. The broth is deeply herbal with a prominent star anise note. The meat is fall-off-the-bone tender. The offal options are extensive: pork intestines, stomach, tongue, and liver. For first-timers, stick to the ribs and add a portion of tau kee (fried bean curd skin).
 
 Restoran Ah Hee Bak Kut Teh in Pandamaran serves a version that is lighter in colour but more intensely flavoured. The broth here uses more white pepper than the Teh version, giving it a sharpness that balances the richness of the pork fat.
 

@@ -4,7 +4,7 @@ Ipoh is a city that food travellers pass through on their way to Penang or the C
 
 The food in Ipoh is lighter and more restrained than KL or Penang. The flavours are cleaner. The heat comes from white pepper rather than chilli. The cooking is less aggressive across the board. This is not a criticism. It is a style.
 
-## White Coffee: Ipoh's Most Famous Export
+## White Coffee: Ipoh's Best-Known Export
 
 Ipoh white coffee is not white. The name comes from the roasting process. The beans are roasted with margarine, which produces a lighter colour than the caramelised black beans used in standard Malaysian coffee. The result is a brew that is smoother, less bitter, and carries a faint buttery note.
 
@@ -20,7 +20,7 @@ Bean sprout chicken is the dish most associated with Ipoh. Poached chicken is se
 
 The chicken is poached at a low temperature until the meat is silky and the skin is glossy. It is served at room temperature with a ginger-scallion oil and a dark soy sauce dip. The bean sprouts are blanched for seconds, drained, and dressed with a light soy drizzle.
 
-Restoran Tuck Kee on Jalan Theatre is the most famous bean sprout chicken restaurant in Ipoh. The queue starts forming before lunch. The chicken is served by weight. Order a quarter bird for one person, a half for two. Add a bowl of hor fun (flat rice noodles) in a clear chicken broth on the side.
+Restoran Tuck Kee on Jalan Theatre is the best-known bean sprout chicken restaurant in Ipoh. The queue starts forming before lunch. The chicken is served by weight. Order a quarter bird for one person, a half for two. Add a bowl of hor fun (flat rice noodles) in a clear chicken broth on the side.
 
 For an alternative, Onn Kee on Jalan Yau Tet Shin serves a similar menu with a slightly different soy sauce blend. The chicken is equally good. The queue is often shorter.
 
@@ -36,13 +36,13 @@ Another Ipoh specialty is the salted chicken. A whole chicken is stuffed with sa
 
 Ipoh is divided by the Kinta River into Old Town and New Town. The food differences matter.
 
-Old Town is where the pre-war shophouses are concentrated. This is the tourist-facing side, with restored colonial buildings and the most famous coffee shops. Sin Yoon Loong, Nam Heong, and Woong Kee are all in Old Town. The food here is aimed at a wider audience, but the standards remain high because the local customer base still fills the seats.
+Old Town is where the pre-war shophouses are concentrated. This is the tourist-facing side, with restored colonial buildings and the best-known coffee shops. Sin Yoon Loong, Nam Heong, and Woong Kee are all in Old Town. The food here is aimed at a wider audience, but the standards remain high because the local customer base still fills the seats.
 
 New Town is where the Chinese restaurants and seafood stalls cluster. The bean sprout chicken shops are mostly in New Town. The food here is less photographed but equally good. The evening pasar malam (night market) in New Town has a wider selection of Malay and Indian food than Old Town.
 
 ## Timing Your Ipoh Visit
 
-Ipoh's food scene operates on an early schedule. Most of the famous coffee shops and noodle stalls close by 2 PM. Bean sprout chicken restaurants serve lunch from 11 AM to 3 PM and reopen for dinner around 5 PM.
+Ipoh's food scene operates on an early schedule. Most of the well-known coffee shops and noodle stalls close by 2 PM. Bean sprout chicken restaurants serve lunch from 11 AM to 3 PM and reopen for dinner around 5 PM.
 
 The best strategy for a first visit is to arrive in the morning, have white coffee and kaya toast at Sin Yoon Loong around 8 AM, follow it with bean sprout chicken at Tuck Kee for lunch, and spend the afternoon exploring Old Town before dinner in New Town.
 

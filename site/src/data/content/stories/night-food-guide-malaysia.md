@@ -14,7 +14,7 @@ The food at a pasar malam is designed for walking and eating. There are no table
 
 **Apam balik** is a thick pancake folded over a filling of sweet corn, crushed peanuts, and sugar. The batter is cooked in a round cast-iron mould. The edges are thin and crisp. The centre is thick and soft. The filling is warm and sweet. Look for the stall with the longest queue. That is the one.
 
-**Keropok lekor** is deep-fried fish sausage from the east coast. Made from mackerel and sago flour, shaped into rolls, boiled, sliced, and fried to order. The texture is chewy inside, crisp outside. Served with a sweet-spicy chilli dipping sauce. The keropok lekor stall at the Taman Connaught pasar malam in KL is the most famous.
+**Keropok lekor** is deep-fried fish sausage from the east coast. Made from mackerel and sago flour, shaped into rolls, boiled, sliced, and fried to order. The texture is chewy inside, crisp outside. Served with a sweet-spicy chilli dipping sauce. The keropok lekor stall at the Taman Connaught pasar malam in KL is the best-known.
 
 **Satay** at a pasar malam is grilled over charcoal in full view. The smoke tells you where the stall is before you see it. Chicken and beef skewers, served with peanut sauce, cucumber, and ketupat. The grilling is done in small batches, so the skewers are always hot.
 
@@ -33,9 +33,9 @@ The food at a pasar malam is designed for walking and eating. There are no table
 
 Some hawker centres operate a day shift and a night shift. The day shift vendors pack up around 4 PM, and the night shift vendors take over from 5 PM until midnight or later. Each shift has different stalls and different specialties.
 
-**Gurney Drive Hawker Centre, Penang** is the most famous evening hawker centre in Malaysia. It operates from about 5 PM to 11 PM. The evening is the main service. The best stalls open at 5 PM and serve continuously until they sell out. The laksa, char kway teow, and Hokkien mee in the evening are made with more energy and higher heat than the daytime versions. The barbecue seafood stalls only operate in the evening, grilling fresh fish, prawns, and squid over charcoal.
+**Gurney Drive Hawker Centre, Penang** is the best-known evening hawker centre in Malaysia. It operates from about 5 PM to 11 PM. The evening is the main service. The best stalls open at 5 PM and serve continuously until they sell out. The laksa, char kway teow, and Hokkien mee in the evening are made with more energy and higher heat than the daytime versions. The barbecue seafood stalls only operate in the evening, grilling fresh fish, prawns, and squid over charcoal.
 
-**Jalan Alor, KL** is the city's most famous night food street. It operates from about 5 PM to 2 AM. The street is closed to traffic in the evening. Hawker stalls line both sides, with open-air seating in the middle. The food here is more Chinese than Malay: grilled fish, seafood, satay, and noodle dishes. The atmosphere is loud, smoky, and energetic. Jalan Alor is touristy, but the food quality is still high because the competition is fierce.
+**Jalan Alor, KL** is the city's best-known night food street. It operates from about 5 PM to 2 AM. The street is closed to traffic in the evening. Hawker stalls line both sides, with open-air seating in the middle. The food here is more Chinese than Malay: grilled fish, seafood, satay, and noodle dishes. The atmosphere is loud, smoky, and energetic. Jalan Alor is touristy, but the food quality is still high because the competition is fierce.
 
 **Chulia Street, Penang** transforms into a late-night food corridor after 8 PM. The late session runs from 8 PM to midnight. The crowd is a mix of backpackers and local families. The Hokkien mee on Chulia Street is served by a stall that only opens in the evening. The broth has been simmering since 2 PM and the prawn shells have released their full flavour.
 

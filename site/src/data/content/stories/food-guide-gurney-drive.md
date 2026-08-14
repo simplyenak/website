@@ -1,8 +1,8 @@
 # Gurney Drive Food Guide
 
-Gurney Drive is Penang's most famous hawker centre. The coastal road runs along the northern edge of George Town, and the hawker complex sits between the road and the sea. It is a covered structure with dozens of stalls arranged in rows, each specialising in a single dish.
+Gurney Drive is Penang's best-known hawker centre. The coastal road runs along the northern edge of George Town, and the hawker complex sits between the road and the sea. It is a covered structure with dozens of stalls arranged in rows, each specialising in a single dish.
 
-The first-time visitor should understand that Gurney Drive is not a single food destination. It is multiple competing hawker stalls concentrated in one location. The quality varies between stalls, and the famous names are not always the best. This guide covers the stalls that have earned their reputation through consistent cooking over years of operation.
+The first-time visitor should understand that Gurney Drive is not a single food area. It is multiple competing hawker stalls concentrated in one location. The quality varies between stalls, and the well-known names are not always the best. This guide covers the stalls that have earned their reputation through consistent cooking over years of operation.
 
 ## How Gurney Drive Works
 

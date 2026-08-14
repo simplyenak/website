@@ -2,11 +2,11 @@
 
 Penang's food reputation is built on its daytime hawkers, but the island comes into its own after dark. The evening market at Batu Ferringhi glows with charcoal fires. The Gurney Drive hawker centre hums with the sound of a hundred woks at once. Chulia Street stays alive until midnight, serving the dishes that Penangites eat when they want to eat well and eat late.
 
-Penang after dark is less about drinking and more about eating. The island does not have a big club scene. What it has is hawker centres and street stalls that stay open until the food runs out. This guide covers the three essential night food destinations on the island.
+Penang after dark is less about drinking and more about eating. The island does not have a big club scene. What it has is hawker centres and street stalls that stay open until the food runs out. This guide covers the three essential night food areas on the island.
 
 ## Gurney Drive Hawker Centre: The Evening Institution
 
-Gurney Drive is the most famous hawker centre in Penang. It operates every evening from about 5 PM to 11 PM, with some stalls staying open until midnight on weekends. The hawker centre is a covered walkway along the coastal road, with permanent stalls on both sides and a central seating area.
+Gurney Drive is the best-known hawker centre in Penang. It operates every evening from about 5 PM to 11 PM, with some stalls staying open until midnight on weekends. The hawker centre is a covered walkway along the coastal road, with permanent stalls on both sides and a central seating area.
 
 The evening session is the main service. The best stalls open at 5 PM and serve continuously until they sell out, which is usually around 8 PM for the most popular items. The second shift of stalls opens at 7 PM and runs until 11 PM. Plan to arrive at 5:30 PM to catch the first shift without the longest queues.
 
@@ -24,7 +24,7 @@ The evening session is the main service. The best stalls open at 5 PM and serve 
 
 ## Chulia Street: The Late Night Food Spine
 
-Chulia Street runs through the heart of George Town's heritage zone and transforms into a late-night food destination after 8 PM. The street is lined with kopitiams that rent their front counters to evening hawkers, plus a few independent stalls that set up on the sidewalk.
+Chulia Street runs through the heart of George Town's heritage zone and transforms into a late-night food area after 8 PM. The street is lined with kopitiams that rent their front counters to evening hawkers, plus a few independent stalls that set up on the sidewalk.
 
 The late session on Chulia Street runs from 8 PM to about midnight. The crowd is mixed :  backpackers, local families, and office workers who stopped for a beer on nearby Love Lane and wandered over for food.
 
@@ -40,7 +40,7 @@ The late session on Chulia Street runs from 8 PM to about midnight. The crowd is
 
 ## Batu Ferringhi Night Market: The Beach Evening
 
-Batu Ferringhi is the beach strip on Penang's northern coast, about 20 minutes by car from George Town. The night market along the main road is the island's most tourist-oriented food destination, but the food is still genuine.
+Batu Ferringhi is the beach strip on Penang's northern coast, about 20 minutes by car from George Town. The night market along the main road is the island's most tourist-oriented food area, but the food is still genuine.
 
 The market runs every evening from about 7 PM to 11 PM. The food section is at the eastern end, near the McDonald's. The stalls here serve Malay and Malay-Chinese street food adapted for a broad audience.
 
@@ -62,7 +62,7 @@ Chulia Street is the late-night option. The street opens later and stays open la
 
 Batu Ferringhi is worth the drive from George Town if you want a beachside evening. Combine the night market with a swim before sunset. The market starts filling up at 7:30 PM.
 
-Cash is required at every night food destination in Penang. ATMs are available in George Town but not at Gurney Drive or Batu Ferringhi. Bring enough for the evening.
+Cash is required at every night food area in Penang. ATMs are available in George Town but not at Gurney Drive or Batu Ferringhi. Bring enough for the evening.
 
 The evening vendors in Penang take their cue from the stock. When the ingredients run out, they close. The best stalls close earliest. If you see a queue, join it. If you see a stall closing early, that is a sign of quality, not laziness.
 

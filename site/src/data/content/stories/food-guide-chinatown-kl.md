@@ -28,7 +28,7 @@ The curry puff stall on Jalan Hang Lekir makes three versions: potato and egg, s
 
 Jalan Sultan runs perpendicular to Petaling Street and has a cluster of Cantonese restaurants that have been here since the early 1900s.
 
-Restoran Yut Kee on Jalan Tun H S Lee is technically just outside Chinatown but is the most famous Hainanese-Cantonese kopitiam in KL. It opened in 1928. The building has changed, but the menu has barely adapted. The Hainanese chicken chop is the dish to order: a breaded chicken cutlet fried and served with a thick, savoury gravy that combines Worcestershire sauce, tomato ketchup, and soy sauce. It is British colonial cooking filtered through Chinese tastes.
+Restoran Yut Kee on Jalan Tun H S Lee is technically just outside Chinatown but is the best-known Hainanese-Cantonese kopitiam in KL. It opened in 1928. The building has changed, but the menu has barely adapted. The Hainanese chicken chop is the dish to order: a breaded chicken cutlet fried and served with a thick, savoury gravy that combines Worcestershire sauce, tomato ketchup, and soy sauce. It is British colonial cooking filtered through Chinese tastes.
 
 The roasted duck at Kedai Makanan dan Minuman Kwai Seng on Jalan Tun Tan Siew Sin is another Chinatown institution. The ducks are hung in the front window, glazed with maltose and soy, and roasted in a charcoal oven. The skin is so thin and crisp it shatters. The meat underneath is moist and deeply savoury. Order the thigh portion if it is available.
 

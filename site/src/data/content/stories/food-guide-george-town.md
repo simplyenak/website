@@ -14,13 +14,13 @@ The dish to order is the Perut Ikan. This is a fermented fish stomach cooked in 
 
 The Nyonya Kuih at Auntie Gaik Lean's are made on site and change daily. The Ondeh-ondeh are glutinous rice balls filled with liquid gula melaka and rolled in grated coconut. The Kuih Kosui is a steamed rice flour cake topped with fresh coconut. Both are worth ordering for dessert.
 
-For a less formal Nyonya meal, the hawker stall at Lebuh Kimberley serves a version of Laksa Lemak that is coconut-based, different from the tamarind-based Asam Laksa that Penang is more famous for. The broth is rich and creamy, stained yellow from turmeric, and served with rice noodles, bean sprouts, and a hard-boiled egg.
+For a less formal Nyonya meal, the hawker stall at Lebuh Kimberley serves a version of Laksa Lemak that is coconut-based, different from the tamarind-based Asam Laksa that Penang is better known for. The broth is rich and creamy, stained yellow from turmeric, and served with rice noodles, bean sprouts, and a hard-boiled egg.
 
 ## Hokkien Food: Penang's Chinese Heritage
 
 Penang's Chinese population is predominantly Hokkien, from the Fujian province in southern China. The Hokkien dishes in George Town are the closest you will find to the original Fujian versions outside of China.
 
-Hokkien Mee is the most famous Penang Hokkien dish, but the heritage version is different from what most visitors expect. The original Hokkien Mee is a noodle soup with a prawn-based broth. The version you find at most hawker stalls includes yellow noodles, rice vermicelli, prawns, pork, and a hard-boiled egg in a rich, orange broth.
+Hokkien Mee is the best-known Penang Hokkien dish, but the heritage version is different from what most visitors expect. The original Hokkien Mee is a noodle soup with a prawn-based broth. The version you find at most hawker stalls includes yellow noodles, rice vermicelli, prawns, pork, and a hard-boiled egg in a rich, orange broth.
 
 The Hokkien Mee stall at Lebuh Presgrave has been operating since the 1960s. The broth is made by simmering prawn heads and shells with pork bones for several hours. The result is a soup that is simultaneously briny and meaty. The stall opens in the late morning and sells out by early afternoon.
 
@@ -34,7 +34,7 @@ Penang's Indian-Muslim community has been in George Town as long as the Chinese.
 
 Nasi Kandar is the defining Indian-Muslim dish of Penang. It was invented here. The story is that Indian-Muslim hawkers carried a kandar (a shoulder pole) with two containers: one for rice and one for curry. They walked through George Town selling curry rice to office workers.
 
-Line Clear Restaurant on Lebuh Penang is the most famous Nasi Kandar in Penang. It operates 24 hours a day. The concept is simple: rice is served with your choice of curries and fried sides. The fish curry is the most popular. It is tangy with tamarind, hot from dried chillies, and thin enough to soak into the rice.
+Line Clear Restaurant on Lebuh Penang is the best-known Nasi Kandar in Penang. It operates 24 hours a day. The concept is simple: rice is served with your choice of curries and fried sides. The fish curry is the most popular. It is tangy with tamarind, hot from dried chillies, and thin enough to soak into the rice.
 
 The deep-fried chicken at Line Clear is cooked in a large wok at the front of the restaurant. The chicken is marinated in turmeric and curry powder, then fried until the skin is crisp and the meat is moist. The chicken pieces are displayed on a counter for you to choose from.
 

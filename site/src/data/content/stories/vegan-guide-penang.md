@@ -1,6 +1,6 @@
 # The Vegan's Guide to Penang
 
-Penang is famous for its street food. But when you are vegan, the famous dishes are mostly off limits. Char kway teow has eggs and lard. Hokkien mee has prawns and pork. Laksa has fish broth. Nasi lemak has anchovies and eggs in the standard version.
+Penang is known for its street food. But when you are vegan, the well-known dishes are mostly off limits. Char kway teow has eggs and lard. Hokkien mee has prawns and pork. Laksa has fish broth. Nasi lemak has anchovies and eggs in the standard version.
 
 The good news is that Penang also has one of the strongest Buddhist vegetarian food scenes in Malaysia. The 素食 (sù shí) stalls that serve the local Buddhist community are vegan by design. No animal products, no eggs, no dairy. Once you know how to find them, you will eat better than you expected.
 
@@ -18,7 +18,7 @@ George Town's 素食 stalls are concentrated around the older Chinese neighbourh
 
 The vegetarian stall on Lebuh Kimberley opens for breakfast and serves until lunch. The menu is simple: rice with three or four vegetable dishes that change daily. The mock meat options are made in-house. The "pork belly" is made from layered soy protein. The "fish" is made from konjac and seaweed. The texture is close enough that the locals treat it as a regular meal, not a compromise.
 
-Further down Lebuh Cintra, a 素食 stall operates from a kopitiam frontage in the evening. This is the place to go for vegan versions of Penang's famous noodle dishes. The vegetarian char kway teow uses vegetable oil instead of lard and replaces eggs with extra tofu and bean sprouts. The wok hei is still there. The dark soy sauce gives the noodles the same colour. It is a different dish from the original, but it stands on its own.
+Further down Lebuh Cintra, a 素食 stall operates from a kopitiam frontage in the evening. This is the place to go for vegan versions of Penang's well-known noodle dishes. The vegetarian char kway teow uses vegetable oil instead of lard and replaces eggs with extra tofu and bean sprouts. The wok hei is still there. The dark soy sauce gives the noodles the same colour. It is a different dish from the original, but it stands on its own.
 
 The vegetarian Hokkien mee at this stall uses a mushroom-based broth that mimics the prawn broth of the original. The broth is deep brown, almost black, from the soy mushroom stock. It is poured over rice vermicelli and topped with fried yuba strips, tofu puffs, and fresh greens. The vendor adds a spoonful of chilli oil and a squeeze of lime. RM 5.
 
@@ -44,7 +44,7 @@ The stalls on the road leading up to the temple also serve vegan food. The veget
 
 Penang is good for vegan desserts because the local sweets rely on coconut milk and palm sugar, not dairy.
 
-**Cendol** at a 素食 stall is made with coconut milk, shaved ice, green rice flour jelly, and gula melaka syrup. The standard cendol at mixed stalls sometimes adds condensed milk. At a 素食 stall, it is dairy-free. The cendol stall on Lebuh Keng Kwee (off Armenian Street) is the most famous in Penang. Ask for it without condensed milk. The stall near the Kapitan Keling area also serves a version with fresh coconut milk.
+**Cendol** at a 素食 stall is made with coconut milk, shaved ice, green rice flour jelly, and gula melaka syrup. The standard cendol at mixed stalls sometimes adds condensed milk. At a 素食 stall, it is dairy-free. The cendol stall on Lebuh Keng Kwee (off Armenian Street) is the best-known in Penang. Ask for it without condensed milk. The stall near the Kapitan Keling area also serves a version with fresh coconut milk.
 
 **Kuih** (traditional cakes) are made from rice flour, coconut milk, and palm sugar. Most are naturally vegan. Kuih lapis (layered cake), kuih seri muka (pandan custard with glutinous rice), and kuih dadar (pandan crepe with sweet coconut) are all safe. The kuih stalls at Chowrasta Market have a wide selection.
 

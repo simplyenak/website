@@ -1,12 +1,12 @@
 # Penang for Couples: A Romantic Food Guide
 
-George Town at dusk has a specific quality of light. The white colonial buildings turn warm orange. The Chinese shophouses cast long shadows across the streets. The hawker stalls begin lighting their woks. This is the best time to be in Penang as a couple. The food here is often described as the best in Malaysia, but the experience of eating it together, walking from stall to stall through streets that have not changed in a century, is what makes Penang a romantic destination.
+George Town at dusk has a specific quality of light. The white colonial buildings turn warm orange. The Chinese shophouses cast long shadows across the streets. The hawker stalls begin lighting their woks. This is the best time to be in Penang as a couple. The food here is often described as the best in Malaysia, but the experience of eating it together, walking from stall to stall through streets that have not changed in a century, is what makes Penang a romantic place to eat.
 
 ## The Armenian Street Evening Walk
 
 Start your evening on Armenian Street in the UNESCO heritage zone. The street is pedestrian-friendly in the early evening, and the food stalls here serve small portions designed for grazing rather than gorging.
 
-The cendol stall at the corner of Armenian Street and Lebuh Keng Kwee is the most famous dessert in Penang for good reason. Shaved ice, green rice flour jelly, coconut milk, and gula melaka syrup. Share one bowl. The ice is shaved to order and pressed into a compact mound. The gula melaka is poured over the top in a dark ribbon. The stall has been operated by the same family for generations. RM 3.
+The cendol stall at the corner of Armenian Street and Lebuh Keng Kwee is the best-known dessert in Penang for good reason. Shaved ice, green rice flour jelly, coconut milk, and gula melaka syrup. Share one bowl. The ice is shaved to order and pressed into a compact mound. The gula melaka is poured over the top in a dark ribbon. The stall has been operated by the same family for generations. RM 3.
 
 Walk down Armenian Street towards Lebuh Pantai. The Hokkien prawn mee stall a few doors from the cendol stall serves noodles in a broth that has been simmering prawn heads for hours. The broth is deep orange and carries an intensity that you will remember. Order one bowl to share with extra noodles. Squeeze the calamansi over the top and add a spoonful of sambal if you want heat. RM 6.
 

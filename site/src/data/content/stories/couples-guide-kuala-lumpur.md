@@ -14,7 +14,7 @@ The SkyBar at Traders Hotel used to be the default choice for couples. It is sti
 
 ## Jalan Alor: The Hawker Date
 
-Jalan Alor is KL's most famous food street, and it is at its best for couples at 6 PM. The crowds have not arrived yet. The smoke from the charcoal grills is just starting to rise. The neon signs are flickering on. This window between 6 PM and 7:30 PM is the sweet spot for a date night meal.
+Jalan Alor is KL's best-known food street, and it is at its best for couples at 6 PM. The crowds have not arrived yet. The smoke from the charcoal grills is just starting to rise. The neon signs are flickering on. This window between 6 PM and 7:30 PM is the sweet spot for a date night meal.
 
 Start at the satay stall on the corner opposite Wong Ah Wah. Order ten skewers of mixed chicken and beef. The peanut sauce has visible crushed nuts and a tamarind tang. Eat them standing at the stall. RM 10.
 

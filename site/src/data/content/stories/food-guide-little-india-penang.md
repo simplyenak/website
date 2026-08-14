@@ -8,7 +8,7 @@ The food in Little India Penang is different from the Indian food in KL's Brickf
 
 Nasi Kandar was invented in Penang. The name comes from the kandar, a shoulder pole used by Indian-Muslim hawkers to carry containers of rice and curry to office workers. The system has since moved into restaurants, but the principle remains: rice with your choice of curries and fried sides.
 
-Line Clear Restaurant on Lebuh Penang, at the edge of Little India, is the most famous Nasi Kandar in Malaysia. It operates 24 hours a day and the queue rarely drops below ten people. The restaurant occupies a corner shophouse with tables spilling onto the pavement.
+Line Clear Restaurant on Lebuh Penang, at the edge of Little India, is the best-known Nasi Kandar in Malaysia. It operates 24 hours a day and the queue rarely drops below ten people. The restaurant occupies a corner shophouse with tables spilling onto the pavement.
 
 The process at Line Clear is simple: tell the server how many rice portions you need, point at the curries and fried dishes you want, and pay at the counter. The curries are displayed in large stainless steel containers. The fish curry is the most popular. It is made with tamarind, dried chillies, and turmeric, and it is thin enough to soak into the rice.
 

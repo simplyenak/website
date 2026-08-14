@@ -3,7 +3,7 @@ title: "The Vegetarian's Guide to Kuala Lumpur"
 description: "Where to eat, what to order, and how to never get accidental shrimp paste again in KL."
 ---
 
-You're vegetarian, you're visiting KL, and you've been burned before by meals that said "vegetarian" but really weren't. Here's the good news: KL has some of the best vegetarian food in Asia — once you know where to look.
+You're vegetarian, you're visiting KL, and you've been burned before by meals that said "vegetarian" but really weren't. Here's the good news: KL has some of the best vegetarian food in Asia, once you know where to look.
 
 ## Where Vegetarians Actually Eat Well in Kuala Lumpur
 
@@ -15,11 +15,11 @@ KL's Little India, Brickfields, has the highest concentration of vegetarian-frie
 
 ### Buddhist vegetarian is different
 
-Chinese Buddhist vegetarian restaurants avoid onion, garlic, and leeks as part of religious practice. These places serve incredible mock meat dishes from soy and mushroom — the flavours are nothing like what you'd expect from "vegetarian food."
+Chinese Buddhist vegetarian restaurants avoid onion, garlic, and leeks as part of religious practice. These places serve convincing mock meat dishes from soy and mushroom. The flavours are nothing like what you'd expect from "vegetarian food."
 
 ## The Stalls We Visit
 
-Our guide takes you to a family-run stall in Brickfields that's been serving banana leaf rice for 27 years. Their vegetable curry changes daily based on what's fresh at the market. We also visit a Buddhist vegetarian kitchen in Sentul where the head chef trained under a temple monk — their 'duck' made from yuba is so convincing even meat-eaters ask for seconds.
+Our guide takes you to a family-run stall in Brickfields that's been serving banana leaf rice for 27 years. Their vegetable curry changes daily based on what's fresh at the market. We also visit a Buddhist vegetarian kitchen in Sentul where the head chef trained under a temple monk. Their 'duck' made from yuba is so convincing even meat-eaters ask for seconds.
 
 ## The Honest Truth
 

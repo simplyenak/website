@@ -34,7 +34,7 @@ Chinese food in Malaysia is more than a copy of what you eat in China. The Hokki
 
 **Cantonese food** dominates KL. Dim sum, roast meats, and stir-fried noodles are the staples. The wantan mee in KL is a Cantonese dish: egg noodles tossed in soy sauce, served with char siew (BBQ pork) and wantan dumplings.
 
-**Hainanese food** gave Malaysia its most famous comfort dish: chicken rice. Poached chicken served with rice cooked in chicken stock and pandan. It is simple, precise, and harder to execute well than any complex dish.
+**Hainanese food** gave Malaysia its most well-known comfort dish: chicken rice. Poached chicken served with rice cooked in chicken stock and pandan. It is simple, precise, and harder to execute well than any complex dish.
 
 **Teochew food** is known for steamed fish, braised duck, and porridge. Teochew porridge (muay) is a thin rice porridge served with side dishes: salted vegetables, fried fish, braised peanuts.
 
@@ -62,7 +62,7 @@ The food stalls at a kopitiam operate independently. One stall may serve wantan 
 
 Kopitiams are the most democratic food venues in Malaysia. You can eat Chinese, Malay, and Indian food at the same kopitiam, from different stalls, at the same meal.
 
-**Where to experience it:** Old Town Ipoh has the most famous kopitiams in Malaysia. Sin Yoon Loong, Kedai Kopi Kong Heng, and Kedai Kopi Xin Chun are all over eighty years old. In KL, the kopitiams in the Chinatown area are the oldest. In Penang, the kopitiams on Chulia Street and Kimberley Street are the most established.
+**Where to experience it:** Old Town Ipoh has the best-known kopitiams in Malaysia. Sin Yoon Loong, Kedai Kopi Kong Heng, and Kedai Kopi Xin Chun are all over eighty years old. In KL, the kopitiams in the Chinatown area are the oldest. In Penang, the kopitiams on Chulia Street and Kimberley Street are the most established.
 
 ## How Migration Shaped the Food
 

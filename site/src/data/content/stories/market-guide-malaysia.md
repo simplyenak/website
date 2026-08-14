@@ -8,7 +8,7 @@ For a first-time visitor, the market scene can be confusing. There are different
 
 Wet markets are morning markets that sell fresh produce, meat, seafood, and prepared foods. They are called "wet" because the floors are constantly hosed down to keep produce fresh and to wash away the fish scales and vegetable trimmings.
 
-Every Malaysian city has at least one major wet market. The most famous are Chowrasta Market in Penang, Pudu Market in KL, and the market in Ipoh's Old Town. These markets open around 6 AM and are most active between 7 AM and 10 AM. By noon, most vendors have packed up.
+Every Malaysian city has at least one major wet market. The best-known are Chowrasta Market in Penang, Pudu Market in KL, and the market in Ipoh's Old Town. These markets open around 6 AM and are most active between 7 AM and 10 AM. By noon, most vendors have packed up.
 
 **What to eat at a wet market:** The cooked food section is where the market regulars eat breakfast. Look for the stalls that have queues of older customers. These are the ones that have been feeding the market community for decades.
 
@@ -16,7 +16,7 @@ At Chowrasta Market in George Town, the asam laksa stall on the lower level has 
 
 At Pudu Market in KL, the morning hawker section serves some of the best wantan mee in the city. The noodles are springy, the char siew is caramelised, and the wantan dumplings are filled with pork and prawn. The stall at the northern end of the food section has been operating since the 1980s.
 
-At the wet market in Ipoh's Old Town, the breakfast stalls serve Ipoh's famous white coffee and kaya toast. The coffee is roasted with palm oil margarine, giving it a smooth, slightly sweet flavour. The kaya (coconut jam) is made in-house at most stalls.
+At the wet market in Ipoh's Old Town, the breakfast stalls serve Ipoh's well-known white coffee and kaya toast. The coffee is roasted with palm oil margarine, giving it a smooth, slightly sweet flavour. The kaya (coconut jam) is made in-house at most stalls.
 
 **What to buy:** Fresh tropical fruit is the best purchase at any wet market. Mangosteen, rambutan, cempedak, and durian are all cheaper and better here than at supermarkets. Let the vendor choose your fruit. They know which are ripe.
 
@@ -30,7 +30,7 @@ Pasar malam are different from hawker centres. Hawker centres are permanent and 
 
 **Apam balik** is a thick pancake filled with sweet corn, crushed peanuts, and sugar. The batter is poured into a round cast-iron mould, the filling is added, and the pancake is folded in half. The outside is crisp, the inside is soft, and the filling is warm and sweet. Look for the stall with the largest queue. RM 2.
 
-**Keropok lekor** is deep-fried fish sausage from the east coast of Malaysia. It is made from mackerel and sago flour, shaped into long rolls, boiled, sliced, and fried. The texture is chewy on the inside and crisp on the outside. It is served with a sweet-spicy chilli dipping sauce. The keropok lekor stall at the KL pasar malam in Taman Connaught is the most famous version.
+**Keropok lekor** is deep-fried fish sausage from the east coast of Malaysia. It is made from mackerel and sago flour, shaped into long rolls, boiled, sliced, and fried. The texture is chewy on the inside and crisp on the outside. It is served with a sweet-spicy chilli dipping sauce. The keropok lekor stall at the KL pasar malam in Taman Connaught is the best-known version.
 
 **Satay** at a pasar malam is grilled over charcoal in full view. The smoke is the signal. Follow it. Chicken and beef skewers with peanut sauce, cucumber, and ketupat. The satay at pasar malam is cheaper than at hawker centres and the grilling is done in smaller batches.
 
@@ -40,7 +40,7 @@ Pasar malam are different from hawker centres. Hawker centres are permanent and 
 
 **What to buy:** Pasar malam are also the best place to buy local snacks to take home. Curry puffs, kuih, and dried anchovies are all available in small bags. The prices are lower than at tourist shops.
 
-**The pasar malam schedule:** Each day of the week, a different neighbourhood hosts the pasar malam. The most famous night markets are Taman Connaught in KL (Wednesday, the longest in Malaysia), Batu Ferringhi in Penang (nightly during peak season), and Jonker Street in Melaka (weekend evenings).
+**The pasar malam schedule:** Each day of the week, a different neighbourhood hosts the pasar malam. The best-known night markets are Taman Connaught in KL (Wednesday, the longest in Malaysia), Batu Ferringhi in Penang (nightly during peak season), and Jonker Street in Melaka (weekend evenings).
 
 ## Hypermarkets: Modern Shopping, Local Food
 

@@ -54,6 +54,6 @@ The stalls on the road leading up to the temple serve vegetarian versions of Pen
 
 Look for the 素食 sign. It is the most reliable indicator of vegetarian food in Penang. Every stall with this sign has a kitchen set up for vegetarian cooking. No questions, no negotiations, no accidents. You can search for 素食 on Google Maps and find stalls that an English search for "vegetarian" will miss entirely.
 
-The Buddhist vegetarian tradition has been feeding Penang's community for generations. The stalls are not new. They are not trendy. They have been here, quietly serving food that works for vegetarians, since long before the island became famous for its street food.
+The Buddhist vegetarian tradition has been feeding Penang's community for generations. The stalls are not new. They are not trendy. They have been here, quietly serving food that works for vegetarians, since long before the island became known for its street food.
 
 The Simply Enak food tours in Penang visit several of these stalls and know which vendors to take you to. No translation needed, no surprises, just the food that actually works for you.

@@ -2,11 +2,11 @@
 
 When the sun goes down in Kuala Lumpur, the streets change. The traffic thins, the heat lifts, and the hawker stalls that were shuttered all afternoon roll out their woks and light their charcoal fires. KL after dark is not a club scene for most locals. It is a food scene. Families come out at 8 PM to eat. Office workers stop at pasar malams on their way home. Friends gather at tables set up on the roadside. The city eats well at night, and the best food is sold from mobile carts and plastic tables.
 
-This guide covers three night food destinations in and around KL. Each has a different character. One is famous. One is local. One is massive.
+This guide covers three night food areas in and around KL. Each has a different character. One is well known. One is local. One is massive.
 
-## Jalan Alor: The Famous Night Food Street
+## Jalan Alor: The Well-Known Night Food Street
 
-Jalan Alor is KL's most famous food street, and its reputation is earned. By 6 PM every evening, the road is closed to traffic. Hawker stalls line both sides. Plastic tables and chairs fill the street. The red glow of charcoal fires and string lights illuminates the whole strip.
+Jalan Alor is KL's best-known food street, and its reputation is earned. By 6 PM every evening, the road is closed to traffic. Hawker stalls line both sides. Plastic tables and chairs fill the street. The red glow of charcoal fires and string lights illuminates the whole strip.
 
 The evening session at Jalan Alor starts at 6 PM and runs past midnight. The dinner rush is between 7 PM and 9 PM. The late-night crowd arrives after 10 PM, when the drinking crowd from nearby Changkat Bukit Bintang wanders over for supper.
 
@@ -16,7 +16,7 @@ The evening session at Jalan Alor starts at 6 PM and runs past midnight. The din
 
 **Satay** at Jalan Alor is grilled over a long, narrow charcoal grill. The skewers are turned constantly. The fat from the meat drips onto the charcoal, creating bursts of smoke that flavour the meat. The peanut sauce is served warm. The ketupat (compressed rice cakes) come in small palm-leaf parcels.
 
-**Wong Ah Wah** is the most famous restaurant on Jalan Alor, known for its grilled chicken wings. The wings are marinated in honey and soy, grilled over charcoal, and served with a sweet chilli dip. The skin is caramelised and slightly charred. The meat is moist. Order a plate of wings and a bottle of Sarsi.
+**Wong Ah Wah** is the best-known restaurant on Jalan Alor, known for its grilled chicken wings. The wings are marinated in honey and soy, grilled over charcoal, and served with a sweet chilli dip. The skin is caramelised and slightly charred. The meat is moist. Order a plate of wings and a bottle of Sarsi.
 
 **Dessert at Jalan Alor** is durian. Several stalls along the street sell durian by the table. The vendor opens the fruit in front of you and serves the segments on a plastic plate. Musang King (Mao Shan Wang) is the high-end variety :  creamy, bittersweet, with a smooth texture. It costs around RM 30-50 per fruit depending on the season. The kampung (village) durian is cheaper and has a more watery texture but is still worth trying.
 

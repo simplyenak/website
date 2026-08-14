@@ -42,4 +42,4 @@ Tempeh is fermented soybean cake that Malay and Nyonya cooking use in ways that 
 
 Serious eating in KL requires a schedule. Chow Kit operates from 4 AM to noon. Kampung Baru night stalls start at 6 PM and sell out by 9 PM. The chef-run stalls at Taman Connaught are only open on Monday nights when the night market runs. Plan your eating around these windows or you will miss the best dishes.
 
-If you want a guided deep dive into KL's serious food scene with a local guide who knows the chef stalls and market vendors by name, the Simply Enak Kuala Lumpur food tour includes Chow Kit, Kampung Baru, and a rotating selection of chef-run stalls.
+If you want a guided tour of KL's serious food scene with a local guide who knows the chef stalls and market vendors by name, the Simply Enak Kuala Lumpur food tour includes Chow Kit, Kampung Baru, and a rotating selection of chef-run stalls.

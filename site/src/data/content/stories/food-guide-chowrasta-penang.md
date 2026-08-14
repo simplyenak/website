@@ -1,14 +1,14 @@
 # Chowrasta Market Food Guide
 
-Chowrasta Market is Penang's oldest and most famous market. It has been operating in the heart of George Town since the early 19th century. The name Chowrasta means four roads in Hindi, a reference to the intersection where the market originally stood. Today it is a covered market building surrounded by street stalls that spill onto the neighbouring pavement.
+Chowrasta Market is Penang's oldest and best-known market. It has been operating in the heart of George Town since the early 19th century. The name Chowrasta means four roads in Hindi, a reference to the intersection where the market originally stood. Today it is a covered market building surrounded by street stalls that spill onto the neighbouring pavement.
 
 The market is half wet market and half dry goods bazaar. The wet section sells fresh fish, meat, and vegetables. The dry section sells spices, snacks, and household goods. The cooked food stalls sit between the two sections and along the surrounding streets. For a first-time visitor, the cooked food is the main attraction.
 
-## The Famous Stalls Inside the Market
+## The Best-Known Stalls Inside the Market
 
 The permanent stalls inside the market building serve the dishes that Chowrasta is known for.
 
-The Asam Laksa stall at stall 123 inside the main hall is one of the most famous in George Town. The broth is made from mackerel simmered with tamarind, lemongrass, galangal, and torch ginger flower. It is sour, spicy, and deeply savoury. The noodles are thick rice vermicelli. The toppings include shredded fish, sliced cucumber, onion, pineapple, and a dollop of shrimp paste on the side.
+The Asam Laksa stall at stall 123 inside the main hall is one of the best-known in George Town. The broth is made from mackerel simmered with tamarind, lemongrass, galangal, and torch ginger flower. It is sour, spicy, and deeply savoury. The noodles are thick rice vermicelli. The toppings include shredded fish, sliced cucumber, onion, pineapple, and a dollop of shrimp paste on the side.
 
 The queue at this stall starts forming before 11 AM. The bowl costs RM 5. The broth is made fresh each morning and the stall closes when it runs out, usually by 2 PM.
 

@@ -1,6 +1,6 @@
 # Gluten-Free Guide to Penang
 
-Penang's food reputation is built on noodles. Char kway teow, Hokkien mee, wan tan mee, laksa. Almost every famous dish on the island is a noodle dish. When you are gluten-free, this sounds like a problem.
+Penang's food reputation is built on noodles. Char kway teow, Hokkien mee, wan tan mee, laksa. Almost every well-known dish on the island is a noodle dish. When you are gluten-free, this sounds like a problem.
 
 It is less of a problem than you think. Most of Penang's noodles are made from rice flour. The dishes that are unsafe use wheat-based soy sauce, not wheat noodles. And the island's South Indian food tradition, which is built on rice and lentils, gives you plenty of naturally gluten-free options.
 
@@ -14,7 +14,7 @@ The solution is to eat at stalls where the seasoning is simple and transparent. 
 
 ## Naturally Gluten-Free Penang Dishes
 
-**Penang laksa (assam laksa)** is one of the safest GF options on the island. The broth is made from mackerel, tamarind, lemongrass, galangal, torch ginger flower, and chilli. No soy, no wheat. The noodles are thick rice vermicelli. The toppings are shredded cucumber, pineapple, onion, mint, and shrimp paste. The shrimp paste is potentially a concern for severe coeliacs due to cross-contamination risk, but the dish itself contains no wheat ingredients. Ask at the stall. The laksa at Air Itam is the most famous version, and the broth there is made without any wheat products.
+**Penang laksa (assam laksa)** is one of the safest GF options on the island. The broth is made from mackerel, tamarind, lemongrass, galangal, torch ginger flower, and chilli. No soy, no wheat. The noodles are thick rice vermicelli. The toppings are shredded cucumber, pineapple, onion, mint, and shrimp paste. The shrimp paste is potentially a concern for severe coeliacs due to cross-contamination risk, but the dish itself contains no wheat ingredients. Ask at the stall. The laksa at Air Itam is the best-known version, and the broth there is made without any wheat products.
 
 **Nasi kandar** is rice with curries. The rice is plain steamed rice. The curries are based on coconut milk, spices, and tamarind. No wheat. The fried chicken at nasi kandar stalls is coated in rice flour batter. The vegetable curries use no thickeners. This is one of the safest GF meals in Penang. Line Clear Restaurant and Nasi Kandar Beratur are both reliable.
 
@@ -54,6 +54,6 @@ The universal gesture: Point at the dish, then point at your stomach, shake your
 
 ## The Bottom Line
 
-Penang is a good city for gluten-free eating if you stick to the right dishes. Nasi kandar, nasi lemak, Penang laksa, satay, grilled seafood, thosai, and idli are all naturally gluten-free. The risk is in soy sauce-based dishes, not in the rice noodles that Penang is famous for.
+Penang is a good city for gluten-free eating if you stick to the right dishes. Nasi kandar, nasi lemak, Penang laksa, satay, grilled seafood, thosai, and idli are all naturally gluten-free. The risk is in soy sauce-based dishes, not in the rice noodles that Penang is known for.
 
 The key is knowing which stalls to go to and which questions to ask. With a little preparation, you can eat your way through Penang without compromise.

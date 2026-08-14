@@ -36,7 +36,7 @@ Order the thali: a complete meal with rice, dal, vegetable curries, roti, and a 
 
 ## What to Avoid
 
-**Nasi kandar** is the most famous dish in Penang, but it is not Jain-friendly. The curries at nasi kandar stalls contain onion and garlic as a base. The serving spoons are shared across meat and vegetable dishes. Cross-contamination is guaranteed.
+**Nasi kandar** is the best-known dish in Penang, but it is not Jain-friendly. The curries at nasi kandar stalls contain onion and garlic as a base. The serving spoons are shared across meat and vegetable dishes. Cross-contamination is guaranteed.
 
 **Banana leaf rice** at most Indian restaurants uses ghee on the rice and onion in the vegetable curries. You would need to request Jain preparation specifically, and not all restaurants can do this.
 

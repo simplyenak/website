@@ -14,9 +14,9 @@ For Muslim visitors, Penang's halal food falls into three categories: Malay food
 
 ## Nasi Kandar in George Town: The Halal Standard
 
-Nasi kandar is Penang's most famous halal dish. It is rice served with a selection of curries and sides. The vendor pours curry sauce over the rice from a height, mixing the flavours as the sauce lands. It is an Indian-Muslim dish, which means it is halal by default.
+Nasi kandar is Penang's most well-known halal dish. It is rice served with a selection of curries and sides. The vendor pours curry sauce over the rice from a height, mixing the flavours as the sauce lands. It is an Indian-Muslim dish, which means it is halal by default.
 
-Line Clear Restaurant on Lebuh Penang (at the junction with Chulia Street) is the most famous nasi kandar in Penang. It operates 24 hours a day. Rice is served with your choice of curries: fish curry, chicken curry, dal, and vegetable curry. The fried chicken is cooked in a turmeric batter that stays crispy even after the curry sauce hits it. The queue stretches down the street at lunchtime. The staff are fast and efficient. Point at what you want from the display and your plate is built in under a minute.
+Line Clear Restaurant on Lebuh Penang (at the junction with Chulia Street) is the best-known nasi kandar in Penang. It operates 24 hours a day. Rice is served with your choice of curries: fish curry, chicken curry, dal, and vegetable curry. The fried chicken is cooked in a turmeric batter that stays crispy even after the curry sauce hits it. The queue stretches down the street at lunchtime. The staff are fast and efficient. Point at what you want from the display and your plate is built in under a minute.
 
 Restoran Nasi Kandar Beratur on Lebuh Kimberley is another essential stop. The name means "queue up" in Malay, and for good reason. The queue here starts forming before the stall opens at 11 AM. The draw is the fish curry: tangy with tamarind, hot from dried chillies, and thin enough to soak into the rice. Order it with fried chicken, okra, and a hard-boiled egg.
 

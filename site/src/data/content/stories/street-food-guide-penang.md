@@ -4,9 +4,9 @@ Penang has a reputation that precedes it. Travel magazines call it the food capi
 
 The island's food culture is shaped by its history. George Town is a UNESCO World Heritage site, a port city where Malay, Chinese, Indian, Nyonya, and European influences collided over centuries. That mix is on every plate. This guide covers the four essential areas for street food in Penang and the dishes you need to eat at each one.
 
-## Gurney Drive: The Famous Hawker Centre
+## Gurney Drive: The Well-Known Hawker Centre
 
-Gurney Drive is a coastal road in George Town with a long row of hawker stalls operating under a covered walkway. This is the most famous hawker centre in Penang and the most convenient for first-time visitors. The stalls are permanent, the seating is plentiful, and you can sample ten different dishes without walking more than fifty metres.
+Gurney Drive is a coastal road in George Town with a long row of hawker stalls operating under a covered walkway. This is the best-known hawker centre in Penang and the most convenient for first-time visitors. The stalls are permanent, the seating is plentiful, and you can sample ten different dishes without walking more than fifty metres.
 
 The trick to Gurney Drive is knowing which stalls to queue at. Not every stall here is good. Some coast on their location. The ones worth waiting for have queues that start before the dinner rush.
 
@@ -20,7 +20,7 @@ The trick to Gurney Drive is knowing which stalls to queue at. Not every stall h
 
 Chulia Street runs through the heart of the George Town heritage zone. During the day it is a busy road of shophouses and backpacker hostels. In the evening it transforms into a street food corridor. The hawkers here cater to a mix of locals and international visitors, but the locals are more discerning. The stalls that survive on Chulia Street are the ones residents of George Town walk to for dinner.
 
-**Hokkien mee** in Penang is a prawn noodle soup. The broth is made by simmering prawn shells and pork bones for hours until it turns a deep, rusty orange. Yellow noodles and rice vermicelli are served together in the same bowl, topped with prawns, sliced pork, hard-boiled egg, and a dollop of sambal. The Hokkien mee at the corner of Chulia Street and Jalan Masjid Kapitan Keling is the most famous version. It sells out by 8 PM most nights. Go early.
+**Hokkien mee** in Penang is a prawn noodle soup. The broth is made by simmering prawn shells and pork bones for hours until it turns a deep, rusty orange. Yellow noodles and rice vermicelli are served together in the same bowl, topped with prawns, sliced pork, hard-boiled egg, and a dollop of sambal. The Hokkien mee at the corner of Chulia Street and Jalan Masjid Kapitan Keling is the best-known version. It sells out by 8 PM most nights. Go early.
 
 **Wan tan mee** on Chulia Street is served dry with a dark soy dressing, topped with barbecued roast pork and wantan dumplings in a separate bowl of broth. The noodles at Kedai Kopi Heng Huat on Chulia Street are thinner than standard wan tan mee noodles and springier in texture. The char siew here is roasted with honey and five-spice powder, giving it a caramelised edge that balances the savoury soy dressing.
 

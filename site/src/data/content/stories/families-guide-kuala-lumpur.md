@@ -12,7 +12,7 @@ The Food Hall at Pavilion KL on the same street has a section dedicated to Malay
 
 ## Jalan Alor with Children: The Evening Strategy
 
-Jalan Alor is KL's most famous hawker street, but it can overwhelm children after 8 PM when the crowds are thick and the smoke is heavy. The trick is to arrive early.
+Jalan Alor is KL's best-known hawker street, but it can overwhelm children after 8 PM when the crowds are thick and the smoke is heavy. The trick is to arrive early.
 
 Show up at 5:30 PM when the stalls are just setting up. The street is still quiet, the cooks have time to talk to you, and you can grab a table directly in front of the stall you want. The char kway teow stall near the 7-Eleven is a safe first bet. The noodles are stir-fried with dark soy sauce and egg. Ask the cook to hold the chilli and cockles. Your children will eat what is essentially buttery noodles with prawns. RM 8 per plate.
 
