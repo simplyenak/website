@@ -216,6 +216,22 @@ def main():
             "vacuum_after_prune": True,
             "min_interval_hours": 24,
         },
+
+        # Plugins (opt-in by default). Merged list: keep the working
+        # search/delivery plugins and add the ops-relevant bundled ones.
+        "plugins": {
+            "enabled": [
+                "buzz-platform",
+                "web/agent-search",
+                "web-searxng",
+                "disk-cleanup",
+                "security-guidance",
+                "platforms/email",
+                "google_meet",
+                "teams_pipeline",
+            ],
+            "disabled": [],
+        },
     }
 
     # Fallback providers from env (overrides hardcoded list if set)

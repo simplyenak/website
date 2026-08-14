@@ -10,9 +10,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
-# Install hermes-agent v0.19.0 (latest stable)
-RUN pip install --no-cache-dir "hermes-agent[web,cron,voice]==0.19.0" && \
-    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]"
+# Install hermes-agent v0.20.0 (git tag v2026.8.3 — 0.20.0 is not on PyPI)
+RUN HERMES_NIX_BUILD=1 pip install --no-cache-dir \
+    "git+https://github.com/NousResearch/hermes-agent.git@v2026.8.3#egg=hermes-agent[web,cron,voice]" && \
+    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]" yt-dlp google-auth
 
 # Create the hermes user and all needed directories
 RUN useradd -m -s /bin/bash hermes && \
