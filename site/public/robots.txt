@@ -58,4 +58,7 @@ Allow: /
 Llms-txt: https://simplyenak.com/llms.txt
 Okf: https://simplyenak.com/okf/
 
+# IndexNow key for fast Bing/Yandex/LinkedIn indexing
+IndexNowKey: https://simplyenak.com/indexnow-key.txt
+
 Sitemap: https://simplyenak.com/sitemap-index.xml
