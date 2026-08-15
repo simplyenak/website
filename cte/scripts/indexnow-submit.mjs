@@ -29,7 +29,7 @@ const DOMAIN = argValue('domain') || process.env.INDEXNOW_DOMAIN;
 const DRY = process.argv.includes('--dry-run');
 const SITEMAP_INDEX = `https://${DOMAIN}/sitemap-index.xml`;
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
-const BATCH = 1000;
+const BATCH = 100;
 const SLEEP_MS = 500;
 
 if (!DOMAIN) {
@@ -49,7 +49,7 @@ if (!/^[a-f0-9]{64}$/i.test(key)) {
 
 const urls = new Set();
 async function collect(sitemapUrl) {
-  const res = await fetch(sitemapUrl, { headers: { 'user-agent': 'indexnow-submit/1.0' } });
+  const res = await fetchRetry(sitemapUrl, { headers: { 'user-agent': 'indexnow-submit/1.0' } });
   if (!res.ok) throw new Error(`GET ${sitemapUrl} -> HTTP ${res.status}`);
   const xml = await res.text();
   const locs = [...xml.matchAll(/<loc>\s*([^<\s]+?)\s*<\/loc>/g)].map((m) => m[1].trim());
@@ -62,6 +62,22 @@ async function collect(sitemapUrl) {
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Sitemap fetches through the CDN Worker occasionally flake (transient
+// 5xx/timeout) — retry with backoff instead of failing the whole run.
+async function fetchRetry(url, opts, attempts = 3) {
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const res = await fetch(url, opts);
+      if (res.ok) return res;
+      console.warn(`[indexnow] GET ${url} -> HTTP ${res.status} (attempt ${i}/${attempts})`);
+    } catch (e) {
+      console.warn(`[indexnow] GET ${url} -> ${e.message} (attempt ${i}/${attempts})`);
+    }
+    if (i < attempts) await sleep(1000 * i);
+  }
+  throw new Error(`GET ${url} failed after ${attempts} attempts`);
+}
 
 async function submit(batch) {
   const body = { host: DOMAIN, key, urlList: batch };

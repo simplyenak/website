@@ -14,6 +14,20 @@ echo "=== Payload Auto-Sync: $(date -u '+%Y-%m-%dT%H:%M:%SZ') ==="
 #    tracked edit (code, configs, workflows) on each hourly tick.
 git fetch origin main 2>&1 || echo "(no remote)"
 
+# 1b. Align the server branch with origin BEFORE touching content. The old
+#     --force-with-lease push below silently erased commits pushed from other
+#     checkouts (it killed the IndexNow deploy on 2026-08-13): the server
+#     branch never included origin's commits, so every hourly push rewrote
+#     origin/main with the server's shorter history. A clean-tree rebase fixes
+#     the branch; the push in step 5 is then a plain fast-forward. If the tree
+#     is dirty (e.g. heal-i18n mid-write), skip the rebase — the plain push
+#     will fail loudly instead of overwriting.
+if git diff --quiet && git diff --cached --quiet; then
+  git rebase origin/main 2>&1 || { echo "⚠ rebase failed — manual intervention needed (see log)"; exit 1; }
+else
+  echo "(working tree dirty — skipping origin rebase this tick)"
+fi
+
 # Only checkout origin content when the content dir is CLEAN. If the heal-i18n
 # pipeline has uncommitted translation writes in src/data/content/, a blind
 # `git checkout origin/main -- src/data/content/` would destroy them (this
@@ -55,11 +69,12 @@ echo "--- Changes detected ---"
 git diff --stat -- src/data/content/
 
 # 5. Commit and push
-# Use --force-with-lease to handle diverged branches safely.
-# The sync script may run on a branch that has local commits ahead of origin.
+# Plain push ONLY. Force pushes from this cron silently erased remote commits
+# (IndexNow deploy, 2026-08-13). After the step-1b rebase this is a fast-forward;
+# if it is not, fail loudly and let the next tick or a human reconcile.
 echo "--- Committing and pushing ---"
 git add src/data/content/
 git commit -m "chore: auto-sync Payload CMS content $(date '+%Y-%m-%d')"
-git push origin main --force-with-lease 2>&1 || git push origin main --force 2>&1
+git push origin main 2>&1 || { echo "⚠ push failed (non-fast-forward) — another checkout has unpushed work; fix manually"; exit 1; }
 
 echo "✅ Push complete — deploy triggered."
