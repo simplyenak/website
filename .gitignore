@@ -109,3 +109,6 @@ scripts/known-secrets.txt
 .i18n-heal.lock
 site/src/data/content/.translate-backup/
 site/src/data/content/.sync-backup/
+frontend/.claude/
+revamp/.claude/
+*.env.cloudflare
