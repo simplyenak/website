@@ -6,8 +6,10 @@ Run: python3 scripts/seo-automation/test-refresh-loop.py
 (no network, no GSC credentials needed — pure logic tests)
 """
 import importlib.util
+import json
 import sys
 import unittest
+import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent.parent
@@ -144,6 +146,89 @@ class TestMissingRedirect(unittest.TestCase):
             self.assertIsNone(rl.missing_redirect_check("https://simplyenak.com/foo"))
         finally:
             rl.check_url_status = orig
+
+
+class TestVerify(unittest.TestCase):
+    def setUp(self):
+        self.orig_status = rl.check_url_status
+        self.orig_open = urllib.request.urlopen
+        # isolate from the real output dir
+        self.orig_dir = rl.OUTPUT_DIR
+        self.tmp = Path(__file__).parent / "_test_verify"
+        self.tmp.mkdir(exist_ok=True)
+        rl.OUTPUT_DIR = self.tmp
+
+    def tearDown(self):
+        rl.check_url_status = self.orig_status
+        urllib.request.urlopen = self.orig_open
+        rl.OUTPUT_DIR = self.orig_dir
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _write_latest(self, pages):
+        (self.tmp / "refresh-loop_latest.json").write_text(
+            json.dumps({"meta": {}, "pages": pages, "missing_redirects": []}))
+
+    def test_verify_pass_when_rendered(self):
+        self._write_latest([{"page": "https://simplyenak.com/stories/foo"}])
+        rl.check_url_status = lambda url, timeout=12: {"status": 200, "redirect": None, "error": None}
+
+        def fake_open(req, timeout=20):
+            class R:
+                def read(self):
+                    return b'<html><title>Foo - Simply Enak</title><body><p>Intro paragraph text.</p></body></html>'
+            return R()
+
+        urllib.request.urlopen = fake_open
+        self.assertEqual(rl.verify(), 0)
+
+    def test_verify_fails_on_404(self):
+        self._write_latest([{"page": "https://simplyenak.com/stories/foo"}])
+        rl.check_url_status = lambda url, timeout=12: {"status": 404, "redirect": None, "error": None}
+        self.assertEqual(rl.verify(), 1)
+
+    def test_verify_fails_when_rendered_title_missing(self):
+        # snapshot says meta_title is "Expected Title", rendered page lacks it
+        self._write_latest([{"page": "https://simplyenak.com/stories/foo"}])
+        rl.check_url_status = lambda url, timeout=12: {"status": 200, "redirect": None, "error": None}
+
+        orig_resolve = rl.resolve_content_source
+        rl.resolve_content_source = lambda page: {
+            "file": "/nonexistent/stories.json", "collection": "stories",
+            "slug": "foo", "meta_title": "Expected Refresh Title",
+            "meta_description": ""}
+
+        def fake_open(req, timeout=20):
+            class R:
+                def read(self):
+                    return b'<html><title>Stale Title</title><body><p>different text entirely</p></body></html>'
+            return R()
+
+        urllib.request.urlopen = fake_open
+        try:
+            # expect_body stays empty (no stories.json on disk), but the
+            # expected title is missing from the rendered page → must fail
+            self.assertEqual(rl.verify(), 1)
+        finally:
+            rl.resolve_content_source = orig_resolve
+
+    def test_verify_redirect_target(self):
+        self._write_latest([{"page": "https://simplyenak.com/stories/foo",
+                             "missing_redirect": {"stories_url": "https://simplyenak.com/stories/foo/"}}])
+        # the redirect target must answer 200; the root URL 404 is expected
+        rl.check_url_status = lambda url, timeout=12: {"status": 200, "redirect": None, "error": None}
+        self.assertEqual(rl.verify(), 0)
+
+    def test_first_markdown_paragraph_skips_h1(self):
+        md = "# Title\n\nFirst real paragraph here.\n\nSecond paragraph."
+        self.assertEqual(rl._first_markdown_paragraph(md), "First real paragraph here.")
+
+    def test_first_lexical_paragraph(self):
+        content = {"root": {"children": [
+            {"type": "heading", "children": [{"text": "H1"}]},
+            {"type": "paragraph", "children": [{"text": "First para"}]},
+        ]}}
+        self.assertEqual(rl._first_lexical_paragraph(content), "First para")
 
 
 if __name__ == "__main__":

@@ -629,14 +629,149 @@ def reindex(dry_run: bool = False):
     sys.exit(1 if failed else 0)
 
 
+def _strip_markdown(text: str) -> str:
+    """Strip common markdown syntax for a plain-text probe."""
+    import re
+    return re.sub(r"[#*_`>\[\]()]", "", text or "").strip()
+
+
+def _first_markdown_paragraph(text: str) -> str:
+    """First real paragraph of markdown, skipping the H1 heading line."""
+    if not text:
+        return ""
+    lines = text.splitlines()
+    # drop leading heading(s) and blank lines
+    body = [ln for ln in lines if not ln.lstrip().startswith("#") and ln.strip()]
+    return body[0] if body else ""
+
+
+def _first_lexical_paragraph(content: dict) -> str:
+    """Extract the first paragraph text from Payload lexical content."""
+    root = (content or {}).get("root", {})
+    for child in root.get("children", []):
+        if isinstance(child, dict) and child.get("type") == "paragraph":
+            return "".join(
+                c.get("text", "") for c in child.get("children", []) if isinstance(c, dict)
+            ).strip()
+    return ""
+
+
+def verify(live: bool = True) -> int:
+    """Verify the refreshed pages actually RENDER the current content.
+
+    Closes the loop the brief/reindex leave open: the deploy rebuilds from
+    Payload at build time (prebuild sync hook), so the rendered page must
+    contain what the snapshot currently holds. This catches stale deploys,
+    wrong-field writes (content vs content_markdown), and missing redirects
+    (checks the /stories/ twin answers 200).
+
+    Reads refresh-loop_latest.json for the flagged URLs, resolves each page's
+    current meta_title + body intro from the content snapshots, then checks
+    the live HTML. Exit 1 if any check fails.
+    """
+    import re
+    latest = OUTPUT_DIR / "refresh-loop_latest.json"
+    if not latest.exists():
+        print("ERROR: no refresh-loop_latest.json — run the analysis first")
+        return 1
+    data = json.loads(latest.read_text())
+    entries = list(data.get("pages", [])) + list(data.get("missing_redirects", []))
+    if not entries:
+        print("Nothing to verify (no pages flagged).")
+        return 0
+
+    failures = 0
+    for e in entries:
+        url = e["page"]
+        src = resolve_content_source(url)
+        expect_title = src.get("meta_title") or ""
+        expect_body = ""
+        # Body probe: the FULL first paragraph of the story's markdown (the
+        # rendered field). Building it from markdown and checking the rendered
+        # HTML catches stale deploys; the divergence check below catches
+        # wrong-field writes (content patched, markdown not).
+        if "stories" in src.get("collection", ""):
+            try:
+                items = json.loads(Path(src["file"]).read_text())
+                for s in items:
+                    if s.get("slug") == src.get("slug"):
+                        md = s.get("content_markdown") or ""
+                        lexical = s.get("content") or {}
+                        md_para = _strip_markdown(_first_markdown_paragraph(md))
+                        expect_body = md_para
+                        # Divergence warning: flag when the lexical first
+                        # paragraph has text the markdown is missing entirely
+                        # (an appended refresh sentence lost in one field).
+                        # Word-choice drift or sentence-in-different-paragraph
+                        # placement is benign — the rendered field is markdown,
+                        # and the live body check below is the real gate.
+                        lex_para = _first_lexical_paragraph(lexical)
+                        if md_para and lex_para:
+                            # longest common suffix check: text present in
+                            # lexical but not anywhere in the full markdown
+                            md_full = _strip_markdown(md)
+                            lex_tail = lex_para[-40:]
+                            if lex_tail not in md_full and len(lex_para) > len(md_para) + 40:
+                                print(f"  ⚠ {url} — lexical content has text missing from "
+                                      f"content_markdown (markdown renders; refresh may be lost)")
+                        break
+            except Exception:
+                pass
+
+        # redirect case: verify the /stories/ twin is live instead
+        check_url = url
+        if e.get("missing_redirect"):
+            check_url = e["missing_redirect"]["stories_url"]
+            expect_title = ""
+            expect_body = ""
+
+        st = check_url_status(check_url)
+        if st["status"] != 200:
+            print(f"  ✗ {url} → HTTP {st['status']} ({st.get('redirect') or st.get('error') or 'no redirect'})")
+            failures += 1
+            continue
+
+        if live and (expect_title or expect_body):
+            try:
+                import html as html_mod
+                with urllib.request.urlopen(urllib.request.Request(
+                        check_url, headers={"User-Agent": "refresh-loop-verify/1.0"}), timeout=20) as resp:
+                    raw = resp.read().decode("utf-8", errors="replace")
+                html_text = html_mod.unescape(raw)
+            except Exception as ex:
+                print(f"  ✗ {url} → fetch failed: {ex}")
+                failures += 1
+                continue
+            title_ok = not expect_title or re.sub(r"\s+", " ", expect_title)[:40] in html_text
+            body_ok = not expect_body or expect_body in html_text
+            if title_ok and body_ok:
+                print(f"  ✓ {url} (title{'/body' if expect_body else ''} present)")
+            else:
+                missing = []
+                if not title_ok:
+                    missing.append(f"title {expect_title[:40]!r}")
+                if not body_ok:
+                    missing.append(f"body {expect_body!r}")
+                print(f"  ✗ {url} → rendered page missing: {'; '.join(missing)}")
+                failures += 1
+        else:
+            print(f"  ✓ {url} (HTTP 200)")
+
+    print(f"\n[verify] {'FAILED' if failures else 'PASSED'} — {failures} failure(s)")
+    return 1 if failures else 0
+
+
 def main():
     parser = argparse.ArgumentParser(description="GSC Content Refresh Loop")
     parser.add_argument("--days", type=int, default=28, help="Lookback days per period (default 28)")
     parser.add_argument("--top", type=int, default=5, help="Top N pages for the brief (default 5)")
     parser.add_argument("--reindex", action="store_true", help="IndexNow the flagged URLs (run after deploy)")
     parser.add_argument("--dry-run", action="store_true", help="With --reindex: list URLs without submitting")
+    parser.add_argument("--verify", action="store_true", help="Check flagged pages render the current content (run after deploy)")
     args = parser.parse_args()
 
+    if args.verify:
+        sys.exit(verify())
     if args.reindex:
         reindex(dry_run=args.dry_run)
         return
