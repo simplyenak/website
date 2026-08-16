@@ -14,6 +14,13 @@ var REDIRECTS = {
   "/pt/stories/eating-durians": "/stories/eating-durians/",
   "/do-malaysians-speak-english": "/stories/do-malaysians-speak-english",
   "/ms/stories/chinese-dumpling-festival": "/stories/chinese-dumpling-festival",
+  // Root-level story URLs still getting impressions but 404ing (missing after
+  // the /stories/ permalink migration) — ~926 imps/mo recovered (Aug 16 2026)
+  "/food-guide-chow-kit": "/stories/food-guide-chow-kit",
+  "/vegetarian-guide-kuala-lumpur": "/stories/vegetarian-guide-kuala-lumpur",
+  "/wedding-groups-guide-kuala-lumpur": "/stories/wedding-groups-guide-kuala-lumpur",
+  "/families-guide-kuala-lumpur": "/stories/families-guide-kuala-lumpur",
+  "/street-food-guide-kuala-lumpur": "/stories/street-food-guide-kuala-lumpur",
 
   // ── Priority 3a — Renamed tours (727 imps/mo) ──
   "/tours/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
