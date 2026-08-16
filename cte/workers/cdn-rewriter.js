@@ -1,5 +1,5 @@
 var CDN_ORIGIN = "https://cdn.culinarytravelexperts.com";
-var PAGES_ORIGIN = "https://cte-site.pages.dev";
+var PAGES_ORIGIN = "https://culinary-travel-experts.pages.dev";
 var CDN_ROOT = "https://cdn.culinarytravelexperts.com";
 var STATIC_TTL = 2592000; // 30 days in seconds
 

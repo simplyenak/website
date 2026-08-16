@@ -42,7 +42,7 @@ function handleRequest(request) {
       html = html.replace("Culinary Travel Experts. All rights reserved.", "Local Culinary Travel Experiences Sdn. Bhd.");
       html = html.replace(/unforgettable/gi, "remarkable");
 
-      return new Response(html, { headers: { "content-type": "text/html; charset=utf-8" } });
+      return new Response(html, { status: res.status, headers: { "content-type": "text/html; charset=utf-8" } });
     });
   });
 }
