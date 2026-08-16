@@ -338,6 +338,30 @@ async function preflightCheck() {
   }
 }
 
+/**
+ * Recursively strip sensitive user fields from Payload docs before writing
+ * snapshots. Payload populates relationship fields (e.g. stories.author) at
+ * depth=3 with the FULL user doc, including apiKey, sessions and password
+ * hashes. These are committed to a public repo — never persist them.
+ */
+const SENSITIVE_USER_KEYS = new Set(['apiKey', 'apiKeyIndex', 'sessions', 'password', 'salt', 'hash'])
+function stripSensitiveFields(node) {
+  if (Array.isArray(node)) {
+    for (const item of node) stripSensitiveFields(item)
+    return node
+  }
+  if (node && typeof node === 'object') {
+    for (const key of Object.keys(node)) {
+      if (SENSITIVE_USER_KEYS.has(key)) {
+        delete node[key]
+      } else {
+        stripSensitiveFields(node[key])
+      }
+    }
+  }
+  return node
+}
+
 function writeJSON(filename, data, options = {}) {
   if (DRY_RUN) {
     if (VERBOSE) log(`  [DRY RUN] Would write ${filename}`)
@@ -483,6 +507,7 @@ function writeJSON(filename, data, options = {}) {
     } catch { /* if we can't read existing file, proceed without translations */ }
   }
 
+  stripSensitiveFields(data)
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n', 'utf-8')
   stats.written++
   if (VERBOSE) log(`  ✅ ${filename}`)
