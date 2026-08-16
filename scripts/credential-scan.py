@@ -66,8 +66,16 @@ CHECKS = [
     ),
     (
         "Provider key formats",
-        r"(sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{22,}|xox[baprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}|sk-ant-[A-Za-z0-9_-]{20,})",
+        r"(sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{22,}|xox[baprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}|sk-ant-[A-Za-z0-9_-]{20,}|[a-f0-9]{32}\.[A-Za-z0-9_-]{16,})",
         ("*",),
+    ),
+    (
+        "Literal credentials in dot-config / env.production files",
+        # Agent/editor config dirs (.claude/.vscode/.cursor/...) and production
+        # env snapshots must never carry real credential values. Placeholder
+        # values (example/REPLACE/changeme) are filtered by is_benign().
+        r"(?i)(api[_-]?key|secret|password|token|credential)\s*[=:]\s*[\"']?[A-Za-z0-9_\-./+]{16,}",
+        (".claude/*", ".claude/**", ".vscode/*", ".cursor/*", ".qwen/*", ".agents/*", "*.env.production"),
     ),
     (
         "env-get with real-value default",
