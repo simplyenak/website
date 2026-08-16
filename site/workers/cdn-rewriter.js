@@ -69,9 +69,13 @@ var REDIRECTS = {
   // durian-guide-2026 consolidated into eating-durians (cannibalization fix,
   // Aug 16 2026): only ranked for year-dated queries (~110 imp/mo), page merged
   "/durian-guide-2026": "/stories/eating-durians",
+  "/durian-guide-2026/": "/stories/eating-durians",
   "/stories/durian-guide-2026": "/stories/eating-durians",
+  "/stories/durian-guide-2026/": "/stories/eating-durians",
   "/pt/stories/durian-guide-2026": "/stories/eating-durians",
+  "/pt/stories/durian-guide-2026/": "/stories/eating-durians",
   "/nl/stories/durian-guide-2026": "/stories/eating-durians",
+  "/nl/stories/durian-guide-2026/": "/stories/eating-durians",
   "/food-safety": "/stories/food-safety",
   "/gluten-free-guide-malaysia": "/stories/gluten-free-guide-malaysia",
   "/hidden-gems-in-kuala-lumpur": "/stories/hidden-gems-in-kuala-lumpur",
