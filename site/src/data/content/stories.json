@@ -9,7 +9,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -63,7 +63,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -117,388 +117,6 @@
     "_status": "draft"
   },
   {
-    "id": 274,
-    "title": "How do I know if a restaurant is halal in Malaysia",
-    "slug": "faq-how-do-i-know-if-a-restaurant-is-halal-in-malaysia",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: How do I know if a restaurant is halal in Malaysia",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: How do I know if a restaurant is halal in Malaysia",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## How do I know if a restaurant is halal in Malaysia\n\nHalal-certified restaurants in Malaysia display a green JAKIM halal logo on their signage or near the entrance. You can also look for the words 'Makanan Halal' or 'Halal' on the menu. Malay restaurants are almost always halal, as are Indian Muslim stalls. Chinese restaurants that serve halal food advertise it prominently. Our Simply Enak food tours only visit halal-friendly stops, so there is never any guesswork.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best halal food malaysia spots. Book your tour today.*\n",
-    "publishedDate": "2026-08-06T11:00:31.120Z",
-    "featuredImage": {
-      "id": 438,
-      "alt": "A table with plates of roti jala and chicken curry on a black plastic table",
-      "caption": "A traditional Malaysian breakfast spread",
-      "polaroidLabel": null,
-      "credit": "Tianchad / Simply Enak",
-      "location_ref": null,
-      "neighbourhood_ref": [],
-      "food_ref": [],
-      "dietary_ref": [],
-      "travel_type_ref": [],
-      "specialty_ref": [],
-      "vendor_ref": [],
-      "usage": null,
-      "tags": [],
-      "renameTo": null,
-      "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:26:32.594Z",
-      "createdAt": "2026-08-13T13:12:41.773Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0386_DSC_4351-opq3007862610.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0386_DSC_4351-opq3007862610-400x300.webp",
-      "filename": "0386_DSC_4351-opq3007862610.webp",
-      "mimeType": "image/webp",
-      "filesize": 328578,
-      "width": 3884,
-      "height": 2589,
-      "focalX": 50,
-      "focalY": 50,
-      "sizes": {
-        "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0386_DSC_4351-opq3007862610-400x300.webp",
-          "width": 400,
-          "height": 300,
-          "mimeType": "image/webp",
-          "filesize": 14766,
-          "filename": "0386_DSC_4351-opq3007862610-400x300.webp"
-        },
-        "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0386_DSC_4351-opq3007862610-800x600.webp",
-          "width": 800,
-          "height": 600,
-          "mimeType": "image/webp",
-          "filesize": 40840,
-          "filename": "0386_DSC_4351-opq3007862610-800x600.webp"
-        },
-        "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0386_DSC_4351-opq3007862610-1200x800.webp",
-          "width": 1200,
-          "height": 800,
-          "mimeType": "image/webp",
-          "filesize": 66548,
-          "filename": "0386_DSC_4351-opq3007862610-1200x800.webp"
-        }
-      }
-    },
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [],
-    "meta": {
-      "title": "How do I know if a restaurant is halal in Malaysia",
-      "description": "Halal-certified restaurants in Malaysia display a green JAKIM halal logo on their signage or near the entrance. You can also look for the words 'Makanan Halal' ",
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:10.814Z",
-    "createdAt": "2026-08-06T03:00:31.152Z",
-    "_status": "draft"
-  },
-  {
-    "id": 273,
-    "title": "Is all food in Malaysia halal",
-    "slug": "faq-is-all-food-in-malaysia-halal",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: Is all food in Malaysia halal",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: Is all food in Malaysia halal",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## Is all food in Malaysia halal\n\nNot all food in Malaysia is halal, but the majority is. Malaysia has a strong halal certification system through JAKIM, and most restaurants and food stalls display their halal status clearly. Chinese restaurants and stalls are generally not halal-certified, while Malay and Indian Muslim establishments are. If you are unsure, look for the halal certification logo or simply ask the vendor. On our food tours, every stop is halal-friendly.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best halal food malaysia spots. Book your tour today.*\n",
-    "publishedDate": "2026-08-06T11:00:31.068Z",
-    "featuredImage": {
-      "id": 439,
-      "alt": "Vendor grilling meat on a charcoal grill in a Penang hawker center.",
-      "caption": "Meat on the grill in a Penang hawker center.",
-      "polaroidLabel": null,
-      "credit": "Tianchad / Simply Enak",
-      "location_ref": null,
-      "neighbourhood_ref": [],
-      "food_ref": [],
-      "dietary_ref": [],
-      "travel_type_ref": [],
-      "specialty_ref": [],
-      "vendor_ref": [],
-      "usage": null,
-      "tags": [],
-      "renameTo": null,
-      "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:26:35.197Z",
-      "createdAt": "2026-08-13T13:12:50.607Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0023_DSC_7176-opq3008224422.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0023_DSC_7176-opq3008224422-400x300.webp",
-      "filename": "0023_DSC_7176-opq3008224422.webp",
-      "mimeType": "image/webp",
-      "filesize": 427372,
-      "width": 3980,
-      "height": 2653,
-      "focalX": 50,
-      "focalY": 50,
-      "sizes": {
-        "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0023_DSC_7176-opq3008224422-400x300.webp",
-          "width": 400,
-          "height": 300,
-          "mimeType": "image/webp",
-          "filesize": 18484,
-          "filename": "0023_DSC_7176-opq3008224422-400x300.webp"
-        },
-        "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0023_DSC_7176-opq3008224422-800x600.webp",
-          "width": 800,
-          "height": 600,
-          "mimeType": "image/webp",
-          "filesize": 53070,
-          "filename": "0023_DSC_7176-opq3008224422-800x600.webp"
-        },
-        "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0023_DSC_7176-opq3008224422-1200x800.webp",
-          "width": 1200,
-          "height": 800,
-          "mimeType": "image/webp",
-          "filesize": 86014,
-          "filename": "0023_DSC_7176-opq3008224422-1200x800.webp"
-        }
-      }
-    },
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [],
-    "meta": {
-      "title": "Is all food in Malaysia halal",
-      "description": "Not all food in Malaysia is halal, but the majority is. Malaysia has a strong halal certification system through JAKIM, and most restaurants and food stalls dis",
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:11.425Z",
-    "createdAt": "2026-08-06T03:00:31.096Z",
-    "_status": "draft"
-  },
-  {
-    "id": 270,
-    "title": "Where can I find the best street food in Kuala Lumpur",
-    "slug": "faq-where-can-i-find-the-best-street-food-in-kuala-lumpur",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: Where can I find the best street food in Kuala Lumpur",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: Where can I find the best street food in Kuala Lumpur",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## Where can I find the best street food in Kuala Lumpur\n\nJalan Alor is the most famous street food street in Kuala Lumpur, packed with outdoor stalls and busy until midnight. But locals know the best food is often found in food courts and hawker centres like SS2 in Petaling Jaya, the Bangsar Night Market on Wednesdays, and the food court at Lot 10 on Bukit Bintang. Chinatown's Petaling Street also has great options. The trick is to go where the queues are.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best street food malaysia spots. Book your tour today.*\n",
-    "publishedDate": "2026-08-06T11:00:30.932Z",
-    "featuredImage": null,
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [],
-    "meta": {
-      "title": "Where can I find the best street food in Kuala Lumpur",
-      "description": "Jalan Alor is the most famous street food street in Kuala Lumpur, packed with outdoor stalls and busy until midnight. But locals know the best food is often fou",
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:12.009Z",
-    "createdAt": "2026-08-06T03:00:30.963Z",
-    "_status": "draft"
-  },
-  {
-    "id": 269,
-    "title": "What is the most popular street food in Malaysia",
-    "slug": "faq-what-is-the-most-popular-street-food-in-malaysia",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: What is the most popular street food in Malaysia",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: What is the most popular street food in Malaysia",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## What is the most popular street food in Malaysia\n\nNasi lemak is widely considered Malaysia's most popular street food. This fragrant coconut rice dish comes with sambal, anchovies, peanuts, and a hard-boiled egg, wrapped in banana leaf. You can find it at nearly every street corner in Kuala Lumpur and Penang from early morning until late evening. Each stall puts its own spin on the sambal. Our food tours always include a nasi lemak stop so you can taste why Malaysians call it their national dish.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best street food malaysia spots. Book your tour today.*\n",
-    "publishedDate": "2026-08-06T11:00:30.828Z",
-    "featuredImage": {
-      "id": 440,
-      "alt": "A man standing behind a food stall with various dishes in front of him.",
-      "caption": "A vendor at his food stall in Penang",
-      "polaroidLabel": null,
-      "credit": "Tianchad / Simply Enak",
-      "location_ref": null,
-      "neighbourhood_ref": [],
-      "food_ref": [],
-      "dietary_ref": [],
-      "travel_type_ref": [],
-      "specialty_ref": [],
-      "vendor_ref": [],
-      "usage": null,
-      "tags": [],
-      "renameTo": null,
-      "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:26:37.323Z",
-      "createdAt": "2026-08-13T13:13:02.464Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0348_DSC_4556-opq3007872166.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0348_DSC_4556-opq3007872166-400x300.webp",
-      "filename": "0348_DSC_4556-opq3007872166.webp",
-      "mimeType": "image/webp",
-      "filesize": 463344,
-      "width": 3962,
-      "height": 2640,
-      "focalX": 50,
-      "focalY": 50,
-      "sizes": {
-        "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0348_DSC_4556-opq3007872166-400x300.webp",
-          "width": 400,
-          "height": 300,
-          "mimeType": "image/webp",
-          "filesize": 19312,
-          "filename": "0348_DSC_4556-opq3007872166-400x300.webp"
-        },
-        "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0348_DSC_4556-opq3007872166-800x600.webp",
-          "width": 800,
-          "height": 600,
-          "mimeType": "image/webp",
-          "filesize": 55402,
-          "filename": "0348_DSC_4556-opq3007872166-800x600.webp"
-        },
-        "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0348_DSC_4556-opq3007872166-1200x800.webp",
-          "width": 1200,
-          "height": 800,
-          "mimeType": "image/webp",
-          "filesize": 92750,
-          "filename": "0348_DSC_4556-opq3007872166-1200x800.webp"
-        }
-      }
-    },
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [],
-    "meta": {
-      "title": "What is the most popular street food in Malaysia",
-      "description": "Nasi lemak is widely considered Malaysia's most popular street food. This fragrant coconut rice dish comes with sambal, anchovies, peanuts, and a hard-boiled eg",
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:12.601Z",
-    "createdAt": "2026-08-06T03:00:30.872Z",
-    "_status": "draft"
-  },
-  {
     "id": 268,
     "title": "Durian Season in Malaysia: When to Visit for the Best Fruit (2026 Guide)",
     "slug": "durian-season-malaysia",
@@ -508,7 +126,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -767,7 +385,7 @@
         "direction": "ltr"
       }
     },
-    "content_markdown": "# Durian Season in Malaysia: When to Visit for the Best Fruit (2026 Guide)\n\nDurian season in Malaysia runs from **June to August**, with the peak in July. This is when you'll find the widest variety, the best prices, and the freshest fruit. But the exact timing shifts depending on where you are in the country.\n\n## The Main Season: June to August\n\nThe biggest durian season falls between June and August. During these months, the orchards across Peninsular Malaysia are producing fruit at full capacity. This is when Musang King (Mao Shan Wang), Black Thorn, and D24 hit the markets in the largest quantities.\n\n**What this means for you:**\n\n- **Best selection**: Every major variety is available\n- **Lowest prices**: Supply is high, so prices drop\n- **Freshest fruit**: Direct from orchard, not stored or shipped\n\nIn KL, you'll see durian stalls appear overnight. One day a quiet street corner, the next a lineup of pickup trucks with the fruit loaded on the back. The vendors are usually farmers or their representatives, selling directly to cut out the middlemen.\n\n## Regional Variations\n\nDurian doesn't ripen everywhere at the same time. The season moves through Malaysia in a rough arc from north to south.\n\n**Penang and Kedah**: Season starts early, usually late May. Penang is known for its Black Thorn and Hor Lor varieties. The Balik Pulau area, on the quieter side of the island, has orchards that open to visitors during peak season.\n\n**Pahang (Temerloh, Genting Highlands)**: This is the durian heartland. Temerloh is known as \"Durian Town\" and hosts a festival every July. The season here runs from June through August, with some late harvests into September.\n\n**Selangor (Bukit Tinggi, Fraser's Hill)**: These highland areas produce durian from June to August. The cooler climate means slightly later ripening than the lowlands.\n\n**Johor**: The southernmost state has a slightly different cycle. Some varieties ripen earlier in May, others later into September. Johor is also where you'll find Golden Phoenix, a bitter, watery variety that's grown from old trees.\n\n## Secondary Seasons\n\nMalaysia has a smaller durian season from **November to January**. This is less predictable and produces fewer varieties. You'll still find fruit, but the selection is narrower and the prices are higher.\n\nThere's also a brief window in **March to April** in some areas, but this is the leanest period. Don't plan a trip around this if durian is your main goal.\n\n## What to Expect by Month\n\n**June**: Season kicks off. Penang leads the way. KL markets start seeing durian trucks. Prices are still relatively high as supply ramps up.\n\n**July**: Peak season. Everything is available. Prices are at their lowest. This is when Temerloh hosts its durian festival. If you can only visit one month, make it July.\n\n**August**: Season winds down. Some late varieties are still available, but the best selections are gone. Prices start climbing again.\n\n## How to Time Your Trip\n\nIf durian is your priority, plan for **mid-June to mid-August**. This gives you the widest window to catch the fruit at different stages of the season.\n\nStay at least three days. Durian is seasonal and weather-dependent. A storm can knock fruit from the trees early, or delay the harvest. Having a few days gives you flexibility.\n\n## Where to Eat Durian During Season\n\n**KL:**\n- Jalan Alor: several durian stalls appear every June\n- Taman Connaught: vendors park their trucks and sell straight from the back\n- Bangsar: some stalls set up during peak season\n\n**Penang:**\n- George Town: the durian strip along Jalan Burma and surrounding streets\n- Balik Pulau: visit the orchards directly\n- Night markets: durian is a regular feature during season\n\n**Temerloh:**\n- The town itself is the goal. Every shop and roadside stall sells durian during season.\n\n## Price Guide\n\nDurian prices vary by variety and size. Here's what to expect during peak season:\n\n- **Musang King (Mao Shan Wang):** RM 30-50 per fruit, RM 60-80 per kilogram\n- **D24:** RM 20-35 per fruit\n- **Black Thorn:** RM 40-60 per fruit\n- **Durian kampung:** RM 10-20 per fruit\n\nPrices drop during peak season but rise sharply once supply dwindles.\n\n## A Note on Durian and Hotels\n\nDurian is banned in most hotels, shopping malls, and public transport across Malaysia. This isn't a cultural preference: it's enforcement. Hotels will ask you to dispose of the fruit before checking in. Some have lockers where you can store durian for a few hours.\n\nIf you're staying in a hotel and want to eat durian, buy it from a vendor outside and eat it nearby. Don't take it back to your room.\n\n## Ready to Taste Durian at Its Best?\n\nIf you're visiting during durian season and want to experience it properly, the Simply Enak Penang food tour includes a durian tasting stop at a trusted vendor in George Town. Your guide explains the varieties, helps you choose, and makes sure you get the best fruit for your budget.",
+    "content_markdown": "# Durian Season in Malaysia: When to Visit for the Best Fruit (2026 Guide)\n\nDurian season in Malaysia runs from **June to August**, with the peak in July. This is when you'll find the widest variety, the best prices, and the freshest fruit. But the exact timing shifts depending on where you are in the country.\n\n## The Main Season: June to August\n\nThe biggest durian season falls between June and August. During these months, the orchards across Peninsular Malaysia are producing fruit at full capacity. This is when Musang King (Mao Shan Wang), Black Thorn, and D24 hit the markets in the largest quantities.\n\n**What this means for you:**\n\n- **Best selection**: Every major variety is available\n- **Lowest prices**: Supply is high, so prices drop\n- **Freshest fruit**: Direct from orchard, not stored or shipped\n\nIn KL, you'll see durian stalls appear overnight. One day a quiet street corner, the next a lineup of pickup trucks with the fruit loaded on the back. The vendors are usually farmers or their representatives, selling directly to cut out the middlemen.\n\n## Regional Variations\n\nDurian doesn't ripen everywhere at the same time. The season moves through Malaysia in a rough arc from north to south.\n\n**Penang and Kedah**: Season starts early, usually late May. Penang is known for its Black Thorn and Hor Lor varieties. The Balik Pulau area, on the quieter side of the island, has orchards that open to visitors during peak season.\n\n**Pahang (Temerloh, Genting Highlands)**: This is the durian heartland. Temerloh is known as \"Durian Town\" and hosts a festival every July. The season here runs from June through August, with some late harvests into September.\n\n**Selangor (Bukit Tinggi, Fraser's Hill)**: These highland areas produce durian from June to August. The cooler climate means slightly later ripening than the lowlands.\n\n**Johor**: The southernmost state has a slightly different cycle. Some varieties ripen earlier in May, others later into September. Johor is also where you'll find Golden Phoenix, a bitter, watery variety that's grown from old trees.\n\n## Secondary Seasons\n\nMalaysia has a smaller durian season from **November to January**. This is less predictable and produces fewer varieties. You'll still find fruit, but the selection is narrower and the prices are higher.\n\nThere's also a brief window in **March to April** in some areas, but this is the leanest period. Don't plan a trip around this if durian is your main goal.\n\n## What to Expect by Month\n\n**June**: Season kicks off. Penang leads the way. KL markets start seeing durian trucks. Prices are still relatively high as supply ramps up.\n\n**July**: Peak season. Everything is available. Prices are at their lowest. This is when Temerloh hosts its durian festival. If you can only visit one month, make it July.\n\n**August**: Season winds down. Some late varieties are still available, but the best selections are gone. Prices start climbing again.\n\n## How to Time Your Trip\n\nIf durian is your priority, plan for **mid-June to mid-August**. This gives you the widest window to catch the fruit at different stages of the season.\n\nStay at least three days. Durian is seasonal and weather-dependent. A storm can knock fruit from the trees early, or delay the harvest. Having a few days gives you flexibility.\n\n## Where to Eat Durian During Season\n\n**KL:**\n- Jalan Alor: several durian stalls appear every June\n- Taman Connaught: vendors park their trucks and sell straight from the back\n- Bangsar: some stalls set up during peak season\n\n**Penang:**\n- George Town: the durian strip along Jalan Burma and surrounding streets\n- Balik Pulau: visit the orchards directly\n- Night markets: durian is a regular feature during season\n\n**Temerloh:**\n- The town itself is the goal. Every shop and roadside stall sells durian during season.\n\n## Price Guide\n\nDurian prices vary by variety and size. Here's what to expect during peak season:\n\n- **Musang King (Mao Shan Wang):** RM 30-50 per fruit, RM 60-80 per kilogram\n- **D24:** RM 20-35 per fruit\n- **Black Thorn:** RM 40-60 per fruit\n- **Durian kampung:** RM 10-20 per fruit\n\nPrices drop during peak season but rise sharply once supply dwindles.\n\n## How to Pick a Good Durian\n\nA few things we teach on tour, and use ourselves:\n\n- **Shape** — rounder fruit has more flesh per shell than long, oval ones.\n- **Stem** — a thick, short stem usually means thick flesh inside.\n- **Aroma** — a strong smell even unopened is a good sign. If you can't smell it, it's likely underripe.\n- **The knock test** — tap the shell. A deep, hollow sound means it's ready; a high, tight sound means it's not.\n- **Never buy pre-opened** — the flesh loses its aroma and sweetness once exposed. Let the vendor crack it in front of you.\n\n## A Note on Durian and Hotels\n\nDurian is banned in most hotels, shopping malls, and public transport across Malaysia. This isn't a cultural preference: it's enforcement. Hotels will ask you to dispose of the fruit before checking in. Some have lockers where you can store durian for a few hours.\n\nIf you're staying in a hotel and want to eat durian, buy it from a vendor outside and eat it nearby. Don't take it back to your room.\n\n## Ready to Taste Durian at Its Best?\n\nIf you're visiting during durian season and want to experience it properly, the Simply Enak Penang food tour includes a durian tasting stop at a trusted vendor in George Town. Your guide explains the varieties, helps you choose, and makes sure you get the best fruit for your budget.",
     "publishedDate": null,
     "featuredImage": {
       "id": 441,
@@ -835,7 +453,7 @@
       "description": "Plan your durian trip to Malaysia. Peak season is June-August. Learn when to visit, where to find the best fruit, and what varieties are available by month.",
       "image": null
     },
-    "updatedAt": "2026-08-14T03:08:01.184Z",
+    "updatedAt": "2026-08-16T08:08:59.556Z",
     "createdAt": "2026-08-05T00:39:07.792Z",
     "_status": "published"
   },
@@ -849,7 +467,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -906,7 +524,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1045,7 +663,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1102,7 +720,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1219,414 +837,6 @@
     "_status": "draft"
   },
   {
-    "id": 257,
-    "title": "does malaysia speak english",
-    "slug": "faq-does-malaysia-speak-english",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: does malaysia speak english",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: does malaysia speak english",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## does malaysia speak english\n\nVisitors to Malaysia often want to know more about malaysia food guide. The short answer is that Malaysia's food scene is diverse, and there is something for every taste. The best approach is to try a few different options with a local guide who knows the ins and outs of the food scene. Simply Enak's tours in Kuala Lumpur and Penang cover the best this topic has to offer.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best malaysia food guide spots. Book your tour today.*\n",
-    "publishedDate": "2026-08-03T11:00:27.443Z",
-    "featuredImage": null,
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
-    "meta": {
-      "title": "does malaysia speak english",
-      "description": "Visitors to Malaysia often want to know more about malaysia food guide. The short answer is that Malaysia's food scene is diverse, and there is something for ev",
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:13.213Z",
-    "createdAt": "2026-08-03T03:00:27.913Z",
-    "_status": "draft"
-  },
-  {
-    "id": 245,
-    "title": "do malaysians speak english",
-    "slug": "faq-do-malaysians-speak-english",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: do malaysians speak english",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: do malaysians speak english",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## do malaysians speak english\n\nVisitors to Malaysia often want to know more about malaysia food guide. The short answer is that Malaysia's food scene is diverse, and there is something for every taste. The best approach is to try a few different options with a local guide who knows the ins and outs of the food scene. Simply Enak's tours in Kuala Lumpur and Penang cover the best this topic has to offer.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best malaysia food guide spots. Book your tour today.*\n",
-    "publishedDate": "2026-07-29T11:00:55.956Z",
-    "featuredImage": null,
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
-    "meta": {
-      "title": "do malaysians speak english",
-      "description": "Visitors to Malaysia often want to know more about malaysia food guide. The short answer is that Malaysia's food scene is diverse, and there is something for ev",
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:14.093Z",
-    "createdAt": "2026-07-29T03:00:56.404Z",
-    "_status": "draft"
-  },
-  {
-    "id": 241,
-    "title": "Where can I eat durian in Kuala Lumpur",
-    "slug": "faq-where-can-i-eat-durian-in-kuala-lumpur",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: Where can I eat durian in Kuala Lumpur",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: Where can I eat durian in Kuala Lumpur",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## Where can I eat durian in Kuala Lumpur\n\nKuala Lumpur has several excellent places to eat durian. The SS2 area in Petaling Jaya is famous for its durian stalls, especially along the main road where vendors set up shop during the season. There is also Durian Man in Cheras and Jin Xian Hong in Pudu for a sit-down durian experience. Many of these places let you choose your fruit and open it right in front of you. A Simply Enak durian tour takes you to the best stalls.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best durian malaysia spots. Book your tour today.*\n",
-    "publishedDate": "2026-07-29T11:00:52.675Z",
-    "featuredImage": null,
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
-    "meta": {
-      "title": "Where can I eat durian in Kuala Lumpur",
-      "description": "Kuala Lumpur has several excellent places to eat durian. The SS2 area in Petaling Jaya is famous for its durian stalls, especially along the main road where ven",
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:14.655Z",
-    "createdAt": "2026-07-29T03:00:53.121Z",
-    "_status": "draft"
-  },
-  {
     "id": 238,
     "title": "Malaysia Food Tours: What to Expect, What to Eat, and How to Choose",
     "slug": "malaysia-food-tours",
@@ -1636,7 +846,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1776,604 +986,6 @@
     "_status": "draft"
   },
   {
-    "id": 237,
-    "title": "What nights are night markets in Kuala Lumpur",
-    "slug": "faq-what-nights-are-night-markets-in-kuala-lumpur",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: What nights are night markets in Kuala Lumpur",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: What nights are night markets in Kuala Lumpur",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## What nights are night markets in Kuala Lumpur\n\nVisitors to Malaysia often want to know more about night market malaysia. The short answer is that Malaysia's food scene is diverse, and there is something for every taste. The best approach is to try a few different options with a local guide who knows the ins and outs of the food scene. Simply Enak's tours in Kuala Lumpur and Penang cover the best this topic has to offer.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best night market malaysia spots. Book your tour today.*\n",
-    "publishedDate": "2026-07-23T16:43:12.619Z",
-    "featuredImage": null,
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
-    "meta": {
-      "title": null,
-      "description": null,
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:15.285Z",
-    "createdAt": "2026-07-23T08:43:13.157Z",
-    "_status": "draft"
-  },
-  {
-    "id": 233,
-    "title": "What is included in a Malaysian food tour",
-    "slug": "faq-what-is-included-in-a-malaysian-food-tour",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: What is included in a Malaysian food tour",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: What is included in a Malaysian food tour",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## What is included in a Malaysian food tour\n\nWhat is included in a malaysian food tour is one of Malaysia's most interesting food experiences. You will find it across hawker centres, street stalls, and restaurants throughout Kuala Lumpur and Penang. Malaysians have been enjoying this as part of their daily food routine for generations. The best way to experience it is with a local guide who can take you to the places that do it right.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best malaysia food tour spots. Book your tour today.*\n",
-    "publishedDate": "2026-07-23T16:41:27.484Z",
-    "featuredImage": null,
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
-    "meta": {
-      "title": null,
-      "description": null,
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:15.941Z",
-    "createdAt": "2026-07-23T08:41:28.051Z",
-    "_status": "draft"
-  },
-  {
-    "id": 232,
-    "title": "How much does a food tour cost in Malaysia",
-    "slug": "faq-how-much-does-a-food-tour-cost-in-malaysia",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "FAQ: How much does a food tour cost in Malaysia",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: How much does a food tour cost in Malaysia",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## How much does a food tour cost in Malaysia\n\nThis is one of the most common questions visitors ask. Most street food dishes cost between RM5 and RM15, making Malaysia one of the most affordable food destinations in Southeast Asia. Portions are generous, and sharing dishes is the norm. If you are joining a guided tour, everything is included so you can focus on tasting rather than counting ringgit.\n\n---\n\n*Planning a trip to Malaysia? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best malaysia food tour spots. Book your tour today.*\n",
-    "publishedDate": "2026-07-23T16:41:25.618Z",
-    "featuredImage": null,
-    "meta_title": null,
-    "meta_description": null,
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
-    "meta": {
-      "title": null,
-      "description": null,
-      "image": null
-    },
-    "updatedAt": "2026-08-14T04:23:16.570Z",
-    "createdAt": "2026-07-23T08:41:27.328Z",
-    "_status": "draft"
-  },
-  {
-    "id": 231,
-    "title": "When is durian season in Malaysia",
-    "slug": "faq-when-is-durian-season-in-malaysia",
-    "specialtyExperiences": [],
-    "author": {
-      "id": 1,
-      "role": "admin",
-      "fullName": "Maarten",
-      "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
-      "createdAt": "2026-05-19T08:11:57.639Z",
-      "enableAPIKey": true,
-      "email": "admin@simplyenak.com",
-      "collection": "users"
-    },
-    "excerpt": "Durian season in Malaysia runs June to August, peaking in July. Month-by-month guide, regional differences, prices and how to pick a good one.",
-    "content": {
-      "root": {
-        "type": "root",
-        "format": "",
-        "indent": 0,
-        "version": 1,
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "text": "FAQ: When is durian season in Malaysia",
-                "type": "text"
-              }
-            ]
-          }
-        ],
-        "direction": "ltr"
-      }
-    },
-    "content_markdown": "## When is durian season in Malaysia?\n\nThe short answer: durian season in Malaysia runs mainly from **June to August**, with the peak in **July**. A smaller, less predictable secondary season runs from **November to January**. Penang's season starts first, usually in the last week of May.\n\nIf you can only plan one trip around durian, aim for **mid-June to mid-August**. That window gives you the widest variety at the lowest prices, from the first Musang Kings of the year to the late-season kampung fruit.\n\n## Why the season is different in every state\n\nDurian doesn't ripen across Malaysia at the same time. The harvest moves in a rough arc around the country, so the \"right\" month depends on where you are.\n\n**Penang and Kedah**: the earliest season. Stalls start appearing in late May, and Balik Pulau's orchards open to visitors through June and July. Penang is the place for Black Thorn and Hor Lor.\n\n**Pahang**: the durian heartland. Temerloh, known as Durian Town, runs its famous festival every July. The season here is June to August, with some late harvests spilling into September.\n\n**Selangor**: the highland orchards around Bukit Tinggi and Fraser's Hill ripen from June to August. The cooler climate pushes their crop slightly later than the lowlands.\n\n**Johor**: the southernmost state runs a different clock. Some varieties appear as early as May, others keep coming into September. Johor is where you find Golden Phoenix, the bitter, watery durian grown from old trees.\n\n## Month by month\n\n**June**: the season opens. Penang leads, then KL's streets fill with durian trucks. Prices are still a little high while supply ramps up.\n\n**July**: peak season across the peninsula. The widest selection, the best prices, and Temerloh's durian festival. If you can only visit one month, make it July.\n\n**August**: the season winds down. The best selections are gone by mid-month, but late varieties and kampung durian are still easy to find.\n\n**November to January**: the secondary season. Less predictable, fewer varieties, higher prices. Worth checking if you're travelling then, but don't plan a trip around it.\n\n**March to April**: the leanest window. Some areas have a brief crop, but this is the one time of year we'd say don't chase durian.\n\n## How the weather shapes the fruit\n\nDurian quality follows the rain. A dry spell before harvest concentrates the sweetness; heavy rain at the wrong moment means watery, disappointing fruit. This is why two stalls on the same street can sell noticeably different durians in the same week. If you're staying a few days, eat early in your trip and ask vendors what arrived that morning.\n\n## What you'll find at the stalls\n\nBy July, you'll see the full lineup:\n\n- **Musang King (Mao Shan Wang)**: bright yellow flesh, bittersweet and creamy. The most famous, and the most expensive. RM 30-50 per fruit in season.\n- **D24 (Sultan)**: pale yellow, thick flesh, a gentle bitterness. The dependable first-timer choice.\n- **Black Thorn**: Penang's pride, sweet and custardy with darker-tipped thorns. RM 40-60 in season.\n- **XO**: big fruit, thick flesh, a slightly boozy, bitter finish.\n- **Durian kampung**: the village durian, RM 10-20 a fruit. The taste varies from tree to tree, which is half the fun.\n\n## How to pick a good one\n\nA few things we teach on tour, and use ourselves:\n\n- **Shape**: rounder fruit has more flesh per shell than long, oval ones.\n- **Stem**: a thick, short stem usually means thick flesh inside.\n- **Aroma**: a strong smell even unopened is a good sign. If you can't smell it, it's likely underripe.\n- **The knock test**: tap the shell. A deep, hollow sound means it's ready; a high, tight sound means it's not.\n- **Never buy pre-opened**: the flesh loses its aroma and sweetness once exposed. Let the vendor crack it in front of you.\n\n## Where to eat durian during season\n\n**Kuala Lumpur**: Jalan Alor and Taman Connaught get stalls and trucks every June. Bangsar has a few seasonal spots. Vendors sell straight from pickup trucks to cut out the middleman, so the fruit is usually orchard-fresh.\n\n**Penang**: the durian strip along Jalan Macalister and Jalan Burma in George Town, and the orchards of Balik Pulau on the quieter side of the island. If you want to learn how to read a shell and tell a Musang King from a D24, our Georgetown night tour ends with a durian stop on the Macalister strip.\n\n**Temerloh**: the town itself is the destination. Every roadside stall sells durian during the festival weeks.\n\n## A note about hotels and transport\n\nDurian is banned in most hotels, malls, and on public transport across Malaysia, and the rule is enforced, not cultural. Vendors know this and will happily help you eat your fruit on the spot or pack it for immediate travel. If your hotel has a durian locker, use it; otherwise eat where you buy.\n\n---\n\n*Planning a durian trip? Simply Enak's food tours in Kuala Lumpur and Penang take you straight to the best stalls of the season. Book your tour today.*\n",
-    "publishedDate": "2026-07-23T16:40:56.495Z",
-    "featuredImage": {
-      "id": 442,
-      "alt": "Durian market display with many durians on wooden shelves.",
-      "caption": "Fresh durians on display at a market in Penang.",
-      "polaroidLabel": null,
-      "credit": "Tianchad / Simply Enak",
-      "location_ref": null,
-      "neighbourhood_ref": [],
-      "food_ref": [],
-      "dietary_ref": [],
-      "travel_type_ref": [],
-      "specialty_ref": [],
-      "vendor_ref": [],
-      "usage": null,
-      "tags": [],
-      "renameTo": null,
-      "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:26:41.708Z",
-      "createdAt": "2026-08-13T13:13:18.943Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0136_DSC_6444-opq3008224333.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0136_DSC_6444-opq3008224333-400x300.webp",
-      "filename": "0136_DSC_6444-opq3008224333.webp",
-      "mimeType": "image/webp",
-      "filesize": 754144,
-      "width": 3945,
-      "height": 2629,
-      "focalX": 50,
-      "focalY": 50,
-      "sizes": {
-        "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0136_DSC_6444-opq3008224333-400x300.webp",
-          "width": 400,
-          "height": 300,
-          "mimeType": "image/webp",
-          "filesize": 32556,
-          "filename": "0136_DSC_6444-opq3008224333-400x300.webp"
-        },
-        "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0136_DSC_6444-opq3008224333-800x600.webp",
-          "width": 800,
-          "height": 600,
-          "mimeType": "image/webp",
-          "filesize": 100712,
-          "filename": "0136_DSC_6444-opq3008224333-800x600.webp"
-        },
-        "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0136_DSC_6444-opq3008224333-1200x800.webp",
-          "width": 1200,
-          "height": 800,
-          "mimeType": "image/webp",
-          "filesize": 168614,
-          "filename": "0136_DSC_6444-opq3008224333-1200x800.webp"
-        }
-      }
-    },
-    "meta_title": "When Is Durian Season in Malaysia? Month-by-Month Guide | Simply Enak",
-    "meta_description": "Durian season in Malaysia runs June to August, peaking in July. Month-by-month guide, regional differences, prices and how to pick a good one.",
-    "status": "published",
-    "workflowStatus": "draft",
-    "scheduledPublish": null,
-    "locationsRef": [
-      {
-        "id": 14,
-        "name": "Kuala Lumpur",
-        "slug": "kuala-lumpur",
-        "icon": "🏙️",
-        "color": "#0ea5e9",
-        "description": "Kuala Lumpur's food scene runs 24 hours a day. Our KL food tours start at wet markets before dawn and end at Chinatown hawker stalls after dark. Banana leaf rice in Little India, claypot chicken rice in Pudu, roti canai flipped by an uncle who has done this for 50 years. Guides who know which stall is worth the queue — and which one to skip.",
-        "image": {
-          "id": 136,
-          "alt": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "caption": "Menara 118 during the Secrets of KL Food Tour by Simply Enak",
-          "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": null,
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-19T00:18:02.769Z",
-          "createdAt": "2026-06-19T00:18:01.822Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-landmark.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-          "filename": "simply-enak-landmark.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2305832,
-          "width": 2730,
-          "height": 4096,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 21170,
-              "filename": "DSC_9621-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68243,
-              "filename": "DSC_9621-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_9621-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 122310,
-              "filename": "DSC_9621-1200x800.jpg"
-            }
-          }
-        },
-        "status": "published",
-        "updatedAt": "2026-07-11T14:24:38.554Z",
-        "createdAt": "2026-05-19T08:33:20.569Z",
-        "_status": "published"
-      },
-      {
-        "id": 15,
-        "name": "Penang",
-        "slug": "penang",
-        "icon": "🏝️",
-        "color": "#22c55e",
-        "description": "Penang has been called the food capital of Malaysia. Our George Town food tours take you through backstreets where hawkers have been frying noodles since 1975. Charcoal-fired char koay teow, family-run chendol stalls, banana leaf rice in Little India, and assam laksa from the stall CNN put on their list of the world's top 50 foods. Small groups, guides who grew up in these neighbourhoods.",
-        "image": null,
-        "status": "published",
-        "updatedAt": "2026-07-11T14:25:24.433Z",
-        "createdAt": "2026-05-19T08:33:21.134Z",
-        "_status": "published"
-      }
-    ],
-    "meta": {
-      "title": null,
-      "description": null,
-      "image": null
-    },
-    "updatedAt": "2026-08-16T08:02:55.902Z",
-    "createdAt": "2026-07-23T08:40:57.059Z",
-    "_status": "draft"
-  },
-  {
     "id": 230,
     "title": "Malaysian Durian: What Every Visitor Gets Wrong",
     "slug": "malaysia-durian-guide",
@@ -2383,7 +995,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -2573,7 +1185,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -3063,7 +1675,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -3793,7 +2405,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -4479,7 +3091,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -5165,7 +3777,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -5829,7 +4441,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -6335,7 +4947,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -6808,7 +5420,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -7295,7 +5907,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -7746,7 +6358,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -7941,7 +6553,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -8415,7 +7027,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -8896,7 +7508,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -9496,7 +8108,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -9825,7 +8437,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -10306,7 +8918,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -10939,7 +9551,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -11419,7 +10031,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -11899,7 +10511,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -12457,7 +11069,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -12996,7 +11608,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -13558,7 +12170,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -14139,7 +12751,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -14679,7 +13291,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -15229,7 +13841,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -15847,7 +14459,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -16376,7 +14988,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -16972,7 +15584,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -17416,7 +16028,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -18016,7 +16628,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -18465,7 +17077,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -18970,7 +17582,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -19517,7 +18129,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -20010,7 +18622,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -20630,7 +19242,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -21026,7 +19638,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -21476,7 +20088,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -21883,7 +20495,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -22290,7 +20902,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -22801,7 +21413,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -23238,7 +21850,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -23797,7 +22409,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -24192,7 +22804,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -24714,7 +23326,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -25134,7 +23746,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -25579,7 +24191,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -26010,7 +24622,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -26454,7 +25066,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -26940,7 +25552,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -27377,7 +25989,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -27797,7 +26409,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -28271,7 +26883,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -28667,7 +27279,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -29129,7 +27741,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -29591,7 +28203,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -29784,7 +28396,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -29896,7 +28508,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30022,7 +28634,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30134,7 +28746,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30192,7 +28804,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30304,7 +28916,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30416,7 +29028,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30542,7 +29154,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30654,7 +29266,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30780,7 +29392,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30838,7 +29450,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -31745,7 +30357,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -32362,7 +30974,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33147,7 +31759,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33605,7 +32217,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -34510,7 +33122,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -34801,7 +33413,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -35622,7 +34234,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -36596,7 +35208,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -37421,7 +36033,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -37970,7 +36582,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -38612,7 +37224,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -39475,7 +38087,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -40072,7 +38684,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -40850,7 +39462,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -41407,7 +40019,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -41584,7 +40196,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -42112,7 +40724,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-16T08:02:54.032Z",
+      "updatedAt": "2026-08-16T08:08:55.979Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
