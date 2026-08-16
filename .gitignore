@@ -92,6 +92,7 @@ scripts/*.sh
 !scripts/fix-meta-title-dms.py
 !scripts/payload_env.py
 !scripts/credential-scan.py
+!scripts/backlink-audit.py
 !scripts/enrich-content-from-experience.py
 !scripts/weekly-experience-check.py
 !scripts/create-experience-notes-migration.sh
