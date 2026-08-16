@@ -64,6 +64,7 @@ jobs:
           PAYLOAD_TOKEN=${{ secrets.PAYLOAD_TOKEN }}
           PAYLOAD_EMAIL=${{ secrets.PAYLOAD_EMAIL }}
           PAYLOAD_PASSWORD=${{ secrets.PAYLOAD_PASSWORD }}
+          PAYLOAD_ADMIN_API_KEY=${{ secrets.PAYLOAD_ADMIN_API_KEY }}
           PUBLIC_SITE_URL=https://simplyenak.com
           EOF
 
@@ -119,6 +120,7 @@ jobs:
           PAYLOAD_URL: https://cms.system.simplyenak.com
           PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
           PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
+          PAYLOAD_ADMIN_API_KEY: ${{ secrets.PAYLOAD_ADMIN_API_KEY }}
 
       - name: Build site
         working-directory: site

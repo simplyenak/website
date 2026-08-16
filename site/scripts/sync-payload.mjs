@@ -239,7 +239,29 @@ async function fetchCollection(slug) {
     const docs = await payloadFetch(slug, true)
     if (docs !== null) { stats.fetched++; return docs }
   }
-  // 1b. Try login-based auth if email/password are available
+  // 1a. Try admin API key auth (users API-Key) BEFORE password login. Some
+  //     collections (menus) only accept the admin key, and a stale password
+  //     (e.g. CI secret not matching Payload) would otherwise accumulate
+  //     failed logins and LOCK the admin account (observed 2026-08-16: admin
+  //     locked out by repeated CI 401s). The key never locks the account.
+  if (PAYLOAD_ADMIN_API_KEY) {
+    const url = new URL(`${PAYLOAD_URL}/api/${slug}`)
+    url.searchParams.set('depth', '3')
+    url.searchParams.set('limit', '0')
+    try {
+      const authRes = await fetch(url, {
+        headers: { 'Content-Type': 'application/json', 'Authorization': `users API-Key ${PAYLOAD_ADMIN_API_KEY}` },
+        signal: AbortSignal.timeout(300000),
+      })
+      if (authRes.ok) {
+        const json = await authRes.json()
+        stats.fetched++
+        return json.docs || []
+      }
+    } catch { /* admin key failed, fall through */ }
+  }
+  // 1b. Try login-based auth if email/password are available — LAST resort
+  //     (failed logins lock the account; admin key is preferred)
   let loginToken = '';
   if (PAYLOAD_EMAIL && PAYLOAD_PASSWORD) {
     try {
@@ -268,26 +290,6 @@ async function fetchCollection(slug) {
         }
       }
     } catch { /* login failed, fall through */ }
-  }
-  // 1c. Try admin API key auth (users API-Key) — some collections (menus)
-  //     reject both the read-only token and password login, only accepting
-  //     the admin key. Without this, menus syncs as empty and the site nav
-  //     gets wiped on every sync (observed 2026-08-16).
-  if (PAYLOAD_ADMIN_API_KEY) {
-    const url = new URL(`${PAYLOAD_URL}/api/${slug}`)
-    url.searchParams.set('depth', '3')
-    url.searchParams.set('limit', '0')
-    try {
-      const authRes = await fetch(url, {
-        headers: { 'Content-Type': 'application/json', 'Authorization': `users API-Key ${PAYLOAD_ADMIN_API_KEY}` },
-        signal: AbortSignal.timeout(300000),
-      })
-      if (authRes.ok) {
-        const json = await authRes.json()
-        stats.fetched++
-        return json.docs || []
-      }
-    } catch { /* admin key failed, fall through */ }
   }
   // 2. Try without auth (public read)
   const docs = await payloadFetch(slug, false)

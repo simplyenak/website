@@ -187,27 +187,38 @@ class TestVerify(unittest.TestCase):
         rl.check_url_status = lambda url, timeout=12: {"status": 404, "redirect": None, "error": None}
         self.assertEqual(rl.verify(), 1)
 
-    def test_verify_fails_when_rendered_title_missing(self):
-        # snapshot says meta_title is "Expected Title", rendered page lacks it
+    def test_verify_fails_when_body_missing(self):
+        # REAL integration path: a temp stories.json holds content_markdown for
+        # slug "foo"; resolve_content_source finds it; the rendered page lacks
+        # the intro paragraph → verify must fail on the BODY check (the exact
+        # bug class from Aug 16: snapshot has it, rendered page doesn't).
+        story = {
+            "slug": "foo",
+            "title": "Foo",
+            "meta_title": "Foo Title",
+            "meta_description": "",
+            "excerpt": "Foo excerpt",
+            "content_markdown": "# Foo\n\nIntro paragraph text that must render.",
+            "content": {},
+        }
+        (self.tmp / "stories.json").write_text(json.dumps([story]))
+
         self._write_latest([{"page": "https://simplyenak.com/stories/foo"}])
         rl.check_url_status = lambda url, timeout=12: {"status": 200, "redirect": None, "error": None}
 
         orig_resolve = rl.resolve_content_source
         rl.resolve_content_source = lambda page: {
-            "file": "/nonexistent/stories.json", "collection": "stories",
-            "slug": "foo", "meta_title": "Expected Refresh Title",
-            "meta_description": ""}
+            "file": str(self.tmp / "stories.json"), "collection": "stories",
+            "slug": "foo", "meta_title": "Foo Title", "meta_description": ""}
 
         def fake_open(req, timeout=20):
             class R:
                 def read(self):
-                    return b'<html><title>Stale Title</title><body><p>different text entirely</p></body></html>'
+                    return b'<html><title>Foo Title</title><body><p>totally different body</p></body></html>'
             return R()
 
         urllib.request.urlopen = fake_open
         try:
-            # expect_body stays empty (no stories.json on disk), but the
-            # expected title is missing from the rendered page → must fail
             self.assertEqual(rl.verify(), 1)
         finally:
             rl.resolve_content_source = orig_resolve
