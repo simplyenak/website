@@ -168,6 +168,48 @@ def normalize_url(url: str) -> str:
     return u or "/"
 
 
+def check_url_status(url: str, timeout: int = 12) -> dict:
+    """Check a live URL's HTTP status without following redirects.
+
+    Returns {"status": int|None, "redirect": str|None, "error": str|None}.
+    A status of None means the check failed (network/DNS) — callers should
+    treat that as "unknown", not as healthy.
+    """
+    import urllib.error as url_err
+    req = urllib.request.Request(url, method="HEAD",
+                                 headers={"User-Agent": "refresh-loop/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return {"status": resp.status, "redirect": resp.headers.get("Location"), "error": None}
+    except url_err.HTTPError as e:
+        return {"status": e.code, "redirect": e.headers.get("Location"), "error": None}
+    except Exception as e:
+        return {"status": None, "redirect": None, "error": str(e)}
+
+
+def missing_redirect_check(page: str) -> dict | None:
+    """Detect the 'old story URL 404s, /stories/ twin is live' class.
+
+    After the Jul 2026 /stories/ permalink migration, root-level story URLs kept
+    their GSC impressions but 404 when the Worker REDIRECTS map missed them —
+    which looks like a content decline but is a missing 301. If the page 404s
+    and /stories/<slug>/ answers 200, flag it: fix the redirect, not the copy.
+    Returns {"stories_url": ..., "status": ...} or None if not applicable.
+    """
+    path = urllib.parse.urlparse(page).path
+    slug = path.strip("/").split("/")[-1]
+    if path.startswith("/stories/") or not slug:
+        return None  # already the canonical form, or a root page like "/"
+    stories_url = f"https://{DEFAULT_HOST}/stories/{slug}/"
+    cur = check_url_status(page)
+    if cur["status"] == 404:
+        twin = check_url_status(stories_url)
+        if twin["status"] == 200:
+            return {"stories_url": stories_url, "root_status": cur["status"]}
+    return None
+
+
+
 
 def resolve_content_source(page: str) -> dict:
     """Map a page URL to the file that holds its copy, plus current title/description if found."""
@@ -286,6 +328,22 @@ def score_page(cur: dict, prev: dict) -> dict | None:
     if 4 <= pos_c <= 10:
         score += 20; reasons.append("striking distance")
 
+    # Volume value: absolute lost clicks and impressions (ROI ordering). A page
+    # losing 5 clicks is worth refreshing before a page losing 2, even if the
+    # percentage decay is smaller.
+    lost_clicks = max(0, clicks_p - clicks_c)
+    lost_impressions = max(0, imp_p - imp_c)
+    if lost_clicks >= 5:
+        score += 15; reasons.append(f"-{lost_clicks} clicks lost")
+    elif lost_clicks >= 2:
+        score += 10; reasons.append(f"-{lost_clicks} clicks lost")
+    if lost_impressions >= 300:
+        score += 15; reasons.append(f"-{lost_impressions} impressions lost")
+    elif lost_impressions >= 100:
+        score += 10; reasons.append(f"-{lost_impressions} impressions lost")
+    elif lost_impressions >= 40:
+        score += 5; reasons.append(f"-{lost_impressions} impressions lost")
+
     # Counter-signals (the discipline rule — don't touch winners)
     if clicks_c > clicks_p:
         score -= 20
@@ -304,6 +362,8 @@ def score_page(cur: dict, prev: dict) -> dict | None:
         "impression_drop_pct": round(imp_drop * 100, 1),
         "click_drop_pct": round(click_drop * 100, 1),
         "position_change": round(pos_worse, 1),
+        "lost_clicks": lost_clicks,
+        "lost_impressions": lost_impressions,
         "top_queries": [],
     }
 
@@ -332,6 +392,7 @@ def analyze(token: str, days: int, top_n: int):
 
     candidates = []
     structural = []
+    missing_redirect = []
     for row in cur_rows:
         keys = row.get("keys", [])
         if not keys:
@@ -356,9 +417,33 @@ def analyze(token: str, days: int, top_n: int):
             print(f"         imp {e['prev']['impressions']}→{e['cur']['impressions']}  pos {e['prev']['position']}→{e['cur']['position']}")
             print(f"         {' '.join(e['reasons'])}")
 
-    candidates.sort(key=lambda e: e["score"], reverse=True)
+    # Missing-redirect class: root-level story URL 404s but /stories/ twin is
+    # live. This is a 301 fix, not a copy refresh — pull it out of the pool.
+    checked = []
+    for e in candidates:
+        try:
+            mr = missing_redirect_check(e["page"])
+        except Exception as ex:
+            mr = None
+            print(f"  ⚠ url check failed for {e['page']}: {ex}")
+        if mr:
+            e["missing_redirect"] = mr
+            missing_redirect.append(e)
+        else:
+            checked.append(e)
+    candidates = checked
+
+    if missing_redirect:
+        print(f"\n🚧 Missing redirects (old root URL 404s, /stories/ twin live — add to Worker REDIRECTS, do NOT refresh copy):")
+        for e in sorted(missing_redirect, key=lambda x: -x["lost_clicks"]):
+            print(f"  {e['page']}  (imp {e['prev']['impressions']}→{e['cur']['impressions']}, {e['lost_clicks']} clicks lost)")
+            print(f"         → {e['missing_redirect']['stories_url']}")
+
+    # ROI ordering: absolute lost clicks first, then lost impressions, then signal score.
+    candidates.sort(key=lambda e: (e["lost_clicks"], e["lost_impressions"], e["score"]), reverse=True)
     picked = candidates[:top_n]
     print(f"\nDeclining candidates: {len(candidates)}, top {len(picked)} picked")
+
 
     # Top queries per picked page (server-side filter — cheap, precise)
     cur_start_s, cur_end_s = fmt_date(start_current), fmt_date(end_current)
@@ -380,17 +465,24 @@ def analyze(token: str, days: int, top_n: int):
               f"clicks {e['prev']['clicks']}→{e['cur']['clicks']}  pos {e['prev']['position']}→{e['cur']['position']}  "
               f"({' '.join(e['reasons'][:3])})")
 
-    return picked, fmt_date(start_prev), fmt_date(end_prev), fmt_date(start_current), fmt_date(end_current)
+    return picked, missing_redirect, fmt_date(start_prev), fmt_date(end_prev), fmt_date(start_current), fmt_date(end_current)
 
 
-def build_brief(picked: list[dict], dates: dict) -> str:
+def build_brief(picked: list[dict], dates: dict, missing_redirect: list[dict] | None = None) -> str:
     """Generate the per-page refresh brief (the deliverable)."""
+    missing_redirect = missing_redirect or []
     lines = []
     lines.append(f"# Content Refresh Brief — {dates['current_start']} → {dates['current_end']}")
     lines.append("")
     lines.append("Source: GSC two-period comparison. Rule: refresh beats publish — update meta, ")
     lines.append("first 2 paragraphs, one list, the date; then reindex. Do not touch winners.")
     lines.append("")
+    if missing_redirect:
+        lines.append(f"🚧 MISSING REDIRECTS ({len(missing_redirect)}) — fix these in site/workers/cdn-rewriter.js REDIRECTS map, do NOT refresh copy:")
+        for e in sorted(missing_redirect, key=lambda x: -x["lost_clicks"]):
+            lines.append(f"- {e['page']}  →  {e['missing_redirect']['stories_url']}  "
+                         f"(imp {e['prev']['impressions']}→{e['cur']['impressions']}, {e['lost_clicks']} clicks lost)")
+        lines.append("")
     lines.append(f"Pages: {len(picked)}")
     for i, e in enumerate(picked, 1):
         src = resolve_content_source(e["page"])
@@ -447,7 +539,8 @@ def build_brief(picked: list[dict], dates: dict) -> str:
     return "\n".join(lines)
 
 
-def save_outputs(picked: list[dict], dates: dict) -> Path:
+def save_outputs(picked: list[dict], dates: dict, missing_redirect: list[dict] | None = None) -> Path:
+    missing_redirect = missing_redirect or []
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     meta = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -455,14 +548,15 @@ def save_outputs(picked: list[dict], dates: dict) -> Path:
         "current_range": [dates["current_start"], dates["current_end"]],
         "previous_range": [dates["previous_start"], dates["previous_end"]],
         "count": len(picked),
+        "missing_redirect_count": len(missing_redirect),
     }
-    payload = {"meta": meta, "pages": picked}
+    payload = {"meta": meta, "pages": picked, "missing_redirects": missing_redirect}
 
     json_path = OUTPUT_DIR / f"refresh-loop_{timestamp}.json"
     json_path.write_text(json.dumps(payload, indent=2, default=str))
     (OUTPUT_DIR / "refresh-loop_latest.json").write_text(json.dumps(payload, indent=2, default=str))
 
-    brief = build_brief(picked, dates)
+    brief = build_brief(picked, dates, missing_redirect)
     brief_path = OUTPUT_DIR / f"refresh-brief_{timestamp}.md"
     brief_path.write_text(brief)
     (OUTPUT_DIR / "refresh-brief_latest.md").write_text(brief)
@@ -552,11 +646,11 @@ def main():
         print("ERROR: no GSC credentials (expected ~/.google/credentials/gsc-key.json)")
         sys.exit(1)
 
-    picked, prev_start, prev_end, cur_start, cur_end = analyze(token, args.days, args.top)
+    picked, missing_redirect, prev_start, prev_end, cur_start, cur_end = analyze(token, args.days, args.top)
     dates = {"previous_start": prev_start, "previous_end": prev_end,
              "current_start": cur_start, "current_end": cur_end}
-    if picked:
-        save_outputs(picked, dates)
+    if picked or missing_redirect:
+        save_outputs(picked, dates, missing_redirect)
     else:
         print("\nNo declining pages in striking distance this period. Nothing to refresh.")
 

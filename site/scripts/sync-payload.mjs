@@ -43,6 +43,7 @@ const PAYLOAD_URL = process.env.PAYLOAD_URL || 'http://localhost:3000'
 const PAYLOAD_TOKEN = process.env.PAYLOAD_TOKEN || ''
 const PAYLOAD_EMAIL = process.env.PAYLOAD_EMAIL || ''
 const PAYLOAD_PASSWORD = process.env.PAYLOAD_PASSWORD || ''
+const PAYLOAD_ADMIN_API_KEY = process.env.PAYLOAD_ADMIN_API_KEY || ''
 const CONTENT_DIR = path.resolve(__dirname, '../src/data/content')
 const DRY_RUN = process.argv.includes('--dry-run')
 const VERBOSE = process.argv.includes('--verbose')
@@ -267,6 +268,26 @@ async function fetchCollection(slug) {
         }
       }
     } catch { /* login failed, fall through */ }
+  }
+  // 1c. Try admin API key auth (users API-Key) — some collections (menus)
+  //     reject both the read-only token and password login, only accepting
+  //     the admin key. Without this, menus syncs as empty and the site nav
+  //     gets wiped on every sync (observed 2026-08-16).
+  if (PAYLOAD_ADMIN_API_KEY) {
+    const url = new URL(`${PAYLOAD_URL}/api/${slug}`)
+    url.searchParams.set('depth', '3')
+    url.searchParams.set('limit', '0')
+    try {
+      const authRes = await fetch(url, {
+        headers: { 'Content-Type': 'application/json', 'Authorization': `users API-Key ${PAYLOAD_ADMIN_API_KEY}` },
+        signal: AbortSignal.timeout(300000),
+      })
+      if (authRes.ok) {
+        const json = await authRes.json()
+        stats.fetched++
+        return json.docs || []
+      }
+    } catch { /* admin key failed, fall through */ }
   }
   // 2. Try without auth (public read)
   const docs = await payloadFetch(slug, false)
