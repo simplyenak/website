@@ -20,7 +20,7 @@ STAGING_SERVICE="development-payload-qah34c_payload"
 STAGING_POSTGRES_CONTAINER="development-payload-qah34c_payload-postgres.1.rv7imcakvk9y0yz0w1w1gmnmm"
 STAGING_DB_USER="payload"
 STAGING_DB_NAME="payload"
-STAGING_DB_PASSWORD="***REMOVED***bM"
+STAGING_DB_PASSWORD="${STAGING_DB_PASSWORD:?Set STAGING_DB_PASSWORD in the environment (AGENTS.md credential policy)}"
 DUMP_FILE="/tmp/payload-staging-sync.sql"
 REMOTE_DUMP="/tmp/payload-staging-sync.sql"
 

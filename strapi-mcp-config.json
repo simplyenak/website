@@ -4,9 +4,12 @@
       "command": "npx",
       "args": [
         "strapi-mcp@latest",
-        "--url", "http://localhost:1337",
-        "--token", "***REMOVED***"
-      ]
+        "--url",
+        "http://localhost:1337"
+      ],
+      "env": {
+        "STRAPI_API_TOKEN": "${STRAPI_API_TOKEN}"
+      }
     }
   }
 }

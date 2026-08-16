@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Update Dokploy DB with new composeFile and env for Hermes + Buzz."""
+import os
 import subprocess
 import sys
 
@@ -53,9 +54,13 @@ compose_file = compose_file.replace(
 # Modify env
 env_lines = env_content.split('\n')
 new_env = [l for l in env_lines if 'ROCKETCHAT_' not in l]
+buzz_key = os.environ.get('BUZZ_PRIVATE_KEY', '')
+if not buzz_key:
+    print('ERROR: BUZZ_PRIVATE_KEY not set — export it first (AGENTS.md credential policy)')
+    sys.exit(1)
 new_env.extend([
     'BUZZ_RELAY_URL=https://buzz.system.simplyenak.com',
-    'BUZZ_PRIVATE_KEY=***REMOVED***',
+    f'BUZZ_PRIVATE_KEY={buzz_key}',
     'BUZZ_HOME_CHANNEL=233f0c82-dcf3-450e-ab04-d0eea5c69511',
     'BUZZ_ALLOWED_USERS=7e8539c5ccbb1138d92a1f414efef9c833f080627956114ea7350747e564b989',
     'BUZZ_ALLOW_ALL_USERS=false',

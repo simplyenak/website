@@ -3,7 +3,7 @@
 # Usage: ./deploy-staging.sh
 
 echo "Setting up Cloudflare environment..."
-export CLOUDFLARE_API_TOKEN="***REMOVED***"
+export CLOUDFLARE_API_TOKEN="${CLOUDFLARE_API_TOKEN:?Set CLOUDFLARE_API_TOKEN in the environment (AGENTS.md credential policy)}"
 export CLOUDFLARE_ACCOUNT_ID="464881de51ec2f03bea6104e467bf3fb"
 
 echo "Building project..."

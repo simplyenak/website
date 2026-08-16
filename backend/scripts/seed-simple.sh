@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Simple seed script using curl and API token
-API_TOKEN="***REMOVED***"
+API_TOKEN="${STRAPI_API_TOKEN:?Set STRAPI_API_TOKEN in the environment (AGENTS.md credential policy)}"
 BASE_URL="http://localhost:1337/api"
 
 echo "🌱 Starting database seeding..."
@@ -90,7 +90,7 @@ curl -X POST "$BASE_URL/stories" \
         "bgImage": null
       },
       "contents": {
-        "content": "There\'s nothing in this world like the food you will find in Malaysia during Hari Raya. Don\'t get me wrong, we have amazing food all year round and for special occasions, but the delicacies served during Hari Raya are at the top of most of our tourists\' \"must-have\" lists. Hari Raya marks the end of Ramadan, or the fasting month, for Muslims worldwide, and especially here in Malaysia."
+        "content": "There'\''s nothing in this world like the food you will find in Malaysia during Hari Raya. Don'\''t get me wrong, we have amazing food all year round and for special occasions, but the delicacies served during Hari Raya are at the top of most of our tourists'\'' \"must-have\" lists. Hari Raya marks the end of Ramadan, or the fasting month, for Muslims worldwide, and especially here in Malaysia."
       },
       "categories": [
         {

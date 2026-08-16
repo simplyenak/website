@@ -17,6 +17,7 @@
 #
 # Required Dokploy project env vars (set in Dokploy UI → project → env):
 #   TELEGRAM_BOT_TOKEN      — BotFather token
+#   TELEGRAM_WEBHOOK_SECRET — bot webhook secret
 #   TELEGRAM_ALLOWED_USERS  — Your Telegram user ID
 #   OPENCODE_GO_API_KEY     — OpenCode API key (set BOTH this and OPENCODE_API_KEY)
 #   OPENCODE_API_KEY        — Same key, Hermes reads this for built-in provider
@@ -88,7 +89,7 @@ services:
     environment:
       # ── Required Dokploy project env vars ──
       # Set these in Dokploy UI → project → environment variables
-      - TELEGRAM_BOT_TOKEN=***REMOVED***
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:?set in Dokploy env}
       - TELEGRAM_ALLOWED_USERS=${TELEGRAM_ALLOWED_USERS}
       - OPENCODE_API_KEY=${OPENCODE_API_KEY}
       - OPENCODE_GO_API_KEY=${OPENCODE_GO_API_KEY}
@@ -101,7 +102,7 @@ services:
       # These survive redeploy and server reset
       - OMNIROUTE_URL=http://omniroute:20129/v1
       - TELEGRAM_WEBHOOK_URL=https://hermes.system.simplyenak.com/telegram
-      - TELEGRAM_WEBHOOK_SECRET=***REMOVED***
+      - TELEGRAM_WEBHOOK_SECRET=${TELEGRAM_WEBHOOK_SECRET:?set in Dokploy env}
       - HERMES_TELEGRAM_DISABLE_FALLBACK_IPS=true
       - API_SERVER_ENABLED=false
       - API_SERVER_HOST=0.0.0.0

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Extract Hermes compose from Dokploy DB, modify for Buzz, write back."""
+import os
 import subprocess
 import re
+import sys
 import json
 
 def run(cmd):
@@ -71,8 +73,12 @@ for line in env_lines:
         continue
     new_env.append(line)
 # Add Buzz env vars
+buzz_key = os.environ.get('BUZZ_PRIVATE_KEY', '')
+if not buzz_key:
+    print('ERROR: BUZZ_PRIVATE_KEY not set — export it first (AGENTS.md credential policy)')
+    sys.exit(1)
 new_env.append('BUZZ_RELAY_URL=https://buzz.system.simplyenak.com')
-new_env.append('BUZZ_PRIVATE_KEY=***REMOVED***')
+new_env.append(f'BUZZ_PRIVATE_KEY={buzz_key}')
 new_env.append('BUZZ_HOME_CHANNEL=233f0c82-dcf3-450e-ab04-d0eea5c69511')
 new_env.append('BUZZ_ALLOWED_USERS=7e8539c5ccbb1138d92a1f414efef9c833f080627956114ea7350747e564b989')
 new_env.append('BUZZ_ALLOW_ALL_USERS=false')

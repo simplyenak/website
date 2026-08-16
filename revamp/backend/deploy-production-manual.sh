@@ -1,15 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-# Environment variables for Simply Enak Production Backend
-export DATABASE_URL="postgres://payload:***REMOVED***@payload-postgres:5432/payload_production"
-export PAYLOAD_SECRET="***REMOVED***"
-export PAYLOAD_DB_PASSWORD="***REMOVED***"
-export S3_ACCESS_KEY_ID="***REMOVED***"
-export S3_SECRET_ACCESS_KEY="CHANGE_ME_GET_FROM_SCALEWAY"
-export S3_BUCKET="se-website-images"
-export S3_REGION="nl-ams"
-export S3_ENDPOINT="https://s3.nl-ams.scw.cloud"
+# Simply Enak Production Backend — manual deploy
+# Credentials are read from the environment (export them, or source site/.env).
+# NEVER hardcode credentials here (AGENTS.md credential policy).
 
 # Verify all required variables are set
 echo "=== Verifying environment variables ==="
