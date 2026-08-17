@@ -303,8 +303,11 @@ def generate_report(results: dict, domains_audited: list[str]) -> str:
         lines.append("\n### 3. Moz Link Explorer (anchor ratios — Dooley check)")
         if moz.get("error") and not moz.get("metrics") and not moz.get("anchors"):
             lines.append(health_line(False, "Moz", "SKIP — no MOZ_API_KEY. Anchor ratio check "
-                                                    "requires Moz free tier (2500 rows/mo)."))
-            lines.append("  - Add key: `export MOZ_API_KEY=accessId:secret`, re-run.")
+                                                    "requires a paid Moz/Ahrefs/Semrush backlink "
+                                                    "API (Moz free tier is a 7-day trial, not "
+                                                    "suitable for monthly runs)."))
+            lines.append("  - Free alternatives already covered: GSC branded-share + Common Crawl graph.")
+            lines.append("  - Add key: `export MOZ_API_KEY=accessId:secret`, re-run (one-off snapshot).")
         else:
             m = moz.get("metrics") or {}
             md = m.get("data", m) if isinstance(m, dict) else {}
