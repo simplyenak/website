@@ -1,0 +1,27 @@
+#!/bin/bash
+# Pre-commit hook: block hardcoded credentials before they enter history.
+# Runs the repo credential scan (scripts/credential-scan.py) on every commit.
+# Exit 1 blocks the commit. Installed via: git config core.hooksPath scripts/git-hooks
+set -u
+
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+cd "$ROOT" || exit 0
+
+# Fast path: nothing scannable staged -> let it through
+if ! git diff --cached --name-only | grep -qE '\.(py|js|mjs|ts|sh|yml|yaml|json)$|\.env|\.claude|\.vscode'; then
+    exit 0
+fi
+
+# Allow explicit bypass for legacy/snapshot work (e.g. importing an old
+# codebase verbatim) — use it rarely: git commit --no-verify
+if [ -f scripts/credential-scan.py ]; then
+    python3 scripts/credential-scan.py
+    RC=$?
+    if [ "$RC" -ne 0 ]; then
+        echo ""
+        echo "✋ COMMIT BLOCKED: credential scan found violations (see above)."
+        echo "   Fix them, or if this is a deliberate exception: git commit --no-verify"
+        exit "$RC"
+    fi
+fi
+exit 0
