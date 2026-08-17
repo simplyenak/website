@@ -175,16 +175,48 @@ def check_url_status(url: str, timeout: int = 12) -> dict:
     A status of None means the check failed (network/DNS) — callers should
     treat that as "unknown", not as healthy.
     """
-    import urllib.error as url_err
-    req = urllib.request.Request(url, method="HEAD",
-                                 headers={"User-Agent": "refresh-loop/1.0"})
+    import subprocess
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return {"status": resp.status, "redirect": resp.headers.get("Location"), "error": None}
-    except url_err.HTTPError as e:
-        return {"status": e.code, "redirect": e.headers.get("Location"), "error": None}
+        # curl, not urllib: Cloudflare bot-fight TLS-fingerprints urllib (JA3)
+        # and serves it a different response than real clients — urllib would
+        # silently follow redirects (200) or hit a bot block (403/404) where
+        # curl sees the true status (301/308/404). Discovered 2026-08-17: the
+        # redirect checks returned 85 false failures with urllib; curl was
+        # consistently correct. `-I` + no -L = report the redirect itself.
+        r = subprocess.run(
+            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}\t%{redirect_url}",
+             "-I", "--max-time", str(timeout),
+             "-A", "Mozilla/5.0 (compatible; refresh-loop/1.0)", url],
+            capture_output=True, text=True, timeout=timeout + 5)
+        if r.returncode != 0:
+            return {"status": None, "redirect": None, "error": r.stderr.strip() or "curl failed"}
+        parts = r.stdout.strip().split("\t", 1)
+        code = parts[0].strip()
+        loc = parts[1].strip() if len(parts) > 1 else ""
+        return {"status": int(code) if code.isdigit() else None,
+                "redirect": loc or None, "error": None}
     except Exception as e:
         return {"status": None, "redirect": None, "error": str(e)}
+
+
+def _fetch_html(url: str, timeout: int = 20) -> str | None:
+    """Fetch page HTML via curl (follows redirects), returns raw text or None.
+
+    Same TLS-fingerprint rationale as check_url_status: urllib gets bot-flagged
+    by Cloudflare and can be served a challenge/different body. curl follows
+    the redirect chain (301/308) to the final HTML like a real browser.
+    """
+    import subprocess
+    try:
+        r = subprocess.run(
+            ["curl", "-sL", "--max-time", str(timeout),
+             "-A", "Mozilla/5.0 (compatible; refresh-loop-verify/1.0)", url],
+            capture_output=True, timeout=timeout + 5)
+        if r.returncode != 0:
+            return None
+        return r.stdout.decode("utf-8", errors="replace")
+    except Exception:
+        return None
 
 
 def missing_redirect_check(page: str) -> dict | None:
@@ -691,6 +723,9 @@ def verify(live: bool = True, retry_delay: float = 60.0) -> int:
         # old Worker version without the current redirects can 404/soft-404 a
         # page for a minute. Retry once after a pause before declaring failure.
         import time
+        deploy_ctx = _deploy_context()
+        if deploy_ctx:
+            print(f"[verify] deploy context: {deploy_ctx}")
         if retry_delay > 0:
             print(f"[verify] {failures} failure(s) — retrying once in {retry_delay:.0f}s (deploy window?)")
             time.sleep(retry_delay)
@@ -700,6 +735,33 @@ def verify(live: bool = True, retry_delay: float = 60.0) -> int:
             return 0
         return 1
     return 0
+
+
+def _deploy_context() -> str:
+    """Best-effort: is a Deploy Site run in progress? (gh CLI must be present).
+
+    This is the missing context from the 2026-08-17 incident: verify failed
+    because the concurrent session's Worker deploy was mid-transition (old
+    Worker without current redirects briefly live). Knowing a deploy is in
+    flight distinguishes 'transient' from 'broken' before the retry.
+    """
+    try:
+        import subprocess
+        r = subprocess.run(
+            ["gh", "run", "list", "--workflow=deploy-site.yml", "--limit=3"],
+            capture_output=True, text=True, timeout=15)
+        if r.returncode != 0:
+            return ""
+        in_progress = [ln for ln in r.stdout.splitlines() if "in_progress" in ln and "Deploy Site" in ln]
+        recent = [ln for ln in r.stdout.splitlines() if "Deploy Site" in ln]
+        parts = []
+        if in_progress:
+            parts.append(f"{len(in_progress)} deploy(s) IN PROGRESS")
+        if recent and not in_progress:
+            parts.append("no deploy in progress")
+        return "; ".join(parts) if parts else ""
+    except Exception:
+        return ""
 
 
 def _verify_entries(entries, live):
@@ -739,21 +801,24 @@ def _verify_entries(entries, live):
             expect_body = ""
 
         st = check_url_status(check_url)
-        if st["status"] != 200:
-            print(f"  ✗ {url} → HTTP {st['status']} ({st.get('redirect') or st.get('error') or 'no redirect'})")
+        # 301/308 are reachable — the fetch below follows the chain with curl -L
+        # and checks the FINAL page content. Only unreachable/error states fail.
+        if st["status"] is None:
+            print(f"  ✗ {url} → status unknown ({st.get('error') or 'check failed'})")
+            failures += 1
+            continue
+        if st["status"] == 404:
+            print(f"  ✗ {url} → HTTP 404 (page gone)")
             failures += 1
             continue
 
         if live and (expect_title or expect_body):
-            try:
-                with urllib.request.urlopen(urllib.request.Request(
-                        check_url, headers={"User-Agent": "refresh-loop-verify/1.0"}), timeout=20) as resp:
-                    raw = resp.read().decode("utf-8", errors="replace")
-                html_text = html_mod.unescape(raw)
-            except Exception as ex:
-                print(f"  ✗ {url} → fetch failed: {ex}")
+            raw = _fetch_html(check_url)
+            if raw is None:
+                print(f"  ✗ {url} → fetch failed")
                 failures += 1
                 continue
+            html_text = html_mod.unescape(raw)
             title_ok = not expect_title or re.sub(r"\s+", " ", expect_title)[:40] in html_text
             body_ok = not expect_body or expect_body in html_text
             if title_ok and body_ok:
@@ -778,10 +843,15 @@ def main():
     parser.add_argument("--reindex", action="store_true", help="IndexNow the flagged URLs (run after deploy)")
     parser.add_argument("--dry-run", action="store_true", help="With --reindex: list URLs without submitting")
     parser.add_argument("--verify", action="store_true", help="Check flagged pages render the current content (run after deploy)")
+    parser.add_argument("--verify-retry-delay", type=float, default=60.0,
+                        help="Seconds to wait before the verify retry (default 60; 0 disables retry)")
+    parser.add_argument("--no-verify-retry", action="store_true",
+                        help="Disable the verify retry entirely (fail fast)")
     args = parser.parse_args()
 
     if args.verify:
-        sys.exit(verify())
+        delay = 0.0 if args.no_verify_retry else args.verify_retry_delay
+        sys.exit(verify(retry_delay=delay))
     if args.reindex:
         reindex(dry_run=args.dry_run)
         return

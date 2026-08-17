@@ -33,9 +33,12 @@ Consequences:
   Payload is therefore always the source the deployed site builds from, even
   if the committed `src/data/content/*.json` snapshots differ. To see what
   will actually ship, run `npm run sync` first and check the diff.
-- The CI deploy workflow (`deploy-site.yml`) also runs `npm run sync` itself
-  before building. Editing content JSON snapshots locally does NOT change the
-  deployed site unless Payload is updated too.
+- The CI deploy workflow (`deploy-site.yml`) has an explicit sync step that
+  only runs for non-push triggers (`if: github.event_name != 'push'`). On
+  push — the normal path — the prebuild hook is what syncs. Either way, the
+  build rebuilds snapshots from live Payload, so editing content JSON
+  snapshots locally does NOT change the deployed site unless Payload is
+  updated too.
 - Prebuild sync requires Payload auth env vars (PAYLOAD_URL/PAYLOAD_TOKEN, or
   PAYLOAD_EMAIL/PAYLOAD_PASSWORD, or PAYLOAD_ADMIN_API_KEY). Missing/wrong
   credentials make the sync silently fall back to public reads or empty

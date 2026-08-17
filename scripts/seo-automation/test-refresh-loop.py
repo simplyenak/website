@@ -9,7 +9,6 @@ import importlib.util
 import json
 import sys
 import unittest
-import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent.parent
@@ -151,7 +150,7 @@ class TestMissingRedirect(unittest.TestCase):
 class TestVerify(unittest.TestCase):
     def setUp(self):
         self.orig_status = rl.check_url_status
-        self.orig_open = urllib.request.urlopen
+        self.orig_fetch = rl._fetch_html
         # isolate from the real output dir
         self.orig_dir = rl.OUTPUT_DIR
         self.tmp = Path(__file__).parent / "_test_verify"
@@ -160,7 +159,7 @@ class TestVerify(unittest.TestCase):
 
     def tearDown(self):
         rl.check_url_status = self.orig_status
-        urllib.request.urlopen = self.orig_open
+        rl._fetch_html = self.orig_fetch
         rl.OUTPUT_DIR = self.orig_dir
         import shutil
         shutil.rmtree(self.tmp, ignore_errors=True)
@@ -172,14 +171,7 @@ class TestVerify(unittest.TestCase):
     def test_verify_pass_when_rendered(self):
         self._write_latest([{"page": "https://simplyenak.com/stories/foo"}])
         rl.check_url_status = lambda url, timeout=12: {"status": 200, "redirect": None, "error": None}
-
-        def fake_open(req, timeout=20):
-            class R:
-                def read(self):
-                    return b'<html><title>Foo - Simply Enak</title><body><p>Intro paragraph text.</p></body></html>'
-            return R()
-
-        urllib.request.urlopen = fake_open
+        rl._fetch_html = lambda url, timeout=20: '<html><title>Foo - Simply Enak</title><body><p>Intro paragraph text.</p></body></html>'
         self.assertEqual(rl.verify(), 0)
 
     def test_verify_fails_on_404(self):
@@ -211,13 +203,7 @@ class TestVerify(unittest.TestCase):
             "file": str(self.tmp / "stories.json"), "collection": "stories",
             "slug": "foo", "meta_title": "Foo Title", "meta_description": ""}
 
-        def fake_open(req, timeout=20):
-            class R:
-                def read(self):
-                    return b'<html><title>Foo Title</title><body><p>totally different body</p></body></html>'
-            return R()
-
-        urllib.request.urlopen = fake_open
+        rl._fetch_html = lambda url, timeout=20: '<html><title>Foo Title</title><body><p>totally different body</p></body></html>'
         try:
             self.assertEqual(rl.verify(retry_delay=0), 1)
         finally:
@@ -255,6 +241,42 @@ class TestVerify(unittest.TestCase):
             {"type": "paragraph", "children": [{"text": "First para"}]},
         ]}}
         self.assertEqual(rl._first_lexical_paragraph(content), "First para")
+
+
+class TestDeployHealth(unittest.TestCase):
+    def setUp(self):
+        import importlib.util as ilu
+        spec = ilu.spec_from_file_location(
+            "deploy_health", REPO / "scripts" / "seo-automation" / "deploy-health.py")
+        self.dh = ilu.module_from_spec(spec)
+        spec.loader.exec_module(self.dh)
+        # isolate content dir
+        self.orig_content = self.dh.CONTENT_DIR
+        self.tmp = Path(__file__).parent / "_test_health"
+        self.tmp.mkdir(exist_ok=True)
+        self.dh.CONTENT_DIR = self.tmp
+
+    def tearDown(self):
+        self.dh.CONTENT_DIR = self.orig_content
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_nav_empty_is_problem(self):
+        (self.tmp / "navigation.json").write_text(json.dumps({"header_links": []}))
+        problems = self.dh.check_nav()
+        self.assertTrue(any("EMPTY" in p for p in problems))
+
+    def test_nav_populated_is_ok(self):
+        (self.tmp / "navigation.json").write_text(
+            json.dumps({"header_links": [{"label": "Home", "url": "/"}]}))
+        self.assertEqual(self.dh.check_nav(), [])
+
+    def test_credential_scan_flags_known_secret_in_snapshot(self):
+        # a known secret value present in a content snapshot must be flagged
+        (self.tmp / "stories.json").write_text(
+            json.dumps([{"slug": "x", "apiKey": "0123456789abcdef0123456789abcdef"}]))
+        problems = self.dh.check_credentials()
+        self.assertTrue(any("apiKey" in p for p in problems))
 
 
 if __name__ == "__main__":

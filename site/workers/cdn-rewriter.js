@@ -56,7 +56,12 @@ var REDIRECTS = {
   "/stories/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
   "/stories/eat-drink-georgetown": "/tours/penang-street-food",
   "/stories/secrets-of-kl-nightlife": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
-  "/stories/melaka-cultural-food-journey": "/stories/food-tours-melaka",
+  // melaka-cultural-food-journey story removed from Payload — land on the
+  // Melaka tour page (same topic; found dead by deploy-health gate 2026-08-17)
+  "/stories/melaka-cultural-food-journey": "/tours/locations/food-tours-melaka",
+  "/stories/food-tours-melaka": "/tours/locations/food-tours-melaka",
+  "/tours/melaka-cultural-food-journey": "/tours/locations/food-tours-melaka",
+  "/melaka-cultural-food-journey": "/stories/food-guide-melaka",
 
   // ── Food-tours → /tours index ──
   "/food-tours": "/tours",
@@ -77,15 +82,19 @@ var REDIRECTS = {
   "/nl/stories/durian-guide-2026": "/stories/eating-durians",
   "/nl/stories/durian-guide-2026/": "/stories/eating-durians",
   "/food-safety": "/stories/food-safety",
-  "/gluten-free-guide-malaysia": "/stories/gluten-free-guide-malaysia",
+  // country-level guides removed from Payload — land on the closest city guide
+  "/gluten-free-guide-malaysia": "/stories/gluten-free-guide-kuala-lumpur",
   "/hidden-gems-in-kuala-lumpur": "/stories/hidden-gems-in-kuala-lumpur",
-  "/kuala-lumpur-guide-malaysia": "/stories/kuala-lumpur-guide-malaysia",
+  // kuala-lumpur-guide-malaysia story removed — no replacement story; land on
+  // the KL street-food tour (found dead by deploy-health gate 2026-08-17)
+  "/kuala-lumpur-guide-malaysia": "/tours/kuala-lumpur-street-food",
+  "/kuala-lumpur-food-tour/stories": "/tours/kuala-lumpur-street-food",
   "/malaysian-herbs-and-spices": "/stories/malaysian-herbs-and-spices",
   "/must-try-malaysian-street-food": "/stories/must-try-malaysian-street-food",
   "/port-klang-to-kuala-lumpur": "/stories/port-klang-to-kuala-lumpur",
-  "/rendang-daging": "/stories/rendang-daging",
+  "/rendang-daging": "/tours/kuala-lumpur-street-food",
   "/souvenirs-for-foodies": "/stories/souvenirs-for-foodies",
-  "/spicy-food": "/stories/spicy-food",
+  "/spicy-food": "/tours/kuala-lumpur-street-food",
   "/traveling-during-fasting-month": "/stories/traveling-during-fasting-month",
   "/vegan-guide-penang": "/stories/vegan-guide-penang",
 
@@ -110,10 +119,10 @@ var REDIRECTS = {
   "/secrets-of-kl-nightlife/": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails",
   "/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
   "/flavours-of-malaysia-off-the-beaten-track/": "/tours/flavours-of-malaysia",
-  "/melaka-cultural-food-journey": "/stories/melaka-cultural-food-journey",
-  "/melaka-cultural-food-journey/": "/stories/melaka-cultural-food-journey",
+  "/melaka-cultural-food-journey": "/tours/locations/food-tours-melaka",
+  "/melaka-cultural-food-journey/": "/tours/locations/food-tours-melaka",
   "/hidden-gems-in-kuala-lumpur/": "/stories/hidden-gems-in-kuala-lumpur",
-  "/kuala-lumpur-food-tour/stories": "/stories/kuala-lumpur-food-tour",
+  "/kuala-lumpur-food-tour/stories": "/tours/kuala-lumpur-street-food",
   "/malaysian-herbs-and-spices/custom-tours": "/stories/malaysian-herbs-and-spices",
   "/malaysian-herbs-and-spices/stories": "/stories/malaysian-herbs-and-spices",
   "/malaysian-herbs-and-spices/tours": "/stories/malaysian-herbs-and-spices",
@@ -121,16 +130,18 @@ var REDIRECTS = {
   "/must-try-malaysian-street-food/stories": "/stories/must-try-malaysian-street-food",
   "/must-try-malaysian-street-food/tours": "/stories/must-try-malaysian-street-food",
   "/port-klang-to-kuala-lumpur/": "/stories/port-klang-to-kuala-lumpur",
-  "/rendang-daging/": "/stories/rendang-daging",
-  "/rendang-daging/custom-tours": "/stories/rendang-daging",
-  "/rendang-daging/stories": "/stories/rendang-daging",
-  "/rendang-daging/tours": "/stories/rendang-daging",
+  // rendang-daging + spicy-food stories removed from Payload — land on the KL
+  // street-food tour (covers both topics; found dead by deploy-health gate)
+  "/rendang-daging/": "/tours/kuala-lumpur-street-food",
+  "/rendang-daging/custom-tours": "/tours/kuala-lumpur-street-food",
+  "/rendang-daging/stories": "/tours/kuala-lumpur-street-food",
+  "/rendang-daging/tours": "/tours/kuala-lumpur-street-food",
   "/souvenirs-for-foodies/": "/stories/souvenirs-for-foodies",
-  "/spicy-food/": "/stories/spicy-food",
-  "/spicy-food//1000": "/stories/spicy-food",
-  "/spicy-food/1000": "/stories/spicy-food",
-  "/spicy-food/stories": "/stories/spicy-food",
-  "/spicy-food/tours": "/stories/spicy-food",
+  "/spicy-food/": "/tours/kuala-lumpur-street-food",
+  "/spicy-food//1000": "/tours/kuala-lumpur-street-food",
+  "/spicy-food/1000": "/tours/kuala-lumpur-street-food",
+  "/spicy-food/stories": "/tours/kuala-lumpur-street-food",
+  "/spicy-food/tours": "/tours/kuala-lumpur-street-food",
 
   // ── Canonicalize trailing slash ──
   "/directions": "/directions/",
