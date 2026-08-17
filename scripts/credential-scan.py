@@ -6,7 +6,9 @@ Fails if any TRACKED, ACTIVE file contains:
   1. Known leaked credential values (e.g. admin123)
   2. Private key material
   3. Well-known provider key formats (OpenAI, AWS, GitHub PAT, Slack, Google)
-  4. env-var getters with a REAL-VALUE default (the mandate violation pattern:
+  4. Literal credentials in agent/editor dot-config dirs and *.env.production
+  5. Hardcoded credential values (credential-named key assigned a 20+ char literal)
+  6. env-var getters with a REAL-VALUE default (the mandate violation pattern:
      os.environ.get("PAYLOAD_PASSWORD", "admin123") — defaults must be empty)
 
 Excludes: docs (*.md), lockfiles, ARCHIVED/, downloaded-project/,
@@ -74,8 +76,16 @@ CHECKS = [
         # Agent/editor config dirs (.claude/.vscode/.cursor/...) and production
         # env snapshots must never carry real credential values. Placeholder
         # values (example/REPLACE/changeme) are filtered by is_benign().
-        r"(?i)(api[_-]?key|secret|password|token|credential)\s*[=:]\s*[\"']?[A-Za-z0-9_\-./+]{16,}",
+        r"(API[_-]?KEY|SECRET|PASSWORD|TOKEN|CREDENTIAL)[A-Z0-9_]*\s*[=:]\s*[\"']?[A-Za-z0-9_./+-]{16,}",
         (".claude/*", ".claude/**", ".vscode/*", ".cursor/*", ".qwen/*", ".agents/*", "*.env.production"),
+    ),
+    (
+        "Hardcoded credential values (key = 20+ char literal)",
+        # Key-named assignments with a long literal value. Env references
+        # (${VAR}, ${{ secrets.* }}, import.meta.env, process.env) and
+        # placeholder values are filtered by is_benign().
+        r"(API_?KEY|ACCESS_?KEY|PRIVATE_?KEY|SECRET|TOKEN|PASSWORD|PASSWD)[A-Z0-9_]*[\"']?[[:space:]]*[:=][[:space:]]*[\"']?[A-Za-z0-9_./+-]{20,}",
+        ("*.py", "*.js", "*.mjs", "*.ts", "*.sh", "*.yml", "*.yaml", "*.json", "*.env*"),
     ),
     (
         "env-get with real-value default",
@@ -88,7 +98,11 @@ CHECKS = [
 ]
 
 # Values that are legitimately non-secret even in credential-named keys
-ALLOWED_VALUE_SUBSTRINGS = ("://", "@", "REPLACE", "example", "changeme", "PUBLIC_VITE_")
+ALLOWED_VALUE_SUBSTRINGS = (
+    "://", "@", "REPLACE", "example", "changeme", "change_me", "CHANGE_ME",
+    "PUBLIC_VITE_", "public", "${", "secrets.", "{{", "import.meta",
+    "process.env", "credentials.", "your-", "placeholder", "<", ">",
+)
 
 def is_benign(line: str) -> bool:
     return any(s in line for s in ALLOWED_VALUE_SUBSTRINGS)
@@ -96,6 +110,11 @@ def is_benign(line: str) -> bool:
 def run_git_grep(pattern: str, globs: tuple) -> list:
     cmd = ["git", "grep", "-n", "-E", pattern, "--", *globs, *EXCLUDES]
     r = subprocess.run(cmd, capture_output=True, text=True)
+    # rc=0 hits, rc=1 no hits. Anything else is a broken pattern/command —
+    # fail loudly instead of silently reporting "clean".
+    if r.returncode not in (0, 1):
+        print(f"⚠️  git grep error (rc={r.returncode}): {r.stderr.strip()[:200]}", file=sys.stderr)
+        return []
     if r.returncode == 0:
         return r.stdout.strip().splitlines()
     return []
