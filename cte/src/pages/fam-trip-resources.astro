@@ -17,7 +17,7 @@ const metadata = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'FAM Trip Resources',
-  description: 'Downloadable resources for travel agents including destination guides, sample itineraries, pricing sheets, and marketing materials.',
+  description: 'Resources for travel agents including destination guides, sample itineraries, pricing sheets, and marketing materials.',
   url: 'https://culinarytravelexperts.com/fam-trip-resources',
   isPartOf: {
     '@type': 'WebSite',
@@ -36,7 +36,7 @@ const metadata = {
 
       <div class="prose prose-lg max-w-none mb-12">
         <p>
-          We have created these resources to help you sell with confidence. Each guide includes the information your clients will ask about, and the talking points that help you differentiate Simply Enak from standard food tours.
+          We have created these resources to help you sell with confidence. Each guide includes the information your clients will ask about, and the talking points that help you differentiate our experiences from standard food tours.
         </p>
       </div>
 
@@ -44,62 +44,91 @@ const metadata = {
         <div class="bg-card p-6 rounded-lg">
           <div class="flex justify-between items-start">
             <div>
-              <h2 class="font-bold text-lg mb-2">Destination Guides</h2>
-              <p class="text-muted mb-4">In-depth guides for KL, Penang, Ipoh, Melaka, Cameron Highlands, and Johor Bahru. Vendor lists, must-try dishes, cultural context, and agent talking points.</p>
+              <h2 class="font-bold text-lg mb-2">Read before you sell</h2>
+              <p class="text-muted mb-4">Practical, honest guidance from 15 years of running food experiences. Written for agents, usable with clients.</p>
             </div>
-            <span class="text-sm text-muted bg-muted px-3 py-1 rounded">Coming Soon</span>
+          </div>
+          <div class="space-y-4 mt-4">
+            <a href="/blog/would-you-sell-disappointment" class="block p-4 border border-gray-200 rounded-lg hover:border-accent transition-colors">
+              <h3 class="font-semibold">Would You Sell Disappointment?</h3>
+              <p class="text-sm text-muted mt-1">A guest wanted fireflies, blue tears, and a vegan dinner. The eco-boat uses diesel. The fireflies are often underwhelming. Here is how we think about experiences that might not deliver, and what you should know before you promise.</p>
+            </a>
+            <a href="/blog/greenwashing-malaysian-tourism" class="block p-4 border border-gray-200 rounded-lg hover:border-accent transition-colors">
+              <h3 class="font-semibold">Greenwashing in Malaysian Tourism</h3>
+              <p class="text-sm text-muted mt-1">Companies advertise "whispering boats" and eco-friendly experiences while running diesel engines. Here is how to spot genuine sustainability versus marketing spin, for yourself and for your clients.</p>
+            </a>
+            <a href="/blog/how-to-sell-malaysian-food-tours" class="block p-4 border border-gray-200 rounded-lg hover:border-accent transition-colors">
+              <h3 class="font-semibold">How to Sell Malaysian Food Tours to Skeptical Clients</h3>
+              <p class="text-sm text-muted mt-1">Common objections: "Will they like the food?" "Is it safe?" "Is it too spicy?" Here is how to position the experience, manage expectations, and convert hesitant clients.</p>
+            </a>
           </div>
         </div>
 
         <div class="bg-card p-6 rounded-lg">
           <div class="flex justify-between items-start">
             <div>
-              <h2 class="font-bold text-lg mb-2">Sample Itineraries</h2>
-              <p class="text-muted mb-4">Ready-to-sell itineraries for 1-day, 3-day, and 7-day food experiences. Customizable by group size and dietary needs. Includes pricing tiers and group recommendations.</p>
-            </div>
-            <span class="text-sm text-muted bg-muted px-3 py-1 rounded">Coming Soon</span>
-          </div>
-        </div>
-
-        <div class="bg-card p-6 rounded-lg">
-          <div class="flex justify-between items-start">
-            <div>
-              <h2 class="font-bold text-lg mb-2">Pricing Sheet</h2>
-              <p class="text-muted mb-4">Agent rates, commission structure, minimum group sizes, and booking terms. Transparent pricing so you can quote confidently.</p>
+              <h2 class="font-bold text-lg mb-2">Trade Kit</h2>
+              <p class="text-muted mb-4">Pricing, commission structure, destination overviews, sample itineraries, and marketing copy. Request it and we send the full package with your partner terms.</p>
             </div>
             <a href="#contact" class="text-accent hover:underline">Request →</a>
-          </div>
-        </div>
-
-        <div class="bg-card p-6 rounded-lg">
-          <div class="flex justify-between items-start">
-            <div>
-              <h2 class="font-bold text-lg mb-2">Marketing Assets</h2>
-              <p class="text-muted mb-4">High-resolution photos, pre-written social media posts, email templates, and brochure copy for promoting Malaysian food tours.</p>
-            </div>
-            <span class="text-sm text-muted bg-muted px-3 py-1 rounded">Coming Soon</span>
           </div>
         </div>
       </div>
 
       <div class="mt-12 p-6 bg-primary/10 rounded-lg">
-        <h2 class="font-bold text-lg mb-2">Want everything at once?</h2>
+        <h2 class="font-bold text-lg mb-2">Want the full trade kit?</h2>
         <p class="text-muted mb-4">
-          Register as a partner and we will send you the complete trade kit, all guides, itineraries, pricing, and marketing materials in one package.
+          Register as a partner and we will send the complete package: destination guides, sample itineraries, pricing, commission terms, and marketing materials.
         </p>
         <a href="#contact" class="btn-primary">Request Trade Kit</a>
       </div>
 
       <div class="mt-12 prose prose-lg max-w-none">
+        <!-- TBD (verify before deploy): booking confirmation within 48h / same-day urgent
+             handling, pre-planned weather/market-closure alternatives, small-agency
+             support, and FAM/hosted visits for agents are OPERATIONAL CLAIMS written
+             from the strategy docs, not yet confirmed by the operator. Commission
+             numbers (20-25% tours / 15% private) come from cte-b2b-content-strategy.md. -->
         <h2>What is in the Trade Kit?</h2>
         <ul>
-          <li><strong>Destination Guides:</strong> 6 cities × 10 pages each = 60 pages of vendor profiles, dish highlights, cultural notes</li>
-          <li><strong>Sample Itineraries:</strong> 12 customizable itineraries across all regions</li>
+          <li><strong>Destination Guides:</strong> 6 cities, each with vendor profiles, dish highlights, cultural notes</li>
+          <li><strong>Sample Itineraries:</strong> Ready-to-sell routes across all regions</li>
           <li><strong>Pricing Sheet:</strong> Agent rates, commission structure, group size recommendations</li>
-          <li><strong>Marketing Assets:</strong> 50+ photos, 20 social media templates, 10 email templates</li>
+          <li><strong>Marketing Assets:</strong> Photos, social media templates, email templates</li>
           <li><strong>Agent Toolkit:</strong> FAQ document, objection handling guide, sustainability talking points</li>
         </ul>
+
+        <h2>Common questions from agents</h2>
+        <ul>
+          <li><strong>How fast can we confirm a booking?</strong> Most requests are confirmed within 48 hours. Urgent requests are handled same-day where vendor availability allows.</li>
+          <li><strong>What if my client has dietary restrictions?</strong> Halal, vegetarian, vegan, and allergy needs are confirmed with every vendor before the tour. We do not improvise dietary needs on the day.</li>
+          <li><strong>What happens if the tour cannot run?</strong> Weather, market closures, and vendor emergencies have pre-planned alternatives. You are informed before your client is affected.</li>
+          <li><strong>Do you work with small agencies?</strong> Yes. We have partners who book a few tours a year and partners who book every week. The agreement is the same, the support scales with volume.</li>
+          <li><strong>Can we see the experiences before we sell them?</strong> Yes. Join one of our familiarization visits or send a colleague on a hosted tour before you commit to selling.</li>
+        </ul>
       </div>
+
+      <!-- Contact -->
+      <section id="contact" class="py-10">
+        <h2 class="text-2xl font-bold mb-4">Request the Trade Kit</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl">
+          <form>
+            <div class="space-y-4">
+              <input type="text" placeholder="Name" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <input type="email" placeholder="Email" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <input type="text" placeholder="Agency or company" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <textarea placeholder="What are you planning to sell?" rows="4" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default"></textarea>
+              <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-secondary transition-colors cursor-pointer">Request Trade Kit</button>
+            </div>
+          </form>
+          <div class="space-y-8">
+            <div><h3 class="font-bold font-heading text-lg">Email</h3><p class="text-muted mt-1"><a href="mailto:hello@culinarytravelexperts.com" class="text-accent hover:underline">hello@culinarytravelexperts.com</a></p></div>
+            <div><h3 class="font-bold font-heading text-lg">Based In</h3><p class="text-muted mt-1">Kuala Lumpur, Malaysia</p></div>
+          </div>
+        </div>
+        <p class="text-muted mt-4 text-sm">We respond within 24 hours.</p>
+      </section>
     </div>
   </section>
 </Layout>
+

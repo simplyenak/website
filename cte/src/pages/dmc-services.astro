@@ -66,16 +66,32 @@ const metadata = {
     <div class="max-w-4xl mx-auto px-4">
       <h1 class="text-4xl font-bold mb-6">DMC Services</h1>
       <p class="text-xl text-muted mb-8">
-        MOTAC application in progress. Experienced with groups from 2 to 200.
+        Your clients' food requests, handled end to end. Groups from 2 to 200.
       </p>
 
       <div class="prose prose-lg max-w-none mb-12">
+        <h2>Kinds of requests we handle</h2>
         <p>
-          We are not just another tour operator. We are a destination management company built around food culture, with an application to operate across Malaysia, and experienced in handling groups of every size.
+          The request never arrives as a clean package. It arrives as a problem: a halal-only group that still wants the full hawker experience. A CEO who wants to cook, not eat. A 40-person incentive group that needs three simultaneous market walks. A client who cannot eat gluten but is visiting the noodle capital of Asia.
         </p>
         <p>
-          What makes us different is not our licenses or insurance, it is our relationships. Every vendor we work with has been part of our network for years. Some for 14. This means your clients get access to places most operators cannot reach.
+          We handle these. Since 2011 we have matched complex requests to the right vendors, guides, and timing, and we do it quietly, so the client just experiences the food.
         </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none mb-12">
+        <!-- TBD (verify before deploy): 48h confirmation, same-day urgent handling,
+             1:8 guide ratio, pre-planned contingencies, and payment-term details are
+             OPERATIONAL CLAIMS written from strategy docs, not yet confirmed. -->
+        <h2>How we operate</h2>
+        <ul>
+          <li><strong>Booking window:</strong> Most experiences confirmed within 48 hours. Urgent requests handled same-day where vendor availability allows.</li>
+          <li><strong>Guide ratio:</strong> One guide per 8 guests on walking tours, scaled up with multi-guide coordination for larger groups. Every guide is trained in food safety and cultural interpretation.</li>
+          <li><strong>Vendor relationships:</strong> We only send clients to vendors we know personally. If a vendor cannot host on your date, we say so before you commit, and we offer a vetted alternative.</li>
+          <li><strong>Contingency:</strong> Rain plans, market closures, and vendor emergencies are pre-planned per tour. Your clients are never left standing at a locked gate.</li>
+          <li><strong>Dietary coordination:</strong> Halal, vegetarian, vegan, gluten-free, allergies, all confirmed with vendors before arrival. We do not improvise dietary needs on the day.</li>
+          <li><strong>Payment terms:</strong> Clear invoicing in MYR or your currency. Deposit structure agreed in the supplier agreement, no surprises at settlement.</li>
+        </ul>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 mb-12">
@@ -122,23 +138,35 @@ const metadata = {
         </ul>
       </div>
 
-      <div class="prose prose-lg max-w-none mb-12">
+      <!-- TBD: case study needs verification before publishing. The 45-person
+           European food industry delegation story is not yet confirmed. -->
+      <!-- <div class="prose prose-lg max-w-none mb-12">
         <h2>Case Study: European Food Industry Delegation</h2>
         <p>
-          Last year, we hosted a 45-person delegation from a European food industry association. They wanted to understand Malaysian ingredients, meet local producers, and experience street food culture at scale.
+          Last year, we hosted a 45-person delegation from a European food industry association...
         </p>
-        <p>
-          We coordinated three guides, six vendor locations, and a private cooking session with a family in George Town who has been making Nyonya dishes for three generations. The delegation left with recipe cards, vendor contacts, and stories they told their clients for months.
-        </p>
-        <p>
-          That is what we do. We do not just run tours, we build experiences that your clients talk about.
-        </p>
-      </div>
+      </div> -->
 
-      <div class="mt-12">
-        <a href="#contact" class="btn-primary">Get a Quote</a>
+      <!-- Contact -->
+      <section id="contact" class="py-10">
+        <h2 class="text-2xl font-bold mb-4">Get a Quote</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl">
+          <form>
+            <div class="space-y-4">
+              <input type="text" placeholder="Name" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <input type="email" placeholder="Email" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <textarea placeholder="Tell us about the request" rows="4" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default"></textarea>
+              <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-secondary transition-colors cursor-pointer">Get a Quote</button>
+            </div>
+          </form>
+          <div class="space-y-8">
+            <div><h3 class="font-bold font-heading text-lg">Email</h3><p class="text-muted mt-1"><a href="mailto:hello@culinarytravelexperts.com" class="text-accent hover:underline">hello@culinarytravelexperts.com</a></p></div>
+            <div><h3 class="font-bold font-heading text-lg">Based In</h3><p class="text-muted mt-1">Kuala Lumpur, Malaysia</p></div>
+          </div>
+        </div>
         <p class="text-muted mt-4 text-sm">We respond within 24 hours. Custom proposals available.</p>
-      </div>
+      </section>
     </div>
   </section>
 </Layout>
+

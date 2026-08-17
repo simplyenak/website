@@ -1,0 +1,147 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'For Travel Creators | Access & Filming in Malaysia',
+  description: 'Film and photograph the Malaysia tourists never see. Access to markets before they open, vendors at work, home cooks in their kitchens. Hosted experiences for travel creators.',
+  image: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
+  canonical: 'https://culinarytravelexperts.com/for-creators',
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What kind of access do travel creators get?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We open doors that are closed to regular tourists: markets before opening, vendors at their first batch of the day, home cooks in their own kitchens, producers at work. Our guides know these people personally.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can we film and photograph freely?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. We coordinate filming permission with every vendor in advance. You come to create, not to ask permission on the spot.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you host creators?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We host select creators whose audiences travel to Southeast Asia. Tell us about your audience and past work, and we will design an experience that fits your content.',
+      },
+    },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<Layout metadata={metadata}>
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-6">For Travel Creators</h1>
+      <p class="text-xl text-muted mb-8">
+        Your audience has seen the tourist version of Malaysia. We give you access to the one they have not.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-card p-6 rounded-lg">
+          <h2 class="font-bold text-lg mb-3">Real access</h2>
+          <p class="text-sm text-muted">Markets before they open. Vendors at the first batch of the day. Home cooks in their own kitchens. Places tourists never get to.</p>
+        </div>
+        <div class="bg-card p-6 rounded-lg">
+          <h2 class="font-bold text-lg mb-3">Filming freedom</h2>
+          <p class="text-sm text-muted">Permission coordinated with every vendor in advance. You create, you do not ask permission on the spot.</p>
+        </div>
+        <div class="bg-card p-6 rounded-lg">
+          <h2 class="font-bold text-lg mb-3">Story, not script</h2>
+          <p class="text-sm text-muted">We do not hand you a script. We hand you people with decades of craft and let their stories shape your content.</p>
+        </div>
+      </div>
+
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>Content your audience has never seen</h2>
+        <p>
+          Most food content from Malaysia is filmed at the same stalls, from the same angles, at the same busy hour. We operate differently. Our guides know the vendors personally: the ones who have been at the same corner for four decades, the home cook who learned from her grandmother, the fisherman who still goes out the traditional way.
+        </p>
+        <p>
+          That is the difference between a generic food video and a story that travels. We get you in front of the people, at the right time, with permission already in place.
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>What you can film</h2>
+        <ul>
+          <li><strong>Morning markets:</strong> Vendors setting up, first customers, produce at its freshest</li>
+          <li><strong>Vendor craft:</strong> Char kway teow over a 60-year-old wok, sambal pounded by hand</li>
+          <li><strong>Home cooking:</strong> Family recipes passed down through generations, in family kitchens</li>
+          <li><strong>Producers:</strong> Palm sugar farms, durian orchards, tea plantations, fishing villages</li>
+          <li><strong>Guides at work:</strong> The people who explain it all, in four languages</li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 p-6 rounded-lg mb-12">
+        <h2 class="font-bold text-lg mb-3">Hosted experiences</h2>
+        <p class="text-muted mb-4">
+          We host a limited number of creators each season: those whose audiences travel to Southeast Asia and whose work fits our values. If that is you, tell us about your audience and show us your past work.
+        </p>
+        <p class="text-sm text-muted">
+          No scripts, no staged moments, no fake urgency. Just access to people who have been doing this for decades.
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>What a hosted day looks like</h2>
+        <ul>
+          <li><strong>Early start:</strong> Markets at opening, before the crowds, when vendors are at their most honest on camera</li>
+          <li><strong>Unscripted access:</strong> We introduce you, then step back. You direct the shoot, the vendors keep working</li>
+          <li><strong>Practical help:</strong> A guide who knows the vendors, the food history, and the local context, in English, Malay, Mandarin, or Cantonese</li>
+          <li><strong>Multiple locations:</strong> Market, hawker stalls, home kitchen, producer, fishing village, depending on your story</li>
+          <li><strong>Reasonable breaks:</strong> It gets hot, the food is plentiful, and we schedule around your shoot, not ours</li>
+        </ul>
+        <h2>What we ask of you</h2>
+        <ul>
+          <li><strong>Usage rights:</strong> Standard creator agreement. You keep editorial control of your content, we ask for the right to share your work and a credit where it makes sense</li>
+          <li><strong>Heads-up on sensitive content:</strong> If your angle includes criticism of a vendor or practice, tell us in advance so we can choose the right locations</li>
+          <li><strong>Consistency with our values:</strong> We do not host content that misrepresents Malaysian food culture, its people, or its heritage</li>
+        </ul>
+        <p>
+          We have been doing this since 2011. We know which vendors welcome cameras, which moments land on camera, and which stories travel. That is the part we bring. The craft is yours.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <section id="contact" class="py-10">
+        <h2 class="text-2xl font-bold mb-4">Tell Us About Your Work</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl">
+          <form>
+            <div class="space-y-4">
+              <input type="text" placeholder="Name" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <input type="email" placeholder="Email" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <input type="text" placeholder="Platform and audience size" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <textarea placeholder="Tell us about your content and what you want to film" rows="4" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default"></textarea>
+              <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-secondary transition-colors cursor-pointer">Get in Touch</button>
+            </div>
+          </form>
+          <div class="space-y-8">
+            <div><h3 class="font-bold font-heading text-lg">Email</h3><p class="text-muted mt-1"><a href="mailto:hello@culinarytravelexperts.com" class="text-accent hover:underline">hello@culinarytravelexperts.com</a></p></div>
+            <div><h3 class="font-bold font-heading text-lg">Based In</h3><p class="text-muted mt-1">Kuala Lumpur, Malaysia</p></div>
+            <div><h3 class="font-bold font-heading text-lg">Since</h3><p class="text-muted mt-1">2011, 15 years of vendor relationships</p></div>
+          </div>
+        </div>
+        <p class="text-muted mt-4 text-sm">We respond within 48 hours.</p>
+      </section>
+    </div>
+  </section>
+</Layout>
+

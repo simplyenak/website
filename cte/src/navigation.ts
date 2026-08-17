@@ -15,6 +15,10 @@ export const headerData = {
       href: '/for-agents',
     },
     {
+      text: 'For Creators',
+      href: '/for-creators',
+    },
+    {
       text: 'Resources',
       href: '/fam-trip-resources',
     },
@@ -31,17 +35,19 @@ export const footerData = {
     {
       title: 'Pages',
       links: [
-        { text: 'Services', href: '#services' },
-        { text: 'Destinations', href: '#destinations' },
-        { text: 'Partner With Us', href: '#partner' },
-        { text: 'About', href: '#about' },
+        { text: 'Services', href: '/dmc-services' },
+        { text: 'Destinations', href: '/#destinations' },
+        { text: 'For Agents', href: '/for-agents' },
+        { text: 'For Creators', href: '/for-creators' },
+        { text: 'Resources', href: '/fam-trip-resources' },
       ],
     },
     {
       title: 'Company',
       links: [
-        { text: 'Contact', href: '#contact' },
-        { text: 'Trade Kit', href: '#trade-kit' },
+        { text: 'About', href: '/#about' },
+        { text: 'Sustainability', href: '/sustainability' },
+        { text: 'Trade Kit', href: '/fam-trip-resources#contact' },
       ],
     },
   ],

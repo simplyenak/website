@@ -1,6 +1,15 @@
 ---
-title: 'Sustainability & Impact | Culinary Travel Experts'
-description: 'How Culinary Travel Experts supports local communities, preserves food heritage, and promotes sustainable tourism in Malaysia.'
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Sustainability & Impact | Culinary Travel Experts',
+  description: 'How Culinary Travel Experts supports local communities, preserves food heritage, and promotes sustainable tourism in Malaysia.',
+  canonical: 'https://culinarytravelexperts.com/sustainability',
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 ---
 
 <script type="application/ld+json">
@@ -19,84 +28,106 @@ description: 'How Culinary Travel Experts supports local communities, preserves 
 }
 </script>
 
-<section class="py-20">
-  <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-4xl font-bold mb-6">Sustainability & Impact</h1>
-    <p class="text-xl text-muted mb-8">
-      Every booking supports a family, preserves a tradition, funds a community project.
-    </p>
-
-    <div class="prose prose-lg max-w-none mb-12">
-      <p>
-        We don't use the word "sustainable" loosely. For us, it means something specific: our vendors are families, not corporations. Our relationships last for years, not seasons. Your clients' bookings directly support these families and help preserve traditional cooking methods that might otherwise disappear.
+<Layout metadata={metadata}>
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-6">Sustainability & Impact</h1>
+      <p class="text-xl text-muted mb-8">
+        Every booking supports a family, preserves a tradition, funds a community project.
       </p>
-      <p>
-        This isn't marketing. It's how we've operated since 2011.
-      </p>
-    </div>
 
-    <div class="grid md:grid-cols-2 gap-8 my-12">
-      <div class="bg-card p-6 rounded-lg">
-        <h3 class="font-bold text-lg mb-3">Community Impact</h3>
-        <p class="text-muted mb-4">
-          85% of our vendors are family-owned businesses. Some have been operating for three generations.
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>What we mean by sustainable</h2>
+        <p>
+          The word gets thrown around a lot in tourism. Here is what it means for us: our vendors are families, not corporations. Our relationships last for years, not seasons. When your clients book, the money goes to the people who actually make the food, not to an intermediary.
         </p>
-        <p class="text-sm text-muted">
-          When your clients eat at the Chen family's char siew bao stall, that money goes directly to the family that's been making them since 1985. When they try cendol at Penang Road, the vendor uses palm sugar from a farm her husband runs. These aren't transactions, they're relationships.
+        <p>
+          This is not a marketing claim. It is how we have operated since 2011.
+        </p>
+        <p>
+          We wrote a guide on <a href="/blog/greenwashing-malaysian-tourism" class="text-accent hover:underline">how to spot genuine sustainability in Malaysian tourism</a>, because the difference between real and staged matters for your clients too.
         </p>
       </div>
-      <div class="bg-card p-6 rounded-lg">
-        <h3 class="font-bold text-lg mb-3">Food Heritage</h3>
-        <p class="text-muted mb-4">
-          We work with fourth-generation producers, traditional spice makers, and heritage recipe holders.
-        </p>
-        <p class="text-sm text-muted">
-          The auntie who makes our nasi ulam learned from her mother, who learned from hers. The spice paste at Pak Hassan's stall uses a recipe unchanged since the 1960s. Your clients taste these traditions, and by doing so, they help ensure they survive.
-        </p>
+
+      <div class="grid md:grid-cols-2 gap-8 my-12">
+        <div class="bg-card p-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3">Community Impact</h3>
+          <p class="text-muted mb-4">
+            Our vendors are family-run businesses, many operating for decades.
+          </p>
+          <p class="text-sm text-muted">
+            When your clients eat, that money goes directly to the family that runs the stall. When they buy at a market, the vendor keeps the full price. These are not transactions, they are relationships, and relationships are what keep a stall alive for the next generation.
+          </p>
+        </div>
+        <div class="bg-card p-6 rounded-lg">
+          <h3 class="font-bold text-lg mb-3">Food Heritage</h3>
+          <p class="text-muted mb-4">
+            We work with traditional producers, spice makers, and heritage recipe holders.
+          </p>
+          <p class="text-sm text-muted">
+            The auntie who makes our nasi ulam learned from her mother, who learned from hers. The spice paste at the market stall uses a recipe unchanged for decades. Your clients taste these traditions, and by doing so, they help ensure they survive.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="prose prose-lg max-w-none mb-12">
-      <h2>What This Means for Your Clients</h2>
-      <p>
-        When agents sell Simply Enak experiences, they're offering more than a meal. They're offering:
-      </p>
-      <ul>
-        <li><strong>Direct community support:</strong> Money goes to families, not intermediaries</li>
-        <li><strong>Cultural preservation:</strong> Traditional recipes and techniques continue</li>
-        <li><strong>Real connections:</strong> Your clients meet the people behind the food</li>
-        <li><strong>Stories to share:</strong> Real relationships, not staged experiences</li>
-      </ul>
-    </div>
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>What This Means for Your Clients</h2>
+        <p>
+          When agents sell Culinary Travel Experts experiences, they're offering more than a meal. They're offering:
+        </p>
+        <ul>
+          <li><strong>Direct community support:</strong> Money goes to families, not intermediaries</li>
+          <li><strong>Cultural preservation:</strong> Traditional recipes and techniques continue</li>
+          <li><strong>Real connections:</strong> Your clients meet the people behind the food</li>
+          <li><strong>Stories to share:</strong> Real relationships, not staged experiences</li>
+        </ul>
+      </div>
 
-    <div class="bg-primary/10 p-6 rounded-lg mb-12">
-      <h3 class="font-bold text-lg mb-3">Sustainability in Practice</h3>
-      <p class="text-muted mb-4">
-        Here's what sustainable tourism looks like on our tours:
-      </p>
-      <ul>
-        <li><strong>Sourcing:</strong> We buy from local producers, not distributors. Ingredients are seasonal, local, and fresh.</li>
-        <li><strong>Waste:</strong> Our vendors practice nose-to-tail and root-to-stem cooking. Nothing goes to waste.</li>
-        <li><strong>Equity:</strong> We pay fair prices. Vendors tell us this matters, it allows them to invest in their businesses and support their families.</li>
-        <li><strong>Education:</strong> Guides share the history behind each dish, each ingredient, each technique. Your clients leave knowing more than they arrived with.</li>
-      </ul>
-    </div>
+      <div class="bg-primary/10 p-6 rounded-lg mb-12">
+        <h3 class="font-bold text-lg mb-3">Sustainability in Practice</h3>
+        <p class="text-muted mb-4">
+          Here's what sustainable tourism looks like on our tours:
+        </p>
+        <ul>
+          <li><strong>Sourcing:</strong> We buy from local producers, not distributors. Ingredients are seasonal, local, and fresh.</li>
+          <li><strong>Waste:</strong> Our vendors practice nose-to-tail and root-to-stem cooking. Nothing goes to waste.</li>
+          <li><strong>Equity:</strong> We pay fair prices. Vendors tell us this matters, it allows them to invest in their businesses and support their families.</li>
+          <li><strong>Education:</strong> Guides share the history behind each dish, each ingredient, each technique. Your clients leave knowing more than they arrived with.</li>
+        </ul>
+      </div>
 
-    <div class="prose prose-lg max-w-none mb-12">
-      <h2>Talking Points for Your Clients</h2>
-      <p>
-        When your clients ask about sustainability, here's what you can tell them:
-      </p>
-      <ul>
-        <li>"Every tour you book supports family-run businesses that have been operating for decades"</li>
-        <li>"Your meal at this stall directly funds the family that's kept this recipe alive for three generations"</li>
-        <li>"This isn't a staged experience, it's where the locals actually eat"</li>
-        <li>"The guide will tell you the stories behind each dish, not just the recipe"</li>
-      </ul>
-    </div>
+      <div class="prose prose-lg max-w-none mb-12">
+        <h2>Talking Points for Your Clients</h2>
+        <p>
+          When your clients ask about sustainability, here's what you can tell them:
+        </p>
+        <ul>
+          <li>"Every tour you book supports family-run businesses that have been operating for decades"</li>
+          <li>"Your meal at this stall directly funds the family that's kept this recipe alive for three generations"</li>
+          <li>"This isn't a staged experience, it's where the locals actually eat"</li>
+          <li>"The guide will tell you the stories behind each dish, not just the recipe"</li>
+        </ul>
+      </div>
 
-    <div class="mt-12">
-      <a href="#contact" class="btn-primary">Learn More</a>
+      <!-- Contact -->
+      <section id="contact" class="py-10">
+        <h2 class="text-2xl font-bold mb-4">Learn More</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl">
+          <form>
+            <div class="space-y-4">
+              <input type="text" placeholder="Name" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <input type="email" placeholder="Email" required class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default" />
+              <textarea placeholder="Tell us about your requirements" rows="4" class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent text-default"></textarea>
+              <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-secondary transition-colors cursor-pointer">Send Message</button>
+            </div>
+          </form>
+          <div class="space-y-8">
+            <div><h3 class="font-bold font-heading text-lg">Email</h3><p class="text-muted mt-1"><a href="mailto:hello@culinarytravelexperts.com" class="text-accent hover:underline">hello@culinarytravelexperts.com</a></p></div>
+            <div><h3 class="font-bold font-heading text-lg">Based In</h3><p class="text-muted mt-1">Kuala Lumpur, Malaysia</p></div>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
-</section>
+  </section>
+</Layout>
+

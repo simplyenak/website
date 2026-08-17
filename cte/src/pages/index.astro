@@ -2,7 +2,9 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
@@ -68,53 +70,77 @@ const b2bSchema = {
   <!-- B2B Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(b2bSchema)} />
   <Hero
-    tagline="Your clients. Our Malaysia. Experiences that stay with them."
+    tagline="For travel agents, DMCs and creators"
     actions={[
-      { variant: 'primary', text: 'View Sample Itineraries', href: '#itineraries' },
-      { variant: 'secondary', text: 'Become a Partner', href: '#partner' },
+      { variant: 'primary', text: 'For Agents', href: '/for-agents' },
+      { variant: 'secondary', text: 'For Creators', href: '/for-creators' },
     ]}
     image={{ src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg', alt: 'Penang street food' }}
   >
     <Fragment slot="title">
-      We connect your clients with Malaysia's<br />
-      <span class="text-accent">culinary and heritage traditions.</span>
+      Your client wants something that<br />
+      <span class="text-accent">does not fit a package. Say yes.</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Every experience we design is built on relationships we have spent years developing. The fish cracker maker who has been working the same street for four decades. The Nyonya home cook who learned from her grandmother. The market vendors who practise methods their mothers taught them. We find these people, earn their trust, and build experiences around their knowledge. Your clients get more than a tour. They get access to people who have been living Malaysia's culinary and heritage traditions every day of their lives.
+      A client who wants a halal food tour with a durian tasting, a cooking class, and a group of 12, leaving in three weeks. That request does not fit a brochure. It fits us. Since 2011 we have built the vendor relationships, the guides, and the logistics that let you say yes to the request and leave the rest to us.
     </Fragment>
   </Hero>
 
-  <!-- Services -->
+  <!-- Proof strip -->
+  <Stats
+    id="proof"
+    title="Proof, not promises"
+    subtitle="The numbers behind the people your clients will meet."
+    stats={[
+      { amount: '5.0', title: 'Google rating', icon: 'tabler:star' },
+      { amount: '81', title: 'Guest reviews', icon: 'tabler:message-circle' },
+      { amount: '6', title: 'Cities served', icon: 'tabler:map-pin' },
+      { amount: '2011', title: 'Serving guests since', icon: 'tabler:calendar' },
+    ]}
+  />
+
+  <!-- The two lanes -->
   <Features
-    id="services"
-    title="Culinary and heritage experiences, built around community and tradition"
-    columns="3"
+    id="lanes"
+    title="Two ways to work with us"
+    subtitle="Whether you sell experiences or create content about them, we open the same doors."
+    columns={2}
     items={[
       {
-        title: 'Multi-Day Itineraries',
-        description: '3 to 7 days exploring Malaysia through its food culture. Market visits, home cooking sessions, heritage eateries, and producers who have been feeding their communities for generations.',
-        icon: 'tabler:route',
+        title: 'Travel Agents and DMCs',
+        description: 'Sell our experiences to your clients with a clear commission structure, marketing materials, and a dedicated account manager. You say yes to the complex request, we handle everything after that.',
+        icon: 'tabler:briefcase',
       },
       {
-        title: 'Day Experiences',
-        description: 'Morning market walks, afternoon cooking classes with home cooks, evening hawker crawls through neighborhoods that have fed Kuala Lumpur for decades.',
-        icon: 'tabler:sun',
+        title: 'Travel Creators',
+        description: 'Film and photograph the Malaysia tourists never see: the back of the market, the vendor\'s first batch of the day, the home cook\'s family recipe. Access, story angles, and hosting for creators whose audiences travel.',
+        icon: 'tabler:video',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <Steps2
+    id="how-it-works"
+    title="How it works"
+    subtitle="Four steps between the client request and the experience."
+    items={[
+      {
+        title: 'Tell us the request',
+        description: 'Group size, dietary needs, interests, dates. A food tour for two, a team event for 40, a week-long itinerary across three cities. Nothing is too specific.',
       },
       {
-        title: 'Custom and Sustainable Trips',
-        description: 'Dietary needs, special interests, or a focus on sustainable food systems. We build itineraries that support local economies and preserve traditional food knowledge.',
-        icon: 'tabler:leaf',
+        title: 'We design the experience',
+        description: 'We match the request to the vendors, guides, and locations we have worked with for years. You get a proposal with pricing and a clear answer on what is possible.',
       },
       {
-        title: 'Corporate and Events',
-        description: 'Team cooking with local ingredients, incentive trips that support village communities, gala dinners featuring heritage recipes from across Malaysia.',
-        icon: 'tabler:building-community',
+        title: 'Your client is handled',
+        description: 'Pre-tour instructions, dietary coordination, day-of logistics, language support. Our guides speak English, Malay, Mandarin, and Cantonese.',
       },
       {
-        title: 'Itinerary Planning',
-        description: 'You want the local knowledge but prefer to operate it yourself. We plan the route with vetted vendors who practise traditional methods and source locally.',
-        icon: 'tabler:map',
+        title: 'You get paid',
+        description: 'Commission on every booking, on time. High-volume partners get priority access to our most sought-after experiences.',
       },
     ]}
   />
@@ -147,7 +173,7 @@ const b2bSchema = {
     }}
   >
     <Fragment slot="content">
-      We have been building these relationships for 15 years. We know which families welcome guests, which stories resonate, and how to create moments that stay with people long after they return home.
+      We have been building these relationships since 2011. We know which families welcome guests, which stories resonate, and how to create moments that stay with people long after they return home.
     </Fragment>
   </Content>
 
@@ -167,45 +193,16 @@ const b2bSchema = {
     </div>
   </section>
 
-  <!-- Sample Itinerary -->
-  <Content
-    id="itineraries"
-    isReversed
-    title="3 Days in Penang"
-    items={[
-      {
-        title: 'Day 1. George Town Heritage Food',
-        description: 'Pulau Tikus morning market with local producers, Transfer Road roti canai made the same way for 60 years, Nyonya home restaurant featuring family recipes passed down through generations.',
-      },
-      {
-        title: 'Day 2. Markets, Kitchens and Communities',
-        description: 'Balat morning market where farmers sell direct, Nyonya cooking class in a family kitchen, sunset at a fishing village that still uses traditional methods.',
-      },
-      {
-        title: 'Day 3. Fishermen, Farmers and Spice',
-        description: 'Fishing village breakfast with the daily catch, family-owned durian farm visit, kampung cooking session using garden-grown ingredients, tropical spice garden walk.',
-      },
-    ]}
-    image={{
-      src: 'https://cdn.simplyenak.com/payload-media/hand-dipping-lumpia-in-penang-laksa.jpg',
-      alt: 'Dipping fried dough into Penang laksa',
-    }}
-  >
-    <Fragment slot="content">
-      Every itinerary connects travelers to the people behind the food. Family recipes, traditional techniques, local producers who have been feeding their communities for generations. Every booking supports local livelihoods and helps preserve Malaysia's culinary heritage.
-    </Fragment>
-  </Content>
-
   <!-- Partner With Us -->
   <section id="partner" class="py-16 md:py-24 bg-brand-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-bold font-heading text-center">Partner With Us</h2>
       <p class="mt-4 text-lg text-muted max-w-3xl mx-auto text-center">We are Malaysia's B2B food experience partner, structured for trade. MOTAC application in progress. Part of Simply Enak.</p>
       <div class="mt-10 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"><h3 class="text-xl font-bold font-heading">Travel Agents</h3><p class="mt-2 text-muted">Sell our itineraries to your clients. Commission structure, marketing materials, and a dedicated account manager.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"><h3 class="text-xl font-bold font-heading">Travel Agents</h3><p class="mt-2 text-muted">Sell our itineraries to your clients. Clear commission structure, marketing materials, and a dedicated account manager.</p></div>
         <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">DMCs and Tour Operators</h3><p class="mt-2 text-muted">Your Malaysia ground partner for food experiences. FIT and group capabilities, licensing in progress.</p></div>
         <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-half"><h3 class="text-xl font-bold font-heading">Hotels and Resorts</h3><p class="mt-2 text-muted">Offer guests curated food experiences without building your own program. We handle booking and logistics.</p></div>
-        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">Event and Incentive Planners</h3><p class="mt-2 text-muted">Corporate dinners, team building, incentive groups. We design food-focused experiences.</p></div>
+        <div class="bg-white border border-brand-100 p-6 rounded-xl intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"><h3 class="text-xl font-bold font-heading">Travel Creators</h3><p class="mt-2 text-muted">Filming and photography access to the people and places tourists never see. Hosted experiences for creators whose audiences travel.</p></div>
       </div>
     </div>
   </section>
