@@ -656,7 +656,7 @@ def _first_lexical_paragraph(content: dict) -> str:
     return ""
 
 
-def verify(live: bool = True) -> int:
+def verify(live: bool = True, retry_delay: float = 60.0) -> int:
     """Verify the refreshed pages actually RENDER the current content.
 
     Closes the loop the brief/reindex leave open: the deploy rebuilds from
@@ -667,7 +667,10 @@ def verify(live: bool = True) -> int:
 
     Reads refresh-loop_latest.json for the flagged URLs, resolves each page's
     current meta_title + body intro from the content snapshots, then checks
-    the live HTML. Exit 1 if any check fails.
+    the live HTML. Exit 1 if any check fails. On failure, retries ONCE after
+    retry_delay seconds (deploys swap the Worker briefly — an old Worker
+    version can 404 a page for a minute). retry_delay is injectable so tests
+    can set it to 0.
     """
     import re
     latest = OUTPUT_DIR / "refresh-loop_latest.json"
@@ -680,16 +683,35 @@ def verify(live: bool = True) -> int:
         print("Nothing to verify (no pages flagged).")
         return 0
 
+    failures = _verify_entries(entries, live)
+
+    print(f"\n[verify] {'FAILED' if failures else 'PASSED'} — {failures} failure(s)")
+    if failures:
+        # Deploys (hourly auto-sync + every push) swap the Worker briefly; an
+        # old Worker version without the current redirects can 404/soft-404 a
+        # page for a minute. Retry once after a pause before declaring failure.
+        import time
+        if retry_delay > 0:
+            print(f"[verify] {failures} failure(s) — retrying once in {retry_delay:.0f}s (deploy window?)")
+            time.sleep(retry_delay)
+        failures2 = _verify_entries(entries, live)
+        if failures2 == 0:
+            print("[verify] PASSED on retry (was a deploy window)")
+            return 0
+        return 1
+    return 0
+
+
+def _verify_entries(entries, live):
+    """Shared verification body so verify() can retry without re-reading files."""
+    import re
+    import html as html_mod
     failures = 0
     for e in entries:
         url = e["page"]
         src = resolve_content_source(url)
         expect_title = src.get("meta_title") or ""
         expect_body = ""
-        # Body probe: the FULL first paragraph of the story's markdown (the
-        # rendered field). Building it from markdown and checking the rendered
-        # HTML catches stale deploys; the divergence check below catches
-        # wrong-field writes (content patched, markdown not).
         if "stories" in src.get("collection", ""):
             try:
                 items = json.loads(Path(src["file"]).read_text())
@@ -699,16 +721,8 @@ def verify(live: bool = True) -> int:
                         lexical = s.get("content") or {}
                         md_para = _strip_markdown(_first_markdown_paragraph(md))
                         expect_body = md_para
-                        # Divergence warning: flag when the lexical first
-                        # paragraph has text the markdown is missing entirely
-                        # (an appended refresh sentence lost in one field).
-                        # Word-choice drift or sentence-in-different-paragraph
-                        # placement is benign — the rendered field is markdown,
-                        # and the live body check below is the real gate.
                         lex_para = _first_lexical_paragraph(lexical)
                         if md_para and lex_para:
-                            # longest common suffix check: text present in
-                            # lexical but not anywhere in the full markdown
                             md_full = _strip_markdown(md)
                             lex_tail = lex_para[-40:]
                             if lex_tail not in md_full and len(lex_para) > len(md_para) + 40:
@@ -718,7 +732,6 @@ def verify(live: bool = True) -> int:
             except Exception:
                 pass
 
-        # redirect case: verify the /stories/ twin is live instead
         check_url = url
         if e.get("missing_redirect"):
             check_url = e["missing_redirect"]["stories_url"]
@@ -733,7 +746,6 @@ def verify(live: bool = True) -> int:
 
         if live and (expect_title or expect_body):
             try:
-                import html as html_mod
                 with urllib.request.urlopen(urllib.request.Request(
                         check_url, headers={"User-Agent": "refresh-loop-verify/1.0"}), timeout=20) as resp:
                     raw = resp.read().decode("utf-8", errors="replace")
@@ -756,9 +768,7 @@ def verify(live: bool = True) -> int:
                 failures += 1
         else:
             print(f"  ✓ {url} (HTTP 200)")
-
-    print(f"\n[verify] {'FAILED' if failures else 'PASSED'} — {failures} failure(s)")
-    return 1 if failures else 0
+    return failures
 
 
 def main():

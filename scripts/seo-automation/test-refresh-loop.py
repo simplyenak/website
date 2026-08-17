@@ -185,7 +185,7 @@ class TestVerify(unittest.TestCase):
     def test_verify_fails_on_404(self):
         self._write_latest([{"page": "https://simplyenak.com/stories/foo"}])
         rl.check_url_status = lambda url, timeout=12: {"status": 404, "redirect": None, "error": None}
-        self.assertEqual(rl.verify(), 1)
+        self.assertEqual(rl.verify(retry_delay=0), 1)
 
     def test_verify_fails_when_body_missing(self):
         # REAL integration path: a temp stories.json holds content_markdown for
@@ -219,7 +219,7 @@ class TestVerify(unittest.TestCase):
 
         urllib.request.urlopen = fake_open
         try:
-            self.assertEqual(rl.verify(), 1)
+            self.assertEqual(rl.verify(retry_delay=0), 1)
         finally:
             rl.resolve_content_source = orig_resolve
 
@@ -228,7 +228,22 @@ class TestVerify(unittest.TestCase):
                              "missing_redirect": {"stories_url": "https://simplyenak.com/stories/foo/"}}])
         # the redirect target must answer 200; the root URL 404 is expected
         rl.check_url_status = lambda url, timeout=12: {"status": 200, "redirect": None, "error": None}
-        self.assertEqual(rl.verify(), 0)
+        self.assertEqual(rl.verify(retry_delay=0), 0)
+
+    def test_verify_recovers_on_retry(self):
+        # deploy-window case: first pass 404s, retry (after 0s delay) passes
+        self._write_latest([{"page": "https://simplyenak.com/stories/foo"}])
+        calls = {"n": 0}
+
+        def flaky_status(url, timeout=12):
+            calls["n"] += 1
+            if calls["n"] == 1:
+                return {"status": 404, "redirect": None, "error": None}
+            return {"status": 200, "redirect": None, "error": None}
+
+        rl.check_url_status = flaky_status
+        self.assertEqual(rl.verify(retry_delay=0), 0)
+        self.assertEqual(calls["n"], 2)
 
     def test_first_markdown_paragraph_skips_h1(self):
         md = "# Title\n\nFirst real paragraph here.\n\nSecond paragraph."
