@@ -1,5 +1,93 @@
 {
-  "header_links": [],
-  "footer_links": [],
-  "mobile_links": []
+  "header_links": [
+    {
+      "label": "Home",
+      "url": "/",
+      "openInNewTab": false
+    },
+    {
+      "label": "Food Tours",
+      "url": "/tours",
+      "openInNewTab": false
+    },
+    {
+      "label": "About",
+      "url": "/about",
+      "openInNewTab": false
+    },
+    {
+      "label": "Stories",
+      "url": "/stories",
+      "openInNewTab": false
+    },
+    {
+      "label": "Contact",
+      "url": "/contact",
+      "openInNewTab": false
+    }
+  ],
+  "footer_links": [
+    {
+      "label": "All Food Experiences",
+      "url": "/tours",
+      "openInNewTab": false
+    },
+    {
+      "label": "Private Tours",
+      "url": "/tours/private-tours",
+      "openInNewTab": false
+    },
+    {
+      "label": "Media Enquiries",
+      "url": "/media",
+      "openInNewTab": false
+    },
+    {
+      "label": "Contact Us",
+      "url": "/contact",
+      "openInNewTab": false
+    },
+    {
+      "label": "Privacy Policy",
+      "url": "/privacy-policy",
+      "openInNewTab": false
+    },
+    {
+      "label": "Terms & Conditions",
+      "url": "/terms-conditions",
+      "openInNewTab": false
+    }
+  ],
+  "mobile_links": [
+    {
+      "label": "Home",
+      "url": "/",
+      "openInNewTab": false
+    },
+    {
+      "label": "Food Tours",
+      "url": "/tours",
+      "openInNewTab": false
+    },
+    {
+      "label": "About",
+      "url": "/about",
+      "openInNewTab": false
+    },
+    {
+      "label": "Stories",
+      "url": "/stories",
+      "openInNewTab": false
+    },
+    {
+      "label": "Contact",
+      "url": "/contact",
+      "openInNewTab": false
+    },
+    {
+      "label": "Private Tours",
+      "url": "/tours/private-tours",
+      "openInNewTab": false
+    }
+  ]
 }
