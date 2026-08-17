@@ -18,6 +18,30 @@ Simply Enak's website, built with **Astro v6** and **Tailwind CSS v4**. Generate
 
 **Node.js requirement:** >= 22.12.0
 
+## Build behavior — `npm run build` re-syncs from Payload (IMPORTANT)
+
+`npm run build` has a **prebuild hook** that runs BEFORE the Astro build
+(package.json `prebuild`):
+
+```
+node scripts/sync-payload.mjs && python3 scripts/generate-okf-bundle.py \
+  && python3 scripts/fix-story-yaml.py && npm run generate:herald || true
+```
+
+Consequences:
+- The build **re-syncs all content snapshots from Payload at build time**.
+  Payload is therefore always the source the deployed site builds from, even
+  if the committed `src/data/content/*.json` snapshots differ. To see what
+  will actually ship, run `npm run sync` first and check the diff.
+- The CI deploy workflow (`deploy-site.yml`) also runs `npm run sync` itself
+  before building. Editing content JSON snapshots locally does NOT change the
+  deployed site unless Payload is updated too.
+- Prebuild sync requires Payload auth env vars (PAYLOAD_URL/PAYLOAD_TOKEN, or
+  PAYLOAD_EMAIL/PAYLOAD_PASSWORD, or PAYLOAD_ADMIN_API_KEY). Missing/wrong
+  credentials make the sync silently fall back to public reads or empty
+  collections — check `site/src/data/content/` after a build if content
+  appears missing.
+
 ## Architecture
 
 ```
