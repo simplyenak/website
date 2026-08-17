@@ -57,6 +57,13 @@ def check_credentials() -> list[str]:
         except Exception:
             continue
         for v in values:
+            # Dev-only placeholder secrets (e.g. simplyenak-jwt-secret-dev,
+            # `${VAR:-default}` fallbacks in start-*.sh) are not live
+            # credentials — they were in public history once (hence in
+            # known-secrets.txt) but aren't rotation-worthy. Exclude values
+            # that are clearly dev defaults.
+            if v.endswith("-dev") or "dev-" in v[:12] or v.startswith("your_"):
+                continue
             if v in text and ("=" in text.split(v)[0][-40:] or ":" in text.split(v)[0][-40:]):
                 problems.append(f"known secret {v[:10]}… found in tracked {f}")
     # snapshots must not carry user apiKey/sessions
