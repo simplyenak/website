@@ -18,6 +18,7 @@
 # Required Dokploy project env vars (set in Dokploy UI → project → env):
 #   TELEGRAM_BOT_TOKEN      — BotFather token
 #   TELEGRAM_WEBHOOK_SECRET — bot webhook secret
+#   WEBHOOK_SECRET          — n8n→hermes webhook auth secret
 #   TELEGRAM_ALLOWED_USERS  — Your Telegram user ID
 #   OPENCODE_GO_API_KEY     — OpenCode API key (set BOTH this and OPENCODE_API_KEY)
 #   OPENCODE_API_KEY        — Same key, Hermes reads this for built-in provider
@@ -109,7 +110,7 @@ services:
       - GATEWAY_ALLOW_ALL_USERS=false
       - WEBHOOK_ENABLED=true
       - WEBHOOK_PORT=8644
-      - WEBHOOK_SECRET=***REMOVED***
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET:?set in Dokploy env}
       - TZ=Asia/Kuala_Lumpur
       - MEMPALACE_URL=http://mempalace-proxy:3456/mcp
       - MEMPALACE_TIMEOUT=60

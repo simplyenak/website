@@ -29,12 +29,12 @@ start_backend() {
         cat > .env << EOF
 HOST=0.0.0.0
 PORT=1337
-APP_KEYS="simplyenak-dev-1,simplyenak-dev-2,simplyenak-dev-3,simplyenak-dev-4"
-API_TOKEN_SALT=***REMOVED***
-ADMIN_JWT_SECRET=***REMOVED***
-TRANSFER_TOKEN_SALT=***REMOVED***
-JWT_SECRET=***REMOVED***
-ENCRYPTION_KEY=simplyenak-encryption-key-dev-16-chars
+APP_KEYS="${APP_KEYS:-simplyenak-dev-1,simplyenak-dev-2,simplyenak-dev-3,simplyenak-dev-4}"
+API_TOKEN_SALT="${API_TOKEN_SALT:-simplyenak-api-token-salt-dev}"
+ADMIN_JWT_SECRET="${ADMIN_JWT_SECRET:-simplyenak-admin-jwt-secret-dev}"
+TRANSFER_TOKEN_SALT="${TRANSFER_TOKEN_SALT:-simplyenak-transfer-token-salt-dev}"
+JWT_SECRET="${JWT_SECRET:-simplyenak-jwt-secret-dev}"
+ENCRYPTION_KEY="${ENCRYPTION_KEY:-simplyenak-encryption-key-dev-16-chars}"
 NODE_ENV=development
 DATABASE_CLIENT=sqlite
 DATABASE_FILENAME=.tmp/data.db
