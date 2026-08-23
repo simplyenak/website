@@ -2,12 +2,14 @@
 import Layout from '~/layouts/PageLayout.astro';
 import ThankYou from '~/components/ThankYou.astro';
 import { getThankYouPage } from '~/lib/content';
-
+import GooglePreferredSources from '~/components/common/GooglePreferredSources.astro';
+import { getLangFromUrl } from '~/i18n/utils';
 import { useTranslations } from '~/i18n/utils';
 
 const d = getThankYouPage('thank-you') || {} as any;
-
+const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations('en');
+
 const metadata = {
   title: d?.seo?.metaTitle || d.metaTitle || 'Thank You',
   description: d?.seo?.metaDescription || d.metaDescription || '',
@@ -30,4 +32,7 @@ const metadata = {
       { title: t('thankyou.backHome'), href: '/' },
     ]}
   />
+  
+  <!-- Google Preferred Sources: placed after the thank-you, where readers feel most connected -->
+  <GooglePreferredSources lang={currentLang} />
 </Layout>
