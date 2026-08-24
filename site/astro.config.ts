@@ -1,6 +1,14 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// Load .env at build time — without this, process.env.PAYLOAD_URL etc.
+// are undefined during `astro build`, causing every live API fetch to hang
+// against http://localhost:3000 and exhausting memory (OOM) before most
+// pages are rendered. Astro doesn't auto-load .env into process.env for
+// build-time module code (only for runtime server code).
+import dotenv from 'dotenv';
+dotenv.config({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.env') });
+
 import { defineConfig } from 'astro/config';
 
 import { unified } from '@astrojs/markdown-remark';
