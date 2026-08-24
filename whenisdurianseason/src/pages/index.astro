@@ -1,10 +1,10 @@
 ---
 import Layout from '~/layouts/Default.astro';
-import { regions, varieties, pickingTips, faqs, MONTHS, liveStatusScript } from '~/data/durian';
+import { regions, varieties, pickingTips, faqs, MONTHS, liveStatusScript, dataVerified, monthNotes } from '~/data/durian';
 
 const title = 'When Is Durian Season in Malaysia? Live Answer + Region Calendar';
 const description =
-  'Is it durian season in Malaysia right now? Get a live season verdict, a month-by-month region calendar, Musang King peak timing, and how to pick a good durian.';
+  'Is it durian season in Malaysia right now? Live verdict, month-by-month region calendar, Musang King peak timing, typical RM/kg prices, a visit-month planner, and how to pick a good durian.';
 
 const siteUrl = 'https://whenisdurianseason.com';
 
@@ -30,7 +30,7 @@ const structuredData = {
       operatingSystem: 'Any',
       url: siteUrl,
       description:
-        'Live answer to "is it durian season in Malaysia right now", with a month-by-month calendar for every region, variety peak windows, and a durian picking guide.',
+        'Live answer to "is it durian season in Malaysia right now", with a month-by-month calendar for every region, variety peak windows and RM/kg prices, a visit-month planner, and a durian picking guide.',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       publisher: { '@type': 'Organization', name: 'Simply Enak' },
     },
@@ -149,14 +149,98 @@ const structuredData = {
           <article class="variety-card">
             <div class="variety-head">
               <h3>{v.name}</h3>
-              <span class="price-tier" title="Relative price tier">{priceTier(v.priceTier)}</span>
+              <span data-variety-status={v.id} class="status-chip">checking&hellip;</span>
             </div>
             {v.alsoKnownAs && <p class="variety-aka">Also: {v.alsoKnownAs}</p>}
             <p class="variety-color"><strong>Flesh:</strong> {v.color}</p>
             <p class="variety-taste">{v.taste}</p>
             <p class="variety-peak"><strong>Peak:</strong> {v.peakNote}</p>
+            <p class="variety-meta">
+              <span class="price-tier" title="Relative price tier">{priceTier(v.priceTier)}</span>
+              {v.typicalPrice && (
+                <span class="variety-price">RM {v.typicalPrice.low}&ndash;{v.typicalPrice.high}/kg in season</span>
+              )}
+            </p>
           </article>
         ))}
+      </div>
+      <p class="data-note verified-stamp">
+        Prices and windows last checked <strong>{dataVerified.lastChecked}</strong> by {dataVerified.verifiedBy},
+        based on {dataVerified.basis}.
+      </p>
+    </div>
+  </section>
+
+  <section class="tool-section" id="plan-by-month">
+    <div class="container">
+      <h2 class="section-title">Plan Around Your Visit Month</h2>
+      <p class="section-hint">
+        Pick the month you land in Malaysia. Each panel shows which regions are in season and which varieties
+        should be at the stalls then.
+      </p>
+      <div class="month-chips" role="navigation" aria-label="Months">
+        {MONTHS.map((m, i) => (
+          <a href={`#month-panel-${i + 1}`} data-month-chip={i + 1} class="month-chip">{m}</a>
+        ))}
+      </div>
+      <div id="month-planner" class="month-planner">
+        {MONTHS.map((_, i) => {
+          const m = i + 1;
+          const peakRegions = regions.filter((r) => r.mainSeason.includes(m));
+          const secondaryRegions = regions.filter((r) => (r.secondarySeason || []).includes(m));
+          const monthVarieties = varieties.filter((v) => v.months.includes(m));
+          return (
+            <details id={`month-panel-${m}`} class="month-panel" open={m === 6}>
+              <summary>
+                <strong>{MONTHS[i]}</strong>
+                <span class="month-summary">
+                  {peakRegions.length > 0
+                    ? `Peak in ${peakRegions.length} region${peakRegions.length > 1 ? 's' : ''}`
+                    : 'Off-peak on the peninsula'}
+                </span>
+              </summary>
+              <div class="month-body">
+                <p class="month-note">{monthNotes[i]}</p>
+                <div class="month-cols">
+                  <div>
+                    <h4>Peak regions</h4>
+                    {peakRegions.length > 0 ? (
+                      <ul>
+                        {peakRegions.map((r) => (
+                          <li><span class="dot dot-peak"></span>{r.name}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p class="month-none">None this month</p>
+                    )}
+                    {secondaryRegions.length > 0 && (
+                      <>
+                        <h4>Secondary flush</h4>
+                        <ul>
+                          {secondaryRegions.map((r) => (
+                            <li><span class="dot dot-secondary"></span>{r.name}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </div>
+                  <div>
+                    <h4>Varieties at stalls</h4>
+                    {monthVarieties.length > 0 ? (
+                      <ul>
+                        {monthVarieties.map((v) => (
+                          <li>{v.name}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p class="month-none">Mostly imported fruit this month</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </details>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -230,6 +314,7 @@ const structuredData = {
   </footer>
 
   <script type="application/json" id="region-data" set:html={JSON.stringify(regions.map((r) => ({ id: r.id, main: r.mainSeason, secondary: r.secondarySeason || [] })))} />
+  <script type="application/json" id="variety-data" set:html={JSON.stringify(varieties.map((v) => ({ id: v.id, months: v.months })))} />
   <script set:html={liveStatusScript} />
 
   <style>
@@ -300,6 +385,35 @@ const structuredData = {
     .variety-taste { font-size: 0.88rem; color: var(--color-muted); margin: 0.4rem 0; }
     .variety-peak { font-size: 0.82rem; }
     .variety-peak strong { color: var(--color-primary); }
+    .variety-meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed var(--color-border); flex-wrap: wrap; }
+    .variety-price { font-size: 0.82rem; font-weight: 700; color: var(--color-primary); }
+    .verified-stamp { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--color-border); }
+    .verified-stamp strong { color: var(--color-text); }
+
+    /* Month planner */
+    .month-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 1.2rem 0 1.5rem; }
+    .month-chip { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid var(--color-border); background: var(--color-card); color: var(--color-text); }
+    .month-chip:hover { border-color: var(--color-accent); text-decoration: none; }
+    .chip-current { background: var(--color-primary); border-color: var(--color-primary); color: #fff !important; }
+    .month-planner { display: flex; flex-direction: column; gap: 0.6rem; }
+    .month-panel { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; }
+    .month-panel summary { cursor: pointer; padding: 0.85rem 1.2rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; list-style: none; }
+    .month-panel summary::-webkit-details-marker { display: none; }
+    .month-panel summary::after { content: '+'; font-weight: 800; color: var(--color-muted); }
+    .month-panel[open] summary::after { content: '\\2013'; }
+    .month-panel summary strong { font-size: 1rem; }
+    .month-summary { font-size: 0.8rem; color: var(--color-muted); }
+    .month-panel[open] { border-color: var(--color-accent); }
+    .month-body { padding: 0.2rem 1.2rem 1.1rem; }
+    .month-note { font-size: 0.9rem; margin-bottom: 0.9rem; }
+    .month-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+    .month-cols h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); margin-bottom: 0.4rem; }
+    .month-cols ul { list-style: none; }
+    .month-cols li { font-size: 0.88rem; padding: 0.15rem 0; display: flex; align-items: center; gap: 0.5rem; }
+    .month-none { font-size: 0.85rem; color: var(--color-muted); font-style: italic; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-peak { background: #7FA33C; }
+    .dot-secondary { background: #CBDD9B; }
 
     /* Picking tips */
     .tips-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; max-width: 720px; }

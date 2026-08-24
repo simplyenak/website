@@ -139,6 +139,46 @@ export const liveStatusScript = `
   if (stamp) {
     stamp.textContent = now.toLocaleDateString('en-MY', { day: 'numeric', month: 'long', year: 'numeric' });
   }
+
+  // Variety chips: in season / months until next window
+  var VARIETIES = [];
+  var vData = document.getElementById('variety-data');
+  if (vData) {
+    VARIETIES = JSON.parse(vData.textContent);
+    VARIETIES.forEach(function(v) {
+      var el = document.querySelector('[data-variety-status="' + v.id + '"]');
+      if (!el) return;
+      var label, level;
+      if (v.months.indexOf(m) !== -1) {
+        label = 'In season now';
+        level = 'peak';
+      } else {
+        var until = null;
+        for (var i = 1; i <= 12; i++) {
+          var check = ((m - 1 + i) % 12) + 1;
+          if (v.months.indexOf(check) !== -1) { until = i; break; }
+        }
+        var backMonth = new Date(2000, (check - 1), 1).toLocaleDateString('en-MY', { month: 'short' });
+        label = until === 1 ? 'Starts next month' : 'Back around ' + backMonth;
+        level = 'off';
+      }
+      el.textContent = label;
+      el.setAttribute('data-level', level);
+      el.className = 'status-chip status-' + level;
+    });
+  }
+
+  // Month planner: open the current month's panel and highlight its nav chip
+  var planner = document.getElementById('month-planner');
+  if (planner) {
+    var openEl = document.getElementById('month-panel-' + m);
+    if (openEl) {
+      planner.querySelectorAll('details').forEach(function(d) { d.open = false; });
+      openEl.open = true;
+    }
+    var chipEl = document.querySelector('[data-month-chip="' + m + '"]');
+    if (chipEl) chipEl.classList.add('chip-current');
+  }
 })();
 `;
 
@@ -150,6 +190,10 @@ export interface Variety {
   taste: string;
   peakNote: string;
   priceTier: 1 | 2 | 3;
+  /** Months when this variety is typically at stalls (peninsula baseline) */
+  months: number[];
+  /** Typical stall price range in RM/kg during the season */
+  typicalPrice?: { low: number; high: number };
 }
 
 export const varieties: Variety[] = [
@@ -161,6 +205,8 @@ export const varieties: Variety[] = [
     taste: 'Rich, bittersweet, custard-thick. The one people line up for.',
     peakNote: 'Best mid-season, June to August on the peninsula. Raub-grown fruit commands the top prices.',
     priceTier: 3,
+    months: [6, 7, 8],
+    typicalPrice: { low: 45, high: 100 },
   },
   {
     id: 'd24',
@@ -169,6 +215,8 @@ export const varieties: Variety[] = [
     taste: 'Balanced sweet-bitter, very creamy. The classic premium durian before Musang King took the crown.',
     peakNote: 'Reliable through the whole main season; often the best value among premium types.',
     priceTier: 2,
+    months: [6, 7, 8],
+    typicalPrice: { low: 20, high: 45 },
   },
   {
     id: 'black-thorn',
@@ -178,6 +226,8 @@ export const varieties: Variety[] = [
     taste: 'Intensely sweet with a wine-like finish. Sticky, fine texture.',
     peakNote: 'Short window late in the season, usually July to September. Penang hillside fruit is the benchmark.',
     priceTier: 3,
+    months: [7, 8, 9],
+    typicalPrice: { low: 50, high: 110 },
   },
   {
     id: 'd101',
@@ -186,6 +236,8 @@ export const varieties: Variety[] = [
     taste: 'Mild and sweet with little bitterness. A common first durian for newcomers.',
     peakNote: 'Widely available early in the season.',
     priceTier: 1,
+    months: [5, 6, 7],
+    typicalPrice: { low: 12, high: 25 },
   },
   {
     id: 'tekka',
@@ -194,6 +246,8 @@ export const varieties: Variety[] = [
     taste: 'Small seed, strong bitter kick, fibrous. A connoisseur pick.',
     peakNote: 'Mid-season, often sold out early at specialist stalls.',
     priceTier: 2,
+    months: [6, 7],
+    typicalPrice: { low: 25, high: 50 },
   },
   {
     id: 'xdm',
@@ -203,7 +257,47 @@ export const varieties: Variety[] = [
     taste: 'Sweet, soft, not too bitter. Penang favourite named for its flesh colour.',
     peakNote: 'Peaks in Penang around July to August alongside Balik Pulau festival events.',
     priceTier: 2,
+    months: [6, 7, 8],
+    typicalPrice: { low: 20, high: 45 },
   },
+];
+
+/**
+ * Verification stamp shown user-facing. Update `lastChecked` whenever a guide
+ * re-confirms prices/season windows; the date is rendered on the page.
+ */
+export const dataVerified = {
+  lastChecked: '2026-08-24',
+  verifiedBy: 'Simply Enak guides (KL & Penang stalls)',
+  basis: 'typical patterns from published FAMA/MARDI guidance plus our own market visits',
+};
+
+/** One hand-written practical note per month. This is the unique content layer. */
+export const monthNotes: string[] = [
+  // Jan
+  'Secondary flush in KL, Pahang, Perak and the east coast; Sarawak is at PEAK. Peninsula fruit is limited and pricier, so Kuching is the place to be.',
+  // Feb
+  'Tail end of the secondary flush on the peninsula while Sarawak keeps going. Expect slimmer pickings and higher prices outside Borneo.',
+  // Mar
+  'The quietest month nationwide. A few farm-gate fruit appear, but most stalls run imported fruit. Not the month to plan a durian trip around.',
+  // Apr
+  'Transition month. If the monsoon ended early, Penang can open with first flushes; otherwise stalls still lean on imports. Watch FAMA announcements.',
+  // May
+  'Season opener. Penang and the east coast start first, with Balik Pulau hillside fruit leading. Early fruit is exciting but pricey and quality is uneven.',
+  // Jun
+  'Peak builds across the peninsula. Supply thickens week by week and prices fall from early-season highs. Musang King and D24 arrive in volume.',
+  // Jul
+  'Heart of the season everywhere on the peninsula. Raub hits its festival window and Black Thorn starts appearing at specialist stalls.',
+  // Aug
+  'Last big peninsula month. Black Thorn is at its best and end-of-season deals appear as supply thins. Go now if you want volume and value.',
+  // Sep
+  'The peninsula winds down; Sabah takes over at full peak. Penang Black Thorn stragglers are worth hunting, but the epicentre moves to Borneo.',
+  // Oct
+  'Sabah closing month. Peninsula off-season begins in earnest, with only scattered farm-gate fruit and imports.',
+  // Nov
+  'Transition month. Johor starts its secondary flush and Sarawak opens its big season. Still thin on the peninsula.',
+  // Dec
+  'Secondary flush in KL, Pahang, Perak and the east coast, while Sarawak peaks. A genuinely good month if you are heading to Kuching.',
 ];
 
 export const pickingTips = [
