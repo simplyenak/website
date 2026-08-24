@@ -44,6 +44,7 @@ const post = {
     ? { title: story.category, slug: story.category.toLowerCase().replace(/\s+/g, '-') }
     : { title: 'Food & Culture Guides', slug: 'food-culture-guides' },
   tags: [],
+  locations: story.locationsRef || [],
   metadata: { title: story.meta_title || story.title, description: story.excerpt || '' },
   contents: story.content_markdown || '',
 };

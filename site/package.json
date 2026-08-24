@@ -8,7 +8,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "prebuild": "node scripts/sync-payload.mjs && python3 scripts/generate-okf-bundle.py && python3 scripts/fix-story-yaml.py && npm run generate:herald || true",
+    "prebuild": "node scripts/sync-payload.mjs && node scripts/merge-stories-translations.mjs && python3 scripts/generate-okf-bundle.py && python3 scripts/fix-story-yaml.py && npm run generate:herald || true",
     "generate:herald": "npx herald emit --agents --security --headers --platform cloudflare",
     "generate:okf": "python3 scripts/generate-okf-bundle.py",
     "build:okf": "python3 scripts/generate-okf-bundle.py",
