@@ -36,6 +36,46 @@ try {
       src.includes(currentStorySlug) || src === currentPagePath
     )
   );
+
+  // Fallback: auto-generate pills from story locations if no curated recs
+  if (linkEquityRecs.length === 0 && post.locations && post.locations.length > 0) {
+    const locationPills: any[] = [];
+    for (const loc of post.locations) {
+      const locName = typeof loc === 'string' ? loc : loc.name;
+      const locSlug = typeof loc === 'string' ? loc.toLowerCase().replace(/\s+/g, '-') : loc.slug;
+      if (locName === 'Kuala Lumpur' || locSlug === 'kuala-lumpur') {
+        locationPills.push({
+          target_path: '/tours/kuala-lumpur-street-food/',
+          link_text: 'KL street food tour',
+        });
+      }
+      if (locName === 'Penang' || locSlug === 'penang') {
+        locationPills.push({
+          target_path: '/tours/penang-street-food/',
+          link_text: 'Penang street food tour',
+        });
+      }
+      if (locName === 'Melaka' || locSlug === 'melaka') {
+        locationPills.push({
+          target_path: '/tours/',
+          link_text: 'Melaka food tour',
+        });
+      }
+      if (locName === 'Ipoh' || locSlug === 'ipoh') {
+        locationPills.push({
+          target_path: '/tours/',
+          link_text: 'Ipoh food tour',
+        });
+      }
+    }
+    // Deduplicate
+    const seen = new Set();
+    linkEquityRecs = locationPills.filter(p => {
+      if (seen.has(p.target_path)) return false;
+      seen.add(p.target_path);
+      return true;
+    });
+  }
 } catch {}
 ---
 
