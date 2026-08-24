@@ -1,0 +1,406 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { dishes, dietaryRestrictions } from '~/data/dishes';
+
+const meta = {
+  title: 'Malaysian Food Dietary Safety Checker | Simply Enak',
+  description: 'Select your dietary restrictions and instantly see which Malaysian dishes are safe to eat, which to avoid, and what hidden ingredients to ask about. Free interactive tool for travelers.',
+  canonical: 'https://simplyenak.com/dietary-safety-checker',
+};
+
+const dishData = dishes.map(d => ({
+  id: d.id,
+  name: d.name,
+  category: d.category,
+  origin: d.origin,
+  description: d.description,
+  tags: {
+    vegetarian: d.vegetarian,
+    vegan: d.vegan,
+    halal: d.halal,
+    glutenFree: d.glutenFree,
+    nutFree: d.nutFree,
+    shellfishFree: d.shellfishFree,
+    dairyFree: d.dairyFree,
+    eggFree: d.eggFree,
+  },
+  hiddenIngredients: d.hiddenIngredients,
+  tourSlug: d.tourSlug || null,
+}));
+---
+
+<Layout metadata={meta} structuredData={{
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  'name': 'Malaysian Food Dietary Safety Checker',
+  'description': 'Select your dietary restrictions and instantly see which Malaysian dishes are safe to eat, which to avoid, and what hidden ingredients to ask about.',
+  'url': 'https://simplyenak.com/dietary-safety-checker',
+  'applicationCategory': 'FoodTool',
+  'operatingSystem': 'Any',
+  'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'USD' },
+  'publisher': { '@type': 'Organization', 'name': 'Simply Enak' },
+}}>
+  <!-- Breadcrumb -->
+  <div class="sticky top-0 z-30 bg-page border-b border-gray-100 dark:border-white/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 py-3 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Dietary Safety Checker</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="w-full h-full bg-gradient-to-br from-[#2a1a0a] to-[#1a1a1a]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
+      <p class="text-accent/90 text-xs uppercase tracking-[0.2em] font-bold mb-3">Free Interactive Tool</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4">
+        <span class="inline-block bg-accent text-black px-4 py-1 rounded-sm" style="transform:rotate(-0.7deg)">
+          Malaysian Food Dietary Safety Checker
+        </span>
+        <span class="block text-white/90 text-xl md:text-2xl mt-3 font-normal font-sans">
+          Select your dietary restrictions. See instantly which Malaysian dishes are safe, which to avoid, and what hidden ingredients to ask about.
+        </span>
+      </h1>
+      <p class="text-white/60 text-sm mt-6 max-w-2xl mx-auto">
+        Covers {dishes.length} common Malaysian dishes across Malay, Chinese, Indian, Nyonya, and Sarawak cuisines. No signup required.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool Section -->
+  <section class="py-12 md:py-16 bg-muted/30" id="checker-tool">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+
+      <!-- Step 1: Select Restrictions -->
+      <div class="bg-card border border-gray-100 dark:border-white/10 rounded-xl shadow-sm p-6 md:p-10 mb-8">
+        <h2 class="text-2xl font-bold mb-2">Select Your Dietary Restrictions</h2>
+        <p class="text-muted text-sm mb-6">Toggle all that apply. Results update instantly.</p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" id="restriction-toggles">
+          {dietaryRestrictions.map(r => (
+            <button
+              type="button"
+              data-restriction={r.id}
+              class="restriction-btn flex flex-col items-start gap-1 p-4 rounded-lg border-2 border-gray-200 dark:border-white/10 hover:border-accent transition-all text-left bg-white dark:bg-transparent"
+            >
+              <span class="text-2xl">{r.icon}</span>
+              <span class="font-semibold text-sm text-default">{r.label}</span>
+              <span class="text-xs text-muted leading-tight">{r.description}</span>
+            </button>
+          ))}
+        </div>
+
+        <div class="mt-6 flex items-center gap-4">
+          <button id="clear-btn" class="text-sm text-muted hover:text-primary transition-colors font-medium">
+            Clear all
+          </button>
+          <span id="result-count" class="text-sm text-muted ml-auto"></span>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results-container" class="space-y-6">
+        <div id="no-restrictions-msg" class="text-center py-16">
+          <div class="text-5xl mb-4">🍽️</div>
+          <p class="text-muted text-lg">Select at least one dietary restriction above to see safe dishes.</p>
+        </div>
+
+        <!-- Safe dishes -->
+        <div id="safe-section" class="hidden">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl">✅</span>
+            <h3 class="text-xl font-bold text-green-600 dark:text-green-400">Safe to Eat</h3>
+            <span id="safe-count" class="text-sm text-muted"></span>
+          </div>
+          <div id="safe-dishes" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+
+        <!-- Caution dishes -->
+        <div id="caution-section" class="hidden">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl">⚠️</span>
+            <h3 class="text-xl font-bold text-yellow-600 dark:text-yellow-400">Eat with Caution — Ask First</h3>
+            <span id="caution-count" class="text-sm text-muted"></span>
+          </div>
+          <p class="text-sm text-muted mb-4">These dishes may be OK depending on preparation. Check the hidden ingredients note and ask the vendor.</p>
+          <div id="caution-dishes" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+
+        <!-- Avoid dishes -->
+        <div id="avoid-section" class="hidden">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl">🚫</span>
+            <h3 class="text-xl font-bold text-red-600 dark:text-red-400">Avoid</h3>
+            <span id="avoid-count" class="text-sm text-muted"></span>
+          </div>
+          <div id="avoid-dishes" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 p-8 bg-accent/5 border border-accent/20 rounded-xl text-center" id="tour-cta">
+        <h3 class="text-2xl font-bold mb-2">Want a guide who already knows all this?</h3>
+        <p class="text-muted mb-4 max-w-xl mx-auto">Our guides vet every stall for your dietary needs. No guesswork, no awkward questions — just eating.</p>
+        <a href="/tours" class="inline-block bg-accent text-black font-bold px-8 py-3 rounded-lg hover:bg-accent/90 transition-colors">
+          Browse Food Tours
+        </a>
+      </div>
+
+      <!-- Share section -->
+      <div class="mt-8 text-center" id="share-section">
+        <p class="text-sm text-muted mb-3">Found this useful? Share it:</p>
+        <div class="flex items-center justify-center gap-4">
+          <a href="https://twitter.com/intent/tweet?text=Check%20if%20Malaysian%20food%20is%20safe%20for%20your%20diet&url=https://simplyenak.com/dietary-safety-checker" target="_blank" rel="noopener" class="text-sm text-accent hover:underline">Share on X</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://simplyenak.com/dietary-safety-checker" target="_blank" rel="noopener" class="text-sm text-accent hover:underline">Share on Facebook</a>
+          <button id="copy-url-btn" class="text-sm text-accent hover:underline cursor-pointer">Copy link</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEO Content Section -->
+  <section class="py-12 bg-page border-t border-gray-100 dark:border-white/10">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 prose prose-sm dark:prose-invert">
+      <h2 class="text-2xl font-bold mb-4">Why Malaysian Food Trips Need a Dietary Safety Checker</h2>
+      <p class="text-muted">Malaysian food is one of the world's great cuisines, but it can be tricky for travelers with dietary restrictions. Shrimp paste (belacan) hides in unexpected places. Pork lard flavors Chinese stir-fries. Ghee shows up in Indian breads. Even dishes that sound vegetarian may contain dried shrimp or fish sauce.</p>
+      <p class="text-muted">This tool covers {dishes.length} common Malaysian dishes across Malay, Chinese, Indian, Nyonya, and Sarawak cooking traditions. For each dish, you'll see whether it's safe, needs caution, or should be avoided for your specific dietary needs, plus the hidden ingredients to ask about.</p>
+
+      <h3 class="text-lg font-bold mt-6 mb-3">Common Hidden Ingredients in Malaysian Food</h3>
+      <ul class="text-muted space-y-2">
+        <li><strong>Belacan (shrimp paste):</strong> Found in sambal, curries, laksa, rojak. Even dishes that seem vegetarian may contain it.</li>
+        <li><strong>Pork lard:</strong> Used in Chinese stir-fries for flavor. Char kway teow and Hokkien mee traditionally use it.</li>
+        <li><strong>Ghee:</strong> Common in Indian-Muslim breads like roti canai and in some curries.</li>
+        <li><strong>Soy sauce:</strong> Contains wheat unless tamari is used. Found in many Chinese dishes and sambal.</li>
+        <li><strong>Coconut milk:</strong> Not dairy, but common in curries, laksa, and desserts. Safe for dairy-free, but check if you avoid coconut.</li>
+        <li><strong>Peanuts:</strong> In satay sauce, apam balik, and as garnish for rojak and other dishes.</li>
+      </ul>
+
+      <h3 class="text-lg font-bold mt-6 mb-3">Tips for Eating Safely in Malaysia</h3>
+      <ul class="text-muted space-y-2">
+        <li><strong>Ask specifically:</strong> "Vegetarian" in Malaysia may still include fish. Say "no shrimp paste, no fish sauce, no dried shrimp" to be clear.</li>
+        <li><strong>Buddhist vegetarian (zhai):</strong> Chinese Buddhist restaurants are the safest option for strict vegetarians and vegans. They avoid onion, garlic, and leek too.</li>
+        <li><strong>Halal certification:</strong> Look for the JAKIM halal logo. Malay stalls are generally halal, Chinese stalls are generally not.</li>
+        <li><strong>Cross-contamination:</strong> At hawker stalls, utensils may touch multiple dishes. If you have severe allergies, private tours with pre-arranged stops are safest.</li>
+        <li><strong>Book a guided tour:</strong> Our guides at Simply Enak know which stalls are safe for your needs. We vet every stop so you can eat with confidence.</li>
+      </ul>
+    </div>
+  </section>
+
+  <span id="dish-data" data-payload={JSON.stringify(dishData)} style="display:none"></span>
+  <span id="restrictions-data" data-payload={JSON.stringify(dietaryRestrictions)} style="display:none"></span>
+</Layout>
+
+<script is:inline>
+  (function() {
+    var DISHES = JSON.parse(document.getElementById('dish-data').getAttribute('data-payload'));
+    var RESTRICTIONS = JSON.parse(document.getElementById('restrictions-data').getAttribute('data-payload'));
+    var activeRestrictions = new Set();
+
+    var safeSection = document.getElementById('safe-section');
+    var cautionSection = document.getElementById('caution-section');
+    var avoidSection = document.getElementById('avoid-section');
+    var noRestrictionsMsg = document.getElementById('no-restrictions-msg');
+    var resultCount = document.getElementById('result-count');
+    var safeDishesEl = document.getElementById('safe-dishes');
+    var cautionDishesEl = document.getElementById('caution-dishes');
+    var avoidDishesEl = document.getElementById('avoid-dishes');
+    var safeCountEl = document.getElementById('safe-count');
+    var cautionCountEl = document.getElementById('caution-count');
+    var avoidCountEl = document.getElementById('avoid-count');
+
+    // --- Toggle buttons ---
+    var toggleButtons = document.querySelectorAll('.restriction-btn');
+    toggleButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var rid = btn.getAttribute('data-restriction');
+        if (activeRestrictions.has(rid)) {
+          activeRestrictions.delete(rid);
+          btn.classList.remove('border-accent', 'bg-accent/10');
+          btn.classList.add('border-gray-200');
+        } else {
+          activeRestrictions.add(rid);
+          btn.classList.add('border-accent', 'bg-accent/10');
+          btn.classList.remove('border-gray-200');
+        }
+        renderResults();
+      });
+    });
+
+    // --- Clear button ---
+    document.getElementById('clear-btn').addEventListener('click', function() {
+      activeRestrictions.clear();
+      toggleButtons.forEach(function(btn) {
+        btn.classList.remove('border-accent', 'bg-accent/10');
+        btn.classList.add('border-gray-200');
+      });
+      renderResults();
+    });
+
+    // --- Copy URL ---
+    document.getElementById('copy-url-btn').addEventListener('click', function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        var btn = document.getElementById('copy-url-btn');
+        var orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = orig; }, 2000);
+      });
+    });
+
+    // --- Classify dishes ---
+    function classifyDish(dish) {
+      if (activeRestrictions.size === 0) return null;
+
+      var hasAvoid = false;
+      var hasCaution = false;
+
+      activeRestrictions.forEach(function(rid) {
+        var status = dish.tags[rid];
+        if (status === 'avoid') hasAvoid = true;
+        else if (status === 'caution') hasCaution = true;
+      });
+
+      if (hasAvoid) return 'avoid';
+      if (hasCaution) return 'caution';
+      return 'safe';
+    }
+
+    // --- Create dish card HTML ---
+    function dishCard(dish) {
+      var tourLink = '';
+      if (dish.tourSlug) {
+        tourLink = '<a href="/tours/' + dish.tourSlug + '" class="inline-block mt-3 text-xs font-semibold text-accent hover:underline">Try this on our ' + dish.origin + ' food tour →</a>';
+      }
+
+      var badges = '';
+      var activeArray = Array.from(activeRestrictions);
+      activeArray.forEach(function(rid) {
+        var status = dish.tags[rid];
+        var restInfo = RESTRICTIONS.find(function(r) { return r.id === rid; });
+        if (!restInfo) return;
+
+        var label = restInfo.label;
+        var icon = restInfo.icon;
+
+        if (status === 'safe') {
+          badges += '<span class="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-medium">✅ ' + label + '</span>';
+        } else if (status === 'caution') {
+          badges += '<span class="inline-flex items-center gap-1 text-xs bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400 px-2 py-0.5 rounded-full font-medium">⚠️ ' + label + '</span>';
+        } else {
+          badges += '<span class="inline-flex items-center gap-1 text-xs bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 px-2 py-0.5 rounded-full font-medium">🚫 ' + label + '</span>';
+        }
+      });
+
+      return '<div class="bg-card border border-gray-100 dark:border-white/10 rounded-lg p-5 shadow-sm">' +
+        '<div class="flex items-start justify-between mb-2">' +
+          '<div>' +
+            '<h4 class="font-bold text-default text-lg">' + dish.name + '</h4>' +
+            '<p class="text-xs text-muted">' + dish.category + ' · ' + dish.origin + '</p>' +
+          '</div>' +
+        '</div>' +
+        '<p class="text-sm text-muted mb-3">' + dish.description + '</p>' +
+        '<div class="flex flex-wrap gap-1.5 mb-3">' + badges + '</div>' +
+        (dish.hiddenIngredients ? '<div class="text-xs bg-muted/30 rounded-md p-3 text-muted"><strong>Hidden ingredients:</strong> ' + dish.hiddenIngredients + '</div>' : '') +
+        tourLink +
+      '</div>';
+    }
+
+    // --- Render results ---
+    function renderResults() {
+      if (activeRestrictions.size === 0) {
+        noRestrictionsMsg.classList.remove('hidden');
+        safeSection.classList.add('hidden');
+        cautionSection.classList.add('hidden');
+        avoidSection.classList.add('hidden');
+        resultCount.textContent = '';
+        return;
+      }
+
+      noRestrictionsMsg.classList.add('hidden');
+
+      var safe = [];
+      var caution = [];
+      var avoid = [];
+
+      DISHES.forEach(function(dish) {
+        var category = classifyDish(dish);
+        if (category === 'safe') safe.push(dish);
+        else if (category === 'caution') caution.push(dish);
+        else if (category === 'avoid') avoid.push(dish);
+      });
+
+      // Safe
+      if (safe.length > 0) {
+        safeSection.classList.remove('hidden');
+        safeCountEl.textContent = '(' + safe.length + ' dishes)';
+        safeDishesEl.innerHTML = safe.map(dishCard).join('');
+      } else {
+        safeSection.classList.add('hidden');
+      }
+
+      // Caution
+      if (caution.length > 0) {
+        cautionSection.classList.remove('hidden');
+        cautionCountEl.textContent = '(' + caution.length + ' dishes)';
+        cautionDishesEl.innerHTML = caution.map(dishCard).join('');
+      } else {
+        cautionSection.classList.add('hidden');
+      }
+
+      // Avoid
+      if (avoid.length > 0) {
+        avoidSection.classList.remove('hidden');
+        avoidCountEl.textContent = '(' + avoid.length + ' dishes)';
+        avoidDishesEl.innerHTML = avoid.map(dishCard).join('');
+      } else {
+        avoidSection.classList.add('hidden');
+      }
+
+      resultCount.textContent = safe.length + ' safe, ' + caution.length + ' caution, ' + avoid.length + ' avoid';
+    }
+
+    // --- URL state sync ---
+    function syncFromURL() {
+      var params = new URLSearchParams(window.location.search);
+      var rids = params.get('r');
+      if (rids) {
+        rids.split(',').forEach(function(rid) {
+          activeRestrictions.add(rid);
+          var btn = document.querySelector('[data-restriction="' + rid + '"]');
+          if (btn) {
+            btn.classList.add('border-accent', 'bg-accent/10');
+            btn.classList.remove('border-gray-200');
+          }
+        });
+        renderResults();
+      }
+    }
+
+    function updateURL() {
+      var rids = Array.from(activeRestrictions).join(',');
+      var url = new URL(window.location.href);
+      if (rids) url.searchParams.set('r', rids);
+      else url.searchParams.delete('r');
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    // Patch renderResults to also update URL
+    var origRender = renderResults;
+    renderResults = function() {
+      origRender();
+      updateURL();
+    };
+
+    // Init
+    syncFromURL();
+    if (activeRestrictions.size === 0) {
+      renderResults();
+    }
+  })();
+</script>

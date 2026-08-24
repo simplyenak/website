@@ -1,0 +1,368 @@
+---
+import Default from '~/layouts/Default.astro';
+import { dishes, dietaryRestrictions } from '~/data/dishes';
+
+const title = 'What Can I Eat in Malaysia? Dietary Safety Checker';
+const description = 'Select your dietary restrictions and instantly see which Malaysian dishes are safe, which to avoid, and what hidden ingredients to ask about. Free tool for travelers visiting Malaysia.';
+
+const dishData = dishes.map(d => ({
+  id: d.id,
+  name: d.name,
+  category: d.category,
+  origin: d.origin,
+  description: d.description,
+  tags: {
+    vegetarian: d.vegetarian,
+    vegan: d.vegan,
+    halal: d.halal,
+    glutenFree: d.glutenFree,
+    nutFree: d.nutFree,
+    shellfishFree: d.shellfishFree,
+    dairyFree: d.dairyFree,
+    eggFree: d.eggFree,
+  },
+  hiddenIngredients: d.hiddenIngredients,
+  tourSlug: d.tourSlug || null,
+}));
+---
+
+<Default title={title} description={description}>
+  <!-- Hero -->
+  <header style="background: linear-gradient(135deg, #1a1a1a, #2a1a0a); color: white; padding: 3rem 1rem; text-align: center;">
+    <div class="container">
+      <p style="color: var(--color-accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; margin-bottom: 0.5rem;">Free Tool for Travelers</p>
+      <h1 style="font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; line-height: 1.1;">
+        What Can I Eat in Malaysia?
+      </h1>
+      <p style="font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 0.5rem;">
+        Select your dietary restrictions. See instantly which Malaysian dishes are safe, which to avoid, and what hidden ingredients to ask about.
+      </p>
+      <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4);">
+        Covers {dishes.length} dishes across Malay, Chinese, Indian, Nyonya & Sarawak cuisines. No signup.
+      </p>
+    </div>
+  </header>
+
+  <!-- Tool -->
+  <section style="padding: 2rem 0;" id="checker">
+    <div class="container">
+      <!-- Step 1: Select -->
+      <div style="background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+        <h2 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Select Your Dietary Restrictions</h2>
+        <p style="color: var(--color-muted); font-size: 0.85rem; margin-bottom: 1rem;">Toggle all that apply. Results update instantly.</p>
+
+        <div id="restriction-toggles" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.6rem;">
+          {dietaryRestrictions.map(r => (
+            <button
+              type="button"
+              data-restriction={r.id}
+              class="restriction-btn"
+            >
+              <span style="font-size: 1.4rem;">{r.icon}</span>
+              <span style="font-weight: 700; font-size: 0.85rem;">{r.label}</span>
+              <span style="font-size: 0.72rem; color: var(--color-muted); line-height: 1.3;">{r.description}</span>
+            </button>
+          ))}
+        </div>
+
+        <div style="margin-top: 1rem; display: flex; align-items: center; gap: 0.75rem;">
+          <button id="clear-btn" style="font-size: 0.85rem; color: var(--color-muted); background: none; border: none; cursor: pointer; font-weight: 600;">Clear all</button>
+          <span id="result-count" style="font-size: 0.85rem; color: var(--color-muted); margin-left: auto;"></span>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="results-container">
+        <div id="no-restrictions-msg" style="text-align: center; padding: 3rem 1rem;">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">🍽️</div>
+          <p style="color: var(--color-muted); font-size: 1.1rem;">Select at least one dietary restriction above to see safe dishes.</p>
+        </div>
+
+        <div id="safe-section" class="hidden">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span style="font-size: 1.5rem;">✅</span>
+            <h3 style="font-size: 1.15rem; color: #16a34a;">Safe to Eat</h3>
+            <span id="safe-count" style="font-size: 0.85rem; color: var(--color-muted);"></span>
+          </div>
+          <div id="safe-dishes" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem;"></div>
+        </div>
+
+        <div id="caution-section" class="hidden">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span style="font-size: 1.5rem;">⚠️</span>
+            <h3 style="font-size: 1.15rem; color: #ca8a04;">Eat with Caution — Ask First</h3>
+            <span id="caution-count" style="font-size: 0.85rem; color: var(--color-muted);"></span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--color-muted); margin-bottom: 0.75rem;">These dishes may be OK depending on preparation. Check the hidden ingredients note and ask the vendor.</p>
+          <div id="caution-dishes" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem;"></div>
+        </div>
+
+        <div id="avoid-section" class="hidden">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span style="font-size: 1.5rem;">🚫</span>
+            <h3 style="font-size: 1.15rem; color: #dc2626;">Avoid</h3>
+            <span id="avoid-count" style="font-size: 0.85rem; color: var(--color-muted);"></span>
+          </div>
+          <div id="avoid-dishes" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem;"></div>
+        </div>
+      </div>
+
+      <!-- CTA to Simply Enak -->
+      <div style="margin-top: 2rem; background: linear-gradient(135deg, #FFA33322, #B52D3811); border: 1px solid #FFA33344; border-radius: 12px; padding: 1.5rem; text-align: center;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Want a guide who already knows all this?</h3>
+        <p style="color: var(--color-muted); margin-bottom: 0.75rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+          Simply Enak's guides vet every stall for your dietary needs. No guesswork, no awkward questions — just eating.
+        </p>
+        <a href="https://simplyenak.com/tours" style="display: inline-block; background: var(--color-accent); color: #1a1a1a; font-weight: 700; padding: 0.65rem 1.5rem; border-radius: 8px; text-decoration: none;">
+          Browse Food Tours →
+        </a>
+      </div>
+
+      <!-- Share -->
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <p style="font-size: 0.85rem; color: var(--color-muted); margin-bottom: 0.5rem;">Found this useful? Share it:</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+          <a href="https://twitter.com/intent/tweet?text=What%20can%20I%20eat%20in%20Malaysia%20with%20my%20diet%3F&url=https://whatcanieatinmy.com" target="_blank" rel="noopener" style="font-size: 0.85rem;">Share on X</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://whatcanieatinmy.com" target="_blank" rel="noopener" style="font-size: 0.85rem;">Share on Facebook</a>
+          <button id="copy-url-btn" style="font-size: 0.85rem; background: none; border: none; cursor: pointer; color: var(--color-primary);">Copy link</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content -->
+  <section style="padding: 2rem 0 3rem; border-top: 1px solid var(--color-border);">
+    <div class="container" style="max-width: 700px;">
+      <h2 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Why Malaysian Food Trips Need a Dietary Safety Checker</h2>
+      <p style="color: var(--color-muted); margin-bottom: 0.75rem; font-size: 0.9rem;">Malaysian food is one of the world's great cuisines, but it can be tricky for travelers with dietary restrictions. Shrimp paste (belacan) hides in unexpected places. Pork lard flavors Chinese stir-fries. Ghee shows up in Indian breads. Even dishes that sound vegetarian may contain dried shrimp or fish sauce.</p>
+      <p style="color: var(--color-muted); margin-bottom: 0.75rem; font-size: 0.9rem;">This tool covers {dishes.length} common Malaysian dishes across Malay, Chinese, Indian, Nyonya, and Sarawak cooking traditions. For each dish, you'll see whether it's safe, needs caution, or should be avoided for your specific dietary needs, plus the hidden ingredients to ask about.</p>
+
+      <h3 style="font-size: 1.05rem; margin: 1rem 0 0.4rem;">Common Hidden Ingredients in Malaysian Food</h3>
+      <ul style="color: var(--color-muted); font-size: 0.9rem; padding-left: 1.2rem; line-height: 1.7;">
+        <li><strong>Belacan (shrimp paste):</strong> Found in sambal, curries, laksa, rojak. Even dishes that seem vegetarian may contain it.</li>
+        <li><strong>Pork lard:</strong> Used in Chinese stir-fries for flavor. Char kway teow and Hokkien mee traditionally use it.</li>
+        <li><strong>Ghee:</strong> Common in Indian-Muslim breads like roti canai and in some curries.</li>
+        <li><strong>Soy sauce:</strong> Contains wheat unless tamari is used. Found in many Chinese dishes and sambal.</li>
+        <li><strong>Coconut milk:</strong> Not dairy, but common in curries, laksa, and desserts. Safe for dairy-free, but check if you avoid coconut.</li>
+        <li><strong>Peanuts:</strong> In satay sauce, apam balik, and as garnish for rojak and other dishes.</li>
+      </ul>
+
+      <h3 style="font-size: 1.05rem; margin: 1rem 0 0.4rem;">Tips for Eating Safely in Malaysia</h3>
+      <ul style="color: var(--color-muted); font-size: 0.9rem; padding-left: 1.2rem; line-height: 1.7;">
+        <li><strong>Ask specifically:</strong> "Vegetarian" in Malaysia may still include fish. Say "no shrimp paste, no fish sauce, no dried shrimp" to be clear.</li>
+        <li><strong>Buddhist vegetarian (zhai):</strong> Chinese Buddhist restaurants are the safest option for strict vegetarians and vegans. They avoid onion, garlic, and leek too.</li>
+        <li><strong>Halal certification:</strong> Look for the JAKIM halal logo. Malay stalls are generally halal, Chinese stalls are generally not.</li>
+        <li><strong>Cross-contamination:</strong> At hawker stalls, utensils may touch multiple dishes. If you have severe allergies, private tours with pre-arranged stops are safest.</li>
+        <li><strong>Book a guided tour:</strong> <a href="https://simplyenak.com/tours">Simply Enak's guides</a> know which stalls are safe for your needs. They vet every stop so you can eat with confidence.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding: 1.5rem 0; border-top: 1px solid var(--color-border); text-align: center;">
+    <div class="container">
+      <p style="font-size: 0.8rem; color: var(--color-muted);">
+        Built by <a href="https://simplyenak.com">Simply Enak</a> — Malaysian food tours led by guides who know what's in every dish.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Data -->
+  <script type="application/json" id="dish-data" set:html={JSON.stringify(dishData)} />
+  <script type="application/json" id="restrictions-data" set:html={JSON.stringify(dietaryRestrictions)} />
+
+  <!-- Interactive logic -->
+  <script is:inline>
+    (function() {
+      var DISHES = JSON.parse(document.getElementById('dish-data').textContent);
+      var RESTRICTIONS = JSON.parse(document.getElementById('restrictions-data').textContent);
+      var activeRestrictions = new Set();
+
+      // Styles for toggle buttons
+      var style = document.createElement('style');
+      style.textContent = `
+        .restriction-btn {
+          display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+          padding: 0.75rem; border-radius: 8px; border: 2px solid var(--color-border);
+          background: var(--color-card); cursor: pointer; text-align: left;
+          transition: all 0.15s ease; font-family: inherit;
+        }
+        .restriction-btn:hover { border-color: var(--color-accent); }
+        .restriction-btn.active { border-color: var(--color-accent); background: rgba(255,163,51,0.08); }
+        .dish-card {
+          background: var(--color-card); border: 1px solid var(--color-border);
+          border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .badge {
+          display: inline-flex; align-items: center; gap: 3px;
+          font-size: 0.72rem; padding: 2px 7px; border-radius: 999px; font-weight: 500;
+        }
+        .badge-safe { background: #dcfce7; color: #15803d; }
+        .badge-caution { background: #fef3c7; color: #a16207; }
+        .badge-avoid { background: #fee2e2; color: #b91c1c; }
+        .hidden { display: none !important; }
+        @media (prefers-color-scheme: dark) {
+          .badge-safe { background: rgba(34,197,94,0.15); color: #4ade80; }
+          .badge-caution { background: rgba(234,179,8,0.15); color: #facc15; }
+          .badge-avoid { background: rgba(239,68,68,0.15); color: #f87171; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      var safeSection = document.getElementById('safe-section');
+      var cautionSection = document.getElementById('caution-section');
+      var avoidSection = document.getElementById('avoid-section');
+      var noRestrictionsMsg = document.getElementById('no-restrictions-msg');
+      var resultCount = document.getElementById('result-count');
+
+      function classifyDish(dish) {
+        if (activeRestrictions.size === 0) return null;
+        var hasAvoid = false, hasCaution = false;
+        activeRestrictions.forEach(function(rid) {
+          var status = dish.tags[rid];
+          if (status === 'avoid') hasAvoid = true;
+          else if (status === 'caution') hasCaution = true;
+        });
+        if (hasAvoid) return 'avoid';
+        if (hasCaution) return 'caution';
+        return 'safe';
+      }
+
+      function esc(s) {
+        var d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+      }
+
+      function dishCard(dish) {
+        var badges = '';
+        activeRestrictions.forEach(function(rid) {
+          var status = dish.tags[rid];
+          var restInfo = RESTRICTIONS.find(function(r) { return r.id === rid; });
+          if (!restInfo) return;
+          var cls = status === 'safe' ? 'badge-safe' : status === 'caution' ? 'badge-caution' : 'badge-avoid';
+          var icon = status === 'safe' ? '✅' : status === 'caution' ? '⚠️' : '🚫';
+          badges += '<span class="badge ' + cls + '">' + icon + ' ' + esc(restInfo.label) + '</span>';
+        });
+
+        var tourLink = '';
+        if (dish.tourSlug) {
+          tourLink = '<a href="https://simplyenak.com/tours/' + esc(dish.tourSlug) + '" style="display:inline-block;margin-top:0.5rem;font-size:0.75rem;font-weight:600;">Try this on a Simply Enak food tour →</a>';
+        }
+
+        var hidden = '';
+        if (dish.hiddenIngredients) {
+          hidden = '<div style="font-size:0.75rem;background:rgba(0,0,0,0.03);border-radius:6px;padding:0.5rem;margin-top:0.5rem;color:var(--color-muted);"><strong>Hidden ingredients:</strong> ' + esc(dish.hiddenIngredients) + '</div>';
+        }
+
+        return '<div class="dish-card">' +
+          '<h4 style="font-weight:700;font-size:1.05rem;">' + esc(dish.name) + '</h4>' +
+          '<p style="font-size:0.72rem;color:var(--color-muted);margin-bottom:0.4rem;">' + esc(dish.category) + ' · ' + esc(dish.origin) + '</p>' +
+          '<p style="font-size:0.85rem;color:var(--color-muted);margin-bottom:0.5rem;">' + esc(dish.description) + '</p>' +
+          '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:0.25rem;">' + badges + '</div>' +
+          hidden + tourLink +
+        '</div>';
+      }
+
+      function renderResults() {
+        if (activeRestrictions.size === 0) {
+          noRestrictionsMsg.classList.remove('hidden');
+          safeSection.classList.add('hidden');
+          cautionSection.classList.add('hidden');
+          avoidSection.classList.add('hidden');
+          resultCount.textContent = '';
+          return;
+        }
+
+        noRestrictionsMsg.classList.add('hidden');
+
+        var safe = [], caution = [], avoid = [];
+        DISHES.forEach(function(dish) {
+          var cat = classifyDish(dish);
+          if (cat === 'safe') safe.push(dish);
+          else if (cat === 'caution') caution.push(dish);
+          else if (cat === 'avoid') avoid.push(dish);
+        });
+
+        if (safe.length > 0) {
+          safeSection.classList.remove('hidden');
+          document.getElementById('safe-count').textContent = '(' + safe.length + ' dishes)';
+          document.getElementById('safe-dishes').innerHTML = safe.map(dishCard).join('');
+        } else { safeSection.classList.add('hidden'); }
+
+        if (caution.length > 0) {
+          cautionSection.classList.remove('hidden');
+          document.getElementById('caution-count').textContent = '(' + caution.length + ' dishes)';
+          document.getElementById('caution-dishes').innerHTML = caution.map(dishCard).join('');
+        } else { cautionSection.classList.add('hidden'); }
+
+        if (avoid.length > 0) {
+          avoidSection.classList.remove('hidden');
+          document.getElementById('avoid-count').textContent = '(' + avoid.length + ' dishes)';
+          document.getElementById('avoid-dishes').innerHTML = avoid.map(dishCard).join('');
+        } else { avoidSection.classList.add('hidden'); }
+
+        resultCount.textContent = safe.length + ' safe, ' + caution.length + ' caution, ' + avoid.length + ' avoid';
+        updateURL();
+      }
+
+      // Toggle buttons
+      document.querySelectorAll('.restriction-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var rid = btn.getAttribute('data-restriction');
+          if (activeRestrictions.has(rid)) {
+            activeRestrictions.delete(rid);
+            btn.classList.remove('active');
+          } else {
+            activeRestrictions.add(rid);
+            btn.classList.add('active');
+          }
+          renderResults();
+        });
+      });
+
+      // Clear
+      document.getElementById('clear-btn').addEventListener('click', function() {
+        activeRestrictions.clear();
+        document.querySelectorAll('.restriction-btn').forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        renderResults();
+      });
+
+      // Copy URL
+      document.getElementById('copy-url-btn').addEventListener('click', function() {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+          var btn = document.getElementById('copy-url-btn');
+          var orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = orig; }, 2000);
+        });
+      });
+
+      // URL state
+      function syncFromURL() {
+        var params = new URLSearchParams(window.location.search);
+        var rids = params.get('r');
+        if (rids) {
+          rids.split(',').forEach(function(rid) {
+            activeRestrictions.add(rid);
+            var btn = document.querySelector('[data-restriction="' + rid + '"]');
+            if (btn) btn.classList.add('active');
+          });
+        }
+      }
+
+      function updateURL() {
+        var rids = Array.from(activeRestrictions).join(',');
+        var url = new URL(window.location.href);
+        if (rids) url.searchParams.set('r', rids);
+        else url.searchParams.delete('r');
+        window.history.replaceState({}, '', url.toString());
+      }
+
+      syncFromURL();
+      renderResults();
+    })();
+  </script>
+</Default>

@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 /**
- * translate-missing-stories.mjs
+ * translate-missing-stories-fast.mjs
  * 
- * Translates missing story content using Omniroute (glm-5.2).
- * Handles title, excerpt, content (markdown), meta_title, meta_description.
- * Writes to monitoring files so merge-stories-translations.mjs picks them up.
+ * Fast translator: writes files AFTER EACH story (not at end).
+ * Translates title, excerpt, content (markdown), meta_title, meta_description.
  * 
- * Usage: TRANSLATE_PROVIDER=omniroute node scripts/translate-missing-stories.mjs [--lang de] [--all]
+ * Usage: TRANSLATE_PROVIDER=omniroute node scripts/translate-missing-stories-fast.mjs [--lang de]
  */
 
 import fs from 'fs';
@@ -20,8 +19,6 @@ const CONTENT_DIR = path.resolve(__dirname, '../src/data/content');
 const TRANSLATIONS_DIR = path.resolve(__dirname, '../src/i18n/translations');
 
 const ALL_LANGS = ['ms', 'zh', 'de', 'es', 'fr', 'nl', 'ru', 'ja', 'pt'];
-
-// Languages to translate
 const TARGET_LANGS = process.argv.includes('--all') 
   ? ALL_LANGS 
   : (process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1]?.split(',') || ALL_LANGS : ALL_LANGS);
@@ -62,26 +59,17 @@ async function llmCall(prompt) {
 }
 
 function cleanMarkdown(text) {
-  // Remove any markdown formatting artifacts that might cause issues
   return text.replace(/\[object Object\]/g, '').replace(/\\n/g, '\n').trim();
 }
 
 async function main() {
   console.log(`🌐 Translating missing stories → ${TARGET_LANGS.join(', ')}`);
+  console.log(`💡 Note: Files written after each story for real-time progress\n`);
   
   // Load stories
   const storiesPath = path.join(CONTENT_DIR, 'stories.json');
   const stories = JSON.parse(fs.readFileSync(storiesPath, 'utf8'));
   const storyById = new Map(stories.map(s => [String(s.id), s]));
-  
-  // Load existing translations
-  const existingTranslations = {};
-  for (const lang of ALL_LANGS) {
-    const transPath = path.join(TRANSLATIONS_DIR, `stories-translations-${lang}.json`);
-    existingTranslations[lang] = fs.existsSync(transPath) 
-      ? JSON.parse(fs.readFileSync(transPath, 'utf8')) 
-      : {};
-  }
   
   let translated = 0;
   let errors = 0;
@@ -89,10 +77,16 @@ async function main() {
   for (const lang of TARGET_LANGS) {
     console.log(`\n📝 Translating to ${lang}...`);
     
+    // Load existing translations or create empty
+    const transPath = path.join(TRANSLATIONS_DIR, `stories-translations-${lang}.json`);
+    let existingTranslations = {};
+    if (fs.existsSync(transPath)) {
+      existingTranslations = JSON.parse(fs.readFileSync(transPath, 'utf8'));
+    }
+    
     // Find stories missing this language
-    const transSet = new Set(Object.keys(existingTranslations[lang]));
     const missingIds = stories
-      .filter(s => !transSet.has(String(s.id)))
+      .filter(s => !existingTranslations[String(s.id)])
       .map(s => s.id);
     
     if (missingIds.length === 0) {
@@ -107,10 +101,7 @@ async function main() {
       if (!story) continue;
       
       try {
-        // Build translation object
-        const translation = {
-          languages_code: lang
-        };
+        const translation = { languages_code: lang };
         
         // Translate title
         const titlePrompt = `Translate this title to ${lang}. Return ONLY the translated title, nothing else:\n\n"${story.title}"`;
@@ -121,56 +112,48 @@ async function main() {
         const excerptPrompt = `Translate this excerpt to ${lang}. Return ONLY the translated text, nothing else:\n\n"${excerpt}"`;
         translation.excerpt = await llmCall(excerptPrompt);
         
-        // Translate content (markdown) - this is the main body
+        // Translate content (markdown)
         const content = story.content_markdown || story.content || '';
         if (content && content.length > 100) {
-          console.log(`  📄 Translating content (${content.length} chars)...`);
-          const contentPrompt = `Translate this article from English to ${lang}. Preserve all markdown formatting (headers, bold, links, lists). Return ONLY the translated markdown, nothing else:\n\n${content}`;
+          const contentPrompt = `Translate this article from English to ${lang}. Preserve all markdown formatting. Return ONLY the translated markdown, nothing else:\n\n${content}`;
           translation.content = await llmCall(contentPrompt);
         }
         
-        // Translate meta title (if different from title)
+        // Translate meta title
         const metaTitle = story.meta_title || story.title;
-        if (metaTitle !== story.title) {
-          const metaPrompt = `Translate this title to ${lang}. Return ONLY the translated title:\n\n"${metaTitle}"`;
-          translation.meta_title = await llmCall(metaPrompt);
-        } else {
-          translation.meta_title = translation.title;
-        }
+        translation.meta_title = metaTitle !== story.title 
+          ? await llmCall(`Translate this title to ${lang}:\n\n"${metaTitle}"`)
+          : translation.title;
         
         // Translate meta description
         const metaDesc = story.meta_description || '';
         if (metaDesc) {
-          const metaDescPrompt = `Translate this description to ${lang}. Return ONLY the translated text:\n\n"${metaDesc}"`;
-          translation.meta_description = await llmCall(metaDescPrompt);
+          translation.meta_description = await llmCall(`Translate this description to ${lang}:\n\n"${metaDesc}"`);
         }
         
-        // Clean any corruption
+        // Clean and save
         for (const key of Object.keys(translation)) {
           if (typeof translation[key] === 'string') {
             translation[key] = cleanMarkdown(translation[key]);
           }
         }
         
-        existingTranslations[lang][String(id)] = translation;
-        translated++;
-        console.log(`  ✓ ${story.slug}: ${translation.title.slice(0, 40)}...`);
+        existingTranslations[String(id)] = translation;
         
-        // Rate limit: 2s between stories (content translation takes longer)
-        await new Promise(r => setTimeout(r, 2000));
+        // Write file immediately after each story
+        fs.writeFileSync(transPath, JSON.stringify(existingTranslations, null, 2) + '\n', 'utf8');
+        
+        translated++;
+        console.log(`  ✓ [${translated}/${missingIds.length}] ${story.slug}: ${translation.title.slice(0, 30)}...`);
+        
+        // Rate limit
+        await new Promise(r => setTimeout(r, 1500));
         
       } catch (err) {
         console.error(`  ✗ ${story.slug}: ${err.message}`);
         errors++;
       }
     }
-  }
-  
-  // Write back all translations
-  for (const lang of TARGET_LANGS) {
-    const transPath = path.join(TRANSLATIONS_DIR, `stories-translations-${lang}.json`);
-    fs.writeFileSync(transPath, JSON.stringify(existingTranslations[lang], null, 2) + '\n', 'utf8');
-    console.log(`\n💾 Saved ${Object.keys(existingTranslations[lang]).length} translations for ${lang}`);
   }
   
   console.log(`\n✅ Done: ${translated} translated, ${errors} errors`);

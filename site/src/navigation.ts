@@ -49,6 +49,10 @@ export const headerData = {
       href: getBlogPermalink(),
     },
     {
+      text: 'Dietary Checker',
+      href: getPermalink('/dietary-safety-checker'),
+    },
+    {
       text: 'About',
       href: getPermalink('/about'),
     },
