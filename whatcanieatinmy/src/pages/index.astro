@@ -2,7 +2,7 @@
 import Default from '~/layouts/Default.astro';
 import { dishes, dietaryRestrictions } from '~/data/dishes';
 
-const title = 'What Can I Eat in Malaysia? Dietary Safety Checker';
+const title = 'What Can I Eat in Malaysia? Check Any Dish Against Your Diet';
 const description = 'Select your dietary restrictions and instantly see which Malaysian dishes are safe, which to avoid, and what hidden ingredients to ask about. Free tool for travelers visiting Malaysia.';
 
 const dishData = dishes.map(d => ({
@@ -21,7 +21,9 @@ const dishData = dishes.map(d => ({
     dairyFree: d.dairyFree,
     eggFree: d.eggFree,
   },
-  hiddenIngredients: d.hiddenIngredients,
+  notes: d.notes || {},
+  image: d.image || null,
+  imageAlt: d.imageAlt || null,
 }));
 
 const cuisines = [...new Set(dishes.map(d => d.origin))];
@@ -31,10 +33,10 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
   <!-- Hero -->
   <header class="hero">
     <div class="container">
-      <p class="hero-eyebrow">Free Tool for Travelers</p>
-      <h1 class="hero-title">What Can I Eat in Malaysia?</h1>
+      <p class="hero-eyebrow">The Fast Answer for Restricted Eaters</p>
+      <h1 class="hero-title">Know Exactly What You Can Eat in Malaysia</h1>
       <p class="hero-subtitle">
-        Select your dietary restrictions. See instantly which Malaysian dishes are safe, which to avoid, and what hidden ingredients to ask about.
+        {dishes.length} dishes checked against 8 dietary restrictions in seconds. Every hidden ingredient exposed before you order. No guesswork, no awkward stall-side questions, just eating.
       </p>
       <p class="hero-meta">
         {dishes.length} dishes · {cuisines.join(', ')} cuisines · No signup
@@ -43,88 +45,40 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
     </div>
   </header>
 
-  <!-- Tool -->
-  <section class="tool-section" id="checker">
+  <!-- Dish Search (primary action) -->
+  <section class="tool-section" style="padding-bottom: 0;">
     <div class="container">
-      <!-- Step 1: Select -->
-      <div class="selector-card">
-        <h2 class="selector-title">Select Your Dietary Restrictions</h2>
-        <p class="selector-hint">Toggle all that apply. Results update instantly.</p>
-
-        <div class="toggles-grid" id="restriction-toggles">
-          {dietaryRestrictions.map(r => (
-            <button type="button" data-restriction={r.id} class="restriction-btn">
-              <span class="restriction-icon">{r.icon}</span>
-              <span class="restriction-label">{r.label}</span>
-              <span class="restriction-desc">{r.description}</span>
-            </button>
-          ))}
-        </div>
-
-        <div class="selector-actions">
-          <button id="clear-btn" class="clear-btn">Clear all</button>
-          <span id="result-count" class="result-count"></span>
-        </div>
-      </div>
-
-      <!-- Dish Search -->
       <div class="search-card">
         <h2 class="search-title">Check a Specific Dish</h2>
-        <p class="search-hint">Type a Malaysian dish name to see if it's safe for your selected restrictions.</p>
+        <p class="search-hint">Type a Malaysian dish name to see how it fits every diet. Or browse by restriction below.</p>
         <div class="search-input-wrap">
           <input type="text" id="dish-search" class="search-input" placeholder="e.g. nasi lemak, char kway teow, roti canai..." autocomplete="off" />
           <span class="search-icon">🔍</span>
         </div>
         <div id="search-results" class="search-results"></div>
       </div>
+    </div>
+  </section>
 
-      <!-- Results -->
-      <div id="results-container" class="results-container">
-        <div id="no-restrictions-msg" class="empty-state">
-          <div class="empty-icon">🍽️</div>
-          <p class="empty-text">Select at least one dietary restriction above to see safe dishes.</p>
-          <p class="empty-hint">Or try a popular combination:</p>
-          <div class="empty-presets">
-            <button class="preset-btn" data-preset="vegetarian,halal">Vegetarian + Halal</button>
-            <button class="preset-btn" data-preset="vegan,glutenFree">Vegan + Gluten-Free</button>
-            <button class="preset-btn" data-preset="shellfishFree,nutFree">Shellfish + Nut Allergy</button>
-          </div>
-        </div>
+  <!-- Intro: why this tool exists -->
+  <section class="intro-section">
+    <div class="container intro-container">
+      <h2 class="intro-title">Why we built this</h2>
+      <p class="intro-text">
+        Picture this: you land in Kuala Lumpur, jet-lagged and hungry. The food smells incredible. But you're vegetarian, and the friendly stall owner nods when you ask if the fried rice is "vegetarian." What he doesn't mention is the dried shrimp in the sambal, because in Malaysia, that still counts as vegetarian-friendly.
+      </p>
+      <p class="intro-text">
+        Malaysian food is some of the best in the world, and it hides its ingredients well. Shrimp paste sits in curries that look meat-free. Pork lard flavors noodles with no pork in sight. Ghee turns up in breads you'd assume were plain. If you eat halal, gluten-free, nut-free, or vegan, a simple meal can feel like a minefield.
+      </p>
+      <p class="intro-text">
+        We built this checker after years of guiding travelers through Malaysian food markets. It covers {dishes.length} common dishes, tells you which are safe for your diet, and flags the hidden ingredients to ask about. No signup, no cost. Just check before you order, and eat with confidence.
+      </p>
+    </div>
+  </section>
 
-        <div id="no-safe-msg" class="empty-state hidden">
-          <div class="empty-icon">😕</div>
-          <p class="empty-text">No dishes are fully safe for your combination of restrictions.</p>
-          <p class="empty-hint">Check the "Caution" section below — some dishes may be OK if you ask the vendor about specific ingredients.</p>
-        </div>
-
-        <div id="safe-section" class="result-section hidden">
-          <div class="result-header result-header-safe">
-            <span class="result-icon">✅</span>
-            <h3 class="result-title">Safe to Eat</h3>
-            <span id="safe-count" class="result-count-badge"></span>
-          </div>
-          <div id="safe-dishes" class="dishes-grid"></div>
-        </div>
-
-        <div id="caution-section" class="result-section hidden">
-          <div class="result-header result-header-caution">
-            <span class="result-icon">⚠️</span>
-            <h3 class="result-title">Eat with Caution — Ask First</h3>
-            <span id="caution-count" class="result-count-badge"></span>
-          </div>
-          <p class="result-desc">These dishes may be OK depending on preparation. Check the hidden ingredients note and ask the vendor.</p>
-          <div id="caution-dishes" class="dishes-grid"></div>
-        </div>
-
-        <div id="avoid-section" class="result-section hidden">
-          <div class="result-header result-header-avoid">
-            <span class="result-icon">🚫</span>
-            <h3 class="result-title">Avoid</h3>
-            <span id="avoid-count" class="result-count-badge"></span>
-          </div>
-          <div id="avoid-dishes" class="dishes-grid"></div>
-        </div>
-      </div>
+  <!-- Tool -->
+  <section class="tool-section" id="checker">
+    <div class="container">
 
       <!-- Share -->
       <div class="share-section">
@@ -134,6 +88,20 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://whatcanieatinmy.com" target="_blank" rel="noopener" class="share-btn share-facebook">Share on Facebook</a>
           <a href="https://wa.me/?text=Check%20what%20you%20can%20eat%20in%20Malaysia%20with%20your%20diet%3A%20https://whatcanieatinmy.com" target="_blank" rel="noopener" class="share-btn share-whatsapp">Share on WhatsApp</a>
           <button id="copy-url-btn" class="share-btn share-copy">Copy link</button>
+        </div>
+      </div>
+
+      <!-- Browse by restriction -->
+      <div class="browse-section">
+        <h2 class="browse-title">Browse by Dietary Restriction</h2>
+        <p class="browse-hint">Dedicated guide pages for each restriction:</p>
+        <div class="browse-chips">
+          {dietaryRestrictions.map(r => (
+            <a href={`/${r.id}`} class="browse-chip">
+              <span class="browse-chip-icon">{r.icon}</span>
+              <span class="browse-chip-label">{r.label}</span>
+            </a>
+          ))}
         </div>
       </div>
     </div>
@@ -272,6 +240,27 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
     a:hover { text-decoration: underline; }
     .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
     .hidden { display: none !important; }
+
+    /* === Intro Section === */
+    .intro-section {
+      padding: 2.25rem 0 0.5rem;
+    }
+    .intro-container { max-width: 680px; }
+    .intro-title {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+    .intro-text {
+      color: var(--c-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 0.85rem;
+    }
+    .intro-text:first-of-type {
+      font-size: 1.02rem;
+      color: var(--c-text);
+    }
 
     /* === Hero === */
     .hero {
@@ -598,6 +587,8 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
     .result-header-safe { border-color: var(--c-safe); }
     .result-header-caution { border-color: var(--c-caution); }
     .result-header-avoid { border-color: var(--c-avoid); }
+    .result-header-all { border-color: var(--c-accent); }
+    .result-header-all .result-title { color: var(--c-primary); }
     .result-icon { font-size: 1.3rem; }
     .result-title { font-size: 1.1rem; }
     .result-header-safe .result-title { color: var(--c-safe); }
@@ -633,14 +624,32 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
       transition: box-shadow 0.15s;
     }
     .dish-card:hover { box-shadow: var(--shadow-lg); }
-    /* Cuisine color only on Safe section cards — Caution/Avoid use safety colors */
-    #safe-dishes .dish-card[data-cuisine="Malay"] { border-left-color: var(--c-cuisine-malay); }
-    #safe-dishes .dish-card[data-cuisine="Chinese"] { border-left-color: var(--c-cuisine-chinese); }
-    #safe-dishes .dish-card[data-cuisine="Indian"] { border-left-color: var(--c-cuisine-indian); }
-    #safe-dishes .dish-card[data-cuisine="Nyonya"] { border-left-color: var(--c-cuisine-nyonya); }
-    #safe-dishes .dish-card[data-cuisine="Sarawak"] { border-left-color: var(--c-cuisine-sarawak); }
+    /* Status colors only — no cuisine colors to avoid confusion */
+    #safe-dishes .dish-card { border-left-color: var(--c-safe); }
     #caution-dishes .dish-card { border-left-color: var(--c-caution); }
     #avoid-dishes .dish-card { border-left-color: var(--c-avoid); }
+
+    /* === Dish Images === */
+    .dish-image {
+      width: 100%;
+      height: 160px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      background: var(--c-bg);
+    }
+    .dish-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .dish-image-sm {
+      height: 90px;
+      width: 90px;
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
 
     .dish-name { font-weight: 700; font-size: 1.02rem; }
     .dish-meta {
@@ -653,36 +662,26 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
       color: var(--c-muted);
       margin-bottom: 0.5rem;
     }
-    .dish-badges {
+    /* === Per-restriction notes === */
+    .diet-notes {
       display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 0.25rem;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      font-size: 0.72rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-weight: 500;
-    }
-    .badge-safe { background: var(--c-safe-bg); color: var(--c-safe); }
-    .badge-caution { background: var(--c-caution-bg); color: var(--c-caution); }
-    .badge-avoid { background: var(--c-avoid-bg); color: var(--c-avoid); }
-    .dish-hidden {
-      font-size: 0.8rem;
-      background: rgba(0,0,0,0.03);
-      border-radius: 6px;
-      padding: 0.5rem 0.65rem;
+      flex-direction: column;
+      gap: 0.35rem;
       margin-top: 0.5rem;
-      color: var(--c-text);
-      line-height: 1.5;
     }
-    @media (prefers-color-scheme: dark) {
-      .dish-hidden { background: rgba(255,255,255,0.04); }
+    .diet-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
     }
+    .diet-note-icon { flex-shrink: 0; line-height: 1.4; }
+    .note-safe { background: var(--c-safe-bg); color: var(--c-safe); }
+    .note-caution { background: var(--c-caution-bg); color: var(--c-caution); }
+    .note-avoid { background: var(--c-avoid-bg); color: var(--c-avoid); }
 
     /* === Share === */
     .share-section {
@@ -723,6 +722,49 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
     .share-twitter:hover { color: #1DA1F2; border-color: #1DA1F2; }
     .share-facebook:hover { color: #1877F2; border-color: #1877F2; }
     .share-whatsapp:hover { color: #25D366; border-color: #25D366; }
+
+    /* === Browse by Restriction === */
+    .browse-section {
+      margin-top: 2rem;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .browse-title {
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+    .browse-hint {
+      font-size: 0.85rem;
+      color: var(--c-muted);
+      margin-bottom: 0.75rem;
+    }
+    .browse-chips {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .browse-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--c-border);
+      border-radius: 999px;
+      background: var(--c-card);
+      color: var(--c-text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .browse-chip:hover {
+      border-color: var(--c-accent);
+      background: rgba(255,163,51,0.08);
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+    .browse-chip-icon { font-size: 1.05rem; }
 
     /* === SEO Section === */
     .seo-section {
@@ -828,13 +870,6 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
       var RESTRICTIONS = JSON.parse(document.getElementById('restrictions-data').textContent);
       var activeRestrictions = new Set();
 
-      var safeSection = document.getElementById('safe-section');
-      var cautionSection = document.getElementById('caution-section');
-      var avoidSection = document.getElementById('avoid-section');
-      var noRestrictionsMsg = document.getElementById('no-restrictions-msg');
-      var noSafeMsg = document.getElementById('no-safe-msg');
-      var resultCount = document.getElementById('result-count');
-
       function classifyDish(dish) {
         if (activeRestrictions.size === 0) return null;
         var hasAvoid = false, hasCaution = false;
@@ -852,90 +887,6 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
         var d = document.createElement('div');
         d.textContent = s;
         return d.innerHTML;
-      }
-
-      function dishCard(dish) {
-        var badges = '';
-        activeRestrictions.forEach(function(rid) {
-          var status = dish.tags[rid];
-          var restInfo = RESTRICTIONS.find(function(r) { return r.id === rid; });
-          if (!restInfo) return;
-          var cls = status === 'safe' ? 'badge-safe' : status === 'caution' ? 'badge-caution' : 'badge-avoid';
-          var icon = status === 'safe' ? '✅' : status === 'caution' ? '⚠️' : '🚫';
-          badges += '<span class="badge ' + cls + '">' + icon + ' ' + esc(restInfo.label) + '</span>';
-        });
-
-        var hidden = '';
-        if (dish.hiddenIngredients) {
-          hidden = '<div class="dish-hidden"><strong>Hidden ingredients:</strong> ' + esc(dish.hiddenIngredients) + '</div>';
-        }
-
-        return '<div class="dish-card" data-cuisine="' + esc(dish.origin) + '">' +
-          '<div class="dish-name">' + esc(dish.name) + '</div>' +
-          '<div class="dish-meta">' + esc(dish.category) + ' · ' + esc(dish.origin) + '</div>' +
-          '<div class="dish-desc">' + esc(dish.description) + '</div>' +
-          '<div class="dish-badges">' + badges + '</div>' +
-          hidden +
-        '</div>';
-      }
-
-      function renderResults(scroll) {
-        if (activeRestrictions.size === 0) {
-          noRestrictionsMsg.classList.remove('hidden');
-          noSafeMsg.classList.add('hidden');
-          safeSection.classList.add('hidden');
-          cautionSection.classList.add('hidden');
-          avoidSection.classList.add('hidden');
-          resultCount.textContent = '';
-          return;
-        }
-
-        noRestrictionsMsg.classList.add('hidden');
-
-        var safe = [], caution = [], avoid = [];
-        DISHES.forEach(function(dish) {
-          var cat = classifyDish(dish);
-          if (cat === 'safe') safe.push(dish);
-          else if (cat === 'caution') caution.push(dish);
-          else if (cat === 'avoid') avoid.push(dish);
-        });
-
-        // No safe dishes
-        if (safe.length === 0) {
-          noSafeMsg.classList.remove('hidden');
-        } else {
-          noSafeMsg.classList.add('hidden');
-        }
-
-        if (safe.length > 0) {
-          safeSection.classList.remove('hidden');
-          document.getElementById('safe-count').textContent = '(' + safe.length + ')';
-          document.getElementById('safe-dishes').innerHTML = safe.map(dishCard).join('');
-        } else { safeSection.classList.add('hidden'); }
-
-        if (caution.length > 0) {
-          cautionSection.classList.remove('hidden');
-          document.getElementById('caution-count').textContent = '(' + caution.length + ')';
-          document.getElementById('caution-dishes').innerHTML = caution.map(dishCard).join('');
-        } else { cautionSection.classList.add('hidden'); }
-
-        if (avoid.length > 0) {
-          avoidSection.classList.remove('hidden');
-          document.getElementById('avoid-count').textContent = '(' + avoid.length + ')';
-          document.getElementById('avoid-dishes').innerHTML = avoid.map(dishCard).join('');
-        } else { avoidSection.classList.add('hidden'); }
-
-        resultCount.textContent = safe.length + ' safe · ' + caution.length + ' caution · ' + avoid.length + ' avoid';
-        updateURL();
-
-        if (scroll) {
-          var results = document.getElementById('results-container');
-          if (results) {
-            setTimeout(function() {
-              results.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
-          }
-        }
       }
 
       // === Dish Search ===
@@ -1037,9 +988,9 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
           var verdict, verdictClass, verdictIcon;
 
           if (activeRestrictions.size === 0) {
-            verdict = 'Select restrictions above to check';
+            verdict = 'Diet breakdown below';
             verdictClass = 'search-verdict-unknown';
-            verdictIcon = '?';
+            verdictIcon = '🍽️';
           } else {
             var cat = classifyDish(dish);
             if (cat === 'safe') {
@@ -1057,31 +1008,34 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
             }
           }
 
-          var badges = '';
-          if (activeRestrictions.size > 0) {
-            activeRestrictions.forEach(function(rid) {
-              var status = dish.tags[rid];
-              var restInfo = RESTRICTIONS.find(function(r) { return r.id === rid; });
-              if (!restInfo) return;
-              var cls = status === 'safe' ? 'badge-safe' : status === 'caution' ? 'badge-caution' : 'badge-avoid';
-              var icon = status === 'safe' ? '✅' : status === 'caution' ? '⚠️' : '🚫';
-              badges += '<span class="badge ' + cls + '">' + icon + ' ' + esc(restInfo.label) + '</span>';
-            });
-          }
+          var noteLines = '';
+          var restrictionsToShow = activeRestrictions.size > 0
+            ? Array.from(activeRestrictions)
+            : RESTRICTIONS.filter(function(r) { return dish.notes && dish.notes[r.id]; }).map(function(r) { return r.id; });
 
-          var hidden = '';
-          if (dish.hiddenIngredients) {
-            hidden = '<div class="dish-hidden"><strong>Hidden ingredients:</strong> ' + esc(dish.hiddenIngredients) + '</div>';
+          restrictionsToShow.forEach(function(rid) {
+            var status = dish.tags[rid];
+            var restInfo = RESTRICTIONS.find(function(r) { return r.id === rid; });
+            if (!restInfo) return;
+            var cls = status === 'safe' ? 'note-safe' : status === 'caution' ? 'note-caution' : 'note-avoid';
+            var icon = status === 'safe' ? '✅' : status === 'caution' ? '⚠️' : '🚫';
+            var note = dish.notes && dish.notes[rid] ? ' — ' + esc(dish.notes[rid]) : '';
+            noteLines += '<div class="diet-note ' + cls + '"><span class="diet-note-icon">' + icon + '</span><span><strong>' + esc(restInfo.label) + '</strong>' + note + '</span></div>';
+          });
+
+          var image = '';
+          if (dish.image) {
+            image = '<div class="dish-image dish-image-sm"><img src="/images/dishes/' + esc(dish.image) + '" alt="' + esc(dish.imageAlt || dish.name) + '" loading="lazy" /></div>';
           }
 
           html += '<div class="search-result-card">' +
             '<div class="search-verdict ' + verdictClass + '">' + verdictIcon + '</div>' +
             '<div class="search-result-body">' +
+              image +
               '<div class="search-result-name">' + esc(dish.name) + '</div>' +
               '<div class="search-result-meta">' + esc(dish.category) + ' · ' + esc(dish.origin) + ' · ' + esc(verdict) + '</div>' +
               '<div class="search-result-desc">' + esc(dish.description) + '</div>' +
-              (badges ? '<div class="search-result-badges">' + badges + '</div>' : '') +
-              hidden +
+              (noteLines ? '<div class="diet-notes">' + noteLines + '</div>' : '') +
             '</div>' +
           '</div>';
         });
@@ -1108,56 +1062,6 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
         }, 150);
       });
 
-      // Re-render search results when restrictions change
-      var origRenderResults = renderResults;
-      renderResults = function(scroll) {
-        origRenderResults(scroll);
-        if (searchInput.value.trim()) {
-          renderSearchResults(searchInput.value);
-        }
-      };
-
-      // Toggle buttons
-      document.querySelectorAll('.restriction-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var rid = btn.getAttribute('data-restriction');
-          if (activeRestrictions.has(rid)) {
-            activeRestrictions.delete(rid);
-            btn.classList.remove('active');
-          } else {
-            activeRestrictions.add(rid);
-            btn.classList.add('active');
-          }
-          renderResults(true);
-        });
-      });
-
-      // Preset buttons
-      document.querySelectorAll('.preset-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var preset = btn.getAttribute('data-preset');
-          activeRestrictions.clear();
-          document.querySelectorAll('.restriction-btn').forEach(function(b) {
-            b.classList.remove('active');
-          });
-          preset.split(',').forEach(function(rid) {
-            activeRestrictions.add(rid);
-            var b = document.querySelector('[data-restriction="' + rid + '"]');
-            if (b) b.classList.add('active');
-          });
-          renderResults(true);
-        });
-      });
-
-      // Clear
-      document.getElementById('clear-btn').addEventListener('click', function() {
-        activeRestrictions.clear();
-        document.querySelectorAll('.restriction-btn').forEach(function(btn) {
-          btn.classList.remove('active');
-        });
-        renderResults(false);
-      });
-
       // Copy URL
       document.getElementById('copy-url-btn').addEventListener('click', function() {
         navigator.clipboard.writeText(window.location.href).then(function() {
@@ -1167,30 +1071,6 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
           setTimeout(function() { btn.textContent = orig; }, 2000);
         });
       });
-
-      // URL state
-      function syncFromURL() {
-        var params = new URLSearchParams(window.location.search);
-        var rids = params.get('r');
-        if (rids) {
-          rids.split(',').forEach(function(rid) {
-            activeRestrictions.add(rid);
-            var btn = document.querySelector('[data-restriction="' + rid + '"]');
-            if (btn) btn.classList.add('active');
-          });
-        }
-      }
-
-      function updateURL() {
-        var rids = Array.from(activeRestrictions).join(',');
-        var url = new URL(window.location.href);
-        if (rids) url.searchParams.set('r', rids);
-        else url.searchParams.delete('r');
-        window.history.replaceState({}, '', url.toString());
-      }
-
-      syncFromURL();
-      renderResults(false);
     })();
   </script>
 </Default>

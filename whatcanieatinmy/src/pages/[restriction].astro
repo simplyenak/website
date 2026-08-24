@@ -1,0 +1,395 @@
+---
+import Default from '~/layouts/Default.astro';
+import { dishes, dietaryRestrictions } from '~/data/dishes';
+
+export function getStaticPaths() {
+  return dietaryRestrictions.map(r => ({
+    params: { restriction: r.id },
+    props: { restriction: r },
+  }));
+}
+
+const { restriction } = Astro.props;
+
+const safe = dishes.filter(d => d[restriction.id] === 'safe');
+const caution = dishes.filter(d => d[restriction.id] === 'caution');
+const avoid = dishes.filter(d => d[restriction.id] === 'avoid');
+
+const title = `${restriction.label} Malaysian Food Guide | What Can I Eat in Malaysia?`;
+const description = `Can you eat Malaysian food if you're ${restriction.label.toLowerCase()}? See ${safe.length} safe dishes, ${caution.length} to ask about, and ${avoid.length} to avoid. Hidden ingredients guide for ${restriction.label.toLowerCase()} travelers in Malaysia.`;
+
+// SEO text per restriction
+const seoTexts: Record<string, { intro: string; tips: string[] }> = {
+  vegetarian: {
+    intro: 'Malaysian food can be challenging for vegetarians. Many dishes contain hidden shrimp paste (belacan), dried shrimp, or fish sauce even when they appear meatless. Chinese Buddhist vegetarian (zhai) restaurants are your safest bet.',
+    tips: [
+      'Say "tanpa udang kering" (no dried shrimp) and "tanpa belacan" (no shrimp paste) — "vegetarian" alone may still include fish',
+      'Chinese Buddhist (zhai) restaurants avoid all animal products plus onion, garlic, and leek',
+      'Indian restaurants have many vegetarian options — look for "pure veg" signs',
+      'Nasi lemak coconut rice is vegan, but the sambal contains anchovies',
+    ],
+  },
+  vegan: {
+    intro: 'Vegan options exist in Malaysia but require vigilance. Eggs, dairy, and honey appear in unexpected places. Coconut milk is common (not dairy, but check your stance). The safest spots are Chinese Buddhist vegetarian and Indian vegetarian restaurants.',
+    tips: [
+      'Ask "tanpa telur" (no egg) and "tanpa susu" (no dairy) in addition to no meat/shrimp',
+      'Roti canai contains ghee (dairy) — ask for vegan version at Indian-Muslim stalls',
+      'Teh tarik contains milk — order "teh o" (black tea) instead',
+      'Kuih (Nyonya snacks) often contain eggs or milk',
+    ],
+  },
+  halal: {
+    intro: 'Malay food is generally halal (Muslim-prepared, no pork or alcohol). Chinese food often contains pork or lard. Indian Muslim (Mamak) food is halal. Look for the JAKIM halal certification logo for certainty.',
+    tips: [
+      'Look for the JAKIM halal logo — it\'s the official Malaysian halal certification',
+      'Malay stalls are generally halal; Chinese stalls are generally not',
+      'Mamak (Indian-Muslim) restaurants like those serving roti canai and teh tarik are halal and open 24 hours',
+      'Some Chinese dishes may be pork-free but cooked with alcohol or lard — always ask',
+    ],
+  },
+  glutenFree: {
+    intro: 'Gluten-free eating in Malaysia is tricky because soy sauce (contains wheat) is everywhere in Chinese cooking. Many Malay and Indian dishes are naturally gluten-free since they use rice or rice noodles as the base.',
+    tips: [
+      'Ask "tanpa kicap" (no soy sauce) — many dishes can be prepared without it',
+      'Rice-based dishes like nasi lemak, banana leaf rice, and dosai are naturally gluten-free',
+      'Sambal may contain soy sauce — ask if it\'s made with just chilies and shrimp paste',
+      'Bring tamari (gluten-free soy sauce) for Chinese food stalls',
+    ],
+  },
+  nutFree: {
+    intro: 'Peanuts are ubiquitous in Malaysian cooking — satay sauce, garnishes, and desserts. Tree nuts are less common but cross-contamination at hawker stalls is a real risk for severe allergies.',
+    tips: [
+      'Satay is served with peanut sauce — avoid stalls that sell satay entirely',
+      'Rojak and ais kacang (ABC) contain peanuts as a key ingredient',
+      'Apam balik (peanut pancake) is filled with crushed peanuts',
+      'Say "tanpa kacang" (no peanuts) — but stress cross-contamination risk for severe allergies',
+    ],
+  },
+  shellfishFree: {
+    intro: 'Shellfish is one of the hardest ingredients to avoid in Malaysia. Shrimp paste (belacan) is a cornerstone of Malay and Nyonya cooking, hiding in sambal, curries, and laksa. Dried shrimp (udang kering) garnishes many dishes.',
+    tips: [
+      'Belacan (shrimp paste) is in most sambal — even dishes that don\'t show shrimp may contain it',
+      'Ask "tanpa belacan, tanpa udang kering" (no shrimp paste, no dried shrimp)',
+      'Chinese stir-fries may use oyster sauce or dried shrimp for flavoring',
+      'Indian food is generally safer — less shrimp paste usage',
+    ],
+  },
+  dairyFree: {
+    intro: 'Dairy in Malaysian food comes mainly from ghee (Indian-Muslim cooking), condensed milk (drinks and desserts), and butter (Chinese baked goods). Coconut milk is NOT dairy and is safe for dairy-free diets.',
+    tips: [
+      'Roti canai uses ghee — ask if it can be made with oil instead',
+      'Teh tarik and kopi use condensed milk — order "teh o" or "kopi o" (black, no milk)',
+      'Coconut milk in curries and laksa is safe for dairy-free (it\'s not dairy)',
+      'Kaya toast spread contains coconut milk and eggs, but no dairy',
+    ],
+  },
+  eggFree: {
+    intro: 'Eggs appear in many Malaysian dishes — as garnish (nasi lemak, wanton noodles), in batter (pisang goreng), and in desserts (kuih, apam balik). Indian vegetarian food often marks egg-containing dishes.',
+    tips: [
+      'Nasi lemak often comes with a fried egg — ask "tanpa telur" (no egg)',
+      'Pisang goreng batter may contain egg — ask if it\'s just flour and water',
+      'Kuih and Nyonya desserts frequently contain eggs',
+      'Indian "pure veg" restaurants often distinguish egg-containing items',
+    ],
+  },
+};
+
+const seo = seoTexts[restriction.id] || seoTexts.vegetarian;
+
+function dishCard(dish) {
+  const note = dish.notes?.[restriction.id];
+  const noteLine = note
+    ? `<div class="diet-note"><span class="diet-note-icon">ℹ️</span><span>${note}</span></div>`
+    : '';
+  const image = dish.image
+    ? `<div class="dish-image"><img src="/images/dishes/${dish.image}" alt="${dish.imageAlt || dish.name}" loading="lazy" /></div>`
+    : '';
+  return `<div class="dish-card">
+    ${image}
+    <div class="dish-name">${dish.name}</div>
+    <div class="dish-meta">${dish.category} · ${dish.origin}</div>
+    <div class="dish-desc">${dish.description}</div>
+    ${noteLine}
+  </div>`;
+}
+---
+
+<Default title={title} description={description} canonical={`https://whatcanieatinmy.com/${restriction.id}`}>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">{restriction.icon} {restriction.label} Guide</p>
+      <h1 class="hero-title">{restriction.label} Malaysian Food Guide</h1>
+      <p class="hero-subtitle">
+        {safe.length} dishes are safe, {caution.length} need checking, {avoid.length} to avoid. Hidden ingredients you need to know about.
+      </p>
+      <a href="/" class="hero-cta">← Back to main checker</a>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section class="intro-section">
+    <div class="container intro-container">
+      <p class="intro-text">
+        Malaysian food hides its ingredients well. Shrimp paste sits in curries that look meat-free, pork lard flavors noodles with no pork in sight, and "vegetarian" at a stall may still mean dried shrimp. If you're {restriction.label.toLowerCase()}, this guide shows which dishes you can order with confidence, and what to ask before you do.
+      </p>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="tool-section">
+    <div class="container">
+      <!-- Safe -->
+      {safe.length > 0 && (
+        <div class="result-section">
+          <div class="result-header result-header-safe">
+            <span class="result-icon">✅</span>
+            <h3 class="result-title">Safe to Eat</h3>
+            <span class="result-count-badge">({safe.length})</span>
+          </div>
+          <div class="dishes-grid" set:html={safe.map(d => dishCard(d)).join('')} />
+        </div>
+      )}
+
+      <!-- Caution -->
+      {caution.length > 0 && (
+        <div class="result-section">
+          <div class="result-header result-header-caution">
+            <span class="result-icon">⚠️</span>
+            <h3 class="result-title">Eat with Caution — Ask First</h3>
+            <span class="result-count-badge">({caution.length})</span>
+          </div>
+          <p class="result-desc">These dishes may be OK depending on preparation. Check the hidden ingredients note and ask the vendor.</p>
+          <div class="dishes-grid" set:html={caution.map(d => dishCard(d)).join('')} />
+        </div>
+      )}
+
+      <!-- Avoid -->
+      {avoid.length > 0 && (
+        <div class="result-section">
+          <div class="result-header result-header-avoid">
+            <span class="result-icon">🚫</span>
+            <h3 class="result-title">Avoid</h3>
+            <span class="result-count-badge">({avoid.length})</span>
+          </div>
+          <div class="dishes-grid" set:html={avoid.map(d => dishCard(d)).join('')} />
+        </div>
+      )}
+
+      <!-- Link to other restrictions -->
+      <div class="other-restrictions">
+        <p class="other-label">Also check:</p>
+        <div class="other-chips">
+          {dietaryRestrictions.filter(r => r.id !== restriction.id).map(r => (
+            <a href={`/${r.id}`} class="other-chip">{r.icon} {r.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content -->
+  <section class="seo-section">
+    <div class="container seo-container">
+      <h2 class="seo-title">{restriction.label} Food in Malaysia: What You Need to Know</h2>
+      <p class="seo-text">{seo.intro}</p>
+      <p class="seo-text">This guide covers {dishes.length} common Malaysian dishes. For each dish, we note whether it's safe for {restriction.label.toLowerCase()} diets, what to ask the vendor, and which hidden ingredients to watch out for.</p>
+
+      <div class="seo-card">
+        <h3 class="seo-card-title">Tips for {restriction.label} Eating in Malaysia</h3>
+        <ul class="seo-list">
+          {seo.tips.map(tip => <li>{tip}</li>)}
+        </ul>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h2 class="seo-title">{restriction.label} Malaysian Food FAQ</h2>
+        <details class="faq-item">
+          <summary>How many Malaysian dishes are safe for {restriction.label.toLowerCase()} diets?</summary>
+          <p>Out of {dishes.length} common Malaysian dishes, {safe.length} are safe for {restriction.label.toLowerCase()} diets, {caution.length} may be OK depending on preparation (ask the vendor), and {avoid.length} should be avoided.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What hidden ingredients should {restriction.label.toLowerCase()} travelers watch for in Malaysia?</summary>
+          <p>{seo.intro}</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is this guide a guarantee?</summary>
+          <p>No. Recipes vary between vendors and regions. This guide covers common preparations, but always confirm with the vendor if you have serious allergies or strict dietary requirements. Use the Malay phrases in the tips section to ask clearly.</p>
+        </details>
+      </div>
+
+      <!-- Back to main -->
+      <div style="text-align:center; margin-top: 2rem;">
+        <a href="/" class="hero-cta">← Back to main checker</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-text">
+        Built by <a href="https://simplyenak.com" class="footer-link">Simply Enak</a> — Malaysian food tours led by guides who know what's in every dish.
+      </p>
+    </div>
+  </footer>
+
+  <style is:global>
+    :root {
+      --c-primary: #B52D38;
+      --c-accent: #FFA333;
+      --c-bg: #FAF7F2;
+      --c-card: #FFFFFF;
+      --c-text: #1A1A1A;
+      --c-muted: #6B6B6B;
+      --c-border: #E8E4DE;
+      --c-safe: #16a34a;
+      --c-safe-bg: #dcfce7;
+      --c-caution: #ca8a04;
+      --c-caution-bg: #fef3c7;
+      --c-avoid: #dc2626;
+      --c-avoid-bg: #fee2e2;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-lg: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --c-bg: #141210; --c-card: #1E1B18; --c-text: #F0EDE8; --c-muted: #9E978F; --c-border: #2E2A25;
+        --c-safe: #4ade80; --c-safe-bg: rgba(34,197,94,0.12);
+        --c-caution: #facc15; --c-caution-bg: rgba(234,179,8,0.12);
+        --c-avoid: #f87171; --c-avoid-bg: rgba(239,68,68,0.12);
+        --shadow: 0 1px 3px rgba(0,0,0,0.3); --shadow-lg: 0 4px 12px rgba(0,0,0,0.4);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-sans); background: var(--c-bg); color: var(--c-text); line-height: 1.6; }
+    a { color: var(--c-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+
+    /* === Intro === */
+    .intro-section { padding: 1.75rem 0 0; }
+    .intro-container { max-width: 680px; }
+    .intro-text { color: var(--c-muted); font-size: 0.95rem; line-height: 1.75; }
+
+    .hero {
+      background: linear-gradient(135deg, #2a0e0e 0%, #3d1a05 40%, #1a1a1a 100%);
+      color: white; padding: 3rem 1rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,163,51,0.12), transparent 60%);
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-eyebrow { color: var(--c-accent); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .hero-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .hero-subtitle { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 550px; margin: 0 auto 1rem; }
+    .hero-cta {
+      display: inline-block; background: var(--c-accent); color: #1a1a1a; font-weight: 700;
+      padding: 0.5rem 1.25rem; border-radius: var(--radius-sm); text-decoration: none; font-size: 0.88rem;
+    }
+    .hero-cta:hover { text-decoration: none; opacity: 0.9; }
+
+    .tool-section { padding: 2rem 0; }
+    .result-section { margin-bottom: 1.5rem; }
+    .result-header {
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem; border-bottom: 2px solid;
+    }
+    .result-header-safe { border-color: var(--c-safe); }
+    .result-header-caution { border-color: var(--c-caution); }
+    .result-header-avoid { border-color: var(--c-avoid); }
+    .result-icon { font-size: 1.3rem; }
+    .result-title { font-size: 1.1rem; }
+    .result-header-safe .result-title { color: var(--c-safe); }
+    .result-header-caution .result-title { color: var(--c-caution); }
+    .result-header-avoid .result-title { color: var(--c-avoid); }
+    .result-count-badge { font-size: 0.8rem; color: var(--c-muted); font-weight: 600; }
+    .result-desc { font-size: 0.83rem; color: var(--c-muted); margin-bottom: 0.75rem; }
+
+    .dishes-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; }
+    @media (min-width: 640px) { .dishes-grid { grid-template-columns: repeat(2, 1fr); } }
+    .dish-card {
+      background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius-sm);
+      padding: 1rem; box-shadow: var(--shadow); border-left: 3px solid var(--c-border); transition: box-shadow 0.15s;
+    }
+    .dish-card:hover { box-shadow: var(--shadow-lg); }
+    #safe-dishes .dish-card, .result-section:first-child .dish-card { border-left-color: var(--c-safe); }
+    .result-section:nth-child(2) .dish-card { border-left-color: var(--c-caution); }
+    .result-section:last-child .dish-card { border-left-color: var(--c-avoid); }
+
+    /* === Dish Images === */
+    .dish-image {
+      width: 100%;
+      height: 160px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      background: var(--c-bg);
+    }
+    .dish-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .dish-name { font-weight: 700; font-size: 1.02rem; }
+    .dish-meta { font-size: 0.72rem; color: var(--c-muted); margin-bottom: 0.35rem; }
+    .dish-desc { font-size: 0.85rem; color: var(--c-muted); margin-bottom: 0.5rem; }
+    .diet-note {
+      display: flex; align-items: flex-start; gap: 0.45rem;
+      font-size: 0.82rem; line-height: 1.45; padding: 0.4rem 0.6rem;
+      border-radius: 6px; background: rgba(0,0,0,0.03); color: var(--c-text); margin-top: 0.5rem;
+    }
+    @media (prefers-color-scheme: dark) { .diet-note { background: rgba(255,255,255,0.04); } }
+    .diet-note-icon { flex-shrink: 0; line-height: 1.4; }
+
+    .other-restrictions { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--c-border); }
+    .other-label { font-size: 0.85rem; color: var(--c-muted); margin-bottom: 0.5rem; }
+    .other-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .other-chip {
+      font-size: 0.82rem; padding: 0.35rem 0.75rem; border: 1px solid var(--c-border);
+      border-radius: 999px; background: var(--c-card); color: var(--c-text); transition: all 0.15s;
+    }
+    .other-chip:hover { border-color: var(--c-accent); background: rgba(255,163,51,0.08); text-decoration: none; }
+
+    .seo-section { padding: 2rem 0 2.5rem; border-top: 1px solid var(--c-border); }
+    .seo-container { max-width: 760px; }
+    .seo-title { font-size: 1.25rem; margin-bottom: 0.6rem; }
+    .seo-text { color: var(--c-muted); margin-bottom: 0.75rem; font-size: 0.9rem; line-height: 1.7; }
+    .seo-card {
+      background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius-sm);
+      padding: 1.25rem; box-shadow: var(--shadow); margin: 1.25rem 0;
+    }
+    .seo-card-title { font-size: 1rem; margin-bottom: 0.6rem; }
+    .seo-list { color: var(--c-muted); font-size: 0.88rem; padding-left: 1.2rem; line-height: 1.7; }
+    .seo-list li { margin-bottom: 0.35rem; }
+
+    .faq-section { margin-top: 2rem; }
+    .faq-item { border: 1px solid var(--c-border); border-radius: var(--radius-sm); margin-bottom: 0.5rem; overflow: hidden; }
+    .faq-item summary {
+      padding: 0.85rem 1rem; font-weight: 600; font-size: 0.92rem; cursor: pointer;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-item summary::after { content: '+'; font-size: 1.2rem; color: var(--c-muted); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item[open] summary { border-bottom: 1px solid var(--c-border); }
+    .faq-item p { padding: 0.85rem 1rem; font-size: 0.88rem; color: var(--c-muted); line-height: 1.7; }
+
+    .site-footer { padding: 1.5rem 0; border-top: 1px solid var(--c-border); text-align: center; }
+    .footer-text { font-size: 0.82rem; color: var(--c-muted); }
+    .footer-link { font-weight: 600; }
+
+    @media (max-width: 480px) {
+      .hero { padding: 2.5rem 1rem; }
+      .tool-section { padding: 1.5rem 0; }
+      .dishes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</Default>

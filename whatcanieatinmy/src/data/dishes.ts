@@ -1,34 +1,43 @@
 /**
  * Malaysian Dish Database for Dietary Safety Checker
  *
- * Each dish has dietary tags indicating whether it is:
- * - safe for that restriction (true = safe, false = avoid)
- * - conditional ("caution") = depends on preparation / ask vendor
+ * Each dish has dietary status tags: 'safe' | 'caution' | 'avoid'
  *
- * Hidden ingredients field documents the common hidden concern
- * for each dish so travelers know what to ask about.
- *
- * This is a linkable asset — the data is the value. Journalists,
- * bloggers, and travel sites can reference it as a definitive guide.
+ * `notes` holds a short explanation per dietary restriction — only for
+ * restrictions where the dish is caution or avoid. Safe statuses get no
+ * note. This is the data journalists and travelers cite.
  */
+
+export type DietaryId =
+  | 'vegetarian'
+  | 'vegan'
+  | 'halal'
+  | 'glutenFree'
+  | 'nutFree'
+  | 'shellfishFree'
+  | 'dairyFree'
+  | 'eggFree';
+
+type Status = 'safe' | 'caution' | 'avoid';
 
 export interface Dish {
   id: string;
   name: string;
   category: string;
-  origin: string; // Malay, Chinese, Indian, Nyonya, etc.
+  origin: string;
   description: string;
-  // Dietary safety: 'safe' | 'caution' | 'avoid'
-  vegetarian: 'safe' | 'caution' | 'avoid';
-  vegan: 'safe' | 'caution' | 'avoid';
-  halal: 'safe' | 'caution' | 'avoid';
-  glutenFree: 'safe' | 'caution' | 'avoid';
-  nutFree: 'safe' | 'caution' | 'avoid';
-  shellfishFree: 'safe' | 'caution' | 'avoid';
-  dairyFree: 'safe' | 'caution' | 'avoid';
-  eggFree: 'safe' | 'caution' | 'avoid';
-  hiddenIngredients: string;
-  tourSlug?: string; // link to relevant Simply Enak tour
+  vegetarian: Status;
+  vegan: Status;
+  halal: Status;
+  glutenFree: Status;
+  nutFree: Status;
+  shellfishFree: Status;
+  dairyFree: Status;
+  eggFree: Status;
+  notes?: Partial<Record<DietaryId, string>>;
+  image?: string;
+  imageAlt?: string;
+  tourSlug?: string;
 }
 
 export const dishes: Dish[] = [
@@ -39,15 +48,24 @@ export const dishes: Dish[] = [
     category: 'Rice',
     origin: 'Malay',
     description: 'Coconut rice with sambal, peanuts, cucumber, and usually fried chicken or anchovies.',
+    image: 'test-nasi-lemak.jpg',
+    imageAlt: 'Nasi lemak served on a banana leaf with sambal, peanuts and fried chicken',
     vegetarian: 'avoid',
     vegan: 'avoid',
     halal: 'safe',
-    glutenFree: 'caution', // sambal may contain soy sauce
-    nutFree: 'avoid', // contains peanuts
-    shellfishFree: 'avoid', // dried anchovies (ikan bilis)
+    glutenFree: 'caution',
+    nutFree: 'avoid',
+    shellfishFree: 'avoid',
     dairyFree: 'safe',
-    eggFree: 'caution', // often served with fried egg
-    hiddenIngredients: 'Dried anchovies (ikan bilis) in sambal and as garnish. Soy sauce in sambal may contain wheat.',
+    eggFree: 'caution',
+    notes: {
+      vegetarian: 'Dried anchovies (ikan bilis) in the sambal and as garnish.',
+      vegan: 'Anchovies in sambal; fried egg is a common side.',
+      glutenFree: 'Sambal may contain soy sauce (wheat).',
+      nutFree: 'Peanuts are a core topping.',
+      shellfishFree: 'Belacan (shrimp paste) is usually in the sambal.',
+      eggFree: 'Often served with a fried egg — ask without.',
+    },
     tourSlug: 'kuala-lumpur-street-food',
   },
   {
@@ -56,15 +74,23 @@ export const dishes: Dish[] = [
     category: 'Rice',
     origin: 'Indian-Muslim',
     description: 'Steamed rice with various curries poured over. A Penang institution.',
-    vegetarian: 'caution', // some stalls have vegetarian curries
+    vegetarian: 'caution',
     vegan: 'avoid',
     halal: 'safe',
     glutenFree: 'caution',
-    nutFree: 'caution', // some curries use ground nuts
-    shellfishFree: 'avoid', // shrimp paste in many curries
-    dairyFree: 'caution', // some curries use ghee or yogurt
+    nutFree: 'caution',
+    shellfishFree: 'avoid',
+    dairyFree: 'caution',
     eggFree: 'caution',
-    hiddenIngredients: 'Shrimp paste (belacan) in many curries. Cross-contamination is common since ladles touch multiple dishes.',
+    notes: {
+      vegetarian: 'Some stalls have vegetable-only curries — ask which ladles are meat-free.',
+      vegan: 'Curries often contain meat; cross-contact is common.',
+      glutenFree: 'Some curries are thickened with flour.',
+      nutFree: 'Some curries use ground nuts or cashew.',
+      shellfishFree: 'Shrimp paste (belacan) is in many curry bases.',
+      dairyFree: 'Ghee or yogurt appears in several curries.',
+      eggFree: 'Egg is a common side and some curries include it.',
+    },
     tourSlug: 'penang-street-food',
   },
   {
@@ -74,14 +100,21 @@ export const dishes: Dish[] = [
     origin: 'Indian',
     description: 'Rice served on a banana leaf with vegetable curries, dhal, and sides.',
     vegetarian: 'safe',
-    vegan: 'caution', // ghee or yogurt in some curries
-    halal: 'caution', // some Indian stalls are not halal-certified
-    glutenFree: 'caution', // some curries may use flour thickening
-    nutFree: 'caution', // some curries use cashew or groundnut
-    shellfishFree: 'caution', // some mixed curries may contain shrimp
-    dairyFree: 'caution', // ghee, yogurt, paneer common
+    vegan: 'caution',
+    halal: 'caution',
+    glutenFree: 'caution',
+    nutFree: 'caution',
+    shellfishFree: 'caution',
+    dairyFree: 'caution',
     eggFree: 'safe',
-    hiddenIngredients: 'Ghee (clarified butter) is widely used in South Indian cooking. Ask if curries are purely vegetable-based.',
+    notes: {
+      vegan: 'Ghee or yogurt in some curries — ask for vegetable-oil versions.',
+      halal: 'Some Indian stalls are not halal-certified.',
+      glutenFree: 'Some curries use flour as thickener.',
+      nutFree: 'Cashew or groundnut appears in some curries.',
+      shellfishFree: 'Mixed curry counters may include shrimp-based dishes.',
+      dairyFree: 'Ghee, yogurt, and paneer are common in South Indian cooking.',
+    },
     tourSlug: 'kuala-lumpur-street-food',
   },
   {
@@ -92,13 +125,19 @@ export const dishes: Dish[] = [
     description: 'Stir-fried flat rice noodles with prawns, cockles, Chinese sausage, and bean sprouts.',
     vegetarian: 'avoid',
     vegan: 'avoid',
-    halal: 'avoid', // pork and non-halal ingredients
-    glutenFree: 'safe', // rice noodles, but soy sauce contains wheat
+    halal: 'avoid',
+    glutenFree: 'safe',
     nutFree: 'safe',
-    shellfishFree: 'avoid', // prawns, cockles, shrimp paste
+    shellfishFree: 'avoid',
     dairyFree: 'safe',
-    eggFree: 'caution', // usually contains egg
-    hiddenIngredients: 'Pork lard is traditionally used for flavor. Cockles are common. Soy sauce contains wheat unless tamari is used.',
+    eggFree: 'caution',
+    notes: {
+      vegetarian: 'Prawns, cockles, and Chinese sausage throughout.',
+      vegan: 'Meat and seafood base; egg is standard in the stir-fry.',
+      halal: 'Pork lard is traditionally used, plus Chinese sausage may contain pork.',
+      shellfishFree: 'Prawns and cockles are standard; some versions add shrimp paste.',
+      eggFree: 'Egg is normally mixed into the noodles.',
+    },
     tourSlug: 'penang-street-food',
   },
   {
@@ -110,12 +149,19 @@ export const dishes: Dish[] = [
     vegetarian: 'avoid',
     vegan: 'avoid',
     halal: 'avoid',
-    glutenFree: 'avoid', // wheat noodles + soy sauce
+    glutenFree: 'avoid',
     nutFree: 'safe',
-    shellfishFree: 'avoid', // squid, prawns
+    shellfishFree: 'avoid',
     dairyFree: 'safe',
     eggFree: 'caution',
-    hiddenIngredients: 'Pork lard, pork cracklings. Dark soy sauce contains wheat. Often includes squid and prawns.',
+    notes: {
+      vegetarian: 'Pork, squid, and pork cracklings throughout.',
+      vegan: 'Pork-based dish with seafood.',
+      halal: 'Pork and pork lard are core ingredients.',
+      glutenFree: 'Wheat noodles plus dark soy sauce.',
+      shellfishFree: 'Squid and often prawns included.',
+      eggFree: 'Usually finished with an egg cracked into the wok.',
+    },
     tourSlug: 'kuala-lumpur-street-food',
   },
   {
@@ -126,13 +172,18 @@ export const dishes: Dish[] = [
     description: 'Rice noodles in a tangy, spicy fish broth with mackerel, tamarind, and mint.',
     vegetarian: 'avoid',
     vegan: 'avoid',
-    halal: 'caution', // fish-based, but some stalls may not be halal-certified
-    glutenFree: 'safe', // rice noodles; check for shrimp paste
+    halal: 'caution',
+    glutenFree: 'safe',
     nutFree: 'safe',
-    shellfishFree: 'caution', // shrimp paste (belacan) sometimes added
+    shellfishFree: 'caution',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Shrimp paste (belacan) is often added even in fish-based broth. Mackerel is the main protein.',
+    notes: {
+      vegetarian: 'The broth is fish-based with mackerel as the main protein.',
+      vegan: 'Fish broth base.',
+      halal: 'Fish-based, but some stalls are not halal-certified — ask.',
+      shellfishFree: 'Shrimp paste (belacan) is often added even to fish broth.',
+    },
     tourSlug: 'penang-street-food',
   },
   {
@@ -144,12 +195,19 @@ export const dishes: Dish[] = [
     vegetarian: 'avoid',
     vegan: 'avoid',
     halal: 'caution',
-    glutenFree: 'safe', // rice vermicelli
+    glutenFree: 'safe',
     nutFree: 'safe',
-    shellfishFree: 'avoid', // prawns
-    dairyFree: 'avoid', // coconut milk
-    eggFree: 'caution', // often garnished with egg
-    hiddenIngredients: 'Coconut milk is the base. Prawns are essential. Some versions use belacan.',
+    shellfishFree: 'avoid',
+    dairyFree: 'avoid',
+    eggFree: 'caution',
+    notes: {
+      vegetarian: 'Prawns and chicken in the gravy.',
+      vegan: 'Meat and seafood base with coconut milk.',
+      halal: 'Contains prawns; stall certification varies.',
+      shellfishFree: 'Prawns are essential to the dish.',
+      dairyFree: 'Coconut milk is the base — skip if you avoid coconut.',
+      eggFree: 'Often garnished with shredded egg — ask without.',
+    },
   },
   {
     id: 'roti-canai',
@@ -157,15 +215,20 @@ export const dishes: Dish[] = [
     category: 'Bread',
     origin: 'Indian-Muslim',
     description: 'Flaky, buttery flatbread served with dhal or curry. A Malaysian breakfast staple.',
-    vegetarian: 'caution', // dough contains ghee/butter
+    vegetarian: 'caution',
     vegan: 'avoid',
     halal: 'safe',
-    glutenFree: 'avoid', // wheat flour
+    glutenFree: 'avoid',
     nutFree: 'safe',
     shellfishFree: 'safe',
-    dairyFree: 'avoid', // ghee or margarine in dough
+    dairyFree: 'avoid',
     eggFree: 'safe',
-    hiddenIngredients: 'Ghee or margarine is kneaded into the dough. The dhal dipping sauce is usually vegetarian but may contain shrimp paste at some stalls.',
+    notes: {
+      vegetarian: 'The dough contains ghee, and dhal may contain shrimp paste at some stalls.',
+      vegan: 'Ghee is kneaded into the dough.',
+      glutenFree: 'Wheat flour dough.',
+      dairyFree: 'Ghee or margarine is worked into the dough.',
+    },
     tourSlug: 'kuala-lumpur-street-food',
   },
   {
@@ -182,7 +245,13 @@ export const dishes: Dish[] = [
     shellfishFree: 'safe',
     dairyFree: 'avoid',
     eggFree: 'avoid',
-    hiddenIngredients: 'Same ghee/margarine as roti canai. Dhal may contain shrimp paste.',
+    notes: {
+      vegetarian: 'Dough contains ghee; dhal may contain shrimp paste.',
+      vegan: 'Ghee in dough plus egg filling.',
+      glutenFree: 'Wheat flour dough.',
+      dairyFree: 'Ghee or margarine in the dough.',
+      eggFree: 'Egg is the filling.',
+    },
   },
   {
     id: 'satay',
@@ -192,13 +261,18 @@ export const dishes: Dish[] = [
     description: 'Skewered, charcoal-grilled meat served with peanut sauce, cucumber, and onion.',
     vegetarian: 'avoid',
     vegan: 'avoid',
-    halal: 'safe', // chicken and beef satay are halal; ask about source
-    glutenFree: 'caution', // soy sauce in marinade
-    nutFree: 'avoid', // peanut sauce
+    halal: 'safe',
+    glutenFree: 'caution',
+    nutFree: 'avoid',
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Peanut sauce is universal. Marinade often contains soy sauce (wheat). Some stalls may sell pork satay — check if halal matters to you.',
+    notes: {
+      vegetarian: 'Meat skewers; peanut sauce sometimes contains belacan.',
+      vegan: 'Meat-based dish.',
+      glutenFree: 'Marinade often contains soy sauce (wheat).',
+      nutFree: 'Peanut sauce is universal at satay stalls.',
+    },
     tourSlug: 'kuala-lumpur-street-food',
   },
   {
@@ -207,15 +281,23 @@ export const dishes: Dish[] = [
     category: 'Snack',
     origin: 'Nyonya',
     description: 'Colorful bite-sized cakes: ondeh-ondeh, kuih lapis, ang koo kuih, and more.',
-    vegetarian: 'caution', // varies by type
-    vegan: 'caution', // many use coconut milk
-    halal: 'caution', // some Chinese kuih may contain pork or lard
-    glutenFree: 'caution', // some use wheat flour
-    nutFree: 'caution', // some use peanuts or coconut
-    shellfishFree: 'caution', // some savory kuih use shrimp paste
-    dairyFree: 'safe', // rarely uses dairy
-    eggFree: 'caution', // some use egg
-    hiddenIngredients: 'Each kuih type is different. Coconut milk is extremely common. Some savory varieties contain shrimp paste. Ask the vendor what is inside.',
+    vegetarian: 'caution',
+    vegan: 'caution',
+    halal: 'caution',
+    glutenFree: 'caution',
+    nutFree: 'caution',
+    shellfishFree: 'caution',
+    dairyFree: 'safe',
+    eggFree: 'caution',
+    notes: {
+      vegetarian: 'Each kuih is different — savory ones may contain dried shrimp.',
+      vegan: 'Coconut milk and egg appear in many varieties.',
+      halal: 'Some Chinese-made kuih may contain lard.',
+      glutenFree: 'Some use wheat flour alongside rice flour.',
+      nutFree: 'Peanuts appear in some varieties.',
+      shellfishFree: 'Savory kuih sometimes use shrimp paste.',
+      eggFree: 'Egg is common in custard-style kuih.',
+    },
     tourSlug: 'penang-street-food',
   },
   {
@@ -225,14 +307,17 @@ export const dishes: Dish[] = [
     origin: 'Malay',
     description: 'Iced coconut milk dessert with green jelly noodles, red beans, and palm sugar.',
     vegetarian: 'safe',
-    vegan: 'safe', // traditionally vegan
+    vegan: 'safe',
     halal: 'safe',
-    glutenFree: 'safe', // rice flour jelly
-    nutFree: 'safe', // coconut is not classified as tree nut in Malaysian context
+    glutenFree: 'safe',
+    nutFree: 'safe',
     shellfishFree: 'safe',
-    dairyFree: 'safe', // coconut milk, not dairy
+    dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Some modern versions add dairy ice cream on top. Traditional version is fully plant-based. Coconut milk is the base — safe for dairy-free.',
+    notes: {
+      vegan: 'Some modern stalls add dairy ice cream on top — ask for the classic version.',
+      dairyFree: 'Coconut milk is the base (not dairy), but some stalls add dairy ice cream.',
+    },
     tourSlug: 'penang-street-food',
   },
   {
@@ -245,11 +330,14 @@ export const dishes: Dish[] = [
     vegan: 'safe',
     halal: 'safe',
     glutenFree: 'safe',
-    nutFree: 'caution', // some versions include peanuts
+    nutFree: 'caution',
     shellfishFree: 'safe',
-    dairyFree: 'caution', // some versions add evaporated milk
+    dairyFree: 'caution',
     eggFree: 'safe',
-    hiddenIngredients: 'Some versions add evaporated milk or ice cream. Some include peanuts. Ask for the classic version without dairy.',
+    notes: {
+      nutFree: 'Some versions include crushed peanuts.',
+      dairyFree: 'Some versions add evaporated milk or ice cream — ask for the classic.',
+    },
   },
   {
     id: 'durian',
@@ -265,7 +353,6 @@ export const dishes: Dish[] = [
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Naturally safe for all dietary restrictions. The only concern is durian being served in venues that also serve alcohol — some hotels prohibit durian.',
     tourSlug: 'georgetown-night-food-durian',
   },
   {
@@ -275,14 +362,17 @@ export const dishes: Dish[] = [
     origin: 'Indian-Muslim',
     description: 'Frothy pulled tea with condensed milk. National drink of Malaysia.',
     vegetarian: 'safe',
-    vegan: 'avoid', // condensed milk
+    vegan: 'avoid',
     halal: 'safe',
     glutenFree: 'safe',
     nutFree: 'safe',
     shellfishFree: 'safe',
-    dairyFree: 'avoid', // condensed milk + evaporated milk
+    dairyFree: 'avoid',
     eggFree: 'safe',
-    hiddenIngredients: 'Made with condensed milk and evaporated milk. Ask for "teh O" (black tea with sugar, no milk) for a dairy-free version.',
+    notes: {
+      vegan: 'Condensed milk is essential — order "teh O" for black tea with sugar.',
+      dairyFree: 'Made with condensed and evaporated milk — order "teh O" instead.',
+    },
   },
   {
     id: 'kopi-o',
@@ -292,13 +382,15 @@ export const dishes: Dish[] = [
     description: 'Black coffee with sugar, served hot or iced. No milk.',
     vegetarian: 'safe',
     vegan: 'safe',
-    halal: 'caution', // Chinese kopitiams are not always halal
+    halal: 'caution',
     glutenFree: 'safe',
     nutFree: 'safe',
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Traditionally no milk. But served in Chinese kopitiams that may also serve pork. Ask for "kopi O peng" for iced version.',
+    notes: {
+      halal: 'Chinese kopitiams may also serve pork — look for halal certification.',
+    },
   },
   {
     id: 'wanton-noodles',
@@ -308,13 +400,20 @@ export const dishes: Dish[] = [
     description: 'Egg noodles with pork dumplings, char siew, and vegetables.',
     vegetarian: 'avoid',
     vegan: 'avoid',
-    halal: 'avoid', // pork
-    glutenFree: 'avoid', // wheat noodles
+    halal: 'avoid',
+    glutenFree: 'avoid',
     nutFree: 'safe',
-    shellfishFree: 'caution', // some broths use dried shrimp
+    shellfishFree: 'caution',
     dairyFree: 'safe',
-    eggFree: 'avoid', // egg noodles + egg in dumplings
-    hiddenIngredients: 'Pork dumplings and char siew (BBQ pork). Broth may contain dried shrimp. Wheat noodles throughout.',
+    eggFree: 'avoid',
+    notes: {
+      vegetarian: 'Pork dumplings and char siew (BBQ pork) throughout.',
+      vegan: 'Pork-based dish.',
+      halal: 'Pork dumplings and char siew are core toppings.',
+      glutenFree: 'Wheat egg noodles plus soy sauce.',
+      shellfishFree: 'Broth may contain dried shrimp.',
+      eggFree: 'Egg noodles plus egg in the dumpling filling.',
+    },
   },
   {
     id: 'hainan-chicken-rice',
@@ -324,13 +423,19 @@ export const dishes: Dish[] = [
     description: 'Poached chicken with fragrant rice cooked in chicken fat, served with chili sauce.',
     vegetarian: 'avoid',
     vegan: 'avoid',
-    halal: 'avoid', // often non-halal Chinese stalls
-    glutenFree: 'caution', // soy sauce in chili sauce
+    halal: 'avoid',
+    glutenFree: 'caution',
     nutFree: 'safe',
-    shellfishFree: 'caution', // some chili sauces contain shrimp
+    shellfishFree: 'caution',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Rice is cooked in chicken fat and broth. Chili sauce may contain soy sauce (wheat) and shrimp paste.',
+    notes: {
+      vegetarian: 'Chicken is the dish; rice is cooked in chicken fat.',
+      vegan: 'Chicken and chicken-fat rice.',
+      halal: 'Most stalls are not halal-certified.',
+      glutenFree: 'Chili sauce and soy sauce contain wheat.',
+      shellfishFree: 'Chili sauce sometimes contains shrimp paste.',
+    },
   },
   {
     id: 'popiah',
@@ -338,15 +443,22 @@ export const dishes: Dish[] = [
     category: 'Snack',
     origin: 'Nyonya',
     description: 'Fresh spring roll with turnip, bean sprouts, lettuce, and various fillings.',
-    vegetarian: 'caution', // some versions contain dried shrimp or meat
+    vegetarian: 'caution',
     vegan: 'caution',
-    halal: 'caution', // depends on filling
-    glutenFree: 'avoid', // wheat wrapper
+    halal: 'caution',
+    glutenFree: 'avoid',
     nutFree: 'safe',
-    shellfishFree: 'caution', // dried shrimp common
+    shellfishFree: 'caution',
     dairyFree: 'safe',
-    eggFree: 'caution', // some versions include egg
-    hiddenIngredients: 'Dried shrimp (heh bee) is a common filling. Some versions contain pork or sausage. The wrapper is wheat-based.',
+    eggFree: 'caution',
+    notes: {
+      vegetarian: 'Dried shrimp (heh bee) is a common filling — ask for a version without.',
+      vegan: 'Dried shrimp in filling; egg may be included.',
+      halal: 'Some versions contain pork or sausage.',
+      glutenFree: 'The wrapper is wheat-based.',
+      shellfishFree: 'Dried shrimp is traditional in the filling.',
+      eggFree: 'Some versions include egg.',
+    },
     tourSlug: 'penang-street-food',
   },
   {
@@ -358,12 +470,18 @@ export const dishes: Dish[] = [
     vegetarian: 'avoid',
     vegan: 'avoid',
     halal: 'safe',
-    glutenFree: 'caution', // some paste contains wheat
-    nutFree: 'caution', // crushed peanuts common
-    shellfishFree: 'avoid', // prawn paste (heh ko) is core ingredient
+    glutenFree: 'caution',
+    nutFree: 'caution',
+    shellfishFree: 'avoid',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Prawn paste (heh ko) is the essential ingredient. Crushed peanuts are usually sprinkled on top.',
+    notes: {
+      vegetarian: 'Prawn paste (heh ko) is the essential dressing.',
+      vegan: 'Prawn paste dressing.',
+      glutenFree: 'Some prawn paste contains wheat.',
+      nutFree: 'Crushed peanuts are usually sprinkled on top.',
+      shellfishFree: 'Prawn paste (heh ko) is the core ingredient.',
+    },
   },
   {
     id: 'bean-curd-dessert',
@@ -372,14 +490,18 @@ export const dishes: Dish[] = [
     origin: 'Chinese',
     description: 'Silken tofu pudding in sweet ginger syrup, served hot or cold.',
     vegetarian: 'safe',
-    vegan: 'caution', // some versions use dairy milk; traditional is soy-based
-    halal: 'caution', // Chinese stalls
-    glutenFree: 'safe', // soy + ginger
+    vegan: 'caution',
+    halal: 'caution',
+    glutenFree: 'safe',
     nutFree: 'safe',
     shellfishFree: 'safe',
-    dairyFree: 'caution', // modern versions sometimes use dairy milk
+    dairyFree: 'caution',
     eggFree: 'safe',
-    hiddenIngredients: 'Traditional version is soy-based and vegan-friendly. Some modern stalls use dairy milk instead of soy. Ask if it is "tau fu fa with soya" or "with milk".',
+    notes: {
+      vegan: 'Traditional version is soy-based; some modern stalls use dairy milk — ask.',
+      halal: 'Chinese stalls may not be halal-certified.',
+      dairyFree: 'Some stalls use dairy milk instead of soy — ask for "tau fu fa with soya".',
+    },
   },
   {
     id: 'apam-balik',
@@ -388,14 +510,20 @@ export const dishes: Dish[] = [
     origin: 'Malay',
     description: 'Crispy folded pancake filled with crushed peanuts and sugar.',
     vegetarian: 'safe',
-    vegan: 'caution', // some versions use egg in batter
+    vegan: 'caution',
     halal: 'safe',
-    glutenFree: 'avoid', // wheat flour
-    nutFree: 'avoid', // peanut filling
+    glutenFree: 'avoid',
+    nutFree: 'avoid',
     shellfishFree: 'safe',
-    dairyFree: 'caution', // some use margarine
+    dairyFree: 'caution',
     eggFree: 'caution',
-    hiddenIngredients: 'Peanut filling is universal. Batter may contain egg. Some vendors use margarine (may contain dairy).',
+    notes: {
+      vegan: 'Some batters include egg; some vendors use margarine.',
+      glutenFree: 'Wheat flour batter.',
+      nutFree: 'Crushed peanut filling is universal.',
+      dairyFree: 'Some vendors use margarine (may contain dairy).',
+      eggFree: 'Batter may contain egg — ask.',
+    },
   },
   {
     id: 'pisang-goreng',
@@ -404,14 +532,19 @@ export const dishes: Dish[] = [
     origin: 'Malay',
     description: 'Deep-fried banana fritters. Crispy outside, sweet inside.',
     vegetarian: 'safe',
-    vegan: 'caution', // some batters use egg
+    vegan: 'caution',
     halal: 'safe',
-    glutenFree: 'caution', // batter may use wheat flour
+    glutenFree: 'caution',
     nutFree: 'safe',
     shellfishFree: 'safe',
-    dairyFree: 'caution', // some use margarine
+    dairyFree: 'caution',
     eggFree: 'caution',
-    hiddenIngredients: 'Batter varies — some use egg, some use rice flour only. Wheat flour is common. Ask if batter contains egg.',
+    notes: {
+      vegan: 'Some batters use egg — ask for rice-flour-only batter.',
+      glutenFree: 'Wheat flour is common in the batter; some stalls use rice flour only.',
+      dairyFree: 'Some batters include margarine.',
+      eggFree: 'Ask if the batter contains egg.',
+    },
   },
   {
     id: 'kaya-toast',
@@ -420,14 +553,20 @@ export const dishes: Dish[] = [
     origin: 'Chinese',
     description: 'Toasted bread with kaya (coconut jam) and butter, served with soft-boiled eggs.',
     vegetarian: 'safe',
-    vegan: 'avoid', // butter
-    halal: 'caution', // Chinese kopitiam
-    glutenFree: 'avoid', // wheat bread
+    vegan: 'avoid',
+    halal: 'caution',
+    glutenFree: 'avoid',
     nutFree: 'safe',
     shellfishFree: 'safe',
-    dairyFree: 'avoid', // butter
-    eggFree: 'avoid', // served with soft-boiled eggs
-    hiddenIngredients: 'Kaya is made from coconut, eggs, and sugar. Butter is used generously. Served with soft-boiled eggs.',
+    dairyFree: 'avoid',
+    eggFree: 'avoid',
+    notes: {
+      vegan: 'Butter and kaya (made with egg) on the toast.',
+      halal: 'Chinese kopitiams are often not halal-certified.',
+      glutenFree: 'Wheat bread.',
+      dairyFree: 'Butter is spread generously.',
+      eggFree: 'Kaya contains egg, plus soft-boiled egg on the side.',
+    },
   },
   {
     id: 'curry-laksa',
@@ -435,15 +574,23 @@ export const dishes: Dish[] = [
     category: 'Noodles',
     origin: 'Nyonya',
     description: 'Noodles in spicy coconut curry soup with tofu puffs, prawns, and cockles.',
-    vegetarian: 'caution', // some stalls have vegetarian version
+    vegetarian: 'caution',
     vegan: 'avoid',
     halal: 'caution',
-    glutenFree: 'caution', // depends on noodle type
+    glutenFree: 'caution',
     nutFree: 'safe',
-    shellfishFree: 'avoid', // prawns, cockles, shrimp paste
-    dairyFree: 'avoid', // coconut milk
+    shellfishFree: 'avoid',
+    dairyFree: 'avoid',
     eggFree: 'caution',
-    hiddenIngredients: 'Coconut milk base. Prawns and cockles common. Shrimp paste often in broth. Some versions include chicken or pork.',
+    notes: {
+      vegetarian: 'Standard version has prawns and cockles; some stalls offer vegetable-only broth.',
+      vegan: 'Meat, seafood, and often egg in the dish.',
+      halal: 'Some versions include pork; stall certification varies.',
+      glutenFree: 'Depends on noodle type — yellow noodles contain wheat.',
+      shellfishFree: 'Prawns, cockles, and shrimp paste in the broth.',
+      dairyFree: 'Coconut milk base — skip if you avoid coconut.',
+      eggFree: 'Often includes boiled egg and egg noodles.',
+    },
   },
   {
     id: 'buddhist-vegetarian',
@@ -452,14 +599,21 @@ export const dishes: Dish[] = [
     origin: 'Chinese',
     description: 'Mock meat dishes made from soy and mushroom, no onion or garlic.',
     vegetarian: 'safe',
-    vegan: 'caution', // some use dairy or egg
-    halal: 'caution', // not halal-certified but contains no pork
-    glutenFree: 'caution', // mock meats often contain wheat gluten (seitan)
-    nutFree: 'caution', // some dishes use cashew or peanut
+    vegan: 'caution',
+    halal: 'caution',
+    glutenFree: 'caution',
+    nutFree: 'caution',
     shellfishFree: 'safe',
     dairyFree: 'caution',
     eggFree: 'caution',
-    hiddenIngredients: 'Mock meats are often wheat gluten (seitan) — not gluten-free. Some dishes use egg or dairy. No onion, garlic, or leek by religious practice.',
+    notes: {
+      vegan: 'Some dishes use dairy or egg — ask which are fully plant-based.',
+      halal: 'Contains no pork but usually not halal-certified.',
+      glutenFree: 'Mock meats are often wheat gluten (seitan).',
+      nutFree: 'Some dishes use cashew or peanut.',
+      dairyFree: 'Some dishes use milk in sauces.',
+      eggFree: 'Egg appears in some dishes and noodles.',
+    },
     tourSlug: 'kl-vegetarian-food-tour',
   },
   {
@@ -469,14 +623,18 @@ export const dishes: Dish[] = [
     origin: 'Indian',
     description: 'Crispy fermented rice and lentil crepe, served with chutney and sambar.',
     vegetarian: 'safe',
-    vegan: 'safe', // traditionally vegan
-    halal: 'caution', // Indian stalls may not be halal-certified
-    glutenFree: 'safe', // rice + lentil batter
+    vegan: 'safe',
+    halal: 'caution',
+    glutenFree: 'safe',
     nutFree: 'safe',
     shellfishFree: 'safe',
-    dairyFree: 'safe', // traditionally no dairy
+    dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Traditionally made from rice and lentil batter — naturally vegan and gluten-free. Some stalls may add ghee on top; ask for "no ghee".',
+    notes: {
+      vegan: 'Naturally vegan — but ask for "no ghee" as some stalls add it on top.',
+      halal: 'Indian stalls may not be halal-certified.',
+      dairyFree: 'Some stalls add ghee — ask for it cooked in oil.',
+    },
     tourSlug: 'kl-vegetarian-food-tour',
   },
   {
@@ -493,7 +651,9 @@ export const dishes: Dish[] = [
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Made from fermented rice and lentil batter. Naturally vegan, gluten-free, and free of all major allergens. One of the safest Malaysian foods.',
+    notes: {
+      halal: 'Indian stalls may not be halal-certified.',
+    },
     tourSlug: 'kl-vegetarian-food-tour',
   },
   {
@@ -510,7 +670,11 @@ export const dishes: Dish[] = [
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Potato masala may contain mustard seeds and curry leaves. Same batter as dosai — naturally vegan and gluten-free. Ask for "no ghee".',
+    notes: {
+      vegan: 'Naturally vegan — ask for "no ghee".',
+      halal: 'Indian stalls may not be halal-certified.',
+      dairyFree: 'Ask for no ghee; some stalls add it.',
+    },
     tourSlug: 'kl-vegetarian-food-tour',
   },
   {
@@ -522,12 +686,19 @@ export const dishes: Dish[] = [
     vegetarian: 'avoid',
     vegan: 'avoid',
     halal: 'safe',
-    glutenFree: 'caution', // some paste contains soy sauce
-    nutFree: 'caution', // some use ground nut
-    shellfishFree: 'caution', // some recipes use belacan
-    dairyFree: 'avoid', // coconut milk
+    glutenFree: 'caution',
+    nutFree: 'caution',
+    shellfishFree: 'caution',
+    dairyFree: 'avoid',
     eggFree: 'safe',
-    hiddenIngredients: 'Coconut milk base. Some recipes include belacan (shrimp paste). Soy sauce may be used in spice paste.',
+    notes: {
+      vegetarian: 'Beef dish.',
+      vegan: 'Beef and coconut milk base.',
+      glutenFree: 'Some spice pastes include soy sauce.',
+      nutFree: 'Some recipes use ground nuts in the paste.',
+      shellfishFree: 'Some recipes include belacan (shrimp paste).',
+      dairyFree: 'Coconut milk base — skip if you avoid coconut.',
+    },
   },
   {
     id: 'kari-pap',
@@ -535,15 +706,22 @@ export const dishes: Dish[] = [
     category: 'Snack',
     origin: 'Malay',
     description: 'Deep-fried pastry filled with curried potatoes and sometimes chicken or sardine.',
-    vegetarian: 'caution', // potato version can be vegetarian
+    vegetarian: 'caution',
     vegan: 'caution',
     halal: 'safe',
-    glutenFree: 'avoid', // wheat pastry
+    glutenFree: 'avoid',
     nutFree: 'safe',
-    shellfishFree: 'caution', // some versions use shrimp
+    shellfishFree: 'caution',
     dairyFree: 'caution',
     eggFree: 'caution',
-    hiddenIngredients: 'Pastry is wheat-based. Filling varies — potato, chicken, or sardine. Some curries contain belacan. Ask for potato-only version.',
+    notes: {
+      vegetarian: 'Ask for the potato-only version; chicken and sardine are common.',
+      vegan: 'Filling varies; egg wash sometimes used on pastry.',
+      glutenFree: 'Wheat pastry.',
+      shellfishFree: 'Sardine versions exist; some curry fillings use shrimp paste.',
+      dairyFree: 'Some pastries use margarine.',
+      eggFree: 'Pastry may be egg-washed.',
+    },
   },
   {
     id: 'yong-tau-foo',
@@ -551,22 +729,28 @@ export const dishes: Dish[] = [
     category: 'Soup',
     origin: 'Chinese',
     description: 'Tofu and vegetables stuffed with fish paste, served in broth or dry with sauce.',
-    vegetarian: 'avoid', // fish paste filling
+    vegetarian: 'avoid',
     vegan: 'avoid',
-    halal: 'caution', // fish-based but Chinese stall
-    glutenFree: 'caution', // some sauces contain wheat
+    halal: 'caution',
+    glutenFree: 'caution',
     nutFree: 'safe',
-    shellfishFree: 'caution', // fish paste may contain shrimp
+    shellfishFree: 'caution',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Fish paste is the filling — even in tofu and vegetables. Some broths use dried shrimp. Soy-based dipping sauce contains wheat.',
+    notes: {
+      vegetarian: 'Fish paste fills even the tofu and vegetables.',
+      vegan: 'Fish paste filling throughout.',
+      halal: 'Fish-based but usually Chinese-run stalls without certification.',
+      glutenFree: 'Soy-based dipping sauce contains wheat; some items use wheat flour.',
+      shellfishFree: 'Fish paste may contain shrimp; broth may use dried shrimp.',
+    },
   },
   {
     id: 'cendol-penang',
     name: 'Penang Road Cendol',
     category: 'Dessert',
     origin: 'Nyonya',
-    description: 'Penang\'s famous cendol with palm sugar, coconut milk, and red beans.',
+    description: "Penang's famous cendol with palm sugar, coconut milk, and red beans.",
     vegetarian: 'safe',
     vegan: 'safe',
     halal: 'safe',
@@ -575,7 +759,6 @@ export const dishes: Dish[] = [
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Fully plant-based: coconut milk, palm sugar, green jelly (rice flour), red beans. One of the safest desserts for all restrictions.',
     tourSlug: 'penang-street-food',
   },
   {
@@ -586,13 +769,18 @@ export const dishes: Dish[] = [
     description: 'Rice with BBQ pork, vegetables, and sweet dark sauce.',
     vegetarian: 'avoid',
     vegan: 'avoid',
-    halal: 'avoid', // pork
-    glutenFree: 'caution', // soy sauce
+    halal: 'avoid',
+    glutenFree: 'caution',
     nutFree: 'safe',
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Char siew is pork marinated in honey, soy sauce (wheat), and red food coloring. Not halal. Soy sauce throughout.',
+    notes: {
+      vegetarian: 'BBQ pork is the dish.',
+      vegan: 'Pork-based.',
+      halal: 'Pork is the core ingredient.',
+      glutenFree: 'Soy sauce (wheat) in marinade and sauce.',
+    },
   },
   {
     id: 'bao',
@@ -600,15 +788,22 @@ export const dishes: Dish[] = [
     category: 'Snack',
     origin: 'Chinese',
     description: 'Steamed buns with various fillings: pork, chicken, red bean, or kaya.',
-    vegetarian: 'caution', // red bean or kaya versions
-    vegan: 'caution', // red bean version
-    halal: 'caution', // pork versions not halal
-    glutenFree: 'avoid', // wheat dough
+    vegetarian: 'caution',
+    vegan: 'caution',
+    halal: 'caution',
+    glutenFree: 'avoid',
     nutFree: 'safe',
     shellfishFree: 'safe',
     dairyFree: 'caution',
     eggFree: 'caution',
-    hiddenIngredients: 'Dough is wheat-based. Fillings vary: pork (not halal), chicken, red bean (vegetarian), or kaya (contains egg). Ask for "tau sar pau" (red bean bun) for vegetarian.',
+    notes: {
+      vegetarian: 'Ask for "tau sar pau" (red bean) — pork and chicken versions are common.',
+      vegan: 'Red bean version is usually vegan; kaya contains egg.',
+      halal: 'Pork versions are not halal; check the filling.',
+      glutenFree: 'Wheat dough.',
+      dairyFree: 'Some doughs use milk.',
+      eggFree: 'Kaya filling contains egg.',
+    },
   },
   {
     id: 'sup-kambing',
@@ -619,19 +814,23 @@ export const dishes: Dish[] = [
     vegetarian: 'avoid',
     vegan: 'avoid',
     halal: 'safe',
-    glutenFree: 'caution', // some use soy sauce
+    glutenFree: 'caution',
     nutFree: 'safe',
     shellfishFree: 'safe',
     dairyFree: 'safe',
     eggFree: 'safe',
-    hiddenIngredients: 'Mutton bones may be included. Some versions use soy sauce (wheat) for seasoning. Spices are the main flavoring.',
+    notes: {
+      vegetarian: 'Mutton soup.',
+      vegan: 'Mutton base.',
+      glutenFree: 'Some versions use soy sauce (wheat) for seasoning.',
+    },
   },
 ];
 
 export const dietaryRestrictions = [
   { id: 'vegetarian', label: 'Vegetarian', icon: '🥬', description: 'No meat, poultry, or fish' },
   { id: 'vegan', label: 'Vegan', icon: '🌱', description: 'No animal products including dairy and eggs' },
-  { id: 'halal', label: 'Halal', icon: '🥩', description: 'No pork, no alcohol, halal-certified only' },
+  { id: 'halal', label: 'Halal', icon: 'حلال', description: 'No pork, no alcohol, halal-certified only' },
   { id: 'glutenFree', label: 'Gluten-Free', icon: '🌾', description: 'No wheat, barley, or rye' },
   { id: 'nutFree', label: 'Nut-Free', icon: '🥜', description: 'No peanuts or tree nuts' },
   { id: 'shellfishFree', label: 'Shellfish-Free', icon: '🦐', description: 'No shrimp, prawns, crab, or shellfish' },
