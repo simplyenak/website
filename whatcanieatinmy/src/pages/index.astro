@@ -42,6 +42,7 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
         {dishes.length} dishes · {cuisines.join(', ')} cuisines · No signup
       </p>
       <a href="#checker" class="hero-cta">Start checking ↓</a>
+      <p class="hero-credit">© 2026 Simply Enak · Photo by Tianchad</p>
     </div>
   </header>
 
@@ -264,12 +265,23 @@ const cuisines = [...new Set(dishes.map(d => d.origin))];
 
     /* === Hero === */
     .hero {
-      background: linear-gradient(135deg, #2a0e0e 0%, #3d1a05 40%, #1a1a1a 100%);
+      background:
+        linear-gradient(180deg, rgba(20,10,5,0.82) 0%, rgba(20,10,5,0.68) 55%, rgba(20,10,5,0.88) 100%),
+        url('/images/hero-kuih.jpg') center 35% / cover no-repeat,
+        linear-gradient(135deg, #2a0e0e 0%, #3d1a05 40%, #1a1a1a 100%);
       color: white;
-      padding: 3.5rem 1rem;
+      padding: 4.5rem 1rem;
       text-align: center;
       position: relative;
       overflow: hidden;
+    }
+    .hero-credit {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.75rem;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.45);
+      z-index: 2;
     }
     .hero::before {
       content: '';

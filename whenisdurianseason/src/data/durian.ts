@@ -28,9 +28,8 @@ export const regions: Region[] = [
   {
     id: 'penang',
     name: 'Penang',
-    mainSeason: [6, 7, 8],
-    secondarySeason: [12, 1],
-    notes: 'Balik Pulau is the famous growing area. Hillside orchards produce Bawang, Black Thorn, and Musang King. Season peaks mid-year; the December flush is smaller.',
+    mainSeason: [5, 6, 7],
+    notes: 'Balik Pulau is the famous growing area. Hillside orchards produce Bawang, Black Thorn, and Musang King. The harvest runs May to July, starting earlier than most of the peninsula, and there is little fruit outside those months.',
   },
   {
     id: 'kl-selangor',

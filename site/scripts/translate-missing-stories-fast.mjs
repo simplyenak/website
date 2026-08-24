@@ -63,11 +63,16 @@ function cleanMarkdown(text) {
   if (typeof text !== 'string') return '';
   // Remove [object Object] artifacts
   text = text.replace(/\[object Object\]/g, '');
+  // Remove markdown code fences
+  text = text.replace(/^```[a-z]*\n?/, '').replace(/```$/,'').trim();
   // Remove extra quotes that LLM sometimes adds
   text = text.replace(/^"(.*)"$/, '$1');
+  text = text.replace(/^'(.*)'$/, '$1');
   // Clean escaped newlines
   text = text.replace(/\\n/g, '\n');
-  return text.trim();
+  // Remove leading/trailing whitespace
+  text = text.trim();
+  return text;
 }
 
 async function main() {

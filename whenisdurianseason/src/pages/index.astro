@@ -8,7 +8,7 @@ const description =
 
 const siteUrl = 'https://whenisdurianseason.com';
 
-const priceTier = (t: 1 | 2 | 3) => 'RM'.repeat(t) + '\u00b7'.repeat(3 - t);
+const priceTier = (t: 1 | 2 | 3) => (t === 3 ? 'Premium price' : t === 2 ? 'Mid price' : 'Value');
 
 const regionRows = regions.map((r) => ({
   ...r,
