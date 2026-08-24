@@ -116,7 +116,8 @@ async function main() {
         const content = story.content_markdown || story.content || '';
         if (content && content.length > 100) {
           const contentPrompt = `Translate this article from English to ${lang}. Preserve all markdown formatting. Return ONLY the translated markdown, nothing else:\n\n${content}`;
-          translation.content = await llmCall(contentPrompt);
+          const contentResult = await llmCall(contentPrompt);
+          translation.content = typeof contentResult === 'string' ? contentResult : JSON.stringify(contentResult);
         }
         
         // Translate meta title

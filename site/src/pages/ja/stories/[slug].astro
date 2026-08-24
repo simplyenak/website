@@ -23,6 +23,17 @@ const image = getImageUrl(story.featuredImage || '') as ImageMetadata | string |
 
 const contentHtml = story.content_markdown ? marked.parse(story.content_markdown) : '';
 
+// Use translated content if available
+let finalContent = contentHtml;
+if (story.translations) {
+  const trans = story.translations.find((t: any) => t.languages_code === Astro.url.pathname.split('/')[1]);
+  if (trans?.content) {
+    try {
+      finalContent = marked.parse(trans.content);
+    } catch {}
+  }
+}
+
 // Shape story data into a Post-like object for SinglePost
 const post = {
   id: 'payload-' + story.id,
@@ -52,7 +63,7 @@ const meta = {
 
 <Layout metadata={meta}>
   <SinglePost post={post} url={url}>
-    <div class="prose prose-sm md:prose-base max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-default prose-blockquote:font-medium prose-blockquote:text-lg prose-li:my-1 dark:prose-blockquote:bg-accent/10 dark:prose-blockquote:text-white" set:html={contentHtml} />
+    <div class="prose prose-sm md:prose-base max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-default prose-headings:leading-tight prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-default prose-blockquote:font-medium prose-blockquote:text-lg prose-li:my-1 dark:prose-blockquote:bg-accent/10 dark:prose-blockquote:text-white" set:html={finalContent} />
   </SinglePost>
   <ToBlogLink />
   <RelatedPosts post={post} />
