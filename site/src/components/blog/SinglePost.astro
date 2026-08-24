@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
+import GooglePreferredSources from '~/components/common/GooglePreferredSources.astro';
 
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
@@ -20,6 +21,7 @@ const readingTime = Math.max(1, Math.ceil(((post.contents || post.Content)?.leng
 const siteUrl = 'https://simplyenak.com';
 const blogSlug = typeof url === 'string' ? url.replace(siteUrl, '') : (url.pathname || '');
 const authorName = post.author || 'Simply Enak';
+const paulineImageUrl = 'https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg';
 
 // Load link equity boost recommendations
 let linkEquityRecs: any[] = [];
@@ -137,6 +139,11 @@ try {
         <slot />
       </div>
 
+      <!-- Google Preferred Sources: below the article, above the CTA -->
+      <div class="my-10">
+        <GooglePreferredSources />
+      </div>
+
       <!-- In-article CTA -->
       <div class="my-12 p-6 md:p-8 bg-accent/5 border border-accent/20 rounded-xl">
         <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
@@ -154,9 +161,13 @@ try {
       <!-- Author bio card -->
       <div class="my-10 p-6 bg-gray-50 dark:bg-[#151313] rounded-xl border border-gray-100 dark:border-white/10">
         <div class="flex items-start gap-4">
-          <div class="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-            <span class="text-accent font-bold text-xl">{post.author ? post.author.charAt(0) : 'S'}</span>
-          </div>
+          {post.author === 'Pauline' ? (
+            <img src={paulineImageUrl} alt="Pauline" class="w-14 h-14 rounded-full object-cover shrink-0" />
+          ) : (
+            <div class="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+              <span class="text-accent font-bold text-xl">{post.author ? post.author.charAt(0) : 'S'}</span>
+            </div>
+          )}
           <div class="flex-1">
             <p class="font-bold font-heading text-default">{post.author || 'Simply Enak Team'}</p>
             <p class="text-xs text-muted mb-2">Simply Enak Food Experiences</p>

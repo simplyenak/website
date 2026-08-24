@@ -1,47 +1,43 @@
 ---
-// Google Preferred Sources button
-// Docs: https://developers.google.com/search/docs/appearance/preferred-sources
-// 
-// Brand voice: Warm, personal — like a friend inviting you to stay connected
-// Not: transactional, corporate, or demanding
-
-const { lang = 'en' } = Astro.props;
+const props = Astro.props;
+const lang = props.lang || 'en';
 const domain = 'simplyenak.com';
 const deeplink = `https://www.google.com/preferences/source?q=${domain}`;
 ---
 
-<!-- 
+<!--
   Google Preferred Sources widget.
   Renders an interactive button if Google recognizes the domain,
-  otherwise degrades gracefully to a text link fallback.
+  otherwise degrades gracefully to a styled text-link fallback.
 -->
-<div class="mt-8 pt-6 border-t border-gray-200 dark:border-slate-700">
+<div class="my-10 py-6 border-t border-gray-200 dark:border-slate-700">
   <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
     <div class="flex-1">
       <p class="font-bold font-heading text-default text-base mb-1">
         Love what you just read?
       </p>
-      <p class="text-sm text-muted dark:text-slate-400 leading-relaxed">
-        Stay in the loop — add Simply Enak to your Google favorites so you never miss a story.
+      <p class="text-sm text-muted leading-relaxed">
+        Stay in the loop, add Simply Enak to your Google favorites so you never miss a story.
       </p>
     </div>
     <div class="flex flex-col items-end gap-2 shrink-0">
-      <!-- 
+      <!--
         google-add-preferred-source-btn renders the official Google button.
         data-lang auto-localizes the button text based on browser settings.
         data-theme matches the site's dark/light mode preference.
       -->
-      <div 
-        google-add-preferred-source-btn 
+      <div
+        google-add-preferred-source-btn
         data-lang={lang}
         data-theme="auto"
+        class="rounded-lg transition-transform duration-200 hover:scale-105"
       ></div>
       <!-- Fallback for non-JS or ineligible domains -->
-      <a 
-        href={deeplink} 
-        target="_blank" 
+      <a
+        href={deeplink}
+        target="_blank"
         rel="noopener noreferrer"
-        class="text-xs text-accent/70 hover:text-accent transition-colors underline underline-offset-2"
+        class="text-xs text-accent/70 hover:text-accent hover:underline underline-offset-2 transition-colors"
       >
         Can't find the button? → Add us manually
       </a>
