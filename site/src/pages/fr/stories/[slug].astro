@@ -29,7 +29,12 @@ if (story.translations) {
   const trans = story.translations.find((t: any) => t.languages_code === Astro.url.pathname.split('/')[1]);
   if (trans?.content) {
     try {
-      finalContent = marked.parse(trans.content);
+      // Strip leading h1 from translated markdown to avoid duplicate with template
+      let translatedMarkdown = trans.content;
+      if (translatedMarkdown.startsWith('# ')) {
+        translatedMarkdown = translatedMarkdown.replace(/^#[^\n]*\n\n?/, '');
+      }
+      finalContent = marked.parse(translatedMarkdown);
     } catch {}
   }
 }
