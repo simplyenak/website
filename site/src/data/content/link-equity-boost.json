@@ -1,24 +1,179 @@
 {
-  "generated_at": "2026-07-23T09:50:29.189667+00:00",
+  "generated_at": "2026-08-24T11:35:00.000000+00:00",
   "target_pages": [
-    "/tours/specialty/market-tours-penang/"
+    "/tours/kuala-lumpur-street-food/",
+    "/tours/penang-street-food/",
+    "/tours/flavours-of-malaysia/",
+    "/tours/kl-vegetarian-food-tour/",
+    "/tours/inside-pudu/",
+    "/tours/georgetown-night-food-durian/",
+    "/tours/secrets-of-kl-nightlife-street-art-and-cocktails/"
   ],
   "recommendations": [
     {
-      "target_path": "/tours/specialty/market-tours-penang/",
-      "target_title": "Market Tour",
-      "link_text": " Tours",
+      "target_path": "/tours/georgetown-night-food-durian/",
+      "target_title": "Georgetown Night Food & Durian Tour",
+      "link_text": "Penang night food tour",
       "sources": [
-        "/stories/vegan-guide-kuala-lumpur/",
-        "/eating-durians/",
-        "/stories/jain-guide-penang/"
+        "/stories/durian-season-penang/",
+        "/stories/durian-season-malaysia/",
+        "/stories/malaysia-durian-guide/",
+        "/stories/eating-durians/",
+        "/stories/durian-guide-malaysia/",
+        "/stories/night-food-guide-penang/",
+        "/stories/food-guide-george-town/"
+      ],
+      "priority": 5
+    },
+    {
+      "target_path": "/tours/kl-vegetarian-food-tour/",
+      "target_title": "KL Vegetarian Food Tour",
+      "link_text": "Vegetarian food tour in KL",
+      "sources": [
+        "/stories/vegetarian-guide-kuala-lumpur/",
+        "/stories/vegetarian-guide-malaysia/",
+        "/stories/jain-guide-kuala-lumpur/",
+        "/stories/hidden-meat-problem-vegetarian-kl/",
+        "/stories/how-to-find-vegetarian-restaurants-kl-penang-ipoh/",
+        "/stories/what-vegetarian-actually-means-kuala-lumpur/"
+      ],
+      "priority": 5
+    },
+    {
+      "target_path": "/tours/kuala-lumpur-street-food/",
+      "target_title": "KL Street Food Tour",
+      "link_text": "KL street food tour",
+      "sources": [
+        "/stories/street-food-guide-kuala-lumpur/",
+        "/stories/market-guide-kuala-lumpur/",
+        "/stories/food-guide-kuala-lumpur/",
+        "/stories/food-guide-chinatown-kl/",
+        "/stories/food-guide-chow-kit/",
+        "/stories/food-guide-kampung-baru/",
+        "/stories/heritage-food-guide-kuala-lumpur/",
+        "/stories/night-food-guide-kuala-lumpur/",
+        "/stories/vegan-guide-kuala-lumpur/"
       ],
       "priority": 4.5
+    },
+    {
+      "target_path": "/tours/penang-street-food/",
+      "target_title": "Penang Street Food Tour",
+      "link_text": "Penang street food tour",
+      "sources": [
+        "/stories/street-food-guide-penang/",
+        "/stories/market-guide-penang/",
+        "/stories/food-guide-penang/",
+        "/stories/food-guide-chowrasta-penang/",
+        "/stories/food-guide-little-india-penang/",
+        "/stories/heritage-food-guide-penang/",
+        "/stories/night-food-guide-penang/",
+        "/stories/vegan-guide-penang/",
+        "/stories/halal-guide-penang/"
+      ],
+      "priority": 4.5
+    },
+    {
+      "target_path": "/tours/flavours-of-malaysia/",
+      "target_title": "Flavours of Malaysia Market Tour",
+      "link_text": "Market culture food tour",
+      "sources": [
+        "/stories/market-guide-malaysia/",
+        "/stories/market-guide-kuala-lumpur/",
+        "/stories/market-guide-penang/",
+        "/stories/malaysian-herbs-and-spices/",
+        "/stories/street-food-guide-malaysia/",
+        "/stories/food-safety/",
+        "/stories/food-guide-melaka/",
+        "/stories/johor-bahru-local-food-guide/",
+        "/stories/port-klang-to-kuala-lumpur/",
+        "/stories/hidden-gems-in-kuala-lumpur/"
+      ],
+      "priority": 4
+    },
+    {
+      "target_path": "/tours/inside-pudu/",
+      "target_title": "Inside Pudu Market Tour",
+      "link_text": "Pudu wet market food tour",
+      "sources": [
+        "/stories/food-guide-chow-kit/",
+        "/stories/food-guide-kuala-lumpur/",
+        "/stories/food-guide-chinatown-kl/",
+        "/stories/market-guide-kuala-lumpur/",
+        "/stories/heritage-food-guide-kuala-lumpur/"
+      ],
+      "priority": 4
+    },
+    {
+      "target_path": "/tours/secrets-of-kl-nightlife-street-art-and-cocktails/",
+      "target_title": "Secrets of KL Nightlife Tour",
+      "link_text": "KL nightlife and street art tour",
+      "sources": [
+        "/stories/night-food-guide-kuala-lumpur/",
+        "/stories/night-food-guide-malaysia/"
+      ],
+      "priority": 3.5
     }
   ],
   "source_pages": [
-    "/eating-durians/",
-    "/stories/jain-guide-penang/",
-    "/stories/vegan-guide-kuala-lumpur/"
+    "/stories/durian-season-penang/",
+    "/stories/durian-season-malaysia/",
+    "/stories/malaysia-durian-guide/",
+    "/stories/eating-durians/",
+    "/stories/durian-guide-malaysia/",
+    "/stories/night-food-guide-penang/",
+    "/stories/food-guide-george-town/",
+    "/stories/vegetarian-guide-kuala-lumpur/",
+    "/stories/vegetarian-guide-malaysia/",
+    "/stories/jain-guide-kuala-lumpur/",
+    "/stories/hidden-meat-problem-vegetarian-kl/",
+    "/stories/how-to-find-vegetarian-restaurants-kl-penang-ipoh/",
+    "/stories/what-vegetarian-actually-means-kuala-lumpur/",
+    "/stories/street-food-guide-kuala-lumpur/",
+    "/stories/market-guide-kuala-lumpur/",
+    "/stories/food-guide-kuala-lumpur/",
+    "/stories/food-guide-chinatown-kl/",
+    "/stories/food-guide-chow-kit/",
+    "/stories/food-guide-kampung-baru/",
+    "/stories/heritage-food-guide-kuala-lumpur/",
+    "/stories/night-food-guide-kuala-lumpur/",
+    "/stories/vegan-guide-kuala-lumpur/",
+    "/stories/street-food-guide-penang/",
+    "/stories/market-guide-penang/",
+    "/stories/food-guide-penang/",
+    "/stories/food-guide-chowrasta-penang/",
+    "/stories/food-guide-little-india-penang/",
+    "/stories/heritage-food-guide-penang/",
+    "/stories/night-food-guide-penang/",
+    "/stories/vegan-guide-penang/",
+    "/stories/halal-guide-penang/",
+    "/stories/market-guide-malaysia/",
+    "/stories/malaysian-herbs-and-spices/",
+    "/stories/street-food-guide-malaysia/",
+    "/stories/food-safety/",
+    "/stories/food-guide-melaka/",
+    "/stories/johor-bahru-local-food-guide/",
+    "/stories/port-klang-to-kuala-lumpur/",
+    "/stories/hidden-gems-in-kuala-lumpur/",
+    "/stories/night-food-guide-malaysia/",
+    "/stories/gluten-free-guide-kuala-lumpur/",
+    "/stories/gluten-free-guide-penang/",
+    "/stories/food-guide-little-india-kl/",
+    "/stories/foodies-guide-penang/",
+    "/stories/foodies-guide-kuala-lumpur/",
+    "/stories/couples-guide-penang/",
+    "/stories/couples-guide-kuala-lumpur/",
+    "/stories/families-guide-penang/",
+    "/stories/families-guide-kuala-lumpur/",
+    "/stories/chefs-guide-kuala-lumpur/",
+    "/stories/malaysian-egg-dishes-cooking-methods/",
+    "/stories/malaysian-chefs-local-cuisine/",
+    "/stories/malaysia-food-guide-first-time-visitors/",
+    "/stories/malaysian-festivities/",
+    "/stories/chinese-dumpling-festival/",
+    "/stories/11-foods-to-try-during-hari-raya/",
+    "/stories/traveling-during-fasting-month/",
+    "/stories/souvenirs-for-foodies/",
+    "/stories/malaysian-street-food-local-guide/"
   ]
 }

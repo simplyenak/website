@@ -1,0 +1,1030 @@
+{
+  "simplyenak.com": {
+    "2026-08-16T12:51:18.165418+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 265,
+          "impressions": 1781,
+          "queries": 11
+        },
+        "non_branded": {
+          "clicks": 192,
+          "impressions": 39792,
+          "queries": 4933
+        },
+        "branded_clicks_pct": 58.0,
+        "branded_impr_pct": 4.3,
+        "brand_queries": [
+          {
+            "q": "simply enak",
+            "clicks": 189,
+            "impressions": 600,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak food tours",
+            "clicks": 63,
+            "impressions": 109,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak kangar jaya",
+            "clicks": 12,
+            "impressions": 758,
+            "pos": 7.3
+          },
+          {
+            "q": "penang food tour",
+            "clicks": 9,
+            "impressions": 601,
+            "pos": 12.0
+          },
+          {
+            "q": "food tour penang",
+            "clicks": 8,
+            "impressions": 235,
+            "pos": 5.3
+          },
+          {
+            "q": "durian",
+            "clicks": 5,
+            "impressions": 5449,
+            "pos": 9.2
+          },
+          {
+            "q": "durian malaysia",
+            "clicks": 4,
+            "impressions": 659,
+            "pos": 13.0
+          },
+          {
+            "q": "durian season malaysia",
+            "clicks": 4,
+            "impressions": 349,
+            "pos": 8.8
+          },
+          {
+            "q": "food tour penang georgetown",
+            "clicks": 4,
+            "impressions": 52,
+            "pos": 4.2
+          },
+          {
+            "q": "kl food tour",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 14.4
+          },
+          {
+            "q": "best durian in malaysia",
+            "clicks": 3,
+            "impressions": 71,
+            "pos": 5.7
+          },
+          {
+            "q": "best food tour penang",
+            "clicks": 3,
+            "impressions": 25,
+            "pos": 4.5
+          },
+          {
+            "q": "durian in malaysia",
+            "clicks": 3,
+            "impressions": 185,
+            "pos": 7.9
+          },
+          {
+            "q": "food souvenirs from malaysia",
+            "clicks": 3,
+            "impressions": 17,
+            "pos": 7.1
+          },
+          {
+            "q": "food tour kuala lumpur",
+            "clicks": 3,
+            "impressions": 529,
+            "pos": 16.5
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "simplyenak.com",
+          "in_crawl": true,
+          "in_rankings": true,
+          "pagerank": 5.189465819037248e-09,
+          "pagerank_rank": 15545560,
+          "harmonic_centrality": 14259932.0,
+          "harmonic_centrality_rank": 3617988,
+          "n_hosts": 3,
+          "note": "Domain-level metrics from CC web graph. Quarterly updates."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:49:00Z",
+          "cached_at": 1786884540.20057
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-16T12:52:12.072376+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 265,
+          "impressions": 1781,
+          "queries": 11
+        },
+        "non_branded": {
+          "clicks": 192,
+          "impressions": 39792,
+          "queries": 4933
+        },
+        "branded_clicks_pct": 58.0,
+        "branded_impr_pct": 4.3,
+        "brand_queries": [
+          {
+            "q": "simply enak",
+            "clicks": 189,
+            "impressions": 600,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak food tours",
+            "clicks": 63,
+            "impressions": 109,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak kangar jaya",
+            "clicks": 12,
+            "impressions": 758,
+            "pos": 7.3
+          },
+          {
+            "q": "penang food tour",
+            "clicks": 9,
+            "impressions": 601,
+            "pos": 12.0
+          },
+          {
+            "q": "food tour penang",
+            "clicks": 8,
+            "impressions": 235,
+            "pos": 5.3
+          },
+          {
+            "q": "durian",
+            "clicks": 5,
+            "impressions": 5449,
+            "pos": 9.2
+          },
+          {
+            "q": "durian malaysia",
+            "clicks": 4,
+            "impressions": 659,
+            "pos": 13.0
+          },
+          {
+            "q": "durian season malaysia",
+            "clicks": 4,
+            "impressions": 349,
+            "pos": 8.8
+          },
+          {
+            "q": "food tour penang georgetown",
+            "clicks": 4,
+            "impressions": 52,
+            "pos": 4.2
+          },
+          {
+            "q": "kl food tour",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 14.4
+          },
+          {
+            "q": "best durian in malaysia",
+            "clicks": 3,
+            "impressions": 71,
+            "pos": 5.7
+          },
+          {
+            "q": "best food tour penang",
+            "clicks": 3,
+            "impressions": 25,
+            "pos": 4.5
+          },
+          {
+            "q": "durian in malaysia",
+            "clicks": 3,
+            "impressions": 185,
+            "pos": 7.9
+          },
+          {
+            "q": "food souvenirs from malaysia",
+            "clicks": 3,
+            "impressions": 17,
+            "pos": 7.1
+          },
+          {
+            "q": "food tour kuala lumpur",
+            "clicks": 3,
+            "impressions": 529,
+            "pos": 16.5
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "simplyenak.com",
+          "in_crawl": true,
+          "in_rankings": true,
+          "pagerank": 5.189465819037248e-09,
+          "pagerank_rank": 15545560,
+          "harmonic_centrality": 14259932.0,
+          "harmonic_centrality_rank": 3617988,
+          "n_hosts": 3,
+          "note": "Domain-level metrics from CC web graph. Quarterly updates."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:49:00Z",
+          "cached_at": 1786884540.20057
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-16T12:53:51.784340+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 265,
+          "impressions": 1781,
+          "queries": 11
+        },
+        "non_branded": {
+          "clicks": 192,
+          "impressions": 39792,
+          "queries": 4933
+        },
+        "branded_clicks_pct": 58.0,
+        "branded_impr_pct": 4.3,
+        "brand_queries": [
+          {
+            "q": "simply enak",
+            "clicks": 189,
+            "impressions": 600,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak food tours",
+            "clicks": 63,
+            "impressions": 109,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak kangar jaya",
+            "clicks": 12,
+            "impressions": 758,
+            "pos": 7.3
+          },
+          {
+            "q": "penang food tour",
+            "clicks": 9,
+            "impressions": 601,
+            "pos": 12.0
+          },
+          {
+            "q": "food tour penang",
+            "clicks": 8,
+            "impressions": 235,
+            "pos": 5.3
+          },
+          {
+            "q": "durian",
+            "clicks": 5,
+            "impressions": 5449,
+            "pos": 9.2
+          },
+          {
+            "q": "durian malaysia",
+            "clicks": 4,
+            "impressions": 659,
+            "pos": 13.0
+          },
+          {
+            "q": "durian season malaysia",
+            "clicks": 4,
+            "impressions": 349,
+            "pos": 8.8
+          },
+          {
+            "q": "food tour penang georgetown",
+            "clicks": 4,
+            "impressions": 52,
+            "pos": 4.2
+          },
+          {
+            "q": "kl food tour",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 14.4
+          },
+          {
+            "q": "best durian in malaysia",
+            "clicks": 3,
+            "impressions": 71,
+            "pos": 5.7
+          },
+          {
+            "q": "best food tour penang",
+            "clicks": 3,
+            "impressions": 25,
+            "pos": 4.5
+          },
+          {
+            "q": "durian in malaysia",
+            "clicks": 3,
+            "impressions": 185,
+            "pos": 7.9
+          },
+          {
+            "q": "food souvenirs from malaysia",
+            "clicks": 3,
+            "impressions": 17,
+            "pos": 7.1
+          },
+          {
+            "q": "food tour kuala lumpur",
+            "clicks": 3,
+            "impressions": 529,
+            "pos": 16.5
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "simplyenak.com",
+          "in_crawl": true,
+          "in_rankings": true,
+          "pagerank": 5.189465819037248e-09,
+          "pagerank_rank": 15545560,
+          "harmonic_centrality": 14259932.0,
+          "harmonic_centrality_rank": 3617988,
+          "n_hosts": 3,
+          "note": "Domain-level metrics from CC web graph. Quarterly updates."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:49:00Z",
+          "cached_at": 1786884540.20057
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-16T13:03:23.917020+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 265,
+          "impressions": 1781,
+          "queries": 11
+        },
+        "non_branded": {
+          "clicks": 192,
+          "impressions": 39792,
+          "queries": 4933
+        },
+        "branded_clicks_pct": 58.0,
+        "branded_impr_pct": 4.3,
+        "brand_queries": [
+          {
+            "q": "simply enak",
+            "clicks": 189,
+            "impressions": 600,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak food tours",
+            "clicks": 63,
+            "impressions": 109,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak kangar jaya",
+            "clicks": 12,
+            "impressions": 758,
+            "pos": 7.3
+          },
+          {
+            "q": "penang food tour",
+            "clicks": 9,
+            "impressions": 601,
+            "pos": 12.0
+          },
+          {
+            "q": "food tour penang",
+            "clicks": 8,
+            "impressions": 235,
+            "pos": 5.3
+          },
+          {
+            "q": "durian",
+            "clicks": 5,
+            "impressions": 5449,
+            "pos": 9.2
+          },
+          {
+            "q": "durian malaysia",
+            "clicks": 4,
+            "impressions": 659,
+            "pos": 13.0
+          },
+          {
+            "q": "durian season malaysia",
+            "clicks": 4,
+            "impressions": 349,
+            "pos": 8.8
+          },
+          {
+            "q": "food tour penang georgetown",
+            "clicks": 4,
+            "impressions": 52,
+            "pos": 4.2
+          },
+          {
+            "q": "kl food tour",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 14.4
+          },
+          {
+            "q": "best durian in malaysia",
+            "clicks": 3,
+            "impressions": 71,
+            "pos": 5.7
+          },
+          {
+            "q": "best food tour penang",
+            "clicks": 3,
+            "impressions": 25,
+            "pos": 4.5
+          },
+          {
+            "q": "durian in malaysia",
+            "clicks": 3,
+            "impressions": 185,
+            "pos": 7.9
+          },
+          {
+            "q": "food souvenirs from malaysia",
+            "clicks": 3,
+            "impressions": 17,
+            "pos": 7.1
+          },
+          {
+            "q": "food tour kuala lumpur",
+            "clicks": 3,
+            "impressions": 529,
+            "pos": 16.5
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "simplyenak.com",
+          "in_crawl": true,
+          "in_rankings": true,
+          "pagerank": 5.189465819037248e-09,
+          "pagerank_rank": 15545560,
+          "harmonic_centrality": 14259932.0,
+          "harmonic_centrality_rank": 3617988,
+          "n_hosts": 3,
+          "note": "Domain-level metrics from CC web graph. Quarterly updates."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:49:00Z",
+          "cached_at": 1786884540.20057
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-17T06:32:01.299555+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 267,
+          "impressions": 1835,
+          "queries": 11
+        },
+        "non_branded": {
+          "clicks": 190,
+          "impressions": 40082,
+          "queries": 4978
+        },
+        "branded_clicks_pct": 58.4,
+        "branded_impr_pct": 4.4,
+        "brand_queries": [
+          {
+            "q": "simply enak",
+            "clicks": 191,
+            "impressions": 610,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak food tours",
+            "clicks": 63,
+            "impressions": 109,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak kangar jaya",
+            "clicks": 12,
+            "impressions": 799,
+            "pos": 7.4
+          },
+          {
+            "q": "penang food tour",
+            "clicks": 9,
+            "impressions": 602,
+            "pos": 11.9
+          },
+          {
+            "q": "food tour penang",
+            "clicks": 8,
+            "impressions": 239,
+            "pos": 5.3
+          },
+          {
+            "q": "durian",
+            "clicks": 5,
+            "impressions": 5472,
+            "pos": 9.2
+          },
+          {
+            "q": "durian malaysia",
+            "clicks": 4,
+            "impressions": 661,
+            "pos": 12.9
+          },
+          {
+            "q": "durian season malaysia",
+            "clicks": 4,
+            "impressions": 349,
+            "pos": 8.6
+          },
+          {
+            "q": "food tour penang georgetown",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 4.3
+          },
+          {
+            "q": "kl food tour",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 14.4
+          },
+          {
+            "q": "best durian in malaysia",
+            "clicks": 3,
+            "impressions": 71,
+            "pos": 5.7
+          },
+          {
+            "q": "durian in malaysia",
+            "clicks": 3,
+            "impressions": 186,
+            "pos": 7.9
+          },
+          {
+            "q": "food souvenirs from malaysia",
+            "clicks": 3,
+            "impressions": 17,
+            "pos": 7.1
+          },
+          {
+            "q": "food tour kuala lumpur",
+            "clicks": 3,
+            "impressions": 529,
+            "pos": 16.5
+          },
+          {
+            "q": "food tour malaysia",
+            "clicks": 3,
+            "impressions": 80,
+            "pos": 17.4
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "simplyenak.com",
+          "in_crawl": true,
+          "in_rankings": true,
+          "pagerank": 5.189465819037248e-09,
+          "pagerank_rank": 15545560,
+          "harmonic_centrality": 14259932.0,
+          "harmonic_centrality_rank": 3617988,
+          "n_hosts": 3,
+          "note": "Domain-level metrics from CC web graph. Quarterly updates."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:49:00Z",
+          "cached_at": 1786884540.20057
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-17T06:33:03.419211+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 267,
+          "impressions": 1835,
+          "queries": 11
+        },
+        "non_branded": {
+          "clicks": 190,
+          "impressions": 40082,
+          "queries": 4978
+        },
+        "branded_clicks_pct": 58.4,
+        "branded_impr_pct": 4.4,
+        "brand_queries": [
+          {
+            "q": "simply enak",
+            "clicks": 191,
+            "impressions": 610,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak food tours",
+            "clicks": 63,
+            "impressions": 109,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak kangar jaya",
+            "clicks": 12,
+            "impressions": 799,
+            "pos": 7.4
+          },
+          {
+            "q": "penang food tour",
+            "clicks": 9,
+            "impressions": 602,
+            "pos": 11.9
+          },
+          {
+            "q": "food tour penang",
+            "clicks": 8,
+            "impressions": 239,
+            "pos": 5.3
+          },
+          {
+            "q": "durian",
+            "clicks": 5,
+            "impressions": 5472,
+            "pos": 9.2
+          },
+          {
+            "q": "durian malaysia",
+            "clicks": 4,
+            "impressions": 661,
+            "pos": 12.9
+          },
+          {
+            "q": "durian season malaysia",
+            "clicks": 4,
+            "impressions": 349,
+            "pos": 8.6
+          },
+          {
+            "q": "food tour penang georgetown",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 4.3
+          },
+          {
+            "q": "kl food tour",
+            "clicks": 4,
+            "impressions": 50,
+            "pos": 14.4
+          },
+          {
+            "q": "best durian in malaysia",
+            "clicks": 3,
+            "impressions": 71,
+            "pos": 5.7
+          },
+          {
+            "q": "durian in malaysia",
+            "clicks": 3,
+            "impressions": 186,
+            "pos": 7.9
+          },
+          {
+            "q": "food souvenirs from malaysia",
+            "clicks": 3,
+            "impressions": 17,
+            "pos": 7.1
+          },
+          {
+            "q": "food tour kuala lumpur",
+            "clicks": 3,
+            "impressions": 529,
+            "pos": 16.5
+          },
+          {
+            "q": "food tour malaysia",
+            "clicks": 3,
+            "impressions": 80,
+            "pos": 17.4
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "simplyenak.com",
+          "in_crawl": true,
+          "in_rankings": true,
+          "pagerank": 5.189465819037248e-09,
+          "pagerank_rank": 15545560,
+          "harmonic_centrality": 14259932.0,
+          "harmonic_centrality_rank": 3617988,
+          "n_hosts": 3,
+          "note": "Domain-level metrics from CC web graph. Quarterly updates."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:49:00Z",
+          "cached_at": 1786884540.20057
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    }
+  },
+  "culinarytravelexperts.com": {
+    "2026-08-16T12:51:18.165418+00:00": {
+      "gsc": {
+        "error": "GSC query failed 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"User does not have sufficient permission for site 'sc-domain:culinarytravelexperts.com'. See also: https://support.google.com/webmasters/answer/2451999."
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "culinarytravelexperts.com",
+          "in_crawl": false,
+          "in_rankings": false,
+          "pagerank": null,
+          "pagerank_rank": null,
+          "harmonic_centrality": null,
+          "harmonic_centrality_rank": null,
+          "n_hosts": null,
+          "note": "Domain not found in Common Crawl data. It may be too new, too small, or not yet crawled."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:50:30Z",
+          "cached_at": 1786884630.7428553
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-16T12:52:12.072376+00:00": {
+      "gsc": {
+        "error": "GSC query failed 403: User does not have sufficient permission for site 'sc-domain:culinarytravelexperts.com'. See also: https://support.google.com/webmasters/answer/2451999."
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "culinarytravelexperts.com",
+          "in_crawl": false,
+          "in_rankings": false,
+          "pagerank": null,
+          "pagerank_rank": null,
+          "harmonic_centrality": null,
+          "harmonic_centrality_rank": null,
+          "n_hosts": null,
+          "note": "Domain not found in Common Crawl data. It may be too new, too small, or not yet crawled."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:50:30Z",
+          "cached_at": 1786884630.7428553
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-16T12:53:51.784340+00:00": {
+      "gsc": {
+        "error": "GSC query failed 403: User does not have sufficient permission for site 'sc-domain:culinarytravelexperts.com'. See also: https://support.google.com/webmasters/answer/2451999."
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "culinarytravelexperts.com",
+          "in_crawl": false,
+          "in_rankings": false,
+          "pagerank": null,
+          "pagerank_rank": null,
+          "harmonic_centrality": null,
+          "harmonic_centrality_rank": null,
+          "n_hosts": null,
+          "note": "Domain not found in Common Crawl data. It may be too new, too small, or not yet crawled."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:50:30Z",
+          "cached_at": 1786884630.7428553
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-16T13:03:23.917020+00:00": {
+      "gsc": {
+        "error": "GSC query failed 403: User does not have sufficient permission for site 'sc-domain:culinarytravelexperts.com'. See also: https://support.google.com/webmasters/answer/2451999."
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "culinarytravelexperts.com",
+          "in_crawl": false,
+          "in_rankings": false,
+          "pagerank": null,
+          "pagerank_rank": null,
+          "harmonic_centrality": null,
+          "harmonic_centrality_rank": null,
+          "n_hosts": null,
+          "note": "Domain not found in Common Crawl data. It may be too new, too small, or not yet crawled."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:50:30Z",
+          "cached_at": 1786884630.7428553
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-17T06:32:01.299555+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 0,
+          "impressions": 0,
+          "queries": 0
+        },
+        "non_branded": {
+          "clicks": 0,
+          "impressions": 1,
+          "queries": 1
+        },
+        "branded_clicks_pct": 0.0,
+        "branded_impr_pct": 0.0,
+        "brand_queries": [
+          {
+            "q": "culinary travel",
+            "clicks": 0,
+            "impressions": 1,
+            "pos": 6
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "culinarytravelexperts.com",
+          "in_crawl": false,
+          "in_rankings": false,
+          "pagerank": null,
+          "pagerank_rank": null,
+          "harmonic_centrality": null,
+          "harmonic_centrality_rank": null,
+          "n_hosts": null,
+          "note": "Domain not found in Common Crawl data. It may be too new, too small, or not yet crawled."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:50:30Z",
+          "cached_at": 1786884630.7428553
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-08-17T06:33:03.419211+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 0,
+          "impressions": 0,
+          "queries": 0
+        },
+        "non_branded": {
+          "clicks": 0,
+          "impressions": 1,
+          "queries": 1
+        },
+        "branded_clicks_pct": 0.0,
+        "branded_impr_pct": 0.0,
+        "brand_queries": [
+          {
+            "q": "culinary travel",
+            "clicks": 0,
+            "impressions": 1,
+            "pos": 6
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "culinarytravelexperts.com",
+          "in_crawl": false,
+          "in_rankings": false,
+          "pagerank": null,
+          "pagerank_rank": null,
+          "harmonic_centrality": null,
+          "harmonic_centrality_rank": null,
+          "n_hosts": null,
+          "note": "Domain not found in Common Crawl data. It may be too new, too small, or not yet crawled."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:50:30Z",
+          "cached_at": 1786884630.7428553
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    }
+  }
+}

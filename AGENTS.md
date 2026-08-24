@@ -70,3 +70,7 @@ Credential note: only the WORKERS token (`~/.cloudflare/tokens.env`, `CLOUDFLARE
 - No: authentic, superlatives, em-dashes, "We're not X, we're Y"
 - Sell presence, never absence
 - Show with specifics (names, years, dishes)
+
+## Skills
+- **j-space**: MANDATORY for any multi-step reasoning, audits, long-horizon tasks, complex debugging, or consistency checks across files. Load it BEFORE starting the work — don't wait to be asked. Invoke with `--skills j-space` or say "using j-space".
+- **Trigger keywords**: audit, verify, check consistency, multi-step, long-running, complex, debug across files → always load J-Space first.

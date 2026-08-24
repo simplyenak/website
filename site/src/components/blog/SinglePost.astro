@@ -23,11 +23,19 @@ const blogSlug = typeof url === 'string' ? url.replace(siteUrl, '') : (url.pathn
 const authorName = post.author || 'Simply Enak';
 const paulineImageUrl = 'https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg';
 
-// Load link equity boost recommendations
+// Load link equity boost recommendations — filter to this page's story
 let linkEquityRecs: any[] = [];
 try {
   const boostData = (await import('~/data/content/link-equity-boost.json')).default;
-  linkEquityRecs = boostData?.recommendations || [];
+  const allRecs = boostData?.recommendations || [];
+  // Match current page against the recommendation's source pages
+  const currentPagePath = '/' + post.slug + '/';
+  const currentStorySlug = post.slug;
+  linkEquityRecs = allRecs.filter((r: any) =>
+    r.sources.some((src: string) =>
+      src.includes(currentStorySlug) || src === currentPagePath
+    )
+  );
 } catch {}
 ---
 

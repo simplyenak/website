@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "generated_at": "2026-08-16T12:54:11.884138+00:00",
+    "site": "sc-domain:simplyenak.com",
+    "current_range": [
+      "2026-07-19",
+      "2026-08-15"
+    ],
+    "previous_range": [
+      "2026-06-21",
+      "2026-07-18"
+    ],
+    "count": 5,
+    "missing_redirect_count": 0
+  },
+  "pages": [
+    {
+      "page": "https://simplyenak.com/food-guide-chow-kit",
+      "score": 95,
+      "reasons": [
+        "impressions -84%",
+        "clicks -45%",
+        "striking distance",
+        "-5 clicks lost",
+        "-466 impressions lost"
+      ],
+      "cur": {
+        "impressions": 92,
+        "clicks": 6,
+        "ctr": 6.52,
+        "position": 6.1
+      },
+      "prev": {
+        "impressions": 558,
+        "clicks": 11,
+        "ctr": 1.97,
+        "position": 5.5
+      },
+      "impression_drop_pct": 83.5,
+      "click_drop_pct": 45.5,
+      "position_change": 0.6,
+      "lost_clicks": 5,
+      "lost_impressions": 466,
+      "top_queries": [
+        {
+          "query": "chow kit food",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 3
+        },
+        {
+          "query": "chow kit market",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 2
+        },
+        {
+          "query": "this",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 1
+        }
+      ]
+    },
+    {
+      "page": "https://simplyenak.com/tours/locations/food-tours-ipoh",
+      "score": 55,
+      "reasons": [
+        "clicks -75%",
+        "striking distance",
+        "-3 clicks lost"
+      ],
+      "cur": {
+        "impressions": 83,
+        "clicks": 1,
+        "ctr": 1.2,
+        "position": 8.7
+      },
+      "prev": {
+        "impressions": 31,
+        "clicks": 4,
+        "ctr": 12.9,
+        "position": 8.5
+      },
+      "impression_drop_pct": -167.7,
+      "click_drop_pct": 75.0,
+      "position_change": 0.2,
+      "lost_clicks": 3,
+      "lost_impressions": 0,
+      "top_queries": [
+        {
+          "query": "chinatown ipoh",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 11
+        },
+        {
+          "query": "food tasting",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 6
+        },
+        {
+          "query": "ipoh food tour",
+          "impressions": 14,
+          "clicks": 0,
+          "position": 10.4
+        },
+        {
+          "query": "ipoh itinerary",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 3
+        },
+        {
+          "query": "simply enak",
+          "impressions": 2,
+          "clicks": 0,
+          "position": 1
+        }
+      ]
+    },
+    {
+      "page": "https://simplyenak.com/stories/gluten-free-guide-penang",
+      "score": 115,
+      "reasons": [
+        "impressions -52%",
+        "clicks -67%",
+        "position +2.5",
+        "striking distance",
+        "-2 clicks lost"
+      ],
+      "cur": {
+        "impressions": 32,
+        "clicks": 1,
+        "ctr": 3.12,
+        "position": 7.2
+      },
+      "prev": {
+        "impressions": 66,
+        "clicks": 3,
+        "ctr": 4.55,
+        "position": 4.8
+      },
+      "impression_drop_pct": 51.5,
+      "click_drop_pct": 66.7,
+      "position_change": 2.5,
+      "lost_clicks": 2,
+      "lost_impressions": 34,
+      "top_queries": []
+    },
+    {
+      "page": "https://simplyenak.com/stories/gluten-free-guide-kuala-lumpur",
+      "score": 75,
+      "reasons": [
+        "impressions -38%",
+        "clicks -40%",
+        "position +1.1",
+        "striking distance",
+        "-2 clicks lost"
+      ],
+      "cur": {
+        "impressions": 44,
+        "clicks": 3,
+        "ctr": 6.82,
+        "position": 7.9
+      },
+      "prev": {
+        "impressions": 71,
+        "clicks": 5,
+        "ctr": 7.04,
+        "position": 6.8
+      },
+      "impression_drop_pct": 38.0,
+      "click_drop_pct": 40.0,
+      "position_change": 1.1,
+      "lost_clicks": 2,
+      "lost_impressions": 27,
+      "top_queries": []
+    },
+    {
+      "page": "https://simplyenak.com/vegan-guide-penang",
+      "score": 85,
+      "reasons": [
+        "impressions -42%",
+        "clicks -67%",
+        "striking distance",
+        "-2 clicks lost"
+      ],
+      "cur": {
+        "impressions": 31,
+        "clicks": 1,
+        "ctr": 3.23,
+        "position": 9.2
+      },
+      "prev": {
+        "impressions": 53,
+        "clicks": 3,
+        "ctr": 5.66,
+        "position": 9.0
+      },
+      "impression_drop_pct": 41.5,
+      "click_drop_pct": 66.7,
+      "position_change": 0.2,
+      "lost_clicks": 2,
+      "lost_impressions": 22,
+      "top_queries": []
+    }
+  ],
+  "missing_redirects": []
+}

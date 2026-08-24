@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "generated_at": "2026-08-16T07:33:44.775612+00:00",
+    "site": "sc-domain:simplyenak.com",
+    "current_range": [
+      "2026-07-19",
+      "2026-08-15"
+    ],
+    "previous_range": [
+      "2026-06-21",
+      "2026-07-18"
+    ],
+    "count": 6
+  },
+  "pages": [
+    {
+      "page": "https://simplyenak.com/stories/gluten-free-guide-penang",
+      "score": 105,
+      "reasons": [
+        "impressions -52%",
+        "clicks -67%",
+        "position +2.5",
+        "striking distance"
+      ],
+      "cur": {
+        "impressions": 32,
+        "clicks": 1,
+        "ctr": 3.12,
+        "position": 7.2
+      },
+      "prev": {
+        "impressions": 66,
+        "clicks": 3,
+        "ctr": 4.55,
+        "position": 4.8
+      },
+      "impression_drop_pct": 51.5,
+      "click_drop_pct": 66.7,
+      "position_change": 2.5,
+      "top_queries": []
+    },
+    {
+      "page": "https://simplyenak.com/vegan-guide-penang",
+      "score": 75,
+      "reasons": [
+        "impressions -42%",
+        "clicks -67%",
+        "striking distance"
+      ],
+      "cur": {
+        "impressions": 31,
+        "clicks": 1,
+        "ctr": 3.23,
+        "position": 9.2
+      },
+      "prev": {
+        "impressions": 53,
+        "clicks": 3,
+        "ctr": 5.66,
+        "position": 9.0
+      },
+      "impression_drop_pct": 41.5,
+      "click_drop_pct": 66.7,
+      "position_change": 0.2,
+      "top_queries": []
+    },
+    {
+      "page": "https://simplyenak.com/food-guide-chow-kit",
+      "score": 65,
+      "reasons": [
+        "impressions -84%",
+        "clicks -45%",
+        "striking distance"
+      ],
+      "cur": {
+        "impressions": 92,
+        "clicks": 6,
+        "ctr": 6.52,
+        "position": 6.1
+      },
+      "prev": {
+        "impressions": 558,
+        "clicks": 11,
+        "ctr": 1.97,
+        "position": 5.5
+      },
+      "impression_drop_pct": 83.5,
+      "click_drop_pct": 45.5,
+      "position_change": 0.6,
+      "top_queries": [
+        {
+          "query": "chow kit food",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 3
+        },
+        {
+          "query": "chow kit market",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 2
+        },
+        {
+          "query": "this",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 1
+        }
+      ]
+    },
+    {
+      "page": "https://simplyenak.com/stories/gluten-free-guide-kuala-lumpur",
+      "score": 65,
+      "reasons": [
+        "impressions -38%",
+        "clicks -40%",
+        "position +1.1",
+        "striking distance"
+      ],
+      "cur": {
+        "impressions": 44,
+        "clicks": 3,
+        "ctr": 6.82,
+        "position": 7.9
+      },
+      "prev": {
+        "impressions": 71,
+        "clicks": 5,
+        "ctr": 7.04,
+        "position": 6.8
+      },
+      "impression_drop_pct": 38.0,
+      "click_drop_pct": 40.0,
+      "position_change": 1.1,
+      "top_queries": []
+    },
+    {
+      "page": "https://simplyenak.com/tours/flavours-of-malaysia-off-the-beaten-track/",
+      "score": 60,
+      "reasons": [
+        "impressions -77%",
+        "position +3.2",
+        "striking distance"
+      ],
+      "cur": {
+        "impressions": 108,
+        "clicks": 1,
+        "ctr": 0.93,
+        "position": 5.0
+      },
+      "prev": {
+        "impressions": 469,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 1.9
+      },
+      "impression_drop_pct": 77.0,
+      "click_drop_pct": 0,
+      "position_change": 3.2,
+      "top_queries": [
+        {
+          "query": "activity",
+          "impressions": 2,
+          "clicks": 0,
+          "position": 6.5
+        },
+        {
+          "query": "food event",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 1
+        },
+        {
+          "query": "food festivals near me",
+          "impressions": 25,
+          "clicks": 0,
+          "position": 1
+        },
+        {
+          "query": "food hopping",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 16
+        },
+        {
+          "query": "i show meat uncensored",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 4
+        }
+      ]
+    },
+    {
+      "page": "https://simplyenak.com/es/stories/heritage-food-guide-malaysia",
+      "score": 60,
+      "reasons": [
+        "impressions -51%",
+        "striking distance"
+      ],
+      "cur": {
+        "impressions": 38,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 7.9
+      },
+      "prev": {
+        "impressions": 78,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 13.7
+      },
+      "impression_drop_pct": 51.3,
+      "click_drop_pct": 0,
+      "position_change": -5.8,
+      "top_queries": []
+    }
+  ]
+}

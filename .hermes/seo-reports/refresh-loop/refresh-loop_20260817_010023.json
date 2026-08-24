@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "generated_at": "2026-08-17T01:00:23.164184+00:00",
+    "site": "sc-domain:simplyenak.com",
+    "current_range": [
+      "2026-07-20",
+      "2026-08-16"
+    ],
+    "previous_range": [
+      "2026-06-22",
+      "2026-07-19"
+    ],
+    "count": 5,
+    "missing_redirect_count": 0
+  },
+  "pages": [
+    {
+      "page": "https://simplyenak.com/food-guide-chow-kit",
+      "score": 95,
+      "reasons": [
+        "impressions -84%",
+        "clicks -45%",
+        "striking distance",
+        "-5 clicks lost",
+        "-468 impressions lost"
+      ],
+      "cur": {
+        "impressions": 91,
+        "clicks": 6,
+        "ctr": 6.59,
+        "position": 6.1
+      },
+      "prev": {
+        "impressions": 559,
+        "clicks": 11,
+        "ctr": 1.97,
+        "position": 5.5
+      },
+      "impression_drop_pct": 83.7,
+      "click_drop_pct": 45.5,
+      "position_change": 0.7,
+      "lost_clicks": 5,
+      "lost_impressions": 468,
+      "top_queries": [
+        {
+          "query": "chow kit food",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 3
+        },
+        {
+          "query": "this",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 1
+        }
+      ]
+    },
+    {
+      "page": "https://simplyenak.com/tours/locations/food-tours-ipoh",
+      "score": 55,
+      "reasons": [
+        "clicks -75%",
+        "striking distance",
+        "-3 clicks lost"
+      ],
+      "cur": {
+        "impressions": 86,
+        "clicks": 1,
+        "ctr": 1.16,
+        "position": 8.6
+      },
+      "prev": {
+        "impressions": 32,
+        "clicks": 4,
+        "ctr": 12.5,
+        "position": 8.5
+      },
+      "impression_drop_pct": -168.8,
+      "click_drop_pct": 75.0,
+      "position_change": 0.2,
+      "lost_clicks": 3,
+      "lost_impressions": 0,
+      "top_queries": [
+        {
+          "query": "chinatown ipoh",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 11
+        },
+        {
+          "query": "food tasting",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 6
+        },
+        {
+          "query": "ipoh food tour",
+          "impressions": 13,
+          "clicks": 0,
+          "position": 10.5
+        },
+        {
+          "query": "ipoh itinerary",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 3
+        },
+        {
+          "query": "simply enak",
+          "impressions": 2,
+          "clicks": 0,
+          "position": 1
+        }
+      ]
+    },
+    {
+      "page": "https://simplyenak.com/stories/gluten-free-guide-kuala-lumpur",
+      "score": 90,
+      "reasons": [
+        "impressions -53%",
+        "clicks -40%",
+        "position +1.2",
+        "striking distance",
+        "-2 clicks lost",
+        "-41 impressions lost"
+      ],
+      "cur": {
+        "impressions": 37,
+        "clicks": 3,
+        "ctr": 8.11,
+        "position": 8.0
+      },
+      "prev": {
+        "impressions": 78,
+        "clicks": 5,
+        "ctr": 6.41,
+        "position": 6.8
+      },
+      "impression_drop_pct": 52.6,
+      "click_drop_pct": 40.0,
+      "position_change": 1.2,
+      "lost_clicks": 2,
+      "lost_impressions": 41,
+      "top_queries": []
+    },
+    {
+      "page": "https://simplyenak.com/stories/gluten-free-guide-penang",
+      "score": 105,
+      "reasons": [
+        "impressions -48%",
+        "clicks -67%",
+        "position +2.5",
+        "striking distance",
+        "-2 clicks lost"
+      ],
+      "cur": {
+        "impressions": 34,
+        "clicks": 1,
+        "ctr": 2.94,
+        "position": 7.2
+      },
+      "prev": {
+        "impressions": 66,
+        "clicks": 3,
+        "ctr": 4.55,
+        "position": 4.8
+      },
+      "impression_drop_pct": 48.5,
+      "click_drop_pct": 66.7,
+      "position_change": 2.5,
+      "lost_clicks": 2,
+      "lost_impressions": 32,
+      "top_queries": []
+    },
+    {
+      "page": "https://simplyenak.com/tours/dietary/vegan-food-tours-kuala-lumpur",
+      "score": 75,
+      "reasons": [
+        "clicks -100%",
+        "position +2.2",
+        "striking distance",
+        "-2 clicks lost"
+      ],
+      "cur": {
+        "impressions": 40,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 9.9
+      },
+      "prev": {
+        "impressions": 29,
+        "clicks": 2,
+        "ctr": 6.9,
+        "position": 7.7
+      },
+      "impression_drop_pct": -37.9,
+      "click_drop_pct": 100.0,
+      "position_change": 2.2,
+      "lost_clicks": 2,
+      "lost_impressions": 0,
+      "top_queries": [
+        {
+          "query": "vegan circus",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 28
+        },
+        {
+          "query": "vegan diet",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 7
+        },
+        {
+          "query": "vegan dining experience",
+          "impressions": 2,
+          "clicks": 0,
+          "position": 9.5
+        },
+        {
+          "query": "vegan food tour",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 1
+        },
+        {
+          "query": "vegan stops",
+          "impressions": 1,
+          "clicks": 0,
+          "position": 9
+        }
+      ]
+    }
+  ],
+  "missing_redirects": []
+}

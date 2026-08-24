@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "generated_at": "2026-08-16T07:27:44.334544+00:00",
+    "range": [
+      "2026-08-09",
+      "2026-08-16"
+    ],
+    "site": "sc-domain:simplyenak.com",
+    "totals": {
+      "CLICKS_LEAK": 3,
+      "TITLE_FIX": 0,
+      "CONTENT_GAP": 0
+    }
+  },
+  "pages": [
+    {
+      "page": "https://simplyenak.com/stories/do-malaysians-speak-english",
+      "impressions": 1407,
+      "clicks": 1,
+      "ctr": 0.07,
+      "position": 8.1,
+      "top_query": "malaysia",
+      "top_query_impressions": 107,
+      "top_query_position": 3.8,
+      "bucket": "CLICKS_LEAK"
+    },
+    {
+      "page": "https://simplyenak.com/stories/eating-durians",
+      "impressions": 3593,
+      "clicks": 1,
+      "ctr": 0.03,
+      "position": 14.6,
+      "top_query": "durian",
+      "top_query_impressions": 48,
+      "top_query_position": 8.7,
+      "bucket": "CLICKS_LEAK"
+    },
+    {
+      "page": "https://simplyenak.com/stories/eating-durians/",
+      "impressions": 712,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 13.2,
+      "top_query": "durian",
+      "top_query_impressions": 148,
+      "top_query_position": 10.7,
+      "bucket": "CLICKS_LEAK"
+    }
+  ]
+}

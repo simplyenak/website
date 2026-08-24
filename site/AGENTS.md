@@ -116,3 +116,7 @@ After changes, always verify:
 1. `npm run build` succeeds
 2. `npm run check` passes (astro check + ESLint + Prettier)
 3. Visual check in browser: homepage, blog, mobile menu
+
+## Skills
+- **j-space**: MANDATORY for audits, consistency checks, or multi-step tasks across site/ and cte/. Load before starting.
+- **Trigger keywords**: audit, verify, check consistency, multi-step, long-running, complex, debug across files → always load J-Space first.
