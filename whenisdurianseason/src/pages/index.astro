@@ -1,0 +1,332 @@
+---
+import Layout from '~/layouts/Default.astro';
+import { regions, varieties, pickingTips, faqs, MONTHS, liveStatusScript } from '~/data/durian';
+
+const title = 'When Is Durian Season in Malaysia? Live Answer + Region Calendar';
+const description =
+  'Is it durian season in Malaysia right now? Get a live season verdict, a month-by-month region calendar, Musang King peak timing, and how to pick a good durian.';
+
+const siteUrl = 'https://whenisdurianseason.com';
+
+const priceTier = (t: 1 | 2 | 3) => 'RM'.repeat(t) + '\u00b7'.repeat(3 - t);
+
+const regionRows = regions.map((r) => ({
+  ...r,
+  cells: MONTHS.map((_, i) => {
+    const m = i + 1;
+    if (r.mainSeason.includes(m)) return 'peak' as const;
+    if ((r.secondarySeason || []).includes(m)) return 'secondary' as const;
+    return 'off' as const;
+  }),
+}));
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'Durian Season Checker Malaysia',
+      applicationCategory: 'TravelApplication',
+      operatingSystem: 'Any',
+      url: siteUrl,
+      description:
+        'Live answer to "is it durian season in Malaysia right now", with a month-by-month calendar for every region, variety peak windows, and a durian picking guide.',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      publisher: { '@type': 'Organization', name: 'Simply Enak' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<Layout metadata={{ title, description }} structuredData={structuredData}>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">The Fastest Way to Find When Durians Are in Season</p>
+      <h1>When Is Durian Season in Malaysia?</h1>
+      <div id="season-verdict" class="verdict" data-level="unknown">
+        <span class="verdict-dot" aria-hidden="true"></span>
+        <p id="verdict-text">Checking today's date against the season calendar&hellip;</p>
+        <p class="verdict-date">Today: <span id="live-date">&nbsp;</span></p>
+      </div>
+      <a href="#calendar" class="hero-cta">See the region calendar &darr;</a>
+    </div>
+  </header>
+
+  <section class="intro-section">
+    <div class="container intro-container">
+      <h2>The short answer</h2>
+      <p>
+        Durian season in most of peninsular Malaysia runs <strong>June to August</strong>, with a
+        smaller flush around <strong>December to February</strong>. Sabah peaks July to October.
+        Sarawak runs the other way: its biggest harvest lands November to January. The exact weeks
+        shift every year because flowering follows the monsoons, so use the live check above and
+        the calendar below rather than fixed dates.
+      </p>
+      <p>
+        You can find some durian almost any month somewhere in Malaysia. But during peak months
+        stalls overflow, prices drop, and the famous varieties show up in volume. If durian is one
+        of the reasons you are visiting, timing matters more than anything else you plan around it.
+      </p>
+    </div>
+  </section>
+
+  <section class="tool-section" id="calendar">
+    <div class="container">
+      <h2 class="section-title">Season Calendar by Region</h2>
+      <p class="section-hint">
+        Typical pattern for each region. Green = peak harvest, light green = smaller secondary
+        season. The status chip on each row updates to where we are today.
+      </p>
+
+      <!-- Desktop table -->
+      <div class="table-wrap">
+        <table class="season-table">
+          <thead>
+            <tr>
+              <th scope="col">Region</th>
+              {MONTHS.map((m) => <th scope="col">{m}</th>)}
+              <th scope="col">Right now</th>
+            </tr>
+          </thead>
+          <tbody>
+            {regionRows.map((r) => (
+              <tr>
+                <th scope="row" class="region-name">
+                  {r.name}
+                </th>
+                {r.cells.map((c) => (
+                  <td class={`cell-${c}`} aria-label={c === 'peak' ? 'Peak season' : c === 'secondary' ? 'Secondary season' : 'Off season'}></td>
+                ))}
+                <td data-region-status={r.id} class="status-chip">checking&hellip;</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile cards -->
+      <div class="region-cards">
+        {regions.map((r) => (
+          <div class="region-card">
+            <div class="region-card-head">
+              <h3>{r.name}</h3>
+              <span data-region-status={r.id} class="status-chip">checking&hellip;</span>
+            </div>
+            <p class="region-notes">{r.notes}</p>
+            <p class="region-window">
+              Main: {r.mainSeason.map((m) => MONTHS[m - 1]).join(', ')}
+              {r.secondarySeason ? (
+                <>
+                  {' '}&middot; Secondary: {r.secondarySeason.map((m) => MONTHS[m - 1]).join(', ')}
+                </>
+              ) : null}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <p class="data-note">
+        Seasons shift year to year with rainfall. Treat this as a planning guide and confirm close
+        to your travel dates. Updated against agricultural agency announcements each season.
+      </p>
+    </div>
+  </section>
+
+  <section class="tool-section alt-bg" id="varieties">
+    <div class="container">
+      <h2 class="section-title">Varieties and When They Peak</h2>
+      <p class="section-hint">What to order in season, from first-timer friendly to connoisseur picks.</p>
+      <div class="variety-grid">
+        {varieties.map((v) => (
+          <article class="variety-card">
+            <div class="variety-head">
+              <h3>{v.name}</h3>
+              <span class="price-tier" title="Relative price tier">{priceTier(v.priceTier)}</span>
+            </div>
+            {v.alsoKnownAs && <p class="variety-aka">Also: {v.alsoKnownAs}</p>}
+            <p class="variety-color"><strong>Flesh:</strong> {v.color}</p>
+            <p class="variety-taste">{v.taste}</p>
+            <p class="variety-peak"><strong>Peak:</strong> {v.peakNote}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-section" id="picking">
+    <div class="container">
+      <h2 class="section-title">How to Pick a Good Durian</h2>
+      <p class="section-hint">Five checks at the stall, in order.</p>
+      <ol class="tips-list">
+        {pickingTips.map((tip, i) => (
+          <li class="tip-item">
+            <span class="tip-num">{i + 1}</span>
+            <div>
+              <h3>{tip.title}</h3>
+              <p>{tip.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="seo-section">
+    <div class="container seo-container">
+      <h2 class="section-title">Planning a Durian Trip</h2>
+      <div class="seo-grid">
+        <div class="seo-card">
+          <h3>If you visit June to August</h3>
+          <ul>
+            <li>Balik Pulau, Penang for hillside orchards and the Red Prawn</li>
+            <li>Raub, Pahang for Musang King country and the yearly festival</li>
+            <li>SS2 night market, Petaling Jaya for city-side variety buffets</li>
+          </ul>
+        </div>
+        <div class="seo-card">
+          <h3>If your dates fall outside season</h3>
+          <ul>
+            <li>Kuching, Sarawak between November and January</li>
+            <li>Sabah between July and October, later than the peninsula</li>
+            <li>Musang King and D24 frozen whole or paste, sold year round, decent but not the same</li>
+          </ul>
+        </div>
+      </div>
+      <p class="seo-text">
+        During season, Simply Enak runs a <a href="https://simplyenak.com/tours/georgetown-night-food-durian/">Georgetown night food tour with guided durian tasting</a>,
+        five Balik Pulau varieties with a guide who knows which stall is selling honestly that week.
+        Outside season the regular evening food tours still run; ask about durian availability when you book at
+        <a href="https://simplyenak.com/tours">simplyenak.com</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="faq-section-wrap">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      {faqs.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-text">
+        Built by <a href="https://simplyenak.com" class="footer-link">Simply Enak</a> — Malaysian food tours led by guides who eat their way through every season.
+      </p>
+    </div>
+  </footer>
+
+  <script type="application/json" id="region-data" set:html={JSON.stringify(regions.map((r) => ({ id: r.id, main: r.mainSeason, secondary: r.secondarySeason || [] })))} />
+  <script set:html={liveStatusScript} />
+
+  <style>
+    /* Hero */
+    .hero { background: linear-gradient(160deg, #2E421C 0%, #3E5622 60%, #55702F 100%); color: #fff; padding: 4rem 0 3rem; text-align: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; font-weight: 700; color: #CFE39B; margin-bottom: 0.75rem; }
+    .hero h1 { font-size: clamp(1.8rem, 5vw, 2.9rem); line-height: 1.15; margin-bottom: 1.25rem; }
+    .hero-cta { display: inline-block; margin-top: 1.5rem; background: var(--color-accent); color: #1A1A1A !important; font-weight: 700; padding: 0.7rem 1.6rem; border-radius: 999px; }
+    .hero-cta:hover { text-decoration: none; filter: brightness(1.05); }
+
+    /* Verdict banner */
+    .verdict { max-width: 560px; margin: 0 auto; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 14px; padding: 1rem 1.25rem; backdrop-filter: blur(4px); }
+    .verdict p { margin: 0; }
+    #verdict-text { font-size: 1.05rem; font-weight: 700; }
+    .verdict-date { font-size: 0.78rem; opacity: 0.75; margin-top: 0.35rem !important; }
+    .verdict-dot { display: none; width: 10px; height: 10px; border-radius: 50%; position: absolute; }
+
+    /* Sections */
+    .intro-section { padding: 3rem 0; }
+    .intro-container h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .intro-container p { color: var(--color-muted); margin-bottom: 0.9rem; max-width: 720px; }
+    .intro-container strong { color: var(--color-text); }
+    .tool-section { padding: 2.5rem 0; border-top: 1px solid var(--color-border); }
+    .alt-bg { background: #F4F1E6; }
+    .section-title { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .section-hint { color: var(--color-muted); font-size: 0.92rem; margin-bottom: 1.5rem; }
+
+    /* Season table */
+    .table-wrap { overflow-x: auto; background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; }
+    .season-table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.85rem; }
+    .season-table th, .season-table td { padding: 0.55rem 0.4rem; text-align: center; border-bottom: 1px solid var(--color-border); }
+    .season-table thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); background: var(--color-card); }
+    .season-table tbody tr:last-child th, .season-table tbody tr:last-child td { border-bottom: none; }
+    .region-name { text-align: left !important; white-space: nowrap; font-weight: 600; padding-left: 0.9rem !important; max-width: 180px; }
+    .cell-peak { background: #7FA33C; }
+    .cell-secondary { background: #CBDD9B; }
+    .cell-off { background: transparent; }
+
+    /* Status chips */
+    .status-chip { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 999px; white-space: nowrap; background: #EEE9DC; color: var(--color-muted); }
+    .status-chip[data-level='peak'] { background: #7FA33C; color: #fff; }
+    .status-chip[data-level='secondary'] { background: #CBDD9B; color: #2E421C; }
+    .status-chip[data-level='off'] { background: #EEE9DC; color: var(--color-muted); }
+    td.status-chip { font-size: 0.68rem; }
+
+    /* Mobile region cards */
+    .region-cards { display: none; }
+    @media (max-width: 760px) {
+      .table-wrap { display: none; }
+      .region-cards { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+      .region-card { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 1rem 1.1rem; }
+      .region-card-head { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+      .region-card-head h3 { font-size: 1rem; }
+      .region-notes { font-size: 0.85rem; color: var(--color-muted); margin-bottom: 0.5rem; }
+      .region-window { font-size: 0.78rem; color: var(--color-primary); font-weight: 600; }
+    }
+
+    .data-note { font-size: 0.8rem; color: var(--color-muted); margin-top: 1rem; }
+
+    /* Varieties */
+    .variety-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+    .variety-card { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.1rem 1.2rem; }
+    .variety-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
+    .variety-head h3 { font-size: 1.05rem; }
+    .price-tier { color: var(--color-primary); font-weight: 800; letter-spacing: 0.08em; font-size: 0.8rem; }
+    .variety-aka { font-size: 0.75rem; color: var(--color-muted); margin-top: 0.15rem; }
+    .variety-color { font-size: 0.82rem; margin-top: 0.5rem; }
+    .variety-taste { font-size: 0.88rem; color: var(--color-muted); margin: 0.4rem 0; }
+    .variety-peak { font-size: 0.82rem; }
+    .variety-peak strong { color: var(--color-primary); }
+
+    /* Picking tips */
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; max-width: 720px; }
+    .tip-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 1rem 1.2rem; }
+    .tip-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--color-accent); color: #1A1A1A; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .tip-item h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .tip-item p { font-size: 0.88rem; color: var(--color-muted); }
+
+    /* SEO / trip planning */
+    .seo-section { padding: 2.5rem 0; background: #F4F1E6; border-top: 1px solid var(--color-border); }
+    .seo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+    .seo-card { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.2rem 1.3rem; }
+    .seo-card h3 { font-size: 1rem; margin-bottom: 0.6rem; }
+    .seo-card ul { padding-left: 1.1rem; }
+    .seo-card li { font-size: 0.88rem; color: var(--color-muted); margin-bottom: 0.4rem; }
+    .seo-text { font-size: 0.92rem; color: var(--color-muted); max-width: 720px; }
+    .seo-text a { font-weight: 600; }
+
+    /* FAQ */
+    .faq-section-wrap { padding: 2.5rem 0; border-top: 1px solid var(--color-border); }
+    .faq-item { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; margin-bottom: 0.7rem; padding: 0.9rem 1.2rem; }
+    .faq-item summary { cursor: pointer; font-weight: 700; font-size: 0.95rem; }
+    .faq-item p { margin-top: 0.6rem; font-size: 0.9rem; color: var(--color-muted); }
+
+    /* Footer */
+    .site-footer { padding: 2rem 0 3rem; border-top: 1px solid var(--color-border); text-align: center; }
+    .footer-text { font-size: 0.85rem; color: var(--color-muted); }
+    .footer-link { font-weight: 700; }
+  </style>
+</Layout>

@@ -143,14 +143,14 @@ const toMsPath = (path: string): string => `/ms${path}`;
 export function getHeaderData(lang: Language) {
   const t = useTranslations(lang);
 
-  // For non-English, prefix paths with language
-  const p = (path: string) => lang === 'en' ? getPermalink(path) : getPermalink(`/ms${path}`);
+  // For non-English, prefix paths with the actual language code
+  const p = (path: string) => lang === 'en' ? getPermalink(path) : getPermalink(`/${lang}${path}`);
 
   return {
     links: [
       {
         text: t('nav.home'),
-        href: lang === 'en' ? getPermalink('/') : getPermalink('/ms'),
+        href: lang === 'en' ? getPermalink('/') : getPermalink(`/${lang}`),
       },
       {
         text: t('nav.tours'),
@@ -167,7 +167,7 @@ export function getHeaderData(lang: Language) {
       },
       {
         text: t('nav.stories'),
-        href: lang === 'en' ? getBlogPermalink() : getPermalink('/ms/stories'),
+        href: lang === 'en' ? getBlogPermalink() : getPermalink(`/${lang}/stories`),
       },
       {
         text: t('nav.about'),
@@ -185,7 +185,7 @@ export function getHeaderData(lang: Language) {
 export function getFooterData(lang: Language) {
   const t = useTranslations(lang);
 
-  const p = (path: string) => lang === 'en' ? path : `/ms${path}`;
+  const p = (path: string) => lang === 'en' ? path : `/${lang}${path}`;
 
   return {
     links: [

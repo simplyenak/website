@@ -55,11 +55,19 @@ async function llmCall(prompt) {
   }
   
   const data = await res.json();
-  return data.choices?.[0]?.message?.content?.trim() || '';
+  const content = data.choices?.[0]?.message?.content?.trim() || '';
+  return content;
 }
 
 function cleanMarkdown(text) {
-  return text.replace(/\[object Object\]/g, '').replace(/\\n/g, '\n').trim();
+  if (typeof text !== 'string') return '';
+  // Remove [object Object] artifacts
+  text = text.replace(/\[object Object\]/g, '');
+  // Remove extra quotes that LLM sometimes adds
+  text = text.replace(/^"(.*)"$/, '$1');
+  // Clean escaped newlines
+  text = text.replace(/\\n/g, '\n');
+  return text.trim();
 }
 
 async function main() {
@@ -104,39 +112,32 @@ async function main() {
         const translation = { languages_code: lang };
         
         // Translate title
-        const titlePrompt = `Translate this title to ${lang}. Return ONLY the translated title, nothing else:\n\n"${story.title}"`;
-        translation.title = await llmCall(titlePrompt);
+        const titlePrompt = `Translate this title to ${lang}. Return ONLY the translated title, nothing else:\n\n${story.title}`;
+        translation.title = cleanMarkdown(await llmCall(titlePrompt));
         
         // Translate excerpt
         const excerpt = (story.excerpt || '').slice(0, 200);
-        const excerptPrompt = `Translate this excerpt to ${lang}. Return ONLY the translated text, nothing else:\n\n"${excerpt}"`;
-        translation.excerpt = await llmCall(excerptPrompt);
+        const excerptPrompt = `Translate this excerpt to ${lang}. Return ONLY the translated text, nothing else:\n\n${excerpt}`;
+        translation.excerpt = cleanMarkdown(await llmCall(excerptPrompt));
         
-        // Translate content (markdown)
+        // Translate content (markdown) - THIS IS THE EXPENSIVE PART
         const content = story.content_markdown || story.content || '';
         if (content && content.length > 100) {
           const contentPrompt = `Translate this article from English to ${lang}. Preserve all markdown formatting. Return ONLY the translated markdown, nothing else:\n\n${content}`;
           const contentResult = await llmCall(contentPrompt);
-          translation.content = typeof contentResult === 'string' ? contentResult : JSON.stringify(contentResult);
+          translation.content = cleanMarkdown(contentResult);
         }
         
         // Translate meta title
         const metaTitle = story.meta_title || story.title;
         translation.meta_title = metaTitle !== story.title 
-          ? await llmCall(`Translate this title to ${lang}:\n\n"${metaTitle}"`)
+          ? cleanMarkdown(await llmCall(`Translate this title to ${lang}:\n\n${metaTitle}`))
           : translation.title;
         
         // Translate meta description
         const metaDesc = story.meta_description || '';
         if (metaDesc) {
-          translation.meta_description = await llmCall(`Translate this description to ${lang}:\n\n"${metaDesc}"`);
-        }
-        
-        // Clean and save
-        for (const key of Object.keys(translation)) {
-          if (typeof translation[key] === 'string') {
-            translation[key] = cleanMarkdown(translation[key]);
-          }
+          translation.meta_description = cleanMarkdown(await llmCall(`Translate this description to ${lang}:\n\n${metaDesc}`));
         }
         
         existingTranslations[String(id)] = translation;

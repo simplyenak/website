@@ -5,7 +5,7 @@
  * Merges translation monitoring files from src/i18n/translations/
  * back into src/data/content/stories.json so that locale pages work.
  * 
- * Matches translations to stories by story ID.
+ * Matches translations by story ID (translation file keys = story IDs).
  * 
  * Usage: node scripts/merge-stories-translations.mjs
  */
@@ -51,7 +51,7 @@ function main() {
     const transData = JSON.parse(fs.readFileSync(transPath, 'utf8'));
     console.log(`  📝 ${lang}: ${Object.keys(transData).length} translations to merge`);
     
-    // Merge each translation into its corresponding story
+    // Merge each translation into its corresponding story by ID
     for (const [storyIdStr, trans] of Object.entries(transData)) {
       const story = storyById.get(storyIdStr);
       if (!story) {
