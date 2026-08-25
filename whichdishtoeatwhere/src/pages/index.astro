@@ -1,0 +1,258 @@
+---
+import Layout from '~/layouts/Default.astro';
+import { states, faqs, totalDishes, dataVerified, REGION_LABELS, type Region } from '~/data/dishes';
+
+const title = 'Which Dish to Eat Where in Malaysia: Every State, Every Signature Dish';
+const description =
+  'The state-by-state guide to what to eat in Malaysia: asam laksa in Air Itam, satay in Kajang, nasi kerabu in Kota Bharu, Sarawak laksa in Kuching. Sixteen states and territories, where exactly to eat each dish, halal notes and best times.';
+
+const siteUrl = 'https://whichdishtoeatwhere.com';
+
+const regionsOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borneo'];
+const byRegion = regionsOrder.map((r) => ({
+  region: r,
+  label: REGION_LABELS[r],
+  states: states.filter((s) => s.region === r),
+}));
+
+const halalLabel: Record<string, string> = {
+  halal: 'Halal',
+  'pork-free': 'Pork-free',
+  'non-halal': 'Contains pork',
+  varies: 'Halal varies by stall',
+};
+
+const quickStates = ['penang', 'kuala-lumpur', 'melaka', 'perak', 'kelantan', 'sarawak'];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'Which Dish to Eat Where Malaysia',
+      applicationCategory: 'TravelApplication',
+      operatingSystem: 'Any',
+      url: siteUrl,
+      description:
+        'State-by-state guide to Malaysia\'s signature dishes and exactly where to eat them, from hawker streets to fishing villages, with halal notes and best times.',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      publisher: { '@type': 'Organization', name: 'Simply Enak' },
+    },
+    {
+      '@type': 'ItemList',
+      name: 'Signature dishes of every Malaysian state',
+      itemListElement: states.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: `${s.name}: ${s.dishes.map((d) => d.name).join(', ')}`,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+
+const pickerData = states.map((s) => ({
+  id: s.id,
+  name: s.name,
+  dishes: s.dishes.map((d) => ({ id: d.id, name: d.name, state: s.name })),
+}));
+---
+
+<Layout title={title} description={description} structuredData={structuredData}>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">The State-by-State Malaysia Food Answer</p>
+      <h1>Which Dish to Eat Where in Malaysia?</h1>
+      <p class="lede">
+        Every one of Malaysia's 13 states and 3 territories has dishes worth travelling for, and most are
+        tied to one town, one street, one market. Pick where you're headed and get your eating list.
+      </p>
+      <div class="picker">
+        <label for="state-picker" class="sr-only" style="position:absolute;left:-9999px;">Choose a state</label>
+        <select id="state-picker">
+          <option value="" selected disabled>Where are you headed?</option>
+          {states.map((s) => <option value={s.id}>{s.name}</option>)}
+        </select>
+        <button id="random-dish" type="button">Surprise me</button>
+      </div>
+      <div class="quick-pills">
+        {quickStates.map((id) => {
+          const s = states.find((x) => x.id === id);
+          return <a href={`#state-${s!.id}`}>{s!.name}</a>;
+        })}
+      </div>
+      <p class="stat-row">
+        <strong>{states.length}</strong> states &amp; territories &middot;
+        <strong> {totalDishes}</strong> signature dishes &middot; each with its exact where
+      </p>
+    </div>
+  </header>
+
+  <section class="intro-section">
+    <div class="container">
+      <h2 class="section-title">The short answer</h2>
+      <p>
+        Malaysia does not have one food scene; it has at least sixteen. Order asam laksa in Penang, not
+        Johor. Eat laksa Johor in Muar. Get your nasi kerabu blue at Kota Bharu's morning market, your
+        bak kut teh at a Klang breakfast table, your Sarawak laksa in Kuching before it sells out at 11am.
+      </p>
+      <p>
+        This page lists the signature dish of every state and, more importantly, the town or neighbourhood
+        where it is done right. Every card carries halal notes and the best time of day, because in
+        Malaysia breakfast dishes routinely sell out by mid-morning and some streets only matter after dark.
+      </p>
+    </div>
+  </section>
+
+  <section id="states">
+    <div class="container">
+      <h2 class="section-title">Jump to a state</h2>
+      <div class="toc-grid">
+        {byRegion.map((r) =>
+          r.states.map((s) => (
+            <a href={`#state-${s.id}`}>
+              {s.name}
+              <span class="toc-region">{r.label}</span>
+            </a>
+          )),
+        )}
+      </div>
+
+      {byRegion.map((r) => (
+        <div class="region-block">
+          <div class="region-heading">
+            <h2>{r.label}</h2>
+            <div class="rule" aria-hidden="true"></div>
+            <span class="count">{r.states.length} states</span>
+          </div>
+          {r.states.map((s) => (
+            <div class="state-card" id={`state-${s.id}`} data-state={s.id}>
+              <div class="state-head">
+                <h3>{s.name}</h3>
+                <span class="tagline">{s.dishes.length} signature dishes</span>
+              </div>
+              <p class="state-intro">{s.intro}</p>
+              <div class="dish-list">
+                {s.dishes.map((d) => (
+                  <div class="dish" id={`dish-${d.id}`}>
+                    <div class="dish-top">
+                      <span class="dish-name">{d.name}</span>
+                      {d.origin && <span class="dish-origin">{d.origin}</span>}
+                    </div>
+                    <p class="dish-what">{d.what}</p>
+                    <p class="dish-where">
+                      <span class="label">Where to eat it</span>
+                      {d.where}
+                      {d.famousAt && d.famousAt.length > 0 && (
+                        <em> Famous at: {d.famousAt.join(' · ')}.</em>
+                      )}
+                    </p>
+                    <div class="dish-meta">
+                      <span class={`chip ${d.halal}`}>{halalLabel[d.halal]}</span>
+                      {d.bestTime && <span class="chip time">{d.bestTime}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {s.cta && (
+                <div class="state-cta">
+                  <a href={s.cta.url} target="_blank" rel="noopener">{s.cta.label} &rarr;</a>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">Questions travelers ask</h2>
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p class="answer">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Eat Malaysia with people who eat Malaysia</h2>
+      <p>
+        Simply Enak runs guided food walks in Kuala Lumpur and George Town that cover many of these dishes
+        in a single evening, led by guides from the food industry.
+      </p>
+      <a href="https://simplyenak.com/tours" target="_blank" rel="noopener">See the food tours</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="verified">
+        Dish and location notes last checked <strong>{dataVerified.lastChecked}</strong> by{' '}
+        {dataVerified.verifiedBy}, based on {dataVerified.basis}. Stall names change; the neighbourhoods
+        do not.
+      </div>
+      <p>
+        Built by <a href="https://simplyenak.com">Simply Enak</a> &middot; Malaysian food tours led by
+        guides who eat their way through every state on this list.
+      </p>
+    </div>
+  </footer>
+
+  <script type="application/json" id="dish-data" set:html={JSON.stringify(pickerData)} />
+  <script>
+    (function () {
+      var data = JSON.parse(document.getElementById('dish-data').textContent);
+      var byState = {};
+      var allDishes = [];
+      data.forEach(function (s) {
+        byState[s.id] = s;
+        s.dishes.forEach(function (d) {
+          d.stateId = s.id;
+          allDishes.push(d);
+        });
+      });
+
+      function goTo(anchorId) {
+        var el = document.getElementById(anchorId);
+        if (!el) return;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.state-card.flash, .dish.flash').forEach(function (c) {
+          c.classList.remove('flash');
+        });
+        el.classList.add('flash');
+        setTimeout(function () {
+          el.classList.remove('flash');
+        }, 2400);
+      }
+
+      var picker = document.getElementById('state-picker');
+      if (picker) {
+        picker.addEventListener('change', function () {
+          if (picker.value) goTo('state-' + picker.value);
+        });
+      }
+
+      var btn = document.getElementById('random-dish');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var d = allDishes[Math.floor(Math.random() * allDishes.length)];
+          var opt = picker && picker.querySelector('option[value="' + d.stateId + '"]');
+          if (opt && picker) picker.value = d.stateId;
+          goTo('dish-' + d.id);
+        });
+      }
+    })();
+  </script>
+</Layout>
