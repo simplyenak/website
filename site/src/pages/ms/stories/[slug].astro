@@ -38,8 +38,12 @@ if (story.translations) {
       translatedMarkdown = translatedMarkdown.replace(/^#[^\n]+\n\n?/, '');
       finalContent = marked.parse(translatedMarkdown);
     } catch {}
+  } else if (!trans?.content) {
+    // No translation - use original content but strip h1 tags to avoid duplicate with template
+    let cleanContent = contentHtml;
+    cleanContent = cleanContent.replace(/<h1[^>]*>.*?<\/h1>/gis, '');
+    finalContent = cleanContent;
   }
-  // else: no translation - use original content as-is (keep its h1)
 }
 
 // Shape story data into a Post-like object for SinglePost
