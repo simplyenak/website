@@ -3,7 +3,6 @@ import Layout from '~/layouts/Default.astro';
 import {
   states,
   faqs,
-  totalDishes,
   checklistTotal,
   nationalClassics,
   packages,
@@ -12,9 +11,9 @@ import {
   type Region,
 } from '~/data/dishes';
 
-const title = `What to Eat in Malaysia: The State-by-State Food Checklist (${checklistTotal} Dishes)`;
+const title = `What to Eat in Malaysia: The Food Checklist (${checklistTotal} Dishes)`;
 const description =
-  'What to eat in Malaysia, state by state: asam laksa in Air Itam, satay in Kajang, nasi kerabu in Kota Bharu, Sarawak laksa in Kuching. Tick off every dish you try, see your score and share it.';
+  'The Malaysia food checklist: 81 dishes to tick off as you travel, from asam laksa to Sarawak laksa. Track your score, share it, and go deeper with state-by-state packages.';
 
 const siteUrl = 'https://whattoeatinmalaysia.com';
 
@@ -25,14 +24,7 @@ const byRegion = regionsOrder.map((r) => ({
   states: states.filter((s) => s.region === r),
 }));
 
-const halalLabel: Record<string, string> = {
-  halal: 'Halal',
-  'pork-free': 'Pork-free',
-  'non-halal': 'Contains pork',
-  varies: 'Halal varies by stall',
-};
 
-const quickStates = ['penang', 'kuala-lumpur', 'melaka', 'perak', 'kelantan', 'sarawak'];
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -44,13 +36,13 @@ const structuredData = {
       operatingSystem: 'Any',
       url: siteUrl,
       description:
-        'State-by-state guide to Malaysia\u2019s signature dishes with exactly where to eat them, plus a saveable checklist to tick off what you have tried and share your score.',
+        'The Malaysia food checklist: 81 dishes to tick off as you travel, with your score saved in your browser and shareable, plus paid state-by-state deep dives.',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       publisher: { '@type': 'Organization', name: 'Simply Enak' },
     },
     {
       '@type': 'ItemList',
-      name: 'Signature dishes of every Malaysian state',
+      name: 'The Malaysia food checklist',
       itemListElement: states.map((s, i) => ({
         '@type': 'ListItem',
         position: i + 1,
@@ -73,6 +65,8 @@ const pickerData = states.map((s) => ({
   name: s.name,
   dishes: s.dishes.map((d) => ({ id: d.id, name: d.name, state: s.name })),
 }));
+
+const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
 ---
 
 <Layout title={title} description={description} structuredData={structuredData}>
@@ -81,24 +75,9 @@ const pickerData = states.map((s) => ({
       <p class="eyebrow">The Malaysia Food Checklist</p>
       <h1>What to Eat in Malaysia</h1>
       <p class="lede">
-        Eighty-one dishes worth the flight. Sixteen states and territories, plus the classics you will
-        meet everywhere, each with the exact town or street where it is done right. Tick as you eat.
-        Share your score when you get home.
+        Eighty-one dishes worth the flight. Tick them off as you eat your way through Malaysia,
+        and share your score when you get home.
       </p>
-      <div class="picker">
-        <label for="state-picker" style="position:absolute;left:-9999px;">Choose a state</label>
-        <select id="state-picker">
-          <option value="" selected disabled>Where are you headed?</option>
-          {states.map((s) => <option value={s.id}>{s.name}</option>)}
-        </select>
-        <button id="random-dish" type="button">Surprise me</button>
-      </div>
-      <div class="quick-pills">
-        {quickStates.map((id) => {
-          const s = states.find((x) => x.id === id);
-          return <a href={`#state-${s!.id}`}>{s!.name}</a>;
-        })}
-      </div>
       <div class="progress-panel" id="progress-panel">
         <div class="progress-top">
           <p class="progress-label">
@@ -120,84 +99,105 @@ const pickerData = states.map((s) => ({
     </div>
   </header>
 
-  <section class="intro-section">
+  <section id="checklist">
     <div class="container">
-      <h2 class="section-title">The short answer</h2>
-      <p>
-        Malaysia does not have one food scene; it has at least sixteen. Order asam laksa in Penang, not
-        Johor. Eat laksa Johor in Muar. Get your nasi kerabu blue at Kota Bharu's morning market, your
-        bak kut teh at a Klang breakfast table, your Sarawak laksa in Kuching before it sells out at 11am.
+      <h2 class="section-title">The checklist</h2>
+      <p class="section-hint">
+        Open a state, tick what you have tried. The classics at the top need no state at all.
       </p>
-      <p>
-        Every card tells you the signature dish of the state and the town or neighbourhood where it
-        is done right, with halal notes and the time of day that matters: breakfast dishes sell out
-        by mid-morning here, and some streets only wake up after dark. Use it in three passes.
-        Before the trip, to plan. During the trip, to tick. After the trip, to brag. Most visitors
-        finish in single digits. No shame; there is a lot of Malaysia.
-      </p>
+
+      <div class="cl-group open">
+        <div class="cl-group-head">
+          <h3>National classics</h3>
+          <span class="count-chip" data-state-count="classics">0/{nationalClassics.length} tried</span>
+        </div>
+        <div class="cl-grid">
+          {nationalClassics.map((c) => (
+            <label class="cl-item" data-dish-card={c.id} for={`check-${c.id}`}>
+              <input
+                type="checkbox"
+                class="vh"
+                id={`check-${c.id}`}
+                data-dish={c.id}
+                aria-label={`Tried ${c.name}`}
+              />
+              <span class="tick" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d={checkPath} /></svg>
+              </span>
+              <span class="cl-txt">
+                <strong>{c.name}</strong>
+                <em>{c.what}</em>
+              </span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {byRegion.map((r) => (
+        <div class="cl-region">
+          <p class="cl-region-name">{r.label}</p>
+          {r.states.map((s) => (
+            <details class="cl-group" id={`state-${s.id}`} data-state={s.id}>
+              <summary>
+                <span class="cl-group-title">{s.name}</span>
+                <span class="count-chip" data-state-count={s.id}>0/{s.dishes.length} tried</span>
+              </summary>
+              <div class="cl-grid">
+                {s.dishes.map((d) => (
+                  <label class="cl-item" data-dish-card={d.id} for={`check-${d.id}`}>
+                    <input
+                      type="checkbox"
+                      class="vh"
+                      id={`check-${d.id}`}
+                      data-dish={d.id}
+                      aria-label={`Tried ${d.name}`}
+                    />
+                    <span class="tick" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d={checkPath} /></svg>
+                    </span>
+                    <span class="cl-txt">
+                      <strong>{d.name}</strong>
+                      <em>{d.what}</em>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </details>
+          ))}
+        </div>
+      ))}
     </div>
   </section>
 
-  <section id="states">
+  <section id="guide">
     <div class="container">
-      <h2 class="section-title">Jump to a state</h2>
-      <div class="toc-grid">
-        {byRegion.map((r) =>
-          r.states.map((s) => (
-            <a href={`#state-${s.id}`}>
-              {s.name}
-              <span class="toc-region">{r.label}</span>
-            </a>
-          )),
-        )}
-      </div>
+      <h2 class="section-title">The state guides</h2>
+      <p class="section-hint">
+        A taste of each state's kitchen. The full guides, exact streets, famous stalls, halal
+        notes and ingredient detail, are part of the paid deep dives below.
+      </p>
 
       {byRegion.map((r) => (
         <div class="region-block">
           <div class="region-heading">
             <h2>{r.label}</h2>
             <div class="rule" aria-hidden="true"></div>
-            <span class="count">{r.states.length} states</span>
           </div>
           {r.states.map((s) => (
-            <div class="state-card" id={`state-${s.id}`} data-state={s.id}>
+            <div class="state-card preview">
               <div class="state-head">
                 <h3>{s.name}</h3>
-                <span class="tagline">
-                  <span class="count-chip" data-state-count={s.id}>0/{s.dishes.length} tried</span>
-                </span>
+                <span class="tagline">{s.dishes.length} signature dishes</span>
               </div>
               <p class="state-intro">{s.intro}</p>
               <div class="dish-list">
                 {s.dishes.map((d) => (
-                  <div class="dish" id={`dish-${d.id}`} data-dish-card={d.id}>
-                    <div class="dish-row">
-                      <input
-                        type="checkbox"
-                        class="dish-check"
-                        id={`check-${d.id}`}
-                        data-dish={d.id}
-                        aria-label={`Tried ${d.name}`}
-                      />
-                      <div class="dish-body">
-                        <div class="dish-top">
-                          <span class="dish-name">{d.name}</span>
-                          {d.origin && <span class="dish-origin">{d.origin}</span>}
-                        </div>
-                        <p class="dish-what">{d.what}</p>
-                        <p class="dish-where">
-                          <span class="label">Where to eat it</span>
-                          {d.where}
-                          {d.famousAt && d.famousAt.length > 0 && (
-                            <em> Famous at: {d.famousAt.join(' · ')}.</em>
-                          )}
-                        </p>
-                        <div class="dish-meta">
-                          <span class={`chip ${d.halal}`}>{halalLabel[d.halal]}</span>
-                          {d.bestTime && <span class="chip time">{d.bestTime}</span>}
-                        </div>
-                      </div>
+                  <div class="dish preview-row">
+                    <div class="dish-top">
+                      <span class="dish-name">{d.name}</span>
+                      {d.origin && <span class="dish-origin">{d.origin}</span>}
                     </div>
+                    <p class="dish-what">{d.what}</p>
                   </div>
                 ))}
               </div>
@@ -213,39 +213,11 @@ const pickerData = states.map((s) => ({
     </div>
   </section>
 
-  <section id="classics">
-    <div class="container">
-      <h2 class="section-title">The national classics</h2>
-      <p class="section-hint">
-        Not tied to one state: the staples waiting at mamak stalls, kopitiams and night markets
-        anywhere in the country. They count towards your score too.
-      </p>
-      <div class="classic-grid">
-        {nationalClassics.map((c) => (
-          <div class="classic-card" data-dish-card={c.id}>
-            <input
-              type="checkbox"
-              class="dish-check"
-              id={`check-${c.id}`}
-              data-dish={c.id}
-              aria-label={`Tried ${c.name}`}
-            />
-            <div>
-              <p class="c-name">{c.name}</p>
-              <p class="c-what">{c.what}</p>
-              <span class={`chip ${c.halal}`}>{halalLabel[c.halal]}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section id="packages">
     <div class="container">
       <h2 class="section-title">Go deeper</h2>
       <p class="section-hint">
-        Malaysia Basics is free and stays free. The deep dives below are in the kitchen.
+        The checklist is free and stays free. The deep dives below open the full guides.
       </p>
       <div class="pkg-grid">
         {packages.map((p) => (
@@ -307,7 +279,7 @@ const pickerData = states.map((s) => ({
   <footer>
     <div class="container">
       <div class="verified">
-        Dish and location notes last checked <strong>{dataVerified.lastChecked}</strong> by{' '}
+        Dish notes last checked <strong>{dataVerified.lastChecked}</strong> by{' '}
         {dataVerified.verifiedBy}, based on {dataVerified.basis}. Stall names change; the neighbourhoods
         do not.
       </div>
@@ -340,34 +312,21 @@ const pickerData = states.map((s) => ({
 
       var tried = load();
       var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-dish]'));
-      var stateTotals = {};
-
-      function byId() {
-        var m = {};
-        boxes.forEach(function (b) {
-          m[b.getAttribute('data-dish')] = b;
-        });
-        return m;
-      }
-      var boxMap = byId();
-
-      function nameOf(id) {
-        return boxMap[id] ? boxMap[id].getAttribute('aria-label').replace(/^Tried /, '') : id;
-      }
 
       function refresh() {
-        var ids = boxes.filter(function (b) {
-          return b.checked;
-        }).map(function (b) {
-          return b.getAttribute('data-dish');
-        });
+        var ids = boxes
+          .filter(function (b) {
+            return b.checked;
+          })
+          .map(function (b) {
+            return b.getAttribute('data-dish');
+          });
         tried = ids;
         save(ids);
 
         var n = ids.length;
         document.getElementById('tried-count').textContent = n;
-        var fill = document.getElementById('progress-fill');
-        fill.style.width = (TOTAL ? (100 * n) / TOTAL : 0) + '%';
+        document.getElementById('progress-fill').style.width = (TOTAL ? (100 * n) / TOTAL : 0) + '%';
         document.getElementById('progress-track').setAttribute('aria-valuenow', n);
 
         ids.forEach(function (id) {
@@ -375,14 +334,18 @@ const pickerData = states.map((s) => ({
           if (card) card.classList.add('checked');
         });
 
-        document.querySelectorAll('[data-state]').forEach(function (stateEl) {
-          var sid = stateEl.getAttribute('data-state');
-          var stateBoxes = stateEl.querySelectorAll('[data-dish]');
-          var done = Array.prototype.filter.call(stateBoxes, function (b) {
+        document.querySelectorAll('[data-state-count]').forEach(function (chip) {
+          var scope = chip.getAttribute('data-state-count');
+          var parent =
+            scope === 'classics'
+              ? document.getElementById('checklist')
+              : document.getElementById('state-' + scope);
+          if (!parent) return;
+          var group = parent.querySelectorAll('[data-dish]');
+          var done = Array.prototype.filter.call(group, function (b) {
             return b.checked;
           }).length;
-          var chip = stateEl.querySelector('[data-state-count]');
-          if (chip) chip.textContent = done + '/' + stateBoxes.length + ' tried';
+          chip.textContent = done + '/' + group.length + ' tried';
         });
       }
 
@@ -397,12 +360,20 @@ const pickerData = states.map((s) => ({
       refresh();
 
       // Share score
+      function nameOf(b) {
+        return b.getAttribute('aria-label').replace(/^Tried /, '');
+      }
       document.getElementById('share-btn').addEventListener('click', function () {
         var n = tried.length;
-        var picks = tried.slice(0, 3).map(nameOf);
+        var picks = boxes
+          .filter(function (b) {
+            return b.checked;
+          })
+          .slice(0, 3)
+          .map(nameOf);
         var text =
           'Malaysia food checklist: ' + n + '/' + TOTAL + ' dishes tried' +
-          (picks.length ? ' (' + picks.join(', ') + (tried.length > 3 ? ', ...' : '') + ')' : '') +
+          (picks.length ? ' (' + picks.join(', ') + (n > 3 ? ', ...' : '') + ')' : '') +
           '. How many have you had?';
         var url = 'https://whattoeatinmalaysia.com';
         if (navigator.share) {
@@ -434,7 +405,7 @@ const pickerData = states.map((s) => ({
         refresh();
       });
 
-      // State picker + surprise me
+      // State navigation: picker + surprise open the right group
       var data = JSON.parse(document.getElementById('dish-data').textContent);
       var allDishes = [];
       data.forEach(function (s) {
@@ -446,8 +417,9 @@ const pickerData = states.map((s) => ({
       function goTo(anchorId) {
         var el = document.getElementById(anchorId);
         if (!el) return;
+        if (el.tagName === 'DETAILS') el.open = true;
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.querySelectorAll('.state-card.flash').forEach(function (c) {
+        document.querySelectorAll('.cl-group.flash').forEach(function (c) {
           c.classList.remove('flash');
         });
         el.classList.add('flash');
@@ -456,14 +428,21 @@ const pickerData = states.map((s) => ({
         }, 2400);
       }
       var picker = document.getElementById('state-picker');
-      picker.addEventListener('change', function () {
-        if (picker.value) goTo('state-' + picker.value);
-      });
-      document.getElementById('random-dish').addEventListener('click', function () {
-        var d = allDishes[Math.floor(Math.random() * allDishes.length)];
-        picker.value = d.stateId;
-        goTo('dish-' + d.id);
-      });
+      if (picker) {
+        picker.addEventListener('change', function () {
+          if (picker.value) goTo('state-' + picker.value);
+        });
+      }
+      var btn = document.getElementById('random-dish');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var d = allDishes[Math.floor(Math.random() * allDishes.length)];
+          var opt = picker && picker.querySelector('option[value="' + d.stateId + '"]');
+          if (opt && picker) picker.value = d.stateId;
+          goTo('state-' + d.stateId);
+        });
+      }
+
       // Waitlist
       var wlForm = document.getElementById('waitlist-form');
       var wlBtn = document.getElementById('waitlist-btn');

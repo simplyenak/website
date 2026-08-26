@@ -390,6 +390,125 @@ const canonicalUrl = canonical || `${siteUrl}/`;
       .classic-card.checked { background: #FBF6EB; }
       .classic-card.checked .c-name { text-decoration: line-through; text-decoration-color: var(--color-accent); }
 
+      /* Checklist groups + ink tick */
+      .vh { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+      .cl-region { margin-top: 28px; }
+      .cl-region-name {
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--color-muted);
+        margin: 0 0 6px 4px;
+      }
+      .cl-group {
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+        margin: 10px 0;
+        overflow: hidden;
+        scroll-margin-top: 24px;
+      }
+      .cl-group.flash { box-shadow: 0 0 0 3px var(--color-accent); }
+      details.cl-group summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 18px;
+        font-weight: 700;
+        color: var(--color-primary);
+      }
+      details.cl-group summary::-webkit-details-marker { display: none; }
+      details.cl-group summary .cl-group-title { font-size: 1rem; }
+      details.cl-group summary::after {
+        content: '+';
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: var(--color-muted);
+        margin-left: auto;
+      }
+      details.cl-group[open] summary::after { content: '–'; }
+      .cl-group .cl-group-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 18px 0;
+      }
+      .cl-group .cl-group-head h3 { font-size: 1rem; color: var(--color-primary); }
+
+      .cl-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+        gap: 4px 14px;
+        padding: 8px 12px 14px;
+      }
+      .cl-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 9px 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .cl-item:hover { background: #FBF3E4; }
+      .tick {
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+        margin-top: 1px;
+        display: grid;
+        place-items: center;
+        background: #fff;
+        border: 2px solid #C7B9A2;
+        border-radius: 52% 46% 50% 48% / 47% 53% 45% 55%;
+        transform: rotate(-3deg);
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      .tick svg {
+        width: 17px;
+        height: 17px;
+        fill: none;
+        stroke: var(--color-accent);
+        stroke-width: 3.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 36;
+        stroke-dashoffset: 36;
+      }
+      .cl-item input:checked + .tick {
+        border-color: var(--color-accent);
+        background: #FBE9DE;
+        transform: rotate(1deg);
+      }
+      .cl-item input:checked + .tick svg {
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.02s;
+      }
+      .cl-txt strong { display: block; font-size: 0.94rem; line-height: 1.35; }
+      .cl-txt em {
+        display: block;
+        font-style: normal;
+        font-size: 0.79rem;
+        color: var(--color-muted);
+        line-height: 1.45;
+      }
+      .cl-item.checked { background: #FBF6EB; }
+      .cl-item.checked .cl-txt strong {
+        text-decoration: line-through;
+        text-decoration-thickness: 1.5px;
+        text-decoration-color: var(--color-accent);
+      }
+      .cl-item.checked .cl-txt em { opacity: 0.6; }
+
+      /* Guide previews */
+      .state-card.preview .preview-row { padding: 12px 22px; }
+      .dish.preview-row .dish-what { color: var(--color-muted); font-size: 0.92rem; }
+
       /* Packages + waitlist */
       .pkg-grid {
         display: grid;

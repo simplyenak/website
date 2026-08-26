@@ -989,7 +989,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Do these dishes really change from neighbourhood to neighbourhood?',
-    a: "Yes. Many signature dishes are tied to one town or even one street: asam laksa to Air Itam, satay to Kajang, mee bandung to Muar, keropok lekor to Losong. The \"where\" in each card is the shortest route to the good version.",
+    a: "Yes. Many signature dishes are tied to one town or even one street: asam laksa to Air Itam, satay to Kajang, mee bandung to Muar, keropok lekor to Losong. The State Deep Dives pin down exactly where to eat each one.",
   },
   {
     q: 'How does this food checklist work?',
