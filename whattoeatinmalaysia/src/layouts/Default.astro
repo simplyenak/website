@@ -7,7 +7,7 @@ export interface Props {
 }
 
 const { title, description, canonical, structuredData } = Astro.props;
-const siteUrl = 'https://whichdishtoeatwhere.com';
+const siteUrl = 'https://whattoeatinmalaysia.com';
 const canonicalUrl = canonical || `${siteUrl}/`;
 ---
 
@@ -282,6 +282,113 @@ const canonicalUrl = canonical || `${siteUrl}/`;
         margin-bottom: 14px;
         color: var(--color-text);
       }
+
+      /* Checklist */
+      .progress-panel {
+        max-width: 520px;
+        margin: 26px auto 0;
+        background: rgba(255, 246, 233, 0.94);
+        border-radius: 12px;
+        padding: 14px 18px;
+        color: var(--color-text);
+        text-align: left;
+      }
+      .progress-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .progress-label { font-size: 0.85rem; font-weight: 600; }
+      .progress-label span { color: var(--color-accent); }
+      .progress-actions { display: flex; gap: 8px; }
+      .progress-actions button {
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 600;
+        border-radius: 8px;
+        border: 1px solid var(--color-border);
+        background: #FFF6E9;
+        color: var(--color-primary);
+        padding: 5px 12px;
+        cursor: pointer;
+      }
+      .progress-actions button:hover { border-color: var(--color-accent); }
+      .progress-track {
+        margin-top: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: #EFE4D2;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #E4572E, #C99B3F);
+        transition: width 0.35s ease;
+      }
+      .progress-hint { font-size: 0.72rem; color: var(--color-muted); margin-top: 6px; }
+
+      .dish-check {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        border: 2px solid #C7B9A2;
+        border-radius: 7px;
+        background: var(--color-card);
+        cursor: pointer;
+        display: inline-grid;
+        place-content: center;
+        margin-top: 2px;
+      }
+      .dish-check:hover { border-color: var(--color-accent); }
+      .dish-check::after {
+        content: '';
+        width: 11px;
+        height: 11px;
+        border-radius: 3px;
+        transform: scale(0);
+        transition: transform 0.12s ease-in;
+        background: var(--color-accent);
+      }
+      .dish-check:checked { border-color: var(--color-accent); }
+      .dish-check:checked::after { transform: scale(1); }
+      .dish-row { display: flex; gap: 12px; align-items: flex-start; }
+      .dish-row .dish-body { flex: 1; min-width: 0; }
+      .dish.checked { background: #FBF6EB; }
+      .dish.checked .dish-name { text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: var(--color-accent); }
+
+      .count-chip {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--color-primary);
+        background: #F6EBD8;
+        border-radius: 999px;
+        padding: 2px 10px;
+      }
+
+      .classic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 12px;
+      }
+      .classic-card {
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 14px 16px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .classic-card .c-name { font-weight: 700; font-size: 0.98rem; }
+      .classic-card .c-what { font-size: 0.86rem; color: var(--color-text); }
+      .classic-card.checked { background: #FBF6EB; }
+      .classic-card.checked .c-name { text-decoration: line-through; text-decoration-color: var(--color-accent); }
 
       @media (max-width: 640px) {
         .hero { padding: 48px 0 44px; }

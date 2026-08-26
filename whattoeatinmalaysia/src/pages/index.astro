@@ -1,0 +1,423 @@
+---
+import Layout from '~/layouts/Default.astro';
+import {
+  states,
+  faqs,
+  totalDishes,
+  checklistTotal,
+  nationalClassics,
+  dataVerified,
+  REGION_LABELS,
+  type Region,
+} from '~/data/dishes';
+
+const title = `What to Eat in Malaysia: The State-by-State Food Checklist (${checklistTotal} Dishes)`;
+const description =
+  'What to eat in Malaysia, state by state: asam laksa in Air Itam, satay in Kajang, nasi kerabu in Kota Bharu, Sarawak laksa in Kuching. Tick off every dish you try, see your score and share it.';
+
+const siteUrl = 'https://whattoeatinmalaysia.com';
+
+const regionsOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borneo'];
+const byRegion = regionsOrder.map((r) => ({
+  region: r,
+  label: REGION_LABELS[r],
+  states: states.filter((s) => s.region === r),
+}));
+
+const halalLabel: Record<string, string> = {
+  halal: 'Halal',
+  'pork-free': 'Pork-free',
+  'non-halal': 'Contains pork',
+  varies: 'Halal varies by stall',
+};
+
+const quickStates = ['penang', 'kuala-lumpur', 'melaka', 'perak', 'kelantan', 'sarawak'];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'What to Eat in Malaysia Checklist',
+      applicationCategory: 'TravelApplication',
+      operatingSystem: 'Any',
+      url: siteUrl,
+      description:
+        'State-by-state guide to Malaysia\u2019s signature dishes with exactly where to eat them, plus a saveable checklist to tick off what you have tried and share your score.',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      publisher: { '@type': 'Organization', name: 'Simply Enak' },
+    },
+    {
+      '@type': 'ItemList',
+      name: 'Signature dishes of every Malaysian state',
+      itemListElement: states.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: `${s.name}: ${s.dishes.map((d) => d.name).join(', ')}`,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+
+const pickerData = states.map((s) => ({
+  id: s.id,
+  name: s.name,
+  dishes: s.dishes.map((d) => ({ id: d.id, name: d.name, state: s.name })),
+}));
+---
+
+<Layout title={title} description={description} structuredData={structuredData}>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">The Malaysia Food Checklist</p>
+      <h1>What to Eat in Malaysia</h1>
+      <p class="lede">
+        {checklistTotal} essential dishes, every state's signature specials plus the national
+        classics, each with the exact town or street to eat it in. Tick off what you've tried and
+        see your score.
+      </p>
+      <div class="picker">
+        <label for="state-picker" style="position:absolute;left:-9999px;">Choose a state</label>
+        <select id="state-picker">
+          <option value="" selected disabled>Where are you headed?</option>
+          {states.map((s) => <option value={s.id}>{s.name}</option>)}
+        </select>
+        <button id="random-dish" type="button">Surprise me</button>
+      </div>
+      <div class="quick-pills">
+        {quickStates.map((id) => {
+          const s = states.find((x) => x.id === id);
+          return <a href={`#state-${s!.id}`}>{s!.name}</a>;
+        })}
+      </div>
+      <div class="progress-panel" id="progress-panel">
+        <div class="progress-top">
+          <p class="progress-label">
+            Tried <span id="tried-count">0</span> of {checklistTotal}
+          </p>
+          <div class="progress-actions">
+            <button id="share-btn" type="button">Share score</button>
+            <button id="reset-btn" type="button">Reset</button>
+          </div>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax={checklistTotal} aria-valuenow="0" id="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="progress-hint">
+          Saved in this browser, no account. Start anywhere below; the bar keeps up with you.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section class="intro-section">
+    <div class="container">
+      <h2 class="section-title">The short answer</h2>
+      <p>
+        Malaysia does not have one food scene; it has at least sixteen. Order asam laksa in Penang, not
+        Johor. Eat laksa Johor in Muar. Get your nasi kerabu blue at Kota Bharu's morning market, your
+        bak kut teh at a Klang breakfast table, your Sarawak laksa in Kuching before it sells out at 11am.
+      </p>
+      <p>
+        This page lists the signature dish of every state and, more importantly, the town or neighbourhood
+        where it is done right. Every card carries halal notes and the best time of day, because in
+        Malaysia breakfast dishes routinely sell out by mid-morning and some streets only matter after dark.
+        Work through it as a checklist; most visitors manage single digits.
+      </p>
+    </div>
+  </section>
+
+  <section id="states">
+    <div class="container">
+      <h2 class="section-title">Jump to a state</h2>
+      <div class="toc-grid">
+        {byRegion.map((r) =>
+          r.states.map((s) => (
+            <a href={`#state-${s.id}`}>
+              {s.name}
+              <span class="toc-region">{r.label}</span>
+            </a>
+          )),
+        )}
+      </div>
+
+      {byRegion.map((r) => (
+        <div class="region-block">
+          <div class="region-heading">
+            <h2>{r.label}</h2>
+            <div class="rule" aria-hidden="true"></div>
+            <span class="count">{r.states.length} states</span>
+          </div>
+          {r.states.map((s) => (
+            <div class="state-card" id={`state-${s.id}`} data-state={s.id}>
+              <div class="state-head">
+                <h3>{s.name}</h3>
+                <span class="tagline">
+                  <span class="count-chip" data-state-count={s.id}>0/{s.dishes.length} tried</span>
+                </span>
+              </div>
+              <p class="state-intro">{s.intro}</p>
+              <div class="dish-list">
+                {s.dishes.map((d) => (
+                  <div class="dish" id={`dish-${d.id}`} data-dish-card={d.id}>
+                    <div class="dish-row">
+                      <input
+                        type="checkbox"
+                        class="dish-check"
+                        id={`check-${d.id}`}
+                        data-dish={d.id}
+                        aria-label={`Tried ${d.name}`}
+                      />
+                      <div class="dish-body">
+                        <div class="dish-top">
+                          <span class="dish-name">{d.name}</span>
+                          {d.origin && <span class="dish-origin">{d.origin}</span>}
+                        </div>
+                        <p class="dish-what">{d.what}</p>
+                        <p class="dish-where">
+                          <span class="label">Where to eat it</span>
+                          {d.where}
+                          {d.famousAt && d.famousAt.length > 0 && (
+                            <em> Famous at: {d.famousAt.join(' · ')}.</em>
+                          )}
+                        </p>
+                        <div class="dish-meta">
+                          <span class={`chip ${d.halal}`}>{halalLabel[d.halal]}</span>
+                          {d.bestTime && <span class="chip time">{d.bestTime}</span>}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {s.cta && (
+                <div class="state-cta">
+                  <a href={s.cta.url} target="_blank" rel="noopener">{s.cta.label} &rarr;</a>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="classics">
+    <div class="container">
+      <h2 class="section-title">The national classics</h2>
+      <p class="section-hint">
+        Not tied to one state: the staples you will meet at mamak stalls, kopitiams and night markets
+        anywhere in the country. They count towards your score too.
+      </p>
+      <div class="classic-grid">
+        {nationalClassics.map((c) => (
+          <div class="classic-card" data-dish-card={c.id}>
+            <input
+              type="checkbox"
+              class="dish-check"
+              id={`check-${c.id}`}
+              data-dish={c.id}
+              aria-label={`Tried ${c.name}`}
+            />
+            <div>
+              <p class="c-name">{c.name}</p>
+              <p class="c-what">{c.what}</p>
+              <span class={`chip ${c.halal}`}>{halalLabel[c.halal]}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">Questions travelers ask</h2>
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p class="answer">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Eat Malaysia with people who eat Malaysia</h2>
+      <p>
+        Simply Enak runs guided food walks in Kuala Lumpur and George Town that cover many of these dishes
+        in a single evening, led by guides from the food industry.
+      </p>
+      <a href="https://simplyenak.com/tours" target="_blank" rel="noopener">See the food tours</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="verified">
+        Dish and location notes last checked <strong>{dataVerified.lastChecked}</strong> by{' '}
+        {dataVerified.verifiedBy}, based on {dataVerified.basis}. Stall names change; the neighbourhoods
+        do not.
+      </div>
+      <p>
+        Built by <a href="https://simplyenak.com">Simply Enak</a> &middot; Malaysian food tours led by
+        guides who eat their way through every state on this list.
+      </p>
+    </div>
+  </footer>
+
+  <script type="application/json" id="dish-data" set:html={JSON.stringify(pickerData)} />
+  <script>
+    (function () {
+      var KEY = 'wtm-tried-v1';
+      var TOTAL = document.querySelectorAll('[data-dish]').length;
+
+      function load() {
+        try {
+          return JSON.parse(localStorage.getItem(KEY) || '[]');
+        } catch (e) {
+          return [];
+        }
+      }
+      function save(ids) {
+        localStorage.setItem(KEY, JSON.stringify(ids));
+      }
+
+      var tried = load();
+      var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-dish]'));
+      var stateTotals = {};
+
+      function byId() {
+        var m = {};
+        boxes.forEach(function (b) {
+          m[b.getAttribute('data-dish')] = b;
+        });
+        return m;
+      }
+      var boxMap = byId();
+
+      function nameOf(id) {
+        return boxMap[id] ? boxMap[id].getAttribute('aria-label').replace(/^Tried /, '') : id;
+      }
+
+      function refresh() {
+        var ids = boxes.filter(function (b) {
+          return b.checked;
+        }).map(function (b) {
+          return b.getAttribute('data-dish');
+        });
+        tried = ids;
+        save(ids);
+
+        var n = ids.length;
+        document.getElementById('tried-count').textContent = n;
+        var fill = document.getElementById('progress-fill');
+        fill.style.width = (TOTAL ? (100 * n) / TOTAL : 0) + '%';
+        document.getElementById('progress-track').setAttribute('aria-valuenow', n);
+
+        ids.forEach(function (id) {
+          var card = document.querySelector('[data-dish-card="' + id + '"]');
+          if (card) card.classList.add('checked');
+        });
+
+        document.querySelectorAll('[data-state]').forEach(function (stateEl) {
+          var sid = stateEl.getAttribute('data-state');
+          var stateBoxes = stateEl.querySelectorAll('[data-dish]');
+          var done = Array.prototype.filter.call(stateBoxes, function (b) {
+            return b.checked;
+          }).length;
+          var chip = stateEl.querySelector('[data-state-count]');
+          if (chip) chip.textContent = done + '/' + stateBoxes.length + ' tried';
+        });
+      }
+
+      boxes.forEach(function (b) {
+        b.checked = tried.indexOf(b.getAttribute('data-dish')) !== -1;
+        b.addEventListener('change', function () {
+          var card = b.closest('[data-dish-card]');
+          if (card && !b.checked) card.classList.remove('checked');
+          refresh();
+        });
+      });
+      refresh();
+
+      // Share score
+      document.getElementById('share-btn').addEventListener('click', function () {
+        var n = tried.length;
+        var picks = tried.slice(0, 3).map(nameOf);
+        var text =
+          'Malaysia food checklist: ' + n + '/' + TOTAL + ' dishes tried' +
+          (picks.length ? ' (' + picks.join(', ') + (tried.length > 3 ? ', ...' : '') + ')' : '') +
+          '. How many have you had?';
+        var url = 'https://whattoeatinmalaysia.com';
+        if (navigator.share) {
+          navigator.share({ title: 'What to Eat in Malaysia', text: text, url: url }).catch(function () {});
+        } else {
+          (navigator.clipboard ? navigator.clipboard.writeText(text + ' ' + url) : Promise.reject())
+            .then(function () {
+              var btn = document.getElementById('share-btn');
+              btn.textContent = 'Copied';
+              setTimeout(function () {
+                btn.textContent = 'Share score';
+              }, 1600);
+            })
+            .catch(function () {
+              window.prompt('Copy your score:', text + ' ' + url);
+            });
+        }
+      });
+
+      // Reset
+      document.getElementById('reset-btn').addEventListener('click', function () {
+        if (!window.confirm('Clear all ' + tried.length + ' ticks?')) return;
+        boxes.forEach(function (b) {
+          b.checked = false;
+        });
+        document.querySelectorAll('.checked').forEach(function (c) {
+          c.classList.remove('checked');
+        });
+        refresh();
+      });
+
+      // State picker + surprise me
+      var data = JSON.parse(document.getElementById('dish-data').textContent);
+      var allDishes = [];
+      data.forEach(function (s) {
+        s.dishes.forEach(function (d) {
+          d.stateId = s.id;
+          allDishes.push(d);
+        });
+      });
+      function goTo(anchorId) {
+        var el = document.getElementById(anchorId);
+        if (!el) return;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.state-card.flash').forEach(function (c) {
+          c.classList.remove('flash');
+        });
+        el.classList.add('flash');
+        setTimeout(function () {
+          el.classList.remove('flash');
+        }, 2400);
+      }
+      var picker = document.getElementById('state-picker');
+      picker.addEventListener('change', function () {
+        if (picker.value) goTo('state-' + picker.value);
+      });
+      document.getElementById('random-dish').addEventListener('click', function () {
+        var d = allDishes[Math.floor(Math.random() * allDishes.length)];
+        picker.value = d.stateId;
+        goTo('dish-' + d.id);
+      });
+    })();
+  </script>
+</Layout>

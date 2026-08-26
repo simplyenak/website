@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://whichdishtoeatwhere.com',
+  site: 'https://whattoeatinmalaysia.com',
   compressHTML: true,
 });

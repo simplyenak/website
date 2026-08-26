@@ -829,6 +829,91 @@ export const states: StateEntry[] = [
 
 export const totalDishes = states.reduce((n, s) => n + s.dishes.length, 0);
 
+/** National staples every traveller meets, regardless of state. Not counted in state cards. */
+export interface ClassicItem {
+  id: string;
+  name: string;
+  what: string;
+  halal: HalalStatus;
+}
+
+export const nationalClassics: ClassicItem[] = [
+  {
+    id: 'roti-canai',
+    name: 'Roti canai',
+    what: 'Flaky griddled flatbread with dhal and curry, the national breakfast of mamak stalls.',
+    halal: 'halal',
+  },
+  {
+    id: 'teh-tarik',
+    name: 'Teh tarik',
+    what: '"Pulled" milky tea, poured long between mugs for foam. The drink that goes with everything.',
+    halal: 'halal',
+  },
+  {
+    id: 'nasi-goreng-kampung',
+    name: 'Nasi goreng kampung',
+    what: 'Village fried rice with anchovies, kangkung and chili, ideally from a wok at dawn.',
+    halal: 'halal',
+  },
+  {
+    id: 'apam-balik',
+    name: 'Apam balik',
+    what: 'Thick peanut pancake folded over crushed peanut and sugar; crisp or soft depending on region.',
+    halal: 'halal',
+  },
+  {
+    id: 'banana-leaf-rice',
+    name: 'Banana leaf rice',
+    what: 'Rice on a banana leaf with vegetable sides, curries and papadum, refilled until you surrender.',
+    halal: 'varies',
+  },
+  {
+    id: 'kaya-toast',
+    name: 'Kaya toast & half-boiled eggs',
+    what: 'Coconut-egg jam toast with soft eggs and white pepper, kopitiam breakfast since forever.',
+    halal: 'varies',
+  },
+  {
+    id: 'maggi-goreng',
+    name: 'Maggi goreng',
+    what: 'Instant noodles fried mamak-style with egg and chili sauce. Midnight institution.',
+    halal: 'halal',
+  },
+  {
+    id: 'ais-kacang',
+    name: 'Ais kacang (ABC)',
+    what: 'Shaved ice mountain over sweet corn, red bean, grass jelly and syrups. The dessert that follows the weather.',
+    halal: 'halal',
+  },
+  {
+    id: 'nyonya-kuih',
+    name: 'Nyonya kuih',
+    what: 'Steamed and griddled sweets in pandan, coconut and gula melaka; two-bite pieces sold by the box.',
+    halal: 'varies',
+  },
+  {
+    id: 'durian',
+    name: 'Fresh durian',
+    what: 'The king of fruit, eaten fresh at a roadside stall. Timing help: whenisdurianseason.com.',
+    halal: 'halal',
+  },
+  {
+    id: 'milo-dinosaur',
+    name: 'Milo dinosaur',
+    what: 'Iced Milo with an unmixed heap of powder on top. A Malaysian childhood in a cup.',
+    halal: 'halal',
+  },
+  {
+    id: 'rojak-buah',
+    name: 'Rojak buah',
+    what: 'Fruit salad the Malaysian way: jicama, pineapple, cucumber, fritters, shrimp paste and crushed peanut.',
+    halal: 'varies',
+  },
+];
+
+export const checklistTotal = totalDishes + nationalClassics.length;
+
 export interface Faq {
   q: string;
   a: string;
@@ -855,6 +940,10 @@ export const faqs: Faq[] = [
     q: 'Do these dishes really change from neighbourhood to neighbourhood?',
     a: "Yes. Many signature dishes are tied to one town or even one street: asam laksa to Air Itam, satay to Kajang, mee bandung to Muar, keropok lekor to Losong. The \"where\" in each card is the shortest route to the good version.",
   },
+  {
+    q: 'How does this food checklist work?',
+    a: 'Tick a dish when you try it. Your progress is saved in your own browser, no account and no tracking, and the counter in the header keeps score out of the full list. Hit "Share score" to copy or share how many you have tried; Reset clears everything.',
+    },
   {
     q: 'Can I try these dishes with a guide instead of self-driving?',
     a: 'Yes. Simply Enak runs guided food tours in Kuala Lumpur and George Town that cover many of these dishes in one walk, and its guides eat their way through every state listed here. See simplyenak.com.',
