@@ -21,24 +21,29 @@ if (!story) return Astro.redirect('/ja');
 
 const image = getImageUrl(story.featuredImage || '') as ImageMetadata | string | undefined;
 
+// Get locale from URL
+const locale = Astro.url.pathname.split('/')[1];
+
+// Get translation if available
+const trans = story.translations?.find((t: any) => t.languages_code === locale) || {};
+
+// Use translated title/excerpt if available
+const title = trans?.title || story.title;
+const excerpt = trans?.excerpt || story.excerpt;
+const metaTitle = trans?.meta_title || story.meta_title || story.title;
+
 const contentHtml = story.content_markdown ? marked.parse(story.content_markdown) : '';
 
 // Use translated content if available
 let finalContent = contentHtml;
-if (story.translations) {
-  const locale = Astro.url.pathname.split('/')[1];
-  const trans = story.translations.find((t: any) => t.languages_code === locale);
-  if (trans?.content && typeof trans.content === 'string' && !trans.content.startsWith('[object Object]')) {
-    try {
-      // Strip leading h1 and code fences from translated markdown to avoid duplicate with template
-      let translatedMarkdown = trans.content;
-      // Remove markdown code fences if present
-      translatedMarkdown = translatedMarkdown.replace(/^```[a-z]*\n?/, '').replace(/```$/,'');
-      // Remove leading # Title pattern
-      translatedMarkdown = translatedMarkdown.replace(/^#[^\n]+\n\n?/, '');
-      finalContent = marked.parse(translatedMarkdown);
-    } catch {}
-  }
+if (trans?.content && typeof trans.content === 'string' && !trans.content.startsWith('[object Object]')) {
+  try {
+    // Strip leading h1 and code fences from translated markdown
+    let translatedMarkdown = trans.content;
+    translatedMarkdown = translatedMarkdown.replace(/^```[a-z]*\n?/, '').replace(/```$/, '');
+    translatedMarkdown = translatedMarkdown.replace(/^#[^\n]+\n\n?/, '');
+    finalContent = marked.parse(translatedMarkdown);
+  } catch {}
 }
 
 // Shape story data into a Post-like object for SinglePost
@@ -47,8 +52,8 @@ const post = {
   slug: story.slug,
   permalink: story.slug,
   publishDate: new Date(story.publishedDate || story.createdAt || Date.now()),
-  title: story.title || '',
-  excerpt: story.excerpt || '',
+  title: title,
+  excerpt: excerpt,
   image: image,
   author: 'Pauline',
   category: story.category
@@ -56,15 +61,15 @@ const post = {
     : { title: 'Food & Culture Guides', slug: 'food-culture-guides' },
   tags: [],
   locations: story.locationsRef || [],
-  metadata: { title: story.meta_title || story.title, description: story.excerpt || '' },
+  metadata: { title: metaTitle, description: excerpt || '' },
   contents: story.content_markdown || '',
 };
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 
 const meta = {
-  title: story.meta_title || story.title || '',
-  description: story.excerpt || '',
+  title: metaTitle,
+  description: excerpt,
 };
 ---
 

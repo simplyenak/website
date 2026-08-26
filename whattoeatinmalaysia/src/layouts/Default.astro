@@ -594,6 +594,45 @@ const canonicalUrl = canonical || `${siteUrl}/`;
       .waitlist-form button:disabled { opacity: 0.6; cursor: default; }
       .waitlist-note { margin-top: 10px; font-size: 0.85rem; color: var(--color-primary); }
 
+      .buy-band {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 16px;
+        margin-bottom: 26px;
+      }
+      .buy-main, .unlock-box {
+        background: var(--color-card);
+        border: 1px solid #C99B3F;
+        border-radius: 14px;
+        padding: 22px 24px;
+      }
+      .unlock-box { border-color: var(--color-border); }
+      .buy-title { font-size: 1.15rem; font-weight: 800; color: var(--color-primary); margin-bottom: 8px; }
+      .buy-title-sm { font-weight: 700; color: var(--color-primary); margin-bottom: 10px; }
+      .buy-sub { font-size: 0.92rem; color: var(--color-muted); margin-bottom: 16px; }
+      .buy-btn {
+        display: inline-block;
+        background: var(--color-primary);
+        color: #FFF6E9;
+        font-weight: 700;
+        padding: 12px 22px;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+      .buy-btn:hover { background: #5E2315; text-decoration: none; }
+      .buy-note { font-size: 0.75rem; color: var(--color-muted); margin-top: 10px; }
+      .unlocked-banner {
+        background: #F0F8F1;
+        border: 1px solid #BFE0C8;
+        color: #1E6B3A;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 26px;
+      }
+      @media (max-width: 760px) { .buy-band { grid-template-columns: 1fr; } }
+
       @media (max-width: 640px) {
         .hero { padding: 48px 0 44px; }
         .state-head h3 { font-size: 1.2rem; }

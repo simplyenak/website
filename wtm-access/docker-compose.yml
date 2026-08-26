@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  wtm-access:
+    image: wtm-access:latest
+    container_name: wtm-access
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      WTM_SECRET: ${WTM_SECRET}
+      WTM_HOOKKEY: ${WTM_HOOKKEY}
+      WTM_DB: /data/wtm.db
+    volumes:
+      - wtm-data:/data
+    networks:
+      - dokploy-network
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.lbswarm=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.routers.wtm-access-websecure.rule=Host(`wtm-access.system.simplyenak.com`)
+        - traefik.http.routers.wtm-access-websecure.entrypoints=websecure
+        - traefik.http.routers.wtm-access-websecure.tls=true
+        - traefik.http.routers.wtm-access-websecure.tls.certresolver=letsencrypt
+        - traefik.http.routers.wtm-access-websecure.service=wtm-access-web
+        - traefik.http.services.wtm-access-web.loadbalancer.server.port=8300
+
+volumes:
+  wtm-data:
+
+networks:
+  dokploy-network:
+    external: true
+    name: dokploy-network

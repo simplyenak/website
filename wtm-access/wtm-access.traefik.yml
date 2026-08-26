@@ -1,0 +1,14 @@
+http:
+  routers:
+    wtm-access-websecure:
+      rule: "Host(`wtm-access.system.simplyenak.com`)"
+      entryPoints:
+        - websecure
+      service: wtm-access-web
+      tls:
+        certResolver: letsencrypt
+  services:
+    wtm-access-web:
+      loadBalancer:
+        servers:
+          - url: "http://wtm-access:8300"

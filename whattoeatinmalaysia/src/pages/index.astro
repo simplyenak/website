@@ -192,7 +192,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
               <p class="state-intro">{s.intro}</p>
               <div class="dish-list">
                 {s.dishes.map((d) => (
-                  <div class="dish preview-row">
+                  <div class="dish preview-row" data-detail-id={d.id}>
                     <div class="dish-top">
                       <span class="dish-name">{d.name}</span>
                       {d.origin && <span class="dish-origin">{d.origin}</span>}
@@ -224,7 +224,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           <div class={`pkg-card ${p.status}`}>
             <div class="pkg-head">
               <h3>{p.name}</h3>
-              <span class={`pkg-chip ${p.status}`}>{p.status === 'free' ? 'Free' : 'Coming'}</span>
+              <span class={`pkg-chip ${p.status}`}>{p.status === 'free' ? 'Free' : 'Collection'}</span>
             </div>
             <p class="pkg-blurb">{p.blurb}</p>
             <ul class="pkg-list">
@@ -234,6 +234,31 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           </div>
         ))}
       </div>
+
+      <div class="buy-band">
+        <div class="buy-main">
+          <p class="buy-title">Street Food Masters Collection</p>
+          <p class="buy-sub">
+            Every deep dive in one purchase: the Nyonya kitchen and all sixteen state guides, with exact
+            streets, famous stalls, halal notes and ingredient detail. One-time payment.
+          </p>
+          <a class="buy-btn" href="https://uiy.thrivecart.com/street-food-masters-collection/" id="buy-btn" target="_blank" rel="noopener">Get the collection &rarr;</a>
+          <p class="buy-note">Secure checkout by ThriveCart. Test mode while we finalise pricing.</p>
+        </div>
+        <div class="unlock-box">
+          <p class="buy-title-sm">Already bought it?</p>
+          <form id="unlock-form" class="waitlist-form">
+            <label for="unlock-email" style="position:absolute;left:-9999px;">Your purchase email</label>
+            <input id="unlock-email" type="email" required placeholder="Purchase email" autocomplete="email" />
+            <button type="submit" id="unlock-btn">Unlock</button>
+          </form>
+          <p class="waitlist-note" id="unlock-note" hidden></p>
+        </div>
+      </div>
+      <div class="unlocked-banner" id="unlocked-banner" hidden>
+        Collection unlocked. The state guides below now show exactly where to eat every dish.
+      </div>
+
       <div class="waitlist-box" id="waitlist">
         <p class="waitlist-title">Hear first when the deep dives open</p>
         <form id="waitlist-form" class="waitlist-form">
@@ -291,6 +316,32 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
   </footer>
 
   <script type="application/json" id="dish-data" set:html={JSON.stringify(pickerData)} />
+  <script
+    type="application/json"
+    id="full-data"
+    set:html={JSON.stringify({
+      collectionProduct: '9',
+      halalLabels: {
+        halal: 'Halal',
+        'pork-free': 'Pork-free',
+        'non-halal': 'Contains pork',
+        varies: 'Halal varies by stall',
+      },
+      dishes: Object.fromEntries(
+        states.flatMap((s) =>
+          s.dishes.map((d) => [
+            d.id,
+            {
+              where: d.where,
+              famousAt: d.famousAt || [],
+              halal: d.halal,
+              bestTime: d.bestTime || '',
+            },
+          ]),
+        ),
+      ),
+    })}
+  />
   <script>
     (function () {
       // Formspree endpoint. Current ID is DEAD (404, found 2026-08-26) pending
@@ -442,6 +493,90 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           goTo('state-' + d.stateId);
         });
       }
+
+      // Paid unlock
+      var ACCESS = 'https://wtm-access.system.simplyenak.com';
+      var TOKEN_KEY = 'wtm-token';
+      var fullData = JSON.parse(document.getElementById('full-data').textContent);
+
+      function enrichGuides() {
+        document.querySelectorAll('[data-detail-id]').forEach(function (row) {
+          var d = fullData.dishes[row.getAttribute('data-detail-id')];
+          if (!d || row.getAttribute('data-enriched')) return;
+          var where = document.createElement('p');
+          where.className = 'dish-where';
+          where.innerHTML =
+            '<span class="label">Where to eat it</span>' + d.where +
+            (d.famousAt.length ? ' <em>Famous at: ' + d.famousAt.join(' &middot; ') + '.</em>' : '');
+          var meta = document.createElement('div');
+          meta.className = 'dish-meta';
+          meta.innerHTML =
+            '<span class="chip ' + d.halal + '">' + fullData.halalLabels[d.halal] + '</span>' +
+            (d.bestTime ? '<span class="chip time">' + d.bestTime + '</span>' : '');
+          row.appendChild(where);
+          row.appendChild(meta);
+          row.setAttribute('data-enriched', '1');
+        });
+        var banner = document.getElementById('unlocked-banner');
+        if (banner) banner.hidden = false;
+        var buy = document.getElementById('buy-btn');
+        if (buy) buy.textContent = 'Bought — open the guides \u2193';
+      }
+
+      function tryToken(tok) {
+        fetch(ACCESS + '/verify?t=' + encodeURIComponent(tok))
+          .then(function (r) {
+            return r.ok ? r.json() : null;
+          })
+          .then(function (j) {
+            if (j && j.ok && j.products.indexOf(fullData.collectionProduct) !== -1) enrichGuides();
+          })
+          .catch(function () {});
+      }
+      var savedToken = localStorage.getItem(TOKEN_KEY);
+      if (savedToken) tryToken(savedToken);
+
+      document.getElementById('unlock-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = document.getElementById('unlock-email').value.trim();
+        var note = document.getElementById('unlock-note');
+        var btn = document.getElementById('unlock-btn');
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+          note.hidden = false;
+          note.textContent = 'That email does not look right.';
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Checking...';
+        fetch(ACCESS + '/redeem', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email: email }),
+        })
+          .then(function (r) {
+            return r.json().then(function (j) {
+              return { ok: r.ok, j: j };
+            });
+          })
+          .then(function (res) {
+            note.hidden = false;
+            if (res.ok && res.j.ok) {
+              localStorage.setItem(TOKEN_KEY, res.j.token);
+              enrichGuides();
+              note.textContent = 'Unlocked. The state guides below now show full detail.';
+            } else {
+              note.textContent = 'No purchase found for that email yet. Just bought? Give it a minute, then retry.';
+            }
+          })
+          .catch(function () {
+            note.hidden = false;
+            note.textContent = 'Network hiccup. Try again.';
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = 'Unlock';
+          });
+      });
 
       // Waitlist
       var wlForm = document.getElementById('waitlist-form');

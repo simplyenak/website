@@ -1000,6 +1000,10 @@ export const faqs: Faq[] = [
     a: 'The Malaysia Basics checklist on this page is free and stays free. A free account to sync your ticks across devices is next. Deeper packages, a Nyonya checklist and per-state deep dives with ingredient and diet-safety detail, will be paid, one-time per package. Join the list at the bottom of this page to hear first.',
     },
   {
+    q: 'I bought the collection. How do I unlock the guides?',
+    a: 'Enter the email you paid with in the unlock box on this page. Your purchase is matched automatically and the state guides expand to the full detail: exact streets, famous stalls, halal notes and best times. Your unlock is remembered in this browser for 30 days.',
+    },
+  {
     q: 'Can I try these dishes with a guide instead of self-driving?',
     a: 'Yes. Simply Enak runs guided food tours in Kuala Lumpur and George Town that cover many of these dishes in one walk, and its guides eat their way through every state listed here. See simplyenak.com.',
   },
