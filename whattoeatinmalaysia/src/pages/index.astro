@@ -11,9 +11,9 @@ import {
   type Region,
 } from '~/data/dishes';
 
-const title = `What to Eat Where in Malaysia: The Dish-Origin Checklist (${checklistTotal} Dishes)`;
+const title = `Malaysian Food Tasting Checklist: What to Eat Where in Malaysia (${checklistTotal} Dishes)`;
 const description =
-  'Not a restaurant app. A checklist of Malaysian dishes and the towns or states they come from, so you can seek out each one at its source and try the best version.';
+  'The Malaysian food tasting checklist: tick off every dish worth trying, and find each one where it comes from so the version you get is the best version. Not a restaurant app.';
 
 const siteUrl = 'https://whattoeatwhereinmalaysia.com';
 
@@ -36,7 +36,7 @@ const structuredData = {
       operatingSystem: 'Any',
       url: siteUrl,
       description:
-        'Not a restaurant or maps app: a checklist of Malaysian dishes and the towns or states they come from, so you can try each one at its source. Score saved in your browser and shareable; paid state-by-state deep dives available.',
+        'The Malaysian food tasting checklist: tick off dishes worth trying and find each one where it comes from, so the version you get is the best version. Score saved in your browser and shareable; paid state-by-state deep dives available.',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       publisher: { '@type': 'Organization', name: 'Simply Enak' },
     },
@@ -70,15 +70,29 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
 ---
 
 <Layout title={title} description={description} structuredData={structuredData}>
+  <div class="sticky-progress" id="sticky-progress" aria-hidden="true">
+    <span>Tried <b id="sp-count">0</b>/{checklistTotal}</span>
+    <span class="sp-track"><span class="sp-fill" id="sp-fill" style="width:0%"></span></span>
+    <a href="#checklist">Jump to checklist</a>
+  </div>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">The Malaysia Dish-Origin Checklist</p>
-      <h1>What to Eat Where in Malaysia</h1>
-      <p class="lede">
-        Not another maps-and-reviews app. This is a checklist of dishes worth travelling for,
-        each tied to the town or state it comes from, so you can try every one at its source.
-      </p>
-      <div class="progress-panel" id="progress-panel">
+      <p class="eyebrow">The Dish-Origin Checklist</p>
+            <h1>What to Eat in Malaysia</h1>
+            <p class="lede">
+              Not another maps-and-reviews app. This is a checklist of dishes worth travelling for,
+              each tied to the town or state it comes from, so you can try every one at its source.
+            </p>
+            <div class="hero-stats" aria-hidden="true">
+              <span><b>{checklistTotal}</b> dishes</span><span class="dot">&middot;</span>
+              <span><b>16</b> states & territories</span><span class="dot">&middot;</span>
+              <span><b>12</b> national classics</span>
+            </div>
+            <p class="hero-trust" aria-hidden="true">
+              Works offline · No tracking · Built by <a href="https://simplyenak.com" target="_blank" rel="noopener">Simply Enak</a>
+            </p>
+            <p class="hero-cta-row"><a href="#checklist" class="hero-cta">Start checking off</a></p>
+            <div class="progress-panel" id="progress-panel">
         <div class="progress-top">
           <p class="progress-label">
             Tried <span id="tried-count">0</span> of {checklistTotal}
@@ -102,6 +116,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
 
   <section id="checklist">
     <div class="container">
+      <p class="section-eyebrow">01 &middot; Free</p>
       <h2 class="section-title">The checklist</h2>
       <p class="section-hint">
         Open a state and tick what you have tried. Every dish is listed where it comes from:
@@ -174,6 +189,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
 
   <section id="guide">
     <div class="container">
+      <p class="section-eyebrow">02 &middot; Preview</p>
       <h2 class="section-title">The state guides</h2>
       <p class="section-hint">
         A taste of each state's kitchen. The full guides, exact streets, famous stalls, halal
@@ -218,6 +234,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
 
   <section id="packages">
     <div class="container">
+      <p class="section-eyebrow">03 &middot; Deep dives</p>
       <h2 class="section-title">Go deeper</h2>
       <p class="section-hint">
         The checklist is free and stays free. The deep dives below open the full guides.
@@ -384,6 +401,15 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
         document.getElementById('tried-count').textContent = n;
         document.getElementById('progress-fill').style.width = (TOTAL ? (100 * n) / TOTAL : 0) + '%';
         document.getElementById('progress-track').setAttribute('aria-valuenow', n);
+
+        var sp = document.getElementById('sticky-progress');
+        if (sp) {
+          document.getElementById('sp-count').textContent = n;
+          document.getElementById('sp-fill').style.width = (TOTAL ? (100 * n) / TOTAL : 0) + '%';
+          var heroBottom = document.querySelector('.hero');
+          var past = heroBottom ? heroBottom.getBoundingClientRect().bottom < 0 : true;
+          sp.classList.toggle('show', past && n > 0);
+        }
 
         ids.forEach(function (id) {
           var card = document.querySelector('[data-dish-card="' + id + '"]');

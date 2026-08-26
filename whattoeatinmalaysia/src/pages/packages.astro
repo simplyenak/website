@@ -1,0 +1,143 @@
+---
+import Default from '~/layouts/Default.astro';
+import { packages, type PackageCard, faqs } from '~/data/dishes';
+
+const title = 'Deep-Dive Packages — What to Eat in Malaysia';
+const description = 'Compare our deep-dive packages: Nyonya Kitchen, State Deep Dives, and the free Malaysia Basics checklist. One-time purchases, no subscriptions.';
+---
+
+<Default title={title} description={description}>
+  <main class="packages-page">
+    <div class="container">
+      <header class="packages-header">
+        <p class="section-eyebrow">Deep Dives</p>
+        <h1>Choose Your Package</h1>
+        <p class="section-hint">
+          The checklist is free and stays free. The packages below unlock the detail that decides what you can actually eat — stall-level addresses, halal certificates, allergen flags, and printable PDFs.
+        </p>
+      </header>
+
+      <section class="comparison-table" aria-labelledby="compare-heading">
+        <h2 id="compare-heading" class="section-title">What's Included</h2>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              {packages.map(p => <th scope="col" class="pkg-col"><span class="pkg-badge" data-status={p.status}>{p.status === 'free' ? 'Free' : 'Coming'}</span> {p.name}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Price</td>
+              {packages.map(p => <td class="pkg-price-cell">{p.price}</td>)}
+            </tr>
+            <tr>
+              <td>National checklist (81 dishes)</td>
+              {packages.map(p => <td>{p.id === 'basic-malaysia' ? <span class="check">✓</span> : <span class="dash">—</span>}</td>)}
+            </tr>
+            <tr>
+              <td>Town/neighbourhood per dish</td>
+              {packages.map(p => <td>{p.id !== 'basic-malaysia' ? <span class="check">✓</span> : <span class="check-muted">Basic</span>}</td>)}
+            </tr>
+            <tr>
+              <td>Halal status per dish</td>
+              {packages.map(p => <td><span class="check">✓</span></td>)}
+            </tr>
+            <tr>
+              <td>Best time of day</td>
+              {packages.map(p => <td><span class="check">✓</span></td>)}
+            </tr>
+            <tr>
+              <td>Famous stall names</td>
+              {packages.map(p => <td>{p.id !== 'basic-malaysia' ? <span class="check">✓</span> : <span class="dash">—</span>}</td>)}
+            </tr>
+            <tr>
+              <td>Diet safety flags (veg, gluten, nuts)</td>
+              {packages.map(p => <td>{p.id === 'state-deep' ? <span class="check">✓</span> : <span class="dash">—</span>}</td>)}
+            </tr>
+            <tr>
+              <td>Ingredient breakdowns</td>
+              {packages.map(p => <td>{p.id !== 'basic-malaysia' ? <span class="check">✓</span> : <span class="dash">—</span>}</td>)}
+            </tr>
+            <tr>
+              <td>Printable PDF per state</td>
+              {packages.map(p => <td>{p.id !== 'basic-malaysia' ? <span class="check">✓</span> : <span class="dash">—</span>}</td>)}
+            </tr>
+            <tr>
+              <td>Offline access</td>
+              {packages.map(p => <td><span class="check">✓</span></td>)}
+            </tr>
+            <tr>
+              <td>Lifetime updates</td>
+              {packages.map(p => <td><span class="check">✓</span></td>)}
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="package-cards" aria-labelledby="cards-heading">
+        <h2 id="cards-heading" class="section-title">Package Details</h2>
+        <div class="pkg-cards-grid">
+          {packages.map((pkg: PackageCard) => (
+            <article class="pkg-card-detail" data-pkg={pkg.id}>
+              <header class="pkg-card-head">
+                <span class="pkg-badge" data-status={pkg.status}>{pkg.status === 'free' ? 'Free' : 'Coming soon'}</span>
+                <h3>{pkg.name}</h3>
+                <p class="pkg-blurb">{pkg.blurb}</p>
+              </header>
+              <ul class="pkg-includes">
+                {pkg.includes.map(item => <li>{item}</li>)}
+              </ul>
+              <footer class="pkg-card-foot">
+                <p class="pkg-price-display">{pkg.price}</p>
+                {pkg.status === 'free' && (
+                  <a class="pkg-cta primary" href="#checklist">Start using the checklist</a>
+                )}
+                {pkg.status === 'coming' && (
+                  <a class="pkg-cta secondary" href="/login" data-pkg={pkg.id}>Join the waitlist</a>
+                )}
+              </footer>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="packages-faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="section-title">Questions</h2>
+        <dl class="faq-list">
+          {faqs.map((f, i) => (
+            <div class="faq-item">
+              <dt><button class="faq-q" aria-expanded="false" aria-controls={`faq-a-${i}`}>{f.q}</button></dt>
+              <dd id={`faq-a-${i}`} class="faq-a" hidden>{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <footer class="packages-footer">
+        <p>All purchases are one-time — no subscriptions, no recurring charges. Access is tied to your email; log in on any device to open your guides.</p>
+        <p><a href="/login">Already bought? Log in →</a></p>
+      </footer>
+    </div  </main>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        const ans = document.getElementById(btn.getAttribute('aria-controls'));
+        ans.hidden = expanded;
+      });
+    });
+
+    // Waitlist CTA - track which package
+    document.querySelectorAll('.pkg-cta.secondary').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const pkg = a.dataset.pkg;
+        // Store in sessionStorage so /login can pre-select
+        sessionStorage.setItem('wtm-waitlist-pkg', pkg);
+      });
+    });
+  </script>
+</Default>
