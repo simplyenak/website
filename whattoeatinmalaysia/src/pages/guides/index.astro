@@ -1,48 +1,59 @@
 ---
 import Default from '~/layouts/Default.astro';
-import { states, REGION_LABELS, Region, type StateEntry } from '~/data/dishes';
+import { states, REGION_LABELS, Region, type StateEntry, packages as pkgList } from '~/data/dishes';
+import { stateImages } from '~/data/images';
 
 const regionOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borneo'];
 const grouped = regionOrder.map(r => ({ region: r, states: states.filter(s => s.region === r) }));
-
-const title = 'State Food Guides — What to Eat in Malaysia';
-const description = 'Browse every Malaysian state food guide. Each guide lists signature dishes, famous stalls, halal status, best time to eat, and the exact towns where they come from.';
 ---
 
-<Default title={title} description={description}>
-  <main class="guides-index">
+<Default title="State Guides — What to Eat in Malaysia" description="Deep-dive guides for all 16 states and federal territories of Malaysia. Signature dishes, famous stalls, halal status, and best times to eat.">
+  <main class="guides-page">
     <div class="container">
-      <header class="guides-header">
-        <p class="section-eyebrow">Browse by State</p>
-        <h1>State Food Guides</h1>
-        <p class="section-hint">
-          {states.length} states and territories. Each guide shows signature dishes, where to find them, famous stalls, halal status, and the best time to eat.
+      <header class="section-header">
+        <p class="section-eyebrow">02 · Preview</p>
+        <h1>Malaysia State Food Guides</h1>
+        <p class="lead">
+          Every signature dish in each state, with where to eat, famous stalls, halal status, and best time to visit.
         </p>
       </header>
 
-      <nav class="region-tabs" role="tablist" aria-label="Filter by region">
+      <div class="region-tabs">
+        <button class="region-tab active" data-region="all">All states</button>
         {regionOrder.map(r => (
-          <button role="tab" class="region-tab" data-region={r} aria-selected={false}>
-            {REGION_LABELS[r]}
-          </button>
+          <button class="region-tab" data-region={r}>{REGION_LABELS[r]}</button>
         ))}
-      </nav>
+      </div>
 
       {grouped.map(({ region, states: regionStates }) => (
         <section class="region-section" id={region} data-region={region}>
-          <h2 class="region-heading">{REGION_LABELS[region]}</h2>
+          <h2 class="region-heading">
+            {REGION_LABELS[region]}
+            <span class="region-count">{regionStates.length}</span>
+          </h2>
           <div class="guides-grid">
             {regionStates.map((state: StateEntry) => (
               <article class="guide-card" data-state={state.id}>
-                <header class="guide-card-head">
-                  <h3>{state.name}</h3>
-                  <span class="dish-count">{state.dishes.length} dishes</span>
-                </header>
-                <p class="guide-card-intro">{state.intro}</p>
-                <footer class="guide-card-foot">
-                  <a class="guide-link" href={`/guides/${state.id}`}>Open guide →</a>
-                  {state.cta && <a class="guide-cta" href={state.cta.url} target="_blank" rel="noopener">{state.cta.label}</a>}
-                </footer>
+                <a class="guide-card-link" href={`/guides/${state.id}`}>
+                  <div class="guide-card-image">
+                    {stateImages[state.id] ? (
+                      <img src={stateImages[state.id].src} alt={stateImages[state.id].alt} loading="lazy" />
+                    ) : (
+                      <div class="guide-card-placeholder">{state.name.slice(0, 2).toUpperCase()}</div>
+                    )}
+                  </div>
+                  <div class="guide-card-content">
+                    <header class="guide-card-head">
+                      <h3>{state.name}</h3>
+                      <span class="dish-count">{state.dishes.length} dishes</span>
+                    </header>
+                    <p class="guide-card-intro">{state.intro}</p>
+                  </div>
+                  <footer class="guide-card-foot">
+                    <a class="guide-link" href={`/guides/${state.id}`}>Open guide →</a>
+                    {state.cta && <a class="guide-cta" href={state.cta.url} target="_blank" rel="noopener">{state.cta.label}</a>}
+                  </footer>
+                </a>
               </article>
             ))}
           </div>
@@ -50,24 +61,22 @@ const description = 'Browse every Malaysian state food guide. Each guide lists s
       ))}
 
       <section class="guides-cta">
-        <p>Want the full experience? The <a href="/packages">deep-dive packages</a> unlock exact stall addresses, halal certifications, dietary filters, and printable PDFs for every state.</p>
+        <p>Want the full experience? The <a href="/packages">deep-dive packages</a> unlock exact stall addresses, halal certifications, dietary filters, and offline access for every state.</p>
       </section>
     </div>
   </main>
 
   <script>
-    // Region tab filtering
     const tabs = document.querySelectorAll('.region-tab');
     const sections = document.querySelectorAll('.region-section');
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const r = tab.dataset.region;
-        tabs.forEach(t => t.setAttribute('aria-selected', t === tab));
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
         sections.forEach(s => {
-          s.style.display = s.dataset.region === r ? '' : 'none';
+          s.style.display = (r === 'all' || s.dataset.region === r) ? '' : 'none';
         });
-        // Scroll to keep tabs in view
-        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       });
     });
   </script>

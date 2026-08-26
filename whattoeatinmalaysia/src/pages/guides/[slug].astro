@@ -1,6 +1,7 @@
 ---
 import Default from '~/layouts/Default.astro';
 import { states, type StateEntry, type Dish } from '~/data/dishes';
+import { stateImages } from '~/data/images';
 
 export async function getStaticPaths() {
   return states.map(state => ({
@@ -16,6 +17,8 @@ interface Props {
 const { state } = Astro.props;
 const title = `${state.name} Food Guide — What to Eat in Malaysia`;
 const description = `Every signature dish in ${state.name}: famous stalls, halal status, best time to eat, and the exact towns they come from.`;
+
+const image = stateImages[state.id] || stateImages['_default'];
 
 const halalColors: Record<string, { bg: string; text: string }> = {
   halal: { bg: '#DFF6E0', text: '#1A7A2E' },
@@ -43,6 +46,18 @@ const halalLabels: Record<string, string> = {
           <span aria-hidden="true">/</span>
           <span aria-current="page">{state.name}</span>
         </nav>
+        {image && (
+          <div class="guide-hero-image">
+            <img 
+              src={image.src} 
+              alt={image.alt}
+              width="1200"
+              height="600"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+        )}
         <h1>{state.name} Food Guide</h1>
         <p class="guide-intro">{state.intro}</p>
         {state.cta && (
@@ -96,7 +111,8 @@ const halalLabels: Record<string, string> = {
       </section>
 
       <footer class="guide-footer">
-        <p>Back to <a href="/guides">all state guides</a> or <a href="/packages">compare deep-dive packages</a> for printable PDFs, dietary filters, and stall addresses.</p>
+        <p>Back to <a href="/guides">all state guides</a> or <a href="/packages">compare deep-dive packages</a>.</p>
       </footer>
-    </div  </main>
+    </div>
+  </main>
 </Default>
