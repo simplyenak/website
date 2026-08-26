@@ -362,7 +362,7 @@ export const states: StateEntry[] = [
     id: 'putrajaya',
     name: 'Putrajaya',
     region: 'central',
-    intro: "A planned government city with no heritage dish of its own; the precinct food courts and farmers markets do the cooking, and they punch above their weight.",
+    intro: 'A planned government city with no heritage dish of its own; the precinct food courts and pasar tani carry the cooking load, and they do it better than a planned city needs to.',
     dishes: [
       {
         id: 'nasi-lemak-berlauk-p8',
@@ -477,7 +477,7 @@ export const states: StateEntry[] = [
         id: 'nyonya-laksa',
         name: 'Nyonya laksa',
         origin: 'Peranakan',
-        what: 'Coconut-and-tamarind noodle soup balancing rich and sour the way only Nyonya cooking does, with prawn and cucumber ribbons.',
+        what: 'Coconut-and-tamarind noodle soup, rich and sour in the same spoon, with prawn and cucumber ribbons.',
         where: 'Nyonya restaurants around Jonker and Heeren streets.',
         bestTime: 'Lunch',
         halal: 'varies',
@@ -503,7 +503,7 @@ export const states: StateEntry[] = [
         id: 'laksa-johor',
         name: 'Laksa Johor',
         origin: 'Malay',
-        what: "Thick coconut-fish gravy over spaghetti-length noodles, traditionally eaten by hand with ulam on the side. The state’s royal kitchen dish.",
+        what: "Thick coconut-fish gravy over spaghetti-length noodles, traditionally eaten by hand with ulam on the side. Johor serves it on festive days.",
         where: 'Muar and Batu Pahat Malay restaurants; JB warung for breakfast.',
         bestTime: 'Breakfast, lunch',
         halal: 'halal',
@@ -677,7 +677,7 @@ export const states: StateEntry[] = [
         id: 'cek-mek-molek',
         name: "Cek mek molek",
         origin: 'Malay',
-        what: "Banana filled with sugarcane sweetener, battered and fried; the Kelantan sweet stall classic, nicknamed \"pretty lady\".",
+        what: 'Banana stuffed with palm sugar, battered and fried. The name means "pretty lady"; the snack disappears first.',
         where: 'Snack stalls and pasar malam across Kota Bharu.',
         bestTime: 'Snack',
         halal: 'halal',
@@ -847,7 +847,7 @@ export const nationalClassics: ClassicItem[] = [
   {
     id: 'teh-tarik',
     name: 'Teh tarik',
-    what: '"Pulled" milky tea, poured long between mugs for foam. The drink that goes with everything.',
+    what: '"Pulled" milky tea, poured long between two mugs until it foams. Breakfast order, midnight order.',
     halal: 'halal',
   },
   {
@@ -871,7 +871,7 @@ export const nationalClassics: ClassicItem[] = [
   {
     id: 'kaya-toast',
     name: 'Kaya toast & half-boiled eggs',
-    what: 'Coconut-egg jam toast with soft eggs and white pepper, kopitiam breakfast since forever.',
+    what: 'Coconut-egg jam toast with soft eggs and white pepper. The kopitiam breakfast order, unchanged for generations.',
     halal: 'varies',
   },
   {
@@ -883,7 +883,7 @@ export const nationalClassics: ClassicItem[] = [
   {
     id: 'ais-kacang',
     name: 'Ais kacang (ABC)',
-    what: 'Shaved ice mountain over sweet corn, red bean, grass jelly and syrups. The dessert that follows the weather.',
+    what: 'Shaved ice mountain over sweet corn, red bean, grass jelly and syrups. Malaysia in a heatwave is why this exists.',
     halal: 'halal',
   },
   {
