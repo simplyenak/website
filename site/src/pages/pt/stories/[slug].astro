@@ -33,12 +33,13 @@ if (story.translations) {
       // Strip leading h1 and code fences from translated markdown to avoid duplicate with template
       let translatedMarkdown = trans.content;
       // Remove markdown code fences if present
-      translatedMarkdown = translatedMarkdown.replace(/^```[a-z]*\n?/, '').replace(/```$/,'');
+      translatedMarkdown = translatedMarkdown.replace(/^```[a-z]*\n?/, '').replace(/```$/, '');
       // Remove leading # Title pattern
       translatedMarkdown = translatedMarkdown.replace(/^#[^\n]+\n\n?/, '');
       finalContent = marked.parse(translatedMarkdown);
     } catch {}
   }
+  // else: no translation - use original content as-is (keep its h1)
 }
 
 // Shape story data into a Post-like object for SinglePost

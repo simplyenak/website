@@ -38,12 +38,20 @@ const contentHtml = story.content_markdown ? marked.parse(story.content_markdown
 let finalContent = contentHtml;
 if (trans?.content && typeof trans.content === 'string' && !trans.content.startsWith('[object Object]')) {
   try {
-    // Strip leading h1 and code fences from translated markdown
+    // Strip leading h1 and code fences from translated markdown to avoid duplicate with template
     let translatedMarkdown = trans.content;
+    // Remove markdown code fences if present
     translatedMarkdown = translatedMarkdown.replace(/^```[a-z]*\n?/, '').replace(/```$/, '');
+    // Remove leading # Title pattern (single line)
     translatedMarkdown = translatedMarkdown.replace(/^#[^\n]+\n\n?/, '');
     finalContent = marked.parse(translatedMarkdown);
   } catch {}
+} else if (!trans?.content) {
+  // No translation - use original content but strip ALL h1 tags to avoid duplicate with template
+  let cleanContent = contentHtml;
+  // Remove any <h1> tags
+  cleanContent = cleanContent.replace(/<h1[^>]*>.*?<\/h1>/gis, '');
+  finalContent = cleanContent;
 }
 
 // Shape story data into a Post-like object for SinglePost
