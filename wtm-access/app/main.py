@@ -67,6 +67,28 @@ def unsign(token: str):
     return email, exp_i, [p for p in prods.split(",") if p]
 
 
+def extract_product_ids(body: dict) -> list[str]:
+    """ThriveCart sends purchase_map as list of 'product-12'/'bump-3'/'upsell-2'
+    strings (dict in legacy variants) plus base_product int for the front-end."""
+    ids: set[str] = set()
+    raw = body.get("purchase_map")
+    keys: list[str] = []
+    if isinstance(raw, dict):
+        keys = [str(k) for k in raw.keys()]
+    elif isinstance(raw, list):
+        keys = [str(x) for x in raw]
+    for it in keys:
+        it = it.strip()
+        if it.startswith("product-") and it[len("product-"):].isdigit():
+            ids.add(it[len("product-"):])
+        elif it.isdigit():
+            ids.add(it)
+    bp = str(body.get("base_product") or "")
+    if bp.isdigit():
+        ids.add(bp)
+    return sorted(ids)
+
+
 @app.get("/health")
 def health():
     return {"ok": True, "service": "wtm-access"}
@@ -88,19 +110,18 @@ async def thrivecart_hook(request: Request, k: str = Query(default="")):
     )
 
     customer = body.get("customer") or {}
-    email = str(customer.get("email") or customer.get("identifier") or "").strip().lower()
-    purchase_map = body.get("purchase_map") or {}
-    product_ids = [str(p) for p in purchase_map.keys()] or [str(body.get("product_id") or "")]
+    email = str(customer.get("email") or customer.get("identifier") or body.get("customer_identifier") or "")
+    email = email.strip().lower()
+    product_ids = extract_product_ids(body)
 
-    if email and event in ("order.success", "order.rebill", "order.subscription Continue".strip()):
+    if email and event in ("order.success", "order.rebill", "order.subscription_payment"):
         for pid in product_ids:
-            if pid and pid != "None":
-                con.execute(
-                    "INSERT OR REPLACE INTO purchases (email, product_id, order_id, event, ts)"
-                    " VALUES (?,?,?,?,?)",
-                    (email, pid, str(body.get("order_id", "")), event, int(time.time())),
-                )
-    elif email and event in ("order.refund", "order.cancelled"):
+            con.execute(
+                "INSERT OR REPLACE INTO purchases (email, product_id, order_id, event, ts)"
+                " VALUES (?,?,?,?,?)",
+                (email, pid, str(body.get("order_id", "")), event, int(time.time())),
+            )
+    elif email and event in ("order.refund", "order.cancelled", "order.subscription_cancelled"):
         for pid in product_ids:
             con.execute("DELETE FROM purchases WHERE email=? AND product_id=?", (email, pid))
 
