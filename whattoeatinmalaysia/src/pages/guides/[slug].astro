@@ -1,3 +1,46 @@
+---
+import Default from '~/layouts/Default.astro';
+import { states, type StateEntry, type Dish } from '~/data/dishes';
+import { stateImages } from '~/data/images';
+
+export async function getStaticPaths() {
+  return states.map(state => ({
+    params: { slug: state.id },
+    props: { state },
+  }));
+}
+
+interface Props {
+  state: StateEntry;
+}
+
+const { state } = Astro.props;
+const title = `${state.name} Food Guide — What to Eat in Malaysia`;
+const description = `Every signature dish in ${state.name}: famous stalls, halal status, best time to eat, and the exact towns they come from.`;
+
+const image = stateImages[state.id] || stateImages['_default'];
+
+// Simple paywall: check for unlocked cookie (set by /thanks or /login)
+// In production, this would check the session cookie from wtm-access backend
+const cookieHeader = Astro.request.headers.get('cookie') || '';
+const isUnlocked = cookieHeader.includes('wtm-unlocked=true') || 
+                   cookieHeader.includes('thrivecart-email=');
+
+const halalColors: Record<string, { bg: string; text: string }> = {
+  halal: { bg: '#DFF6E0', text: '#1A7A2E' },
+  'pork-free': { bg: '#FFF3D6', text: '#9A6B00' },
+  'non-halal': { bg: '#FDE8E8', text: '#A62828' },
+  varies: { bg: '#E8E8F0', text: '#3B3B7A' },
+};
+
+const halalLabels: Record<string, string> = {
+  halal: 'Halal',
+  'pork-free': 'Pork-free',
+  'non-halal': 'Non-halal',
+  varies: 'Varies by stall',
+};
+---
+
 <style>
 .guide-paywall { padding-top: 24px; }
 .paywall-box { max-width: 640px; margin: 0 auto; text-align: center; padding: 40px 24px; }
@@ -21,3 +64,131 @@
   .paywall-btn { transition: none; }
 }
 </style>
+
+{!isUnlocked ? (
+  <Default title={title} description={description}>
+    <main class="guide-paywall">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Checklist</a>
+          <span aria-hidden="true">/</span>
+          <a href="/guides">Guides</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{state.name}</span>
+        </nav>
+        
+        <div class="paywall-box">
+          <h1>{state.name} Food Guide</h1>
+          <p class="paywall-intro">{state.intro}</p>
+          
+          <div class="paywall-preview">
+            <h2>Preview</h2>
+            <ul class="preview-list">
+              {state.dishes.slice(0, 3).map((dish: Dish) => (
+                <li class="preview-item">
+                  <strong>{dish.name}</strong>
+                  <em>{dish.what.slice(0, 60)}...</em>
+                </li>
+              ))}
+            </ul>
+            <p class="paywall-note">
+              <strong>{state.dishes.length - 3} more dishes</strong> with exact stalls, 
+              halal notes, and best times — unlock with your purchase.
+            </p>
+          </div>
+          
+          <div class="paywall-actions">
+            <a class="paywall-btn primary" href="https://uiy.thrivecart.com/street-food-masters-collection/" target="_blank" rel="noopener">
+              Get the collection &rarr;
+            </a>
+            <a class="paywall-btn secondary" href="/login">
+              Log in to unlock
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </Default>
+) : (
+  <Default title={title} description={description}>
+    <main class="guide-detail">
+      <div class="container">
+        <header class="guide-hero">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Checklist</a>
+            <span aria-hidden="true">/</span>
+            <a href="/guides">Guides</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{state.name}</span>
+          </nav>
+          {image && (
+            <div class="guide-hero-image">
+              <img 
+                src={image.src} 
+                alt={image.alt}
+                width="1200"
+                height="600"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
+          )}
+          <h1>{state.name} Food Guide</h1>
+          <p class="guide-intro">{state.intro}</p>
+          {state.cta && (
+            <a class="guide-tour-cta" href={state.cta.url} target="_blank" rel="noopener">
+              {state.cta.label}
+            </a>
+          )}
+        </header>
+
+        <div class="guide-stats">
+          <span class="stat"><b>{state.dishes.length}</b> signature dishes</span>
+          <span class="stat"><b>{state.dishes.filter(d => d.halal === 'halal').length}</b> halal-certified</span>
+          <span class="stat"><b>{state.dishes.filter(d => d.halal === 'pork-free').length}</b> pork-free</span>
+        </div>
+
+        <section class="dishes-detail" aria-labelledby="dishes-heading">
+          <h2 id="dishes-heading" class="section-title">Signature Dishes</h2>
+          <ul class="dish-detail-list">
+            {state.dishes.map((dish: Dish) => {
+              const h = halalColors[dish.halal] || halalColors.varies;
+              return (
+                <li class="dish-detail" data-dish={dish.id}>
+                  <header class="dish-head">
+                    <h3 class="dish-name">{dish.name}</h3>
+                    {dish.origin && <span class="dish-origin">{dish.origin}</span>}
+                  </header>
+                  <p class="dish-what">{dish.what}</p>
+                  <div class="dish-meta">
+                    <span class="dish-where" title={dish.where}>
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      {dish.where}
+                    </span>
+                    {dish.famousAt && dish.famousAt.length > 0 && (
+                      <span class="dish-famous" title={dish.famousAt.join(', ')}>
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        {dish.famousAt.join(', ')}
+                      </span>
+                    )}
+                    {dish.bestTime && (
+                      <span class="dish-time" title={dish.bestTime}>
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        {dish.bestTime}
+                      </span>
+                    )}
+                    <span class="dish-halal" style={{ background: h.bg, color: h.text }}>{halalLabels[dish.halal]}</span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <footer class="guide-footer">
+          <p>Back to <a href="/guides">all state guides</a> or <a href="/packages">compare deep-dive packages</a>.</p>
+        </footer>
+      </div>
+    </main>
+  </Default>
+)}
