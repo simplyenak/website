@@ -1,4 +1,5 @@
 ---
+import { CONTACT_FORM_URL } from '~/lib/formspree';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getContactPage } from '~/lib/content';
@@ -351,7 +352,7 @@ const metadata = {
       feedback.classList.add('hidden');
 
       try {
-        const res = await fetch('https://formspree.io/f/xjkyqvpz', {
+        const res = await fetch(CONTACT_FORM_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload),

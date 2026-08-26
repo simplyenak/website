@@ -1,4 +1,5 @@
 ---
+import { CONTACT_FORM_URL } from '~/lib/formspree';
 import { Icon } from 'astro-icon/components';
 export interface Props {
   widgetId: string;
@@ -123,7 +124,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
       if (feedback) feedback.classList.add('hidden');
 
       try {
-        const res = await fetch('https://formspree.io/f/xjkyqvpz', {
+        const res = await fetch(CONTACT_FORM_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload),

@@ -321,6 +321,9 @@ const pickerData = states.map((s) => ({
   <script type="application/json" id="dish-data" set:html={JSON.stringify(pickerData)} />
   <script>
     (function () {
+      // Formspree endpoint. Current ID is DEAD (404, found 2026-08-26) pending
+      // replacement; swap here when the new form exists.
+      var WAITLIST_FORM_URL = 'https://formspree.io/f/xjkyqvpz';
       var KEY = 'wtm-tried-v1';
       var TOTAL = document.querySelectorAll('[data-dish]').length;
 
@@ -475,7 +478,7 @@ const pickerData = states.map((s) => ({
         }
         wlBtn.disabled = true;
         wlBtn.textContent = 'Joining...';
-        fetch('https://formspree.io/f/xjkyqvpz', {
+        fetch(WAITLIST_FORM_URL, {
           method: 'POST',
           headers: { 'content-type': 'application/json', accept: 'application/json' },
           body: JSON.stringify({
