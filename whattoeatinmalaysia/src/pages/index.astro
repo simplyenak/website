@@ -11,11 +11,11 @@ import {
   type Region,
 } from '~/data/dishes';
 
-const title = `What to Eat in Malaysia: The Food Checklist (${checklistTotal} Dishes)`;
+const title = `What to Eat Where in Malaysia: The Dish-Origin Checklist (${checklistTotal} Dishes)`;
 const description =
-  'The Malaysia food checklist: 81 dishes to tick off as you travel, from asam laksa to Sarawak laksa. Track your score, share it, and go deeper with state-by-state packages.';
+  'Not a restaurant app. A checklist of Malaysian dishes and the towns or states they come from, so you can seek out each one at its source and try the best version.';
 
-const siteUrl = 'https://whattoeatinmalaysia.com';
+const siteUrl = 'https://whattoeatwhereinmalaysia.com';
 
 const regionsOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borneo'];
 const byRegion = regionsOrder.map((r) => ({
@@ -36,7 +36,7 @@ const structuredData = {
       operatingSystem: 'Any',
       url: siteUrl,
       description:
-        'The Malaysia food checklist: 81 dishes to tick off as you travel, with your score saved in your browser and shareable, plus paid state-by-state deep dives.',
+        'Not a restaurant or maps app: a checklist of Malaysian dishes and the towns or states they come from, so you can try each one at its source. Score saved in your browser and shareable; paid state-by-state deep dives available.',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       publisher: { '@type': 'Organization', name: 'Simply Enak' },
     },
@@ -72,11 +72,11 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
 <Layout title={title} description={description} structuredData={structuredData}>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">The Malaysia Food Checklist</p>
-      <h1>What to Eat in Malaysia</h1>
+      <p class="eyebrow">The Malaysia Dish-Origin Checklist</p>
+      <h1>What to Eat Where in Malaysia</h1>
       <p class="lede">
-        Eighty-one dishes worth the flight. Tick them off as you eat your way through Malaysia,
-        and share your score when you get home.
+        Not another maps-and-reviews app. This is a checklist of dishes worth travelling for,
+        each tied to the town or state it comes from, so you can try every one at its source.
       </p>
       <div class="progress-panel" id="progress-panel">
         <div class="progress-top">
@@ -92,10 +92,11 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           <div class="progress-fill" id="progress-fill"></div>
         </div>
         <p class="progress-hint">
-          Guest mode: saved in this browser, no account. A free account that syncs your ticks
-          everywhere is coming.
+          Ticks are saved in this browser, no account needed. Bought a deep dive?
+          <a href="/login">Log in</a> to open your guides on any device.
         </p>
       </div>
+      <a class="hero-login" href="/login">Log in &rarr;</a>
     </div>
   </header>
 
@@ -103,7 +104,9 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
     <div class="container">
       <h2 class="section-title">The checklist</h2>
       <p class="section-hint">
-        Open a state, tick what you have tried. The classics at the top need no state at all.
+        Open a state and tick what you have tried. Every dish is listed where it comes from:
+        asam laksa in Air Itam, satay in Kajang, kolok mee in Kuching. The classics at the top
+        are eaten everywhere; the rest are worth going to the source for.
       </p>
 
       <div class="cl-group open">
@@ -231,6 +234,9 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
               {p.includes.map((i) => <li>{i}</li>)}
             </ul>
             <p class="pkg-price">{p.price}</p>
+            <a class="pkg-cta" href={p.status === 'free' ? '#checklist' : '#waitlist'}>
+              {p.status === 'free' ? 'Start ticking' : 'Join the waitlist'} &rarr;
+            </a>
           </div>
         ))}
       </div>
@@ -344,9 +350,8 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
   />
   <script>
     (function () {
-      // Formspree endpoint. Current ID is DEAD (404, found 2026-08-26) pending
-      // replacement; swap here when the new form exists.
-      var WAITLIST_FORM_URL = 'https://formspree.io/f/xjkyqvpz';
+      // Own backend captures the waitlist now (Formspree ID was dead, 2026-08-26).
+      var ACCESS = 'https://wtm-access.system.simplyenak.com';
       var KEY = 'wtm-tried-v1';
       var TOTAL = document.querySelectorAll('[data-dish]').length;
 
@@ -426,7 +431,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           'Malaysia food checklist: ' + n + '/' + TOTAL + ' dishes tried' +
           (picks.length ? ' (' + picks.join(', ') + (n > 3 ? ', ...' : '') + ')' : '') +
           '. How many have you had?';
-        var url = 'https://whattoeatinmalaysia.com';
+        var url = 'https://whattoeatwhereinmalaysia.com';
         if (navigator.share) {
           navigator.share({ title: 'What to Eat in Malaysia', text: text, url: url }).catch(function () {});
         } else {
@@ -592,13 +597,12 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
         }
         wlBtn.disabled = true;
         wlBtn.textContent = 'Joining...';
-        fetch(WAITLIST_FORM_URL, {
+        fetch(ACCESS + '/waitlist', {
           method: 'POST',
-          headers: { 'content-type': 'application/json', accept: 'application/json' },
+          headers: { 'content-type': 'application/json' },
           body: JSON.stringify({
             email: email,
             source: 'wtm-checklist',
-            _subject: '[WTM Waitlist] ' + email,
           }),
         })
           .then(function (r) {
@@ -609,9 +613,8 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           .then(function (res) {
             wlNote.hidden = false;
             if (res.ok && res.j.ok) {
-              wlNote.textContent = res.j.dup
-                ? 'You are already on the list.'
-                : 'You are on the list. We will email you when the deep dives open.';
+              wlNote.textContent =
+                'You are on the list. We will email you when the deep dives open.';
               wlForm.reset();
             } else {
               wlNote.textContent = 'Something went wrong. Try again in a minute.';

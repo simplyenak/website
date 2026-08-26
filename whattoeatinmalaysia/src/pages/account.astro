@@ -1,0 +1,102 @@
+---
+import Default from '../layouts/Default.astro';
+---
+<Default title="Your guides — What to Eat in Malaysia" description="Your purchases and unlocked guides.">
+  <main class="auth-wrap">
+    <div class="auth-box" id="acct-box">
+      <p class="eyebrow">Your guides</p>
+      <h1 id="acct-title">Checking this browser...</h1>
+      <div id="acct-body">
+        <p class="auth-lede">Looking for your saved login.</p>
+      </div>
+      <p class="auth-back"><a href="/">&larr; Back to the checklist</a></p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var ACCESS = 'https://wtm-access.system.simplyenak.com';
+      var TOKEN_KEY = 'wtm-token';
+      // ThriveCart numeric product ids -> what the buyer owns
+      var PRODUCTS = {
+        '9': {
+          name: 'Street Food Masters Collection',
+          what: 'Every deep dive: the Nyonya kitchen and all sixteen state guides.',
+        },
+      };
+
+      var title = document.getElementById('acct-title');
+      var body = document.getElementById('acct-body');
+      var token = localStorage.getItem(TOKEN_KEY);
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function renderLoggedOut() {
+        title.textContent = 'No login in this browser';
+        body.innerHTML =
+          '<p class="auth-lede">Log in with your email and we send you a one-time link. ' +
+          'No passwords.</p>' +
+          '<p><a class="auth-cta" href="/login">Log in &rarr;</a></p>' +
+          '<p class="auth-alt">Bought a guide but never got a link? Enter your purchase email ' +
+          'on the <a href="/login">login page</a> and we will match it to your order.</p>';
+      }
+
+      function renderAccount(d) {
+        title.textContent = 'Signed in as ' + d.email;
+        var rows = '';
+        if (d.products && d.products.length) {
+          rows = d.products
+            .map(function (pid) {
+              var p = PRODUCTS[pid] || { name: 'Package ' + pid, what: 'Guide package' };
+              return (
+                '<div class="acct-item"><p class="acct-name">' + esc(p.name) + '</p>' +
+                '<p class="acct-what">' + esc(p.what) + '</p></div>'
+              );
+            })
+            .join('');
+        }
+        var validUntil = d.exp ? new Date(d.exp * 1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+        body.innerHTML =
+          (rows
+            ? '<h2 class="acct-h2">Unlocked</h2>' + rows +
+              '<p class="auth-alt">Your access on this device lasts until ' + esc(validUntil) +
+              '. After that, just log in again.</p>'
+            : '<p class="auth-lede">No purchases on this email yet.' +
+              (d.waitlist ? ' You are on the waitlist, thank you.' : '') + '</p>' +
+              '<p><a class="auth-cta" href="/#packages">See the deep dives &rarr;</a></p>') +
+          '<p><button class="auth-out" id="logout-btn" type="button">Log out</button></p>';
+        var out = document.getElementById('logout-btn');
+        out.addEventListener('click', function () {
+          localStorage.removeItem(TOKEN_KEY);
+          location.href = '/';
+        });
+      }
+
+      if (!token) {
+        renderLoggedOut();
+        return;
+      }
+      fetch(ACCESS + '/verify?t=' + encodeURIComponent(token))
+        .then(function (r) {
+          return r.json().then(function (j) {
+            return { ok: r.ok, j: j };
+          });
+        })
+        .then(function (res) {
+          if (res.ok) renderAccount(res.j);
+          else {
+            localStorage.removeItem(TOKEN_KEY);
+            renderLoggedOut();
+          }
+        })
+        .catch(function () {
+          title.textContent = 'Connection problem';
+          body.innerHTML = '<p class="auth-lede">Could not reach the guide service. Reload to retry.</p>';
+        });
+    })();
+  </script>
+</Default>

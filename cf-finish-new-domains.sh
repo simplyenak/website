@@ -34,6 +34,8 @@ declare -A DOM=(
   [www.whatcanieatinmy.com]=whatcanieatinmy.pages.dev
   [whenisdurianseason.com]=whenisdurianseason.pages.dev
   [www.whenisdurianseason.com]=whenisdurianseason.pages.dev
+  [whattoeatwhereinmalaysia.com]=whattoeatinmalaysia.pages.dev
+  [www.whattoeatwhereinmalaysia.com]=whattoeatinmalaysia.pages.dev
 )
 
 echo "== Creating CNAMEs =="
@@ -46,7 +48,7 @@ echo "== Waiting for Pages domain activation (max 5 min) =="
 for i in $(seq 1 15); do
   sleep 20
   pending=0
-  for proj in whatcanieatinmy whenisdurianseason; do
+  for proj in whatcanieatinmy whenisdurianseason whattoeatinmalaysia; do
     st=$(cf "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$proj/domains" \
       | python3 -c "import json,sys;d=json.load(sys.stdin);print(','.join(f\"{x['name']}={x['status']}\" for x in (d.get('result') or []) if not x['name'].endswith('pages.dev')))")
     echo "  [$proj] $st"
@@ -56,7 +58,7 @@ for i in $(seq 1 15); do
 done
 
 echo "== Live verification =="
-for u in https://whatcanieatinmy.com/ https://www.whatcanieatinmy.com/ https://whenisdurianseason.com/ https://www.whenisdurianseason.com/; do
+for u in https://whatcanieatinmy.com/ https://www.whatcanieatinmy.com/ https://whenisdurianseason.com/ https://www.whenisdurianseason.com/ https://whattoeatwhereinmalaysia.com/ https://www.whattoeatwhereinmalaysia.com/; do
   code=$(curl -s -o /tmp/vfy.html -w "%{http_code}" -m 20 -A "$UA" "$u" || echo ERR)
   title=$(grep -oE "<title>[^<]*</title>" /tmp/vfy.html 2>/dev/null | head -1 | cut -c8-60)
   echo "  $code $u  $title"

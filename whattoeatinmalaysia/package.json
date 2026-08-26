@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev --port 4324",
     "build": "astro build",
-    "preview": "astro preview --port 4324"
+    "preview": "astro preview --port 4324",
+    "push:dishes": "node --experimental-strip-types scripts/push-dishes-to-payload.mjs",
+    "sync:dishes": "node --experimental-strip-types scripts/sync-dishes-from-payload.mjs"
   },
   "dependencies": {
     "astro": "^6.4.2"

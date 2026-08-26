@@ -7,7 +7,7 @@ export interface Props {
 }
 
 const { title, description, canonical, structuredData } = Astro.props;
-const siteUrl = 'https://whattoeatinmalaysia.com';
+const siteUrl = 'https://whattoeatwhereinmalaysia.com';
 const canonicalUrl = canonical || `${siteUrl}/`;
 ---
 
@@ -652,6 +652,43 @@ const canonicalUrl = canonical || `${siteUrl}/`;
         .dish { padding: 14px 16px; }
         .state-head, .state-intro, .state-cta { padding-left: 16px; padding-right: 16px; }
       }
+
+      /* auth pages + package CTAs (2026-08-26) */
+      .hero-login { display: inline-block; margin-top: 14px; font-size: 0.85rem; font-weight: 600; color: var(--color-accent, #b3541e); }
+      .pkg-cta { display: inline-block; margin-top: 12px; font-size: 0.85rem; font-weight: 700; }
+      .auth-wrap { min-height: 60vh; display: flex; align-items: flex-start; justify-content: center; padding: 72px 20px; }
+      .auth-box { max-width: 460px; width: 100%; }
+      .auth-box h1 { font-size: 1.9rem; margin: 6px 0 14px; }
+      .auth-lede { color: var(--color-muted, #6b625a); line-height: 1.6; margin-bottom: 22px; }
+      .auth-form { display: flex; gap: 10px; flex-wrap: wrap; }
+      .auth-form input[type='email'] {
+        flex: 1 1 220px;
+        padding: 12px 14px;
+        border: 1px solid #d8d0c7;
+        border-radius: 8px;
+        font: inherit;
+        background: #fff;
+      }
+      .auth-form button, .auth-out {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 8px;
+        background: #2f2a26;
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .auth-form button:disabled { opacity: 0.6; cursor: wait; }
+      .auth-out { background: transparent; color: var(--color-muted, #6b625a); border: 1px solid #d8d0c7; padding: 8px 14px; font-weight: 600; font-size: 0.85rem; margin-top: 18px; }
+      .auth-note { margin-top: 14px; font-size: 0.9rem; color: var(--color-muted, #6b625a); }
+      .auth-alt { margin-top: 20px; font-size: 0.85rem; color: var(--color-muted, #6b625a); line-height: 1.55; }
+      .auth-back { margin-top: 26px; font-size: 0.85rem; }
+      .auth-cta { display: inline-block; padding: 12px 18px; border-radius: 8px; background: #2f2a26; color: #fff; font-weight: 700; text-decoration: none; }
+      .acct-h2 { font-size: 1.1rem; margin: 18px 0 10px; }
+      .acct-item { border: 1px solid #e4ddd4; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; background: #fffdf9; }
+      .acct-name { font-weight: 700; margin: 0 0 4px; }
+      .acct-what { margin: 0; font-size: 0.88rem; color: var(--color-muted, #6b625a); line-height: 1.5; }
     </style>
   </head>
   <body>

@@ -1,0 +1,114 @@
+---
+import Default from '../layouts/Default.astro';
+---
+<Default title="Log in — What to Eat in Malaysia" description="Log in with your email to open your guides.">
+  <main class="auth-wrap">
+    <div class="auth-box" id="auth-box">
+      <p class="eyebrow">Your guides</p>
+      <h1>Log in</h1>
+      <p class="auth-lede">
+        No passwords. Enter the email you bought or signed up with and we send you a login link.
+      </p>
+
+      <form id="magic-form" class="auth-form">
+        <label for="magic-email" style="position:absolute;left:-9999px;">Your email</label>
+        <input id="magic-email" type="email" required placeholder="you@example.com" autocomplete="email" />
+        <button type="submit" id="magic-btn">Send login link</button>
+      </form>
+      <p class="auth-note" id="magic-note" hidden></p>
+
+      <p class="auth-alt">
+        Just bought something? The checkout success page unlocks your guides automatically.
+        Lost that tab? <a href="/account">Request your guides</a> with your purchase email instead.
+      </p>
+      <p class="auth-back"><a href="/">&larr; Back to the checklist</a></p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var ACCESS = 'https://wtm-access.system.simplyenak.com';
+      var TOKEN_KEY = 'wtm-token';
+
+      // consume magic link: /login#t=...
+      var m = location.hash.match(/[#&]t=([A-Za-z0-9_\-]+)/);
+      if (m) {
+        var box = document.getElementById('auth-box');
+        box.innerHTML =
+          '<p class="eyebrow">Your guides</p><h1>Opening your guides...</h1>' +
+          '<p class="auth-lede">Checking your login link.</p>';
+        var token = m[1];
+        history.replaceState(null, '', '/login');
+        fetch(ACCESS + '/auth/verify?token=' + encodeURIComponent(token))
+          .then(function (r) {
+            return r.json().then(function (j) {
+              return { ok: r.ok, j: j };
+            });
+          })
+          .then(function (res) {
+            if (res.ok && res.j.token) {
+              localStorage.setItem(TOKEN_KEY, res.j.token);
+              location.href = '/account';
+            } else {
+              // error text is server-controlled; still render via textContent to avoid any HTML injection
+              box.innerHTML =
+                '<p class="eyebrow">Your guides</p><h1>That link has expired</h1>' +
+                '<p class="auth-lede" id="link-error">Login links only work once and expire after 15 minutes.</p>' +
+                '<p class="auth-back"><a href="/login">Request a fresh link &rarr;</a></p>';
+              if (res.j.error) {
+                var el = document.getElementById('link-error');
+                if (el) el.textContent = res.j.error;
+              }
+            }
+          })
+          .catch(function () {
+            box.innerHTML =
+              '<p class="eyebrow">Your guides</p><h1>Connection problem</h1>' +
+              '<p class="auth-lede">We could not reach the login service. Try again in a minute.</p>' +
+              '<p class="auth-back"><a href="/login">Back to login &rarr;</a></p>';
+          });
+        return;
+      }
+
+      var form = document.getElementById('magic-form');
+      var btn = document.getElementById('magic-btn');
+      var note = document.getElementById('magic-note');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = document.getElementById('magic-email').value.trim();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+          note.hidden = false;
+          note.textContent = 'That email does not look right.';
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        fetch(ACCESS + '/auth/request', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email: email }),
+        })
+          .then(function (r) {
+            return r.json().then(function (j) {
+              return { ok: r.ok, j: j };
+            });
+          })
+          .then(function (res) {
+            form.hidden = true;
+            note.hidden = false;
+            note.textContent = res.ok
+              ? 'If that email has guides or is on our list, a login link is on its way. It works once and expires in 15 minutes.'
+              : 'Something went wrong. Try again in a minute.';
+          })
+          .catch(function () {
+            note.hidden = false;
+            note.textContent = 'Network hiccup. Try again.';
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = 'Send login link';
+          });
+      });
+    })();
+  </script>
+</Default>
