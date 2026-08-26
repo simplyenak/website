@@ -6,6 +6,7 @@ import {
   totalDishes,
   checklistTotal,
   nationalClassics,
+  packages,
   dataVerified,
   REGION_LABELS,
   type Region,
@@ -112,7 +113,8 @@ const pickerData = states.map((s) => ({
           <div class="progress-fill" id="progress-fill"></div>
         </div>
         <p class="progress-hint">
-          Saved in this browser, no account. Start anywhere below; the bar keeps up with you.
+          Guest mode: saved in this browser, no account. A free account that syncs your ticks
+          everywhere is coming.
         </p>
       </div>
     </div>
@@ -235,6 +237,46 @@ const pickerData = states.map((s) => ({
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="container">
+      <h2 class="section-title">Go deeper</h2>
+      <p class="section-hint">
+        Malaysia Basics is free and stays free. The deep dives below are in the kitchen.
+      </p>
+      <div class="pkg-grid">
+        {packages.map((p) => (
+          <div class={`pkg-card ${p.status}`}>
+            <div class="pkg-head">
+              <h3>{p.name}</h3>
+              <span class={`pkg-chip ${p.status}`}>{p.status === 'free' ? 'Free' : 'Coming'}</span>
+            </div>
+            <p class="pkg-blurb">{p.blurb}</p>
+            <ul class="pkg-list">
+              {p.includes.map((i) => <li>{i}</li>)}
+            </ul>
+            <p class="pkg-price">{p.price}</p>
+          </div>
+        ))}
+      </div>
+      <div class="waitlist-box" id="waitlist">
+        <p class="waitlist-title">Hear first when the deep dives open</p>
+        <form id="waitlist-form" class="waitlist-form">
+          <label for="waitlist-email" style="position:absolute;left:-9999px;">Your email</label>
+          <input
+            id="waitlist-email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@trip.com"
+            autocomplete="email"
+          />
+          <button type="submit" id="waitlist-btn">Join the list</button>
+        </form>
+        <p class="waitlist-note" id="waitlist-note" hidden></p>
       </div>
     </div>
   </section>
@@ -418,6 +460,54 @@ const pickerData = states.map((s) => ({
         var d = allDishes[Math.floor(Math.random() * allDishes.length)];
         picker.value = d.stateId;
         goTo('dish-' + d.id);
+      });
+      // Waitlist
+      var wlForm = document.getElementById('waitlist-form');
+      var wlBtn = document.getElementById('waitlist-btn');
+      var wlNote = document.getElementById('waitlist-note');
+      wlForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = document.getElementById('waitlist-email').value.trim();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+          wlNote.hidden = false;
+          wlNote.textContent = 'That email does not look right.';
+          return;
+        }
+        wlBtn.disabled = true;
+        wlBtn.textContent = 'Joining...';
+        fetch('https://formspree.io/f/xjkyqvpz', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', accept: 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            source: 'wtm-checklist',
+            _subject: '[WTM Waitlist] ' + email,
+          }),
+        })
+          .then(function (r) {
+            return r.json().then(function (j) {
+              return { ok: r.ok, j: j };
+            });
+          })
+          .then(function (res) {
+            wlNote.hidden = false;
+            if (res.ok && res.j.ok) {
+              wlNote.textContent = res.j.dup
+                ? 'You are already on the list.'
+                : 'You are on the list. We will email you when the deep dives open.';
+              wlForm.reset();
+            } else {
+              wlNote.textContent = 'Something went wrong. Try again in a minute.';
+            }
+          })
+          .catch(function () {
+            wlNote.hidden = false;
+            wlNote.textContent = 'Network hiccup. Try again.';
+          })
+          .finally(function () {
+            wlBtn.disabled = false;
+            wlBtn.textContent = 'Join the list';
+          });
       });
     })();
   </script>

@@ -914,6 +914,57 @@ export const nationalClassics: ClassicItem[] = [
 
 export const checklistTotal = totalDishes + nationalClassics.length;
 
+export type PackageStatus = 'free' | 'coming';
+
+export interface PackageCard {
+  id: string;
+  name: string;
+  status: PackageStatus;
+  price: string;
+  blurb: string;
+  includes: string[];
+}
+
+export const packages: PackageCard[] = [
+  {
+    id: 'basic-malaysia',
+    name: 'Malaysia Basics',
+    status: 'free',
+    price: 'Free',
+    blurb: 'The 81-dish national checklist you are on right now.',
+    includes: [
+      '69 state signatures + 12 national classics',
+      'The exact town or street for each dish',
+      'Halal notes and best time of day',
+      'Tick, track and share your score',
+    ],
+  },
+  {
+    id: 'nyonya',
+    name: 'Nyonya Kitchen',
+    status: 'coming',
+    price: 'One-time, per package',
+    blurb: 'The Peranakan canon from Melaka and Penang kitchens, beyond the greatest hits.',
+    includes: [
+      'Expanded Nyonya dish checklist',
+      'Ingredients and allergen notes per dish',
+      'Where each dish is done right',
+    ],
+  },
+  {
+    id: 'state-deep',
+    name: 'State Deep Dives',
+    status: 'coming',
+    price: 'One-time, per state',
+    blurb: 'One state at a time, with the detail that decides what you can eat.',
+    includes: [
+      'Expanded per-state checklists',
+      'Full ingredient breakdowns',
+      'Diet safety flags: halal, vegetarian, gluten, nuts',
+    ],
+  },
+];
+
 export interface Faq {
   q: string;
   a: string;
@@ -943,6 +994,10 @@ export const faqs: Faq[] = [
   {
     q: 'How does this food checklist work?',
     a: 'Tick a dish when you try it. Your progress is saved in your own browser, no account and no tracking, and the counter in the header keeps score out of the full list. Hit "Share score" to copy or share how many you have tried; Reset clears everything.',
+    },
+  {
+    q: 'Is the checklist free? What is coming next?',
+    a: 'The Malaysia Basics checklist on this page is free and stays free. A free account to sync your ticks across devices is next. Deeper packages, a Nyonya checklist and per-state deep dives with ingredient and diet-safety detail, will be paid, one-time per package. Join the list at the bottom of this page to hear first.',
     },
   {
     q: 'Can I try these dishes with a guide instead of self-driving?',
