@@ -103,6 +103,9 @@ async def thrivecart_hook(request: Request, k: str = Query(default="")):
     except Exception:
         return JSONResponse({"error": "bad-json"}, status_code=400)
     event = str(body.get("event", "unknown"))
+    tc_meta = body.get("thrivecart") or {}
+    if tc_meta and str(tc_meta.get("account", "")) != "uiy":
+        return JSONResponse({"error": "wrong-account"}, status_code=403)
     con = db()
     con.execute(
         "INSERT INTO events (event, payload, ts) VALUES (?,?,?)",

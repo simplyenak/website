@@ -1,0 +1,111 @@
+---
+import Layout from '~/layouts/Default.astro';
+import { checklistTotal } from '~/data/dishes';
+---
+
+<Layout title="Thank you — what to eat in Malaysia" description="Your Street Food Masters Collection is unlocking.">
+  <section class="hero thanks-hero">
+    <div class="container">
+      <h1>Payment received. One moment.</h1>
+      <p class="thanks-status" id="thanks-status">Matching your purchase...</p>
+      <div class="thanks-spinner" id="thanks-spinner" aria-hidden="true"></div>
+      <div class="thanks-fallback" id="thanks-fallback" hidden>
+        <p>Could not read your email from the payment link. Enter it below to unlock.</p>
+        <form id="unlock-form" class="waitlist-form">
+          <label for="unlock-email" style="position:absolute;left:-9999px;">Your purchase email</label>
+          <input id="unlock-email" type="email" required placeholder="Purchase email" autocomplete="email" />
+          <button type="submit" id="unlock-btn">Unlock</button>
+        </form>
+        <p class="waitlist-note" id="unlock-note" hidden></p>
+      </div>
+      <p class="thanks-done" id="thanks-done" hidden>
+        The Street Food Masters Collection is unlocked on this browser. The {checklistTotal}-dish
+        checklist now shows exactly where to eat every dish.
+        <a class="buy-btn" href="/#guide">Open the guides &rarr;</a>
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  (function () {
+    var ACCESS = 'https://wtm-access.system.simplyenak.com';
+    var TOKEN_KEY = 'wtm-token';
+    var statusEl = document.getElementById('thanks-status');
+    var spinner = document.getElementById('thanks-spinner');
+    var done = document.getElementById('thanks-done');
+
+    function qsEmail() {
+      var out = {};
+      var qs = location.search.replace(/^\?/, '').split('&');
+      for (var i = 0; i < qs.length; i++) {
+        var kv = qs[i].split('=');
+        var k = decodeURIComponent(kv[0].replace(/\+/g, ' '));
+        var v = decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
+        out[k] = v;
+      }
+      return out['thrivecart[customer][email]'] || '';
+    }
+
+    function finish(j) {
+      localStorage.setItem(TOKEN_KEY, j.token);
+      spinner.hidden = true;
+      statusEl.hidden = true;
+      done.hidden = false;
+      var fb = document.getElementById('thanks-fallback');
+      if (fb) fb.hidden = true;
+    }
+
+    function redeem(email, attempt) {
+      attempt = attempt || 1;
+      fetch(ACCESS + '/redeem', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: email }),
+      })
+        .then(function (r) {
+          return r.json().then(function (j) {
+            return { ok: r.ok, j: j };
+          });
+        })
+        .then(function (res) {
+          if (res.ok && res.j.ok) return finish(res.j);
+          if (attempt < 6) {
+            statusEl.textContent =
+              'Matching your purchase... (' + attempt + '/6). The payment notification is usually a few seconds behind.';
+            setTimeout(function () {
+              redeem(email, attempt + 1);
+            }, 4000);
+          } else {
+            spinner.hidden = true;
+            statusEl.textContent =
+              'We could not match that email yet. If you just paid, wait a minute and reload this page.';
+          }
+        })
+        .catch(function () {
+          if (attempt < 6) setTimeout(function () { redeem(email, attempt + 1); }, 4000);
+          else statusEl.textContent = 'Network problem. Reload to retry.';
+        });
+    }
+
+    var email = qsEmail();
+    if (email && email.indexOf('@') !== -1) {
+      redeem(email);
+    } else {
+      spinner.hidden = true;
+      statusEl.hidden = true;
+      document.getElementById('thanks-fallback').hidden = false;
+      document.getElementById('unlock-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var val = document.getElementById('unlock-email').value.trim();
+        var note = document.getElementById('unlock-note');
+        var btn = document.getElementById('unlock-btn');
+        btn.disabled = true;
+        btn.textContent = 'Checking...';
+        redeem(val, 1);
+        note.hidden = false;
+        note.textContent = 'Checking your purchase...';
+      });
+    }
+  })();
+</script>
