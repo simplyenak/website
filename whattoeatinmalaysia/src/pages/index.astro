@@ -95,19 +95,20 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
             <div class="progress-panel" id="progress-panel">
         <div class="progress-top">
           <p class="progress-label">
-            Tried <span id="tried-count">0</span> of {checklistTotal}
+            Starter checklist: tried <span id="tried-count">0</span> of {nationalClassics.length}
           </p>
           <div class="progress-actions">
             <button id="share-btn" type="button">Share score</button>
             <button id="reset-btn" type="button">Reset</button>
           </div>
         </div>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax={checklistTotal} aria-valuenow="0" id="progress-track">
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax={nationalClassics.length} aria-valuenow="0" id="progress-track">
           <div class="progress-fill" id="progress-fill"></div>
         </div>
         <p class="progress-hint">
-          Ticks are saved in this browser, no account needed. Bought a deep dive?
-          <a href="/login">Log in</a> to open your guides on any device.
+          Ticks are saved in this browser, no account needed. This is the free starter &mdash;
+          sixteen state checklists sit below the fold. Bought a deep dive?
+          <a href="/login">Log in</a> to open them on any device.
         </p>
       </div>
       <a class="hero-login" href="/login">Log in &rarr;</a>

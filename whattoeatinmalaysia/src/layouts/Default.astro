@@ -27,6 +27,9 @@ const canonicalUrl = canonical || `${siteUrl}/`;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#7A2E1D" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     {structuredData && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
@@ -722,6 +725,36 @@ const canonicalUrl = canonical || `${siteUrl}/`;
       .auth-back { margin-top: 26px; font-size: 0.85rem; }
       .auth-cta { display: inline-block; padding: 12px 18px; border-radius: 8px; background: #2f2a26; color: #fff; font-weight: 700; text-decoration: none; }
       .acct-h2 { font-size: 1.1rem; margin: 18px 0 10px; }
+      .install-banner {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 60;
+        max-width: 420px;
+        margin: 0 auto;
+        background: #1F1A15;
+        color: #FFF6E9;
+        border-radius: 14px;
+        padding: 16px 18px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 12px 32px rgba(31, 26, 21, 0.35);
+      }
+      .install-banner p { margin: 0; font-size: 0.85rem; line-height: 1.45; }
+      .install-banner .ib-btns { display: flex; gap: 8px; flex-shrink: 0; }
+      .install-banner button {
+        font: inherit;
+        font-weight: 700;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .install-banner .btn-install { background: var(--color-accent); color: #fff; border: none; }
+      .install-banner .btn-dismiss { background: transparent; color: #CFC6BA; border: 1px solid #4A423A; }
       .acct-item { border: 1px solid #e4ddd4; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; background: #fffdf9; }
       .acct-name { font-weight: 700; margin: 0 0 4px; }
       .acct-what { margin: 0; font-size: 0.88rem; color: var(--color-muted, #6b625a); line-height: 1.5; }
@@ -961,5 +994,43 @@ const canonicalUrl = canonical || `${siteUrl}/`;
   </head>
   <body>
     <slot />
+    <div class="install-banner" id="install-banner" hidden>
+      <p>Install the checklist on your phone. Works offline.</p>
+      <div class="ib-btns">
+        <button type="button" class="btn-install" id="ib-install">Install</button>
+        <button type="button" class="btn-dismiss" id="ib-dismiss">Not now</button>
+      </div>
+    </div>
+    <script is:inline>
+      (function () {
+        if (!('serviceWorker' in navigator)) return;
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/service-worker.js').catch(function () {});
+        });
+        var deferred = null;
+        var banner = document.getElementById('install-banner');
+        var dismissed = false;
+        try { dismissed = localStorage.getItem('wtm-install-dismissed') === '1'; } catch (e) {}
+        window.addEventListener('beforeinstallprompt', function (e) {
+          e.preventDefault();
+          deferred = e;
+          if (banner && !dismissed) banner.hidden = false;
+        });
+        window.addEventListener('appinstalled', function () {
+          if (banner) banner.hidden = true;
+        });
+        var yes = document.getElementById('ib-install');
+        var no = document.getElementById('ib-dismiss');
+        if (yes) yes.addEventListener('click', function () {
+          if (!deferred) return;
+          deferred.prompt();
+          deferred.userChoice.then(function () { deferred = null; if (banner) banner.hidden = true; });
+        });
+        if (no) no.addEventListener('click', function () {
+          if (banner) banner.hidden = true;
+          try { localStorage.setItem('wtm-install-dismissed', '1'); } catch (e) {}
+        });
+      })();
+    </script>
   </body>
 </html>

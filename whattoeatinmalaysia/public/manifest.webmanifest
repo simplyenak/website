@@ -1,0 +1,43 @@
+{
+  "name": "What to Eat in Malaysia",
+  "short_name": "WTM Checklist",
+  "description": "The 81-dish Malaysian food checklist. Tick dishes, track your score, discover where each dish comes from.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF8F1",
+  "theme_color": "#7A2E1D",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "travel", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "My Progress",
+      "short_name": "Progress",
+      "description": "View your ticked dishes and score",
+      "url": "/#checklist",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "State Guides",
+      "short_name": "Guides",
+      "description": "Browse all 16 state food guides",
+      "url": "/guides",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "prefer_related_applications": false
+}
