@@ -106,9 +106,8 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           <div class="progress-fill" id="progress-fill"></div>
         </div>
         <p class="progress-hint">
-          Ticks are saved in this browser, no account needed. This is the free starter &mdash;
-          sixteen state checklists sit below the fold. Bought a deep dive?
-          <a href="/login">Log in</a> to open them on any device.
+          Ticks saved locally — no account needed. This is just the starter. Buy a deep dive to unlock the full {checklistTotal} dish checklist across all states.
+          <a href="/packages">See packages</a> or <a href="/login">Log in</a> if you already bought one.
         </p>
       </div>
       <a class="hero-login" href="/login">Log in &rarr;</a>
@@ -116,120 +115,66 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
   </header>
 
   <section id="checklist">
-    <div class="container">
-      <p class="section-eyebrow">01 &middot; Free</p>
-      <h2 class="section-title">The checklist</h2>
-      <p class="section-hint">
-        Open a state and tick what you have tried. Every dish is listed where it comes from:
-        asam laksa in Air Itam, satay in Kajang, kolok mee in Kuching. The classics at the top
-        are eaten everywhere; the rest are worth going to the source for.
-      </p>
+  <div class="container">
+  <p class="section-eyebrow">01 &middot; Free</p>
+  <h2 class="section-title">The starter checklist</h2>
+  <p class="section-hint">
+    Twelve national classics eaten everywhere. Tick what you've tried and share your score.
+    The remaining {checklistTotal - nationalClassics.length} state-specific dishes unlock when you buy a deep dive.
+  </p>
 
-      <div class="cl-group open">
-        <div class="cl-group-head">
-          <h3>National classics</h3>
-          <span class="count-chip" data-state-count="classics">0/{nationalClassics.length} tried</span>
-        </div>
-        <div class="cl-grid">
-          {nationalClassics.map((c) => (
-            <label class="cl-item" data-dish-card={c.id} for={`check-${c.id}`}>
-              <input
-                type="checkbox"
-                class="vh"
-                id={`check-${c.id}`}
-                data-dish={c.id}
-                aria-label={`Tried ${c.name}`}
-              />
-              <span class="tick" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d={checkPath} /></svg>
-              </span>
-              <span class="cl-txt">
-                <strong>{c.name}</strong>
-                <em>{c.what}</em>
-              </span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      {byRegion.map((r) => (
-        <div class="cl-region">
-          <p class="cl-region-name">{r.label}</p>
-          {r.states.map((s) => (
-            <details class="cl-group" id={`state-${s.id}`} data-state={s.id}>
-              <summary>
-                <span class="cl-group-title">{s.name}</span>
-                <span class="count-chip" data-state-count={s.id}>0/{s.dishes.length} tried</span>
-              </summary>
-              <div class="cl-grid">
-                {s.dishes.map((d) => (
-                  <label class="cl-item" data-dish-card={d.id} for={`check-${d.id}`}>
-                    <input
-                      type="checkbox"
-                      class="vh"
-                      id={`check-${d.id}`}
-                      data-dish={d.id}
-                      aria-label={`Tried ${d.name}`}
-                    />
-                    <span class="tick" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d={checkPath} /></svg>
-                    </span>
-                    <span class="cl-txt">
-                      <strong>{d.name}</strong>
-                      <em>{d.what}</em>
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </details>
-          ))}
-        </div>
+  <div class="cl-group open">
+    <div class="cl-group-head">
+      <h3>National classics</h3>
+      <span class="count-chip" data-state-count="classics">0/{nationalClassics.length} tried</span>
+    </div>
+    <div class="cl-grid">
+      {nationalClassics.map((c) => (
+        <label class="cl-item" data-dish-card={c.id} for={`check-${c.id}`}>
+          <input
+            type="checkbox"
+            class="vh"
+            id={`check-${c.id}`}
+            data-dish={c.id}
+            aria-label={`Tried ${c.name}`}
+          />
+          <span class="tick" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d={checkPath} /></svg>
+          </span>
+          <span class="cl-txt">
+            <strong>{c.name}</strong>
+            <em>{c.what}</em>
+          </span>
+        </label>
       ))}
     </div>
+  </div>
+  </div>
   </section>
 
-  <section id="guide">
+  <section id="guides-gate">
     <div class="container">
-      <p class="section-eyebrow">02 &middot; Preview</p>
-      <h2 class="section-title">The state guides</h2>
+      <p class="section-eyebrow">02 &middot; Paid</p>
+      <h2 class="section-title">State-by-state deep dives</h2>
       <p class="section-hint">
-        A taste of each state's kitchen. The full guides, exact streets, famous stalls, halal
-        notes and ingredient detail, are part of the paid deep dives below.
+        The full checklist has {checklistTotal} dishes across {states.length} states and territories.
+        Buy a deep dive to unlock the complete checklist, exact stall addresses, halal notes, and offline access.
       </p>
 
-      {byRegion.map((r) => (
-        <div class="region-block">
-          <div class="region-heading">
-            <h2>{r.label}</h2>
-            <div class="rule" aria-hidden="true"></div>
-          </div>
-          {r.states.map((s) => (
-            <div class="state-card preview">
-              <div class="state-head">
-                <h3>{s.name}</h3>
-                <span class="tagline">{s.dishes.length} signature dishes</span>
-              </div>
-              <p class="state-intro">{s.intro}</p>
-              <div class="dish-list">
-                {s.dishes.map((d) => (
-                  <div class="dish preview-row" data-detail-id={d.id}>
-                    <div class="dish-top">
-                      <span class="dish-name">{d.name}</span>
-                      {d.origin && <span class="dish-origin">{d.origin}</span>}
-                    </div>
-                    <p class="dish-what">{d.what}</p>
-                  </div>
-                ))}
-              </div>
-              {s.cta && (
-                <div class="state-cta">
-                  <a href={s.cta.url} target="_blank" rel="noopener">{s.cta.label} &rarr;</a>
-                </div>
-              )}
-            </div>
-          ))}
+      <div class="gate-options">
+        <div class="gate-card">
+          <h3>Collection access</h3>
+          <p class="gate-price">RM25 one-time</p>
+          <p>Everything: Nyonya masterclass + all 16 state guides, full checklist unlocked.</p>
+          <a class="gate-btn" href="https://uiy.thrivecart.com/street-food-masters-collection/" target="_blank" rel="noopener">Get the collection &rarr;</a>
         </div>
-      ))}
+        <div class="gate-card">
+          <h3>Individual state</h3>
+          <p class="gate-price">Coming soon</p>
+          <p>Buy just the states you're visiting. Full dish lists, stalls, and offline access.</p>
+          <a class="gate-btn gate-btn--disabled" href="#waitlist">Join waitlist</a>
+        </div>
+      </div>
     </div>
   </section>
 
