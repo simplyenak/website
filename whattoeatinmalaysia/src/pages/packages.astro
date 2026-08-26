@@ -132,7 +132,7 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
                 <p class="pkg-blurb">{p.description}</p>
               </header>
               <ul class="pkg-includes">
-                {p.include.map((i: string) => <li>{i}</li>)}
+                {p.includes.map((i: string) => <li>{i}</li>)}
               </ul>
               <footer class="pkg-card-foot">
                 <p class="pkg-price-display">{p.price || 'One-time, per package'}</p>
