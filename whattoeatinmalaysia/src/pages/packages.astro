@@ -17,7 +17,8 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/penang-street-food.jpg',
     blurb: 'George Town, Air Itam, Bayan Lepas. Which district to walk through and when.',
-    features: ['District maps', 'Best times to go', 'Transit tips', 'Notes & ratings']
+    features: ['District maps', 'Best times to go', 'Transit tips', 'Notes & ratings'],
+    checkoutUrl: '' // Not yet created in ThriveCart
   },
   {
     id: 'city-kl',
@@ -26,7 +27,8 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/kl-food.jpg',
     blurb: 'Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.',
-    features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips', 'Notes & ratings']
+    features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips', 'Notes & ratings'],
+    checkoutUrl: '' // Not yet created in ThriveCart
   },
   {
     id: 'city-melaka',
@@ -35,7 +37,8 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/melaka-food.jpg',
     blurb: 'Jonker Walk, heritage quarter. Nyonya origins and night market hours.',
-    features: ['Jonker Walk routes', 'Nyonya origins', 'Night market hours', 'Notes & ratings']
+    features: ['Jonker Walk routes', 'Nyonya origins', 'Night market hours', 'Notes & ratings'],
+    checkoutUrl: '' // Not yet created in ThriveCart
   },
   {
     id: 'dietary-halal',
@@ -44,7 +47,8 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/halal-guide.jpg',
     blurb: 'JAKIM-verified areas, prayer room locations, and what to ask at Chinese hawker stalls.',
-    features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask', 'Notes & ratings']
+    features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask', 'Notes & ratings'],
+    checkoutUrl: '' // Not yet created in ThriveCart
   },
   {
     id: 'dietary-veg',
@@ -53,7 +57,8 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/vegetarian.jpg',
     blurb: 'Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.',
-    features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options', 'Notes & ratings']
+    features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options', 'Notes & ratings'],
+    checkoutUrl: '' // Not yet created in ThriveCart
   },
   {
     id: 'full-collection',
@@ -62,7 +67,8 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/collection.jpg',
     blurb: 'All five guides in one purchase. Access on any device, forever.',
-    features: ['Everything included', 'Cross-device sync', 'Lifetime access', 'Notes & ratings']
+    features: ['Everything included', 'Cross-device sync', 'Lifetime access', 'Notes & ratings'],
+    checkoutUrl: 'https://uiy.thrivecart.com/product/9/' // Product ID 9 in ThriveCart
   }
 ];
 ---
@@ -95,7 +101,9 @@ const guideCards = [
                 </ul>
                 <div class="guide-card-foot">
                   <span class="guide-card-price">{card.price}</span>
-                  <a class="guide-card-cta" href="/login" data-pkg={card.id}>Join waitlist</a>
+                  <a class="guide-card-cta" href="/login" data-pkg={card.id} data-checkout={card.checkoutUrl || ''}>
+                    {card.status === 'free' ? 'Get now' : card.checkoutUrl ? 'Add to cart' : 'Join waitlist'}
+                  </a>
                 </div>
               </div>
             </article>
@@ -293,6 +301,17 @@ const guideCards = [
       e.addEventListener('click', t => {
         const a = e.dataset.pkg;
         sessionStorage.setItem('wtm-waitlist-pkg', a);
+      });
+    });
+
+    // Add to cart buttons — open ThriveCart checkout
+    document.querySelectorAll('[data-checkout]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const url = btn.dataset.checkout;
+        if (url) {
+          e.preventDefault();
+          window.open(url, '_blank');
+        }
       });
     });
   </script>
