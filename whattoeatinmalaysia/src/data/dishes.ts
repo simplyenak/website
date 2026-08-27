@@ -976,43 +976,43 @@ export interface Faq {
 
 export const faqs: Faq[] = [
   {
-    q: 'Is this a restaurant directory or a maps app?',
-    a: "No. There are no ratings, reviews or pinned locations here. Each entry is a dish, the town or state it comes from, and why that version is the one to seek out. Use Google Maps afterwards to find stalls once you know which dish you are hunting.",
+    q: 'Is this a restaurant app?',
+    a: 'No. No reviews, no ratings, no pinned locations. Each entry is a dish, the town it comes from, and why that version is the one to seek out. Use Google Maps to find stalls once you know what you're hunting.',
   },
   {
-    q: 'Which Malaysian state has the best food?',
-    a: "There is no settled answer, which is the point. Penang is the hawker capital for Chinese-Peranakan street food, Kelantan for deep Malay cooking, Kuching for Sarawak laksa and indigenous Borneo dishes, and Ipoh for coffee-shop classics. Eat what the state you are in is famous for rather than hunting one \"best\".",
+    q: 'Which state has the best food?',
+    a: 'There is no settled answer, and that is the point. Penang for Chinese-Peranakan street food, Kelantan for deep Malay cooking, Kuching for Sarawak laksa, Ipoh for coffee-shop classics. Eat what the state you are in is famous for rather than running around chasing one "best".',
   },
   {
-    q: 'What is the most famous dish in Malaysia overall?',
-    a: 'Nasi lemak, the coconut-rice breakfast eaten everywhere. But it is a national dish, not a regional one; the dishes worth travelling for are the state-specific ones on this page, like asam laksa in Penang, nasi kerabu in Kelantan and Sarawak laksa in Kuching.',
+    q: 'What is Malaysia's most famous dish?',
+    a: 'Nasi lemak — coconut rice with sambal, anchovies, peanuts and cucumber, eaten for breakfast everywhere. But it is a national dish, not a regional one. The dishes worth travelling for are the state-specific ones: asam laksa in Penang, nasi kerabu in Kelantan, Sarawak laksa in Kuching.',
   },
   {
     q: 'Is Malaysian street food halal?',
-    a: 'It varies by dish and stall. Malay-run stalls and nasi kandar shops are halal. Chinese hawker dishes often contain pork or lard (bak kut teh, kolok mee, KL Hokkien mee). Every dish on this page carries a halal note; when in doubt at a stall, ask.',
+    a: 'It depends. Malay-run stalls and nasi kandar shops are halal. Chinese hawker dishes often contain pork or lard — bak kut teh, kolok mee, KL Hokkien mee. Every dish on this page carries a halal note; when in doubt at a stall, just ask.',
   },
   {
     q: 'Should I plan food around breakfast or dinner?',
-    a: 'Both, but breakfast is the unsung slot: nasi dagang, Sarawak laksa, laksa Kuala Perlis and Klang bak kut teh are all morning rituals that sell out by 11am. Night markets take over from sunset, especially on the east coast and in Kota Kinabalu.',
+    a: 'Both. Breakfast is the slot most visitors miss: nasi dagang, Sarawak laksa, laksa Kuala Perlis, Klang bak kut teh — all morning rituals that sell out by 11am. Night markets take over from sunset, especially on the east coast and in Kota Kinabalu.',
   },
   {
     q: 'Do these dishes really change from neighbourhood to neighbourhood?',
-    a: "Yes. Many signature dishes are tied to one town or even one street: asam laksa to Air Itam, satay to Kajang, mee bandung to Muar, keropok lekor to Losong. The State Deep Dives pin down exactly where to eat each one.",
+    a: 'Yes. Asam laksa in Air Itam is not the same as in downtown George Town. Satay in Kajang is different from Kajang satay at a mamak in KL. Mee bandung belongs to Muar. The State Deep Dives pin down exactly which version to seek out.',
   },
   {
-    q: 'How does this food checklist work?',
-    a: 'Tick a dish when you try it. Your progress is saved in your own browser, no account and no tracking, and the counter in the header keeps score out of the full list. Hit "Share score" to copy or share how many you have tried; Reset clears everything.',
-    },
+    q: 'How does this checklist work?',
+    a: 'Tick a dish when you try it. Your progress is saved locally in your browser, no account required. The counter in the header keeps score. Hit "Share score" to copy it; Reset clears everything. Bought a deep dive? Log in and your ticks sync across devices.',
+  },
   {
-    q: 'Is the checklist free? What is coming next?',
-    a: 'The Malaysia Basics checklist on this page is free and stays free. A free account to sync your ticks across devices is next. Deeper packages, a Nyonya checklist and per-state deep dives with ingredient and diet-safety detail, will be paid, one-time per package. Join the list at the bottom of this page to hear first.',
-    },
+    q: 'Is the checklist free?',
+    a: 'The twelve national classics here are free and stay free. The deeper state-by-state guides with exact stall names, ingredient detail, and diet flags are one-time purchases — pay once, access forever.',
+  },
   {
     q: 'I bought the collection. How do I unlock the guides?',
-    a: 'Enter the email you paid with in the unlock box on this page. Your purchase is matched automatically and the state guides expand to the full detail: exact streets, famous stalls, halal notes and best times. Your unlock is remembered in this browser for 30 days.',
-    },
+    a: 'Enter the email you paid with at /login. Your purchase is matched automatically and the state guides open to full detail — exact streets, famous stalls, halal notes, best times. Your unlock lasts 30 days unless you create a free account.',
+  },
   {
-    q: 'Can I try these dishes with a guide instead of self-driving?',
-    a: 'Yes. Simply Enak runs guided food tours in Kuala Lumpur and George Town that cover many of these dishes in one walk, and its guides eat their way through every state listed here. See simplyenak.com.',
+    q: 'Can I follow this with a food tour instead of finding stalls myself?',
+    a: 'Yes. Simply Enak runs guided food walks in Kuala Lumpur and George Town that cover many of these dishes in one evening. See simplyenak.com.',
   },
 ];
