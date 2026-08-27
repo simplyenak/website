@@ -77,12 +77,12 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
   </div>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">Find your way through Malaysia's food</p>
-            <h1>What to Eat in Malaysia</h1>
-            <p class="lede">
-              Twelve national dishes you'll find everywhere. Sixty-nine more you need to travel for.
-              Tick what you've tried, find where each one comes from, and share your score.
-            </p>
+      <p class="eyebrow">A checklist for every traveller</p>
+      <h1>What to Eat in Malaysia</h1>
+      <p class="lede">
+        Twelve national dishes you will find everywhere. Sixty-nine more worth travelling for.
+        Tick what you have tried, find where each one comes from, share your score.
+      </p>
             <div class="hero-stats" aria-hidden="true">
               <span><b>{nationalClassics.length}</b> free classics</span><span class="dot">&middot;</span>
               <span><b>{checklistTotal - nationalClassics.length}</b> more with deep dives</span>
@@ -173,101 +173,33 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
         <div class="gate-card">
           <h3>Penang Food Guide</h3>
           <p class="gate-price">RM8</p>
-          <p>George Town street food districts, best hours, and the dishes that define Penang.</p>
+          <p>George Town, Air Itam, Bayan Lepas. Which district to walk through and when.</p>
           <a class="gate-btn gate-btn--disabled" href="/login" data-pkg="city-penang">Join waitlist</a>
         </div>
         <div class="gate-card">
           <h3>Kuala Lumpur Food Guide</h3>
           <p class="gate-price">RM8</p>
-          <p>KL neighborhoods, coffee shops, and the dishes that make the capital unique.</p>
+          <p>Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.</p>
           <a class="gate-btn gate-btn--disabled" href="/login" data-pkg="city-kl">Join waitlist</a>
         </div>
         <div class="gate-card">
           <h3>Halal Food Guide</h3>
           <p class="gate-price">RM12</p>
-          <p>JAKIM-verified districts, where to ask, and how to navigate halal options.</p>
+          <p>JAKIM-verified areas, prayer room locations, and what to ask at Chinese hawker stalls.</p>
           <a class="gate-btn gate-btn--disabled" href="/login" data-pkg="dietary-halal">Join waitlist</a>
         </div>
         <div class="gate-card">
           <h3>Vegetarian Food Guide</h3>
           <p class="gate-price">RM12</p>
-          <p>Indian, Buddhist, and mamak vegetarian options across major cities.</p>
+          <p>Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.</p>
           <a class="gate-btn gate-btn--disabled" href="/login" data-pkg="dietary-veg">Join waitlist</a>
         </div>
         <div class="gate-card">
           <h3>Full Collection</h3>
           <p class="gate-price">RM25</p>
-          <p>All city guides, both dietary guides, and state-by-state context — one purchase, access forever.</p>
+          <p>All five guides in one purchase. Access on any device, forever.</p>
           <a class="gate-btn gate-btn--disabled" href="/login" data-pkg="full-collection">Join waitlist</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="packages">
-    <div class="container">
-      <p class="section-eyebrow">03 &middot; Deep dives</p>
-      <h2 class="section-title">What you get when you buy</h2>
-      <p class="section-hint">
-        The twelve classics here are free forever. The rest of the country's food runs deeper — neighborhood context, ingredients you can ask for, halal notes that matter.
-      </p>
-      <div class="pkg-grid">
-        {packages.map((p) => (
-          <div class={`pkg-card ${p.status}`}>
-            <div class="pkg-head">
-              <h3>{p.name}</h3>
-              <span class={`pkg-chip ${p.status}`}>{p.status === 'free' ? 'Free' : 'Collection'}</span>
-            </div>
-            <p class="pkg-blurb">{p.blurb}</p>
-            <ul class="pkg-list">
-              {p.includes.map((i) => <li>{i}</li>)}
-            </ul>
-            <p class="pkg-price">{p.price}</p>
-            <a class="pkg-cta" href={p.status === 'free' ? '#checklist' : '#waitlist'}>
-              {p.status === 'free' ? 'Start ticking' : 'Join the waitlist'} &rarr;
-            </a>
-          </div>
-        ))}
-      </div>
-
-      <div class="buy-band">
-        <div class="buy-main">
-          <p class="buy-title">Street Food Masters Collection</p>
-          <p class="buy-sub">
-            Every deep dive in one purchase. Nyonya kitchen, all sixteen state guides, the full checklist — one price, no subscriptions.
-          </p>
-          <a class="buy-btn" href="https://uiy.thrivecart.com/street-food-masters-collection/" id="buy-btn" target="_blank" rel="noopener">Get the collection &rarr;</a>
-          <p class="buy-note">Secure checkout by ThriveCart. Test mode while we finalise pricing.</p>
-        </div>
-        <div class="unlock-box">
-          <p class="buy-title-sm">Already bought it?</p>
-          <form id="unlock-form" class="waitlist-form">
-            <label for="unlock-email" style="position:absolute;left:-9999px;">Your purchase email</label>
-            <input id="unlock-email" type="email" required placeholder="Purchase email" autocomplete="email" />
-            <button type="submit" id="unlock-btn">Unlock</button>
-          </form>
-          <p class="waitlist-note" id="unlock-note" hidden></p>
-        </div>
-      </div>
-      <div class="unlocked-banner" id="unlocked-banner" hidden>
-        Collection unlocked. The state guides below now show exactly where to eat every dish.
-      </div>
-
-      <div class="waitlist-box" id="waitlist">
-        <p class="waitlist-title">Hear first when the deep dives open</p>
-        <form id="waitlist-form" class="waitlist-form">
-          <label for="waitlist-email" style="position:absolute;left:-9999px;">Your email</label>
-          <input
-            id="waitlist-email"
-            name="email"
-            type="email"
-            required
-            placeholder="you@trip.com"
-            autocomplete="email"
-          />
-          <button type="submit" id="waitlist-btn">Join the list</button>
-        </form>
-        <p class="waitlist-note" id="waitlist-note" hidden></p>
       </div>
     </div>
   </section>
@@ -275,7 +207,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
   <section class="faq" id="faq">
     <div class="container">
       <h2 class="section-title">Questions travelers ask</h2>
-      {faqs.map((f) => (
+      {faqs.slice(0, 6).map((f) => (
         <details>
           <summary>{f.q}</summary>
           <p class="answer">{f.a}</p>
