@@ -171,7 +171,12 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
   </style>
 
   <script type="module">
-    // Staggered entrance animation for package cards
+    // Staggered entrance animation for package cards with fallback
+    const cards = document.querySelectorAll('.pkg-card-detail');
+    cards.forEach(card => {
+      card.style.animationPlayState = 'paused';
+    });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -181,10 +186,14 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.pkg-card-detail').forEach(card => {
-      card.style.animationPlayState = 'paused';
-      observer.observe(card);
-    });
+    cards.forEach(card => observer.observe(card));
+
+    // Fallback: play animations if observer doesn't fire within 500ms
+    setTimeout(() => {
+      cards.forEach(card => {
+        card.style.animationPlayState = 'running';
+      });
+    }, 500);
 
     document.querySelectorAll('.faq-q').forEach(e => {
       e.addEventListener('click', () => {
