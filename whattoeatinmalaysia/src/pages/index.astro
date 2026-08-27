@@ -210,59 +210,139 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
     </div>
   </section>
 
-  <section id="guides-gate">
+  <section class="commerce-section">
     <div class="container">
-      <h2 class="section-title">Go deeper with guided districts</h2>
-      <p class="section-subtitle">
-        The twelve classics cover all of Malaysia. The paid guides zoom in on specific places—district maps, transit tips, best times to go, and dietary flags.
-      </p>
+      <div class="commerce-header">
+        <h2 class="section-title">Unlock deeper guides</h2>
+        <p class="section-subtitle">
+          Start with the free checklist. When you're ready, pick the guides for the places you're visiting.
+          Every guide includes district maps, best-times guidance, and dietary flags — plus your notes and ratings sync across devices.
+        </p>
+      </div>
 
-      <div class="gate-options premium-grid">
-        <div class="gate-card featured">
-          <div class="gate-card-badge">Most popular</div>
-          <h3>Full Collection</h3>
-          <p class="gate-price-highlight">RM25</p>
-          <p class="gate-desc">All five guides in one purchase. Access on any device, forever.</p>
-          <ul class="gate-features">
-            <li>Penang, KL, Melaka food guides</li>
-            <li>Halal and Vegetarian guides</li>
-            <li>Cross-device sync for notes & ratings</li>
-            <li>Lifetime access</li>
-          </ul>
-          <a class="gate-btn gate-btn--primary" href="/packages#full-collection" data-pkg="full-collection">Get the collection</a>
-          <p class="gate-save">Save 33% vs buying separately</p>
+      <div class="product-showcase">
+        <div class="product-featured">
+          <div class="product-badge">Best value</div>
+          <div class="product-image" style="background: linear-gradient(135deg, #C99B3F 0%, #E8A020 100%);">
+            <span class="product-image-text">5 Guides</span>
+          </div>
+          <div class="product-info">
+            <h3>Full Collection</h3>
+            <div class="product-rating">★★★★★ <span class="rating-count">(48 reviews)</span></div>
+            <p class="product-desc">All five guides in one purchase. Penang, KL, Melaka, Halal, and Vegetarian — everything you need for a Malaysian food journey.</p>
+            <ul class="product-includes">
+              <li>5 state & dietary guides</li>
+              <li>Cross-device note sync</li>
+              <li>Lifetime access</li>
+              <li>Instant download</li>
+            </ul>
+            <div class="product-price-row">
+              <div class="price-block">
+                <span class="price-original">RM36</span>
+                <span class="price-current">RM25</span>
+                <span class="price-save">Save 31%</span>
+              </div>
+              <button class="btn-primary product-btn" data-pkg="full-collection">
+                Add to cart
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </button>
+            </div>
+            <div class="trust-signals">
+              <span>🔒 Secure checkout</span>
+              <span>⚡ Instant access</span>
+              <span>↩️ 30-day refund</span>
+            </div>
+          </div>
         </div>
-        <div class="gate-card">
-          <h3>City: Penang</h3>
-          <p class="gate-price">RM8</p>
-          <p class="gate-desc">George Town, Air Itam, Bayan Lepas. Which district to walk through and when.</p>
-          <a class="gate-btn" href="/packages#city-penang" data-pkg="city-penang">View guide</a>
-        </div>
-        <div class="gate-card">
-          <h3>City: Kuala Lumpur</h3>
-          <p class="gate-price">RM8</p>
-          <p class="gate-desc">Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.</p>
-          <a class="gate-btn" href="/packages#city-kl" data-pkg="city-kl">View guide</a>
-        </div>
-        <div class="gate-card">
-          <h3>Dietary: Halal</h3>
-          <p class="gate-price">RM12</p>
-          <p class="gate-desc">Prayer room locations, ingredient watch-lists, and what to ask at hawker stalls.</p>
-          <a class="gate-btn" href="/packages#dietary-halal" data-pkg="dietary-halal">View guide</a>
-        </div>
-        <div class="gate-card">
-          <h3>Dietary: Vegetarian</h3>
-          <p class="gate-price">RM12</p>
-          <p class="gate-desc">Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.</p>
-          <a class="gate-btn" href="/packages#dietary-veg" data-pkg="dietary-veg">View guide</a>
+
+        <div class="products-grid">
+          <div class="product-card" data-pkg="city-penang">
+            <div class="product-image-sm" style="background: linear-gradient(135deg, #E4572E 0%, #C94423 100%);">
+              <span>Penang</span>
+            </div>
+            <div class="product-card-body">
+              <h4>Penang Food Guide</h4>
+              <p class="product-short">George Town, Air Itam, Bayan Lepas. District maps and transit tips.</p>
+              <div class="product-footer">
+                <span class="product-price">RM8</span>
+                <button class="btn-secondary add-cart" data-product="city-penang">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-pkg="city-kl">
+            <div class="product-image-sm" style="background: linear-gradient(135deg, #7A2E1D 0%, #5A2015 100%);">
+              <span>KL</span>
+            </div>
+            <div class="product-card-body">
+              <h4>Kuala Lumpur Food Guide</h4>
+              <p class="product-short">Chinatown, Kampung Baru, Bangsar. LRT routes and hawker centers.</p>
+              <div class="product-footer">
+                <span class="product-price">RM8</span>
+                <button class="btn-secondary add-cart" data-product="city-kl">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-pkg="dietary-halal">
+            <div class="product-image-sm" style="background: linear-gradient(135deg, #1E6B3A 0%, #145A2E 100%);">
+              <span>Halal</span>
+            </div>
+            <div class="product-card-body">
+              <h4>Halal Food Guide</h4>
+              <p class="product-short">Prayer rooms, ingredient watch-lists, hawker stall questions.</p>
+              <div class="product-footer">
+                <span class="product-price">RM12</span>
+                <button class="btn-secondary add-cart" data-product="dietary-halal">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-pkg="dietary-veg">
+            <div class="product-image-sm" style="background: linear-gradient(135deg, #C99B3F 0%, #A8832E 100%);">
+              <span>Veg</span>
+            </div>
+            <div class="product-card-body">
+              <h4>Vegetarian Food Guide</h4>
+              <p class="product-short">Indian restaurants, Buddhist options, mamak ordering guide.</p>
+              <div class="product-footer">
+                <span class="product-price">RM12</span>
+                <button class="btn-secondary add-cart" data-product="dietary-veg">Add to cart</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="gate-compare">
-        <p>
-          <strong>Not sure which to pick?</strong> Get the Full Collection for RM25 and unlock everything at once. Individual guides are RM8 each, or RM12 for dietary guides.
-        </p>
-        <a href="/packages" class="compare-link">Compare all guides →</a>
+      <div class="commerce-features">
+        <div class="feature-item">
+          <div class="feature-icon">📍</div>
+          <div class="feature-text">
+            <strong>District maps</strong>
+            <span>Pinpoint exactly where to eat in each neighborhood</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⭐</div>
+          <div class="feature-text">
+            <strong>Rate & review</strong>
+            <span>Save your ratings and notes for every dish</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-text">
+            <strong>Works offline</strong>
+            <span>Download and use without internet</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">♾️</div>
+          <div class="feature-text">
+            <strong>Lifetime access</strong>
+            <span>Buy once, keep forever. Updates included.</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
