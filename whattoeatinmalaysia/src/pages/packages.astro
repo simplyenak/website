@@ -3,7 +3,7 @@ import Default from '~/layouts/Default.astro';
 import { packages, type PackageCard, faqs } from '~/data/dishes';
 
 const title = 'Food Guides — What to Eat in Malaysia';
-const description = 'Choose your Malaysia food guide: city guides, dietary guides, or the full collection. One-time purchases, no subscriptions.';
+const description = 'City guides and dietary guides for Malaysia. One-time purchases, no subscriptions. Start with the free essentials or pick the guide for where you are going.';
 
 // Filter out FAQs that are about checklist mechanics (keep only general ones)
 const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.includes('Is the checklist free'));
@@ -16,7 +16,7 @@ const guideCards = [
     price: 'RM8',
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/penang-street-food.jpg',
-    blurb: 'George Town street food districts, best hours, and the dishes that define Penang.',
+    blurb: 'George Town, Air Itam, Bayan Lepas. Which district to walk through and when.',
     features: ['District maps', 'Best times to go', 'Transit tips']
   },
   {
@@ -25,7 +25,7 @@ const guideCards = [
     price: 'RM8',
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/kl-food.jpg',
-    blurb: 'KL neighborhoods, coffee shops, and the dishes that make the capital unique.',
+    blurb: 'Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.',
     features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips']
   },
   {
@@ -34,7 +34,7 @@ const guideCards = [
     price: 'RM8',
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/melaka-food.jpg',
-    blurb: 'Heritage quarter food, Nyonya specialties, and the history behind each dish.',
+    blurb: 'Jonker Walk, heritage quarter. Nyonya origins and night market hours.',
     features: ['Jonker Walk routes', 'Nyonya origins', 'Night market hours']
   },
   {
@@ -43,7 +43,7 @@ const guideCards = [
     price: 'RM12',
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/halal-guide.jpg',
-    blurb: 'JAKIM-verified districts, where to ask, and how to navigate halal options.',
+    blurb: 'JAKIM-verified areas, prayer room locations, and what to ask at Chinese hawker stalls.',
     features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask']
   },
   {
@@ -52,7 +52,7 @@ const guideCards = [
     price: 'RM12',
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/vegetarian.jpg',
-    blurb: 'Indian, Buddhist, and mamak vegetarian options across major cities.',
+    blurb: 'Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.',
     features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options']
   },
   {
@@ -61,7 +61,7 @@ const guideCards = [
     price: 'RM25',
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/collection.jpg',
-    blurb: 'All city guides, both dietary guides, and state-by-state context — one purchase, access forever.',
+    blurb: 'All five guides in one purchase. Access on any device, forever.',
     features: ['Everything included', 'Cross-device sync', 'Lifetime access']
   }
 ];
@@ -74,8 +74,8 @@ const guideCards = [
         <p class="section-eyebrow">Choose your guide</p>
         <h1>Food Guides for Malaysia</h1>
         <p class="section-hint">
-          Start with the free essentials, then add the guide that matches how you travel.
-          Every package unlocks progressively deeper detail.
+          Twelve national classics are free forever. The deeper state-by-state guides are one-time purchases.
+          Pick the one that matches where you are going.
         </p>
       </header>
 
@@ -117,7 +117,7 @@ const guideCards = [
       </section>
 
       <footer class="packages-footer">
-        <p>All purchases are one-time — no subscriptions, no recurring charges. Access is tied to your email; log in on any device to open your guides.</p>
+        <p>All purchases are one-time. Pay once, access forever. Your unlock is tied to your email.</p>
         <p><a href="/login">Already bought? Log in →</a></p>
       </footer>
     </div>
