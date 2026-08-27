@@ -1112,16 +1112,19 @@ const canonicalUrl = canonical || `${siteUrl}/`;
           if (banner) banner.hidden = true;
         });
 
-        // Fallback: show banner on mobile after 5 seconds if no prompt fired
+        // Fallback: show banner on mobile after 3 seconds if no prompt fired
         var mobileCheck = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         if (mobileCheck && !dismissed) {
           setTimeout(function() {
             if (!deferred && banner && banner.hidden) {
+              // Show the banner first
+              banner.hidden = false;
+              console.log('[WTM] Banner shown via mobile fallback');
               // On iOS or if event missed, show manual install hint
               var iosTip = banner.querySelector('.ios-tip');
               if (iosTip) iosTip.style.display = 'block';
             }
-          }, 5000);
+          }, 3000);
         }
 
         var yes = document.getElementById('ib-install');
