@@ -115,8 +115,8 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
       <section class="package-cards" aria-labelledby="cards-heading">
         <h2 id="cards-heading" class="section-title">Pick your guide</h2>
         <div class="pkg-cards-grid">
-          {packages.map((p: PackageCard) => (
-            <article class="pkg-card-detail" data-pkg={p.id}>
+          {packages.map((p: PackageCard, i: number) => (
+            <article class="pkg-card-detail" data-pkg={p.id} style={`animation-delay: ${i * 80}ms`}>
               <header class="pkg-card-head">
                 <span class={`pkg-badge ${p.status}`}>{p.price}</span>
                 <h3>{p.name}</h3>
@@ -156,7 +156,36 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
     </div>
   </main>
 
+  <style>
+    .pkg-card-detail {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fade-in-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes fade-in-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
   <script type="module">
+    // Staggered entrance animation for package cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pkg-card-detail').forEach(card => {
+      card.style.animationPlayState = 'paused';
+      observer.observe(card);
+    });
+
     document.querySelectorAll('.faq-q').forEach(e => {
       e.addEventListener('click', () => {
         const expanded = e.getAttribute('aria-expanded') === 'true';
