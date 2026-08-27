@@ -2,10 +2,10 @@
 import Default from '~/layouts/Default.astro';
 import { packages, type PackageCard, faqs } from '~/data/dishes';
 
-const title = 'Deep-Dive Packages — What to Eat in Malaysia';
-const description = 'Compare our deep-dive packages: Nyonya Kitchen, State Deep Dives, and the free Malaysia Basics checklist. One-time purchases, no subscriptions.';
+const title = 'Food Guides — What to Eat in Malaysia';
+const description = 'Choose your Malaysia food guide: Halal guide, Penang & KL deep dive, or the full collection. One-time purchases, no subscriptions.';
 
-// Filter out FAQs that are about the checklist mechanics (keep only general ones)
+// Filter out FAQs that are about checklist mechanics (keep only general ones)
 const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.includes('Is the checklist free'));
 ---
 
@@ -13,130 +13,110 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
   <main class="packages-page">
     <div class="container">
       <header class="packages-header">
-        <p class="section-eyebrow">Deep Dives</p>
-        <h1>Choose Your Package</h1>
+        <p class="section-eyebrow">Choose your guide</p>
+        <h1>Food Guides for Malaysia</h1>
         <p class="section-hint">
-          The free checklist is just the start. Buy a deep dive to unlock full state guides, 
-          exact stall locations, ingredient details, and offline access.
+          Start with the free essentials, then add the guide that matches how you travel.
+          Every package unlocks progressively deeper detail.
         </p>
       </header>
 
       <section class="comparison-table" aria-labelledby="compare-heading">
         <h2 id="compare-heading" class="section-title">What's Included</h2>
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th scope="col">Feature</th>
-              <th scope="col" class="pkg-col">
-                <span class="pkg-badge" data-status="free">Free</span> Malaysia Basics
-              </th>
-              <th scope="col" class="pkg-col">
-                <span class="pkg-badge" data-status="coming">Coming</span> Nyonya Kitchen
-              </th>
-              <th scope="col" class="pkg-col">
-                <span class="pkg-badge" data-status="coming">Coming</span> State Deep Dives
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Price</td>
-              <td class="pkg-price-cell">Free</td>
-              <td class="pkg-price-cell">One-time, per package</td>
-              <td class="pkg-price-cell">One-time, per state</td>
-            </tr>
-            <tr>
-              <td>National checklist (12 classics)</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="dash">—</span></td>
-              <td><span class="dash">—</span></td>
-            </tr>
-            <tr>
-              <td>State-specific dishes (69 total)</td>
-              <td><span class="dash">—</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Town/neighbourhood per dish</td>
-              <td><span class="check-muted">Basic</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Halal status per dish</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Best time of day</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Famous stall names</td>
-              <td><span class="dash">—</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Diet safety flags (veg, gluten, nuts)</td>
-              <td><span class="dash">—</span></td>
-              <td><span class="dash">—</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Ingredient breakdowns</td>
-              <td><span class="dash">—</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Offline access</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                {packages.map((p: PackageCard) => (
+                  <th scope="col" class="pkg-col">
+                    <span class={`pkg-badge ${p.status}`}>{p.price}</span>
+                    {p.name}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dish count</td>
+                <td class="pkg-price-cell">{packages[0].includes.length > 0 ? '12 national' : '—'}</td>
+                <td class="pkg-price-cell">All + JAKIM map</td>
+                <td class="pkg-price-cell">47 city dishes</td>
+                <td class="pkg-price-cell">81 + Nyonya</td>
+              </tr>
+              <tr>
+                <td>Halal notes</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span> + JAKIM verified</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Exact stall names</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Diet flags (veg, gluten, nuts)</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>State-by-state guides</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span> (KL + Penang)</td>
+                <td><span class="check">✓</span> (all 16)</td>
+              </tr>
+              <tr>
+                <td>Nyonya deep dive</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Offline access</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Prayer room maps</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section class="package-cards" aria-labelledby="cards-heading">
-        <h2 id="cards-heading" class="section-title">Package Details</h2>
+        <h2 id="cards-heading" class="section-title">Pick your guide</h2>
         <div class="pkg-cards-grid">
-          <article class="pkg-card-detail" data-pkg="basic-malaysia">
-            <header class="pkg-card-head">
-              <span class="pkg-badge" data-status="free">Free</span>
-              <h3>Malaysia Basics</h3>
-              <p class="pkg-blurb">The 12-dish national classics checklist you are on right now.</p>
-            </header>
-            <ul class="pkg-includes">
-              <li>12 national classics with origins</li>
-              <li>The exact town or street for each dish</li>
-              <li>Halal notes and best time of day</li>
-              <li>Tick, track and share your score</li>
-            </ul>
-            <footer class="pkg-card-foot">
-              <p class="pkg-price-display">Free</p>
-              <a class="pkg-cta primary" href="/#checklist">Start using the checklist</a>
-            </footer>
-          </article>
-          
-          {packages.filter(p => p.id !== 'malaysia-basics').map((p: PackageCard) => (
+          {packages.map((p: PackageCard) => (
             <article class="pkg-card-detail" data-pkg={p.id}>
               <header class="pkg-card-head">
-                <span class={`pkg-badge ${p.status}`}>{p.status === 'free' ? 'Free' : 'Coming'}</span>
+                <span class={`pkg-badge ${p.status}`}>{p.price}</span>
                 <h3>{p.name}</h3>
-                <p class="pkg-blurb">{p.description}</p>
+                <p class="pkg-blurb">{p.blurb}</p>
               </header>
               <ul class="pkg-includes">
                 {p.includes.map((i: string) => <li>{i}</li>)}
               </ul>
               <footer class="pkg-card-foot">
-                <p class="pkg-price-display">{p.price || 'One-time, per package'}</p>
-                <a class="pkg-cta secondary" href="/login" data-pkg={p.id}>Join the waitlist</a>
+                <p class="pkg-price-display">{p.price}</p>
+                {p.status === 'free'
+                  ? <a class="pkg-cta primary" href="/#checklist">Start using</a>
+                  : <a class="pkg-cta secondary" href="/login" data-pkg={p.id}>Join waitlist</a>
+                }
               </footer>
             </article>
           ))}
@@ -171,7 +151,7 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
         if (a) a.hidden = expanded;
       });
     });
-    
+
     document.querySelectorAll('.pkg-cta.secondary').forEach(e => {
       e.addEventListener('click', t => {
         const a = e.dataset.pkg;
