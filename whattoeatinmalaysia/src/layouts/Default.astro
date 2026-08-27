@@ -747,6 +747,13 @@ const canonicalUrl = canonical || `${siteUrl}/`;
       .auth-cta:active { transform: scale(0.96); }
       .acct-h2 { font-size: 1.1rem; margin: 18px 0 10px; }
       .acct-item { border: 1px solid #e4ddd4; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; background: #fffdf9; }
+      .dish-notes { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #e4ddd4; }
+      .rating { display: flex; gap: 4px; margin-bottom: 8px; }
+      .star { background: none; border: none; cursor: pointer; font-size: 1.5rem; color: #d4cfc7; transition: color 0.2s; padding: 0; }
+      .star:hover, .star.active { color: #e8a020; }
+      .note-input { width: 100%; border: 1px solid #e4ddd4; border-radius: 6px; padding: 8px 10px; font-size: 0.9rem; resize: vertical; background: #faf8f5; color: #444; box-sizing: border-box; }
+      .note-input:focus { outline: none; border-color: #7A2E1D; background: #fff; }
+      .note-status { font-size: 0.8rem; color: #7A2E1D; margin-top: 4px; min-height: 1.2em; }
       .acct-name { font-weight: 700; margin: 0 0 4px; }
       .acct-what { margin: 0; font-size: 0.88rem; color: var(--color-muted, #6b625a); line-height: 1.5; }
 

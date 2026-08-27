@@ -65,6 +65,12 @@ def db():
         "CREATE TABLE IF NOT EXISTS outbox ("
         " id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, link TEXT, ts INTEGER)"
     )
+    c.execute(
+        "CREATE TABLE IF NOT EXISTS notes ("
+        " id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, dish_id TEXT,"
+        " rating INTEGER, note TEXT, updated INTEGER,"
+        " UNIQUE(email, dish_id))"
+    )
     return c
 
 
@@ -310,3 +316,49 @@ def admin_waitlist(k: str = Query(default="")):
     c.close()
     lines = ["email,source,signed_up_at"] + [f"{r[0]},{r[1]},{time.strftime('%Y-%m-%d %H:%M', time.gmtime(r[2]))}" for r in rows]
     return JSONResponse({"csv": "\n".join(lines), "count": len(rows)})
+
+
+@app.get("/notes")
+def get_notes(t: str = Query(default=""), dish_id: str = Query(default="")):
+    data = unsign(t)
+    if not data:
+        return JSONResponse({"error": "invalid token"}, status_code=401)
+    c = db()
+    if dish_id:
+        row = c.execute(
+            "SELECT dish_id, rating, note, updated FROM notes WHERE email = ? AND dish_id = ?",
+            (data["email"], dish_id),
+        ).fetchone()
+        c.close()
+        if row:
+            return {"dish_id": row[0], "rating": row[1], "note": row[2], "updated": row[3]}
+        return {"dish_id": dish_id}
+    rows = c.execute(
+        "SELECT dish_id, rating, note, updated FROM notes WHERE email = ?",
+        (data["email"],),
+    ).fetchall()
+    c.close()
+    return {"notes": [{"dish_id": r[0], "rating": r[1], "note": r[2], "updated": r[3]} for r in rows]}
+
+
+@app.post("/notes")
+async def save_note(request: Request, t: str = Query(default="")):
+    body = await request.json()
+    data = unsign(t)
+    if not data:
+        return JSONResponse({"error": "invalid token"}, status_code=401)
+    dish_id = body.get("dish_id", "").strip()
+    rating = body.get("rating")
+    note = (body.get("note") or "").strip()[:500]
+    if not dish_id:
+        return JSONResponse({"error": "missing dish_id"}, status_code=400)
+    now = int(time.time())
+    c = db()
+    c.execute(
+        "INSERT INTO notes (email, dish_id, rating, note, updated) VALUES (?, ?, ?, ?, ?)"
+        " ON CONFLICT(email, dish_id) DO UPDATE SET rating=excluded.rating, note=excluded.note, updated=excluded.updated",
+        (data["email"], dish_id, rating, note, now),
+    )
+    c.commit()
+    c.close()
+    return {"ok": True, "dish_id": dish_id}
