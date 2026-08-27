@@ -951,7 +951,7 @@ export const packages: PackageCard[] = [
     price: 'RM15 one-time',
     blurb: 'Everything in Essentials, plus JAKIM certification details, prayer facility maps, and diet flags that matter.',
     includes: [
-      'JAKIM-certified stall locations',
+      'JAKIM-certified areas and districts',
       'Prayer room maps for KL, Penang, Melaka',
       'Diet flags: halal, vegetarian, gluten-free, nut-free',
       'Where to ask when in doubt',
@@ -963,10 +963,10 @@ export const packages: PackageCard[] = [
     name: 'Penang & KL Food Guide',
     status: 'coming',
     price: 'RM10 one-time',
-    blurb: 'City-specific guides for Penang and Kuala Lumpur. Exact stalls, street names, and when to go.',
+    blurb: 'City-specific guides for Penang and Kuala Lumpur. Street-level context, neighborhood food scenes, and when to go.',
     includes: [
-      'Penang dishes with stall addresses',
-      'KL dishes with neighborhood guides',
+      'Penang food districts and atmosphere',
+      'KL neighborhood food guides',
       'Best hours for each area',
       'Street parking and transit tips',
       'Combines with Essentials automatically',
@@ -994,7 +994,7 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     q: 'Is this a restaurant app?',
-    a: 'No. No reviews, no ratings, no pinned locations. Each entry is a dish, the town it comes from, and why that version is the one to seek out. Use Google Maps to find stalls once you know what you are hunting.',
+    a: 'No. No reviews, no ratings, no pinned locations. Each entry is a dish, the town it comes from, and why that version is the one to seek out. Use Google Maps to find spots once you know what you are hunting.',
   },
   {
     q: 'Which state has the best food?',
