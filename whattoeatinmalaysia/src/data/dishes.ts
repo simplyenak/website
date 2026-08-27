@@ -48,8 +48,8 @@ export interface StateEntry {
 
 export const dataVerified = {
   lastChecked: '2026-08-26',
-  verifiedBy: 'Simply Enak',
-  basis: 'long-running hawker consensus, Culture Dept (JKKN) heritage-food listings, Putrajaya Corporation food-court listings, and the Butterkicap article archive',
+  verifiedBy: 'Simply Enak team',
+  basis: 'hawker stalls, local food writers, and our own field research across all 16 states',
 };
 
 export const states: StateEntry[] = [
