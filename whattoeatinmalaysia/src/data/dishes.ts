@@ -977,14 +977,14 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     q: 'Is this a restaurant app?',
-    a: 'No. No reviews, no ratings, no pinned locations. Each entry is a dish, the town it comes from, and why that version is the one to seek out. Use Google Maps to find stalls once you know what you're hunting.',
+    a: 'No. No reviews, no ratings, no pinned locations. Each entry is a dish, the town it comes from, and why that version is the one to seek out. Use Google Maps to find stalls once you know what you are hunting.',
   },
   {
     q: 'Which state has the best food?',
-    a: 'There is no settled answer, and that is the point. Penang for Chinese-Peranakan street food, Kelantan for deep Malay cooking, Kuching for Sarawak laksa, Ipoh for coffee-shop classics. Eat what the state you are in is famous for rather than running around chasing one "best".',
+    a: 'There is no settled answer, and that is the point. Penang for Chinese-Peranakan street food, Kelantan for deep Malay cooking, Kuching for Sarawak laksa, Ipoh for coffee-shop classics. Eat what the state you are in is famous for rather than running around chasing one \'best\'.',
   },
   {
-    q: 'What is Malaysia's most famous dish?',
+    q: 'What is Malaysias most famous dish?',
     a: 'Nasi lemak — coconut rice with sambal, anchovies, peanuts and cucumber, eaten for breakfast everywhere. But it is a national dish, not a regional one. The dishes worth travelling for are the state-specific ones: asam laksa in Penang, nasi kerabu in Kelantan, Sarawak laksa in Kuching.',
   },
   {
@@ -1001,7 +1001,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How does this checklist work?',
-    a: 'Tick a dish when you try it. Your progress is saved locally in your browser, no account required. The counter in the header keeps score. Hit "Share score" to copy it; Reset clears everything. Bought a deep dive? Log in and your ticks sync across devices.',
+    a: 'Tick a dish when you try it. Your progress is saved locally in your browser, no account required. The counter in the header keeps score. Hit \'Share score\' to copy it; Reset clears everything. Bought a deep dive? Log in and your ticks sync across devices.',
   },
   {
     q: 'Is the checklist free?',
