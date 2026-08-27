@@ -3,7 +3,7 @@ import Default from '~/layouts/Default.astro';
 import { packages, type PackageCard, faqs } from '~/data/dishes';
 
 const title = 'Food Guides — What to Eat in Malaysia';
-const description = 'Choose your Malaysia food guide: Halal guide, Penang & KL deep dive, or the full collection. One-time purchases, no subscriptions.';
+const description = 'Choose your Malaysia food guide: city guides, dietary guides, or the full collection. One-time purchases, no subscriptions.';
 
 // Filter out FAQs that are about checklist mechanics (keep only general ones)
 const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.includes('Is the checklist free'));
@@ -40,14 +40,20 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
               <tr>
                 <td>Dish count</td>
                 <td class="pkg-price-cell">12 national</td>
-                <td class="pkg-price-cell">All + prayer maps</td>
-                <td class="pkg-price-cell">City-specific</td>
-                <td class="pkg-price-cell">All states</td>
+                <td class="pkg-price-cell">Penang districts</td>
+                <td class="pkg-price-cell">KL districts</td>
+                <td class="pkg-price-cell">Melaka heritage</td>
+                <td class="pkg-price-cell">JAKIM areas</td>
+                <td class="pkg-price-cell">Indian/Buddhist</td>
+                <td class="pkg-price-cell">All included</td>
               </tr>
               <tr>
                 <td>Halal notes</td>
                 <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span> + prayer maps</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span> + JAKIM</td>
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
               </tr>
@@ -57,20 +63,39 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Diet flags (veg, gluten, nuts)</td>
-                <td><span class="dash">—</span></td>
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
               </tr>
               <tr>
-                <td>State-by-state guides</td>
+                <td>Dietary flags</td>
                 <td><span class="dash">—</span></td>
                 <td><span class="check">✓</span></td>
-                <td><span class="check">✓</span> (KL + Penang)</td>
-                <td><span class="check">✓</span> (all 16)</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>District maps</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Transit tips</td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
               </tr>
               <tr>
                 <td>Offline access</td>
@@ -78,10 +103,6 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
-              </tr>
-              <tr>
-                <td>Prayer room maps</td>
-                <td><span class="dash">—</span></td>
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
                 <td><span class="check">✓</span></td>
