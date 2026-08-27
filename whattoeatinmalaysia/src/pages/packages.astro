@@ -17,7 +17,7 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/penang-street-food.jpg',
     blurb: 'George Town, Air Itam, Bayan Lepas. Which district to walk through and when.',
-    features: ['District maps', 'Best times to go', 'Transit tips']
+    features: ['District maps', 'Best times to go', 'Transit tips', 'Notes & ratings']
   },
   {
     id: 'city-kl',
@@ -26,7 +26,7 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/kl-food.jpg',
     blurb: 'Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.',
-    features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips']
+    features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips', 'Notes & ratings']
   },
   {
     id: 'city-melaka',
@@ -35,7 +35,7 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/melaka-food.jpg',
     blurb: 'Jonker Walk, heritage quarter. Nyonya origins and night market hours.',
-    features: ['Jonker Walk routes', 'Nyonya origins', 'Night market hours']
+    features: ['Jonker Walk routes', 'Nyonya origins', 'Night market hours', 'Notes & ratings']
   },
   {
     id: 'dietary-halal',
@@ -44,7 +44,7 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/halal-guide.jpg',
     blurb: 'JAKIM-verified areas, prayer room locations, and what to ask at Chinese hawker stalls.',
-    features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask']
+    features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask', 'Notes & ratings']
   },
   {
     id: 'dietary-veg',
@@ -53,7 +53,7 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/vegetarian.jpg',
     blurb: 'Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.',
-    features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options']
+    features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options', 'Notes & ratings']
   },
   {
     id: 'full-collection',
@@ -62,7 +62,7 @@ const guideCards = [
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/collection.jpg',
     blurb: 'All five guides in one purchase. Access on any device, forever.',
-    features: ['Everything included', 'Cross-device sync', 'Lifetime access']
+    features: ['Everything included', 'Cross-device sync', 'Lifetime access', 'Notes & ratings']
   }
 ];
 ---
@@ -71,16 +71,17 @@ const guideCards = [
   <main class="packages-page">
     <div class="container">
       <header class="packages-header">
-        <p class="section-eyebrow">Choose your guide</p>
-        <h1>Food Guides for Malaysia</h1>
+        <p class="section-eyebrow">Enhance your journey</p>
+        <h1>Notes, ratings, and deeper guides</h1>
         <p class="section-hint">
-          Twelve national classics are free forever. The deeper state-by-state guides are one-time purchases.
-          Pick the one that matches where you are going.
+          The checklist is free and always will be.
+          Unlock detailed district maps, best-times guidance, and dietary flags for each state.
+          Add personal notes and ratings to every dish.
         </p>
       </header>
 
       <section class="guide-cards" aria-labelledby="cards-heading">
-        <h2 id="cards-heading" class="section-title">Pick your guide</h2>
+        <h2 id="cards-heading" class="section-title">Add depth to your checklist</h2>
         <div class="guide-cards-grid">
           {guideCards.map((card, i) => (
             <article class="guide-card-buy" data-card={card.id} style={`animation-delay: ${i * 80}ms`}>
@@ -117,7 +118,7 @@ const guideCards = [
       </section>
 
       <footer class="packages-footer">
-        <p>All purchases are one-time. Pay once, access forever. Your unlock is tied to your email.</p>
+        <p>Your notes and ratings stay on your device until you log in. One purchase, all guides, lifetime access.</p>
         <p><a href="/login">Already bought? Log in →</a></p>
       </footer>
     </div>
