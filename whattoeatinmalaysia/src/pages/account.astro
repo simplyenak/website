@@ -2,14 +2,14 @@
 import Default from '../layouts/Default.astro';
 ---
 <Default title="Your guides — What to Eat in Malaysia" description="Your purchases and unlocked guides.">
-  <main class="auth-wrap">
-    <div class="auth-box" id="acct-box">
-      <p class="eyebrow">Your guides</p>
-      <h1 id="acct-title">Checking this browser...</h1>
-      <div id="acct-body">
-        <p class="auth-lede">Looking for your saved login.</p>
+  <main class="account-dashboard">
+    <div class="container">
+      <div id="dashboard-content">
+        <div class="dashboard-loading">
+          <div class="spinner"></div>
+          <p>Checking your account...</p>
+        </div>
       </div>
-      <p class="auth-back"><a href="/">&larr; Back to the checklist</a></p>
     </div>
   </main>
 
@@ -17,17 +17,75 @@ import Default from '../layouts/Default.astro';
     (function () {
       var ACCESS = 'https://wtm-access.system.simplyenak.com';
       var TOKEN_KEY = 'wtm-token';
-      // ThriveCart numeric product ids -> what the buyer owns
+
+      // Product catalog matching what's on /packages
       var PRODUCTS = {
         '9': {
-          name: 'Street Food Masters Collection',
-          what: 'Every deep dive: the Nyonya kitchen and all sixteen state guides.',
+          name: 'Full Collection',
+          short: 'All 5 guides',
+          price: 'RM25',
+          description: 'Penang, KL, Melaka, Halal & Vegetarian — everything you need.',
+          badge: 'Best value',
+          color: '#C99B3F',
+          includes: ['5 state & dietary guides', 'Cross-device sync', 'Lifetime access'],
+        },
+        'city-penang': {
+          name: 'Penang Food Guide',
+          short: 'George Town + more',
+          price: 'RM8',
+          description: 'District maps, transit tips, best times to go.',
+          badge: null,
+          color: '#E4572E',
+          includes: ['District maps', 'Transit routes', 'Hawker centers'],
+        },
+        'city-kl': {
+          name: 'KL Food Guide',
+          short: 'Chinatown, Bangsar & more',
+          price: 'RM8',
+          description: 'LRT routes, Kampung Baru, Bangsar food trail.',
+          badge: null,
+          color: '#7A2E1D',
+          includes: ['Neighborhood guides', 'LRT connections', 'Food trails'],
+        },
+        'city-melaka': {
+          name: 'Melaka Food Guide',
+          short: 'Heritage district',
+          price: 'RM8',
+          description: 'Jonker Walk, Nyonya cuisine, heritage food trails.',
+          badge: null,
+          color: '#1E6B3A',
+          includes: ['Heritage districts', 'Nyonya food', 'Walking routes'],
+        },
+        'dietary-halal': {
+          name: 'Halal Food Guide',
+          short: 'Prayer rooms + stalls',
+          price: 'RM12',
+          description: 'Prayer room locations, ingredient watch-lists, stall questions.',
+          badge: 'Dietary',
+          color: '#1E6B3A',
+          includes: ['Prayer room maps', 'Ingredient guide', 'Hawker questions'],
+        },
+        'dietary-veg': {
+          name: 'Vegetarian Food Guide',
+          short: 'Indian + Buddhist options',
+          price: 'RM12',
+          description: 'Indian restaurants, Buddhist cha fan, mamak ordering guide.',
+          badge: 'Dietary',
+          color: '#C99B3F',
+          includes: ['Restaurant list', 'Ordering guide', 'Substitution tips'],
+        },
+        'dietary-gluten': {
+          name: 'Gluten-Free Food Guide',
+          short: 'Safe eating tips',
+          price: 'RM12',
+          description: 'Gluten-free options, hawker stall navigation, restaurant guide.',
+          badge: 'Dietary',
+          color: '#6B4EA3',
+          includes: ['Safe restaurants', 'Stall phrases', 'Substitution guide'],
         },
       };
 
-      var title = document.getElementById('acct-title');
-      var body = document.getElementById('acct-body');
-      var token = localStorage.getItem(TOKEN_KEY);
+      var content = document.getElementById('dashboard-content');
 
       function esc(s) {
         return String(s).replace(/[&<>"']/g, function (c) {
@@ -36,66 +94,196 @@ import Default from '../layouts/Default.astro';
       }
 
       function renderLoggedOut() {
-        title.textContent = 'No login in this browser';
-        body.innerHTML =
-          '<p class="auth-lede">Log in with your email and we send you a one-time link. ' +
-          'No passwords.</p>' +
-          '<p><a class="auth-cta" href="/login">Log in &rarr;</a></p>' +
-          '<p class="auth-alt">Bought a guide but never got a link? Enter your purchase email ' +
-          'on the <a href="/login">login page</a> and we will match it to your order.</p>';
+        content.innerHTML =
+          '<div class="dashboard-empty">' +
+            '<div class="empty-icon">🔓</div>' +
+            '<h2>Sign in to see your guides</h2>' +
+            '<p>Log in with your email and we send you a one-time link. No passwords.</p>' +
+            '<a href="/login" class="btn-primary">Sign in →</a>' +
+            '<p class="empty-alt">Bought a guide but never got a link? <a href="/login">Log in with your purchase email</a> and we will match it.</p>' +
+          '</div>';
       }
 
-      function renderAccount(d) {
-        title.textContent = 'Signed in as ' + d.email;
-        var rows = '';
+      function renderDashboard(d) {
+        var today = new Date();
+        var validUntil = d.exp ? new Date(d.exp * 1000) : null;
+        var daysLeft = validUntil ? Math.ceil((validUntil - today) / 86400000) : null;
+        var accessExpiry = validUntil ? validUntil.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+
+        // Build purchased guides HTML
+        var guidesHtml = '';
         if (d.products && d.products.length) {
-          rows = d.products
-            .map(function (pid) {
-              var p = PRODUCTS[pid] || { name: 'Package ' + pid, what: 'Guide package' };
-              return (
-                '<div class="acct-item"><p class="acct-name">' + esc(p.name) + '</p>' +
-                '<p class="acct-what">' + esc(p.what) + '</p></div>'
-              );
-            })
-            .join('');
+          var guideCards = d.products.map(function(pid) {
+            var p = PRODUCTS[pid] || {
+              name: 'Guide ' + pid,
+              short: 'Digital guide',
+              price: '?',
+              description: 'Guide package',
+              badge: null,
+              color: '#7A2E1D',
+              includes: ['Access included'],
+            };
+            var badgeHtml = p.badge ? '<span class="guide-badge" style="background:' + p.color + '">' + esc(p.badge) + '</span>' : '';
+            var includesHtml = p.includes ? p.includes.map(function(item) {
+              return '<li class="includes-item">✓ ' + esc(item) + '</li>';
+            }).join('') : '';
+            return '<div class="guide-card" data-guide="' + esc(pid) + '">' +
+              '<div class="guide-header" style="background:' + p.color + '">' +
+                '<div class="guide-name">' + esc(p.name) + '</div>' +
+                badgeHtml +
+              '</div>' +
+              '<div class="guide-body">' +
+                '<p class="guide-desc">' + esc(p.description) + '</p>' +
+                '<ul class="guide-includes">' + includesHtml + '</ul>' +
+              '</div>' +
+              '<div class="guide-footer">' +
+                '<span class="guide-price">' + esc(p.price) + '</span>' +
+                '<a href="/guides" class="btn-secondary">View guide</a>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+
+          guidesHtml = '<section class="dashboard-section">' +
+            '<div class="section-header">' +
+              '<h2>Your guides</h2>' +
+              '<span class="section-count">' + d.products.length + ' purchased</span>' +
+            '</div>' +
+            '<div class="guides-grid">' + guideCards + '</div>' +
+          '</section>';
+        } else {
+          guidesHtml = '<section class="dashboard-section">' +
+            '<div class="dashboard-empty">' +
+              '<div class="empty-icon">📚</div>' +
+              '<h2>No guides yet</h2>' +
+              '<p>Start with the free checklist, then grab the guides for the places you\'re visiting.</p>' +
+              '<a href="/packages" class="btn-primary">Browse guides →</a>' +
+            '</div>' +
+          '</section>';
         }
-        var validUntil = d.exp ? new Date(d.exp * 1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
-        body.innerHTML =
-          (rows
-            ? '<h2 class="acct-h2">Unlocked</h2>' + rows +
-              '<p class="auth-alt">Your access on this device lasts until ' + esc(validUntil) +
-              '. After that, just log in again.</p>'
-            : '<p class="auth-lede">No purchases on this email yet.' +
-              (d.waitlist ? ' You are on the waitlist, thank you.' : '') + '</p>' +
-              '<p><a class="auth-cta" href="/#packages">See the deep dives &rarr;</a></p>') +
-          '<p><button class="auth-out" id="logout-btn" type="button">Log out</button></p>';
-        var out = document.getElementById('logout-btn');
-        out.addEventListener('click', function () {
+
+        // Notes summary
+        var notesHtml = '';
+        if (d.notes && d.notes.length) {
+          var notesCount = d.notes.length;
+          var avgRating = d.avgRating ? d.avgRating.toFixed(1) : '—';
+          notesHtml = '<section class="dashboard-stats">' +
+            '<div class="stat-card">' +
+              '<div class="stat-icon">⭐</div>' +
+              '<div class="stat-value">' + notesCount + '</div>' +
+              '<div class="stat-label">Dishes rated</div>' +
+            '</div>' +
+            '<div class="stat-card">' +
+              '<div class="stat-icon">📝</div>' +
+              '<div class="stat-value">' + (d.notesWithNotes || 0) + '</div>' +
+              '<div class="stat-label">Notes saved</div>' +
+            '</div>' +
+            '<div class="stat-card">' +
+              '<div class="stat-icon">📊</div>' +
+              '<div class="stat-value">' + avgRating + '</div>' +
+              '<div class="stat-label">Avg rating</div>' +
+            '</div>' +
+          '</section>';
+        }
+
+        // Access info
+        var accessHtml = '';
+        if (accessExpiry && daysLeft !== null) {
+          var statusClass = daysLeft > 7 ? 'status-good' : daysLeft > 0 ? 'status-warning' : 'status-expired';
+          var statusText = daysLeft > 7 ? 'Active' : daysLeft > 0 ? 'Expires in ' + daysLeft + ' days' : 'Expired';
+          accessHtml = '<div class="access-info ' + statusClass + '">' +
+            '<strong>Access expires:</strong> ' + esc(accessExpiry) + ' (' + statusText + ')' +
+            '<button class="btn-renew" id="renew-btn">Renew now</button>' +
+          '</div>';
+        }
+
+        // Main content
+        var mainHtml =
+          '<div class="dashboard-header">' +
+            '<div class="user-avatar">' + (d.email.charAt(0).toUpperCase()) + '</div>' +
+            '<div class="user-info">' +
+              '<h1>Welcome back</h1>' +
+              '<p class="user-email">' + esc(d.email) + '</p>' +
+            '</div>' +
+            '<button class="btn-logout" id="logout-btn">Log out</button>' +
+          '</div>' +
+          accessHtml +
+          notesHtml +
+          guidesHtml +
+          '<section class="dashboard-actions">' +
+            '<a href="/" class="action-card">' +
+              '<div class="action-icon">✅</div>' +
+              '<div class="action-text">' +
+                '<strong>Checklist</strong>' +
+                '<span>Track what you\'ve tried</span>' +
+              '</div>' +
+              '<span class="action-arrow">→</span>' +
+            '</a>' +
+            '<a href="/guides" class="action-card">' +
+              '<div class="action-icon">🗺️</div>' +
+              '<div class="action-text">' +
+                '<strong>All guides</strong>' +
+                '<span>Browse state guides</span>' +
+              '</div>' +
+              '<span class="action-arrow">→</span>' +
+            '</a>' +
+            '<a href="/packages" class="action-card">' +
+              '<div class="action-icon">🛒</div>' +
+              '<div class="action-text">' +
+                '<strong>More guides</strong>' +
+                '<span>Expand your collection</span>' +
+              '</div>' +
+              '<span class="action-arrow">→</span>' +
+            '</a>' +
+          '</section>';
+
+        content.innerHTML = mainHtml;
+
+        // Logout handler
+        document.getElementById('logout-btn').addEventListener('click', function() {
           localStorage.removeItem(TOKEN_KEY);
           location.href = '/';
         });
+
+        // Renew handler
+        var renewBtn = document.getElementById('renew-btn');
+        if (renewBtn) {
+          renewBtn.addEventListener('click', function() {
+            fetch(ACCESS + '/redeem', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: d.email }),
+            }).then(function(r) { return r.json(); })
+              .then(function(j) {
+                if (j.token) {
+                  localStorage.setItem(TOKEN_KEY, j.token);
+                  location.reload();
+                }
+              });
+          });
+        }
       }
 
+      var token = localStorage.getItem(TOKEN_KEY);
       if (!token) {
         renderLoggedOut();
         return;
       }
+
       fetch(ACCESS + '/verify?t=' + encodeURIComponent(token))
-        .then(function (r) {
-          return r.json().then(function (j) {
-            return { ok: r.ok, j: j };
-          });
-        })
-        .then(function (res) {
-          if (res.ok) renderAccount(res.j);
+        .then(function(r) { return r.json().then(function(j) { return { ok: r.ok, j: j }; }); })
+        .then(function(res) {
+          if (res.ok) renderDashboard(res.j);
           else {
             localStorage.removeItem(TOKEN_KEY);
             renderLoggedOut();
           }
         })
-        .catch(function () {
-          title.textContent = 'Connection problem';
-          body.innerHTML = '<p class="auth-lede">Could not reach the guide service. Reload to retry.</p>';
+        .catch(function() {
+          content.innerHTML =
+            '<div class="dashboard-error">' +
+              '<h2>Connection problem</h2>' +
+              '<p>Could not reach the account service. <a href="#" onclick="location.reload();return false;">Reload to retry</a></p>' +
+            '</div>';
         });
     })();
   </script>
