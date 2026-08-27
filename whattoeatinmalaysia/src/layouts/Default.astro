@@ -33,6 +33,16 @@ const canonicalUrl = canonical || `${siteUrl}/`;
     {structuredData && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
+    <nav class="site-nav" id="site-nav">
+      <div class="container">
+        <a href="/" class="nav-logo">What to Eat in Malaysia</a>
+        <div class="nav-links">
+          <a href="/guides">Guides</a>
+          <a href="/packages">Packages</a>
+          <a href="/account" class="nav-login">Log in</a>
+        </div>
+      </div>
+    </nav>
     <style is:global>
       :root {
         --color-primary: #7A2E1D;
