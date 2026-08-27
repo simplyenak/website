@@ -949,9 +949,8 @@ export const packages: PackageCard[] = [
     name: 'Halal Malaysia Guide',
     status: 'coming',
     price: 'RM15 one-time',
-    blurb: 'Everything in Essentials, plus JAKIM certification details, prayer facility maps, and diet flags that matter.',
+    blurb: 'Everything in Essentials, plus prayer facility maps and diet flags that matter.',
     includes: [
-      'JAKIM-certified areas and districts',
       'Prayer room maps for KL, Penang, Melaka',
       'Diet flags: halal, vegetarian, gluten-free, nut-free',
       'Where to ask when in doubt',
