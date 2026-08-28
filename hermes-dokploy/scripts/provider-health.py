@@ -17,6 +17,10 @@ PROVIDERS = [
      "key_env": None, "auth": None},
     {"name": "SearXNG", "url": "http://searxng:8080/health",
      "key_env": None, "auth": None},
+    # GH_TOKEN: catches logout/rotation silently killing loop issue-tracking.
+    # 404 from this endpoint = token invalid/expired (gh auth logout kills it).
+    {"name": "GitHub", "url": "https://api.github.com/repos/simplyenak/self-running-agents",
+     "key_env": "GH_TOKEN", "auth": "token"},
 ]
 
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
