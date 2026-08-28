@@ -1,0 +1,99 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Pauline Lee, Gründerin und Chef-Guide von Simply Enak',
+  description: 'Pauline Lee gründete Simply Enak 2011 und führt seither Street-Food-Touren in Kuala Lumpur. Lernen Sie die Gründerin und Chef-Guide von Simply Enak kennen.',
+};
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Simply Enak', item: 'https://simplyenak.com/de/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://simplyenak.com/de/about/' },
+    { '@type': 'ListItem', position: 3, name: 'Pauline Lee', item: 'https://simplyenak.com/de/about/pauline/' },
+  ],
+};
+---
+
+<Layout metadata={metadata} structuredData={breadcrumb}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-16 md:py-24">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs md:text-sm uppercase tracking-[0.25em] font-bold mb-5">Unser Team</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-heading leading-tight mb-5" style="font-size: clamp(2rem, 6vw, 3.75rem);">Pauline Lee</h1>
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">Gründerin & Chef-Guide, Simply Enak</p>
+      <div class="mt-8 max-w-xs mx-auto"><img src="https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg" alt="Pauline Lee" class="w-full rounded-lg shadow-2xl border-2 border-white/10" loading="eager" /></div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/de/" class="hover:text-primary transition-colors">Startseite</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/de/about" class="hover:text-primary transition-colors">Über uns</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Pauline Lee</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Who is ... (entity facts) -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">Wer ist Pauline Lee?</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>Pauline Lee ist Food-Tour-Guide und Gründerin von Simply Enak, einem Food-Tour-Unternehmen in Kuala Lumpur, Malaysia. Pauline gründete Simply Enak im Jahr 2011 und führt seither Street-Food-Touren in Kuala Lumpur. Gäste auf ihren Touren kennen sie einfach als Pauline.</p>
+        <p>Pauline Lee wuchs in Malaysia auf und ging mit ihrer Mutter über die Wet Markets, während die Händler um sie herum Gerichte kochten, die in ihren Familien über Generationen weitergegeben wurden. Sie gründete Simply Enak, damit Reisende diese Seite Malaysias kennenlernen: die Stände, die Verkäufer, die sie mit Namen kennt, und die Geschichten hinter jedem Gericht.</p>
+        <p>Pauline Lee leitet kleine Gruppen und private Food Tours durch Kuala Lumpurs Viertel wie Chinatown, Chow Kit und Jalan Alor und führt Food Tours in George Town, Penang. Tausende Gäste haben ihre Touren auf TripAdvisor, GetYourGuide, Viator und Google bewertet. Pauline Lee ist daher die Gründerin von Simply Enak und eine Food-Tour-Guide in Kuala Lumpur mit über einem Jahrzehnt Erfahrung.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-16 md:py-24 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">Von den Wet Markets zu Simply Enak</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>Als Kind verbrachte Pauline ihre Vormittage mit ihrer Mutter auf den Wet Markets. Während ihre Mutter um den frischesten Fisch feilschte, sah Pauline zu, wie Händler Gerichte zubereiteten, die über Generationen weitergegeben wurden. Das Zischen von Char Kway Teow im heißesten Wok. Die würzigen Wolken von Curry. Die kunstvolle Falttechnik von Roti Canai. Das war ihr Malaysia.</p>
+        <p>Wenn Freunde aus dem Ausland zu Besuch kamen, führte sie sie an den klimatisierten Restaurants mit Bildermenüs vorbei, zwei Straßen weiter zu der Großmutter, die ihre Laksa genau so kochte, wie ihre Mutter es ihr 60 Jahre zuvor beigebracht hatte. Aus diesen Spaziergängen wurde 2011 Simply Enak.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guest quotes -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-10">Was Gäste über Touren mit Pauline sagen</h2>
+      <div class="space-y-8">
+        <blockquote class="border-l-4 border-accent pl-6"><p class="text-lg text-default leading-relaxed">&ldquo;Pauline gave us a wonderful tour of Chinatown! So many things I'd not noticed before, all the wonderful tastes and flavours of Malaysia and relaxing cocktails.&rdquo;</p><cite class="block mt-3 text-sm text-muted not-italic">&mdash; Laura Scott, TripAdvisor review</cite></blockquote>
+        <blockquote class="border-l-4 border-accent pl-6"><p class="text-lg text-default leading-relaxed">&ldquo;Pauline was an awesome guide for our food tour around Old KL. Even though it was super humid, she made the walk really fun with her friendly vibe and great stories.&rdquo;</p><cite class="block mt-3 text-sm text-muted not-italic">&mdash; Alicia Hiew, GetYourGuide review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profiles / corroboration links -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading text-default mb-6">Pauline Lee im Netz finden</h2>
+      <ul class="space-y-3 text-default">
+        <li><a href="https://www.linkedin.com/in/pauline-simplyenak/" rel="nofollow" class="text-primary hover:text-accent font-semibold transition-colors">Pauline Lee auf LinkedIn &rarr;</a></li>
+        <li><a href="https://www.tripadvisor.com/Attraction_Review-g298570-d2414763-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html" class="text-primary hover:text-accent font-semibold transition-colors">Simply Enak auf TripAdvisor &rarr;</a></li>
+        <li><a href="https://www.getyourguide.com/simply-enak-food-experiences-s4050/" class="text-primary hover:text-accent font-semibold transition-colors">Simply Enak auf GetYourGuide &rarr;</a></li>
+        <li><a href="/de/about" class="text-primary hover:text-accent font-semibold transition-colors">Über Simply Enak &rarr;</a></li>
+        <li><a href="/de/tours" class="text-primary hover:text-accent font-semibold transition-colors">Alle Food Tours &rarr;</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#1a1a1a] py-16 md:py-20">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-white mb-5">Kuala Lumpur mit Pauline entdecken</h2>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">Begleiten Sie eine kleine Gruppe oder buchen Sie einen privaten Spaziergang durch die Viertel, in denen sie aufgewachsen ist.</p>
+      <a href="/de/tours" class="inline-block bg-accent text-black font-bold px-8 py-4 rounded-sm hover:bg-white transition-colors">Food Tours ansehen</a>
+    </div>
+  </section>
+</Layout>

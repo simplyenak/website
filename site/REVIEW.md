@@ -340,19 +340,9 @@ Using `set:html` without sanitization means if `footNote` ever contains user-gen
 <Fragment set:html={`© ${new Date().getFullYear()} ${SITE?.name}. All rights reserved.`} />
 ```
 
-### 8.2 — No Organization structured data (Missing `sameAs` for social links)
-**Severity:** Medium | **Category:** SEO  
-The footer renders social media links but never injects `Organization` schema with `sameAs` URLs pointing to those profiles. Google uses `sameAs` to validate social presence for brand SERP features.
-**Fix:** Add a `<script type="application/ld+json">` in the Layout or Footer that includes:
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Simply Enak",
-  "url": "https://simplyenak.com",
-  "sameAs": ["https://instagram.com/simplyenak", "https://facebook.com/simplyenak", ...]
-}
-```
+### 8.2 — No Organization structured data (Missing `sameAs` for social links) — RESOLVED 2026-08-28
+**Severity:** Medium | **Category:** SEO | **Status: FIXED**
+Superseded: `StructuredData.astro` now ships an Organization + LocalBusiness graph with `sameAs` (FB, IG, YouTube, TripAdvisor, LinkedIn, GetYourGuide, Viator, Google Maps) on every page, plus Person nodes for founders (Pauline Lee, Maarten Belmans) with their own entity home pages `/about/pauline`, `/about/maarten`. Verified live in the page graph.
 
 ### 8.3 — `intersect-once` animation class may cause jarring reflow on initial load (Line 33)
 **Severity:** Low | **Category:** Performance  

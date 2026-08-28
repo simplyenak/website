@@ -1,0 +1,87 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Maarten Belmans，Simply Enak 联合创始人',
+  description: 'Maarten Belmans 是 Simply Enak 的联合创始人，自2011年起从事马来西亚美食旅游。认识 Simply Enak 美食之旅背后的联合创始人。',
+};
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Simply Enak', item: 'https://simplyenak.com/zh/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://simplyenak.com/zh/about/' },
+    { '@type': 'ListItem', position: 3, name: 'Maarten Belmans', item: 'https://simplyenak.com/zh/about/maarten/' },
+  ],
+};
+---
+
+<Layout metadata={metadata} structuredData={breadcrumb}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-16 md:py-24">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs md:text-sm uppercase tracking-[0.25em] font-bold mb-5">我们的团队</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-heading leading-tight mb-5" style="font-size: clamp(2rem, 6vw, 3.75rem);">Maarten Belmans</h1>
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">联合创始人，运营与增长，Simply Enak</p>
+      <div class="mt-8 max-w-xs mx-auto flex items-center justify-center aspect-[3/4] rounded-lg bg-primary/20 border border-white/10"><span class="text-7xl font-heading font-bold text-white/40">M</span></div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/zh/" class="hover:text-primary transition-colors">首页</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/zh/about" class="hover:text-primary transition-colors">关于我们</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Maarten Belmans</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Who is ... (entity facts) -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">Maarten Belmans是谁？</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>Maarten Belmans 是马来西亚吉隆坡美食之旅公司 Simply Enak 的联合创始人。自2011年起，他一直从事马来西亚美食旅游，那一年他与 Pauline Lee 共同创立了 Simply Enak。</p>
+        <p>Maarten Belmans 负责 Simply Enak 每一次之旅的运营：导游排班、与摊贩的合作关系，以及吉隆坡、槟城和马六甲新美食之旅的开发。他的标准很简单：每一个停留点，都是团队愿意带自己家人去吃的摊位。</p>
+        <p>Maarten Belmans 与持证当地导游（包括创始人 Pauline Lee）合作，提供小团和私人马来西亚美食之旅。因此，Maarten Belmans 是马来西亚美食之旅运营者，也是 Simply Enak 的联合创始人。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-16 md:py-24 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">自2011年起打造 Simply Enak</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>2011年，Maarten 加入 Pauline，把她的市场漫步变成了一家之旅公司。从最早的唐人街路线到今天吉隆坡、槟城和马六加的美食之旅，他在马来西亚美食旅游的运营端已耕耘十余年。</p>
+        <p>这份工作延续在 Simply Enak 打造的旅行工具中，例如榴莲季节指南 When Is Durian Season，也延续在与 Chow Kit、Jalan Alor 和乔治市摊贩的合作关系中，正是这些让每次之旅成为可能。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profiles / corroboration links -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading text-default mb-6">在线查找Maarten Belmans</h2>
+      <ul class="space-y-3 text-default">
+        <li><a href="https://www.tripadvisor.com/Attraction_Review-g298570-d2414763-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html" class="text-primary hover:text-accent font-semibold transition-colors">TripAdvisor 上的 Simply Enak &rarr;</a></li>
+        <li><a href="https://www.getyourguide.com/simply-enak-food-experiences-s4050/" class="text-primary hover:text-accent font-semibold transition-colors">GetYourGuide 上的 Simply Enak &rarr;</a></li>
+        <li><a href="/zh/about" class="text-primary hover:text-accent font-semibold transition-colors">关于 Simply Enak &rarr;</a></li>
+        <li><a href="/zh/tours" class="text-primary hover:text-accent font-semibold transition-colors">全部美食之旅 &rarr;</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#1a1a1a] py-16 md:py-20">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-white mb-5">与 Simply Enak 团队一起品味马来西亚</h2>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">浏览由 Pauline、Trish 和 Simply Enak 持证导游带领的美食之旅。</p>
+      <a href="/zh/tours" class="inline-block bg-accent text-black font-bold px-8 py-4 rounded-sm hover:bg-white transition-colors">查看美食之旅</a>
+    </div>
+  </section>
+</Layout>

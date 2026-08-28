@@ -1,0 +1,87 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Maarten Belmans, cofundador da Simply Enak',
+  description: 'Maarten Belmans é cofundador da Simply Enak e trabalha no turismo gastronómico malaio desde 2011. Conheça o cofundador por trás dos food tours da Simply Enak.',
+};
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Simply Enak', item: 'https://simplyenak.com/pt/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://simplyenak.com/pt/about/' },
+    { '@type': 'ListItem', position: 3, name: 'Maarten Belmans', item: 'https://simplyenak.com/pt/about/maarten/' },
+  ],
+};
+---
+
+<Layout metadata={metadata} structuredData={breadcrumb}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-16 md:py-24">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs md:text-sm uppercase tracking-[0.25em] font-bold mb-5">A nossa equipa</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-heading leading-tight mb-5" style="font-size: clamp(2rem, 6vw, 3.75rem);">Maarten Belmans</h1>
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">Cofundador, operações e crescimento, Simply Enak</p>
+      <div class="mt-8 max-w-xs mx-auto flex items-center justify-center aspect-[3/4] rounded-lg bg-primary/20 border border-white/10"><span class="text-7xl font-heading font-bold text-white/40">M</span></div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/pt/" class="hover:text-primary transition-colors">Início</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/pt/about" class="hover:text-primary transition-colors">Sobre nós</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Maarten Belmans</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Who is ... (entity facts) -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">Quem é Maarten Belmans?</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>Maarten Belmans é cofundador da Simply Enak, uma empresa de tours gastronômicos em Kuala Lumpur, Malásia. Maarten Belmans trabalha no turismo gastronómico malaio desde 2011, o ano em que ele e Pauline Lee fundaram juntos a Simply Enak.</p>
+        <p>Maarten Belmans gere as operações por trás de cada tour da Simply Enak: agendamento de guias, relações com vendedores e o desenvolvimento de novos tours gastronômicos em Kuala Lumpur, Penang e Melaka. O seu critério é simples: cada paragem é uma barraca onde a equipa levaria a própria família.</p>
+        <p>Maarten Belmans trabalha com guias locais licenciados, incluindo a fundadora Pauline Lee, para oferecer tours gastronômicos em pequenos grupos e privados pela Malásia. Maarten Belmans é, portanto, operador de food tours na Malásia e cofundador da Simply Enak.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-16 md:py-24 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">A construir a Simply Enak desde 2011</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>Maarten juntou-se a Pauline em 2011 para transformar os seus passeios de mercado numa empresa de tours. Das primeiras rotas em Chinatown aos tours actuais em Kuala Lumpur, Penang e Melaka, passa mais de uma década no lado operacional do turismo gastronómico malaio.</p>
+        <p>Esse trabalho continua nas ferramentas de viagem que a Simply Enak cria, como o guia de época de durian When Is Durian Season, e nas relações com vendedores de Chow Kit, Jalan Alor e George Town que tornam cada tour possível.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profiles / corroboration links -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading text-default mb-6">Encontre Maarten Belmans online</h2>
+      <ul class="space-y-3 text-default">
+        <li><a href="https://www.tripadvisor.com/Attraction_Review-g298570-d2414763-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html" class="text-primary hover:text-accent font-semibold transition-colors">Simply Enak no TripAdvisor &rarr;</a></li>
+        <li><a href="https://www.getyourguide.com/simply-enak-food-experiences-s4050/" class="text-primary hover:text-accent font-semibold transition-colors">Simply Enak no GetYourGuide &rarr;</a></li>
+        <li><a href="/pt/about" class="text-primary hover:text-accent font-semibold transition-colors">Sobre a Simply Enak &rarr;</a></li>
+        <li><a href="/pt/tours" class="text-primary hover:text-accent font-semibold transition-colors">Todos os tours gastronómicos &rarr;</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#1a1a1a] py-16 md:py-20">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-white mb-5">Saboreie a Malásia com a equipa Simply Enak</h2>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">Veja os food tours guiados por Pauline, Trish e pelos guias licenciados da Simply Enak.</p>
+      <a href="/pt/tours" class="inline-block bg-accent text-black font-bold px-8 py-4 rounded-sm hover:bg-white transition-colors">Ver tours gastronómicos</a>
+    </div>
+  </section>
+</Layout>

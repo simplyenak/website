@@ -1,0 +1,99 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'ポーリン・リー、Simply Enakの創設者兼リードガイド',
+  description: 'ポーリン・リーは2011年にSimply Enakを創設し、以来クアラルンプールでストリートフードツアーのガイドを続けています。Simply Enakの創設者兼リードガイドをご紹介します。',
+};
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Simply Enak', item: 'https://simplyenak.com/ja/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://simplyenak.com/ja/about/' },
+    { '@type': 'ListItem', position: 3, name: 'Pauline Lee', item: 'https://simplyenak.com/ja/about/pauline/' },
+  ],
+};
+---
+
+<Layout metadata={metadata} structuredData={breadcrumb}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-16 md:py-24">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs md:text-sm uppercase tracking-[0.25em] font-bold mb-5">私たちのチーム</p>
+      <h1 class="text-4xl md:text-6xl font-bold font-heading leading-tight mb-5" style="font-size: clamp(2rem, 6vw, 3.75rem);">Pauline Lee</h1>
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">創設者兼リードガイド、Simply Enak</p>
+      <div class="mt-8 max-w-xs mx-auto"><img src="https://se-website-images.s3.nl-ams.scw.cloud/payload-media/pauline-founder-portrait.jpg" alt="Pauline Lee" class="w-full rounded-lg shadow-2xl border-2 border-white/10" loading="eager" /></div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/ja/" class="hover:text-primary transition-colors">ホーム</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/ja/about" class="hover:text-primary transition-colors">会社情報</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-default font-semibold">Pauline Lee</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Who is ... (entity facts) -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">Pauline Leeとは？</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>ポーリン・リーはフードツアーガイドであり、マレーシア・クアラルンプールのフードツアー会社Simply Enakの創設者です。ポーリンは2011年にSimply Enakを創設し、以来クアラルンプールでストリートフードツアーのガイドを続けています。ツアーのゲストは彼女を親しみを込めてポーリンと呼びます。</p>
+        <p>ポーリン・リーはマレーシアで育ち、母親とともにウェットマーケットを歩きながら、周りで何世代も受け継がれてきた料理を作る屋台の店主たちを見て育ちました。旅行者にそのようなマレーシアの姿を味わってもらうため、Simply Enakを始めました。名前で顔なじみの屋台、そして一つひとつの料理にまつわる物語があります。</p>
+        <p>ポーリン・リーはクアラルンプールのチャイナタウン、チョーキット、ジャラン・アロールなどの街で少人数グループやプライベートのフードツアーを率い、ペナンのジョージタウンでもフードツアーのガイドをしています。TripAdvisor、GetYourGuide、Viator、Googleで何千人ものゲストが彼女のツアーを評価しています。ポーリン・リーはSimply Enakの創設者であり、10年以上の経験を持つクアラルンプールのフードツアーガイドです。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-16 md:py-24 bg-white dark:bg-[#1e1c1c]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-8">ウェットマーケットからSimply Enakへ</h2>
+      <div class="space-y-4 text-default leading-relaxed">
+        <p>子どもの頃、ポーリンは毎朝母親とウェットマーケットを歩いていました。母親が新鮮な魚を値切り交渉する間、ポーリンは世代から世代へと受け継がれてきた料理を作る屋台の職人たちに見とれていました。熱した鍋で音を立てるチャークイテオ。香りの雲のように立ちのぼるカレー。ロティ・チャナイを折る繊細な技。それが彼女のマレーシアでした。</p>
+        <p>海外から友達が訪ねてきたとき、彼女は写真付きメニューの冷房の効いたレストランを素通りし、二つ先の通りで、60年前に母親から教わった通りのラクサを作るおばあさんのところへ連れて行きました。2011年、その散歩がSimply Enakになりました。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guest quotes -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-10">ポーリンとのツアーについてゲストの声</h2>
+      <div class="space-y-8">
+        <blockquote class="border-l-4 border-accent pl-6"><p class="text-lg text-default leading-relaxed">&ldquo;Pauline gave us a wonderful tour of Chinatown! So many things I'd not noticed before, all the wonderful tastes and flavours of Malaysia and relaxing cocktails.&rdquo;</p><cite class="block mt-3 text-sm text-muted not-italic">&mdash; Laura Scott, TripAdvisor review</cite></blockquote>
+        <blockquote class="border-l-4 border-accent pl-6"><p class="text-lg text-default leading-relaxed">&ldquo;Pauline was an awesome guide for our food tour around Old KL. Even though it was super humid, she made the walk really fun with her friendly vibe and great stories.&rdquo;</p><cite class="block mt-3 text-sm text-muted not-italic">&mdash; Alicia Hiew, GetYourGuide review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profiles / corroboration links -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-bold font-heading text-default mb-6">Pauline Leeをオンラインで見る</h2>
+      <ul class="space-y-3 text-default">
+        <li><a href="https://www.linkedin.com/in/pauline-simplyenak/" rel="nofollow" class="text-primary hover:text-accent font-semibold transition-colors">LinkedInのPauline Lee &rarr;</a></li>
+        <li><a href="https://www.tripadvisor.com/Attraction_Review-g298570-d2414763-Reviews-Simply_Enak_Food_Experiences-Kuala_Lumpur_Wilayah_Persekutuan.html" class="text-primary hover:text-accent font-semibold transition-colors">TripAdvisorのSimply Enak &rarr;</a></li>
+        <li><a href="https://www.getyourguide.com/simply-enak-food-experiences-s4050/" class="text-primary hover:text-accent font-semibold transition-colors">GetYourGuideのSimply Enak &rarr;</a></li>
+        <li><a href="/ja/about" class="text-primary hover:text-accent font-semibold transition-colors">Simply Enakについて &rarr;</a></li>
+        <li><a href="/ja/tours" class="text-primary hover:text-accent font-semibold transition-colors">すべてのフードツアー &rarr;</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#1a1a1a] py-16 md:py-20">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-white mb-5">ポーリンと歩くクアラルンプール</h2>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">少人数グループツアーに参加するか、彼女が育った街でのプライベートウォークを予約しましょう。</p>
+      <a href="/ja/tours" class="inline-block bg-accent text-black font-bold px-8 py-4 rounded-sm hover:bg-white transition-colors">フードツアーを見る</a>
+    </div>
+  </section>
+</Layout>
