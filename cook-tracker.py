@@ -28,7 +28,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 POST_DIR = ROOT / "site" / "src" / "data" / "post"
-TRACKER_FILE = ROOT / "content" / "cook-tracker.json"
+# Allow overriding the tracker JSON path via env (for read-only container mounts)
+# — same convention as refresh-loop.py / gsc-impressions-clicks.py
+TRACKER_FILE = Path(os.environ.get("COOK_TRACKER_FILE", str(ROOT / "content" / "cook-tracker.json")))
 CREDENTIALS_PATH = os.path.expanduser("~/.google/credentials/gsc-key.json")
 
 # Stage thresholds (days)
