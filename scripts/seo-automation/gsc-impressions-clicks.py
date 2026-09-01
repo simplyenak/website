@@ -30,7 +30,13 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-OUTPUT_DIR = REPO_ROOT / ".hermes" / "seo-reports" / "impressions-clicks"
+# Allow overriding output dir via HERMES_OUTPUT_DIR env var (for read-only mounts)
+# — same convention as refresh-loop.py
+_OVERRIDE_OUTPUT = os.environ.get("HERMES_OUTPUT_DIR")
+if _OVERRIDE_OUTPUT:
+    OUTPUT_DIR = Path(_OVERRIDE_OUTPUT)
+else:
+    OUTPUT_DIR = REPO_ROOT / ".hermes" / "seo-reports" / "impressions-clicks"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Defaults
