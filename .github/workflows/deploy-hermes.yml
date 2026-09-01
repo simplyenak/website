@@ -30,9 +30,13 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             set -e
-            echo "=== Pulling latest code ==="
+            echo "=== Syncing checkout to main ==="
             cd /home/maarten/website-optimization
-            git pull origin main
+            # Deploy checkout must mirror origin/main exactly. A dirty tree
+            # (e.g. scripts scp'd to the server) breaks `git pull` and the
+            # whole deploy — fetch+reset is idempotent instead.
+            git fetch origin main
+            git reset --hard origin/main
 
             echo "=== Building Docker image ==="
             cd hermes-dokploy
