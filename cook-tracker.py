@@ -462,6 +462,25 @@ def main():
         print(json.dumps(data, indent=2, default=str))
     else:
         print_report(data)
+    # Emit a concise machine-readable signal line the cron agent can reason over
+    print()
+    print("--- SIGNAL SUMMARY ---")
+    c = 0
+    for pid, p in sorted(data.get("posts", {}).items()):
+        days = p.get("days_since_published") or 0
+        imp = p.get("total_impressions") or 0
+        clicks = p.get("total_clicks") or 0
+        pos = p.get("current_position") or 0
+        stage = p.get("stage", "?")
+        flags = []
+        if stage in ("building", "ranking") and days >= 60 and imp == 0:
+            flags.append("INDEXED-BUT-0-IMPRESSIONS")
+        if pos and 0 < pos < 20 and clicks == 0:
+            flags.append("RANKING-20-0-CLICKS")
+        if flags:
+            c += 1
+            print(f"  {pid}: stage={stage} days={days} imp={imp} pos={pos} -> {','.join(flags)}")
+    print(f"total concerning: {c}")
     
     return 0
 
