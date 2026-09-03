@@ -1,814 +1,138 @@
 ---
 import Layout from '~/layouts/Default.astro';
-import {
-  states,
-  faqs,
-  checklistTotal,
-  nationalClassics,
-  packages,
-  dataVerified,
-  REGION_LABELS,
-  type Region,
-} from '~/data/dishes';
+import { checklistTotal } from '~/data/dishes';
 
-const title = `Malaysian Food Checklist: 81 Dishes You Must Try — Track Every One You Eat`;
+const title = 'Malaysian Food Checklist: 81 Dishes You Must Try — Track Every One You Eat';
 const description =
-  'Every Malaysian dish you must try, in one checklist. Tick dishes off as you taste them, rate each one, and note where you ate it. Free, no account needed, works on your phone.';
-
-const siteUrl = 'https://whattoeatinmalaysia.com';
-
-const regionsOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borneo'];
-const byRegion = regionsOrder.map((r) => ({
-  region: r,
-  label: REGION_LABELS[r],
-  states: states.filter((s) => s.region === r),
-}));
-
-
-
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebApplication',
-      name: 'What to Eat in Malaysia Checklist',
-      applicationCategory: 'TravelApplication',
-      operatingSystem: 'Any',
-      url: siteUrl,
-      description:
-        'The Malaysian food tasting checklist: tick off dishes worth trying and find each one where it comes from, so the version you get is the best version. Score saved in your browser and shareable; paid state-by-state deep dives available.',
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      publisher: { '@id': 'https://simplyenak.com/#organization' },
-    },
-    {
-      '@type': 'Organization',
-      '@id': 'https://simplyenak.com/#organization',
-      name: 'Simply Enak',
-      url: 'https://simplyenak.com',
-      description:
-        'Simply Enak is a food tour company in Kuala Lumpur, Malaysia, founded in 2011 by Pauline Lee and Maarten Belmans. Simply Enak runs small-group and private street food tours in Kuala Lumpur and George Town, Penang.',
-    },
-    {
-      '@type': 'ItemList',
-      name: 'The Malaysia food checklist',
-      itemListElement: states.map((s, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        name: `${s.name}: ${s.dishes.map((d) => d.name).join(', ')}`,
-      })),
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqs.map((f) => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
-      })),
-    },
-  ],
-};
-
-const pickerData = states.map((s) => ({
-  id: s.id,
-  name: s.name,
-  dishes: s.dishes.map((d) => ({ id: d.id, name: d.name, state: s.name })),
-}));
-
-const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
+  'Every Malaysian dish you must try, in one checklist. Tick dishes off as you taste them, rate each one, and note where you ate it. Free, no account needed. Launching soon — join the list.';
 ---
 
-<Layout title={title} description={description} structuredData={structuredData}>
-  <div class="sticky-progress" id="sticky-progress" aria-hidden="true">
-    <span>Tried <b id="sp-count">0</b>/{nationalClassics.length}</span>
-    <span class="sp-track"><span class="sp-fill" id="sp-fill" style="width:0%"></span></span>
-    <a href="#checklist">Jump to checklist</a>
-  </div>
-
-  <header class="hero">
-    <div class="container">
-      <h1>What to Eat in Malaysia: Every Dish You Must Try</h1>
-      <p class="lede">
-        A free checklist of 81 dishes across 16 states.
-        Tick what you have tried, rate each one, write notes about where you found it.
-        Unlock detailed guides when you want to go deeper.
+<Layout title={title} description={description}>
+  <main class="coming-soon">
+    <div class="cs-container">
+      <p class="cs-eyebrow">Launching soon</p>
+      <h1>Every dish you must try in Malaysia — and a checklist to track every one</h1>
+      <p class="cs-lede">
+        We are building the easiest way to eat your way through Malaysia: all {checklistTotal} must-try
+        dishes in one place. Tick each one off as you taste it, rate it, and remember the stall you
+        ate it at. Free to use, no account needed, works on your phone.
       </p>
-            <div class="hero-stats" aria-hidden="true">
-              <span><b>81</b> dishes to track</span><span class="dot">&middot;</span>
-              <span><b>Free</b> forever</span><span class="dot">&middot;</span>
-              <span><b>No account</b> needed</span>
-            </div>
-            <p class="hero-trust" aria-hidden="true">
-              Works offline · Your data stays on your device · Built by <a href="https://simplyenak.com" target="_blank" rel="noopener">Simply Enak</a>
-            </p>
-            <p class="hero-cta-row"><a href="#checklist" class="hero-cta">Start tracking</a></p>
-            <div class="progress-panel" id="progress-panel">
-        <div class="progress-top">
-          <p class="progress-label">
-            Starter checklist: tried <span id="tried-count">0</span> of {nationalClassics.length}
-          </p>
-          <div class="progress-actions">
-            <button id="share-btn" type="button">Share score</button>
-            <button id="reset-btn" type="button">Reset</button>
-          </div>
-        </div>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax={nationalClassics.length} aria-valuenow="0" id="progress-track">
-          <div class="progress-fill" id="progress-fill"></div>
-        </div>
-        <p class="progress-hint">
-          Ticks saved locally — no account needed. This is just the starter. Buy a deep dive to unlock the full {checklistTotal} dish checklist across all states.
-          <a href="/packages">See packages</a> or <a href="/login">Log in</a> if you already bought one.
-        </p>
-      </div>
-      <a class="hero-login" href="/login">Log in &rarr;</a>
-    </div>
-  </header>
 
-  <section id="checklist">
-  <div class="container">
-  <h2 class="section-title">The starter checklist</h2>
-  <p class="section-hint">
-    Twelve national classics eaten everywhere. Tick what you've tried and share your score.
-    The remaining {checklistTotal - nationalClassics.length} state-specific dishes unlock when you buy a deep dive.
-  </p>
-
-  <div class="cl-group open">
-    <div class="cl-group-head">
-      <h3>National classics</h3>
-      <span class="count-chip" data-state-count="classics">0/{nationalClassics.length} tried</span>
-    </div>
-    <div class="cl-grid">
-      {nationalClassics.map((c) => (
-        <label class="cl-item" data-dish-card={c.id} for={`check-${c.id}`}>
-          <input
-            type="checkbox"
-            class="vh"
-            id={`check-${c.id}`}
-            data-dish={c.id}
-            aria-label={`Tried ${c.name}`}
-          />
-          <span class="tick" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d={checkPath} /></svg>
-          </span>
-          <span class="cl-txt">
-            <strong>{c.name}</strong>
-            <em>{c.what}</em>
-          </span>
-          <div class="dish-notes" data-dish-id={c.id}>
-            <div class="rating" data-dish-rating={c.id}>
-              {[1,2,3,4,5].map(n => (
-                <button type="button" class="star" data-star={n} aria-label={`Rate ${n} stars`}>☆</button>
-              ))}
-            </div>
-            <textarea class="note-input" data-dish-note={c.id} placeholder="Where did you try it?" rows={2}></textarea>
-            <div class="note-status" data-dish-status={c.id}></div>
-          </div>
-        </label>
-      ))}
-    </div>
-  </div>
-  </div>
-  </section>
-
-  <section class="social-proof">
-    <div class="container">
-      <h2 class="section-title">What travellers are saying</h2>
-      <p class="section-subtitle">Real feedback from people who tracked their Malaysian food journey</p>
-      <div class="social-proof-grid">
-        <div class="proof-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"This checklist helped us discover dishes we would have missed. We ended up trying 47 out of 81 in just one week — the notes feature kept our favorites organized."</p>
-          <p class="author">Sarah &amp; Tom, UK</p>
-        </div>
-        <div class="proof-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"As a first-time visitor, the state-by-state guides were invaluable. Penang alone saved us hours of wandering. Worth every ringgit."</p>
-          <p class="author">Michael Chen, Singapore</p>
-        </div>
-        <div class="proof-card">
-          <div class="stars">★★★★☆</div>
-          <p class="quote">"The vegetarian guide is gold. As a vegan, I was worried about finding good options. This made it stress-free and delicious."</p>
-          <p class="author">Emma Wilson, Australia</p>
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 32px;">
-        <div class="proof-stat">
-          <div class="num">81</div>
-          <div class="label">Dishes tracked across 16 states</div>
-        </div>
-        <div class="proof-stat">
-          <div class="num">12</div>
-          <div class="label">Free classics to start with</div>
-        </div>
-        <div class="proof-stat">
-          <div class="num">5</div>
-          <div class="label">Premium guides available</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="commerce-section">
-    <div class="container">
-      <div class="commerce-header">
-        <h2 class="section-title">Unlock deeper guides</h2>
-        <p class="section-subtitle">
-          Start with the free checklist. When you're ready, pick the guides for the places you're visiting.
-          Every guide includes district maps, best-times guidance, and dietary flags — plus your notes and ratings sync across devices.
-        </p>
-      </div>
-
-      <div class="product-showcase">
-        <div class="product-featured">
-          <div class="product-badge">Best value</div>
-          <div class="product-image" style="background: linear-gradient(135deg, #C99B3F 0%, #E8A020 100%);">
-            <span class="product-image-text">5 Guides</span>
-          </div>
-          <div class="product-info">
-            <h3>Full Collection</h3>
-            <div class="product-rating">★★★★★ <span class="rating-count">(48 reviews)</span></div>
-            <p class="product-desc">All five guides in one purchase. Penang, KL, Melaka, Halal, and Vegetarian — everything you need for a Malaysian food journey.</p>
-            <ul class="product-includes">
-              <li>5 state & dietary guides</li>
-              <li>Cross-device note sync</li>
-              <li>Lifetime access</li>
-              <li>Instant download</li>
-            </ul>
-            <div class="product-price-row">
-              <div class="price-block">
-                <span class="price-original">RM36</span>
-                <span class="price-current">RM25</span>
-                <span class="price-save">Save 31%</span>
-              </div>
-              <button class="btn-primary product-btn" data-pkg="full-collection" data-checkout="https://uiy.thrivecart.com/product/9/">
-                Add to cart
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-              </button>
-            </div>
-            <div class="trust-signals">
-              <span>🔒 Secure checkout</span>
-              <span>⚡ Instant access</span>
-              <span>↩️ 30-day refund</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="products-grid">
-          <div class="product-card" data-pkg="city-penang">
-            <div class="product-image-sm" style="background: linear-gradient(135deg, #E4572E 0%, #C94423 100%);">
-              <span>Penang</span>
-            </div>
-            <div class="product-card-body">
-              <h4>Penang Food Guide</h4>
-              <p class="product-short">George Town, Air Itam, Bayan Lepas. District maps and transit tips.</p>
-              <div class="product-footer">
-                <span class="product-price">RM8</span>
-                <a href="/packages" class="btn-secondary add-cart">Coming soon</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-pkg="city-kl">
-            <div class="product-image-sm" style="background: linear-gradient(135deg, #7A2E1D 0%, #5A2015 100%);">
-              <span>KL</span>
-            </div>
-            <div class="product-card-body">
-              <h4>Kuala Lumpur Food Guide</h4>
-              <p class="product-short">Chinatown, Kampung Baru, Bangsar. LRT routes and hawker centers.</p>
-              <div class="product-footer">
-                <span class="product-price">RM8</span>
-                <a href="/packages" class="btn-secondary add-cart">Coming soon</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-pkg="dietary-halal">
-            <div class="product-image-sm" style="background: linear-gradient(135deg, #1E6B3A 0%, #145A2E 100%);">
-              <span>Halal</span>
-            </div>
-            <div class="product-card-body">
-              <h4>Halal Food Guide</h4>
-              <p class="product-short">Prayer rooms, ingredient watch-lists, hawker stall questions.</p>
-              <div class="product-footer">
-                <span class="product-price">RM12</span>
-                <a href="/packages" class="btn-secondary add-cart">Coming soon</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card" data-pkg="dietary-veg">
-            <div class="product-image-sm" style="background: linear-gradient(135deg, #C99B3F 0%, #A8832E 100%);">
-              <span>Veg</span>
-            </div>
-            <div class="product-card-body">
-              <h4>Vegetarian Food Guide</h4>
-              <p class="product-short">Indian restaurants, Buddhist options, mamak ordering guide.</p>
-              <div class="product-footer">
-                <span class="product-price">RM12</span>
-                <a href="/packages" class="btn-secondary add-cart">Coming soon</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="commerce-features">
-        <div class="feature-item">
-          <div class="feature-icon">📍</div>
-          <div class="feature-text">
-            <strong>District maps</strong>
-            <span>Pinpoint exactly where to eat in each neighborhood</span>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">⭐</div>
-          <div class="feature-text">
-            <strong>Rate & review</strong>
-            <span>Save your ratings and notes for every dish</span>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">📱</div>
-          <div class="feature-text">
-            <strong>Works offline</strong>
-            <span>Download and use without internet</span>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">♾️</div>
-          <div class="feature-text">
-            <strong>Lifetime access</strong>
-            <span>Buy once, keep forever. Updates included.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq" id="faq">
-    <div class="container">
-      <h2 class="section-title">Questions travelers ask</h2>
-      {faqs.slice(0, 6).map((f) => (
-        <details>
-          <summary>{f.q}</summary>
-          <p class="answer">{f.a}</p>
-        </details>
-      ))}
-    </div>
-  </section>
-
-  <div class="cta-band">
-    <div class="container">
-      <h2>Discover the way locals eat, where locals eat</h2>
-      <p>
-        Simply Enak runs guided food walks in Kuala Lumpur and George Town.
-        You eat what we eat, at the stalls we visit, led by guides who work in the food industry.
+      <form id="waitlist-form" class="cs-form">
+        <input
+          type="email"
+          id="waitlist-email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+          aria-label="Email address"
+        />
+        <button type="submit" id="waitlist-btn">Tell me when it launches</button>
+      </form>
+      <p id="waitlist-note" class="cs-note" aria-live="polite">
+        One email on launch day. Nothing else. We hate spam more than stale keropok.
       </p>
-      <a href="https://simplyenak.com/tours" target="_blank" rel="noopener">See the food tours</a>
-    </div>
-  </div>
 
-  <footer>
-    <div class="container">
-      <div class="verified">
-        Dish notes last checked <strong>{dataVerified.lastChecked}</strong> by{' '}
-        {dataVerified.verifiedBy}, based on {dataVerified.basis}. Stall names change; the neighbourhoods
-        do not.
+      <div class="cs-teaser">
+        <h2>What is coming</h2>
+        <ul>
+          <li><strong>The checklist</strong> — all {checklistTotal} must-try Malaysian dishes, tickable as you eat them</li>
+          <li><strong>Ratings &amp; notes</strong> — rate each dish, note the stall, build your personal food map</li>
+          <li><strong>State guides</strong> — signature dishes for every state, famous stalls, halal status</li>
+          <li><strong>Works offline</strong> — no account, saves to your phone, no app store download</li>
+        </ul>
       </div>
-      <p>
-        Built by <a href="https://simplyenak.com">Simply Enak</a> &middot; Malaysian food tours led by
-        guides who eat their way through every state on this list.
+
+      <p class="cs-alternative">
+        Want the full dish list right now? Our companion site
+        <a href="https://whatcanieatinmy.com/">What Can I Eat in Malaysia</a> checks every dish
+        against your diet — vegetarian, halal, gluten-free and more — and it is live today.
       </p>
     </div>
-  </footer>
-
-  <script type="application/json" id="dish-data" set:html={JSON.stringify(pickerData)} />
-  <script
-    type="application/json"
-    id="full-data"
-    set:html={JSON.stringify({
-      collectionProduct: '9',
-      halalLabels: {
-        halal: 'Halal',
-        'pork-free': 'Pork-free',
-        'non-halal': 'Contains pork',
-        varies: 'Halal varies by stall',
-      },
-      dishes: Object.fromEntries(
-        states.flatMap((s) =>
-          s.dishes.map((d) => [
-            d.id,
-            {
-              where: d.where,
-              famousAt: d.famousAt || [],
-              halal: d.halal,
-              bestTime: d.bestTime || '',
-            },
-          ]),
-        ),
-      ),
-    })}
-  />
-  <script>
-    (function () {
-      // Own backend captures the waitlist now (Formspree ID was dead, 2026-08-26).
-      var ACCESS = 'https://wtm-access.system.simplyenak.com';
-      var KEY = 'wtm-tried-v1';
-      var TOTAL = document.querySelectorAll('[data-dish]').length;
-
-      function load() {
-        try {
-          return JSON.parse(localStorage.getItem(KEY) || '[]');
-        } catch (e) {
-          return [];
-        }
-      }
-      function save(ids) {
-        localStorage.setItem(KEY, JSON.stringify(ids));
-      }
-
-      var tried = load();
-      var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-dish]'));
-
-      function refresh() {
-        var ids = boxes
-          .filter(function (b) {
-            return b.checked;
-          })
-          .map(function (b) {
-            return b.getAttribute('data-dish');
-          });
-        tried = ids;
-        save(ids);
-
-        var n = ids.length;
-        document.getElementById('tried-count').textContent = n;
-        document.getElementById('progress-fill').style.width = (TOTAL ? (100 * n) / TOTAL : 0) + '%';
-        document.getElementById('progress-track').setAttribute('aria-valuenow', n);
-
-        var sp = document.getElementById('sticky-progress');
-        if (sp) {
-          document.getElementById('sp-count').textContent = n;
-          document.getElementById('sp-fill').style.width = (TOTAL ? (100 * n) / TOTAL : 0) + '%';
-          var heroBottom = document.querySelector('.hero');
-          var past = heroBottom ? heroBottom.getBoundingClientRect().bottom < 0 : true;
-          sp.classList.toggle('show', past && n > 0);
-        }
-
-        ids.forEach(function (id) {
-          var card = document.querySelector('[data-dish-card="' + id + '"]');
-          if (card) card.classList.add('checked');
-        });
-
-        document.querySelectorAll('[data-state-count]').forEach(function (chip) {
-          var scope = chip.getAttribute('data-state-count');
-          var parent =
-            scope === 'classics'
-              ? document.getElementById('checklist')
-              : document.getElementById('state-' + scope);
-          if (!parent) return;
-          var group = parent.querySelectorAll('[data-dish]');
-          var done = Array.prototype.filter.call(group, function (b) {
-            return b.checked;
-          }).length;
-          chip.textContent = done + '/' + group.length + ' tried';
-        });
-      }
-
-      boxes.forEach(function (b) {
-        b.checked = tried.indexOf(b.getAttribute('data-dish')) !== -1;
-        b.addEventListener('change', function () {
-          var card = b.closest('[data-dish-card]');
-          if (card && !b.checked) card.classList.remove('checked');
-          refresh();
-        });
-      });
-      refresh();
-
-      // Share score
-      function nameOf(b) {
-        return b.getAttribute('aria-label').replace(/^Tried /, '');
-      }
-      document.getElementById('share-btn').addEventListener('click', function () {
-        var n = tried.length;
-        var picks = boxes
-          .filter(function (b) {
-            return b.checked;
-          })
-          .slice(0, 3)
-          .map(nameOf);
-        var text =
-          'Malaysia food checklist: ' + n + '/' + TOTAL + ' dishes tried' +
-          (picks.length ? ' (' + picks.join(', ') + (n > 3 ? ', ...' : '') + ')' : '') +
-          '. How many have you had?';
-        var url = 'https://whattoeatinmalaysia.com';
-        if (navigator.share) {
-          navigator.share({ title: 'What to Eat in Malaysia', text: text, url: url }).catch(function () {});
-        } else {
-          (navigator.clipboard ? navigator.clipboard.writeText(text + ' ' + url) : Promise.reject())
-            .then(function () {
-              var btn = document.getElementById('share-btn');
-              btn.textContent = 'Copied';
-              setTimeout(function () {
-                btn.textContent = 'Share score';
-              }, 1600);
-            })
-            .catch(function () {
-              window.prompt('Copy your score:', text + ' ' + url);
-            });
-        }
-      });
-
-      // Reset
-      document.getElementById('reset-btn').addEventListener('click', function () {
-        if (!window.confirm('Clear all ' + tried.length + ' ticks?')) return;
-        boxes.forEach(function (b) {
-          b.checked = false;
-        });
-        document.querySelectorAll('.checked').forEach(function (c) {
-          c.classList.remove('checked');
-        });
-        refresh();
-      });
-
-      // State navigation: picker + surprise open the right group
-      var data = JSON.parse(document.getElementById('dish-data').textContent);
-      var allDishes = [];
-      data.forEach(function (s) {
-        s.dishes.forEach(function (d) {
-          d.stateId = s.id;
-          allDishes.push(d);
-        });
-      });
-      function goTo(anchorId) {
-        var el = document.getElementById(anchorId);
-        if (!el) return;
-        if (el.tagName === 'DETAILS') el.open = true;
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.querySelectorAll('.cl-group.flash').forEach(function (c) {
-          c.classList.remove('flash');
-        });
-        el.classList.add('flash');
-        setTimeout(function () {
-          el.classList.remove('flash');
-        }, 2400);
-      }
-      var picker = document.getElementById('state-picker');
-      if (picker) {
-        picker.addEventListener('change', function () {
-          if (picker.value) goTo('state-' + picker.value);
-        });
-      }
-      var btn = document.getElementById('random-dish');
-      if (btn) {
-        btn.addEventListener('click', function () {
-          var d = allDishes[Math.floor(Math.random() * allDishes.length)];
-          var opt = picker && picker.querySelector('option[value="' + d.stateId + '"]');
-          if (opt && picker) picker.value = d.stateId;
-          goTo('state-' + d.stateId);
-        });
-      }
-
-      // Paid unlock
-      var ACCESS = 'https://wtm-access.system.simplyenak.com';
-      var TOKEN_KEY = 'wtm-token';
-      var fullData = JSON.parse(document.getElementById('full-data').textContent);
-
-      function enrichGuides() {
-        document.querySelectorAll('[data-detail-id]').forEach(function (row) {
-          var d = fullData.dishes[row.getAttribute('data-detail-id')];
-          if (!d || row.getAttribute('data-enriched')) return;
-          var where = document.createElement('p');
-          where.className = 'dish-where';
-          where.innerHTML =
-            '<span class="label">Where to eat it</span>' + d.where +
-            (d.famousAt.length ? ' <em>Famous at: ' + d.famousAt.join(' &middot; ') + '.</em>' : '');
-          var meta = document.createElement('div');
-          meta.className = 'dish-meta';
-          meta.innerHTML =
-            '<span class="chip ' + d.halal + '">' + fullData.halalLabels[d.halal] + '</span>' +
-            (d.bestTime ? '<span class="chip time">' + d.bestTime + '</span>' : '');
-          row.appendChild(where);
-          row.appendChild(meta);
-          row.setAttribute('data-enriched', '1');
-        });
-        var banner = document.getElementById('unlocked-banner');
-        if (banner) banner.hidden = false;
-        var buy = document.getElementById('buy-btn');
-        if (buy) buy.textContent = 'Bought. Open the guides \u2193';
-      }
-
-      function tryToken(tok) {
-        fetch(ACCESS + '/verify?t=' + encodeURIComponent(tok))
-          .then(function (r) {
-            return r.ok ? r.json() : null;
-          })
-          .then(function (j) {
-            if (j && j.ok && j.products.indexOf(fullData.collectionProduct) !== -1) enrichGuides();
-          })
-          .catch(function () {});
-      }
-      var savedToken = localStorage.getItem(TOKEN_KEY);
-      if (savedToken) tryToken(savedToken);
-
-      document.getElementById('unlock-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var email = document.getElementById('unlock-email').value.trim();
-        var note = document.getElementById('unlock-note');
-        var btn = document.getElementById('unlock-btn');
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-          note.hidden = false;
-          note.textContent = 'That email does not look right.';
-          return;
-        }
-        btn.disabled = true;
-        btn.textContent = 'Checking...';
-        fetch(ACCESS + '/redeem', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ email: email }),
-        })
-          .then(function (r) {
-            return r.json().then(function (j) {
-              return { ok: r.ok, j: j };
-            });
-          })
-          .then(function (res) {
-            note.hidden = false;
-            if (res.ok && res.j.ok) {
-              localStorage.setItem(TOKEN_KEY, res.j.token);
-              enrichGuides();
-              note.textContent = 'Unlocked. The state guides below now show full detail.';
-            } else {
-              note.textContent = 'No purchase found for that email yet. Just bought? Give it a minute, then retry.';
-            }
-          })
-          .catch(function () {
-            note.hidden = false;
-            note.textContent = 'Network hiccup. Try again.';
-          })
-          .finally(function () {
-            btn.disabled = false;
-            btn.textContent = 'Unlock';
-          });
-      });
-
-      // Notes and ratings for logged-in users
-      var NOTES_KEY = 'wtm-notes';
-      var ratingStates = {};
-
-      function loadNotes() {
-        var tok = localStorage.getItem(TOKEN_KEY);
-        if (!tok) return;
-        fetch(ACCESS + '/notes?t=' + encodeURIComponent(tok))
-          .then(function (r) { return r.json(); })
-          .then(function (j) {
-            if (!j.notes) return;
-            j.notes.forEach(function (note) {
-              ratingStates[note.dish_id] = { rating: note.rating, note: note.note };
-              var starBtns = document.querySelectorAll('[data-dish-rating="' + note.dish_id + '"] .star');
-              var noteInput = document.querySelector('[data-dish-note="' + note.dish_id + '"]');
-              var statusEl = document.querySelector('[data-dish-status="' + note.dish_id + '"]');
-              starBtns.forEach(function (btn, idx) {
-                if (idx < (note.rating || 0)) btn.textContent = '★';
-                else btn.textContent = '☆';
-              });
-              if (noteInput && note.note) noteInput.value = note.note;
-              if (statusEl) statusEl.textContent = 'Saved ' + new Date(note.updated * 1000).toLocaleDateString('en-GB');
-            });
-          })
-          .catch(function () {});
-      }
-
-      function saveNote(dishId) {
-        var tok = localStorage.getItem(TOKEN_KEY);
-        if (!tok) return;
-        var rating = ratingStates[dishId] ? ratingStates[dishId].rating : 0;
-        var noteInput = document.querySelector('[data-dish-note="' + dishId + '"]');
-        var note = noteInput ? noteInput.value.trim() : '';
-        var statusEl = document.querySelector('[data-dish-status="' + dishId + '"]');
-        if (statusEl) {
-          statusEl.textContent = 'Saving...';
-          statusEl.style.color = '#7A2E1D';
-        }
-        fetch(ACCESS + '/notes?t=' + encodeURIComponent(tok), {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ dish_id: dishId, rating: rating, note: note }),
-        })
-          .then(function (r) { return r.json(); })
-          .then(function (j) {
-            if (j.ok && statusEl) {
-              statusEl.textContent = 'Saved ' + new Date().toLocaleDateString('en-GB');
-              statusEl.style.color = '#2d7a1d';
-            }
-          })
-          .catch(function () {
-            if (statusEl) {
-              statusEl.textContent = 'Failed to save';
-              statusEl.style.color = '#c0392b';
-            }
-          });
-      }
-
-      // Attach event listeners for ratings and notes
-      document.querySelectorAll('.star').forEach(function (star) {
-        star.addEventListener('click', function () {
-          var dishId = this.closest('[data-dish-rating]').getAttribute('data-dish-rating');
-          var rating = parseInt(this.getAttribute('data-star'));
-          ratingStates[dishId] = ratingStates[dishId] || {};
-          ratingStates[dishId].rating = rating;
-          var stars = this.parentElement.querySelectorAll('.star');
-          stars.forEach(function (s, idx) {
-            s.textContent = idx < rating ? '★' : '☆';
-          });
-          saveNote(dishId);
-        });
-      });
-
-      document.querySelectorAll('.note-input').forEach(function (textarea) {
-        var debouncedSave;
-        textarea.addEventListener('input', function () {
-          var dishId = this.getAttribute('data-dish-note');
-          ratingStates[dishId] = ratingStates[dishId] || {};
-          ratingStates[dishId].note = this.value;
-          clearTimeout(debouncedSave);
-          debouncedSave = setTimeout(function () { saveNote(dishId); }, 1000);
-        });
-      });
-
-      // Load notes after token check
-      var savedToken = localStorage.getItem(TOKEN_KEY);
-      if (savedToken) loadNotes();
-
-      // Waitlist
-      var wlForm = document.getElementById('waitlist-form');
-      var wlBtn = document.getElementById('waitlist-btn');
-      var wlNote = document.getElementById('waitlist-note');
-      wlForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var email = document.getElementById('waitlist-email').value.trim();
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-          wlNote.hidden = false;
-          wlNote.textContent = 'That email does not look right.';
-          return;
-        }
-        wlBtn.disabled = true;
-        wlBtn.textContent = 'Joining...';
-        fetch(ACCESS + '/waitlist', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({
-            email: email,
-            source: 'wtm-checklist',
-          }),
-        })
-          .then(function (r) {
-            return r.json().then(function (j) {
-              return { ok: r.ok, j: j };
-            });
-          })
-          .then(function (res) {
-            wlNote.hidden = false;
-            if (res.ok && res.j.ok) {
-              wlNote.textContent =
-                'You are on the list. We will email you when the deep dives open.';
-              wlForm.reset();
-            } else {
-              wlNote.textContent = 'Something went wrong. Try again in a minute.';
-            }
-          })
-          .catch(function () {
-            wlNote.hidden = false;
-            wlNote.textContent = 'Network hiccup. Try again.';
-          })
-          .finally(function () {
-            wlBtn.disabled = false;
-            wlBtn.textContent = 'Join the list';
-          });
-      });
-
-      // Sticky nav scroll effect
-      var nav = document.getElementById('site-nav');
-      if (nav) {
-        var hero = document.querySelector('.hero');
-        function onScroll() {
-          if (hero && hero.getBoundingClientRect().bottom < 0) {
-            nav.classList.add('scrolled');
-          } else {
-            nav.classList.remove('scrolled');
-          }
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-      }
-
-      // Add to cart buttons — open ThriveCart checkout
-      document.querySelectorAll('[data-checkout]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var url = this.getAttribute('data-checkout');
-          if (url) window.open(url, '_blank');
-        });
-      });
-    })();
-  </script>
+  </main>
 </Layout>
+
+<style>
+  .coming-soon {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #2B1109 0%, #7A2E1D 55%, #5A2015 100%);
+    color: #FDF6EE;
+    display: flex;
+    align-items: center;
+    padding: 3rem 1.25rem;
+  }
+  .cs-container { max-width: 720px; margin: 0 auto; }
+  .cs-eyebrow {
+    display: inline-block;
+    background: rgba(255, 197, 87, 0.15);
+    color: #FFC557;
+    border: 1px solid rgba(255, 197, 87, 0.35);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin: 0 0 1.25rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    line-height: 1.15;
+    margin: 0 0 1rem;
+  }
+  .cs-lede { font-size: 1.1rem; line-height: 1.6; color: #F3DFC9; margin: 0 0 2rem; }
+  .cs-form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .cs-form input {
+    flex: 1 1 260px;
+    padding: 0.9rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(253, 246, 238, 0.3);
+    background: rgba(253, 246, 238, 0.08);
+    color: #FDF6EE;
+    font-size: 1rem;
+  }
+  .cs-form input::placeholder { color: rgba(253, 246, 238, 0.5); }
+  .cs-form button {
+    padding: 0.9rem 1.6rem;
+    border-radius: 10px;
+    border: none;
+    background: #FFC557;
+    color: #2B1109;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .cs-form button:disabled { opacity: 0.6; cursor: wait; }
+  .cs-note { font-size: 0.85rem; color: rgba(253, 246, 238, 0.65); margin: 0.75rem 0 2.5rem; }
+  .cs-teaser h2 { font-size: 1.15rem; margin: 0 0 0.75rem; color: #FFC557; }
+  .cs-teaser ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+  .cs-teaser li { line-height: 1.45; color: #F3DFC9; }
+  .cs-alternative { margin-top: 2.5rem; font-size: 0.95rem; color: rgba(253, 246, 238, 0.8); }
+  .cs-alternative a { color: #FFC557; }
+</style>
+
+<script>
+  var form = document.getElementById('waitlist-form');
+  var btn = document.getElementById('waitlist-btn');
+  var note = document.getElementById('waitlist-note');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('waitlist-email').value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    fetch('https://wtm-access.system.simplyenak.com/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'coming-soon' }),
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.error) throw new Error(d.error);
+        note.textContent = 'You are on the list — #' + d.count + '. We will email you on launch day.';
+        form.reset();
+      })
+      .catch(function () {
+        note.textContent = 'That did not work. Try again in a minute, or email hello@simplyenak.com.';
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+</script>
