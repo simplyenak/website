@@ -50,7 +50,10 @@ const ogImage = `${siteUrl}/og.jpg`;
     </script>
     <nav class="site-nav" id="site-nav">
       <div class="container">
-        <a href="/" class="nav-logo">What to Eat in Malaysia</a>
+        <a href="/" class="nav-logo">
+          <img src="/logo.svg" alt="" width="34" height="30" class="nav-logo-img" />
+          What to Eat in Malaysia
+        </a>
         <div class="nav-links">
           {/* Pre-launch: /guides, /packages, /account redirect to / — nav hidden until launch */}
         </div>
@@ -161,7 +164,11 @@ const ogImage = `${siteUrl}/og.jpg`;
         font-weight: 800;
         color: var(--color-primary);
         letter-spacing: -0.02em;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
       }
+      .nav-logo-img { display: block; }
       .nav-logo:hover { text-decoration: none; }
       .nav-links {
         display: flex;
