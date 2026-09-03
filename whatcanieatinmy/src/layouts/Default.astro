@@ -26,6 +26,15 @@ const canonicalUrl = canonical || `${siteUrl}/`;
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- GA4 -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-SQTJJ9Y18R"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-SQTJJ9Y18R');
+  </script>
   <style is:global>
     :root {
       --color-primary: #B52D38;

@@ -33,6 +33,15 @@ const canonicalUrl = canonical || `${siteUrl}/`;
     {structuredData && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
+    <!-- GA4 -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-BR426YRT1T"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-BR426YRT1T');
+    </script>
     <nav class="site-nav" id="site-nav">
       <div class="container">
         <a href="/" class="nav-logo">What to Eat in Malaysia</a>
