@@ -1,20 +1,10 @@
 import type { APIRoute } from 'astro';
-import { states } from '~/data/dishes';
 
 const BASE = 'https://whattoeatinmalaysia.com';
 
 export const GET: APIRoute = () => {
-  const urls = [
-    { loc: `${BASE}/`, changefreq: 'weekly', priority: '1.0' },
-    { loc: `${BASE}/guides/`, changefreq: 'weekly', priority: '0.9' },
-    ...states.map((s) => ({
-      loc: `${BASE}/guides/${s.id}/`,
-      changefreq: 'monthly',
-      priority: '0.8',
-    })),
-    { loc: `${BASE}/packages/`, changefreq: 'monthly', priority: '0.7' },
-    { loc: `${BASE}/login/`, changefreq: 'yearly', priority: '0.3' },
-  ];
+  // Pre-launch: only the homepage is ready. Guides/packages hidden via _redirects.
+  const urls = [{ loc: `${BASE}/`, changefreq: 'weekly', priority: '1.0' }];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls

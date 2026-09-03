@@ -1,0 +1,10 @@
+# Pre-launch: hide unfinished sections (302 so they return when we launch)
+/guides/          /           302
+/guides/*         /           302
+/packages/        /           302
+/packages/*       /           302
+/state/*          /           302
+
+# Duplicate-URL cleanup (permanent)
+/penang           /guides/penang/  301
+/penang/          /guides/penang/  301
