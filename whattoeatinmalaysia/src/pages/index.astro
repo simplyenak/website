@@ -2,19 +2,19 @@
 import Layout from '~/layouts/Default.astro';
 import { checklistTotal } from '~/data/dishes';
 
-const title = 'Malaysian Food Checklist: 81 Dishes You Must Try — Track Every One You Eat';
+const title = 'Malaysian Food Checklist: 81 Dishes You Must Try (Track Every One You Eat)';
 const description =
-  'Every Malaysian dish you must try, in one checklist. Tick dishes off as you taste them, rate each one, and note where you ate it. Free, no account needed. Launching soon — join the list.';
+  'Every Malaysian dish you must try, in one checklist. Tick dishes off as you taste them, rate each one, remember the stall. Free, no account needed. Launching soon, join the list.';
 ---
 
 <Layout title={title} description={description}>
   <main class="coming-soon">
     <div class="cs-container">
       <p class="cs-eyebrow">Launching soon</p>
-      <h1>Every dish you must try in Malaysia — and a checklist to track every one</h1>
+      <h1>Every dish you must try in Malaysia, with a checklist to track every one</h1>
       <p class="cs-lede">
         We are building the easiest way to eat your way through Malaysia: all {checklistTotal} must-try
-        dishes in one place. Tick each one off as you taste it, rate it, and remember the stall you
+        dishes in one place. Tick each one off as you taste it, rate it, remember the stall you
         ate it at. Free to use, no account needed, works on your phone.
       </p>
 
@@ -36,17 +36,17 @@ const description =
       <div class="cs-teaser">
         <h2>What is coming</h2>
         <ul>
-          <li><strong>The checklist</strong> — all {checklistTotal} must-try Malaysian dishes, tickable as you eat them</li>
-          <li><strong>Ratings &amp; notes</strong> — rate each dish, note the stall, build your personal food map</li>
-          <li><strong>State guides</strong> — signature dishes for every state, famous stalls, halal status</li>
-          <li><strong>Works offline</strong> — no account, saves to your phone, no app store download</li>
+          <li><strong>The checklist</strong>: all {checklistTotal} must-try Malaysian dishes, tickable as you eat them</li>
+          <li><strong>Ratings &amp; notes</strong>: rate each dish, note the stall, build your personal food map</li>
+          <li><strong>State guides</strong>: signature dishes for every state, famous stalls, halal status</li>
+          <li><strong>Works offline</strong>: no account, saves to your phone, no app store download</li>
         </ul>
       </div>
 
       <p class="cs-alternative">
         Want the full dish list right now? Our companion site
         <a href="https://whatcanieatinmy.com/">What Can I Eat in Malaysia</a> checks every dish
-        against your diet — vegetarian, halal, gluten-free and more — and it is live today.
+        against your diet, vegetarian, halal, gluten-free and more, and it is live today.
       </p>
     </div>
   </main>
@@ -127,7 +127,7 @@ const description =
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d.error) throw new Error(d.error);
-        note.textContent = 'You are on the list — #' + d.count + '. We will email you on launch day.';
+        note.textContent = 'You are on the list, #' + d.count + '. We will email you on launch day.';
         form.reset();
       })
       .catch(function () {
