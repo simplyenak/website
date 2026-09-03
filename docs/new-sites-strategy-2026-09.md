@@ -40,16 +40,9 @@ Account 26461363. gtag added to Default.astro of both, built, deployed via wrang
 - whattoeatinmalaysia.pages.dev/sitemap.xml (home, guides index, state guides, packages, login)
 - Generated at build: src/pages/sitemap.xml.ts in both repos.
 
-## GSC — BLOCKED on one manual click
+## GSC — DONE (live-verified 2026-09-03)
 
-Site Verification API is disabled in Google project 482404148961 and no available credential can enable it (needs console Owner). Both properties are created but unverified:
-- sc-domain:whatcanieatinmy.com
-- https://whattoeatinmalaysia.pages.dev/
-
-ONE-TIME STEP for Maarten: open https://console.cloud.google.com/apis/api/siteverification.googleapis.com/overview?project=482404148961 and click Enable. Then tell Hermes: everything else (DNS TXT via CF API, verify call, sitemap submission) is automated-ready.
-
-## Next actions after verification
-1. Enable API (above), then Hermes: generate TXT token, add to CF zone 28463f61c423708dc4f137aed091d438, call verify, submit sitemaps.
-2. Register whattoeatinmalaysia.com (unregistered as of 2026-08-28) OR accept pages.dev; if registered: cf-finish-new-domains.sh, update canonicals + sitemap BASE, re-verify.
-3. Add cross-links per Amplification #1 (content edits in Payload/templates).
-4. Commit the layout + sitemap changes (currently deployed but uncommitted in website-optimization repo).
+Site Verification API enabled by Maarten. Both domain properties verified via DNS TXT (records added through CF API), sitemaps submitted and already downloaded by Google, 0 errors:
+- sc-domain:whatcanieatinmy.com — 9 URLs submitted
+- sc-domain:whattoeatinmalaysia.com — 20 URLs submitted
+Obsolete pages.dev URL-prefix property deleted.
