@@ -3,7 +3,7 @@ import Default from '~/layouts/Default.astro';
 import { packages, type PackageCard, faqs } from '~/data/dishes';
 
 const title = 'Food Guides — What to Eat in Malaysia';
-const description = 'City and dietary guides for Malaysia. One-time purchases, no subscriptions. Pick your guide, find your dishes, and track what you tried on the free checklist.';
+const description = 'City and dietary guides for Malaysia. One-time purchases, no subscriptions. Pick your guide to the must-try dishes, then tick them off on the free checklist.';
 
 // Filter out FAQs that are about checklist mechanics (keep only general ones)
 const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.includes('Is the checklist free'));

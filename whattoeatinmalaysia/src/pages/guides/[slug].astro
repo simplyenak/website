@@ -16,7 +16,7 @@ interface Props {
 
 const { state } = Astro.props;
 const title = `${state.name} Food Guide — What to Eat in Malaysia`;
-const description = `Every signature dish in ${state.name}: famous stalls, halal status, best time to eat. Find what to eat in ${state.name}, then tick off what you tried on the free checklist.`;
+const description = `Every signature dish in ${state.name}: famous stalls, halal status, best time to eat. The dishes you must try in ${state.name}, all tickable on the free checklist as you eat them.`;
 
 const image = stateImages[state.id] || stateImages['_default'];
 
