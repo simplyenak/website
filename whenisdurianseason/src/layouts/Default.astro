@@ -30,6 +30,15 @@ const ogImage = `${siteUrl}/og.jpg`;
   <meta property="og:image" content={ogImage} />
   <meta name="twitter:image" content={ogImage} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- GA4 -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-LBVFVFCN37"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-LBVFVFCN37');
+  </script>
   {structuredData && (
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   )}
