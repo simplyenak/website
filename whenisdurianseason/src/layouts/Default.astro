@@ -8,7 +8,8 @@ export interface Props {
 
 const { title, description, canonical, structuredData } = Astro.props;
 const siteUrl = 'https://whenisdurianseason.com';
-const canonicalUrl = canonical || `${siteUrl}/`;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = `${siteUrl}/og.jpg`;
 ---
 
 <!doctype html>
@@ -26,6 +27,8 @@ const canonicalUrl = canonical || `${siteUrl}/`;
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:image" content={ogImage} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   {structuredData && (
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

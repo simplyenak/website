@@ -13,9 +13,9 @@ import {
 
 const title = `Malaysian Food Checklist: Track Every Dish You Taste in Malaysia`;
 const description =
-  'Keep track of every dish you taste in Malaysia. Rate each one, write notes, build your personal food map. Free checklist of 81 dishes. No account needed.';
+  'The easiest way to find and track every dish you try in Malaysia. Tick dishes off as you taste them, rate each one, and note where you ate it. Free checklist of 81 dishes, no account needed, works on your phone.';
 
-const siteUrl = 'https://whattoeatwhereinmalaysia.com';
+const siteUrl = 'https://whattoeatinmalaysia.com';
 
 const regionsOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borneo'];
 const byRegion = regionsOrder.map((r) => ({
@@ -500,7 +500,7 @@ const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
           'Malaysia food checklist: ' + n + '/' + TOTAL + ' dishes tried' +
           (picks.length ? ' (' + picks.join(', ') + (n > 3 ? ', ...' : '') + ')' : '') +
           '. How many have you had?';
-        var url = 'https://whattoeatwhereinmalaysia.com';
+        var url = 'https://whattoeatinmalaysia.com';
         if (navigator.share) {
           navigator.share({ title: 'What to Eat in Malaysia', text: text, url: url }).catch(function () {});
         } else {

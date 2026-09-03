@@ -3,11 +3,13 @@ export interface Props {
   title: string;
   description: string;
   canonical?: string;
+  noindex?: boolean;
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical, noindex } = Astro.props;
 const siteUrl = 'https://whatcanieatinmy.com';
-const canonicalUrl = canonical || `${siteUrl}/`;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = `${siteUrl}/og.jpg`;
 ---
 
 <!doctype html>
@@ -25,6 +27,9 @@ const canonicalUrl = canonical || `${siteUrl}/`;
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:image" content={ogImage} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- GA4 -->
   <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-SQTJJ9Y18R"></script>

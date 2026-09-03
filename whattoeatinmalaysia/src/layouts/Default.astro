@@ -4,11 +4,14 @@ export interface Props {
   description: string;
   canonical?: string;
   structuredData?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
-const { title, description, canonical, structuredData } = Astro.props;
+const { title, description, canonical, structuredData, noindex } = Astro.props;
 const siteUrl = 'https://whattoeatinmalaysia.com';
-const canonicalUrl = canonical || `${siteUrl}/`;
+// Auto-canonical: use Astro.url path so every page self-canonicalizes
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = `${siteUrl}/og.jpg`;
 ---
 
 <!doctype html>
@@ -26,6 +29,9 @@ const canonicalUrl = canonical || `${siteUrl}/`;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImage} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#7A2E1D" />
