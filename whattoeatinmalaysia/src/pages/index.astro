@@ -1,19 +1,19 @@
 ---
 import Layout from '~/layouts/Default.astro';
-import { checklistTotal } from '~/data/dishes';
 
-const title = 'Malaysian Food Checklist: 81 Dishes You Must Try (Track Every One You Eat)';
+const title = 'What to Eat in Malaysia — Malaysian Food Checklist';
 const description =
-  'Every Malaysian dish you must try, in one checklist. Tick dishes off as you taste them, rate each one, remember the stall. Free, no account needed. Launching soon, join the list.';
+  'A checklist of the must-try dishes of Malaysia, so you know what is worth eating and where to find it. Enter your email to be in touch when it is ready.';
 ---
 
 <Layout title={title} description={description}>
   <main class="coming-soon">
     <div class="cs-container">
-      <p class="cs-eyebrow">Launching soon</p>
-      <h1>The Best Way to Taste Malaysia</h1>
+      <p class="cs-eyebrow">Starts with the dishes</p>
+      <h1>The Malaysian Food Checklist</h1>
       <p class="cs-lede">
-        Get ready for everything worth eating as a visitor: all the must-have dishes of Malaysia made simple.
+        The dishes worth trying as a visitor, and where each one comes from, in one place.
+        Simple to use on your phone.
       </p>
 
       <form id="waitlist-form" class="cs-form">
@@ -25,24 +25,16 @@ const description =
           autocomplete="email"
           aria-label="Email address"
         />
-        <button type="submit" id="waitlist-btn">Tell me when it launches</button>
+        <button type="submit" id="waitlist-btn">Keep me in the loop</button>
       </form>
       <p id="waitlist-note" class="cs-note" aria-live="polite">
-        One email on launch day. Nothing else. We hate spam more than stale keropok.
+        We only email when there is something worth telling you.
       </p>
-
-      <div class="cs-teaser">
-        <h2>What is coming</h2>
-        <ul>
-          <li>Checklist of every dish worth trying as a visitor</li>
-          <li>Track what you have tried and where</li>
-          <li>Works on your phone, free, no account</li>
-        </ul>
-      </div>
 
       <p class="cs-alternative">
         Want the full dish list now?
-        <a href="https://whatcanieatinmy.com/">What Can I Eat in Malaysia</a> checks every dish against your diet: vegetarian, halal, gluten-free and more, and is live today.
+        <a href="https://whatcanieatinmy.com/">What Can I Eat in Malaysia</a> checks every dish
+        against your diet: vegetarian, halal, gluten-free and more, and is live today.
       </p>
     </div>
   </main>
@@ -99,9 +91,6 @@ const description =
   }
   .cs-form button:disabled { opacity: 0.6; cursor: wait; }
   .cs-note { font-size: 0.85rem; color: rgba(253, 246, 238, 0.65); margin: 0.75rem 0 2.5rem; }
-  .cs-teaser h2 { font-size: 1.15rem; margin: 0 0 0.75rem; color: #FFC557; }
-  .cs-teaser ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
-  .cs-teaser li { line-height: 1.45; color: #F3DFC9; }
   .cs-alternative { margin-top: 2.5rem; font-size: 0.95rem; color: rgba(253, 246, 238, 0.8); }
   .cs-alternative a { color: #FFC557; }
 </style>
@@ -123,7 +112,7 @@ const description =
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d.error) throw new Error(d.error);
-        note.textContent = 'You are on the list, #' + d.count + '. We will email you on launch day.';
+        note.textContent = 'You are on the list.';
         form.reset();
       })
       .catch(function () {
