@@ -1,17 +1,6 @@
-# Pre-launch: hide unfinished sections (302 so they return when we launch)
-/guides/          /           302
-/guides/*         /           302
-/packages/        /           302
-/packages/*       /           302
-/state/*          /           302
-/app/             /           302
-/app/*            /           302
-/login/           /           302
-/login            /           302
-/account/         /           302
-/account          /           302
-/offline/         /           302
-/thanks/          /           302
+# Legacy /app/ path (checklist lived here pre-launch)
+/app/             /           301
+/app/*            /           301
 
 # Duplicate-URL cleanup (permanent)
 /penang           /guides/penang/  301
