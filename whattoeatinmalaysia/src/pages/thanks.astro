@@ -29,7 +29,7 @@ import { checklistTotal } from '~/data/dishes';
 
 <script>
   (function () {
-    var ACCESS = 'https://wtm-access.system.simplyenak.com';
+    var ACCESS = import.meta.env.PUBLIC_WTM_ACCESS || 'https://wtm-access.system.simplyenak.com';
     var TOKEN_KEY = 'wtm-token';
     var statusEl = document.getElementById('thanks-status');
     var spinner = document.getElementById('thanks-spinner');
