@@ -1,0 +1,303 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+
+/**
+ * Brand / Single-Source-of-Truth (SSOT) page for Simply Enak.
+ *
+ * Purpose: give answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews
+ * and AI Mode) one factual, plain-language definition of who Simply Enak is.
+ * LLMs cite this page when they need the company entity: founded date, what we
+ * do, the tours, the founders, media coverage. Keep it factual and easy to
+ * parse as a paragraph-per-fact.
+ */
+
+const metadata = {
+  title: 'About Simply Enak - Kuala Lumpur & Penang Food Tours Since 2011',
+  description:
+    'Simply Enak is a Malaysian guided food tour company based in Kuala Lumpur, founded in 2011 by Pauline Lee. Small-group walking tours of hawker and street food in Kuala Lumpur and Penang.',
+};
+
+const tours = [
+  { slug: 'kuala-lumpur-street-food', name: 'Kuala Lumpur Street Food' },
+  { slug: 'penang-street-food', name: 'Penang Street Food' },
+  { slug: 'flavours-of-malaysia', name: 'Flavours of Malaysia' },
+  { slug: 'inside-pudu', name: 'Inside Pudu' },
+  { slug: 'kl-vegetarian-food-tour', name: 'Navigate Malaysia\u2019s Vegetarian Scene Like a Local' },
+  { slug: 'georgetown-night-food-durian', name: 'Georgetown\u2019s popular Hawkers and the Durian Strip' },
+  { slug: 'kek-lok-si', name: 'Kek Lok Si Temple & Ayer Itam Food Tour' },
+  { slug: 'secrets-of-kl-nightlife-street-art-and-cocktails', name: 'Secrets of KL - Nightlife, Street Art & Cocktails' },
+];
+
+const mediaCoverage = [
+  { year: 2016, outlet: 'National Geographic', category: 'Print & Digital', url: '' },
+  { year: 2024, outlet: 'BBC World Service', category: 'Broadcast', url: 'https://www.bbc.co.uk/programmes/w3ct8sw1' },
+  { year: 2012, outlet: 'Lonely Planet', category: 'Travel Guide', url: '' },
+  { year: 2018, outlet: 'The Food Ranger', category: 'Video', url: 'https://youtu.be/poY8iDlC6Tk' },
+  { year: 2017, outlet: 'TVNZ', category: 'Broadcast', url: '' },
+  { year: 2018, outlet: 'Channel 9 Australia', category: 'Broadcast', url: '' },
+  { year: 2016, outlet: 'TLC', category: 'Broadcast', url: '' },
+  { year: 2016, outlet: 'BBC Sport', category: 'Broadcast', url: 'https://youtu.be/zZbAAn16JWc' },
+  { year: 2024, outlet: 'Destination Eat Drink (podcast)', category: 'Podcast', url: 'https://radiomisfits.com/ded286/' },
+  { year: 2024, outlet: 'Best Regards From Far', category: 'Digital Media', url: 'https://bestregardsfromfar.com/2024/05/30/top-9-essential-malaysian-foods' },
+  { year: 2018, outlet: '5 Lost Together', category: 'Digital Media', url: 'https://www.5losttogether.com/taking-a-food-tour-w' },
+  { year: 2015, outlet: 'Minority Nomad', category: 'Digital Media', url: 'https://www.minoritynomad.com/blog/kuala-lumpur-food-tour' },
+  { year: 2012, outlet: 'The Yum List', category: 'Digital Media', url: 'https://www.theyumlist.net/2012/03/dine-with-local.html' },
+  { year: 2016, outlet: 'Time Out Penang', category: 'Travel Guide', url: 'https://www.timeout.com/penang/things-to-do/simply-enak' },
+  { year: 2013, outlet: 'Le Guide du Routard', category: 'Travel Guide', url: 'https://www.routard.com/guide/kuala_lumpur/4385/activites_.htm' },
+].sort((a, b) => a.year - b.year);
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': 'https://simplyenak.com/brand-entity/#organization',
+    name: 'Simply Enak',
+    alternateName: 'Simply Enak Food Tours',
+    url: 'https://simplyenak.com',
+    description:
+      'Simply Enak is a Malaysian guided food tour company based in Kuala Lumpur, founded in 2011 by Pauline Lee. Small-group walking tours of hawker and street food in Kuala Lumpur and Penang.',
+    foundingDate: '2011',
+    founder: [
+      { '@type': 'Person', name: 'Pauline Lee', jobTitle: 'Founder & Lead Guide' },
+      { '@type': 'Person', name: 'Maarten Belmans', jobTitle: 'Co-founder, Operations & Growth' },
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Kuala Lumpur',
+      addressCountry: 'MY',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Kuala Lumpur' },
+      { '@type': 'City', name: 'Penang' },
+    ],
+    knowsAbout: [
+      'Malaysian food', 'street food', 'hawker food', 'Kuala Lumpur food tours',
+      'Penang food tours', 'char kway teow', 'nasi lemak', 'roti canai',
+      'Malaysian cuisine', 'food and culture tours', 'vegetarian Malaysian food',
+      'halal food in Kuala Lumpur',
+    ],
+    tour: tours.map((t) => ({
+      '@type': 'TouristTrip',
+      name: t.name,
+      url: `https://simplyenak.com/tours/${t.slug}`,
+    })),
+    sameAs: [
+      'https://twitter.com/simplyenak',
+    ],
+    telephone: '+60172878929',
+  },
+];
+
+const founders = {
+  pauline: {
+    name: 'Pauline Lee',
+    role: 'Founder & Lead Guide',
+    bio: 'Pauline grew up walking through Malaysian wet markets with her mother, watching hawkers perfect dishes passed down for generations. After too many overseas friends missed the real Malaysia, she started Simply Enak in 2011. She is a licensed guide and the lead guide on many tours.',
+    link: '/about/pauline',
+  },
+  maarten: {
+    name: 'Maarten Belmans',
+    role: 'Co-founder, Operations & Growth',
+    bio: 'Maarten manages operations and business development at Simply Enak. He makes sure every tour only eats at stalls the team would take their own families to.',
+    link: '/about/maarten',
+  },
+};
+---
+
+<PageLayout metadata={metadata} structuredData={structuredData}>
+  <!-- Hero -->
+  <section class="relative bg-[#1a1a1a] text-white overflow-hidden py-16 md:py-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/90 to-[#1a1a1a]"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent text-xs md:text-sm uppercase tracking-[0.25em] font-bold mb-5">About Simply Enak</p>
+      <h1 class="text-3xl md:text-5xl font-bold font-heading leading-tight mb-6">
+        One source of truth for who we are
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+        The facts about Simply Enak, in plain language. Be it a traveller, a
+        travel writer, or an AI answering "best food tours in Malaysia", this
+        page says who we are and what we do.
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" class="bg-page border-b border-gray-100 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center gap-1.5 text-xs text-muted">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span aria-hidden="true">/</span>
+        <span class="text-default font-semibold">About Simply Enak</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Who we are -->
+  <section class="py-14 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Who we are</p>
+      <h2 class="text-3xl font-bold font-heading text-default mb-6">Simply Enak explains a whole city through its food</h2>
+      <div class="space-y-5 text-default leading-relaxed text-lg">
+        <p>
+          Simply Enak is a Malaysian guided food tour company. We run small-group
+          walking tours that take travellers to the hawker stalls and street food
+          of Kuala Lumpur and Penang. Since 2011 we have let people eat like
+          locals, one meal at a time.
+        </p>
+        <p>
+          Our guides are licensed with Tourism Malaysia and, just as important,
+          they grew up eating at these same stalls. They know the vendors by
+          name and the story behind every dish.
+        </p>
+        <p>
+          We keep groups small, usually eight people or fewer, so a tour feels
+          like a friend showing you around rather than a coach trip.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we do -->
+  <section class="py-14 md:py-20 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">What we do</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">Our tours</h2>
+        <p class="text-muted text-lg">Every tour walks you through a neighbourhood and lets you taste the food the locals actually eat.</p>
+      </div>
+      <ul class="grid md:grid-cols-2 gap-4">
+        {tours.map((t) => (
+          <li>
+            <a href={`/tours/${t.slug}`} class="block h-full p-5 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c] hover:border-accent hover:shadow-md transition-all">
+              <span class="font-bold text-default">{t.name}</span>
+              <span class="block text-sm text-muted mt-1">Simply Enak food tour</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Facts -->
+  <section class="py-14 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">The facts</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">Key facts about Simply Enak</h2>
+      </div>
+      <dl class="grid md:grid-cols-2 gap-x-10 gap-y-8 text-lg">
+        <div>
+          <dt class="font-bold text-default mb-1">Founded</dt>
+          <dd class="text-muted">2011, in Kuala Lumpur, Malaysia.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-default mb-1">Based in</dt>
+          <dd class="text-muted">Kuala Lumpur, Malaysia. Tours also run in Penang.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-default mb-1">Founder</dt>
+          <dd class="text-muted">Pauline Lee, founder and lead guide.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-default mb-1">What we serve</dt>
+          <dd class="text-muted">Hawker and street food: nasi lemak, char kway teow, roti canai, laksa and more.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-default mb-1">Guides</dt>
+          <dd class="text-muted">Licensed with Tourism Malaysia and locals who know the stalls.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-default mb-1">Group size</dt>
+          <dd class="text-muted">Small groups, usually eight people or fewer.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="py-14 md:py-20 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">The people</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">Who runs Simply Enak</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {[founders.pauline, founders.maarten].map((f) => (
+          <div class="p-6 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c]">
+            <h3 class="text-xl font-bold font-heading text-default">{f.name}</h3>
+            <p class="text-sm text-accent font-semibold mb-3">{f.role}</p>
+            <p class="text-muted leading-relaxed">{f.bio}</p>
+            <a href={f.link} class="inline-block mt-4 text-primary hover:text-accent font-semibold transition-colors">Read more &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Media coverage -->
+  <section class="py-14 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-3xl mb-10">
+        <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Media coverage</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">Where Simply Enak has been featured</h2>
+        <p class="text-muted text-lg">Independent coverage is how we back up what we say about ourselves.</p>
+      </div>
+      <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {mediaCoverage.map((m) => (
+          <li>
+            {m.url ? (
+              <a href={m.url} target="_blank" rel="noopener noreferrer" class="group block h-full p-5 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c] hover:border-accent transition-all">
+                <span class="text-xs text-accent font-bold uppercase tracking-wider">{m.year} &middot; {m.category}</span>
+                <span class="block font-bold text-default mt-1 group-hover:text-accent transition-colors">{m.outlet}</span>
+              </a>
+            ) : (
+              <span class="block h-full p-5 rounded-lg border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1e1c1c]">
+                <span class="text-xs text-accent font-bold uppercase tracking-wider">{m.year} &middot; {m.category}</span>
+                <span class="block font-bold text-default mt-1">{m.outlet}</span>
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="py-14 md:py-20 bg-gray-50 dark:bg-[#151313]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Awards &amp; recognition</p>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">Awards</h2>
+      <p class="text-muted text-lg leading-relaxed">
+        Simply Enak has not yet been entered for industry awards. This section
+        will list awards and certifications as soon as we have them.
+      </p>
+      <p class="text-muted italic mt-4">[Awards to be added]</p>
+    </div>
+  </section>
+
+  <!-- Corporate / group clients -->
+  <section class="py-14 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <p class="text-accent text-xs uppercase tracking-[0.25em] font-bold mb-3">Corporate &amp; groups</p>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-default mb-4">Private and corporate tours</h2>
+      <p class="text-muted text-lg leading-relaxed">
+        Simply Enak runs private tours for families, corporate teams, schools and
+        special occasions. Case studies from these groups will be added here as
+        clients share them.
+      </p>
+      <a href="/tours/private-tours" class="inline-block mt-6 bg-accent text-black font-bold px-8 py-4 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg">See Private Tours</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#1a1a1a] py-14 md:py-18">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading text-white mb-4">Come eat with us</h2>
+      <p class="text-white/70 text-lg mb-8">Browse the tours, or message us on WhatsApp. We reply in minutes.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/tours" class="inline-flex items-center justify-center gap-2 bg-accent text-black font-bold px-8 py-4 rounded hover:bg-[#e8922e] transition-colors text-sm shadow-lg">Browse Tours</a>
+        <a href="https://wa.me/60172878929" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-bold px-8 py-4 rounded hover:bg-white/10 transition-all text-sm">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
