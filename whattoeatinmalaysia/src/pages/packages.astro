@@ -2,8 +2,8 @@
 import Default from '~/layouts/Default.astro';
 import { packages, type PackageCard, faqs } from '~/data/dishes';
 
-const title = 'Food Guides — What to Eat in Malaysia';
-const description = 'City and dietary guides for Malaysia. One-time purchases, no subscriptions. Pick your guide to the must-try dishes, then tick them off on the free checklist.';
+const title = 'Food Checklists — What to Eat in Malaysia';
+const description = 'City and dietary checklists for Malaysia. One-time purchases, no subscriptions. Pick a checklist of the must-try dishes, then tick them off as you taste them.';
 
 // Filter out FAQs that are about checklist mechanics (keep only general ones)
 const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.includes('Is the checklist free'));
@@ -12,63 +12,63 @@ const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.include
 const guideCards = [
   {
     id: 'city-penang',
-    name: 'Penang Food Guide',
-    price: 'RM8',
-    status: 'coming',
+    name: 'Penang Food Checklist',
+    price: 'US$4.99',
+    status: 'live',
     image: 'https://cdn.simplyenak.com/wtm/penang-street-food.jpg',
     blurb: 'George Town, Air Itam, Bayan Lepas. Which district to walk through and when.',
     features: ['District maps', 'Best times to go', 'Transit tips', 'Notes & ratings'],
-    checkoutUrl: '' // Not yet created in ThriveCart
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/penang-food-checklist/'
   },
   {
     id: 'city-kl',
-    name: 'Kuala Lumpur Food Guide',
-    price: 'RM8',
-    status: 'coming',
+    name: 'Kuala Lumpur Food Checklist',
+    price: 'US$4.99',
+    status: 'live',
     image: 'https://cdn.simplyenak.com/wtm/kl-food.jpg',
     blurb: 'Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.',
     features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips', 'Notes & ratings'],
-    checkoutUrl: '' // Not yet created in ThriveCart
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/kuala-lumpur-food-checklist/'
   },
   {
     id: 'city-melaka',
-    name: 'Melaka Food Guide',
-    price: 'RM8',
-    status: 'coming',
+    name: 'Melaka Food Checklist',
+    price: 'US$4.99',
+    status: 'live',
     image: 'https://cdn.simplyenak.com/wtm/melaka-food.jpg',
     blurb: 'Jonker Walk, heritage quarter. Nyonya origins and night market hours.',
     features: ['Jonker Walk routes', 'Nyonya origins', 'Night market hours', 'Notes & ratings'],
-    checkoutUrl: '' // Not yet created in ThriveCart
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/melaka-food-checklist/'
   },
   {
     id: 'dietary-halal',
-    name: 'Halal Food Guide',
-    price: 'RM12',
-    status: 'coming',
+    name: 'Halal Food Checklist',
+    price: 'US$5.99',
+    status: 'live',
     image: 'https://cdn.simplyenak.com/wtm/halal-guide.jpg',
     blurb: 'JAKIM-verified areas, prayer room locations, and what to ask at Chinese hawker stalls.',
     features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask', 'Notes & ratings'],
-    checkoutUrl: '' // Not yet created in ThriveCart
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/halal-food-checklist/'
   },
   {
     id: 'dietary-veg',
-    name: 'Vegetarian Food Guide',
-    price: 'RM12',
-    status: 'coming',
+    name: 'Vegetarian Food Checklist',
+    price: 'US$5.99',
+    status: 'live',
     image: 'https://cdn.simplyenak.com/wtm/vegetarian.jpg',
     blurb: 'Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.',
     features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options', 'Notes & ratings'],
-    checkoutUrl: '' // Not yet created in ThriveCart
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/vegetarian-food-checklist/'
   },
   {
     id: 'full-collection',
     name: 'Full Collection',
-    price: 'RM25',
+    price: 'US$19',
     status: 'coming',
     image: 'https://cdn.simplyenak.com/wtm/collection.jpg',
-    blurb: 'All five guides in one purchase. Access on any device, forever.',
+    blurb: 'All five checklists in one purchase. Access on any device, forever.',
     features: ['Everything included', 'Cross-device sync', 'Lifetime access', 'Notes & ratings'],
-    checkoutUrl: 'https://uiy.thrivecart.com/product/9/' // Product ID 9 in ThriveCart
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/street-food-masters-collection/' // ThriveCart product 9
   }
 ];
 ---
@@ -76,7 +76,7 @@ const guideCards = [
 <Default title={title} description={description}>
   <main class="packages-page">
     <div class="container">
-      <h1>Notes, ratings, and deeper guides</h1>
+      <h1>Notes, ratings, and deeper checklists</h1>
         <p class="section-hint">
           The checklist is free and always will be.
           Unlock detailed district maps, best-times guidance, and dietary flags for each state.
@@ -91,7 +91,7 @@ const guideCards = [
             <article class="guide-card-buy" data-card={card.id} style={`animation-delay: ${i * 80}ms`}>
               <div class="guide-card-image-wrap">
                 <img src={card.image} alt={`${card.name} cover`} loading="lazy" />
-                <span class={`guide-card-status ${card.status}`}>{card.status === 'free' ? 'Free' : 'Coming soon'}</span>
+                <span class={`guide-card-status ${card.status}`}>{card.status === 'free' ? 'Free' : card.status === 'live' ? 'Available' : 'Coming soon'}</span>
               </div>
               <div class="guide-card-body">
                 <h3>{card.name}</h3>
@@ -102,7 +102,7 @@ const guideCards = [
                 <div class="guide-card-foot">
                   <span class="guide-card-price">{card.price}</span>
                   <a class="guide-card-cta" href="/login" data-pkg={card.id} data-checkout={card.checkoutUrl || ''}>
-                    {card.status === 'free' ? 'Get now' : card.checkoutUrl ? 'Add to cart' : 'Join waitlist'}
+                    {card.status === 'free' ? 'Get now' : card.status === 'live' ? 'Buy now' : card.checkoutUrl ? 'Add to cart' : 'Join waitlist'}
                   </a>
                 </div>
               </div>
@@ -124,7 +124,7 @@ const guideCards = [
       </section>
 
       <footer class="packages-footer">
-        <p>Your notes and ratings stay on your device until you log in. One purchase, all guides, lifetime access.</p>
+        <p>Your notes and ratings stay on your device until you log in. One purchase, all checklists, lifetime access.</p>
         <p><a href="/login">Already bought? Log in →</a></p>
       </footer>
     </div>
@@ -175,6 +175,10 @@ const guideCards = [
       letter-spacing: 0.05em;
     }
     .guide-card-status.free {
+      background: #1A7A2E;
+      color: #fff;
+    }
+    .guide-card-status.live {
       background: #1A7A2E;
       color: #fff;
     }

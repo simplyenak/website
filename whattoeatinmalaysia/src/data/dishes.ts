@@ -918,7 +918,7 @@ export const nationalClassics: ClassicItem[] = [
 
 export const checklistTotal = totalDishes + nationalClassics.length;
 
-export type PackageStatus = 'free' | 'coming';
+export type PackageStatus = 'free' | 'coming' | 'live';
 
 export interface PackageCard {
   id: string;
@@ -946,9 +946,9 @@ export const packages: PackageCard[] = [
   },
   {
     id: 'city-penang',
-    name: 'Penang Food Guide',
-    status: 'coming',
-    price: 'RM8 one-time',
+    name: 'Penang Food Checklist',
+    status: 'live',
+    price: 'US$4.99 one-time',
     blurb: 'George Town street food districts, best hours, and the dishes that define Penang.',
     includes: [
       'District map: George Town, Air Itam, Bayan Lepas',
@@ -959,9 +959,9 @@ export const packages: PackageCard[] = [
   },
   {
     id: 'city-kl',
-    name: 'Kuala Lumpur Food Guide',
-    status: 'coming',
-    price: 'RM8 one-time',
+    name: 'Kuala Lumpur Food Checklist',
+    status: 'live',
+    price: 'US$4.99 one-time',
     blurb: 'KL neighborhoods, coffee shops, and the dishes that make the capital unique.',
     includes: [
       'District map: Chinatown, Kampung Baru, Bangsar',
@@ -972,9 +972,9 @@ export const packages: PackageCard[] = [
   },
   {
     id: 'city-melaka',
-    name: 'Melaka Food Guide',
-    status: 'coming',
-    price: 'RM8 one-time',
+    name: 'Melaka Food Checklist',
+    status: 'live',
+    price: 'US$4.99 one-time',
     blurb: 'Heritage quarter food, Nyonya specialties, and the history behind each dish.',
     includes: [
       'District map: Jonker Walk, Cheng Hoy Temple area',
@@ -985,9 +985,9 @@ export const packages: PackageCard[] = [
   },
   {
     id: 'dietary-halal',
-    name: 'Halal Food Guide',
-    status: 'coming',
-    price: 'RM12 one-time',
+    name: 'Halal Food Checklist',
+    status: 'live',
+    price: 'US$5.99 one-time',
     blurb: 'JAKIM-verified stalls in major cities, where to ask, and how to navigate halal options.',
     includes: [
       'JAKIM-certified districts in KL, Penang, Melaka',
@@ -998,9 +998,9 @@ export const packages: PackageCard[] = [
   },
   {
     id: 'dietary-veg',
-    name: 'Vegetarian Food Guide',
-    status: 'coming',
-    price: 'RM12 one-time',
+    name: 'Vegetarian Food Checklist',
+    status: 'live',
+    price: 'US$5.99 one-time',
     blurb: 'Indian, Buddhist, and mamak vegetarian options across major cities.',
     includes: [
       'Vegetarian districts in KL, Penang, Melaka',
@@ -1012,12 +1012,12 @@ export const packages: PackageCard[] = [
   {
     id: 'full-collection',
     name: 'Full Malaysia Collection',
-    status: 'coming',
-    price: 'RM25 one-time',
-    blurb: 'All city guides, both dietary guides, and state-by-state context — one purchase, access forever.',
+    status: 'live',
+    price: 'US$19 one-time',
+    blurb: 'All city checklists, both dietary checklists, and state-by-state context — one purchase, access forever.',
     includes: [
-      'All 3 city guides (Penang, KL, Melaka)',
-      'Both dietary guides (Halal + Vegetarian)',
+      'All 3 city checklists (Penang, KL, Melaka)',
+      'Both dietary checklists (Halal + Vegetarian)',
       'Cross-device sync with free account',
     ],
   },

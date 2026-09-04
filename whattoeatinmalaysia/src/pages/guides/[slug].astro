@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { state } = Astro.props;
-const title = `${state.name} Food Guide — What to Eat in Malaysia`;
+const title = `${state.name} Food Checklist — What to Eat in Malaysia`;
 const description = `Every signature dish in ${state.name}: famous stalls, halal status, best time to eat. The dishes you must try in ${state.name}, all tickable on the free checklist as you eat them.`;
 
 const image = stateImages[state.id] || stateImages['_default'];
@@ -78,7 +78,7 @@ const halalLabels: Record<string, string> = {
         </nav>
         
         <div class="paywall-box">
-          <h1>{state.name} Food Guide</h1>
+          <h1>{state.name} Food Checklist</h1>
           <p class="paywall-intro">{state.intro}</p>
           
           <div class="paywall-preview">
@@ -98,7 +98,7 @@ const halalLabels: Record<string, string> = {
           </div>
           
           <div class="paywall-actions">
-            <a class="paywall-btn primary" href="https://uiy.thrivecart.com/street-food-masters-collection/" target="_blank" rel="noopener">
+            <a class="paywall-btn primary" href="https://checkout.whattoeatinmalaysia.com/street-food-masters-collection/" target="_blank" rel="noopener">
               Get the collection &rarr;
             </a>
             <a class="paywall-btn secondary" href="/login">
@@ -133,7 +133,7 @@ const halalLabels: Record<string, string> = {
               />
             </div>
           )}
-          <h1>{state.name} Food Guide</h1>
+          <h1>{state.name} Food Checklist</h1>
           <p class="guide-intro">{state.intro}</p>
           {state.cta && (
             <a class="guide-tour-cta" href={state.cta.url} target="_blank" rel="noopener">

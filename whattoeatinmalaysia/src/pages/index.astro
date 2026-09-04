@@ -104,7 +104,7 @@ const description =
     var email = document.getElementById('waitlist-email').value.trim();
     if (!email) return;
     btn.disabled = true;
-    fetch('https://wtm-access.system.simplyenak.com/waitlist', {
+    fetch((import.meta.env.PUBLIC_WTM_ACCESS || 'https://wtm-access.system.simplyenak.com') + '/waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, source: 'coming-soon' }),
