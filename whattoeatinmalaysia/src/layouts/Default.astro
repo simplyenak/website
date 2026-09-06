@@ -1,4 +1,6 @@
 ---
+import { SITE_MODE } from '~/config';
+
 export interface Props {
   title: string;
   description: string;
@@ -8,6 +10,11 @@ export interface Props {
 }
 
 const { title, description, canonical, structuredData, noindex } = Astro.props;
+// Gate mode: only the homepage may be indexed. Belt-and-suspenders on top of
+// the _redirects 302 map — every other page self-noindexes even if a stray
+// build serves its HTML.
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html';
+const effectiveNoindex = noindex || (SITE_MODE === 'gate' && !isHome);
 const siteUrl = 'https://whattoeatinmalaysia.com';
 // Auto-canonical: use Astro.url path so every page self-canonicalizes
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
@@ -31,7 +38,7 @@ const ogImage = `${siteUrl}/og.jpg`;
     <meta name="twitter:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:image" content={ogImage} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {effectiveNoindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#7A2E1D" />
@@ -885,10 +892,12 @@ const ogImage = `${siteUrl}/og.jpg`;
       .auth-box { max-width: 460px; width: 100%; }
       .auth-box h1 { font-size: 1.9rem; margin: 6px 0 14px; }
       .auth-lede { color: var(--color-muted, #6b625a); line-height: 1.6; margin-bottom: 22px; }
-      .auth-form { display: flex; gap: 10px; flex-wrap: wrap; }
+      .auth-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: stretch; }
       .auth-form input[type='email'] {
         flex: 1 1 220px;
         padding: 12px 14px;
+        height: 48px;
+        box-sizing: border-box;
         border: 1px solid #d8d0c7;
         border-radius: 8px;
         font: inherit;
@@ -896,6 +905,8 @@ const ogImage = `${siteUrl}/og.jpg`;
       }
       .auth-form button, .auth-out {
         padding: 12px 18px;
+        height: 48px;
+        box-sizing: border-box;
         border: none;
         border-radius: 8px;
         background: #2f2a26;
@@ -915,9 +926,9 @@ const ogImage = `${siteUrl}/og.jpg`;
       .acct-h2 { font-size: 1.1rem; margin: 18px 0 10px; }
       .acct-item { border: 1px solid #e4ddd4; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; background: #fffdf9; }
       .dish-notes { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #e4ddd4; }
-      .rating { display: flex; gap: 4px; margin-bottom: 8px; }
-      .star { background: none; border: none; cursor: pointer; font-size: 1.5rem; color: #d4cfc7; transition: color 0.2s; padding: 0; }
-      .star:hover, .star.active { color: #e8a020; }
+      .rating { display: flex; gap: 0; margin-bottom: 8px; }
+      .star { background: none; border: none; cursor: pointer; font-size: 1.5rem; line-height: 1; color: #d9a441; transition: color 0.2s; padding: 10px 10px; margin: -10px -8px; min-width: 44px; min-height: 44px; }
+      .star:hover, .star.active { color: #c47f06; }
       .note-input { width: 100%; border: 1px solid #e4ddd4; border-radius: 6px; padding: 8px 10px; font-size: 0.9rem; resize: vertical; background: #faf8f5; color: #444; box-sizing: border-box; }
       .note-input:focus { outline: none; border-color: #7A2E1D; background: #fff; }
       .note-status { font-size: 0.8rem; color: #7A2E1D; margin-top: 4px; min-height: 1.2em; }
@@ -1679,7 +1690,11 @@ const ogImage = `${siteUrl}/og.jpg`;
       .guide-card:active { transform: scale(0.98); }
       .guide-card-image { height: 140px; overflow: hidden; border-radius: 8px; margin-bottom: 14px; background: var(--color-bg); }
       .guide-card-image img { width: 100%; height: 100%; object-fit: cover; }
-      .guide-card-placeholder { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--color-muted); background: var(--color-bg); border-radius: 8px; }
+      .guide-card-link { display: block; color: inherit; text-decoration: none; }
+      .guide-card-placeholder { height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: linear-gradient(135deg, #FBF3E4 0%, #F5E6CD 100%); border-radius: 8px; border-top: 3px solid var(--color-accent, #C4551D); }
+      .guide-card-placeholder .ph-name { font-family: Georgia, 'Times New Roman', serif; font-size: 1.15rem; font-weight: 700; color: #4A2C17; }
+      .guide-card-placeholder .ph-sub { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: #A08668; }
+      .guide-card-foot { margin-top: auto; padding-top: 12px; }
       .guide-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
       .guide-card-head h3 { font-size: 1.1rem; color: var(--color-primary); margin: 0; }
       .dish-count { font-size: 0.78rem; color: var(--color-muted); background: var(--color-bg); padding: 3px 10px; border-radius: 999px; font-weight: 600; }

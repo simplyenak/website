@@ -2,8 +2,8 @@
 import Default from '~/layouts/Default.astro';
 import { packages, type PackageCard, faqs } from '~/data/dishes';
 
-const title = 'Food Checklists — What to Eat in Malaysia';
-const description = 'City and dietary checklists for Malaysia. One-time purchases, no subscriptions. Pick a checklist of the must-try dishes, then tick them off as you taste them.';
+const title = 'Food Checklists | What to Eat in Malaysia';
+const description = 'City and dietary checklists for Malaysia. One-time purchases, no subscriptions. Pick a checklist of the signature dishes, then tick them off as you taste them.';
 
 // Filter out FAQs that are about checklist mechanics (keep only general ones)
 const faqItems = faqs.filter(f => !f.q.includes('How does this') && !f.q.includes('Is the checklist free'));
@@ -15,7 +15,7 @@ const guideCards = [
     name: 'Penang Food Checklist',
     price: 'US$3.99',
     status: 'live',
-    image: 'https://cdn.simplyenak.com/wtm/penang-street-food.jpg',
+    image: '/images/covers/penang.jpg',
     blurb: 'George Town, Air Itam, Bayan Lepas. Which district to walk through and when.',
     features: ['District maps', 'Best times to go', 'Transit tips', 'Notes & ratings'],
     checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/penang-food-checklist/'
@@ -25,7 +25,7 @@ const guideCards = [
     name: 'Kuala Lumpur Food Checklist',
     price: 'US$3.99',
     status: 'live',
-    image: 'https://cdn.simplyenak.com/wtm/kl-food.jpg',
+    image: '/images/covers/kl.jpg',
     blurb: 'Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.',
     features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips', 'Notes & ratings'],
     checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/kuala-lumpur-food-checklist/'
@@ -35,7 +35,7 @@ const guideCards = [
     name: 'Melaka Food Checklist',
     price: 'US$3.99',
     status: 'live',
-    image: 'https://cdn.simplyenak.com/wtm/melaka-food.jpg',
+    image: '/images/covers/melaka.svg',
     blurb: 'Jonker Walk, heritage quarter. Nyonya origins and night market hours.',
     features: ['Jonker Walk routes', 'Nyonya origins', 'Night market hours', 'Notes & ratings'],
     checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/melaka-food-checklist/'
@@ -45,7 +45,7 @@ const guideCards = [
     name: 'Halal Food Checklist',
     price: 'US$3.99',
     status: 'live',
-    image: 'https://cdn.simplyenak.com/wtm/halal-guide.jpg',
+    image: '/images/covers/halal.svg',
     blurb: 'JAKIM-verified areas, prayer room locations, and what to ask at Chinese hawker stalls.',
     features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask', 'Notes & ratings'],
     checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/halal-food-checklist/'
@@ -55,7 +55,7 @@ const guideCards = [
     name: 'Vegetarian Food Checklist',
     price: 'US$3.99',
     status: 'live',
-    image: 'https://cdn.simplyenak.com/wtm/vegetarian.jpg',
+    image: '/images/covers/vegetarian.jpg',
     blurb: 'Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.',
     features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options', 'Notes & ratings'],
     checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/vegetarian-food-checklist/'
@@ -64,8 +64,11 @@ const guideCards = [
     id: 'full-collection',
     name: 'Full Collection',
     price: 'US$12',
+    compareAt: 'US$19.95',
+    save: 'Save 40%',
     status: 'live',
-    image: 'https://cdn.simplyenak.com/wtm/collection.jpg',
+    featured: true,
+    image: '/images/covers/collection.jpg',
     blurb: 'All five checklists in one purchase. Access on any device, forever.',
     features: ['Everything included', 'Cross-device sync', 'Lifetime access', 'Notes & ratings'],
     checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/street-food-masters-collection/' // ThriveCart product 9
@@ -82,16 +85,16 @@ const guideCards = [
           Unlock detailed district maps, best-times guidance, and dietary flags for each state.
           Add personal notes and ratings to every dish.
         </p>
-      </header>
 
       <section class="guide-cards" aria-labelledby="cards-heading">
         <h2 id="cards-heading" class="section-title">Add depth to your checklist</h2>
         <div class="guide-cards-grid">
           {guideCards.map((card, i) => (
-            <article class="guide-card-buy" data-card={card.id} style={`animation-delay: ${i * 80}ms`}>
+            <article class={`guide-card-buy${card.featured ? ' featured' : ''}`} data-card={card.id} style={`animation-delay: ${i * 80}ms`}>
               <div class="guide-card-image-wrap">
                 <img src={card.image} alt={`${card.name} cover`} loading="lazy" />
                 <span class={`guide-card-status ${card.status}`}>{card.status === 'free' ? 'Free' : card.status === 'live' ? 'Available' : 'Coming soon'}</span>
+                {card.featured && <span class="guide-card-best">Best value</span>}
               </div>
               <div class="guide-card-body">
                 <h3>{card.name}</h3>
@@ -100,7 +103,11 @@ const guideCards = [
                   {card.features.map(f => <li>{f}</li>)}
                 </ul>
                 <div class="guide-card-foot">
-                  <span class="guide-card-price">{card.price}</span>
+                  <div class="price-row">
+                    <span class="guide-card-price">{card.price}</span>
+                    {card.compareAt && <span class="price-compare">{card.compareAt}</span>}
+                    {card.save && <span class="price-save">{card.save}</span>}
+                  </div>
                   <a class="guide-card-cta" href="/login" data-pkg={card.id} data-checkout={card.checkoutUrl || ''}>
                     {card.status === 'free' ? 'Get now' : card.status === 'live' ? 'Buy now' : card.checkoutUrl ? 'Add to cart' : 'Join waitlist'}
                   </a>
@@ -109,6 +116,11 @@ const guideCards = [
             </article>
           ))}
         </div>
+        <ul class="packages-trust">
+          <li>Pay once, own it forever. No subscription.</li>
+          <li>Secure checkout via ThriveCart. Your guides unlock instantly on the payment success page.</li>
+          <li>Bought on another device? Your login link always works.</li>
+        </ul>
       </section>
 
       <section class="packages-faq" aria-labelledby="faq-heading">
@@ -221,26 +233,84 @@ const guideCards = [
       font-weight: 600;
     }
     .guide-card-foot {
+      margin-top: auto;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      flex-direction: column;
+      gap: 10px;
       padding-top: 16px;
       border-top: 1px solid var(--color-border);
     }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
     .guide-card-price {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.35rem;
+      font-weight: 800;
       color: var(--color-primary);
     }
+    .price-compare {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      text-decoration: line-through;
+    }
+    .price-save {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1A7A2E;
+      background: #DFF6E0;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .guide-card-buy.featured {
+      border: 2px solid var(--color-accent);
+      box-shadow: 0 10px 30px rgba(196, 85, 29, 0.14);
+    }
+    .guide-card-best {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #fff;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+    }
+    .packages-trust {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      justify-content: center;
+      padding: 0;
+      margin: 0 0 48px;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+    .packages-trust li { display: flex; align-items: center; gap: 8px; }
+    .packages-trust li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+    }
     .guide-card-cta {
-      display: inline-block;
-      padding: 10px 20px;
+      display: block;
+      text-align: center;
+      padding: 13px 20px;
       background: var(--color-accent);
       color: #fff;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       text-decoration: none;
       transition: background 0.15s ease, transform 0.15s ease;
     }
@@ -308,7 +378,7 @@ const guideCards = [
       });
     });
 
-    // Add to cart buttons — open ThriveCart checkout
+    // Add to cart buttons: open ThriveCart checkout
     document.querySelectorAll('[data-checkout]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const url = btn.dataset.checkout;

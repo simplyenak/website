@@ -121,16 +121,16 @@ export const liveStatusScript = `
   var verdict = document.getElementById('verdict-text');
   if (banner && verdict) {
     if (peakCount >= 3) {
-      verdict.textContent = 'Yes \\u2014 durian season is ON across most of Malaysia right now.';
+      verdict.textContent = 'Yes, durian season is ON across most of Malaysia right now.';
       banner.setAttribute('data-level', 'peak');
     } else if (peakCount > 0) {
-      verdict.textContent = 'Yes \\u2014 it is peak season in ' + peakCount + ' of ' + REGIONS.length + ' regions right now.';
+      verdict.textContent = 'Yes, it is peak season in ' + peakCount + ' of ' + REGIONS.length + ' regions right now.';
       banner.setAttribute('data-level', 'peak');
     } else if (anyCount > 0) {
-      verdict.textContent = 'Partly \\u2014 some regions are in their secondary season right now.';
+      verdict.textContent = 'Partly, some regions are in their secondary season right now.';
       banner.setAttribute('data-level', 'secondary');
     } else {
-      verdict.textContent = 'Not quite \\u2014 main season has wound down. Sarawak may still have fruit.';
+      verdict.textContent = 'Not quite, the main season has wound down. Sarawak may still have fruit.';
       banner.setAttribute('data-level', 'off');
     }
   }

@@ -90,6 +90,12 @@ const restrictions = DIET_ORDER.map((id) => {
   };
 });
 
+// Sanitize a string by replacing em dashes (—) and en dashes (–) with a standard dash (-).
+// Prevents non-ASCII characters leaking into generated dish notes.
+function sanitize(s) {
+  return s.replace(/[–—]/g, '-');
+}
+
 // --- map dishes ---
 const out = [];
 const errors = [];
@@ -105,7 +111,7 @@ for (const item of items) {
     const m = line.match(NOTE_LINE);
     if (!m) continue;
     statuses[m[1]] = m[2];
-    if (m[3]) notes[m[1]] = m[3];
+    if (m[3]) notes[m[1]] = sanitize(m[3]);
   }
 
   for (const id of DIET_ORDER) {

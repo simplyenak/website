@@ -1,46 +1,27 @@
-// State guide image mapping
-// Maps state slug -> cover image from SimplyEnak CDN or local assets
+// State guide image mapping — only real photographs are listed.
+// The former 16-entry map pointed at 16 byte-identical placeholder JPEGs;
+// those were removed. States without an entry render a branded tile instead.
 export const stateImages: Record<string, { src: string; alt: string }> = {
-  // KL area
-  'kl': {
-    src: '/images/states/inside-pudu-laksa.jpg',
-    alt: 'Inside Pudu Laksa in Kuala Lumpur'
+  penang: {
+    src: '/images/covers/penang.jpg',
+    alt: 'Street food stalls in George Town, Penang',
   },
-  'sekolah-tun-abdul-rahman': {
-    src: '/images/states/kl-satay.jpg',
-    alt: 'Satay in Kuala Lumpur'
+  'kuala-lumpur': {
+    src: '/images/covers/kl.jpg',
+    alt: 'Street food in Kuala Lumpur',
   },
-  
-  // Penang
-  'penang': {
-    src: '/images/states/penang-laksa.jpg',
-    alt: 'Penang Assam Laksa'
+  melaka: {
+    src: '/images/covers/melaka.svg',
+    alt: 'Melaka Food Checklist',
   },
-  
-  // Default placeholder
-  '_default': {
-    src: '/images/placeholder-food.jpg',
-    alt: 'Malaysian food'
-  }
 };
 
-// Dish-level images (optional - for detailed guides)
-export const dishImages: Record<string, string> = {
-  // KL
-  'assam-laksa-pudu': '/images/dishes/pudu-laksa.jpg',
-  'kl-laksa': '/images/dishes/kl-laksa.jpg',
-  
-  // Penang
-  'penang-laksa': '/images/dishes/penang-laksa.jpg',
-  'char-kway-teow': '/images/dishes/char-kway-teow.jpg',
-  
-  // Default fallback
-  '_default': null
-};
+// Dish-level images are not shipped yet; map kept empty so hasDishImage()
+// returns false everywhere instead of pointing at missing files.
+export const dishImages: Record<string, string | null> = {};
 
-// Check if an image exists (for development)
 export function hasStateImage(slug: string): boolean {
-  return slug in stateImages && stateImages[slug] !== null;
+  return slug in stateImages;
 }
 
 export function hasDishImage(dishId: string): boolean {

@@ -1,0 +1,125 @@
+---
+import Layout from '~/layouts/Default.astro';
+import { ACCESS_BASE } from '~/config';
+
+const title = 'What to Eat in Malaysia | Malaysian Food Checklist';
+const description =
+  'A checklist of Malaysia\u2019s defining dishes, so you know what is worth eating and where to find it. Enter your email to hear when it is ready.';
+---
+
+<Layout title={title} description={description}>
+  <main class="coming-soon">
+    <div class="cs-container">
+      <p class="cs-eyebrow">Starts with the dishes</p>
+      <h1>The Malaysian Food Checklist</h1>
+      <p class="cs-lede">
+        The dishes worth trying as a visitor, and where each one comes from, in one place.
+        Simple to use on your phone.
+      </p>
+
+      <form id="waitlist-form" class="cs-form">
+        <input
+          type="email"
+          id="waitlist-email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+          aria-label="Email address"
+        />
+        <button type="submit" id="waitlist-btn">Keep me in the loop</button>
+      </form>
+      <p id="waitlist-note" class="cs-note" aria-live="polite">
+        We only email when there is something worth telling you.
+      </p>
+
+      <p class="cs-alternative">
+        Want the full dish list now?
+        <a href="https://whatcanieatinmy.com/">What Can I Eat in Malaysia</a> checks every dish
+        against your diet: vegetarian, halal, gluten-free and more, and is live today.
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .coming-soon {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #2B1109 0%, #7A2E1D 55%, #5A2015 100%);
+    color: #FDF6EE;
+    display: flex;
+    align-items: center;
+    padding: 3rem 1.25rem;
+  }
+  .cs-container { max-width: 720px; margin: 0 auto; }
+  .cs-eyebrow {
+    display: inline-block;
+    background: rgba(255, 197, 87, 0.15);
+    color: #FFC557;
+    border: 1px solid rgba(255, 197, 87, 0.35);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin: 0 0 1.25rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    line-height: 1.15;
+    margin: 0 0 1rem;
+  }
+  .cs-lede { font-size: 1.1rem; line-height: 1.6; color: #F3DFC9; margin: 0 0 2rem; }
+  .cs-form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .cs-form input {
+    flex: 1 1 260px;
+    padding: 0.9rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(253, 246, 238, 0.3);
+    background: rgba(253, 246, 238, 0.08);
+    color: #FDF6EE;
+    font-size: 1rem;
+  }
+  .cs-form input::placeholder { color: rgba(253, 246, 238, 0.5); }
+  .cs-form button {
+    padding: 0.9rem 1.6rem;
+    border-radius: 10px;
+    border: none;
+    background: #FFC557;
+    color: #2B1109;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .cs-form button:disabled { opacity: 0.6; cursor: wait; }
+  .cs-note { font-size: 0.85rem; color: rgba(253, 246, 238, 0.65); margin: 0.75rem 0 2.5rem; }
+  .cs-alternative { margin-top: 2.5rem; font-size: 0.95rem; color: rgba(253, 246, 238, 0.8); }
+  .cs-alternative a { color: #FFC557; }
+</style>
+
+<script>
+  import { ACCESS_BASE } from '~/config';
+  var form = document.getElementById('waitlist-form');
+  var btn = document.getElementById('waitlist-btn');
+  var note = document.getElementById('waitlist-note');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('waitlist-email').value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    fetch(ACCESS_BASE + '/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'coming-soon' }),
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.error) throw new Error(d.error);
+        note.textContent = 'You are on the list.';
+        form.reset();
+      })
+      .catch(function () {
+        note.textContent = 'That did not work. Try again in a minute, or email hello@simplyenak.com.';
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+</script>

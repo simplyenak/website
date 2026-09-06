@@ -15,8 +15,8 @@ interface Props {
 }
 
 const { state } = Astro.props;
-const title = `${state.name} Food Checklist — What to Eat in Malaysia`;
-const description = `Every signature dish in ${state.name}: famous stalls, halal status, best time to eat. The dishes you must try in ${state.name}, all tickable on the free checklist as you eat them.`;
+const title = `${state.name} Food Checklist | What to Eat in Malaysia`;
+const description = `Every signature dish in ${state.name}: famous stalls, halal status, best time to eat. The dishes that define ${state.name}, all tickable on the free checklist as you eat them.`;
 
 const image = stateImages[state.id] || stateImages['_default'];
 
@@ -93,7 +93,7 @@ const halalLabels: Record<string, string> = {
             </ul>
             <p class="paywall-note">
               <strong>{state.dishes.length - 3} more dishes</strong> with exact stalls, 
-              halal notes, and best times — unlock with your purchase.
+              halal notes, and best times: unlock with your purchase.
             </p>
           </div>
           

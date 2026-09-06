@@ -1,7 +1,0 @@
-# Legacy /app/ path (checklist lived here pre-launch)
-/app/             /           301
-/app/*            /           301
-
-# Duplicate-URL cleanup (permanent)
-/penang           /guides/penang/  301
-/penang/          /guides/penang/  301

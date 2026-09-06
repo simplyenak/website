@@ -1,0 +1,19 @@
+---
+import Layout from '~/layouts/Default.astro';
+---
+<Layout title="Page Not Found | When Is Durian Season" description="That page does not exist. The durian season calendar lives on the homepage.">
+  <main class="notfound">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1>This page fell off the tree.</h1>
+      <p class="nf-text">The address does not exist, but the durian calendar is one tap away.</p>
+      <a href="/" class="hero-cta">Back to the season calendar</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .notfound { padding: 6rem 1rem 7rem; text-align: center; }
+  .notfound h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0.5rem 0 1rem; color: var(--color-heading, #2E421C); }
+  .nf-text { color: var(--color-muted, #6b625a); margin-bottom: 2rem; }
+</style>

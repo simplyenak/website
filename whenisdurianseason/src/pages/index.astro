@@ -20,6 +20,53 @@ const regionRows = regions.map((r) => ({
   }),
 }));
 
+// Build-time snapshot of the live status, so the page never ships "checking…".
+// The client script recomputes with the visitor's clock right after load.
+const buildMonth = new Date().getMonth() + 1;
+
+function regionStatusAt(main: number[], secondary: number[], m: number) {
+  if (main.includes(m)) return { level: 'peak', label: 'Peak season' };
+  if (secondary.includes(m)) return { level: 'secondary', label: 'Secondary season' };
+  for (let i = 1; i <= 12; i++) {
+    const check = ((m - 1 + i) % 12) + 1;
+    if (main.includes(check)) {
+      return { level: 'off', label: i === 1 ? 'Starts next month' : `Off season · back in ~${i} months` };
+    }
+  }
+  return { level: 'off', label: 'Off season' };
+}
+
+function varietyStatusAt(months: number[], m: number) {
+  if (months.includes(m)) return { level: 'peak', label: 'In season now' };
+  for (let i = 1; i <= 12; i++) {
+    const check = ((m - 1 + i) % 12) + 1;
+    if (months.includes(check)) {
+      return { level: 'off', label: i === 1 ? 'Starts next month' : `Back around ${MONTHS[check - 1]}` };
+    }
+  }
+  return { level: 'off', label: 'Off season' };
+}
+
+const regionStatuses = Object.fromEntries(
+  regions.map((r) => [r.id, regionStatusAt(r.mainSeason, r.secondarySeason || [], buildMonth)])
+);
+const varietyStatuses = Object.fromEntries(
+  varieties.map((v) => [v.id, varietyStatusAt(v.months, buildMonth)])
+);
+const peakRegions = regions.filter((r) => regionStatuses[r.id].level === 'peak').length;
+const anyRegions = regions.filter((r) => regionStatuses[r.id].level !== 'off').length;
+const initialVerdict =
+  peakRegions >= 3
+    ? 'Yes, durian season is ON across most of Malaysia right now.'
+    : peakRegions > 0
+      ? `Yes, it is peak season in ${peakRegions} of ${regions.length} regions right now.`
+      : anyRegions > 0
+        ? `Partly, some regions are in their secondary season right now.`
+        : 'Not quite, the main season has wound down. Sarawak may still have fruit.';
+const initialVerdictLevel =
+  peakRegions > 0 ? 'peak' : anyRegions > 0 ? 'secondary' : 'off';
+const buildDateLabel = new Date().toLocaleDateString('en-MY', { day: 'numeric', month: 'long', year: 'numeric' });
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -59,10 +106,10 @@ const structuredData = {
     <div class="container">
       <p class="eyebrow">The Fastest Way to Find When Durians Are in Season</p>
       <h1>When Is Durian Season in Malaysia?</h1>
-      <div id="season-verdict" class="verdict" data-level="unknown">
+      <div id="season-verdict" class="verdict" data-level={initialVerdictLevel}>
         <span class="verdict-dot" aria-hidden="true"></span>
-        <p id="verdict-text">Checking today's date against the season calendar&hellip;</p>
-        <p class="verdict-date">Today: <span id="live-date">&nbsp;</span></p>
+        <p id="verdict-text">{initialVerdict}</p>
+        <p class="verdict-date">Today: <span id="live-date">{buildDateLabel}</span></p>
       </div>
       <a href="#calendar" class="hero-cta">See the region calendar &darr;</a>
     </div>
@@ -113,7 +160,7 @@ const structuredData = {
                 {r.cells.map((c) => (
                   <td class={`cell-${c}`} aria-label={c === 'peak' ? 'Peak season' : c === 'secondary' ? 'Secondary season' : 'Off season'}></td>
                 ))}
-                <td data-region-status={r.id} class="status-chip">checking&hellip;</td>
+                <td data-region-status={r.id} class={`status-chip status-${regionStatuses[r.id].level}`} data-level={regionStatuses[r.id].level}>{regionStatuses[r.id].label}</td>
               </tr>
             ))}
           </tbody>
@@ -126,7 +173,7 @@ const structuredData = {
           <div class="region-card">
             <div class="region-card-head">
               <h3>{r.name}</h3>
-              <span data-region-status={r.id} class="status-chip">checking&hellip;</span>
+              <span data-region-status={r.id} class={`status-chip status-${regionStatuses[r.id].level}`} data-level={regionStatuses[r.id].level}>{regionStatuses[r.id].label}</span>
             </div>
             <p class="region-notes">{r.notes}</p>
             <p class="region-window">
@@ -157,7 +204,7 @@ const structuredData = {
           <article class="variety-card">
             <div class="variety-head">
               <h3>{v.name}</h3>
-              <span data-variety-status={v.id} class="status-chip">checking&hellip;</span>
+              <span data-variety-status={v.id} class={`status-chip status-${varietyStatuses[v.id].level}`} data-level={varietyStatuses[v.id].level}>{varietyStatuses[v.id].label}</span>
             </div>
             {v.alsoKnownAs && <p class="variety-aka">Also: {v.alsoKnownAs}</p>}
             <p class="variety-color"><strong>Flesh:</strong> {v.color}</p>

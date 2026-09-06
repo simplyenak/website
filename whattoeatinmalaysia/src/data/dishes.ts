@@ -1014,7 +1014,7 @@ export const packages: PackageCard[] = [
     name: 'Full Malaysia Collection',
     status: 'live',
     price: 'US$12 one-time',
-    blurb: 'All city checklists, both dietary checklists, and state-by-state context — one purchase, access forever.',
+    blurb: 'All city checklists, both dietary checklists, and state-by-state context: one purchase, access forever.',
     includes: [
       'All 3 city checklists (Penang, KL, Melaka)',
       'Both dietary checklists (Halal + Vegetarian)',
@@ -1039,15 +1039,15 @@ export const faqs: Faq[] = [
   },
   {
     q: 'What is Malaysias most famous dish?',
-    a: 'Nasi lemak — coconut rice with sambal, anchovies, peanuts and cucumber, eaten for breakfast everywhere. But it is a national dish, not a regional one. The dishes worth travelling for are the state-specific ones: asam laksa in Penang, nasi kerabu in Kelantan, Sarawak laksa in Kuching.',
+    a: 'Nasi lemak: coconut rice with sambal, anchovies, peanuts and cucumber, eaten for breakfast everywhere. But it is a national dish, not a regional one. The dishes worth travelling for are the state-specific ones: asam laksa in Penang, nasi kerabu in Kelantan, Sarawak laksa in Kuching.',
   },
   {
     q: 'Is Malaysian street food halal?',
-    a: 'It depends. Malay-run stalls and nasi kandar shops are halal. Chinese hawker dishes often contain pork or lard — bak kut teh, kolok mee, KL Hokkien mee. Every dish on this page carries a halal note; when in doubt at a stall, just ask.',
+    a: 'It depends. Malay-run stalls and nasi kandar shops are halal. Chinese hawker dishes often contain pork or lard: bak kut teh, kolok mee, KL Hokkien mee. Every dish on this page carries a halal note; when in doubt at a stall, just ask.',
   },
   {
     q: 'Should I plan food around breakfast or dinner?',
-    a: 'Both. Breakfast is the slot most visitors miss: nasi dagang, Sarawak laksa, laksa Kuala Perlis, Klang bak kut teh — all morning rituals that sell out by 11am. Night markets take over from sunset, especially on the east coast and in Kota Kinabalu.',
+    a: 'Both. Breakfast is the slot most visitors miss: nasi dagang, Sarawak laksa, laksa Kuala Perlis, Klang bak kut teh, all morning rituals that sell out by 11am. Night markets take over from sunset, especially on the east coast and in Kota Kinabalu.',
   },
   {
     q: 'Do these dishes really change from neighbourhood to neighbourhood?',
@@ -1059,11 +1059,11 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Is the checklist free?',
-    a: 'The twelve national classics here are free and stay free. The deeper state-by-state guides with exact stall names, ingredient detail, and diet flags are one-time purchases — pay once, access forever.',
+    a: 'The twelve national classics here are free and stay free. The deeper state-by-state guides with exact stall names, ingredient detail, and diet flags are one-time purchases: pay once, access forever.',
   },
   {
     q: 'I bought the collection. How do I unlock the guides?',
-    a: 'Enter the email you paid with at /login. Your purchase is matched automatically and the state guides open to full detail — exact streets, famous stalls, halal notes, best times. Your unlock lasts 30 days unless you create a free account.',
+    a: 'Enter the email you paid with at /login. Your purchase is matched automatically and the state guides open to full detail: exact streets, famous stalls, halal notes, best times. Your unlock lasts 30 days unless you create a free account.',
   },
   {
     q: 'Can I follow this with a food tour instead of finding stalls myself?',

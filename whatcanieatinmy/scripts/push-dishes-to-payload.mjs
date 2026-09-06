@@ -39,6 +39,7 @@ const CATEGORY_MAP = {
   Rice: 'rice', Noodles: 'noodles', Bread: 'main', Grilled: 'grilled',
   Snack: 'snack', Dessert: 'dessert', Fruit: 'snack', Drink: 'beverage',
   Breakfast: 'breakfast', Vegetarian: 'main', Curry: 'main', Soup: 'soup',
+  Main: 'main',
 };
 const ORIGIN_MAP = {
   Malay: 'malay', Chinese: 'chinese', Indian: 'indian', 'Indian-Muslim': 'indian',

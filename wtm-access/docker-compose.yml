@@ -11,6 +11,11 @@ services:
       WTM_SECRET: ${WTM_SECRET}
       WTM_HOOKKEY: ${WTM_HOOKKEY}
       WTM_DB: /data/wtm.db
+      WTM_SITE_URL: ${WTM_SITE_URL:-https://whattoeatinmalaysia.com}
+      WTM_SMTP_HOST: ${WTM_SMTP_HOST}
+      WTM_SMTP_PORT: ${WTM_SMTP_PORT:-587}
+      WTM_SMTP_USER: ${WTM_SMTP_USER}
+      WTM_SMTP_PASS: ${WTM_SMTP_PASS}
     volumes:
       - wtm-data:/data
     networks:

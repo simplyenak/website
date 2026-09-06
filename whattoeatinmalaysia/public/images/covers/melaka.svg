@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Melaka Food Checklist cover">
+  <defs>
+    <pattern id="weave" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="28" height="28" fill="#FBF3E4"/>
+      <rect width="12" height="12" fill="#F3E2C7"/>
+      <rect x="14" y="14" width="10" height="10" fill="#F6E9D2"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#weave)"/>
+  <rect x="0" y="0" width="800" height="10" fill="#C4551D"/>
+  <rect x="0" y="490" width="800" height="10" fill="#C4551D"/>
+  <text x="400" y="185" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="6" fill="#8A6A4F">MELAKA</text>
+  <text x="400" y="265" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="bold" fill="#4A2C17">Food Checklist</text>
+  <line x1="300" y1="300" x2="500" y2="300" stroke="#C4551D" stroke-width="2"/>
+  <text x="400" y="345" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#6B5140">Jonker Walk, Nyonya kitchens, night market hours</text>
+  <text x="400" y="420" text-anchor="middle" font-family="Verdana, sans-serif" font-size="15" letter-spacing="3" fill="#A08668">WHAT TO EAT IN MALAYSIA</text>
+</svg>

@@ -7,14 +7,13 @@ const regionOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borne
 const grouped = regionOrder.map(r => ({ region: r, states: states.filter(s => s.region === r) }));
 ---
 
-<Default title="State Guides — What to Eat in Malaysia" description="Deep-dive guides for all 16 states of Malaysia: signature dishes, famous stalls, halal status. Every must-try dish, tickable on the free checklist as you eat it.">
+<Default title="State Guides | What to Eat in Malaysia" description="Deep-dive guides for all 16 states of Malaysia: signature dishes, famous stalls, halal status. Every dish tickable on the free checklist as you eat it.">
   <main class="guides-page">
     <div class="container">
       <h1>Malaysia State Food Guides</h1>
         <p class="lead">
           Every signature dish in each state, with where to eat, famous stalls, halal status, and best time to visit.
         </p>
-      </header>
 
       <div class="region-tabs">
         <button class="region-tab active" data-region="all">All states</button>
@@ -37,7 +36,10 @@ const grouped = regionOrder.map(r => ({ region: r, states: states.filter(s => s.
                     {stateImages[state.id] ? (
                       <img src={stateImages[state.id].src} alt={stateImages[state.id].alt} loading="lazy" />
                     ) : (
-                      <div class="guide-card-placeholder">{state.name.slice(0, 2).toUpperCase()}</div>
+                      <div class="guide-card-placeholder">
+                        <span class="ph-name">{state.name}</span>
+                        <span class="ph-sub">Malaysia</span>
+                      </div>
                     )}
                   </div>
                   <div class="guide-card-content">
@@ -47,11 +49,11 @@ const grouped = regionOrder.map(r => ({ region: r, states: states.filter(s => s.
                     </header>
                     <p class="guide-card-intro">{state.intro}</p>
                   </div>
-                  <footer class="guide-card-foot">
-                    <a class="guide-link" href={`/guides/${state.id}`}>Open guide →</a>
-                    {state.cta && <a class="guide-cta" href={state.cta.url} target="_blank" rel="noopener">{state.cta.label}</a>}
-                  </footer>
                 </a>
+                <footer class="guide-card-foot">
+                  <a class="guide-link" href={`/guides/${state.id}`}>Open guide</a>
+                  {state.cta && <a class="guide-cta" href={state.cta.url} target="_blank" rel="noopener">{state.cta.label}</a>}
+                </footer>
               </article>
             ))}
           </div>
