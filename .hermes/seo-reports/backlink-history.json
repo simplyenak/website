@@ -803,6 +803,140 @@
       "moz": {
         "error": "no key"
       }
+    },
+    "2026-09-01T04:00:13.137243+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 284,
+          "impressions": 2048,
+          "queries": 12
+        },
+        "non_branded": {
+          "clicks": 199,
+          "impressions": 39493,
+          "queries": 5200
+        },
+        "branded_clicks_pct": 58.8,
+        "branded_impr_pct": 4.9,
+        "brand_queries": [
+          {
+            "q": "simply enak",
+            "clicks": 212,
+            "impressions": 698,
+            "pos": 1.1
+          },
+          {
+            "q": "simply enak food tours",
+            "clicks": 59,
+            "impressions": 105,
+            "pos": 1.1
+          },
+          {
+            "q": "food tour penang",
+            "clicks": 13,
+            "impressions": 279,
+            "pos": 5.6
+          },
+          {
+            "q": "simply enak kangar jaya",
+            "clicks": 12,
+            "impressions": 886,
+            "pos": 7.7
+          },
+          {
+            "q": "penang food tour",
+            "clicks": 10,
+            "impressions": 636,
+            "pos": 14.0
+          },
+          {
+            "q": "durian",
+            "clicks": 6,
+            "impressions": 3839,
+            "pos": 9.0
+          },
+          {
+            "q": "durian malaysia",
+            "clicks": 6,
+            "impressions": 602,
+            "pos": 14.1
+          },
+          {
+            "q": "durian season malaysia",
+            "clicks": 4,
+            "impressions": 308,
+            "pos": 7.8
+          },
+          {
+            "q": "kl food tour",
+            "clicks": 4,
+            "impressions": 59,
+            "pos": 14.3
+          },
+          {
+            "q": "kuala lumpur food tour",
+            "clicks": 4,
+            "impressions": 151,
+            "pos": 14.1
+          },
+          {
+            "q": "best durian in malaysia",
+            "clicks": 3,
+            "impressions": 70,
+            "pos": 5.4
+          },
+          {
+            "q": "durian in malaysia",
+            "clicks": 3,
+            "impressions": 185,
+            "pos": 8.1
+          },
+          {
+            "q": "durian season in malaysia",
+            "clicks": 3,
+            "impressions": 547,
+            "pos": 7.7
+          },
+          {
+            "q": "durian season malaysia 2026",
+            "clicks": 3,
+            "impressions": 173,
+            "pos": 4.6
+          },
+          {
+            "q": "food souvenirs from malaysia",
+            "clicks": 3,
+            "impressions": 23,
+            "pos": 7.5
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "simplyenak.com",
+          "in_crawl": true,
+          "in_rankings": true,
+          "pagerank": 5.189465819037248e-09,
+          "pagerank_rank": 15545560,
+          "harmonic_centrality": 14259932.0,
+          "harmonic_centrality_rank": 3617988,
+          "n_hosts": 3,
+          "note": "Domain-level metrics from CC web graph. Quarterly updates."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:49:00Z",
+          "cached_at": 1786884540.20057
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
     }
   },
   "culinarytravelexperts.com": {
@@ -977,6 +1111,56 @@
       }
     },
     "2026-08-17T06:33:03.419211+00:00": {
+      "gsc": {
+        "window_days": 90,
+        "branded": {
+          "clicks": 0,
+          "impressions": 0,
+          "queries": 0
+        },
+        "non_branded": {
+          "clicks": 0,
+          "impressions": 1,
+          "queries": 1
+        },
+        "branded_clicks_pct": 0.0,
+        "branded_impr_pct": 0.0,
+        "brand_queries": [
+          {
+            "q": "culinary travel",
+            "clicks": 0,
+            "impressions": 1,
+            "pos": 6
+          }
+        ]
+      },
+      "common_crawl": {
+        "status": "success",
+        "data": {
+          "domain": "culinarytravelexperts.com",
+          "in_crawl": false,
+          "in_rankings": false,
+          "pagerank": null,
+          "pagerank_rank": null,
+          "harmonic_centrality": null,
+          "harmonic_centrality_rank": null,
+          "n_hosts": null,
+          "note": "Domain not found in Common Crawl data. It may be too new, too small, or not yet crawled."
+        },
+        "error": null,
+        "metadata": {
+          "source": "commoncrawl",
+          "release": "cc-main-2026-jan-feb-mar",
+          "from_cache": true,
+          "timestamp": "2026-08-16T12:50:30Z",
+          "cached_at": 1786884630.7428553
+        }
+      },
+      "moz": {
+        "error": "no key"
+      }
+    },
+    "2026-09-01T04:00:13.137243+00:00": {
       "gsc": {
         "window_days": 90,
         "branded": {
