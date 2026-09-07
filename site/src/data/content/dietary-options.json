@@ -1,5 +1,19 @@
 [
   {
+    "id": 17,
+    "name": "Shellfish-Free",
+    "slug": "shellfish-free",
+    "icon": "🦐",
+    "color": null,
+    "description": "No shrimp, prawns, crab, or shellfish",
+    "image": null,
+    "status": "published",
+    "scheduledPublish": null,
+    "publishedAt": null,
+    "updatedAt": "2026-08-24T15:17:20.935Z",
+    "createdAt": "2026-08-24T15:17:20.934Z"
+  },
+  {
     "id": 12,
     "name": "Vegan",
     "slug": "vegan",
@@ -129,14 +143,14 @@
     "id": 3,
     "name": "Halal",
     "slug": "halal",
-    "icon": "🥩",
+    "icon": "حلال",
     "color": "#2d8a4e",
     "description": "Halal-certified food options",
     "image": null,
     "status": "published",
     "scheduledPublish": null,
     "publishedAt": null,
-    "updatedAt": "2026-06-19T14:41:44.523Z",
+    "updatedAt": "2026-08-24T15:21:01.539Z",
     "createdAt": "2026-05-19T08:33:25.146Z"
   },
   {
