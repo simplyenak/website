@@ -1,6 +1,8 @@
 # Register thrivecart-purchase-ingest relay script + WTM_HOOKKEY secret in Pyrunner.
 # Run inside the pyrunner container: docker exec -e WTM_HOOKKEY=$(cat /tmp/wtm-hookkey) python3 /tmp/register_relay.py
 # (reads script code from /tmp/thrivecart_purchase_ingest.py inside the container)
+# Optionally set THRIVECART_SECRET too (the account "secret word", dashboard-only)
+# so the relay rejects spoofed payloads: add to the Secret table same as WTM_HOOKKEY.
 import django
 import os
 import secrets
@@ -42,4 +44,16 @@ sec, _ = Secret.objects.update_or_create(
     defaults={"encrypted_value": EncryptionService.encrypt(HOOKKEY), "description": "wtm-access webhook auth key"},
 )
 print("SECRET WTM_HOOKKEY set (encrypted len %d)" % len(sec.encrypted_value))
+
+# 3) Upsert THRIVECART_SECRET (optional; skip silently if not provided)
+tc_secret = os.environ.get("THRIVECART_SECRET", "")
+if tc_secret:
+    Secret.objects.update_or_create(
+        key="THRIVECART_SECRET",
+        defaults={"encrypted_value": EncryptionService.encrypt(tc_secret), "description": "ThriveCart account secret word for payload authenticity"},
+    )
+    print("SECRET THRIVECART_SECRET set")
+else:
+    print("SKIP THRIVECART_SECRET (not provided)")
+
 print("DONE")
