@@ -14,6 +14,11 @@ var REDIRECTS = {
   "/pt/stories/eating-durians": "/stories/eating-durians/",
   "/do-malaysians-speak-english": "/stories/do-malaysians-speak-english",
   "/ms/stories/chinese-dumpling-festival": "/stories/chinese-dumpling-festival",
+  // Durian-season FAQ story renamed (faq-when-is-durian-season-in-malaysia →
+  // durian-season-malaysia); old EN URL had 107 imps/mo, NL twin ranks at 4.6.
+  "/stories/faq-when-is-durian-season-in-malaysia": "/stories/durian-season-malaysia/",
+  "/nl/stories/faq-when-is-durian-season-in-malaysia": "/nl/stories/durian-season-malaysia/",
+  "/ms/stories/faq-when-is-durian-season-in-malaysia": "/ms/stories/durian-season-malaysia/",
   // Root-level story URLs still getting impressions but 404ing (missing after
   // the /stories/ permalink migration) — ~926 imps/mo recovered (Aug 16 2026)
   "/food-guide-chow-kit": "/stories/food-guide-chow-kit",
