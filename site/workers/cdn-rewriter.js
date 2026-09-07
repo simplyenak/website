@@ -27,6 +27,19 @@ var REDIRECTS = {
   "/families-guide-kuala-lumpur": "/stories/families-guide-kuala-lumpur",
   "/street-food-guide-kuala-lumpur": "/stories/street-food-guide-kuala-lumpur",
 
+  // Sep 2026 GSC scan: URLs Google still tracks with demand but which 404. The
+  // map was keyed without a trailing slash so canonical-form (slash) requests
+  // never matched; normalization now covers those, and these had NO entry at
+  // all. /eating-durians alone still gets ~7.3k imps/mo on a 404.
+  "/eating-durians": "/stories/eating-durians/",
+  "/nl/stories/eating-durians": "/stories/eating-durians/",
+  "/nl/stories/must-try-malaysian-street-food": "/stories/must-try-malaysian-street-food/",
+  "/pt/stories/how-to-find-vegetarian-restaurants-kl-penang-ipoh": "/stories/how-to-find-vegetarian-restaurants-kl-penang-ipoh/",
+  "/es/stories/traveling-during-fasting-month": "/stories/traveling-during-fasting-month/",
+  "/fr/stories/traveling-during-fasting-month": "/stories/traveling-during-fasting-month/",
+  "/tours/eat-drink-george-town": "/tours/penang-street-food",
+  "/food-safety": "/stories/food-safety",
+
   // ── Priority 3a — Renamed tours (727 imps/mo) ──
   "/tours/flavours-of-malaysia-off-the-beaten-track": "/tours/flavours-of-malaysia",
   "/tours/eat-drink-georgetown": "/tours/penang-street-food",
@@ -189,9 +202,21 @@ async function handleRequest(request) {
   }
 
   // 3. Static redirects ──
-  var redirectTarget = REDIRECTS[url.pathname];
+  // The map is keyed without a trailing slash, but Google requests canonicals
+  // (and the sitemap) with one — a slash-form URL never matched, so the whole
+  // redirect set silently missed ~all Google traffic (eating-durians still got
+  // 7.3k imps/mo on a 404). Normalize a single trailing slash off before the
+  // lookup so both /x and /x/ resolve, then skip self-redirects (no loop).
+  var reqPath = url.pathname;
+  if (reqPath.length > 1 && reqPath.endsWith('/')) {
+    reqPath = reqPath.slice(0, -1);
+  }
+  var redirectTarget = REDIRECTS[reqPath];
   if (redirectTarget) {
-    return Response.redirect("https://simplyenak.com" + redirectTarget + url.search, 301);
+    var targetPath = redirectTarget.replace(/\/$/, '');
+    if (targetPath !== reqPath) {
+      return Response.redirect("https://simplyenak.com" + redirectTarget + url.search, 301);
+    }
   }
 
   // ── Skip non-page requests
