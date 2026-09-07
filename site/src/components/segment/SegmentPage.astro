@@ -80,8 +80,17 @@ const toursSegmentsUrl = `${urlPrefix}/tours/${segmentType === 'travel_type' ? '
 const canonicalUrl = `${urlPrefix}/tours/${segmentType === 'travel_type' ? 'segments' : `${segmentType}s`}/${segment.slug}`;
 
 const meta = {
-  title: cleanPageTitle(segment.metaTitle || segment.nameFull || landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`),
-  description: segment.metaDescription || segment.description || landingPage?.meta_description || landingPage?.metaDescription || '',
+  // Non-EN: localized landing-page metadata wins over the English
+  // segments.js defaults; segment values remain the fallback so every
+  // locale still emits a title even before translations exist.
+  title: cleanPageTitle(
+    locale !== 'en'
+      ? (landingPage?.meta_title || landingPage?.metaTitle || segment.metaTitle || segment.nameFull || `${segment.name} Tours`)
+      : (segment.metaTitle || segment.nameFull || landingPage?.meta_title || landingPage?.metaTitle || `${segment.name} Tours`)
+  ),
+  description: locale !== 'en'
+    ? (landingPage?.meta_description || landingPage?.metaDescription || segment.metaDescription || segment.description || '')
+    : (segment.metaDescription || segment.description || landingPage?.meta_description || landingPage?.metaDescription || ''),
 };
 ---
 

@@ -277,7 +277,7 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
       <p class="text-accent/80 text-xs uppercase tracking-[0.25em] font-bold mb-4">{segmentLabel}</p>
     )}
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6 leading-tight">
-      {segment.name}
+      {locale !== 'en' && landingPage?.hero_title ? landingPage.hero_title : segment.name}
     </h1>
     <p class="text-xl md:text-2xl text-white/85 font-normal font-sans leading-relaxed max-w-2xl mb-8">
       {getHook()}

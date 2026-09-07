@@ -1024,6 +1024,13 @@ async function resolveTravelTypes(locale?: string): Promise<any[]> {
 }
 
 async function resolveLandingPages(locale?: string): Promise<any[]> {
+  // For non-EN locales, prefer snapshot translations over Payload's English
+  // fallback — consistent with resolveStories/resolveFAQs/resolveTours.
+  // (Landing-page translations are not pushed to Payload: the collection is
+  // not natively localized, so the live tier would serve untranslated fields.)
+  if (locale && locale !== 'en' && snapshotLandingPages.length > 0) {
+    return snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
+  }
   // Tier 1: Live Payload API (for all locales — consistent with other resolve* functions)
   const live = await liveLandingPages(locale);
   if (live && live.length > 0) return live;
