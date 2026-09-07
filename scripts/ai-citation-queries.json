@@ -1,0 +1,25 @@
+{
+  "_comment": "Money queries for the weekly AI-citation visibility check (ai-citation-check.py). Each is asked to 3 model families via omniroute; we track whether Simply Enak gets cited. Edit freely - the trend line resets only if queries change, so note edits in git commits.",
+  "queries": [
+    "food tour Kuala Lumpur",
+    "Kuala Lumpur street food tour",
+    "night food tour Kuala Lumpur",
+    "private food tour Kuala Lumpur",
+    "Penang food tour",
+    "George Town street food tour",
+    "Penang food guide",
+    "durian tour Malaysia",
+    "durian tasting Kuala Lumpur",
+    "when is durian season in Malaysia",
+    "what to eat in Kuala Lumpur",
+    "what to eat in Penang",
+    "Kuala Lumpur food guide",
+    "Malaysian food tour",
+    "food experiences Kuala Lumpur",
+    "things to do in Kuala Lumpur food",
+    "multi day food tour Malaysia",
+    "Kuala Lumpur and Penang food trip",
+    "best Malaysian dishes to try",
+    "Malaysia culinary experiences"
+  ]
+}

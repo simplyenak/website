@@ -91,6 +91,8 @@ scripts/*.sh
 !scripts/striking-to-colony.py
 !scripts/fix-pt-meta.py
 !scripts/fix-meta-title-dms.py
+!scripts/ai-citation-check.py
+!scripts/gsc-skill-feedback.py
 !scripts/payload_env.py
 !scripts/credential-scan.py
 !scripts/backlink-audit.py
@@ -98,7 +100,7 @@ scripts/*.sh
 !scripts/weekly-experience-check.py
 !scripts/create-experience-notes-migration.sh
 scripts/*.md
-scripts/seo-automation/
+scripts/seo-automation/*
 !scripts/seo-automation/gsc-striking-distance.py
 !scripts/seo-automation/openseo_client.py
 !scripts/seo-automation/gsc-impressions-clicks.py
@@ -106,6 +108,7 @@ scripts/seo-automation/
 !scripts/seo-automation/refresh-loop.py
 !scripts/seo-automation/test-refresh-loop.py
 !scripts/seo-automation/deploy-health.py
+!scripts/seo-automation/gsc-stale-content.py
 scripts/known-secrets.txt
 .i18n-heal.lock
 site/src/data/content/.translate-backup/
