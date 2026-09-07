@@ -8,13 +8,13 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "prebuild": "node scripts/sync-payload.mjs && node scripts/merge-stories-translations.mjs && python3 scripts/generate-okf-bundle.py && python3 scripts/fix-story-yaml.py && npm run generate:herald || true",
+    "build:prep": "node scripts/sync-payload.mjs && node scripts/merge-stories-translations.mjs && python3 scripts/generate-okf-bundle.py && python3 scripts/fix-story-yaml.py && npm run generate:herald || true",
     "generate:herald": "npx herald emit --agents --security --headers --platform cloudflare",
     "generate:okf": "python3 scripts/generate-okf-bundle.py",
     "build:okf": "python3 scripts/generate-okf-bundle.py",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && node scripts/split-sitemap.mjs || true",
+    "build": "npm run build:prep && astro build && node scripts/split-sitemap.mjs || true",
     "preview": "astro preview",
     "astro": "astro",
     "sync": "node --env-file=.env scripts/sync-payload.mjs",

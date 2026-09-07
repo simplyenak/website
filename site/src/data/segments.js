@@ -290,7 +290,8 @@ export const locationSegments = [
     name: 'Kampung Baru',
     description: 'Visit KL\'s last surviving Malay village around Jalan Raja Muda Abdul Aziz, tasting traditional kampung recipes passed down through generations near Masjid Jamek Kampung Baru.',
     heroSubtitle: 'The Best Malay Village Experience KL',
-    metaTitle: 'Kampung Baru Food Tour Kuala Lumpur',
+    metaTitle: 'Kampung Baru Street Food Tour Kuala Lumpur',
+    metaDescription: 'Kampung Baru street food walking tour: nasi lemak, satay and kuih at KL\'s last Malay village. Local guide, small group, evening tastings.',
     tours: ['flavours-of-malaysia'],
  },
  {

@@ -1,5 +1,5 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
-import { useTranslations } from './i18n/utils';
+import { useTranslations, isEnOnlyPath } from './i18n/utils';
 import type { Language } from './i18n/ui';
 
 export const headerData = {
@@ -146,7 +146,8 @@ export function getHeaderData(lang: Language) {
   const t = useTranslations(lang);
 
   // For non-English, prefix paths with the actual language code
-  const p = (path: string) => lang === 'en' ? getPermalink(path) : getPermalink(`/${lang}${path}`);
+  const p = (path: string) =>
+    lang === 'en' || isEnOnlyPath(path) ? getPermalink(path) : getPermalink(`/${lang}${path}`);
 
   return {
     links: [
@@ -187,7 +188,7 @@ export function getHeaderData(lang: Language) {
 export function getFooterData(lang: Language) {
   const t = useTranslations(lang);
 
-  const p = (path: string) => lang === 'en' ? path : `/${lang}${path}`;
+  const p = (path: string) => (lang === 'en' || isEnOnlyPath(path) ? path : `/${lang}${path}`);
 
   return {
     links: [

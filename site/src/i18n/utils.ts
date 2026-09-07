@@ -8,6 +8,24 @@ export const SUPPORTED_LANGS = ['ms', 'zh', 'de', 'es', 'fr', 'nl', 'ru', 'ja', 
 export type SupportedLang = typeof SUPPORTED_LANGS[number];
 
 /**
+ * Routes that exist ONLY in English — no per-locale page is generated.
+ * Localizing their nav href (`/<lang>/testimonials` …) produces 404s Google
+ * crawls. Used by the nav/footer to keep these links pointing at the EN page.
+ */
+const EN_ONLY_ROUTES = [
+  '/testimonials',
+  '/blog',
+  '/tours/packages',
+  '/tours/private-tours/private-food-tour',
+  '/tours/why-simply-enak',
+  '/tours/eat-drink-george-town',
+];
+export function isEnOnlyPath(path: string): boolean {
+  const clean = '/' + path.replace(/^\/+/, '');
+  return EN_ONLY_ROUTES.some((r) => clean === r || clean.startsWith(r + '/'));
+}
+
+/**
  * Returns static path entries for non-default languages.
  * Use in [lang] page frontmatter:
  *   export async function getStaticPaths() { return getLangStaticPaths(); }

@@ -62,11 +62,13 @@ const gaId = payloadGaId || configGaId || 'G-262711985';
   });
 
   // ── Tracking helpers ─────────────────────────────────────────
-  // Conversion events fire only after consent (they need cookies
-  // for attribution). Pageviews fire cookieless regardless.
+  // Conversion events fire regardless of consent state: with Consent
+  // Mode v2 + analytics_storage denied, gtag still transmits the event
+  // cookieless (modeled reporting fills attribution in GA4). Gating
+  // them on consent lost ~all booking/WhatsApp signal — most visitors
+  // never interact with the banner.
 
   window.trackTourBooking = function (tourName, tourPrice, bookingId) {
-    if (!window._ga4Consented) return;
     gtag('event', 'purchase', {
       transaction_id: bookingId, value: tourPrice, currency: 'MYR',
       items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours', quantity: 1, price: tourPrice }],
@@ -74,7 +76,6 @@ const gaId = payloadGaId || configGaId || 'G-262711985';
   };
 
   window.trackTourInterest = function (tourName) {
-    if (!window._ga4Consented) return;
     gtag('event', 'view_item', {
       currency: 'MYR', value: 0,
       items: [{ item_id: tourName.toLowerCase().replace(/\s+/g, '_'), item_name: tourName, category: 'Food Tours' }],
@@ -82,12 +83,10 @@ const gaId = payloadGaId || configGaId || 'G-262711985';
   };
 
   window.trackContactForm = function () {
-    if (!window._ga4Consented) return;
     gtag('event', 'generate_lead', { currency: 'MYR', value: 0, method: 'contact_form' });
   };
 
   window.trackWhatsApp = function (source) {
-    if (!window._ga4Consented) return;
     gtag('event', 'contact', { method: 'whatsapp', event_label: source || 'unknown' });
   };
 
