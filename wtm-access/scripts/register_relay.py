@@ -23,19 +23,22 @@ if not HOOKKEY:
 env = Environment.objects.filter(is_default=True).first()
 code = open("/tmp/thrivecart_purchase_ingest.py").read()
 
-# 1) Register the relay script (32-char hex webhook token)
+# 1) Register the relay script. IMPORTANT: keep the SAME webhook_token on re-run
+# (only mint a new one on first create) so an existing ThriveCart subscription
+# stays valid. Regenerating the token here orphans the external subscribe and
+# silently breaks purchase delivery until re-subscribed.
 obj, created = Script.objects.update_or_create(
     name="thrivecart-purchase-ingest",
     defaults={
         "description": "Relay ThriveCart purchase/refund webhook to wtm-access internal endpoint (single source of truth).",
         "code": code,
         "environment": env,
-        "webhook_token": secrets.token_hex(16),
+        "webhook_token": secrets.token_hex(16) if not Script.objects.filter(name="thrivecart-purchase-ingest").exists() else Script.objects.get(name="thrivecart-purchase-ingest").webhook_token,
         "is_enabled": True,
         "notify_on": "failure",
     },
 )
-print("SCRIPT", "created" if created else "updated", obj.name)
+print("SCRIPT", "created" if created else "updated (token preserved)", obj.name)
 print("WEBHOOK_URL", "https://pyrunner.system.simplyenak.com/webhook/%s/" % obj.webhook_token)
 
 # 2) Upsert WTM_HOOKKEY secret so the script reads it at runtime
