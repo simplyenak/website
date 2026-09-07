@@ -1,0 +1,52 @@
+name: Build and Deploy wtm-access
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wtm-access/**'
+      - '.github/workflows/deploy-wtm-access.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build, push, and update Swarm service
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          port: ${{ secrets.SERVER_PORT || '4040' }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -e
+            echo "=== Syncing checkout to main ==="
+            cd /home/maarten/website-optimization
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "=== Building wtm-access image ==="
+            cd wtm-access
+            docker build --no-cache -t wtm-access:latest -t localhost:5000/wtm-access:latest .
+
+            echo "=== Pushing to local registry ==="
+            docker push localhost:5000/wtm-access:latest
+
+            echo "=== Updating Dokploy-managed Swarm service ==="
+            SERVICE=$(docker service ls --format '{{.Name}}' | grep -E '^wtm-access-[a-z0-9]+_wtm-access$' | head -1)
+            if [ -n "$SERVICE" ]; then
+              docker service update --force --image localhost:5000/wtm-access:latest "$SERVICE"
+              echo "Updated service: $SERVICE"
+            else
+              echo "FAIL: wtm-access swarm service not found. You may need a Dokploy redeploy."
+              exit 1
+            fi
+
+            echo "=== Done ==="

@@ -133,7 +133,7 @@ async def thrivecart_hook(request: Request, k: str = Query(default="")):
     if not HOOKKEY or k != HOOKKEY:
         return JSONResponse({"error": "unauthorized"}, status_code=401)
     payload = await request.json()
-    event = payload.get("event", "")
+    event = (payload.get("event") or "").lower()
     customer = (payload.get("thrivecart") or {}).get("customer", {}) or {}
     email = norm_email(customer.get("email", ""))
     order_id = str((payload.get("thrivecart") or {}).get("order_id", ""))
@@ -152,17 +152,31 @@ async def thrivecart_hook(request: Request, k: str = Query(default="")):
         "INSERT INTO events (event, payload, ts) VALUES (?, ?, ?)",
         (event, json.dumps(payload)[:8000], now),
     )
+    # Classify the event before touching entitlements. Revoke events always win;
+    # a sale/upsert only grants when the event is a positive purchase signal.
+    revoke_words = ("refund", "chargeback", "reversal", "cancelled", "canceled", "void")
+    grant_words = ("sale", "purchase", "order", "complete", "paid", "activated", "fulfil", "fulfill", "upgraded", "renewed", "customer")
+    is_revoke = any(w in event for w in revoke_words)
+    is_grant = not is_revoke and any(w in event for w in grant_words)
+
     if email and product_ids:
         for pid in product_ids:
-            c.execute(
-                "INSERT INTO purchases (email, product_id, order_id, event, ts)"
-                " VALUES (?, ?, ?, ?, ?)"
-                " ON CONFLICT(email, product_id) DO UPDATE SET order_id=excluded.order_id, event=excluded.event, ts=excluded.ts",
-                (email, pid, order_id, event, now),
-            )
+            if is_revoke:
+                c.execute(
+                    "DELETE FROM purchases WHERE email = ? AND product_id = ?",
+                    (email, pid),
+                )
+            elif is_grant:
+                c.execute(
+                    "INSERT INTO purchases (email, product_id, order_id, event, ts)"
+                    " VALUES (?, ?, ?, ?, ?)"
+                    " ON CONFLICT(email, product_id) DO UPDATE SET order_id=excluded.order_id, event=excluded.event, ts=excluded.ts",
+                    (email, pid, order_id, event, now),
+                )
+            # else: unrelated event (e.g. abandoned cart) -> leave access untouched
     c.commit()
     c.close()
-    return {"ok": True, "email": email, "products": product_ids}
+    return {"ok": True, "email": email, "products": product_ids, "event": event, "revoked": is_revoke}
 
 
 @app.post("/redeem")
@@ -185,7 +199,17 @@ def verify(t: str = Query(default="")):
     data = unsign(t)
     if not data:
         return JSONResponse({"error": "invalid token"}, status_code=401)
-    return data
+    # Re-derive entitlements from the DB, not the token body: a product revoked
+    # since the token was minted must disappear now, not 30 days later.
+    c = db()
+    prods = products_for(c, data["email"])
+    c.close()
+    return {
+        "email": data["email"],
+        "exp": data["exp"],
+        "products": prods,
+        "revoked": sorted(p for p in data["products"] if p not in prods),
+    }
 
 
 @app.post("/waitlist")
@@ -288,8 +312,10 @@ def me(t: str = Query(default="")):
         return JSONResponse({"error": "invalid token"}, status_code=401)
     c = db()
     on_waitlist = c.execute("SELECT 1 FROM waitlist WHERE email = ?", (data["email"],)).fetchone()
+    # Source of truth = DB, so /me matches /verify and /redeem exactly.
+    prods = products_for(c, data["email"])
     c.close()
-    return {**data, "waitlist": bool(on_waitlist)}
+    return {"email": data["email"], "exp": data["exp"], "products": prods, "waitlist": bool(on_waitlist)}
 
 
 @app.get("/admin/outbox")

@@ -1,0 +1,39 @@
+services:
+  wtm-access:
+    image: localhost:5000/wtm-access:latest
+    environment:
+      - WTM_SECRET=${WTM_SECRET}
+      - WTM_HOOKKEY=${WTM_HOOKKEY}
+      - WTM_DB=/data/wtm.db
+      - WTM_SITE_URL=https://whattoeatinmalaysia.com
+      - WTM_SMTP_HOST=${WTM_SMTP_HOST}
+      - WTM_SMTP_PORT=${WTM_SMTP_PORT:-587}
+      - WTM_SMTP_USER=${WTM_SMTP_USER}
+      - WTM_SMTP_PASS=${WTM_SMTP_PASS}
+      - WTM_SMTP_FROM=${WTM_SMTP_FROM:-noreply@whattoeatinmalaysia.com}
+    volumes:
+      - wtm-data:/data
+    networks:
+      - dokploy-network
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.lbswarm=true
+        - traefik.swarm.network=dokploy-network
+        - traefik.http.routers.wtm-access-websecure.rule=Host(`wtm-access.system.simplyenak.com`)
+        - traefik.http.routers.wtm-access-websecure.entrypoints=websecure
+        - traefik.http.routers.wtm-access-websecure.tls=true
+        - traefik.http.routers.wtm-access-websecure.tls.certresolver=letsencrypt
+        - traefik.http.routers.wtm-access-websecure.service=wtm-access-web
+        - traefik.http.services.wtm-access-web.loadbalancer.server.port=8300
+
+volumes:
+  wtm-data:
+    external: true
+    name: wtm-access_wtm-data
+
+networks:
+  dokploy-network:
+    external: true
+    name: dokploy-network
