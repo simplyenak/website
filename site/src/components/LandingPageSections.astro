@@ -110,10 +110,12 @@ const ctaText = landingPage?.cta_text || 'Browse tours';
 // The CMS body_markdown field may contain "## People / ## Places / ## Stories"
 // sections; parse them into the three-card layout. Falls back to the
 // hardcoded pitches when the field is empty.
-const parseBodyMarkdown = (md: string): { people?: string; places?: string; stories?: string; prose: string[] } => {
+const parseBodyMarkdown = (
+  md: string
+): { people?: string; places?: string; stories?: string; prose: { heading?: string; body: string }[] } => {
   if (!md) return { prose: [] };
   const sections: { people?: string; places?: string; stories?: string } = {};
-  const prose: string[] = [];
+  const prose: { heading?: string; body: string }[] = [];
   // Split on ## headings
   const parts = md.split(/\n?^##\s+/m);
   parts.forEach((part, i) => {
@@ -121,16 +123,17 @@ const parseBodyMarkdown = (md: string): { people?: string; places?: string; stor
     if (!trimmed) return;
     if (i === 0) {
       // Leading prose before any heading
-      if (trimmed) prose.push(trimmed);
+      if (trimmed) prose.push({ body: trimmed });
       return;
     }
     const nl = trimmed.indexOf('\n');
-    const heading = (nl === -1 ? trimmed : trimmed.slice(0, nl)).trim().toLowerCase();
+    const heading = (nl === -1 ? trimmed : trimmed.slice(0, nl)).trim();
     const body = (nl === -1 ? '' : trimmed.slice(nl + 1)).trim();
-    if (heading === 'people') sections.people = body;
-    else if (heading === 'places') sections.places = body;
-    else if (heading === 'stories') sections.stories = body;
-    else if (body) prose.push(`${heading}\n${body}`);
+    const lh = heading.toLowerCase();
+    if (lh === 'people') sections.people = body;
+    else if (lh === 'places') sections.places = body;
+    else if (lh === 'stories') sections.stories = body;
+    else if (body) prose.push({ heading, body });
   });
   return { ...sections, prose };
 };
@@ -480,9 +483,16 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
 
     {pitch.prose.length > 0 && (
       <div class="prose prose-sm dark:prose-invert max-w-none text-muted leading-relaxed space-y-4 mt-10 max-w-3xl mx-auto">
-        {pitch.prose.map((para: string) => (
-          <p>{para}</p>
-        ))}
+        {pitch.prose.map((block) =>
+          block.heading ? (
+            <div key={block.heading}>
+              <h2 class="text-xl md:text-2xl font-bold font-heading mb-3">{block.heading}</h2>
+              <p>{block.body}</p>
+            </div>
+          ) : (
+            <p>{block.body}</p>
+          )
+        )}
       </div>
     )}
 
