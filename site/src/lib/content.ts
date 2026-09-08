@@ -740,19 +740,15 @@ function shapeHomePage(raw: any): HomePageData {
 // then to hardcoded data where applicable.
 
 async function resolveTours(locale?: string): Promise<any[]> {
-  // For non-EN locales, prefer snapshot translations over Payload's English fallback
-  if (locale && locale !== 'en' && snapshotTours.length > 0) {
-    const translated = snapshotTours.map(item => {
-      const t = applyLocaleTranslations(item, locale);
-      return t.name && t.name !== item.name ? t : item;
-    });
-    return translated
-      .filter((t: any) => t.slug && (t._status === 'published' || !t._status))
-      .map(mergeTour)
-      .filter(Boolean) as any[];
-  }
+  // NOTE (2026-09-07): tours translations live in Payload's NATIVE localized
+  // fields (tours is the only localizedInPayload collection; the sync writes
+  // them there, NOT in a translations[] array on the JSON snapshot — tours.json
+  // has no translations). So unlike stories/faqs/landing-pages, there is NO
+  // non-EN snapshot-first guard here: the live tier serves the localized
+  // fields and must be consulted for every locale. Snapshot/hardcoded remain
+  // build-time fallbacks when Payload is unreachable.
 
-  // Tier 1: Live Payload API
+  // Tier 1: Live Payload API (localized fields for ?locale=)
   const live = await liveTours(locale);
   if (live && live.length > 0) {
     return live
