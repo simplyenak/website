@@ -735,35 +735,34 @@ function shapeHomePage(raw: any): HomePageData {
   };
 }
 
-// ── Resolvers (Phase 1 = non-live build) ──────────────────────────────
+// ── Resolvers (non-live build) ────────────────────────────────────────
 // Every collection resolves from the committed JSON snapshot FIRST for ALL
 // locales (EN included); the live Payload API is only a fallback when the
 // snapshot is empty. The build is thus deterministic from git and continues
-// even if Payload disconnects. Translations for the snapshot collections live
-// in each item's translations[] array (applied via applyLocaleTranslations);
-// tours is the exception — its translations live in Payload's native
-// localized:true fields, so tours keeps the live-first path with an English
-// snapshot fallback. Phase 2 migrates tours snapshot-back so it can join the
-// non-live pattern.
+// even if Payload disconnects. Translations live in each item's translations[]
+// array (applied via applyLocaleTranslations); for tours the sync-back exports
+// Payload's native localized fields into tours.json translations[]. The sync
+// (sync-payload.mjs) is the loader that keeps snapshots current.
 
 async function resolveTours(locale?: string): Promise<any[]> {
-  // tours (Phase 1 exception): translations live in Payload native localized
-  // fields, not in the snapshot, so resolve LIVE first; English snapshot is the
-  // build-time fallback when Payload is unreachable. A disconnect degrades tours
-  // to English, never fails the build.
+  // Snapshot-first (non-live): tours.json now carries translations[] (sync-back
+  // exports Payload's native localized fields into it), so the committed snapshot
+  // is the primary source for ALL locales. Live Payload is the build-time
+  // fallback when the snapshot is empty. A disconnect no longer degrades tours.
 
-  // Tier 1: Live Payload API (localized fields for ?locale=)
-  const live = await liveTours(locale);
-  if (live && live.length > 0) {
-    return live
+  // Tier 1: JSON snapshots (committed content — non-live build)
+  if (snapshotTours.length > 0) {
+    return snapshotTours
+      .map((t: any) => applyLocaleTranslations(t, locale))
       .filter((t: any) => t.slug && (t._status === 'published' || !t._status))
       .map(mergeTour)
       .filter(Boolean) as any[];
   }
 
-  // Tier 2: JSON snapshots (fallback)
-  if (snapshotTours.length > 0) {
-    return snapshotTours
+  // Tier 2: Live Payload API (fallback when snapshot empty)
+  const live = await liveTours(locale);
+  if (live && live.length > 0) {
+    return live
       .filter((t: any) => t.slug && (t._status === 'published' || !t._status))
       .map(mergeTour)
       .filter(Boolean) as any[];

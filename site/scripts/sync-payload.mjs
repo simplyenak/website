@@ -637,6 +637,60 @@ function transformTour(tour) {
   }
 }
 
+// Fetch one collection for a specific locale (native localized fields).
+// Used by the tours sync-back so native localized:true values can be folded
+// into tours.json translations[] and the snapshot build (Phase 1 non-live).
+async function fetchLocalized(slug, locale) {
+  const urlOf = () => {
+    const u = new URL(`${PAYLOAD_URL}/api/${slug}`)
+    u.searchParams.set('depth', '0')
+    u.searchParams.set('limit', '0')
+    u.searchParams.set('locale', locale)
+    return u
+  }
+  const tryAuth = async (headers) => {
+    try {
+      const res = await fetch(urlOf(), { headers, signal: AbortSignal.timeout(20000) })
+      if (res.ok) return (await res.json()).docs || null
+    } catch { /* fall through */ }
+    return null
+  }
+  if (PAYLOAD_ADMIN_API_KEY) { const d = await tryAuth({ Authorization: `users API-Key ${PAYLOAD_ADMIN_API_KEY}` }); if (d) return d }
+  if (PAYLOAD_TOKEN) { const d = await tryAuth({ Authorization: `Bearer ${PAYLOAD_TOKEN}` }); if (d) return d }
+  return tryAuth({})
+}
+
+// Non-EN tour locales and the native localized fields to export into translations[].
+const TOUR_LOCALES = ['ms', 'zh', 'de', 'es', 'fr', 'nl', 'ru', 'ja', 'pt']
+const TOUR_LOCALIZED_FIELDS = ['name', 'tagline', 'shortDescription', 'fullDescription']
+
+// transformTour + attach translations[] built from Payload's native localized
+// fields, so the JSON snapshot carries every language (non-live build support).
+async function transformToursWithTranslations(tours) {
+  const base = (tours || []).map(t => transformTour(t))
+  if (base.length === 0) return base
+  const localeById = {}
+  for (const loc of TOUR_LOCALES) {
+    try {
+      const docs = await fetchLocalized('tours', loc)
+      localeById[loc] = new Map((docs || []).map(d => [d.id, d]))
+    } catch { localeById[loc] = new Map() }
+  }
+  return base.map(t => {
+    const rows = []
+    for (const loc of TOUR_LOCALES) {
+      const d = localeById[loc] && localeById[loc].get(t.id)
+      if (!d) continue
+      const row = { languages_code: loc }
+      for (const f of TOUR_LOCALIZED_FIELDS) {
+        if (d[f] && d[f] !== t[f]) row[f] = d[f]
+      }
+      if (Object.keys(row).length > 1) rows.push(row)
+    }
+    return rows.length ? { ...t, translations: rows } : t
+  })
+}
+
 function transformHomePage(doc) {
   if (!doc) return null
   const out = { id: doc.id }
@@ -1135,7 +1189,7 @@ async function sync() {
 
   // ── Core collections ──
   const coreItems = [
-    { slug: 'tours', file: 'tours.json', label: 'Tours', transform: (docs) => (docs || []).map(transformTour) },
+    { slug: 'tours', file: 'tours.json', label: 'Tours', transform: transformToursWithTranslations },
     { slug: 'stories', file: 'stories.json', label: 'Stories' },
     { slug: 'faqs', file: 'faqs.json', label: 'FAQs' },
     { slug: 'testimonials', file: 'testimonials.json', label: 'Testimonials' },
@@ -1152,7 +1206,7 @@ async function sync() {
   for (const item of coreItems) {
     log(`📦 ${item.label}...`)
     const docs = await fetchCollection(item.slug)
-    const data = item.transform ? item.transform(docs) : docs
+    const data = item.transform ? await item.transform(docs) : docs
     if (data !== null && data !== undefined) {
       writeJSON(item.file, data)
     } else {
