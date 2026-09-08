@@ -735,54 +735,22 @@ function shapeHomePage(raw: any): HomePageData {
   };
 }
 
-// ── Three-tier resolvers ──────────────────────────────────────────────
-// Each resolver tries live Payload API first, falls back to JSON snapshot,
-// then to hardcoded data where applicable.
-// 
-// UNIFORM RULE (single source of truth, do not copy a guard inline):
-// For a NON-EN locale, whether a collection resolves snapshot-first depends
-// on where its translations actually live, declared once here:
-//   translationsSource[collection] = 'snapshot' | 'payload' | 'none'
-//   - 'snapshot' → non-EN prefers the localized JSON snapshot (translations
-//     live in the item's translations[] array; the live tier would serve the
-//     English/untouched base). Used by stories, faqs, testimonials, pages.
-//   - 'payload'  → non-EN uses the LIVE Payload tier first (translations are
-//     native localized:true fields in Payload, NOT in the snapshot). Used by
-//     tours — the sync stores translations in Payload, tours.json has no
-//     translations[] array.
-//   - 'none'     → no translation handling (taxonomy/option lists, site
-//     settings); behave identically to EN (live-first).
-// The rule per collection: snapshot-first for non-EN IFF source === 'snapshot'.
-const translationsSource = {
-  tours: 'payload',
-  stories: 'snapshot',
-  faqs: 'snapshot',
-  testimonials: 'snapshot',
-  home: 'snapshot',
-  about: 'snapshot',
-  contact: 'snapshot',
-  tours_page: 'snapshot',
-  stories_page: 'snapshot',
-  landing: 'snapshot',
-  locations: 'none',
-  dietary: 'none',
-  specialty: 'none',
-  travel_types: 'none',
-  site_settings: 'none',
-  generic_pages: 'none',
-} as const;
-type TranslationSource = (typeof translationsSource)[keyof typeof translationsSource];
-
-/** Does a non-EN request for this collection prefer the localized snapshot? */
-function snapshotFirstForLocale(locale: string | undefined, source: TranslationSource): boolean {
-  return !!locale && locale !== 'en' && source === 'snapshot';
-}
+// ── Resolvers (Phase 1 = non-live build) ──────────────────────────────
+// Every collection resolves from the committed JSON snapshot FIRST for ALL
+// locales (EN included); the live Payload API is only a fallback when the
+// snapshot is empty. The build is thus deterministic from git and continues
+// even if Payload disconnects. Translations for the snapshot collections live
+// in each item's translations[] array (applied via applyLocaleTranslations);
+// tours is the exception — its translations live in Payload's native
+// localized:true fields, so tours keeps the live-first path with an English
+// snapshot fallback. Phase 2 migrates tours snapshot-back so it can join the
+// non-live pattern.
 
 async function resolveTours(locale?: string): Promise<any[]> {
-  // tours translations live in Payload native localized:true fields, NOT in the
-  // snapshot (translationsSource.tours = 'payload') → live tier serves the
-  // localized fields for every locale; no snapshot-first guard. Snapshot/
-  // hardcoded are build-time fallbacks when Payload is unreachable.
+  // tours (Phase 1 exception): translations live in Payload native localized
+  // fields, not in the snapshot, so resolve LIVE first; English snapshot is the
+  // build-time fallback when Payload is unreachable. A disconnect degrades tours
+  // to English, never fails the build.
 
   // Tier 1: Live Payload API (localized fields for ?locale=)
   const live = await liveTours(locale);
@@ -808,20 +776,14 @@ async function resolveTours(locale?: string): Promise<any[]> {
 async function resolveHomePage(locale?: string): Promise<HomePageData> {
   let raw: any;
 
-  // snapshot-first for non-EN home (translationsSource.home = 'snapshot')
-  if (snapshotFirstForLocale(locale, translationsSource.home) && snapshotHomePage && Object.keys(snapshotHomePage).length > 0) {
-    const translated = applyLocaleTranslations(snapshotHomePage, locale);
-    if (translated.hero_title && translated.hero_title !== snapshotHomePage.hero_title) {
-      raw = translated;
-      // Skip Payload tier 1 & block mapping, go straight to flat field mapping below
-    }
-  }
-
-  if (!raw) {
-    // Tier 1: Live Payload API
+  // Phase 1 (non-live build): committed snapshot is primary for ALL locales,
+  // EN included. Live Payload is only the fallback when the snapshot is empty.
+  // For non-EN, applyLocaleTranslations merges the snapshot's translations[].
+  if (snapshotHomePage && Object.keys(snapshotHomePage).length > 0) {
+    raw = applyLocaleTranslations(snapshotHomePage, locale);
+  } else {
     const live = await liveHomePage(locale);
     if (live && Object.keys(live).length > 0) raw = live;
-    else if (snapshotHomePage && Object.keys(snapshotHomePage).length > 0) raw = snapshotHomePage;
     else raw = {};
   }
 
@@ -964,112 +926,90 @@ async function resolveHomePage(locale?: string): Promise<HomePageData> {
 }
 
 async function resolvePages(locale?: string): Promise<any[]> {
+  if (snapshotPages.length > 0) return snapshotPages;
   const live = await livePages(locale);
   if (live && live.length > 0) return live;
-  if (snapshotPages.length > 0) return snapshotPages;
   return [];
 }
 
 async function resolveFAQs(locale?: string): Promise<any[]> {
-  // snapshot-first for non-EN (translationsSource.faqs = 'snapshot')
-  if (snapshotFirstForLocale(locale, translationsSource.faqs) && snapshotFAQs.length > 0) {
-    const translated = snapshotFAQs.map(item => applyLocaleTranslations(item, locale));
-    const hasTranslations = translated.some((item, i) => {
-      const q = item.question;
-      return q && q !== (snapshotFAQs[i] && snapshotFAQs[i].question);
-    });
-    if (hasTranslations) return translated;
+  // Phase 1 (non-live build): snapshot primary for all locales; live fallback.
+  if (snapshotFAQs.length > 0) {
+    return snapshotFAQs.map(item => applyLocaleTranslations(item, locale));
   }
   const live = await liveFAQs(locale);
   if (live && live.length > 0) return live;
-  if (snapshotFAQs.length > 0) return snapshotFAQs;
   const { tourFaqs } = await import('~/data/tours');
   return tourFaqs || [];
 }
 
 async function resolveTestimonials(locale?: string): Promise<any[]> {
-  // snapshot-first for non-EN (translationsSource.testimonials = 'snapshot')
-  if (snapshotFirstForLocale(locale, translationsSource.testimonials) && snapshotTestimonials.length > 0) {
-    const translated = snapshotTestimonials.map(item => applyLocaleTranslations(item, locale));
-    const hasTranslations = translated.some((item, i) => {
-      const rt = item.review_title || item.author_name;
-      const orig = snapshotTestimonials[i];
-      return rt && rt !== (orig && (orig.review_title || orig.author_name));
-    });
-    if (hasTranslations) return translated;
+  // Phase 1 (non-live build): snapshot primary for all locales; live fallback.
+  if (snapshotTestimonials.length > 0) {
+    return snapshotTestimonials.map(item => applyLocaleTranslations(item, locale));
   }
   const live = await liveTestimonials(locale);
   if (live && live.length > 0) return live;
-  if (snapshotTestimonials.length > 0) return snapshotTestimonials;
   return [];
 }
 
 export async function resolveStories(locale?: string): Promise<any[]> {
-  // snapshot-first for non-EN (translationsSource.stories = 'snapshot')
-  if (snapshotFirstForLocale(locale, translationsSource.stories) && snapshotStories.length > 0) {
-    const translated = snapshotStories.map(item => applyLocaleTranslations(item, locale));
-    const hasTranslations = translated.some((item, i) => {
-      const t = item.title;
-      return t && t !== (snapshotStories[i] && snapshotStories[i].title);
-    });
-    if (hasTranslations) return translated;
+  // Phase 1 (non-live build): committed snapshot is primary for ALL locales —
+  // EN included; live Payload is only a fallback when the snapshot is empty.
+  // Build is deterministic from git and Payload-disconnect tolerant.
+  if (snapshotStories.length > 0) {
+    return snapshotStories.map(item => applyLocaleTranslations(item, locale));
   }
   const live = await liveStories(locale);
   if (live && live.length > 0) return live;
-  if (snapshotStories.length > 0) return snapshotStories;
   return [];
 }
 
 async function resolveSiteSettings(locale?: string): Promise<any> {
+  if (snapshotSiteSettings && Object.keys(snapshotSiteSettings).length > 0) return snapshotSiteSettings;
   const live = await liveSiteSettings(locale);
   if (live && Object.keys(live).length > 0) return live;
-  if (snapshotSiteSettings && Object.keys(snapshotSiteSettings).length > 0) return snapshotSiteSettings;
   return {};
 }
 
 async function resolveLocations(locale?: string): Promise<any[]> {
+  if (snapshotLocations.length > 0) return snapshotLocations;
   const live = await liveLocations(locale);
   if (live && live.length > 0) return live;
-  if (snapshotLocations.length > 0) return snapshotLocations;
   return [];
 }
 
 async function resolveDietaryOptions(locale?: string): Promise<any[]> {
+  if (snapshotDietaryOptions.length > 0) return snapshotDietaryOptions;
   const live = await liveDietaryOptions(locale);
   if (live && live.length > 0) return live;
-  if (snapshotDietaryOptions.length > 0) return snapshotDietaryOptions;
   return [];
 }
 
 async function resolveSpecialtyExperiences(locale?: string): Promise<any[]> {
+  if (snapshotSpecialtyExperiences.length > 0) return snapshotSpecialtyExperiences;
   const live = await liveSpecialtyExperiences(locale);
   if (live && live.length > 0) return live;
-  if (snapshotSpecialtyExperiences.length > 0) return snapshotSpecialtyExperiences;
   return [];
 }
 
 async function resolveTravelTypes(locale?: string): Promise<any[]> {
+  if (snapshotTravelTypes.length > 0) return snapshotTravelTypes;
   const live = await liveTravelTypes(locale);
   if (live && live.length > 0) return live;
-  if (snapshotTravelTypes.length > 0) return snapshotTravelTypes;
   return [];
 }
 
 async function resolveLandingPages(locale?: string): Promise<any[]> {
-  // snapshot-first for non-EN (translationsSource.landing = 'snapshot'); the
-  // live tier would serve untranslated fields because landing-page translations
-  // are not pushed to Payload (collection not natively localized).
-  if (snapshotFirstForLocale(locale, translationsSource.landing) && snapshotLandingPages.length > 0) {
+  // Phase 1 (non-live build): snapshot primary for all locales; live fallback.
+  // Landing-page translations are not pushed to Payload (not natively localized),
+  // so the snapshot is the authoritative localized source.
+  if (snapshotLandingPages.length > 0) {
     return snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
   }
-  // Tier 1: Live Payload API (for all locales — consistent with other resolve* functions)
+  // Fallback: live Payload API
   const live = await liveLandingPages(locale);
   if (live && live.length > 0) return live;
-  // Tier 2: JSON snapshots (fallback for all locales)
-  if (snapshotLandingPages.length > 0) {
-    if (!locale) return snapshotLandingPages;
-    return snapshotLandingPages.map(item => applyLocaleTranslations(item, locale));
-  }
   return [];
 }
 
@@ -1272,10 +1212,9 @@ export async function getHomePage(locale?: string) {
 }
 
 export async function getAboutPage(locale?: string) {
-  // snapshot-first for non-EN (translationsSource.about = 'snapshot')
-  if (snapshotFirstForLocale(locale, translationsSource.about) && snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) {
-    const translated = applyLocaleTranslations(snapshotAboutPage, locale);
-    if (translated.heroHeading && translated.heroHeading !== snapshotAboutPage.heroHeading) return translated;
+  // Phase 1 (non-live build): snapshot primary for all locales; live fallback.
+  if (snapshotAboutPage && Object.keys(snapshotAboutPage).length > 0) {
+    return applyLocaleTranslations(snapshotAboutPage, locale);
   }
   // Tier 1: Live Payload API
   const live = await liveAboutPage(locale);
@@ -1299,10 +1238,9 @@ export async function getAboutPage(locale?: string) {
 }
 
 export async function getContactPage(locale?: string) {
-  // snapshot-first for non-EN (translationsSource.contact = 'snapshot')
-  if (snapshotFirstForLocale(locale, translationsSource.contact) && snapshotContactPage && Object.keys(snapshotContactPage).length > 0) {
-    const translated = applyLocaleTranslations(snapshotContactPage, locale);
-    if (translated.hero_title && translated.hero_title !== snapshotContactPage.hero_title) return translated;
+  // Phase 1 (non-live build): snapshot primary for all locales; live fallback.
+  if (snapshotContactPage && Object.keys(snapshotContactPage).length > 0) {
+    return applyLocaleTranslations(snapshotContactPage, locale);
   }
   // Tier 1: Live Payload API
   const live = await liveContactPage(locale);
@@ -1313,10 +1251,9 @@ export async function getContactPage(locale?: string) {
 }
 
 export async function getToursPage(locale?: string) {
-  // snapshot-first for non-EN (translationsSource.tours_page = 'snapshot')
-  if (snapshotFirstForLocale(locale, translationsSource.tours_page) && snapshotToursPage && Object.keys(snapshotToursPage).length > 0) {
-    const translated = applyLocaleTranslations(snapshotToursPage, locale);
-    if (translated.hero_title && translated.hero_title !== snapshotToursPage.hero_title) return translated;
+  // Phase 1 (non-live build): snapshot primary for all locales; live fallback.
+  if (snapshotToursPage && Object.keys(snapshotToursPage).length > 0) {
+    return applyLocaleTranslations(snapshotToursPage, locale);
   }
   // Tier 1: Live Payload API
   const live = await liveToursPage(locale);
@@ -1327,16 +1264,13 @@ export async function getToursPage(locale?: string) {
 }
 
 export async function getStoriesPage(locale?: string) {
+  // Phase 1 (non-live build): snapshot primary for all locales; live fallback.
+  if (snapshotStoriesPage && Object.keys(snapshotStoriesPage).length > 0) {
+    return applyLocaleTranslations(snapshotStoriesPage, locale);
+  }
   const live = await liveStoriesPage(locale);
   if (live && Object.keys(live).length > 0) return live;
-  if (snapshotStoriesPage && Object.keys(snapshotStoriesPage).length > 0) {
-    if (snapshotFirstForLocale(locale, translationsSource.stories_page)) {
-      const translated = applyLocaleTranslations(snapshotStoriesPage, locale);
-      const hasTranslations = translated.hero_title && translated.hero_title !== snapshotStoriesPage.hero_title;
-      if (hasTranslations) return translated;
-    }
-    return snapshotStoriesPage;
-  }
+  if (snapshotStoriesPage && Object.keys(snapshotStoriesPage).length > 0) return snapshotStoriesPage;
   return {};
 }
 
