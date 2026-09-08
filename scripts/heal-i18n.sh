@@ -178,6 +178,21 @@ if [ "$TRANSLATE_STATUS" -ne 0 ]; then
 fi
 echo "  ✅ Translation pass complete"
 
+# ── PRE-DEPLOY GATE (2026-09-02): verify corruption BEFORE origin push. ─────
+# The Tailride lesson: machine-written content must clear a real gate before
+# it ships, not after. --deploy mode blocks on corruption (EN contamination,
+# broken JSON/ui.ts, schema mismatch) while tolerating the staggered rollout's
+# legitimately partial coverage. A failed gate exits here with the bad writes
+# left UNCOMMITTED — the next auto-sync `git checkout origin/main --
+# src/data/content/` discards them. Fail closed.
+if ! bash scripts/verify-i18n.sh --deploy; then
+    echo ""
+    echo "❌ Pre-deploy gate FAILED — translations NOT committed/pushed/deployed."
+    echo "   Bad writes remain in the working tree for auto-sync to discard."
+    exit 1
+fi
+echo "  ✅ Pre-deploy gate passed — safe to secure to origin."
+
 # ── CRITICAL: secure translations to origin BEFORE anything else ────────────
 # The Payload Auto-Sync cron (every 60m) runs `git checkout origin/main --
 # src/data/content/`, which reverts any uncommitted translation writes.
@@ -206,6 +221,10 @@ echo "▸ Pushing translations to Payload..."
 # Admin API key (PAYLOAD_ADMIN_API_KEY) enables native localized-field writes.
 # Full push — translations persist in Payload as the source of truth.
 node site/scripts/push-translations-payload.mjs 2>&1 | tail -5
+# Phase 2: also write the translations[] array into the `translations` json
+# field of the content collections (stories/faqs/testimonials/pages) so the
+# per-locale copies live in Payload (admin-editable) and sync reads them back.
+node site/scripts/push-translations-field.mjs 2>&1 | tail -12
 echo "  ✅ Push complete — translations live in Payload"
 
 echo ""
@@ -219,11 +238,32 @@ else
     echo "  ⚠  ${REMAINING} items still need translation (may need human review)"
 fi
 
+# ── Quality spot-check (report-only) ──
+# Samples translated fields per locale and checks for leak/truncation/
+# collapse/artifacts. Advisory for human review — never blocks, never fixes
+# (per the no-auto-fix mandate). Runs before the strict gate so its output
+# always reaches the cron log even when the strict gate fails.
+echo ""
+echo "▸ i18n quality spot-check (report-only, for human review)..."
+(cd site && node ../eval/i18n-quality-spotcheck.mjs) || echo "  ⚠  spot-check script itself errored (non-blocking)"
+
 # ── Full post-operation verification (the 2026-08-03 lesson: verify the
 #    artifacts, not just the script's exit code) ──
+# Blocking on CORRUPTION only (--deploy). The old --strict here was never
+# appropriate for the heal cron: the staggered rollout (one language per run)
+# leaves other languages legitimately untranslated, so a coverage-based
+# failure would fire on every single run and train us to ignore it. Coverage
+# is reported informationally above; corruption after the Payload push is
+# what this gate exists to catch.
 echo ""
-echo "▸ Running full verification gate..."
-bash scripts/verify-i18n.sh --strict || echo "  ⚠  Verification FAILED — inspect above before trusting this state."
+echo "▸ Running post-deploy verification gate (corruption-blocking)..."
+if bash scripts/verify-i18n.sh --deploy; then
+    :
+else
+    echo "❌ Post-deploy verification FAILED — i18n state is corrupted and needs"
+    echo "   inspection. Not silently passing."
+    exit 1
+fi
 
 echo ""
 echo "  Done."

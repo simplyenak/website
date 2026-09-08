@@ -816,6 +816,8 @@ function transformHomePage(doc) {
   out.meta_description = doc.meta_description || ''
   out.faqs = doc.faqs || null
 
+  out.translations = doc.translations || undefined
+
   return out
 }
 
@@ -928,6 +930,8 @@ function transformAboutPage(doc) {
   out.seo_title = doc.seo_title || ''
   out.seo_description = doc.seo_description || ''
 
+  out.translations = doc.translations || undefined
+
   return out
 }
 
@@ -974,6 +978,7 @@ function transformContactPage(doc) {
     },
     created_at: doc.createdAt,
     updated_at: doc.updatedAt,
+    translations: doc.translations || undefined,
   }
 }
 
