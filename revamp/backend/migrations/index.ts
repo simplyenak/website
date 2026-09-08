@@ -4,6 +4,7 @@ import * as migration_20260805_144059_add_stories_locations_ref from './20260805
 import * as migration_20260805_180000_fix_stories_rels from './20260805_180000_fix_stories_rels';
 import * as migration_20260806_013636_add_landing_page_travel_fields from './20260806_013636_add_landing_page_travel_fields';
 import * as migration_20260806_021107_add_segment_copy_fields from './20260806_021107_add_segment_copy_fields';
+import * as migration_20260908_064500_add_translations_to_collections from './20260908_064500_add_translations_to_collections';
 
 export const migrations = [
   {
@@ -34,6 +35,11 @@ export const migrations = [
   {
     up: migration_20260806_021107_add_segment_copy_fields.up,
     down: migration_20260806_021107_add_segment_copy_fields.down,
-    name: '20260806_021107_add_segment_copy_fields'
+    name: '20260806_021107_add_segment_copy_fields',
+  },
+  {
+    up: migration_20260908_064500_add_translations_to_collections.up,
+    down: migration_20260908_064500_add_translations_to_collections.down,
+    name: '20260908_064500_add_translations_to_collections'
   },
 ];
