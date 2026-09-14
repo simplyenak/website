@@ -50,11 +50,16 @@ jobs:
             project: whatcanieatinmy
             domain: https://whatcanieatinmy.com/
             branch: main
+            staging_project: whatcanieatinmy-staging
+            staging_branch: main
             expect: public
           - site: whattoeatinmalaysia
             project: whattoeatinmalaysia
             domain: https://whattoeatinmalaysia.com/
             branch: main
+            staging_project: whattoeatinmalaysia-staging
+            # The WTM staging project's production branch is "staging".
+            staging_branch: staging
             # Fail-closed: the site only builds "full" with the exact env
             # PUBLIC_WTM_MODE=full. Production is currently the gated build.
             expect: gate
@@ -62,6 +67,8 @@ jobs:
             project: whenisdurianseason
             domain: https://whenisdurianseason.com/
             branch: main
+            staging_project: whenisdurianseason-staging
+            staging_branch: main
             expect: public
 
     steps:
@@ -130,7 +137,7 @@ jobs:
             echo "✅ public build confirmed"
           fi
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Pages (production)
         if: steps.gate.outputs.run == 'true'
         id: deploy
         uses: cloudflare/pages-action@v1
@@ -142,14 +149,28 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ matrix.branch }}
 
+      # Same build, mirrored to the site's staging project (a *.pages.dev
+      # preview, or for WTM the existing whattoeatinmalaysia-staging lane).
+      - name: Deploy to Cloudflare Pages (staging)
+        if: steps.gate.outputs.run == 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ matrix.staging_project }}
+          directory: ${{ matrix.site }}/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ matrix.staging_branch }}
+
       - name: Verify live
         if: steps.gate.outputs.run == 'true'
         env:
           DOMAIN: ${{ matrix.domain }}
           PROJECT: ${{ matrix.project }}
+          STAGING: ${{ matrix.staging_project }}
         run: |
           UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36'
-          for URL in "$DOMAIN" "https://$PROJECT.pages.dev/"; do
+          for URL in "$DOMAIN" "https://$PROJECT.pages.dev/" "https://$STAGING.pages.dev/"; do
             CODE=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 -A "$UA" "$URL")
             echo "$URL -> $CODE"
             # Edge cache can still serve the previous deploy for a few seconds,
