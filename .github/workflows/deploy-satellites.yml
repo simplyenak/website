@@ -1,0 +1,162 @@
+name: Deploy Satellite Sites
+
+# CI/CD for the Simply Enak satellite Cloudflare Pages projects:
+#   whatcanieatinmy.com    -> pages project `whatcanieatinmy`
+#   whattoeatinmalaysia.com -> pages project `whattoeatinmalaysia`
+#   whenisdurianseason.com -> pages project `whenisdurianseason`
+#
+# Before this workflow existed these three were deployed ad-hoc (wrangler direct
+# upload), so a push changed nothing live. Add a new satellite by adding one
+# matrix entry below.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'whatcanieatinmy/**'
+      - 'whattoeatinmalaysia/**'
+      - 'whenisdurianseason/**'
+      - '.github/workflows/deploy-satellites.yml'
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Satellite to deploy (all = every site)'
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - whatcanieatinmy
+          - whattoeatinmalaysia
+          - whenisdurianseason
+
+concurrency:
+  group: deploy-satellites
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.site }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - site: whatcanieatinmy
+            project: whatcanieatinmy
+            domain: https://whatcanieatinmy.com/
+            branch: main
+            expect: public
+          - site: whattoeatinmalaysia
+            project: whattoeatinmalaysia
+            domain: https://whattoeatinmalaysia.com/
+            branch: main
+            # Fail-closed: the site only builds "full" with the exact env
+            # PUBLIC_WTM_MODE=full. Production is currently the gated build.
+            expect: gate
+          - site: whenisdurianseason
+            project: whenisdurianseason
+            domain: https://whenisdurianseason.com/
+            branch: main
+            expect: public
+
+    steps:
+      # Job-level `if` cannot read the matrix context, so the dispatch filter is
+      # decided in a step and every later step is conditioned on its output.
+      # `inputs.site` is a constrained `choice` input and `matrix.site` comes
+      # from this file; both are passed through `env:` rather than interpolated
+      # into the script body.
+      - name: Select site
+        id: gate
+        env:
+          SELECTED: ${{ inputs.site }}
+          SITE: ${{ matrix.site }}
+        run: |
+          if [ -z "$SELECTED" ] || [ "$SELECTED" = "all" ] || [ "$SELECTED" = "$SITE" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Not selected: $SITE"
+          fi
+
+      - name: Checkout
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.site }}/package-lock.json
+
+      - name: Install dependencies
+        if: steps.gate.outputs.run == 'true'
+        working-directory: ${{ matrix.site }}
+        run: npm ci
+
+      - name: Build
+        if: steps.gate.outputs.run == 'true'
+        working-directory: ${{ matrix.site }}
+        run: npm run build
+
+      # A gate build deploys happily and silently takes the live site down, so
+      # assert the build mode before the upload step.
+      - name: Verify build mode
+        if: steps.gate.outputs.run == 'true'
+        working-directory: ${{ matrix.site }}
+        env:
+          EXPECT: ${{ matrix.expect }}
+        run: |
+          ROBOTS=dist/robots.txt
+          if [ "$EXPECT" = "gate" ]; then
+            grep -q '^Disallow: /$' "$ROBOTS" 2>/dev/null || {
+              echo "❌ Expected a gate build (Disallow: /) but $ROBOTS disagrees:"
+              cat "$ROBOTS" 2>/dev/null
+              exit 1
+            }
+            echo "✅ gate build confirmed"
+          else
+            if grep -q '^Disallow: /$' "$ROBOTS" 2>/dev/null; then
+              echo "❌ $ROBOTS disallows everything — refusing to publish a gated build to a public site:"
+              cat "$ROBOTS"
+              exit 1
+            fi
+            echo "✅ public build confirmed"
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.gate.outputs.run == 'true'
+        id: deploy
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ matrix.project }}
+          directory: ${{ matrix.site }}/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ matrix.branch }}
+
+      - name: Verify live
+        if: steps.gate.outputs.run == 'true'
+        env:
+          DOMAIN: ${{ matrix.domain }}
+          PROJECT: ${{ matrix.project }}
+        run: |
+          UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36'
+          for URL in "$DOMAIN" "https://$PROJECT.pages.dev/"; do
+            CODE=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 -A "$UA" "$URL")
+            echo "$URL -> $CODE"
+            # Edge cache can still serve the previous deploy for a few seconds,
+            # so fail only on a dead or broken response.
+            case "$CODE" in
+              200|301|302|307|308) ;;
+              *) echo "❌ Unexpected status $CODE from $URL"; exit 1 ;;
+            esac
+          done
+          echo "✅ live check passed"
