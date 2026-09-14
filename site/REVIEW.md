@@ -342,7 +342,7 @@ Using `set:html` without sanitization means if `footNote` ever contains user-gen
 
 ### 8.2 — No Organization structured data (Missing `sameAs` for social links) — RESOLVED 2026-08-28
 **Severity:** Medium | **Category:** SEO | **Status: FIXED**
-Superseded: `StructuredData.astro` now ships an Organization + LocalBusiness graph with `sameAs` (FB, IG, YouTube, TripAdvisor, LinkedIn, GetYourGuide, Viator, Google Maps) on every page, plus Person nodes for founders (Pauline Lee, Maarten Belmans) with their own entity home pages `/about/pauline`, `/about/maarten`. Verified live in the page graph.
+Superseded: `StructuredData.astro` now ships an Organization + LocalBusiness graph with `sameAs` (FB, IG, YouTube, TripAdvisor, LinkedIn, GetYourGuide, Viator, Google Maps) on every page, plus Person nodes for founders (Pauline Lee, Maarten van Rijn) with their own entity home pages `/about/pauline`, `/about/maarten`. Verified live in the page graph.
 
 ### 8.3 — `intersect-once` animation class may cause jarring reflow on initial load (Line 33)
 **Severity:** Low | **Category:** Performance  

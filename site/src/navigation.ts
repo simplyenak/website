@@ -106,7 +106,7 @@ export const footerData = {
   companyLinks: [
     { text: 'About Simply Enak', href: '/about' },
     { text: 'Pauline Lee, Founder', href: '/about/pauline' },
-    { text: 'Maarten Belmans, Co-founder', href: '/about/maarten' },
+    { text: 'Maarten van Rijn, Co-founder', href: '/about/maarten' },
     { text: 'Guest Reviews', href: '/testimonials' },
     { text: 'Our Track Record', href: '/track-record' },
     { text: 'Stories & Blog', href: '/stories' },
@@ -236,7 +236,7 @@ export function getFooterData(lang: Language) {
     companyLinks: [
       { text: t('footer.about'), href: p('/about') },
       { text: 'Pauline Lee', href: p('/about/pauline') },
-      { text: 'Maarten Belmans', href: p('/about/maarten') },
+      { text: 'Maarten van Rijn', href: p('/about/maarten') },
       { text: t('footer.testimonials'), href: p('/testimonials') },
       { text: t('footer.stories'), href: p('/stories') },
       { text: t('footer.contact'), href: p('/contact') },
