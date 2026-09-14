@@ -229,8 +229,7 @@ async function handleRequest(request) {
   for (var i = 0; i < CUT_LOCALES.length; i++) {
     var cutPrefix = '/' + CUT_LOCALES[i] + '/';
     if (url.pathname.indexOf(cutPrefix) === 0) {
-      var englishPath = url.pathname.slice(cutPrefix.length);
-      if (englishPath === '') englishPath = '/';
+      var englishPath = '/' + url.pathname.slice(cutPrefix.length);
       return Response.redirect('https://simplyenak.com' + englishPath + url.search, 301);
     }
   }
