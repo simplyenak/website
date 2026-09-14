@@ -1,23 +1,23 @@
 {
   "1": {
-    "contactMethods": {
-      "heading": "",
-      "description": "",
-      "items": []
-    },
-    "planningScenarios": {
-      "heading": "",
-      "description": "",
-      "items": []
-    },
     "ourPromise": {
       "title": "",
-      "description": "",
-      "highlights": []
+      "highlights": [],
+      "description": ""
     },
     "businessHours": {
       "text": "",
       "timezone": ""
+    },
+    "contactMethods": {
+      "items": [],
+      "heading": "",
+      "description": ""
+    },
+    "planningScenarios": {
+      "items": [],
+      "heading": "",
+      "description": ""
     }
   }
 }
