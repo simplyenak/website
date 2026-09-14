@@ -49,7 +49,9 @@ const INDEX_FILE = 'dist/sitemap-index.xml';
 
 // All supported locales (first path segment of the URL after domain).
 // English (en) pages have no locale prefix.
-const ALL_LOCALES = ['en', 'de', 'es', 'fr', 'ja', 'ms', 'nl', 'pt', 'ru', 'zh'];
+// Cut 2026-09-14: fr/nl/pt/ru/zh removed (no target-language demand, 301'd to EN).
+const ALL_LOCALES = ['en', 'de', 'es', 'ja', 'ms'];
+const CUT_LOCALES = ['fr', 'nl', 'pt', 'ru', 'zh'];
 
 // ── Helpers ──────────────────────────────────────────────────────
 
@@ -66,6 +68,11 @@ function localeFromLoc(loc) {
   const firstSegment = pathname.replace(/^\//, '').split('/')[0];
   if (firstSegment && ALL_LOCALES.includes(firstSegment)) {
     return firstSegment;
+  }
+  // Cut locales (2026-09-14): dropped from the sitemap entirely, 301'd to EN
+  // at the edge. Returning null skips the URL in the main loop.
+  if (firstSegment && CUT_LOCALES.includes(firstSegment)) {
+    return null;
   }
   return 'en';
 }
@@ -122,6 +129,7 @@ function main() {
     }
     const loc = locMatch[1];
     const locale = localeFromLoc(loc);
+    if (!locale) continue; // cut locale (2026-09-14) — dropped from sitemap
 
     if (!grouped[locale]) {
       grouped[locale] = [];

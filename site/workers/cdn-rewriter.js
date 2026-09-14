@@ -18,6 +18,28 @@ var REDIRECTS = {
   // durian-season-malaysia); old EN URL had 107 imps/mo, NL twin ranks at 4.6.
   "/stories/faq-when-is-durian-season-in-malaysia": "/stories/durian-season-malaysia/",
   "/nl/stories/faq-when-is-durian-season-in-malaysia": "/nl/stories/durian-season-malaysia/",
+  // Speak-English FAQ shells consolidated into the full article
+  // (2,010w vs 487w shells; deleted from Payload 2026-09-09)
+  "/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/de/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/de/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/es/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/es/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/fr/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/fr/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/ms/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/ms/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/nl/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/nl/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/pt/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/pt/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/ru/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/ru/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/zh/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/zh/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  "/ja/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
+  "/ja/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
   "/ms/stories/faq-when-is-durian-season-in-malaysia": "/ms/stories/durian-season-malaysia/",
   // Root-level story URLs still getting impressions but 404ing (missing after
   // the /stories/ permalink migration) — ~926 imps/mo recovered (Aug 16 2026)
@@ -199,6 +221,18 @@ async function handleRequest(request) {
   if (url.searchParams.get('lang') === 'en') {
     url.searchParams.delete('lang');
     return Response.redirect('https://simplyenak.com' + url.pathname + (url.search || ''), 301);
+  }
+
+  // Cut locales (2026-09-14 GSC demand gate): fr/nl/pt/ru/zh are no longer
+  // published — removed from sitemap+hreflang; 301 the whole prefix to English.
+  var CUT_LOCALES = ['fr', 'nl', 'pt', 'ru', 'zh'];
+  for (var i = 0; i < CUT_LOCALES.length; i++) {
+    var cutPrefix = '/' + CUT_LOCALES[i] + '/';
+    if (url.pathname.indexOf(cutPrefix) === 0) {
+      var englishPath = url.pathname.slice(cutPrefix.length);
+      if (englishPath === '') englishPath = '/';
+      return Response.redirect('https://simplyenak.com' + englishPath + url.search, 301);
+    }
   }
 
   // 3. Static redirects ──

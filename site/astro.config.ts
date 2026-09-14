@@ -38,17 +38,14 @@ export default defineConfig({
     sitemap({
       i18n: {
         defaultLocale: 'en',
+        // Cut 2026-09-14 (GSC demand gate): fr/nl/pt/ru/zh had ~zero target-language
+        // queries → removed from sitemap/hreflang + 301'd to EN in the Worker.
         locales: {
           en: 'en',
           ms: 'ms',
-          zh: 'zh',
           de: 'de',
           es: 'es',
-          fr: 'fr',
-          nl: 'nl',
-          ru: 'ru',
           ja: 'ja',
-          pt: 'pt',
         },
       },
       filter: (page) => {
@@ -58,7 +55,8 @@ export default defineConfig({
         // Post-conversion thank-you pages — no SEO value, already noindex
         if (page.includes('/thank-you')) return false;
         // Pagination pages (/stories/2, /de/stories/3, etc.) — thin content
-        if (/\/stories\/\d+$/.test(page)) return false;
+        // (\d+ alone missed trailing-slash URLs: /stories/2/ passed the filter)
+        if (/\/stories\/\d+\/?$/.test(page)) return false;
         // Duplicate slug from content system
         if (page.includes('%20-%20Copy')) return false;
         return true;
