@@ -289,7 +289,7 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
     <div class="max-w-7xl mx-auto">
       <div class="md:grid md:grid-cols-2 md:min-h-[450px]">
         <div class="overflow-hidden relative h-72 md:h-full md:max-h-[500px]">
-          {heroImgFinal && <img src={heroImgFinal} alt={tour.tagline || tour.name} class="w-full h-full object-cover" />}
+          {heroImgFinal && <img src={heroImgFinal} alt={tour.heroImageAlt || tour.tagline || tour.name} class="w-full h-full object-cover" />}
           <div class="absolute inset-0 bg-gradient-to-r from-black/60 hidden md:block to-transparent"></div>
         </div>
         <div class="flex justify-center flex-col bg-[#1a1a1a] md:p-10 p-8">
