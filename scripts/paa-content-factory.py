@@ -726,6 +726,11 @@ def parse_args():
     p.add_argument("--gsc", action="store_true", help="Also fetch PAA from GSC question queries")
     p.add_argument("--alsoask", action="store_true", help="Also fetch PAA from alsoask.com")
     p.add_argument("--days", type=int, default=28, help="GSC lookback days (default: 28)")
+    p.add_argument("--force-publish", action="store_true",
+                   help="Publish even non-curated answers (disables the Phase-4 approval gate). "
+                        "Only use when the owner has explicitly approved the batch.")
+    p.add_argument("--approval-only", action="store_true",
+                   help="Never auto-publish anything; every question routes to the approval queue.")
     return p.parse_args()
 
 
@@ -780,8 +785,122 @@ def get_questions_for_topic(topic, limit, use_gsc=False, use_alsoask=False, days
     return unique[:limit]
 
 
-def process_questions(questions, topic, dry_run=False):
-    """Generate answers and create Payload Stories for each question."""
+def classify_answer(question, topic=None):
+    """Return the tier that would generate the answer:
+      'curated'  — exact match in TOPIC_ANSWERS bank (passed the 2026-07-23 value audit)
+      'template' — GENERAL_TEMPLATES pattern match (fails the value audit)
+      'fallback' — no match, generic filler.
+    Phase-4 gate: only 'curated' may auto-publish; everything else routes to
+    the owner-approval queue (Grist ContentPipeline + paa-drafts/)."""
+    q_lower = question.strip().lower().rstrip("?").strip()
+    if topic and topic.lower() in TOPIC_ANSWERS:
+        for bank_q in TOPIC_ANSWERS[topic.lower()]:
+            bq = bank_q.lower().strip().rstrip("?").strip()[:40]
+            if q_lower[:40] == bq:
+                return "curated"
+    for tpl in GENERAL_TEMPLATES:
+        for pat in tpl["patterns"]:
+            if re.search(pat, question):
+                return "template"
+    return "fallback"
+
+
+def owner_experience_questions(question, topic):
+    """3-5 questions that pull Maarten's first-hand experience into the draft.
+    Brand rule: show with specifics (names, years, dishes, prices) — these
+    answers are what make the content non-reproducible by a competitor."""
+    qs = [
+        f"What stall or dish would you point a first-timer to for '{question.rstrip('?')}' — name the spot and the price range you've paid there?",
+        f"How has the situation around '{question.rstrip('?')}' changed since our early tours (specific changes you've seen on the ground)?",
+        f"What do tourists get wrong about this topic that you keep correcting on tour?",
+    ]
+    if topic:
+        qs.append(f"What's the one thing you'd tell a group about {topic} that no guidebook says?")
+    qs.append("Is the draft's strategic-tour CTA the right destination for this question, or should it point elsewhere?")
+    return qs
+
+
+DRAFTS_DIR = PROJECT_ROOT / ".hermes" / "paa-drafts"
+APPROVAL_QUEUE = DRAFTS_DIR / "pending.json"
+
+
+def load_approval_queue():
+    DRAFTS_DIR.mkdir(parents=True, exist_ok=True)
+    if APPROVAL_QUEUE.exists():
+        try:
+            return json.loads(APPROVAL_QUEUE.read_text())
+        except Exception:
+            return []
+    return []
+
+
+def send_telegram_draft(title, answer, questions, slug):
+    """Best-effort Telegram notice so Maarten can answer the experience
+    questions (or reply 'approve <slug>' to ship the draft as-is)."""
+    token, chat = "", "1511186614"
+    envp = Path.home() / ".hermes-website" / ".env"
+    if envp.exists():
+        for line in envp.open():
+            line = line.strip()
+            if line.startswith("TELEGRAM_BOT_TOKEN="):
+                token = line.split("=", 1)[1].strip().strip("'\"")
+    if not token:
+        return False
+    text = (
+        f"✍️ PAA draft queued (approval needed)\n"
+        f"Slug: {slug}\nQ: {title}\n\n{answer[:400]}\n\n"
+        f"Experience questions:\n" + "\n".join(f"  {i+1}. {q}" for i, q in enumerate(questions)) +
+        f"\n\nReply with answers (agent folds them into the draft) or 'approve {slug}' to publish as-is."
+    )
+    try:
+        req = urllib.request.Request(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            data=json.dumps({"chat_id": chat, "text": text}).encode(),
+            headers={"Content-Type": "application/json"})
+        urllib.request.urlopen(req, timeout=15)
+        return True
+    except Exception:
+        return False
+
+
+def queue_for_approval(item, topic, answer, tier):
+    """Write the draft + owner questions to the approval queue and the Grist
+    ContentPipeline table (Status=awaiting-approval). No Payload write."""
+    slug = item["slug"]
+    title = item["title"]
+    questions = owner_experience_questions(title, topic)
+    draft = {
+        "slug": slug, "title": title, "question": item["question"], "topic": topic,
+        "tier": tier, "answer": answer, "url": item.get("url"),
+        "owner_questions": questions, "created_at": datetime.now().isoformat(),
+        "payload": None,  # filled by approval-publisher at publish time
+    }
+    DRAFTS_DIR.mkdir(parents=True, exist_ok=True)
+    (DRAFTS_DIR / f"{slug}.json").write_text(json.dumps(draft, indent=2))
+    q = load_approval_queue()
+    q.append({"slug": slug, "status": "awaiting-approval", "created_at": draft["created_at"]})
+    APPROVAL_QUEUE.write_text(json.dumps(q, indent=2))
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT / "scripts" / "seo-os"))
+        import grist
+        grist.upsert("ContentPipeline", ["Query"], [{
+            "Query": title, "Source": "paa", "Status": "awaiting-approval",
+            "Slug": slug, "Title": title, "Bucket": "30 days",
+            "QuestionsAsked": "\n".join(questions),
+            "DraftPath": f".hermes/paa-drafts/{slug}.json",
+            "Notes": f"PAA {tier} answer — gated by Phase-4 approval policy.",
+        }])
+    except Exception as e:
+        print(f"    [gate] Grist upsert skipped ({e})")
+    send_telegram_draft(title, answer, questions, slug)
+    return {"slug": slug, "title": title, "url": item.get("url"),
+            "source": item.get("source"), "action": "QUEUED (approval needed)"}
+
+
+def process_questions(questions, topic, dry_run=False, force_publish=False, approval_only=False):
+    """Generate answers and create Payload Stories for each question.
+    Phase-4 gate: only 'curated' answers auto-publish unless --force-publish.
+    --approval-only routes every question (including curated) to the queue."""
     results = []
     for i, item in enumerate(questions):
         q = item["question"]
@@ -796,7 +915,8 @@ def process_questions(questions, topic, dry_run=False):
 
         # Generate answer
         answer = generate_answer(q, topic)
-        print(f"         answer ({len(answer.split())} words): {answer[:120]}...")
+        tier = classify_answer(q, topic)
+        print(f"         answer ({len(answer.split())} words, tier={tier}): {answer[:120]}...")
 
         if dry_run:
             results.append({
@@ -805,26 +925,35 @@ def process_questions(questions, topic, dry_run=False):
                 "answer": answer,
                 "url": f"/stories/faq/{slug}/",
                 "source": source,
-                "action": "DRY RUN (would create)"
+                "action": "DRY RUN (would create)",
+            })
+            continue
+
+        if (tier != "curated" or approval_only) and not force_publish:
+            reason = "approval-only" if approval_only else f"tier={tier}"
+            print(f"         {reason} -> approval queue (auto-publish off)")
+            results.append(queue_for_approval(
+                {"slug": slug, "title": title, "question": q, "source": source,
+                 "url": f"/stories/faq/{slug}/"}, topic, answer, tier))
+            continue
+
+        result = create_payload_story(slug, title, answer, topic)
+        if result:
+            is_new = result.get("is_new", False) or result.get("id")
+            results.append({
+                "slug": slug,
+                "title": title,
+                "url": f"/stories/faq/{slug}/",
+                "source": source,
+                "action": "CREATED" if is_new else "EXISTS"
             })
         else:
-            result = create_payload_story(slug, title, answer, topic)
-            if result:
-                is_new = result.get("is_new", False) or result.get("id")
-                results.append({
-                    "slug": slug,
-                    "title": title,
-                    "url": f"/stories/faq/{slug}/",
-                    "source": source,
-                    "action": "CREATED" if is_new else "EXISTS"
-                })
-            else:
-                results.append({
-                    "slug": slug,
-                    "title": title,
-                    "source": source,
-                    "action": "FAILED"
-                })
+            results.append({
+                "slug": slug,
+                "title": title,
+                "source": source,
+                "action": "FAILED"
+            })
     return results
 
 
@@ -869,7 +998,12 @@ def main():
             continue
 
         print(f"\n  Processing {len(questions)} questions...")
-        results = process_questions(questions, topic, dry_run=dry_run)
+        results = process_questions(
+            questions, topic,
+            dry_run=dry_run,
+            force_publish=args.force_publish,
+            approval_only=args.approval_only,
+        )
         all_results.extend(results)
 
     # Summary
@@ -882,6 +1016,7 @@ def main():
     created = [r for r in all_results if r.get("action") == "CREATED"]
     existed = [r for r in all_results if r.get("action") == "EXISTS"]
     failed = [r for r in all_results if r.get("action") == "FAILED"]
+    queued = [r for r in all_results if r.get("action") == "QUEUED (approval needed)"]
     dry_run_items = [r for r in all_results if r.get("action") == "DRY RUN (would create)"]
 
     if dry_run_items:
@@ -893,6 +1028,10 @@ def main():
         print(f"  Created: {len(created)}")
         for r in created:
             print(f"    + {r['title']}")
+    if queued:
+        print(f"  Queued for owner approval: {len(queued)}")
+        for r in queued:
+            print(f"    ? {r['title']}")
     if existed:
         print(f"  Already existed: {len(existed)}")
     if failed:
