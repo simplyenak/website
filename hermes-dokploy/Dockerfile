@@ -11,9 +11,13 @@ ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
 # Install hermes-agent v0.21.0 (git tag v2026.8.31 — 0.21.0 is not on PyPI)
+# `mcp` (Python SDK) provides the streamable-HTTP/SSE client transport that
+# URL-based mcp_servers entries in config.yaml need (e.g. the Dolibarr 24
+# MCP endpoint). Without it the gateway lists such servers as enabled but
+# every connect fails with "mcp.client.streamable_http is not available".
 RUN HERMES_NIX_BUILD=1 pip install --no-cache-dir \
     "git+https://github.com/NousResearch/hermes-agent.git@v2026.8.31#egg=hermes-agent[web,cron,voice]" && \
-    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]" yt-dlp google-auth
+    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]" yt-dlp google-auth mcp
 
 # Create the hermes user and all needed directories
 RUN useradd -m -s /bin/bash hermes && \
