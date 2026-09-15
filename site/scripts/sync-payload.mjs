@@ -213,10 +213,11 @@ const ABOUT_REQUIRED_FIELDS = [
   'heroHeading', 'heroDescription', 'founderSection',
 ]
 
-async function payloadFetch(slug, useAuth = true) {
+async function payloadFetch(slug, useAuth = true, draft = false) {
   const url = new URL(`${PAYLOAD_URL}/api/${slug}`)
   url.searchParams.set('depth', '3')
   url.searchParams.set('limit', '0')
+  if (draft) url.searchParams.set('draft', 'true')
 
   const reqHeaders = { 'Content-Type': 'application/json' }
   if (useAuth && PAYLOAD_TOKEN) {
@@ -233,10 +234,10 @@ async function payloadFetch(slug, useAuth = true) {
   }
 }
 
-async function fetchCollection(slug) {
+async function fetchCollection(slug, draft = false) {
   // 1. Try with existing token
   if (PAYLOAD_TOKEN) {
-    const docs = await payloadFetch(slug, true)
+    const docs = await payloadFetch(slug, true, draft)
     if (docs !== null) { stats.fetched++; return docs }
   }
   // 1a. Try admin API key auth (users API-Key) BEFORE password login. Some
@@ -248,6 +249,7 @@ async function fetchCollection(slug) {
     const url = new URL(`${PAYLOAD_URL}/api/${slug}`)
     url.searchParams.set('depth', '3')
     url.searchParams.set('limit', '0')
+    if (draft) url.searchParams.set('draft', 'true')
     try {
       const authRes = await fetch(url, {
         headers: { 'Content-Type': 'application/json', 'Authorization': `users API-Key ${PAYLOAD_ADMIN_API_KEY}` },
@@ -278,6 +280,7 @@ async function fetchCollection(slug) {
           const url = new URL(`${PAYLOAD_URL}/api/${slug}`)
           url.searchParams.set('depth', '3')
           url.searchParams.set('limit', '0')
+          if (draft) url.searchParams.set('draft', 'true')
           const authRes = await fetch(url, {
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${loginToken}` },
             signal: AbortSignal.timeout(300000),
@@ -292,7 +295,7 @@ async function fetchCollection(slug) {
     } catch { /* login failed, fall through */ }
   }
   // 2. Try without auth (public read)
-  const docs = await payloadFetch(slug, false)
+  const docs = await payloadFetch(slug, false, draft)
   if (docs !== null) { stats.unauth++; return docs }
   // 3. Failed
   return null
@@ -1194,7 +1197,7 @@ async function sync() {
 
   // ── Core collections ──
   const coreItems = [
-    { slug: 'tours', file: 'tours.json', label: 'Tours', transform: transformToursWithTranslations },
+    { slug: 'tours', file: 'tours.json', label: 'Tours', transform: transformToursWithTranslations, fetchDraft: true },
     { slug: 'stories', file: 'stories.json', label: 'Stories' },
     { slug: 'faqs', file: 'faqs.json', label: 'FAQs' },
     { slug: 'testimonials', file: 'testimonials.json', label: 'Testimonials' },
@@ -1210,7 +1213,7 @@ async function sync() {
 
   for (const item of coreItems) {
     log(`📦 ${item.label}...`)
-    const docs = await fetchCollection(item.slug)
+    const docs = await fetchCollection(item.slug, item.fetchDraft === true)
     const data = item.transform ? await item.transform(docs) : docs
     if (data !== null && data !== undefined) {
       writeJSON(item.file, data)

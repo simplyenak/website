@@ -48,7 +48,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": false,
+    "showInMenu": "false",
     "popular": false,
     "new": true,
     "badgeLabel": null,
@@ -872,11 +872,11 @@
       {
         "id": "6a4f6d549fb587000184c71c",
         "image": {
-          "id": 350,
-          "alt": null,
-          "caption": null,
+          "id": 463,
+          "alt": "A man and a woman working at a street food cart in Penang, Malaysia.",
+          "caption": "A vendor and a staff member at work in a bustling street food market.",
           "polaroidLabel": null,
-          "credit": null,
+          "credit": "Tianchad / Simply Enak",
           "location_ref": null,
           "neighbourhood_ref": [],
           "food_ref": [],
@@ -888,41 +888,41 @@
           "tags": [],
           "renameTo": null,
           "prefix": "payload-media",
-          "updatedAt": "2026-06-28T14:13:45.139Z",
-          "createdAt": "2026-06-28T14:13:44.640Z",
-          "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
-          "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 999686,
-          "width": 2688,
-          "height": 1512,
+          "updatedAt": "2026-08-13T13:27:47.326Z",
+          "createdAt": "2026-08-13T13:16:59.177Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0020_DSC_7207-opq3008232777.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0020_DSC_7207-opq3008232777-400x300.webp",
+          "filename": "0020_DSC_7207-opq3008232777.webp",
+          "mimeType": "image/webp",
+          "filesize": 366936,
+          "width": 3937,
+          "height": 2624,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0020_DSC_7207-opq3008232777-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 32314,
-              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 20394,
+              "filename": "0020_DSC_7207-opq3008232777-400x300.webp"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0020_DSC_7207-opq3008232777-800x600.webp",
               "width": 800,
               "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 108375,
-              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg"
+              "mimeType": "image/webp",
+              "filesize": 52386,
+              "filename": "0020_DSC_7207-opq3008232777-800x600.webp"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0020_DSC_7207-opq3008232777-1200x800.webp",
               "width": 1200,
               "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 194669,
-              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg"
+              "mimeType": "image/webp",
+              "filesize": 84178,
+              "filename": "0020_DSC_7207-opq3008232777-1200x800.webp"
             }
           }
         }
@@ -930,11 +930,11 @@
       {
         "id": "6a4f6d549fb587000184c71d",
         "image": {
-          "id": 355,
-          "alt": null,
-          "caption": null,
+          "id": 460,
+          "alt": "Two people eating at a table at a Penang street food stall",
+          "caption": "Dinner at a hawker stall in Penang",
           "polaroidLabel": null,
-          "credit": null,
+          "credit": "Tianchad / Simply Enak",
           "location_ref": null,
           "neighbourhood_ref": [],
           "food_ref": [],
@@ -946,41 +946,41 @@
           "tags": [],
           "renameTo": null,
           "prefix": "payload-media",
-          "updatedAt": "2026-06-28T14:13:54.483Z",
-          "createdAt": "2026-06-28T14:13:53.991Z",
-          "url": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
-          "filename": "hin2.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 1030719,
-          "width": 1458,
-          "height": 2592,
+          "updatedAt": "2026-08-13T13:27:38.226Z",
+          "createdAt": "2026-08-13T13:16:28.249Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0036_DSC_7072-opq3008232769.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0036_DSC_7072-opq3008232769-400x300.webp",
+          "filename": "0036_DSC_7072-opq3008232769.webp",
+          "mimeType": "image/webp",
+          "filesize": 515492,
+          "width": 3943,
+          "height": 2628,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0036_DSC_7072-opq3008232769-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 43894,
-              "filename": "hin2-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 24136,
+              "filename": "0036_DSC_7072-opq3008232769-400x300.webp"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-800x600.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0036_DSC_7072-opq3008232769-800x600.webp",
               "width": 800,
               "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 148509,
-              "filename": "hin2-800x600.jpg"
+              "mimeType": "image/webp",
+              "filesize": 67198,
+              "filename": "0036_DSC_7072-opq3008232769-800x600.webp"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-1200x800.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0036_DSC_7072-opq3008232769-1200x800.webp",
               "width": 1200,
               "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 250533,
-              "filename": "hin2-1200x800.jpg"
+              "mimeType": "image/webp",
+              "filesize": 110978,
+              "filename": "0036_DSC_7072-opq3008232769-1200x800.webp"
             }
           }
         }
@@ -1046,11 +1046,11 @@
       {
         "id": "6a4f6d549fb587000184c71f",
         "image": {
-          "id": 351,
-          "alt": null,
-          "caption": null,
+          "id": 477,
+          "alt": "Vendor holding open durian fruit at a market in Penang, Malaysia.",
+          "caption": "Fresh durian at a market in Penang, Malaysia.",
           "polaroidLabel": null,
-          "credit": null,
+          "credit": "Tianchad / Simply Enak",
           "location_ref": null,
           "neighbourhood_ref": [],
           "food_ref": [],
@@ -1062,41 +1062,41 @@
           "tags": [],
           "renameTo": null,
           "prefix": "payload-media",
-          "updatedAt": "2026-06-28T14:13:47.134Z",
-          "createdAt": "2026-06-28T14:13:46.473Z",
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
-          "filename": "DSC_5051-opq3007862668.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2143737,
-          "width": 2625,
-          "height": 3939,
+          "updatedAt": "2026-08-13T13:28:17.247Z",
+          "createdAt": "2026-08-13T13:19:26.802Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0110_DSC_6595-opq3008224353.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0110_DSC_6595-opq3008224353-400x300.webp",
+          "filename": "0110_DSC_6595-opq3008224353.webp",
+          "mimeType": "image/webp",
+          "filesize": 184072,
+          "width": 2610,
+          "height": 3917,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0110_DSC_6595-opq3008224353-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 24871,
-              "filename": "DSC_5051-opq3007862668-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 8558,
+              "filename": "0110_DSC_6595-opq3008224353-400x300.webp"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-800x600.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0110_DSC_6595-opq3008224353-800x600.webp",
               "width": 800,
               "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68511,
-              "filename": "DSC_5051-opq3007862668-800x600.jpg"
+              "mimeType": "image/webp",
+              "filesize": 22292,
+              "filename": "0110_DSC_6595-opq3008224353-800x600.webp"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-1200x800.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0110_DSC_6595-opq3008224353-1200x800.webp",
               "width": 1200,
               "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 111011,
-              "filename": "DSC_5051-opq3007862668-1200x800.jpg"
+              "mimeType": "image/webp",
+              "filesize": 34642,
+              "filename": "0110_DSC_6595-opq3008224353-1200x800.webp"
             }
           }
         }
@@ -1195,7 +1195,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": false,
+    "showInMenu": "false",
     "popular": false,
     "new": true,
     "badgeLabel": "New",
@@ -1261,7 +1261,7 @@
         }
       }
     },
-    "updatedAt": "2026-09-14T06:58:29.077Z",
+    "updatedAt": "2026-09-15T08:54:20.093Z",
     "createdAt": "2026-07-09T09:43:48.772Z",
     "_status": "draft",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -1433,13 +1433,13 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/0020_DSC_7207-opq3008232777.webp",
+        "alt": "A man and a woman working at a street food cart in Penang, Malaysia.",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/0036_DSC_7072-opq3008232769.webp",
+        "alt": "Two people eating at a table at a Penang street food stall",
         "caption": ""
       },
       {
@@ -1448,8 +1448,8 @@
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/0110_DSC_6595-opq3008224353.webp",
+        "alt": "Vendor holding open durian fruit at a market in Penang, Malaysia.",
         "caption": ""
       }
     ],
@@ -1990,7 +1990,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": "true",
     "popular": false,
     "new": true,
     "badgeLabel": null,
@@ -2002,7 +2002,7 @@
       "description": "",
       "image": null
     },
-    "updatedAt": "2026-09-14T06:58:38.988Z",
+    "updatedAt": "2026-09-14T15:51:41.347Z",
     "createdAt": "2026-07-05T07:15:14.782Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -3246,7 +3246,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": "true",
     "popular": false,
     "new": true,
     "badgeLabel": "New Tour",
@@ -3258,7 +3258,7 @@
       "description": "",
       "image": null
     },
-    "updatedAt": "2026-09-14T06:58:39.264Z",
+    "updatedAt": "2026-09-14T15:51:41.649Z",
     "createdAt": "2026-06-28T14:06:11.936Z",
     "_status": "published",
     "ticketing_hub_id": null,
@@ -4415,7 +4415,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": "Nightlife cocktail bar in Kuala Lumpur with creative drinks and city lights",
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": "true",
     "popular": true,
     "new": false,
     "badgeLabel": null,
@@ -4427,7 +4427,7 @@
       "description": "",
       "image": null
     },
-    "updatedAt": "2026-09-14T06:58:39.572Z",
+    "updatedAt": "2026-09-14T15:51:41.976Z",
     "createdAt": "2026-05-19T08:33:49.463Z",
     "_status": "published",
     "ticketing_hub_id": "148305db-44f6-4e6b-b8ec-dedfa9154716",
@@ -5218,7 +5218,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": "Freshly wok-fried char kway teow at a Penang hawker stall",
     "featured": false,
-    "showInMenu": false,
+    "showInMenu": "false",
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -5230,7 +5230,7 @@
       "description": "",
       "image": null
     },
-    "updatedAt": "2026-09-14T06:58:39.874Z",
+    "updatedAt": "2026-09-14T15:51:42.292Z",
     "createdAt": "2026-05-19T08:33:48.876Z",
     "_status": "published",
     "ticketing_hub_id": "bbb1b38a-fe29-4912-b7d7-602cf3013cd5",
@@ -5881,7 +5881,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": false,
+    "showInMenu": "false",
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -5893,7 +5893,7 @@
       "description": "",
       "image": null
     },
-    "updatedAt": "2026-09-14T06:58:40.151Z",
+    "updatedAt": "2026-09-14T15:51:42.581Z",
     "createdAt": "2026-05-19T08:33:48.280Z",
     "_status": "published",
     "ticketing_hub_id": "1aa9ef8b-7878-4793-97d5-b4dcbd737705",
@@ -6781,7 +6781,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": "true",
     "popular": false,
     "new": false,
     "badgeLabel": null,
@@ -6793,7 +6793,7 @@
       "description": "New to Malaysia? This introduction food tour covers markets, hawker stalls and 15+ dishes across KL. Book your culinary journey with local guides since 2011.",
       "image": null
     },
-    "updatedAt": "2026-09-14T06:58:40.426Z",
+    "updatedAt": "2026-09-14T15:51:42.888Z",
     "createdAt": "2026-05-19T08:33:47.672Z",
     "_status": "published",
     "ticketing_hub_id": "8be588c6-3879-4950-bc69-5d006cdf9152",
@@ -7678,11 +7678,11 @@
       {
         "id": "6a412bca7faf8e4b3d61b351",
         "image": {
-          "id": 350,
-          "alt": null,
-          "caption": null,
+          "id": 472,
+          "alt": "Street food stall in Penang's hawker center, featuring a sign for 99 Pancake Ban Chien Kueh",
+          "caption": "A popular street food stall in Penang's hawker center",
           "polaroidLabel": null,
-          "credit": null,
+          "credit": "Tianchad / Simply Enak",
           "location_ref": null,
           "neighbourhood_ref": [],
           "food_ref": [],
@@ -7694,41 +7694,41 @@
           "tags": [],
           "renameTo": null,
           "prefix": "payload-media",
-          "updatedAt": "2026-06-28T14:13:45.139Z",
-          "createdAt": "2026-06-28T14:13:44.640Z",
-          "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
-          "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 999686,
-          "width": 2688,
-          "height": 1512,
+          "updatedAt": "2026-08-13T13:28:09.138Z",
+          "createdAt": "2026-08-13T13:18:36.297Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-400x300.webp",
+          "filename": "0232_DSC_5593-opq3007862713.webp",
+          "mimeType": "image/webp",
+          "filesize": 405606,
+          "width": 3977,
+          "height": 2651,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 32314,
-              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 20732,
+              "filename": "0232_DSC_5593-opq3007862713-400x300.webp"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-800x600.webp",
               "width": 800,
               "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 108375,
-              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-800x600.jpg"
+              "mimeType": "image/webp",
+              "filesize": 54986,
+              "filename": "0232_DSC_5593-opq3007862713-800x600.webp"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-1200x800.webp",
               "width": 1200,
               "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 194669,
-              "filename": "ded2e24a-feee-46c5-80f6-25423f6b49a6~1-1200x800.jpg"
+              "mimeType": "image/webp",
+              "filesize": 88626,
+              "filename": "0232_DSC_5593-opq3007862713-1200x800.webp"
             }
           }
         }
@@ -7736,11 +7736,11 @@
       {
         "id": "6a412ced7faf8e4b3d61b352",
         "image": {
-          "id": 355,
-          "alt": null,
-          "caption": null,
+          "id": 473,
+          "alt": "Vendor holding a durian fruit in a market stall in Penang",
+          "caption": "Fresh durian at a market stall",
           "polaroidLabel": null,
-          "credit": null,
+          "credit": "Tianchad / Simply Enak",
           "location_ref": null,
           "neighbourhood_ref": [],
           "food_ref": [],
@@ -7752,41 +7752,41 @@
           "tags": [],
           "renameTo": null,
           "prefix": "payload-media",
-          "updatedAt": "2026-06-28T14:13:54.483Z",
-          "createdAt": "2026-06-28T14:13:53.991Z",
-          "url": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
-          "filename": "hin2.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 1030719,
-          "width": 1458,
-          "height": 2592,
+          "updatedAt": "2026-08-13T13:28:10.629Z",
+          "createdAt": "2026-08-13T13:18:49.588Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-400x300.webp",
+          "filename": "0109_DSC_6596-opq3008232725.webp",
+          "mimeType": "image/webp",
+          "filesize": 141422,
+          "width": 2521,
+          "height": 3783,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-400x300.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 43894,
-              "filename": "hin2-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 5536,
+              "filename": "0109_DSC_6596-opq3008232725-400x300.webp"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-800x600.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-800x600.webp",
               "width": 800,
               "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 148509,
-              "filename": "hin2-800x600.jpg"
+              "mimeType": "image/webp",
+              "filesize": 14200,
+              "filename": "0109_DSC_6596-opq3008232725-800x600.webp"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/hin2-1200x800.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-1200x800.webp",
               "width": 1200,
               "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 250533,
-              "filename": "hin2-1200x800.jpg"
+              "mimeType": "image/webp",
+              "filesize": 22052,
+              "filename": "0109_DSC_6596-opq3008232725-1200x800.webp"
             }
           }
         }
@@ -7794,69 +7794,11 @@
       {
         "id": "6a412cff7faf8e4b3d61b353",
         "image": {
-          "id": 356,
-          "alt": null,
-          "caption": null,
+          "id": 470,
+          "alt": "A man in a blue shirt and pants, preparing roti canai pancakes in a hawker center",
+          "caption": "A man prepares roti canai pancakes in a hawker center",
           "polaroidLabel": null,
-          "credit": null,
-          "location_ref": null,
-          "neighbourhood_ref": [],
-          "food_ref": [],
-          "dietary_ref": [],
-          "travel_type_ref": [],
-          "specialty_ref": [],
-          "vendor_ref": [],
-          "usage": null,
-          "tags": [],
-          "renameTo": "",
-          "prefix": "payload-media",
-          "updatedAt": "2026-06-29T03:53:39.722Z",
-          "createdAt": "2026-06-28T14:13:55.942Z",
-          "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-400x300.jpg",
-          "filename": "simply-enak-guide-explaining.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 3572168,
-          "width": 2560,
-          "height": 1920,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 36026,
-              "filename": "simply-enak-guide-explaining-400x300.jpg"
-            },
-            "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-800x600.jpg",
-              "width": 800,
-              "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 117342,
-              "filename": "simply-enak-guide-explaining-800x600.jpg"
-            },
-            "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining-1200x800.jpg",
-              "width": 1200,
-              "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 207252,
-              "filename": "simply-enak-guide-explaining-1200x800.jpg"
-            }
-          }
-        }
-      },
-      {
-        "id": "6a412d107faf8e4b3d61b354",
-        "image": {
-          "id": 351,
-          "alt": null,
-          "caption": null,
-          "polaroidLabel": null,
-          "credit": null,
+          "credit": "Tianchad / Simply Enak",
           "location_ref": null,
           "neighbourhood_ref": [],
           "food_ref": [],
@@ -7868,41 +7810,99 @@
           "tags": [],
           "renameTo": null,
           "prefix": "payload-media",
-          "updatedAt": "2026-06-28T14:13:47.134Z",
-          "createdAt": "2026-06-28T14:13:46.473Z",
-          "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
-          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
-          "filename": "DSC_5051-opq3007862668.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 2143737,
-          "width": 2625,
-          "height": 3939,
+          "updatedAt": "2026-08-13T13:28:03.534Z",
+          "createdAt": "2026-08-13T13:18:11.928Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-400x300.webp",
+          "filename": "0233_DSC_5591-opq3007872221.webp",
+          "mimeType": "image/webp",
+          "filesize": 230194,
+          "width": 2586,
+          "height": 3879,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-400x300.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 24871,
-              "filename": "DSC_5051-opq3007862668-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 12498,
+              "filename": "0233_DSC_5591-opq3007872221-400x300.webp"
             },
             "medium": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-800x600.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-800x600.webp",
               "width": 800,
               "height": 600,
-              "mimeType": "image/jpeg",
-              "filesize": 68511,
-              "filename": "DSC_5051-opq3007862668-800x600.jpg"
+              "mimeType": "image/webp",
+              "filesize": 28800,
+              "filename": "0233_DSC_5591-opq3007872221-800x600.webp"
             },
             "large": {
-              "url": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668-1200x800.jpg",
+              "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-1200x800.webp",
               "width": 1200,
               "height": 800,
-              "mimeType": "image/jpeg",
-              "filesize": 111011,
-              "filename": "DSC_5051-opq3007862668-1200x800.jpg"
+              "mimeType": "image/webp",
+              "filesize": 38960,
+              "filename": "0233_DSC_5591-opq3007872221-1200x800.webp"
+            }
+          }
+        }
+      },
+      {
+        "id": "6a412d107faf8e4b3d61b354",
+        "image": {
+          "id": 469,
+          "alt": "A street food vendor in Penang, Malaysia, preparing fried chicken.",
+          "caption": "A street food vendor in Penang, Malaysia, preparing fried chicken.",
+          "polaroidLabel": null,
+          "credit": "Tianchad / Simply Enak",
+          "location_ref": null,
+          "neighbourhood_ref": [],
+          "food_ref": [],
+          "dietary_ref": [],
+          "travel_type_ref": [],
+          "specialty_ref": [],
+          "vendor_ref": [],
+          "usage": null,
+          "tags": [],
+          "renameTo": null,
+          "prefix": "payload-media",
+          "updatedAt": "2026-08-13T13:28:00.891Z",
+          "createdAt": "2026-08-13T13:18:03.751Z",
+          "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765.webp",
+          "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-400x300.webp",
+          "filename": "0044_DSC_7024-opq3008232765.webp",
+          "mimeType": "image/webp",
+          "filesize": 520444,
+          "width": 3964,
+          "height": 2642,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 23114,
+              "filename": "0044_DSC_7024-opq3008232765-400x300.webp"
+            },
+            "medium": {
+              "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-800x600.webp",
+              "width": 800,
+              "height": 600,
+              "mimeType": "image/webp",
+              "filesize": 65774,
+              "filename": "0044_DSC_7024-opq3008232765-800x600.webp"
+            },
+            "large": {
+              "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-1200x800.webp",
+              "width": 1200,
+              "height": 800,
+              "mimeType": "image/webp",
+              "filesize": 109294,
+              "filename": "0044_DSC_7024-opq3008232765-1200x800.webp"
             }
           }
         }
@@ -8063,7 +8063,7 @@
     "galleryImageAlts": [],
     "heroImageAlt": null,
     "featured": false,
-    "showInMenu": true,
+    "showInMenu": "true",
     "popular": false,
     "new": true,
     "badgeLabel": "New",
@@ -8129,7 +8129,7 @@
         }
       }
     },
-    "updatedAt": "2026-09-14T06:58:40.711Z",
+    "updatedAt": "2026-09-15T08:53:46.186Z",
     "createdAt": "2026-05-19T08:33:46.973Z",
     "_status": "published",
     "ticketing_hub_id": "7c6293c6-b979-4092-a577-66dfbad5c88e",
@@ -8317,23 +8317,23 @@
     "hero_image_alt": null,
     "gallery_images": [
       {
-        "src": "https://cdn.simplyenak.com/payload-media/ded2e24a-feee-46c5-80f6-25423f6b49a6~1.jpg",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713.webp",
+        "alt": "Street food stall in Penang's hawker center, featuring a sign for 99 Pancake Ban Chien Kueh",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/hin2.jpg",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725.webp",
+        "alt": "Vendor holding a durian fruit in a market stall in Penang",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/simply-enak-guide-explaining.jpg",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221.webp",
+        "alt": "A man in a blue shirt and pants, preparing roti canai pancakes in a hawker center",
         "caption": ""
       },
       {
-        "src": "https://cdn.simplyenak.com/payload-media/DSC_5051-opq3007862668.jpg",
-        "alt": "",
+        "src": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765.webp",
+        "alt": "A street food vendor in Penang, Malaysia, preparing fried chicken.",
         "caption": ""
       }
     ],
