@@ -552,6 +552,12 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
             <div class="font-bold font-heading text-3xl text-primary">{tour.price || 'RM 285'}</div>
             <p class="text-muted text-xs mt-1">per person · free cancellation</p>
           </div>
+          <div class="border-b border-gray-100 dark:border-white/10 p-6 space-y-3">
+            <TourContactCTA widgetId={widgetId} tourName={tour.name || tour.tagline || ""} tourSlug={tour.slug} />
+            {tour.tourType === 'both' && (
+              <p class="text-xs text-muted text-center">Also available as a <a href="/tours/private-tours" class="text-accent hover:underline font-semibold">Private Tour</a></p>
+            )}
+          </div>
           <div class="border-b border-gray-100 dark:border-white/10 p-6">
             <div class="text-sm grid grid-cols-2 gap-y-3">
               <div>
@@ -608,12 +614,6 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
                 </div>
               )}
             </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <TourContactCTA widgetId={widgetId} tourName={tour.name || tour.tagline || ""} tourSlug={tour.slug} />
-            {tour.tourType === 'both' && (
-              <p class="text-xs text-muted text-center">Also available as a <a href="/tours/private-tours" class="text-accent hover:underline font-semibold">Private Tour</a></p>
-            )}
           </div>
           <!-- Map embed — signal to Google Maps (no API key needed) -->
           <div class="border-t border-gray-100 dark:border-white/10 p-6">

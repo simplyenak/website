@@ -13,8 +13,8 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
 ---
 
 {widgetId ? (
-  <!-- TicketingHub checkout widget -->
-  <div class="mx-auto max-w-fit" id={`widget-container-${widgetId}`}>
+  <!-- TicketingHub checkout widget: full-width container (TH checkout.js hardcodes a 300px iframe; overridden below) -->
+  <div class="w-full" id={`widget-container-${widgetId}`}>
     <script src="https://assets.ticketinghub.com/checkout.js" async data-widget={widgetId}></script>
   </div>
 ) : (
@@ -154,3 +154,11 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
   });
 })();
 </script>
+
+<style is:global>
+  /* TH checkout.js sets a fixed inline width:300px on its iframe; the widget
+     is fully responsive (verified 300–1280px) so let it fill the sidebar card. */
+  [id^="widget-container-"] iframe {
+    width: 100% !important;
+  }
+</style>
