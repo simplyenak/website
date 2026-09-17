@@ -1,0 +1,13 @@
+name: CF Turnstile Keys
+on: [workflow_dispatch]
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List turnstile widgets
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          curl -s "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/turnstile/widgets" \
+            -H "Authorization: Bearer $CF_API_TOKEN" | jq "{success, errors, widgets: [.result[]? | {name, sitekey, status, domains}]}"
