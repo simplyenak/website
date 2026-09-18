@@ -1,7 +1,7 @@
 # J-Space Workspace Ledger
 
 ## Goal
-Audit website-optimization repo
+Build phases 1,3,4,5 of SEO-OS plan: Grist ContentPipeline+kanban feed, competitor/backlink Grist tables (DataForSEO), approval-gated content loop, weekly report add-ons. Phase 2 = Maarten's $10-20 DataForSEO top-up (external gate).
 
 ## Core
 
@@ -14,4 +14,4 @@ Audit website-optimization repo
 ## Open
 
 ## Next
-Audit complete — deliver report
+Confirm Grist table-create API works; design ContentPipeline schema; write cron feed script.

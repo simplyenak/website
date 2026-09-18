@@ -1125,6 +1125,17 @@ export async function getToursByTag(tag: string, locale?: string) {
   return all.filter((t: any) => tourMatchesTag(t, tag));
 }
 
+// Explicit curated tour list (segment.tours in segments.js) — resolves by
+// slug in curated order, keeping whatever published/availability filtering
+// resolveTours applies. Used instead of the fuzzy tag matcher so landing
+// pages show exactly the tours curated for them.
+export async function getToursBySlugs(slugs: string[], locale?: string) {
+  const all = await resolveTours(locale);
+  return slugs
+    .map((s: string) => all.find((t: any) => t?.slug === s))
+    .filter(Boolean);
+}
+
 export async function getToursByDietary(slug: string) { return getToursByTag(slug); }
 export async function getToursByLocation(slug: string) { return getToursByTag(slug); }
 export async function getToursBySpecialty(slug: string) { return getToursByTag(slug); }

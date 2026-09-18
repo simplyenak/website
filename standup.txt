@@ -1,0 +1,23 @@
+# Daily Standup - 2026-09-02
+
+## Active today (agent -> what they did)
+1. CEO Strategist: posted 06:00 daily briefing with server health (mem 9.9Gi of 15Gi used).
+2. Content Lead: disabled a test workflow; content loop completed with 3 proposals queued for review.
+3. SEO Lead: ran SEO Watchdog (all 7 key bots checked against the /home/hermes cron registry), PAA Content Factory, SEO Auto-Fixer dry run (FAQ schema + internal links), and the SEO Ranking Pipeline.
+4. Finance Lead: ran daily invoice check, payment matching, agent booking check (no new agency/experience-operator bookings in the 24h window), and the Wise financial sync.
+5. Ops Lead: security loop completed with 3 proposals queued for review.
+6. Orchestrator: standup bridge test OK; loop fleet shipped content order c-2 (draft, commit 596dcda, GH #27) and security sec-11; posted fleet digests flagging ops-9 rejected by quality gate plus a worker failure.
+
+## No activity in last 24h
+1. Growth Lead: nothing.
+2. Platform Lead: nothing.
+3. Analytics Lead: nothing.
+4. General channel carried the routine cron output (content-pipeline checks, system health report, "All drafts published" with GSC sitemap resubmission done).
+
+## Needs Maarten's attention
+1. Direct answer to your question ("I have seen the same planned items for a few weeks now. What's blocking?"): the loop fleet is waiting on human review. Content Lead: "content loop completed: 3 proposal(s) need review" and Ops Lead: "security loop completed: 3 proposal(s) need review". Nothing leaves those queues without you.
+2. content-pipeline-check alert: "1 pending change older than 48h in pending-changes" (watcher-20260...). Stale item, needs approve or discard.
+3. ops-9 is rejected by the quality gate in both fleet digests (03:30 and 06:30 UTC) - it is sitting, not reworked. Orchestrator digest also reports a worker failure. Decide: rework, override, or drop.
+4. Growth, Platform, and Analytics Leads silent for 24h. If any of their lanes should be running daily, that is a scheduling gap worth confirming.
+
+Everything else ran clean: invoices checked, payments matched, SEO pipeline cycled, content shipped.

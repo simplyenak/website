@@ -158,6 +158,7 @@ async function pushCollection(name, cfg, locale) {
 
   let updatedCount = 0;
   let skippedCount = 0;
+  const touchedSlugs = new Set();
 
   for (const item of itemList) {
     if (!item.id && !item.slug) {
@@ -247,6 +248,7 @@ async function pushCollection(name, cfg, locale) {
     try {
       await patchItem(slug, itemId, body, locale);
       updatedCount++;
+      if (item.slug) touchedSlugs.add(item.slug);
     } catch (err) {
       console.log(`\n    ✗ ${slug}/${itemId}: ${err.message}`);
       errors++;
@@ -256,6 +258,25 @@ async function pushCollection(name, cfg, locale) {
   // Don't log per-collection line if dry run already printed
   if (!DRY_RUN) {
     console.log(`${updatedCount} updated, ${skippedCount} skipped`);
+  }
+
+  // Post-write gate: refresh each touched page's Grist status in the
+  // background (~2s each, fire-and-forget) instead of waiting for the Monday
+  // cron. Spawn only for content collections the gate knows (tours here);
+  // disable with env CONTENT_GATE_AUTO=0.
+  if (!DRY_RUN && touchedSlugs.size > 0
+      && process.env.CONTENT_GATE_AUTO !== '0'
+      && ['stories', 'tours', 'landing_pages', 'locations'].includes(slug)) {
+    const { spawn } = await import('node:child_process');
+    const root = path.resolve(__dirname, '../..');
+    const gate = path.join(root, 'scripts/content-gate.py');
+    for (const s of touchedSlugs) {
+      const child = spawn('python3', [gate, '--slug', `${slug}/${s}`], {
+        cwd: root, stdio: 'ignore', detached: true,
+      });
+      child.unref();
+    }
+    console.log(`  🔎 content gate re-check kicked off for ${touchedSlugs.size} page(s)`);
   }
 
   updated += updatedCount;

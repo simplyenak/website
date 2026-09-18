@@ -20,6 +20,34 @@ export const REGION_LABELS: Record<Region, string> = {
 
 export type HalalStatus = 'halal' | 'pork-free' | 'non-halal' | 'varies';
 
+/** Extract meal type tags from bestTime field */
+export function getMealTags(bestTime?: string): string[] {
+  if (!bestTime) return [];
+  const lower = bestTime.toLowerCase();
+  const tags: string[] = [];
+  if (lower.includes('breakfast')) tags.push('breakfast');
+  if (lower.includes('lunch')) tags.push('lunch');
+  if (lower.includes('dinner') || lower.includes('night')) tags.push('dinner');
+  if (lower.includes('any time')) tags.push('all-day');
+  if (lower.includes('afternoon')) tags.push('afternoon');
+  if (lower.includes('season')) tags.push('seasonal');
+  return tags;
+}
+
+/** Extract venue type from the where field */
+export function getVenueTags(where?: string): string[] {
+  if (!where) return [];
+  const lower = where.toLowerCase();
+  const tags: string[] = [];
+  if (lower.includes('mamak')) tags.push('mamak');
+  if (lower.includes('restaurant')) tags.push('restaurant');
+  if (lower.includes('morning market') || lower.includes('pasar') || lower.includes('night market')) tags.push('market');
+  if (lower.includes('hawker') || lower.includes('food court') || lower.includes('kopitiam')) tags.push('hawker');
+  if (lower.includes('street') || lower.includes('stall')) tags.push('street-food');
+  if (lower.includes('hotel')) tags.push('hotel');
+  return tags;
+}
+
 export interface Dish {
   id: string;
   name: string;
@@ -839,6 +867,8 @@ export interface ClassicItem {
   name: string;
   what: string;
   halal: HalalStatus;
+  bestTime?: string;
+  where?: string;
 }
 
 export const nationalClassics: ClassicItem[] = [
@@ -847,72 +877,96 @@ export const nationalClassics: ClassicItem[] = [
     name: 'Roti canai',
     what: 'Flaky griddled flatbread with dhal and curry, the national breakfast of mamak stalls.',
     halal: 'halal',
+    bestTime: 'Breakfast',
+    where: 'Mamak stalls nationwide',
   },
   {
     id: 'teh-tarik',
     name: 'Teh tarik',
     what: '"Pulled" milky tea, poured long between two mugs until it foams. Breakfast order, midnight order.',
     halal: 'halal',
+    bestTime: 'Any time, late night included',
+    where: 'Mamak stalls, kopitiams',
   },
   {
     id: 'nasi-goreng-kampung',
     name: 'Nasi goreng kampung',
     what: 'Village fried rice with anchovies, kangkung and chili, ideally from a wok at dawn.',
     halal: 'halal',
+    bestTime: 'Breakfast, lunch',
+    where: 'Hawker centres, morning markets',
   },
   {
     id: 'apam-balik',
     name: 'Apam balik',
     what: 'Thick peanut pancake folded over crushed peanut and sugar; crisp or soft depending on region.',
     halal: 'halal',
+    bestTime: 'Breakfast, afternoon',
+    where: 'Street stalls, night markets',
   },
   {
     id: 'banana-leaf-rice',
     name: 'Banana leaf rice',
     what: 'Rice on a banana leaf with vegetable sides, curries and papadum, refilled until you surrender.',
     halal: 'varies',
+    bestTime: 'Lunch',
+    where: 'Indian restaurants, food courts',
   },
   {
     id: 'kaya-toast',
     name: 'Kaya toast & half-boiled eggs',
     what: 'Coconut-egg jam toast with soft eggs and white pepper. The kopitiam breakfast order, unchanged for generations.',
     halal: 'varies',
+    bestTime: 'Breakfast',
+    where: 'Kopitiams, hawker centres',
   },
   {
     id: 'maggi-goreng',
     name: 'Maggi goreng',
     what: 'Instant noodles fried mamak-style with egg and chili sauce. Midnight institution.',
     halal: 'halal',
+    bestTime: 'Dinner, late night',
+    where: 'Mamak stalls, hawker centres',
   },
   {
     id: 'ais-kacang',
     name: 'Ais kacang (ABC)',
     what: 'Shaved ice mountain over sweet corn, red bean, grass jelly and syrups. Malaysia in a heatwave is why this exists.',
     halal: 'halal',
+    bestTime: 'Afternoon',
+    where: 'Hawker stalls, dessert shops',
   },
   {
     id: 'nyonya-kuih',
     name: 'Nyonya kuih',
     what: 'Steamed and griddled sweets in pandan, coconut and gula melaka; two-bite pieces sold by the box.',
     halal: 'varies',
+    bestTime: 'Any time, takeaway',
+    where: 'Nyonya restaurants, morning markets',
   },
   {
     id: 'durian',
     name: 'Fresh durian',
     what: 'The king of fruit, eaten fresh at a roadside stall. Timing help: whenisdurianseason.com.',
     halal: 'halal',
+    bestTime: 'June to August season',
+    where: 'Roadside stalls, fruit markets',
   },
   {
     id: 'milo-dinosaur',
     name: 'Milo dinosaur',
     what: 'Iced Milo with an unmixed heap of powder on top. A Malaysian childhood in a cup.',
     halal: 'halal',
+    bestTime: 'Any time, takeaway',
+    where: 'Mamak stalls, kopitiams',
   },
   {
     id: 'rojak-buah',
     name: 'Rojak buah',
     what: 'Fruit salad the Malaysian way: jicama, pineapple, cucumber, fritters, shrimp paste and crushed peanut.',
     halal: 'varies',
+    bestTime: 'Afternoon',
+    where: 'Street stalls, night markets',
   },
 ];
 
@@ -1051,7 +1105,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Do these dishes really change from neighbourhood to neighbourhood?',
-    a: 'Yes. Asam laksa in Air Itam is not the same as in downtown George Town. Satay in Kajang is different from Kajang satay at a mamak in KL. Mee bandung belongs to Muar. The State Guides pin down exactly which version to seek out.',
+    a: 'Yes. Asam laksa in Air Itam is not the same as in downtown George Town. Satay in Kajang is different from Kajang satay at a mamak in KL. Mee bandung belongs to Muar. The State Checklists pin down exactly which version to seek out.',
   },
   {
     q: 'How does this checklist work?',
@@ -1059,11 +1113,11 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Is the checklist free?',
-    a: 'The twelve national classics here are free and stay free. The deeper state-by-state guides with exact stall names, ingredient detail, and diet flags are one-time purchases: pay once, access forever.',
+    a: 'The twelve national classics here are free and stay free. The deeper state-by-state checklists with exact stall names, ingredient detail, and diet flags are one-time purchases: pay once, access forever.',
   },
   {
-    q: 'I bought the collection. How do I unlock the guides?',
-    a: 'Enter the email you paid with at /login. Your purchase is matched automatically and the state guides open to full detail: exact streets, famous stalls, halal notes, best times. Your unlock lasts 30 days unless you create a free account.',
+    q: 'I bought the collection. How do I unlock the checklists?',
+    a: 'Enter the email you paid with at /login. Your purchase is matched automatically and the state checklists open to full detail: exact streets, famous stalls, halal notes, best times. Your unlock lasts 30 days unless you create a free account.',
   },
   {
     q: 'Can I follow this with a food tour instead of finding stalls myself?',

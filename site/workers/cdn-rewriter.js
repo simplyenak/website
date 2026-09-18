@@ -40,6 +40,17 @@ var REDIRECTS = {
   "/zh/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
   "/ja/stories/faq-do-malaysians-speak-english": "/stories/do-malaysians-speak-english/",
   "/ja/stories/faq-does-malaysia-speak-english": "/stories/do-malaysians-speak-english/",
+  // Remaining 6 faq-* shells (28-42w, 30 imp/0 clicks whole window) — all
+  // unPUBLISHED in Payload 2026-09-15 (Maarten mandate: no faq-* stories).
+  // EN redirects to /faq so the handful of indexed impressions don't 404.
+  // Locale variants had no demand; add per-locale entries here if impressions
+  // appear in GSC.
+  "/stories/faq-why-do-malaysians-eat-with-their-hands": "/faq",
+  "/stories/faq-what-is-the-food-culture-like-in-malaysia": "/faq",
+  "/stories/faq-what-is-included-in-a-malaysian-food-tour": "/faq",
+  "/stories/faq-how-much-does-a-food-tour-cost-in-malaysia": "/faq",
+  "/stories/faq-where-can-i-find-the-best-street-food-in-kuala-lumpur": "/faq",
+  "/stories/faq-what-is-the-most-popular-street-food-in-malaysia": "/faq",
   "/ms/stories/faq-when-is-durian-season-in-malaysia": "/ms/stories/durian-season-malaysia/",
   // Root-level story URLs still getting impressions but 404ing (missing after
   // the /stories/ permalink migration) — ~926 imps/mo recovered (Aug 16 2026)

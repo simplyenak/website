@@ -903,8 +903,55 @@
     "case_id": "eeat_experience_signals",
     "content_type": "all",
     "scenario": "Content must demonstrate first-hand Experience (E-E-A-T)",
-    "description": "Google's December 2025 update made Experience a key ranking factor. Content needs: personal anecdotes, specific verifiable details (prices, locations, names), sensory observations. AI can't fabricate genuine experience — it must come from human insight.",
+    "description": "Google's December 2025 update made Experience a key ranking factor. Content needs: personal anecdotes, specific verifiable details (prices, locations, names), sensory observations. AI can't fabricate genuine experience \u2014 it must come from human insight.",
     "weight": 0.7,
     "notes": "Warn-only. Suggests improvements but doesn't block deploy. Checks blog posts and stories for experience markers."
+  },
+  {
+    "case_id": "topical_scope_anchor",
+    "content_type": "all",
+    "scenario": "Every landing page sits inside the business's demonstrated operating scope",
+    "description": "Forbes (site reputation abuse) and HubSpot (content drift) collapsed after publishing far outside what they were genuinely qualified to cover. Tier A: a location landing page whose location_name mentions no served city (per tours.json locations) is a page for a place we do not operate in. Tier B: any landing page with no served-city or country (malaysia) anchor anywhere in slug/meta/hero/body exists purely to capture traffic. Warn-only: flags drift for human decision, never blocks deploy.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.6,
+    "forbidden_patterns": [
+      "location_lp_for_city_without_tours",
+      "no_scope_anchor_in_any_field"
+    ],
+    "notes": "Warn-only. Scope tokens derived live from tours.json locations + city aliases + 'malaysia' country anchor; new tour locations extend scope automatically."
+  },
+  {
+    "case_id": "differentiated_pov_bodnar",
+    "content_type": "all",
+    "scenario": "Content takes a differentiated stance, not neutral anyone-could-have-written-it prose",
+    "description": "HubSpot CMO Kipp Bodnar's post-mortem after losing 75% of English blog traffic: 'You have to have differentiated point of view, differentiated data, and clear reason why you're uniquely qualified to share your story.' A post with zero opinion markers is encyclopedia prose \u2014 the drift failure mode. Checks opinion language (stance, verdicts, contrarian takes), own data (RM prices, counts, years), and unique qualification (our guides, named team). Warn-only.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.6,
+    "forbidden_patterns": [
+      "no_opinion_markers",
+      "no_own_data",
+      "no_unique_qualification"
+    ],
+    "notes": "Warn-only. Complements eeat_experience_signals (first-hand markers) \u2014 this one scores stance/opinion. Stance has three forms, all full weight: explicit core ('we believe'), implicit ('skip the tourist row', 'your first stop is'), and evaluative judgments. Hedged-only ('we think') flags hedged_stance_only. Formula guardrail: 3+ posts opening with the same stance phrase (first 120 words) flags formula_opening \u2014 varied forms beat a signature opener. Aligns with judge-loop consensus guidance: stance + specifics beats neutrality."
+  },
+  {
+    "case_id": "house_position_register",
+    "content_type": "all",
+    "scenario": "Agents know the brand's stated opinions instead of inventing them",
+    "description": "Differentiated POV requires actual positions. site/src/data/house-positions.json is the register of stated Simply Enak opinions (hand-maintained, outside content/ so auto-sync never reverts it). Agents read it before drafting; new stances need Maarten's sign-off (status: confirmed). Check validates: file exists, entries well-formed with sources, at least one confirmed position.",
+    "check_tiers": [
+      "json_snapshots"
+    ],
+    "weight": 0.5,
+    "forbidden_patterns": [
+      "missing_register",
+      "unsourced_position",
+      "zero_confirmed_positions"
+    ],
+    "notes": "Warn-only. Seeded 2026-09-02 by mining 33 stance sentences from posts+stories; 11 curated entries, all status=candidate until Maarten confirms. Gap-filling: interview protocol (clifton-sellers-content-prompts)."
   }
 ]

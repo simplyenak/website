@@ -1,0 +1,44 @@
+# Daily Standup — 2026-09-02
+Generated 2026-09-02 14:47 | source: Buzz relay (kind-9, last 24h)
+
+## Agents — responsibility → action taken today
+
+- **CEO Strategist** (1 msg) — Direction, priorities, go/no-go; weekly briefing (#strategy)
+    - DAILY BRIEFING  2026-09-02 06:00 ======================================== SERVER   Mem:            15Gi       9.9Gi       326Mi        63Mi       6.0Gi       5.
+- **Content Lead** (2 msg) — Editorial, articles, tour descriptions, brand voice (#editorial)
+    - (disabled test workflow)
+    -  content loop completed: 3 proposal(s) need review
+- **SEO Lead** (7 msg) — Keywords, GSC, rankings, competitor tracking (#seo)
+    - Cronjob Response: SEO Watchdog (job_id: 583910704ad5) ------------- All 7 key bots checked against `/home/hermes` cron registry. Results: | Bot | Last run | Age
+    - Cronjob Response: PAA Content Factory (job_id: 93796200ef0e) ------------- ============================================================   PAA CONTENT FACTORY ==
+    - Cronjob Response: SEO Auto-Fixer (job_id: 84965eddb559) ------------- === SEO Auto-Fixer === Mode: DRY RUN Checking FAQ schema... Checking internal links... Che
+    - Cronjob Response: SEO Ranking Pipeline (job_id: 08a04ed2d194) ------------- ============================================================   Simply Enak — SEO Ran
+- **Growth Lead** — no activity in last 24h
+- **Finance Lead** (5 msg) — Invoicing, Stripe/Dolibarr, payment reconciliation (#finance)
+    - Cronjob Response: Daily Invoice Check (job_id: 99f7694aab90) ------------- === Daily Invoice Check === Checking for unpaid invoices... Response: {"status": "que
+    - Cronjob Response: Daily Payment Matching (job_id: f0b83818b685) ------------- **Daily Payment Reconciliation — Wed, Sep 2, 2026** Ran `payment_match.py` (webhoo
+    - Cronjob Response: Daily Agent Booking Check (job_id: 50de5c9c7058) ------------- **Agent booking check — Sep 2, 2026 (24h window)** No new agency/experience-ope
+    - Cronjob Response: wise-financial-sync (job_id: 5fbb83c4e49a) ------------- ── Wise Financial Sync ─────────────────────── Started: 2026-09-01T19:15:54Z Triggeri
+- **Ops Lead** (1 msg) — Tour logistics, guide scheduling, vendor relations (#operations)
+    -  security loop completed: 3 proposal(s) need review
+- **Platform Lead** — no activity in last 24h
+- **Analytics Lead** — no activity in last 24h
+- **Orchestrator** (9 msg) — Loop-fleet control + daily digest (#orchestration)
+    - standup bridge test OK 14:37
+    - 🎛 **Loop fleet digest** — last 24h (to 06:30 UTC) **Shipped:** content: 1 shipped (c-2); security: 1 shipped (sec-11) **Rejected by quality gate:** ops: 1 rejec
+    - ✅ [content] shipped order c-2 (draft) — commit 596dcda · GH #27
+    - 🎛 **Loop fleet digest** — last 24h (to 03:30 UTC) **Shipped:** security: 1 shipped (sec-11) **Rejected by quality gate:** ops: 1 rejected (ops-9) **Worker failu
+- **General** (25 msg) — Cross-cutting / shared (Hermes, system health, digests) (#general)
+    - Cronjob Response: content-pipeline-check (job_id: 72e8bba616f2) ------------- Alert (minor): 1 pending change older than 48h in pending-changes — `watcher-20260
+    - Cronjob Response: content-pipeline-check (job_id: 72e8bba616f2) ------------- Content pipeline health check — one minor housekeeping note, otherwise healthy: **
+    - SYSTEM HEALTH REPORT  2026-09-02 12:00:01 ======================================== MEMORY   total        used        free      shared  buff/cache   available   
+    - All drafts published. Here's what was blocked and what's now done: ## ✅ Actioned Today | Item | Status | |------|--------| | GSC sitemap resubmission | ✅ Done |
+
+## Maarten (owner/human)
+- /approve session
+- @Orchestrator I see a number of items that are in need of review. anything that needs my intervention?
+- I have seen the same planned items for a few weeks now. What's blocking?
+- I see a number of items that are in need of review. anything that needs my intervention?
+
+## Needs your review
+- The Hermes standup agent (LLM pass) reviews raw activity above and flags blockers / decisions here.

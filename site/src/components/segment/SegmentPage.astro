@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { getToursByTag, getLandingPageBySlug, cleanPageTitle, getStoriesByLocation } from '~/lib/content';
+import { getToursByTag, getToursBySlugs, getLandingPageBySlug, cleanPageTitle, getStoriesByLocation } from '~/lib/content';
 import { dietarySegments, locationSegments, specialtySegments, travelTypeSegments } from '~/data/segments';
 import reviews from '~/data/content/reviews.json';
 import LandingPageSections from '~/components/LandingPageSections.astro';
@@ -23,7 +23,12 @@ const SEGMENT_MAP = {
 
 const segConfig = SEGMENT_MAP[segmentType];
 
-const matchingTours = await getToursByTag(segment.slug);
+// Curated tour list wins over fuzzy tag matching (city-substring matcher
+// gave 0 tours on pages whose slug lacks the city name, e.g. Chow Kit,
+// and over-matched others, e.g. Georgetown listing 6 tours).
+const matchingTours = Array.isArray(segment.tours)
+  ? await getToursBySlugs(segment.tours, locale)
+  : await getToursByTag(segment.slug);
 const landingPage = await getLandingPageBySlug(segment.slug, locale);
 const intro = landingPage?.hero_description || landingPage?.introduction || segment.description || '';
 

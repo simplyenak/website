@@ -28,7 +28,7 @@
     "timezone": ""
   },
   "created_at": "2026-05-19T08:34:28.206Z",
-  "updated_at": "2026-09-14T02:33:48.123Z",
+  "updated_at": "2026-09-14T09:08:25.225Z",
   "translations": [
     {
       "languages_code": "en"
@@ -56,47 +56,47 @@
       }
     },
     {
-      "languages_code": "ja",
-      "contactMethods": {
-        "heading": "",
-        "description": "",
-        "items": []
-      },
-      "planningScenarios": {
-        "heading": "",
-        "description": "",
-        "items": []
-      },
       "ourPromise": {
         "title": "",
-        "description": "",
-        "highlights": []
+        "highlights": [],
+        "description": ""
       },
       "businessHours": {
         "text": "",
         "timezone": ""
+      },
+      "contactMethods": {
+        "items": [],
+        "heading": "",
+        "description": ""
+      },
+      "languages_code": "ja",
+      "planningScenarios": {
+        "items": [],
+        "heading": "",
+        "description": ""
       }
     },
     {
-      "languages_code": "es",
-      "contactMethods": {
-        "heading": "",
-        "description": "",
-        "items": []
-      },
-      "planningScenarios": {
-        "heading": "",
-        "description": "",
-        "items": []
-      },
       "ourPromise": {
         "title": "",
-        "description": "",
-        "highlights": []
+        "highlights": [],
+        "description": ""
       },
       "businessHours": {
         "text": "",
         "timezone": ""
+      },
+      "contactMethods": {
+        "items": [],
+        "heading": "",
+        "description": ""
+      },
+      "languages_code": "es",
+      "planningScenarios": {
+        "items": [],
+        "heading": "",
+        "description": ""
       }
     }
   ]

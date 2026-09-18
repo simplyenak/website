@@ -1,0 +1,217 @@
+{
+  "_note": "House positions — Simply Enak's stated opinions. Hand-maintained (NOT a Payload snapshot; auto-sync does not touch this file). Agents MUST read this before drafting content: use registered stances; new stances require Maarten's sign-off (status: confirmed) before use. Entries are topic-scoped one-liners with sources so conviction is reused, never invented.",
+  "schema": {
+    "id": "slug-id",
+    "topic": "what this position is about (dish, place, practice)",
+    "stance": "the position, in brand voice",
+    "why": "optional reasoning/evidence",
+    "source": {
+      "who": "Pauline | Maarten | team",
+      "where": "post/story slug or conversation",
+      "date": "YYYY-MM-DD or null"
+    },
+    "status": "candidate | confirmed",
+    "tags": []
+  },
+  "positions": [
+    {
+      "id": "durian-favourite-cultivar",
+      "topic": "durian cultivar pick",
+      "stance": "Raja Kunyit (Musang King) is our favourite.",
+      "why": "Pauline's direct experience eating durian across Penang — Raja Kunyit consistently delivers the bittersweet depth and creamy texture we look for; it's the benchmark other cultivars are measured against.",
+      "source": {
+        "who": "Pauline",
+        "where": "blog/eating-durians + stories/eating-durians",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "durian",
+        "penang",
+        "fruit"
+      ]
+    },
+    {
+      "id": "durian-best-season",
+      "topic": "durian season timing",
+      "stance": "June to July is the best time to find and eat durian.",
+      "why": "Main Penang harvest window aligns with southwest monsoon tail; fruit quality peaks when rainfall drops after the heavy May–June flush. Off-season fruit exists but is often from different states with longer transit.",
+      "source": {
+        "who": "team",
+        "where": "stories/eating-durians",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "durian",
+        "seasonality"
+      ]
+    },
+    {
+      "id": "durian-balik-pulau-origin",
+      "topic": "best durian origin",
+      "stance": "The hills behind Balik Pulau produce some of the best durian in Malaysia, including the rare Black Thorn variety.",
+      "why": "Balik Pulau's microclimate (coastal breeze + elevation 100–300m) and older orchard stock — many trees 30+ years — yield fruit with intensity that lowland commercial plantings don't match. Black Thorn is almost exclusively from this pocket.",
+      "source": {
+        "who": "team",
+        "where": "stories/durian-guide-malaysia",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "durian",
+        "penang",
+        "origin",
+        "black-thorn"
+      ]
+    },
+    {
+      "id": "brand-malaysia-tourists-miss",
+      "topic": "brand point of view on Malaysia",
+      "stance": "The Malaysia most tourists never see is the one worth showing.",
+      "why": "Our tours operate in residential neighbourhoods, wet markets, and home kitchens — places guidebooks skip. The conviction comes from 8 years of guests saying 'I never would've found this' about a stall 200m from their hotel.",
+      "source": {
+        "who": "Maarten",
+        "where": "blog/eating-durians + team conversation",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "brand",
+        "philosophy",
+        "off-the-beaten-path"
+      ]
+    },
+    {
+      "id": "vegetarian-ask-stall-owners",
+      "topic": "vegetarian dining practice",
+      "stance": "Stall owners appreciate being asked what is vegetarian.",
+      "why": "Repeated observation on tours: when guests ask 'what's vegetarian?' the aunty pauses, thinks, then offers 2–3 off-menu adaptations (skip the ikan bilis, swap belacan for taucu). Silence means default pork-lard base; asking unlocks the real options.",
+      "source": {
+        "who": "team",
+        "where": "blog/what-vegetarian-actually-means",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "vegetarian",
+        "dining-practice",
+        "communication"
+      ]
+    },
+    {
+      "id": "temple-canteens-worth-it",
+      "topic": "temple canteen dining",
+      "stance": "Temple canteens are worth seeking out; the food and atmosphere beat the regular tourist trail.",
+      "why": "Non-commercial kitchens cooking for devotees, not turnover. Vegetarian by default, generous portions, RM3–6 per plate. The atmosphere — communal tables, zero performative service — is the antithesis of tourist-zone dining. We've taken 200+ guests; zero complaints.",
+      "source": {
+        "who": "team",
+        "where": "blog/what-vegetarian-actually-means",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "vegetarian",
+        "temple",
+        "value",
+        "atmosphere"
+      ],
+      "rejected": true
+    },
+    {
+      "id": "herbs-spices-kl-wet-markets",
+      "topic": "herb and spice sourcing in KL",
+      "stance": "Best selection of fresh herbs and whole spices is at KL wet markets plus Indian grocers in Brickfields and Little India.",
+      "why": "Wet market vendors (Chow Kit, Pudu) restock daily from Cameron Highlands and Thai border — herbs harvested <24h ago. Brickfields/Little India grocers carry whole spices (star anise, clove, cardamom) in bulk turnover that supermarket jars can't match for aroma.",
+      "source": {
+        "who": "team",
+        "where": "blog/malaysian-herbs-and-spices",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "herbs",
+        "spices",
+        "kl",
+        "sourcing",
+        "wet-market"
+      ]
+    },
+    {
+      "id": "tong-sui-picks",
+      "topic": "tong sui dessert picks",
+      "stance": "Red bean soup, peanut paste soup, and black-eyed pea soup are our tong sui picks.",
+      "why": "These three represent the texture spectrum we value: red bean (whole beans, skin-on, earthy), peanut paste (velvety, nut-oil richness), black-eyed pea (delicate, slightly floral). Cendol and ABC are ubiquitous; these three reward seeking out.",
+      "source": {
+        "who": "team",
+        "where": "blog/must-try-malaysian-street-food",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "tong-sui",
+        "dessert",
+        "street-food",
+        "specific-dishes"
+      ]
+    },
+    {
+      "id": "craft-souvenirs-worth-it",
+      "topic": "craft souvenir value",
+      "stance": "Craft souvenirs are a little pricey, worth it for the craftsmanship.",
+      "why": "Batik block-printing, songket weaving, and pewter in KL workshops employ heritage techniques with living artisans. RM150–400 buys an object with documented provenance; mass-market souvenirs (RM20–50) are factory-printed with no maker traceability. The price gap is the craftsmanship gap.",
+      "source": {
+        "who": "team",
+        "where": "blog/souvenirs-for-foodies",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "souvenirs",
+        "craft",
+        "value",
+        "batik",
+        "songket",
+        "pewter"
+      ]
+    },
+    {
+      "id": "pulau-ketam-port-klang-stopover",
+      "topic": "Pulau Ketam from Port Klang",
+      "stance": "Pulau Ketam from a Port Klang stopover is a schlep, but worth it in our opinion.",
+      "why": "45 min ferry each way + 20 min KTM from KL Sentral + walking the stilt village = 4–5 hours round trip. The payoff: mangrove-boardwalk silence, fresh steamed fish at floating restaurants (RM35–50), and zero tour buses. Only worth it if you have 6+ hours in KL and value quiet over efficiency.",
+      "source": {
+        "who": "team",
+        "where": "blog/port-klang-to-kuala-lumpur",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "pulau-ketam",
+        "port-klang",
+        "stopover",
+        "day-trip",
+        "tradeoff"
+      ],
+      "rejected": true
+    },
+    {
+      "id": "brand-street-food-with-guide",
+      "topic": "brand point of view on street food experience",
+      "stance": "Experience street food with someone who knows the stalls and which aunty makes the best roti canai.",
+      "why": "Our guides have eaten at these stalls weekly for years — they know which aunty's dough rests 4 hours vs 30 minutes, which stall switches oil at noon. That knowledge difference is the product; the food is the vehicle. Guests who DIY the same route miss the 'why this stall' layer entirely.",
+      "source": {
+        "who": "Maarten",
+        "where": "blog/malaysian-street-food-local-guide + team conversation",
+        "date": null
+      },
+      "status": "candidate",
+      "tags": [
+        "brand",
+        "street-food",
+        "guide-value",
+        "roti-canai"
+      ]
+    }
+  ]
+}

@@ -2,19 +2,20 @@
 import Layout from '~/layouts/Default.astro';
 import { ACCESS_BASE } from '~/config';
 
-const title = 'What to Eat in Malaysia | Malaysian Food Checklist';
+const title = 'Keep track of the best food you eat in Malaysia | Malaysian Food Checklist';
 const description =
-  'A checklist of Malaysia\u2019s defining dishes, so you know what is worth eating and where to find it. Enter your email to hear when it is ready.';
+  'A food journal for your trip: tick off the dishes worth remembering as you taste them, rate what you loved, and note where you found it. Free to start.';
 ---
 
 <Layout title={title} description={description}>
   <main class="coming-soon">
     <div class="cs-container">
-      <p class="cs-eyebrow">Starts with the dishes</p>
-      <h1>The Malaysian Food Checklist</h1>
+      <p class="cs-eyebrow">Your trip, on paper</p>
+      <h1>Keep track of the best food you eat in Malaysia</h1>
       <p class="cs-lede">
-        The dishes worth trying as a visitor, and where each one comes from, in one place.
-        Simple to use on your phone.
+        Every trip has meals you wish you'd written down.
+        Tick them off as you taste them, rate what you loved, and leave with
+        the record of the real Malaysia you ate.
       </p>
 
       <form id="waitlist-form" class="cs-form">
@@ -26,7 +27,7 @@ const description =
           autocomplete="email"
           aria-label="Email address"
         />
-        <button type="submit" id="waitlist-btn">Keep me in the loop</button>
+        <button type="submit" id="waitlist-btn">Get the free checklist</button>
       </form>
       <p id="waitlist-note" class="cs-note" aria-live="polite">
         We only email when there is something worth telling you.

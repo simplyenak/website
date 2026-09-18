@@ -216,7 +216,7 @@ export const locationSegments = [
  heroSubtitle: "Eat your way through Malaysia's capital",
  metaTitle: 'Food Tours in Kuala Lumpur | Small-Group Walking Tours',
  metaDescription: 'Join Simply Enak for small-group food tours in Kuala Lumpur. Explore Chinatown, Little India, and hidden local stalls with expert local guides. Book online.',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'secrets-of-kl-nightlife-street-art-and-cocktails'],
  },
  {
  slug: 'food-tours-penang',
@@ -236,7 +236,7 @@ export const locationSegments = [
  heroSubtitle: "Malaysia's food story, neighbourhood by neighbourhood",
  metaTitle: 'Food Tours in Malaysia | Small-Group Local Guide Tours',
  metaDescription: 'Book food tours across Malaysia with Simply Enak. Walking tours in KL, Penang, and beyond with expert local guides. Small groups, real stories, unforgettable meals. Reserve your spot.',
- tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'georgetown-night-food-durian', 'secrets-of-kl-nightlife'],
+ tours: ['flavours-of-malaysia', 'kuala-lumpur-street-food', 'penang-street-food', 'georgetown-night-food-durian', 'secrets-of-kl-nightlife-street-art-and-cocktails'],
  geoTag: 'Malaysia',
  },
  {
@@ -244,21 +244,21 @@ export const locationSegments = [
  name: 'Melaka',
  description: "Discover Melaka's 600-year Peranakan food heritage around Jonker Street and Harmony Street - a unique blend of Malay, Chinese, and Portuguese influences.",
  metaTitle: 'Food Tours in Melaka | Peranakan Heritage Walk',
- tours: ['flavours-of-malaysia'],
+ tours: [], // private-only city: no join-in listing until private-on-request variant ships
  },
  {
     slug: 'food-tours-ipoh',
     name: 'Ipoh',
     description: 'Ipoh is famous for its white coffee, bean sprout chicken, and nostalgic old-town food scene around Concubine Lane and the Kinta River.',
     metaTitle: 'Food Tours in Ipoh',
-    tours: ['flavours-of-malaysia'],
+    tours: [], // private-only city: no join-in listing until private-on-request variant ships
  },
  {
     slug: 'food-tours-klang',
     name: 'Klang',
     description: 'Klang is the birthplace of bak kut teh. Explore the original pork bone tea and Hokkien heritage around the Klang KTM station, Jalan Besar, and Little India Klang.',
     metaTitle: 'Food Tours in Klang',
-    tours: ['flavours-of-malaysia'],
+    tours: [], // private-only city: no join-in listing until private-on-request variant ships
  },
  // Neighborhoods - city-specific landing pages
  {

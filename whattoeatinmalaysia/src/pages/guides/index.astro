@@ -7,10 +7,10 @@ const regionOrder: Region[] = ['north', 'central', 'south', 'east-coast', 'borne
 const grouped = regionOrder.map(r => ({ region: r, states: states.filter(s => s.region === r) }));
 ---
 
-<Default title="State Guides | What to Eat in Malaysia" description="Deep-dive guides for all 16 states of Malaysia: signature dishes, famous stalls, halal status. Every dish tickable on the free checklist as you eat it.">
+<Default title="State Checklists | What to Eat in Malaysia" description="Deep-dive checklists for all 16 states of Malaysia: signature dishes, famous stalls, halal status. Every dish tickable on the free checklist as you eat it.">
   <main class="guides-page">
     <div class="container">
-      <h1>Malaysia State Food Guides</h1>
+      <h1>Malaysia State Food Checklists</h1>
         <p class="lead">
           Every signature dish in each state, with where to eat, famous stalls, halal status, and best time to visit.
         </p>
@@ -51,7 +51,7 @@ const grouped = regionOrder.map(r => ({ region: r, states: states.filter(s => s.
                   </div>
                 </a>
                 <footer class="guide-card-foot">
-                  <a class="guide-link" href={`/guides/${state.id}`}>Open guide</a>
+                  <a class="guide-link" href={`/guides/${state.id}`}>Open checklist</a>
                   {state.cta && <a class="guide-cta" href={state.cta.url} target="_blank" rel="noopener">{state.cta.label}</a>}
                 </footer>
               </article>

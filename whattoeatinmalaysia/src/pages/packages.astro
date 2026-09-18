@@ -27,7 +27,7 @@ const guideCards = [
     status: 'live',
     image: '/images/covers/kl.jpg',
     blurb: 'Chinatown, Kampung Baru, Bangsar. How to move between them by LRT or walking.',
-    features: ['Neighborhood guides', 'Hawker center maps', 'Transit tips', 'Notes & ratings'],
+    features: ['Neighborhood checklists', 'Hawker center maps', 'Transit tips', 'Notes & ratings'],
     checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/kuala-lumpur-food-checklist/'
   },
   {
@@ -47,8 +47,9 @@ const guideCards = [
     status: 'live',
     image: '/images/covers/halal.svg',
     blurb: 'JAKIM-verified areas, prayer room locations, and what to ask at Chinese hawker stalls.',
-    features: ['Prayer room maps', 'Ingredient watch-list', 'Where to ask', 'Notes & ratings'],
-    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/halal-food-checklist/'
+    features: ['Prayer room maps', 'Ingredient watch-list', 'What to ask stalls', 'Notes & ratings'],
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/halal-food-checklist/',
+    badge: 'Dietary'
   },
   {
     id: 'dietary-veg',
@@ -57,8 +58,9 @@ const guideCards = [
     status: 'live',
     image: '/images/covers/vegetarian.jpg',
     blurb: 'Indian restaurants, Buddhist cha fan outlets, and mamak ordering tricks.',
-    features: ['Restaurant lists', 'Mamak ordering guide', 'Buddhist options', 'Notes & ratings'],
-    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/vegetarian-food-checklist/'
+    features: ['Restaurant lists', 'Mamak ordering tips', 'Buddhist options', 'Notes & ratings'],
+    checkoutUrl: 'https://checkout.whattoeatinmalaysia.com/vegetarian-food-checklist/',
+    badge: 'Dietary'
   },
   {
     id: 'full-collection',
@@ -94,6 +96,7 @@ const guideCards = [
               <div class="guide-card-image-wrap">
                 <img src={card.image} alt={`${card.name} cover`} loading="lazy" />
                 <span class={`guide-card-status ${card.status}`}>{card.status === 'free' ? 'Free' : card.status === 'live' ? 'Available' : 'Coming soon'}</span>
+                {card.badge && <span class="guide-card-badge">{card.badge}</span>}
                 {card.featured && <span class="guide-card-best">Best value</span>}
               </div>
               <div class="guide-card-body">
@@ -118,7 +121,7 @@ const guideCards = [
         </div>
         <ul class="packages-trust">
           <li>Pay once, own it forever. No subscription.</li>
-          <li>Secure checkout via ThriveCart. Your guides unlock instantly on the payment success page.</li>
+          <li>Secure checkout via ThriveCart. Your checklists unlock instantly on the payment success page.</li>
           <li>Bought on another device? Your login link always works.</li>
         </ul>
       </section>
@@ -247,9 +250,9 @@ const guideCards = [
       flex-wrap: wrap;
     }
     .guide-card-price {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--color-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-accent);
     }
     .price-compare {
       font-size: 0.9rem;
@@ -281,6 +284,19 @@ const guideCards = [
       background: #fff;
       color: var(--color-accent);
       border: 1px solid var(--color-accent);
+    }
+    .guide-card-badge {
+      position: absolute;
+      top: 12px;
+      left: 60px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
     }
     .packages-trust {
       list-style: none;

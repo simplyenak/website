@@ -43,12 +43,13 @@ import payload_env  # noqa: E402  (loads site/.env -> OMNIROUTE_API_KEY)
 
 QUERIES_FILE = REPO / "scripts" / "ai-citation-queries.json"
 HISTORY_FILE = Path.home() / ".hermes-website" / "seo-reports" / "ai-citation-history.json"
+GAPS_FILE = Path.home() / ".hermes-website" / "seo-reports" / "ai-citation-gaps.json"
 OMNIROUTE_BASE = os.environ.get("OMNIROUTE_BASE", "https://omniroute.system.simplyenak.com/v1")
 API_KEY = os.environ.get("OMNIROUTE_API_KEY", "")
 
 FAMILIES = {
     "gpt": ["github/gpt-5.5", "gh/gpt-5.5", "ddgw/gpt-5.4-mini"],
-    "claude": ["github/claude-sonnet-5", "gh/claude-fable-5", "github/claude-fable-5"],
+    "claude": ["auto/claude-sonnet", "github/claude-sonnet-5", "gh/claude-fable-5", "github/claude-fable-5"],
     "gemini": ["github/gemini-3.5-flash", "gh/gemini-3.5-flash", "nous/google/gemini-3.8-flash"],
     # stable workhorse: guarantees a trend line in weeks where the big-3
     # shared credentials are saturated (429 model_cooldown)
@@ -226,6 +227,19 @@ def main() -> int:
     run["per_family"] = per_family
     run["disabled_families"] = disabled
 
+    # Gap-to-brief loop: queries where >=1 family answered but none cited us.
+    # These are the questions where content should exist; feed them into
+    # seo/question-backlog.md and the content_briefs collection.
+    gaps = []
+    for q in answered_queries:
+        fams = run["per_query"][q]
+        answered = [f for f, v in fams.items() if "cited" in v]
+        if answered and not any(v.get("cited") for v in fams.values()):
+            gaps.append({"query": q, "answered_by": answered})
+    GAPS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    GAPS_FILE.write_text(json.dumps({"date": run["date"], "gaps": gaps}, indent=1))
+    run["gaps_count"] = len(gaps)
+
     history = load_history()
     prev = next((h for h in reversed(history)
                  if h.get("families") == run["families"] and h.get("per_query")), None)
@@ -242,6 +256,7 @@ def main() -> int:
         else:
             fam_bits.append(f"{f} {c}/{len(answered_queries)}")
     lines.append("Per family: " + ", ".join(fam_bits))
+    lines.append(f"Content gaps (answered, not cited): {len(gaps)} -> ~/.hermes-website/seo-reports/ai-citation-gaps.json")
     if prev:
         prev_cited = {q for q in prev.get("per_query", {})
                       if any(v.get("cited") for v in prev["per_query"][q].values())}

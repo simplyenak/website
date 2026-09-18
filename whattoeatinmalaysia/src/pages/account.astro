@@ -1,7 +1,7 @@
 ---
 import Default from '../layouts/Default.astro';
 ---
-<Default title="Your guides | What to Eat in Malaysia" description="Your purchases and unlocked guides." noindex>
+<Default title="Your checklists | What to Eat in Malaysia" description="Your purchases and unlocked checklists." noindex>
   <main class="account-dashboard">
     <div class="container">
       <div id="dashboard-content">
@@ -45,7 +45,7 @@ import Default from '../layouts/Default.astro';
           description: 'LRT routes, Kampung Baru, Bangsar food trail.',
           badge: null,
           color: '#7A2E1D',
-          includes: ['Neighborhood guides', 'LRT connections', 'Food trails'],
+          includes: ['Neighborhood checklists', 'LRT connections', 'Food trails'],
         },
         'city-melaka': {
           name: 'Melaka Food Checklist',
@@ -63,7 +63,7 @@ import Default from '../layouts/Default.astro';
           description: 'Prayer room locations, ingredient watch-lists, stall questions.',
           badge: 'Dietary',
           color: '#1E6B3A',
-          includes: ['Prayer room maps', 'Ingredient guide', 'Hawker questions'],
+          includes: ['Prayer room maps', 'Ingredient checklist', 'Hawker questions'],
         },
         'dietary-veg': {
           name: 'Vegetarian Food Checklist',
@@ -97,10 +97,10 @@ import Default from '../layouts/Default.astro';
         content.innerHTML =
           '<div class="dashboard-empty">' +
             '<div class="empty-icon">🔓</div>' +
-            '<h2>Sign in to see your guides</h2>' +
+            '<h2>Sign in to see your checklists</h2>' +
             '<p>Log in with your email and we send you a one-time link. No passwords.</p>' +
             '<a href="/login" class="btn-primary">Sign in →</a>' +
-            '<p class="empty-alt">Bought a guide but never got a link? <a href="/login">Log in with your purchase email</a> and we will match it.</p>' +
+            '<p class="empty-alt">Bought a checklist but never got a link? <a href="/login">Log in with your purchase email</a> and we will match it.</p>' +
           '</div>';
       }
 
@@ -110,7 +110,7 @@ import Default from '../layouts/Default.astro';
         var daysLeft = validUntil ? Math.ceil((validUntil - today) / 86400000) : null;
         var accessExpiry = validUntil ? validUntil.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
 
-        // Build purchased guides HTML
+        // Build purchased checklists HTML
         var guidesHtml = '';
         if (d.products && d.products.length) {
           var guideCards = d.products.map(function(pid) {
@@ -138,14 +138,14 @@ import Default from '../layouts/Default.astro';
               '</div>' +
               '<div class="guide-footer">' +
                 '<span class="guide-price">' + esc(p.price) + '</span>' +
-                '<a href="/guides" class="btn-secondary">View guide</a>' +
+                '<a href="/guides" class="btn-secondary">View checklist</a>' +
               '</div>' +
             '</div>';
           }).join('');
 
           guidesHtml = '<section class="dashboard-section">' +
             '<div class="section-header">' +
-              '<h2>Your guides</h2>' +
+              '<h2>Your checklists</h2>' +
               '<span class="section-count">' + d.products.length + ' purchased</span>' +
             '</div>' +
             '<div class="guides-grid">' + guideCards + '</div>' +
@@ -154,9 +154,9 @@ import Default from '../layouts/Default.astro';
           guidesHtml = '<section class="dashboard-section">' +
             '<div class="dashboard-empty">' +
               '<div class="empty-icon">📚</div>' +
-              '<h2>No guides yet</h2>' +
-              '<p>Start with the free checklist, then grab the guides for the places you\'re visiting.</p>' +
-              '<a href="/packages" class="btn-primary">Browse guides →</a>' +
+              '<h2>No checklists yet</h2>' +
+              '<p>Start with the free checklist, then grab the checklists for the places you\'re visiting.</p>' +
+              '<a href="/packages" class="btn-primary">Browse checklists →</a>' +
             '</div>' +
           '</section>';
         }
@@ -221,15 +221,15 @@ import Default from '../layouts/Default.astro';
             '<a href="/guides" class="action-card">' +
               '<div class="action-icon">🗺️</div>' +
               '<div class="action-text">' +
-                '<strong>All guides</strong>' +
-                '<span>Browse state guides</span>' +
+                '<strong>All checklists</strong>' +
+                '<span>Browse state checklists</span>' +
               '</div>' +
               '<span class="action-arrow">→</span>' +
             '</a>' +
             '<a href="/packages" class="action-card">' +
               '<div class="action-icon">🛒</div>' +
               '<div class="action-text">' +
-                '<strong>More guides</strong>' +
+                '<strong>More checklists</strong>' +
                 '<span>Expand your collection</span>' +
               '</div>' +
               '<span class="action-arrow">→</span>' +

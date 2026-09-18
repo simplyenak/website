@@ -6,14 +6,23 @@
 # success — the artifacts must be verified (contamination clean, coverage
 # complete, schema conformant, files parse).
 #
-# Usage: bash scripts/verify-i18n.sh [--strict]
-#   --strict  → exit 1 on ANY failure (for CI / heal gate)
+# Usage: bash scripts/verify-i18n.sh [--strict | --deploy]
+#   --strict  → exit 1 on ANY failure incl. incomplete coverage (for CI / heal gate)
+#   --deploy  → exit 1 on corruption (contamination, broken JSON/ui.ts, schema
+#               mismatch) but tolerate incomplete coverage — the staggered
+#               heal (one language per run) is legitimately partial. Use this
+#               as the pre-push gate.
 #   default   → exit 1 only on contamination (the hard invariant)
 #
 # Exits 0 if OK, 1 if checks fail.
 
 cd "$(dirname "$0")/.."
-STRICT="${1:-}"
+STRICT=""
+DEPLOY=""
+case "${1:-}" in
+  --strict) STRICT="--strict" ;;
+  --deploy) DEPLOY="--deploy" ;;
+esac
 
 fail=0
 
@@ -74,8 +83,8 @@ if [ -n "$STRICT" ]; then
   fi
 fi
 
-# 5. Schema conformance (strict only — needs admin key)
-if [ -n "$STRICT" ] && [ -n "$PAYLOAD_ADMIN_API_KEY" ]; then
+# 5. Schema conformance (strict/deploy — needs admin key)
+if { [ -n "$STRICT" ] || [ -n "$DEPLOY" ]; } && [ -n "$PAYLOAD_ADMIN_API_KEY" ]; then
   echo "▸ Schema conformance..."
   if (cd site && node --env-file=.env ../eval/check-schema-conformance.mjs --fail 2>/dev/null); then
     echo "  ✅ Schema conformant."

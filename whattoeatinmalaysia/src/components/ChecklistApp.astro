@@ -8,12 +8,14 @@ import {
   packages,
   dataVerified,
   REGION_LABELS,
+  getMealTags,
+  getVenueTags,
   type Region,
 } from '~/data/dishes';
 
-const title = `Malaysian Food Checklist: 81 Dishes to Try and Track`;
+const title = `Keep track of the best food you eat in Malaysia`;
 const description =
-  'Every famous Malaysian dish in one checklist. Tick dishes off as you taste them, rate each one, and note where you ate it. Free, no account needed, works on your phone.';
+  'Keep track of the best food you eat in Malaysia. Tick dishes off as you taste them, rate each one, and note where you ate it. Free to start, no account needed, works on your phone.';
 
 const siteUrl = 'https://whattoeatinmalaysia.com';
 
@@ -24,7 +26,7 @@ const byRegion = regionsOrder.map((r) => ({
   states: states.filter((s) => s.region === r),
 }));
 
-const checkPath = 'M4.5 12.8c2.7 1.3 4.4 3.6 5.4 6.1 2-5.6 5.9-10.4 11.1-13.7';
+const checkPath = 'M20 6L9 17l-5-5';
 
 // Dish images mapping - placeholder colored tiles for now
 const dishImages: Record<string, string> = {
@@ -44,15 +46,14 @@ const dishImages: Record<string, string> = {
 
   <header class="hero">
     <div class="container">
-      <h1>What to Eat in Malaysia: The 81-Dish Checklist</h1>
+      <h1>Keep track of the best food you eat in Malaysia</h1>
       <p class="lede">
-        A free checklist of 81 dishes across 16 states.
-        Tick what you have tried, rate each one, write notes about where you found it.
-        Buy a detailed guide when you want to go deeper.
+        Tick off the dishes worth a detour, one by one. Rate what you loved,
+        note the stall, and leave with a record of the real Malaysia you ate.
       </p>
             <div class="hero-stats" aria-hidden="true">
-              <span><b>81</b> dishes to track</span><span class="dot">&middot;</span>
-              <span><b>Free</b> forever</span><span class="dot">&middot;</span>
+              <span><b>{checklistTotal}</b> dishes across 16 states</span><span class="dot">&middot;</span>
+              <span><b>Free</b> to start</span><span class="dot">&middot;</span>
               <span><b>No account</b> needed</span>
             </div>
             <p class="hero-trust" aria-hidden="true">
@@ -124,6 +125,11 @@ const dishImages: Record<string, string> = {
           <span class="cl-txt">
             <strong>{c.name}</strong>
             <em>{c.what}</em>
+            {(() => {
+              const tags = [...getMealTags(c.bestTime), ...getVenueTags(c.where)];
+              if (tags.length === 0) return null;
+              return <span class="dish-tags">{tags.map(t => <span class={`tag tag-${t}`}>{t}</span>)}</span>;
+            })()}
           </span>
           <div class="dish-notes" data-dish-id={c.id}>
             <div class="rating" data-dish-rating={c.id}>
@@ -147,29 +153,29 @@ const dishImages: Record<string, string> = {
       <h2 class="section-title">What's inside</h2>
       <p class="section-subtitle">Built from the dishes Malaysia actually eats, state by state</p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 32px;">
-        <div class="proof-stat">
-          <div class="num">81</div>
-          <div class="label">Dishes tracked across 16 states</div>
-        </div>
-        <div class="proof-stat">
-          <div class="num">12</div>
-          <div class="label">Free classics to start with</div>
-        </div>
-        <div class="proof-stat">
-          <div class="num">5</div>
-          <div class="label">Premium guides available</div>
-        </div>
-      </div>
+              <div class="proof-stat">
+                <div class="num">{checklistTotal}</div>
+                <div class="label">Dishes across 16 states</div>
+              </div>
+              <div class="proof-stat">
+                <div class="num">{nationalClassics.length}</div>
+                <div class="label">Free classics to start with</div>
+              </div>
+              <div class="proof-stat">
+                <div class="num">5</div>
+                <div class="label">Deeper checklists available</div>
+              </div>
+            </div>
     </div>
   </section>
 
   <section class="commerce-section">
     <div class="container">
       <div class="commerce-header">
-        <h2 class="section-title">Unlock deeper guides</h2>
+        <h2 class="section-title">Unlock deeper checklists</h2>
         <p class="section-subtitle">
-          Start with the free checklist. When you're ready, pick the guides for the places you're visiting.
-          Every guide includes district maps, best-times guidance, and dietary flags. Your notes and ratings sync across devices too.
+          Start with the free checklist. When you're ready, pick the checklists for the places you're visiting.
+          Every checklist includes district maps, best-times guidance, and dietary flags. Your notes and ratings sync across devices too.
         </p>
       </div>
 
@@ -177,7 +183,7 @@ const dishImages: Record<string, string> = {
         <div class="product-featured">
           <div class="product-badge">Best value</div>
           <div class="product-image" style="background: linear-gradient(135deg, #C99B3F 0%, #E8A020 100%);">
-            <span class="product-image-text">5 Guides</span>
+            <span class="product-image-text">5 Checklists</span>
           </div>
           <div class="product-info">
             <h3>Full Collection</h3>
@@ -214,7 +220,7 @@ const dishImages: Record<string, string> = {
             </div>
             <div class="product-info-sm">
               <h3>Penang Food Checklist</h3>
-              <p class="product-desc-sm">George Town street food deep dive: char kway teow, assam laksa, Hokkien mee.</p>
+              <p class="product-desc-sm">Know which district to walk and when: char kway teow, assam laksa, Hokkien mee without the queued-for-tourists stops.</p>
               <div class="product-price-row-sm">
                 <div class="price-block">
                   <span class="price-current">US$3.99</span>
@@ -278,7 +284,7 @@ const dishImages: Record<string, string> = {
             </div>
             <div class="product-info-sm">
               <h3>Melaka Food Checklist</h3>
-              <p class="product-desc-sm">UNESCO city flavours: ayam buah keluak, nyonya laksa, cendol, chicken rice balls.</p>
+              <p class="product-desc-sm">Jonker Walk and the heritage quarter, timed right: ayam buah keluak, nyonya laksa, cendol, chicken rice balls.</p>
               <div class="product-price-row-sm">
                 <div class="price-block">
                   <span class="price-current">US$3.99</span>
@@ -291,7 +297,7 @@ const dishImages: Record<string, string> = {
       </div>
 
       <p class="commerce-note">
-        All guides unlock instantly after payment. Notes and ratings sync across devices when you log in.
+        All checklists unlock instantly after payment. Notes and ratings sync across devices when you log in.
       </p>
     </div>
   </section>
@@ -425,16 +431,16 @@ const dishImages: Record<string, string> = {
 
   // Attach event listeners for ratings and notes
   document.querySelectorAll('.star').forEach(function (star) {
-    star.addEventListener('click', function () {
+    star.addEventListener('click', function (e) {
+      e.stopPropagation();
       var dishId = this.closest('[data-dish-rating]').getAttribute('data-dish-rating');
       var rating = parseInt(this.getAttribute('data-star'));
-      ratingStates[dishId] = ratingStates[dishId] || {};
-      ratingStates[dishId].rating = rating;
+      setRating(dishId, rating);
       var stars = this.parentElement.querySelectorAll('.star');
       stars.forEach(function (s, idx) {
         s.textContent = idx < rating ? '★' : '☆';
+        s.classList.toggle('active', idx < rating);
       });
-      saveNote(dishId);
     });
   });
 
@@ -442,10 +448,9 @@ const dishImages: Record<string, string> = {
     var debouncedSave;
     textarea.addEventListener('input', function () {
       var dishId = this.getAttribute('data-dish-note');
-      ratingStates[dishId] = ratingStates[dishId] || {};
-      ratingStates[dishId].note = this.value;
+      var text = this.value;
       clearTimeout(debouncedSave);
-      debouncedSave = setTimeout(function () { saveNote(dishId); }, 1000);
+      debouncedSave = setTimeout(function () { setNote(dishId, text); }, 1000);
     });
   });
 

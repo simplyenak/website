@@ -9,7 +9,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -64,7 +64,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -82,8 +82,8 @@
             "type": "paragraph",
             "children": [
               {
-                "type": "text",
-                "text": "FAQ: Why do Malaysians eat with their hands"
+                "text": "FAQ: Why do Malaysians eat with their hands",
+                "type": "text"
               }
             ]
           }
@@ -97,7 +97,7 @@
     "meta_title": null,
     "meta_description": null,
     "status": "published",
-    "workflowStatus": "published",
+    "workflowStatus": "draft",
     "scheduledPublish": null,
     "locationsRef": [],
     "translations": null,
@@ -106,9 +106,9 @@
       "description": "Visitors to Malaysia often want to know more about food culture malaysia. The short answer is that Malaysia's food scene is diverse, and there is something for ",
       "image": null
     },
-    "updatedAt": "2026-09-04T03:00:39.390Z",
+    "updatedAt": "2026-09-15T01:33:07.210Z",
     "createdAt": "2026-09-04T03:00:39.389Z",
-    "_status": "published"
+    "_status": "draft"
   },
   {
     "id": 330,
@@ -120,7 +120,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -138,8 +138,8 @@
             "type": "paragraph",
             "children": [
               {
-                "type": "text",
-                "text": "FAQ: What is the food culture like in Malaysia"
+                "text": "FAQ: What is the food culture like in Malaysia",
+                "type": "text"
               }
             ]
           }
@@ -153,7 +153,7 @@
     "meta_title": null,
     "meta_description": null,
     "status": "published",
-    "workflowStatus": "published",
+    "workflowStatus": "draft",
     "scheduledPublish": null,
     "locationsRef": [],
     "translations": null,
@@ -162,9 +162,9 @@
       "description": "If you are wondering what what is the food culture like in malaysia is, you are not alone. Visitors ask this all the time. In Malaysia, the answer depends on wh",
       "image": null
     },
-    "updatedAt": "2026-09-04T03:00:39.299Z",
+    "updatedAt": "2026-09-15T01:33:07.772Z",
     "createdAt": "2026-09-04T03:00:39.299Z",
-    "_status": "published"
+    "_status": "draft"
   },
   {
     "id": 307,
@@ -176,7 +176,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -194,8 +194,8 @@
             "type": "paragraph",
             "children": [
               {
-                "type": "text",
-                "text": "FAQ: What is included in a Malaysian food tour"
+                "text": "FAQ: What is included in a Malaysian food tour",
+                "type": "text"
               }
             ]
           }
@@ -209,7 +209,7 @@
     "meta_title": null,
     "meta_description": null,
     "status": "published",
-    "workflowStatus": "published",
+    "workflowStatus": "draft",
     "scheduledPublish": null,
     "locationsRef": [],
     "translations": null,
@@ -218,9 +218,9 @@
       "description": "If you are wondering what what is included in a malaysian food tour is, you are not alone. Visitors ask this all the time. In Malaysia, the answer depends on wh",
       "image": null
     },
-    "updatedAt": "2026-08-31T03:00:11.077Z",
+    "updatedAt": "2026-09-15T01:33:08.355Z",
     "createdAt": "2026-08-31T03:00:11.077Z",
-    "_status": "published"
+    "_status": "draft"
   },
   {
     "id": 306,
@@ -232,7 +232,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -250,8 +250,8 @@
             "type": "paragraph",
             "children": [
               {
-                "type": "text",
-                "text": "FAQ: How much does a food tour cost in Malaysia"
+                "text": "FAQ: How much does a food tour cost in Malaysia",
+                "type": "text"
               }
             ]
           }
@@ -265,7 +265,7 @@
     "meta_title": null,
     "meta_description": null,
     "status": "published",
-    "workflowStatus": "published",
+    "workflowStatus": "draft",
     "scheduledPublish": null,
     "locationsRef": [],
     "translations": null,
@@ -274,9 +274,9 @@
       "description": "This depends on what you order and where. A plate of nasi lemak at a KL hawker centre costs RM 3-5, while char kway teow in Penang runs RM 6-8. Satay is RM 1.50",
       "image": null
     },
-    "updatedAt": "2026-08-31T03:00:11.022Z",
+    "updatedAt": "2026-09-15T01:33:08.927Z",
     "createdAt": "2026-08-31T03:00:11.021Z",
-    "_status": "published"
+    "_status": "draft"
   },
   {
     "id": 305,
@@ -288,7 +288,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -306,8 +306,8 @@
             "type": "paragraph",
             "children": [
               {
-                "type": "text",
-                "text": "FAQ: Where can I find the best street food in Kuala Lumpur"
+                "text": "FAQ: Where can I find the best street food in Kuala Lumpur",
+                "type": "text"
               }
             ]
           }
@@ -321,7 +321,7 @@
     "meta_title": null,
     "meta_description": null,
     "status": "published",
-    "workflowStatus": "published",
+    "workflowStatus": "draft",
     "scheduledPublish": null,
     "locationsRef": [],
     "translations": null,
@@ -330,9 +330,9 @@
       "description": "Jalan Alor is the most famous street food street in Kuala Lumpur, packed with outdoor stalls and busy until midnight. But locals know the best food is often fou",
       "image": null
     },
-    "updatedAt": "2026-08-31T03:00:10.475Z",
+    "updatedAt": "2026-09-15T01:33:09.477Z",
     "createdAt": "2026-08-31T03:00:10.475Z",
-    "_status": "published"
+    "_status": "draft"
   },
   {
     "id": 304,
@@ -344,7 +344,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -362,8 +362,8 @@
             "type": "paragraph",
             "children": [
               {
-                "type": "text",
-                "text": "FAQ: What is the most popular street food in Malaysia"
+                "text": "FAQ: What is the most popular street food in Malaysia",
+                "type": "text"
               }
             ]
           }
@@ -377,7 +377,7 @@
     "meta_title": null,
     "meta_description": null,
     "status": "published",
-    "workflowStatus": "published",
+    "workflowStatus": "draft",
     "scheduledPublish": null,
     "locationsRef": [],
     "translations": null,
@@ -386,9 +386,9 @@
       "description": "Nasi lemak is widely considered Malaysia's most popular street food. This fragrant coconut rice dish comes with sambal, anchovies, peanuts, and a hard-boiled eg",
       "image": null
     },
-    "updatedAt": "2026-08-31T03:00:10.400Z",
+    "updatedAt": "2026-09-15T01:33:10.021Z",
     "createdAt": "2026-08-31T03:00:10.400Z",
-    "_status": "published"
+    "_status": "draft"
   },
   {
     "id": 301,
@@ -400,7 +400,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -513,7 +513,7 @@
       "description": "Penang's durian season runs late May to August, peaking in June and July. Balik Pulau orchards, Black Thorn and Hor Lor, and the Jalan Macalister durian strip.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:06.595Z",
+    "updatedAt": "2026-09-14T09:06:54.720Z",
     "createdAt": "2026-08-16T08:02:59.191Z",
     "_status": "draft"
   },
@@ -527,7 +527,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -627,7 +627,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:07.508Z",
+    "updatedAt": "2026-09-14T09:06:56.125Z",
     "createdAt": "2026-08-14T08:25:47.937Z",
     "_status": "draft"
   },
@@ -641,7 +641,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1040,7 +1040,7 @@
       "description": "Plan your durian trip to Malaysia. Peak season is June-August. Learn when to visit, where to find the best fruit, and what varieties are available by month.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:07.809Z",
+    "updatedAt": "2026-09-14T09:06:56.481Z",
     "createdAt": "2026-08-05T00:39:07.792Z",
     "_status": "published"
   },
@@ -1054,7 +1054,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1153,7 +1153,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:08.723Z",
+    "updatedAt": "2026-09-14T09:06:58.098Z",
     "createdAt": "2026-08-04T23:35:13.028Z",
     "_status": "draft"
   },
@@ -1167,7 +1167,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1353,7 +1353,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:08.925Z",
+    "updatedAt": "2026-09-14T09:06:58.324Z",
     "createdAt": "2026-08-04T23:35:12.965Z",
     "_status": "draft"
   },
@@ -1367,7 +1367,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1472,7 +1472,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:09.189Z",
+    "updatedAt": "2026-09-14T09:06:58.601Z",
     "createdAt": "2026-08-04T23:16:54.996Z",
     "_status": "draft"
   },
@@ -1486,7 +1486,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1659,7 +1659,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:09.391Z",
+    "updatedAt": "2026-09-14T09:06:58.832Z",
     "createdAt": "2026-08-04T23:16:54.700Z",
     "_status": "draft"
   },
@@ -1673,7 +1673,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -1882,7 +1882,7 @@
       "description": "What Malaysia food tours actually involve — the dishes you will eat, the difference a good guide makes, and how to choose between a half-day tasting and a multi-day food trip across KL and Penang.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:09.676Z",
+    "updatedAt": "2026-09-14T09:06:59.145Z",
     "createdAt": "2026-07-29T01:09:05.310Z",
     "_status": "draft"
   },
@@ -1896,7 +1896,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -2135,7 +2135,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:10.140Z",
+    "updatedAt": "2026-09-14T09:06:59.647Z",
     "createdAt": "2026-07-20T02:21:48.999Z",
     "_status": "published"
   },
@@ -2149,7 +2149,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -2697,7 +2697,7 @@
       "description": "Landing in KL with two days? Here is what to eat, where, and how to order it. Nasi lemak, roti canai, char kuey teow, claypot chicken rice, and more.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:10.768Z",
+    "updatedAt": "2026-09-14T09:07:00.553Z",
     "createdAt": "2026-07-11T14:49:06.525Z",
     "_status": "published"
   },
@@ -2711,7 +2711,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -3501,7 +3501,7 @@
       "description": "Twelve traditional Malaysian kuehs that bring local flavour to your Christmas celebrations.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:11.250Z",
+    "updatedAt": "2026-09-14T09:07:01.090Z",
     "createdAt": "2026-07-05T03:38:59.813Z",
     "_status": "published"
   },
@@ -3515,7 +3515,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -4253,7 +4253,7 @@
       "description": "Malaysian egg dishes go far beyond fried. Learn 10 cooking methods from half-boiled eggs with kaya to telur dadar and salted egg yolk sauce.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:12.086Z",
+    "updatedAt": "2026-09-14T09:07:02.916Z",
     "createdAt": "2026-07-05T03:38:59.760Z",
     "_status": "published"
   },
@@ -4267,7 +4267,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -5013,7 +5013,7 @@
       "description": "How Malaysian chefs are shaping local cuisine globally: from Chef Wan's television career to fine dining in Kuala Lumpur that uses native ingredients.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:13.043Z",
+    "updatedAt": "2026-09-14T09:07:04.234Z",
     "createdAt": "2026-07-05T03:38:59.720Z",
     "_status": "published"
   },
@@ -5027,7 +5027,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -5751,7 +5751,7 @@
       "description": "Malaysian food guide for first-time visitors: what to eat, where, and how to order. Covers nasi lemak, roti canai, banana leaf rice, and more across Malaysia.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:14.053Z",
+    "updatedAt": "2026-09-14T09:07:07.032Z",
     "createdAt": "2026-07-05T03:38:59.673Z",
     "_status": "published"
   },
@@ -5765,7 +5765,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -6208,41 +6208,41 @@
       "tags": [],
       "renameTo": null,
       "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:28:03.534Z",
+      "updatedAt": "2026-09-15T13:13:52.147Z",
       "createdAt": "2026-08-13T13:18:11.928Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-400x300.webp",
-      "filename": "0233_DSC_5591-opq3007872221.webp",
+      "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-roti-canai-pancake-preparation.webp",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/penang-hawker-roti-canai-pancake-preparation-400x300.webp",
+      "filename": "penang-hawker-roti-canai-pancake-preparation.webp",
       "mimeType": "image/webp",
-      "filesize": 230194,
+      "filesize": 212774,
       "width": 2586,
       "height": 3879,
       "focalX": 50,
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-400x300.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-roti-canai-pancake-preparation-400x300.webp",
           "width": 400,
           "height": 300,
           "mimeType": "image/webp",
-          "filesize": 12498,
-          "filename": "0233_DSC_5591-opq3007872221-400x300.webp"
+          "filesize": 12116,
+          "filename": "penang-hawker-roti-canai-pancake-preparation-400x300.webp"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-800x600.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-roti-canai-pancake-preparation-800x600.webp",
           "width": 800,
           "height": 600,
           "mimeType": "image/webp",
-          "filesize": 28800,
-          "filename": "0233_DSC_5591-opq3007872221-800x600.webp"
+          "filesize": 28052,
+          "filename": "penang-hawker-roti-canai-pancake-preparation-800x600.webp"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0233_DSC_5591-opq3007872221-1200x800.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-roti-canai-pancake-preparation-1200x800.webp",
           "width": 1200,
           "height": 800,
           "mimeType": "image/webp",
-          "filesize": 38960,
-          "filename": "0233_DSC_5591-opq3007872221-1200x800.webp"
+          "filesize": 38880,
+          "filename": "penang-hawker-roti-canai-pancake-preparation-1200x800.webp"
         }
       }
     },
@@ -6323,7 +6323,7 @@
       "description": "A Johor Bahru local food guide covering heritage stalls for asam pedas, roti canai, mee rebus, ikan bakar, and pisang goreng across the city.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:15.019Z",
+    "updatedAt": "2026-09-14T09:07:07.853Z",
     "createdAt": "2026-07-05T03:38:59.597Z",
     "_status": "published"
   },
@@ -6337,7 +6337,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -6862,7 +6862,7 @@
       "description": "Discover 7 traditional Pahang recipes featuring wild jungle ingredients and bold Malay flavours.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:16.002Z",
+    "updatedAt": "2026-09-14T09:07:09.584Z",
     "createdAt": "2026-07-05T03:38:59.538Z",
     "_status": "published"
   },
@@ -6876,7 +6876,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -7286,41 +7286,41 @@
       "tags": [],
       "renameTo": null,
       "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:28:09.138Z",
+      "updatedAt": "2026-09-15T13:13:43.714Z",
       "createdAt": "2026-08-13T13:18:36.297Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-400x300.webp",
-      "filename": "0232_DSC_5593-opq3007862713.webp",
+      "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-centre-99-pancake-ban-chien-kueh-stall.webp",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/penang-hawker-centre-99-pancake-ban-chien-kueh-stall-400x300.webp",
+      "filename": "penang-hawker-centre-99-pancake-ban-chien-kueh-stall.webp",
       "mimeType": "image/webp",
-      "filesize": 405606,
+      "filesize": 368468,
       "width": 3977,
       "height": 2651,
       "focalX": 50,
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-400x300.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-centre-99-pancake-ban-chien-kueh-stall-400x300.webp",
           "width": 400,
           "height": 300,
           "mimeType": "image/webp",
-          "filesize": 20732,
-          "filename": "0232_DSC_5593-opq3007862713-400x300.webp"
+          "filesize": 20022,
+          "filename": "penang-hawker-centre-99-pancake-ban-chien-kueh-stall-400x300.webp"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-800x600.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-centre-99-pancake-ban-chien-kueh-stall-800x600.webp",
           "width": 800,
           "height": 600,
           "mimeType": "image/webp",
-          "filesize": 54986,
-          "filename": "0232_DSC_5593-opq3007862713-800x600.webp"
+          "filesize": 52788,
+          "filename": "penang-hawker-centre-99-pancake-ban-chien-kueh-stall-800x600.webp"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0232_DSC_5593-opq3007862713-1200x800.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-hawker-centre-99-pancake-ban-chien-kueh-stall-1200x800.webp",
           "width": 1200,
           "height": 800,
           "mimeType": "image/webp",
-          "filesize": 88626,
-          "filename": "0232_DSC_5593-opq3007862713-1200x800.webp"
+          "filesize": 83970,
+          "filename": "penang-hawker-centre-99-pancake-ban-chien-kueh-stall-1200x800.webp"
         }
       }
     },
@@ -7415,7 +7415,7 @@
       "description": "Explore the deep cultural symbolism of Nyonya cuisine with chef Debbie Teoh.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:16.991Z",
+    "updatedAt": "2026-09-14T09:07:10.088Z",
     "createdAt": "2026-07-05T03:38:59.495Z",
     "_status": "published"
   },
@@ -7429,7 +7429,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -7940,7 +7940,7 @@
       "description": "Discover the indigenous food knowledge of Borneo's rainforest communities at Mulu's Ayus Wellness centre.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:17.869Z",
+    "updatedAt": "2026-09-14T09:07:11.533Z",
     "createdAt": "2026-07-05T03:38:59.381Z",
     "_status": "published"
   },
@@ -7954,7 +7954,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -8005,41 +8005,41 @@
       "tags": [],
       "renameTo": null,
       "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:28:10.629Z",
+      "updatedAt": "2026-09-15T13:13:48.004Z",
       "createdAt": "2026-08-13T13:18:49.588Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-400x300.webp",
-      "filename": "0109_DSC_6596-opq3008232725.webp",
+      "url": "https://cdn.simplyenak.com/payload-media/penang-market-vendor-holding-durian.webp",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/penang-market-vendor-holding-durian-400x300.webp",
+      "filename": "penang-market-vendor-holding-durian.webp",
       "mimeType": "image/webp",
-      "filesize": 141422,
+      "filesize": 129932,
       "width": 2521,
       "height": 3783,
       "focalX": 50,
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-400x300.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-market-vendor-holding-durian-400x300.webp",
           "width": 400,
           "height": 300,
           "mimeType": "image/webp",
-          "filesize": 5536,
-          "filename": "0109_DSC_6596-opq3008232725-400x300.webp"
+          "filesize": 5352,
+          "filename": "penang-market-vendor-holding-durian-400x300.webp"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-800x600.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-market-vendor-holding-durian-800x600.webp",
           "width": 800,
           "height": 600,
           "mimeType": "image/webp",
-          "filesize": 14200,
-          "filename": "0109_DSC_6596-opq3008232725-800x600.webp"
+          "filesize": 13400,
+          "filename": "penang-market-vendor-holding-durian-800x600.webp"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0109_DSC_6596-opq3008232725-1200x800.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-market-vendor-holding-durian-1200x800.webp",
           "width": 1200,
           "height": 800,
           "mimeType": "image/webp",
-          "filesize": 22052,
-          "filename": "0109_DSC_6596-opq3008232725-1200x800.webp"
+          "filesize": 20726,
+          "filename": "penang-market-vendor-holding-durian-1200x800.webp"
         }
       }
     },
@@ -8209,7 +8209,7 @@
       "description": null,
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:18.406Z",
+    "updatedAt": "2026-09-14T09:07:12.370Z",
     "createdAt": "2026-06-24T06:22:41.537Z",
     "_status": "published"
   },
@@ -8223,7 +8223,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -8757,7 +8757,7 @@
       "description": "KL for Wedding Groups & Celebrations Planning a group meal in KL for a wedding party involves specific challenges.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:18.992Z",
+    "updatedAt": "2026-09-14T09:07:13.919Z",
     "createdAt": "2026-06-19T09:50:14.281Z",
     "_status": "published"
   },
@@ -8771,7 +8771,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -9304,7 +9304,7 @@
       "description": "Where to eat, what to order, and how to avoid hidden shrimp paste in Penang.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:19.290Z",
+    "updatedAt": "2026-09-14T09:07:14.914Z",
     "createdAt": "2026-06-19T09:50:14.031Z",
     "_status": "published"
   },
@@ -9318,7 +9318,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -9978,7 +9978,7 @@
       "description": "Everything a vegetarian visitor to Malaysia needs to know: where to eat, what to order, and how to communicate dietary needs.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:19.918Z",
+    "updatedAt": "2026-09-14T09:07:16.084Z",
     "createdAt": "2026-06-19T09:50:13.765Z",
     "_status": "published"
   },
@@ -9992,7 +9992,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -10381,7 +10381,7 @@
       "description": "Where to eat in KL as a vegetarian: Indian banana leaf, Chinese Buddhist monastery canteens, and local spots that do vegetables right.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:20.413Z",
+    "updatedAt": "2026-09-14T09:07:16.708Z",
     "createdAt": "2026-06-19T09:50:13.495Z",
     "_status": "published"
   },
@@ -10395,7 +10395,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -10939,7 +10939,7 @@
       "description": "Where to find vegan food in Penang, what to order at hawker stalls, and how to eat plant-based on the island.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:20.704Z",
+    "updatedAt": "2026-09-14T09:07:17.486Z",
     "createdAt": "2026-06-19T09:50:13.255Z",
     "_status": "published"
   },
@@ -10953,7 +10953,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -11646,7 +11646,7 @@
       "description": "Where to find vegan food in KL, what to order at hawker stalls, and how to eat plant-based across the city.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:21.041Z",
+    "updatedAt": "2026-09-14T09:07:17.987Z",
     "createdAt": "2026-06-19T09:50:13.012Z",
     "_status": "published"
   },
@@ -11660,7 +11660,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -12192,7 +12192,7 @@
       "description": "Penang's street food scene: George Town's best hawker stalls, what to order, and when to go.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:21.550Z",
+    "updatedAt": "2026-09-14T09:07:19.824Z",
     "createdAt": "2026-06-19T09:50:12.769Z",
     "_status": "published"
   },
@@ -12206,7 +12206,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -12746,7 +12746,7 @@
       "description": "The essential Malaysian street food dishes every visitor should try, from nasi lemak to char kway teow.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:21.975Z",
+    "updatedAt": "2026-09-14T09:07:20.481Z",
     "createdAt": "2026-06-19T09:50:12.535Z",
     "_status": "published"
   },
@@ -12760,7 +12760,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -13378,7 +13378,7 @@
       "description": "KL street food guide: which streets to walk, which stalls to sit at, and exactly what to order.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:22.298Z",
+    "updatedAt": "2026-09-14T09:07:22.422Z",
     "createdAt": "2026-06-19T09:50:12.293Z",
     "_status": "published"
   },
@@ -13392,7 +13392,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -13975,7 +13975,7 @@
       "description": "Penang After Dark: Night Food Guide Penang's food reputation is built on its daytime hawkers, but the island comes into its own after dark.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:22.815Z",
+    "updatedAt": "2026-09-14T09:07:23.100Z",
     "createdAt": "2026-06-19T09:50:12.029Z",
     "_status": "published"
   },
@@ -13989,7 +13989,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -14611,7 +14611,7 @@
       "description": "Malaysia's Night Food Scene Malaysia eats late. The hawker stalls that close at lunch are replaced in the evening by a different set of vendors.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:23.331Z",
+    "updatedAt": "2026-09-14T09:07:24.728Z",
     "createdAt": "2026-06-19T09:50:11.778Z",
     "_status": "published"
   },
@@ -14625,7 +14625,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -15250,7 +15250,7 @@
       "description": "KL After Dark: Night Food Guide When the sun goes down in Kuala Lumpur, the streets change.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:23.980Z",
+    "updatedAt": "2026-09-14T09:07:25.417Z",
     "createdAt": "2026-06-19T09:50:11.534Z",
     "_status": "published"
   },
@@ -15264,7 +15264,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -15856,7 +15856,7 @@
       "description": "A Local's Guide to Penang's Markets Penang's markets are older than the state itself in some cases. Chowrasta Market has been operating since the 1890s.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:24.974Z",
+    "updatedAt": "2026-09-14T09:07:27.007Z",
     "createdAt": "2026-06-19T09:50:11.288Z",
     "_status": "published"
   },
@@ -15870,7 +15870,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -16472,7 +16472,7 @@
       "description": "Malaysia's Markets: A Food Lover's Guide Malaysia's markets are not just places to shop. They are where the country's food culture is most alive.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:25.499Z",
+    "updatedAt": "2026-09-14T09:07:28.273Z",
     "createdAt": "2026-06-19T09:50:11.038Z",
     "_status": "published"
   },
@@ -16486,7 +16486,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -17156,7 +17156,7 @@
       "description": "A Local's Guide to KL's Markets Kuala Lumpur's markets are where the city's food culture lives. Not in the restaurants. Not in the food courts.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:25.793Z",
+    "updatedAt": "2026-09-14T09:07:29.951Z",
     "createdAt": "2026-06-19T09:50:10.750Z",
     "_status": "published"
   },
@@ -17170,7 +17170,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -17759,7 +17759,7 @@
       "description": "The Jain Food Guide to Penang You have just arrived in George Town. The smells from the hawker stalls hit you at every corner. You want to try everything.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:26.628Z",
+    "updatedAt": "2026-09-14T09:07:31.253Z",
     "createdAt": "2026-06-19T09:50:10.499Z",
     "_status": "published"
   },
@@ -17773,7 +17773,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -18421,7 +18421,7 @@
       "description": "Jain Food Guide to Kuala Lumpur (2026) You arrive in Kuala Lumpur and the first thing you need to figure out is what you can eat.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:27.103Z",
+    "updatedAt": "2026-09-14T09:07:32.567Z",
     "createdAt": "2026-06-19T09:50:10.225Z",
     "_status": "published"
   },
@@ -18435,7 +18435,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -18923,7 +18923,7 @@
       "description": "Penang's Heritage Food Trail George Town is a UNESCO World Heritage site not because of its buildings alone.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:27.539Z",
+    "updatedAt": "2026-09-14T09:07:33.742Z",
     "createdAt": "2026-06-19T09:50:09.980Z",
     "_status": "published"
   },
@@ -18937,7 +18937,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -19597,7 +19597,7 @@
       "description": "Malaysia's Heritage Food: A Cultural Guide Malaysia's food heritage is older than the country itself.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:27.999Z",
+    "updatedAt": "2026-09-14T09:07:35.215Z",
     "createdAt": "2026-06-19T09:50:09.704Z",
     "_status": "published"
   },
@@ -19611,7 +19611,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -20112,7 +20112,7 @@
       "description": "Kuala Lumpur's Heritage Food Trail Kuala Lumpur's food history is written in the buildings where people still eat.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:28.468Z",
+    "updatedAt": "2026-09-14T09:07:36.187Z",
     "createdAt": "2026-06-19T09:50:09.481Z",
     "_status": "published"
   },
@@ -20126,7 +20126,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -20675,7 +20675,7 @@
       "description": "The Halal Food Guide to Penang You are standing on Chulia Street in George Town.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:28.944Z",
+    "updatedAt": "2026-09-14T09:07:37.640Z",
     "createdAt": "2026-06-19T09:50:09.208Z",
     "_status": "published"
   },
@@ -20689,7 +20689,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -21296,7 +21296,7 @@
       "description": "Halal Food Guide to Kuala Lumpur (2026) You are standing in front of a hawker stall in Chinatown. The steam rising from the wok smells incredible.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:29.248Z",
+    "updatedAt": "2026-09-14T09:07:38.277Z",
     "createdAt": "2026-06-19T09:50:08.957Z",
     "_status": "published"
   },
@@ -21310,7 +21310,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -21858,7 +21858,7 @@
       "description": "Gluten-Free Guide to Penang Penang's food reputation is built on noodles. Char kway teow, Hokkien mee, wan tan mee, laksa.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:29.637Z",
+    "updatedAt": "2026-09-14T09:07:39.760Z",
     "createdAt": "2026-06-19T09:50:08.694Z",
     "_status": "published"
   },
@@ -21872,7 +21872,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -22552,7 +22552,7 @@
       "description": "Gluten-Free Guide to Kuala Lumpur You walk past a nasi lemak stall. The rice is coconut-scented, the sambal is bright red, the fried chicken is golden.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:29.908Z",
+    "updatedAt": "2026-09-14T09:07:40.526Z",
     "createdAt": "2026-06-19T09:50:08.428Z",
     "_status": "published"
   },
@@ -22566,7 +22566,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -23022,7 +23022,7 @@
       "description": "Penang for Foodies: Beyond the Tourist Trail Penang's famous stalls are famous for a reason. The cendol on Armenian Street is excellent.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:30.669Z",
+    "updatedAt": "2026-09-14T09:07:42.372Z",
     "createdAt": "2026-06-19T09:50:08.171Z",
     "_status": "published"
   },
@@ -23036,7 +23036,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -23546,7 +23546,7 @@
       "description": "KL for Foodies: Beyond the Tourist Trail The food that most tourists eat in KL is competent. The char kway teow at Jalan Alor is fine.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:30.939Z",
+    "updatedAt": "2026-09-14T09:07:43.159Z",
     "createdAt": "2026-06-19T09:50:07.925Z",
     "_status": "published"
   },
@@ -23560,7 +23560,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -24027,7 +24027,7 @@
       "description": "Where to Eat in Penang: A First-Timer's Guide Penang's food reputation precedes it.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:31.572Z",
+    "updatedAt": "2026-09-14T09:07:45.225Z",
     "createdAt": "2026-06-19T09:50:07.676Z",
     "_status": "published"
   },
@@ -24041,7 +24041,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -24500,7 +24500,7 @@
       "description": "Where to Eat in Melaka Melaka is smaller than KL and quieter than Penang, but its food scene carries a weight of history that neither can match.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:32.048Z",
+    "updatedAt": "2026-09-14T09:07:45.987Z",
     "createdAt": "2026-06-19T09:50:07.431Z",
     "_status": "published"
   },
@@ -24514,7 +24514,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -25085,7 +25085,7 @@
       "description": "Little India Penang Food Guide Penang's Little India is a cluster of streets in central George Town, centred on Lebuh Pasar (Market Street) and extending...",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:32.409Z",
+    "updatedAt": "2026-09-14T09:07:48.628Z",
     "createdAt": "2026-06-19T09:50:07.171Z",
     "_status": "published"
   },
@@ -25099,7 +25099,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -25596,7 +25596,7 @@
       "description": "Little India KL: Brickfields Food Guide Brickfields is the neighbourhood around KL Sentral station, the city's main transit hub.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:32.855Z",
+    "updatedAt": "2026-09-14T09:07:49.533Z",
     "createdAt": "2026-06-19T09:50:06.921Z",
     "_status": "published"
   },
@@ -25610,7 +25610,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -26221,7 +26221,7 @@
       "description": "Where to Eat in Kuala Lumpur: A First-Timer's Guide You step out of the train at a KL station and the first thing that hits you is the smell.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:33.170Z",
+    "updatedAt": "2026-09-14T09:07:51.252Z",
     "createdAt": "2026-06-19T09:50:06.666Z",
     "_status": "published"
   },
@@ -26235,7 +26235,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -26690,7 +26690,7 @@
       "description": "Where to Eat in Klang Klang is a city that most visitors see from the window of a commuter train.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:33.491Z",
+    "updatedAt": "2026-09-14T09:07:51.887Z",
     "createdAt": "2026-06-19T09:50:06.420Z",
     "_status": "published"
   },
@@ -26704,7 +26704,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -27286,7 +27286,7 @@
       "description": "Kampung Baru Food Guide Kampung Baru is a traditional Malay village in the middle of Kuala Lumpur.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:33.856Z",
+    "updatedAt": "2026-09-14T09:07:55.696Z",
     "createdAt": "2026-06-19T09:50:06.176Z",
     "_status": "published"
   },
@@ -27300,7 +27300,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -27772,7 +27772,7 @@
       "description": "Where to Eat in Ipoh Ipoh is a city that food travellers pass through on their way to Penang or the Cameron Highlands. That is a mistake.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:34.294Z",
+    "updatedAt": "2026-09-14T09:07:56.829Z",
     "createdAt": "2026-06-19T09:50:05.904Z",
     "_status": "published"
   },
@@ -27786,7 +27786,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -28291,7 +28291,7 @@
       "description": "Gurney Drive Food Guide Gurney Drive is Penang's most famous hawker centre.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:34.769Z",
+    "updatedAt": "2026-09-14T09:07:59.232Z",
     "createdAt": "2026-06-19T09:50:05.636Z",
     "_status": "published"
   },
@@ -28305,7 +28305,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -28772,7 +28772,7 @@
       "description": "George Town Heritage Food Guide George Town's UNESCO World Heritage listing was awarded for the city's architecture, but the food culture is equally...",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:35.180Z",
+    "updatedAt": "2026-09-14T09:07:59.960Z",
     "createdAt": "2026-06-19T09:50:05.391Z",
     "_status": "published"
   },
@@ -28786,7 +28786,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -29282,7 +29282,7 @@
       "description": "Chowrasta Market Food Guide Chowrasta Market is Penang's oldest and most famous market.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:35.851Z",
+    "updatedAt": "2026-09-14T09:08:01.805Z",
     "createdAt": "2026-06-19T09:50:05.136Z",
     "_status": "published"
   },
@@ -29296,7 +29296,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -29845,7 +29845,7 @@
       "description": "Chow Kit Market Food Guide Chow Kit is the opposite of a tourist market. It has no gift shops, no air conditioning, and no English signage.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:36.442Z",
+    "updatedAt": "2026-09-14T09:08:02.447Z",
     "createdAt": "2026-06-19T09:50:04.862Z",
     "_status": "published"
   },
@@ -29859,7 +29859,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30348,7 +30348,7 @@
       "description": "KL Chinatown Food Guide KL's Chinatown is centred on Petaling Street, a covered market that draws crowds for its counterfeit goods and counterfeit...",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:36.899Z",
+    "updatedAt": "2026-09-14T09:08:05.228Z",
     "createdAt": "2026-06-19T09:50:04.600Z",
     "_status": "published"
   },
@@ -30362,7 +30362,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -30826,7 +30826,7 @@
       "description": "Penang With Kids: A Food Guide for Families Penang's food scene is famously intense. Loud flavours, heavy chilli, and queues that test adult patience.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:37.325Z",
+    "updatedAt": "2026-09-14T09:08:05.920Z",
     "createdAt": "2026-06-19T09:50:04.353Z",
     "_status": "published"
   },
@@ -30840,7 +30840,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -31350,7 +31350,7 @@
       "description": "KL With Kids: A Food Guide for Families You are standing at the entrance of a KL hawker centre with a tired child in one arm and a stroller in the other.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:37.953Z",
+    "updatedAt": "2026-09-14T09:08:08.345Z",
     "createdAt": "2026-06-19T09:50:04.071Z",
     "_status": "published"
   },
@@ -31364,7 +31364,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -31796,7 +31796,7 @@
       "description": "Penang for Couples: A Romantic Food Guide George Town at dusk has a specific quality of light. The white colonial buildings turn warm orange.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:38.201Z",
+    "updatedAt": "2026-09-14T09:08:08.950Z",
     "createdAt": "2026-06-19T09:50:03.834Z",
     "_status": "published"
   },
@@ -31810,7 +31810,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -32324,7 +32324,7 @@
       "description": "KL for Couples: A Romantic Food Guide The usual advice for couples visiting KL is to book a table at a hotel restaurant with a view of the Petronas Towers.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:38.455Z",
+    "updatedAt": "2026-09-14T09:08:10.395Z",
     "createdAt": "2026-06-19T09:50:03.564Z",
     "_status": "published"
   },
@@ -32338,7 +32338,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -32836,7 +32836,7 @@
       "description": "Kuala Lumpur cooks by instinct. The plates that matter come from people who learned by watching and tasting. A guide for chefs who think in flavour.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:38.897Z",
+    "updatedAt": "2026-09-14T09:08:10.990Z",
     "createdAt": "2026-06-19T09:50:03.237Z",
     "_status": "published"
   },
@@ -32850,7 +32850,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33096,7 +33096,7 @@
       "description": "Local guides break down Malaysia's food markets, from Chow Kit wet markets to Batu Ferringhi night stalls. What to buy, what to eat, when to go.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:39.314Z",
+    "updatedAt": "2026-09-14T09:08:12.727Z",
     "createdAt": "2026-06-12T15:55:40.608Z",
     "_status": "draft"
   },
@@ -33110,7 +33110,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33273,7 +33273,7 @@
       "description": "Cantinho do Especialista - ALIMENTAÇÃO × EXPERIÊNCIAS × CULTURA",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:39.534Z",
+    "updatedAt": "2026-09-14T09:08:12.972Z",
     "createdAt": "2026-06-12T15:55:40.566Z",
     "_status": "draft"
   },
@@ -33287,7 +33287,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33464,7 +33464,7 @@
       "description": "Guias locais - COMIDA × HISTÓRIA × VIAGEM",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:39.765Z",
+    "updatedAt": "2026-09-14T09:08:13.458Z",
     "createdAt": "2026-06-12T15:55:40.522Z",
     "_status": "draft"
   },
@@ -33478,7 +33478,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33641,7 +33641,7 @@
       "description": "Histórias de Fornecedores - COMIDA × PESSOAS × CULTURA",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:39.988Z",
+    "updatedAt": "2026-09-14T09:08:13.683Z",
     "createdAt": "2026-06-12T15:55:40.476Z",
     "_status": "draft"
   },
@@ -33655,7 +33655,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33764,7 +33764,7 @@
       "description": "Cantinho do Especialista - CULTURA × ALIMENTAÇÃO × HISTÓRIA",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:40.251Z",
+    "updatedAt": "2026-09-14T09:08:13.960Z",
     "createdAt": "2026-06-12T15:55:40.433Z",
     "_status": "draft"
   },
@@ -33778,7 +33778,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -33941,7 +33941,7 @@
       "description": "Guias Locais - VIAGEM × EXPERIÊNCIAS × COMIDA",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:40.474Z",
+    "updatedAt": "2026-09-14T09:08:14.178Z",
     "createdAt": "2026-06-12T15:55:40.389Z",
     "_status": "draft"
   },
@@ -33955,7 +33955,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -34118,7 +34118,7 @@
       "description": "Cantinho do Especialista - ALIMENTAÇÃO × CULTURA × VIAGEM",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:40.715Z",
+    "updatedAt": "2026-09-14T09:08:14.437Z",
     "createdAt": "2026-06-12T15:55:40.346Z",
     "_status": "draft"
   },
@@ -34132,7 +34132,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -34309,7 +34309,7 @@
       "description": "Guias locais - COMIDA × VIAGEM × EXPERIÊNCIAS",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:40.934Z",
+    "updatedAt": "2026-09-14T09:08:14.659Z",
     "createdAt": "2026-06-12T15:55:40.305Z",
     "_status": "draft"
   },
@@ -34323,7 +34323,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -34486,7 +34486,7 @@
       "description": "Cantinho do Especialista - CULTURA × HISTÓRIA × ALIMENTAÇÃO",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:41.172Z",
+    "updatedAt": "2026-09-14T09:08:14.937Z",
     "createdAt": "2026-06-12T15:55:40.263Z",
     "_status": "draft"
   },
@@ -34500,7 +34500,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -34677,7 +34677,7 @@
       "description": "Guias locais - COMIDA × VIAGEM × EXPERIÊNCIAS",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:41.401Z",
+    "updatedAt": "2026-09-14T09:08:15.179Z",
     "createdAt": "2026-06-12T15:55:40.219Z",
     "_status": "draft"
   },
@@ -34691,7 +34691,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -34800,7 +34800,7 @@
       "description": "How a simple coconut rice plate became Malaysia's national dish. The history, the ingredients, and where to eat the one that changes your mind about rice.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:41.639Z",
+    "updatedAt": "2026-09-14T09:08:15.437Z",
     "createdAt": "2026-06-12T15:55:40.175Z",
     "_status": "draft"
   },
@@ -34814,7 +34814,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -35772,7 +35772,7 @@
       "description": "Updated June 2026: This guide has been refreshed with the latest insights from our guides, who take guests through KL's vegetarian food spots every week.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:41.859Z",
+    "updatedAt": "2026-09-14T09:08:15.671Z",
     "createdAt": "2026-06-11T09:17:47.834Z",
     "_status": "published"
   },
@@ -35786,7 +35786,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -36454,7 +36454,7 @@
       "description": "Updated May 2026: Ramadan dates shift each year. Here is what travellers should know for the upcoming fasting month.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:42.580Z",
+    "updatedAt": "2026-09-14T09:08:16.752Z",
     "createdAt": "2026-06-11T09:17:47.828Z",
     "_status": "published"
   },
@@ -36468,7 +36468,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -37304,7 +37304,7 @@
       "description": "Edible souvenirs and food-themed gifts that actually travel well from Malaysia, recommended by local guides who know what survives the flight home.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:42.965Z",
+    "updatedAt": "2026-09-14T09:08:17.157Z",
     "createdAt": "2026-06-11T09:17:47.826Z",
     "_status": "published"
   },
@@ -37318,7 +37318,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -37827,7 +37827,7 @@
       "description": "Updated May 2026: Transport options between Port Klang and KL have improved. Here is the latest on how to make the trip.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:43.359Z",
+    "updatedAt": "2026-09-14T09:08:17.849Z",
     "createdAt": "2026-06-11T09:17:47.633Z",
     "_status": "published"
   },
@@ -37841,7 +37841,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -38797,7 +38797,7 @@
       "description": "The plates you cannot skip on a food trip to Malaysia, from nasi lemak to char kuey teow, explained by local guides who eat them every day.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:43.584Z",
+    "updatedAt": "2026-09-14T09:08:18.241Z",
     "createdAt": "2026-06-11T09:17:47.631Z",
     "_status": "published"
   },
@@ -38811,7 +38811,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -39153,7 +39153,7 @@
       "description": "The herbs and spices that define Malaysian cooking: what they are, what they taste like, and where they come from in the market.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:43.808Z",
+    "updatedAt": "2026-09-14T09:08:18.899Z",
     "createdAt": "2026-06-11T09:17:47.506Z",
     "_status": "published"
   },
@@ -39167,7 +39167,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -40039,7 +40039,7 @@
       "description": "Updated June 2026: Festival dates shift each year with the lunar and Islamic calendars. Here are the confirmed dates for the coming year.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:44.044Z",
+    "updatedAt": "2026-09-14T09:08:19.279Z",
     "createdAt": "2026-06-11T09:17:47.504Z",
     "_status": "published"
   },
@@ -40053,7 +40053,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -41078,7 +41078,7 @@
       "description": "Updated June 2026: Malaysia's vegetarian scene keeps growing. Our guides have updated this with the latest spots.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:44.263Z",
+    "updatedAt": "2026-09-14T09:08:19.953Z",
     "createdAt": "2026-06-11T09:17:47.398Z",
     "_status": "published"
   },
@@ -41092,7 +41092,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -41968,7 +41968,7 @@
       "description": "Updated June 2026: Our guides still hear this question every week. Here is the latest advice for vegetarian visitors.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:44.646Z",
+    "updatedAt": "2026-09-14T09:08:20.370Z",
     "createdAt": "2026-06-11T09:17:47.396Z",
     "_status": "published"
   },
@@ -41982,7 +41982,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -42582,7 +42582,7 @@
       "description": "Nine distinctive spots in Kuala Lumpur that most visitors never find, from pre-war coffee shops to hidden speakeasy bars and hawker stalls that have been open since the 1950s.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:44.863Z",
+    "updatedAt": "2026-09-14T09:08:20.790Z",
     "createdAt": "2026-06-11T09:17:47.202Z",
     "_status": "published"
   },
@@ -42596,7 +42596,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -43175,41 +43175,41 @@
       "tags": [],
       "renameTo": null,
       "prefix": "payload-media",
-      "updatedAt": "2026-08-13T13:28:00.891Z",
+      "updatedAt": "2026-09-15T13:13:57.363Z",
       "createdAt": "2026-08-13T13:18:03.751Z",
-      "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765.webp",
-      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-400x300.webp",
-      "filename": "0044_DSC_7024-opq3008232765.webp",
+      "url": "https://cdn.simplyenak.com/payload-media/penang-street-food-vendor-fried-chicken.webp",
+      "thumbnailURL": "https://cdn.simplyenak.com/payload-media/penang-street-food-vendor-fried-chicken-400x300.webp",
+      "filename": "penang-street-food-vendor-fried-chicken.webp",
       "mimeType": "image/webp",
-      "filesize": 520444,
+      "filesize": 471690,
       "width": 3964,
       "height": 2642,
       "focalX": 50,
       "focalY": 50,
       "sizes": {
         "thumbnail": {
-          "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-400x300.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-street-food-vendor-fried-chicken-400x300.webp",
           "width": 400,
           "height": 300,
           "mimeType": "image/webp",
-          "filesize": 23114,
-          "filename": "0044_DSC_7024-opq3008232765-400x300.webp"
+          "filesize": 22208,
+          "filename": "penang-street-food-vendor-fried-chicken-400x300.webp"
         },
         "medium": {
-          "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-800x600.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-street-food-vendor-fried-chicken-800x600.webp",
           "width": 800,
           "height": 600,
           "mimeType": "image/webp",
-          "filesize": 65774,
-          "filename": "0044_DSC_7024-opq3008232765-800x600.webp"
+          "filesize": 62442,
+          "filename": "penang-street-food-vendor-fried-chicken-800x600.webp"
         },
         "large": {
-          "url": "https://cdn.simplyenak.com/payload-media/0044_DSC_7024-opq3008232765-1200x800.webp",
+          "url": "https://cdn.simplyenak.com/payload-media/penang-street-food-vendor-fried-chicken-1200x800.webp",
           "width": 1200,
           "height": 800,
           "mimeType": "image/webp",
-          "filesize": 109294,
-          "filename": "0044_DSC_7024-opq3008232765-1200x800.webp"
+          "filesize": 101656,
+          "filename": "penang-street-food-vendor-fried-chicken-1200x800.webp"
         }
       }
     },
@@ -43289,7 +43289,7 @@
       "description": "A practical, honest guide to street food safety in Malaysia. What to look for, what to skip, and how to eat with confidence at hawker stalls.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:45.245Z",
+    "updatedAt": "2026-09-14T09:08:21.187Z",
     "createdAt": "2026-06-11T09:17:47.201Z",
     "_status": "published"
   },
@@ -43303,7 +43303,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -44217,7 +44217,7 @@
       "description": "Musang King, D24 or kampung? Learn durian types, 2026 prices, season months and the best stalls in KL and Penang. Read the full guide before you buy.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:45.632Z",
+    "updatedAt": "2026-09-14T09:08:21.653Z",
     "createdAt": "2026-06-11T09:17:47.198Z",
     "_status": "published"
   },
@@ -44231,7 +44231,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -44879,7 +44879,7 @@
       "description": "A common visitor question answered honestly, plus a look at some of the more unusual plates you might encounter on a food tour through Malaysia.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:46.105Z",
+    "updatedAt": "2026-09-14T09:08:22.145Z",
     "createdAt": "2026-06-11T09:17:46.973Z",
     "_status": "published"
   },
@@ -44893,7 +44893,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -45722,7 +45722,7 @@
       "description": "Updated June 2026: Malaysia continues to be one of the most English-friendly countries in Southeast Asia for travellers.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:46.493Z",
+    "updatedAt": "2026-09-14T09:08:22.773Z",
     "createdAt": "2026-06-11T09:17:46.971Z",
     "_status": "published"
   },
@@ -45736,7 +45736,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -46344,7 +46344,7 @@
       "description": "Updated May 2026: Dumpling Festival season is here again, and Malaysian families are busy wrapping their annual batch of bak chang.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:46.877Z",
+    "updatedAt": "2026-09-14T09:08:23.173Z",
     "createdAt": "2026-06-11T09:17:46.742Z",
     "_status": "published"
   },
@@ -46358,7 +46358,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -46586,7 +46586,7 @@
       "description": "Updated June 2026: Hari Raya celebrations are back in full swing across Malaysia.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:47.260Z",
+    "updatedAt": "2026-09-14T09:08:24.093Z",
     "createdAt": "2026-06-11T09:17:46.721Z",
     "_status": "published"
   },
@@ -46600,7 +46600,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -47179,7 +47179,7 @@
       "description": "Malaysian Durian Guide: How to Eat the King of Fruits Without Your Hotel Kicking You Out 2,103 people search for \"durian\" every month.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:47.483Z",
+    "updatedAt": "2026-09-14T09:08:24.338Z",
     "createdAt": "2026-06-11T04:36:40.705Z",
     "_status": "published"
   },
@@ -47193,7 +47193,7 @@
       "role": "admin",
       "fullName": "Maarten",
       "department": null,
-      "updatedAt": "2026-08-31T03:00:09.677Z",
+      "updatedAt": "2026-09-15T08:35:57.739Z",
       "createdAt": "2026-05-19T08:11:57.639Z",
       "enableAPIKey": true,
       "email": "admin@simplyenak.com",
@@ -47992,7 +47992,7 @@
       "description": "Not just what to eat but how. The unwritten rules of Malaysia's hawker centres, from ordering with hand signals to spotting a stall worth queuing for.",
       "image": null
     },
-    "updatedAt": "2026-09-14T02:33:47.715Z",
+    "updatedAt": "2026-09-14T09:08:24.822Z",
     "createdAt": "2026-06-11T03:50:53.939Z",
     "_status": "published"
   }

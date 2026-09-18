@@ -53,6 +53,22 @@ const waUrl = `https://wa.me/60172878929?text=${encodeURIComponent(waMsg)}`;
             class="w-full px-3 py-2.5 text-sm rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
         </div>
       </div>
+      <!-- Channel attribution (Joy Hawkins: GA4 under-credits AI/referral —
+           ask first-party, don't guess the channel from tooling) -->
+      <div>
+        <select name="howHeard" id="howHeard"
+          class="w-full px-3 py-2.5 text-sm rounded border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1e1c1c] text-default focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors">
+          <option value="">How did you hear about us? (optional)</option>
+          <option value="google search">Google search</option>
+          <option value="google maps / reviews">Google Maps / reviews</option>
+          <option value="ai chat (chatgpt / claude / gemini)">AI chat (ChatGPT / Claude / Gemini)</option>
+          <option value="social media">Social media</option>
+          <option value="tripadvisor / travel site">TripAdvisor / travel site</option>
+          <option value="recommendation / word of mouth">Recommendation / word of mouth</option>
+          <option value="return guest">Return guest</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
       <div>
         <textarea name="message" rows="2" required
           placeholder="Any questions? Dietary needs, specific requests…"

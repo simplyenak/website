@@ -539,6 +539,101 @@ def check_near_duplicate_content() -> dict:
     return pass_result("No near-duplicate content")
 
 
+def check_topical_scope() -> dict:
+    """Warn-only HubSpot-drift check: every landing page must sit inside the
+    business's demonstrated operating scope (the collapse-case lesson: Forbes/
+    HubSpot fell publishing far outside what they were qualified for).
+
+    Two tiers, both derived from live data (no hardcoded gazetteer):
+      A. location LPs: location_name must mention a served city (from
+         tours.json locations) — 'Pudu Food Tour Kuala Lumpur' passes,
+         'Melaka Food Tours' flags because no tour operates there.
+      B. all LPs: slug+meta+hero+body text must contain a scope anchor
+         (served city token or the country anchor 'malaysia') — catches
+         pages that exist purely to capture traffic.
+    """
+    tours = load_json(CONTENT_DIR / "tours.json")
+    city_aliases = {
+        "kuala lumpur": ["kuala lumpur"],
+        "penang": ["penang", "george town", "georgetown"],
+    }
+    city_tokens = set()
+    for t in tours if isinstance(tours, list) else []:
+        loc = (t.get("location") or "").strip().lower()
+        if loc:
+            city_tokens.add(loc)
+            city_tokens.update(city_aliases.get(loc, []))
+    # Country anchor: the brand operates Malaysian food experiences; pages
+    # branded "… in Malaysia" are in scope even without a city token (tier B).
+    scope_tokens = city_tokens | {"malaysia"}
+
+    def has_token(text: str, tokens: set) -> bool:
+        # 'kl' needs a word boundary (substring would match inside words);
+        # multi-word tokens are fine as substrings.
+        if re.search(r"\bkl\b", text):
+            return True
+        return any(tok != "kl" and tok in text for tok in tokens)
+
+    lp_collections = {
+        "location-landing-pages.json": "location_name",
+        "dietary-landing-pages.json": "dietary_name",
+        "specialty-landing-pages.json": "specialty_name",
+        "travel-type-landing-pages.json": "travel_type_name",
+    }
+    findings = []
+    total = 0
+    for fname, name_field in lp_collections.items():
+        pages = load_json(CONTENT_DIR / fname)
+        if not isinstance(pages, list):
+            continue
+        for p in pages:
+            if p.get("status") == "draft":
+                continue
+            total += 1
+            name = (p.get(name_field) or p.get("slug") or "?")
+            name_l = name.lower()
+            text_l = " ".join(
+                str(p.get(k) or "") for k in (
+                    "slug", "meta_title", "meta_description", "hero_title",
+                    "hero_subtitle", "hero_description", "body_markdown",
+                )
+            ).lower() + " " + name_l
+
+            # Tier A — direct operating claim ('<Place> Food Tours', not the
+            # 'Food Tours Near <Place>' catchment pattern): the page must tie
+            # to a served city in its name OR anywhere in its text. Neighbourhood
+            # pages (Chow Kit, Kampung Baru) pass via city mentions in hero/meta;
+            # pages for cities with no tours (Melaka, Ipoh) flag.
+            if (
+                fname == "location-landing-pages.json"
+                and " near " not in f" {name_l} "
+                and not name_l.startswith("food tours near")
+                and not has_token(text_l, city_tokens)
+            ):
+                findings.append({
+                    "file": fname, "slug": p.get("slug"), "type": "tier_a_city_outside_footprint",
+                    "detail": f"location_name '{name}' and full page text mention no served city "
+                              f"({sorted(city_tokens)}) — no tour operates there",
+                })
+                continue
+            if not has_token(text_l, scope_tokens):
+                findings.append({
+                    "file": fname, "slug": p.get("slug"), "type": "tier_b_no_scope_anchor",
+                    "detail": "no served-city or country anchor anywhere in slug/meta/hero/body",
+                })
+
+    if not findings:
+        return pass_result(
+            f"All {total} landing pages anchored to operating scope "
+            f"(cities: {sorted(city_tokens)})"
+        )
+    return warn_result(
+        f"{len(findings)}/{total} landing pages outside demonstrated operating scope "
+        "(HubSpot-drift signal — confirm genuine qualification or a real expansion plan)",
+        findings[:20],
+    )
+
+
 def check_brand_voice() -> dict:
     posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
     banned = ["authentic", "premium", "luxury", "discover", "explore", "immerse", "customer", "delicious", "unique", "best", "amazing", "adventure", "journey", "award-winning", "world-class", "unforgettable", "breathtaking"]
@@ -1269,6 +1364,209 @@ def check_eeat_experience() -> dict:
     return pass_result(f"All {len(results)} posts have experience signals", results)
 
 
+# ── Differentiated POV (HubSpot CMO Kipp Bodnar's post-mortem) ──
+# "You have to have differentiated point of view, differentiated data, and
+# clear reason why you're uniquely qualified to share your story."
+# HubSpot lost 75% of blog traffic to content drift; safe, neutral,
+# anyone-could-have-written-it prose is the failure mode this catches.
+#
+# Phrasing rule (user, 2026-09-02): when we take a stance, speak from the
+# core — 'we believe', not 'we think'. Hedged stance verbs still count as a
+# stance but trigger a strengthening suggestion.
+
+POV_CORE_OPINION_MARKERS = [
+    r"\bwe (?:believe|recommend|prefer|avoid|skip|rate)\b",
+    r"\bin our (?:experience|opinion|view|book)\b",
+    r"\b(?:my|our) (?:favourite|favorite|pick|verdict|rule)\b",
+    r"\bhonestly\b", r"\bthe trick is\b", r"\bthe truth is\b",
+    r"\bmost (?:guides|tourists|travellers|travelers|people|articles)\b",
+    r"\boverrated\b", r"\bunderrated\b",
+    r"\bdon'?t bother\b", r"\bnot worth\b", r"\bworth (?:it|every)\b",
+    r"\bskip .{3,40} and\b", r"\binstead of\b", r"\bbetter than\b",
+    r"\bcontrary to\b", r"\bforget the\b", r"\bwe disagree\b", r"\bverdict\b",
+]
+POV_HEDGED_OPINION_MARKERS = [
+    r"\bwe think\b",
+    r"\bsome (?:might|would) say\b",
+]
+# Conviction shown, not told: imperatives, definite picks, evaluative
+# judgments. These carry the same stance as 'we believe' without announcing
+# it — a guide saying 'Skip the tourist row and walk two blocks east' has a
+# point of view. Full core weight, so posts are never pushed toward
+# formulaic 'We believe...' openings.
+POV_IMPLICIT_STANCE_MARKERS = [
+    r"\bskip (?:the|it|that|this)\b",
+    r"\border (?:the|this|a|two|three)\b",
+    r"\bstart with\b", r"\bgo (?:hungry|early|before|after)\b", r"\bask for\b",
+    r"\bgo for the\b", r"\byour first (?:stop|bite|order|plate)\b",
+    r"\byou don'?t need\b", r"\bdon'?t leave without\b",
+    r"\bis the one to\b", r"\bisn'?t worth\b", r"\bis worth\b",
+    r"\ba waste of\b", r"\bthe real deal\b", r"\bmake a beeline\b",
+    r"\beven locals\b", r"\blocals (?:know|queue|skip|swear)\b",
+]
+POV_DATA_MARKERS = [
+    r"\bRM ?\d+", r"\bMYR ?\d+",
+    r"\bsince \d{4}\b", r"\b\d+ years\b",
+    r"\b\d[\d,]*\+? (?:tours|guests|travellers|travelers|visitors|reviews|stories|dishes|stalls|vendors)\b",
+    r"\bout of \d+\b", r"\b\d+ per (?:person|plate|portion|group)\b",
+]
+POV_QUALIFICATION_MARKERS = [
+    r"\bour guides?\b", r"\bwe (?:run|operate|lead|host|take)\b",
+    r"\bwe'?ve (?:eaten|tried|visited|walked|tested|sampled)\b",
+    r"\bPauline\b", r"\bMaarten\b",
+    r"\bevery (?:week|month|season)\b", r"\bwe meet (?:you|at)\b",
+]
+
+
+def check_differentiated_pov() -> dict:
+    """Warn-only: does each post take a differentiated stance?
+
+    Three pillars from Kipp Bodnar's HubSpot post-mortem (after losing 75%
+    of English blog traffic): differentiated point of view, differentiated
+    data, and a clear reason why we're uniquely qualified. A post with zero
+    opinion markers is encyclopedia prose any competitor could have written —
+    exactly what HubSpot's drift produced. Paired with consensus guidance in
+    the judge loop: for subjective best-of claims, a clear stance with
+    specifics beats safe neutrality. Phrasing rule: stances come from the
+    core ('we believe'), not hedged ('we think') — hedged-only stance flags
+    `hedged_stance_only` with a strengthening suggestion.
+    """
+    results = []
+    posts = list(POST_DIR.glob("*.md")) + list(POST_DIR.glob("*.mdx"))
+    stories_data = load_json(CONTENT_DIR / "stories.json")
+
+    def score_text(body: str) -> tuple[int, list, list, list]:
+        core = [m for m in POV_CORE_OPINION_MARKERS if re.search(m, body, re.I)]
+        implicit = [m for m in POV_IMPLICIT_STANCE_MARKERS if re.search(m, body, re.I)]
+        hedged = [m for m in POV_HEDGED_OPINION_MARKERS if re.search(m, body, re.I)]
+        data = [m for m in POV_DATA_MARKERS if re.search(m, body, re.I)]
+        qual = [m for m in POV_QUALIFICATION_MARKERS if re.search(m, body, re.I)]
+        # Explicit and implicit stance carry equal weight — 'Skip the tourist
+        # row' is as much a POV as 'We believe'; only hedged counts less.
+        score = (min(50, (len(core) + len(implicit)) * 15 + len(hedged) * 5)
+                 + min(30, len(data) * 10) + min(20, len(qual) * 10))
+        return score, core + implicit, hedged, data + qual
+
+    def pov_issues(core: list, hedged: list, data_qual: list) -> tuple[list, list]:
+        issues, suggestions = [], []
+        if not core and not hedged:
+            issues.append("no_point_of_view")
+            suggestions.append("Take a stance — varied forms: 'We believe...', 'Skip the tourist row...', 'Your first stop is...', 'Most guides get this wrong' (Bodnar: differentiated POV)")
+        elif not core:
+            issues.append("hedged_stance_only")
+            suggestions.append("Commit: 'We believe...' or show it — 'Skip X and go to Y' — rather than 'We think...'")
+        if not data_qual:
+            issues.append("no_own_data_or_qualification")
+            suggestions.append("Add own data (RM prices, counts, years) or qualification ('our guides have...')")
+        return issues, suggestions
+
+    weak_formula = []
+    opener_re = re.compile(r"(?:^|[.!?]\s+)(we (?:believe|think))\b", re.I)
+    for post in posts:
+        content = post.read_text(encoding="utf-8")
+        parts = content.split("---", 2)
+        if len(parts) < 3:
+            continue
+        body = parts[2].strip()
+        if len(body.split()) < 300:
+            continue
+        opener = opener_re.search(" ".join(body.split()[:120]))
+        if opener:
+            weak_formula.append({"file": post.name, "opens_with": opener.group(1).lower()})
+        score, core, hedged, data_qual = score_text(body)
+        issues, suggestions = pov_issues(core, hedged, data_qual)
+        results.append({
+            "file": post.name, "type": "blog_post", "score": score,
+            "issues": issues, "suggestions": suggestions,
+        })
+
+    if isinstance(stories_data, list):
+        for story in stories_data:
+            body = " ".join(extract_text_from_rich_text(story.get("content", {})))
+            if len(body.split()) < 300:
+                continue
+            score, core, hedged, data_qual = score_text(body)
+            issues, suggestions = pov_issues(core, hedged, data_qual)
+            results.append({
+                "file": f"stories/{story.get('slug', '?')}.md", "type": "story",
+                "score": score, "issues": issues, "suggestions": suggestions,
+            })
+
+    weak = [r for r in results if r["issues"]]
+    # Formula guardrail: this check's own suggestions must never breed 20
+    # posts opening the same way. If 3+ posts open with the same explicit
+    # stance phrase, flag it — vary the form (implicit stance, imperatives,
+    # declarative picks) instead.
+    from collections import Counter
+    opener_counts = Counter(o["opens_with"] for o in weak_formula)
+    formula_flags = []
+    for phrase, n in opener_counts.items():
+        if n >= 3:
+            files = [o["file"] for o in weak_formula if o["opens_with"] == phrase]
+            formula_flags.append({
+                "type": "formula_opening", "phrase": phrase,
+                "detail": f"{n} posts open with '{phrase}': {', '.join(files[:5])} — vary the stance form",
+            })
+    if formula_flags:
+        weak = weak + formula_flags
+    if weak:
+        return warn_result(
+            f"{len(weak)}/{len(results)} posts lack a differentiated POV "
+            "(Bodnar: point of view + own data + unique qualification)",
+            weak[:10]
+        )
+    return pass_result(
+        f"All {len(results)} posts carry a differentiated point of view", results)
+
+
+def check_house_positions() -> dict:
+    """Warn-only: health of the house-positions register.
+
+    The register (site/src/data/house-positions.json) is how agents KNOW
+    the brand's opinions instead of inventing them — a stance in new content
+    should trace to a confirmed position, and drafting reads the register
+    before taking any stance. This check keeps the register from rotting:
+    exists, seeded, entries well-formed, sources present, and at least one
+    position human-confirmed (machine-mined candidates don't count).
+    """
+    path = CONTENT_DIR.parent / "house-positions.json"
+    data = load_json(path)
+    positions = data.get("positions") if isinstance(data, dict) else None
+    if not isinstance(positions, list) or not positions:
+        return warn_result(
+            "House-positions register missing or empty — agents have no source "
+            "of stated brand opinions and will fall back to neutral prose or invention"
+        )
+    issues = []
+    ids = [p.get("id") for p in positions]
+    if len(ids) != len(set(ids)):
+        issues.append("duplicate ids")
+    for p in positions:
+        for field in ("id", "topic", "stance", "source", "status"):
+            if not p.get(field):
+                issues.append(f"entry missing {field}: {p.get('id', '?')}")
+        if p.get("status") not in ("candidate", "confirmed"):
+            issues.append(f"bad status '{p.get('status')}': {p.get('id', '?')}")
+        src = p.get("source") or {}
+        if not (isinstance(src, dict) and src.get("who") and src.get("where")):
+            issues.append(f"unsourced position: {p.get('id', '?')}")
+    confirmed = [p for p in positions if p.get("status") == "confirmed"]
+    if not confirmed:
+        issues.append(
+            f"0/{len(positions)} positions confirmed — all machine-mined candidates; "
+            "flip to 'confirmed' after human review so drafting can cite them"
+        )
+    if issues:
+        return warn_result(
+            f"House-positions register issues ({len(positions)} entries)",
+            issues[:10]
+        )
+    return pass_result(
+        f"House-positions register healthy: {len(positions)} positions, "
+        f"{len(confirmed)} confirmed", confirmed[:10]
+    )
+
+
 def check_ai_writing_clusters() -> dict:
     """Check blog posts and stories for clusters of AI writing patterns.
 
@@ -1413,6 +1711,9 @@ CASE_HANDLERS = {
     "lp_eight_section_arc": lambda: check_lp_eight_section_arc(load_json(CONTENT_DIR / "location-landing-pages.json")),
     "lp_payload_deploy_pipeline": lambda: check_lp_payload_pipeline(load_json(CONTENT_DIR / "location-landing-pages.json"), "location-landing-pages.json"),
     "lp_google_maps_places": lambda: check_lp_google_maps_places(load_json(CONTENT_DIR / "location-landing-pages.json")),
+    "topical_scope_anchor": check_topical_scope,
+    "differentiated_pov_bodnar": check_differentiated_pov,
+    "house_position_register": check_house_positions,
     "lp_field_collisions": check_lp_field_collisions,
     "lp_image_optimization": check_image_optimization,
     "blog_seo_basics": check_blog_seo_basics,

@@ -61,9 +61,14 @@ const ogImage = `${siteUrl}/og.jpg`;
           <img src="/logo.svg" alt="" width="33" height="32" class="nav-logo-img" />
           What to Eat in Malaysia
         </a>
-        <div class="nav-links">
-          {/* Pre-launch: /guides, /packages, /account redirect to / — nav hidden until launch */}
+        <div class="nav-links" id="nav-links">
+          <a href="/packages">Get the checklists</a>
+          <a href="/guides">Browse states</a>
+          <a href="/login" class="nav-login">Log in</a>
         </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
       </div>
     </nav>
     <style is:global>
@@ -635,7 +640,7 @@ const ogImage = `${siteUrl}/og.jpg`;
         border: 1px solid #D4C5B5;
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(122, 46, 29, 0.08), inset 0 0 40px rgba(122, 46, 29, 0.03);
-        padding: 24px 20px;
+        padding: 24px 20px 24px 90px;
         margin: 20px 0;
         position: relative;
       }
@@ -653,23 +658,24 @@ const ogImage = `${siteUrl}/og.jpg`;
 
       .checklist-header {
         text-align: center;
-        margin-bottom: 24px;
-        padding-bottom: 16px;
+        margin-bottom: 28px;
+        padding-bottom: 20px;
         border-bottom: 2px solid var(--color-primary);
       }
 
       .checklist-header h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         color: var(--color-primary);
-        margin: 0 0 8px;
+        margin: 0 0 10px;
         letter-spacing: 0.02em;
         text-transform: uppercase;
       }
 
       .checklist-header .subtitle {
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         color: var(--color-muted);
         font-style: italic;
+        line-height: 1.5;
       }
 
       .stamp-seal {
@@ -724,42 +730,56 @@ const ogImage = `${siteUrl}/og.jpg`;
 
       .cl-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 0;
       }
 
       .cl-item {
         display: flex;
-        gap: 14px;
+        gap: 16px;
         align-items: flex-start;
-        padding: 14px 12px;
+        padding: 16px 14px;
         border-bottom: 1px dashed #E8DDD4;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
         position: relative;
         background: transparent;
         transition: background 0.2s ease;
+        flex-wrap: wrap;
       }
 
       .cl-item:hover {
-        background: rgba(233, 160, 80, 0.05);
+        background: rgba(233, 160, 80, 0.08);
       }
 
       .cl-item.checked {
-        background: transparent;
+        background: rgba(233, 160, 80, 0.05);
+      }
+
+      .cl-txt {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .dish-notes {
+        width: 100%;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 2px dashed #E8DDD4;
+        display: block;
       }
 
       /* Checkbox - actual checkbox appearance */
       .tick {
-        width: 24px;
-        height: 24px;
-        min-width: 24px;
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
         margin-top: 2px;
         display: grid;
         place-items: center;
         background: #fff;
         border: 2px solid #8B7355;
-        border-radius: 2px;
+        border-radius: 4px;
         box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
         position: relative;
         transition: all 0.2s ease;
@@ -779,12 +799,12 @@ const ogImage = `${siteUrl}/og.jpg`;
         transition: opacity 0.2s ease;
       }
 
-      .cl-item input:checked + .tick {
+      .cl-item.checked .tick {
         border-color: var(--color-accent);
         background: #FBE9DE;
       }
 
-      .cl-item input:checked + .tick svg {
+      .cl-item.checked .tick svg {
         stroke-dashoffset: 0;
         opacity: 1;
         animation: tick-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -792,14 +812,15 @@ const ogImage = `${siteUrl}/og.jpg`;
 
       /* Dish image thumbnail */
       .dish-img-wrap {
-        width: 56px;
-        height: 56px;
-        min-width: 56px;
-        border-radius: 4px;
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        border-radius: 6px;
         overflow: hidden;
         background: linear-gradient(135deg, #F5F0EB 0%, #E8DDD4 100%);
         border: 1px solid var(--color-border);
         position: relative;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.06);
       }
 
       .dish-img-wrap img {
@@ -826,6 +847,84 @@ const ogImage = `${siteUrl}/og.jpg`;
       .cl-txt {
         flex: 1;
         min-width: 0;
+      }
+
+      /* Tag system */
+      .dish-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .tag {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1.4;
+      }
+
+      .tag-breakfast {
+        background: #FFF3E0;
+        color: #E65100;
+        border: 1px solid #FFCC80;
+      }
+
+      .tag-lunch {
+        background: #E8F5E9;
+        color: #2E7D32;
+        border: 1px solid #A5D6A7;
+      }
+
+      .tag-dinner {
+        background: #E3F2FD;
+        color: #1565C0;
+        border: 1px solid #90CAF9;
+      }
+
+      .tag-all-day {
+        background: #F3E5F5;
+        color: #7B1FA2;
+        border: 1px solid #CE93D8;
+      }
+
+      .tag-mamak {
+        background: #FFF8E1;
+        color: #F57F17;
+        border: 1px solid #FFE082;
+      }
+
+      .tag-market {
+        background: #E8FAF4;
+        color: #00695C;
+        border: 1px solid #80CBC4;
+      }
+
+      .tag-hawker {
+        background: #FCE4EC;
+        color: #880E4F;
+        border: 1px solid #F48FB1;
+      }
+
+      .tag-street-food {
+        background: #EDE7F6;
+        color: #4527A0;
+        border: 1px solid #B39DDB;
+      }
+
+      .tag-restaurant {
+        background: #EFEBE9;
+        color: #4E342E;
+        border: 1px solid #BCAAA4;
+      }
+
+      .tag-seasonal {
+        background: #FFF3E0;
+        color: #BF360C;
+        border: 1px solid #FFAB91;
       }
 
       .cl-txt strong {
@@ -863,70 +962,80 @@ const ogImage = `${siteUrl}/og.jpg`;
       .cl-item.checked::after {
         content: '✓ TRIED';
         position: absolute;
-        top: 8px;
-        right: 12px;
-        font-size: 0.65rem;
+        top: 10px;
+        right: 14px;
+        font-size: 0.68rem;
         font-weight: 700;
         color: var(--color-accent);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        opacity: 0.6;
+        opacity: 0.75;
         transform: rotate(-5deg);
+        padding: 2px 8px;
+        border: 1px solid var(--color-accent);
+        border-radius: 3px;
       }
 
-      /* Notes section */
       .dish-notes {
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px dashed #E8DDD4;
-        display: none;
-      }
-
-      .cl-item:hover .dish-notes,
-      .cl-item.checked .dish-notes {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 2px dashed #E8DDD4;
         display: block;
       }
 
       .rating {
         display: flex;
-        gap: 4px;
-        margin-bottom: 8px;
+        gap: 8px;
+        margin-bottom: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid #F0E8DF;
       }
 
       .star {
         background: none;
         border: none;
         cursor: pointer;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         line-height: 1;
         color: #D4C5B5;
-        transition: color 0.2s;
-        padding: 4px;
-        min-width: 32px;
-        min-height: 32px;
+        transition: all 0.15s ease;
+        padding: 6px;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .star:hover, .star.active {
+      .star:hover {
+        color: #E8A020;
+        transform: scale(1.1);
+      }
+
+      .star.active {
         color: #D9A441;
       }
 
       .note-input {
         width: 100%;
         border: 1px solid #E8DDD4;
-        border-radius: 4px;
-        padding: 8px 10px;
-        font-size: 0.85rem;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 0.88rem;
         resize: vertical;
-        background: rgba(255,255,255,0.7);
+        background: rgba(255,255,255,0.8);
         color: #444;
         box-sizing: border-box;
         font-family: inherit;
+        min-height: 60px;
+        transition: border-color 0.2s, background 0.2s;
       }
 
       .note-input:focus {
         outline: none;
         border-color: var(--color-primary);
         background: #fff;
+        box-shadow: 0 0 0 3px rgba(122, 46, 29, 0.08);
       }
 
       .note-status {
@@ -2192,9 +2301,157 @@ const ogImage = `${siteUrl}/og.jpg`;
         .pkg-cards-grid { grid-template-columns: 1fr; }
         .compare-table th, .compare-table td { padding: 10px 10px; font-size: 0.8rem; }
       }
+
+      /* Footer */
+      .site-footer {
+        background: var(--color-primary-deep);
+        color: #F5E7D0;
+        padding: 48px 0 24px;
+        margin-top: 64px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 32px;
+      }
+      .footer-brand { max-width: 280px; }
+      .footer-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #FFF6E9;
+        text-decoration: none;
+        margin-bottom: 12px;
+      }
+      .footer-logo:hover { color: #F3C88B; text-decoration: none; }
+      .footer-logo-img { display: block; }
+      .footer-tagline {
+        font-size: 0.9rem;
+        color: #C9A87C;
+        line-height: 1.6;
+      }
+      .footer-links h4 {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #F3C88B;
+        margin-bottom: 14px;
+      }
+      .footer-links a {
+        display: block;
+        font-size: 0.9rem;
+        color: #E8D5C0;
+        padding: 5px 0;
+        transition: color 0.2s ease;
+      }
+      .footer-links a:hover { color: #FFF6E9; text-decoration: none; }
+      .footer-bottom {
+        border-top: 1px solid rgba(243, 200, 139, 0.2);
+        padding-top: 24px;
+        text-align: center;
+      }
+      .footer-bottom p {
+        font-size: 0.85rem;
+        color: #B8A490;
+        margin: 4px 0;
+      }
+      .footer-bottom a {
+        color: #F3C88B;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .footer-bottom a:hover { color: #FFF6E9; }
+      .footer-note { font-size: 0.8rem; opacity: 0.8; }
+
+      @media (max-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-brand { max-width: none; }
+        .footer-grid { gap: 24px; }
+      }
+
+      /* Mobile nav */
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        color: var(--color-text);
+      }
+      .nav-toggle svg {
+        width: 24px;
+        height: 24px;
+      }
+      @media (max-width: 640px) {
+        .nav-toggle { display: block; }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--color-card);
+          border-bottom: 1px solid var(--color-border);
+          padding: 16px 24px;
+          flex-direction: column;
+          gap: 12px;
+          box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+        .nav-links.open { display: flex; }
+        .nav-links a { padding: 8px 0; }
+        .nav-login { display: inline-block; }
+      }
     </style>
   </head>
   <body>
     <slot />
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="footer-logo">
+              <img src="/logo.svg" alt="" width="28" height="27" class="footer-logo-img" />
+              What to Eat in Malaysia
+            </a>
+            <p class="footer-tagline">Your checklist for Malaysia's best street food</p>
+          </div>
+          <div class="footer-links">
+            <h4>Explore</h4>
+            <a href="/guides">State checklists</a>
+            <a href="/packages">Buy checklists</a>
+            <a href="https://whatcanieatinmy.com">Dietary filter</a>
+          </div>
+          <div class="footer-links">
+            <h4>Company</h4>
+            <a href="https://simplyenak.com" target="_blank" rel="noopener">Simply Enak</a>
+            <a href="/login">Log in</a>
+            <a href="/account">Your checklists</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Built with love by <a href="https://simplyenak.com" target="_blank" rel="noopener">Simply Enak</a></p>
+          <p class="footer-note">Free checklist forever. Premium checklists unlock deeper insights.</p>
+        </div>
+      </div>
+    </footer>
   </body>
+  <script>
+    (function() {
+      var toggle = document.getElementById('nav-toggle');
+      var links = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', function() {
+          var isOpen = links.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen);
+        });
+      }
+    })();
+  </script>
 </html>

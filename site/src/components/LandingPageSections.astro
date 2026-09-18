@@ -260,12 +260,26 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
 <div class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] md:hidden">
   <div class="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
     <div>
-      <p class="text-xs text-muted">From RM {lowestPrice} MYR/pax</p>
-      <p class="text-xs font-semibold">{tourCount} tour{tourCount !== 1 ? 's' : ''} available</p>
+      {tourCount > 0 ? (
+        <p class="text-xs text-muted">From RM {lowestPrice} MYR/pax</p>
+      ) : (
+        <p class="text-xs text-muted">Private tour, on request</p>
+      )}
+      <p class="text-xs font-semibold">
+        {tourCount > 0
+          ? `${tourCount} tour${tourCount !== 1 ? 's' : ''} available`
+          : 'Designed around your group'}
+      </p>
     </div>
-    <a href="#tours" class="bg-accent text-black font-bold px-6 py-2.5 rounded text-sm hover:bg-accent/90 transition-colors">
-      Book Now
-    </a>
+    {tourCount > 0 ? (
+      <a href="#tours" class="bg-accent text-black font-bold px-6 py-2.5 rounded text-sm hover:bg-accent/90 transition-colors">
+        Book Now
+      </a>
+    ) : (
+      <a href="https://wa.me/60172878929" class="bg-accent text-black font-bold px-6 py-2.5 rounded text-sm hover:bg-accent/90 transition-colors">
+        Chat with Us
+      </a>
+    )}
   </div>
 </div>
 
@@ -541,7 +555,11 @@ const lowestPrice = tourCount > 0 ? Math.min(...matchingTours.map((t: any) => {
           </li>
           <li class="flex items-start gap-2">
             <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span>From RM{lowestPrice} per person for join-in tours; private tours available</span>
+            {tourCount > 0 ? (
+              <span>From RM{lowestPrice} per person for join-in tours; private tours available</span>
+            ) : (
+              <span>Private tours on request, priced for your group rather than per person</span>
+            )}
           </li>
         </ul>
       </div>

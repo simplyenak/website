@@ -113,3 +113,17 @@ Decision: Maarten's call; keep consistent across FB/IG/GBP once chosen.
   ("15+ years" — since 2011 = correct for 2026)
 - TripAdvisor "Since 2011" description (except the "We're not..." phrasing above)
 - Instagram profile
+
+---
+
+## Monthly audit 2026-09-06 (agent-search/SearXNG, exact phrase "Simply Enak", top 10 + targeted reads)
+
+- wonderfulmalaysia.com PARTIALLY FIXED: live page now says "Flavours of Malaysia – Off the Beaten Track" (name updated, old suffix kept); old review narrative still says 'Off the beaten track' 1x; "aweseom" gone from live page (Google snippet still shows stale cache). Next nudge: drop the suffix.
+- goKL.my UNCHANGED: "authentic" 2x in their directory copy.
+- TripAdvisor: "We're not typical tour…" still visible in KL listing snippet (d2328058); d2414763 bot-blocked (returns Google interstitial) — still needs dashboard rewrite.
+- FB tagline UNCHANGED: "The Truly Malaysian Food Experience".
+- IG bio consistent; now also mentions Ipoh.
+- Collisions: Kangar Jaya Perlis restaurant still present (FB post via Shophubby) AND NEW TikTok @simplyenak.kgr; simplyenakindo.com still in top-10 exact-phrase results.
+- NEW location drift: GYG + TA Penang + IG say Ipoh live; our /tours marks Ipoh "Coming soon", homepage title is "KL & Penang". Align when Ipoh launches.
+- NEW: GYG operator copy contains 2 em-dashes (brand voice: none).
+- CLEAN: homepage, /tours, /tours/flavours-of-malaysia (live, no old tour names, no "authentic"), minoritynomad.com blog.
