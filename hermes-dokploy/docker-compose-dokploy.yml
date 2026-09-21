@@ -121,9 +121,14 @@ services:
       - BRILLIANT_URL=http://cortex-api:8000
       - SEARXNG_URL=http://searxng:8080
       # jev-ultrafast defaults (non-secret)
-      - TYPESAFE_MODEL=jev-latest
-      - TEXT_MODEL_BASE_URL=https://openrouter.ai/api/v1
-      - TEXT_MODEL=inception/mercury-2.5
+      # Jev: OpenCode Zen free System One route (jev-1.13-free); TYPESAFE_API_KEY
+      # holds the Zen key. Set JEV_API_URL to "" to fall back to TypeSafe direct.
+      - JEV_API_URL=https://opencode.ai/zen/v1/systemone
+      - TYPESAFE_MODEL=jev-1.13-free
+      # TYPE_TEXT helper: free model via the internal Omniroute gateway
+      - TEXT_MODEL_BASE_URL=http://omniroute:20129/v1
+      - TEXT_MODEL=oc/deepseek-v4-flash-free
+      - TEXT_MODEL_API_KEY=${OMNIROUTE_API_KEY}
       - TEXT_MODEL_REASONING=none
       - N8N_WEBHOOK_URL=http://production-n8n-6aryb3_n8n:5678/webhook
       - ROCKETCHAT_URL=https://rocketchat.system.simplyenak.com

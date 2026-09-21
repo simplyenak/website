@@ -17,12 +17,53 @@ import os
 import sys
 
 
+PROFILE_ENV = "/home/hermes/.hermes/.env"
+
+
+def load_env_defaults():
+    """Seed os.environ from the profile .env for values not already set.
+
+    Keeps credentials in the maintained env file (empty-default policy) while
+    raw `docker exec` shells — which bypass Hermes' own env loader — still get
+    them. Never overwrites an existing value.
+    """
+    try:
+        with open(PROFILE_ENV) as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, value = line.partition("=")
+                key = key.strip()
+                value = value.strip().strip('"').strip("'")
+                if key and value:
+                    os.environ.setdefault(key, value)
+    except FileNotFoundError:
+        pass
+
+
+def resolve_typesafe_key():
+    """Map the Zen key onto TYPESAFE_API_KEY when routing Jev through Zen."""
+    if "opencode.ai" in (os.environ.get("JEV_API_URL") or ""):
+        zen = os.environ.get("OPENCODE_ZEN_API_KEY")
+        if zen:
+            os.environ.setdefault("TYPESAFE_API_KEY", zen)
+
+
 def main():
+    load_env_defaults()
+    resolve_typesafe_key()
+
     missing = [k for k in ("TYPESAFE_API_KEY",) if not os.environ.get(k)]
     if missing:
         print(f"ERROR: missing required env var(s): {', '.join(missing)}", file=sys.stderr)
         print("Set them in Dokploy → project → environment variables.", file=sys.stderr)
         sys.exit(2)
+
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import jev_zen_shim
+
+    jev_zen_shim.install()
 
     from jev_ultrafast import Agent
 
