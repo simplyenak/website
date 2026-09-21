@@ -98,6 +98,9 @@ services:
       - BRILLIANT_API_KEY=${BRILLIANT_API_KEY}
       - HERMES_WORKSPACE_PASSWORD=${HERMES_WORKSPACE_PASSWORD}
       - API_SERVER_KEY=${API_SERVER_KEY}
+      # jev-ultrafast (browser agent) — keys set in Dokploy env, EMPTY by design
+      - TYPESAFE_API_KEY=${TYPESAFE_API_KEY}
+      - TEXT_MODEL_API_KEY=${TEXT_MODEL_API_KEY}
 
       # ── Durable (hardcoded) env vars ──
       # These survive redeploy and server reset
@@ -117,6 +120,11 @@ services:
       - BRILLIANT_MCP_URL=http://brilliant-mcp:8002/mcp
       - BRILLIANT_URL=http://cortex-api:8000
       - SEARXNG_URL=http://searxng:8080
+      # jev-ultrafast defaults (non-secret)
+      - TYPESAFE_MODEL=jev-latest
+      - TEXT_MODEL_BASE_URL=https://openrouter.ai/api/v1
+      - TEXT_MODEL=inception/mercury-2.5
+      - TEXT_MODEL_REASONING=none
       - N8N_WEBHOOK_URL=http://production-n8n-6aryb3_n8n:5678/webhook
       - ROCKETCHAT_URL=https://rocketchat.system.simplyenak.com
       - ROCKETCHAT_USERNAME=hermes

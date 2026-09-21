@@ -148,8 +148,59 @@ def _bootstrap_scripts():
         print(f"  Cron auto-register skipped: {e}", flush=True)
 
 
+def start_chromium():
+    """Launch headless Chromium with a CDP endpoint on :9333 for browser tooling.
+
+    browser-harness (used by jev-ultrafast and the browser tool) attaches to
+    BU_CDP_URL. Non-fatal: if Chromium fails, the gateway still starts and
+    browser-dependent features degrade with a clear error instead.
+    """
+    import time
+    import urllib.request
+
+    cdp_url = os.environ.get("BU_CDP_URL", "http://127.0.0.1:9333")
+    chrome_bin = os.environ.get("BH_CHROME_PATH", "/usr/bin/chromium")
+    if not os.path.exists(chrome_bin):
+        print(f"Chromium not found at {chrome_bin} — browser supervisor skipped", flush=True)
+        return
+    try:
+        urllib.request.urlopen(f"{cdp_url}/json/version", timeout=2)
+        print(f"Chromium CDP already up at {cdp_url}", flush=True)
+        return
+    except Exception:
+        pass
+
+    os.makedirs("/home/hermes/.cache", exist_ok=True)
+    log = open("/home/hermes/.cache/chromium-cdp.log", "ab")
+    subprocess.Popen(
+        [
+            chrome_bin,
+            "--headless=new",
+            "--no-sandbox",
+            "--disable-gpu",
+            "--disable-dev-shm-usage",
+            "--remote-debugging-address=127.0.0.1",
+            "--remote-debugging-port=9333",
+            "--user-data-dir=/home/hermes/.cache/chromium-profile",
+            "--window-size=1280,900",
+            "about:blank",
+        ],
+        stdout=log,
+        stderr=log,
+        start_new_session=True,
+    )
+    for _ in range(24):  # up to ~6s, non-fatal
+        try:
+            urllib.request.urlopen(f"{cdp_url}/json/version", timeout=1)
+            print(f"Chromium CDP ready at {cdp_url}", flush=True)
+            return
+        except Exception:
+            time.sleep(0.25)
+    print(f"Warning: Chromium CDP not ready at {cdp_url} (see /home/hermes/.cache/chromium-cdp.log)", flush=True)
+
+
 def main():
-    print("=== Hermes Agent v0.18.0 Entrypoint ===", flush=True)
+    print("=== Hermes Agent v0.21.3 Entrypoint ===", flush=True)
 
     # Fix volume permissions (best effort — may fail without CAP_CHOWN/DAC_OVERRIDE)
     fix_permissions(HERMES_DIR)
@@ -207,6 +258,9 @@ def main():
 
     # Point HOME at the volume mount so the gateway reads/writes state directly.
     os.environ["HOME"] = "/home/hermes"
+
+    # Start headless Chromium CDP supervisor (for jev-ultrafast / browser tool)
+    start_chromium()
 
     # Ensure gateway-locks directory exists (build-time pre-created, but be safe)
     ensure_lock_dir()

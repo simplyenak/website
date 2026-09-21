@@ -1,23 +1,27 @@
 # =============================================================================
-# Hermes Agent v0.21.0 — Docker Swarm-optimized image
+# Hermes Agent v0.21.3 — Docker Swarm-optimized image
 # =============================================================================
 FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl git \
+    curl git chromium fonts-liberation \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+    PYTHONDONTWRITEBYTECODE=1 \
+    BH_CHROME_PATH=/usr/bin/chromium \
+    BU_CDP_URL=http://127.0.0.1:9333
 
-# Install hermes-agent v0.21.0 (git tag v2026.8.31 — 0.21.0 is not on PyPI)
+# Install hermes-agent v0.21.3 (git tag v2026.9.14 — PyPI lags behind git tags)
 # `mcp` (Python SDK) provides the streamable-HTTP/SSE client transport that
 # URL-based mcp_servers entries in config.yaml need (e.g. the Dolibarr 24
 # MCP endpoint). Without it the gateway lists such servers as enabled but
 # every connect fails with "mcp.client.streamable_http is not available".
 RUN HERMES_NIX_BUILD=1 pip install --no-cache-dir \
-    "git+https://github.com/NousResearch/hermes-agent.git@v2026.8.31#egg=hermes-agent[web,cron,voice]" && \
-    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]" yt-dlp google-auth mcp
+    "git+https://github.com/NousResearch/hermes-agent.git@v2026.9.14#egg=hermes-agent[web,cron,voice]" && \
+    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]" yt-dlp google-auth mcp && \
+    pip install --no-cache-dir \
+    "git+https://github.com/browser-use/jev-ultrafast.git@1231850a0bf1a0c0341fe408ef1668dbbfdfac46#egg=jev-ultrafast"
 
 # Create the hermes user and all needed directories
 RUN useradd -m -s /bin/bash hermes && \
