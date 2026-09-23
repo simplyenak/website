@@ -10,8 +10,7 @@ from datetime import datetime
 PROVIDERS = [
     {"name": "Omniroute", "url": "http://omniroute:20129/v1/models",
      "key_env": "OMNIROUTE_API_KEY", "auth": "Bearer"},
-    {"name": "Brilliant KB", "url": "http://compose-brilliant_api:8000/entries",
-     "key_env": "BRILLIANT_API_KEY", "auth": "Bearer"},
+    # Brilliant KB removed Sep 2026 (app taken down) — do NOT re-add.
     {"name": "PyRunner", "url": "http://pyrunner:8000/",
      "key_env": None, "auth": None},
     {"name": "Payload CMS", "url": "http://simplyenakbackend_payload:3000/api/access",
@@ -99,7 +98,7 @@ def agentsearch_canary():
 
 
 def main():
-    _dotenv_fallback("GH_TOKEN", "OMNIROUTE_API_KEY", "BRILLIANT_API_KEY")
+    _dotenv_fallback("GH_TOKEN", "OMNIROUTE_API_KEY")
     failures = []
     for p in PROVIDERS:
         # Missing credential = loud failure, not a confusing downstream error.
