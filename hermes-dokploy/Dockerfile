@@ -19,7 +19,7 @@ ENV PYTHONUNBUFFERED=1 \
 # every connect fails with "mcp.client.streamable_http is not available".
 RUN HERMES_NIX_BUILD=1 pip install --no-cache-dir \
     "git+https://github.com/NousResearch/hermes-agent.git@v2026.9.14#egg=hermes-agent[web,cron,voice]" && \
-    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]" yt-dlp google-auth mcp && \
+    pip install --no-cache-dir aiohttp[speedups] "python-telegram-bot[webhooks]" yt-dlp google-auth mcp hindsight-client==0.6.1 && \
     pip install --no-cache-dir \
     "git+https://github.com/browser-use/jev-ultrafast.git@1231850a0bf1a0c0341fe408ef1668dbbfdfac46#egg=jev-ultrafast"
 
