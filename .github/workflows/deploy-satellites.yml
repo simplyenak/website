@@ -140,27 +140,23 @@ jobs:
       - name: Deploy to Cloudflare Pages (production)
         if: steps.gate.outputs.run == 'true'
         id: deploy
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ matrix.project }}
-          directory: ${{ matrix.site }}/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ matrix.branch }}
+          command: pages deploy ${{ matrix.site }}/dist --project-name=${{ matrix.project }} --branch=${{ matrix.branch }}
 
       # Same build, mirrored to the site's staging project (a *.pages.dev
       # preview, or for WTM the existing whattoeatinmalaysia-staging lane).
       - name: Deploy to Cloudflare Pages (staging)
         if: steps.gate.outputs.run == 'true'
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ matrix.staging_project }}
-          directory: ${{ matrix.site }}/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ matrix.staging_branch }}
+          command: pages deploy ${{ matrix.site }}/dist --project-name=${{ matrix.staging_project }} --branch=${{ matrix.staging_branch }}
 
       - name: Verify live
         if: steps.gate.outputs.run == 'true'
