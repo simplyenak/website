@@ -215,14 +215,26 @@ async function handleContact(request) {
     var body = await request.json();
     honeypotVal = body.honeypot_website || body.website || "";
     if (!honeypotVal) {
-      await fetch(CONTACT_WEBHOOK, {
+      var fwd = await fetch(CONTACT_WEBHOOK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
+      // Surface real failures: if Pyrunner did not accept the submission,
+      // return non-2xx so the page shows the honest error + email/WhatsApp
+      // fallback instead of a false "Message sent".
+      if (!fwd.ok) {
+        return new Response(JSON.stringify({ status: "error" }), {
+          status: 502,
+          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+        });
+      }
     }
   } catch (e) {
-    // Malformed body — still 200 so the page doesn't flash an error needlessly.
+    return new Response(JSON.stringify({ status: "error" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+    });
   }
   return new Response(JSON.stringify({ status: "ok" }), {
     status: 200,
