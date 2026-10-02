@@ -4,6 +4,9 @@ var CDN_ROOT = "https://cdn.simplyenak.com";
 var STATIC_TTL = 2592000; // 30 days in seconds
 var HTML_CACHE_TTL = 300; // seconds — AI systems fetch pages in real time; short edge TTL keeps HTML fast without staleness
 
+// Pyrunner contact-form webhook (holds the RESEND key; forwards to booking@simplyenak.com).
+var CONTACT_WEBHOOK = "https://pyrunner.system.simplyenak.com/webhook/05fd150c785ea358c281f1cea0e9ec4f08bc069ba4d96ef3a66f062c06725521/";
+
 // ── Static redirect map ──────────────────────────────────────────────
 // This is the single source of truth for 301s on simplyenak.com.
 // The site _redirects file and Pages Functions don't fire because
@@ -205,8 +208,38 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
 });
 
+async function handleContact(request) {
+  // Honeypot: drop silently (return 200 so we never leak to bots).
+  var honeypotVal = "";
+  try {
+    var body = await request.json();
+    honeypotVal = body.honeypot_website || body.website || "";
+    if (!honeypotVal) {
+      await fetch(CONTACT_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+    }
+  } catch (e) {
+    // Malformed body — still 200 so the page doesn't flash an error needlessly.
+  }
+  return new Response(JSON.stringify({ status: "ok" }), {
+    status: 200,
+    headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+  });
+}
+
 async function handleRequest(request) {
   var url = new URL(request.url);
+
+  // ── Contact form receiver — same-origin POST /api/contact ──
+  // Client forms POST their JSON here; we relay it to the Pyrunner
+  // contact-form webhook (server-side, no CORS preflight) which sends it to
+  // booking@simplyenak.com via Resend. Honeypot submissions are dropped.
+  if (request.method === "POST" && url.pathname === "/api/contact") {
+    return handleContact(request);
+  }
 
   // ── Static assets — pass through immediately ──
   if (/\.(jpg|jpeg|png|webp|gif|svg|css|js|ico|woff2|pdf|mp4|webm)$/i.test(url.pathname)) {

@@ -1,7 +1,10 @@
 /**
- * Formspree endpoints.
- * NOTE (2026-08-26): form xjkyqvpz returns 404 FORM_NOT_FOUND at Formspree;
- * every contact submission site-wide fails until this ID is replaced.
- * Swap the ID here once; all 11 call sites pick it up.
+ * Contact form endpoint (all call sites).
+ *
+ * SELF-HOSTED (2026-10-02): previously Formspree (form xjkyqvpz) which 404'd
+ * FORM_NOT_FOUND for over a month. Now a RELATIVE same-origin path served by the
+ * Cloudflare Worker (`/api/contact` -> POSTs to the Pyrunner `contact-form`
+ * webhook -> Resend email to booking@simplyenak.com). Relative path = no CORS.
+ * 11 call sites pick this up with no other change.
  */
-export const CONTACT_FORM_URL = 'https://formspree.io/f/xjkyqvpz';
+export const CONTACT_FORM_URL = '/api/contact';
