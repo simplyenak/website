@@ -129,24 +129,20 @@ jobs:
           PAYLOAD_URL: https://cms.system.simplyenak.com
 
       - name: Deploy to staging
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: staging
-          directory: site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          command: pages deploy site/dist --project-name=staging --branch=main
 
       - name: Deploy to production
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: website
-          directory: site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: production
+          command: pages deploy site/dist --project-name=website --branch=production
 
       - name: Deploy CDN Worker
         env:
